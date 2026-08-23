@@ -17,11 +17,11 @@ export default async function ArticlePage({
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
         {article.date}
       </p>
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#17222B] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {article.title}
@@ -36,16 +36,16 @@ export default async function ArticlePage({
         ))}
       </div>
 
-      <div className="mt-16 border-t border-[#D6DBD8] pt-10">
+      <div className="mt-16 border-t border-[#E5D9C7] pt-10">
         <p
-          className="text-xl leading-snug text-[#17222B]"
+          className="text-xl leading-snug text-[#2B2118]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           If this is where you are right now, we can talk about it properly.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           Talk to a pastor — {SITE.price}
         </Link>

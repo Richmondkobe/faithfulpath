@@ -32,7 +32,7 @@ export default function Home() {
         <div className="grid items-center gap-12 sm:grid-cols-[1.15fr_1fr]">
           <div>
             <h1
-              className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#17222B] sm:text-[3.5rem]"
+              className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.5rem]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               Some things you cannot work out alone.
@@ -48,13 +48,13 @@ export default function Home() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/talk-to-a-pastor"
-                className="inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
               >
                 Talk to a pastor — {SITE.price}
               </Link>
               <Link
                 href="/articles"
-                className="inline-flex items-center justify-center rounded-sm border border-[#D6DBD8] px-7 py-4 text-[15px] font-medium text-[#17222B] transition-colors hover:border-[#2C5651] hover:text-[#2C5651]"
+                className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
               >
                 Read the articles
               </Link>
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#D6DBD8] bg-[#EEF1EF]">
+      <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
         <div className="mx-auto max-w-5xl px-6 py-12">
           <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
             {[
@@ -86,26 +86,26 @@ export default function Home() {
             ].map(([figure, label]) => (
               <div key={label}>
                 <dt
-                  className="text-3xl text-[#17222B] sm:text-4xl"
+                  className="text-3xl text-[#2B2118] sm:text-4xl"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
                 >
                   {figure}
                 </dt>
-                <dd className="mt-1 text-[13px] leading-snug text-[#5A6A73]">
+                <dd className="mt-1 text-[13px] leading-snug text-[#6B5F53]">
                   {label}
                 </dd>
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B7A83]">
+          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 py-20">
+      <section className="mx-auto max-w-5xl px-6 py-14">
         <h2
-          className="text-3xl tracking-[-0.01em] text-[#17222B] sm:text-4xl"
+          className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           One honest hour
@@ -114,18 +114,18 @@ export default function Home() {
           A private conversation, online, wherever you are. No church membership
           required, and you do not have to arrive with faith intact.
         </p>
-        <div className="mt-12 divide-y divide-[#D6DBD8] border-y border-[#D6DBD8]">
+        <div className="mt-8 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
           {STAGES.map((stage) => (
             <div
               key={stage.label}
-              className="grid gap-3 py-8 sm:grid-cols-[8rem_1fr] sm:gap-8"
+              className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-6"
             >
-              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
                 {stage.label}
               </p>
               <div>
                 <h3
-                  className="text-xl text-[#17222B]"
+                  className="text-xl text-[#2B2118]"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {stage.title}
@@ -137,31 +137,31 @@ export default function Home() {
         </div>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+          className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           See how it works
         </Link>
       </section>
 
-      <section className="border-t border-[#D6DBD8] bg-[#EEF1EF]">
-        <div className="mx-auto max-w-5xl px-6 py-20">
+      <section className="border-t border-[#E5D9C7] bg-[#F3EADC]">
+        <div className="mx-auto max-w-5xl px-6 py-14">
           <h2
-            className="text-3xl tracking-[-0.01em] text-[#17222B] sm:text-4xl"
+            className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             Writing and teaching
           </h2>
           {recent.length === 0 ? (
-            <p className="mt-6 max-w-xl leading-relaxed text-[#5A6A73]">
+            <p className="mt-6 max-w-xl leading-relaxed text-[#6B5F53]">
               Articles are on their way.
             </p>
           ) : (
-            <ul className="mt-10 divide-y divide-[#D6DBD8] border-y border-[#D6DBD8]">
+            <ul className="mt-10 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
               {recent.map((a) => (
                 <li key={a.slug} className="py-6">
                   <Link href={"/articles/" + a.slug} className="group block">
                     <h3
-                      className="text-xl text-[#17222B] transition-colors group-hover:text-[#2C5651]"
+                      className="text-xl text-[#2B2118] transition-colors group-hover:text-[#8B5E34]"
                       style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                     >
                       {a.title}
@@ -174,7 +174,7 @@ export default function Home() {
           )}
           <Link
             href="/articles"
-            className="mt-8 inline-block text-[15px] font-medium text-[#2C5651] underline-offset-4 hover:underline"
+            className="mt-8 inline-block text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
           >
             All articles
           </Link>

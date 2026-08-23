@@ -13,7 +13,7 @@ export default function About() {
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#17222B] sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         About
@@ -50,22 +50,22 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-14 border-y border-[#D6DBD8] py-8">
-        <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B7A83]">
+      <div className="mt-14 border-y border-[#E5D9C7] py-8">
+        <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
           {COUNTRIES.join(" · ")}
         </p>
       </div>
 
       <div className="mt-14">
         <p
-          className="text-xl leading-snug text-[#17222B]"
+          className="text-xl leading-snug text-[#2B2118]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           If you would like to talk, I keep hours for exactly that.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           Talk to a pastor — {SITE.price}
         </Link>

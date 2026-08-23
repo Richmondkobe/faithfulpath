@@ -66,24 +66,24 @@ const STAGES = [
 export default function Home() {
   return (
     <main
-      className={`${display.variable} ${sans.variable} min-h-screen bg-[#FCFCFB] text-[#3E4E58]`}
+      className={`${display.variable} ${sans.variable} min-h-screen bg-[#FDFAF4] text-[#4A4038]`}
       style={{ fontFamily: "var(--font-sans)" }}
     >
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-[#2C5651]">
+        <p className="text-[11px] uppercase tracking-[0.22em] text-[#8B5E34]">
           Faithful Path Community
         </p>
 
         <h1
-          className="mt-8 text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-[#17222B] sm:text-[4.25rem]"
+          className="mt-8 text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-[#2B2118] sm:text-[4.25rem]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Talk to a pastor.
         </h1>
 
         <p
-          className="mt-6 max-w-xl text-lg leading-relaxed text-[#3E4E58] sm:text-xl"
+          className="mt-6 max-w-xl text-lg leading-relaxed text-[#4A4038] sm:text-xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
         >
           Online Christian counselling and spiritual guidance — one honest hour
@@ -93,18 +93,18 @@ export default function Home() {
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
             href="https://cal.com/getclb/talk-to-a-pastor"
-            className="inline-flex items-center justify-center rounded-sm bg-[#17222B] px-8 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2C5651]"
+            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-8 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
           >
             Book a conversation — US$60
           </a>
-          <p className="text-sm text-[#6B7A83]">
+          <p className="text-sm text-[#7C7065]">
             One 60-minute session. No church membership required.
           </p>
         </div>
       </section>
 
       {/* Credential band */}
-      <section className="border-y border-[#D6DBD8] bg-[#EEF1EF]">
+      <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
         <div className="mx-auto max-w-3xl px-6 py-12">
           <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
             {[
@@ -115,47 +115,47 @@ export default function Home() {
             ].map(([figure, label]) => (
               <div key={label}>
                 <dt
-                  className="text-3xl text-[#17222B] sm:text-4xl"
+                  className="text-3xl text-[#2B2118] sm:text-4xl"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
                 >
                   {figure}
                 </dt>
-                <dd className="mt-1 text-[13px] leading-snug text-[#5A6A73]">
+                <dd className="mt-1 text-[13px] leading-snug text-[#6B5F53]">
                   {label}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B7A83]">
+          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
       </section>
 
       {/* What the conversation is */}
-      <section className="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+      <section className="mx-auto max-w-3xl px-6 py-14 sm:py-28">
         <h2
-          className="text-3xl tracking-[-0.01em] text-[#17222B] sm:text-4xl"
+          className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           What you get for US$60
         </h2>
 
-        <div className="mt-12 divide-y divide-[#D6DBD8] border-y border-[#D6DBD8]">
+        <div className="mt-8 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
           {STAGES.map((stage) => (
-            <div key={stage.label} className="grid gap-3 py-8 sm:grid-cols-[8rem_1fr] sm:gap-8">
-              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+            <div key={stage.label} className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-6">
+              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
                 {stage.label}
               </p>
               <div>
                 <h3
-                  className="text-xl text-[#17222B]"
+                  className="text-xl text-[#2B2118]"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {stage.title}
                 </h3>
-                <p className="mt-2 leading-relaxed text-[#3E4E58]">{stage.body}</p>
+                <p className="mt-2 leading-relaxed text-[#4A4038]">{stage.body}</p>
               </div>
             </div>
           ))}
@@ -163,10 +163,10 @@ export default function Home() {
       </section>
 
       {/* Who comes */}
-      <section className="bg-[#17222B] py-20 text-[#DCE3E2] sm:py-28">
+      <section className="bg-[#2B2118] py-20 text-[#EDE3D3] sm:py-28">
         <div className="mx-auto max-w-3xl px-6">
           <h2
-            className="text-3xl tracking-[-0.01em] text-[#FCFCFB] sm:text-4xl"
+            className="text-3xl tracking-[-0.01em] text-[#FDFAF4] sm:text-4xl"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             People come to me saying things like this
@@ -176,7 +176,7 @@ export default function Home() {
             {SITUATIONS.map((line) => (
               <li
                 key={line}
-                className="border-l-2 border-[#2C5651] pl-5 text-lg leading-relaxed sm:text-xl"
+                className="border-l-2 border-[#8B5E34] pl-5 text-lg leading-relaxed sm:text-xl"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 300, fontStyle: "italic" }}
               >
                 {line}
@@ -184,7 +184,7 @@ export default function Home() {
             ))}
           </ul>
 
-          <p className="mt-12 max-w-xl leading-relaxed text-[#9DAFB0]">
+          <p className="mt-12 max-w-xl leading-relaxed text-[#C9B99F]">
             You don't have to arrive with the right words, or with faith intact.
             You only have to be willing to say the true thing out loud once.
           </p>
@@ -192,9 +192,9 @@ export default function Home() {
       </section>
 
       {/* Who I am */}
-      <section className="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+      <section className="mx-auto max-w-3xl px-6 py-14 sm:py-28">
         <h2
-          className="text-3xl tracking-[-0.01em] text-[#17222B] sm:text-4xl"
+          className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Who you'd be talking to
@@ -221,12 +221,12 @@ export default function Home() {
       </section>
 
       {/* What this isn't */}
-      <section className="border-y border-[#D6DBD8] bg-[#EEF1EF]">
+      <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
         <div className="mx-auto max-w-3xl px-6 py-16">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
             Please read this first
           </h2>
-          <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-[#3E4E58]">
+          <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-[#4A4038]">
             <p>
               This is pastoral and spiritual guidance from an ordained minister.
               It is not licensed therapy, psychiatric treatment, or medical care,
@@ -236,7 +236,7 @@ export default function Home() {
             <p>
               Sessions are scheduled in advance. This is not an emergency
               service.{" "}
-              <strong className="font-semibold text-[#17222B]">
+              <strong className="font-semibold text-[#2B2118]">
                 If you are in immediate danger, or thinking of harming yourself,
                 please contact your local emergency number or a crisis line in
                 your country right now.
@@ -250,23 +250,23 @@ export default function Home() {
       </section>
 
       {/* Closing */}
-      <section className="mx-auto max-w-3xl px-6 py-20 text-center sm:py-28">
+      <section className="mx-auto max-w-3xl px-6 py-14 text-center sm:py-28">
         <p
-          className="mx-auto max-w-lg text-2xl leading-snug text-[#17222B] sm:text-3xl"
+          className="mx-auto max-w-lg text-2xl leading-snug text-[#2B2118] sm:text-3xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
         >
           One hour is usually enough to stop going in circles.
         </p>
         <a
           href="https://cal.com/getclb/talk-to-a-pastor"
-          className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-8 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2C5651]"
+          className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-8 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
         >
           Book a conversation — US$60
         </a>
       </section>
 
-      <footer className="border-t border-[#D6DBD8] py-10">
-        <p className="mx-auto max-w-3xl px-6 text-[13px] text-[#6B7A83]">
+      <footer className="border-t border-[#E5D9C7] py-10">
+        <p className="mx-auto max-w-3xl px-6 text-[13px] text-[#7C7065]">
           Faithful Path Community
         </p>
       </footer>

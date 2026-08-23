@@ -18,4 +18,5 @@ export type Article = {
   body: string[];
 };
 
-export const ARTICLES: Article[] = [];
+import { ALL_ARTICLES } from "./articles";
+export const ARTICLES: Article[] = ALL_ARTICLES;

@@ -36,19 +36,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body
-        className="min-h-screen bg-[#FCFCFB] text-[#3E4E58] antialiased"
+        className="min-h-screen bg-[#FDFAF4] text-[#4A4038] antialiased"
         style={{ fontFamily: "var(--font-sans)" }}
       >
-        <header className="border-b border-[#D6DBD8] bg-[#FCFCFB]">
+        <header className="border-b border-[#E5D9C7] bg-[#FDFAF4]">
           <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <Link href="/">
               <span
-                className="block text-xl leading-none text-[#17222B]"
+                className="block text-xl leading-none text-[#2B2118]"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {SITE.name}
               </span>
-              <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-[#2C5651]">
+              <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-[#8B5E34]">
                 {SITE.tagline}
               </span>
             </Link>
@@ -58,7 +58,7 @@ export default function RootLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[#4A5A66] transition-colors hover:text-[#2C5651]"
+                  className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
                 >
                   {item.label}
                 </Link>
@@ -69,15 +69,15 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="mt-24 border-t border-[#D6DBD8] bg-[#EEF1EF]">
+        <footer className="mt-24 border-t border-[#E5D9C7] bg-[#F3EADC]">
           <div className="mx-auto max-w-5xl px-6 py-12">
             <p
-              className="text-lg text-[#17222B]"
+              className="text-lg text-[#2B2118]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {SITE.name}
             </p>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-[#5A6A73]">
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-[#6B5F53]">
               Pastoral and spiritual guidance online. Not a substitute for
               therapy, medical care, or emergency services.
             </p>
@@ -86,7 +86,7 @@ export default function RootLayout({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[#4A5A66] transition-colors hover:text-[#2C5651]"
+                  className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
                 >
                   {item.label}
                 </Link>

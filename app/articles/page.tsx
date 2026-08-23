@@ -12,7 +12,7 @@ export default function Articles() {
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#17222B] sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Articles
@@ -26,20 +26,20 @@ export default function Articles() {
       </p>
 
       {ARTICLES.length === 0 ? (
-        <p className="mt-14 leading-relaxed text-[#5A6A73]">
+        <p className="mt-14 leading-relaxed text-[#6B5F53]">
           Articles are on their way. In the meantime, if something is weighing
           on you, we can talk about it properly.
         </p>
       ) : (
-        <ul className="mt-14 divide-y divide-[#D6DBD8] border-y border-[#D6DBD8]">
+        <ul className="mt-14 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
           {ARTICLES.map((a) => (
             <li key={a.slug} className="py-8">
               <Link href={"/articles/" + a.slug} className="group block">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
                   {a.date}
                 </p>
                 <h2
-                  className="mt-2 text-2xl text-[#17222B] transition-colors group-hover:text-[#2C5651]"
+                  className="mt-2 text-2xl text-[#2B2118] transition-colors group-hover:text-[#8B5E34]"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {a.title}
@@ -51,16 +51,16 @@ export default function Articles() {
         </ul>
       )}
 
-      <div className="mt-16 border-t border-[#D6DBD8] pt-10">
+      <div className="mt-16 border-t border-[#E5D9C7] pt-10">
         <p
-          className="text-xl leading-snug text-[#17222B]"
+          className="text-xl leading-snug text-[#2B2118]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Reading only takes you so far.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           Talk to a pastor — {SITE.price}
         </Link>
