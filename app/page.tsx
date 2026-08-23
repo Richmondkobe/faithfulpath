@@ -92,7 +92,7 @@ export default function Home() {
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
-            href="/book"
+            href="https://cal.com/getclb/talk-to-a-pastor"
             className="inline-flex items-center justify-center rounded-sm bg-[#17222B] px-8 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2C5651]"
           >
             Book a conversation — US$60
@@ -258,7 +258,7 @@ export default function Home() {
           One hour is usually enough to stop going in circles.
         </p>
         <a
-          href="/book"
+          href="https://cal.com/getclb/talk-to-a-pastor"
           className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-8 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2C5651]"
         >
           Book a conversation — US$60
