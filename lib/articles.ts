@@ -36,4 +36,50 @@ export const churchLeadershipTraining: Article = {
   ],
 };
 
-export const ALL_ARTICLES: Article[] = [churchLeadershipTraining];
+export const christianMarriageHelp: Article = {
+  slug: "christian-marriage-help-real-problem",
+  title: "Christian Marriage Help: The Problem You Name Is Rarely the Real One",
+  metaTitle: "Christian Marriage Help: Finding the Real Problem",
+  metaDescription:
+    "After counselling more than a thousand couples, here is why the problem couples name is rarely the one that is actually hurting the marriage.",
+  summary:
+    "Couples arrive naming money, or sex, or the in-laws. After a thousand of these conversations, I have learned to listen for something underneath.",
+  date: "August 2026",
+  isoDate: "2026-08-24",
+  body: [
+    { p: "In more than twenty years of pastoral work I have sat with well over a thousand couples. Almost every one of them arrived able to tell me exactly what was wrong with their marriage. Almost none of them were right." },
+    { p: "That is not a criticism. It is simply what happens when you live inside a problem. You describe what you can see, and what you can see is the argument you had on Tuesday, not the thing that made Tuesday possible." },
+    { h2: "One question that changes the conversation" },
+    { p: "There is a question I ask early, and it does more work than anything else I know: if this problem disappeared tomorrow, would your marriage be healthy?" },
+    { p: "A couple tells me they fight about the children. So I ask: if the children behaved perfectly from tomorrow morning, would the two of you be well? There is usually a pause. Then, quietly, one of them says no. That pause is where the real conversation begins." },
+    { h2: "What money arguments are usually about" },
+    { p: "Money is the most common thing couples name, and it is almost never about arithmetic. When a wife says you spend too much, she often means I do not feel secure with you. When a husband says she never lets me buy anything, he often means I feel controlled in my own home." },
+    { p: "You can build them a budget. They will keep having the same fight, because the budget was never the disagreement. Trust was." },
+    { h2: "What a struggling sex life is usually telling you" },
+    { p: "Couples come to me describing mismatched desire. Sometimes that is genuinely the issue. More often the bedroom is simply the room where everything else becomes visible: the resentment nobody named, the apology that never came, the slow loss of affection over years." },
+    { p: "Trying to repair physical intimacy while the emotional relationship is dead is like fixing a tap in a house with no water supply." },
+    { h2: "When the dishes are not about the dishes" },
+    { p: "He never helps around the house is rarely a scheduling complaint. Underneath it is usually this: I feel like you take everything I do for granted. The dishes are just where that feeling finally became sayable." },
+    { h2: "The spiritual answer that becomes a hiding place" },
+    { p: "This next part is difficult to write as a pastor, and I want to be careful with it." },
+    { p: "Sometimes a couple tells me they simply need to pray more. Sometimes they tell me the enemy is attacking their marriage. I believe in prayer, and I believe the enemy is real and does not love what God has joined. I have prayed with couples and seen God do what no counselling could." },
+    { p: "But I have also sat with a husband who told me for forty minutes that the devil was attacking his home, when what his wife needed to hear was four words: I was wrong, forgive me. Spiritual language can become the most respectable way to avoid saying them." },
+    { p: "Prayer is not a substitute for repentance. It is not a substitute for a boundary you have refused to set, an apology you have not made, or a habit you have not changed. When a couple is spiritually active and relationally immature, more prayer meetings will not close that gap. Only honesty will." },
+    { h2: "The five layers underneath a complaint" },
+    { p: "When someone brings me a complaint, I listen for five things underneath it. Take he never helps around the house." },
+    { list: [
+      "The complaint: he never helps around the house.",
+      "The feeling: I am overwhelmed and unappreciated.",
+      "The belief: he does not value what I do.",
+      "The fear: I am alone in this marriage.",
+      "The need: partnership, appreciation, and security.",
+    ] },
+    { p: "Nobody arrives saying I am afraid I am alone in this marriage. They arrive talking about dishes. The work is getting from the first line to the last one, and most couples cannot do it by themselves, because the moment one of them starts down that path the other hears an accusation and defends." },
+    { h2: "The question that moves a marriage" },
+    { p: "There is one more shift, and for Christian couples it is the important one. Most couples come wanting an answer to who is wrong. That question has never healed a marriage in my experience, because both of them are partly right, and being right has never once made anybody feel loved." },
+    { p: "The better question is this: what is my responsibility before God in this marriage? Not his. Not hers. Mine." },
+    { p: "It is a harder question, and it is the only one either person can actually act on tomorrow morning." },
+  ],
+};
+
+export const ALL_ARTICLES: Article[] = [christianMarriageHelp, churchLeadershipTraining];
