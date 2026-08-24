@@ -71,7 +71,7 @@ export default function RootLayout({
 
         {children}
 
-        <footer className="mt-24 border-t border-[#E5D9C7] bg-[#F3EADC]">
+        <footer className="border-t border-[#E5D9C7] bg-[#F3EADC]">
           <div className="mx-auto max-w-5xl px-6 py-12">
             <p
               className="text-lg text-[#2B2118]"
