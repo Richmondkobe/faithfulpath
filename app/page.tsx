@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SITE, COUNTRIES, ARTICLES } from "@/lib/site";
+import { SITE, COUNTRIES } from "@/lib/site";
+import { ALL_ARTICLES as ARTICLES } from "@/lib/articles";
 
 const STAGES = [
   {

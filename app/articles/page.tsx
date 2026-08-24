@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ARTICLES, SITE } from "@/lib/site";
+import { ALL_ARTICLES as ARTICLES } from "@/lib/articles";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Articles | Faithful Path Community",

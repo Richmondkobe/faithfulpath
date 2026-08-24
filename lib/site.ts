@@ -10,13 +10,6 @@ export const COUNTRIES = [
   "Kenya", "Rwanda", "Uganda", "Nigeria", "Singapore",
 ];
 
-export type Article = {
-  slug: string;
-  title: string;
-  summary: string;
-  date: string;
-  body: string[];
-};
 
-import { ALL_ARTICLES } from "./articles";
-export const ARTICLES: Article[] = ALL_ARTICLES;
+
+
