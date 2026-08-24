@@ -82,4 +82,43 @@ export const christianMarriageHelp: Article = {
   ],
 };
 
-export const ALL_ARTICLES: Article[] = [christianMarriageHelp, churchLeadershipTraining];
+export const christianDatingAdvice: Article = {
+  slug: "christian-dating-advice-wrong-question",
+  title: "Christian Dating Advice: You Are Asking the Wrong Question",
+  metaTitle: "Christian Dating Advice From a Pastor of Twenty Years",
+  metaDescription:
+    "Most Christian dating advice teaches you to discern God's will. After twenty years preparing couples for marriage, here is the question that matters more.",
+  summary:
+    "Christian singles are taught to ask how do I know God's will. The more useful question is how do I become someone capable of a healthy marriage.",
+  date: "August 2026",
+  isoDate: "2026-08-24",
+  body: [
+    { p: "I have prepared a great many couples for marriage, and I have also sat with people years later when those marriages were in trouble. That second conversation teaches you things about the first one." },
+    { p: "What I have come to believe is that most Christian singles are not struggling because they cannot find a Christian spouse. They are struggling because they have been handed a model of dating that asks how do I know God's will far more often than it asks how do I become a person capable of choosing well and staying." },
+    { h2: "The question almost nobody asks" },
+    { p: "Christian singles will spend months asking whether someone loves God. It is the right question, and it is nowhere near enough." },
+    { p: "I have watched people conduct what amounts to a spiritual background check and never once ask the question that would have told them most: how does he treat people when he is angry? What does she do when she is embarrassed in front of others? How does he speak to a waiter who has got the order wrong?" },
+    { p: "A person can love God sincerely and still be controlling, dishonest, emotionally absent, or unable to apologise. Biblical knowledge and relational competence are different things, and the second one is what you will live with." },
+    { h2: "When someone says God told them you are their spouse" },
+    { p: "I want to be direct about this one, because I have seen the damage it does." },
+    { p: "If a person tells you that God has revealed to them that you are their husband or wife, you are under no obligation whatsoever to agree. None. Their sense of revelation does not bind your conscience, override your discernment, or remove your right to say no." },
+    { p: "God is perfectly capable of telling you as well. If he has not, that is information." },
+    { p: "I say this carefully, because I do believe God guides people. But I have watched this sentence used as pressure, most often by a man on a younger woman, in a way that makes refusal feel like disobedience to God rather than a decision about a person. That is not prophecy. It is manipulation borrowing God's authority, and you are allowed to name it." },
+    { h2: "Marriage is not a treatment for anything" },
+    { p: "Some Christian singles are so focused on avoiding sexual sin that marriage becomes the remedy. Get married quickly, and the struggle ends." },
+    { p: "It does not work like that. Marriage is not a treatment for lust, loneliness, insecurity, or emotional dependency. Whatever you have not dealt with while single, you carry through the door with you, and now there is another person living inside it with you." },
+    { p: "I have sat with couples eighteen months in who married fast for exactly this reason, and the presenting struggle had not gone anywhere. It had simply acquired a witness." },
+    { h2: "Three smaller things worth correcting" },
+    { h3: "Signs are not the same as discernment" },
+    { p: "Seeing her name three times in a day is a coincidence. Feeling something when he walks into church is attraction. A sermon about marriage on the Sunday you were thinking about marriage is a sermon. God can speak through any of these, but character observed over time will tell you more than any of them, and it will not mislead you." },
+    { h3: "Conflict is not a verdict" },
+    { p: "Some singles expect a Christian relationship to be unusually peaceful, so the first serious disagreement feels like a sign to leave. Healthy relationships do not avoid conflict. They teach two people how to handle it. The question is never do we disagree. It is what happens when we do." },
+    { h3: "You do not have to be fully healed first" },
+    { p: "Working on yourself is right. Waiting until you are a finished person is another way of never starting. The standard is not that you have no wounds. It is that you are self-aware, taking responsibility, willing to grow, and able to treat another person well." },
+    { h2: "The better question" },
+    { p: "Instead of asking who is my soulmate, ask who is a wise, healthy, compatible person with whom I could build a marriage that lasts. Christian marriage is not the discovery of one magical human being God assigned to you. It is two people making a covenant and then keeping it, over decades, on ordinary days." },
+    { p: "And instead of asking how do I know God's will for my dating life, ask what kind of person I am becoming while I wait. That is the question you can actually answer this year, and it is the one that will still matter twenty years into a marriage." },
+  ],
+};
+
+export const ALL_ARTICLES: Article[] = [christianDatingAdvice, christianMarriageHelp, churchLeadershipTraining];
