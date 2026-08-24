@@ -28,8 +28,7 @@ export default function Articles() {
 
       {ARTICLES.length === 0 ? (
         <p className="mt-14 leading-relaxed text-[#5A6A73]">
-          Articles are on their way. Iimport Link from "next/link";
-importhing
+          Articles are on their way. In the meantime, if something is weighing
           on you, we can talk about it properly.
         </p>
       ) : (
