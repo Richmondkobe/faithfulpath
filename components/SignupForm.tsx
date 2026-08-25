@@ -12,6 +12,19 @@ export default function SignupForm() {
 
   async function handleSubmit() {
     if (status === "loading") return;
+
+    if (!name.trim()) {
+      setStatus("error");
+      setMessage("Please enter your full name.");
+      return;
+    }
+
+    if (!email.trim() || !email.includes("@")) {
+      setStatus("error");
+      setMessage("Please enter a valid email address.");
+      return;
+    }
+
     setStatus("loading");
     setMessage("");
 
@@ -69,7 +82,8 @@ export default function SignupForm() {
           onKeyDown={(e) => {
             if (e.key === "Enter") handleSubmit();
           }}
-          placeholder="Your name"
+          placeholder="Your full name"
+          required
           className={inputClass}
         />
         <div className="flex flex-col gap-2 sm:flex-row">
@@ -81,6 +95,7 @@ export default function SignupForm() {
               if (e.key === "Enter") handleSubmit();
             }}
             placeholder="your@email.com"
+            required
             className={inputClass + " flex-1"}
           />
           <button

@@ -4,6 +4,13 @@ export async function POST(request: Request) {
   try {
     const { email, name } = await request.json();
 
+    if (!name || typeof name !== "string" || !name.trim()) {
+      return NextResponse.json(
+        { error: "Please enter your name." },
+        { status: 400 }
+      );
+    }
+
     if (!email || typeof email !== "string" || !email.includes("@")) {
       return NextResponse.json(
         { error: "Please enter a valid email address." },
@@ -20,14 +27,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const payload: Record<string, unknown> = {
-      email: email.trim().toLowerCase(),
-    };
-
-    if (name && typeof name === "string" && name.trim()) {
-      payload.fields = { name: name.trim() };
-    }
-
     const res = await fetch("https://connect.mailerlite.com/api/subscribers", {
       method: "POST",
       headers: {
@@ -35,7 +34,10 @@ export async function POST(request: Request) {
         Accept: "application/json",
         Authorization: `Bearer ${key}`,
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        email: email.trim().toLowerCase(),
+        fields: { name: name.trim() },
+      }),
     });
 
     if (!res.ok) {
