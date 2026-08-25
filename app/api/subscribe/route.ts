@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, name } = await request.json();
 
     if (!email || typeof email !== "string" || !email.includes("@")) {
       return NextResponse.json(
@@ -20,6 +20,14 @@ export async function POST(request: Request) {
       );
     }
 
+    const payload: Record<string, unknown> = {
+      email: email.trim().toLowerCase(),
+    };
+
+    if (name && typeof name === "string" && name.trim()) {
+      payload.fields = { name: name.trim() };
+    }
+
     const res = await fetch("https://connect.mailerlite.com/api/subscribers", {
       method: "POST",
       headers: {
@@ -27,7 +35,7 @@ export async function POST(request: Request) {
         Accept: "application/json",
         Authorization: `Bearer ${key}`,
       },
-      body: JSON.stringify({ email: email.trim().toLowerCase() }),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
