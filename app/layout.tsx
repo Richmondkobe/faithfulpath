@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
+import SignupForm from "@/components/SignupForm";
 import "./globals.css";
 
 const display = Newsreader({
@@ -73,6 +74,9 @@ export default function RootLayout({
 
         <footer className="border-t border-[#E5D9C7] bg-[#F3EADC]">
           <div className="mx-auto max-w-5xl px-6 py-12">
+            <div className="mb-10 border-b border-[#E5D9C7] pb-10">
+              <SignupForm />
+            </div>
             <p
               className="text-lg text-[#2B2118]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
