@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
 import SignupForm from "@/components/SignupForm";
+import SocialLinks from "@/components/SocialLinks";
 import "./globals.css";
 
 const display = Newsreader({
@@ -98,6 +99,9 @@ export default function RootLayout({
                 </Link>
               ))}
             </nav>
+            <div className="mt-8">
+              <SocialLinks />
+            </div>
           </div>
         </footer>
       </body>
