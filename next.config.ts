@@ -44,7 +44,30 @@ const OLD_PATHS = [
   "virtual-christian-therapy",
 ];
 
+// Guide covers are served from the public Supabase storage bucket.
+const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
+  : undefined;
+
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      // Guide PDFs go through the saveProduct action, and the default cap is
+      // 1MB — far too small for a real guide plus its cover.
+      bodySizeLimit: "25mb",
+    },
+  },
+  images: {
+    remotePatterns: supabaseHost
+      ? [
+          {
+            protocol: "https",
+            hostname: supabaseHost,
+            pathname: "/storage/v1/object/public/**",
+          },
+        ]
+      : [],
+  },
   async redirects() {
     return [
       // Pages whose topic maps directly onto an existing new article

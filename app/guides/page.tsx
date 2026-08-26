@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { GUIDES } from "@/lib/guides";
+import { listPublishedProducts } from "@/lib/products-db";
+import { coverPublicUrl } from "@/lib/supabase/admin";
+import { formatPrice } from "@/lib/products";
 import { SITE } from "@/lib/site";
+
+// Saving in the admin calls revalidatePath("/guides"); this is the backstop for
+// rows edited directly in Supabase.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Guides | Faithful Path Community",
@@ -9,9 +16,11 @@ export const metadata: Metadata = {
     "Short, practical guides on marriage, ministry and faith — written from twenty years of pastoral work.",
 };
 
-export default function Guides() {
+export default async function Guides() {
+  const guides = await listPublishedProducts();
+
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+    <main className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
         className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -26,8 +35,8 @@ export default function Guides() {
         week. Written from what people actually bring me.
       </p>
 
-      {GUIDES.length === 0 ? (
-        <div className="mt-14 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-7 py-10">
+      {guides.length === 0 ? (
+        <div className="mt-14 max-w-2xl rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-7 py-10">
           <p
             className="text-xl leading-snug text-[#2B2118]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -41,31 +50,44 @@ export default function Guides() {
           </p>
         </div>
       ) : (
-        <ul className="mt-14 space-y-10">
-          {GUIDES.map((g) => (
-            <li
-              key={g.slug}
-              className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-7 py-8"
-            >
-              <h2
-                className="text-2xl text-[#2B2118]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-              >
-                {g.title}
-              </h2>
-              <p className="mt-1 text-[#6B5F53]">{g.subtitle}</p>
-              <p className="mt-4 max-w-2xl leading-relaxed">{g.description}</p>
-              <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-                {g.pages} · {g.price}
-              </p>
-              <a
-                href={g.checkoutUrl}
-                className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
-              >
-                Buy — {g.price}
-              </a>
-            </li>
-          ))}
+        <ul className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {guides.map((g) => {
+            const cover = coverPublicUrl(g.cover_path);
+            return (
+              <li key={g.id}>
+                <Link href={`/guides/${g.slug}`} className="group block">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+                    {cover && (
+                      <Image
+                        src={cover}
+                        alt={g.title}
+                        fill
+                        sizes="(min-width: 1024px) 20rem, (min-width: 640px) 40vw, 90vw"
+                        className="object-cover transition-opacity group-hover:opacity-90"
+                      />
+                    )}
+                  </div>
+                  <h2
+                    className="mt-4 text-xl text-[#2B2118] transition-colors group-hover:text-[#8B5E34]"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {g.title}
+                  </h2>
+                  {g.subtitle && (
+                    <p className="mt-1 leading-relaxed text-[#6B5F53]">
+                      {g.subtitle}
+                    </p>
+                  )}
+                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                    {formatPrice(g.price_cents)}
+                  </p>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       )}
 
