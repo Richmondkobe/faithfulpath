@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ALL_ARTICLES as ARTICLES } from "@/lib/articles";
+import { listPublishedArticles } from "@/lib/articles-db";
+import { displayDate } from "@/lib/article";
 import { SITE } from "@/lib/site";
+
+// Saving in the admin calls revalidatePath("/articles"); this is the backstop
+// for rows edited directly in Supabase.
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   title: "Articles | Faithful Path Community",
@@ -9,7 +14,9 @@ export const metadata: Metadata = {
     "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
 };
 
-export default function Articles() {
+export default async function Articles() {
+  const ARTICLES = await listPublishedArticles();
+
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
@@ -37,7 +44,7 @@ export default function Articles() {
             <li key={a.slug} className="py-8">
               <Link href={"/articles/" + a.slug} className="group block">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
-                  {a.date}
+                  {displayDate(a.published_at)}
                 </p>
                 <h2
                   className="mt-2 text-2xl text-[#17222B] transition-colors group-hover:text-[#2C5651]"
@@ -45,7 +52,7 @@ export default function Articles() {
                 >
                   {a.title}
                 </h2>
-                <p className="mt-2 leading-relaxed">{a.summary}</p>
+                <p className="mt-2 leading-relaxed">{a.excerpt}</p>
               </Link>
             </li>
           ))}

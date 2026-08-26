@@ -17,10 +17,24 @@ export default async function AdminLayout({
     <div>
       <div className="border-b border-[#E5D9C7] bg-[#F3EADC]">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-3 text-sm">
-          <div className="flex items-center gap-5">
-            <Link href="/admin" className="text-[#8B5E34]">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
               Admin
-            </Link>
+            </span>
+            <nav className="flex items-center gap-5">
+              <Link
+                href="/admin"
+                className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+              >
+                Guides
+              </Link>
+              <Link
+                href="/admin/articles"
+                className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+              >
+                Articles
+              </Link>
+            </nav>
             <span className="text-[#6B5F53]">{email}</span>
           </div>
           <form action={logout}>

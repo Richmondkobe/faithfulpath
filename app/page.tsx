@@ -1,7 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SITE, COUNTRIES } from "@/lib/site";
-import { ALL_ARTICLES as ARTICLES } from "@/lib/articles";
+import { listPublishedArticles } from "@/lib/articles-db";
+
+// Matches /articles: revalidatePath on save keeps this fresh, and this is the
+// backstop for rows edited directly in Supabase.
+export const revalidate = 300;
 
 const STAGES = [
   {
@@ -24,8 +28,8 @@ const STAGES = [
   },
 ];
 
-export default function Home() {
-  const recent = ARTICLES.slice(0, 3);
+export default async function Home() {
+  const recent = (await listPublishedArticles()).slice(0, 3);
 
   return (
     <main>
@@ -167,7 +171,7 @@ export default function Home() {
                     >
                       {a.title}
                     </h3>
-                    <p className="mt-2 max-w-2xl leading-relaxed">{a.summary}</p>
+                    <p className="mt-2 max-w-2xl leading-relaxed">{a.excerpt}</p>
                   </Link>
                 </li>
               ))}

@@ -1,4 +1,9 @@
-import type { Article } from "./types";
+// Frozen copy of the three articles as they existed in lib/articles.ts before
+// they were migrated into Supabase on 2026-08-26. Kept only so
+// migrate-articles.ts stays runnable against another database. The live content
+// is the `articles` table — edit it in /admin/articles, not here.
+
+import type { Article } from "../lib/types";
 
 export const churchLeadershipTraining: Article = {
   slug: "church-leadership-training",
