@@ -31,6 +31,7 @@ export async function POST(request: NextRequest) {
           },
         },
       ],
+      allow_promotion_codes: true,
       metadata: { product_id: product.id, slug: product.slug },
       payment_intent_data: {
         metadata: { product_id: product.id, slug: product.slug },
