@@ -46,7 +46,10 @@ export default async function Guide({ params }: Props) {
           stretching to the row height, which is what lets it stick. */}
       <div className="mt-8 grid gap-12 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-14">
         <div className="self-start md:sticky md:top-10">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+          {/* object-contain so the whole cover is visible — a cover whose
+              proportions differ from 2/3 letterboxes against the panel colour
+              rather than being cropped. */}
+          <div className="relative aspect-[2/3] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
             {cover && (
               <Image
                 src={cover}
@@ -54,7 +57,7 @@ export default async function Guide({ params }: Props) {
                 fill
                 priority
                 sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover"
+                className="object-contain"
               />
             )}
           </div>

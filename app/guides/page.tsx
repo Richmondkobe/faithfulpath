@@ -56,14 +56,16 @@ export default async function Guides() {
             return (
               <li key={g.id}>
                 <Link href={`/guides/${g.slug}`} className="group block">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+                  {/* Matches the detail page: object-contain so the whole
+                      cover shows rather than being cropped. */}
+                  <div className="relative aspect-[2/3] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
                     {cover && (
                       <Image
                         src={cover}
                         alt={g.title}
                         fill
                         sizes="(min-width: 1024px) 20rem, (min-width: 640px) 40vw, 90vw"
-                        className="object-cover transition-opacity group-hover:opacity-90"
+                        className="object-contain transition-opacity group-hover:opacity-90"
                       />
                     )}
                   </div>
