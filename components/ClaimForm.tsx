@@ -1,18 +1,41 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { claimGuide, type ClaimState } from "@/app/guides/[slug]/claim/actions";
+import { alreadyTracked, markTracked, withFbq } from "@/lib/fbq";
 
 const initial: ClaimState = { error: null, token: null };
 
 export default function ClaimForm({
   slug,
   claimKey,
+  title,
 }: {
   slug: string;
   claimKey: string;
+  title: string;
 }) {
   const [state, action, pending] = useActionState(claimGuide, initial);
+
+  // Fires on a successful claim, not on page view. Claiming twice with the same
+  // address is idempotent and returns the same token, so keying the guard on
+  // the token stops a repeat claim counting as a second lead.
+  useEffect(() => {
+    if (!state.token) return;
+
+    const key = `fbq:lead:${state.token}`;
+    if (alreadyTracked(key)) return;
+
+    return withFbq((fbq) => {
+      fbq(
+        "track",
+        "Lead",
+        { content_name: title },
+        { eventID: `lead-${state.token}` }
+      );
+      markTracked(key);
+    });
+  }, [state.token, title]);
 
   if (state.token) {
     return (

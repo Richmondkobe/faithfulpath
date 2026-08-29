@@ -4,6 +4,7 @@ import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
 import SignupForm from "@/components/SignupForm";
 import SocialLinks from "@/components/SocialLinks";
+import MetaPixel from "@/components/MetaPixel";
 import "./globals.css";
 
 const display = Newsreader({
@@ -43,6 +44,8 @@ export default function RootLayout({
         className="min-h-screen bg-[#FDFAF4] text-[#4A4038] antialiased"
         style={{ fontFamily: "var(--font-sans)" }}
       >
+        <MetaPixel />
+
         <header className="border-b border-[#E5D9C7] bg-[#FDFAF4]">
           <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <Link href="/">
