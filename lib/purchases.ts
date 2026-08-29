@@ -29,6 +29,47 @@ export async function getPurchaseByToken(
 }
 
 /**
+ * Record a free claim as a purchase, so downloads, tokens and delivery all work
+ * exactly as they do for a paid order.
+ *
+ * stripe_session_id is NOT NULL and UNIQUE, so free claims get a deterministic
+ * synthetic id. That is what makes this idempotent: a second claim from the same
+ * address collides on the unique constraint and returns the original row and
+ * download token rather than creating a duplicate.
+ */
+export async function recordFreeClaim(
+  productId: string,
+  email: string
+): Promise<Purchase> {
+  const normalized = email.trim().toLowerCase();
+  const syntheticId = `free:${productId}:${normalized}`;
+
+  const existing = await getPurchaseBySessionId(syntheticId);
+  if (existing) return existing;
+
+  const { data, error } = await supabaseAdmin
+    .from("purchases")
+    .insert({
+      product_id: productId,
+      email: normalized,
+      amount_cents: 0,
+      stripe_session_id: syntheticId,
+    })
+    .select("*")
+    .single();
+
+  if (error) {
+    if (error.code === "23505") {
+      const raced = await getPurchaseBySessionId(syntheticId);
+      if (raced) return raced;
+    }
+    throw new Error(`Could not record claim: ${error.message}`);
+  }
+
+  return data as Purchase;
+}
+
+/**
  * Write the purchase row for a paid Checkout Session. Idempotent: Stripe retries
  * webhooks, and the thank-you page calls this too in case it beats the webhook,
  * so this can run several times for one session.
