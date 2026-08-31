@@ -28,10 +28,31 @@ export async function generateMetadata({
   const { slug } = await params;
   const a = await getPublishedArticleBySlug(slug);
   if (!a) return {};
+
+  const title = a.meta_title ?? a.title;
+  const description = a.meta_description ?? undefined;
+  const url = `/articles/${slug}`;
+
   return {
-    title: a.meta_title ?? a.title,
-    description: a.meta_description ?? undefined,
+    title,
+    description,
     authors: [{ name: AUTHOR.name }],
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      title,
+      description,
+      siteName: "Faithful Path Community",
+      authors: [AUTHOR.name],
+      images: ["/og-default.png"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-default.png"],
+    },
   };
 }
 

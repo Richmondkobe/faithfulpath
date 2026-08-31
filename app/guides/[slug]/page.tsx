@@ -16,12 +16,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!guide) return { title: "Guide not found | Faithful Path Community" };
 
+  const description =
+    guide.subtitle ??
+    guide.description?.slice(0, 155) ??
+    "A short, practical guide from Faithful Path Community.";
+
+  // Page metadata replaces the root layout's openGraph/twitter objects wholesale
+  // rather than merging into them, so siteName and the image have to be repeated
+  // here or guide pages would ship without either. The generic card is used in
+  // preference to the guide's own cover: covers are portrait 2/3, and a social
+  // card crops to roughly 1.91/1, which would slice the title off the top.
+  const images = ["/og-default.png"];
+
   return {
     title: `${guide.title} | Faithful Path Community`,
-    description:
-      guide.subtitle ??
-      guide.description?.slice(0, 155) ??
-      "A short, practical guide from Faithful Path Community.",
+    description,
+    openGraph: {
+      type: "website",
+      url: `/guides/${slug}`,
+      title: guide.title,
+      description,
+      siteName: "Faithful Path Community",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description,
+      images,
+    },
   };
 }
 
