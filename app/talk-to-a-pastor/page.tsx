@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 
 const display = Newsreader({
@@ -243,7 +244,20 @@ export default function Home() {
               </strong>
             </p>
             <p>
-              Everything you write and say stays between us.
+              What you write and say is treated as private. The only exceptions
+              are where someone is at risk of serious harm, or where the law
+              requires disclosure. Your written intake is stored — I read it
+              before we meet, and I return to it when I write back to you.
+            </p>
+            <p>
+              Intake notes and session notes are deleted twelve months after we
+              speak, and sooner{" "}
+              <Link
+                href="/contact"
+                className="text-[#8B5E34] underline underline-offset-4"
+              >
+                if you ask me to
+              </Link>.
             </p>
           </div>
         </div>
