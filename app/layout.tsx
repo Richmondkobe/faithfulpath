@@ -21,9 +21,34 @@ const sans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://faithfulpathcommunity.com"),
   title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
   description:
     "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+  authors: [{ name: "Richmond Kobe" }],
+  openGraph: {
+    type: "website",
+    siteName: "Faithful Path Community",
+    url: "https://faithfulpathcommunity.com",
+    title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
+    description:
+      "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Faithful Path Community",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
+    description:
+      "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+    images: ["/og-default.png"],
+  },
 };
 
 const NAV = [
