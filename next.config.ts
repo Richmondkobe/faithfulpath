@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
       // Pages whose topic maps directly onto an existing new article
       {
         source: "/christian-leadership-training",
-        destination: "/articles/church-leadership-training",
+        destination: "/articles/christian-leadership-training",
         permanent: true,
       },
       {
