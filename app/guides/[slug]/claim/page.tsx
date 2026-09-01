@@ -69,7 +69,7 @@ export default async function Claim({
             This copy is free — there is nothing to pay. Leave your email and
             the download will appear straight away.
           </p>
-          <ClaimForm slug={slug} claimKey={key!} title={guide.title} />
+          <ClaimForm slug={slug} claimKey={key!} />
         </div>
       </div>
     </main>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import TrackPurchase from "@/components/TrackPurchase";
 import { stripe } from "@/lib/stripe";
 import { getPurchaseBySessionId, recordPurchase } from "@/lib/purchases";
 import { getProductById } from "@/lib/products-db";
@@ -89,15 +88,6 @@ export default async function ThankYou({
 
   return (
     <Shell>
-      {/* Success branch only — the "still settling" state must not report a
-          conversion. Currency matches the hardcoded "usd" in the Checkout
-          Session; if that ever varies it needs to come from the database. */}
-      <TrackPurchase
-        purchaseId={purchase.id}
-        value={purchase.amount_cents / 100}
-        currency="USD"
-      />
-
       <h1
         className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={heading}
