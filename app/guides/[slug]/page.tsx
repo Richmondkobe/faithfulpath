@@ -10,6 +10,15 @@ import { SITE } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
+// Purpose-built 1200x630 social cards, one per guide. A guide without one falls
+// back to the site card rather than to its own cover: covers are portrait 2/3
+// and a social card crops to roughly 1.91/1, which would slice the title off
+// the top. Adding a guide here means adding the file to public/ as well.
+const OG_IMAGES: Record<string, string | undefined> = {
+  "lead-before-youre-ready": "/og-lead-before-youre-ready.png",
+  "talk-before-you-marry": "/og-talk-before-you-marry.png",
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = await getPublishedProductBySlug(slug);
@@ -23,10 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   // Page metadata replaces the root layout's openGraph/twitter objects wholesale
   // rather than merging into them, so siteName and the image have to be repeated
-  // here or guide pages would ship without either. The generic card is used in
-  // preference to the guide's own cover: covers are portrait 2/3, and a social
-  // card crops to roughly 1.91/1, which would slice the title off the top.
-  const images = ["/og-default.png"];
+  // here or guide pages would ship without either.
+  const images = [OG_IMAGES[slug] ?? "/og-default.png"];
 
   return {
     title: `${guide.title} | Faithful Path Community`,
