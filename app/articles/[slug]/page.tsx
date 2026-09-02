@@ -113,7 +113,7 @@ export default async function ArticlePage({
         </div>
       </div>
 
-      <ArticleBody source={a.body_md} />
+      <ArticleBody source={a.body_md} title={a.title} />
 
       <div className="mt-16 border-t border-[#E5D9C7] pt-10">
         <p
