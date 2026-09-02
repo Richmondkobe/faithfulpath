@@ -3,6 +3,12 @@ import { SITE } from "@/lib/site";
 import { listPublishedArticles } from "@/lib/articles-db";
 import { listPublishedProducts } from "@/lib/products-db";
 
+// The sitemap is a cached Route Handler, so without this it would only ever
+// reflect the articles and guides that existed at build time. An hour is short
+// enough that newly published work gets crawled promptly, and long enough that
+// crawlers don't hit Supabase on every request.
+export const revalidate = 3600;
+
 // Everything a stranger should be able to find. Deliberately absent: the
 // post-purchase page (already noindex), the admin area and its login, and the
 // per-guide claim links, which are given out on purpose rather than crawled.
