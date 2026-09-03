@@ -19,6 +19,30 @@ const OG_IMAGES: Record<string, string | undefined> = {
   "talk-before-you-marry": "/og-talk-before-you-marry.png",
 };
 
+// Hand-picked further reading, keyed by guide slug. Only the Spiritual Reset
+// guide has articles close enough to its subject to be worth pointing at, so
+// every other guide renders nothing here.
+const RELATED_ARTICLES: Record<
+  string,
+  { href: string; title: string }[] | undefined
+> = {
+  "the-christian-spiritual-reset": [
+    {
+      href: "/articles/signs-of-spiritual-burnout",
+      title: "12 Signs of Spiritual Burnout — and What Actually Helps",
+    },
+    {
+      href: "/articles/three-day-christian-retreat-schedule",
+      title:
+        "A Three-Day Christian Retreat Schedule: Seven Guided Sessions for Rest and Renewal",
+    },
+    {
+      href: "/articles/retreat-for-pastors",
+      title: "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
+    },
+  ],
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = await getPublishedProductBySlug(slug);
@@ -62,6 +86,7 @@ export default async function Guide({ params }: Props) {
   if (!guide) notFound();
 
   const cover = coverPublicUrl(guide.cover_path);
+  const related = RELATED_ARTICLES[slug];
 
   return (
     <main className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
@@ -127,6 +152,30 @@ export default async function Guide({ params }: Props) {
           {guide.description && (
             <div className="mt-12 max-w-2xl border-t border-[#E5D9C7] pt-10">
               <Markdown source={guide.description} />
+            </div>
+          )}
+
+          {related && (
+            <div className="mt-12 max-w-2xl border-t border-[#E5D9C7] pt-10">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                Read more
+              </h2>
+              <ul className="mt-6 space-y-5">
+                {related.map((article) => (
+                  <li key={article.href}>
+                    <Link
+                      href={article.href}
+                      className="block text-lg leading-snug text-[#2B2118] transition-colors hover:text-[#8B5E34]"
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 400,
+                      }}
+                    >
+                      {article.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>
