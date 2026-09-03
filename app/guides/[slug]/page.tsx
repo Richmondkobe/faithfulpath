@@ -29,7 +29,7 @@ const RELATED_ARTICLES: Record<
   "the-christian-spiritual-reset": [
     {
       href: "/articles/signs-of-spiritual-burnout",
-      title: "12 Signs of Spiritual Burnout — and What Actually Helps",
+      title: "12 Signs of Spiritual Burnout—and What Actually Helps",
     },
     {
       href: "/articles/three-day-christian-retreat-schedule",
