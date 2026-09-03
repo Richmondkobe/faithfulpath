@@ -19,9 +19,9 @@ const OG_IMAGES: Record<string, string | undefined> = {
   "talk-before-you-marry": "/og-talk-before-you-marry.png",
 };
 
-// Hand-picked further reading, keyed by guide slug. Only the Spiritual Reset
-// guide has articles close enough to its subject to be worth pointing at, so
-// every other guide renders nothing here.
+// Hand-picked further reading, keyed by guide slug. Titles are copied from the
+// `articles` table so a link reads the same here as it does on the article
+// itself. A guide with no entry renders nothing.
 const RELATED_ARTICLES: Record<
   string,
   { href: string; title: string }[] | undefined
@@ -39,6 +39,37 @@ const RELATED_ARTICLES: Record<
     {
       href: "/articles/retreat-for-pastors",
       title: "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
+    },
+  ],
+  "talk-before-you-marry": [
+    {
+      href: "/articles/couples-spiritual-reset-weekend",
+      title:
+        "How to Take a Christian Couples' Retreat Without Turning It Into Marriage Therapy",
+    },
+    {
+      href: "/articles/christian-dating-advice-wrong-question",
+      title: "Christian Dating Advice: You Are Asking the Wrong Question",
+    },
+    {
+      href: "/articles/christian-marriage-help-real-problem",
+      title:
+        "Christian Marriage Help: The Problem You Name Is Rarely the Real One",
+    },
+  ],
+  "lead-before-youre-ready": [
+    {
+      href: "/articles/retreat-for-pastors",
+      title:
+        "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
+    },
+    {
+      href: "/articles/church-leadership-training",
+      title: "Church Leadership Training: How to Raise Up Leaders Who Last",
+    },
+    {
+      href: "/articles/church-retreat-ideas",
+      title: "How to Plan a Christian Group Retreat: Five Formats That Work",
     },
   ],
 };
