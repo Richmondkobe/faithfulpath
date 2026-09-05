@@ -34,6 +34,9 @@ export async function POST(request: NextRequest) {
       allow_promotion_codes: true,
       metadata: { product_id: product.id, slug: product.slug },
       payment_intent_data: {
+        // Without this, the dashboard and the customer's receipt both show the
+        // payment intent ID instead of what was actually bought.
+        description: product.title,
         metadata: { product_id: product.id, slug: product.slug },
       },
       success_url: `${origin}/guides/thank-you?session_id={CHECKOUT_SESSION_ID}`,
