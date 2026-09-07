@@ -72,6 +72,21 @@ const RELATED_ARTICLES: Record<
       title: "How to Plan a Christian Group Retreat: Five Formats That Work",
     },
   ],
+  "before-you-say-yes": [
+    {
+      href: "/articles/christian-dating-red-flags",
+      title: "Christian Dating Red Flags: 7 Signs Christians Spiritualise",
+    },
+    {
+      href: "/articles/what-does-equally-yoked-mean",
+      title: "What Does \"Equally Yoked\" Mean? A Pastor's Honest Answer",
+    },
+    {
+      href: "/articles/christian-dating-boundaries",
+      title:
+        "Christian Dating Boundaries: Seven Kinds That Matter (Not Just Physical)",
+    },
+  ],
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
