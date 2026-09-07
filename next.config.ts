@@ -5,7 +5,6 @@ import type { NextConfig } from "next";
 // As articles get rewritten, change the destination to the new article.
 const OLD_PATHS = [
   "christian-mens-retreat-themes",
-  "pentecostal-denomination-christian-dating",
   "hidden-gems-lesser-known-parables-of-jesus",
   "christian-dating-and-finances",
   "orthodox-dating",
@@ -74,6 +73,11 @@ const nextConfig: NextConfig = {
       {
         source: "/christian-leadership-training",
         destination: "/articles/christian-leadership-training",
+        permanent: true,
+      },
+      {
+        source: "/pentecostal-denomination-christian-dating",
+        destination: "/articles/pentecostal-christian-dating",
         permanent: true,
       },
       {
