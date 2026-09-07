@@ -19,6 +19,7 @@ const STATIC_PATHS = [
   "/guides",
   "/talk-to-a-pastor",
   "/contact",
+  "/before-you-say-yes/resources",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

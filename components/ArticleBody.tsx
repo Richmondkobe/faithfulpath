@@ -1,4 +1,8 @@
-import ReactMarkdown, { type Components } from "react-markdown";
+import ReactMarkdown, {
+  defaultUrlTransform,
+  type Components,
+  type Options,
+} from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 // Longform article typography. The block styling deliberately mirrors what the
@@ -39,6 +43,16 @@ function stripDuplicateTitle(source: string, title?: string): string {
   }
 
   return source;
+}
+
+// react-markdown's sanitiser allows only http(s), mailto, xmpp and irc, so a
+// tel: link silently loses its href. Allow it back for digits and the handful
+// of punctuation real dial strings use — everything else still goes through the
+// default sanitiser, so javascript: and friends stay blocked.
+const TEL = /^tel:[0-9+*#().,;\s-]+$/i;
+
+function urlTransform(url: string): string {
+  return TEL.test(url) ? url : defaultUrlTransform(url);
 }
 
 const components: Components = {
@@ -146,13 +160,21 @@ const components: Components = {
 export default function ArticleBody({
   source,
   title,
+  // Extra remark plugins for callers whose source is not written for a
+  // Markdown renderer. Articles pass none.
+  remarkPlugins = [],
 }: {
   source: string;
   title?: string;
+  remarkPlugins?: NonNullable<Options["remarkPlugins"]>;
 }) {
   return (
     <div className="mt-10 space-y-6">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, ...remarkPlugins]}
+        components={components}
+        urlTransform={urlTransform}
+      >
         {stripDuplicateTitle(source, title)}
       </ReactMarkdown>
     </div>
