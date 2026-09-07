@@ -1,70 +1,116 @@
-import { Fragment } from "react";
-import { parseInline, parseMarkdown } from "@/lib/markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 
-// Guide descriptions. Article bodies use components/ArticleBody.tsx, which
-// shares the parser but keeps the longform article typography.
+// Guide subtitles and descriptions. Article bodies use components/ArticleBody.tsx,
+// which is the same react-markdown setup kept at the longform article scale.
 
-function Inline({ text }: { text: string }) {
-  return (
-    <>
-      {parseInline(text).map((span, i) => {
-        if (span.bold) {
-          return (
-            <strong key={i} className="font-medium text-[#2B2118]">
-              {span.text}
-            </strong>
-          );
-        }
-        if (span.italic) return <em key={i}>{span.text}</em>;
-        return <Fragment key={i}>{span.text}</Fragment>;
-      })}
-    </>
-  );
+const DISPLAY = "var(--font-display)";
+
+// The subtitle sits directly under the guide title and is set larger and
+// lighter than the description below it.
+const LEDE_P = {
+  className: "text-lg leading-relaxed",
+  style: { fontFamily: DISPLAY, fontWeight: 300 },
+};
+const BODY_P = { className: "leading-relaxed", style: undefined };
+
+function buildComponents(lede: boolean): Components {
+  const p = lede ? LEDE_P : BODY_P;
+
+  return {
+    p: ({ children }) => (
+      <p className={p.className} style={p.style}>
+        {children}
+      </p>
+    ),
+    h2: ({ children }) => (
+      <h2
+        className="pt-4 text-2xl text-[#2B2118]"
+        style={{ fontFamily: DISPLAY, fontWeight: 500 }}
+      >
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3
+        className="pt-3 text-xl text-[#2B2118]"
+        style={{ fontFamily: DISPLAY, fontWeight: 500 }}
+      >
+        {children}
+      </h3>
+    ),
+    strong: ({ children }) => (
+      <strong className="font-medium text-[#2B2118]">{children}</strong>
+    ),
+    em: ({ children }) => <em>{children}</em>,
+    // Same tab, matching the guide page's accent.
+    a: ({ href, children }) => (
+      <a
+        href={href}
+        className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+      >
+        {children}
+      </a>
+    ),
+    ul: ({ children }) => (
+      <ul className="ml-5 list-disc space-y-2 leading-relaxed">{children}</ul>
+    ),
+    ol: ({ children }) => (
+      <ol className="ml-5 list-decimal space-y-2 leading-relaxed">{children}</ol>
+    ),
+    li: ({ children }) => <li>{children}</li>,
+    blockquote: ({ children }) => (
+      <blockquote className="border-l-2 border-[#8B5E34] pl-5 leading-relaxed text-[#5C5147] italic">
+        {children}
+      </blockquote>
+    ),
+    hr: () => <hr className="border-t border-[#E5D9C7]" />,
+    code: ({ children }) => (
+      <code className="rounded-sm bg-[#F3EBDD] px-1.5 py-0.5 text-[0.9em] text-[#2B2118]">
+        {children}
+      </code>
+    ),
+    pre: ({ children }) => (
+      <pre className="overflow-x-auto rounded-sm bg-[#F3EBDD] p-4 text-sm text-[#2B2118]">
+        {children}
+      </pre>
+    ),
+    table: ({ children }) => (
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse text-left">{children}</table>
+      </div>
+    ),
+    th: ({ children }) => (
+      <th className="border-b border-[#E5D9C7] py-2 pr-4 font-medium text-[#2B2118]">
+        {children}
+      </th>
+    ),
+    td: ({ children }) => (
+      <td className="border-b border-[#E5D9C7] py-2 pr-4 align-top">
+        {children}
+      </td>
+    ),
+  };
 }
 
-export default function Markdown({ source }: { source: string }) {
+const LEDE_COMPONENTS = buildComponents(true);
+const BODY_COMPONENTS = buildComponents(false);
+
+export default function Markdown({
+  source,
+  lede = false,
+}: {
+  source: string;
+  lede?: boolean;
+}) {
   return (
-    <div className="space-y-5">
-      {parseMarkdown(source).map((block, i) => {
-        switch (block.type) {
-          case "list":
-            return (
-              <ul key={i} className="ml-5 list-disc space-y-2 leading-relaxed">
-                {block.items.map((item, j) => (
-                  <li key={j}>
-                    <Inline text={item} />
-                  </li>
-                ))}
-              </ul>
-            );
-          case "h2":
-            return (
-              <h2
-                key={i}
-                className="pt-4 text-2xl text-[#2B2118]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-              >
-                <Inline text={block.text} />
-              </h2>
-            );
-          case "h3":
-            return (
-              <h3
-                key={i}
-                className="pt-3 text-xl text-[#2B2118]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-              >
-                <Inline text={block.text} />
-              </h3>
-            );
-          default:
-            return (
-              <p key={i} className="leading-relaxed">
-                <Inline text={block.text} />
-              </p>
-            );
-        }
-      })}
+    <div className={lede ? "space-y-3" : "space-y-5"}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={lede ? LEDE_COMPONENTS : BODY_COMPONENTS}
+      >
+        {source}
+      </ReactMarkdown>
     </div>
   );
 }

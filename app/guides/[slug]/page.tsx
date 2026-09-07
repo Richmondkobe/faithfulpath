@@ -158,12 +158,9 @@ export default async function Guide({ params }: Props) {
           </h1>
 
           {guide.subtitle && (
-            <p
-              className="mt-4 max-w-xl text-lg leading-relaxed"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
-            >
-              {guide.subtitle}
-            </p>
+            <div className="mt-4 max-w-xl">
+              <Markdown source={guide.subtitle} lede />
+            </div>
           )}
 
           <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
