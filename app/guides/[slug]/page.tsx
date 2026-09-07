@@ -56,6 +56,15 @@ const RELATED_ARTICLES: Record<
       title:
         "Christian Marriage Help: The Problem You Name Is Rarely the Real One",
     },
+    {
+      href: "/articles/money-while-dating",
+      title:
+        "Christian Dating and Money: Financial Red Flags to Notice Before Engagement.",
+    },
+    {
+      href: "/articles/how-long-to-date-before-engagement",
+      title: "How Long Should Christians Date Before Getting Engaged?",
+    },
   ],
   "lead-before-youre-ready": [
     {
@@ -78,16 +87,34 @@ const RELATED_ARTICLES: Record<
       title: "Christian Dating Red Flags: 7 Signs Christians Spiritualise",
     },
     {
+      href: "/articles/green-flags-christian-relationship",
+      title: "10 Green Flags in a Christian Dating Relationship",
+    },
+    {
       href: "/articles/what-does-equally-yoked-mean",
       title: "What Does \"Equally Yoked\" Mean? A Pastor's Honest Answer",
+    },
+    {
+      href: "/articles/pentecostal-christian-dating",
+      title:
+        "Can a Pentecostal Date a Baptist? A Christian Guide to Denominational Differences.",
     },
     {
       href: "/articles/christian-dating-boundaries",
       title:
         "Christian Dating Boundaries: Seven Kinds That Matter (Not Just Physical)",
     },
+    {
+      href: "/articles/god-told-me-to-marry-you",
+      title:
+        "\"God Told Me to Marry You\": How to Test a Spiritual Claim in Dating",
+    },
   ],
 };
+
+// Guides whose Read more list is a selection rather than everything relevant,
+// and so ends with a link to the full articles index.
+const MORE_ARTICLES: ReadonlySet<string> = new Set(["before-you-say-yes"]);
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -219,6 +246,14 @@ export default async function Guide({ params }: Props) {
                   </li>
                 ))}
               </ul>
+              {MORE_ARTICLES.has(slug) && (
+                <Link
+                  href="/articles"
+                  className="mt-6 inline-block text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
+                >
+                  More articles →
+                </Link>
+              )}
             </div>
           )}
         </div>
