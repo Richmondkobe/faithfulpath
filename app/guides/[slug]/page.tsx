@@ -118,7 +118,7 @@ const RELATED_ARTICLES: Record<
     },
     {
       href: "/articles/is-anxiety-a-sin",
-      title: "Anxiety a Sin? What the Bible Actually Says",
+      title: "Is Anxiety a Sin? What the Bible Actually Says",
     },
     {
       href: "/articles/how-to-stop-catastrophising-christian",
@@ -130,7 +130,7 @@ const RELATED_ARTICLES: Record<
     },
     {
       href: "/articles/seeking-gods-will-anxiety-one-more-sign",
-      title: "Just One More Sign”: When Seeking God’s Will Becomes Anxiety",
+      title: "“Just One More Sign”: When Seeking God’s Will Becomes Anxiety",
     },
     {
       href: "/articles/take-every-thought-captive-meaning",
