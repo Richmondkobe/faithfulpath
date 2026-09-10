@@ -110,11 +110,41 @@ const RELATED_ARTICLES: Record<
         "\"God Told Me to Marry You\": How to Test a Spiritual Claim in Dating",
     },
   ],
+  "when-your-mind-wont-rest": [
+    {
+      href: "/articles/how-to-stop-overthinking-christian",
+      title:
+        "How to Stop Overthinking as a Christian (Without Being Told to “Just Pray More”)",
+    },
+    {
+      href: "/articles/is-anxiety-a-sin",
+      title: "Anxiety a Sin? What the Bible Actually Says",
+    },
+    {
+      href: "/articles/how-to-stop-catastrophising-christian",
+      title: "Catastrophising: How to Stop Your Mind from Predicting Disaster",
+    },
+    {
+      href: "/articles/how-to-stop-replaying-the-past-christian",
+      title: "Why You Keep Replaying the Past—and How to Stop",
+    },
+    {
+      href: "/articles/seeking-gods-will-anxiety-one-more-sign",
+      title: "Just One More Sign”: When Seeking God’s Will Becomes Anxiety",
+    },
+    {
+      href: "/articles/take-every-thought-captive-meaning",
+      title: "What “Take Every Thought Captive” Means in Context",
+    },
+  ],
 };
 
 // Guides whose Read more list is a selection rather than everything relevant,
 // and so ends with a link to the full articles index.
-const MORE_ARTICLES: ReadonlySet<string> = new Set(["before-you-say-yes"]);
+const MORE_ARTICLES: ReadonlySet<string> = new Set([
+  "before-you-say-yes",
+  "when-your-mind-wont-rest",
+]);
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
