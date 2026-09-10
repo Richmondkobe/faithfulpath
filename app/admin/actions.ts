@@ -3,41 +3,38 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
-import {
-  supabaseAdmin,
-  COVERS_BUCKET,
-  GUIDES_BUCKET,
-} from "@/lib/supabase/admin";
+import { supabaseAdmin } from "@/lib/supabase/admin";
+import { COVERS_BUCKET, GUIDES_BUCKET, STORAGE_PATH } from "@/lib/storage";
 import { slugify } from "@/lib/products";
 
 export type ProductFormState = { error: string | null };
 
-function safeFileName(name: string): string {
-  const dot = name.lastIndexOf(".");
-  const base = dot > 0 ? name.slice(0, dot) : name;
-  const ext = dot > 0 ? name.slice(dot + 1).toLowerCase() : "";
-  const cleanBase = slugify(base) || "file";
-  const cleanExt = ext.replace(/[^a-z0-9]/g, "");
-  return cleanExt ? `${cleanBase}.${cleanExt}` : cleanBase;
-}
+/**
+ * The browser uploads the files itself now — going through the server action put
+ * whole PDFs in the request body, which the platform rejected before the action
+ * ever ran. It sends back the storage path, and a path from the client is an
+ * input like any other: check the shape, then check the object is really there
+ * before recording it against the guide.
+ */
+async function verifyUploaded(bucket: string, path: string): Promise<void> {
+  if (!STORAGE_PATH.test(path)) {
+    throw new Error("That upload did not complete cleanly. Try selecting the file again.");
+  }
 
-async function uploadTo(
-  bucket: string,
-  slug: string,
-  file: File
-): Promise<string> {
-  const path = `${slug}/${Date.now()}-${safeFileName(file.name)}`;
-  const { error } = await supabaseAdmin.storage
+  const slash = path.lastIndexOf("/");
+  const folder = path.slice(0, slash);
+  const name = path.slice(slash + 1);
+
+  const { data, error } = await supabaseAdmin.storage
     .from(bucket)
-    .upload(path, file, {
-      contentType: file.type || undefined,
-      upsert: false,
-    });
+    .list(folder, { search: name, limit: 100 });
 
   if (error) {
-    throw new Error(`Upload to ${bucket} failed: ${error.message}`);
+    throw new Error(`Could not confirm the upload: ${error.message}`);
   }
-  return path;
+  if (!data?.some((entry) => entry.name === name)) {
+    throw new Error("The uploaded file is not in storage. Try the upload again.");
+  }
 }
 
 export async function saveProduct(
@@ -67,8 +64,8 @@ export async function saveProduct(
   }
   const price_cents = Math.round(price * 100);
 
-  const cover = formData.get("cover");
-  const pdf = formData.get("pdf");
+  const coverPath = String(formData.get("cover_path") ?? "").trim();
+  const pdfPath = String(formData.get("pdf_path") ?? "").trim();
 
   const fields: Record<string, unknown> = {
     slug,
@@ -80,11 +77,13 @@ export async function saveProduct(
   };
 
   try {
-    if (cover instanceof File && cover.size > 0) {
-      fields.cover_path = await uploadTo(COVERS_BUCKET, slug, cover);
+    if (coverPath) {
+      await verifyUploaded(COVERS_BUCKET, coverPath);
+      fields.cover_path = coverPath;
     }
-    if (pdf instanceof File && pdf.size > 0) {
-      fields.pdf_path = await uploadTo(GUIDES_BUCKET, slug, pdf);
+    if (pdfPath) {
+      await verifyUploaded(GUIDES_BUCKET, pdfPath);
+      fields.pdf_path = pdfPath;
     }
   } catch (err) {
     return { error: err instanceof Error ? err.message : "Upload failed." };

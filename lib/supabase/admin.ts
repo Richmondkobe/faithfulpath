@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { COVERS_BUCKET, GUIDES_BUCKET } from "@/lib/storage";
 
 // Service-role client. RLS is on with no policies, so every read or write of
 // products / purchases / storage has to go through this. It must never reach
@@ -26,8 +27,9 @@ export const supabaseAdmin = createClient(url, serviceRoleKey, {
   },
 });
 
-export const COVERS_BUCKET = "covers";
-export const GUIDES_BUCKET = "guides";
+// Defined in lib/storage.ts so Client Components can name the buckets without
+// pulling this module — and the service role key — into the browser.
+export { COVERS_BUCKET, GUIDES_BUCKET };
 
 export function coverPublicUrl(path: string | null): string | null {
   if (!path) return null;
