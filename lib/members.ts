@@ -76,9 +76,15 @@ export async function syncMemberFromSubscription(
   const customerId = typeof customer === "string" ? customer : customer.id;
   const email = typeof customer === "string" ? null : customerEmail(customer);
 
-  // In current Stripe API versions the period lives on the subscription item,
-  // not on the subscription.
-  const periodEnd = subscription.items.data[0]?.current_period_end ?? null;
+  // This object came from the SDK, so it is in the SDK's API version, where the
+  // period lives on the subscription item. Older versions put it on the
+  // subscription itself — read that too, so an SDK upgrade in either direction
+  // cannot quietly start storing null.
+  const legacyPeriodEnd = (subscription as Stripe.Subscription & {
+    current_period_end?: number;
+  }).current_period_end;
+  const periodEnd =
+    subscription.items.data[0]?.current_period_end ?? legacyPeriodEnd ?? null;
 
   const fields = {
     stripe_customer_id: customerId,

@@ -4,6 +4,43 @@ import { stripe } from "@/lib/stripe";
 import { recordPurchase } from "@/lib/purchases";
 import { syncMemberFromSubscription } from "@/lib/members";
 
+/**
+ * The webhook endpoint is pinned to its own Stripe API version, which is not the
+ * one this SDK sends on outbound calls. Fields move between versions — in
+ * 2025-02-24.acacia a subscription's current_period_end sits on the subscription
+ * and an invoice names its subscription at the top level; in the SDK's own
+ * version the period moved onto the subscription item and the invoice reference
+ * moved under parent.
+ *
+ * So the membership handlers read exactly one thing out of a payload — an id,
+ * which has never moved — and then fetch the subscription fresh through the SDK,
+ * where the shape is whatever this SDK expects. Nothing else here depends on the
+ * endpoint's version.
+ */
+function subscriptionIdFromInvoice(invoice: Stripe.Invoice): string | null {
+  const withLegacy = invoice as Stripe.Invoice & {
+    // Present up to and including acacia; gone in later versions.
+    subscription?: string | Stripe.Subscription | null;
+    parent?: {
+      subscription_details?: { subscription?: string | Stripe.Subscription | null };
+    } | null;
+  };
+
+  const candidates = [
+    withLegacy.subscription,
+    withLegacy.parent?.subscription_details?.subscription,
+    ...(invoice.lines?.data ?? []).map(
+      (line) => (line as { subscription?: string | Stripe.Subscription | null }).subscription
+    ),
+  ];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === "string" && candidate) return candidate;
+    if (candidate && typeof candidate === "object" && candidate.id) return candidate.id;
+  }
+  return null;
+}
+
 // The signature is computed over the exact bytes Stripe sent, so the body has
 // to be read raw — never request.json().
 export async function POST(request: NextRequest) {
@@ -55,7 +92,8 @@ export async function POST(request: NextRequest) {
 
       // Every subscription change re-reads the subscription from Stripe rather
       // than applying the event as a delta, so out-of-order delivery and
-      // replays both settle on the same answer.
+      // replays both settle on the same answer — and so the payload's API
+      // version cannot matter. See the note above the file's imports.
       case "customer.subscription.created":
       case "customer.subscription.updated":
       case "customer.subscription.deleted": {
@@ -64,19 +102,10 @@ export async function POST(request: NextRequest) {
         break;
       }
 
-      // Renewals and failed payments: the invoice carries the subscription.
+      // Renewals and failed payments.
       case "invoice.paid":
       case "invoice.payment_failed": {
-        const invoice = event.data.object as Stripe.Invoice & {
-          subscription?: string | Stripe.Subscription | null;
-        };
-        const subscriptionId =
-          typeof invoice.subscription === "string"
-            ? invoice.subscription
-            : invoice.subscription?.id ??
-              invoice.lines?.data.find((line) => line.subscription)?.subscription;
-        const id =
-          typeof subscriptionId === "string" ? subscriptionId : subscriptionId?.id;
+        const id = subscriptionIdFromInvoice(event.data.object as Stripe.Invoice);
         if (id) await syncMemberFromSubscription(id);
         break;
       }
