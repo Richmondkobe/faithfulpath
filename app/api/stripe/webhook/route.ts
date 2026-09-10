@@ -2,6 +2,7 @@ import type Stripe from "stripe";
 import { NextResponse, type NextRequest } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { recordPurchase } from "@/lib/purchases";
+import { syncMemberFromSubscription } from "@/lib/members";
 
 // The signature is computed over the exact bytes Stripe sent, so the body has
 // to be read raw — never request.json().
@@ -36,9 +37,50 @@ export async function POST(request: NextRequest) {
       case "checkout.session.completed":
       case "checkout.session.async_payment_succeeded": {
         const session = event.data.object as Stripe.Checkout.Session;
+
+        // Guides and memberships both land here. Without this branch a
+        // membership signup would be written into purchases as a guide sale.
+        if (session.mode === "subscription") {
+          const subscriptionId =
+            typeof session.subscription === "string"
+              ? session.subscription
+              : session.subscription?.id;
+          if (subscriptionId) await syncMemberFromSubscription(subscriptionId);
+          break;
+        }
+
         await recordPurchase(session);
         break;
       }
+
+      // Every subscription change re-reads the subscription from Stripe rather
+      // than applying the event as a delta, so out-of-order delivery and
+      // replays both settle on the same answer.
+      case "customer.subscription.created":
+      case "customer.subscription.updated":
+      case "customer.subscription.deleted": {
+        const subscription = event.data.object as Stripe.Subscription;
+        await syncMemberFromSubscription(subscription.id);
+        break;
+      }
+
+      // Renewals and failed payments: the invoice carries the subscription.
+      case "invoice.paid":
+      case "invoice.payment_failed": {
+        const invoice = event.data.object as Stripe.Invoice & {
+          subscription?: string | Stripe.Subscription | null;
+        };
+        const subscriptionId =
+          typeof invoice.subscription === "string"
+            ? invoice.subscription
+            : invoice.subscription?.id ??
+              invoice.lines?.data.find((line) => line.subscription)?.subscription;
+        const id =
+          typeof subscriptionId === "string" ? subscriptionId : subscriptionId?.id;
+        if (id) await syncMemberFromSubscription(id);
+        break;
+      }
+
       default:
         break;
     }

@@ -38,6 +38,8 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Only the routes that care about a session. The public store and the Stripe
-  // webhook do not need cookie handling.
-  matcher: ["/admin/:path*", "/login"],
+  // webhook do not need cookie handling. /members and the auth callback do:
+  // without the refresh here a member is silently signed out when their access
+  // token expires.
+  matcher: ["/admin/:path*", "/login", "/members/:path*", "/auth/:path*"],
 };
