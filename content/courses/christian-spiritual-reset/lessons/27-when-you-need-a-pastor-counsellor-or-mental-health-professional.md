@@ -10,13 +10,13 @@ type: teaching
 
 ## For any week, whenever it applies
 
-Chapter 5 said, before the retreat, that a retreat cannot replace medical or psychological care. This chapter says it again, after the retreat, for a different reason. Before you went, the question was whether you were safe to go. Now the question is what the retreat showed you. Three days of quiet often make visible what months of noise had covered, and some readers will have come home knowing, perhaps for the first time, that what they are carrying needs more than rest and a rule of life.
+Lesson 5 said, before the retreat, that a retreat cannot replace medical or psychological care. This lesson says it again, after the retreat, for a different reason. Before you went, the question was whether you were safe to go. Now the question is what the retreat showed you. Three days of quiet often make visible what months of noise had covered, and some readers will have come home knowing, perhaps for the first time, that what they are carrying needs more than rest and a rule of life.
 
-If that is you, this chapter is not a verdict. It is a map.
+If that is you, this lesson is not a verdict. It is a map.
 
 ## Signs that the retreat surfaced something more
 
-Chapter 4 described where pastoral description stops being adequate. Read it again now, in the light of what happened, and add these post-retreat signs.
+Lesson 4 described where pastoral description stops being adequate. Read it again now, in the light of what happened, and add these post-retreat signs.
 
 The dip has not lifted. Session Ten said to expect a flat week. If the flatness has lasted most days for two weeks or more, or if it is deepening rather than easing, it may be more than readjustment. You do not need to wait two weeks if the symptoms are severe, are rapidly worsening, are preventing ordinary functioning, or include thoughts of suicide or self-harm. Seek help now.
 
@@ -24,15 +24,15 @@ The grief remains overwhelming. Session Four may have brought grief or anger clo
 
 Something surfaced that frightens you. A memory, an experience from the past, a pattern of thought, a fear about yourself. If it affects your safety or daily life, or continues to intrude, consider taking it to an appropriately qualified person. You do not have to disclose everything immediately; you may begin by saying that something difficult surfaced and asking how confidentiality works.
 
-You recognised yourself in Chapter 5. The sections on suicidal thoughts, abuse, substance dependence, behavioural addiction, or trauma. If you read them before the retreat and thought "not me," and after the retreat think "perhaps me," that shift is the point of this chapter.
+You recognised yourself in Lesson 5. The sections on suicidal thoughts, abuse, substance dependence, behavioural addiction, or trauma. If you read them before the retreat and thought "not me," and after the retreat think "perhaps me," that shift is the point of this lesson.
 
 The rule of life is not holding. Not because you are undisciplined, but because something underneath keeps knocking it over: anxiety that will not settle, a low mood that swallows the mornings, compulsions, panic, an inability to concentrate.
 
-Or simply this: you are not getting better, and you have been faithful. Chapter 5 said that a lack of immediate relief does not mean the retreat failed. It is also true that faithfulness without improvement, over weeks, is a reason to seek help, not a reason to try harder.
+Or simply this: you are not getting better, and you have been faithful. Lesson 5 said that a lack of immediate relief does not mean the retreat failed. It is also true that faithfulness without improvement, over weeks, is a reason to seek help, not a reason to try harder.
 
 ## Who does what
 
-Christians often go to the wrong person first, usually a pastor, because it is the person they know. Pastors are essential and this chapter will say so, but they are not the right first call for everything. Here is a rough guide. It is general; titles, qualifications, and how care is accessed vary by country, and the resources page at the back will help you find what exists where you live.
+Christians often go to the wrong person first, usually a pastor, because it is the person they know. Pastors are essential and this lesson will say so, but they are not the right first call for everything. Here is a rough guide. It is general; titles, qualifications, and how care is accessed vary by country, and the "Finding Help Where You Live" page at the start of this course will help you find what exists where you live.
 
 | Need | Appropriate help | What they do |
 |---|---|---|
@@ -50,7 +50,7 @@ Two things the table implies. First, most serious difficulties need more than on
 
 ## Christian objections, answered briefly
 
-Chapter 5 dealt with these, and they tend to return under pressure, so here they are again, shorter.
+Lesson 5 dealt with these, and they tend to return under pressure, so here they are again, shorter.
 
 Seeking therapy means my faith is not enough. Faith does not require you to reject appropriate care. Luke, who wrote a Gospel, was a physician; Paul told Timothy to take a remedy for his stomach. Prayer, pastoral support, medicine, and therapy can work together.
 
@@ -68,7 +68,7 @@ Check legal registration or recognised professional credentials; in most countri
 
 After two or three sessions, ask yourself: do I feel respected, listened to, and able to raise concerns? Therapy may sometimes feel emotionally difficult without being unsafe. If you do not feel respected or heard, it is acceptable to change. Both the relationship and an appropriate, evidence-based approach matter.
 
-If cost is a barrier, ask about sliding scales, charitable counselling services, church-funded schemes, employee assistance programmes, university training clinics, and public health provision. Chapter 14 said not to let an unavailable appointment become no action; the same applies to an expensive one.
+If cost is a barrier, ask about sliding scales, charitable counselling services, church-funded schemes, employee assistance programmes, university training clinics, and public health provision. Lesson 25 said not to let an unavailable appointment become no action; the same applies to an expensive one.
 
 ## For pastors and leaders
 
@@ -84,15 +84,9 @@ Do not carry it alone, and do not carry it to someone who will panic. A pastor o
 
 ## If you are in danger
 
-Everything in this chapter assumes you have time to choose. If you do not, the map collapses to one instruction: get help immediately.
+Everything in this lesson assumes you have time to choose. If you do not, the map collapses to one instruction: get help immediately.
 
 If you may act on suicidal thoughts, have a plan or access to the means, cannot keep yourself safe, or are in immediate danger from another person, contact emergency services or go to the nearest emergency department now. Use a crisis or abuse service from a safe device. Move to a safer or public place if possible, tell a trusted person, and do not remain alone. If it is safe, create distance between yourself and anything you could use to harm yourself.
 
-If you do not know the crisis number in your country, search for your national emergency service or crisis line, or ask a hospital, doctor, or trusted person to help you make contact. The resources page at the back explains how to find these services, but do not wait to turn to it if you need help now. The rest of this book can wait.
+If you do not know the crisis number in your country, search for your national emergency service or crisis line, or ask a hospital, doctor, or trusted person to help you make contact. The "Finding Help Where You Live" page at the start of this course explains how to find these services, but do not wait to turn to it if you need help now. The rest of this course can wait.
 
-## Before Chapter 17
-
-1. Did any of the post-retreat signs describe you? Which?
-2. Using the table, who is the right first call for what you are carrying? Write the kind of help, not yet the name.
-3. Which of the objections has been holding you back, if any? Write the answer to it in your own words.
-4. What is the one step this week: a call to your doctor, an enquiry to a counsellor, a conversation with a pastor outside your church, a crisis call today? Write it, and do it.

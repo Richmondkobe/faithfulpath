@@ -8,11 +8,11 @@ type: teaching
 
 # Recognising Burnout, Spiritual Dryness, and Emotional Overload
 
-The first three chapters have used words like tired, dry, and overloaded almost interchangeably. Before you enter the retreat, it will help to separate them, because they are not the same thing and they do not respond to the same care. A person who is burned out needs something different from a person who is spiritually dry, and both need something different from a person who is emotionally overloaded. Many readers will recognise themselves in more than one. That is common. But naming what is actually happening is the first honest act of the retreat.
+The first three lessons have used words like tired, dry, and overloaded almost interchangeably. Before you enter the retreat, it will help to separate them, because they are not the same thing and they do not respond to the same care. A person who is burned out needs something different from a person who is spiritually dry, and both need something different from a person who is emotionally overloaded. Many readers will recognise themselves in more than one. That is common. But naming what is actually happening is the first honest act of the retreat.
 
-A word of caution before we begin. What follows is a pastoral description, not a medical or psychological assessment. I am a pastor experienced in counselling, not a doctor. Some of the signs below overlap with depression, anxiety, chronic stress, and physical illness, and this chapter cannot tell you which is which. If you read this and think, this has gone further than tiredness, please take that seriously and read Chapter 5 carefully.
+A word of caution before we begin. What follows is a pastoral description, not a medical or psychological assessment. I am a pastor experienced in counselling, not a doctor. Some of the signs below overlap with depression, anxiety, chronic stress, and physical illness, and this lesson cannot tell you which is which. If you read this and think, this has gone further than tiredness, please take that seriously and read Lesson 5 carefully.
 
-Here is the shape of the chapter in one view. These categories overlap and none of them is a diagnosis.
+Here is the shape of the lesson in one view. These categories overlap and none of them is a diagnosis.
 
 | Experience | Central difficulty | What may help |
 |---|---|---|
@@ -22,7 +22,7 @@ Here is the shape of the chapter in one view. These categories overlap and none 
 
 ## Burnout: when demands outrun recovery
 
-Burnout is a state of deep exhaustion that can develop when prolonged demands continually exceed a person's resources, support, and opportunity to recover. Clinically, the World Health Organization uses the term specifically for chronic workplace stress that has not been successfully managed. In this guide I use it more broadly and pastorally, to include similar patterns of exhaustion arising from ministry, caregiving, parenting, and other sustained responsibilities. It often feels as though you have been pouring out for much longer than you have been receiving rest, help, encouragement, or care.
+Burnout is a state of deep exhaustion that can develop when prolonged demands continually exceed a person's resources, support, and opportunity to recover. Clinically, the World Health Organization uses the term specifically for chronic workplace stress that has not been successfully managed. In this course I use it more broadly and pastorally, to include similar patterns of exhaustion arising from ministry, caregiving, parenting, and other sustained responsibilities. It often feels as though you have been pouring out for much longer than you have been receiving rest, help, encouragement, or care.
 
 Scripture gives us a vivid picture of an overwhelmed leader in Numbers 11:10–15. Moses, who had confronted Pharaoh and led a nation through the sea, hears the people complaining about food and says to God, "I am not able to carry all this people alone; the burden is too heavy for me. If you will treat me like this, kill me at once." We should not impose a modern diagnosis on Moses, but his words portray a man who had become overwhelmed and could no longer carry his responsibility alone. The burden had become unsustainable, not because Moses lacked faith, but because one person was trying to carry what needed to be shared. Notice what God does. He tells Moses to gather seventy elders and shares the burden among them (Numbers 11:16–17). Earlier, in Exodus 18:13–23, Moses' father-in-law Jethro watches him judge the people from morning to evening and says plainly, "What you are doing is not good. You and the people with you will certainly wear yourselves out." The remedy was not another demand for greater spiritual effort. God provided a structural answer: shared responsibility.
 
@@ -38,7 +38,7 @@ Common signs of burnout include:
 - Physical changes such as persistent headaches, disrupted sleep, low energy, digestive problems, or frequent illness. (These should not automatically be attributed to burnout; new, severe, or persistent symptoms deserve medical evaluation.)
 - A quiet fantasy of simply walking away from everything
 
-If this describes you, the retreat will matter, but so will what comes after it. Burnout usually has structural causes, and Part Five will help you look at them. A person can rest for three days and walk straight back into the pattern that emptied them.
+If this describes you, the retreat will matter, but so will what comes after it. Burnout usually has structural causes, and Module 5 will help you look at them. A person can rest for three days and walk straight back into the pattern that emptied them.
 
 ## Spiritual dryness: when God seems absent
 
@@ -92,7 +92,7 @@ There is a point at which these descriptions stop being adequate. If low mood, e
 
 If you have thoughts of not wanting to be alive, tell a trusted person and contact a qualified mental-health professional or crisis service promptly. If you believe you may act on those thoughts, have formed a plan, or cannot keep yourself safe, do not continue the retreat alone. Contact emergency services or a crisis line in your country now, and ask a trusted person to stay with you. A retreat can wait. Your immediate safety cannot.
 
-Chapter 5 will say more about how pastoral care and professional care work together. It is not optional reading for anyone who recognised themselves in the last two paragraphs.
+Lesson 5 will say more about how pastoral care and professional care work together. It is not optional reading for anyone who recognised themselves in the last two paragraphs.
 
 ## A personal check-in
 

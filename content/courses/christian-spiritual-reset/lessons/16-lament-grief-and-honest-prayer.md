@@ -34,7 +34,7 @@ Psalm 13 is a lament in miniature, and it displays a common lament movement: add
 
 Notice what the psalm does not do. It does not skip the first four verses to get to the last two. It does not apologise for the questions. In the poem, the declaration of trust comes after complaint and petition. That does not necessarily mean the pain has ended. It shows that trust can be spoken while the situation remains unresolved, and that it is a decision as much as a feeling: "I have trusted." Address, complaint, petition, trust. That is a pattern, and it is a permission.
 
-Not every lament reaches the trust. Psalm 88 ends, "You have caused my beloved and my friend to shun me; my companions have become darkness." No turn, no resolution, no song. Chapter 4 mentioned it, and it belongs here as well. Scripture makes room for prayer that ends in the dark. If your lament today does not reach the final verses of Psalm 13, you have not prayed wrongly. Your prayer may resemble Psalm 88 in ending without visible resolution, and that kind of prayer is also in the book.
+Not every lament reaches the trust. Psalm 88 ends, "You have caused my beloved and my friend to shun me; my companions have become darkness." No turn, no resolution, no song. Lesson 4 mentioned it, and it belongs here as well. Scripture makes room for prayer that ends in the dark. If your lament today does not reach the final verses of Psalm 13, you have not prayed wrongly. Your prayer may resemble Psalm 88 in ending without visible resolution, and that kind of prayer is also in the book.
 
 Grief in particular needs this permission, because much of what people carry into a retreat is grief they have never had time or permission to feel. Some of it is the obvious kind: a death, a diagnosis, a divorce, a miscarriage. But much of it is less visible. The ministry that did not become what you hoped. The marriage that is not what you prayed for. The friendship that faded without a reason. The version of yourself you expected to be by now. The child who has walked away from faith. The church that hurt you. The body that no longer does what it did. These losses often have no funeral and no casserole, and so they are carried privately, sometimes for years, as a heaviness with no name.
 
@@ -52,7 +52,7 @@ In your journal, gently:
 2. Is there something about which you feel angry, disappointed, confused, or abandoned in relation to God? Write it down without softening it.
 
 3. When you read Psalm 13's questions, which one is closest to your own: forgetting, hiding, sorrow, an enemy prevailing, or another phrase from the psalm?
-4. What have you been told, or told yourself, about whether it is acceptable to pray like this? If any answer brings up more than you can hold, stop here, and use the pause guidance from Chapter 5. You can return to the rest of the session later, or not at all.
+4. What have you been told, or told yourself, about whether it is acceptable to pray like this? If any answer brings up more than you can hold, stop here, and use the pause guidance from Lesson 5. You can return to the rest of the session later, or not at all.
 
 ## Guided prayer
 
@@ -70,7 +70,7 @@ Anchor phrase: "How long, O LORD?" Or, if that is too raw today: "Consider and a
 
 Do not try to feel anything in this silence, and do not try to stop feeling anything. If tears come, let them. If nothing comes, that is also permitted. God's presence is not suspended until your grief becomes orderly or your prayer reaches a hopeful conclusion.
 
-If the silence becomes more than sorrow, if it moves into panic, disconnection, or a sense of reliving rather than remembering, stop, open your eyes, and use the orientation exercise from Chapter 5. Contact your support person if you need to. If the reaction is severe, persistent, or includes danger to yourself, contact a qualified professional, crisis service, or emergency service rather than relying only on your designated person.
+If the silence becomes more than sorrow, if it moves into panic, disconnection, or a sense of reliving rather than remembering, stop, open your eyes, and use the orientation exercise from Lesson 5. Contact your support person if you need to. If the reaction is severe, persistent, or includes danger to yourself, contact a qualified professional, crisis service, or emergency service rather than relying only on your designated person.
 
 When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop.
 
@@ -110,8 +110,8 @@ Space for anything else you want to record from this session.
 
 After Session Four: rest. This has been the hardest hour of the retreat for many people, and the next session, on confession and grace, should not follow it immediately. The default is to leave Session Five until the following morning. If, after a long break, a meal, a walk, and time outside, you feel settled enough to continue this evening, you may, but do not assume you should.
 
-Session Six, on forgiveness, may also be deferred to the at-home format or to the weeks after the retreat, and Part Four shows how the remaining sessions rearrange when you do that. The order of the sessions matters more than the clock, and your capacity matters more than completing all ten in three days.
+Session Six, on forgiveness, may also be deferred to the at-home format or to the weeks after the retreat, and Module 4 shows how the remaining sessions rearrange when you do that. The order of the sessions matters more than the clock, and your capacity matters more than completing all ten in three days.
 
 A word for readers whose grief is heavy or very recent. You do not need to wait until grief has lasted a particular length of time or become unbearable before seeking support. Consider professional or group support if you are struggling to function, becoming increasingly depressed or anxious, relying on harmful coping strategies, experiencing persistent panic or traumatic reactions, or simply feel that you should not carry this alone.
 
-If today has left you with thoughts of not wanting to be alive, follow Chapter 5 now. If you may act on those thoughts, have formed a plan, or cannot keep yourself safe, contact local emergency services or go to the nearest emergency department. Ask a trusted person to stay with you while help is arranged. Do not remain alone, and do not continue the retreat.
+If today has left you with thoughts of not wanting to be alive, follow Lesson 5 now. If you may act on those thoughts, have formed a plan, or cannot keep yourself safe, contact local emergency services or go to the nearest emergency department. Ask a trusted person to stay with you while help is arranged. Do not remain alone, and do not continue the retreat.

@@ -1,8 +1,78 @@
-{"lesson":"09-creating-a-digital-boundary","pass_mark":4,"questions":[
-{"q":"What is the single purpose of the digital boundary?","options":["To prove your willpower","To protect your attention for God during the time you have set aside","To reject technology","To impress your support person"],"answer":1,"explanation":"It is not a test, a fast to be proud of, or a boundary against help. If you slip and check something, you have noticed, and you can put it down again."},
-{"q":"Why does the chapter say 'airplane mode with an emergency channel' is not an arrangement at all?","options":["Because airplane mode drains the battery","Because a phone in airplane mode cannot ordinarily receive a call","Because emergencies never happen on retreat","Because airplane mode is forbidden"],"answer":1,"explanation":"You must choose one of two fundamentally different arrangements: stay reachable for emergencies with Focus/Do Not Disturb, or disconnect completely with scheduled checks."},
-{"q":"Which arrangement does the chapter recommend for parents, caregivers, and anyone with safety needs?","options":["Airplane mode with scheduled checks","Focus or Do Not Disturb with selected emergency contacts allowed through","Leaving the phone at home","A phone held by retreat staff"],"answer":1,"explanation":"Cellular service stays on, everything is silenced except one or two designated contacts, and the arrangement is tested before you leave, not on Day 1."},
-{"q":"What does the chapter ask you to do with your emergency contact before the retreat?","options":["Give them your social media passwords","Define together what counts as a genuine emergency, say it out loud, and agree what they do if you don't answer","Ask them to message you each morning","Nothing, they will know when to call"],"answer":1,"explanation":"A genuine emergency does not include ordinary questions or routine work decisions. Ask them to call rather than message so there is no ambiguity."},
-{"q":"What is 'the Bible problem'?","options":["Not owning a Bible","Opening a Bible app places Scripture beside the apps that compete for your attention; bring a printed Bible if you can","Bible apps do not work offline","Reading too many translations"],"answer":1,"explanation":"If a phone is your only option, disable notifications, be honest about how Day 1 goes, and switch to paper on Day 2 if it is not working."},
-{"q":"What does the chapter say about worship music and podcasts during the retreat?","options":["Use them constantly to stay focused","Music is allowed in a limited way, but the default is silence; leave podcasts, sermons and audiobooks aside unless a session directs you to one","Only instrumental music is permitted","All sound is forbidden"],"answer":1,"explanation":"The programme already provides structured input. Do not use music to fill every quiet moment; if silence triggers severe distress, follow Chapter 5's guidance."}],
-"reflection":["What is your honest reaction to the thought of three days without your phone? Write it down without judging it.","Which arrangement are you choosing, who is your emergency contact, and when will you test it?","How will you read Scripture and this guide during the retreat? If the answer is \"on my phone,\" what will you do to make that workable?","Fill in the written agreement from the chapter."]}
+{
+ "lesson": "09-creating-a-digital-boundary",
+ "pass_mark": 4,
+ "questions": [
+  {
+   "q": "What is the single purpose of the digital boundary?",
+   "options": [
+    "To prove your willpower",
+    "To protect your attention for God during the time you have set aside",
+    "To reject technology",
+    "To impress your support person"
+   ],
+   "answer": 1,
+   "explanation": "It is not a test, a fast to be proud of, or a boundary against help. If you slip and check something, you have noticed, and you can put it down again."
+  },
+  {
+   "q": "Why does the chapter say 'airplane mode with an emergency channel' is not an arrangement at all?",
+   "options": [
+    "Because airplane mode drains the battery",
+    "Because emergencies never happen on retreat",
+    "Because a phone in airplane mode cannot ordinarily receive a call",
+    "Because airplane mode is forbidden"
+   ],
+   "answer": 2,
+   "explanation": "You must choose one of two fundamentally different arrangements: stay reachable for emergencies with Focus/Do Not Disturb, or disconnect completely with scheduled checks."
+  },
+  {
+   "q": "Which arrangement does the chapter recommend for parents, caregivers, and anyone with safety needs?",
+   "options": [
+    "Airplane mode with scheduled checks",
+    "Leaving the phone at home",
+    "A phone held by retreat staff",
+    "Focus or Do Not Disturb with selected emergency contacts allowed through"
+   ],
+   "answer": 3,
+   "explanation": "Cellular service stays on, everything is silenced except one or two designated contacts, and the arrangement is tested before you leave, not on Day 1."
+  },
+  {
+   "q": "What does the chapter ask you to do with your emergency contact before the retreat?",
+   "options": [
+    "Define together what counts as a genuine emergency, say it out loud, and agree what they do if you don't answer",
+    "Give them your social media passwords",
+    "Ask them to message you each morning",
+    "Nothing, they will know when to call"
+   ],
+   "answer": 0,
+   "explanation": "A genuine emergency does not include ordinary questions or routine work decisions. Ask them to call rather than message so there is no ambiguity."
+  },
+  {
+   "q": "What is 'the Bible problem'?",
+   "options": [
+    "Not owning a Bible",
+    "Opening a Bible app places Scripture beside the apps that compete for your attention; bring a printed Bible if you can",
+    "Bible apps do not work offline",
+    "Reading too many translations"
+   ],
+   "answer": 1,
+   "explanation": "If a phone is your only option, disable notifications, be honest about how Day 1 goes, and switch to paper on Day 2 if it is not working."
+  },
+  {
+   "q": "What does the chapter say about worship music and podcasts during the retreat?",
+   "options": [
+    "Use them constantly to stay focused",
+    "Only instrumental music is permitted",
+    "Music is allowed in a limited way, but the default is silence; leave podcasts, sermons and audiobooks aside unless a session directs you to one",
+    "All sound is forbidden"
+   ],
+   "answer": 2,
+   "explanation": "The programme already provides structured input. Do not use music to fill every quiet moment; if silence triggers severe distress, follow Chapter 5's guidance."
+  }
+ ],
+ "reflection": [
+  "What is your honest reaction to the thought of three days without your phone? Write it down without judging it.",
+  "Which arrangement are you choosing, who is your emergency contact, and when will you test it?",
+  "How will you read Scripture and this guide during the retreat? If the answer is \"on my phone,\" what will you do to make that workable?",
+  "Fill in the written agreement from the chapter."
+ ]
+}

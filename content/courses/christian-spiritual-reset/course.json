@@ -3,6 +3,22 @@
   "title": "The Christian Spiritual Reset",
   "modules": [
     {
+      "slug": "m0",
+      "title": "Start Here",
+      "lessons": [
+        {
+          "order": 0,
+          "slug": "00-finding-help-where-you-live",
+          "title": "Finding Help Where You Live",
+          "source": "Resources",
+          "type": "reference",
+          "file": "lessons/00-finding-help-where-you-live.md",
+          "quiz": null,
+          "reflection": null
+        }
+      ]
+    },
+    {
       "slug": "m1",
       "title": "Why Your Soul Needs a Retreat",
       "lessons": [

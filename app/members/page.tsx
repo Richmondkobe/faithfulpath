@@ -4,7 +4,12 @@ import { redirect } from "next/navigation";
 import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
 import { memberLogout } from "@/app/members/actions";
-import { getCourse, getLessons, lessonHref } from "@/lib/course";
+import {
+  getCountableLessons,
+  getCourse,
+  getLessons,
+  lessonHref,
+} from "@/lib/course";
 import { getCourseProgress, completedCount } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 
@@ -20,6 +25,7 @@ async function CourseCard() {
   if (!course) return null;
 
   const lessons = getLessons(COURSE_SLUG);
+  const countable = getCountableLessons(COURSE_SLUG);
 
   // /members is the page a paying member lands on, so it must not break because
   // the course tables are missing or unreadable. Drop the card and log it
@@ -32,9 +38,9 @@ async function CourseCard() {
     return null;
   }
 
-  const done = completedCount(progress);
+  const done = completedCount(progress, countable);
   const next =
-    lessons.find((l) => !progress.get(l.slug)?.completed_at) ??
+    countable.find((l) => !progress.get(l.slug)?.completed_at) ??
     lessons[lessons.length - 1];
 
   return (
@@ -50,7 +56,7 @@ async function CourseCard() {
       </h2>
 
       <div className="mt-5">
-        <ProgressBar done={done} total={lessons.length} label="Your progress" />
+        <ProgressBar done={done} total={countable.length} label="Your progress" />
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-5">
@@ -60,7 +66,7 @@ async function CourseCard() {
         >
           {done === 0 ? "Start the course" : "Go to the course"}
         </Link>
-        {done > 0 && done < lessons.length && (
+        {done > 0 && done < countable.length && (
           <Link
             href={lessonHref(COURSE_SLUG, next.slug)}
             className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"

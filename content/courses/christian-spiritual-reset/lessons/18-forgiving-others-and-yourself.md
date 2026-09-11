@@ -12,11 +12,11 @@ Optional session: for the at-home format, the 30-day follow-up, or a supported s
 
 ## Before you begin
 
-This session is optional, and it is not in the standard three-day program. Sessions Four and Five both said it may be deferred, and the three-day schedule in Part Four does not include it. It belongs in the at-home format, where it has its own day; in the 30-day plan in Part Five; or in a supported setting with a pastor, counsellor, or trauma-informed professional. Read this section and decide honestly whether now is the time.
+This session is optional, and it is not in the standard three-day program. Sessions Four and Five both said it may be deferred, and the three-day schedule in Module 4 does not include it. It belongs in the at-home format, where it has its own day; in the 30-day plan in Module 5; or in a supported setting with a pastor, counsellor, or trauma-informed professional. Read this section and decide honestly whether now is the time.
 
 Consider proceeding if you are sufficiently rested and settled, the harm is no longer active, and you want to explore what forgiveness might mean without forcing a final outcome. Defer for any reason that makes today feel unsuitable. You do not need to prove that your reason is valid.
 
-If the harm you carry is abuse, Chapter 5's guidance applies throughout. You are not required to forgive on a schedule, you are never required to contact or return to someone who harmed you, and the default exercise at the end is written specifically with you in mind. If exercises involving the person who harmed you tend to trigger panic, flashbacks, or dissociation, plan this session with a trauma-informed professional rather than doing it alone. If someone monitors your belongings or writing, do not create or keep anything that could place you at risk; pray without writing.
+If the harm you carry is abuse, Lesson 5's guidance applies throughout. You are not required to forgive on a schedule, you are never required to contact or return to someone who harmed you, and the default exercise at the end is written specifically with you in mind. If exercises involving the person who harmed you tend to trigger panic, flashbacks, or dissociation, plan this session with a trauma-informed professional rather than doing it alone. If someone monitors your belongings or writing, do not create or keep anything that could place you at risk; pray without writing.
 
 ## Five movements, not one
 
@@ -30,7 +30,7 @@ Much of the confusion around forgiveness comes from asking one word to do five d
 | Release | Relinquishing personal vengeance and the compulsion to collect |
 | Reconciliation | Possible only with repentance, safety, and rebuilt trust |
 
-You can unilaterally relinquish personal vengeance, pray for freedom from hatred, establish boundaries, and entrust judgement to God. Some Christians call that forgiveness; others reserve "forgiveness" for a relational response to repentance. This guide uses "release" for the unilateral decision and "reconciliation" for a restored relationship. Reconciliation always requires more than one person. Release, truth, safety, and justice do not wait for the other person.
+You can unilaterally relinquish personal vengeance, pray for freedom from hatred, establish boundaries, and entrust judgement to God. Some Christians call that forgiveness; others reserve "forgiveness" for a relational response to repentance. This course uses "release" for the unilateral decision and "reconciliation" for a restored relationship. Reconciliation always requires more than one person. Release, truth, safety, and justice do not wait for the other person.
 
 ## Central passage
 
@@ -91,7 +91,7 @@ Anchor phrase: "Into your hands I place this wound." Or: "God sees and God cares
 
 Rest in the truth that God is both merciful and just. You do not need to compare the wrong done to you with anything else. Hold only the prayer.
 
-If the silence brings the person's presence too close, if it moves into fear, panic, or reliving rather than remembering, stop, open your eyes, and use the orientation exercise from Chapter 5. That is not failure. It is information that this session needs support, and it can wait.
+If the silence brings the person's presence too close, if it moves into fear, panic, or reliving rather than remembering, stop, open your eyes, and use the orientation exercise from Lesson 5. That is not failure. It is information that this session needs support, and it can wait.
 
 When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop.
 

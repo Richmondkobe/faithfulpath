@@ -1,8 +1,78 @@
-{"lesson":"05-what-a-retreat-can-and-cannot-do","pass_mark":4,"questions":[
-{"q":"Which of these does the chapter list as something a retreat CAN do?","options":["Guarantee that you will feel God's presence","Interrupt a pattern and help you name what you are carrying","Replace medical or psychological care","Fix in three days what took years to form"],"answer":1,"explanation":"A retreat can interrupt a pattern, give unhurried honesty before God, help you name what you carry, restore perspective and begin things. The other three are in the 'cannot' list."},
-{"q":"What point does the chapter draw from Luke the physician (Colossians 4:14) and Paul's advice to Timothy (1 Timothy 5:23)?","options":["Doctors are unnecessary for people of faith","Scripture does not force a choice between depending on God and receiving appropriate care through ordinary means","Only physical illness deserves treatment","Prayer should replace medicine"],"answer":1,"explanation":"Prayer and silence may support healing and form part of wider care, but they are not substitutes for medical or psychological treatment."},
-{"q":"Why does the chapter say a retreat cannot make a difficult decision for you?","options":["Because decisions should be made by your pastor","Because a strong feeling during a retreat is not the same as divine instruction; impressions must be tested against Scripture, wise counsel and existing responsibilities","Because God never speaks during retreats","Because decisions require a group vote"],"answer":1,"explanation":"Treating a feeling as instruction has led sincere people into serious mistakes. Part Five walks through testing what you believe you heard."},
-{"q":"What is the chapter's guidance on forgiveness for readers with abuse in their past?","options":["Forgiveness requires reconciliation and renewed contact","Forgiveness must be completed by the end of Session Six","Forgiveness is real but is not the same as reconciliation, trust or returning to danger; it does not require contact and is not on a schedule","Forgiveness is impossible in such cases"],"answer":2,"explanation":"Forgiveness does not remove the need for truth, boundaries, justice, reporting or consequences, and you are never required to put yourself back within reach of someone who harmed you."},
-{"q":"If a session brings up more than you can hold, what is the chapter's simple rule?","options":["Push through; discomfort means it is working","Stop the session, not necessarily the retreat: stand up, go outside, orient to the present, contact your support person","Abandon the whole retreat and go home immediately","Fast until the feeling passes"],"answer":1,"explanation":"The sessions are offered, not assigned. A paused retreat is not a failed one; Elijah slept and ate twice before God spoke to him."},
-{"q":"Which of these is NOT one of the four paths the chapter asks you to choose from before beginning?","options":["Proceed independently","Proceed with support","Use an adapted format","Proceed without telling anyone"],"answer":3,"explanation":"The fourth path is to postpone for now and seek professional, medical, crisis or safety support first. Postponing is not failing; it may be the wisest way to prepare."}],
-"reflection":["After reading this chapter, is there any support you need to arrange before you begin? Write it down, and write down when you will arrange it.","Who is the person you will call if a session becomes too much? Have you told them? Do you also know how to reach professional or crisis help if needed?","What are you hoping the retreat itself will accomplish? Mark anything that belongs in the \"cannot\" section.","Which of the four paths are you choosing?"]}
+{
+ "lesson": "05-what-a-retreat-can-and-cannot-do",
+ "pass_mark": 4,
+ "questions": [
+  {
+   "q": "Which of these does the chapter list as something a retreat CAN do?",
+   "options": [
+    "Guarantee that you will feel God's presence",
+    "Interrupt a pattern and help you name what you are carrying",
+    "Replace medical or psychological care",
+    "Fix in three days what took years to form"
+   ],
+   "answer": 1,
+   "explanation": "A retreat can interrupt a pattern, give unhurried honesty before God, help you name what you carry, restore perspective and begin things. The other three are in the 'cannot' list."
+  },
+  {
+   "q": "What point does the chapter draw from Luke the physician (Colossians 4:14) and Paul's advice to Timothy (1 Timothy 5:23)?",
+   "options": [
+    "Doctors are unnecessary for people of faith",
+    "Only physical illness deserves treatment",
+    "Scripture does not force a choice between depending on God and receiving appropriate care through ordinary means",
+    "Prayer should replace medicine"
+   ],
+   "answer": 2,
+   "explanation": "Prayer and silence may support healing and form part of wider care, but they are not substitutes for medical or psychological treatment."
+  },
+  {
+   "q": "Why does the chapter say a retreat cannot make a difficult decision for you?",
+   "options": [
+    "Because decisions should be made by your pastor",
+    "Because God never speaks during retreats",
+    "Because decisions require a group vote",
+    "Because a strong feeling during a retreat is not the same as divine instruction; impressions must be tested against Scripture, wise counsel and existing responsibilities"
+   ],
+   "answer": 3,
+   "explanation": "Treating a feeling as instruction has led sincere people into serious mistakes. Part Five walks through testing what you believe you heard."
+  },
+  {
+   "q": "What is the chapter's guidance on forgiveness for readers with abuse in their past?",
+   "options": [
+    "Forgiveness is real but is not the same as reconciliation, trust or returning to danger; it does not require contact and is not on a schedule",
+    "Forgiveness requires reconciliation and renewed contact",
+    "Forgiveness must be completed by the end of Session Six",
+    "Forgiveness is impossible in such cases"
+   ],
+   "answer": 0,
+   "explanation": "Forgiveness does not remove the need for truth, boundaries, justice, reporting or consequences, and you are never required to put yourself back within reach of someone who harmed you."
+  },
+  {
+   "q": "If a session brings up more than you can hold, what is the chapter's simple rule?",
+   "options": [
+    "Push through; discomfort means it is working",
+    "Stop the session, not necessarily the retreat: stand up, go outside, orient to the present, contact your support person",
+    "Abandon the whole retreat and go home immediately",
+    "Fast until the feeling passes"
+   ],
+   "answer": 1,
+   "explanation": "The sessions are offered, not assigned. A paused retreat is not a failed one; Elijah slept and ate twice before God spoke to him."
+  },
+  {
+   "q": "Which of these is NOT one of the four paths the chapter asks you to choose from before beginning?",
+   "options": [
+    "Proceed independently",
+    "Proceed with support",
+    "Proceed without telling anyone",
+    "Use an adapted format"
+   ],
+   "answer": 2,
+   "explanation": "The fourth path is to postpone for now and seek professional, medical, crisis or safety support first. Postponing is not failing; it may be the wisest way to prepare."
+  }
+ ],
+ "reflection": [
+  "After reading this chapter, is there any support you need to arrange before you begin? Write it down, and write down when you will arrange it.",
+  "Who is the person you will call if a session becomes too much? Have you told them? Do you also know how to reach professional or crisis help if needed?",
+  "What are you hoping the retreat itself will accomplish? Mark anything that belongs in the \"cannot\" section.",
+  "Which of the four paths are you choosing?"
+ ]
+}

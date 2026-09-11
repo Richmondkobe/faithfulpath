@@ -45,7 +45,7 @@ Briefly, in your journal:
 1. Right now, where is your attention? In this room, or somewhere else? If somewhere else, where: the past, the future, another place, another person?
 2. When you try to bring your attention back to now, what pulls it away again? Name the strongest pull.
 3. On a scale from "mostly attentive to this room" to "strongly pulled elsewhere," where would you place yourself? No right answer.
-4. What situation currently feels unstable, loud, or beyond your control? Name it in one line without analysing or solving it. If you feel unreal, disconnected from your body, unable to recognise where you are, or as though you are reliving another time, pause the session and use the grounding and support guidance from Chapter 5.
+4. What situation currently feels unstable, loud, or beyond your control? Name it in one line without analysing or solving it. If you feel unreal, disconnected from your body, unable to recognise where you are, or as though you are reliving another time, pause the session and use the grounding and support guidance from Lesson 5.
 
 ## Guided prayer
 
@@ -105,7 +105,7 @@ God is a very present help. The storm is real, and Christ is with me in it. I am
 
 Space for anything else you want to record from this session.
 
-Ending Day 1: Session Two closes the first day. If the three-day program in Part Four is your guide, the evening is unstructured: a simple meal, rest, perhaps some time outside or with a psalm. Do not add another session.
+Ending Day 1: Session Two closes the first day. If the three-day program in Module 4 is your guide, the evening is unstructured: a simple meal, rest, perhaps some time outside or with a psalm. Do not add another session.
 
 Today you practised two movements: from performance to welcome, and from divided attention to presence. You do not need to master either before sleeping. You have begun.
 

@@ -14,7 +14,7 @@ Day 3, morning (or after Session Five, if you did that this morning; take a prop
 
 Good morning. This is the last day, and its shape is different from the first two. Day 1 was about arriving. Day 2 was about releasing and telling the truth. Day 3 turns outward again: listening, remembering who you are, and preparing to return. The heavier work is behind you, and if some of it is unfinished, that is expected and permitted.
 
-This session is about listening. Before you start, reread the paragraph in Chapter 5 called "A word about hearing from God," because everything in this session depends on it. Whatever you sense today will be written down and tested. Unless immediate safety requires action, no major, irreversible, or high-risk decision is made during a retreat.
+This session is about listening. Before you start, reread the paragraph in Lesson 5 called "A word about hearing from God," because everything in this session depends on it. Whatever you sense today will be written down and tested. Unless immediate safety requires action, no major, irreversible, or high-risk decision is made during a retreat.
 
 ## Central passage
 
@@ -24,7 +24,7 @@ Read it twice. The second time, notice that God's response includes both correct
 
 ## Teaching
 
-We have been following Elijah since Chapter 1, and this is where his story arrives. Strengthened by the food God provided, Elijah travelled forty days and nights until he reached Horeb, the mountain closely associated with Moses and Israel's covenant history, and he entered a cave. God's first words to him are a question: "What are you doing here, Elijah?"
+We have been following Elijah since Lesson 1, and this is where his story arrives. Strengthened by the food God provided, Elijah travelled forty days and nights until he reached Horeb, the mountain closely associated with Moses and Israel's covenant history, and he entered a cave. God's first words to him are a question: "What are you doing here, Elijah?"
 
 Elijah's answer reflects both genuine danger and a perception narrowed by isolation: he believes he is the only faithful one left, and that they seek his life. Then God tells him to stand on the mountain, and there is a wind that tears rocks apart, and an earthquake, and a fire, and the text says three times that the LORD was not in them. After the fire comes something the Hebrew describes with a phrase that is difficult to reproduce exactly; translations range from "a still small voice" and "a gentle whisper" to "a sound of sheer silence." Elijah hears it, covers his face, and goes to the mouth of the cave. And God asks the same question again: "What are you doing here, Elijah?"
 
@@ -36,9 +36,9 @@ One thing the passage does not teach is that correction is authenticated by how 
 
 Now, how does God speak? Christians commonly seek his guidance through Scripture, prayer, conscience, wise counsel, and careful attention to circumstances. Only Scripture functions as the church's authoritative written standard. 2 Timothy 3:16–17 says all Scripture is God-breathed and useful for teaching, reproof, correction, and training, so that God's people may be "complete, equipped for every good work." Most of what God has to say to you about how to live is already written, and a great deal of "seeking direction" is simply the search for something more exciting than obedience to what we already know. Before you listen for anything new, ask what Scripture already says about the matter in front of you.
 
-Every personal interpretation, impression, circumstance, and piece of counsel remains fallible and must be tested. The Holy Spirit may bring conviction, but not every feeling of guilt comes from the Spirit; conscience itself needs formation through Scripture, truth, community, and, where relevant, mental-health care. And even a genuine call may need another person to recognise it. Samuel, in 1 Samuel 3:1– 10, heard God's voice three times and each time ran to Eli, assuming the old priest was calling. Eli was an imperfect man; the same book records his failures with his sons. Yet in that moment he gave Samuel a wise response, and told the boy what to say: "Speak, LORD, for your servant hears." Even in a time when the word of the Lord was rare, Samuel needed another person to help him interpret what was happening. You are not meant to do this alone. The retreat's insistence on a support person and on Part Five's testing is not a lack of faith in God's voice. It is Eli.
+Every personal interpretation, impression, circumstance, and piece of counsel remains fallible and must be tested. The Holy Spirit may bring conviction, but not every feeling of guilt comes from the Spirit; conscience itself needs formation through Scripture, truth, community, and, where relevant, mental-health care. And even a genuine call may need another person to recognise it. Samuel, in 1 Samuel 3:1– 10, heard God's voice three times and each time ran to Eli, assuming the old priest was calling. Eli was an imperfect man; the same book records his failures with his sons. Yet in that moment he gave Samuel a wise response, and told the boy what to say: "Speak, LORD, for your servant hears." Even in a time when the word of the Lord was rare, Samuel needed another person to help him interpret what was happening. You are not meant to do this alone. The retreat's insistence on a support person and on Module 5's testing is not a lack of faith in God's voice. It is Eli.
 
-Here are the tests, which Chapter 5 introduced and Part Five will apply in detail.
+Here are the tests, which Lesson 5 introduced and Module 5 will apply in detail.
 
 - Does it agree with Scripture, read in context?
 - Does it reflect the character and fruit of Christ?
@@ -53,9 +53,9 @@ Here are the tests, which Chapter 5 introduced and Part Five will apply in detai
 
 Two things the tests are not. Urgency is a reason to slow down, unless immediate safety or a genuine external deadline requires action. And peace may accompany discernment, but it is not proof; people can feel peaceful about harmful decisions, and faithful action can feel frightening.
 
-On responsibilities: does what you sense deal faithfully with legitimate responsibilities rather than using spiritual language to escape them? And does it also recognise that some roles, expectations, or relationships may need to change for reasons of truth, safety, justice, or health? Both questions are real, and Part Five will help you hold them together.
+On responsibilities: does what you sense deal faithfully with legitimate responsibilities rather than using spiritual language to escape them? And does it also recognise that some roles, expectations, or relationships may need to change for reasons of truth, safety, justice, or health? Both questions are real, and Module 5 will help you hold them together.
 
-Two further cautions. First, if you hear a voice that others cannot hear, particularly one that issues commands, threatens you, or makes it hard to tell internal experience from external reality, do not assume it is God. End the retreat and seek prompt professional assessment. If a voice commands you to harm yourself or someone else, tells you that you have a unique world-saving mission, or makes you feel unable to remain safe, seek urgent professional or emergency help and do not remain alone. Second, if you listen and sense nothing at all, you have not failed. Chapter 12 said this. Faithful listening that hears nothing is still faithful, and God's direction may come later, through ordinary means, when you are back in ordinary life.
+Two further cautions. First, if you hear a voice that others cannot hear, particularly one that issues commands, threatens you, or makes it hard to tell internal experience from external reality, do not assume it is God. End the retreat and seek prompt professional assessment. If a voice commands you to harm yourself or someone else, tells you that you have a unique world-saving mission, or makes you feel unable to remain safe, seek urgent professional or emergency help and do not remain alone. Second, if you listen and sense nothing at all, you have not failed. Lesson 12 said this. Faithful listening that hears nothing is still faithful, and God's direction may come later, through ordinary means, when you are back in ordinary life.
 
 ## Self-assessment
 
@@ -104,7 +104,7 @@ After the second reading, ask what that word or phrase is saying in its own cont
 
 After the third reading, ask what it might be saying to you, in your situation, in light of your question. Write that down too, and mark it clearly as what I sense, not what God said.
 
-Then take an index card and write two things on it: What I sense: followed by your sentence, and What I will test it against: followed by the tests, and the names of the people you will consult. Keep this card with the Act, Share, and Seek-counsel cards from Session Three. It goes home with you. Part Five's first chapter is built around it.
+Then take an index card and write two things on it: What I sense: followed by your sentence, and What I will test it against: followed by the tests, and the names of the people you will consult. Keep this card with the Act, Share, and Seek-counsel cards from Session Three. It goes home with you. Module 5's first lesson is built around it.
 
 Do not make a major, irreversible, high-risk, or life-altering decision solely on the basis of today's impression. Low-risk actions already supported by Scripture and wisdom, such as arranging counsel, making a medical appointment, or gathering information, may be appropriate. Waiting is not unbelief. It acknowledges that our interpretation is fallible even when God is faithful. If an impression conflicts with Scripture, promotes harm, or cannot withstand truthful examination, do not treat it as divine direction. If it remains unclear, leave it unclear rather than forcing certainty.
 

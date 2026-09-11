@@ -8,7 +8,7 @@ type: teaching
 
 # What a Retreat Can and Cannot Do
 
-Chapters 1 and 4 both pointed you here. If you arrived because something in those pages described you more seriously than you expected, thank you for coming. Nothing in this chapter is meant to disqualify you from the retreat. It is meant to make sure you enter it with the right expectations and the right support, so that the time helps you rather than harms you.
+Lessons 1 and 4 both pointed you here. If you arrived because something in those pages described you more seriously than you expected, thank you for coming. Nothing in this lesson is meant to disqualify you from the retreat. It is meant to make sure you enter it with the right expectations and the right support, so that the time helps you rather than harms you.
 
 Everyone else should read it too. A retreat is a good thing, and good things get misused when we ask them to do more than they can.
 
@@ -32,19 +32,19 @@ It can begin things. A decision to seek help, a conversation you have been avoid
 
 It cannot replace medical or psychological care. If you are living with depression, an anxiety disorder, an eating disorder, an addiction, or the effects of trauma, a retreat may be part of your care, but it is not the care itself. Prayer and silence can support healing and may form part of a person's wider care, but they are not substitutes for appropriate medical or psychological treatment. Although Jesus' statement in Luke 5:31, "Those who are well have no need of a physician, but those who are sick," is part of a spiritual analogy, it assumes the ordinary value of seeking a physician when one is ill. Luke himself was a doctor (Colossians 4:14). Paul advised Timothy to use a practical remedy for his stomach and frequent illnesses (1 Timothy 5:23). Scripture does not force us to choose between dependence on God and receiving appropriate care through ordinary means.
 
-It cannot fix in three days what took years to form. Burnout with structural causes will not be cured by rest alone. Long-buried grief will not be fully processed in one weekend. A marriage under strain will not be repaired by a couples' retreat if nothing changes afterwards. The retreat is a beginning, and Part Five exists precisely because the beginning needs a next step.
+It cannot fix in three days what took years to form. Burnout with structural causes will not be cured by rest alone. Long-buried grief will not be fully processed in one weekend. A marriage under strain will not be repaired by a couples' retreat if nothing changes afterwards. The retreat is a beginning, and Module 5 exists precisely because the beginning needs a next step.
 
-It cannot guarantee that you will feel God's presence. Chapter 4 said this already, and it bears repeating. Some readers will finish these three days with a strong sense of having met God. Others will finish having been faithful and honest and still feeling dry. Both have done the retreat. Psalm 88 ends in darkness, and God kept it in his book.
+It cannot guarantee that you will feel God's presence. Lesson 4 said this already, and it bears repeating. Some readers will finish these three days with a strong sense of having met God. Others will finish having been faithful and honest and still feeling dry. Both have done the retreat. Psalm 88 ends in darkness, and God kept it in his book.
 
-It cannot substitute for community. Solitude is one of the means God uses; the body of Christ is another, and it is not optional. Galatians 6:2 tells us to "bear one another's burdens," which assumes that some burdens are too heavy to bear alone. A retreat taken as a permanent escape from other people is not what this book is recommending.
+It cannot substitute for community. Solitude is one of the means God uses; the body of Christ is another, and it is not optional. Galatians 6:2 tells us to "bear one another's burdens," which assumes that some burdens are too heavy to bear alone. A retreat taken as a permanent escape from other people is not what this course is recommending.
 
-It cannot make a difficult decision for you. Some readers are coming with a major choice in front of them and hoping for clarity. The listening sessions may help. But hearing from God, as Part Five will explain, is tested against Scripture, wise counsel, and the responsibilities already entrusted to you. A strong feeling during a retreat is not the same as divine instruction, and treating it that way has led sincere people into serious mistakes.
+It cannot make a difficult decision for you. Some readers are coming with a major choice in front of them and hoping for clarity. The listening sessions may help. But hearing from God, as Module 5 will explain, is tested against Scripture, wise counsel, and the responsibilities already entrusted to you. A strong feeling during a retreat is not the same as divine instruction, and treating it that way has led sincere people into serious mistakes.
 
 ## Retreat and professional care, together
 
 If you are already receiving care from a doctor, counsellor, or therapist, tell them you are planning this retreat and ask whether anything in it should be adjusted for you. Bring them the outline of the sessions if it helps. A competent professional should take your beliefs seriously and help you consider whether the retreat is appropriate for you at this time. They may recommend changes in its length, setting, exercises, or level of support, and that advice is worth taking.
 
-If you are not receiving care but Chapter 4 suggested you might need it, I would ask you to take one step toward it before you begin, even if that step is only a phone call to book an appointment. Some readers may prefer to wait until after the retreat. I understand that, and I will not insist, except in the situations described below. But please do not let the retreat become the reason you postpone help you already know you need.
+If you are not receiving care but Lesson 4 suggested you might need it, I would ask you to take one step toward it before you begin, even if that step is only a phone call to book an appointment. Some readers may prefer to wait until after the retreat. I understand that, and I will not insist, except in the situations described below. But please do not let the retreat become the reason you postpone help you already know you need.
 
 Christian readers sometimes worry that seeking counselling or medication signals a failure of faith. It does not. Proverbs 11:14 teaches the broader wisdom of seeking sound counsel: "in an abundance of counselors there is safety." Modern professional counselling is not exactly what the proverb describes, but receiving qualified help is consistent with its rejection of isolated decision-making. Receiving help from a doctor, a counsellor, and a pastor does not divide your trust in God. Each may contribute different knowledge, care, and support, and wise care often involves cooperation between them.
 
@@ -52,7 +52,7 @@ Christian readers sometimes worry that seeking counselling or medication signals
 
 The following are important examples rather than a complete list. Other conditions can also make extended solitude unwise: difficulty distinguishing what is real from internal experiences, a period of very reduced need for sleep and racing activity, a medically dangerous eating disorder, a recent psychiatric crisis or hospitalisation, severe dissociation, or any condition that makes being alone unsafe. If a doctor or mental-health professional has advised you not to spend extended time alone, or if you are unsure whether solitude is currently safe for you, seek professional guidance before beginning.
 
-Thoughts of not wanting to be alive. If you are having these thoughts, do not rely on this retreat as your response. Tell a trusted person and contact a qualified mental-health professional or crisis service promptly. If you believe you may act on those thoughts, have made a plan, or cannot keep yourself safe, contact your local emergency services or go to the nearest emergency department now. Ask someone trustworthy to remain with you while help is arranged. The resources page at the back of this book explains how to find crisis services in your country. The retreat will still be here when you are safe.
+Thoughts of not wanting to be alive. If you are having these thoughts, do not rely on this retreat as your response. Tell a trusted person and contact a qualified mental-health professional or crisis service promptly. If you believe you may act on those thoughts, have made a plan, or cannot keep yourself safe, contact your local emergency services or go to the nearest emergency department now. Ask someone trustworthy to remain with you while help is arranged. The "Finding Help Where You Live" page at the start of this course explains how to find crisis services in your country. The retreat will still be here when you are safe.
 
 Abuse, past or present. If you are currently being harmed physically, sexually, emotionally, financially, or through coercive control, your immediate priority is safety. A private retreat is not a substitute for specialist support or a personalised safety plan. Contact a domestic-abuse service using a safe device if possible, and speak with an advocate who can help you consider your circumstances without pressuring you. Leaving can increase danger in some situations, so do not confront the person harming you or announce plans to leave without considering your safety. If you believe your phone or internet activity may be monitored, use a safer device when looking for help. A pastor may be part of your support if they understand abuse, maintain appropriate confidentiality, and do not pressure you toward unsafe reconciliation.
 
@@ -78,7 +78,7 @@ You do not have to finish the exercise that brought it up. Skip it and come back
 
 Several of the sessions ahead will invite you to listen. Some readers will hear, in Scripture and in the quiet, things that are clear and true. Any of us can mistake fear, desire, memory, or strong emotion for divine direction, especially when we are exhausted or distressed.
 
-For now, hold everything lightly. Write down what you sense. No impression that contradicts Scripture, promotes harm, inflates your importance, removes accountability, or demands reckless urgency should be accepted as God's direction. Unless immediate safety requires action, do not make an irreversible decision during the retreat, especially anything involving leaving a marriage, a church, a job, or a country, or anything that requires someone else to change. Part Five will walk you through testing what you believe you heard against Scripture, the character of Christ, the counsel of mature believers, and the responsibilities God has already given you. Until then, treat impressions as impressions.
+For now, hold everything lightly. Write down what you sense. No impression that contradicts Scripture, promotes harm, inflates your importance, removes accountability, or demands reckless urgency should be accepted as God's direction. Unless immediate safety requires action, do not make an irreversible decision during the retreat, especially anything involving leaving a marriage, a church, a job, or a country, or anything that requires someone else to change. Module 5 will walk you through testing what you believe you heard against Scripture, the character of Christ, the counsel of mature believers, and the responsibilities God has already given you. Until then, treat impressions as impressions.
 
 ## Choosing your path
 
@@ -86,14 +86,7 @@ Before beginning, choose one of four paths:
 
 1. Proceed independently. You feel stable, safe alone, and able to pause when needed.
 2. Proceed with support. Arrange regular contact with a trusted person or professional during the retreat.
-3. Use an adapted format. Choose the shorter, guided, or group version from Part Four.
+3. Use an adapted format. Choose the shorter, guided, or group version from Module 4.
 4. Postpone for now. Seek professional, medical, crisis, or safety support first. Postponing is not failing. It may be the wisest way to prepare.
 
-## Before you enter Part Two
-
-1. After reading this chapter, is there any support you need to arrange before you begin? Write it down, and write down when you will arrange it.
-2. Who is the person you will call if a session becomes too much? Have you told them? Do you also know how to reach professional or crisis help if needed?
-3. What are you hoping the retreat itself will accomplish? Mark anything that belongs in the "cannot" section. You may still bring every desire to God, but separate what you are asking of God from what you are expecting this three-day process to produce.
-4. Which of the four paths are you choosing?
-
-Part Two begins the practical preparation. You have done the hard work of honesty. Now we get ready.
+Module 2 begins the practical preparation. You have done the hard work of honesty. Now we get ready.

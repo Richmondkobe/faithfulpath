@@ -53,8 +53,14 @@ export async function getLessonReflections(
   return new Map((data ?? []).map((r) => [r.question_index, r.answer]));
 }
 
-export function completedCount(progress: Map<string, Progress>): number {
-  let n = 0;
-  for (const row of progress.values()) if (row.completed_at) n++;
-  return n;
+/**
+ * How many of `lessons` are finished. Counting against an explicit list rather
+ * than every stored row is what keeps reference lessons out of the total — a
+ * member may well mark one complete, and it still should not move the bar.
+ */
+export function completedCount(
+  progress: Map<string, Progress>,
+  lessons: { slug: string }[]
+): number {
+  return lessons.filter((l) => progress.get(l.slug)?.completed_at).length;
 }

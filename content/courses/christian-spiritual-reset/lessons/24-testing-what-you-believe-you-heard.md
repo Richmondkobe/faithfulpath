@@ -12,7 +12,7 @@ type: teaching
 
 You are back. The house is loud, or the inbox is, or the children are, and the quiet of the retreat already feels like something that happened to someone else. That is normal, and Session Ten warned you about it.
 
-Do not make any decisions today. This morning, read the chapter, sort your cards into the three categories below, and identify what will need testing. The full testing may take days or weeks. Your whole assignment for the first morning is this:
+Do not make any decisions today. This morning, read this lesson, sort your cards into the three categories below, and identify what will need testing. The full testing may take days or weeks. Your whole assignment for the first morning is this:
 
 1. Sort each card into one of the three categories.
 2. Take no major action today.
@@ -22,7 +22,7 @@ Do not make any decisions today. This morning, read the chapter, sort your cards
 
 Then let the rest of the day be ordinary.
 
-This chapter is about one card in particular: the one from Session Seven marked What I sense, and any cards marked To test from Session Nine.
+This lesson is about one card in particular: the one from Session Seven marked What I sense, and any cards marked To test from Session Nine.
 
 Session Seven asked you to write down what you sensed and to test it before acting. This is how.
 
@@ -34,13 +34,13 @@ Testing does not insult God. It honours him by refusing to attach his name to so
 
 ## The safety exception
 
-Everything in this chapter about waiting, consulting, and taking time applies to ordinary discernment. It does not apply to immediate danger, abuse, urgent medical care, legal reporting duties, or deadlines that cannot safely be postponed. In those situations, seek qualified help and take the safest necessary action now. Do not remain in danger merely to complete a discernment process. Chapter 5's guidance on abuse and crisis takes precedence over anything below.
+Everything in this lesson about waiting, consulting, and taking time applies to ordinary discernment. It does not apply to immediate danger, abuse, urgent medical care, legal reporting duties, or deadlines that cannot safely be postponed. In those situations, seek qualified help and take the safest necessary action now. Do not remain in danger merely to complete a discernment process. Lesson 5's guidance on abuse and crisis takes precedence over anything below.
 
 ## First, sort what you have
 
 Take out the What I sense card and any To test cards, and sort them into three kinds.
 
-Nothing significant. If the card says "nothing," or records only a general sense of peace, or a familiar verse without any particular direction attached, there is nothing to test. Put it in the journal as a record of the retreat and move on to Chapter 14. Many readers will be here, and Chapter 12 already said that this is a complete outcome.
+Nothing significant. If the card says "nothing," or records only a general sense of peace, or a familiar verse without any particular direction attached, there is nothing to test. Put it in the journal as a record of the retreat and move on to Lesson 25. Many readers will be here, and Lesson 12 already said that this is a complete outcome.
 
 A low-risk, reversible step. Contacting a counsellor to arrange an initial appointment. Asking a trusted person for a conversation. Protecting one two-hour period for rest this week. Gathering information about reducing your hours. Writing an apology without sending it yet. These are the kind of actions Session Seven already permitted: supported by Scripture and ordinary wisdom, easily undone if mistaken, and harmful to no one. Notice that each of these explores a step rather than executes it; that distinction is worth keeping throughout. Test them lightly, using the worksheet quickly, and then do them.
 
@@ -90,7 +90,7 @@ Sometimes the tests point in different directions. Scripture permits it, the fru
 
 If a direction fails a test clearly, particularly test one, let it go. Session Seven said this: if an impression conflicts with Scripture, promotes harm, or cannot withstand truthful examination, do not treat it as divine direction. That is not a loss. It is the testing doing what it was for.
 
-And if, after weeks of testing, a category-three direction has passed every test, has been weighed by wise people who know you, and still holds, then it may be time to act, with the proportionate step first. Passing the tests does not give infallible certainty or guarantee a particular outcome. It means the direction has become responsible enough to take a proportionate next step. Chapter 14 is about that.
+And if, after weeks of testing, a category-three direction has passed every test, has been weighed by wise people who know you, and still holds, then it may be time to act, with the proportionate step first. Passing the tests does not give infallible certainty or guarantee a particular outcome. It means the direction has become responsible enough to take a proportionate next step. Lesson 25 is about that.
 
 ## A note on fleeces and signs
 
@@ -119,10 +119,3 @@ Testing begins: ______ Review on: ______
 
 Verdict for now: act on the small step / not yet, revisit on ______ / let it go
 
-## Before Chapter 14
-
-1. Which category does your card fall into? If nothing significant, go to Chapter 14 with a clear conscience.
-2. Does the safety exception apply to anything? If so, what help are you seeking today?
-3. When will you contact your Eli, and what will you bring?
-4. What is the smallest reversible version of any step you are considering?
-5. Is there anything you are reluctant to test? Write down why. Reluctance to test is itself something to test.

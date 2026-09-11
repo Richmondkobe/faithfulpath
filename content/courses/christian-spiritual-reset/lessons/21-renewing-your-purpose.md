@@ -92,9 +92,9 @@ The blank is specific and small. Not "changing the world." Not "reaching my pote
 
 Underneath, write one line beginning One faithful thing: and name a single action, doable in the next month, that expresses the sentence. Not a plan. One thing. It should be safe, proportionate, within your control, and compatible with your current capacity. Rest, asking for help, making an appointment, or declining a non-essential responsibility can count.
 
-Read the card to God. Keep it with the Act, Share, and Seek-counsel cards from Session Three and the identity card from Session Eight. Part Five's 30-day plan will ask you to look at it again on Day 30 and see whether the sentence still fits.
+Read the card to God. Keep it with the Act, Share, and Seek-counsel cards from Session Three and the identity card from Session Eight. Module 5's 30-day plan will ask you to look at it again on Day 30 and see whether the sentence still fits.
 
-If the exercise surfaced something larger, a sense that a role should end, or change, or that something you have been carrying is not yours, write it on a separate card marked To test, and put it with the Session Seven card. It is not a decision. It is a question for the testing that Part Five will walk you through, with the people who can help you weigh it.
+If the exercise surfaced something larger, a sense that a role should end, or change, or that something you have been carrying is not yours, write it on a separate card marked To test, and put it with the Session Seven card. It is not a decision. It is a question for the testing that Module 5 will walk you through, with the people who can help you weigh it.
 
 ## Closing declaration
 

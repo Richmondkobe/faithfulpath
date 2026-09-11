@@ -8,21 +8,21 @@ type: teaching
 
 # What to Bring
 
-This is the shortest chapter in the book, and it should be. A retreat that needs a great deal of equipment has already become something else. But a few things matter, and forgetting them can cost you an afternoon of driving back for a charger or, more seriously, leave you without medication or a way to call for help. So here is a short, practical list, with a few notes on why each item earns its place.
+This is the shortest lesson in the course, and it should be. A retreat that needs a great deal of equipment has already become something else. But a few things matter, and forgetting them can cost you an afternoon of driving back for a charger or, more seriously, leave you without medication or a way to call for help. So here is a short, practical list, with a few notes on why each item earns its place.
 
 Near the end of 2 Timothy, while imprisoned, Paul asks Timothy to bring "the cloak that I left with Carpus at Troas, also the books, and above all the parchments" (2 Timothy 4:13). Warmth for his body and written material that mattered to him. Two thousand years later, physical care and attentive reading still belong together.
 
 ## For the sessions
 
-A Bible. Bring a printed Bible if that is accessible and practical for you, for the reasons Chapter 9 gave. Otherwise, prepare an audio or digital Bible in a way that minimises unrelated notifications and distractions. Bring the translation you are most comfortable reading slowly.
+A Bible. Bring a printed Bible if that is accessible and practical for you, for the reasons Lesson 9 gave. Otherwise, prepare an audio or digital Bible in a way that minimises unrelated notifications and distractions. Bring the translation you are most comfortable reading slowly.
 
-This guide, or the session pages from Part Three. Printed, on an e-reader, or on a device you have prepared according to Chapter 9. Make sure you can read the sessions without walking past your inbox.
+This course, or printed session lessons from Module 3. Printed, on an e-reader, or on a device you have prepared according to Lesson 9. Make sure you can read the sessions without walking past your inbox.
 
 A journal and a pen. Handwriting is recommended because it often encourages a slower pace, and a physical journal is one you can bring back and reread. If handwriting is difficult or inaccessible, use an offline document, a voice recorder, a tablet, or another method that allows you to reflect without opening work or communication apps. The purpose is deliberate reflection, not a particular physical method. Choose a journal you will actually use rather than one so beautiful you are afraid to write in it, and bring a spare pen.
 
 Decide, too, how you will keep your journal private, particularly in a shared home, a group retreat, a borrowed property, or a relationship where someone reads your things. Do not write identifying details if doing so could place you or someone else at risk.
 
-The pages you have already written. Your check-in from Chapter 4, your intention from Chapter 7, and anything you wrote about resistance in Chapter 8. Session One will ask for them. Tuck them into the front of the journal.
+The pages you have already written. Your check-in from Lesson 4, your intention from Lesson 7, and anything you wrote about resistance in Lesson 8. Session One will ask for them. Tuck them into the front of the journal.
 
 A simple timer or watch. Several sessions include timed silence, and you should not have to pick up your phone to time it. A cheap kitchen timer or a watch with a timer function will do.
 
@@ -44,7 +44,7 @@ Comfortable clothes in layers. You will sit still for long periods, which makes 
 
 Shoes you can walk in. Several sessions suggest walking, and the outdoors is part of the retreat where it is possible.
 
-Whatever you need to sleep well. Chapter 6 said that rest is part of the retreat. If you sleep better with your own pillow, earplugs, or an eye mask, bring them. If you use prescribed sleep medication or a CPAP machine, maintain your normal routine. Do not experiment with unfamiliar sleep aids during the retreat.
+Whatever you need to sleep well. Lesson 6 said that rest is part of the retreat. If you sleep better with your own pillow, earplugs, or an eye mask, bring them. If you use prescribed sleep medication or a CPAP machine, maintain your normal routine. Do not experiment with unfamiliar sleep aids during the retreat.
 
 For outdoors. Sunscreen, a hat, insect repellent, rain protection, and a small first-aid kit if you will be walking away from buildings. Carry only supplies you know how to use, remain within your physical ability, and tell your support person where you are walking. Check the weather before you leave, not when you arrive.
 
@@ -54,11 +54,11 @@ Toothbrush and toothpaste, soap, deodorant, a towel if one is not provided, mens
 
 ## Food and water
 
-Chapter 11 is about this in more detail. For now: bring food that meets your dietary, allergy, medical, and medication needs, and choose simple things that need little preparation. Confirm whether a shared kitchen or retreat centre can safely accommodate serious allergies. Do not begin an unfamiliar restrictive diet during the retreat. Bring adequate drinking water or confirm that safe water is available, and do not restrict water as part of this retreat. If a medical condition or medication affects your fluid needs, follow professional advice.
+Lesson 11 is about this in more detail. For now: bring food that meets your dietary, allergy, medical, and medication needs, and choose simple things that need little preparation. Confirm whether a shared kitchen or retreat centre can safely accommodate serious allergies. Do not begin an unfamiliar restrictive diet during the retreat. Bring adequate drinking water or confirm that safe water is available, and do not restrict water as part of this retreat. If a medical condition or medication affects your fluid needs, follow professional advice.
 
 ## Safety, communication, and transport
 
-Your phone, prepared as Chapter 9 described, with the emergency arrangement tested and the charger packed. A power bank if you will be away from sockets.
+Your phone, prepared as Lesson 9 described, with the emergency arrangement tested and the charger packed. A power bank if you will be away from sockets.
 
 A paper card with essential information. The address of where you are staying, the name and number of your emergency contact, the number of the property or host, your doctor's number, and the emergency services number for the country you are in. If your phone fails, this card is your backup.
 
@@ -76,7 +76,7 @@ Before you pack, confirm whether the location provides bedding and towels, food-
 
 This list is as important as the other one.
 
-Work. Leave work devices behind unless a device is necessary for accessibility, Scripture, this guide, or emergency communication.
+Work. Leave work devices behind unless a device is necessary for accessibility, Scripture, this course, or emergency communication.
 
 If you must bring one, download what you need, sign out of work accounts, and keep it offline during sessions. The retreat has room for you to think about your work, and one of the Day 3 sessions will ask you to. It does not have room for you to do it.
 
@@ -86,7 +86,7 @@ Most other books. This may seem strange from someone who writes them. Keep addit
 
 Objects that create unnecessary pressure. Leave behind items that predictably trigger guilt, compulsive work, distress, or a sense that you must perform for someone else. Bring photographs or meaningful objects only if they support the purpose of the retreat and feel emotionally safe. If a session needs you to bring a memory into the room, it will say so.
 
-Name the guilt about leaving. If guilt returns while you pack, reread Chapter 2 and write down what the guilt is saying. You do not need to eliminate the feeling before you go; you only need to keep it from making the decision for you.
+Name the guilt about leaving. If guilt returns while you pack, reread Lesson 2 and write down what the guilt is saying. You do not need to eliminate the feeling before you go; you only need to keep it from making the decision for you.
 
 ## A checklist
 
@@ -95,9 +95,9 @@ Copy this and tick it off before you leave. Items marked (optional) are just tha
 **Sessions and reflection**
 
 - Bible, printed or prepared
-- This guide or the Part Three session pages
+- This course or printed session lessons from Module 3
 - Journal (or accessible alternative) and two pens
-- Chapter 4 check-in, Chapter 7 intention, Chapter 8 notes
+- Lesson 4 check-in, Lesson 7 intention, Lesson 8 notes
 - Timer or watch
 - Index cards or loose paper
 - Settling object (optional)
@@ -125,7 +125,7 @@ Copy this and tick it off before you leave. Items marked (optional) are just tha
 
 **Food and water**
 
-- Simple food meeting your needs (see Chapter 11)
+- Simple food meeting your needs (see Lesson 11)
 - Refillable water bottle
 
 **Safety, communication, and transport**
@@ -149,9 +149,5 @@ Copy this and tick it off before you leave. Items marked (optional) are just tha
 - Unfinished projects (completed, delegated, or rescheduled)
 - Extra books
 - Objects that create pressure
-- Guilt acknowledged and addressed using Chapter 2
+- Guilt acknowledged and addressed using Lesson 2
 
-## Before you turn the page
-
-1. Go through the checklist and mark anything you do not yet have. Which missing items are essential? Will you buy, borrow, substitute, download, or decide that you do not need them?
-2. Is there anything on the "leave behind" list you are reluctant to leave? Write down what it is and what you are afraid will happen if you do not bring it.

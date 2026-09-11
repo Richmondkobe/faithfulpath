@@ -8,9 +8,9 @@ type: teaching
 
 # What to Do When You Are Afraid of Silence
 
-Everything in Part Two so far has been about arrangements. This last chapter is about the thing the arrangements are for: silence.
+Everything in Module 2 so far has been about arrangements. This last lesson of Module 2 is about the thing the arrangements are for: silence.
 
-Most of the sessions ahead contain periods of silence, some short, some as long as half an hour. For some readers, silence sounds like relief. For others, it produces unease, dread, or even a sense of threat, and they may hesitate to admit that because fear of quiet can seem unspiritual. I want to say plainly that the fear is common, it is not a sign of weak faith, and there are practical ways to work with it. This chapter is written for the reader who has been dreading this part.
+Most of the sessions ahead contain periods of silence, some short, some as long as half an hour. For some readers, silence sounds like relief. For others, it produces unease, dread, or even a sense of threat, and they may hesitate to admit that because fear of quiet can seem unspiritual. I want to say plainly that the fear is common, it is not a sign of weak faith, and there are practical ways to work with it. This lesson is written for the reader who has been dreading this part.
 
 The silence is always adjustable. You may shorten it, open your eyes, move, add neutral background sound, contact support, or stop entirely. Mild restlessness is not failure, and severe distress is not something you must endure to prove faith. If you cannot engage safely in silence, spoken prayer, Scripture read aloud, gentle walking, or supported companionship are valid alternatives.
 
@@ -42,9 +42,9 @@ Notice what is missing from these passages. None of them describes silence as a 
 
 Two clarifications, because the word "silence" means different things to different people.
 
-First, the silence this retreat asks for is not an attempt to empty the mind or to reach a state without thought. It is attention. You are not trying to become blank; you are trying to become present to God, who is already present to you. When the sessions ask you to be silent, they will nearly always give you something to hold: a line of Scripture, a phrase of prayer, a question, or simply the intention you wrote in Chapter 7. Silence here means putting down the other noise so that you can attend to that one thing, and to the God it points to.
+First, the silence this retreat asks for is not an attempt to empty the mind or to reach a state without thought. It is attention. You are not trying to become blank; you are trying to become present to God, who is already present to you. When the sessions ask you to be silent, they will nearly always give you something to hold: a line of Scripture, a phrase of prayer, a question, or simply the intention you wrote in Lesson 7. Silence here means putting down the other noise so that you can attend to that one thing, and to the God it points to.
 
-Second, silence in this guide does not require a soundproof room. Birds, traffic, air conditioning, household noise, or a neutral background sound may remain. The boundary concerns deliberate input and conversation, not the elimination of every sound. For someone with tinnitus, total quiet can make internal ringing more noticeable; a fan, natural ambient sound, or low neutral noise may make attentive prayer more accessible.
+Second, silence in this course does not require a soundproof room. Birds, traffic, air conditioning, household noise, or a neutral background sound may remain. The boundary concerns deliberate input and conversation, not the elimination of every sound. For someone with tinnitus, total quiet can make internal ringing more noticeable; a fan, natural ambient sound, or low neutral noise may make attentive prayer more accessible.
 
 If thoughts come, and they will, you do not have to suppress them. You notice them and return to what you were holding. If a thought repeatedly returns, write it down if doing so is helpful. Do not automatically treat its repetition as divine emphasis or proof that it must be explored immediately. You can decide later, possibly with wise counsel, whether it deserves attention or should simply be allowed to pass. Silence is not a battle against your mind. It is a gentle, repeated returning.
 
@@ -62,7 +62,7 @@ None of these is more spiritual than the others. Silence does not require physic
 
 ## A graduated approach
 
-You do not have to begin with thirty minutes. In fact, if silence frightens you, you should not. Chapter 8 started you at up to three minutes. The sessions in Part Three will usually indicate a suggested length, but every suggested length is adjustable. Here is an example, not a test:
+You do not have to begin with thirty minutes. In fact, if silence frightens you, you should not. Lesson 8 started you at up to three minutes. The sessions in Module 3 will usually indicate a suggested length, but every suggested length is adjustable. Here is an example, not a test:
 
 - Begin with one to five minutes.
 - If that feels manageable, add a few minutes in a later session.
@@ -71,7 +71,7 @@ You do not have to begin with thirty minutes. In fact, if silence frightens you,
 
 There is no spiritual requirement to reach thirty minutes. Ten attentive minutes can be a complete practice. If a session suggests thirty and you can manage ten, do ten and count it as the session. Shortening the period is not spiritual failure. God is not measuring your devotion with a stopwatch.
 
-Use a timer, as Chapter 10 said, so that you are not watching the clock. Choose an initial length before beginning so that you are not repeatedly negotiating with the clock. But treat it as a plan, not a contract. You remain free to stop, shorten, change posture, or seek help at any time.
+Use a timer, as Lesson 10 said, so that you are not watching the clock. Choose an initial length before beginning so that you are not repeatedly negotiating with the clock. But treat it as a plan, not a contract. You remain free to stop, shorten, change posture, or seek help at any time.
 
 ## Anchors
 
@@ -87,28 +87,20 @@ Posture is the last anchor. Choose a position that is stable, supported, and phy
 
 ## Distinguishing discomfort from distress
 
-There is a difference between the ordinary discomfort of silence and something that needs you to stop, and you should know the difference before you begin. Only you can make that judgement in the moment; this book cannot make it for you.
+There is a difference between the ordinary discomfort of silence and something that needs you to stop, and you should know the difference before you begin. Only you can make that judgement in the moment; this course cannot make it for you.
 
 Mild restlessness, boredom, wandering attention, an urge to check something, or a mild sadness as things surface may be manageable without requiring you to stop. Notice what happens and return gently to your anchor. You are not required to stay with any sensation or emotion that feels unsafe, unfamiliar, rapidly intensifying, or beyond your ability to manage.
 
-Distress feels different. If silence brings panic, a racing heart that does not settle, a sense of being back in a memory rather than remembering it, a feeling of unreality or of watching yourself from outside, or a fear that is out of proportion to sitting in a quiet room, that is not something to push through. Stop the silence. Open your eyes if they are closed, stand up, move, and use the orientation exercise from Chapter 5: name where you are, the date, and several things you can see, hear, and touch. Contact your support person if you need to, remembering that a support person offers companionship and is not automatically qualified to manage severe symptoms. If symptoms include chest pain, fainting, severe difficulty breathing, any medical emergency, thoughts of harming yourself, or an inability to remain safe, contact emergency services or crisis support rather than assuming the reaction is psychological.
+Distress feels different. If silence brings panic, a racing heart that does not settle, a sense of being back in a memory rather than remembering it, a feeling of unreality or of watching yourself from outside, or a fear that is out of proportion to sitting in a quiet room, that is not something to push through. Stop the silence. Open your eyes if they are closed, stand up, move, and use the orientation exercise from Lesson 5: name where you are, the date, and several things you can see, hear, and touch. Contact your support person if you need to, remembering that a support person offers companionship and is not automatically qualified to manage severe symptoms. If symptoms include chest pain, fainting, severe difficulty breathing, any medical emergency, thoughts of harming yourself, or an inability to remain safe, contact emergency services or crisis support rather than assuming the reaction is psychological.
 
-If distress happens more than once, or severely, do not continue the silent portions alone. Chapter 5's guidance on trauma applies, and a trauma-informed professional can help you find ways into quiet that your body will accept. Nothing in this retreat is worth reliving harm. Silence is offered, not assigned, like everything else.
+If distress happens more than once, or severely, do not continue the silent portions alone. Lesson 5's guidance on trauma applies, and a trauma-informed professional can help you find ways into quiet that your body will accept. Nothing in this retreat is worth reliving harm. Silence is offered, not assigned, like everything else.
 
 ## If you sense nothing
 
 Finally, the fear that many readers hold most quietly: that they will be silent, and faithful, and attentive, and nothing will happen.
 
-It may not. Chapter 5 said so, and I will not soften it now. Some retreats are marked by a strong sense of God's presence. Others are marked by faithfulness without feeling. Both are real retreats, and Scripture, as we saw, makes room for both. If you sit in silence and sense nothing, you have not failed and you have not been abandoned. Christian confidence rests in God's character and promises, not in whether a retreat produces a perceptible response. You have waited, as the psalmist waited, and the waiting itself is prayer.
+It may not. Lesson 5 said so, and I will not soften it now. Some retreats are marked by a strong sense of God's presence. Others are marked by faithfulness without feeling. Both are real retreats, and Scripture, as we saw, makes room for both. If you sit in silence and sense nothing, you have not failed and you have not been abandoned. Christian confidence rests in God's character and promises, not in whether a retreat produces a perceptible response. You have waited, as the psalmist waited, and the waiting itself is prayer.
 
 In my pastoral experience, some people recognise the significance of a retreat only later. A decision becomes clearer, a pattern becomes visible, or a quieter change develops over the following weeks. I cannot promise that outcome. But immediate emotion is not the only measure of value, and a silent retreat is not judged by what you felt on Day 2.
 
-## Before you enter Part Three
-
-1. Which of the fears at the start of this chapter is closest to yours? Write it in a sentence.
-2. What length of silence can you honestly manage right now? Start there.
-3. What will your anchor phrase be for the first session? Write it on a card and keep it in your Bible.
-
-4. Still, moving, or supported silence? Eyes open or closed? Decide before you begin, and give yourself permission to change.
-
-Part Two is finished. You have a place, a length, an intention, a boundary, a bag, a plan for your body, and a way into quiet. Part Three is the retreat itself. Turn the page when you are ready to begin.
+Module 2 is finished. You have a place, a length, an intention, a boundary, a bag, a plan for your body, and a way into quiet. Module 3 is the retreat itself. Continue to the next lesson when you are ready to begin.

@@ -8,7 +8,7 @@ type: teaching
 
 # Jesus and the Practice of Withdrawing
 
-Chapter 2 gave you permission to withdraw without calling it selfish. Now we turn from permission to pattern: what Jesus' own practice can teach us about entering, protecting, and leaving a time of retreat. The Gospels give us more detail than most Christians realise, and the detail is instructive, because it shows a pattern rather than a formula.
+Lesson 2 gave you permission to withdraw without calling it selfish. Now we turn from permission to pattern: what Jesus' own practice can teach us about entering, protecting, and leaving a time of retreat. The Gospels give us more detail than most Christians realise, and the detail is instructive, because it shows a pattern rather than a formula.
 
 ## A pattern, not a program
 
@@ -30,7 +30,7 @@ Lay these side by side and you see that Jesus withdrew after demand, in loss, be
 
 The consistent centre of Jesus' withdrawals was prayer, communion with the Father. In several places where the Gospels preserve the content of his prayers, including Matthew 11:25–26, John 11:41–42, John 17, and Gethsemane, his words are remarkably candid. He gives thanks, names what lies before him, intercedes for his followers, expresses what he desires, and submits himself to the Father's will.
 
-This is worth saying clearly, because retreat culture, including much Christian retreat culture, has drifted toward wellness language. Silence, reflection, and physical rest may accompany a Christian retreat, and this guide includes all three, but they are not its ultimate centre. We do not withdraw merely to become calmer. We withdraw to become present to God. Everything else in these pages serves that.
+This is worth saying clearly, because retreat culture, including much Christian retreat culture, has drifted toward wellness language. Silence, reflection, and physical rest may accompany a Christian retreat, and this course includes all three, but they are not its ultimate centre. We do not withdraw merely to become calmer. We withdraw to become present to God. Everything else in these pages serves that.
 
 The Gospels do not describe elaborate arrangements. They repeatedly show Jesus seeking ordinary, solitary places, a hillside, a garden, a boat, the far side of a lake, where he could pray without the immediate pressure of the crowd. You do not need a retreat centre. You need a place where interruptions can be reduced and where you can give sustained attention to God.
 
@@ -40,7 +40,7 @@ Here is the part that will encourage anyone whose life does not cooperate with q
 
 Jesus' times of solitude were interrupted repeatedly. In Mark 1:36–37, Simon and the others go looking for him in the dark and find him with the words, "Everyone is looking for you." In Matthew 14:13–14, the crowds hear where his boat is heading and walk around the lake on foot, so that when he lands, "he saw a great crowd, and he had compassion on them and healed their sick." That evening, after feeding five thousand, Matthew 14:23 says he "went up on the mountain by himself to pray." He got his time alone. It just came later than the story first suggested.
 
-Two things to take from this. First, do everything you can to protect your retreat, and a later chapter will show you how. Second, an interruption does not automatically ruin your retreat. Respond to genuine needs, return to the quiet when possible, and reschedule what you cannot complete. Even if circumstances prevent you from finishing, the time you gave to God was not wasted.
+Two things to take from this. First, do everything you can to protect your retreat, and a later lesson will show you how. Second, an interruption does not automatically ruin your retreat. Respond to genuine needs, return to the quiet when possible, and reschedule what you cannot complete. Even if circumstances prevent you from finishing, the time you gave to God was not wasted.
 
 At the same time, compassion does not require you to respond immediately to every notification, request, or preference. Jesus responded to people in need, but he did not surrender his life to every demand made upon him. Learning the difference between a genuine need and an avoidable distraction is part of what this retreat will teach you.
 
@@ -48,11 +48,11 @@ At the same time, compassion does not require you to respond immediately to ever
 
 One more detail. Jesus often prayed alone, but on at least two especially significant occasions, the Transfiguration in Luke 9:28– 36 and Gethsemane, he brought Peter, James, and John with him. They were imperfect companions. At the Transfiguration they struggled with sleep, and in Gethsemane they failed to remain watchful during his anguish. Yet Jesus still allowed them to accompany him, and they became witnesses to moments they would never forget.
 
-Jesus sometimes withdrew completely alone and sometimes brought trusted disciples nearby. His example leaves room for both private solitude and supported retreat. Solitude with God is essential; unhealthy isolation from people is not the goal. This is why Part Four includes formats for couples, small groups, and churches, and why even the personal version of this retreat will ask you to tell at least one person what you are doing. Afterwards, speak with someone about what became clear through Scripture, prayer, silence, and honest reflection, and test any significant impression against Scripture, the character of Christ, wise counsel, and the responsibilities God has already entrusted to you. We will return to that testing in Part Five.
+Jesus sometimes withdrew completely alone and sometimes brought trusted disciples nearby. His example leaves room for both private solitude and supported retreat. Solitude with God is essential; unhealthy isolation from people is not the goal. This is why Module 4 includes formats for couples, small groups, and churches, and why even the personal version of this retreat will ask you to tell at least one person what you are doing. Afterwards, speak with someone about what became clear through Scripture, prayer, silence, and honest reflection, and test any significant impression against Scripture, the character of Christ, wise counsel, and the responsibilities God has already entrusted to you. We will return to that testing in Module 5.
 
 ## More than an example
 
-Jesus is not merely the example behind this retreat. He is the one who invites you into it. You are not trying to reproduce his life through discipline alone. You are responding to the living Christ who says, "Come to me," and who meets tired people with grace. The pattern in this chapter tells you what the days may look like. The person tells you who is waiting in them.
+Jesus is not merely the example behind this retreat. He is the one who invites you into it. You are not trying to reproduce his life through discipline alone. You are responding to the living Christ who says, "Come to me," and who meets tired people with grace. The pattern in this lesson tells you what the days may look like. The person tells you who is waiting in them.
 
 ## What this means for your three days
 
@@ -60,9 +60,3 @@ The structure of this retreat follows the shape you have just seen. You will beg
 
 None of this is original. It is simply an attempt to let the way Jesus lived shape the way you rest.
 
-## Before you turn the page
-
-1. Of the five moments listed above, which one is closest to where you are right now: after demand, in loss, before a decision, in a season of testing, or facing something hard? Write a sentence about why.
-2. Jesus told the Father exactly what he wanted in Gethsemane. When did you last pray a prayer that honest? What stops you?
-3. Who is one trustworthy person you could tell about this retreat? If no one comes to mind, what pastor, counsellor, mature believer, or supportive community could you begin approaching?
-4. What would help you reduce avoidable interruptions without becoming anxious or resentful when a genuine need arises?

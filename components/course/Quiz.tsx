@@ -5,8 +5,9 @@ import type { QuizQuestion } from "@/lib/course";
 import { saveQuizAttempt } from "@/app/members/courses/actions";
 
 // All questions on screen at once: these are short recall checks at the end of
-// a lesson, and a member should be able to look back over the whole set before
-// submitting rather than being marched through one at a time.
+// a lesson ("Check-in" in the UI), and a member should be able to look back
+// over the whole set before submitting rather than being marched through one at
+// a time.
 
 export default function Quiz({
   courseSlug,
@@ -65,7 +66,7 @@ export default function Quiz({
         className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
-        Quiz
+        Check-in
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
         {questions.length} questions · {passMark} correct to pass

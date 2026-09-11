@@ -12,7 +12,7 @@ type: session
 
 ## Before you begin
 
-Good morning. If you slept well, thank God for it. If you did not, that is not a failure; Day 2 will still hold. Follow the food and medication plan you established in Chapter 11, and do not begin this emotionally demanding session hungry, dehydrated, medically unstable, or physically unwell. Give yourself a few minutes of quiet with your drink before you open the Bible. You are not late.
+Good morning. If you slept well, thank God for it. If you did not, that is not a failure; Day 2 will still hold. Follow the food and medication plan you established in Lesson 11, and do not begin this emotionally demanding session hungry, dehydrated, medically unstable, or physically unwell. Give yourself a few minutes of quiet with your drink before you open the Bible. You are not late.
 
 This session begins the deeper part of the retreat. It is still gentle, and it still moves at your pace. But it asks you to look at what you have been carrying, and some of that may be heavy. If the session brings up more than you can safely hold, stop. That may mean pausing the exercise, ending the session, or ending the retreat and seeking appropriate support. Let safety, not completion, determine the next step.
 
@@ -24,7 +24,7 @@ Read the passage twice as written, the second time slowly, pausing after each ph
 
 ## Teaching
 
-Chapter 1 quoted this passage, and you may know it well. Familiarity is the danger. It is possible to have heard "Come to me, all who labor and are heavy laden" so many times that it no longer lands, so this session will try to hear it again, in the three movements the passage itself makes.
+Lesson 1 quoted this passage, and you may know it well. Familiarity is the danger. It is possible to have heard "Come to me, all who labor and are heavy laden" so many times that it no longer lands, so this session will try to hear it again, in the three movements the passage itself makes.
 
 Come to me. Rest begins in relationship with Christ, not in a technique. Matthew does not limit "all who labor and are heavy laden" to one kind of burden. Yet elsewhere he records Jesus condemning religious leaders who "tie up heavy burdens, hard to bear, and lay them on people's shoulders" without lifting a finger to help (Matthew 23:4). It is therefore appropriate to include religious exhaustion among the burdens you may bring, while not reducing the invitation to that alone. Some of what you are carrying may have been laid on you in God's name. It is still a burden, and Jesus still says "Come."
 
@@ -100,9 +100,9 @@ Seek-counsel cards: "I will not make this decision alone. I will seek appropriat
 
 Read each card to God, aloud if you have privacy. Then place the Entrust cards face down somewhere set apart, under your Bible, in front of the cross if you brought one, or in an envelope marked with today's date. The location has no spiritual power. It is simply a physical way of marking the decision you have made in prayer. You are not destroying these; you may want to look at them again on Day 3 or after the retreat.
 
-Keep the Share, Act, and Seek-counsel cards together. They go back into your ordinary life with you, and Part Five will help you turn them into a plan.
+Keep the Share, Act, and Seek-counsel cards together. They go back into your ordinary life with you, and Module 5 will help you turn them into a plan.
 
-If any card, at any point, brings up more than you can hold, stop, set it aside, and use the pause guidance from Chapter 5. That card can wait for Session Four, Session Six, or a conversation with the right person after the retreat.
+If any card, at any point, brings up more than you can hold, stop, set it aside, and use the pause guidance from Lesson 5. That card can wait for Session Four, Session Six, or a conversation with the right person after the retreat.
 
 ## Closing declaration
 

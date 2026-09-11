@@ -10,7 +10,7 @@ type: teaching
 
 You are still showing up. You still go to work, still answer messages, still sit in church on Sunday. If someone asked how you were doing, you would say "fine," and it would not exactly be a lie. Nothing has collapsed. But somewhere underneath the routine, something has gone quiet. Prayer feels like talking into a room where nobody is home. The Bible on your phone has become one more app you scroll past. You are not angry with God. You are just tired in a place that sleep does not reach.
 
-If that describes you, I want you to hear something before we go any further: you are not a failure, and you are not a fraud. You are a person whose body has kept moving after the soul asked for a rest it never received. That gap between an active life and an exhausted spirit is exactly what this guide is written to close.
+If that describes you, I want you to hear something before we go any further: you are not a failure, and you are not a fraud. You are a person whose body has kept moving after the soul asked for a rest it never received. That gap between an active life and an exhausted spirit is exactly what this course is written to close.
 
 ## A tiredness sleep cannot fix
 
@@ -42,31 +42,19 @@ The Greek word translated "desolate," erēmos, describes a solitary or uninhabit
 
 Then there is the invitation almost every tired Christian has heard but few have actually accepted. In Matthew 11:28–30, Jesus says, "Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls."
 
-Read that last phrase again. Not rest for your body. Rest for your soul. Jesus names the exact tiredness you are feeling and says he is the one who can lift it. But an invitation only becomes rest when you show up. This guide is a structured way of showing up.
+Read that last phrase again. Not rest for your body. Rest for your soul. Jesus names the exact tiredness you are feeling and says he is the one who can lift it. But an invitation only becomes rest when you show up. This course is a structured way of showing up.
 
 ## What a spiritual reset is, and is not
 
 A spiritual reset is not an attempt to manufacture an emotional encounter with God. It is not a way to force God to speak, and it is not a test of how spiritual you are. It is a deliberate pause from noise, responsibility, and performance so that you can become honest before God again. You may experience tears, clarity, peace, conviction, or nothing dramatic at all. The goal is not to produce a feeling. The goal is to make yourself available to God.
 
-## What this guide will ask of you
+## What this course will ask of you
 
-Over the coming pages I will walk with you the way I would walk with someone who came into my office and admitted they were running on empty. There will be teaching, but not a lot of it.
+Over the coming lessons I will walk with you the way I would walk with someone who came into my office and admitted they were running on empty. There will be teaching, but not a lot of it.
 
 Mostly there will be Scripture to sit with, honest questions to answer, guided prayers, stretches of silence, and space to write. Some sessions will be gentle. Some will go to hard places: grief you have not processed, people you have not forgiven, shame you have carried longer than you realise. We go there because lasting rest is difficult while so much remains unnamed and carried alone.
 
-This guide is designed primarily as a three-day retreat. If possible, give yourself those three days; the slower pace allows each stage to do its work. I also recognise that work, family, health, or caregiving responsibilities may make that impossible. For that reason, Part Four includes adapted formats for a three-hour reset, a full-day retreat, an at-home version, couples, small groups, and pastors.
+This course is designed primarily as a three-day retreat. If possible, give yourself those three days; the slower pace allows each stage to do its work. I also recognise that work, family, health, or caregiving responsibilities may make that impossible. For that reason, Module 4 includes adapted formats for a three-hour reset, a full-day retreat, an at-home version, couples, small groups, and pastors.
 
-One more thing, and it matters. If you are thinking about harming yourself or believe you may be in immediate danger, do not begin this retreat alone. Contact emergency services or a crisis service in your country, and tell a trusted person who can remain with you. If you are facing an uncontrolled addiction, abuse, severe depression, or unresolved trauma, please read Chapter 5 before beginning. Silence can bring buried pain to the surface, and you may need a qualified counsellor, doctor, or trusted pastoral leader alongside you. Seeking help is not a failure of faith. It is an act of wisdom and courage.
+One more thing, and it matters. If you are thinking about harming yourself or believe you may be in immediate danger, do not begin this retreat alone. Contact emergency services or a crisis service in your country, and tell a trusted person who can remain with you. If you are facing an uncontrolled addiction, abuse, severe depression, or unresolved trauma, please read Lesson 5 before beginning. Silence can bring buried pain to the surface, and you may need a qualified counsellor, doctor, or trusted pastoral leader alongside you. Seeking help is not a failure of faith. It is an act of wisdom and courage.
 
-## Before you turn the page
-
-Take two minutes. Not to plan or to fix anything, just to answer honestly.
-
-1. When did you last feel close to God, not in a service or a meeting, but on your own? What was different then?
-
-2. What is one thing you have kept doing for God while feeling nothing? Do not judge it. Just name it.
-3. Elijah said, "It is enough." If you were completely honest with God right now, what would your sentence be?
-
-Write your answers somewhere you can return to. You will read them again on the final day and notice what has shifted, what has become clearer, and what God may still be inviting you to face.
-
-You have kept going for a long time. For the next few days, you are allowed to stop.

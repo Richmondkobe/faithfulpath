@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
-import { getCourse, getLessons, lessonHref } from "@/lib/course";
+import {
+  getCountableLessons,
+  getCourse,
+  getLessons,
+  lessonHref,
+} from "@/lib/course";
 import { getCourseProgress, completedCount } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 
@@ -23,13 +28,16 @@ export default async function CourseOverview({
   if (!course) notFound();
 
   const lessons = getLessons(courseSlug);
+  // Reference lessons are listed and readable, but there is nothing to finish
+  // in them, so they are outside both the count and the Continue trail.
+  const countable = getCountableLessons(courseSlug);
   const progress = await getCourseProgress(courseSlug);
-  const done = completedCount(progress);
+  const done = completedCount(progress, countable);
 
-  // Where "Continue" goes: the first lesson in reading order not yet finished,
-  // or the last one if they have finished everything.
+  // Where "Continue" goes: the first lesson still to be done, or the last one
+  // in the course once everything is finished.
   const nextLesson =
-    lessons.find((l) => !progress.get(l.slug)?.completed_at) ??
+    countable.find((l) => !progress.get(l.slug)?.completed_at) ??
     lessons[lessons.length - 1];
 
   return (
@@ -56,14 +64,14 @@ export default async function CourseOverview({
       </p>
 
       <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-        <ProgressBar done={done} total={lessons.length} label="Your progress" />
+        <ProgressBar done={done} total={countable.length} label="Your progress" />
         <Link
           href={lessonHref(courseSlug, nextLesson.slug)}
           className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           {done === 0
             ? "Start the course"
-            : done === lessons.length
+            : done === countable.length
               ? "Revisit the last lesson"
               : "Continue"}
         </Link>

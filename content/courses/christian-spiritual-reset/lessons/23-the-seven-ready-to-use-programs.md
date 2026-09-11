@@ -8,19 +8,19 @@ type: reference
 
 # The Seven Ready-to-Use Programs
 
-## How to use Part Four
+## How to use these programs
 
-Part Three gave you the ten sessions. Part Four arranges them into schedules you can follow without planning. Each program lists which sessions to do, in what order, with rest, meals, and movement built in, and each is written so that you can copy it into your journal or print the page and take it with you.
+Module 3 gave you the ten sessions. This page arranges them into schedules you can follow without planning. Each program lists which sessions to do, in what order, with rest, meals, and movement built in, and each is written so that you can copy it into your journal or print the page and take it with you.
 
 A few things apply to every program.
 
 The times are suggestions. They show a realistic shape for the day, not a timetable to keep to the minute. Shift everything to suit when you wake, when you eat, and when your medication is due. What matters is the order of the sessions and the rest between them.
 
-The one-day and three-hour formats shorten selected sessions deliberately; do not compress them further. If a program says "rest" or "movement" between two sessions, that is not filler. The breaks reduce emotional and physical strain, create space for recovery, and help you notice whether continuing is appropriate. They do not replace the safeguards in Chapter 5 or professional support where needed. Do not close the gaps to fit in more.
+The one-day and three-hour formats shorten selected sessions deliberately; do not compress them further. If a program says "rest" or "movement" between two sessions, that is not filler. The breaks reduce emotional and physical strain, create space for recovery, and help you notice whether continuing is appropriate. They do not replace the safeguards in Lesson 5 or professional support where needed. Do not close the gaps to fit in more.
 
-Every session remains adjustable. The silence lengths, the journaling, and the exercises are all subject to what Chapter 12 said: shorten, adapt, or stop as you need. A program is a container, not a contract.
+Every session remains adjustable. The silence lengths, the journaling, and the exercises are all subject to what Lesson 12 said: shorten, adapt, or stop as you need. A program is a container, not a contract.
 
-The safety guidance holds throughout. Chapter 5's four paths, the pause rule, the emergency arrangements from Chapter 9, and the food and medication plan from Chapter 11 apply whichever program you choose.
+The safety guidance holds throughout. Lesson 5's four paths, the pause rule, the emergency arrangements from Lesson 9, and the food and medication plan from Lesson 11 apply whichever program you choose.
 
 Sessions Six, Eight, and Nine are not required parts of the core three-day program. Session Six is reserved for a supported or extended format. Sessions Eight and Nine are optional additions only when capacity and time genuinely permit. The standard route contains seven sessions. If Session Four or Five needs to be deferred for safety or capacity, the retreat remains valid and complete as a three-day period of prayer and rest. Deferred sessions are optional material for later support, not missing requirements.
 
@@ -34,11 +34,11 @@ The recommended format. Up to seven core sessions across three days.
 | Day 2 | Sessions 3 and 4 | Session 5, only if fully settled |
 | Day 3, Route A (Session 5 completed on Day 2) | Sessions 7 and 10 | Session 8 or 9, not both |
 | Day 3, Route B (Session 5 still needed) | Sessions 5, 7, and 10 | No flex sessions |
-| After the retreat | 30-day plan (Part Five) | Sessions 6, 8, or 9 as appropriate |
+| After the retreat | 30-day plan (Module 5) | Sessions 6, 8, or 9 as appropriate |
 
 Best for: anyone who can take three consecutive days away from ordinary work. Friday to Sunday is the most common shape; three weekdays work equally well, and some readers prefer them.
 
-Before you arrive: complete Part Two. In particular, have your intention (Chapter 7), your phone arrangement tested (Chapter 9), your bag packed (Chapter 10), and your food and medication plan settled (Chapter 11). Do the Chapter 8 practice for the week before if you can.
+Before you arrive: complete Module 2. In particular, have your intention (Lesson 7), your phone arrangement tested (Lesson 9), your bag packed (Lesson 10), and your food and medication plan settled (Lesson 11). Do the Lesson 8 practice for the week before if you can.
 
 Arrival: if you can, arrive the evening before Day 1. Unpack, eat, set up the room, and sleep. Do no sessions. This is optional and may require an additional night's accommodation; if that is not affordable or practical, arrive on the morning of Day 1 and use the first hour, or longer, to settle before Session One.
 
@@ -47,10 +47,10 @@ Arrival: if you can, arrive the evening before Day 1. Unpack, eat, set up the ro
 | Time | What | Notes |
 |---|---|---|
 | Wake | Wake naturally where appropriate, or follow the schedule required by your medication, meals, health needs, or sleep routine | If you are exhausted, sleep. |
-| Morning | Breakfast, quiet, settling | Make a drink. Sit. Read a psalm from the Chapter 8 list if you like. No session yet. |
+| Morning | Breakfast, quiet, settling | Make a drink. Sit. Read a psalm from the Lesson 8 list if you like. No session yet. |
 | Late morning | Session One: Come As You Are | 60–90 minutes. Ends with the sealed envelope. |
 | Midday | Lunch | Unhurried. Without screens if you can. |
-| Early afternoon | Rest or sleep | Session One and Chapter 6 both expect this on Day 1. Take it. |
+| Early afternoon | Rest or sleep | Session One and Lesson 6 both expect this on Day 1. Take it. |
 | Mid-afternoon | Session Two: Be Still and Become Present | 60–90 minutes, including the noticing exercise. |
 | Late afternoon | Free | Outside if possible and accessible. Nothing structured. |
 | Evening | Simple meal, rest, a psalm | No further session. Day 1 is finished. |
@@ -73,7 +73,7 @@ If you sleep through the afternoon, do Session Two in the early evening instead 
 | Evening, alternative | Session Five: Confession and Grace, optional | Only if you feel physically rested, emotionally settled, and genuinely willing, not merely because you want to clear Day 3. If in any doubt, leave it for Day 3. |
 | Night | Sleep | Session Four may be the most emotionally demanding part of the retreat. Give yourself a long and unhurried night. |
 
-If Session Four brought up more than you could hold, stop there for the day. Do not attempt Session Five. Contact your support person if you need to, follow Chapter 5's guidance, and sleep. Day 3 will still hold, with Session Five in the morning or deferred to the 30-day plan.
+If Session Four brought up more than you could hold, stop there for the day. Do not attempt Session Five. Contact your support person if you need to, follow Lesson 5's guidance, and sleep. Day 3 will still hold, with Session Five in the morning or deferred to the 30-day plan.
 
 If you chose to skip Session Four because your loss is very recent or overwhelming, as Session Four permits, use the afternoon for rest and Scripture. Skipping Session Four does not automatically mean you should replace it with Session Five. Decide independently whether confession is appropriate. Rest may remain the wisest use of the afternoon and evening.
 
@@ -109,7 +109,7 @@ Timing Session Ten: choose its start by working backwards from checkout and safe
 
 Departure: depart according to your booking and travel plan, but do not drive or travel alone if you are too tired, distressed, or disoriented to do so safely. Tell your support person your plan and confirm when you arrive.
 
-Session Six is not scheduled. If forgiveness is the thing you most need to address, the at-home format gives it a day of its own, and Part Five's 30-day plan gives it a place after you return. It is not omitted because it is unimportant; it is omitted because it should not be squeezed between other heavy work.
+Session Six is not scheduled. If forgiveness is the thing you most need to address, the at-home format gives it a day of its own, and Module 5's 30-day plan gives it a place after you return. It is not omitted because it is unimportant; it is omitted because it should not be squeezed between other heavy work.
 
 ### The whole retreat on one page
 
@@ -131,9 +131,9 @@ Sessions used: 1, 2, 3, 7, 10, each in a shortened form.
 
 Not used: 4, 5, 6, 8, 9. Lament, confession, and forgiveness are not included because they should not be compressed into a single day alongside four other sessions. They remain available in the 30-day plan, and the one-day retreat is complete without them.
 
-Best for: someone who cannot get away overnight but can protect one full day. Chapter 6 said this is the best alternative to three days, and it is. It should not feel like a nine-hour seminar; roughly a third of the day is meals and rest.
+Best for: someone who cannot get away overnight but can protect one full day. Lesson 6 said this is the best alternative to three days, and it is. It should not feel like a nine-hour seminar; roughly a third of the day is meals and rest.
 
-Before you begin: complete Part Two as far as you can. The intention (Chapter 7), the phone arrangement (Chapter 9), and the food plan (Chapter 11) matter most. If you are doing this at home, follow the home-alone or home-with-household guidance in Chapter 6.
+Before you begin: complete Module 2 as far as you can. The intention (Lesson 7), the phone arrangement (Lesson 9), and the food plan (Lesson 11) matter most. If you are doing this at home, follow the home-alone or home-with-household guidance in Lesson 6.
 
 Shortening the sessions: in each session, read the central passage and the teaching, do the self-assessment and guided prayer, keep the silence at ten minutes or less, answer the two journaling questions named below, and do the practical exercise in full. Most shortened sessions will take 45 to 60 minutes;
 
@@ -171,11 +171,11 @@ A compressed pause for someone who needs to stop now and cannot wait for a day t
 
 Sessions used: brief elements of 1, 2, 3, and 10.
 
-What this is: an immediate spiritual pause, not the full retreat. Chapter 6 was clear that it is not crisis care and not a substitute for professional help. If you are in distress that needs more than a pause, Chapter 5 applies before this program does.
+What this is: an immediate spiritual pause, not the full retreat. Lesson 6 was clear that it is not crisis care and not a substitute for professional help. If you are in distress that needs more than a pause, Lesson 5 applies before this program does.
 
-Best for: a Saturday morning, a weekday afternoon of leave, a quiet three hours when the household is out. It can be repeated monthly as part of the rhythm you build in Part Five, and many readers will use it that way after a full retreat.
+Best for: a Saturday morning, a weekday afternoon of leave, a quiet three hours when the household is out. It can be repeated monthly as part of the rhythm you build in Module 5, and many readers will use it that way after a full retreat.
 
-Before you begin: phone away or on the Chapter 9 arrangement, a Bible, a journal, a timer, a drink. Tell the people who might otherwise interrupt you that you will be unavailable for the full three hours, and explain how a genuine emergency should reach you. Allow half an hour of transition afterwards, so the practical commitment is three and a half hours. Write a one-line intention before you start, even if you have not done Chapter 7 in full.
+Before you begin: phone away or on the Lesson 9 arrangement, a Bible, a journal, a timer, a drink. Tell the people who might otherwise interrupt you that you will be unavailable for the full three hours, and explain how a genuine emergency should reach you. Allow half an hour of transition afterwards, so the practical commitment is three and a half hours. Write a one-line intention before you start, even if you have not done Lesson 7 in full.
 
 The card marks used below, from Session Three: A (Act: a next faithful action within my responsibility), S (Share: a burden needing support), E (Entrust: an outcome I cannot control), ? (Seek counsel: responsibility unclear or serious).
 
@@ -202,13 +202,13 @@ Sessions used, core version: 1, 2, 3, 4, 5, 7, 10 across eight days.
 
 Sessions used, extended version: all ten, with two rest days, across twelve days.
 
-Best for: parents of young children, caregivers, shift workers, people in ministry roles that cannot be handed over, and anyone for whom three consecutive days are impossible. Chapter 6 said this format requires more discipline, because ordinary life keeps interrupting, and that is true. It is also the format the later sessions recommended for anyone engaging lament, confession, and forgiveness deeply, because it gives each of those its own day and its own night's sleep.
+Best for: parents of young children, caregivers, shift workers, people in ministry roles that cannot be handed over, and anyone for whom three consecutive days are impossible. Lesson 6 said this format requires more discipline, because ordinary life keeps interrupting, and that is true. It is also the format the later sessions recommended for anyone engaging lament, confession, and forgiveness deeply, because it gives each of those its own day and its own night's sleep.
 
-Before you begin: the at-home guidance in Chapter 6, the at-home digital boundary in Chapter 9, and the household agreement below. Choose your daily session time now: early morning before the household wakes, or evening after it settles, are the usual options. Protect the same time each day if you can.
+Before you begin: the at-home guidance in Lesson 6, the at-home digital boundary in Lesson 9, and the household agreement below. Choose your daily session time now: early morning before the household wakes, or evening after it settles, are the usual options. Protect the same time each day if you can.
 
 The household agreement. If you share your home, sit down with the other adults before Day 1 and agree three things: the daily session time and that it will be protected; who handles ordinary needs during that hour; and how genuine emergencies will reach you. Write it down. Ask them to pray for you if that is appropriate. If the other adults cannot or will not protect the time, choose a time when they are absent, or use the one-day format on a day when you can be elsewhere.
 
-The daily shape. Each session takes 45 to 75 minutes. Do it in one sitting if you can. Sessions One, Two, Three, Seven, Eight, Nine, and Ten may be divided, doing the passage, teaching, prayer, and silence in the morning and the journaling and exercise in the evening. If possible, complete Sessions Four, Five, and Six in one sitting; if you must divide one, pause only at a clearly marked point and complete the closing prayer or grounding exercise before returning to ordinary responsibilities. Between sessions, live normally, with the light-touch boundary Chapter 9 described. Keep a psalm from the Chapter 8 list for the days between sessions. Do not do two sessions in one day to catch up.
+The daily shape. Each session takes 45 to 75 minutes. Do it in one sitting if you can. Sessions One, Two, Three, Seven, Eight, Nine, and Ten may be divided, doing the passage, teaching, prayer, and silence in the morning and the journaling and exercise in the evening. If possible, complete Sessions Four, Five, and Six in one sitting; if you must divide one, pause only at a clearly marked point and complete the closing prayer or grounding exercise before returning to ordinary responsibilities. Between sessions, live normally, with the light-touch boundary Lesson 9 described. Keep a psalm from the Lesson 8 list for the days between sessions. Do not do two sessions in one day to catch up.
 
 ### Core version: eight days
 
@@ -251,9 +251,9 @@ Sessions used: the standard three-day program (1, 2, 3, 4, 5, 7, 10), with the a
 
 What this is, and is not. This is two people taking the retreat at the same time, in the same place, supporting each other. It is not a marriage-repair program, and it is not a couples' counselling weekend. Each of you does the personal work of the sessions alone. The shared moments are brief and structured, and their purpose is to let you witness each other's rest rather than to process the relationship. If your marriage needs repair, a retreat may help you both come to that work with more capacity, but the work itself belongs to counselling, and this program will not substitute for it.
 
-Who should not use this program. If there is abuse, coercion, or fear in the relationship, do not take a retreat together. Chapter 5's abuse guidance applies; the person being harmed needs a safety plan and specialist support, not three days alone with the person harming them, and if there is immediate danger, contact a domestic-abuse service or emergency services. If one partner is being pressured into the retreat by the other, do the personal retreat separately or not at all. And if the relationship is in acute crisis, a shared retreat may intensify it; see a qualified professional first, and consider separate retreats.
+Who should not use this program. If there is abuse, coercion, or fear in the relationship, do not take a retreat together. Lesson 5's abuse guidance applies; the person being harmed needs a safety plan and specialist support, not three days alone with the person harming them, and if there is immediate danger, contact a domestic-abuse service or emergency services. If one partner is being pressured into the retreat by the other, do the personal retreat separately or not at all. And if the relationship is in acute crisis, a shared retreat may intensify it; see a qualified professional first, and consider separate retreats.
 
-Before you begin. Each of you completes Part Two individually: your own intention, your own check-in, your own phone arrangement. Then, together, agree three things: that the personal sessions are private, and neither will ask to read the other's journal or cards; how you will signal that you need space, without explanation; and what you will do if one of you needs to stop a session or the retreat. Write it down. Agree also on the practicalities: who cooks, when you will eat together, and where each of you will do the sessions. Use separate rooms if possible. Otherwise, use different parts of the property or take the sessions at different times so that neither person feels watched.
+Before you begin. Each of you completes Module 2 individually: your own intention, your own check-in, your own phone arrangement. Then, together, agree three things: that the personal sessions are private, and neither will ask to read the other's journal or cards; how you will signal that you need space, without explanation; and what you will do if one of you needs to stop a session or the retreat. Write it down. Agree also on the practicalities: who cooks, when you will eat together, and where each of you will do the sessions. Use separate rooms if possible. Otherwise, use different parts of the property or take the sessions at different times so that neither person feels watched.
 
 The daily shape. Follow Program 1's schedule, doing each session separately at the same time, in separate spaces. Eat together. Walk together if you wish, in silence or in ordinary conversation, but not to discuss the sessions. Follow your usual and agreed sleeping arrangements; couples preparing for marriage should arrange separate sleeping spaces consistent with their convictions and boundaries. Add the three shared moments below.
 
@@ -281,10 +281,10 @@ Group size. Six to twelve is workable for a small group. For a church retreat wi
 
 **Before the retreat: the leader's preparation.**
 
-- Read the whole book, including Chapter 5, before you lead anything. Do the retreat yourself first if at all possible.
+- Complete the whole course, including Lesson 5, before you lead anything. Do the retreat yourself first if at all possible.
 - Know your church's safeguarding policy and your reporting obligations, and tell the group what they are before any sharing begins. A leader cannot promise absolute confidentiality, and should not.
 - Appoint a safeguarding lead who has accepted the role, and arrange an external professional or crisis contact before the retreat. Do not assume that a participant who happens to be professionally qualified will act as the emergency responder. Know the local crisis and emergency numbers, and have a quiet room available where someone can go with a companion if a session overwhelms them.
-- Send participants Part Two in advance and ask them to do Chapters 7 and 9 before they come. A group of people who arrive without an intention or a phone plan will spend Day 1 finding one.
+- Ask participants to complete Module 2 in advance and ask them to do Lessons 7 and 9 before they come. A group of people who arrive without an intention or a phone plan will spend Day 1 finding one.
 - Ask participants to read each session's teaching privately before the group gathers for it. Reading every teaching aloud turns the retreat into a seminar and lengthens the schedule considerably.
 - Decide in advance what will be shared and what will not, and tell the group. The default below is that almost nothing from the sessions is shared aloud.
 
@@ -304,7 +304,7 @@ The residential weekend: a facilitator's timetable. Times assume an evening arri
 
 | When | Together | Apart | Notes |
 |---|---|---|---|
-| Friday evening | Welcome, rules for sharing, safeguarding statement, check-in method, Chapter 8 psalm, sleep |  | No session. |
+| Friday evening | Welcome, rules for sharing, safeguarding statement, check-in method, Lesson 8 psalm, sleep |  | No session. |
 | Saturday morning | Session One: passage, introduction, prayer, silence (30 min) | Journaling and exercise (45 min) | Optional sharing after lunch, not before. |
 | Saturday midday | Lunch, rest |  |  |
 | Saturday afternoon | Session Two: passage, prayer, silence (30 min) | Journaling; noticing exercise outdoors (60 min) | Optional sharing (30 min max) on Sessions One and Two. Free evening. |
@@ -323,7 +323,7 @@ The one-day church retreat. Follow Program 2, with the same pattern: passages an
 
 The weekly small group. One session per meeting, over seven to ten weeks, with the leader reading the passage, a shortened silence together, and the teaching, journaling, and exercise done at home before the next meeting. Open each meeting with brief optional sharing about the previous session's exercise. Take a week off between Sessions Four and Five, and between Five and Six if you include Six. Do not include Six unless the group is small, well-established, and the leader has considered Session Six's conditions carefully. The 30-day plan can be done together as the final weeks.
 
-When someone is in trouble. If a participant becomes distressed, the safeguarding lead or a designated leader goes with them to the quiet room, sits with them, uses Chapter 5's orientation exercise if needed, and does not try to counsel them. If the distress is severe, involves safety, or does not settle, the leader contacts the arranged professional or emergency services, and does not leave the person alone. Afterwards, the leader follows up within a day and helps them find ongoing support, seeking the person's agreement wherever possible; if there is immediate danger or a safeguarding obligation, follow the agreed emergency and reporting procedure even when consent cannot first be obtained. None of this is announced to the group.
+When someone is in trouble. If a participant becomes distressed, the safeguarding lead or a designated leader goes with them to the quiet room, sits with them, uses Lesson 5's orientation exercise if needed, and does not try to counsel them. If the distress is severe, involves safety, or does not settle, the leader contacts the arranged professional or emergency services, and does not leave the person alone. Afterwards, the leader follows up within a day and helps them find ongoing support, seeking the person's agreement wherever possible; if there is immediate danger or a safeguarding obligation, follow the agreed emergency and reporting procedure even when consent cannot first be obtained. None of this is announced to the group.
 
 A word to pastors leading this. You may be more tired than anyone in the room. Do not lead this retreat as a substitute for taking it. Program 7 is for you.
 
@@ -357,7 +357,7 @@ Session Ten. When you choose your one rhythm, consider a weekly protected period
 
 The re-entry problem for ministers. You will return to a pulpit within days, and there is a temptation to preach the retreat. As a strong rule, do not preach or publicly announce what you believe you heard for at least a month. Let it be tested first through time, Scripture, trusted counsel, and the church's proper leadership processes. A congregation that hears its pastor announce a new direction on the Sunday after a retreat has good reason to be wary. Tell the person in leadership who knew you were going. Keep the rest until it has become real.
 
-When the retreat shows you it is more than tiredness. Some ministers will discover on retreat that what they are carrying is not burnout but depression, or trauma, or a marriage in serious trouble, or a crisis of faith they have been hiding. Chapter 5 applies to you exactly as it applies to a layperson, with one addition: find help outside your own church. A minister receiving pastoral care from their own congregation is rarely free to be honest. Your denomination, a professional counsellor, or a pastor in another town can hold what your congregation cannot.
+When the retreat shows you it is more than tiredness. Some ministers will discover on retreat that what they are carrying is not burnout but depression, or trauma, or a marriage in serious trouble, or a crisis of faith they have been hiding. Lesson 5 applies to you exactly as it applies to a layperson, with one addition: find help outside your own church. A minister receiving pastoral care from their own congregation is rarely free to be honest. Your denomination, a professional counsellor, or a pastor in another town can hold what your congregation cannot.
 
 A last word. The retreat's central image has been Elijah, who had the greatest public ministry of his generation and asked to die the next day. God fed him, let him sleep, listened to him, reoriented him, and gave him a companion and a successor. He did not tell him to try harder. That is the pattern, and it is for you.
 

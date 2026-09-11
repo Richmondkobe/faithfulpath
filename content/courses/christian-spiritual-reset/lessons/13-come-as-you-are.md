@@ -12,9 +12,9 @@ type: session
 
 ## Before you begin
 
-You have arrived. Before anything else, do the ordinary things: unpack, find where you will sit, put the phone where you agreed to put it, and make a drink. If you are tired, and Chapter 6 said you might be, allow yourself an hour to do nothing before you start. There is no prize for beginning quickly.
+You have arrived. Before anything else, do the ordinary things: unpack, find where you will sit, put the phone where you agreed to put it, and make a drink. If you are tired, and Lesson 6 said you might be, allow yourself an hour to do nothing before you start. There is no prize for beginning quickly.
 
-When you are ready, take out the pages you wrote before you came: the check-in from Chapter 4, the intention from Chapter 7, and any notes on resistance from Chapter 8. Put them beside your Bible. Set your timer within reach. Then read on.
+When you are ready, take out the pages you wrote before you came: the check-in from Lesson 4, the intention from Lesson 7, and any notes on resistance from Lesson 8. Put them beside your Bible. Set your timer within reach. Then read on.
 
 ## Central passage
 
@@ -24,7 +24,7 @@ Read the passage twice, slowly. The second time, pay attention to verse 20.
 
 ## Teaching
 
-Jesus told this parable in response to people who complained that he welcomed sinners and ate with them (Luke 15:1–2). It is the third of three stories in the chapter about something lost and found, and it ends with an elder brother who resents the welcome. We will not deal with him today. But it is worth knowing that the running father is not only private comfort; he is Jesus' picture of God's joy in receiving the lost, told to people who thought such joy was a scandal.
+Jesus told this parable in response to people who complained that he welcomed sinners and ate with them (Luke 15:1–2). It is the third of three stories in Luke 15 about something lost and found, and it ends with an elder brother who resents the welcome. We will not deal with him today. But it is worth knowing that the running father is not only private comfort; he is Jesus' picture of God's joy in receiving the lost, told to people who thought such joy was a scandal.
 
 Most people arrive at a retreat the way the younger son arrives home: with a speech prepared.
 
@@ -47,7 +47,7 @@ Answer these in your journal, briefly. This is a check-in, not a test.
 1. How is your body right now? Tired, restless, tense, heavy, numb, calm? Name it without fixing it.
 2. How is your mind? Racing, foggy, anxious, blank, quietly sad?
 3. What speech have you prepared? In other words, what have you been planning to prove, achieve, or perform during these days so that the retreat will count?
-4. Look back at your Chapter 4 check-in. Does it still describe you today? What has changed since you wrote it, if anything?
+4. Look back at your Lesson 4 check-in. Does it still describe you today? What has changed since you wrote it, if anything?
 
 ## Guided prayer
 
@@ -57,11 +57,11 @@ Father, I am here. That is the most honest thing I can say. I have come tired, a
 
 If the language of embrace in the passage is difficult for you, you can pray instead: "Let me know that I am welcomed and safe in your presence."
 
-Now take the intention you wrote in Chapter 7 and read it to God, exactly as you wrote it, including the part you had not said and the line about releasing the outcome. This is the first thing you say to him on the retreat, and it does not need to be improved.
+Now take the intention you wrote in Lesson 7 and read it to God, exactly as you wrote it, including the part you had not said and the line about releasing the outcome. This is the first thing you say to him on the retreat, and it does not need to be improved.
 
 ## Silence
 
-Suggested length: ten minutes. Adjust to what you can manage, as Chapter 12 described.
+Suggested length: ten minutes. Adjust to what you can manage, as Lesson 12 described.
 
 Anchor phrase: "While he was still a long way off, his father saw him." Or, if you prefer something shorter: "I am here."
 
@@ -81,16 +81,16 @@ Take as long as you need with these. Full sentences are not required.
 
 ## Practical exercise: setting things down
 
-Take three or four of the index cards from Chapter 10. This exercise has two parts, and the distinction matters.
+Take three or four of the index cards from Lesson 10. This exercise has two parts, and the distinction matters.
 
-Bring into the retreat. Some of what you carried here belongs here: grief, anger, spiritual questions, shame, relationships that need prayer, and the central intention you wrote in Chapter 7. Do not seal these away. They are what the next nine sessions are for, even if you approach them gradually.
+Bring into the retreat. Some of what you carried here belongs here: grief, anger, spiritual questions, shame, relationships that need prayer, and the central intention you wrote in Lesson 7. Do not seal these away. They are what the next nine sessions are for, even if you approach them gradually.
 
 Set aside until Day 3. Other things you carried in do not need attention during the retreat: routine work tasks, non-urgent emails, shopping and errands, decisions that do not need to be made this week, problems already delegated to someone else. Write these on the cards, one item per line, as specifically as you can. If the list runs to several cards, that is normal.
 
 When the list is complete, read it once. These are real, and they will still be real on the last day. But they are not for now. Put the cards in an envelope, seal it, and write on the front: Not until Day
 3. Put the envelope somewhere you will not see it, in your bag or a drawer. You will reopen it during Session Ten.
 
-One exception. The envelope is for non-urgent demands. Do not place a safety concern, a medical need, a crisis, thoughts of harming yourself, or an urgent responsibility inside and tell yourself it must wait until Day 3. Those are handled as Chapter 5 described, now.
+One exception. The envelope is for non-urgent demands. Do not place a safety concern, a medical need, a crisis, thoughts of harming yourself, or an urgent responsibility inside and tell yourself it must wait until Day 3. Those are handled as Lesson 5 described, now.
 
 You are not throwing anything away. You are giving yourself permission to put the ordinary demands down for three days. The father's house is a place where the pig field does not have the final word. There will be time to tell the truth about where you have been, but your failure is not the only fact about you.
 

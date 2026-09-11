@@ -68,6 +68,19 @@ export const getLessons = cache((courseSlug: string): LessonMeta[] => {
     .sort((a, b) => a.order - b.order);
 });
 
+/**
+ * Lessons that count toward progress. Reference lessons — the resources page and
+ * the programme list — are part of the course to read, but there is nothing to
+ * complete in them, so they are left out of the count.
+ */
+export function isCountable(lesson: LessonMeta): boolean {
+  return lesson.type !== "reference";
+}
+
+export const getCountableLessons = cache((courseSlug: string): LessonMeta[] =>
+  getLessons(courseSlug).filter(isCountable)
+);
+
 export function findLesson(
   courseSlug: string,
   lessonSlug: string

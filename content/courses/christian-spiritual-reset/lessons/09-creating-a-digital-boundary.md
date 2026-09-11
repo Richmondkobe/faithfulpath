@@ -8,9 +8,9 @@ type: teaching
 
 # Creating a Digital Boundary
 
-Of the four ordinary questions from Chapter 6, the phone is one of the factors most likely to determine whether your retreat remains protected. You can have three protected days and a good location and still spend them checking. This chapter is about drawing a boundary you can actually keep, one that removes the noise without removing your access to help.
+Of the four ordinary questions from Lesson 6, the phone is one of the factors most likely to determine whether your retreat remains protected. You can have three protected days and a good location and still spend them checking. This lesson is about drawing a boundary you can actually keep, one that removes the noise without removing your access to help.
 
-I want to say at the outset that this is not an anti-technology chapter. Your phone will carry the Bible, the map to your location, the number of your support person, and the means of calling for help. The goal is not to reject the device. It is to stop it from being the centre of your attention for a few days, so that something else can be.
+I want to say at the outset that this is not an anti-technology lesson. Your phone will carry the Bible, the map to your location, the number of your support person, and the means of calling for help. The goal is not to reject the device. It is to stop it from being the centre of your attention for a few days, so that something else can be.
 
 ## Why it matters more than it seems
 
@@ -26,7 +26,7 @@ And there is Martha. In Luke 10:38–42, Jesus visits the home of Martha and Mar
 
 The boundary has one purpose: to protect your attention for God during the time you have set aside. It is not a test of willpower, a spiritual fast to be proud of, or a way of proving anything to anyone. If you slip and check something, you have not failed; you have noticed, and you can put it down again.
 
-The boundary is also not a boundary against help. Chapter 5 was clear that emergency calling should remain available, and Chapter 6 asked you to keep reception where you can. Choose the arrangement that provides necessary safety without feeding repeated checking. Some readers will rest better with one scheduled check. Others will rest better knowing that a designated contact can call through at any time.
+The boundary is also not a boundary against help. Lesson 5 was clear that emergency calling should remain available, and Lesson 6 asked you to keep reception where you can. Choose the arrangement that provides necessary safety without feeding repeated checking. Some readers will rest better with one scheduled check. Others will rest better knowing that a designated contact can call through at any time.
 
 ## Two arrangements
 
@@ -53,7 +53,7 @@ Choose one emergency contact and define "emergency." Ideally this is your design
 
 Deal with the Bible problem. Opening a Bible app on a multifunction device places Scripture beside the same apps that usually compete for your attention. If you can, bring a printed Bible. If you cannot, a phone with notifications disabled and the Bible app open will work, but be honest with yourself about how it goes on Day 1, and switch to paper on Day 2 if it is not working.
 
-The same applies to this guide. If you are reading it as an ebook and your edition and device allow it, print the retreat session pages from Part Three for your personal use. Otherwise, download everything in advance and read on an e-reader or tablet that has no messaging apps, or use a distraction-reducing reading mode. A device limited to the Bible and this guide presents far fewer distractions, though paper still offers the clearest separation.
+The same applies to this course. If you are reading it as an ebook and your edition and device allow it, print the retreat session lessons from Module 3 for your personal use. Otherwise, download everything in advance and read on an e-reader or tablet that has no messaging apps, or use a distraction-reducing reading mode. A device limited to the Bible and this course presents far fewer distractions, though paper still offers the clearest separation.
 
 Leave the other screens off. Television, laptop, tablet with email, smartwatch notifications. If you are at home, unplug the television or put the remote in a drawer. This is not about severity. It is about not having to make the decision fifty times a day.
 
@@ -61,7 +61,7 @@ Avoid publicly narrating the retreat while you are living it. Posting can turn p
 
 ## Prepare the device before you leave
 
-- Download the Bible, this guide, maps, any music, and emergency information for offline use
+- Download the Bible, this course, maps, any music, and emergency information for offline use
 - Disable notification badges and lock-screen previews
 - Remove social-media and email apps from the home screen, or temporarily sign out
 - Turn off smartwatch notifications
@@ -73,7 +73,7 @@ Avoid publicly narrating the retreat while you are living it. Posting can turn p
 
 ## Music, podcasts, and worship
 
-Some readers will want to know whether worship music is allowed. The answer is yes, in a limited way. Part Three will occasionally suggest a song or a period of listening, and if music helps you enter prayer, use it. But the default of the retreat is silence, and I would ask you not to use music to fill every quiet moment. Silence may initially reveal how accustomed you are to constant input. Mild restlessness can be observed without alarm. If silence triggers panic, flashbacks, dissociation, or severe distress, follow Chapter 5's guidance: shorten the period, keep your eyes open, move gently, contact support, or pause the retreat.
+Some readers will want to know whether worship music is allowed. The answer is yes, in a limited way. Module 3 will occasionally suggest a song or a period of listening, and if music helps you enter prayer, use it. But the default of the retreat is silence, and I would ask you not to use music to fill every quiet moment. Silence may initially reveal how accustomed you are to constant input. Mild restlessness can be observed without alarm. If silence triggers panic, flashbacks, dissociation, or severe distress, follow Lesson 5's guidance: shorten the period, keep your eyes open, move gently, contact support, or pause the retreat.
 
 For this guided retreat, leave podcasts, sermons, audiobooks, and additional teaching aside unless a session specifically directs you to one. They are valuable in ordinary life, but this program already provides structured input. The remaining space is for prayer, Scripture, rest, observation, and response.
 
@@ -85,9 +85,9 @@ You may reach for the phone without deciding to. This is habit, not weakness, an
 
 You may feel a low-level restlessness that has no obvious cause. Restlessness may ease as the retreat continues, though the timing differs from person to person. Some readers will enjoy the separation quickly; others will continue to find it difficult. Neither response determines the spiritual value of the retreat.
 
-You may find that your mind is louder than you expected. Thoughts, worries, memories, and lists that were held down by the constant stream may surface. The return of ordinary thoughts and unfinished concerns is not necessarily a problem; it may simply mean you are noticing what constant input had obscured. Write down what surfaces, and the sessions ahead will give those thoughts somewhere to go. If the experience becomes severe or destabilising, do not interpret that as spiritual progress you must endure. Follow the safety guidance in Chapter 5.
+You may find that your mind is louder than you expected. Thoughts, worries, memories, and lists that were held down by the constant stream may surface. The return of ordinary thoughts and unfinished concerns is not necessarily a problem; it may simply mean you are noticing what constant input had obscured. Write down what surfaces, and the sessions ahead will give those thoughts somewhere to go. If the experience becomes severe or destabilising, do not interpret that as spiritual progress you must endure. Follow the safety guidance in Lesson 5.
 
-In my pastoral experience, many people later describe the digital boundary as one of the most valuable parts of the retreat, and some choose to keep a version of it afterwards. Part Five will help you think about that.
+In my pastoral experience, many people later describe the digital boundary as one of the most valuable parts of the retreat, and some choose to keep a version of it afterwards. Module 5 will help you think about that.
 
 ## Adjustments for other formats
 
@@ -109,15 +109,9 @@ For my retreat from ______ to ______, I will use the following arrangement (tick
 
 ☐ Property-contact option: my emergency contact will call ______, who can reach me at the retreat location.
 
-I tested this arrangement on ______. My emergency contact is ______, and we have agreed what counts as an emergency. I have told ______, ______, and ______ that I am unavailable. I will read Scripture on ______ and this guide on ______. I will not post about the retreat while it is happening. If I slip, I will put the phone down and return to what I was doing without guilt.
+I tested this arrangement on ______. My emergency contact is ______, and we have agreed what counts as an emergency. I have told ______, ______, and ______ that I am unavailable. I will read Scripture on ______ and this course on ______. I will not post about the retreat while it is happening. If I slip, I will put the phone down and return to what I was doing without guilt.
 
 Signed: ______
 
 If you are retreating with a spouse or group, discuss the shared expectations in advance. Each person should state their own boundary and any legitimate exceptions. Encourage one another without monitoring, shaming, or confiscating devices.
 
-## Before you turn the page
-
-1. What is your honest reaction to the thought of three days without your phone? Write it down without judging it.
-2. Which arrangement are you choosing, who is your emergency contact, and when will you test it?
-3. How will you read Scripture and this guide during the retreat? If the answer is "on my phone," what will you do to make that workable?
-4. Fill in the written agreement above.

@@ -64,7 +64,7 @@ Your motives do not have to be perfectly pure before you begin. Few human motive
 
 ## Open hands
 
-There is one more quality that a good intention needs, and Chapter 5 already introduced it. It must be held with open hands.
+There is one more quality that a good intention needs, and Lesson 5 already introduced it. It must be held with open hands.
 
 An intention is a request, not a demand. You bring it to God and you leave the outcome with him. You may ask for clarity about a decision and receive, instead, peace about not knowing yet. You may ask for God's felt presence and receive three days of quiet faithfulness without it. You may ask to forgive someone and discover that what you needed first was to grieve. Jeremiah 29:13 formed part of God's promise to his exiled people that their displacement and judgment would not be the end of their story: "You will seek me and find me, when you seek me with all your heart." It does not guarantee a dramatic retreat experience, but it reveals God's desire for a people who turn toward him wholeheartedly.
 
@@ -76,7 +76,7 @@ Open hands do not mean passivity toward abuse, injustice, danger, or responsibil
 
 Here is the exercise. Take a page in your journal, or a single sheet you will bring with you, and write four things.
 
-1. What I am carrying. In a few sentences, the situation you are coming from. Use what you wrote in Chapter 4's check-in.
+1. What I am carrying. In a few sentences, the situation you are coming from. Use what you wrote in Lesson 4's check-in.
 
 2. What I am asking. One sentence, in the first person, addressed to God. The concern that matters most right now. Plain words. Hannah's honesty, not polished religious language.
 3. What I have not said. The hidden hope or fear, if there is one.
@@ -90,4 +90,4 @@ You will carry this page into Session One, where it becomes the first thing you 
 
 Some readers will sit with this exercise and find nothing. Not because they are hiding something, but because they are too tired or too numb to know what they want. If that is you, your intention can simply be that: "I do not know what I need. I only know I need to stop and be with you." That is a complete and honest intention, and God has met people with far less.
 
-Elijah entered the wilderness able to name little more than his exhaustion: "It is enough." God responded first with care for his body and presence in his despair. If your words mean only, "I have reached my limit and need to stop," write that honestly, and go. But if "It is enough" means you do not want to remain alive, follow the safety guidance in Chapter 5 and seek immediate support rather than beginning the retreat alone.
+Elijah entered the wilderness able to name little more than his exhaustion: "It is enough." God responded first with care for his body and presence in his despair. If your words mean only, "I have reached my limit and need to stop," write that honestly, and go. But if "It is enough" means you do not want to remain alive, follow the safety guidance in Lesson 5 and seek immediate support rather than beginning the retreat alone.

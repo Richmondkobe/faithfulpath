@@ -1,8 +1,76 @@
-{"lesson":"10-what-to-bring","pass_mark":4,"questions":[
-{"q":"What did Paul ask Timothy to bring him in 2 Timothy 4:13, and what point does the chapter draw from it?","options":["Money and food: provision matters most","The cloak, the books and the parchments: physical care and attentive reading belong together","A sword: protection matters","New sandals: travel matters"],"answer":1,"explanation":"Warmth for his body and written material that mattered to him. Two thousand years later the pairing still holds."},
-{"q":"Why does the chapter recommend a handwritten journal?","options":["Because typing is sinful","Because handwriting often encourages a slower pace and the journal can be brought back and reread","Because paper is cheaper","Because journals are required by the retreat centre"],"answer":1,"explanation":"If handwriting is difficult, an offline document, voice recorder or tablet is fine. The purpose is deliberate reflection, not a particular method."},
-{"q":"Which pages does Session One ask you to bring?","options":["Your church membership card","Your Chapter 4 check-in, Chapter 7 intention, and Chapter 8 notes","A printed sermon","Your work diary"],"answer":1,"explanation":"Tuck them into the front of the journal. The retreat builds on what you have already written honestly."},
-{"q":"What is the chapter's guidance on medication during the retreat?","options":["Pause it to focus on prayer","Bring enough for the retreat and any delay, keep it labelled, and do not alter doses or stop without medical advice","Bring only what fits in a small bag","Leave it with your support person"],"answer":1,"explanation":"A retreat is not the time to prove you can manage without what you normally rely on. This includes accessibility aids and medical devices."},
-{"q":"What should be on the paper card the chapter asks you to carry?","options":["Your favourite verses","The address where you are staying, emergency contact, host, doctor and the local emergency number","Your intention and prayer","A list of sins to confess"],"answer":1,"explanation":"If your phone fails, this card is your backup."},
-{"q":"What is the chapter's advice about bringing other books?","options":["Bring as many as possible to use the quiet well","Keep additional reading minimal; do not pack a stack of books to protect yourself from silence","Bring only fiction","Books are forbidden"],"answer":1,"explanation":"If your practice needs a hymnal, prayer book or one carefully chosen companion text, bring it deliberately."}],
-"reflection":["Go through the checklist and mark anything you do not yet have. Which missing items are essential? Will you buy, borrow, substitute, download, or decide that you do not need them?","Is there anything on the \"leave behind\" list you are reluctant to leave? Write down what it is and what you are afraid will happen if you do not bring it."]}
+{
+ "lesson": "10-what-to-bring",
+ "pass_mark": 4,
+ "questions": [
+  {
+   "q": "What did Paul ask Timothy to bring him in 2 Timothy 4:13, and what point does the chapter draw from it?",
+   "options": [
+    "Money and food: provision matters most",
+    "A sword: protection matters",
+    "The cloak, the books and the parchments: physical care and attentive reading belong together",
+    "New sandals: travel matters"
+   ],
+   "answer": 2,
+   "explanation": "Warmth for his body and written material that mattered to him. Two thousand years later the pairing still holds."
+  },
+  {
+   "q": "Why does the chapter recommend a handwritten journal?",
+   "options": [
+    "Because typing is sinful",
+    "Because paper is cheaper",
+    "Because journals are required by the retreat centre",
+    "Because handwriting often encourages a slower pace and the journal can be brought back and reread"
+   ],
+   "answer": 3,
+   "explanation": "If handwriting is difficult, an offline document, voice recorder or tablet is fine. The purpose is deliberate reflection, not a particular method."
+  },
+  {
+   "q": "Which pages does Session One ask you to bring?",
+   "options": [
+    "Your Chapter 4 check-in, Chapter 7 intention, and Chapter 8 notes",
+    "Your church membership card",
+    "A printed sermon",
+    "Your work diary"
+   ],
+   "answer": 0,
+   "explanation": "Tuck them into the front of the journal. The retreat builds on what you have already written honestly."
+  },
+  {
+   "q": "What is the chapter's guidance on medication during the retreat?",
+   "options": [
+    "Pause it to focus on prayer",
+    "Bring enough for the retreat and any delay, keep it labelled, and do not alter doses or stop without medical advice",
+    "Bring only what fits in a small bag",
+    "Leave it with your support person"
+   ],
+   "answer": 1,
+   "explanation": "A retreat is not the time to prove you can manage without what you normally rely on. This includes accessibility aids and medical devices."
+  },
+  {
+   "q": "What should be on the paper card the chapter asks you to carry?",
+   "options": [
+    "Your favourite verses",
+    "Your intention and prayer",
+    "The address where you are staying, emergency contact, host, doctor and the local emergency number",
+    "A list of sins to confess"
+   ],
+   "answer": 2,
+   "explanation": "If your phone fails, this card is your backup."
+  },
+  {
+   "q": "What is the chapter's advice about bringing other books?",
+   "options": [
+    "Bring as many as possible to use the quiet well",
+    "Bring only fiction",
+    "Books are forbidden",
+    "Keep additional reading minimal; do not pack a stack of books to protect yourself from silence"
+   ],
+   "answer": 3,
+   "explanation": "If your practice needs a hymnal, prayer book or one carefully chosen companion text, bring it deliberately."
+  }
+ ],
+ "reflection": [
+  "Go through the checklist and mark anything you do not yet have. Which missing items are essential? Will you buy, borrow, substitute, download, or decide that you do not need them?",
+  "Is there anything on the \"leave behind\" list you are reluctant to leave? Write down what it is and what you are afraid will happen if you do not bring it."
+ ]
+}
