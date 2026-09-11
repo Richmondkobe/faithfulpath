@@ -4,11 +4,74 @@ import { redirect } from "next/navigation";
 import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
 import { memberLogout } from "@/app/members/actions";
+import { getCourse, getLessons, lessonHref } from "@/lib/course";
+import { getCourseProgress, completedCount } from "@/lib/course-progress";
+import ProgressBar from "@/components/course/ProgressBar";
+
+const COURSE_SLUG = "christian-spiritual-reset";
 
 export const metadata: Metadata = {
   title: "Members | Faithful Path Community",
   robots: { index: false, follow: false },
 };
+
+async function CourseCard() {
+  const course = getCourse(COURSE_SLUG);
+  if (!course) return null;
+
+  const lessons = getLessons(COURSE_SLUG);
+
+  // /members is the page a paying member lands on, so it must not break because
+  // the course tables are missing or unreadable. Drop the card and log it
+  // instead — the membership itself is unaffected.
+  let progress;
+  try {
+    progress = await getCourseProgress(COURSE_SLUG);
+  } catch (err) {
+    console.error("Course card hidden — could not read progress:", err);
+    return null;
+  }
+
+  const done = completedCount(progress);
+  const next =
+    lessons.find((l) => !progress.get(l.slug)?.completed_at) ??
+    lessons[lessons.length - 1];
+
+  return (
+    <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        Your course
+      </p>
+      <h2
+        className="mt-2 text-2xl text-[#2B2118]"
+        style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+      >
+        {course.title}
+      </h2>
+
+      <div className="mt-5">
+        <ProgressBar done={done} total={lessons.length} label="Your progress" />
+      </div>
+
+      <div className="mt-5 flex flex-wrap items-center gap-5">
+        <Link
+          href={`/members/courses/${COURSE_SLUG}`}
+          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        >
+          {done === 0 ? "Start the course" : "Go to the course"}
+        </Link>
+        {done > 0 && done < lessons.length && (
+          <Link
+            href={lessonHref(COURSE_SLUG, next.slug)}
+            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          >
+            Continue: {next.title}
+          </Link>
+        )}
+      </div>
+    </section>
+  );
+}
 
 function ManageBilling() {
   return (
@@ -94,8 +157,10 @@ export default async function Members() {
         className="mt-6 text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        Placeholder copy. Course pages arrive here later.
+        Placeholder copy.
       </p>
+
+      <CourseCard />
 
       {member?.cancel_at_period_end && member.current_period_end && (
         <p className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-sm leading-relaxed text-[#6B5F53]">

@@ -1,0 +1,317 @@
+{
+  "slug": "christian-spiritual-reset",
+  "title": "The Christian Spiritual Reset",
+  "modules": [
+    {
+      "slug": "m1",
+      "title": "Why Your Soul Needs a Retreat",
+      "lessons": [
+        {
+          "order": 1,
+          "slug": "01-when-your-body-keeps-going-but-your-soul-is-tired",
+          "title": "When Your Body Keeps Going but Your Soul Is Tired",
+          "source": "Chapter 1",
+          "type": "teaching",
+          "file": "lessons/01-when-your-body-keeps-going-but-your-soul-is-tired.md",
+          "quiz": "quizzes/01.json",
+          "reflection": "quizzes/01.json"
+        },
+        {
+          "order": 2,
+          "slug": "02-retreat-is-not-running-away",
+          "title": "Retreat Is Not Running Away",
+          "source": "Chapter 2",
+          "type": "teaching",
+          "file": "lessons/02-retreat-is-not-running-away.md",
+          "quiz": "quizzes/02.json",
+          "reflection": "quizzes/02.json"
+        },
+        {
+          "order": 3,
+          "slug": "03-jesus-and-the-practice-of-withdrawing",
+          "title": "Jesus and the Practice of Withdrawing",
+          "source": "Chapter 3",
+          "type": "teaching",
+          "file": "lessons/03-jesus-and-the-practice-of-withdrawing.md",
+          "quiz": "quizzes/03.json",
+          "reflection": "quizzes/03.json"
+        },
+        {
+          "order": 4,
+          "slug": "04-recognising-burnout-spiritual-dryness-and-emotional-overload",
+          "title": "Recognising Burnout, Spiritual Dryness, and Emotional Overload",
+          "source": "Chapter 4",
+          "type": "teaching",
+          "file": "lessons/04-recognising-burnout-spiritual-dryness-and-emotional-overload.md",
+          "quiz": "quizzes/04.json",
+          "reflection": "quizzes/04.json"
+        },
+        {
+          "order": 5,
+          "slug": "05-what-a-retreat-can-and-cannot-do",
+          "title": "What a Retreat Can and Cannot Do",
+          "source": "Chapter 5",
+          "type": "teaching",
+          "file": "lessons/05-what-a-retreat-can-and-cannot-do.md",
+          "quiz": "quizzes/05.json",
+          "reflection": "quizzes/05.json"
+        }
+      ]
+    },
+    {
+      "slug": "m2",
+      "title": "Preparing to Meet With God",
+      "lessons": [
+        {
+          "order": 6,
+          "slug": "06-choosing-your-retreat-length-and-location",
+          "title": "Choosing Your Retreat Length and Location",
+          "source": "Chapter 6",
+          "type": "teaching",
+          "file": "lessons/06-choosing-your-retreat-length-and-location.md",
+          "quiz": "quizzes/06.json",
+          "reflection": "quizzes/06.json"
+        },
+        {
+          "order": 7,
+          "slug": "07-setting-your-intention",
+          "title": "Setting Your Intention",
+          "source": "Chapter 7",
+          "type": "teaching",
+          "file": "lessons/07-setting-your-intention.md",
+          "quiz": "quizzes/07.json",
+          "reflection": "quizzes/07.json"
+        },
+        {
+          "order": 8,
+          "slug": "08-preparing-your-heart",
+          "title": "Preparing Your Heart",
+          "source": "Chapter 8",
+          "type": "teaching",
+          "file": "lessons/08-preparing-your-heart.md",
+          "quiz": "quizzes/08.json",
+          "reflection": "quizzes/08.json"
+        },
+        {
+          "order": 9,
+          "slug": "09-creating-a-digital-boundary",
+          "title": "Creating a Digital Boundary",
+          "source": "Chapter 9",
+          "type": "teaching",
+          "file": "lessons/09-creating-a-digital-boundary.md",
+          "quiz": "quizzes/09.json",
+          "reflection": "quizzes/09.json"
+        },
+        {
+          "order": 10,
+          "slug": "10-what-to-bring",
+          "title": "What to Bring",
+          "source": "Chapter 10",
+          "type": "teaching",
+          "file": "lessons/10-what-to-bring.md",
+          "quiz": "quizzes/10.json",
+          "reflection": "quizzes/10.json"
+        },
+        {
+          "order": 11,
+          "slug": "11-fasting-food-rest-and-physical-health",
+          "title": "Fasting, Food, Rest, and Physical Health",
+          "source": "Chapter 11",
+          "type": "teaching",
+          "file": "lessons/11-fasting-food-rest-and-physical-health.md",
+          "quiz": "quizzes/11.json",
+          "reflection": "quizzes/11.json"
+        },
+        {
+          "order": 12,
+          "slug": "12-what-to-do-when-you-are-afraid-of-silence",
+          "title": "What to Do When You Are Afraid of Silence",
+          "source": "Chapter 12",
+          "type": "teaching",
+          "file": "lessons/12-what-to-do-when-you-are-afraid-of-silence.md",
+          "quiz": "quizzes/12.json",
+          "reflection": "quizzes/12.json"
+        }
+      ]
+    },
+    {
+      "slug": "m3",
+      "title": "The Retreat Journey",
+      "lessons": [
+        {
+          "order": 13,
+          "slug": "13-come-as-you-are",
+          "title": "Come As You Are",
+          "source": "Session One",
+          "type": "session",
+          "file": "lessons/13-come-as-you-are.md",
+          "quiz": null,
+          "reflection": "quizzes/13.json"
+        },
+        {
+          "order": 14,
+          "slug": "14-be-still-and-become-present",
+          "title": "Be Still and Become Present",
+          "source": "Session Two",
+          "type": "session",
+          "file": "lessons/14-be-still-and-become-present.md",
+          "quiz": null,
+          "reflection": "quizzes/14.json"
+        },
+        {
+          "order": 15,
+          "slug": "15-release-what-you-are-carrying",
+          "title": "Release What You Are Carrying",
+          "source": "Session Three",
+          "type": "session",
+          "file": "lessons/15-release-what-you-are-carrying.md",
+          "quiz": null,
+          "reflection": "quizzes/15.json"
+        },
+        {
+          "order": 16,
+          "slug": "16-lament-grief-and-honest-prayer",
+          "title": "Lament, Grief, and Honest Prayer",
+          "source": "Session Four",
+          "type": "session",
+          "file": "lessons/16-lament-grief-and-honest-prayer.md",
+          "quiz": null,
+          "reflection": "quizzes/16.json"
+        },
+        {
+          "order": 17,
+          "slug": "17-confession-and-grace",
+          "title": "Confession and Grace",
+          "source": "Session Five",
+          "type": "session",
+          "file": "lessons/17-confession-and-grace.md",
+          "quiz": null,
+          "reflection": "quizzes/17.json"
+        },
+        {
+          "order": 18,
+          "slug": "18-forgiving-others-and-yourself",
+          "title": "Forgiving Others and Yourself",
+          "source": "Session Six",
+          "type": "session",
+          "file": "lessons/18-forgiving-others-and-yourself.md",
+          "quiz": null,
+          "reflection": "quizzes/18.json"
+        },
+        {
+          "order": 19,
+          "slug": "19-listening-for-god-s-direction",
+          "title": "Listening for God's Direction",
+          "source": "Session Seven",
+          "type": "session",
+          "file": "lessons/19-listening-for-god-s-direction.md",
+          "quiz": null,
+          "reflection": "quizzes/19.json"
+        },
+        {
+          "order": 20,
+          "slug": "20-rediscovering-your-identity",
+          "title": "Rediscovering Your Identity",
+          "source": "Session Eight",
+          "type": "session",
+          "file": "lessons/20-rediscovering-your-identity.md",
+          "quiz": null,
+          "reflection": "quizzes/20.json"
+        },
+        {
+          "order": 21,
+          "slug": "21-renewing-your-purpose",
+          "title": "Renewing Your Purpose",
+          "source": "Session Nine",
+          "type": "session",
+          "file": "lessons/21-renewing-your-purpose.md",
+          "quiz": null,
+          "reflection": "quizzes/21.json"
+        },
+        {
+          "order": 22,
+          "slug": "22-returning-with-a-new-rhythm",
+          "title": "Returning With a New Rhythm",
+          "source": "Session Ten",
+          "type": "session",
+          "file": "lessons/22-returning-with-a-new-rhythm.md",
+          "quiz": null,
+          "reflection": "quizzes/22.json"
+        }
+      ]
+    },
+    {
+      "slug": "m4",
+      "title": "Choose Your Retreat",
+      "lessons": [
+        {
+          "order": 23,
+          "slug": "23-the-seven-ready-to-use-programs",
+          "title": "The Seven Ready-to-Use Programs",
+          "source": "Part Four",
+          "type": "reference",
+          "file": "lessons/23-the-seven-ready-to-use-programs.md",
+          "quiz": null,
+          "reflection": null
+        }
+      ]
+    },
+    {
+      "slug": "m5",
+      "title": "After the Retreat",
+      "lessons": [
+        {
+          "order": 24,
+          "slug": "24-testing-what-you-believe-you-heard",
+          "title": "Testing What You Believe You Heard",
+          "source": "Chapter 13",
+          "type": "teaching",
+          "file": "lessons/24-testing-what-you-believe-you-heard.md",
+          "quiz": "quizzes/24.json",
+          "reflection": "quizzes/24.json"
+        },
+        {
+          "order": 25,
+          "slug": "25-turning-insight-into-action",
+          "title": "Turning Insight Into Action",
+          "source": "Chapter 14",
+          "type": "teaching",
+          "file": "lessons/25-turning-insight-into-action.md",
+          "quiz": "quizzes/25.json",
+          "reflection": "quizzes/25.json"
+        },
+        {
+          "order": 26,
+          "slug": "26-building-a-sustainable-rule-of-life",
+          "title": "Building a Sustainable Rule of Life",
+          "source": "Chapter 15",
+          "type": "teaching",
+          "file": "lessons/26-building-a-sustainable-rule-of-life.md",
+          "quiz": "quizzes/26.json",
+          "reflection": "quizzes/26.json"
+        },
+        {
+          "order": 27,
+          "slug": "27-when-you-need-a-pastor-counsellor-or-mental-health-professional",
+          "title": "When You Need a Pastor, Counsellor, or Mental-Health Professional",
+          "source": "Chapter 16",
+          "type": "teaching",
+          "file": "lessons/27-when-you-need-a-pastor-counsellor-or-mental-health-professional.md",
+          "quiz": "quizzes/27.json",
+          "reflection": "quizzes/27.json"
+        },
+        {
+          "order": 28,
+          "slug": "28-your-30-day-spiritual-renewal-plan",
+          "title": "Your 30-Day Spiritual Renewal Plan",
+          "source": "Chapter 17",
+          "type": "teaching",
+          "file": "lessons/28-your-30-day-spiritual-renewal-plan.md",
+          "quiz": "quizzes/28.json",
+          "reflection": "quizzes/28.json"
+        }
+      ]
+    }
+  ],
+  "description": "A guided at-home Christian retreat for burnout, spiritual dryness and renewal, based on the guide The Christian Spiritual Reset."
+}
