@@ -1,6 +1,6 @@
 ---
 title: "Lament, Grief, and Honest Prayer"
-module: m3
+module: m4
 order: 16
 source: "Session Four"
 type: session
@@ -110,7 +110,7 @@ Space for anything else you want to record from this session.
 
 After Session Four: rest. This has been the hardest hour of the retreat for many people, and the next session, on confession and grace, should not follow it immediately. The default is to leave Session Five until the following morning. If, after a long break, a meal, a walk, and time outside, you feel settled enough to continue this evening, you may, but do not assume you should.
 
-Session Six, on forgiveness, may also be deferred to the at-home format or to the weeks after the retreat, and Module 4 shows how the remaining sessions rearrange when you do that. The order of the sessions matters more than the clock, and your capacity matters more than completing all ten in three days.
+Session Six, on forgiveness, may also be deferred to the at-home format or to the weeks after the retreat, and Module 3 shows how the remaining sessions rearrange when you do that. The order of the sessions matters more than the clock, and your capacity matters more than completing all ten in three days.
 
 A word for readers whose grief is heavy or very recent. You do not need to wait until grief has lasted a particular length of time or become unbearable before seeking support. Consider professional or group support if you are struggling to function, becoming increasingly depressed or anxious, relying on harmful coping strategies, experiencing persistent panic or traumatic reactions, or simply feel that you should not carry this alone.
 

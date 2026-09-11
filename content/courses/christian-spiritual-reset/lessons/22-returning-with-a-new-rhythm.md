@@ -1,6 +1,6 @@
 ---
 title: "Returning With a New Rhythm"
-module: m3
+module: m4
 order: 22
 source: "Session Ten"
 type: session

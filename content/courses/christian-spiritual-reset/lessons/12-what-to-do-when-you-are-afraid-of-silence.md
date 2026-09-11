@@ -62,7 +62,7 @@ None of these is more spiritual than the others. Silence does not require physic
 
 ## A graduated approach
 
-You do not have to begin with thirty minutes. In fact, if silence frightens you, you should not. Lesson 8 started you at up to three minutes. The sessions in Module 3 will usually indicate a suggested length, but every suggested length is adjustable. Here is an example, not a test:
+You do not have to begin with thirty minutes. In fact, if silence frightens you, you should not. Lesson 8 started you at up to three minutes. The sessions in Module 4 will usually indicate a suggested length, but every suggested length is adjustable. Here is an example, not a test:
 
 - Begin with one to five minutes.
 - If that feels manageable, add a few minutes in a later session.
@@ -103,4 +103,4 @@ It may not. Lesson 5 said so, and I will not soften it now. Some retreats are ma
 
 In my pastoral experience, some people recognise the significance of a retreat only later. A decision becomes clearer, a pattern becomes visible, or a quieter change develops over the following weeks. I cannot promise that outcome. But immediate emotion is not the only measure of value, and a silent retreat is not judged by what you felt on Day 2.
 
-Module 2 is finished. You have a place, a length, an intention, a boundary, a bag, a plan for your body, and a way into quiet. Module 3 is the retreat itself. Continue to the next lesson when you are ready to begin.
+Module 2 is finished. You have a place, a length, an intention, a boundary, a bag, a plan for your body, and a way into quiet. Module 4 is the retreat itself. Continue to the next lesson when you are ready to begin.

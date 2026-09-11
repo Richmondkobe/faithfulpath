@@ -53,7 +53,7 @@ Choose one emergency contact and define "emergency." Ideally this is your design
 
 Deal with the Bible problem. Opening a Bible app on a multifunction device places Scripture beside the same apps that usually compete for your attention. If you can, bring a printed Bible. If you cannot, a phone with notifications disabled and the Bible app open will work, but be honest with yourself about how it goes on Day 1, and switch to paper on Day 2 if it is not working.
 
-The same applies to this course. If you are reading it as an ebook and your edition and device allow it, print the retreat session lessons from Module 3 for your personal use. Otherwise, download everything in advance and read on an e-reader or tablet that has no messaging apps, or use a distraction-reducing reading mode. A device limited to the Bible and this course presents far fewer distractions, though paper still offers the clearest separation.
+The same applies to this course. If you are reading it as an ebook and your edition and device allow it, print the retreat session lessons from Module 4 for your personal use. Otherwise, download everything in advance and read on an e-reader or tablet that has no messaging apps, or use a distraction-reducing reading mode. A device limited to the Bible and this course presents far fewer distractions, though paper still offers the clearest separation.
 
 Leave the other screens off. Television, laptop, tablet with email, smartwatch notifications. If you are at home, unplug the television or put the remote in a drawer. This is not about severity. It is about not having to make the decision fifty times a day.
 
@@ -73,7 +73,7 @@ Avoid publicly narrating the retreat while you are living it. Posting can turn p
 
 ## Music, podcasts, and worship
 
-Some readers will want to know whether worship music is allowed. The answer is yes, in a limited way. Module 3 will occasionally suggest a song or a period of listening, and if music helps you enter prayer, use it. But the default of the retreat is silence, and I would ask you not to use music to fill every quiet moment. Silence may initially reveal how accustomed you are to constant input. Mild restlessness can be observed without alarm. If silence triggers panic, flashbacks, dissociation, or severe distress, follow Lesson 5's guidance: shorten the period, keep your eyes open, move gently, contact support, or pause the retreat.
+Some readers will want to know whether worship music is allowed. The answer is yes, in a limited way. Module 4 will occasionally suggest a song or a period of listening, and if music helps you enter prayer, use it. But the default of the retreat is silence, and I would ask you not to use music to fill every quiet moment. Silence may initially reveal how accustomed you are to constant input. Mild restlessness can be observed without alarm. If silence triggers panic, flashbacks, dissociation, or severe distress, follow Lesson 5's guidance: shorten the period, keep your eyes open, move gently, contact support, or pause the retreat.
 
 For this guided retreat, leave podcasts, sermons, audiobooks, and additional teaching aside unless a session specifically directs you to one. They are valuable in ordinary life, but this program already provides structured input. The remaining space is for prayer, Scripture, rest, observation, and response.
 

@@ -1,6 +1,6 @@
 ---
 title: "Confession and Grace"
-module: m3
+module: m4
 order: 17
 source: "Session Five"
 type: session
@@ -114,4 +114,4 @@ Space for anything else you want to record from this session.
 
 After Session Five: Session Six, on forgiving others, is the last of the heavier sessions. If you did Session Five on the evening of Day 2, sleep before Session Six; do not attempt it tonight. If you did Session Five on the morning of Day 3, take a proper break, a meal and a walk at least, before anything further.
 
-Remember what Session Four said: Session Six may be deferred to the at-home format or to the weeks after the retreat. Module 4's three-day program does not expect you to complete every remaining session on Day 3, and any session left unfinished can be completed after you return home without being treated as failure. For readers who have engaged lament, confession, and forgiveness deeply, the at-home format is the recommended one. You do not need to force forgiveness into a schedule.
+Remember what Session Four said: Session Six may be deferred to the at-home format or to the weeks after the retreat. Module 3's three-day program does not expect you to complete every remaining session on Day 3, and any session left unfinished can be completed after you return home without being treated as failure. For readers who have engaged lament, confession, and forgiveness deeply, the at-home format is the recommended one. You do not need to force forgiveness into a schedule.

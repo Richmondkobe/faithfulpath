@@ -1,6 +1,6 @@
 ---
 title: "Listening for God's Direction"
-module: m3
+module: m4
 order: 19
 source: "Session Seven"
 type: session

@@ -86,7 +86,7 @@ Before beginning, choose one of four paths:
 
 1. Proceed independently. You feel stable, safe alone, and able to pause when needed.
 2. Proceed with support. Arrange regular contact with a trusted person or professional during the retreat.
-3. Use an adapted format. Choose the shorter, guided, or group version from Module 4.
+3. Use an adapted format. Choose the shorter, guided, or group version from Module 3.
 4. Postpone for now. Seek professional, medical, crisis, or safety support first. Postponing is not failing. It may be the wisest way to prepare.
 
 Module 2 begins the practical preparation. You have done the hard work of honesty. Now we get ready.

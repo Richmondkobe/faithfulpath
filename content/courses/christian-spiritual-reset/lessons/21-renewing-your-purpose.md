@@ -1,6 +1,6 @@
 ---
 title: "Renewing Your Purpose"
-module: m3
+module: m4
 order: 21
 source: "Session Nine"
 type: session

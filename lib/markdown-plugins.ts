@@ -101,3 +101,33 @@ export function remarkAutolink() {
 
   return (tree: MdNode) => walk(tree, false);
 }
+
+/**
+ * Rewrites the relative links the lessons use between each other —
+ * `./05-what-a-retreat-can-and-cannot-do` — onto the course's URL space.
+ *
+ * A browser would resolve these correctly from the lesson URL anyway, but only
+ * by accident of the path shape: one stray trailing slash and every link lands
+ * a directory out. Making them absolute at render time removes that dependency,
+ * and any `.md` suffix with it.
+ */
+export function remarkRelativeLessonLinks(basePath: string) {
+  const base = basePath.replace(/\/$/, "");
+
+  // unified calls the entry in remarkPlugins as the plugin and expects a
+  // transformer back, so a parameterised plugin needs this extra level —
+  // returning the transformer directly hands unified an undefined tree.
+  return () => (tree: MdNode) => {
+    const walk = (node: MdNode): void => {
+      if (node.type === "link" && typeof node.url === "string") {
+        const m = node.url.match(/^\.\/(.+)$/);
+        if (m) {
+          const [target, tail = ""] = m[1].split(/(?=[#?])/);
+          node.url = `${base}/${target.replace(/\.md$/, "")}${tail}`;
+        }
+      }
+      node.children?.forEach((child) => walk(child));
+    };
+    walk(tree);
+  };
+}

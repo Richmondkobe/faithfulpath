@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireActiveMember } from "@/lib/member-gate";
-import { findLesson, getQuiz, lessonHref } from "@/lib/course";
+import { findLesson, getQuiz, getRouteLesson, lessonHref } from "@/lib/course";
+import { ROUTE_ANSWER_INDEX, type Route } from "@/lib/course-progress";
 
 export type SaveState = { error: string | null; savedAt: number | null };
 
@@ -132,4 +133,37 @@ export async function saveReflections(
       savedAt: null,
     };
   }
+}
+
+/**
+ * Saves the member's chosen route. Stored as the route lesson's answer 0 in
+ * course_reflections — see ROUTE_ANSWER_INDEX — so no new table is needed and
+ * the existing RLS keeps it private.
+ */
+export async function saveRoute(
+  courseSlug: string,
+  route: Route
+): Promise<void> {
+  if (route !== "guided" && route !== "quick") {
+    throw new Error("Unknown route.");
+  }
+
+  const { supabase, userId } = await memberClient();
+  const routeLesson = getRouteLesson(courseSlug);
+  if (!routeLesson) throw new Error("This course has no route choice.");
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: courseSlug,
+      lesson_slug: routeLesson.slug,
+      question_index: ROUTE_ANSWER_INDEX,
+      answer: route,
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(`/members/courses/${courseSlug}`);
+  revalidatePath("/members");
 }

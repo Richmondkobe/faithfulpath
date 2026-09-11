@@ -1,6 +1,6 @@
 ---
 title: "Rediscovering Your Identity"
-module: m3
+module: m4
 order: 20
 source: "Session Eight"
 type: session

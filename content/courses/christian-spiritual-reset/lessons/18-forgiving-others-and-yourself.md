@@ -1,6 +1,6 @@
 ---
 title: "Forgiving Others and Yourself"
-module: m3
+module: m4
 order: 18
 source: "Session Six"
 type: session
@@ -12,7 +12,7 @@ Optional session: for the at-home format, the 30-day follow-up, or a supported s
 
 ## Before you begin
 
-This session is optional, and it is not in the standard three-day program. Sessions Four and Five both said it may be deferred, and the three-day schedule in Module 4 does not include it. It belongs in the at-home format, where it has its own day; in the 30-day plan in Module 5; or in a supported setting with a pastor, counsellor, or trauma-informed professional. Read this section and decide honestly whether now is the time.
+This session is optional, and it is not in the standard three-day program. Sessions Four and Five both said it may be deferred, and the three-day schedule in Module 3 does not include it. It belongs in the at-home format, where it has its own day; in the 30-day plan in Module 5; or in a supported setting with a pastor, counsellor, or trauma-informed professional. Read this section and decide honestly whether now is the time.
 
 Consider proceeding if you are sufficiently rested and settled, the harm is no longer active, and you want to explore what forgiveness might mean without forcing a final outcome. Defer for any reason that makes today feel unsuitable. You do not need to prove that your reason is valid.
 

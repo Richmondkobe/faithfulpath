@@ -11,14 +11,25 @@ const ROOT = join(process.cwd(), "content", "courses");
 export type LessonType = "teaching" | "session" | "reference";
 
 export type LessonMeta = {
+  /**
+   * The displayed number for a countable lesson, and what the lessons
+   * themselves cite ("read Lesson 24"). It is NOT the sequence — module 3
+   * carries 23 and 31-37 while sitting before module 4's 13-22 — so nothing
+   * may order by it.
+   */
   order: number;
   slug: string;
   title: string;
   source: string;
   type: LessonType;
   file: string;
-  quiz?: string;
-  reflection?: string;
+  module?: string;
+  quiz?: string | null;
+  reflection?: string | null;
+  /** Id of a video to embed above the text. Placeholder until one is recorded. */
+  video?: string | null;
+  /** The lesson carrying the route buttons. */
+  route_choice?: boolean;
 };
 
 export type CourseModule = {
@@ -59,14 +70,28 @@ export const getCourse = cache((courseSlug: string): Course | null => {
   }
 });
 
-/** Every lesson in reading order, flattened across modules. */
+/**
+ * Every lesson in course order: the array order in course.json, module by
+ * module. Deliberately not sorted — see LessonMeta.order.
+ */
 export const getLessons = cache((courseSlug: string): LessonMeta[] => {
   const course = getCourse(courseSlug);
   if (!course) return [];
-  return course.modules
-    .flatMap((m) => m.lessons)
-    .sort((a, b) => a.order - b.order);
+  return course.modules.flatMap((m) => m.lessons);
 });
+
+/** Look a lesson up by its displayed number, for routes defined in those terms. */
+export function lessonByOrder(
+  courseSlug: string,
+  order: number
+): LessonMeta | null {
+  return getLessons(courseSlug).find((l) => l.order === order) ?? null;
+}
+
+/** The lesson carrying the route buttons, if the course has one. */
+export function getRouteLesson(courseSlug: string): LessonMeta | null {
+  return getLessons(courseSlug).find((l) => l.route_choice === true) ?? null;
+}
 
 /**
  * Lessons that count toward progress. Reference lessons — the resources page and
@@ -112,7 +137,7 @@ export const getLessonBody = cache(
  * no file at all, so every field is treated as optional.
  */
 export const getQuiz = cache(
-  (courseSlug: string, file: string | undefined): Quiz | null => {
+  (courseSlug: string, file: string | null | undefined): Quiz | null => {
     if (!file) return null;
     try {
       const raw = readFileSync(join(ROOT, courseSlug, file), "utf8");

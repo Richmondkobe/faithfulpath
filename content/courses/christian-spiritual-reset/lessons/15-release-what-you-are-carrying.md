@@ -1,6 +1,6 @@
 ---
 title: "Release What You Are Carrying"
-module: m3
+module: m4
 order: 15
 source: "Session Three"
 type: session

@@ -1,5 +1,8 @@
 # Course content: The Christian Spiritual Reset
 
-- course.json — course metadata: 6 modules (m0 "Start Here" plus m1–m5), 29 lessons in order (00–28), with file paths.
-- lessons/NN-slug.md — lesson body in Markdown (GFM tables used). Front matter: title, module, order, source, type (teaching | session | reference).
-- quizzes/NN.json — per lesson: `questions` (multiple choice: q, options[4], answer = index of the correct option, explanation shown after answering), `pass_mark`, and `reflection` (free-text journal prompts). Teaching chapters have both; retreat sessions have reflection only (questions is empty); lessons 00 and 23 (reference) have neither.
+- course.json — course metadata. Six modules in order: m0 Start Here, m1 Why Your Soul Needs a Retreat, m2 Preparing to Meet With God, m3 Choose Your Retreat, m4 The Retreat Journey, m5 After the Retreat. Lesson sequence is the array order in course.json. `order` is the stable display number for countable lessons (matches in-text references such as "read Lesson 24"); it is NOT the sequence, and reference lessons show no number.
+- lessons/<slug>.md — lesson body in Markdown (GFM tables used). Front matter: title, module, order, source, type (teaching | session | reference), plus optional `video` (id of a video to embed above the text, placeholder until recorded) and `route_choice: true` (the lesson has route buttons; see below).
+- quizzes/NN.json — per countable lesson: `questions` (multiple choice: q, options[4], answer = index of the correct option, explanation shown after answering), `pass_mark`, and `reflection` (free-text journal prompts). Teaching chapters have both; retreat sessions have reflection only (questions is empty); reference lessons have no quiz file.
+- Links between lessons are relative Markdown links to the lesson slug, e.g. `[Lesson 5](./05-what-a-retreat-can-and-cannot-do)`.
+- Reference lessons (type reference) do not count toward progress: 27 countable lessons.
+- Route choice: 00-choose-your-route contains two links whose text begins "I choose". These should render as buttons; clicking saves the member's route ("guided" or "quick") and navigates to the link target. Continue logic: guided = first unfinished countable lesson in sequence; quick = 05, then 09, then 23 (choose format), then the first unfinished countable lesson.

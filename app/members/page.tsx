@@ -13,6 +13,7 @@ import {
 import {
   getCourseProgress,
   completedCount,
+  getRoute,
   nextLessonFor,
 } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
@@ -35,15 +36,17 @@ async function CourseCard() {
   // the course tables are missing or unreadable. Drop the card and log it
   // instead — the membership itself is unaffected.
   let progress;
+  let route = null;
   try {
     progress = await getCourseProgress(COURSE_SLUG);
+    route = await getRoute(COURSE_SLUG);
   } catch (err) {
     console.error("Course card hidden — could not read progress:", err);
     return null;
   }
 
   const done = completedCount(progress, countable);
-  const next = nextLessonFor(lessons, countable, progress);
+  const next = nextLessonFor(COURSE_SLUG, lessons, countable, progress, route);
 
   return (
     <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
@@ -66,7 +69,9 @@ async function CourseCard() {
           href={`/members/courses/${COURSE_SLUG}`}
           className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
-          {progress.size === 0 ? "Start the course" : "Go to the course"}
+          {progress.size === 0 && route === null
+            ? "Start the course"
+            : "Go to the course"}
         </Link>
         {done > 0 && done < countable.length && (
           <Link

@@ -16,7 +16,7 @@ Near the end of 2 Timothy, while imprisoned, Paul asks Timothy to bring "the clo
 
 A Bible. Bring a printed Bible if that is accessible and practical for you, for the reasons Lesson 9 gave. Otherwise, prepare an audio or digital Bible in a way that minimises unrelated notifications and distractions. Bring the translation you are most comfortable reading slowly.
 
-This course, or printed session lessons from Module 3. Printed, on an e-reader, or on a device you have prepared according to Lesson 9. Make sure you can read the sessions without walking past your inbox.
+This course, or printed session lessons from Module 4. Printed, on an e-reader, or on a device you have prepared according to Lesson 9. Make sure you can read the sessions without walking past your inbox.
 
 A journal and a pen. Handwriting is recommended because it often encourages a slower pace, and a physical journal is one you can bring back and reread. If handwriting is difficult or inaccessible, use an offline document, a voice recorder, a tablet, or another method that allows you to reflect without opening work or communication apps. The purpose is deliberate reflection, not a particular physical method. Choose a journal you will actually use rather than one so beautiful you are afraid to write in it, and bring a spare pen.
 
@@ -95,7 +95,7 @@ Copy this and tick it off before you leave. Items marked (optional) are just tha
 **Sessions and reflection**
 
 - Bible, printed or prepared
-- This course or printed session lessons from Module 3
+- This course or printed session lessons from Module 4
 - Journal (or accessible alternative) and two pens
 - Lesson 4 check-in, Lesson 7 intention, Lesson 8 notes
 - Timer or watch

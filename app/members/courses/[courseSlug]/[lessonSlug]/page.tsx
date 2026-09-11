@@ -12,7 +12,14 @@ import {
   isCountable,
   lessonHref,
 } from "@/lib/course";
-import { getCourseProgress, getLessonReflections } from "@/lib/course-progress";
+import {
+  getCourseProgress,
+  getLessonReflections,
+  getRoute,
+} from "@/lib/course-progress";
+import { remarkRelativeLessonLinks } from "@/lib/markdown-plugins";
+import RouteChoiceButton from "@/components/course/RouteChoiceButton";
+import VideoPlaceholder from "@/components/course/VideoPlaceholder";
 import Quiz from "@/components/course/Quiz";
 import Reflection from "@/components/course/Reflection";
 import MarkComplete from "@/components/course/MarkComplete";
@@ -47,6 +54,51 @@ export default async function Lesson({
   const progress = await getCourseProgress(courseSlug);
   const mine = progress.get(lesson.slug) ?? null;
 
+  // Lesson-to-lesson links in the Markdown are relative; point them at this
+  // course's pages.
+  const coursePath = `/members/courses/${courseSlug}`;
+  const remarkPlugins = [remarkRelativeLessonLinks(coursePath)];
+
+  // On the route lesson, the two links whose text begins "I choose" become
+  // buttons that record the choice on the way through. Everything else on the
+  // page keeps the ordinary link styling.
+  const chosenRoute = lesson.route_choice ? await getRoute(courseSlug) : null;
+  const components = lesson.route_choice
+    ? {
+        a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
+          const label = String(
+            Array.isArray(children) ? children.join("") : (children ?? "")
+          );
+          const route = /^I choose/i.test(label.trim())
+            ? /quick/i.test(label)
+              ? ("quick" as const)
+              : ("guided" as const)
+            : null;
+
+          if (!route || !href) {
+            return (
+              <a
+                href={href}
+                className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              >
+                {children}
+              </a>
+            );
+          }
+          return (
+            <RouteChoiceButton
+              courseSlug={courseSlug}
+              route={route}
+              href={href}
+              chosen={chosenRoute === route}
+            >
+              {children}
+            </RouteChoiceButton>
+          );
+        },
+      }
+    : undefined;
+
   const savedReflections = reflectionPrompts.length
     ? Object.fromEntries(await getLessonReflections(courseSlug, lesson.slug))
     : {};
@@ -78,10 +130,17 @@ export default async function Lesson({
         {lesson.title}
       </h1>
 
+      {lesson.video && <VideoPlaceholder />}
+
       {/* Same renderer as the articles: GFM tables, headings, lists and
           blockquotes already styled to the site. Passing the title drops the
           lesson file's own H1, which repeats it. */}
-      <ArticleBody source={body} title={lesson.title} />
+      <ArticleBody
+        source={body}
+        title={lesson.title}
+        remarkPlugins={remarkPlugins}
+        components={components}
+      />
 
       {quiz && quiz.questions.length > 0 && (
         <Quiz

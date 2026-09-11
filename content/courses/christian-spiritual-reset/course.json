@@ -7,6 +7,30 @@
       "title": "Start Here",
       "lessons": [
         {
+          "order": -2,
+          "slug": "00-welcome",
+          "title": "Welcome",
+          "source": "Course",
+          "type": "reference",
+          "file": "lessons/00-welcome.md",
+          "quiz": null,
+          "reflection": null,
+          "video": "welcome",
+          "module": "m0"
+        },
+        {
+          "order": -1,
+          "slug": "00-choose-your-route",
+          "title": "Choose Your Route",
+          "source": "Course",
+          "type": "reference",
+          "file": "lessons/00-choose-your-route.md",
+          "quiz": null,
+          "reflection": null,
+          "route_choice": true,
+          "module": "m0"
+        },
+        {
           "order": 0,
           "slug": "00-finding-help-where-you-live",
           "title": "Finding Help Where You Live",
@@ -14,7 +38,8 @@
           "type": "reference",
           "file": "lessons/00-finding-help-where-you-live.md",
           "quiz": null,
-          "reflection": null
+          "reflection": null,
+          "module": "m0"
         }
       ]
     },
@@ -30,7 +55,8 @@
           "type": "teaching",
           "file": "lessons/01-when-your-body-keeps-going-but-your-soul-is-tired.md",
           "quiz": "quizzes/01.json",
-          "reflection": "quizzes/01.json"
+          "reflection": "quizzes/01.json",
+          "module": "m1"
         },
         {
           "order": 2,
@@ -40,7 +66,8 @@
           "type": "teaching",
           "file": "lessons/02-retreat-is-not-running-away.md",
           "quiz": "quizzes/02.json",
-          "reflection": "quizzes/02.json"
+          "reflection": "quizzes/02.json",
+          "module": "m1"
         },
         {
           "order": 3,
@@ -50,7 +77,8 @@
           "type": "teaching",
           "file": "lessons/03-jesus-and-the-practice-of-withdrawing.md",
           "quiz": "quizzes/03.json",
-          "reflection": "quizzes/03.json"
+          "reflection": "quizzes/03.json",
+          "module": "m1"
         },
         {
           "order": 4,
@@ -60,7 +88,8 @@
           "type": "teaching",
           "file": "lessons/04-recognising-burnout-spiritual-dryness-and-emotional-overload.md",
           "quiz": "quizzes/04.json",
-          "reflection": "quizzes/04.json"
+          "reflection": "quizzes/04.json",
+          "module": "m1"
         },
         {
           "order": 5,
@@ -70,7 +99,8 @@
           "type": "teaching",
           "file": "lessons/05-what-a-retreat-can-and-cannot-do.md",
           "quiz": "quizzes/05.json",
-          "reflection": "quizzes/05.json"
+          "reflection": "quizzes/05.json",
+          "module": "m1"
         }
       ]
     },
@@ -86,7 +116,8 @@
           "type": "teaching",
           "file": "lessons/06-choosing-your-retreat-length-and-location.md",
           "quiz": "quizzes/06.json",
-          "reflection": "quizzes/06.json"
+          "reflection": "quizzes/06.json",
+          "module": "m2"
         },
         {
           "order": 7,
@@ -96,7 +127,8 @@
           "type": "teaching",
           "file": "lessons/07-setting-your-intention.md",
           "quiz": "quizzes/07.json",
-          "reflection": "quizzes/07.json"
+          "reflection": "quizzes/07.json",
+          "module": "m2"
         },
         {
           "order": 8,
@@ -106,7 +138,8 @@
           "type": "teaching",
           "file": "lessons/08-preparing-your-heart.md",
           "quiz": "quizzes/08.json",
-          "reflection": "quizzes/08.json"
+          "reflection": "quizzes/08.json",
+          "module": "m2"
         },
         {
           "order": 9,
@@ -116,7 +149,8 @@
           "type": "teaching",
           "file": "lessons/09-creating-a-digital-boundary.md",
           "quiz": "quizzes/09.json",
-          "reflection": "quizzes/09.json"
+          "reflection": "quizzes/09.json",
+          "module": "m2"
         },
         {
           "order": 10,
@@ -126,7 +160,8 @@
           "type": "teaching",
           "file": "lessons/10-what-to-bring.md",
           "quiz": "quizzes/10.json",
-          "reflection": "quizzes/10.json"
+          "reflection": "quizzes/10.json",
+          "module": "m2"
         },
         {
           "order": 11,
@@ -136,7 +171,8 @@
           "type": "teaching",
           "file": "lessons/11-fasting-food-rest-and-physical-health.md",
           "quiz": "quizzes/11.json",
-          "reflection": "quizzes/11.json"
+          "reflection": "quizzes/11.json",
+          "module": "m2"
         },
         {
           "order": 12,
@@ -146,12 +182,107 @@
           "type": "teaching",
           "file": "lessons/12-what-to-do-when-you-are-afraid-of-silence.md",
           "quiz": "quizzes/12.json",
-          "reflection": "quizzes/12.json"
+          "reflection": "quizzes/12.json",
+          "module": "m2"
         }
       ]
     },
     {
       "slug": "m3",
+      "title": "Choose Your Retreat",
+      "lessons": [
+        {
+          "order": 23,
+          "slug": "23-choose-your-retreat-format",
+          "title": "Choose Your Retreat Format",
+          "source": "Part Four",
+          "type": "reference",
+          "file": "lessons/23-choose-your-retreat-format.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 31,
+          "slug": "31-the-three-day-christian-renewal-retreat",
+          "title": "Program 1: The Three-Day Christian Renewal Retreat",
+          "source": "Part Four, Program 1",
+          "type": "reference",
+          "file": "lessons/31-the-three-day-christian-renewal-retreat.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 32,
+          "slug": "32-the-one-day-retreat-with-god",
+          "title": "Program 2: The One-Day Retreat With God",
+          "source": "Part Four, Program 2",
+          "type": "reference",
+          "file": "lessons/32-the-one-day-retreat-with-god.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 33,
+          "slug": "33-the-three-hour-spiritual-reset",
+          "title": "Program 3: The Three-Hour Spiritual Reset",
+          "source": "Part Four, Program 3",
+          "type": "reference",
+          "file": "lessons/33-the-three-hour-spiritual-reset.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 34,
+          "slug": "34-the-at-home-retreat",
+          "title": "Program 4: The At-Home Retreat",
+          "source": "Part Four, Program 4",
+          "type": "reference",
+          "file": "lessons/34-the-at-home-retreat.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 35,
+          "slug": "35-the-retreat-for-couples",
+          "title": "Program 5: The Retreat for Couples",
+          "source": "Part Four, Program 5",
+          "type": "reference",
+          "file": "lessons/35-the-retreat-for-couples.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 36,
+          "slug": "36-the-small-group-and-church-retreat",
+          "title": "Program 6: The Small-Group and Church Retreat",
+          "source": "Part Four, Program 6",
+          "type": "reference",
+          "file": "lessons/36-the-small-group-and-church-retreat.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        },
+        {
+          "order": 37,
+          "slug": "37-the-retreat-for-pastors-and-christian-leaders",
+          "title": "Program 7: The Retreat for Pastors and Christian Leaders",
+          "source": "Part Four, Program 7",
+          "type": "reference",
+          "file": "lessons/37-the-retreat-for-pastors-and-christian-leaders.md",
+          "quiz": null,
+          "reflection": null,
+          "module": "m3"
+        }
+      ]
+    },
+    {
+      "slug": "m4",
       "title": "The Retreat Journey",
       "lessons": [
         {
@@ -162,7 +293,8 @@
           "type": "session",
           "file": "lessons/13-come-as-you-are.md",
           "quiz": null,
-          "reflection": "quizzes/13.json"
+          "reflection": "quizzes/13.json",
+          "module": "m4"
         },
         {
           "order": 14,
@@ -172,7 +304,8 @@
           "type": "session",
           "file": "lessons/14-be-still-and-become-present.md",
           "quiz": null,
-          "reflection": "quizzes/14.json"
+          "reflection": "quizzes/14.json",
+          "module": "m4"
         },
         {
           "order": 15,
@@ -182,7 +315,8 @@
           "type": "session",
           "file": "lessons/15-release-what-you-are-carrying.md",
           "quiz": null,
-          "reflection": "quizzes/15.json"
+          "reflection": "quizzes/15.json",
+          "module": "m4"
         },
         {
           "order": 16,
@@ -192,7 +326,8 @@
           "type": "session",
           "file": "lessons/16-lament-grief-and-honest-prayer.md",
           "quiz": null,
-          "reflection": "quizzes/16.json"
+          "reflection": "quizzes/16.json",
+          "module": "m4"
         },
         {
           "order": 17,
@@ -202,7 +337,8 @@
           "type": "session",
           "file": "lessons/17-confession-and-grace.md",
           "quiz": null,
-          "reflection": "quizzes/17.json"
+          "reflection": "quizzes/17.json",
+          "module": "m4"
         },
         {
           "order": 18,
@@ -212,7 +348,8 @@
           "type": "session",
           "file": "lessons/18-forgiving-others-and-yourself.md",
           "quiz": null,
-          "reflection": "quizzes/18.json"
+          "reflection": "quizzes/18.json",
+          "module": "m4"
         },
         {
           "order": 19,
@@ -222,7 +359,8 @@
           "type": "session",
           "file": "lessons/19-listening-for-god-s-direction.md",
           "quiz": null,
-          "reflection": "quizzes/19.json"
+          "reflection": "quizzes/19.json",
+          "module": "m4"
         },
         {
           "order": 20,
@@ -232,7 +370,8 @@
           "type": "session",
           "file": "lessons/20-rediscovering-your-identity.md",
           "quiz": null,
-          "reflection": "quizzes/20.json"
+          "reflection": "quizzes/20.json",
+          "module": "m4"
         },
         {
           "order": 21,
@@ -242,7 +381,8 @@
           "type": "session",
           "file": "lessons/21-renewing-your-purpose.md",
           "quiz": null,
-          "reflection": "quizzes/21.json"
+          "reflection": "quizzes/21.json",
+          "module": "m4"
         },
         {
           "order": 22,
@@ -252,23 +392,8 @@
           "type": "session",
           "file": "lessons/22-returning-with-a-new-rhythm.md",
           "quiz": null,
-          "reflection": "quizzes/22.json"
-        }
-      ]
-    },
-    {
-      "slug": "m4",
-      "title": "Choose Your Retreat",
-      "lessons": [
-        {
-          "order": 23,
-          "slug": "23-the-seven-ready-to-use-programs",
-          "title": "The Seven Ready-to-Use Programs",
-          "source": "Part Four",
-          "type": "reference",
-          "file": "lessons/23-the-seven-ready-to-use-programs.md",
-          "quiz": null,
-          "reflection": null
+          "reflection": "quizzes/22.json",
+          "module": "m4"
         }
       ]
     },
@@ -284,7 +409,8 @@
           "type": "teaching",
           "file": "lessons/24-testing-what-you-believe-you-heard.md",
           "quiz": "quizzes/24.json",
-          "reflection": "quizzes/24.json"
+          "reflection": "quizzes/24.json",
+          "module": "m5"
         },
         {
           "order": 25,
@@ -294,7 +420,8 @@
           "type": "teaching",
           "file": "lessons/25-turning-insight-into-action.md",
           "quiz": "quizzes/25.json",
-          "reflection": "quizzes/25.json"
+          "reflection": "quizzes/25.json",
+          "module": "m5"
         },
         {
           "order": 26,
@@ -304,7 +431,8 @@
           "type": "teaching",
           "file": "lessons/26-building-a-sustainable-rule-of-life.md",
           "quiz": "quizzes/26.json",
-          "reflection": "quizzes/26.json"
+          "reflection": "quizzes/26.json",
+          "module": "m5"
         },
         {
           "order": 27,
@@ -314,7 +442,8 @@
           "type": "teaching",
           "file": "lessons/27-when-you-need-a-pastor-counsellor-or-mental-health-professional.md",
           "quiz": "quizzes/27.json",
-          "reflection": "quizzes/27.json"
+          "reflection": "quizzes/27.json",
+          "module": "m5"
         },
         {
           "order": 28,
@@ -324,7 +453,8 @@
           "type": "teaching",
           "file": "lessons/28-your-30-day-spiritual-renewal-plan.md",
           "quiz": "quizzes/28.json",
-          "reflection": "quizzes/28.json"
+          "reflection": "quizzes/28.json",
+          "module": "m5"
         }
       ]
     }

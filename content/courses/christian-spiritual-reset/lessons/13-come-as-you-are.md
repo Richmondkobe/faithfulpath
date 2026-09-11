@@ -1,6 +1,6 @@
 ---
 title: "Come As You Are"
-module: m3
+module: m4
 order: 13
 source: "Session One"
 type: session

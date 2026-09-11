@@ -66,7 +66,7 @@ Some readers do not need convincing. They need permission. So let me give it as 
 
 You are allowed to stop. Not because you have earned it, and not because you have nothing left to give, but because God commanded rest before you ever asked for it, and because the Son of God modelled withdrawal in the middle of the most important work ever done.
 
-Taking these days does not have to mean abandoning your responsibilities. In many cases, preparing for a retreat is itself an act of responsibility, because it allows you to return with greater clarity and emotional presence. If you are married, explain to your spouse what you need and listen to any practical concerns. If others depend on you, arrange appropriate care before you leave. If three uninterrupted days are genuinely impossible, use one of the adapted formats in Module 4. The goal is not to prove your commitment by disappearing. The goal is to create honest, protected space with God.
+Taking these days does not have to mean abandoning your responsibilities. In many cases, preparing for a retreat is itself an act of responsibility, because it allows you to return with greater clarity and emotional presence. If you are married, explain to your spouse what you need and listen to any practical concerns. If others depend on you, arrange appropriate care before you leave. If three uninterrupted days are genuinely impossible, use one of the adapted formats in Module 3. The goal is not to prove your commitment by disappearing. The goal is to create honest, protected space with God.
 
 Not everyone will immediately understand your decision. You do not need to defend your exhaustion, but you should communicate clearly, make responsible arrangements, and protect the time you have set aside.
 

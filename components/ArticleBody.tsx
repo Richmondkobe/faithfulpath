@@ -163,16 +163,21 @@ export default function ArticleBody({
   // Extra remark plugins for callers whose source is not written for a
   // Markdown renderer. Articles pass none.
   remarkPlugins = [],
+  // Per-node overrides, for a caller that needs one element to behave
+  // differently — the course's route buttons, say. Everything not named here
+  // keeps the styling below.
+  components: overrides,
 }: {
   source: string;
   title?: string;
   remarkPlugins?: NonNullable<Options["remarkPlugins"]>;
+  components?: Partial<Components>;
 }) {
   return (
     <div className="mt-10 space-y-6">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, ...remarkPlugins]}
-        components={components}
+        components={overrides ? { ...components, ...overrides } : components}
         urlTransform={urlTransform}
       >
         {stripDuplicateTitle(source, title)}

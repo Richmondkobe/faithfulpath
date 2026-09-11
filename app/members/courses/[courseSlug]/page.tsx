@@ -11,6 +11,7 @@ import {
 import {
   getCourseProgress,
   completedCount,
+  getRoute,
   nextLessonFor,
 } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
@@ -35,11 +36,14 @@ export default async function CourseOverview({
   // Reference lessons are listed and readable, but there is nothing to finish
   // in them, so they are outside both the count and the Continue trail.
   const countable = getCountableLessons(courseSlug);
-  const progress = await getCourseProgress(courseSlug);
+  const [progress, route] = await Promise.all([
+    getCourseProgress(courseSlug),
+    getRoute(courseSlug),
+  ]);
   const done = completedCount(progress, countable);
 
-  const started = progress.size > 0;
-  const nextLesson = nextLessonFor(lessons, countable, progress);
+  const started = progress.size > 0 || route !== null;
+  const nextLesson = nextLessonFor(courseSlug, lessons, countable, progress, route);
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">

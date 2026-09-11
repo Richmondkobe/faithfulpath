@@ -1,6 +1,6 @@
 ---
 title: "Be Still and Become Present"
-module: m3
+module: m4
 order: 14
 source: "Session Two"
 type: session
@@ -105,7 +105,7 @@ God is a very present help. The storm is real, and Christ is with me in it. I am
 
 Space for anything else you want to record from this session.
 
-Ending Day 1: Session Two closes the first day. If the three-day program in Module 4 is your guide, the evening is unstructured: a simple meal, rest, perhaps some time outside or with a psalm. Do not add another session.
+Ending Day 1: Session Two closes the first day. If the three-day program in Module 3 is your guide, the evening is unstructured: a simple meal, rest, perhaps some time outside or with a psalm. Do not add another session.
 
 Today you practised two movements: from performance to welcome, and from divided attention to presence. You do not need to master either before sleeping. You have begun.
 
