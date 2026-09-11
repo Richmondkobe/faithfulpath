@@ -5,10 +5,12 @@ import ArticleBody from "@/components/ArticleBody";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   findLesson,
+  getCountableLessons,
   getCourse,
   getLessonBody,
   getLessons,
   getQuiz,
+  isCountable,
   lessonHref,
 } from "@/lib/course";
 import { getCourseProgress, getLessonReflections } from "@/lib/course-progress";
@@ -36,6 +38,12 @@ export default async function Lesson({
   const { lesson, module: lessonModule } = found;
   const lessons = getLessons(courseSlug);
   const index = lessons.findIndex((l) => l.slug === lesson.slug);
+
+  // Numbered by position among the lessons that count, so the header agrees
+  // with the progress bar. A reference lesson has no number at all — it sits
+  // outside the sequence — so it shows its module and nothing more.
+  const countable = getCountableLessons(courseSlug);
+  const position = countable.findIndex((l) => l.slug === lesson.slug) + 1;
   const previous = index > 0 ? lessons[index - 1] : null;
   const next = index < lessons.length - 1 ? lessons[index + 1] : null;
 
@@ -60,7 +68,9 @@ export default async function Lesson({
       </Link>
 
       <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        {lessonModule.title} · Lesson {lesson.order} of {lessons.length}
+        {isCountable(lesson)
+          ? `${lessonModule.title} · Lesson ${position} of ${countable.length}`
+          : lessonModule.title}
       </p>
 
       <h1

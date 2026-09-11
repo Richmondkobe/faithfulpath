@@ -10,7 +10,11 @@ import {
   getLessons,
   lessonHref,
 } from "@/lib/course";
-import { getCourseProgress, completedCount } from "@/lib/course-progress";
+import {
+  getCourseProgress,
+  completedCount,
+  nextLessonFor,
+} from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -39,9 +43,7 @@ async function CourseCard() {
   }
 
   const done = completedCount(progress, countable);
-  const next =
-    countable.find((l) => !progress.get(l.slug)?.completed_at) ??
-    lessons[lessons.length - 1];
+  const next = nextLessonFor(lessons, countable, progress);
 
   return (
     <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
@@ -64,7 +66,7 @@ async function CourseCard() {
           href={`/members/courses/${COURSE_SLUG}`}
           className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
-          {done === 0 ? "Start the course" : "Go to the course"}
+          {progress.size === 0 ? "Start the course" : "Go to the course"}
         </Link>
         {done > 0 && done < countable.length && (
           <Link

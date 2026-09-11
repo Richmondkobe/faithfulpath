@@ -8,7 +8,11 @@ import {
   getLessons,
   lessonHref,
 } from "@/lib/course";
-import { getCourseProgress, completedCount } from "@/lib/course-progress";
+import {
+  getCourseProgress,
+  completedCount,
+  nextLessonFor,
+} from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 
 export const metadata: Metadata = {
@@ -34,11 +38,8 @@ export default async function CourseOverview({
   const progress = await getCourseProgress(courseSlug);
   const done = completedCount(progress, countable);
 
-  // Where "Continue" goes: the first lesson still to be done, or the last one
-  // in the course once everything is finished.
-  const nextLesson =
-    countable.find((l) => !progress.get(l.slug)?.completed_at) ??
-    lessons[lessons.length - 1];
+  const started = progress.size > 0;
+  const nextLesson = nextLessonFor(lessons, countable, progress);
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
@@ -69,7 +70,7 @@ export default async function CourseOverview({
           href={lessonHref(courseSlug, nextLesson.slug)}
           className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
-          {done === 0
+          {!started
             ? "Start the course"
             : done === countable.length
               ? "Revisit the last lesson"

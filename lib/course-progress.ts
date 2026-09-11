@@ -54,6 +54,26 @@ export async function getLessonReflections(
 }
 
 /**
+ * Where "Start the course" / "Continue" points.
+ *
+ * A member who has done nothing at all starts at the very beginning, which is
+ * the Start Here lesson. Once there is any progress they are resuming, so it
+ * moves to the first unfinished countable lesson — reference lessons are never
+ * the target, because nothing marks them off and the button would stick there.
+ */
+export function nextLessonFor<T extends { slug: string }>(
+  all: T[],
+  countable: T[],
+  progress: Map<string, Progress>
+): T {
+  if (progress.size === 0) return all[0];
+  return (
+    countable.find((l) => !progress.get(l.slug)?.completed_at) ??
+    all[all.length - 1]
+  );
+}
+
+/**
  * How many of `lessons` are finished. Counting against an explicit list rather
  * than every stored row is what keeps reference lessons out of the total — a
  * member may well mark one complete, and it still should not move the bar.
