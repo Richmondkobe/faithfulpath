@@ -182,7 +182,10 @@ export default async function Members() {
         className="mt-6 text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        Placeholder copy.
+        You are in the right place. Everything here moves at your pace: nothing
+        is timed, nothing is graded, and you can pause a retreat and come back to
+        it. Start with the welcome and choose your route, and if you are already
+        exhausted, take the quick start. The rest will keep.
       </p>
 
       <CourseCard />
