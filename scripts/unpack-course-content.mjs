@@ -18,7 +18,7 @@ import {
   cpSync, existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync,
 } from "node:fs";
 import { homedir, tmpdir } from "node:os";
-import { basename, join } from "node:path";
+import { join } from "node:path";
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
