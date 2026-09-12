@@ -4,9 +4,49 @@ module: m5
 order: 24
 source: "Chapter 13"
 type: teaching
+outcome: "Sort what you brought home from the retreat and test any impression before you act on it — because testing honours God rather than doubting him."
+action: "Sort your What I sense and To test cards into the three categories. Complete the Discernment Check-in for each particular direction you are testing. If you have a major direction, schedule an hour with your Eli or an appropriate qualified adviser, open the Testing Worksheet from the Resources section, and add a start date and a review date. Take no major action today."
+action_done: "I have sorted my cards, completed the appropriate check-in, and, for any major direction, dated the worksheet and scheduled an adviser conversation."
+resources: [testing-worksheet]
 ---
 
 # Testing What You Believe You Heard
+
+## Key Scripture
+
+> "Do not despise prophecies, but test everything; hold fast what is good."
+>
+> — 1 Thessalonians 5:20–21 (ESV)
+
+## In brief
+
+You are back. The house is loud, or the inbox is, and the quiet of the retreat already feels like something that happened to someone else. That is normal, and Session Ten warned you about it. Do not make any decisions today. This lesson is about one card in particular: the one from Session Seven marked *What I sense*, and any cards marked *To test* from Session Nine. Session Seven asked you to write down what you sensed and to test it before acting. This is how.
+
+**Why testing is faith, not doubt.** Some people feel that testing an impression from a retreat is a failure of trust. If God spoke, why examine it? The answer is that Scripture commands examination precisely because God speaks and because we are fallible receivers. "Do not despise prophecies, but test everything; hold fast what is good" (1 Thessalonians 5:20–21). The Bereans were called "more noble" because they received Paul's teaching eagerly and examined the Scriptures daily to see whether it was so (Acts 17:11). Testing does not insult God. It honours him by refusing to attach his name to something that may be our own fear, desire, or exhaustion. You were tired. Test it.
+
+**The safety exception.** Everything here about waiting and consulting applies to ordinary discernment. It does not apply to immediate danger, abuse, urgent medical care, legal reporting duties, or deadlines that cannot safely be postponed. In those situations, seek qualified help and take the safest necessary action now. Do not remain in danger to complete a discernment process.
+
+**First, sort what you have.** *Nothing significant:* a general sense of peace, a familiar verse with no direction attached. There is nothing to test. Record it and move to Lesson 25; many people will be here, and it is a complete outcome. *A low-risk, reversible step:* contacting a counsellor, asking a trusted person for a conversation, protecting a two-hour period for rest, gathering information about reducing your hours. These explore a step rather than execute it, are easily undone if mistaken, and harm no one. Test them lightly and then do them. *A major, high-impact, or hard-to-reverse direction:* leaving a job, a church, a marriage, or a country; starting a ministry; a large financial commitment; a confrontation or disclosure that will change relationships. These get the full testing, over weeks, with other people, and are not acted on until the testing is done. Most of what people bring home is in the second category. If yours is in the third, be glad you wrote it down instead of acting on it.
+
+**The nine tests.** Work through them in your journal, giving each a status: supports, raises concern, not yet examined, or requires qualified advice.
+
+1. *Does it agree with Scripture, read in context?* The first and weightiest test, and not passed by finding a matching verse. Ask what the whole of Scripture teaches about the kind of thing you are considering. An impression that contradicts clear biblical teaching fails here, and nothing else needs checking.
+2. *Does it reflect the character and fruit of Christ?* Hold it against Galatians 5:22–23. Directions that require you to become harder, more secretive, more self-important, or less accountable raise concern however spiritual they sound.
+3. *Is it truthful about facts, not merely feelings?* Write down the facts it depends on, then check them with people who know.
+4. *Does it withstand time and careful questioning?* For a major direction, allow at least a month whenever circumstances permit. What would you say to a friend who brought you this? What are the three strongest reasons not to do it? If you cannot think of any, you are not yet questioning it carefully.
+5. *What do mature and appropriately qualified advisers say?* This test cannot be done alone. For health, law, money, employment, or abuse, "qualified" means professionally qualified, not simply spiritually mature.
+6. *Does it respect safety, consent, justice, and accountability?* Who is affected, and have they been considered? Does it leave you accountable, or place you beyond correction? An abusive or controlling person does not receive a veto over your safety.
+7. *Does it require secrecy, superiority, recklessness, or immunity from challenge?* "They would not understand." "God has shown me and that is enough." Urgency that exists mainly to prevent examination. These are warning signs, not confirmations. Genuine direction from God can bear examination.
+8. *Is the proposed action proportionate and reversible?* Reduce hours before resigning. Have the conversation before leaving. Trial the ministry before founding it.
+9. *Are you rested, regulated, informed, and supported enough to decide?* If you are still in the post-retreat dip, a major decision can usually wait until you are in better condition to make it.
+
+**How to consult your Eli, your mature, trustworthy adviser.** Your "Eli" is the mature, trustworthy person you identified in Session Seven: someone who knows you, respects Scripture, is willing to question you, and does not simply confirm everything you say. Where the decision involves health, law, money, employment, abuse, or safeguarding, your Eli supplements a professionally qualified adviser; they do not replace one. Contact them and ask for an hour. Bring the card, your answers to the nine tests, and the facts. Tell them you are not asking them to confirm it; you are asking them to help you test it. Ask three questions: What in this do you recognise as wise? What concerns you? What have I not considered? Then listen without defending. Do not choose an Eli who will simply agree with you, and do not go from adviser to adviser until you find one who does. If two wise people independently raise the same concern, weigh it heavily. If your spouse has serious reservations about a direction that affects the family, that is not an obstacle to overcome; it is part of the test. In an abusive relationship, consult a domestic-abuse specialist privately; joint discernment may not be safe.
+
+**When the tests disagree.** Then the direction is not ready, and that is the answer for now: not "no", but "not yet". Keep testing and revisit in a month. A major direction that does not require urgent action can usually be given time. What is true and responsible should be able to withstand patient examination. If a direction clearly fails a test, particularly test one, let it go; that is the testing doing what it was for. And if, after weeks, a major direction has passed every test and been weighed by wise people who know you, it may be time to act, with the proportionate step first. Passing the tests does not give certainty. It means the direction has become responsible enough to take a next step.
+
+**A note on fleeces.** Be cautious about asking for a sign, after Gideon. His fleece is recorded, not commended; he already had God's clear word and was asking for reassurance. Seek confirmation through the means Scripture commends: Scripture itself, truthful examination, wise counsel, time, prayer, and fruit.
+
+## Read the deeper teaching
 
 ## For the first morning home
 
@@ -118,4 +158,3 @@ Copy this into your journal for each card you are testing. For each test, record
 Testing begins: ______ Review on: ______
 
 Verdict for now: act on the small step / not yet, revisit on ______ / let it go
-

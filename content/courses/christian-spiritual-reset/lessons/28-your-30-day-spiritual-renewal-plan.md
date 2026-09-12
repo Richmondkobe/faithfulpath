@@ -4,9 +4,46 @@ module: m5
 order: 28
 source: "Chapter 17"
 type: teaching
+outcome: "Give your first month home a shape you do not have to invent each morning, and end it with an honest review rather than a verdict."
+action: "Start the plan, Day 1. Copy the four weekly blocks into your diary. Add the Day 30 review date and a provisional date for your next deliberate pause: a three-hour reset next month, a day in three months, or a full retreat within the year."
+action_done: "I have dated the four weeks, scheduled my Day 30 review, and recorded a provisional date for my next pause."
+final_action: "Complete the course, Day 30. Complete the Day 30 Integration Check-in. Confirm or adjust the date of your next deliberate pause. A blank answer is not failure; it identifies the place where your next step begins."
+final_done: "I have completed my Day 30 review and confirmed my next deliberate pause."
 ---
 
 # Your 30-Day Spiritual Renewal Plan
+
+## Key Scripture
+
+> "He who began a good work in you will bring it to completion at the day of Jesus Christ."
+>
+> — Philippians 1:6 (ESV)
+
+## In brief
+
+The four lessons before this one each cover a piece of the return: testing, action, rhythm, help. This lesson puts them on a calendar, so that the first month home has a shape and you do not have to decide each morning what the retreat asked of you. It is deliberately light. Read it once, copy the four weekly blocks into your diary, and return only to the week you are in. The plan is for doing, not for repeated studying.
+
+**What the month is for.** Three things: to let the rhythm from Session Ten become familiar through a month of imperfect repetition; to work through the cards at a pace that does not recreate the burnout; and to give the optional sessions and the testing the time they need. It is not for becoming a different person in thirty days. "He who began a good work in you will bring it to completion at the day of Jesus Christ" (Philippians 1:6). The day of completion is not Day 30. Day 30 is a review.
+
+**One thing that does not wait for the calendar.** If any warning sign from Lesson 4 or Lesson 5 applies, if you are in danger, being harmed, unable to function, in severe distress, or dependent on a substance, read Lesson 27 now, on whatever day it is, and act on it. Safety and professional help take priority over every week below.
+
+**The daily minimum.** Every day, the rhythm from Session Ten's card. That is all that is required. If your rhythm is weekly rather than daily, the daily minimum is smaller still: a psalm and a few minutes of quiet on the days you can. When you miss, resume the next day without compensation or guilt. A psalm for each week, if you want one: Psalm 23, then 62, then 27, then 131.
+
+**Week 1: landing.** The soft week. Expect the dip. Do little. Day 1: read Lesson 24, sort the cards, take no major action, do any necessary safety action, schedule the Eli conversation. This week: keep the rhythm, imperfectly, and tell your support person you are home, one conversation, not a report. If capacity allows: read Lesson 25 on Day 2 or 3 and complete one Act card or one Seek-counsel step; if that step concerns health or safety, it takes priority. Do not pronounce a verdict on the retreat, announce major conclusions, or redesign your life this week. Do not begin the rule of life yet.
+
+**Week 2: doing.** The week the cards leave the pile. One Share conversation, held, using the three sentences from Lesson 25. The Jethro questions, answered in your journal. The Eli conversation, if you are testing anything. Session Eight, if you left it and want it. Read Lesson 26 at the end of the week and begin thinking about the rule, but do not write it yet. Two-week check on the rhythm: is it livable? If not, shrink it. Do not abandon it.
+
+**Week 3: shaping.** The week the rule is written. Write it from Lesson 26 with the three core lines and no more than two optional ones; put the review dates on it and share it. The structural request from Lesson 25, if capacity allows, taken to whoever can change something. Session Nine, if you left it: the purpose sentence and the "one faithful thing". Revisit Lesson 27 whether or not you thought it applied; sometimes a need becomes clearer after several weeks at home.
+
+**Week 4: settling.** Session Six, only if its conditions are met: you are rested and settled, the harm is not active, and you want to explore what release might mean without forcing an outcome. If in doubt, use the short default prayer and leave the rest; Session Six may not be for this month, or this year, and that is a legitimate decision. The Lesson 24 review, if you are testing a major direction: revisit the worksheet with the time now given, and if the testing supports a small, reversible step, consider taking it. Day 30 is not a decision deadline.
+
+**The Day 30 review.** Sit down for an hour with the journal, the cards, the intention from Lesson 7, and your Lesson 1 answers. Not to grade the month, but to see it. Begin with grace received: where did you notice help, kindness, provision, rest, or God's presence that you did not produce through effort? Then the intention: what has become clearer, and what still needs attention? Then the Lesson 1 answers beside where you are now; do not force a conclusion, notice. The rhythm: how often did you keep it, and should it be kept, shrunk, moved, or replaced? The cards: which became actions, conversations, help, or release? The unresolved: name it, and leave it named. The help: if Lesson 27 applied, did you act? And the next pause: book it, because a rhythm needs a next time. Write one dated paragraph: what the month has been. Then close the journal.
+
+**If you missed most of it.** Illness, a family crisis, a work emergency, or a dip that lasted longer than expected may have taken the month. Two things. The plan does not expire and does not need restarting from the beginning; find the next unfinished step that still matters and begin there. And ask whether the fraction you did was the important part. Many who "missed the plan" kept the rhythm on some days, made one appointment, had one conversation. Those are not a fraction of the plan. They are the plan, in the form your month allowed. Resume.
+
+**A closing word.** You began this course tired in a place that sleep does not reach. You took days you probably felt you could not afford, and you spent them being honest with God about what you were carrying. I do not know what the month has been for you, and I have tried not to promise what I could not. But I can tell you what the pattern is, because it has been the pattern from the first page. God fed Elijah before he sent him. He let him sleep. He asked him what he was doing there, and listened to the answer, twice. He reoriented him, gave him work that was his to do, and gave him a companion. He did not tell him to try harder. That is still the pattern. Go on your way, and go with others. Work when it is yours to work. Stop when it is time to stop. The world is held by God, not by you. The Lord bless you and keep you.
+
+## Read the deeper teaching
 
 ## For the whole first month home
 

@@ -4,9 +4,35 @@ module: m5
 order: 25
 source: "Chapter 14"
 type: teaching
+outcome: "Help you turn the cards you brought home into responsible action, one action, conversation, appointment, or structural change at a time."
+action: "This week, complete the action on your Session Ten card. If you have a Seek-counsel card, make the appointment or take the next access step. Then complete the Two-Week Plan from the Resources section with the minimum you will carry for the next fortnight."
+action_done: "I have completed my first action, addressed any Seek-counsel card that applies, and filled in the Two-Week Plan."
+resources: [two-week-plan]
 ---
 
 # Turning Insight Into Action
+
+## Key Scripture
+
+> "But be doers of the word, and not hearers only, deceiving yourselves."
+>
+> — James 1:22 (ESV)
+
+## In brief
+
+Lesson 24 dealt with impressions that need careful testing. This lesson is about the steps you have already identified as low-risk, responsible, and reversible: the Act, Share, and Seek-counsel cards from Session Three, the action and person from Session Ten, and, if you completed Session Nine, your "one faithful thing". A retreat can begin a change, but insight takes root through what you practise afterwards. The work of these two weeks does not need to be dramatic. It needs to be actual.
+
+**Hearing and doing.** James compares a person who hears the word and does nothing to someone who looks in a mirror, walks away, and forgets what they saw. It is a precise description of the post-retreat dip: three days of seeing yourself clearly, then a week in which the image fades because nothing was done with it. Jesus said the same more starkly: the difference between the house that stands and the house that falls is not what the builders heard, but that one "hears my words and does them" (Luke 6:47–49). What happened on the retreat is the hearing. This lesson is the doing.
+
+**Nehemiah: insight, then a plan.** Nehemiah's burden for Jerusalem came in prayer, and he wept and fasted "for days". He did not resign his post. Months later, when the king asked why he looked sad, he prayed silently and asked for exactly what he needed: leave, letters, timber. He inspected the walls quietly at night before telling anyone, and when he did tell them, the work was divided into sections small enough for families to build. Insight, then time. A plan with specifics. A quiet look at the facts before the announcement. That is the opposite of coming home and announcing everything on the first evening.
+
+**The cards, one kind at a time.** *Act cards:* this week, do the one from Session Ten. Not all of them; one. If it is a conversation, have it. If it is an appointment, book it. When it is done, take the next, at roughly one a week. The point is not speed; it is that the cards leave the pile and become things that happened. *Share cards:* burdens that should not be carried alone will not share themselves. Decide what kind of sharing the card needs, being heard, receiving support, dividing a task, or asking a leader to redistribute responsibility, then ask, saying three things: this is the burden; this is how I have been carrying it alone; this is the specific help I am requesting. Specific requests are easier to answer than general appeals, and a request lets the other person answer honestly. Expect some to say no, and some to be glad they were asked. *Seek-counsel cards:* make the appointment. Not the decision; the appointment. The card is done when the date is in the diary. If you cannot book immediately, take the next access step: identify two providers, join a waiting list, ask for a referral, find out the cost. Do not let an unavailable appointment become no action. If you have been putting off a medical or mental-health appointment, this is the card that matters most. *Entrust cards:* these have no action; that is the point. Read it, pray it, put it back. *Repairs from Session Five:* an apology is an Act card with Lesson 8's cautions. Centre the harm done to the other person, do not pressure them to respond, and do not make contact if it would be unsafe, unwanted, or legally restricted.
+
+**Structural change: the Jethro conversation.** Rest does not fix a structure. A person can take three days and walk straight back into the pattern that emptied them, and many do, unless something about the pattern changes. Jethro's advice to Moses had three parts: you are doing too much, some of it can be done by others, and here is how to divide it. Every burned-out person needs that conversation, with themselves and with whoever can change the workload: a manager, an elder board, a spouse, a ministry team, a care coordinator. Ask, and write the answers down: What am I doing that only I can do? What could someone else do, if asked and trusted? What does not need doing at all? What am I doing because I am afraid of what happens if I stop? What would this role look like if it were designed for a human being with limits? Then take the answers to the person who can change something and ask for one structural change. One. A protected day off. A task removed. A meeting that stops. If the answer is no, ask why, and whether another form of relief is possible. A clear refusal is important information about the sustainability of the present arrangement. Expect some resistance; a system used to your overfunctioning will have to adjust when you stop.
+
+**When it does not work.** Some of this will fail. The person will decline, the change will be refused, the appointment will be weeks away, the rhythm will be missed three days running. None of that undoes the retreat. Session Ten's card had a line for this: "When I miss it, I will start again the next day without guilt." A refused request is information. A missed rhythm is restarted, not abandoned. An appointment weeks away is still booked, which is more than it was. Doing the word is a habit, and habits are built by resuming, not by never failing.
+
+## Read the deeper teaching
 
 ## For the first week home
 
@@ -84,4 +110,3 @@ Some of this will fail. The person you asked will decline. The structural change
 None of that undoes the retreat. Session Ten's rhythm card had a line for exactly this: "When I miss it, I will start again the next day without guilt." Apply the same sentence to everything in this lesson. A refused request is information: ask why, consider whether the request was clear and appropriate, explore another person or another form of help, or move the larger question to the "To test" pile. A missed rhythm is restarted, not abandoned. An appointment weeks away is still booked, which is more than it was.
 
 The house in Luke 6 was not built in a day, and the flood did not come on the first afternoon. Doing the word is a habit, and habits are built by resuming, not by never failing.
-

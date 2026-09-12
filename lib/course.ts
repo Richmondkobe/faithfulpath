@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
+import type { Checkin } from "@/lib/checkin";
 
 // Course text and quizzes are files in the repo, not database rows: they are
 // authored content, they version with the code, and a correction is an ordinary
@@ -32,6 +33,29 @@ export type LessonMeta = {
   route_choice?: boolean;
 };
 
+/**
+ * Fields that live only in the lesson file's front matter, not in course.json.
+ */
+export type LessonFront = {
+  outcome?: string;
+  action?: string;
+  action_done?: string;
+  action_followup?: string;
+  final_action?: string;
+  final_done?: string;
+  resources: string[];
+};
+
+/** A teaching lesson's body, split at the headings the content guarantees. */
+export type LessonSections = {
+  /** The Key Scripture blockquote, without its heading. */
+  keyScripture: string | null;
+  /** The condensed teaching. For a session or reference lesson, the whole body. */
+  inBrief: string;
+  /** Everything from "Read the deeper teaching" to the end, heading excluded. */
+  deeper: string | null;
+};
+
 export type CourseModule = {
   slug: string;
   title: string;
@@ -54,11 +78,17 @@ export type QuizQuestion = {
 };
 
 export type Quiz = {
+  /**
+   * The retired multiple-choice quiz. Every array is empty in the current
+   * content; the component is kept for possible future use, and an empty set
+   * renders nothing.
+   */
   questions: QuizQuestion[];
-  /** Number of correct answers needed to pass. Absent when there are no questions. */
   pass_mark: number | null;
   /** Free-text journal prompts. */
   reflection: string[];
+  /** The phase 2 check-in, on the four lessons that have one. */
+  checkin: Checkin | null;
 };
 
 export const getCourse = cache((courseSlug: string): Course | null => {
@@ -119,10 +149,57 @@ export function findLesson(
   return null;
 }
 
-// The body carries YAML front matter that the renderer must not print. The
-// fields in it are duplicated in course.json, which is what the app reads, so
-// this only has to strip it.
-const FRONT_MATTER = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/;
+const FRONT_MATTER = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/;
+
+/**
+ * Enough YAML for this content: `key: "value"`, `key: value`, `key: true`, and
+ * the one inline list shape used, `resources: [a, b]`. Anything else is
+ * ignored rather than guessed at, so a new field shows up as missing instead of
+ * as something wrong.
+ */
+function parseFrontMatter(raw: string): Record<string, string | boolean | string[]> {
+  const block = raw.match(FRONT_MATTER)?.[1] ?? "";
+  const out: Record<string, string | boolean | string[]> = {};
+
+  for (const line of block.split(/\r?\n/)) {
+    const m = line.match(/^([a-z_]+):\s*(.*)$/i);
+    if (!m) continue;
+    const [, key, rawValue] = m;
+    const value = rawValue.trim();
+
+    if (value === "true" || value === "false") {
+      out[key] = value === "true";
+    } else if (value.startsWith("[") && value.endsWith("]")) {
+      out[key] = value
+        .slice(1, -1)
+        .split(",")
+        .map((v) => v.trim().replace(/^["']|["']$/g, ""))
+        .filter(Boolean);
+    } else {
+      out[key] = value.replace(/^["']|["']$/g, "");
+    }
+  }
+  return out;
+}
+
+export const getLessonFront = cache(
+  (courseSlug: string, file: string): LessonFront => {
+    const raw = readFileSync(join(ROOT, courseSlug, file), "utf8");
+    const fm = parseFrontMatter(raw);
+    const str = (k: string) =>
+      typeof fm[k] === "string" && fm[k] ? (fm[k] as string) : undefined;
+
+    return {
+      outcome: str("outcome"),
+      action: str("action"),
+      action_done: str("action_done"),
+      action_followup: str("action_followup"),
+      final_action: str("final_action"),
+      final_done: str("final_done"),
+      resources: Array.isArray(fm.resources) ? (fm.resources as string[]) : [],
+    };
+  }
+);
 
 export const getLessonBody = cache(
   (courseSlug: string, file: string): string => {
@@ -130,6 +207,70 @@ export const getLessonBody = cache(
     return raw.replace(FRONT_MATTER, "").trim();
   }
 );
+
+const H2 = (title: string) =>
+  new RegExp(`^##\\s+${title}\\s*$`, "im");
+
+/**
+ * Splits a teaching lesson into the parts the page lays out separately. A body
+ * without the headings — a session or reference lesson — comes back whole in
+ * `inBrief`, which is what those layouts render.
+ */
+export const getLessonSections = cache(
+  (courseSlug: string, file: string): LessonSections => {
+    const body = getLessonBody(courseSlug, file);
+
+    const deeperMatch = body.match(H2("Read the deeper teaching"));
+    const beforeDeeper =
+      deeperMatch?.index === undefined ? body : body.slice(0, deeperMatch.index);
+    const deeper =
+      deeperMatch?.index === undefined
+        ? null
+        : body.slice(deeperMatch.index + deeperMatch[0].length).trim();
+
+    const keyMatch = beforeDeeper.match(H2("Key Scripture"));
+    const briefMatch = beforeDeeper.match(H2("In brief"));
+
+    if (keyMatch?.index === undefined || briefMatch?.index === undefined) {
+      return { keyScripture: null, inBrief: beforeDeeper.trim(), deeper };
+    }
+
+    const keyScripture = beforeDeeper
+      .slice(keyMatch.index + keyMatch[0].length, briefMatch.index)
+      .trim();
+    const inBrief = beforeDeeper
+      .slice(briefMatch.index + briefMatch[0].length)
+      .trim();
+
+    return { keyScripture: keyScripture || null, inBrief, deeper };
+  }
+);
+
+export type Resource = { slug: string; title: string; body: string };
+
+export const getResource = cache(
+  (courseSlug: string, slug: string): Resource | null => {
+    if (!/^[a-z0-9-]+$/.test(slug)) return null;
+    try {
+      const raw = readFileSync(
+        join(ROOT, courseSlug, "resources", `${slug}.md`),
+        "utf8"
+      );
+      const fm = parseFrontMatter(raw);
+      return {
+        slug,
+        title: typeof fm.title === "string" ? fm.title : slug,
+        body: raw.replace(FRONT_MATTER, "").trim(),
+      };
+    } catch {
+      return null;
+    }
+  }
+);
+
+export function resourceHref(courseSlug: string, slug: string): string {
+  return `/members/courses/${courseSlug}/resources/${slug}`;
+}
 
 /**
  * A lesson's quiz and reflection prompts. Both live in the same JSON file.
@@ -146,6 +287,7 @@ export const getQuiz = cache(
         questions: parsed.questions ?? [],
         pass_mark: parsed.pass_mark ?? null,
         reflection: parsed.reflection ?? [],
+        checkin: parsed.checkin ?? null,
       };
     } catch {
       return null;

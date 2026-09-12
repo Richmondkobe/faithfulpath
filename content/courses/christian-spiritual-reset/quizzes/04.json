@@ -1,78 +1,175 @@
 {
  "lesson": "04-recognising-burnout-spiritual-dryness-and-emotional-overload",
- "pass_mark": 4,
- "questions": [
-  {
-   "q": "How does the chapter describe its three categories of burnout, spiritual dryness and emotional overload?",
-   "options": [
-    "As pastoral descriptions that overlap and are not diagnoses",
-    "As clinical diagnoses a reader can apply to themselves",
-    "As three stages that always follow one another",
-    "As signs of hidden sin"
-   ],
-   "answer": 0,
-   "explanation": "The author writes as a pastor experienced in counselling, not a doctor. Some signs overlap with depression, anxiety, chronic stress and physical illness, which is why Chapter 5 matters."
-  },
-  {
-   "q": "When Moses said the burden was too heavy for him (Numbers 11:10–15), how did God respond?",
-   "options": [
-    "He rebuked Moses for weak faith",
-    "He shared the burden among seventy elders",
-    "He told Moses to pray harder and try again",
-    "He removed Moses from leadership"
-   ],
-   "answer": 1,
-   "explanation": "The remedy was structural, shared responsibility (Numbers 11:16–17), just as Jethro had earlier warned Moses that judging alone would wear him out (Exodus 18:13–23)."
-  },
-  {
-   "q": "According to the chapter, what is the central difficulty in burnout?",
-   "options": [
-    "God feels distant even when life is calm",
-    "Too much emotion to process at once",
-    "Prolonged demands with inadequate recovery or support",
-    "A lack of spiritual gifts"
-   ],
-   "answer": 2,
-   "explanation": "Burnout is deep exhaustion from pouring out for far longer than you have been receiving rest, help, encouragement or care. Rest alone will not cure it if the structure that emptied you stays the same."
-  },
-  {
-   "q": "What does the chapter say about the cause of spiritual dryness?",
-   "options": [
-    "It is always the result of unconfessed sin",
-    "It is never connected to sin",
-    "It is caused by too much prayer",
-    "It is not always the result of sin; sometimes there is something to confess (Psalm 32), but often, as with Job, there is nothing to find"
-   ],
-   "answer": 3,
-   "explanation": "Psalms 42, 63 and 13 show people holding on to faith while feeling nothing. Scripture preserved those prayers so we would know the experience is not unusual."
-  },
-  {
-   "q": "Which of these is listed as a common sign of emotional overload?",
-   "options": [
-    "Crying, or being close to it, without an obvious trigger",
-    "Increasing cynicism toward the people you serve",
-    "Wondering whether earlier experiences of God were real",
-    "Dreading ministry you used to find meaningful"
-   ],
-   "answer": 0,
-   "explanation": "Overloaded people often look fine, but the weight shows in unexpected tears, disproportionate reactions to small things and a flatness that has replaced both joy and sorrow. The other options belong to the burnout and dryness lists."
-  },
-  {
-   "q": "When does the chapter say a pastoral description stops being adequate and a doctor or mental-health professional should be consulted?",
-   "options": [
-    "Only after a full year of difficulty",
-    "When low mood, emptiness or loss of interest has been present most days for two weeks or longer, or is significantly affecting daily functioning",
-    "Never, because a retreat is enough",
-    "Only if a pastor recommends it"
-   ],
-   "answer": 1,
-   "explanation": "You do not need to wait until things become severe. And anyone with thoughts of not wanting to be alive should tell a trusted person and contact a professional or crisis service promptly."
-  }
- ],
+ "questions": [],
  "reflection": [
-  "Which of the three descriptions had the most marks: burnout, spiritual dryness, or emotional overload? Which had the fewest?",
-  "How long has this been going on? Weeks, months, or longer? When did you first notice?",
+  "Which of the three descriptions fits you most closely: burnout, spiritual dryness, or emotional overload? Which fits least?",
+  "How long has this been going on? When did you first notice?",
   "Is there a specific event you can connect it to (a loss, a move, a conflict, a change of role), or did it build gradually with no obvious cause?",
-  "Did the section \"Where this stops being pastoral\" describe you? If so, what support do you need today? Write the name of the person, doctor, counsellor, crisis service, or emergency service you will contact."
- ]
+  "If the check-in pointed you toward support, who will you contact, and when?"
+ ],
+ "checkin": {
+  "type": "readiness",
+  "title": "Personal Readiness Check-in",
+  "intro": "This is not a test and it is not scored. It helps you notice what deserves attention, and it may point you toward support before you begin. Your answers are for your personal reflection. They are not monitored in real time, and completing this check-in does not contact anyone on your behalf. If you are in immediate danger, call your local emergency number now.",
+  "sections": [
+   {
+    "id": "signs",
+    "type": "multi",
+    "question": "What have you experienced during the past month? Mark everything that applies.",
+    "options": [
+     {
+      "id": "exhaustion",
+      "text": "Persistent exhaustion"
+     },
+     {
+      "id": "interest",
+      "text": "Loss of interest or enjoyment"
+     },
+     {
+      "id": "irritable",
+      "text": "Irritability or resentment"
+     },
+     {
+      "id": "concentrate",
+      "text": "Difficulty concentrating"
+     },
+     {
+      "id": "empty",
+      "text": "Prayer or Scripture feeling empty"
+     },
+     {
+      "id": "tears",
+      "text": "Unexpected tears or emotional reactions"
+     },
+     {
+      "id": "numb",
+      "text": "Feeling numb or detached"
+     },
+     {
+      "id": "functioning",
+      "text": "Difficulty functioning at work or home"
+     },
+     {
+      "id": "alive",
+      "text": "Thoughts of wanting to disappear or not be alive",
+      "urgent": true
+     }
+    ]
+   },
+   {
+    "id": "duration",
+    "type": "single",
+    "question": "How long has this been happening?",
+    "options": [
+     {
+      "id": "under2w",
+      "text": "Less than two weeks"
+     },
+     {
+      "id": "over2w",
+      "text": "Two weeks or longer"
+     },
+     {
+      "id": "months",
+      "text": "Several months"
+     },
+     {
+      "id": "unsure",
+      "text": "I am not sure"
+     }
+    ]
+   },
+   {
+    "id": "impact",
+    "type": "single",
+    "question": "How much is it affecting ordinary life?",
+    "options": [
+     {
+      "id": "normal",
+      "text": "I am functioning normally"
+     },
+     {
+      "id": "some",
+      "text": "Some responsibilities are becoming difficult"
+     },
+     {
+      "id": "significant",
+      "text": "My work, relationships, sleep, eating, or self-care are significantly affected"
+     },
+     {
+      "id": "struggling",
+      "text": "I am struggling to manage ordinary responsibilities"
+     },
+     {
+      "id": "unsafe",
+      "text": "I am struggling to remain safe",
+      "urgent": true
+     }
+    ]
+   },
+   {
+    "id": "alone",
+    "type": "single",
+    "question": "Do you feel safe being alone for an extended period?",
+    "options": [
+     {
+      "id": "yes",
+      "text": "Yes"
+     },
+     {
+      "id": "uncertain",
+      "text": "I am uncertain"
+     },
+     {
+      "id": "no",
+      "text": "No",
+      "urgent": true
+     }
+    ]
+   }
+  ],
+  "guidance": [
+   {
+    "id": "urgent",
+    "when": "signs_has:alive OR impact_in:unsafe OR alone_in:no",
+    "heading": "Please get support before anything else",
+    "text": "One or more of your answers suggests that this is more than tiredness, and that being alone in silence may not be safe for you right now. That is not a failure of faith, and it does not mean the retreat is closed to you. It means the order matters: help first, retreat later. Tell a trusted person today, and contact a doctor, a qualified mental-health professional, or a crisis service where you live. If you believe you may act on thoughts of not being alive, or cannot keep yourself safe, contact your local emergency number or go to the nearest emergency department now, and ask someone to stay with you.",
+    "cta": {
+     "text": "Finding help where you live",
+     "lesson": "00-finding-help-where-you-live"
+    },
+    "block_continue": true,
+    "hide_action": true
+   },
+   {
+    "id": "professional",
+    "when": "(duration_in:over2w,months,unsure AND impact_in:significant,struggling) OR impact_in:struggling",
+    "heading": "Speak with a doctor or counsellor before you retreat",
+    "text": "What you describe has lasted two weeks or longer and is affecting ordinary life, or has reached the point where ordinary responsibilities are hard to manage. That is the point at which a pastoral description stops being enough. Please make an appointment with a doctor or a qualified mental-health professional before you begin, and tell them you are planning this retreat. Choose path 2 (proceed with support), 3 (an adapted format) or 4 (postpone) in Lesson 5. The retreat will still be here.",
+    "cta": {
+     "text": "Finding help where you live",
+     "lesson": "00-finding-help-where-you-live"
+    }
+   },
+   {
+    "id": "support",
+    "when": "alone_in:uncertain OR impact_in:some,significant OR duration_in:over2w,months,unsure OR signs_count_gte:4",
+    "heading": "Consider a gentle, supported format",
+    "text": "Your answers suggest you are carrying a good deal. You can still take this retreat, but plan it with support: tell someone what you are doing, arrange contact during the retreat, and consider a shorter or at-home format rather than three days alone. Lesson 5 will help you choose the right path, and Module 3 has the shorter formats. If things get worse before you begin, or you start to feel unsafe, seek help first."
+   },
+   {
+    "id": "ok",
+    "when": "otherwise",
+    "heading": "You look ready to prepare",
+    "text": "Your answers suggest tiredness rather than crisis. Carry on with the preparation lessons, be honest in the reflections, and tell at least one person about the retreat. If anything changes before you begin, come back and do this check-in again."
+   }
+  ],
+  "priority": [
+   "urgent",
+   "professional",
+   "support",
+   "ok"
+  ],
+  "notes": "Apply guidance in `priority` order; the first rule whose `when` matches wins. `urgent` overrides everything: show its text and CTA, hide the ordinary Continue/next-lesson link and the lesson's next-step checkbox, and show the Finding Help link instead."
+ }
 }

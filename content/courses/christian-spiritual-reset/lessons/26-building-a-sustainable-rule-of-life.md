@@ -4,9 +4,37 @@ module: m5
 order: 26
 source: "Chapter 15"
 type: teaching
+outcome: "Turn the one rhythm you kept into a small rule of life, with a regular Sabbath at its centre, that can survive an ordinary difficult week."
+action: "In your third week home, write your rule of life on the Rule of Life Template from the Resources section: the three core lines, no more than two optional ones, the two-week check and three-month review dates, and the person you will share it with. Then share it."
+action_done: "I have written my rule for this season and shared it with my Eli or support person."
+resources: [rule-of-life-template]
 ---
 
 # Building a Sustainable Rule of Life
+
+## Key Scripture
+
+> "The Sabbath was made for man, not man for the Sabbath."
+>
+> — Mark 2:27 (ESV)
+
+## In brief
+
+By now you have kept one rhythm for a week or two, imperfectly, and done a few of the cards. This lesson turns that rhythm into a small pattern that can carry you: what older Christian traditions call a rule of life. It should be built in ordinary life, not on retreat, because ordinary life is where it has to work.
+
+**What a rule is, and is not.** The word comes from the Latin *regula*, a straightedge: a guide by which something is given shape. A helpful modern image is a trellis, a structure along which a living thing can grow without being crushed. A rule of life is a small, chosen pattern of prayer, rest, work, and relationship that gives your life a shape it will not find by drifting. Daniel prayed three times a day at his window "as he had done previously" (Daniel 6:10); Acts 2:42 is a rule of life in one sentence: teaching, fellowship, table, prayer. A rule is not legalism. "For freedom Christ has set us free" (Galatians 5:1). A rule that becomes a way of earning God's approval, or a stick to beat yourself with, has stopped being a trellis and become a cage, and should be torn up. But for many burned-out people the nearer danger is drift: without a chosen pattern, the loudest demand wins every day. A rule is how you decide in advance what will not be squeezed.
+
+**Sabbath at the centre.** This course strongly recommends a regular period of worship, ceasing, rest, and delight as the centre of any sustainable Christian rhythm. Its roots are in creation, rest because God rested (Exodus 20:8–11), and in liberation, rest because you were slaves and are no longer (Deuteronomy 5:12–15). Sabbath declares that the world is held by God and that you are not a slave to your work, your phone, or anyone's expectations. Jesus rejected interpretations that made the day a burden: "The Sabbath was made for man, not man for the Sabbath" (Mark 2:27), and he healed on it repeatedly. Christians differ over whether his teaching continues, fulfils, or transforms the command, and over which day; Paul refused to let the observance of days become a matter of judgement (Colossians 2:16–17; Romans 14:5–6). This course does not require agreement about a day. What it recommends is the principle beneath the debate: God built a rhythm of ceasing into creation and his people's freedom, and a life without it is not the life you were made for.
+
+*How to practise it.* Choose a period, ideally a full day, or a half-day or evening-to-evening if that is impossible, in which you stop your ordinary work: not only paid work, but managing, fixing, improving, and producing. Fill it with worship if the day allows, rest, delight, and unhurried people. Do not use the day to catch up. Sabbath is not neglect: necessary care, mercy, and emergencies remain. If Sunday is your work day, as it is for pastors and shift workers, take another day and protect it as fiercely as a pastor's Sunday is protected for everyone else. If you are a caregiver who cannot stop for a day, receive safe respite if it exists, and if it does not, look for Sabbath fragments: a protected hour, help with one task. A half-day kept for a year is worth more than a full day intended and never taken. Sabbath will cost you something at first. That cost is the point: the manna did not fall on the seventh day, and the people who trusted that had enough.
+
+**The other parts of the rule.** The whole rule should fit on one page; three to five commitments is enough. *Core: regular ceasing and rest,* the Sabbath practice above, and a realistic sleep window. *Core: prayer and Scripture,* a fixed time most days, however short; the Lesson 8 practice, a psalm and a few minutes of silence, is a complete daily pattern for a tired person, and the fixed time matters more than the length. *Core: one limit that protects your health or calling,* usually a work limit: an evening that is off, a day that is not touched, a laptop closed at a set hour. Write it into the rule so it is decided once rather than fifty times a week. *Optional:* a relationship you will tend, beginning with a church community you belong to and are known in, not only one you serve; your body, from Lesson 11; and the element of the phone boundary you chose to keep.
+
+**Writing it.** Use the template. Here is an example, deliberately unimpressive, because unimpressive rules are the ones that get kept: Saturday noon to evening, no paid work or email, eat with family and walk, phone outside the bedroom; a psalm and five minutes of prayer at 7 a.m., Monday to Friday; laptop closed by 7 p.m.; when I miss something, I will resume at the next opportunity without punishment, compensation, or guilt. "Without compensation" matters. Do not repay a missed Sabbath with a double one. Resume. Read the page to God, then share it with your Eli or support person; a rule nobody else knows about is easy to abandon quietly. Write the rule you can keep in a difficult ordinary week, not the one you wish you had capacity for, and if you share a life, do not write it alone.
+
+**Reviewing it.** At two weeks, a light check: is this livable? If it already feels like a cage, remove something now. At three months, sit down with your Eli and ask: What have I kept? What have I dropped, and why? What has changed that the rule needs to reflect? What one thing would I add or remove? Then rewrite the page with the new date. A rule of life is not written once. It is revised for the rest of your life, and every revision is the same small act of trust as Sabbath itself: that God holds the world, and that you can afford to stop and look at how you are living in it.
+
+## Read the deeper teaching
 
 ## For the second and third weeks home
 
@@ -91,4 +119,3 @@ Two cautions. Do not write the rule you wish you had the capacity for. Write the
 At two weeks, a light check: is this livable? If the rule already feels like a cage, remove something immediately. You do not need to wait for the formal review date to subtract.
 
 At three months, sit down with the page and your Eli and ask four questions. What have I kept? What have I dropped, and why? What has changed in my life that the rule needs to reflect? What one thing would I add or remove? Then rewrite the page with the new date. A rule of life is not written once. It is revised for the rest of your life, and every revision is a small act of the same trust that Sabbath is: that God holds the world, and that you can afford to stop and look at how you are living in it.
-

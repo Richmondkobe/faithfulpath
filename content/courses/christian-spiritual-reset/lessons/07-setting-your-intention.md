@@ -4,9 +4,45 @@ module: m2
 order: 7
 source: "Chapter 7"
 type: teaching
+outcome: "Write one honest intention for your retreat: what you are carrying, what you are asking, and what you are willing to leave in God's hands."
+action: "On one page, write the four parts of your intention: what I am carrying, what I am asking (one sentence, addressed to God), what I have not said, and what I am releasing. Read it once, aloud if you can, and keep the page for Session One."
+action_done: "I have written my four-part intention and kept the page."
 ---
 
 # Setting Your Intention
+
+## Key Scripture
+
+> "What do you want me to do for you?"
+>
+> — Mark 10:51 (ESV)
+
+## In brief
+
+You have a length and a place, or at least a target for both. Before we prepare your heart, and before we address your phone and your packing, there is one short exercise that shapes everything else: deciding, honestly, why you are going.
+
+This sounds obvious. It is not. People often arrive at a retreat with no clear intention, an exhausting list of things to fix, or a spiritual-sounding purpose that conceals what they truly want. A retreat intention is one honest sentence to God about what you are bringing and what you are asking. It is provisional, not controlling: it gives you a place to begin while leaving God free to redirect your attention.
+
+**"What do you want me to do for you?"** In Mark 10, a blind beggar named Bartimaeus hears that Jesus is passing through Jericho and starts shouting. The crowd tells him to be quiet; he shouts louder. Jesus stops, calls him over, and asks a question that seems unnecessary. The man is blind. Everyone can see what he needs. But Jesus asks anyway, and Bartimaeus has to say it out loud: "Rabbi, I want to see." Asked the same question, James and John answered with seats of honour, and the answer revealed them. Saying what we want, plainly, in his hearing, tells us the truth about ourselves. Your intention is your answer to that question. Not the answer a mature Christian should give. The real one.
+
+**Intention is not a list.** The first mistake is to arrive with too much: resolve my calling, forgive my father, decide about the job, restart my prayer life, lose the anxiety. Each may be real, but together they turn the retreat into work. Psalm 27:4 offers a different posture. David knew danger and many competing needs, yet he writes, "One thing have I asked of the LORD." Not because he had only one need, but because he gathered his desire into the one underneath the others. A good intention sounds less like "I want to resolve X, Y, and Z" and more like "I have been carrying this alone for a long time and I need to set it down in front of you."
+
+| Outcome-focused expectation | Open-handed intention |
+|---|---|
+| "God must tell me whether to leave my job." | "I want to bring my fear and uncertainty about work before God without forcing an immediate answer." |
+| "I must forgive everything by Sunday." | "I want to become honest about the wound and open to the next safe step toward freedom." |
+| "I need to feel God again." | "I want to remain present with God and truthful about the distance I feel." |
+| "This retreat must cure my burnout." | "I want to recognise what has emptied me and become willing to change what I can." |
+
+**Intention is not a performance.** The opposite mistake is an intention that is entirely correct and entirely hollow: "I want to draw closer to God and be renewed in my faith." Nothing is wrong with the sentence. But if the truer sentence is "I am so angry about what happened that I cannot pray, and I have not told anyone," then the polished version is a way of avoiding the retreat before it starts. Scripture does not reward polished prayers. Hannah was so distressed that she prayed without sound and Eli assumed she was drunk (1 Samuel 1). She brought her anguish before God without disguising it. God already knows the unpolished version. Writing it down is for you, so that you enter the retreat as the person you actually are.
+
+**The intention you are hiding.** Underneath the stated intention there is sometimes a hidden one. Some go hoping God will confirm a decision already made, or change a person who is not there, or to prove they are still spiritual, or for a dramatic experience that will make everything feel real again. None of these disqualifies you. But left unspoken, each can distort what you hear. So write down what you are hoping for that you have not said, and bring that to God as well. Psalm 139:23–24 is the prayer for this: "Search me, O God, and know my heart."
+
+**Open hands.** An intention is a request, not a demand. You may ask for clarity and receive peace about not knowing yet. Jesus in Gethsemane gives the pattern: honest desire, "remove this cup from me," held together with surrender, "yet not what I will, but what you will" (Mark 14:36). State your intention plainly, then add, in whatever words are yours, *but I am open to what you have for me instead*. Open hands do not mean passivity toward abuse, injustice, danger, or responsibilities that require action. Surrender means refusing to manipulate the retreat into your preferred answer, not surrendering wisdom, boundaries, or safety.
+
+**If you cannot find an intention.** Some people sit with this and find nothing, because they are too tired or too numb to know what they want. If that is you, your intention can simply be: "I do not know what I need. I only know I need to stop and be with you." That is a complete and honest intention. God receives even a prayer that brief. Elijah could name little more than "It is enough." But if "it is enough" means you do not want to remain alive, follow the guidance in Lesson 5 and seek support rather than beginning alone.
+
+## Read the deeper teaching
 
 You have a length and a place, or at least a target for both. Before we prepare your heart more deliberately, and before we address your phone and packing, there is one short exercise that will shape everything else: deciding, honestly, why you are going.
 

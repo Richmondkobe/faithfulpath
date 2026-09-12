@@ -4,9 +4,43 @@ module: m2
 order: 11
 source: "Chapter 11"
 type: teaching
+outcome: "Care for your body during the retreat the way God cared for Elijah: food, water, sleep, and gentle movement, with fasting optional and not for everyone."
+action: "Write a simple plan for each retreat day: what you will eat and how you will get it, when you will sleep and wake, and what movement, if any, you will include and where it is safe. If you were considering a food fast, decide now, using the guidance in this lesson, whether it is genuinely appropriate for you."
+action_done: "I have written my food, sleep, and movement plan and recorded whether I will eat normally or undertake a medically appropriate fast."
+action_followup: "If you chose to fast: have you discussed this with a healthcare professional who knows your health and medication history, where the lesson recommends doing so?"
 ---
 
 # Fasting, Food, Rest, and Physical Health
+
+## Key Scripture
+
+> "Arise and eat, for the journey is too great for you."
+>
+> — 1 Kings 19:7 (ESV)
+
+## In brief
+
+Elijah's story contains a detail that is easy to skip. Before God spoke to him, an angel woke him and said, "Arise and eat." Then, after he slept again: "Arise and eat, for the journey is too great for you." God's first recorded response to Elijah's exhaustion was not correction or instruction. It was food, water, and sleep. Only afterwards came the journey, the mountain, and the whisper.
+
+Christians sometimes treat the body as an obstacle to spiritual life. Scripture does not. We meet God as whole persons, and the body you bring to the retreat is the only one you have. A necessary word first: I am a pastor, not a physician. This is general pastoral guidance, not an assessment of what is safe for you. Ordinary eating is the default for this retreat. If you wish to alter your food or fluid intake, get advice from a healthcare professional who knows your history, before the retreat, not during it.
+
+The whole lesson in four lines: eat normally, drink according to your usual needs, and rest; consider food fasting only if it is already familiar to you and individually cleared; practise non-food restraint instead, from digital input, entertainment, or unnecessary speech; and stop any practice that causes concerning symptoms.
+
+**Fasting: optional, and not for everyone.** This retreat does not require fasting. You can participate fully in every session while eating normally, and for a retreat focused on burnout and restoration, that is my general recommendation. You do not need physical hunger to make the retreat spiritually serious. Scripture treats fasting as a recognised practice: Jesus assumed his followers would fast and taught them to do it without display (Matthew 6:16–18), and the early church fasted before major decisions (Acts 13:2–3). But Scripture is equally clear that fasting is not a technique for extracting things from God. Isaiah 58 rebukes people who abstain from food while continuing oppression, and teaches that self-denial is empty when separated from justice, generosity, and care for the vulnerable. Jesus' forty days were a unique period of preparation, not a model for you.
+
+Do not undertake a food fast without individual medical guidance if you are pregnant, breastfeeding, or trying to conceive; under eighteen; an older adult with frailty or medical advice to eat regularly; living with diabetes or any condition affecting blood sugar, or a heart, kidney, liver, gastrointestinal, or chronic condition; taking regular medication; recovering from illness, surgery, or significant exhaustion; or prone to fainting, migraines, anaemia, or low blood pressure. Separately, and without exception: this course does not recommend food fasting for anyone with a current or past eating disorder or disordered-eating pattern. Fasting can reawaken patterns that took a long time to escape, under a spiritual disguise that makes it harder to recognise. Follow your established meal plan, and if the retreat's simplicity around food begins to feel like an invitation to restrict, pause and contact your treatment provider. Nothing in this retreat is worth that risk.
+
+If you are on either list, there is no spiritual loss. Elijah did not fast; he was fed. If you have been cleared and fasting is already a healthy, established part of your practice, keep it modest and familiar, never restrict water, and stop immediately if you feel dizzy, faint, confused, or shaky, or if your heart races. If symptoms are severe or do not begin resolving, seek urgent medical help. There is no spiritual merit in pushing through a body that is telling you to stop. For many people taking this course, the digital boundary of Lesson 9 is the wiser fast.
+
+**Food: simple, nourishing, unhurried.** Plan meals that need little preparation, using familiar foods that meet your dietary, allergy, medical, and medication needs. Do not use the retreat to begin a restrictive diet. Eat enough; some people under-eat on retreat in a spirit of simplicity and then wonder why they cannot concentrate by the second afternoon. Simplicity is about not fussing, not about going without. Eat slowly, and if you can, without reading or listening to anything. A meal eaten in silence, with attention and thanks, is itself a small act of retreat; the risen Jesus cooked breakfast on a beach for tired fishermen. Two cautions: do not make an abrupt change to your caffeine routine, because withdrawal headaches are easy to mistake for spiritual distress; and alcohol is not part of this retreat, but if you drink heavily and may be dependent, do not use the retreat to stop suddenly, because withdrawal can be medically dangerous.
+
+**Rest: sleep is not the enemy of prayer.** "He gives to his beloved sleep" (Psalm 127:2). Sleep is a gift, not an interruption. Elijah slept twice before God spoke. If you arrive exhausted, you may spend a good part of Day 1 asleep, and that is fine. Do not set an alarm for five in the morning to prove your seriousness. Keep your normal routine and medication around sleep, take an afternoon nap if you need one, and do not use the retreat to try to fix your sleep. Rest is not time stolen from the retreat. It is part of the retreat.
+
+**Movement: walk, do not train.** Several sessions suggest walking, and gentle walking often helps thoughts and emotions become easier to notice; two disciples walked their grief out on the road to Emmaus, and Jesus joined them. This is not the time for a long run or a hard workout. Stay within your ability and near help, and adapt the walking sessions to whatever movement is possible for you, or simply to sitting somewhere different, outdoors if you can. The point is a change of position and place, not distance.
+
+**Illness and knowing when to stop.** If you become unwell, treat it as you would at home. Do not spiritualise a fever. If you would ordinarily stay in bed, stay in bed and let the sessions wait. The retreat is not undone by a day of illness; it is paused. The sessions are offered, not assigned, and your body's limits are legitimate limits.
+
+## Read the deeper teaching
 
 Elijah's story, which has followed us through this course, contains a detail that is easy to skip. Before God spoke to him, an angel woke him and said, "Arise and eat." Then, after he slept again, "Arise and eat, for the journey is too great for you" (1 Kings 19:5–7). God's first recorded response to Elijah's exhaustion was not correction or instruction. It was food, water, and sleep. Only afterwards came the journey, the mountain, and the whisper.
 
@@ -78,4 +112,3 @@ If you become unwell during the retreat, treat it as you would at home. Rest, fo
 If you develop symptoms of a contagious illness at a shared property or retreat centre, notify the property or retreat leader, avoid exposing others, and arrange appropriate care or an early return where it is safe to travel.
 
 If you have an injury or a chronic condition that flares, follow your usual care and do not push through pain to complete a session. The sessions are offered, not assigned, and your body's limits are legitimate limits.
-

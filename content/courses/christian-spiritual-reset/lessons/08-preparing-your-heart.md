@@ -4,9 +4,50 @@ module: m2
 order: 8
 source: "Chapter 8"
 type: teaching
+outcome: "Use the week before your retreat to begin slowing down, notice your resistance, settle what can be settled, and ask others to pray."
+action: "Schedule the ten-minute preparation practice for the five to seven days immediately before your retreat. If your retreat begins within the next week, start today: read the day's psalm twice, sit quietly for up to three minutes, and pray one sentence about the retreat. Then ask one trustworthy person to pray for you on each retreat day."
+action_done: "I have scheduled or begun the practice and asked someone to pray."
 ---
 
 # Preparing Your Heart
+
+## Key Scripture
+
+> "I have calmed and quieted my soul, like a weaned child with its mother; like a weaned child is my soul within me."
+>
+> — Psalm 131:2 (ESV)
+
+## In brief
+
+A retreat does not begin when you arrive. It begins in the days before, when you decide whether to come toward it slowly or crash into it at full speed. A little preparation may reduce the restlessness of the first day. If you cannot manage it, a restless retreat is not a failed one. But this lesson asks very little each day, because your heart, like your body, does not stop moving the moment you tell it to.
+
+**Why you cannot simply stop.** When a person who has been running for months finally sits down, the body sits and the mind keeps running. Many people spend the first day of a retreat simply coming down from the speed they arrived at. Psalm 131 describes the destination: a soul calmed and quieted like a weaned child with its mother, content to remain without urgently seeking anything. The psalmist did not arrive there by accident. The verb is active. He calmed and quieted his soul. This week is about beginning to do the same.
+
+**A simple practice for the week before.** For the five to seven days before your retreat, set aside ten minutes a day.
+
+| Day | Psalm | Simple focus |
+|---|---|---|
+| 1 | Psalm 23 | God's care |
+| 2 | Psalm 62 | Rest and waiting |
+| 3 | Psalm 27 | One central desire |
+| 4 | Psalm 42 | Spiritual thirst |
+| 5 | Psalm 63 | Longing for God |
+| 6 | Psalm 139 | Honest self-examination |
+| 7 | Psalm 131 | Quiet trust |
+
+Each day: read the psalm twice, the second time more slowly, noticing which words describe something in you. Sit quietly for up to three minutes with a timer, holding one phrase; if three minutes is too much, begin with one. Then pray one sentence about the retreat: "Lord, I am coming to be with you. Prepare me, and prepare the days." The purpose is attention, not endurance. By the end of the week you will have practised returning to quiet and learned something about how you respond when you slow down.
+
+**Noticing your resistance.** Somewhere in that week, resistance may appear. A sudden urgency about tasks that could wait. A growing feeling that the retreat is self-indulgent, that this is not the right time, that someone else needs you more. A vague dread. Resistance is information, not a command. It does not automatically mean cancel, and it does not automatically mean push through. Ask what it might be telling you. If it is a responsibility, handle it. If it is a real concern about safety, Lesson 5's four paths apply. And if it is reluctance to face something the quiet may surface, a grief, a truth about your work, a question about God you have not let yourself ask, write it down and bring the page with you. Name it, so that when it appears on the retreat you recognise it as something you expected. Not every anxious feeling is spiritual opposition.
+
+**Unfinished relationships.** Jesus said that if you are offering your gift at the altar and remember that your brother has something against you, you should go and be reconciled first (Matthew 5:23–24). Devotion must not become a way of avoiding responsibility for harm we have caused. So ask: is there anyone I have hurt, or am in open conflict with, whom I could reasonably approach before I go? Not every strained relationship, and not old wounds that need the retreat itself. A sharp word you have not apologised for; a misunderstanding one honest conversation could begin to address. If it is safe and wise, do it, without demanding forgiveness on your timetable. Two cautions: Jesus is speaking about a wrong you have done, not instructing you to chase reconciliation with everyone who has wronged you, and you are never required to contact someone unsafe. And do not use this principle to talk yourself out of going.
+
+**Confession before you go.** Some carry a specific, known offence they have not confessed, and it sits between them and any real stillness. If there is something like that, name it to God this week; 1 John 1:9 gives the promise plainly. This is the thing you already know, not the deeper confession that surfaces slowly in Session Five. If your actions harmed someone or involve abuse, criminal conduct, or someone's safety, seek qualified guidance about accountability and reporting. But do not turn this into a search. Confess what you know and leave the rest to God. If you keep confessing the same matter because you cannot feel forgiven, speak with a pastor or mental-health professional who understands scrupulosity, persistent religious guilt or a compulsive fear that you have not confessed or repented correctly.
+
+**Praying, and asking others to pray.** Jehoshaphat, facing an invading army, "set his face to seek the LORD" (2 Chronicles 20:3). Setting your face is a chosen act. Pray for the practical things and the deeper ones, and ask others to pray too. You do not need to explain why: "I am taking some days to be with God, and I would value your prayers" is enough.
+
+**Handing over well.** If you are leaving responsibilities in someone's hands, hand them over properly: write down what needs doing and who is doing it, route urgent contact through one person, and give whoever is covering clear authority to act. A poorly handed-over responsibility follows you into the retreat as a low hum of worry.
+
+## Read the deeper teaching
 
 A retreat does not begin when you arrive. It begins in the days before, when you decide whether to come toward it slowly or to crash into it at full speed. The way you approach the preceding week can make a meaningful difference. A little preparation may reduce the restlessness of the first day and help you arrive with greater attention. If you cannot complete this preparation, however, you can still take the retreat honestly and benefit from it. And a restless retreat is not necessarily a failed retreat. Sometimes restlessness is itself part of what needs to be noticed with compassion.
 
@@ -85,4 +126,3 @@ This is not a formality. James 5:16 speaks of the prayer of a righteous person h
 One practical note, because it affects the heart more than people expect. If you are leaving work, ministry, or family responsibilities in someone else's hands, hand them over properly. Write down what needs doing and who is doing it. Tell people when you will return and how genuine emergencies should be handled. Whenever possible, route urgent contact through one designated person rather than remaining available to everyone. Give the person covering for you clearly defined authority, the information they genuinely need, and permission to handle agreed matters without consulting you.
 
 Moses' father-in-law told him that carrying everything alone was "not good," and the remedy was to share the load with people who could bear it (Exodus 18:17–23). A poorly handed-over responsibility will follow you into the retreat as a low hum of worry. A well-handed-over one lets you be absent in fact, not only in location.
-

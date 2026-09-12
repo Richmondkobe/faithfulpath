@@ -4,9 +4,52 @@ module: m2
 order: 6
 source: "Chapter 6"
 type: teaching
+outcome: "Settle the ordinary questions that decide whether a retreat happens at all: how long, where, and when."
+action: "Write down your retreat length (three days, one day, three hours, or the at-home format), your location, and your target dates, with a softer day before and after if you can arrange it. If you cannot settle everything yet, choose at least a format and a target month."
+action_done: "I have chosen a format, a place, and target dates."
 ---
 
 # Choosing Your Retreat Length and Location
+
+## Key Scripture
+
+> "Come away by yourselves to a desolate place and rest a while."
+>
+> — Mark 6:31 (ESV)
+
+## In brief
+
+Module 1 asked you to be honest about your condition. Module 2 asks you to be practical about your plans. The two belong together. Many people who genuinely want unhurried time with God never create it, not because they lack desire, but because they never settle the ordinary questions: when, where, for how long, and what to do with the phone. This lesson covers the first three. Lesson 9 covers the phone.
+
+A retreat does not need to be elaborate. It needs to be protected. Everything here serves that one word.
+
+**Choosing your length.** This course is built around three days. If you can take them, take them. Day 1 slows you down and helps you begin to release what you carry. Day 2 makes room for deeper honesty through lament, confession, and release. Day 3 turns toward listening, identity, and returning. The program builds in walks, meals, and quiet between the heavier sessions, and you will not be expected to resolve every grief or complete forgiveness on a schedule. Three consecutive days without ordinary work between sessions is the recommended shape; it does not have to be Friday to Sunday.
+
+If three consecutive days are out of reach, and for many people they will be, Module 3 offers adapted programs: a one-day retreat that covers the essential sessions across eight to ten hours with generous breaks; a three-hour reset for someone who needs to stop now; and an at-home retreat that spreads seven sessions across eight days for parents, caregivers, and anyone who cannot step away. Choose the length you can actually protect, not the one that sounds most impressive. A one-day retreat that happens is worth more than a three-day retreat that stays on your list for a year. And longer is not automatically better; if you are considering more than three days, seek guidance from someone experienced in facilitating retreats.
+
+**Choosing your place.** Jesus withdrew to ordinary settings: mountains, gardens, wilderness places, a boat. You do not need a retreat centre, but the place does matter, because some places make it much harder to be quiet.
+
+| Location | Main advantage | Main challenge | Best suited for |
+|---|---|---|---|
+| Home alone | Free and familiar | Chores and digital distraction | One-day or three-day retreat |
+| Home with others | Accessible | Frequent interruption | At-home format |
+| Borrowed home | Affordable and separate | Privacy and access arrangements | One-day or three-day retreat |
+| Church building | Quiet and inexpensive | Security and interruptions | Day retreat |
+| Retreat centre | Purpose-built environment | Cost and travel | First three-day retreat |
+| Hotel or guesthouse | Privacy and availability | Phone, television, and expense | One-day or three-day retreat |
+| Outdoors | Natural quiet and movement | Weather and safety | Individual sessions, not usually the whole retreat |
+
+A few notes. Home alone works if you set up one room as the retreat space and close the doors on the rest; it takes real discipline, because home is full of unfinished work. Home with the household present is the hardest option and the one many parents will have to use; it works in the at-home format, with sessions early or late, and only if the other adults agree to protect the time. A borrowed home, a relative's house while they are away or a church member's guest room, is often the best option: quiet and free of your own unfinished business. A church building can serve for a day; if you are a pastor, ask a colleague at a different church so you are not where everyone can find you. A retreat centre does much of the protecting for you and is a very good choice for a first three-day retreat if it is within your means. The outdoors is excellent for parts of a retreat, rarely practical as the whole of it, and needs sense: tell someone where you are going, and keep phone coverage.
+
+**Seven questions for any location.** Can I have protected time here? Does it help me feel safe and settled? Can I sleep well here? Can I eat simply here? Can I control my connectivity without losing access to help? Can it support my physical needs, including accessibility and medication? Can I afford it without stress? Any "no" needs a solution or a different place. The full teaching below expands each one.
+
+**On cost.** Some people feel that a proper retreat needs a proper retreat centre and, since they cannot afford one, do not go at all. That is exactly the situation this course was written to address. The most important elements of a retreat, unhurried time, honesty before God, Scripture, and silence, are free. Everything else is helpful but optional.
+
+**Timing.** If you can, reduce demands for a day or two before, and do not schedule anything heavy for the day after. Returning straight into a full calendar makes it harder to carry forward what became clear. If you arrive exhausted anyway, allow yourself to sleep; resting through part of Day 1 is not failure.
+
+A tentative plan can be adjusted. An undefined plan is easy to postpone.
+
+## Read the deeper teaching
 
 Module 1 asked you to be honest about your condition. Module 2 asks you to be practical about your plans. The two belong together. Many people who genuinely want extended, undistracted time with God never create it, not because they lack desire, but because they never settle the ordinary questions. Four of them can determine whether a retreat happens: when, where, for how long, and what to do with the phone. This lesson will help you decide the length, location, and approximate dates. Lesson 9 will address the phone.
 

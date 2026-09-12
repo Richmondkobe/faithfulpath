@@ -4,7 +4,17 @@ import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireActiveMember } from "@/lib/member-gate";
 import { findLesson, getQuiz, getRouteLesson, lessonHref } from "@/lib/course";
-import { ROUTE_ANSWER_INDEX, type Route } from "@/lib/course-progress";
+import {
+  CHECKIN_INDEX,
+  DAY30_INDEX,
+  FOLLOWUP_INDEX,
+  ROUTE_ANSWER_INDEX,
+  type CheckinState,
+  type Day30State,
+  type Route,
+} from "@/lib/course-progress";
+import { getQuiz as loadQuiz } from "@/lib/course";
+import { matchGuidance, type CheckinAnswers } from "@/lib/checkin";
 
 export type SaveState = { error: string | null; savedAt: number | null };
 
@@ -164,6 +174,139 @@ export async function saveRoute(
   );
   if (error) throw new Error(error.message);
 
+  revalidatePath(`/members/courses/${courseSlug}`);
+  revalidatePath("/members");
+}
+
+/** Writes one of the reserved rows above 100 for a lesson. */
+async function saveLessonExtra(
+  courseSlug: string,
+  lessonSlug: string,
+  index: number,
+  answer: string
+): Promise<void> {
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: courseSlug,
+      lesson_slug: lessonSlug,
+      question_index: index,
+      answer,
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+}
+
+/**
+ * Saves a check-in. The outcome is decided here, from the lesson's own JSON,
+ * rather than trusting whatever the browser worked out — the urgent path hides
+ * the way forward, so it must not be something a client can talk us out of.
+ */
+export async function saveCheckin(
+  courseSlug: string,
+  lessonSlug: string,
+  answers: CheckinAnswers,
+  extra?: { path?: string | null; confirmed?: boolean }
+): Promise<{ outcome: string | null }> {
+  const found = findLesson(courseSlug, lessonSlug);
+  if (!found) throw new Error("Unknown lesson.");
+
+  const checkin = loadQuiz(courseSlug, found.lesson.quiz)?.checkin;
+  if (!checkin) throw new Error("This lesson has no check-in.");
+
+  const outcome = checkin.guidance ? (matchGuidance(checkin, answers)?.id ?? null) : null;
+
+  const state: CheckinState = {
+    answers,
+    outcome,
+    path: extra?.path ?? null,
+    confirmed: extra?.confirmed ?? false,
+    at: new Date().toISOString(),
+  };
+  await saveLessonExtra(courseSlug, lessonSlug, CHECKIN_INDEX, JSON.stringify(state));
+
+  revalidatePath(lessonHref(courseSlug, lessonSlug));
+  return { outcome };
+}
+
+export async function saveFollowup(
+  courseSlug: string,
+  lessonSlug: string,
+  value: string
+): Promise<void> {
+  await saveLessonExtra(courseSlug, lessonSlug, FOLLOWUP_INDEX, value);
+  revalidatePath(lessonHref(courseSlug, lessonSlug));
+}
+
+/** Sets or clears a lesson's completion, for the "Your next step" checkbox. */
+export async function setLessonComplete(
+  courseSlug: string,
+  lessonSlug: string,
+  done: boolean
+): Promise<void> {
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase.from("course_progress").upsert(
+    {
+      user_id: userId,
+      course_slug: courseSlug,
+      lesson_slug: lessonSlug,
+      completed_at: done ? new Date().toISOString() : null,
+    },
+    { onConflict: "user_id,course_slug,lesson_slug" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(lessonHref(courseSlug, lessonSlug));
+  revalidatePath(`/members/courses/${courseSlug}`);
+  revalidatePath("/members");
+}
+
+/** The Day 30 stage of Lesson 28: unlocking it early, and finishing the course. */
+export async function saveDay30(
+  courseSlug: string,
+  lessonSlug: string,
+  patch: Day30State
+): Promise<void> {
+  const { supabase, userId } = await memberClient();
+
+  const { data: existing } = await supabase
+    .from("course_reflections")
+    .select("answer")
+    .eq("course_slug", courseSlug)
+    .eq("lesson_slug", lessonSlug)
+    .eq("question_index", DAY30_INDEX)
+    .maybeSingle();
+
+  let current: Day30State = {};
+  try {
+    current = existing?.answer ? (JSON.parse(existing.answer) as Day30State) : {};
+  } catch {
+    current = {};
+  }
+
+  const next: Day30State = { ...current, ...patch };
+  if (patch.finalDone && !current.finalDoneAt) {
+    next.finalDoneAt = new Date().toISOString();
+  }
+  if (patch.finalDone === false) {
+    delete next.finalDoneAt;
+  }
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: courseSlug,
+      lesson_slug: lessonSlug,
+      question_index: DAY30_INDEX,
+      answer: JSON.stringify(next),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(lessonHref(courseSlug, lessonSlug));
   revalidatePath(`/members/courses/${courseSlug}`);
   revalidatePath("/members");
 }

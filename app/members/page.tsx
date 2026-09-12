@@ -13,6 +13,7 @@ import {
 import {
   getCourseProgress,
   completedCount,
+  getCourseComplete,
   getRoute,
   nextLessonFor,
 } from "@/lib/course-progress";
@@ -37,9 +38,14 @@ async function CourseCard() {
   // instead — the membership itself is unaffected.
   let progress;
   let route = null;
+  let courseComplete = false;
   try {
     progress = await getCourseProgress(COURSE_SLUG);
     route = await getRoute(COURSE_SLUG);
+    courseComplete = await getCourseComplete(
+      COURSE_SLUG,
+      lessons[lessons.length - 1].slug
+    );
   } catch (err) {
     console.error("Course card hidden — could not read progress:", err);
     return null;
@@ -59,6 +65,12 @@ async function CourseCard() {
       >
         {course.title}
       </h2>
+
+      {courseComplete && (
+        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Course complete
+        </p>
+      )}
 
       <div className="mt-5">
         <ProgressBar done={done} total={countable.length} label="Your progress" />

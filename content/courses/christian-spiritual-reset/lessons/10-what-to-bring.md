@@ -4,9 +4,41 @@ module: m2
 order: 10
 source: "Chapter 10"
 type: teaching
+outcome: "Pack what matters and leave behind what will follow you into the quiet."
+action: "Download and complete the Retreat Packing Checklist (in Resources below). Decide whether you will buy, borrow, substitute, or do without each missing item. Then complete your paper Emergency Information Card."
+action_done: "I have completed my checklist and emergency card."
+resources: [retreat-packing-checklist, emergency-information-card]
 ---
 
 # What to Bring
+
+## Key Scripture
+
+> "When you come, bring the cloak that I left with Carpus at Troas, also the books, and above all the parchments."
+>
+> — 2 Timothy 4:13 (ESV)
+
+## In brief
+
+This is the shortest lesson in the course, and it should be. A retreat that needs a great deal of equipment has already become something else. But a few things matter, and forgetting them can cost you an afternoon driving back for a charger or, more seriously, leave you without medication or a way to call for help.
+
+Near the end of 2 Timothy, from prison, Paul asks for his cloak, his books, and above all the parchments. Warmth for his body and written material that mattered to him. Two thousand years later, physical care and attentive reading still belong together.
+
+**For the sessions.** A Bible, printed if that is practical, for the reasons Lesson 9 gave. This course, printed or on a device prepared so that you can read the sessions without walking past your inbox. A journal and two pens; handwriting encourages a slower pace and gives you something to bring back and reread, but if it is difficult, an offline document or voice recorder is fine. Decide how you will keep the journal private, especially in a shared home or on a group retreat. The pages you have already written: your Lesson 4 check-in, your Lesson 7 intention, and your Lesson 8 notes on resistance; Session One will ask for them. A timer or watch, so you do not have to pick up your phone to time the silences. A few index cards, because some sessions ask you to write something you will keep separately, tear up, or seal in an envelope. Optionally, something that helps you settle: a small cross, a blanket, a particular mug, a battery-powered candle.
+
+**Medication and health.** Bring enough prescribed medication for the retreat and any delay, labelled and stored properly, with any supplies or devices you need. Do not alter doses, stop medication, or change your schedule for the retreat or a fast without medical advice. Carry essential medical information where responders can find it. Bring the aids you normally rely on, glasses, hearing aids and batteries, mobility aids, a CPAP machine, insulin supplies, an EpiPen. A retreat is not the time to prove you can manage without them.
+
+**Clothing and sleep.** Layers, because sitting still makes people cold and walking makes them warm, plus one layer more than you think you need. Shoes you can walk in. Whatever you need to sleep well: your own pillow, earplugs, an eye mask. Keep your normal sleep routine and do not experiment with unfamiliar sleep aids. For outdoors: sunscreen, hat, repellent, rain protection, a small first-aid kit, and the weather checked before you leave.
+
+**Personal care, food, and water.** The ordinary things are easy to forget when you are thinking about the spiritual ones. Bring simple food that meets your dietary, allergy, and medication needs and needs little preparation; Lesson 11 covers this. Bring adequate water, and do not restrict it.
+
+**Safety, communication, and transport.** Your phone, prepared and tested as Lesson 9 described, with charger and power bank. A paper card with the address where you are staying, your emergency contact, the host, your doctor, and the local emergency number; if your phone fails, this card is your backup. Identification and booking details. A little cash or a card. Transport confirmed both ways, with enough fuel, charge, or a backup contact to get home safely.
+
+**What to leave behind.** This list is as important as the other one. *Work:* leave work devices unless one is needed for Scripture, this course, or emergencies, and if you must bring one, sign out of work accounts and keep it offline during sessions. The retreat has room for you to think about your work, and a Day 3 session will ask you to; it does not have room for you to do it. *Unfinished projects:* finish, delegate, or reschedule anything time-sensitive before you leave, including next Sunday's sermon if that is yours. *Most other books:* this may seem strange from someone who writes them, but do not pack a stack of books to protect yourself from silence. One deliberately chosen companion text, a hymnal, or a prayer book is fine. *Objects that create pressure:* anything that predictably triggers guilt, compulsive work, or performing for someone else. And *name the guilt about leaving:* if it returns while you pack, reread Lesson 2 and write down what the guilt is saying. You do not need to eliminate the feeling. You only need to keep it from making the decision for you.
+
+The checklist and the emergency card are in Resources below.
+
+## Read the deeper teaching
 
 This is the shortest lesson in the course, and it should be. A retreat that needs a great deal of equipment has already become something else. But a few things matter, and forgetting them can cost you an afternoon of driving back for a charger or, more seriously, leave you without medication or a way to call for help. So here is a short, practical list, with a few notes on why each item earns its place.
 
@@ -150,4 +182,3 @@ Copy this and tick it off before you leave. Items marked (optional) are just tha
 - Extra books
 - Objects that create pressure
 - Guilt acknowledged and addressed using Lesson 2
-

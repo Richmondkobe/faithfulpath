@@ -8,6 +8,13 @@ type: reference
 
 # Finding Help Where You Live
 
+## Get help now
+
+- **If you are in immediate danger, may act on thoughts of not being alive, or cannot keep yourself safe:** call the emergency number where you are, or go to the nearest emergency department. Tell someone nearby. Do not stay alone.
+- **Find local crisis support:** [Find A Helpline](https://findahelpline.com) lists free, confidential helplines by country; choose your country and use the phone, text, or chat option shown. Availability differs by country and service.
+- **International suicide-prevention information:** [International Association for Suicide Prevention](https://www.iasp.info/suicidalthoughts/).
+- **Please know:** this course does not monitor your journal answers, check-ins, or any sign of distress, and completing a check-in does not contact anyone on your behalf. Reaching out is something you do, and it is the right thing to do.
+
 Checked September 2026. Numbers and services change; verify before relying on any of them.
 
 This course is used in many countries, and a list of one country's phone numbers would be useless to most readers. Instead, this lesson tells you what kinds of help exist, how to find them where you live, and what to do if you cannot.

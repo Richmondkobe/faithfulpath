@@ -4,9 +4,42 @@ module: m1
 order: 2
 source: "Chapter 2"
 type: teaching
+outcome: "Answer the voice that calls rest selfish, and learn the difference between running away and withdrawing in order to return."
+action: "Write down which of the three sentences ('If I stop, everything will fall apart', 'Other people have it harder', 'I will rest once this season is over') sounds most like you, and beneath it list what would need to be delegated, simplified, postponed, or explained for you to take a retreat responsibly."
+action_done: "I have named my sentence and listed what needs arranging."
 ---
 
 # Retreat Is Not Running Away
+
+## Key Scripture
+
+> "But he would withdraw to desolate places and pray."
+>
+> — Luke 5:16 (ESV)
+
+## In brief
+
+Somewhere between Lesson 1 and this one, a voice may have started arguing with you. It sounds reasonable. *People are counting on you. You can rest when things settle down. Taking three days for yourself is selfish. Real faith pushes through.* If you are a parent, a caregiver, a leader, or simply the reliable one, that voice may be very loud. It needs answering. Until that voice is answered, you may avoid the retreat altogether or spend the entire time feeling guilty, and guilt can make it difficult to become quiet, honest, and attentive.
+
+**Rest is commanded, not merely permitted.** Many sincere Christians have absorbed a version of faith in which the most spiritual person is the one who never stops. Scripture gives a more honest picture. God himself rests on the seventh day (Genesis 2:2–3), not because he is tired, but to establish a pattern. Israel, freshly out of Egypt, is taught through the manna that they do not need to gather every day (Exodus 16). At Sinai, rest becomes part of the covenant, placed alongside the commands against murder, theft, and adultery (Exodus 20:8–11). And when the command is repeated in Deuteronomy 5:15, the reason given is this: "You shall remember that you were a slave in the land of Egypt." A people who had never been allowed to stop were commanded to stop. A person who cannot stop is not free, however productive they look. Rest is not a reward for finishing your work. It is a declaration that God, not you, holds the world together.
+
+**Withdrawing in order to return.** Luke 5:15–16 describes a moment when Jesus' ministry was expanding rapidly: great crowds gathering to hear him and be healed. His response? "He would withdraw to desolate places and pray." Even as the demand increased, he continued to withdraw and pray. The verb describes repeated, customary action. This was his rhythm, not a one-time crisis. If anyone had a right to say "people are counting on me," it was Jesus. He withdrew anyway, and he came back.
+
+That is the difference between escape and retreat. Escapism uses distance to avoid truth, responsibility, or necessary help. A genuine retreat uses distance to turn toward God, face the truth honestly, and discern the next faithful step. That step may involve returning with renewed strength, making a responsible change, seeking help, or remaining away from a situation that is unsafe. You are taking these days so you can go back to your family, your work, and your church as a person who has something to give again. Consider what you are offering the people who depend on you right now: probably a distracted, depleted, slightly irritable version of yourself held together by willpower. They are already being affected by your exhaustion.
+
+**Jonah and Elijah.** Scripture also shows us real running away. God tells Jonah to go to Nineveh; Jonah boards a ship for Tarshish, "away from the presence of the LORD" (Jonah 1:3). That is the mark of running: it moves away from God and from what he has said. Elijah also fled, in fear and exhaustion (1 Kings 19:3). But in the wilderness he remained responsive: he prayed, even if the prayer was despair; when God fed him, he ate; and when God asked, "What are you doing here?", he answered honestly. The test is not whether you feel like fleeing. The test is whether you turn toward God once you get there. Before calling your withdrawal a retreat, ask what you intend to do with the silence: face God honestly, or use spiritual language to avoid a person, a decision, or a conflict? A genuine retreat eventually brings you back to the truth of what drove you there, so that you can respond with greater wisdom and courage.
+
+**Three lies.** Over many years I have heard three sentences from people who needed a retreat and would not take one.
+
+*"If I stop, everything will fall apart."* Essential responsibilities should not be abandoned, but preparation is different from postponement. Underneath this sentence is a belief that we are holding everything up, and Psalm 127:1–2 calls that anxious toil vanity: "he gives to his beloved sleep."
+
+*"Other people have it harder, so I have no right to be tired."* Comparison restores no one. Jesus did not say "come to me, all who labor more than average."
+
+*"I will rest once this season is over."* The most dangerous of the three, because the season rarely ends on its own. One deadline replaces another. If you keep waiting for rest to become convenient, exhaustion will eventually start making decisions for you. Elijah did not choose to stop. He collapsed. It is better to choose.
+
+**Permission.** Some people do not need convincing; they need permission. So here it is, as plainly as a pastor can give it: you are allowed to stop. Not because you have earned it, but because God commanded rest before you asked for it, and because Jesus modelled withdrawal in the middle of the most important work ever done. Preparing well for a retreat is itself an act of responsibility. Explain what you need, arrange care for those who depend on you, and if three days are genuinely impossible, use one of the adapted formats in Module 3.
+
+## Read the deeper teaching
 
 Somewhere between reading Lesson 1 and opening this one, a voice may have started arguing with you. It sounds reasonable. It says things like: People are counting on you. You can rest when things settle down. Taking three days for yourself is selfish. Real faith pushes through. If you are a parent, a caregiver, a leader, or simply the reliable one in your family, that voice may be very loud.
 
@@ -69,4 +102,3 @@ You are allowed to stop. Not because you have earned it, and not because you hav
 Taking these days does not have to mean abandoning your responsibilities. In many cases, preparing for a retreat is itself an act of responsibility, because it allows you to return with greater clarity and emotional presence. If you are married, explain to your spouse what you need and listen to any practical concerns. If others depend on you, arrange appropriate care before you leave. If three uninterrupted days are genuinely impossible, use one of the adapted formats in Module 3. The goal is not to prove your commitment by disappearing. The goal is to create honest, protected space with God.
 
 Not everyone will immediately understand your decision. You do not need to defend your exhaustion, but you should communicate clearly, make responsible arrangements, and protect the time you have set aside.
-

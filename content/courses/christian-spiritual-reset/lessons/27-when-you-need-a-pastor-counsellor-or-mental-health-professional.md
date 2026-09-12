@@ -4,9 +4,52 @@ module: m5
 order: 27
 source: "Chapter 16"
 type: teaching
+outcome: "Recognise when what the retreat surfaced needs more than rest and a rule of life, and know who to call for what."
+action: "Go through the post-retreat signs in this lesson. If any applies to you, use the table to identify the right first call and make it, or take the first access step, this week. If none applies, write down who you would call and how, so the answer is ready if things change."
+action_done: "I have checked the signs and either made my first call or recorded who I would call."
 ---
 
 # When You Need a Pastor, Counsellor, or Mental-Health Professional
+
+## Key Scripture
+
+> "Without counsel plans fail, but with many advisers they succeed."
+>
+> — Proverbs 15:22 (ESV)
+
+## In brief
+
+Lesson 5 said, before the retreat, that a retreat cannot replace medical or psychological care. This lesson says it again, after the retreat, for a different reason. Before you went, the question was whether you were safe to go. Now the question is what the retreat showed you. Three days of quiet often make visible what months of noise had covered, and some people come home knowing, perhaps for the first time, that what they are carrying needs more than rest. If that is you, this lesson is not a verdict. It is a map.
+
+**Signs that the retreat surfaced something more.** *The dip has not lifted:* if the flatness has lasted most days for two weeks or more, or is deepening rather than easing, it may be more than readjustment. Do not wait two weeks if symptoms are severe, rapidly worsening, preventing ordinary functioning, or include thoughts of suicide or self-harm; seek help now. *The grief remains overwhelming:* grief does not close neatly, and ongoing sadness does not mean Session Four failed, but if it significantly disrupts life, sleep, or eating, a counsellor can help well before anything reaches a clinical threshold. *Something surfaced that frightens you:* a memory, a pattern of thought, a fear about yourself; if it affects safety or daily life, take it to an appropriately qualified person. *You recognised yourself in Lesson 5:* if you read the sections on suicidal thoughts, abuse, substance dependence, addiction, or trauma before the retreat and thought "not me", and now think "perhaps me", that shift is the point of this lesson. *The rule of life is not holding,* not from lack of discipline, but because something underneath keeps knocking it over: anxiety, low mood, compulsions, panic. Or simply: *you are not getting better, and you have been faithful.* Faithfulness without improvement, over weeks, is a reason to seek help, not a reason to try harder.
+
+**Who does what.** Christians often go to the wrong person first, usually a pastor, because it is the person they know. Pastors are essential, but they are not the right first call for everything.
+
+| Need | Appropriate help |
+|---|---|
+| Spiritual dryness, questions of faith, guidance about a decision, church-related hurt | A pastor or spiritual director: prayer, Scripture, counsel, discernment. Not diagnosis or treatment. |
+| Grief, relationship difficulty, transitions, moderate anxiety or low mood | A qualified counsellor or therapist. Many are Christian or respectful of faith; ask. |
+| Persistent low mood, hopelessness, sleep and appetite changes, panic, intrusive thoughts, trauma symptoms, anything affecting daily functioning | A doctor or qualified mental-health professional: assessment, and treatment that may include therapy, medication, or both. |
+| Thoughts of death, suicide, or not wanting to be alive | A crisis line or urgent mental-health service now; emergency services if you may act, have a plan, or cannot stay safe. |
+| Abuse or coercive control, past or present | A specialist domestic-abuse or sexual-violence service, from a safe device; emergency services if in immediate danger. Joint counselling may be unsafe where abuse exists. |
+| Substance dependence | A doctor and an addiction service; a recovery community. Do not stop alcohol or sedatives abruptly on your own. |
+| Behavioural addiction | A counsellor with relevant experience; an accountable community. |
+| Scrupulosity, compulsive confession, religious anxiety | A clinician experienced in OCD, particularly CBT with exposure and response prevention. |
+| Serious misconduct, safeguarding concerns, legal exposure | The appropriate safeguarding, legal, or professional authority. |
+
+Two things the table implies. Most serious difficulties need more than one kind of help, and a pastor is often one part of it. And the pastor's role is real: someone receiving treatment for depression still needs prayer, Scripture, and a community that knows them. The mistake is not going to a pastor. It is going only to a pastor for something a pastor is not trained to treat. The "Finding Help Where You Live" page will help you find what exists in your country.
+
+**Christian objections, answered briefly.** *Seeking therapy means my faith is not enough:* Luke was a physician; Paul told Timothy to take a remedy. Prayer, pastoral support, medicine, and therapy can work together. *Medication would be a spiritual defeat:* medication is a medical treatment, not a verdict on your faith; discuss benefits and risks with a qualified prescriber, and do not start, stop, or change it because of something you experienced on retreat. *A Christian should be able to pray this away:* keep praying, and let prayer lead you toward truthful help rather than away from it. *My pastor should be enough:* responsible pastors recognise when medical, psychological, legal, or safeguarding expertise is needed; if yours does not, that is a reason to find additional help. *People will find out:* professional care is generally confidential within the laws of your country; ask about the limits before you begin.
+
+**Choosing a counsellor.** Check registration or recognised credentials, ask about relevant training and approach, and ask how they relate to faith; you do not need a Christian counsellor for good therapy, but you need one who respects that your faith is central. If you do not feel respected and heard after a few sessions, it is acceptable to change. If cost is a barrier, ask about sliding scales, charitable services, and public provision.
+
+**For pastors and leaders.** Find help outside your own church. Receiving counselling from a member of your own congregation can create complicated boundaries and may make complete honesty difficult for both of you. Use your denomination's provision, a supervisor, a counsellor with clergy experience, or a pastor in another town, and keep clinical details private.
+
+**For those in a crisis of faith.** Some come home from the retreat not sure what they believe. This is not a mental-health condition, and not necessarily a sign that anything is wrong. It is often what happens when a faith carried by activity finally stops moving and has to stand on its own. Do not carry it alone, and do not carry it to someone who will panic. Faith allowed to ask honest questions can become more mature, though the process is slow.
+
+**If you are in danger.** Everything here assumes you have time to choose. If you do not, the map collapses to one instruction: get help immediately. If you may act on suicidal thoughts, cannot keep yourself safe, or are in immediate danger from another person, contact emergency services or go to the nearest emergency department now, tell a trusted person, and do not remain alone. The rest of this course can wait.
+
+## Read the deeper teaching
 
 ## For any week, whenever it applies
 
@@ -89,4 +132,3 @@ Everything in this lesson assumes you have time to choose. If you do not, the ma
 If you may act on suicidal thoughts, have a plan or access to the means, cannot keep yourself safe, or are in immediate danger from another person, contact emergency services or go to the nearest emergency department now. Use a crisis or abuse service from a safe device. Move to a safer or public place if possible, tell a trusted person, and do not remain alone. If it is safe, create distance between yourself and anything you could use to harm yourself.
 
 If you do not know the crisis number in your country, search for your national emergency service or crisis line, or ask a hospital, doctor, or trusted person to help you make contact. The "Finding Help Where You Live" page at the start of this course explains how to find these services, but do not wait to turn to it if you need help now. The rest of this course can wait.
-

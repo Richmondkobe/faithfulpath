@@ -4,9 +4,42 @@ module: m1
 order: 4
 source: "Chapter 4"
 type: teaching
+outcome: "Tell apart burnout, spiritual dryness, and emotional overload — they need different care — and recognise the point at which pastoral description is no longer enough."
+action: "Review the guidance shown after your Personal Readiness Check-in and follow the recommended next step. If it points you toward support, make or schedule that contact before continuing."
+action_done: "I have reviewed my guidance and recorded the next appropriate action."
 ---
 
 # Recognising Burnout, Spiritual Dryness, and Emotional Overload
+
+## Key Scripture
+
+> "Cast your burden on the LORD, and he will sustain you."
+>
+> — Psalm 55:22 (ESV)
+
+## In brief
+
+The first three lessons used words like tired, dry, and overloaded almost interchangeably. Before you enter the retreat, it helps to separate them, because they are not the same and they do not respond to the same care. Many people will recognise themselves in more than one. That is common. Naming what is actually happening is the first honest act of the retreat.
+
+A caution first. What follows is a pastoral description, not a medical or psychological assessment. I am a pastor experienced in counselling, not a doctor. Some of these signs overlap with depression, anxiety, chronic stress, and physical illness, and this lesson cannot tell you which is which. If you read this and think, *this has gone further than tiredness*, take that seriously and read Lesson 5 carefully.
+
+| Experience | Central difficulty | What may help |
+|---|---|---|
+| Burnout | Prolonged demands with inadequate recovery or support | Rest, boundaries, delegation, structural change, and possibly professional care |
+| Spiritual dryness | God feels distant or spiritual practices feel empty | Honest prayer, Scripture, patient faith, Christian community, and exploring possible contributing factors |
+| Emotional overload | More emotion and stress than you can presently process | Reduced demands, safe expression, supportive relationships, gradual processing, and professional help when needed |
+
+**Burnout: when demands outrun recovery.** Burnout is deep exhaustion from prolonged demands that keep exceeding your resources, support, and chance to recover. The World Health Organization uses "burnout" specifically for chronic workplace stress that has not been successfully managed. In this course I use the term more broadly and pastorally, for similar patterns arising in ministry, caregiving, parenting, and other sustained responsibilities; it is not a diagnosis. It feels like pouring out for far longer than you have been receiving. Moses knew it: "I am not able to carry all this people alone; the burden is too heavy for me" (Numbers 11:14). Notice God's answer. Not a demand for more faith, but seventy elders to share the load (Numbers 11:16–17), just as Jethro had warned earlier that judging alone would wear Moses out (Exodus 18). The remedy was structural. Signs include dreading what you used to find meaningful, cynicism toward the people you serve, resentment surfacing as irritability, going through the motions of prayer and church, and a quiet fantasy of walking away. If this is you, the retreat will matter, but so will what comes after it. A person can rest for three days and walk straight back into the pattern that emptied them. Module 5 is about that pattern.
+
+**Spiritual dryness: when God seems absent.** A person can be well rested and still find that God feels distant. Prayer feels like effort with no response. Scripture reads like a document. Belief has become a fact rather than a relationship. The Bible is full of this: "Where is your God?" (Psalm 42), "How long, O LORD? Will you forget me forever?" (Psalm 13). These are prayers of people holding on to faith while feeling nothing, and Scripture kept them so we would know the experience is not unusual. Dryness is not always the result of sin. Sometimes there is something to confess, as in Psalm 32; but often, as with Job, there is nothing to find. The retreat cannot force God to feel close again, and you should be suspicious of anyone who promises that. What it can do is give you unhurried space to be honest about the distance and to keep turning toward God whether or not the feeling returns.
+
+**Emotional overload: when there is too much to carry.** This is the experience of accumulated emotion and demand exceeding your present ability to process it: grief postponed because there was no time, disappointment never voiced, anger buried because it seemed unspiritual. Overloaded people often look fine. They are frequently the strong ones. But the weight shows in unexpected tears, disproportionate reactions to small things, and a flatness that has replaced both joy and sorrow. Paul admitted to being "so utterly burdened beyond our strength that we despaired of life itself" (2 Corinthians 1:8). Psalm 55:22 and 1 Peter 5:7 both invite you to cast what you carry onto God. That does not mean the feeling disappears; it means you no longer carry it as though you were alone. The retreat's middle sessions will make gentle room for lament, confession, release, and forgiveness, without pressure to resolve everything in three days.
+
+**The whole person.** Because you are a whole person, these three reinforce one another, and any of them can occur alongside a medical or psychological condition. If you recognise yourself in all three, you are not beyond help. If you are stable and safe to retreat, choose a gentle, unhurried format with appropriate support. A longer retreat may allow more rest, but a shorter or supported format may be wiser if extended silence feels overwhelming.
+
+**Where this stops being pastoral.** If low mood, emptiness, or loss of interest has been present most days for two weeks or longer, or is significantly affecting your work, relationships, sleep, eating, or ability to function, speak with a doctor or qualified mental-health professional. You do not need to wait until things are severe. If you have thoughts of not wanting to be alive, tell a trusted person and contact a professional or crisis service promptly. If you believe you may act on those thoughts, or cannot keep yourself safe, do not continue alone: contact emergency services now and ask someone to stay with you. A retreat can wait. Your safety cannot.
+
+## Read the deeper teaching
 
 The first three lessons have used words like tired, dry, and overloaded almost interchangeably. Before you enter the retreat, it will help to separate them, because they are not the same thing and they do not respond to the same care. A person who is burned out needs something different from a person who is spiritually dry, and both need something different from a person who is emotionally overloaded. Many readers will recognise themselves in more than one. That is common. But naming what is actually happening is the first honest act of the retreat.
 

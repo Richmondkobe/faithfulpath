@@ -4,9 +4,58 @@ module: m1
 order: 1
 source: "Chapter 1"
 type: teaching
+outcome: "Help you recognise soul-tiredness and see from Scripture that God meets exhausted people with rest before he gives them direction."
+action: "Write one completely honest sentence to God about how tired you are — the sentence you would say if no one else could hear. Keep it somewhere safe; Session One will ask you to bring it."
+action_done: "I have written and saved my honest sentence."
 ---
 
 # When Your Body Keeps Going but Your Soul Is Tired
+
+## Key Scripture
+
+> "Come to me, all who labor and are heavy laden, and I will give you rest… and you will find rest for your souls."
+>
+> — Matthew 11:28–29 (ESV)
+
+## In brief
+
+You are still showing up. You go to work, answer messages, and attend church on Sunday. If someone asked how you were doing, you would say "fine," and it would not exactly be a lie. But somewhere beneath the routine, something has gone quiet. Prayer feels like talking into an empty room. You are not angry with God. You are simply tired in a place that sleep does not reach.
+
+Hear this first: you are not a failure, and you are not a fraud. You are a person whose body kept moving after your soul asked for a rest it never received.
+
+There is a difference between being physically tired and being soul-tired. Physical tiredness may improve after sleep or a quiet weekend. Soul-tiredness often remains. It shows up in small ways. You stop enjoying what used to nourish you. Worship music plays, but you feel nothing. You become short with people you love. You pray for others out of habit but cannot remember the last time you prayed honestly about yourself.
+
+Many Christians respond by trying harder: a new reading plan, an earlier alarm, another spiritual commitment. Soon, that becomes one more thing at which they feel they are failing. What may be missing is not another assignment. It is unhurried, undistracted time with God, with nothing to prove and nothing to perform.
+
+The Bible does not hide this condition.
+
+In 1 Kings 18, Elijah experiences one of the most dramatic public victories of his ministry on Mount Carmel. In the next chapter, he is sitting under a broom tree, asking God to let him die.
+
+Notice when his collapse came: after a triumph, not a defeat. His body had been running on adrenaline through a drought, a confrontation, a death threat, and a long journey. When he finally stopped, everything he had been carrying caught up with him. Soul-tiredness often becomes visible when we finally slow down.
+
+Now notice what God did.
+
+There was no rebuke and no sermon about having more faith. An angel gave Elijah bread and water and allowed him to sleep. Then the angel fed him again. Only after Elijah had eaten and rested did God lead him to Horeb and speak to him. When God spoke, it was not through the wind, earthquake, or fire, but through a low whisper after the noise had passed.
+
+Rest first. Direction second.
+
+This course follows that same order.
+
+Jesus also made room for this rhythm. When the disciples returned from their first mission, crowds were pressing around them so intensely that they did not even have time to eat. Jesus did not say, "Well done; now keep going." He said, "Come away by yourselves to a desolate place and rest a while" (Mark 6:31).
+
+Jesus practised this rhythm himself. Luke 5:16 tells us that he regularly withdrew to quiet places to pray. If Jesus deliberately made room for withdrawal, prayer, and rest, you are not weak for needing them too.
+
+In Matthew 11, Jesus names the kind of tiredness you may be experiencing. He offers not only rest for the body, but rest for the soul.
+
+Be clear, then, about what a spiritual reset is. It is not a way to manufacture a feeling, force God to speak, or prove how spiritual you are. It is a deliberate pause from noise, responsibility, and performance so that you can become honest before God again.
+
+The goal is to make yourself available to him, whatever you feel.
+
+One more thing before you continue, because it matters: if you are thinking about harming yourself or believe you may be in immediate danger, do not begin this retreat alone. Contact emergency or crisis services where you live and tell a trusted person who can remain with you.
+
+If you are experiencing abuse, uncontrolled addiction, severe depression, or unresolved trauma, go to Lesson 5 before beginning a retreat. Silence can bring buried pain to the surface. Seeking appropriate help is wisdom, not weakness.
+
+## Read the deeper teaching
 
 You are still showing up. You still go to work, still answer messages, still sit in church on Sunday. If someone asked how you were doing, you would say "fine," and it would not exactly be a lie. Nothing has collapsed. But somewhere underneath the routine, something has gone quiet. Prayer feels like talking into a room where nobody is home. The Bible on your phone has become one more app you scroll past. You are not angry with God. You are just tired in a place that sleep does not reach.
 
@@ -57,4 +106,3 @@ Mostly there will be Scripture to sit with, honest questions to answer, guided p
 This course is designed primarily as a three-day retreat. If possible, give yourself those three days; the slower pace allows each stage to do its work. I also recognise that work, family, health, or caregiving responsibilities may make that impossible. For that reason, Module 3 includes adapted formats for a three-hour reset, a full-day retreat, an at-home version, couples, small groups, and pastors.
 
 One more thing, and it matters. If you are thinking about harming yourself or believe you may be in immediate danger, do not begin this retreat alone. Contact emergency services or a crisis service in your country, and tell a trusted person who can remain with you. If you are facing an uncontrolled addiction, abuse, severe depression, or unresolved trauma, please read Lesson 5 before beginning. Silence can bring buried pain to the surface, and you may need a qualified counsellor, doctor, or trusted pastoral leader alongside you. Seeking help is not a failure of faith. It is an act of wisdom and courage.
-

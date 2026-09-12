@@ -1,78 +1,54 @@
 {
  "lesson": "28-your-30-day-spiritual-renewal-plan",
- "pass_mark": 4,
- "questions": [
-  {
-   "q": "What are the three purposes of the 30-day plan?",
-   "options": [
-    "To let the rhythm become familiar, work through the cards without recreating burnout, and give optional sessions and testing the time they need",
-    "To become a different person, finish every card, and plan the next retreat",
-    "To fast, pray, and evangelise",
-    "To review the book, re-read the sessions, and write a report"
-   ],
-   "answer": 0,
-   "explanation": "Day 30 is a review, not a deadline. Philippians 1:6: he who began a good work will bring it to completion at the day of Jesus Christ, not on Day 30."
-  },
-  {
-   "q": "What is the one thing that does not wait for the calendar?",
-   "options": [
-    "Writing the rule of life",
-    "Reading Chapter 16 and acting on it if any warning sign from Chapters 4 or 5 applies",
-    "Session Six",
-    "The Day 30 review"
-   ],
-   "answer": 1,
-   "explanation": "Safety and professional help take priority over every week of the plan."
-  },
-  {
-   "q": "What is the daily minimum for the month?",
-   "options": [
-    "An hour of Bible study",
-    "Rereading one chapter",
-    "The rhythm from Session Ten's card; if that rhythm is weekly, a psalm and a few minutes of quiet on the days you can",
-    "Journaling three pages"
-   ],
-   "answer": 2,
-   "explanation": "When you miss, resume the next day without compensation or guilt."
-  },
-  {
-   "q": "What is Week 1 for, and what should you NOT do in it?",
-   "options": [
-    "Writing the rule; do not rest",
-    "Session Six; do not test anything",
-    "The Jethro conversation; do not tell anyone",
-    "Landing softly, expecting the dip, doing little; do not pronounce a verdict, announce conclusions, redesign your life, or begin the rule yet"
-   ],
-   "answer": 3,
-   "explanation": "Day 1 is reading Chapter 13 and sorting the cards. Tell your support person you are home: one conversation, not a report."
-  },
-  {
-   "q": "In which week is the rule of life written?",
-   "options": [
-    "Week 3",
-    "Week 1",
-    "Week 2",
-    "Week 4"
-   ],
-   "answer": 0,
-   "explanation": "Week 2 is doing (the cards leave the pile), Week 3 is shaping (the rule), Week 4 is settling (review, and Session Six only if its conditions are met)."
-  },
-  {
-   "q": "What does the chapter say to readers who reach Day 30 having done only a fraction of the plan?",
-   "options": [
-    "Restart from the beginning",
-    "The plan does not expire; begin at the next unfinished step that matters, and recognise that what you did do may have been the important part",
-    "Give up on the retreat",
-    "Take another retreat immediately"
-   ],
-   "answer": 1,
-   "explanation": "One rhythm kept on some days, one appointment, one conversation: those are not a fraction of the plan. They are the plan, in the form your month allowed. Resume."
-  }
- ],
+ "questions": [],
  "reflection": [
-  "Grace received: where did you notice help, kindness, provision, truth, rest, or God's presence during the month?",
-  "The intention: read it again. What has become clearer, and what still needs attention?",
-  "The rhythm: how often did you keep it? What helped it happen, and what repeatedly prevented it?",
-  "The next pause: what will it be, and when will you book it?"
- ]
+  "Which week of the plan do you expect to find hardest, and why?",
+  "What is your daily minimum, in one line, and what will you do on the day you miss it?",
+  "Grace received: where have you already noticed help, kindness, provision, or rest since coming home?",
+  "What would tell you, before Day 30, that you need to read Lesson 27 now rather than later?"
+ ],
+ "checkin": {
+  "type": "integration",
+  "title": "Day 30 Integration Check-in",
+  "intro": "At the beginning of this course, I told you that the journey was designed to help you return with four things. On Day 30, record what those four outcomes look like now, in your own words. This is not a test and nothing is scored. Your answers are for your personal reflection and are not monitored in real time.",
+  "items": [
+   {
+    "id": "burden",
+    "label": "One burden I have entrusted to God",
+    "placeholder": "What did you hand over, and what does that look like on an ordinary day?"
+   },
+   {
+    "id": "action",
+    "label": "One responsible step I have taken",
+    "placeholder": "The action card that became something that happened."
+   },
+   {
+    "id": "person",
+    "label": "One person I have involved",
+    "placeholder": "Who now knows, prays, shares the load, or holds you to the rule?"
+   },
+   {
+    "id": "rhythm",
+    "label": "One sustainable rhythm I am carrying home",
+    "placeholder": "The rhythm you kept, imperfectly, and how often."
+   },
+   {
+    "id": "help",
+    "label": "Help I have sought, if Lesson 27 applied",
+    "placeholder": "Write the call made or the appointment booked. If help was not indicated, write 'Not needed at this time.' If it was indicated but not sought, leave this blank; this is where you resume.",
+    "optional": true
+   },
+   {
+    "id": "pause",
+    "label": "My next deliberate pause",
+    "placeholder": "What, and the date it is booked for."
+   }
+  ],
+  "reflection_prompt": "In one dated paragraph: what has this month been?",
+  "confirm": "I have completed my Day 30 review.",
+  "closing": "Go on your way, and go with others. Work when it is yours to work. Stop when it is time to stop. The world is held by God, not by you.",
+  "blank_note": "A blank line among the four outcomes is not failure; it identifies the place where your next step begins.",
+  "available_from": "day30",
+  "notes": "This check-in belongs to the Day 30 stage of Lesson 28 (front matter `final_action` / `final_done`). The lesson's first checkbox (`action_done`) is the Day 1 stage and can be ticked immediately; the course stays open through the month and the final confirmation becomes available on Day 30 (30 days after the Day 1 checkbox, or immediately if the member says the month is complete)."
+ }
 }

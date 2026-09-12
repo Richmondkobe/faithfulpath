@@ -4,9 +4,50 @@ module: m2
 order: 9
 source: "Chapter 9"
 type: teaching
+outcome: "Draw a phone boundary you can actually keep — one that removes the noise without removing your access to help."
+action: "Choose your phone arrangement, complete the Digital Boundary Agreement (in Resources below), and test the arrangement by asking your emergency contact to call while it is active."
+action_done: "I have completed and tested my digital-boundary arrangement."
+resources: [digital-boundary-agreement, emergency-information-card]
 ---
 
 # Creating a Digital Boundary
+
+## Key Scripture
+
+> "Martha, Martha, you are anxious and troubled about many things, but one thing is necessary."
+>
+> — Luke 10:41–42 (ESV)
+
+## In brief
+
+Of the four ordinary questions from Lesson 6, the phone is the one most likely to decide whether your retreat stays protected. You can have three clear days and a good location and still spend them checking. This is not an anti-technology lesson. Your phone will carry the Bible, the map, your support person's number, and the means of calling for help. The goal is not to reject the device. It is to stop it being the centre of your attention for a few days, so that something else can be.
+
+**Why it matters more than it seems.** Most of us underestimate how much of our inner life is now shaped by a screen. The phone fills every gap: the queue, the two minutes before a meeting, the moment of boredom, the moment of discomfort. Those gaps are where thoughts surface and spontaneous prayer begins. A retreat is, in large part, the deliberate reopening of those gaps. Paul wrote, in a very different context, "I will not be dominated by anything" (1 Corinthians 6:12). If the thought of turning the phone off produces something close to anxiety, that is information, not shame. And there is Martha, "distracted with much serving" while Mary sat and listened. Her service was not the problem; distraction in that moment was. A phone can do something similar.
+
+**What the boundary is for.** One purpose: to protect your attention for God during the time you have set aside. It is not a test of willpower or a fast to be proud of. If you slip and check something, you have not failed; you have noticed, and you can put it down again. And it is not a boundary against help. Emergency calling should remain available.
+
+**Two arrangements.** There are two basic approaches: remain reachable or disconnect completely. The four arrangements below apply one of those approaches in different ways. They do not combine: a phone in airplane mode cannot ordinarily receive a call, so "airplane mode with an emergency channel" is not an arrangement at all.
+
+| Arrangement | Can calls reach you? | Best for |
+|---|---|---|
+| Focus or Do Not Disturb with selected contacts | Yes | Parents, caregivers, anyone with safety needs |
+| Airplane mode with scheduled checks | No, except during checks | Those who need deep separation and have another route for emergencies |
+| Phone held by retreat staff or support person | Indirectly | Retreat centres and supported formats |
+| Basic phone for calls only | Yes | Those who want no apps but need emergency access |
+
+*Option A, remain reachable:* keep cellular service on, use Focus or Do Not Disturb to silence everything except one or two designated contacts, disable previews, and keep the phone out of sight. *Option B, disconnect completely:* airplane mode with Wi-Fi off, connectivity restored only at a scheduled check, with emergencies routed through the property, host, or someone who can reach you physically. Whichever you choose, test it before you leave: have your designated person call while the setting is active and confirm their call rings and nothing else does.
+
+**The rest of the arrangement.** Tell people: one short message to those who normally reach you, saying when you are away and who to contact if something urgent comes up. Choose one emergency contact and define "emergency" together, out loud: a serious health or safety problem, an urgent issue with a dependant, something that cannot wait; not ordinary questions or routine work decisions. Ask them to call rather than message, and agree what they do if you do not answer. Bring a printed Bible if you can; an app sits beside everything that competes for your attention. Leave the other screens off. And do not post about the retreat while you are living it.
+
+**Prepare the device before you leave.** Download the Bible, this course, maps, and emergency information for offline use; disable badges and previews; remove or sign out of social media and email; turn off smartwatch notifications; write essential numbers on paper; save the address; pack a charger; test the emergency arrangement; tell your contact when the boundary begins and ends.
+
+**Music, podcasts, and worship.** Music is allowed in a limited way, and Module 4 will occasionally suggest a song. But the default is silence, and I would ask you not to use music to fill every quiet moment. Leave podcasts, sermons, and audiobooks aside unless a session directs you to one. This program already provides structured input.
+
+**What to expect when you stop.** You may reach for the phone without deciding to, many times on Day 1. This is habit, not weakness; notice it and return. You may feel a low-level restlessness. You may find your mind louder than you expected, as thoughts and lists held down by the constant stream surface. Write down what surfaces; the sessions ahead give those thoughts somewhere to go. In my pastoral experience, many people later describe the digital boundary as one of the most valuable parts of the retreat.
+
+For the one-day retreat and three-hour reset, keep the boundary from the moment you begin. For the at-home retreat, the realistic version is a boundary around each session rather than the whole week: phone in another room, or Option A, for the session, then ordinary life between.
+
+## Read the deeper teaching
 
 Of the four ordinary questions from Lesson 6, the phone is one of the factors most likely to determine whether your retreat remains protected. You can have three protected days and a good location and still spend them checking. This lesson is about drawing a boundary you can actually keep, one that removes the noise without removing your access to help.
 
@@ -114,4 +155,3 @@ I tested this arrangement on ______. My emergency contact is ______, and we have
 Signed: ______
 
 If you are retreating with a spouse or group, discuss the shared expectations in advance. Each person should state their own boundary and any legitimate exceptions. Encourage one another without monitoring, shaming, or confiscating devices.
-

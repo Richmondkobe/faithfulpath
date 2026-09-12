@@ -1,5 +1,6 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getRouteLesson, lessonByOrder } from "@/lib/course";
+import type { CheckinAnswers } from "@/lib/checkin";
 
 // Progress is the member's own data, so every query here goes through the
 // cookie-backed anon client and is authorised by RLS on auth.uid() — never the
@@ -130,4 +131,79 @@ export function completedCount(
   lessons: { slug: string }[]
 ): number {
   return lessons.filter((l) => progress.get(l.slug)?.completed_at).length;
+}
+
+/* ------------------------------------------------- per-lesson extra state */
+
+/**
+ * Reflection prompts occupy indexes 0..n, so everything else a lesson needs to
+ * remember is kept in the same table above 100. That is what lets phase 2 store
+ * check-in answers, the Day 30 stage and the Lesson 11 follow-up without a
+ * migration — and the existing RLS keeps all of it private to the member.
+ */
+export const CHECKIN_INDEX = 100;
+export const DAY30_INDEX = 101;
+export const FOLLOWUP_INDEX = 102;
+
+export type CheckinState = {
+  answers: CheckinAnswers;
+  /** Id of the guidance rule that matched, for the rule-driven check-ins. */
+  outcome?: string | null;
+  /** Safety check-in: the path the member chose. */
+  path?: string | null;
+  confirmed?: boolean;
+  at?: string;
+};
+
+export type Day30State = {
+  /** The member pressed "My month is complete" rather than waiting. */
+  monthComplete?: boolean;
+  finalDone?: boolean;
+  finalDoneAt?: string;
+};
+
+function parseJson<T>(raw: string | undefined): T | null {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
+export function readCheckin(reflections: Map<number, string>): CheckinState | null {
+  return parseJson<CheckinState>(reflections.get(CHECKIN_INDEX));
+}
+
+export function readDay30(reflections: Map<number, string>): Day30State | null {
+  return parseJson<Day30State>(reflections.get(DAY30_INDEX));
+}
+
+export function readFollowup(reflections: Map<number, string>): string | null {
+  return reflections.get(FOLLOWUP_INDEX) ?? null;
+}
+
+export const DAY30_MS = 30 * 24 * 60 * 60 * 1000;
+
+/**
+ * The Day 30 stage opens 30 days after the first checkbox was ticked, or as
+ * soon as the member says their month is done — some will have started the plan
+ * before reaching this page, and the date is theirs to judge.
+ */
+export function day30Available(
+  completedAt: string | null | undefined,
+  day30: Day30State | null
+): boolean {
+  if (day30?.monthComplete) return true;
+  if (!completedAt) return false;
+  return Date.now() - new Date(completedAt).getTime() >= DAY30_MS;
+}
+
+/** Whether the member has finished the course: Lesson 28's Day 30 checkbox. */
+export async function getCourseComplete(
+  courseSlug: string,
+  finalLessonSlug: string
+): Promise<boolean> {
+  const reflections = await getLessonReflections(courseSlug, finalLessonSlug);
+  return Boolean(readDay30(reflections)?.finalDone);
 }

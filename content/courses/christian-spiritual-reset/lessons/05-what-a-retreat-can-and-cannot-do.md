@@ -4,9 +4,45 @@ module: m1
 order: 5
 source: "Chapter 5"
 type: teaching
+outcome: "Enter the retreat with the right expectations and the right support: what it can and cannot do, when it should wait, and how to pause safely."
+action: "Take the first practical action required by the path you selected. Proceed independently: record your support person and your local emergency or crisis-help information. Proceed with support: contact your support person and agree when you will check in. Use an adapted format: select the shorter, supported, or group format you will use. Postpone for now: open Finding Help Where You Live and contact an appropriate source of support."
+action_done: "I have taken or scheduled the first action required by my chosen path."
 ---
 
 # What a Retreat Can and Cannot Do
+
+## Key Scripture
+
+> "Bear one another's burdens, and so fulfill the law of Christ."
+>
+> — Galatians 6:2 (ESV)
+
+## In brief
+
+Lessons 1 and 4 both pointed you here. If you arrived because something in them described you more seriously than you expected, thank you for coming. Nothing in this lesson is meant to disqualify you from the retreat. It is meant to make sure the time helps you rather than harms you. Everyone else should read it too. A retreat is a good thing, and good things get misused when we ask them to do more than they can.
+
+**What a retreat can do.** It can interrupt a pattern: three days outside the rhythms you no longer examine lets you see them. It can give you unhurried honesty before God. It can help you name what you are carrying, so a vague heaviness becomes specific words: a grief, a resentment, a fear. It can restore perspective. It can become a place where you meet God or grow more attentive to him. I say "can" deliberately, not because God is absent until a retreat begins, but because we cannot manufacture a particular experience of him. And it can begin things: a decision to seek help, a conversation you have avoided, a rhythm of rest.
+
+**What a retreat cannot do.** It cannot replace medical or psychological care. If you live with depression, an anxiety disorder, an eating disorder, an addiction, or the effects of trauma, a retreat may be part of your care, but it is not the care itself. Luke was a physician (Colossians 4:14); Paul told Timothy to use a practical remedy for his stomach (1 Timothy 5:23). Scripture does not make us choose between depending on God and receiving care through ordinary means. It cannot fix in three days what took years to form. It cannot guarantee that you will feel God's presence: Psalm 88 ends in darkness, and God kept it in his book. It cannot substitute for community; Galatians 6:2 assumes some burdens are too heavy to bear alone. And it cannot make a difficult decision for you. A strong feeling during a retreat is not the same as divine instruction, and treating it that way has led sincere people into serious mistakes. Module 5 will show you how to test what you believe you heard.
+
+**Retreat and professional care, together.** If you are already receiving care, tell your doctor or counsellor you are planning this retreat and ask whether anything should be adjusted. If Lesson 4 suggested you might need care and you are not receiving it, take one step toward it before you begin, even if that step is only a phone call. Seeking counselling or medication is not a failure of faith. Receiving help from a doctor, a counsellor, and a pastor does not divide your trust in God.
+
+**Situations that need additional support.** *Thoughts of not wanting to be alive:* do not rely on this retreat as your response; tell a trusted person and contact a professional or crisis service; if you may act on those thoughts, contact emergency services now. *Abuse, present or past:* if you are currently being harmed, your priority is safety and specialist support, not a private retreat; if the abuse is in your past, know that forgiveness is not reconciliation, trust, or returning to danger, is never on a schedule, and never requires contact with the person who harmed you. Session Six includes a shorter alternative. *Substance dependence:* do not use a retreat to stop suddenly; withdrawal from some substances is dangerous. *Behavioural addiction:* a retreat may be part of recovery, but it is not recovery; be connected to support. *Trauma:* if silence or recalling the past tends to trigger flashbacks, panic, or dissociation, plan the retreat with a trauma-informed professional and consider a shorter or supported format. The full teaching below covers each of these in more detail; please read it if any of them applies to you.
+
+**When to pause.** Here is the rule for the days ahead: if a session brings up more than you can hold, stop the session. Not necessarily the retreat, but the session. Stand up, go outside, drink some water, eat something. Look around and name where you are, the date, and several things you can see and hear. Remind yourself: *I am here, in the present.* Pray simply, even if the only prayer you have is "Lord, help." Contact your support person, and if the reaction is severe or involves danger, contact a professional or emergency service. You do not have to finish the exercise that brought it up. A retreat that is paused is not a retreat that failed. Elijah slept and ate twice before God spoke to him.
+
+**A word about hearing from God.** Several sessions will invite you to listen. Hold everything lightly and write down what you sense. No impression that contradicts Scripture, promotes harm, inflates your importance, removes accountability, or demands reckless urgency should be accepted as God's direction. Unless safety requires it, make no irreversible decision during the retreat, especially about a marriage, a church, a job, or a country.
+
+**Choosing your path.** Before beginning, choose one of four:
+
+1. Proceed independently. You feel stable, safe alone, and able to pause when needed.
+2. Proceed with support. Arrange regular contact with a trusted person or professional during the retreat.
+3. Use an adapted format. Choose the shorter, guided, or group version from Module 3.
+4. Postpone for now. Seek professional, medical, crisis, or safety support first. Postponing is not failing. It may be the wisest way to prepare.
+
+Module 2 begins the practical preparation. You have done the hard work of honesty. Now we get ready.
+
+## Read the deeper teaching
 
 Lessons 1 and 4 both pointed you here. If you arrived because something in those pages described you more seriously than you expected, thank you for coming. Nothing in this lesson is meant to disqualify you from the retreat. It is meant to make sure you enter it with the right expectations and the right support, so that the time helps you rather than harms you.
 

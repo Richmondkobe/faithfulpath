@@ -4,9 +4,44 @@ module: m1
 order: 3
 source: "Chapter 3"
 type: teaching
+outcome: "See the pattern in how Jesus withdrew — when he went, what he did there, and how he handled interruption — so the shape of your retreat comes from him rather than from wellness culture."
+action: "Name one trustworthy person you will tell about this retreat, and decide when you will tell them. If no one comes to mind, write down which pastor, counsellor, mature believer, or community you could begin approaching."
+action_done: "I have chosen the person I will tell."
 ---
 
 # Jesus and the Practice of Withdrawing
+
+## Key Scripture
+
+> "And rising very early in the morning, while it was still dark, he departed and went out to a desolate place, and there he prayed."
+>
+> — Mark 1:35 (ESV)
+
+## In brief
+
+Lesson 2 gave you permission to withdraw. This lesson turns from permission to pattern. The Gospels record Jesus withdrawing at very different moments, and read together they show a shape rather than a formula.
+
+**When he withdrew.** *After a day of overwhelming demand.* In Mark 1, Jesus spends a Sabbath in Capernaum teaching, confronting an unclean spirit, healing, and then meeting "the whole city" at the door once the sun sets. The next verse: "rising very early in the morning, while it was still dark, he departed and went out to a desolate place, and there he prayed." He got up before the demands of the new day began.
+
+*In a season of loss.* When Jesus learns that John the Baptist has been killed, Matthew tells us he withdrew by boat to a solitary place (Matthew 14:13). The timing invites us to see solitude as an appropriate response to grief. Seeking quiet after loss is not weakness.
+
+*Before a major decision.* The night before he chose the twelve, "all night he continued in prayer to God" (Luke 6:12). Direction came after the withdrawal, not instead of it. The point is not that every decision needs a sleepless night, but that Jesus gave serious, undistracted attention to prayer before a significant choice.
+
+*In a time of testing.* The forty days in the wilderness (Luke 4:1–2) were a unique period of fasting and testing you are not asked to reproduce, but they remind us that solitude does not always feel peaceful. When distractions disappear, fear and unresolved pain can become more noticeable. Difficulty during a retreat does not mean you have made a mistake.
+
+*Before suffering.* In Gethsemane he prayed one of Scripture's most candid prayers, three times, while his friends slept, and then walked toward what was coming. No retreat of ours compares to it, but its honesty and surrender show what prayer under pressure can look like.
+
+There was no single mood that qualified him for solitude. He went when the work was going well and when it was about to cost him everything. If you are waiting to feel a particular way before you take this retreat, you can stop waiting.
+
+**What he did with the time.** The consistent centre of Jesus' withdrawals was prayer: communion with the Father. Where the Gospels preserve his prayers, they are remarkably candid. He gives thanks, names what lies ahead, intercedes, says what he desires, and submits to the Father's will. This matters because much retreat culture, including Christian retreat culture, has drifted toward wellness language. Silence, reflection, and rest all have a place in this course, but they are not its centre. We do not withdraw merely to become calmer. We withdraw to become present to God. And notice that Jesus needed no elaborate arrangements: a hillside, a garden, a boat, the far side of a lake. You need a place where interruptions can be reduced, not a retreat centre.
+
+**When the withdrawal was interrupted.** This is the part that will encourage anyone whose life does not cooperate with quiet. Jesus' solitude was interrupted repeatedly. Simon finds him in the dark: "Everyone is looking for you" (Mark 1:37). The crowds walk around the lake to meet his boat, and he has compassion on them and heals their sick (Matthew 14:14). Then, that evening, after feeding five thousand, he "went up on the mountain by himself to pray" (Matthew 14:23). He got his time alone. It just came later. Two things follow: do everything you can to protect your retreat, and an interruption does not automatically ruin it. Respond to genuine needs, return to the quiet when you can, and reschedule what you cannot complete. At the same time, compassion does not require you to answer every notification. Learning the difference between a genuine need and an avoidable distraction is part of what this retreat will teach you.
+
+**He did not always go entirely alone.** At the Transfiguration and in Gethsemane he brought Peter, James, and John: imperfect companions who fell asleep, and yet he allowed them near. His example leaves room for both private solitude and supported retreat. Solitude with God is essential; isolation from people is not the goal. This is why the course includes formats for couples, small groups, and churches, and why even the personal retreat asks you to tell at least one person what you are doing, and afterwards to test anything significant against Scripture, the character of Christ, and wise counsel.
+
+**More than an example.** Jesus is not merely the pattern behind this retreat. He is the one who invites you into it: the living Christ who says "Come to me" and meets tired people with grace. The retreat ahead follows his shape. You will begin by getting away from the noise and becoming present before God; you will be given room to grieve and release; you will listen before deciding anything; and you will return, as he always did, to the people and the work you left.
+
+## Read the deeper teaching
 
 Lesson 2 gave you permission to withdraw without calling it selfish. Now we turn from permission to pattern: what Jesus' own practice can teach us about entering, protecting, and leaving a time of retreat. The Gospels give us more detail than most Christians realise, and the detail is instructive, because it shows a pattern rather than a formula.
 
@@ -59,4 +94,3 @@ Jesus is not merely the example behind this retreat. He is the one who invites y
 The structure of this retreat follows the shape you have just seen. You will begin as Jesus did after Capernaum, by getting away from the noise and simply being present before God. You will be given room, as he took after John's death, to grieve and release what you are carrying. You will spend time listening, as he did on the mountain before choosing the twelve, before you make any decisions about direction. And you will be asked to return, as he always did, to the people and the work you left, with a rhythm that can sustain you.
 
 None of this is original. It is simply an attempt to let the way Jesus lived shape the way you rest.
-

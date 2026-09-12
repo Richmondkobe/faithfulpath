@@ -1,79 +1,277 @@
 {
  "lesson": "24-testing-what-you-believe-you-heard",
- "pass_mark": 4,
- "questions": [
-  {
-   "q": "Why does the chapter say testing an impression is faith, not doubt?",
-   "options": [
-    "Because Scripture commands examination precisely because God speaks and we are fallible receivers (1 Thessalonians 5:20–21; Acts 17:11)",
-    "Because God never speaks today",
-    "Because retreats are unreliable",
-    "Because only pastors can hear God"
-   ],
-   "answer": 0,
-   "explanation": "Paul holds both together: do not despise prophecies, and test everything. Testing honours God by refusing to attach his name to what may be our own fear, desire or exhaustion."
-  },
-  {
-   "q": "What is the safety exception?",
-   "options": [
-    "Testing can be skipped if you feel certain",
-    "Waiting and consulting do not apply to immediate danger, abuse, urgent medical care, legal reporting duties, or deadlines that cannot safely be postponed",
-    "Safety concerns should be tested for a month first",
-    "Only pastors decide what is safe"
-   ],
-   "answer": 1,
-   "explanation": "Do not remain in danger merely to complete a discernment process. Chapter 5's guidance on abuse and crisis takes precedence."
-  },
-  {
-   "q": "Into which three categories are the cards sorted?",
-   "options": [
-    "Past, present, future",
-    "Spiritual, practical, relational",
-    "Nothing significant; a low-risk reversible step; a major, high-impact or hard-to-reverse direction",
-    "Confirmed, doubtful, rejected"
-   ],
-   "answer": 2,
-   "explanation": "Most of what people bring home is in the second category. Category three gets the full testing, over weeks, with other people, before any action."
-  },
-  {
-   "q": "Which test is described as the first and weightiest?",
-   "options": [
-    "Whether it feels peaceful",
-    "Whether your Eli agrees",
-    "Whether a sign confirms it",
-    "Whether it agrees with Scripture read in context, not merely a matching verse"
-   ],
-   "answer": 3,
-   "explanation": "Ask what the whole of Scripture teaches about the kind of thing you are considering. An impression that contradicts clear biblical teaching fails here and nothing else needs checking."
-  },
-  {
-   "q": "Which of these is a warning sign rather than a confirmation, according to test seven?",
-   "options": [
-    "\"They would not understand; this is between me and God\"",
-    "\"I would like wise people to examine this\"",
-    "\"Let me take a smaller reversible step first\"",
-    "\"I will give this a month\""
-   ],
-   "answer": 0,
-   "explanation": "Secrecy, superiority, urgency that exists mainly to prevent examination, and immunity from challenge are warning signs. Genuine direction from God can bear examination."
-  },
-  {
-   "q": "What does the chapter say about Gideon's fleece (Judges 6:36–40)?",
-   "options": [
-    "It is the recommended way to confirm guidance",
-    "It is recorded, not commended; Gideon already had God's clear word and was asking for reassurance",
-    "It proves God always gives signs",
-    "It should be repeated three times"
-   ],
-   "answer": 1,
-   "explanation": "Signs are easy to manufacture and misread. Seek confirmation through Scripture, truthful examination, wise counsel, time, prayer and fruit."
-  }
- ],
+ "questions": [],
  "reflection": [
-  "Which category does your card fall into? If nothing significant, go to Chapter 14 with a clear conscience.",
-  "Does the safety exception apply to anything? If so, what help are you seeking today?",
-  "When will you contact your Eli, and what will you bring?",
+  "Which category does your card fall into, and did anything about that surprise you?",
+  "Which of the nine tests would be hardest for your direction to pass, and why?",
   "What is the smallest reversible version of any step you are considering?",
   "Is there anything you are reluctant to test? Write down why. Reluctance to test is itself something to test."
- ]
+ ],
+ "checkin": {
+  "type": "discernment",
+  "title": "Discernment Check-in",
+  "intro": "Use this for the card you brought home marked 'What I sense', or any 'To test' card. It is not scored. It applies the nine tests in a short form and tells you where the direction stands for now. Your answers are for your personal reflection and are not monitored in real time.",
+  "sections": [
+   {
+    "id": "category",
+    "type": "single",
+    "question": "What kind of thing did you bring home?",
+    "options": [
+     {
+      "id": "nothing",
+      "text": "Nothing significant: a general sense of peace, or a familiar verse with no direction attached"
+     },
+     {
+      "id": "small",
+      "text": "A low-risk, reversible step: an appointment, a conversation, protected rest, gathering information"
+     },
+     {
+      "id": "major",
+      "text": "A major, high-impact, or hard-to-reverse direction: leaving, starting, committing, confronting, disclosing"
+     }
+    ]
+   },
+   {
+    "id": "safety",
+    "type": "single",
+    "question": "Does one of these time-sensitive situations apply?",
+    "options": [
+     {
+      "id": "danger",
+      "text": "I am in immediate danger or cannot remain safe",
+      "urgent": true
+     },
+     {
+      "id": "abuse",
+      "text": "Abuse or coercive control is involved"
+     },
+     {
+      "id": "medical",
+      "text": "I need urgent medical care"
+     },
+     {
+      "id": "reporting",
+      "text": "A legal or safeguarding reporting duty applies"
+     },
+     {
+      "id": "deadline",
+      "text": "A deadline cannot safely be postponed"
+     },
+     {
+      "id": "none",
+      "text": "None of these applies"
+     }
+    ]
+   },
+   {
+    "id": "scripture",
+    "type": "single",
+    "question": "Does it agree with Scripture, read in context, not just a matching verse?",
+    "options": [
+     {
+      "id": "yes",
+      "text": "Yes, as far as I can tell"
+     },
+     {
+      "id": "unsure",
+      "text": "I am not sure what Scripture teaches about this"
+     },
+     {
+      "id": "no",
+      "text": "No, it conflicts with clear biblical teaching"
+     }
+    ]
+   },
+   {
+    "id": "warning",
+    "type": "multi",
+    "question": "Do any of these describe how you feel about it? Mark all that apply.",
+    "options": [
+     {
+      "id": "secret",
+      "text": "\"They would not understand\"; I would rather not tell anyone yet"
+     },
+     {
+      "id": "enough",
+      "text": "\"God has shown me, and that is enough\""
+     },
+     {
+      "id": "urgent",
+      "text": "I feel I must act before anyone can talk me out of it"
+     },
+     {
+      "id": "harder",
+      "text": "Acting on it would make me harder, more secretive, or less accountable"
+     },
+     {
+      "id": "none",
+      "text": "None of these"
+     }
+    ]
+   },
+   {
+    "id": "eli",
+    "type": "single",
+    "question": "Have you talked it through with your Eli or a qualified adviser?",
+    "options": [
+     {
+      "id": "yes",
+      "text": "Yes, and they raised no serious concern"
+     },
+     {
+      "id": "concern",
+      "text": "Yes, and they raised a serious concern"
+     },
+     {
+      "id": "no",
+      "text": "Not yet"
+     }
+    ]
+   },
+   {
+    "id": "time",
+    "type": "single",
+    "question": "How long have you been testing it since the retreat?",
+    "options": [
+     {
+      "id": "week",
+      "text": "Less than a week"
+     },
+     {
+      "id": "weeks",
+      "text": "One to four weeks"
+     },
+     {
+      "id": "month",
+      "text": "More than a month"
+     }
+    ]
+   },
+   {
+    "id": "condition",
+    "type": "single",
+    "question": "Are you rested, settled, and supported enough to make this decision now?",
+    "options": [
+     {
+      "id": "yes",
+      "text": "Yes"
+     },
+     {
+      "id": "no",
+      "text": "No, I am still in the dip, exhausted, or in the middle of a crisis"
+     }
+    ]
+   }
+  ],
+  "priority": [
+   "danger",
+   "abuse",
+   "medical",
+   "reporting",
+   "deadline",
+   "fails",
+   "warning",
+   "nothing",
+   "concern",
+   "notyet",
+   "small",
+   "ready",
+   "fallback"
+  ],
+  "guidance": [
+   {
+    "id": "danger",
+    "when": "safety_in:danger",
+    "heading": "Get help now",
+    "text": "Nothing in this lesson about waiting or consulting applies to immediate danger. Contact emergency services, a crisis line, or an abuse service now, tell a trusted person, and do not remain alone. The discernment can wait. Your safety cannot.",
+    "cta": {
+     "text": "Get Help Now",
+     "lesson": "00-finding-help-where-you-live"
+    },
+    "replace_primary": true
+   },
+   {
+    "id": "abuse",
+    "when": "safety_in:abuse",
+    "heading": "Seek specialist help, privately",
+    "text": "Where abuse or coercive control is involved, discernment should not be done jointly with the person involved, and a private retreat or ordinary pastoral conversation is not a substitute for specialist support. Contact a domestic-abuse or sexual-violence service from a safe device, and take advice about safety before any decision. If there is immediate danger, use emergency services.",
+    "cta": {
+     "text": "Finding help where you live",
+     "lesson": "00-finding-help-where-you-live"
+    }
+   },
+   {
+    "id": "medical",
+    "when": "safety_in:medical",
+    "heading": "Get medical care first",
+    "text": "An urgent medical need takes priority over discernment. Seek the care you need now; the direction you are testing will still be there afterwards."
+   },
+   {
+    "id": "reporting",
+    "when": "safety_in:reporting",
+    "heading": "Take prompt advice from the right authority",
+    "text": "Where a legal or safeguarding reporting duty applies, the responsible step is prompt advice from the appropriate safeguarding, legal, or professional authority, not a private discernment process. Do not delay a required report in order to keep testing."
+   },
+   {
+    "id": "deadline",
+    "when": "safety_in:deadline",
+    "heading": "Take the safest necessary action, with advice",
+    "text": "If a deadline cannot safely be postponed, take the safest necessary action and get qualified advice where the matter involves health, law, money, employment, or safety. Prefer the most reversible option available, and keep testing the larger direction afterwards."
+   },
+   {
+    "id": "fails",
+    "when": "scripture_in:no",
+    "heading": "Let it go",
+    "text": "An impression that conflicts with clear biblical teaching fails the first test, and nothing else needs checking. This is not a loss. It is the testing doing exactly what it is for. Record it, and if it is hard to release, talk it through with your Eli."
+   },
+   {
+    "id": "warning",
+    "when": "warning_has:secret,enough,urgent,harder",
+    "heading": "Do not act: warning signs are present",
+    "text": "Secrecy, 'God has shown me and that is enough', urgency that exists mainly to avoid examination, or a direction that would make you less accountable are warning signs, not confirmations. Genuine direction from God can bear examination. Do not act, however small the step seems. Bring it, and these feelings, to your Eli and let wise people look at it with you."
+   },
+   {
+    "id": "nothing",
+    "when": "category_in:nothing",
+    "heading": "There is nothing to test",
+    "text": "A sense of peace, or a familiar passage without a particular direction, is a complete and common outcome. Record it in your journal as part of the retreat and move on to Lesson 25."
+   },
+   {
+    "id": "concern",
+    "when": "eli_in:concern",
+    "heading": "Weigh the concern heavily",
+    "text": "A wise person who knows you has raised a serious concern. That is the most valuable thing an adviser can give you. Do not go looking for another adviser who will agree. Write the concern down, test it against the facts, give it time, and revisit the direction with that concern in the open."
+   },
+   {
+    "id": "notyet",
+    "when": "category_in:major AND (eli_in:no OR time_in:week,weeks OR condition_in:no OR scripture_in:unsure)",
+    "heading": "Not yet",
+    "text": "A major direction needs the full testing: Scripture read in context, the facts checked, at least a month whenever circumstances permit, your Eli and any professionally qualified advisers consulted, and you rested enough to decide well. One or more of those is still missing. That is not 'no'. It is 'not yet'. Keep testing, put a review date on the worksheet, and take no irreversible action before then.",
+    "cta": {
+     "text": "Testing Worksheet",
+     "resource": "testing-worksheet"
+    }
+   },
+   {
+    "id": "small",
+    "when": "category_in:small AND safety_in:none AND scripture_in:yes AND warning_not:secret,enough,urgent,harder AND condition_in:yes",
+    "heading": "Test it lightly, then do it",
+    "text": "A small, reversible, harmless step that raises no concern does not need weeks of testing. Run quickly through the nine tests in your journal, and if nothing raises concern, take the step. If it turns out to affect relationships, employment, safety, or money more than you thought, come back and treat it as a major direction. If you answered 'not sure' about Scripture, find out first, with help."
+   },
+   {
+    "id": "ready",
+    "when": "category_in:major AND safety_in:none AND scripture_in:yes AND eli_in:yes AND time_in:month AND condition_in:yes",
+    "heading": "Responsible enough for a proportionate next step",
+    "text": "The direction has been given time, has been weighed by people who know you, agrees with Scripture, and shows no warning signs. That does not give certainty or guarantee an outcome. It means the direction is responsible enough to take the smallest reversible version of the step first: reduce hours before resigning, have the conversation before leaving, trial before founding. Let the result inform the larger question. Lesson 25 is about that."
+   },
+   {
+    "id": "fallback",
+    "when": "otherwise",
+    "heading": "Keep testing",
+    "text": "Your answers do not yet add up to a clear outcome. Work through the nine tests in your journal, and if you answered 'not sure' about Scripture, find out first, with help. Come back to this check-in when you have."
+   }
+  ],
+  "notes": "Apply guidance in `priority` order; the first matching rule wins. `warning_not` means none of the listed ids are ticked; `warning_has` means any is ticked. `replace_primary` on the danger outcome means the ordinary 'Continue to Lesson 25' button is replaced as the primary action by the Get Help Now link (Lesson 25 remains reachable from the overview; the course is not locked). The check-in is repeatable: a member with more than one distinct direction can run it again for each.",
+  "repeatable": true
+ }
 }
