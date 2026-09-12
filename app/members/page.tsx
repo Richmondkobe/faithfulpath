@@ -13,11 +13,12 @@ import {
 import {
   getCourseProgress,
   completedCount,
-  getCourseComplete,
+  getCompletion,
   getRoute,
   nextLessonFor,
 } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
+import CertificateButton from "@/components/course/CertificateButton";
 
 const COURSE_SLUG = "christian-spiritual-reset";
 
@@ -47,11 +48,11 @@ async function CourseCard() {
   // instead — the membership itself is unaffected.
   let progress;
   let route = null;
-  let courseComplete = false;
+  let completion = { complete: false, name: null as string | null, finishedAt: null as string | null };
   try {
     progress = await getCourseProgress(COURSE_SLUG);
     route = await getRoute(COURSE_SLUG);
-    courseComplete = await getCourseComplete(
+    completion = await getCompletion(
       COURSE_SLUG,
       lessons[lessons.length - 1].slug
     );
@@ -75,7 +76,7 @@ async function CourseCard() {
         {course.title}
       </h2>
 
-      {courseComplete && (
+      {completion.complete && (
         <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
           Course complete
         </p>
@@ -94,6 +95,13 @@ async function CourseCard() {
             ? "Start the course"
             : "Go to the course"}
         </Link>
+        {completion.complete && (
+          <CertificateButton
+            courseSlug={COURSE_SLUG}
+            name={completion.name}
+            nameFieldHref={`${lessonHref(COURSE_SLUG, lessons[lessons.length - 1].slug)}#certificate-name`}
+          />
+        )}
         {done > 0 && done < countable.length && (
           <Link
             href={lessonHref(COURSE_SLUG, next.slug)}

@@ -29,6 +29,7 @@ import {
   readCheckin,
   readDay30,
   readFollowup,
+  readCertificateName,
   DAY30_MS,
 } from "@/lib/course-progress";
 import { remarkRelativeLessonLinks } from "@/lib/markdown-plugins";
@@ -359,6 +360,7 @@ export default async function Lesson({
           available={day30Open}
           finalDone={Boolean(day30?.finalDone)}
           opensOn={opensOn}
+          certificateName={readCertificateName(reflections)}
         />
       )}
 

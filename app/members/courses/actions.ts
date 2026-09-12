@@ -7,6 +7,7 @@ import { findLesson, getQuiz, getRouteLesson, lessonHref } from "@/lib/course";
 import {
   CHECKIN_INDEX,
   DAY30_INDEX,
+  CERT_NAME_INDEX,
   FOLLOWUP_INDEX,
   ROUTE_ANSWER_INDEX,
   type CheckinState,
@@ -306,6 +307,23 @@ export async function saveDay30(
   );
   if (error) throw new Error(error.message);
 
+  revalidatePath(lessonHref(courseSlug, lessonSlug));
+  revalidatePath(`/members/courses/${courseSlug}`);
+  revalidatePath("/members");
+}
+
+/** The name a member wants printed on their certificate. */
+export async function saveCertificateName(
+  courseSlug: string,
+  lessonSlug: string,
+  name: string
+): Promise<void> {
+  await saveLessonExtra(
+    courseSlug,
+    lessonSlug,
+    CERT_NAME_INDEX,
+    name.trim().slice(0, 120)
+  );
   revalidatePath(lessonHref(courseSlug, lessonSlug));
   revalidatePath(`/members/courses/${courseSlug}`);
   revalidatePath("/members");

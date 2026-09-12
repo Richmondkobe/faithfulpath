@@ -11,12 +11,13 @@ import {
 import {
   getCourseProgress,
   completedCount,
-  getCourseComplete,
+  getCompletion,
   getRoute,
   nextLessonFor,
 } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 import CourseFooter from "@/components/course/CourseFooter";
+import CertificateButton from "@/components/course/CertificateButton";
 
 export const metadata: Metadata = {
   title: "Course | Faithful Path Community",
@@ -39,10 +40,10 @@ export default async function CourseOverview({
   // in them, so they are outside both the count and the Continue trail.
   const countable = getCountableLessons(courseSlug);
   const finalLesson = lessons[lessons.length - 1];
-  const [progress, route, courseComplete] = await Promise.all([
+  const [progress, route, completion] = await Promise.all([
     getCourseProgress(courseSlug),
     getRoute(courseSlug),
-    getCourseComplete(courseSlug, finalLesson.slug),
+    getCompletion(courseSlug, finalLesson.slug),
   ]);
   const done = completedCount(progress, countable);
 
@@ -72,15 +73,21 @@ export default async function CourseOverview({
         {course.description}
       </p>
 
-      {courseComplete && (
-        <p className="mt-8 rounded-sm border border-[#8B5E34] bg-[#F3EADC] px-5 py-4 text-[#2B2118]">
-          <span className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      {completion.complete && (
+        <div className="mt-8 rounded-sm border border-[#8B5E34] bg-[#F3EADC] px-5 py-5 text-[#2B2118]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
             Course complete
-          </span>
-          <span className="mt-1 block">
+          </p>
+          <p className="mt-1">
             You finished your Day 30 review. The lessons stay open to you.
-          </span>
-        </p>
+          </p>
+          <CertificateButton
+            courseSlug={courseSlug}
+            name={completion.name}
+            nameFieldHref={`${lessonHref(courseSlug, finalLesson.slug)}#certificate-name`}
+            className="mt-5"
+          />
+        </div>
       )}
 
       <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">

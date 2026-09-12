@@ -144,6 +144,8 @@ export function completedCount(
 export const CHECKIN_INDEX = 100;
 export const DAY30_INDEX = 101;
 export const FOLLOWUP_INDEX = 102;
+/** The name a member wants on their certificate. */
+export const CERT_NAME_INDEX = 103;
 
 export type CheckinState = {
   answers: CheckinAnswers;
@@ -183,6 +185,35 @@ export function readFollowup(reflections: Map<number, string>): string | null {
   return reflections.get(FOLLOWUP_INDEX) ?? null;
 }
 
+export function readCertificateName(
+  reflections: Map<number, string>
+): string | null {
+  return reflections.get(CERT_NAME_INDEX)?.trim() || null;
+}
+
+/**
+ * What the course-complete UI needs: whether the course is finished, the name
+ * for the certificate, and the date it was finished.
+ */
+export type Completion = {
+  complete: boolean;
+  name: string | null;
+  finishedAt: string | null;
+};
+
+export async function getCompletion(
+  courseSlug: string,
+  finalLessonSlug: string
+): Promise<Completion> {
+  const reflections = await getLessonReflections(courseSlug, finalLessonSlug);
+  const day30 = readDay30(reflections);
+  return {
+    complete: Boolean(day30?.finalDone),
+    name: readCertificateName(reflections),
+    finishedAt: day30?.finalDoneAt ?? null,
+  };
+}
+
 export const DAY30_MS = 30 * 24 * 60 * 60 * 1000;
 
 /**
@@ -204,6 +235,5 @@ export async function getCourseComplete(
   courseSlug: string,
   finalLessonSlug: string
 ): Promise<boolean> {
-  const reflections = await getLessonReflections(courseSlug, finalLessonSlug);
-  return Boolean(readDay30(reflections)?.finalDone);
+  return (await getCompletion(courseSlug, finalLessonSlug)).complete;
 }

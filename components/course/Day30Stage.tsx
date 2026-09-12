@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { saveDay30 } from "@/app/members/courses/actions";
+import CertificateButton from "@/components/course/CertificateButton";
+import { saveDay30, saveCertificateName } from "@/app/members/courses/actions";
 
 /**
  * The second stage of Lesson 28. It opens thirty days after the first checkbox,
@@ -17,6 +18,7 @@ export default function Day30Stage({
   available,
   finalDone,
   opensOn,
+  certificateName,
 }: {
   courseSlug: string;
   lessonSlug: string;
@@ -25,12 +27,25 @@ export default function Day30Stage({
   available: boolean;
   finalDone: boolean;
   opensOn: string | null;
+  certificateName: string | null;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(available);
   const [done, setDone] = useState(finalDone);
+  const [name, setName] = useState(certificateName ?? "");
+  const [nameSaved, setNameSaved] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+
+  const saveName = () =>
+    startTransition(async () => {
+      try {
+        await saveCertificateName(courseSlug, lessonSlug, name);
+        setNameSaved(true);
+      } catch {
+        setError("Your name could not be saved. Please try again.");
+      }
+    });
 
   return (
     <section className="mt-16 border-t border-[#E5D9C7] pt-10">
@@ -78,6 +93,42 @@ export default function Day30Stage({
           >
             {finalAction}
           </p>
+          {/* Needed only for the certificate — a member can finish the course
+              without giving a name. */}
+          <div id="certificate-name" className="mt-8 scroll-mt-24">
+            <label
+              htmlFor="certificate-name-input"
+              className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+            >
+              Your name as you would like it on your certificate
+            </label>
+            <div className="mt-2 flex flex-wrap gap-3">
+              <input
+                id="certificate-name-input"
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setNameSaved(false);
+                }}
+                onBlur={() => name.trim() && saveName()}
+                placeholder="As you would like it printed"
+                className="min-w-0 flex-1 rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]"
+              />
+              <button
+                type="button"
+                onClick={saveName}
+                disabled={pending || !name.trim()}
+                className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34] disabled:opacity-60"
+              >
+                Save name
+              </button>
+            </div>
+            {nameSaved && !pending && (
+              <p className="mt-2 text-sm text-[#5C5147]">Saved.</p>
+            )}
+          </div>
+
           <label
             className={`mt-6 flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-4 text-sm leading-relaxed ${
               done ? "border-[#8B5E34] bg-[#F3EADC]" : "border-[#D9CDBA]"
@@ -105,9 +156,17 @@ export default function Day30Stage({
             <span className="text-[#2B2118]">{finalDoneLabel}</span>
           </label>
           {done && (
-            <p className="mt-3 text-sm text-[#5C5147]">
-              The course is marked complete.
-            </p>
+            <div className="mt-4">
+              <p className="text-sm text-[#5C5147]">
+                The course is marked complete.
+              </p>
+              <CertificateButton
+                courseSlug={courseSlug}
+                name={name.trim() || null}
+                nameFieldHref="#certificate-name"
+                className="mt-4"
+              />
+            </div>
           )}
         </>
       )}
