@@ -175,17 +175,21 @@ export default async function Members() {
         className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
-        Welcome to the membership
+        Welcome to Faithful Path
       </h1>
 
       <p
         className="mt-6 text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        You are in the right place. Everything here moves at your pace: nothing
-        is timed, nothing is graded, and you can pause a retreat and come back to
-        it. Start with the welcome and choose your route, and if you are already
-        exhausted, take the quick start. The rest will keep.
+        You are in the right place. Everything here moves at a pace you can
+        safely manage. There are no grades, deadlines, or rewards for finishing
+        quickly. You may shorten an exercise, pause a session, or return to the
+        retreat later. Begin with the welcome, then choose the route that matches
+        the capacity you have today. If you are already exhausted, choose the
+        Quick Start route. Complete the essential safety and preparation steps,
+        then begin with a shorter reset. You do not have to carry the whole
+        course at once. The rest will be here when you are ready.
       </p>
 
       <CourseCard />
