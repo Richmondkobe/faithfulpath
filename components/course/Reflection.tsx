@@ -27,8 +27,9 @@ export default function Reflection({
         Reflection
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
-        Only you can read these. They are saved to your account and will be here
-        when you come back.
+        Your answers are for your personal reflection. They are saved to your
+        account, are not monitored in real time, and will be here when you come
+        back.
       </p>
 
       <form action={action} className="mt-8 space-y-8">
