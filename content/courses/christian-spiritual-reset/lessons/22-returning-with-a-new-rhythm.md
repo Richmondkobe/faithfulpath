@@ -4,6 +4,7 @@ module: m4
 order: 22
 source: "Session Ten"
 type: session
+audio: 10-returning-with-a-new-rhythm
 ---
 
 # Returning With a New Rhythm
@@ -20,7 +21,9 @@ If you deferred sessions, this session is still for you. It does not assume you 
 
 ## Central passage
 
-1 Kings 19:19–21, followed by Luke 10:17–20 Read both. In the first, notice what Elijah's return from isolation looks like. In the second, notice what Jesus tells the returning disciples to rejoice in.
+## 1 Kings 19:19–21, followed by Luke 10:17–20
+
+Read both. In the first, notice what Elijah's return from isolation looks like. In the second, notice what Jesus tells the returning disciples to rejoice in.
 
 ## Teaching
 

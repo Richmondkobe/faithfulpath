@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
 import type { Checkin } from "@/lib/checkin";
@@ -38,6 +38,12 @@ export type LessonMeta = {
  */
 export type LessonFront = {
   outcome?: string;
+  /** A single video, placed above Key Scripture (teaching) or Before you begin (session). */
+  video?: string;
+  /** Several videos, each placed above the heading named in its own front matter. */
+  videos: string[];
+  /** A session's guided-prayer recording. */
+  audio?: string;
   action?: string;
   action_done?: string;
   action_followup?: string;
@@ -191,6 +197,9 @@ export const getLessonFront = cache(
 
     return {
       outcome: str("outcome"),
+      video: str("video"),
+      videos: Array.isArray(fm.videos) ? (fm.videos as string[]) : [],
+      audio: str("audio"),
       action: str("action"),
       action_done: str("action_done"),
       action_followup: str("action_followup"),
@@ -297,4 +306,182 @@ export const getQuiz = cache(
 
 export function lessonHref(courseSlug: string, lessonSlug: string): string {
   return `/members/courses/${courseSlug}/${lessonSlug}`;
+}
+
+/* ------------------------------------------------------------ media scripts */
+
+export type VideoScript = {
+  id: string;
+  title: string;
+  length: string | null;
+  /** The heading this video sits immediately above, for a `videos` list. */
+  beforeHeading: string | null;
+  /** The spoken script, with the italic recording notes removed. */
+  script: string;
+};
+
+export type AudioScript = {
+  id: string;
+  title: string;
+  length: string | null;
+};
+
+/**
+ * Whole-line italics in a script are directions to the person recording it —
+ * "record this unhurried" — and are never shown to a member.
+ */
+function stripRecordingNotes(body: string): string {
+  return body
+    .split(/\n{2,}/)
+    .filter((block) => !/^\*[^*][\s\S]*\*$/.test(block.trim()))
+    .join("\n\n")
+    .trim();
+}
+
+export const getVideoScript = cache(
+  (courseSlug: string, id: string): VideoScript | null => {
+    if (!/^[a-z0-9-]+$/.test(id)) return null;
+    try {
+      const raw = readFileSync(join(ROOT, courseSlug, "videos", `${id}.md`), "utf8");
+      const fm = parseFrontMatter(raw);
+      return {
+        id,
+        title: typeof fm.title === "string" ? fm.title : id,
+        length: typeof fm.length === "string" ? fm.length : null,
+        beforeHeading:
+          typeof fm.before_heading === "string" ? fm.before_heading : null,
+        script: stripRecordingNotes(raw.replace(FRONT_MATTER, "")),
+      };
+    } catch {
+      return null;
+    }
+  }
+);
+
+export const getAudioScript = cache(
+  (courseSlug: string, id: string): AudioScript | null => {
+    if (!/^[a-z0-9-]+$/.test(id)) return null;
+    try {
+      const raw = readFileSync(join(ROOT, courseSlug, "audio", `${id}.md`), "utf8");
+      const fm = parseFrontMatter(raw);
+      // The script itself is deliberately not returned: the guided prayer is
+      // spoken, and the written prayer already follows in the lesson.
+      return {
+        id,
+        title: typeof fm.title === "string" ? fm.title : id,
+        length: typeof fm.length === "string" ? fm.length : null,
+      };
+    } catch {
+      return null;
+    }
+  }
+);
+
+/** The lengths the silence timer offers, from audio/silence-timers.md. */
+export const getSilenceLengths = cache((courseSlug: string): number[] => {
+  try {
+    const raw = readFileSync(
+      join(ROOT, courseSlug, "audio", "silence-timers.md"),
+      "utf8"
+    );
+    const fm = parseFrontMatter(raw);
+    const lengths = Array.isArray(fm.lengths)
+      ? (fm.lengths as string[]).map((n) => Number(n)).filter((n) => n > 0)
+      : [];
+    return lengths.length > 0 ? lengths : [5, 10, 20, 30];
+  } catch {
+    return [5, 10, 20, 30];
+  }
+});
+
+const WORD_MINUTES: Record<string, number> = {
+  five: 5,
+  ten: 10,
+  fifteen: 15,
+  twenty: 20,
+  "twenty-five": 25,
+  thirty: 30,
+  forty: 40,
+  "forty-five": 45,
+  sixty: 60,
+};
+
+/**
+ * The length a session suggests, written in words in its Silence section —
+ * "Suggested length: fifteen minutes". Offered alongside the standard set when
+ * it is not already one of them.
+ */
+export function suggestedSilenceMinutes(body: string): number | null {
+  const section = body.split(/^##\s+Silence\s*$/m)[1];
+  if (!section) return null;
+  const m = section.match(/Suggested length:\s*([a-z-]+)\s*minutes/i);
+  if (!m) return null;
+  return WORD_MINUTES[m[1].toLowerCase()] ?? null;
+}
+
+/** Whether a recording has actually been dropped into public/course-media. */
+export function hasMedia(kind: "videos" | "audio", file: string): boolean {
+  if (!/^[a-z0-9-]+\.(mp4|mp3)$/.test(file)) return false;
+  try {
+    return existsSync(join(process.cwd(), "public", "course-media", kind, file));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Splits a lesson body so a component can be placed at a named heading, and
+ * returns the pieces in order. Used to put the guided-prayer player under its
+ * own heading and each Day-30 video above its week, without the content having
+ * to know anything about the page.
+ *
+ * `at` is the heading line as the content writes it, e.g. "## Silence".
+ */
+export type BodyPiece =
+  | { kind: "markdown"; source: string }
+  | { kind: "slot"; id: string };
+
+export function spliceAtHeadings(
+  body: string,
+  slots: { id: string; heading: string; where: "before" | "after" | "endOfSection" }[]
+): BodyPiece[] {
+  type Cut = { index: number; id: string };
+  const cuts: Cut[] = [];
+
+  for (const slot of slots) {
+    const escaped = slot.heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const re = new RegExp(`^${escaped}\\s*$`, "m");
+    const m = body.match(re);
+    if (m?.index === undefined) continue;
+
+    if (slot.where === "before") {
+      cuts.push({ index: m.index, id: slot.id });
+    } else if (slot.where === "after") {
+      cuts.push({ index: m.index + m[0].length, id: slot.id });
+    } else {
+      // End of the section: just before the next heading of any level, or the
+      // end of the body.
+      const rest = body.slice(m.index + m[0].length);
+      const nextHeading = rest.search(/^#{1,6}\s+/m);
+      cuts.push({
+        index: nextHeading === -1 ? body.length : m.index + m[0].length + nextHeading,
+        id: slot.id,
+      });
+    }
+  }
+
+  cuts.sort((a, b) => a.index - b.index);
+
+  const pieces: BodyPiece[] = [];
+  let from = 0;
+  for (const cut of cuts) {
+    const source = body.slice(from, cut.index).trim();
+    if (source) pieces.push({ kind: "markdown", source });
+    pieces.push({ kind: "slot", id: cut.id });
+    from = cut.index;
+  }
+  const tail = body.slice(from).trim();
+  if (tail) pieces.push({ kind: "markdown", source: tail });
+
+  return pieces;
 }

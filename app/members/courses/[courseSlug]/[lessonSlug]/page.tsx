@@ -11,9 +11,15 @@ import {
   getLessonSections,
   getLessons,
   getQuiz,
+  getAudioScript,
+  getSilenceLengths,
+  getVideoScript,
+  hasMedia,
   isCountable,
   lessonHref,
   resourceHref,
+  spliceAtHeadings,
+  suggestedSilenceMinutes,
 } from "@/lib/course";
 import {
   day30Available,
@@ -31,6 +37,9 @@ import Reflection from "@/components/course/Reflection";
 import MarkComplete from "@/components/course/MarkComplete";
 import RouteChoiceButton from "@/components/course/RouteChoiceButton";
 import VideoPlaceholder from "@/components/course/VideoPlaceholder";
+import VideoBlock from "@/components/course/VideoBlock";
+import AudioBlock from "@/components/course/AudioBlock";
+import SilenceTimer from "@/components/course/SilenceTimer";
 import KeyScripture from "@/components/course/KeyScripture";
 import DeeperTeaching from "@/components/course/DeeperTeaching";
 import ResourcesBox from "@/components/course/ResourcesBox";
@@ -103,6 +112,103 @@ export default async function Lesson({
 
   const coursePath = `/members/courses/${courseSlug}`;
   const remarkPlugins = [remarkRelativeLessonLinks(coursePath)];
+
+  const mediaUrl = (kind: "videos" | "audio", file: string) =>
+    hasMedia(kind, file) ? `/course-media/${kind}/${file}` : null;
+
+  // A single `video` sits above the Key Scripture box on a teaching lesson, and
+  // above "Before you begin" on a session.
+  const leadVideo = front.video ? getVideoScript(courseSlug, front.video) : null;
+  const leadVideoBlock = leadVideo ? (
+    <VideoBlock video={leadVideo} src={mediaUrl("videos", `${leadVideo.id}.mp4`)} />
+  ) : // 00-welcome names a video that has no script file; its words are already
+  // in the lesson body, so the placeholder alone is right there.
+  front.video ? (
+    <VideoPlaceholder />
+  ) : null;
+
+  const audio = front.audio ? getAudioScript(courseSlug, front.audio) : null;
+  const silenceLengths = getSilenceLengths(courseSlug);
+  const body = getLessonBody(courseSlug, lesson.file);
+  const suggested = suggestedSilenceMinutes(body);
+
+  const openingSrcFor = Object.fromEntries(
+    [...new Set([...silenceLengths, ...(suggested ? [suggested] : [])])].map((n) => [
+      n,
+      mediaUrl("audio", `timer-opening-${n}.mp3`),
+    ])
+  );
+
+  // Slots inside the body: the guided-prayer player, the silence timer, and any
+  // Day 30 week videos that name the heading they belong above.
+  const listedVideos = front.videos
+    .map((id) => getVideoScript(courseSlug, id))
+    .filter((v): v is NonNullable<typeof v> => v !== null);
+
+  const slots: { id: string; heading: string; where: "before" | "after" | "endOfSection" }[] = [];
+  if (audio) slots.push({ id: "audio", heading: "## Guided prayer", where: "after" });
+  // A session's lead video belongs above "Before you begin", which lives inside
+  // the body rather than above it.
+  if (lesson.type === "session" && leadVideo) {
+    slots.push({ id: "leadVideo", heading: "## Before you begin", where: "before" });
+  }
+  if (lesson.type === "session") {
+    slots.push({ id: "silence", heading: "## Silence", where: "endOfSection" });
+  }
+  for (const v of listedVideos) {
+    if (v.beforeHeading) {
+      slots.push({ id: `video:${v.id}`, heading: v.beforeHeading, where: "before" });
+    }
+  }
+
+  const renderSlot = (id: string) => {
+    if (id === "leadVideo" && leadVideo) {
+      return (
+        <VideoBlock
+          key="leadVideo"
+          video={leadVideo}
+          src={mediaUrl("videos", `${leadVideo.id}.mp4`)}
+        />
+      );
+    }
+    if (id === "audio" && audio) {
+      return <AudioBlock key="audio" audio={audio} src={mediaUrl("audio", `${audio.id}.mp3`)} />;
+    }
+    if (id === "silence") {
+      return (
+        <SilenceTimer
+          key="silence"
+          lengths={silenceLengths}
+          suggested={suggested}
+          openingSrcFor={openingSrcFor}
+          closingSrc={mediaUrl("audio", "timer-closing.mp3")}
+        />
+      );
+    }
+    const video = listedVideos.find((v) => `video:${v.id}` === id);
+    if (video) {
+      return (
+        <VideoBlock key={id} video={video} src={mediaUrl("videos", `${video.id}.mp4`)} />
+      );
+    }
+    return null;
+  };
+
+  const renderBody = (source: string) => {
+    const pieces = slots.length > 0 ? spliceAtHeadings(source, slots) : [{ kind: "markdown" as const, source }];
+    return pieces.map((piece, i) =>
+      piece.kind === "markdown" ? (
+        <ArticleBody
+          key={`md-${i}`}
+          source={piece.source}
+          remarkPlugins={remarkPlugins}
+          components={routeComponents}
+        />
+      ) : (
+        renderSlot(piece.id)
+      )
+    );
+  };
   const chosenRoute = lesson.route_choice ? await getRoute(courseSlug) : null;
   const routeComponents = lesson.route_choice
     ? {
@@ -211,7 +317,10 @@ export default async function Lesson({
         </div>
       )}
 
-      {lesson.video && <VideoPlaceholder />}
+      {/* A lead video sits above Key Scripture on a teaching lesson. On a
+          session it belongs above "Before you begin", which is inside the body,
+          so it is spliced in there instead. */}
+      {isTeaching && leadVideoBlock}
 
       {isTeaching && sections.keyScripture && (
         <KeyScripture>
@@ -222,21 +331,16 @@ export default async function Lesson({
       {/* Teaching lessons render the condensed "In brief"; sessions and
           reference lessons keep their single body, which is what `inBrief`
           holds when the headings are absent. */}
-      <ArticleBody
-        source={isTeaching ? sections.inBrief : getLessonBody(courseSlug, lesson.file)}
-        title={isTeaching ? undefined : lesson.title}
-        remarkPlugins={remarkPlugins}
-        components={routeComponents}
-      />
+      {renderBody(isTeaching ? sections.inBrief : body)}
 
       {front.resources.length > 0 && (
         <ResourcesBox courseSlug={courseSlug} slugs={front.resources} />
       )}
 
+      {/* Lesson 28's week videos sit against headings inside the deeper
+          teaching, so that body is spliced too. */}
       {isTeaching && sections.deeper && (
-        <DeeperTeaching>
-          <ArticleBody source={sections.deeper} remarkPlugins={remarkPlugins} />
-        </DeeperTeaching>
+        <DeeperTeaching>{renderBody(sections.deeper)}</DeeperTeaching>
       )}
 
       {/* Lesson 28 only: the Day 30 stage sits immediately before its check-in. */}

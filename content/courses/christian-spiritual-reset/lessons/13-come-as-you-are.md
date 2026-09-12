@@ -4,6 +4,8 @@ module: m4
 order: 13
 source: "Session One"
 type: session
+video: day-1-introduction
+audio: 01-come-as-you-are
 ---
 
 # Come As You Are

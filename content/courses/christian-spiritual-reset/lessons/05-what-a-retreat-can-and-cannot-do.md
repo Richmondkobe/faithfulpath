@@ -7,6 +7,7 @@ type: teaching
 outcome: "Enter the retreat with the right expectations and the right support: what it can and cannot do, when it should wait, and how to pause safely."
 action: "Take the first practical action required by the path you selected. Proceed independently: record your support person and your local emergency or crisis-help information. Proceed with support: contact your support person and agree when you will check in. Use an adapted format: select the shorter, supported, or group format you will use. Postpone for now: open Finding Help Where You Live and contact an appropriate source of support."
 action_done: "I have taken or scheduled the first action required by my chosen path."
+video: safety-and-how-to-use-this-retreat
 ---
 
 # What a Retreat Can and Cannot Do

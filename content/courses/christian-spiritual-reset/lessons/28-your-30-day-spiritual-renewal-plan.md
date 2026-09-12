@@ -9,6 +9,7 @@ action: "Start the plan, Day 1. Copy the four weekly blocks into your diary. Add
 action_done: "I have dated the four weeks, scheduled my Day 30 review, and recorded a provisional date for my next pause."
 final_action: "Complete the course, Day 30. Complete the Day 30 Integration Check-in. Confirm or adjust the date of your next deliberate pause. A blank answer is not failure; it identifies the place where your next step begins."
 final_done: "I have completed my Day 30 review and confirmed my next deliberate pause."
+videos: [week-1-landing, week-2-doing, week-3-shaping, week-4-settling]
 ---
 
 # Your 30-Day Spiritual Renewal Plan

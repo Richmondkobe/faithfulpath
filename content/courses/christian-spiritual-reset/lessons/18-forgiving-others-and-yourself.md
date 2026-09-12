@@ -4,6 +4,7 @@ module: m4
 order: 18
 source: "Session Six"
 type: session
+audio: 06-forgiving-others-and-yourself
 ---
 
 # Forgiving Others and Yourself

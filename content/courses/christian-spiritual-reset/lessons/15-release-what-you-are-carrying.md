@@ -4,6 +4,8 @@ module: m4
 order: 15
 source: "Session Three"
 type: session
+video: day-2-introduction
+audio: 03-release-what-you-are-carrying
 ---
 
 # Release What You Are Carrying

@@ -4,6 +4,7 @@ module: m4
 order: 21
 source: "Session Nine"
 type: session
+audio: 09-renewing-your-purpose
 ---
 
 # Renewing Your Purpose

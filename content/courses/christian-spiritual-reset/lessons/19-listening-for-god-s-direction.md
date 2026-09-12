@@ -4,6 +4,8 @@ module: m4
 order: 19
 source: "Session Seven"
 type: session
+video: day-3-introduction
+audio: 07-listening-for-gods-direction
 ---
 
 # Listening for God's Direction

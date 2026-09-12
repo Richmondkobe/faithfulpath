@@ -4,6 +4,7 @@ module: m4
 order: 20
 source: "Session Eight"
 type: session
+audio: 08-rediscovering-your-identity
 ---
 
 # Rediscovering Your Identity

@@ -4,6 +4,7 @@ module: m4
 order: 17
 source: "Session Five"
 type: session
+audio: 05-confession-and-grace
 ---
 
 # Confession and Grace

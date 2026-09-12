@@ -4,6 +4,7 @@ module: m4
 order: 16
 source: "Session Four"
 type: session
+audio: 04-lament-grief-and-honest-prayer
 ---
 
 # Lament, Grief, and Honest Prayer

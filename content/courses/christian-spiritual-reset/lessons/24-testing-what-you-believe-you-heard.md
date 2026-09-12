@@ -8,6 +8,7 @@ outcome: "Sort what you brought home from the retreat and test any impression be
 action: "Sort your What I sense and To test cards into the three categories. Complete the Discernment Check-in for each particular direction you are testing. If you have a major direction, schedule an hour with your Eli or an appropriate qualified adviser, open the Testing Worksheet from the Resources section, and add a start date and a review date. Take no major action today."
 action_done: "I have sorted my cards, completed the appropriate check-in, and, for any major direction, dated the worksheet and scheduled an adviser conversation."
 resources: [testing-worksheet]
+video: welcome-home
 ---
 
 # Testing What You Believe You Heard
