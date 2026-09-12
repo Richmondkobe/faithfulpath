@@ -1,4 +1,4 @@
-# Course content: The Christian Spiritual Reset (content v5, phase 3)
+# Course content: The Christian Spiritual Reset (content v6)
 
 ## Files
 - course.json — course metadata. Six modules in order: m0 Start Here, m1 Why Your Soul Needs a Retreat, m2 Preparing to Meet With God, m3 Choose Your Retreat, m4 The Retreat Journey, m5 After the Retreat. Lesson sequence is the array order in course.json. `order` is the stable display number for countable lessons (matches in-text references such as "read Lesson 24"); reference lessons show no number. 27 countable lessons (types teaching and session); reference lessons never count toward progress.
@@ -35,6 +35,9 @@ Four types, all unscored, all saved per member (answers and outcome id) — stor
 - **safety** (05.json): `statements` (each a checkbox), `path` (single select, saved as the member's path), `confirm` (final checkbox), `help_link`. All statements + path + confirm required to tick; ticking confirm counts as completing the check-in.
 - **discernment** (24.json): same rule engine as readiness (`warning_has`, `warning_not` = none of the listed ids ticked). `repeatable: true` — show a "Check another direction" button that clears and re-runs. The matched rule with `replace_primary` (immediate danger) replaces the primary Next button with the "Get Help Now" cta but does NOT lock the course.
 - **integration** (28.json): `items` (labelled text fields with placeholders; `optional` where marked), `reflection_prompt` (one textarea), `confirm` (checkbox), `closing` text shown after confirm. `available_from: day30` — same availability rule as `final_action`.
+
+## Downloads (printable PDFs)
+- downloads/<id>.pdf — whole-document PDFs for members to download and print. `downloads: [workbook, session-guide]` on a lesson lists them in that lesson's Resources box (create the box if the lesson has no `resources`), each with title, page count and a Download link. Titles: workbook = "The Christian Spiritual Reset — Workbook (printable, A4, 59 pages)", session-guide = "Retreat Session Guide (printable, A4, 43 pages)". Serve them from the content folder behind the member gate (a route that streams the file), not from public/, so they are not downloadable without membership. Currently on 00-welcome, 10-what-to-bring and 23-choose-your-retreat-format.
 
 ## Videos and audio (phase 3)
 - videos/<id>.md — script for a short video by Richmond (front matter: title, lesson, length, optional before_heading). A lesson references one with `video: <id>` or several with `videos: [<id>, …]`. Until a media file exists at public/course-media/videos/<id>.mp4, render a "Video coming soon" placeholder box with the script text beneath it under the heading "What Richmond says in this video" (the italic recording notes are not shown to members). When the .mp4 exists, render a player and keep the script collapsed beneath it as a transcript. Placement: `video` goes above the Key Scripture box (teaching lessons) or above "Before you begin" (sessions); each entry in `videos` goes immediately above the heading named in its `before_heading`.

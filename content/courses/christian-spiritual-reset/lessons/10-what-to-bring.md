@@ -8,6 +8,7 @@ outcome: "Pack what matters and leave behind what will follow you into the quiet
 action: "Download and complete the Retreat Packing Checklist (in Resources below). Decide whether you will buy, borrow, substitute, or do without each missing item. Then complete your paper Emergency Information Card."
 action_done: "I have completed my checklist and emergency card."
 resources: [retreat-packing-checklist, emergency-information-card]
+downloads: [workbook, session-guide]
 ---
 
 # What to Bring

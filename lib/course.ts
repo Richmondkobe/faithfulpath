@@ -44,6 +44,8 @@ export type LessonFront = {
   videos: string[];
   /** A session's guided-prayer recording. */
   audio?: string;
+  /** Printable PDFs to list in the lesson's Resources box. */
+  downloads: string[];
   action?: string;
   action_done?: string;
   action_followup?: string;
@@ -200,6 +202,7 @@ export const getLessonFront = cache(
       video: str("video"),
       videos: Array.isArray(fm.videos) ? (fm.videos as string[]) : [],
       audio: str("audio"),
+      downloads: Array.isArray(fm.downloads) ? (fm.downloads as string[]) : [],
       action: str("action"),
       action_done: str("action_done"),
       action_followup: str("action_followup"),
@@ -484,4 +487,54 @@ export function spliceAtHeadings(
   if (tail) pieces.push({ kind: "markdown", source: tail });
 
   return pieces;
+}
+
+/* ------------------------------------------------------- printable PDFs */
+
+export type CourseDownload = {
+  id: string;
+  title: string;
+  pages: number;
+};
+
+/**
+ * Titles as the content README specifies them, page counts included — both
+ * verified against the PDFs themselves (59 and 43).
+ *
+ * The files live in the content folder, not public/, so they are served by a
+ * route that checks the membership first. Putting them in public/ would make
+ * them a plain URL anyone could share.
+ */
+const DOWNLOADS: Record<string, CourseDownload> = {
+  workbook: {
+    id: "workbook",
+    title: "The Christian Spiritual Reset — Workbook (printable, A4, 59 pages)",
+    pages: 59,
+  },
+  "session-guide": {
+    id: "session-guide",
+    title: "Retreat Session Guide (printable, A4, 43 pages)",
+    pages: 43,
+  },
+};
+
+/** Resolves a download, and only if the PDF is actually present. */
+export function getDownload(
+  courseSlug: string,
+  id: string
+): CourseDownload | null {
+  const meta = DOWNLOADS[id];
+  if (!meta) return null;
+  return downloadPath(courseSlug, id) ? meta : null;
+}
+
+/** Absolute path to a download's PDF, or null if it is not there. */
+export function downloadPath(courseSlug: string, id: string): string | null {
+  if (!/^[a-z0-9-]+$/.test(id) || !/^[a-z0-9-]+$/.test(courseSlug)) return null;
+  const path = join(ROOT, courseSlug, "downloads", `${id}.pdf`);
+  return existsSync(path) ? path : null;
+}
+
+export function downloadHref(courseSlug: string, id: string): string {
+  return `/members/courses/${courseSlug}/downloads/${id}`;
 }

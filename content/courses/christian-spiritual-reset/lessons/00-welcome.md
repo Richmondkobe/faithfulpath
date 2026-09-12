@@ -5,6 +5,7 @@ order: -2
 source: "Course"
 type: reference
 video: "welcome"
+downloads: [workbook, session-guide]
 ---
 
 # Welcome

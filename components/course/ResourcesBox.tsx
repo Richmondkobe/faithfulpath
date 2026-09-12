@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getResource, resourceHref } from "@/lib/course";
+import { downloadHref, getDownload, getResource, resourceHref } from "@/lib/course";
 
 /**
  * Sits above the collapsed deeper teaching on purpose: a member must never have
@@ -8,15 +8,22 @@ import { getResource, resourceHref } from "@/lib/course";
 export default function ResourcesBox({
   courseSlug,
   slugs,
+  downloads = [],
 }: {
   courseSlug: string;
   slugs: string[];
+  /** Ids of printable PDFs to list alongside the worksheets. */
+  downloads?: string[];
 }) {
   const resources = slugs
     .map((slug) => getResource(courseSlug, slug))
     .filter((r): r is NonNullable<typeof r> => r !== null);
 
-  if (resources.length === 0) return null;
+  const files = downloads
+    .map((id) => getDownload(courseSlug, id))
+    .filter((d): d is NonNullable<typeof d> => d !== null);
+
+  if (resources.length === 0 && files.length === 0) return null;
 
   return (
     <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-6 py-5">
@@ -38,6 +45,17 @@ export default function ResourcesBox({
             >
               Print
             </Link>
+          </li>
+        ))}
+        {files.map((file) => (
+          <li key={file.id} className="flex flex-wrap items-baseline gap-x-4">
+            <span className="text-[#2B2118]">{file.title}</span>
+            <a
+              href={downloadHref(courseSlug, file.id)}
+              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              Download
+            </a>
           </li>
         ))}
       </ul>

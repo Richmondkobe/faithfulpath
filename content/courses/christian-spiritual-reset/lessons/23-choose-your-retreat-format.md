@@ -4,6 +4,7 @@ module: m3
 order: 23
 source: "Part Four"
 type: reference
+downloads: [workbook, session-guide]
 ---
 
 # Choose Your Retreat Format

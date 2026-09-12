@@ -333,8 +333,14 @@ export default async function Lesson({
           holds when the headings are absent. */}
       {renderBody(isTeaching ? sections.inBrief : body)}
 
-      {front.resources.length > 0 && (
-        <ResourcesBox courseSlug={courseSlug} slugs={front.resources} />
+      {/* The box appears for downloads alone, on lessons that list no
+          worksheets. */}
+      {(front.resources.length > 0 || front.downloads.length > 0) && (
+        <ResourcesBox
+          courseSlug={courseSlug}
+          slugs={front.resources}
+          downloads={front.downloads}
+        />
       )}
 
       {/* Lesson 28's week videos sit against headings inside the deeper
