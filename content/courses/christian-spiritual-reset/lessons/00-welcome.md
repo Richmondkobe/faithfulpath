@@ -12,8 +12,6 @@ downloads: [workbook, session-guide]
 
 ## A welcome from Richmond
 
-*Video coming soon. The words below are what Richmond says in it.*
-
 Hello, and welcome.
 
 My name is Richmond Kobe. I have served as a pastor for more than twenty years, in different countries and different kinds of churches.
