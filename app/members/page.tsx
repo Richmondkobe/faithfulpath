@@ -21,6 +21,15 @@ import ProgressBar from "@/components/course/ProgressBar";
 
 const COURSE_SLUG = "christian-spiritual-reset";
 
+const WELCOME = [
+  "You are in the right place.",
+  "Everything here moves at a pace you can safely manage. There are no grades, deadlines, or rewards for finishing quickly. You may shorten an exercise, pause a session, or return to the retreat later.",
+  "Begin with the welcome, then choose the route that matches the capacity you have today.",
+  "If you are already exhausted, choose the Quick Start route. Complete the essential safety and preparation steps, then begin with a shorter reset.",
+  "You do not have to carry the whole course at once.",
+  "The rest will be here when you are ready.",
+];
+
 export const metadata: Metadata = {
   title: "Members | Faithful Path Community",
   robots: { index: false, follow: false },
@@ -178,19 +187,17 @@ export default async function Members() {
         Welcome to Faithful Path
       </h1>
 
-      <p
-        className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
-      >
-        You are in the right place. Everything here moves at a pace you can
-        safely manage. There are no grades, deadlines, or rewards for finishing
-        quickly. You may shorten an exercise, pause a session, or return to the
-        retreat later. Begin with the welcome, then choose the route that matches
-        the capacity you have today. If you are already exhausted, choose the
-        Quick Start route. Complete the essential safety and preparation steps,
-        then begin with a shorter reset. You do not have to carry the whole
-        course at once. The rest will be here when you are ready.
-      </p>
+      <div className="mt-6 space-y-4">
+        {WELCOME.map((paragraph) => (
+          <p
+            key={paragraph.slice(0, 24)}
+            className="text-lg leading-relaxed"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          >
+            {paragraph}
+          </p>
+        ))}
+      </div>
 
       <CourseCard />
 
