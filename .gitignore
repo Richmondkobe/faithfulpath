@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# course recordings — these live in the private Supabase bucket, never in git
+*.mp4
+*.mp3

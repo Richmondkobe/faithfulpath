@@ -30,14 +30,17 @@ export default function VideoBlock({
           {video.title}
           {video.length ? ` · ${video.length}` : ""}
         </p>
-        <details className="group mt-3">
-          <summary className="cursor-pointer list-none text-sm text-[#8B5E34] underline underline-offset-4">
-            Read the transcript
-          </summary>
-          <div className="border-l-2 border-[#E5D9C7] pl-5">
-            <ArticleBody source={video.script} />
-          </div>
-        </details>
+        {/* Some videos have no script file — there is nothing to transcribe. */}
+        {video.script.trim() && (
+          <details className="group mt-3">
+            <summary className="cursor-pointer list-none text-sm text-[#8B5E34] underline underline-offset-4">
+              Read the transcript
+            </summary>
+            <div className="border-l-2 border-[#E5D9C7] pl-5">
+              <ArticleBody source={video.script} />
+            </div>
+          </details>
+        )}
       </section>
     );
   }

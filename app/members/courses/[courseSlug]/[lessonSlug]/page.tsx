@@ -14,7 +14,6 @@ import {
   getAudioScript,
   getSilenceLengths,
   getVideoScript,
-  hasMedia,
   isCountable,
   lessonHref,
   resourceHref,
@@ -33,6 +32,7 @@ import {
   DAY30_MS,
 } from "@/lib/course-progress";
 import { remarkRelativeLessonLinks } from "@/lib/markdown-plugins";
+import { signedMediaUrls } from "@/lib/course-media";
 import Quiz from "@/components/course/Quiz";
 import Reflection from "@/components/course/Reflection";
 import MarkComplete from "@/components/course/MarkComplete";
@@ -114,37 +114,73 @@ export default async function Lesson({
   const coursePath = `/members/courses/${courseSlug}`;
   const remarkPlugins = [remarkRelativeLessonLinks(coursePath)];
 
-  const mediaUrl = (kind: "videos" | "audio", file: string) =>
-    hasMedia(kind, file) ? `/course-media/${kind}/${file}` : null;
-
   // A single `video` sits above the Key Scripture box on a teaching lesson, and
   // above "Before you begin" on a session.
   const leadVideo = front.video ? getVideoScript(courseSlug, front.video) : null;
-  const leadVideoBlock = leadVideo ? (
-    <VideoBlock video={leadVideo} src={mediaUrl("videos", `${leadVideo.id}.mp4`)} />
-  ) : // 00-welcome names a video that has no script file; its words are already
-  // in the lesson body, so the placeholder alone is right there.
-  front.video ? (
-    <VideoPlaceholder />
-  ) : null;
-
   const audio = front.audio ? getAudioScript(courseSlug, front.audio) : null;
   const silenceLengths = getSilenceLengths(courseSlug);
   const body = getLessonBody(courseSlug, lesson.file);
   const suggested = suggestedSilenceMinutes(body);
-
-  const openingSrcFor = Object.fromEntries(
-    [...new Set([...silenceLengths, ...(suggested ? [suggested] : [])])].map((n) => [
-      n,
-      mediaUrl("audio", `timer-opening-${n}.mp3`),
-    ])
-  );
 
   // Slots inside the body: the guided-prayer player, the silence timer, and any
   // Day 30 week videos that name the heading they belong above.
   const listedVideos = front.videos
     .map((id) => getVideoScript(courseSlug, id))
     .filter((v): v is NonNullable<typeof v> => v !== null);
+
+  // Every recording this page could need, signed in one pass. The member has
+  // already been checked by requireActiveMember above, so signing here is the
+  // only place a URL to these files is ever produced.
+  const timerLengths = [...new Set([...silenceLengths, ...(suggested ? [suggested] : [])])];
+  const [videoUrls, audioUrls] = await Promise.all([
+    signedMediaUrls(
+      "videos",
+      // front.video as well as leadVideo?.id: a lesson can name a video that
+      // has no script file (00-welcome does), and it still has a recording.
+      [front.video, leadVideo?.id, ...listedVideos.map((v) => v.id)]
+        .filter((id): id is string => Boolean(id))
+        .map((id) => `${id}.mp4`)
+    ),
+    signedMediaUrls(
+      "audio",
+      [
+        ...(audio ? [`${audio.id}.mp3`] : []),
+        ...(lesson.type === "session"
+          ? [...timerLengths.map((n) => `timer-opening-${n}.mp3`), "timer-closing.mp3"]
+          : []),
+      ]
+    ),
+  ]);
+  const videoUrl = (id: string) => videoUrls[`${id}.mp4`] ?? null;
+  const audioUrl = (file: string) => audioUrls[file] ?? null;
+
+  const openingSrcFor = Object.fromEntries(
+    timerLengths.map((n) => [n, audioUrl(`timer-opening-${n}.mp3`)])
+  );
+
+  // 00-welcome names a video with no script file — its words are already in the
+  // lesson body. Before the recording exists that is just a placeholder; once it
+  // is uploaded it is still a video, so it gets a player with no transcript.
+  const scriptlessSrc = front.video ? videoUrl(front.video) : null;
+  const leadVideoBlock = leadVideo ? (
+    <VideoBlock video={leadVideo} src={videoUrl(leadVideo.id)} />
+  ) : front.video ? (
+    scriptlessSrc ? (
+      <VideoBlock
+        video={{
+          id: front.video,
+          title: lesson.title,
+          length: null,
+          beforeHeading: null,
+          script: "",
+        }}
+        src={scriptlessSrc}
+      />
+    ) : (
+      <VideoPlaceholder />
+    )
+  ) : null;
+
 
   const slots: { id: string; heading: string; where: "before" | "after" | "endOfSection" }[] = [];
   if (audio) slots.push({ id: "audio", heading: "## Guided prayer", where: "after" });
@@ -168,12 +204,12 @@ export default async function Lesson({
         <VideoBlock
           key="leadVideo"
           video={leadVideo}
-          src={mediaUrl("videos", `${leadVideo.id}.mp4`)}
+          src={videoUrl(leadVideo.id)}
         />
       );
     }
     if (id === "audio" && audio) {
-      return <AudioBlock key="audio" audio={audio} src={mediaUrl("audio", `${audio.id}.mp3`)} />;
+      return <AudioBlock key="audio" audio={audio} src={audioUrl(`${audio.id}.mp3`)} />;
     }
     if (id === "silence") {
       return (
@@ -182,14 +218,14 @@ export default async function Lesson({
           lengths={silenceLengths}
           suggested={suggested}
           openingSrcFor={openingSrcFor}
-          closingSrc={mediaUrl("audio", "timer-closing.mp3")}
+          closingSrc={audioUrl("timer-closing.mp3")}
         />
       );
     }
     const video = listedVideos.find((v) => `video:${v.id}` === id);
     if (video) {
       return (
-        <VideoBlock key={id} video={video} src={mediaUrl("videos", `${video.id}.mp4`)} />
+        <VideoBlock key={id} video={video} src={videoUrl(video.id)} />
       );
     }
     return null;
@@ -318,10 +354,11 @@ export default async function Lesson({
         </div>
       )}
 
-      {/* A lead video sits above Key Scripture on a teaching lesson. On a
-          session it belongs above "Before you begin", which is inside the body,
-          so it is spliced in there instead. */}
-      {isTeaching && leadVideoBlock}
+      {/* A lead video sits above Key Scripture on a teaching lesson, and above
+          the text on a reference lesson. Only a session places it differently —
+          above "Before you begin", which is inside the body, so it is spliced in
+          there instead. */}
+      {lesson.type !== "session" && leadVideoBlock}
 
       {isTeaching && sections.keyScripture && (
         <KeyScripture>

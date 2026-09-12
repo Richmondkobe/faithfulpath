@@ -422,16 +422,6 @@ export function suggestedSilenceMinutes(body: string): number | null {
   return WORD_MINUTES[m[1].toLowerCase()] ?? null;
 }
 
-/** Whether a recording has actually been dropped into public/course-media. */
-export function hasMedia(kind: "videos" | "audio", file: string): boolean {
-  if (!/^[a-z0-9-]+\.(mp4|mp3)$/.test(file)) return false;
-  try {
-    return existsSync(join(process.cwd(), "public", "course-media", kind, file));
-  } catch {
-    return false;
-  }
-}
-
 /**
  * Splits a lesson body so a component can be placed at a named heading, and
  * returns the pieces in order. Used to put the guided-prayer player under its

@@ -1,6 +1,26 @@
 # Course media
 
-Drop recordings in here and they appear on the site automatically — no code change, no redeploy setting to flip. Until a file exists, the lesson shows the script (for video) or a short "coming soon" note (for audio), so nothing is broken by a file that is not ready yet.
+Recordings live in the private Supabase Storage bucket **course-media**, not in
+this repository and not under `public/`. Two reasons: a single video is larger
+than git will accept, and anything under `public/` is a plain URL that works for
+anyone it is forwarded to. Lesson pages ask Supabase for a short-lived signed
+URL, and only after checking the member's subscription.
+
+Upload a recording with:
+
+    npm run media:upload -- path/to/welcome.mp4
+    npm run media:upload -- path/to/01-come-as-you-are.mp3
+    npm run media:upload -- --list        # what is in the bucket now
+
+The key is taken from the file name: `welcome.mp4` becomes `videos/welcome.mp4`
+and `01-come-as-you-are.mp3` becomes `audio/01-come-as-you-are.mp3`, which is
+what the lessons look for. Use `--as <id>` if the file is named something else.
+
+Until a recording is uploaded the lesson shows the script (for video) or a short
+"coming soon" note (for audio), so nothing is broken by a file that is not ready.
+
+**Size limit: 50 MB per file** on this Supabase project. A 4–5 minute talking-head
+at roughly 1 Mbps, 720p, comes in around 30 MB. Compress before uploading.
 
 File names must match exactly, lower case, including the extension.
 
