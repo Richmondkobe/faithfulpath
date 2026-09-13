@@ -9,8 +9,9 @@ export const metadata: Metadata = {
 };
 
 const MESSAGES: Record<string, string> = {
-  link: "That sign-in link was incomplete. Ask for a new one below.",
-  expired: "That sign-in link has expired or was already used. Ask for a new one below.",
+  link: "That sign-in link was incomplete. Ask for a new code below and type it in.",
+  expired:
+    "That sign-in link has expired or was already used. Ask for a new code below and type it in.",
 };
 
 export default async function MemberLogin({
@@ -35,8 +36,8 @@ export default async function MemberLogin({
         className="mt-6 text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        Use the email address you paid with. We will send you a link — there is
-        no password to remember.
+        Use the email address you paid with. We will email you a 6-digit code to
+        type in — there is no password to remember.
       </p>
 
       {notice && (
