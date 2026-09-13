@@ -139,6 +139,13 @@ const RELATED_ARTICLES: Record<
   ],
 };
 
+// Guides that also exist as a guided online course behind the membership. The
+// note sits under the Buy button, where someone is deciding how they want to
+// work through the material.
+const COURSE_EDITION: ReadonlySet<string> = new Set([
+  "the-christian-spiritual-reset",
+]);
+
 // Guides whose Read more list is a selection rather than everything relevant,
 // and so ends with a link to the full articles index.
 const MORE_ARTICLES: ReadonlySet<string> = new Set([
@@ -248,6 +255,23 @@ export default async function Guide({ params }: Props) {
               Buy — {formatPrice(guide.price_cents)}
             </button>
           </form>
+
+          {COURSE_EDITION.has(slug) && (
+            <div className="mt-8 max-w-xl rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4">
+              <p className="text-sm leading-relaxed text-[#6B5F53]">
+                This guide is also a guided online course — the same retreat led
+                session by session, with video, guided prayers, timed silences,
+                and printable workbooks.{" "}
+                <Link
+                  href="/membership"
+                  className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                >
+                  See the course
+                </Link>
+                .
+              </p>
+            </div>
+          )}
 
           {guide.description && (
             <div className="mt-12 max-w-2xl border-t border-[#E5D9C7] pt-10">

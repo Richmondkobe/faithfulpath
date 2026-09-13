@@ -80,6 +80,37 @@ export default async function Home() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Online course
+        </p>
+        <h2
+          className="mt-4 text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+        >
+          The Christian Spiritual Reset
+        </h2>
+        <p
+          className="mt-5 max-w-xl text-lg leading-relaxed"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        >
+          Some seasons do not call for another book. They call for somewhere to
+          stop.
+        </p>
+        <p className="mt-4 max-w-xl leading-relaxed">
+          This is a guided retreat you take at home, at whatever pace your life
+          allows — video teaching, guided prayers, timers to hold the silence
+          for you, and printable workbooks, all read online. It opens with
+          membership at US$19 a month, and you can stop whenever you need to.
+        </p>
+        <Link
+          href="/membership"
+          className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        >
+          See the course
+        </Link>
+      </section>
+
       <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
         <div className="mx-auto max-w-5xl px-6 py-12">
           <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">

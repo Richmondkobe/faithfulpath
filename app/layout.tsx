@@ -54,6 +54,7 @@ const NAV = [
   { href: "/", label: "Home" },
   { href: "/articles", label: "Articles" },
   { href: "/guides", label: "Guides" },
+  { href: "/membership", label: "Courses" },
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
