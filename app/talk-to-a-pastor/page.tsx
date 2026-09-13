@@ -186,7 +186,7 @@ export default function Home() {
           </ul>
 
           <p className="mt-12 max-w-xl leading-relaxed text-[#C9B99F]">
-            You don't have to arrive with the right words, or with faith intact.
+            You don&rsquo;t have to arrive with the right words, or with faith intact.
             You only have to be willing to say the true thing out loud once.
           </p>
         </div>
@@ -198,7 +198,7 @@ export default function Home() {
           className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
-          Who you'd be talking to
+          Who you&rsquo;d be talking to
         </h2>
 
         <div className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed">
@@ -208,13 +208,13 @@ export default function Home() {
             West and East Africa, and through Southeast Asia.
           </p>
           <p>
-            In that time I've counselled well over a thousand individuals and
+            In that time I&rsquo;ve counselled well over a thousand individuals and
             couples: engaged couples preparing to marry, families coming apart,
-            people carrying grief they can't put down, and pastors quietly
+            people carrying grief they can&rsquo;t put down, and pastors quietly
             running on empty.
           </p>
           <p>
-            I've written eighteen books on spiritual growth and personal
+            I&rsquo;ve written eighteen books on spiritual growth and personal
             development. But the work I care most about has always happened in a
             room with one person, telling the truth.
           </p>
@@ -231,7 +231,7 @@ export default function Home() {
             <p>
               This is pastoral and spiritual guidance from an ordained minister.
               It is not licensed therapy, psychiatric treatment, or medical care,
-              and it does not replace them. Where you need a clinician, I'll say
+              and it does not replace them. Where you need a clinician, I&rsquo;ll say
               so and help you think about finding one.
             </p>
             <p>
