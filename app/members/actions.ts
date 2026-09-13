@@ -1,8 +1,10 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   formatOpensOn,
@@ -116,6 +118,11 @@ export type MemberQuestionState = {
  * control. The row is written first and emailed second — a question that
  * reaches us but not the inbox can be chased from the table, whereas one that
  * was never saved is simply gone.
+ *
+ * The send itself runs in `after()`, once the response has gone. Resend can
+ * take the better part of a minute, and the member has no reason to watch a
+ * spinner for it: what they need to know — that the question is safely ours —
+ * is true the moment the insert returns.
  */
 export async function askMemberQuestion(
   _prev: MemberQuestionState,
@@ -159,15 +166,22 @@ export async function askMemberQuestion(
     return { error: "That could not be sent just now. Please try again.", sent: false };
   }
 
-  const emailed = await sendQuestionEmail({ memberEmail: email, question, askedAt });
-  if (emailed) {
-    // Best-effort: the question is safely stored either way, and this column is
-    // only how we tell a delivered one from a stuck one.
-    await supabase
+  after(async () => {
+    const emailed = await sendQuestionEmail({ memberEmail: email, question, askedAt });
+    if (!emailed) return;
+
+    // Stamped with the service-role client rather than the member's: by now the
+    // response has been sent, so there is no longer a cookie jar to refresh a
+    // token into. This is bookkeeping — the question is safely stored either
+    // way, and the column only tells a delivered one from a stuck one.
+    const { error: stampError } = await supabaseAdmin
       .from("member_questions")
       .update({ emailed_at: new Date().toISOString() })
       .eq("id", row.id);
-  }
+    if (stampError) {
+      console.error("Question emailed but not stamped:", stampError.message);
+    }
+  });
 
   revalidatePath("/members");
   return { error: null, sent: true };

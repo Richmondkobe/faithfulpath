@@ -55,9 +55,16 @@ export async function getQuestionAllowance(): Promise<QuestionAllowance> {
   return { used: Boolean(latest), askedAt: latest, opensOn: next };
 }
 
+/** How long to wait on Resend before giving up on a single send. */
+const SEND_TIMEOUT_MS = 10_000;
+
 /**
  * Emails the question on to Richmond, with the member's address as reply-to so
  * a reply goes straight back to them rather than into the site.
+ *
+ * Called from `after()`, so the member is not waiting on it — but a hung
+ * request would still pin the serverless invocation until its max duration, so
+ * the fetch is given an explicit timeout of its own.
  *
  * Returns whether it actually went. A failure is logged and reported, never
  * thrown: the question is already saved by the time this runs, and losing it
@@ -94,6 +101,7 @@ export async function sendQuestionEmail({
   try {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
+      signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${key}`,
@@ -118,6 +126,7 @@ export async function sendQuestionEmail({
     }
     return true;
   } catch (err) {
+    // Includes the abort above: a timeout is a failed send, not a crash.
     console.error("Resend request failed:", err);
     return false;
   }
