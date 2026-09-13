@@ -1,11 +1,56 @@
 import type { Metadata } from "next";
+import { getPublishedProductBySlug } from "@/lib/products-db";
+import { coverPublicUrl } from "@/lib/supabase/admin";
 
-export const metadata: Metadata = {
-  title: "The Christian Spiritual Reset — Online Course | Faithful Path Community",
-  description:
-    "The complete online edition of The Christian Spiritual Reset — a guided Christian retreat for people who are exhausted, spiritually dry, or unable to hear God.",
-  alternates: { canonical: "/membership" },
-};
+// The course is sold here, but its cover lives on the guide it was made from.
+// Reading it at request time rather than hardcoding the URL means re-uploading
+// the cover in the admin area updates the social card too.
+const GUIDE_SLUG = "the-christian-spiritual-reset";
+
+// Metadata now reads the guide row, so without this the page would go dynamic
+// and hit Supabase on every visit. An hour matches the rest of the site.
+export const revalidate = 3600;
+
+const TITLE =
+  "The Christian Spiritual Reset — Online Course | Faithful Path Community";
+const DESCRIPTION =
+  "The complete online edition of The Christian Spiritual Reset — a guided Christian retreat for people who are exhausted, spiritually dry, or unable to hear God.";
+
+export async function generateMetadata(): Promise<Metadata> {
+  // The cover is portrait (2/3). Declaring its real size lets the platforms
+  // that can lay out a tall image do so; the ones that insist on a 1.91/1 card
+  // will crop it to a band. A purpose-built 1200x630 card, like the ones in
+  // public/og-*.png, would render better everywhere.
+  const guide = await getPublishedProductBySlug(GUIDE_SLUG);
+  const cover = coverPublicUrl(guide?.cover_path ?? null);
+
+  const images = cover
+    ? [{ url: cover, width: 832, height: 1248, alt: "The Christian Spiritual Reset" }]
+    : [{ url: "/og-default.png", width: 1200, height: 630, alt: "Faithful Path Community" }];
+
+  return {
+    title: TITLE,
+    description: DESCRIPTION,
+    alternates: { canonical: "/membership" },
+    // Page metadata replaces the root layout's openGraph/twitter objects
+    // wholesale rather than merging into them, so siteName and the url have to
+    // be repeated here.
+    openGraph: {
+      type: "website",
+      url: "/membership",
+      siteName: "Faithful Path Community",
+      title: TITLE,
+      description: DESCRIPTION,
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: TITLE,
+      description: DESCRIPTION,
+      images,
+    },
+  };
+}
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 500 } as const;
 const lede = { fontFamily: "var(--font-display)", fontWeight: 300 } as const;
