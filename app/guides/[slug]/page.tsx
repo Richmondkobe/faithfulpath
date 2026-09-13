@@ -17,6 +17,7 @@ type Props = { params: Promise<{ slug: string }> };
 const OG_IMAGES: Record<string, string | undefined> = {
   "lead-before-youre-ready": "/og-lead-before-youre-ready.png",
   "talk-before-you-marry": "/og-talk-before-you-marry.png",
+  "the-christian-spiritual-reset": "/og-the-christian-spiritual-reset.png",
 };
 
 // Hand-picked further reading, keyed by guide slug. Titles are copied from the
