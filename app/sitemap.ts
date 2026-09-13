@@ -10,13 +10,19 @@ import { listPublishedProducts } from "@/lib/products-db";
 export const revalidate = 3600;
 
 // Everything a stranger should be able to find. Deliberately absent: the
-// post-purchase page (already noindex), the admin area and its login, and the
-// per-guide claim links, which are given out on purpose rather than crawled.
+// post-purchase page (already noindex), the admin area and its login, the
+// per-guide claim links, which are given out on purpose rather than crawled,
+// and the whole members area, which needs a paid sign-in and is noindex on
+// every page.
+//
+// /membership belongs here: it is the public sales page for the course, and
+// the only way in for someone who has not paid.
 const STATIC_PATHS = [
   "",
   "/about",
   "/articles",
   "/guides",
+  "/membership",
   "/talk-to-a-pastor",
   "/contact",
   "/before-you-say-yes/resources",

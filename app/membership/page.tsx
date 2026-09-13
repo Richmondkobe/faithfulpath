@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Membership | Faithful Path Community",
+  title: "The Christian Spiritual Reset — Online Course | Faithful Path Community",
   description:
-    "The complete online edition of The Christian Spiritual Reset — a guided Christian retreat for people who feel exhausted, spiritually dry, or unable to hear God clearly.",
+    "The complete online edition of The Christian Spiritual Reset — a guided Christian retreat for people who are exhausted, spiritually dry, or unable to hear God.",
   alternates: { canonical: "/membership" },
 };
 
