@@ -1,6 +1,10 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
-import { listPublishedArticles } from "@/lib/articles-db";
+import {
+  articlesPageHref,
+  listPublishedArticlePage,
+  listPublishedArticles,
+} from "@/lib/articles-db";
 import { listPublishedProducts } from "@/lib/products-db";
 
 // The sitemap is a cached Route Handler, so without this it would only ever
@@ -29,10 +33,20 @@ const STATIC_PATHS = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, guides] = await Promise.all([
+  const [articles, guides, index] = await Promise.all([
     listPublishedArticles(),
     listPublishedProducts(),
+    listPublishedArticlePage(1),
   ]);
+
+  // Pages two and up of the articles index. Page one is already in
+  // STATIC_PATHS as /articles, and each of these is its own canonical, so
+  // listing them is what lets a crawler reach the older articles without
+  // walking the Newer/Older links.
+  const articlePages = Array.from(
+    { length: Math.max(0, index.pageCount - 1) },
+    (_, i) => articlesPageHref(i + 2)
+  );
 
   const now = new Date();
 
@@ -42,6 +56,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.8,
+    })),
+    ...articlePages.map((path) => ({
+      url: `${SITE.url}${path}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      // Below /articles itself: these are routes to the writing, not the
+      // writing, and page one is the one worth ranking.
+      priority: 0.5,
     })),
     ...articles.map((a) => ({
       url: `${SITE.url}/articles/${a.slug}`,
