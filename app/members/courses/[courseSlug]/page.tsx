@@ -18,6 +18,7 @@ import {
 import ProgressBar from "@/components/course/ProgressBar";
 import CourseFooter from "@/components/course/CourseFooter";
 import CertificateButton from "@/components/course/CertificateButton";
+import JournalButton from "@/components/course/JournalButton";
 
 export const metadata: Metadata = {
   title: "Course | Faithful Path Community",
@@ -153,6 +154,28 @@ export default async function CourseOverview({
           </section>
         ))}
       </div>
+
+      <section className="mt-16 border-t border-[#E5D9C7] pt-10">
+        <h2
+          className="text-2xl text-[#2B2118]"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          Your journal
+        </h2>
+        <p className="mt-3 leading-relaxed">
+          Everything you have written through these lessons, gathered in one
+          place — yours to read here or to take away as a PDF.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <Link
+            href="/members/journal"
+            className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            Read your journal
+          </Link>
+          <JournalButton />
+        </div>
+      </section>
 
       <CourseFooter courseSlug={courseSlug} />
     </main>

@@ -19,3 +19,22 @@ export async function requireActiveMember(): Promise<string> {
 
   return email;
 }
+
+/**
+ * The gate for the journal, which outlives the subscription: anything a member
+ * wrote stays readable after they cancel. Any members row will do — active,
+ * past_due or canceled — but there must be one, so this never opens to a
+ * signed-in stranger who simply has an account.
+ *
+ * Writing is not covered by this. Every write still goes through
+ * requireActiveMember, so a cancelled member can read and download but not edit.
+ */
+export async function requireMemberRow(): Promise<string> {
+  const email = await getSessionEmail();
+  if (!email) redirect("/membership");
+
+  const member = await getMemberByEmail(email);
+  if (!member) redirect("/members");
+
+  return email;
+}

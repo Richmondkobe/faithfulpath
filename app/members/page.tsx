@@ -19,6 +19,9 @@ import {
 } from "@/lib/course-progress";
 import ProgressBar from "@/components/course/ProgressBar";
 import CertificateButton from "@/components/course/CertificateButton";
+import JournalButton from "@/components/course/JournalButton";
+import MemberQuestionForm from "@/components/MemberQuestionForm";
+import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
 
@@ -115,6 +118,47 @@ async function CourseCard() {
   );
 }
 
+/**
+ * One written question a month. The allowance is read here and the form only
+ * rendered when it is available — askMemberQuestion re-checks it anyway, since
+ * a hidden form is not a control.
+ */
+async function QuestionSection() {
+  let allowance;
+  try {
+    allowance = await getQuestionAllowance();
+  } catch (err) {
+    // Same reasoning as the course card: /members must not break because one
+    // table is unreadable.
+    console.error("Question section hidden — could not read allowance:", err);
+    return null;
+  }
+
+  return (
+    <section className="mt-12 border-t border-[#E5D9C7] pt-10">
+      <h2
+        className="text-2xl text-[#2B2118]"
+        style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+      >
+        Ask Pastor Richmond
+      </h2>
+      <p className="mt-3 leading-relaxed">
+        One written question a month, answered personally. Take as long as you
+        need to write it.
+      </p>
+
+      {allowance.used ? (
+        <p className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 leading-relaxed text-[#6B5F53]">
+          You have used this month&rsquo;s question; your next one opens on{" "}
+          {formatOpensOn(allowance.opensOn)}.
+        </p>
+      ) : (
+        <MemberQuestionForm />
+      )}
+    </section>
+  );
+}
+
 function ManageBilling() {
   return (
     <form action="/api/membership/portal" method="POST">
@@ -158,6 +202,28 @@ export default async function Members() {
             ? "Update your card and the membership will pick up where it left off."
             : "There is no active membership attached to this address. If you paid with a different one, sign out and sign back in with that address."}
         </p>
+
+        {/* What they wrote outlives the subscription. Only offered to someone
+            who actually has a members row — a signed-in stranger has no
+            journal, and requireMemberRow would turn them straight back. */}
+        {member && (
+          <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+            <p className="text-[#2B2118]">Your journal stays yours</p>
+            <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+              Everything you wrote through the course is still here to read and
+              to download, whether or not the membership is active.
+            </p>
+            <div className="mt-5 flex flex-wrap items-center gap-4">
+              <Link
+                href="/members/journal"
+                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+              >
+                Read your journal
+              </Link>
+              <JournalButton />
+            </div>
+          </div>
+        )}
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           {member?.stripe_customer_id ? (
@@ -218,6 +284,30 @@ export default async function Members() {
           . You keep access until then.
         </p>
       )}
+
+      <section className="mt-12 border-t border-[#E5D9C7] pt-10">
+        <h2
+          className="text-2xl text-[#2B2118]"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+        >
+          Your journal
+        </h2>
+        <p className="mt-3 leading-relaxed">
+          Every reflection and next step you have written, kept together. It is
+          yours to keep, and it stays readable if your membership ever ends.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <Link
+            href="/members/journal"
+            className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            Read your journal
+          </Link>
+          <JournalButton />
+        </div>
+      </section>
+
+      <QuestionSection />
 
       <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-[#E5D9C7] pt-10">
         <ManageBilling />

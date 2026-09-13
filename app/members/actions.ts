@@ -1,7 +1,15 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { requireActiveMember } from "@/lib/member-gate";
+import {
+  formatOpensOn,
+  getQuestionAllowance,
+  sendQuestionEmail,
+  QUESTION_MAX,
+} from "@/lib/questions";
 import { siteUrl } from "@/lib/stripe";
 
 export type MemberLoginState = { error: string | null; sent: string | null };
@@ -91,4 +99,76 @@ export async function memberLogout() {
   const supabase = await createSupabaseServerClient();
   await supabase.auth.signOut();
   redirect("/membership");
+}
+
+/* ------------------------------------------------------- written questions */
+
+export type MemberQuestionState = {
+  error: string | null;
+  sent: boolean;
+};
+
+/**
+ * One written question, emailed on to Richmond.
+ *
+ * The monthly limit is re-checked here and not just in the page: a server
+ * action is reachable by direct POST, so the form being hidden is not a
+ * control. The row is written first and emailed second — a question that
+ * reaches us but not the inbox can be chased from the table, whereas one that
+ * was never saved is simply gone.
+ */
+export async function askMemberQuestion(
+  _prev: MemberQuestionState,
+  formData: FormData
+): Promise<MemberQuestionState> {
+  const question = String(formData.get("question") ?? "").trim();
+
+  if (question.length < 10) {
+    return { error: "Write a little more so Richmond can answer properly.", sent: false };
+  }
+  if (question.length > QUESTION_MAX) {
+    return { error: `Please keep it under ${QUESTION_MAX} characters.`, sent: false };
+  }
+
+  // Asking is a membership benefit, so it closes when the membership does.
+  const email = await requireActiveMember();
+
+  const supabase = await createSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { error: "Please sign in again.", sent: false };
+
+  const allowance = await getQuestionAllowance();
+  if (allowance.used) {
+    return {
+      error: `You have used this month's question; your next one opens on ${formatOpensOn(allowance.opensOn)}.`,
+      sent: false,
+    };
+  }
+
+  const askedAt = new Date();
+  const { data: row, error } = await supabase
+    .from("member_questions")
+    .insert({ user_id: user.id, email, question })
+    .select("id")
+    .single();
+
+  if (error) {
+    console.error("Could not save member question:", error.message);
+    return { error: "That could not be sent just now. Please try again.", sent: false };
+  }
+
+  const emailed = await sendQuestionEmail({ memberEmail: email, question, askedAt });
+  if (emailed) {
+    // Best-effort: the question is safely stored either way, and this column is
+    // only how we tell a delivered one from a stuck one.
+    await supabase
+      .from("member_questions")
+      .update({ emailed_at: new Date().toISOString() })
+      .eq("id", row.id);
+  }
+
+  revalidatePath("/members");
+  return { error: null, sent: true };
 }
