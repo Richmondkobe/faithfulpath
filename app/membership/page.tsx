@@ -411,11 +411,6 @@ export default function Membership() {
         Start gently. Go deeper when you are ready.
       </p>
 
-      <p className="mt-6 text-sm leading-relaxed text-[#6B5F53]">
-        Cancel at any time from your account. You will be billed monthly, with no
-        long-term commitment.
-      </p>
-
       <div className="mt-16 border-t border-[#E5D9C7] pt-10">
         <p className="text-sm leading-relaxed text-[#6B5F53]">
           Already a member?{" "}
