@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { articlesPageHref } from "@/lib/articles-db";
 
 /**
  * Newer / Older either side of the page numbers.
@@ -11,11 +10,17 @@ import { articlesPageHref } from "@/lib/articles-db";
 export default function ArticlePagination({
   page,
   pageCount,
+  basePath = "/articles",
 }: {
   page: number;
   pageCount: number;
+  /** "/articles", or "/articles/category/<slug>" — paging stays inside it. */
+  basePath?: string;
 }) {
   if (pageCount <= 1) return null;
+
+  // Page one is the base path itself, never …/page/1.
+  const href = (n: number) => (n <= 1 ? basePath : `${basePath}/page/${n}`);
 
   const link =
     "text-sm text-[#2C5651] underline underline-offset-4 transition-colors hover:text-[#17222B]";
@@ -27,7 +32,7 @@ export default function ArticlePagination({
       className="mt-14 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-[#D6DBD8] pt-8"
     >
       {page > 1 ? (
-        <Link href={articlesPageHref(page - 1)} className={link}>
+        <Link href={href(page - 1)} className={link}>
           ← Newer
         </Link>
       ) : (
@@ -46,7 +51,7 @@ export default function ArticlePagination({
               </span>
             ) : (
               <Link
-                href={articlesPageHref(n)}
+                href={href(n)}
                 className="inline-flex h-9 min-w-9 items-center justify-center rounded-sm border border-[#D6DBD8] px-3 text-[#5A6A73] transition-colors hover:border-[#2C5651] hover:text-[#17222B]"
               >
                 <span className="sr-only">Page </span>
@@ -58,7 +63,7 @@ export default function ArticlePagination({
       </ol>
 
       {page < pageCount ? (
-        <Link href={articlesPageHref(page + 1)} className={link}>
+        <Link href={href(page + 1)} className={link}>
           Older →
         </Link>
       ) : (

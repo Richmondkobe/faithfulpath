@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { articlesPageHref, listPublishedArticlePage } from "@/lib/articles-db";
+import {
+  articlesPageHref,
+  countPublishedByCategory,
+  listPublishedArticlePage,
+} from "@/lib/articles-db";
 import ArticleIndex from "@/components/ArticleIndex";
 
 export const revalidate = 300;
@@ -58,13 +62,21 @@ export default async function ArticlesPage({ params }: Props) {
   // One list, one URL: page one lives at /articles.
   if (page === 1) redirect("/articles");
 
-  const { articles, pageCount } = await listPublishedArticlePage(page);
+  const [{ articles, pageCount }, counts] = await Promise.all([
+    listPublishedArticlePage(page),
+    countPublishedByCategory(),
+  ]);
 
   // Past the end. 404 rather than an empty list, so a stale link or a crawler
   // guessing at /articles/page/99 is told plainly that there is nothing there.
   if (articles.length === 0) notFound();
 
   return (
-    <ArticleIndex articles={articles} page={page} pageCount={pageCount} />
+    <ArticleIndex
+      articles={articles}
+      page={page}
+      pageCount={pageCount}
+      counts={counts}
+    />
   );
 }

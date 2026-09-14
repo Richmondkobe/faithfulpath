@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { slugify } from "@/lib/products";
+import { isCategorySlug } from "@/lib/categories";
 
 export type ArticleFormState = { error: string | null };
 
@@ -23,6 +24,11 @@ export async function saveArticle(
   const metaTitle = String(formData.get("meta_title") ?? "").trim();
   const metaDescription = String(formData.get("meta_description") ?? "").trim();
   const published = formData.get("published") === "on";
+  // Anything not in lib/categories.ts is stored as null rather than written
+  // through — the column has a check constraint, and a rejected insert would
+  // lose the whole edit over a stale option value.
+  const categoryInput = String(formData.get("category") ?? "").trim();
+  const category = isCategorySlug(categoryInput) ? categoryInput : null;
 
   if (!title) return { error: "Give the article a title." };
   if (!bodyMd) return { error: "The article has no body." };
@@ -40,6 +46,7 @@ export async function saveArticle(
     meta_title: metaTitle || null,
     meta_description: metaDescription || null,
     published,
+    category,
     updated_at: new Date().toISOString(),
   };
 
@@ -83,11 +90,16 @@ export async function saveArticle(
   revalidatePath("/admin/articles");
   revalidatePath("/");
   revalidatePath("/articles");
+  revalidatePath("/articles/page/[page]", "page");
   revalidatePath(`/articles/${slug}`);
   // A renamed slug leaves the old path cached; clear it too.
   if (previousSlug && previousSlug !== slug) {
     revalidatePath(`/articles/${previousSlug}`);
   }
+  // Moving an article between categories changes both category pages, so clear
+  // every one rather than working out which two.
+  revalidatePath("/articles/category/[category]", "page");
+  revalidatePath("/articles/category/[category]/page/[page]", "page");
 
   redirect("/admin/articles");
 }

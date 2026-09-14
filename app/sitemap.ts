@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import {
+  ARTICLES_PER_PAGE,
   articlesPageHref,
+  countPublishedByCategory,
   listPublishedArticlePage,
   listPublishedArticles,
 } from "@/lib/articles-db";
+import { CATEGORIES, categoryHref } from "@/lib/categories";
 import { listPublishedProducts } from "@/lib/products-db";
 
 // The sitemap is a cached Route Handler, so without this it would only ever
@@ -33,10 +36,11 @@ const STATIC_PATHS = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, guides, index] = await Promise.all([
+  const [articles, guides, index, categoryCounts] = await Promise.all([
     listPublishedArticles(),
     listPublishedProducts(),
     listPublishedArticlePage(1),
+    countPublishedByCategory(),
   ]);
 
   // Pages two and up of the articles index. Page one is already in
@@ -48,6 +52,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (_, i) => articlesPageHref(i + 2)
   );
 
+  // Category pages, and their own page two and up. A category with nothing in
+  // it is left out: it renders, but an empty page is not worth crawling.
+  const categoryPages = CATEGORIES.flatMap((category) => {
+    const total = categoryCounts.get(category.slug) ?? 0;
+    if (total === 0) return [];
+
+    const pages = Math.max(1, Math.ceil(total / ARTICLES_PER_PAGE));
+    return Array.from({ length: pages }, (_, i) => categoryHref(category.slug, i + 1));
+  });
+
   const now = new Date();
 
   return [
@@ -56,6 +70,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.8,
+    })),
+    ...categoryPages.map((path) => ({
+      url: `${SITE.url}${path}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      // A real way in for a reader who wants one topic, but still a route to
+      // the writing rather than the writing itself.
+      priority: 0.6,
     })),
     ...articlePages.map((path) => ({
       url: `${SITE.url}${path}`,

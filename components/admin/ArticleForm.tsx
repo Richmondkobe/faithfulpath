@@ -5,6 +5,7 @@ import Link from "next/link";
 import { saveArticle, type ArticleFormState } from "@/app/admin/articles/actions";
 import { slugify } from "@/lib/products";
 import type { Article } from "@/lib/article";
+import { CATEGORIES } from "@/lib/categories";
 
 const initial: ArticleFormState = { error: null };
 
@@ -92,6 +93,26 @@ export default function ArticleForm({ article }: { article?: Article }) {
           defaultValue={article?.excerpt ?? ""}
           className={inputClass + " leading-relaxed"}
         />
+      </Field>
+
+      <Field
+        label="Category"
+        htmlFor="category"
+        hint="Groups the article on /articles and gives it a category page. Optional."
+      >
+        <select
+          id="category"
+          name="category"
+          defaultValue={article?.category ?? ""}
+          className={inputClass}
+        >
+          <option value="">No category</option>
+          {CATEGORIES.map((c) => (
+            <option key={c.slug} value={c.slug}>
+              {c.label}
+            </option>
+          ))}
+        </select>
       </Field>
 
       <Field

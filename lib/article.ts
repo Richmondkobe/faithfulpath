@@ -12,6 +12,8 @@ export type Article = {
   meta_description: string | null;
   published: boolean;
   published_at: string | null;
+  /** One of the slugs in lib/categories.ts, or null while uncategorised. */
+  category: string | null;
   created_at: string;
   updated_at: string;
 };

@@ -8,6 +8,7 @@ import {
   listPublishedArticles,
 } from "@/lib/articles-db";
 import { displayDate, isoDay } from "@/lib/article";
+import { categoryHref, getCategory } from "@/lib/categories";
 import { AUTHOR } from "@/lib/types";
 import { SITE } from "@/lib/site";
 
@@ -67,6 +68,7 @@ export default async function ArticlePage({
 
   const date = displayDate(a.published_at);
   const iso = isoDay(a.published_at);
+  const category = getCategory(a.category);
 
   const schema = {
     "@context": "https://schema.org",
@@ -75,6 +77,7 @@ export default async function ArticlePage({
     description: a.meta_description,
     datePublished: iso,
     dateModified: iso,
+    ...(category ? { articleSection: category.label } : {}),
     author: {
       "@type": "Person",
       name: AUTHOR.name,
@@ -95,6 +98,17 @@ export default async function ArticlePage({
 
       <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
         {date}
+        {category && (
+          <>
+            <span aria-hidden="true"> · </span>
+            <Link
+              href={categoryHref(category.slug)}
+              className="underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              {category.label}
+            </Link>
+          </>
+        )}
       </p>
       <h1
         className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"

@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
-import { listPublishedArticlePage } from "@/lib/articles-db";
+import {
+  countPublishedByCategory,
+  listPublishedArticlePage,
+} from "@/lib/articles-db";
 import ArticleIndex from "@/components/ArticleIndex";
 
 // Saving in the admin calls revalidatePath("/articles"); this is the backstop
@@ -16,7 +19,17 @@ export const metadata: Metadata = {
 };
 
 export default async function Articles() {
-  const { articles, pageCount } = await listPublishedArticlePage(1);
+  const [{ articles, pageCount }, counts] = await Promise.all([
+    listPublishedArticlePage(1),
+    countPublishedByCategory(),
+  ]);
 
-  return <ArticleIndex articles={articles} page={1} pageCount={pageCount} />;
+  return (
+    <ArticleIndex
+      articles={articles}
+      page={1}
+      pageCount={pageCount}
+      counts={counts}
+    />
+  );
 }
