@@ -7,6 +7,7 @@ printable: true
 group_sharing: false
 worksheet_private: true
 resource_safety_required: true
+not_for_group_sharing: true
 ---
 
 # When I Need Additional Help

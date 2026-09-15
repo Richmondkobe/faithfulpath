@@ -7,6 +7,8 @@ type: worksheet
 printable: true
 group_sharing: false
 resource_safety_required: true
+worksheet_private: true
+not_for_group_sharing: true
 ---
 
 # "If This Happened, What Would It Mean to Me?"

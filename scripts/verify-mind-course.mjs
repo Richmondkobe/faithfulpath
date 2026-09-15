@@ -147,6 +147,18 @@ for (const resource of manifest.resources) {
 }
 ok(`${barred.length} worksheets barred from group sharing, agreeing with their files`);
 
+// A barred worksheet also says so in its own front matter, so the file is
+// self-describing for anyone reading it outside the platform.
+for (const resource of barred) {
+  const raw = readFileSync(join(ROOT, resource.file), "utf8");
+  for (const key of ["worksheet_private", "not_for_group_sharing"]) {
+    if (!new RegExp(`^${key}:\\s*true\\s*$`, "m").test(raw)) {
+      fail(`${resource.file} is barred from group sharing but has no ${key}: true`);
+    }
+  }
+}
+ok(`${barred.length} barred worksheets carry worksheet_private and not_for_group_sharing`);
+
 console.log(
   failures === 0
     ? "\nWhen Your Mind Won't Rest: manifest and content agree.\n"
