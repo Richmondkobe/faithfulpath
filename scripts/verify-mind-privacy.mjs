@@ -82,7 +82,13 @@ ok("no dangerouslySetInnerHTML in the course code — member text is escaped by 
 for (const [file, code] of source) {
   for (const match of code.matchAll(/<MindMarkdown\s+source=\{([^}]+)\}/g)) {
     const expr = match[1].trim();
-    const allowed = /^(file\.body|page\.body|main|chapter|before|after)$/.test(expr);
+    // Each of these is a slice of a course file, vetted once here so that a new
+    // one has to be added deliberately rather than slipping in:
+    //   file.body / page.body  whole file
+    //   main / chapter         splitChapter
+    //   before / after         splitPauseQuestions
+    //   notice / rest          splitFirstNotice
+    const allowed = /^(file\.body|page\.body|main|chapter|before|after|notice|rest)$/.test(expr);
     if (!allowed) fail(`${file} renders '${expr}' as Markdown — is it member input?`);
   }
 }

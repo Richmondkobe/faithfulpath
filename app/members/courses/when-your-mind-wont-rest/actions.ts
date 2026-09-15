@@ -18,11 +18,15 @@ import {
   PATTERN_FINDER_INDEX,
   NEXT_STEP_INDEX,
   PATH_INDEX,
+  isDayStatus,
   isNextStep,
+  type DayStatus,
   type NextStep,
 } from "@/lib/mind-progress";
 import {
   mindCheckinHref,
+  mindDayHref,
+  mindJourneyHref,
   mindLeadersHref,
   mindLessonHref,
   MIND_BASE,
@@ -393,4 +397,62 @@ export async function eraseMindEntries(pageSlug: string): Promise<void> {
   revalidatePath(mindLessonHref(pageSlug));
   revalidatePath(mindCheckinHref(pageSlug));
   revalidatePath("/members/journal");
+}
+
+/* ---------------------------------------------------------- the journey */
+
+/**
+ * Records that a day was opened.
+ *
+ * Idempotent, and deliberately so: `ignoreDuplicates` means visited_at is set
+ * once and never moved, because the count a member sees is of days reached,
+ * not of times they came back. Opening a day completes nothing — this function
+ * cannot write a status, and nothing else calls it.
+ */
+export async function recordDayVisit(day: number): Promise<void> {
+  if (!Number.isInteger(day) || day < 1 || day > 30) return;
+
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase
+    .from("course_day_progress")
+    .upsert(
+      { user_id: userId, course_slug: MIND_COURSE_SLUG, day },
+      { onConflict: "user_id,course_slug,day", ignoreDuplicates: true }
+    );
+
+  // A visit that could not be recorded must not take the page down with it.
+  if (error) console.error("Could not record a journey visit:", error.message);
+}
+
+/**
+ * Sets or clears a day's status.
+ *
+ * All four are changeable and clearable; passing null returns the day to
+ * opened-with-no-status, which is a real state. "I need support" does not
+ * complete the day and notifies nobody — there is no alerting anywhere in this
+ * course, and the page says so where the member can read it.
+ */
+export async function setDayStatus(
+  day: number,
+  status: DayStatus | null
+): Promise<void> {
+  if (!Number.isInteger(day) || day < 1 || day > 30) throw new Error("Unknown day.");
+  if (status !== null && !isDayStatus(status)) throw new Error("Unknown status.");
+
+  const { supabase, userId } = await memberClient();
+
+  const { error } = await supabase.from("course_day_progress").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      day,
+      status,
+      status_at: status ? new Date().toISOString() : null,
+    },
+    { onConflict: "user_id,course_slug,day" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindDayHref(day));
+  revalidatePath(mindJourneyHref());
 }

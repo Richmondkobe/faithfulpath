@@ -493,3 +493,46 @@ export const findDownload = cache((slug: string) =>
     (d) => d.file.split("/").pop()!.replace(/\.pdf$/, "") === slug
   ) ?? null
 );
+
+/* -------------------------------------------------------------- journey */
+
+/**
+ * Splits the leading blockquote off a page body.
+ *
+ * The journey home opens with the "Please read before Day 1" notice, which has
+ * to be shown on its own on a member's first entry and stay reachable
+ * afterwards. Taking it from the file rather than restating it here means the
+ * notice a member reads is the one the author wrote.
+ */
+export function splitFirstNotice(body: string): { notice: string | null; rest: string } {
+  const lines = body.split(/\r?\n/);
+  const start = lines.findIndex((l) => l.trimStart().startsWith(">"));
+  if (start === -1) return { notice: null, rest: body };
+
+  let end = start;
+  while (end < lines.length && (lines[end].trimStart().startsWith(">") || !lines[end].trim())) {
+    if (lines[end].trimStart().startsWith(">")) end++;
+    else if (lines[end + 1]?.trimStart().startsWith(">")) end++;
+    else break;
+  }
+
+  return {
+    notice: lines.slice(start, end).join("\n").trim() || null,
+    rest: [...lines.slice(0, start), ...lines.slice(end)].join("\n").trim(),
+  };
+}
+
+/** The journey's days, grouped by week in manifest order. */
+export const getJourneyWeeks = cache((): { week: string; title: string; days: MindPage[] }[] => {
+  const weeks: { week: string; title: string; days: MindPage[] }[] = [];
+  for (const day of getJourneyModule().pages) {
+    const key = day.week ?? "w1";
+    let group = weeks.find((w) => w.week === key);
+    if (!group) {
+      group = { week: key, title: day.week_title ?? key, days: [] };
+      weeks.push(group);
+    }
+    group.days.push(day);
+  }
+  return weeks;
+});
