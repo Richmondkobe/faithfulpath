@@ -20,6 +20,7 @@ import { MIND_BASE } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import ModulePause from "@/components/mind/ModulePause";
 import PatternFinder, { type Pattern } from "@/components/mind/PatternFinder";
+import EraseEntries from "@/components/mind/EraseEntries";
 
 export const metadata: Metadata = {
   title: "Pause | Faithful Path Community",
@@ -112,6 +113,8 @@ export default async function MindCheckin({ params }: Props) {
           />
         )
       )}
+
+      {answers.size > 0 && <EraseEntries pageSlug={slug} />}
 
       {after && (
         <div className="mt-10 border-t border-[#E5D9C7] pt-8">

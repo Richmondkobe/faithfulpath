@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail } from "@/lib/members";
 import { getJournal } from "@/lib/journal";
+import { getMindJournal } from "@/lib/mind-journal";
 import { buildJournalPdf } from "@/lib/journal-pdf";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -27,18 +28,21 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(new URL("/members", request.url), 307);
   }
 
-  const journal = await getJournal(COURSE_SLUG);
-  if (!journal) {
+  // Everything the member has written, whichever course it came from — one
+  // document, because it is one journal to them.
+  const [reset, mind] = await Promise.all([getJournal(COURSE_SLUG), getMindJournal()]);
+  const journals = [reset, mind].filter((j): j is NonNullable<typeof j> => j !== null);
+  if (journals.length === 0) {
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
 
-  const pdf = await buildJournalPdf({ journal, memberEmail: email });
+  const pdf = await buildJournalPdf({ journals, memberEmail: email });
 
   return new NextResponse(new Uint8Array(pdf), {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Length": String(pdf.byteLength),
-      "Content-Disposition": `attachment; filename="${COURSE_SLUG}-journal.pdf"`,
+      "Content-Disposition": `attachment; filename="faithful-path-journal.pdf"`,
       // A private document assembled per member: never cache it anywhere.
       "Cache-Control": "private, no-store",
     },

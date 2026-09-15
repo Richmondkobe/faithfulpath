@@ -350,3 +350,47 @@ export async function saveMindCertificateName(name: string): Promise<void> {
 
   revalidatePath(MIND_BASE);
 }
+
+/* ----------------------------------------------------------- deletion */
+
+/**
+ * Erases what the member wrote on one page.
+ *
+ * Deletion here means the writing is gone, not that the row is gone: the
+ * answer is overwritten with nothing, which leaves a row holding no content.
+ * course_reflections has no delete policy — deliberately, so that progress
+ * cannot be removed out from under a member — and blanking achieves what
+ * someone means when they ask to delete what they wrote, without needing one.
+ *
+ * What survives is the fact a lesson was finished, which is not writing about
+ * them and is what the progress count is made of.
+ */
+export async function eraseMindEntries(pageSlug: string): Promise<void> {
+  const { supabase, userId } = await memberClient();
+
+  const { data, error: readError } = await supabase
+    .from("course_reflections")
+    .select("question_index")
+    .eq("course_slug", MIND_COURSE_SLUG)
+    .eq("lesson_slug", pageSlug);
+
+  if (readError) throw new Error(readError.message);
+
+  const rows = (data ?? []).map((row) => ({
+    user_id: userId,
+    course_slug: MIND_COURSE_SLUG,
+    lesson_slug: pageSlug,
+    question_index: row.question_index as number,
+    answer: "",
+  }));
+  if (rows.length === 0) return;
+
+  const { error } = await supabase
+    .from("course_reflections")
+    .upsert(rows, { onConflict: "user_id,course_slug,lesson_slug,question_index" });
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindLessonHref(pageSlug));
+  revalidatePath(mindCheckinHref(pageSlug));
+  revalidatePath("/members/journal");
+}

@@ -31,6 +31,7 @@ import PathChoice from "@/components/mind/PathChoice";
 import Intentions from "@/components/mind/Intentions";
 import Acknowledgement, { type AckState } from "@/components/mind/Acknowledgement";
 import RestlessList, { type RestlessEntry } from "@/components/mind/RestlessList";
+import EraseEntries from "@/components/mind/EraseEntries";
 
 export const metadata: Metadata = {
   title: "When Your Mind Won't Rest | Faithful Path Community",
@@ -158,6 +159,9 @@ export default async function MindLesson({ params }: Props) {
       {entries.length > 0 && (
         <RestlessList entries={entries} lessonSlugByNumber={lessonSlugByNumber} />
       )}
+
+      {/* Only where there is something of theirs to delete. */}
+      {(intention || answers.size > 0) && <EraseEntries pageSlug={slug} />}
 
       {worksheets.length > 0 && (
         <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">

@@ -175,10 +175,11 @@ class Flow {
 }
 
 export async function buildJournalPdf({
-  journal,
+  journals,
   memberEmail,
 }: {
-  journal: Journal;
+  /** One per course the member has written in, in the order they appear. */
+  journals: Journal[];
   memberEmail: string;
 }): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
@@ -199,11 +200,21 @@ export async function buildJournalPdf({
 
   /* ------------------------------------------------------------- heading */
 
+  const entryCount = journals.reduce((n, j) => n + j.entryCount, 0);
+  const lastWritten = journals
+    .map((j) => j.lastWrittenAt)
+    .filter((d): d is string => Boolean(d))
+    .sort()
+    .at(-1) ?? null;
+
   flow.tracked("Faithful Path");
   flow.space(12);
-  flow.text(journal.courseTitle, { size: 26, leading: 32 });
+  flow.text("Your journal", { size: 26, leading: 32 });
   flow.space(4);
-  flow.text("Your journal", { size: 15, leading: 20, font: fonts.italic, color: MUTED });
+  flow.text(
+    journals.map((j) => j.courseTitle).join(" · "),
+    { size: 13, leading: 18, font: fonts.italic, color: MUTED }
+  );
   flow.space(10);
   flow.rule();
   flow.space(14);
@@ -213,16 +224,16 @@ export async function buildJournalPdf({
     month: "long",
     year: "numeric",
   });
-  const last = journalDate(journal.lastWrittenAt);
+  const last = journalDate(lastWritten);
   flow.text(memberEmail, { size: 9.5, leading: 13, color: MUTED });
   flow.text(
     last
-      ? `${journal.entryCount} reflection${journal.entryCount === 1 ? "" : "s"} · last written ${last} · printed ${printed}`
+      ? `${entryCount} reflection${entryCount === 1 ? "" : "s"} · last written ${last} · printed ${printed}`
       : `Printed ${printed}`,
     { size: 9.5, leading: 13, color: MUTED }
   );
 
-  if (journal.modules.length === 0) {
+  if (journals.every((j) => j.modules.length === 0)) {
     flow.space(28);
     flow.text(
       "You have not written anything in your journal yet. Your reflections will appear here once you begin the course.",
@@ -232,6 +243,15 @@ export async function buildJournalPdf({
   }
 
   /* ------------------------------------------------- modules and lessons */
+
+  for (const journal of journals) {
+    if (journal.modules.length === 0) continue;
+
+    flow.space(34);
+    flow.keepTogether(90);
+    flow.text(journal.courseTitle, { size: 19, leading: 25 });
+    flow.space(4);
+    flow.rule();
 
   for (const mod of journal.modules) {
     flow.space(30);
@@ -301,11 +321,13 @@ export async function buildJournalPdf({
     }
   }
 
+  }
+
   /* -------------------------------------------------------------- footer */
 
   const pages = flow.pages;
   pages.forEach((page, i) => {
-    const label = `${journal.courseTitle} · Your journal · ${i + 1} of ${pages.length}`;
+    const label = `Your journal · ${i + 1} of ${pages.length}`;
     const width = fonts.regular.widthOfTextAtSize(label, 8.5);
     page.drawText(label, {
       x: (PAGE_W - width) / 2,

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { requireMemberRow } from "@/lib/member-gate";
 import { getMemberByEmail, isActive } from "@/lib/members";
-import { getJournal, journalDate } from "@/lib/journal";
+import { getJournal, journalDate, type Journal } from "@/lib/journal";
+import { getMindJournal } from "@/lib/mind-journal";
 import { lessonHref } from "@/lib/course";
+import { mindLessonHref } from "@/lib/mind-links";
 import JournalButton from "@/components/course/JournalButton";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -26,7 +28,18 @@ export default async function JournalPage() {
   const member = await getMemberByEmail(email);
   const active = isActive(member);
 
-  const journal = await getJournal(COURSE_SLUG);
+  const [reset, mind] = await Promise.all([getJournal(COURSE_SLUG), getMindJournal()]);
+  const journals: Journal[] = [reset, mind].filter(
+    (j): j is Journal => j !== null && j.modules.length > 0
+  );
+  // The counts and the empty state read across every course at once.
+  const entryCount = journals.reduce((n, j) => n + j.entryCount, 0);
+  const lastWrittenAt =
+    journals
+      .map((j) => j.lastWrittenAt)
+      .filter((d): d is string => Boolean(d))
+      .sort()
+      .at(-1) ?? null;
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
@@ -60,11 +73,11 @@ export default async function JournalPage() {
         </p>
       )}
 
-      {journal && journal.entryCount > 0 && (
+      {entryCount > 0 && (
         <p className="mt-8 text-sm text-[#6B5F53]">
-          {journal.entryCount} reflection{journal.entryCount === 1 ? "" : "s"}
-          {journalDate(journal.lastWrittenAt) && (
-            <> · last written {journalDate(journal.lastWrittenAt)}</>
+          {entryCount} reflection{entryCount === 1 ? "" : "s"}
+          {journalDate(lastWrittenAt) && (
+            <> · last written {journalDate(lastWrittenAt)}</>
           )}
         </p>
       )}
@@ -73,7 +86,7 @@ export default async function JournalPage() {
         <JournalButton variant="primary" />
       </div>
 
-      {!journal || journal.modules.length === 0 ? (
+      {journals.length === 0 ? (
         <div className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
           <p className="text-[#2B2118]">Nothing written yet</p>
           <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
@@ -90,7 +103,20 @@ export default async function JournalPage() {
           )}
         </div>
       ) : (
-        <div className="mt-14 space-y-14">
+        <div className="mt-14 space-y-16">
+          {journals.map((journal) => (
+            <section key={journal.courseSlug}>
+              {/* Named per course, because a member may have written in both
+                  and the entries only make sense under the course they belong
+                  to. */}
+              <h2
+                className="text-2xl text-[#2B2118]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                {journal.courseTitle}
+              </h2>
+
+              <div className="mt-8 space-y-14">
           {journal.modules.map((mod, mi) => (
             <section key={`${mod.title}-${mi}`}>
               <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
@@ -169,7 +195,11 @@ export default async function JournalPage() {
 
                     {active && (
                       <Link
-                        href={lessonHref(COURSE_SLUG, lesson.slug)}
+                        href={
+                          journal.courseSlug === COURSE_SLUG
+                            ? lessonHref(COURSE_SLUG, lesson.slug)
+                            : mindLessonHref(lesson.slug)
+                        }
                         className="mt-4 inline-block text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
                       >
                         Open the lesson
@@ -177,6 +207,9 @@ export default async function JournalPage() {
                     )}
                   </article>
                 ))}
+              </div>
+            </section>
+          ))}
               </div>
             </section>
           ))}
