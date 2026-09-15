@@ -127,6 +127,20 @@ for (const resource of manifest.resources) {
 }
 if (mismatched === 0) ok(`safety-box flags agree for all ${manifest.resources.length} worksheets`);
 
+// And the box is really there, above the prompts. The page refuses to render
+// an exercise whose box has gone missing, so this catches it at build instead
+// of leaving a worksheet blank for a member.
+const needBox = manifest.resources.filter((r) => r.safety_box_required_before_prompts);
+for (const resource of needBox) {
+  const body = readFileSync(join(ROOT, resource.file), "utf8").split("---").slice(2).join("---");
+  const box = body.match(/^>\s+\S/m);
+  const prompt = body.match(/^(Step\s*\d|\d+\.|\*\*Step)/m);
+  if (!box || (prompt && box.index > prompt.index)) {
+    fail(`${resource.file} needs a safety box above its prompts and has none`);
+  }
+}
+ok(`${needBox.length} worksheets carry their safety box above the prompts`);
+
 /* the two worksheets barred from group sharing are marked in both places */
 
 // `group_sharing` is the field every worksheet carries, and the one the

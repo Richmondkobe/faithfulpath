@@ -5,6 +5,7 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   findPageBySlug,
   findResource,
+  getCountingLessons,
   getFoundationPages,
   readPageFile,
   resourceSlug,
@@ -13,7 +14,11 @@ import {
 import {
   getPageAnswers,
   getFinishedLessons,
+  readJson,
+  ACKNOWLEDGEMENT_INDEX,
+  INTENTION_INDEX,
   NEXT_STEP_INDEX,
+  PATH_INDEX,
   isNextStep,
   type NextStep,
 } from "@/lib/mind-progress";
@@ -22,6 +27,10 @@ import MindMarkdown from "@/components/mind/MindMarkdown";
 import ChapterDisclosure from "@/components/mind/ChapterDisclosure";
 import NextFaithfulStep from "@/components/mind/NextFaithfulStep";
 import FinishLesson from "@/components/mind/FinishLesson";
+import PathChoice from "@/components/mind/PathChoice";
+import Intentions from "@/components/mind/Intentions";
+import Acknowledgement, { type AckState } from "@/components/mind/Acknowledgement";
+import RestlessList, { type RestlessEntry } from "@/components/mind/RestlessList";
 
 export const metadata: Metadata = {
   title: "When Your Mind Won't Rest | Faithful Path Community",
@@ -69,6 +78,28 @@ export default async function MindLesson({ params }: Props) {
   const savedStep = answers.get(NEXT_STEP_INDEX) ?? "";
   const nextStep: NextStep | null = isNextStep(savedStep) ? savedStep : null;
 
+  const choice = file.front.choice as
+    | { options?: { id: string; label: string }[] }
+    | undefined;
+  const intention = file.front.intention as
+    | { questions?: { id: string; prompt: string }[] }
+    | undefined;
+  const acknowledgement = file.front.acknowledgement as
+    | { intro?: string; statements?: { id: string; text: string }[] }
+    | undefined;
+
+  // The restless-now list is generated from `entries`; the Markdown list in the
+  // body is the fallback the build checks it against.
+  const entries = (file.front.render_list_from_entries
+    ? ((file.front.entries as RestlessEntry[] | undefined) ?? [])
+    : []) as RestlessEntry[];
+
+  const lessonSlugByNumber = Object.fromEntries(
+    getCountingLessons()
+      .filter((l) => typeof l.order === "number")
+      .map((l) => [l.order as number, l.slug ?? l.file.split("/").pop()!.replace(/\.md$/, "")])
+  ) as Record<number, string>;
+
   const action = typeof file.front.action === "string" ? file.front.action : null;
   const support = typeof file.front.support === "string" ? file.front.support : null;
 
@@ -98,6 +129,35 @@ export default async function MindLesson({ params }: Props) {
       </article>
 
       {chapter && <ChapterDisclosure chapter={chapter} lessonTitle={page.title} />}
+
+      {/* The Start Here pages that do something beyond reading. Each is driven
+          by its own front-matter block, so the page's author decides what it
+          asks and this route only renders it. */}
+      {choice && (
+        <PathChoice
+          options={choice.options ?? []}
+          saved={answers.get(PATH_INDEX)?.trim() || null}
+        />
+      )}
+
+      {intention && (
+        <Intentions
+          questions={intention.questions ?? []}
+          saved={readJson<Record<string, string>>(answers, INTENTION_INDEX) ?? {}}
+        />
+      )}
+
+      {acknowledgement && (
+        <Acknowledgement
+          intro={acknowledgement.intro ?? ""}
+          statements={acknowledgement.statements ?? []}
+          saved={readJson<AckState>(answers, ACKNOWLEDGEMENT_INDEX) ?? {}}
+        />
+      )}
+
+      {entries.length > 0 && (
+        <RestlessList entries={entries} lessonSlugByNumber={lessonSlugByNumber} />
+      )}
 
       {worksheets.length > 0 && (
         <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">

@@ -380,3 +380,30 @@ export function splitChapter(body: string): LessonBody {
     chapter: chapter || null,
   };
 }
+
+/* -------------------------------------------------------- safety boxes */
+
+/** The first prompt in a worksheet — "Step 1.", "1." or a bolded step. */
+const FIRST_PROMPT = /^(Step\s*\d|\d+\.|\*\*Step)/m;
+/** A Markdown blockquote, which is how every safety box is written. */
+const BLOCKQUOTE = /^>\s+\S/m;
+
+/**
+ * Whether a worksheet's safety box actually sits above its prompts.
+ *
+ * Some exercises must never be shown without their box — testing a prediction
+ * against the evidence is the wrong thing to do to a real danger, and the box
+ * is what says so. The manifest flags those with
+ * safety_box_required_before_prompts, but a flag is a claim about the file, not
+ * a property of it: this checks the file itself, so a box deleted in an edit
+ * stops the exercise rendering rather than quietly going missing.
+ */
+export function hasSafetyBoxBeforePrompts(body: string): boolean {
+  const box = body.match(BLOCKQUOTE);
+  if (!box?.index && box?.index !== 0) return false;
+
+  const prompt = body.match(FIRST_PROMPT);
+  if (prompt?.index === undefined) return true;
+
+  return box.index < prompt.index;
+}

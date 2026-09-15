@@ -44,6 +44,19 @@ create table if not exists public.course_day_progress (
 create index if not exists course_day_progress_user_course_idx
   on public.course_day_progress (user_id, course_slug, day);
 
+-- Defined here as well as in the course_progress migration. `create or replace`
+-- makes that harmless if it already exists, and it means this file does not
+-- silently depend on another migration having been applied first — the whole
+-- file is one transaction, so that dependency failing would roll back the table
+-- along with it.
+create or replace function public.touch_updated_at()
+returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
 drop trigger if exists course_day_progress_touch_updated_at on public.course_day_progress;
 create trigger course_day_progress_touch_updated_at
   before update on public.course_day_progress
