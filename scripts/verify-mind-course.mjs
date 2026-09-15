@@ -173,6 +173,46 @@ for (const resource of barred) {
 }
 ok(`${barred.length} barred worksheets carry worksheet_private and not_for_group_sharing`);
 
+/* the author notes the renderer strips must still be there to strip — a
+   reworded one would silently start showing on the page again */
+
+const AUTHOR_NOTES = {
+  "m0/lessons/07-my-mind-is-restless-right-now.md": [
+    "*The list below is generated from the `entries` above; it is reproduced here only so the page can be read as plain Markdown.*",
+  ],
+  "m5/00-journey-home.md": [
+    "*Displayed before Day 1 can open on a member's first entry, with a single **Continue to Day 1** button. No agreement, checkbox or personal response is required, and the support pages and course home remain open. The notice stays accessible from the journey home afterwards.*",
+  ],
+  "m2/checkins/m2-pattern-finder.md": [
+    '*After you choose: "These lessons may be helpful." The suggested lessons appear as links; the module itself stays in its normal order.*',
+  ],
+};
+
+let stripped = 0;
+for (const [file, notes] of Object.entries(AUTHOR_NOTES)) {
+  const lines = readFileSync(join(ROOT, file), "utf8").split(/\r?\n/).map((l) => l.trim());
+  for (const note of notes) {
+    const hits = lines.filter((l) => l === note).length;
+    if (hits === 0) {
+      fail(`${file}: an author note the renderer strips is no longer in the file — it may have been reworded, and the new wording will show to members`);
+    } else if (hits > 1) {
+      fail(`${file}: an author note appears ${hits} times; the renderer strips every copy, which may be more than intended`);
+    } else {
+      stripped++;
+    }
+  }
+}
+ok(`${stripped} author notes present and stripped at render`);
+
+// And the guidance that looks identical in shape is deliberately kept.
+const weekFour = readFileSync(join(ROOT, "m5/00-journey-home.md"), "utf8");
+if (!/Optional, any day in Week Four/.test(weekFour)) {
+  fail("the Week Four guidance is missing from the journey home");
+} else if (Object.values(AUTHOR_NOTES).flat().some((n) => n.includes("Week Four"))) {
+  fail("the Week Four guidance has been added to the stripped notes — it is for members");
+}
+ok("the Week Four guidance is kept, not stripped");
+
 console.log(
   failures === 0
     ? "\nWhen Your Mind Won't Rest: manifest and content agree.\n"

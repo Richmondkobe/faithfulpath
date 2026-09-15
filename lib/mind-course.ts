@@ -252,6 +252,50 @@ export type PageFile = {
   body: string;
 };
 
+/**
+ * Lines written to the person building the course, not to the member reading
+ * it — "Displayed before Day 1 can open on a member's first entry…" and the
+ * like. They describe what the platform should do, and they were rendering on
+ * the page underneath the thing they describe.
+ *
+ * Stripped at render rather than deleted from the files, because the content is
+ * authored elsewhere and may be regenerated; a deletion here would be undone by
+ * the next export, and this cannot be.
+ *
+ * Matched in full and scoped to one file each, deliberately. Every one of these
+ * is an italic single-line paragraph, and so are several lines of real guidance
+ * — the Week Four note on the journey home tells a member about an optional
+ * exercise and is exactly the same shape. Anything looser than an exact match
+ * would take that with it. verify:mind asserts each one still matches, so a
+ * reworded note shows up as a failure rather than quietly reappearing.
+ */
+const AUTHOR_NOTES: Record<string, string[]> = {
+  "m0/lessons/07-my-mind-is-restless-right-now.md": [
+    "*The list below is generated from the `entries` above; it is reproduced here only so the page can be read as plain Markdown.*",
+  ],
+  "m5/00-journey-home.md": [
+    "*Displayed before Day 1 can open on a member's first entry, with a single **Continue to Day 1** button. No agreement, checkbox or personal response is required, and the support pages and course home remain open. The notice stays accessible from the journey home afterwards.*",
+  ],
+  "m2/checkins/m2-pattern-finder.md": [
+    '*After you choose: "These lessons may be helpful." The suggested lessons appear as links; the module itself stays in its normal order.*',
+  ],
+};
+
+/** The notes this file carries, for the build assertion to check against. */
+export function authorNotesFor(file: string): string[] {
+  return AUTHOR_NOTES[file] ?? [];
+}
+
+function stripAuthorNotes(file: string, body: string): string {
+  const notes = AUTHOR_NOTES[file];
+  if (!notes) return body;
+
+  const lines = body.split(/\r?\n/).filter((line) => !notes.includes(line.trim()));
+  // A stripped line leaves its blank line behind; collapse the gap so the
+  // paragraphs either side sit as though it had never been there.
+  return lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
 /** A content file's front matter and body, read by its manifest-relative path. */
 export const readPageFile = cache((file: string): PageFile | null => {
   const path = join(ROOT, file);
@@ -263,7 +307,8 @@ export const readPageFile = cache((file: string): PageFile | null => {
 
   return {
     front: (front ?? {}) as Record<string, YamlValue>,
-    body: raw.replace(FRONT_MATTER, "").trim(),
+    // Stripped here rather than in each route, so no render path can miss it.
+    body: stripAuthorNotes(file, raw.replace(FRONT_MATTER, "").trim()),
   };
 });
 
