@@ -3,16 +3,23 @@
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireActiveMember } from "@/lib/member-gate";
-import { MIND_COURSE_SLUG, findPageBySlug, readPageFile } from "@/lib/mind-course";
+import {
+  MIND_COURSE_SLUG,
+  findCheckin,
+  findPageBySlug,
+  readPageFile,
+} from "@/lib/mind-course";
 import {
   ACKNOWLEDGEMENT_INDEX,
+  CHECKIN_INDEX,
   INTENTION_INDEX,
+  PATTERN_FINDER_INDEX,
   NEXT_STEP_INDEX,
   PATH_INDEX,
   isNextStep,
   type NextStep,
 } from "@/lib/mind-progress";
-import { mindLessonHref, MIND_BASE } from "@/lib/mind-links";
+import { mindCheckinHref, mindLessonHref, MIND_BASE } from "@/lib/mind-links";
 
 /**
  * Every action re-checks the membership. A Server Action is reachable by direct
@@ -208,4 +215,81 @@ export async function saveAcknowledgement(
   if (error) throw new Error(error.message);
 
   revalidatePath(mindLessonHref("04-when-this-course-is-not-enough"));
+}
+
+/* -------------------------------------------------------- check-ins */
+
+/**
+ * A module pause: private notes against the pause's own questions.
+ *
+ * Unscored, optional, and gating nothing. There are no right answers here and
+ * nothing is compared against anything — the rows exist so a member can come
+ * back and read what they wrote, and for no other purpose.
+ */
+export async function saveCheckinAnswers(
+  checkinSlug: string,
+  answers: Record<string, string>
+): Promise<void> {
+  const checkin = findCheckin(checkinSlug);
+  if (!checkin || checkin.type !== "pause") throw new Error("Unknown check-in.");
+
+  const { supabase, userId } = await memberClient();
+
+  const stored: Record<string, string> = {};
+  for (const [key, text] of Object.entries(answers)) {
+    if (!/^q\d+$/.test(key)) continue;
+    stored[key] = String(text).slice(0, 4000);
+  }
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      lesson_slug: checkinSlug,
+      question_index: CHECKIN_INDEX,
+      answer: JSON.stringify(stored),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindCheckinHref(checkinSlug));
+}
+
+/**
+ * The Pattern Finder.
+ *
+ * Stores which patterns the member ticked, and nothing else. No score is
+ * calculated, no type is derived, and no label is written anywhere — the
+ * manifest forbids all three, and a page that tells someone what kind of person
+ * they are is the opposite of what this is for. The selections are kept only so
+ * the suggestions are still here when they come back.
+ */
+export async function savePatternFinder(
+  checkinSlug: string,
+  selected: string[]
+): Promise<void> {
+  const checkin = findCheckin(checkinSlug);
+  if (!checkin || checkin.type !== "pattern_finder") {
+    throw new Error("Unknown pattern finder.");
+  }
+
+  const { supabase, userId } = await memberClient();
+
+  const known = new Set((checkin.patterns ?? []).map((p) => p.id));
+  const ids = [...new Set(selected)].filter((id) => known.has(id));
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      lesson_slug: checkinSlug,
+      question_index: PATTERN_FINDER_INDEX,
+      answer: JSON.stringify({ selected: ids }),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindCheckinHref(checkinSlug));
 }

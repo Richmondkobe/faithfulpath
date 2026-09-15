@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
+import { MIND_COURSE_SLUG } from "@/lib/mind-links";
 
 // Reader for "When Your Mind Won't Rest".
 //
@@ -14,7 +15,7 @@ import { cache } from "react";
 // ordering, gating, statuses or resources is read from there, never inferred
 // from the directory listing.
 
-export const MIND_COURSE_SLUG = "when-your-mind-wont-rest";
+export { MIND_COURSE_SLUG } from "@/lib/mind-links";
 
 const ROOT = join(process.cwd(), "content", "courses", MIND_COURSE_SLUG);
 
@@ -406,4 +407,50 @@ export function hasSafetyBoxBeforePrompts(body: string): boolean {
   if (prompt?.index === undefined) return true;
 
   return box.index < prompt.index;
+}
+
+/* ------------------------------------------------------------ check-ins */
+
+export type PauseBody = {
+  /** Prose before the questions. */
+  before: string;
+  /** The numbered questions, in order. */
+  questions: string[];
+  /** Prose after them. */
+  after: string;
+};
+
+/**
+ * Lifts a module pause's numbered questions out of its body.
+ *
+ * The questions live in the Markdown as an ordered list, and the page needs
+ * them as labels so each can be answered in place. Splitting rather than
+ * duplicating is what keeps every question on the page exactly once.
+ *
+ * A pause with no list comes back with an empty `questions` and its whole body
+ * in `before`, so it still renders as a page to read.
+ */
+export function splitPauseQuestions(body: string): PauseBody {
+  const lines = body.split(/\r?\n/);
+  const first = lines.findIndex((l) => /^\d+\.\s+\S/.test(l));
+  if (first === -1) return { before: body, questions: [], after: "" };
+
+  let last = first;
+  const questions: string[] = [];
+  for (let i = first; i < lines.length; i++) {
+    const match = lines[i].match(/^\d+\.\s+(.*)$/);
+    if (match) {
+      questions.push(match[1].trim());
+      last = i;
+      continue;
+    }
+    if (lines[i].trim() === "") continue;
+    break;
+  }
+
+  return {
+    before: lines.slice(0, first).join("\n").trim(),
+    questions,
+    after: lines.slice(last + 1).join("\n").trim(),
+  };
 }

@@ -1,8 +1,10 @@
-import { MIND_COURSE_SLUG } from "@/lib/mind-course";
-
 // Where each part of the course lives. Kept apart from lib/mind-course.ts so
 // Client Components can build a link without pulling the manifest reader — and
-// its node:fs import — into the browser bundle.
+// its node:fs import — into the browser bundle. That is also why the slug is
+// declared here rather than imported from the reader: importing it the other
+// way round dragged the whole of node:fs into the client chunk.
+
+export const MIND_COURSE_SLUG = "when-your-mind-wont-rest";
 
 export const MIND_BASE = `/members/courses/${MIND_COURSE_SLUG}`;
 

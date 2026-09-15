@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { requireActiveMember } from "@/lib/member-gate";
-import { getMindCourse, getCountingLessons } from "@/lib/mind-course";
+import {
+  getMindCourse,
+  getCountingLessons,
+  getCheckins,
+  checkinSlug,
+} from "@/lib/mind-course";
 import { getFinishedLessons, getJourneyProgress, visitedWording } from "@/lib/mind-progress";
 import {
+  mindCheckinHref,
   mindJourneyHref,
   mindLeadersHref,
   mindLessonHref,
@@ -111,6 +117,31 @@ export default async function MindCourseHome() {
           );
         })}
       </ul>
+
+      {/* The pauses and the Pattern Finder. Listed apart from the entry points
+          because none of them is a way into the course — they are optional
+          stops along it, and nothing depends on doing any of them. */}
+      <section className="mt-12 border-t border-[#E5D9C7] pt-8">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Optional pauses along the way
+        </h2>
+        <ul className="mt-4 space-y-2">
+          {getCheckins().map((checkin) => (
+            <li key={checkin.file}>
+              <Link
+                href={mindCheckinHref(checkinSlug(checkin))}
+                className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              >
+                {checkin.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#6B5F53]">
+          None of these is scored or required, and none of them affects finishing
+          the course or your certificate.
+        </p>
+      </section>
 
       {/* Outside the learner pathway, and the manifest says so — it sits apart
           from the three entry points rather than among them. */}
