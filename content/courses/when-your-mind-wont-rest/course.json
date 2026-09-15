@@ -1,0 +1,1720 @@
+{
+  "slug": "when-your-mind-wont-rest",
+  "title": "When Your Mind Won't Rest",
+  "subtitle": "A Christian Course for Overthinking, Worry, Fear, and Renewing Your Mind",
+  "author": "Pastor Richmond Kobe",
+  "source_book": "When Your Mind Won't Rest (Faithful Path Community, 2026)",
+  "course_map_version": "v3 (15 September 2026)",
+  "promise": "Learn to recognise what your restless mind is doing, respond with biblical truth and practical wisdom, and build a quieter, more sustainable way of living with God.",
+  "promise_excludes": [
+    "cure for anxiety",
+    "guarantee of a quiet mind",
+    "treatment of any condition"
+  ],
+  "scripture": {
+    "translation": "ESV",
+    "notice": "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.",
+    "notice_required_on": [
+      "every course page footer",
+      "every downloadable PDF",
+      "every audio or video description"
+    ],
+    "verse_count_checked_before_launch": false
+  },
+  "entry_points": [
+    {
+      "id": "foundation",
+      "label": "Begin the Foundation Course",
+      "blurb": "Follow the complete 21-lesson journey and learn how to understand, recognise and respond to a restless mind.",
+      "opens": "m0/lessons/00-welcome.md"
+    },
+    {
+      "id": "restless_now",
+      "label": "My Mind Is Restless Right Now",
+      "blurb": "Go directly to the lesson and practical resource that most closely matches what is happening.",
+      "opens": "m0/lessons/07-my-mind-is-restless-right-now.md",
+      "persistent_button_on_every_page": true,
+      "never_locked": true
+    },
+    {
+      "id": "journey",
+      "label": "Begin the 30-Day Mind-Renewal Journey",
+      "blurb": "Practise the book's principles gently over thirty flexible days. Best after completing the foundation course or reading the book.",
+      "opens": "m5/00-journey-home.md",
+      "locked": false
+    }
+  ],
+  "course_home_links": [
+    {
+      "id": "leaders",
+      "label": "Using This Course With Others",
+      "blurb": "Group and safeguarding guidance for pastors, church leaders and facilitators. Not part of the learner pathway.",
+      "opens": "leaders/pages/00-using-this-course-with-others.md",
+      "outside_learner_pathway": true,
+      "member_gated": true
+    }
+  ],
+  "footer_links": [
+    {
+      "label": "Need more support?",
+      "opens": "m0/lessons/04-when-this-course-is-not-enough.md"
+    },
+    {
+      "label": "My Mind Is Restless Right Now",
+      "opens": "m0/lessons/07-my-mind-is-restless-right-now.md"
+    }
+  ],
+  "no_prerequisite_locks": true,
+  "lesson_rules": {
+    "next_faithful_step": {
+      "options": [
+        "I intend to try this",
+        "Not today",
+        "This is not appropriate for me"
+      ],
+      "private": true,
+      "optional": true,
+      "separate_from_completion": true
+    },
+    "completion": {
+      "button_label": "I have finished this lesson for today",
+      "never_depends_on": [
+        "performing the action",
+        "answering reflection questions",
+        "opening or completing the worksheet",
+        "module pauses",
+        "check-ins"
+      ]
+    },
+    "complete_chapter": {
+      "rendered_as": "single collapsed disclosure generated at render time",
+      "raw_html_in_source": false,
+      "internal_headings_visible_and_anchored": true,
+      "nested_disclosures": false
+    },
+    "journal_reflection": {
+      "private": true,
+      "optional": true,
+      "required_for_completion": false
+    }
+  },
+  "modules": [
+    {
+      "id": "m0",
+      "title": "Start Here",
+      "outcome": "Orientation, route selection, intention and safety. None of these pages counts towards completion.",
+      "counts_towards_completion": false,
+      "pages": [
+        {
+          "file": "m0/lessons/00-welcome.md",
+          "order": 0,
+          "title": "Welcome: You Do Not Have to Solve Everything Today",
+          "type": "reference",
+          "slug": "00-welcome",
+          "audio": "welcome",
+          "counts_towards_completion": false
+        },
+        {
+          "file": "m0/lessons/01-how-this-course-works.md",
+          "order": 1,
+          "title": "How This Course Works",
+          "type": "reference",
+          "slug": "01-how-this-course-works",
+          "counts_towards_completion": false
+        },
+        {
+          "file": "m0/lessons/02-choose-your-path-and-pace.md",
+          "order": 2,
+          "title": "Choose Your Path and Pace",
+          "type": "reference",
+          "slug": "02-choose-your-path-and-pace",
+          "counts_towards_completion": false,
+          "choice": {
+            "key": "path",
+            "options": [
+              {
+                "id": "six-week",
+                "label": "Full six-week journey"
+              },
+              {
+                "id": "gentle",
+                "label": "Gentle self-paced journey"
+              },
+              {
+                "id": "help-today",
+                "label": "Help for today"
+              },
+              {
+                "id": "alongside-care",
+                "label": "Alongside counselling or pastoral care"
+              },
+              {
+                "id": "thirty-day",
+                "label": "30-day practice journey"
+              }
+            ],
+            "changeable": true,
+            "affects_progress": false,
+            "required": false
+          }
+        },
+        {
+          "file": "m0/lessons/03-before-you-begin.md",
+          "order": 3,
+          "title": "Before You Begin: A Personal Intention",
+          "type": "reference",
+          "slug": "03-before-you-begin",
+          "counts_towards_completion": false,
+          "intention": {
+            "questions": [
+              {
+                "id": "reason_for_course",
+                "prompt": "What brought you to this course?"
+              },
+              {
+                "id": "hoped_for_understanding",
+                "prompt": "What would you like to understand or practise?"
+              }
+            ],
+            "private": true,
+            "required": false
+          }
+        },
+        {
+          "file": "m0/lessons/04-when-this-course-is-not-enough.md",
+          "order": 4,
+          "title": "When This Course Is Not Enough",
+          "type": "reference",
+          "slug": "04-when-this-course-is-not-enough",
+          "always_accessible": true,
+          "never_locked": true,
+          "counts_towards_completion": false,
+          "acknowledgement": {
+            "intro": "Please read and acknowledge these three boundaries before continuing with the foundation journey. They protect the purpose of the course and remind you where additional help is available.",
+            "statements": [
+              {
+                "id": "pastoral_not_treatment",
+                "text": "I understand this is pastoral formation, not medical or psychological treatment."
+              },
+              {
+                "id": "knows_support_page",
+                "text": "I know where to find this page."
+              },
+              {
+                "id": "may_stop_or_skip",
+                "text": "I understand I can stop or skip any exercise."
+              }
+            ],
+            "stores": "checked status and acknowledgement date only",
+            "locks": false,
+            "dismissible": true,
+            "repeats_until_complete": true,
+            "repeats_note": "The acknowledgement remains visible when the member returns to this page; it must not create an unavoidable modal across the course.",
+            "monitored_as_safety_information": false
+          }
+        },
+        {
+          "file": "m0/lessons/05-if-you-are-not-sure-you-belong-to-christ.md",
+          "order": 5,
+          "title": "If You Are Not Sure You Belong to Christ",
+          "type": "reference",
+          "slug": "05-if-you-are-not-sure-you-belong-to-christ",
+          "counts_towards_completion": false,
+          "optional": true,
+          "completion_control": false
+        },
+        {
+          "file": "m0/lessons/06-finding-help-where-you-live.md",
+          "order": 6,
+          "title": "Finding Help Where You Live",
+          "type": "reference",
+          "slug": "06-finding-help-where-you-live",
+          "always_accessible": true,
+          "never_locked": true,
+          "counts_towards_completion": false
+        },
+        {
+          "file": "m0/lessons/07-my-mind-is-restless-right-now.md",
+          "order": 7,
+          "title": "My Mind Is Restless Right Now",
+          "type": "tool",
+          "slug": "07-my-mind-is-restless-right-now",
+          "always_accessible": true,
+          "never_locked": true,
+          "counts_towards_completion": false,
+          "entries": [
+            {
+              "text": "My mind is predicting disaster",
+              "lesson": 6,
+              "lesson_title": "When Your Mind Predicts Disaster",
+              "resource": "resources/06-possibility-probability-and-present-reality.md",
+              "resource_label": "Possibility, Probability and Present Reality"
+            },
+            {
+              "text": "I am replaying something I cannot change",
+              "lesson": 7,
+              "lesson_title": "Replaying What You Cannot Change",
+              "resource": "resources/07-repair-learn-continue-or-release.md",
+              "resource_label": "Repair, Learn, Continue or Release?"
+            },
+            {
+              "text": "I am rehearsing a conversation that has not happened",
+              "lesson": 8,
+              "lesson_title": "Rehearsing Conversations That Have Not Happened",
+              "resource": "resources/08-what-was-said-and-what-did-i-imagine.md",
+              "resource_label": "What Was Said and What Did I Imagine?"
+            },
+            {
+              "text": "I am trying to work out what someone thinks of me",
+              "lesson": 9,
+              "lesson_title": "Trying to Read Other People's Minds",
+              "resource": "resources/09-facts-assumptions-and-other-possible-explanations.md",
+              "resource_label": "Facts, Assumptions and Other Possible Explanations"
+            },
+            {
+              "text": "I keep asking God for one more confirmation",
+              "lesson": 10,
+              "lesson_title": "When Discernment Becomes Obsession",
+              "resource": "resources/10-do-i-need-more-information-or-more-courage.md",
+              "resource_label": "Do I Need More Information or More Courage?"
+            },
+            {
+              "text": "I am checking and re-checking",
+              "lesson": 11,
+              "lesson_title": "Perfectionism and the Fear of Getting It Wrong",
+              "resource": "resources/11-faithful-wise-or-perfect.md",
+              "resource_label": "Faithful, Wise or Perfect?"
+            },
+            {
+              "text": "I am carrying everyone",
+              "lesson": 12,
+              "lesson_title": "Carrying Everyone in Your Mind",
+              "resource": "resources/12-what-is-mine-to-carry.md",
+              "resource_label": "What Is Mine to Carry?"
+            },
+            {
+              "text": "My prayers have become more worry",
+              "lesson": 16,
+              "lesson_title": "Prayer That Does Not Become More Worry",
+              "resource": "resources/16-the-six-movement-prayer.md",
+              "resource_label": "The Six-Movement Prayer"
+            },
+            {
+              "text": "I am living in tomorrow",
+              "lesson": 17,
+              "lesson_title": "Give Tomorrow Back to God",
+              "resource": "resources/17-today-later-or-release.md",
+              "resource_label": "Today, Later or Release?"
+            },
+            {
+              "text": "A decision has been waiting a long time",
+              "lesson": 18,
+              "lesson_title": "When Discernment Is Finished",
+              "resource": "resources/18-the-faithful-decision-sheet.md",
+              "resource_label": "The Faithful Decision Sheet"
+            },
+            {
+              "text": "I cannot rest until I know",
+              "lesson": 19,
+              "lesson_title": "Peace Before Answers",
+              "resource": "resources/19-what-am-i-waiting-to-know-before-i-permit-myself-to-rest.md",
+              "resource_label": "What Am I Waiting to Know Before I Permit Myself to Rest?"
+            },
+            {
+              "text": "It is the middle of the night",
+              "page": "08-night-time",
+              "page_label": "Open the night-time page"
+            }
+          ],
+          "render_list_from_entries": true
+        },
+        {
+          "file": "m0/lessons/08-night-time.md",
+          "order": 8,
+          "title": "It Is the Middle of the Night",
+          "type": "tool",
+          "slug": "08-night-time",
+          "audio": "night-time",
+          "resources": [
+            "resources/25-night-time-thought-download.md"
+          ],
+          "always_accessible": true,
+          "never_locked": true,
+          "counts_towards_completion": false,
+          "links_to_other_exercises": false,
+          "audio_must_include": [
+            "the instruction not to begin another thought-analysis exercise",
+            "the immediate-danger exception",
+            "a statement that opening the support page does not contact help",
+            "verbal identification of the Scripture quotation as ESV"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "title": "Understand What Your Mind Is Doing",
+      "outcome": "Recognise the difference between useful thought and mental circling, notice what may be driving the cycle, and respond without shame.",
+      "counts_towards_completion": true,
+      "pages": [
+        {
+          "file": "m1/lessons/01-when-your-mind-will-not-switch-off.md",
+          "order": 1,
+          "title": "When Your Mind Will Not Switch Off",
+          "type": "teaching",
+          "slug": "01-when-your-mind-will-not-switch-off",
+          "chapter": 1,
+          "key_scripture": "Psalm 94:19",
+          "worksheet": "What Has Been Occupying My Mind?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/01-what-has-been-occupying-my-mind.md"
+          ]
+        },
+        {
+          "file": "m1/lessons/02-thinking-worrying-or-overthinking.md",
+          "order": 2,
+          "title": "Thinking, Worrying or Overthinking?",
+          "type": "teaching",
+          "slug": "02-thinking-worrying-or-overthinking",
+          "chapter": 2,
+          "key_scripture": "Ecclesiastes 3:1–8",
+          "worksheet": "Healthy Thinking or Mental Circling?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/02-healthy-thinking-or-mental-circling.md"
+          ]
+        },
+        {
+          "file": "m1/lessons/03-anxiety-faith-and-shame.md",
+          "order": 3,
+          "title": "Anxiety, Faith and Shame",
+          "type": "teaching",
+          "slug": "03-anxiety-faith-and-shame",
+          "chapter": 3,
+          "key_scripture": "Psalm 56:3–4",
+          "worksheet": "What Have I Been Telling Myself About My Faith?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/03-what-have-i-been-telling-myself-about-my-faith.md"
+          ]
+        },
+        {
+          "file": "m1/lessons/04-the-fear-beneath-the-thought.md",
+          "order": 4,
+          "title": "The Fear Beneath the Thought",
+          "type": "teaching",
+          "slug": "04-the-fear-beneath-the-thought",
+          "chapter": 4,
+          "key_scripture": "Psalm 139:23–24",
+          "worksheet": "\"If This Happened, What Would It Mean to Me?\"",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/04-if-this-happened-what-would-it-mean-to-me.md"
+          ]
+        },
+        {
+          "file": "m1/lessons/05-your-body-is-part-of-the-story.md",
+          "order": 5,
+          "title": "Your Body Is Part of the Story",
+          "type": "teaching",
+          "slug": "05-your-body-is-part-of-the-story",
+          "chapter": 5,
+          "key_scripture": "1 Kings 19:1–18",
+          "worksheet": "Body and Mind Check-In",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/05-body-and-mind-check-in.md"
+          ]
+        }
+      ],
+      "checkins": [
+        {
+          "file": "m1/checkins/m1-pause.md",
+          "title": "Module 1 pause: What am I noticing?",
+          "type": "pause",
+          "scored": false,
+          "required": false,
+          "private": true,
+          "gates_completion": false,
+          "affects_certificate": false
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "Recognise Your Overthinking Pattern",
+      "outcome": "Identify the particular form overthinking takes and choose a proportionate response.",
+      "counts_towards_completion": true,
+      "pages": [
+        {
+          "file": "m2/lessons/06-when-your-mind-predicts-disaster.md",
+          "order": 6,
+          "title": "When Your Mind Predicts Disaster",
+          "type": "teaching",
+          "slug": "06-when-your-mind-predicts-disaster",
+          "chapter": 6,
+          "key_scripture": "Matthew 6:34",
+          "worksheet": "Possibility, Probability and Present Reality",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/06-possibility-probability-and-present-reality.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/07-replaying-what-you-cannot-change.md",
+          "order": 7,
+          "title": "Replaying What You Cannot Change",
+          "type": "teaching",
+          "slug": "07-replaying-what-you-cannot-change",
+          "chapter": 7,
+          "key_scripture": "Philippians 3:13–14",
+          "worksheet": "Repair, Learn, Continue or Release?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/07-repair-learn-continue-or-release.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/08-rehearsing-conversations-that-have-not-happened.md",
+          "order": 8,
+          "title": "Rehearsing Conversations That Have Not Happened",
+          "type": "teaching",
+          "slug": "08-rehearsing-conversations-that-have-not-happened",
+          "chapter": 8,
+          "key_scripture": "Proverbs 18:13",
+          "worksheet": "What Was Said and What Did I Imagine?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/08-what-was-said-and-what-did-i-imagine.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/09-trying-to-read-other-peoples-minds.md",
+          "order": 9,
+          "title": "Trying to Read Other People's Minds",
+          "type": "teaching",
+          "slug": "09-trying-to-read-other-peoples-minds",
+          "chapter": 9,
+          "key_scripture": "1 Corinthians 13:7",
+          "worksheet": "Facts, Assumptions and Other Possible Explanations",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/09-facts-assumptions-and-other-possible-explanations.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/10-when-discernment-becomes-obsession.md",
+          "order": 10,
+          "title": "When Discernment Becomes Obsession",
+          "type": "teaching",
+          "slug": "10-when-discernment-becomes-obsession",
+          "chapter": 10,
+          "key_scripture": "James 1:5–8",
+          "worksheet": "Do I Need More Information or More Courage?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/10-do-i-need-more-information-or-more-courage.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/11-perfectionism-and-the-fear-of-getting-it-wrong.md",
+          "order": 11,
+          "title": "Perfectionism and the Fear of Getting It Wrong",
+          "type": "teaching",
+          "slug": "11-perfectionism-and-the-fear-of-getting-it-wrong",
+          "chapter": 11,
+          "key_scripture": "Ecclesiastes 11:4",
+          "worksheet": "Faithful, Wise or Perfect?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/11-faithful-wise-or-perfect.md"
+          ]
+        },
+        {
+          "file": "m2/lessons/12-carrying-everyone-in-your-mind.md",
+          "order": 12,
+          "title": "Carrying Everyone in Your Mind",
+          "type": "teaching",
+          "slug": "12-carrying-everyone-in-your-mind",
+          "chapter": 12,
+          "key_scripture": "Galatians 6:2–5",
+          "worksheet": "What Is Mine to Carry?",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/12-what-is-mine-to-carry.md"
+          ]
+        }
+      ],
+      "checkins": [
+        {
+          "file": "m2/checkins/m2-pattern-finder.md",
+          "title": "Pattern Finder: Which of these sounds most like what your mind has been doing?",
+          "type": "pattern_finder",
+          "scored": false,
+          "required": false,
+          "private": true,
+          "gates_completion": false,
+          "affects_certificate": false,
+          "rules": {
+            "multi_select": true,
+            "includes_not_sure_option": true,
+            "nothing_required": true,
+            "no_score": true,
+            "no_type_or_label_stored": true,
+            "no_diagnosis": true,
+            "result_text": "These lessons may be helpful.",
+            "suggestions_only": true,
+            "never_reorders_module": true,
+            "never_hides_lessons": true
+          },
+          "patterns": [
+            {
+              "id": "predicting",
+              "text": "My mind runs ahead to what could go wrong, and each imagined problem leads to the next.",
+              "lesson": 6
+            },
+            {
+              "id": "replaying",
+              "text": "I keep going back to something I said or did, or a decision that went badly, even though it cannot be changed.",
+              "lesson": 7
+            },
+            {
+              "id": "rehearsing",
+              "text": "I hold conversations in my head, supplying both sides, before they have happened.",
+              "lesson": 8
+            },
+            {
+              "id": "mind_reading",
+              "text": "I work out what people think of me from small signs, a short reply, a silence, a look.",
+              "lesson": 9
+            },
+            {
+              "id": "confirmation",
+              "text": "I keep asking God, or other people, for one more confirmation before I can act.",
+              "lesson": 10
+            },
+            {
+              "id": "perfecting",
+              "text": "I check, redo and delay because nothing feels finished or safe to send.",
+              "lesson": 11
+            },
+            {
+              "id": "carrying",
+              "text": "I lie awake holding other people's problems, planning and worrying on their behalf.",
+              "lesson": 12
+            },
+            {
+              "id": "not_sure",
+              "text": "I am not sure.",
+              "lesson": null
+            }
+          ]
+        },
+        {
+          "file": "m2/checkins/m2-pause.md",
+          "title": "Module 2 pause: Name the cycle",
+          "type": "pause",
+          "scored": false,
+          "required": false,
+          "private": true,
+          "gates_completion": false,
+          "affects_certificate": false,
+          "resources": [
+            "resources/23-the-worry-cycle-map.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": "Renew Your Mind Without Fighting Yourself",
+      "outcome": "Respond to thoughts with truth, prayer, surrender and appropriate action, without turning spiritual practices into new forms of overthinking.",
+      "counts_towards_completion": true,
+      "pages": [
+        {
+          "file": "m3/lessons/13-take-every-thought-captive-what-does-that-mean.md",
+          "order": 13,
+          "title": "Take Every Thought Captive — What Does That Mean?",
+          "type": "teaching",
+          "slug": "13-take-every-thought-captive-what-does-that-mean",
+          "chapter": 13,
+          "key_scripture": "2 Corinthians 10:3–5",
+          "worksheet": "The Thought-Capturing Record",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/13-the-thought-capturing-record.md"
+          ]
+        },
+        {
+          "file": "m3/lessons/14-renewing-your-mind-is-not-positive-thinking.md",
+          "order": 14,
+          "title": "Renewing Your Mind Is Not Positive Thinking",
+          "type": "teaching",
+          "slug": "14-renewing-your-mind-is-not-positive-thinking",
+          "chapter": 14,
+          "key_scripture": "Romans 12:1–2",
+          "worksheet": "From False Reassurance to Biblical Truth",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/14-from-false-reassurance-to-biblical-truth.md"
+          ]
+        },
+        {
+          "file": "m3/lessons/15-think-about-what-is-true.md",
+          "order": 15,
+          "title": "Think About What Is True",
+          "type": "teaching",
+          "slug": "15-think-about-what-is-true",
+          "chapter": 15,
+          "key_scripture": "Philippians 4:4–9",
+          "worksheet": "The Philippians 4:8 Pastoral Attention Test",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/15-the-philippians-4-8-pastoral-attention-test.md"
+          ]
+        },
+        {
+          "file": "m3/lessons/16-prayer-that-does-not-become-more-worry.md",
+          "order": 16,
+          "title": "Prayer That Does Not Become More Worry",
+          "type": "teaching",
+          "slug": "16-prayer-that-does-not-become-more-worry",
+          "chapter": 16,
+          "key_scripture": "Psalm 62:8",
+          "worksheet": "The Six-Movement Prayer",
+          "audio": "six-movement-prayer",
+          "audio_placement": "with the guided practice",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/16-the-six-movement-prayer.md"
+          ]
+        },
+        {
+          "file": "m3/lessons/17-give-tomorrow-back-to-god.md",
+          "order": 17,
+          "title": "Give Tomorrow Back to God",
+          "type": "teaching",
+          "slug": "17-give-tomorrow-back-to-god",
+          "chapter": 17,
+          "key_scripture": "Matthew 6:25–34",
+          "worksheet": "Today, Later or Release?",
+          "audio": "give-tomorrow-back-to-god",
+          "audio_placement": "with the guided practice",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/17-today-later-or-release.md"
+          ]
+        },
+        {
+          "file": "m3/lessons/18-when-discernment-is-finished.md",
+          "order": 18,
+          "title": "When Discernment Is Finished",
+          "type": "teaching",
+          "slug": "18-when-discernment-is-finished",
+          "chapter": 18,
+          "key_scripture": "Proverbs 3:5–6",
+          "worksheet": "The Faithful Decision Sheet",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/18-the-faithful-decision-sheet.md"
+          ],
+          "worksheet_private": true,
+          "not_for_group_sharing": true
+        }
+      ],
+      "checkins": [
+        {
+          "file": "m3/checkins/m3-pause.md",
+          "title": "Module 3 pause: My faithful response",
+          "type": "pause",
+          "scored": false,
+          "required": false,
+          "private": true,
+          "gates_completion": false,
+          "affects_certificate": false
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": "Build a Quieter and More Sustainable Life",
+      "outcome": "Live faithfully while answers remain open, and build a gracious rhythm that supports the whole person.",
+      "counts_towards_completion": true,
+      "pages": [
+        {
+          "file": "m4/lessons/19-peace-before-answers.md",
+          "order": 19,
+          "title": "Peace Before Answers",
+          "type": "teaching",
+          "slug": "19-peace-before-answers",
+          "chapter": 19,
+          "key_scripture": "John 14:27",
+          "worksheet": "What Am I Waiting to Know Before I Permit Myself to Rest?",
+          "audio": "peace-before-answers",
+          "audio_placement": "with the guided prayer",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/19-what-am-i-waiting-to-know-before-i-permit-myself-to-rest.md"
+          ]
+        },
+        {
+          "file": "m4/lessons/20-a-rule-of-life-for-a-restless-mind.md",
+          "order": 20,
+          "title": "A Rule of Life for a Restless Mind",
+          "type": "teaching",
+          "slug": "20-a-rule-of-life-for-a-restless-mind",
+          "chapter": 20,
+          "key_scripture": "Mark 1:35",
+          "worksheet": "My Peace-Supporting Weekly Rhythm",
+          "finish_label": "I have finished this lesson for today",
+          "resources": [
+            "resources/20-my-peace-supporting-weekly-rhythm.md",
+            "resources/26-personal-digital-boundary.md",
+            "resources/27-support-map.md"
+          ]
+        },
+        {
+          "file": "m4/lessons/21-you-do-not-have-to-solve-your-whole-life-tonight.md",
+          "order": 21,
+          "title": "You Do Not Have to Solve Your Whole Life Tonight",
+          "type": "teaching",
+          "slug": "21-you-do-not-have-to-solve-your-whole-life-tonight",
+          "chapter": 21,
+          "key_scripture": "Matthew 6:34",
+          "audio": "final-prayer-of-surrender",
+          "audio_placement": "with the guided prayer",
+          "finish_label": "I have finished this lesson for today",
+          "capstone": true,
+          "certificate": {
+            "eligible_after": "foundation_complete",
+            "excludes_module_5": true,
+            "generated_on_request": true,
+            "member_enters_name": true,
+            "includes_journal_content": false,
+            "format": "A4 landscape",
+            "wording": "This certifies that [Member's Name] has completed the foundation course - When Your Mind Won't Rest: A Christian Course for Overthinking, Worry, Fear, and Renewing Your Mind - with Pastor Richmond Kobe.",
+            "footer": "Faithful Path Community - Certificate of Participation and Completion."
+          }
+        }
+      ],
+      "checkins": [
+        {
+          "file": "m4/checkins/m4-pause.md",
+          "title": "Module 4 pause: Course review",
+          "type": "pause",
+          "scored": false,
+          "required": false,
+          "private": true,
+          "gates_completion": false,
+          "affects_certificate": false
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": "The 30-Day Mind-Renewal Journey",
+      "outcome": "Thirty individual practice days grouped into four weeks, plus review and commitment.",
+      "counts_towards_completion": false,
+      "pages": [
+        {
+          "file": "m5/days/01-what-has-been-occupying-my-mind.md",
+          "day": 1,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Worksheet",
+          "title": "Day 1: What has been occupying my mind",
+          "resources": [
+            "resources/01-what-has-been-occupying-my-mind.md"
+          ]
+        },
+        {
+          "file": "m5/days/02-thinking-or-circling.md",
+          "day": 2,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Brief",
+          "title": "Day 2: Thinking or circling"
+        },
+        {
+          "file": "m5/days/03-what-i-have-told-myself-about-my-faith.md",
+          "day": 3,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Worksheet",
+          "title": "Day 3: What I have told myself about my faith",
+          "resources": [
+            "resources/03-what-have-i-been-telling-myself-about-my-faith.md"
+          ]
+        },
+        {
+          "file": "m5/days/04-one-act-of-care-for-the-body.md",
+          "day": 4,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Ordinary",
+          "title": "Day 4: One act of care for the body"
+        },
+        {
+          "file": "m5/days/05-the-fear-beneath-the-thought.md",
+          "day": 5,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Brief, optional",
+          "title": "Day 5: The fear beneath the thought"
+        },
+        {
+          "file": "m5/days/06-noticing-triggers.md",
+          "day": 6,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Action",
+          "title": "Day 6: Noticing triggers",
+          "resources": [
+            "resources/22-common-triggers.md"
+          ]
+        },
+        {
+          "file": "m5/days/07-rest-and-look.md",
+          "day": 7,
+          "week": "w1",
+          "week_title": "Week One: Notice",
+          "label": "Rest",
+          "title": "Day 7: Rest and look"
+        },
+        {
+          "file": "m5/days/08-what-am-i-predicting.md",
+          "day": 8,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Worksheet",
+          "title": "Day 8: What am I predicting",
+          "resources": [
+            "resources/06-possibility-probability-and-present-reality.md"
+          ]
+        },
+        {
+          "file": "m5/days/09-replaying-what-i-cannot-change.md",
+          "day": 9,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Brief",
+          "title": "Day 9: Replaying what I cannot change"
+        },
+        {
+          "file": "m5/days/10-said-and-imagined.md",
+          "day": 10,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Worksheet",
+          "title": "Day 10: Said and imagined",
+          "resources": [
+            "resources/08-what-was-said-and-what-did-i-imagine.md"
+          ]
+        },
+        {
+          "file": "m5/days/11-facts-and-assumptions.md",
+          "day": 11,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Brief",
+          "title": "Day 11: Facts and assumptions"
+        },
+        {
+          "file": "m5/days/12-information-or-courage.md",
+          "day": 12,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Brief",
+          "title": "Day 12: Information or courage"
+        },
+        {
+          "file": "m5/days/13-faithful-wise-or-perfect.md",
+          "day": 13,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Action",
+          "title": "Day 13: Faithful, wise or perfect"
+        },
+        {
+          "file": "m5/days/14-rest-and-look.md",
+          "day": 14,
+          "week": "w2",
+          "week_title": "Week Two: Test",
+          "label": "Rest",
+          "title": "Day 14: Rest and look"
+        },
+        {
+          "file": "m5/days/15-one-thought-examined.md",
+          "day": 15,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Brief",
+          "title": "Day 15: One thought, examined"
+        },
+        {
+          "file": "m5/days/16-what-is-mine-to-carry.md",
+          "day": 16,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Brief",
+          "title": "Day 16: What is mine to carry"
+        },
+        {
+          "file": "m5/days/17-the-six-movement-prayer.md",
+          "day": 17,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Worksheet",
+          "title": "Day 17: The six-movement prayer",
+          "resources": [
+            "resources/16-the-six-movement-prayer.md"
+          ]
+        },
+        {
+          "file": "m5/days/18-from-false-reassurance-to-biblical-truth.md",
+          "day": 18,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Brief",
+          "title": "Day 18: From false reassurance to biblical truth"
+        },
+        {
+          "file": "m5/days/19-today-later-or-release.md",
+          "day": 19,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Worksheet",
+          "title": "Day 19: Today, later or release",
+          "resources": [
+            "resources/17-today-later-or-release.md"
+          ]
+        },
+        {
+          "file": "m5/days/20-set-one-thing-down.md",
+          "day": 20,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Action",
+          "title": "Day 20: Set one thing down"
+        },
+        {
+          "file": "m5/days/21-rest-and-look.md",
+          "day": 21,
+          "week": "w3",
+          "week_title": "Week Three: Release",
+          "label": "Rest",
+          "title": "Day 21: Rest and look"
+        },
+        {
+          "file": "m5/days/22-peace-before-answers.md",
+          "day": 22,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Worksheet",
+          "title": "Day 22: Peace before answers",
+          "resources": [
+            "resources/19-what-am-i-waiting-to-know-before-i-permit-myself-to-rest.md"
+          ]
+        },
+        {
+          "file": "m5/days/23-the-six-movement-prayer-again.md",
+          "day": 23,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Brief",
+          "title": "Day 23: The six-movement prayer, again"
+        },
+        {
+          "file": "m5/days/24-a-digital-boundary.md",
+          "day": 24,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Action",
+          "title": "Day 24: A digital boundary",
+          "resources": [
+            "resources/26-personal-digital-boundary.md"
+          ]
+        },
+        {
+          "file": "m5/days/25-a-support-map.md",
+          "day": 25,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Brief",
+          "title": "Day 25: A support map",
+          "resources": [
+            "resources/27-support-map.md"
+          ]
+        },
+        {
+          "file": "m5/days/26-my-actual-week.md",
+          "day": 26,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Worksheet",
+          "title": "Day 26: My actual week",
+          "resources": [
+            "resources/20-my-peace-supporting-weekly-rhythm.md"
+          ]
+        },
+        {
+          "file": "m5/days/27-my-rule-for-this-season.md",
+          "day": 27,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Worksheet",
+          "title": "Day 27: My rule for this season",
+          "resources": [
+            "resources/20-my-peace-supporting-weekly-rhythm.md"
+          ]
+        },
+        {
+          "file": "m5/days/28-do-one-thing.md",
+          "day": 28,
+          "week": "w4",
+          "week_title": "Week Four: Practise",
+          "label": "Rest",
+          "title": "Day 28: Do one thing"
+        },
+        {
+          "file": "m5/days/29-review.md",
+          "day": 29,
+          "week": "w5",
+          "week_title": "Review and Commitment",
+          "label": "Brief",
+          "title": "Day 29: Review",
+          "resources": [
+            "resources/28-when-i-need-additional-help.md"
+          ]
+        },
+        {
+          "file": "m5/days/30-commitment.md",
+          "day": 30,
+          "week": "w5",
+          "week_title": "Review and Commitment",
+          "label": "Brief",
+          "title": "Day 30: Commitment",
+          "audio": "final-prayer-of-surrender"
+        }
+      ],
+      "home": "m5/00-journey-home.md",
+      "first_entry_notice": {
+        "title": "Please read before Day 1",
+        "must_display_on_first_entry": true,
+        "action": "Continue to Day 1",
+        "requires_checkbox": false,
+        "requires_agreement": false,
+        "stores_response": false,
+        "locks_support_pages": false,
+        "locks_course_home": false,
+        "accessible_afterwards": true,
+        "page": "m5/00-journey-home.md"
+      },
+      "status_config": {
+        "options": [
+          "Complete",
+          "Skip for now",
+          "Not appropriate for me",
+          "I need support"
+        ],
+        "progress_wording": "x of 30 days visited",
+        "visit_counts_on_open": true,
+        "opening_marks_complete": false,
+        "status_changeable": true,
+        "status_clearable": true,
+        "not_appropriate_counts_as_responded": true,
+        "need_support_marks_complete": false,
+        "need_support_opens": "m0/lessons/06-finding-help-where-you-live.md",
+        "need_support_sends_notification": false,
+        "skip_for_now_style": "neutral",
+        "no_streaks": true,
+        "no_overdue": true,
+        "no_catch_up": true,
+        "no_emotional_scoring": true,
+        "any_day_openable_without_calendar_date": true,
+        "progress_stored_separately_from_foundation": true
+      }
+    }
+  ],
+  "resources": [
+    {
+      "file": "m1/resources/01-what-has-been-occupying-my-mind.md",
+      "title": "What Has Been Occupying My Mind?",
+      "toolkit_number": 1,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m1/resources/02-healthy-thinking-or-mental-circling.md",
+      "title": "Healthy Thinking or Mental Circling?",
+      "toolkit_number": 2,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m1/resources/03-what-have-i-been-telling-myself-about-my-faith.md",
+      "title": "What Have I Been Telling Myself About My Faith?",
+      "toolkit_number": 3,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m1/resources/04-if-this-happened-what-would-it-mean-to-me.md",
+      "title": "\"If This Happened, What Would It Mean to Me?\"",
+      "toolkit_number": 4,
+      "printable": true,
+      "group_sharing": false,
+      "not_for_group_sharing": true,
+      "group_sharing_note": "one of the two foundation-course worksheets prohibited from group sharing",
+      "private": true,
+      "safety_box_required_before_prompts": true,
+      "optional": true,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m1/resources/05-body-and-mind-check-in.md",
+      "title": "Body and Mind Check-In",
+      "toolkit_number": 5,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/06-possibility-probability-and-present-reality.md",
+      "title": "Possibility, Probability and Present Reality",
+      "toolkit_number": 6,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/07-repair-learn-continue-or-release.md",
+      "title": "Repair, Learn, Continue or Release?",
+      "toolkit_number": 7,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/08-what-was-said-and-what-did-i-imagine.md",
+      "title": "What Was Said and What Did I Imagine?",
+      "toolkit_number": 8,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/09-facts-assumptions-and-other-possible-explanations.md",
+      "title": "Facts, Assumptions and Other Possible Explanations",
+      "toolkit_number": 9,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/10-do-i-need-more-information-or-more-courage.md",
+      "title": "Do I Need More Information or More Courage?",
+      "toolkit_number": 10,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/11-faithful-wise-or-perfect.md",
+      "title": "Faithful, Wise or Perfect?",
+      "toolkit_number": 11,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/12-what-is-mine-to-carry.md",
+      "title": "What Is Mine to Carry?",
+      "toolkit_number": 12,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/13-the-thought-capturing-record.md",
+      "title": "The Thought-Capturing Record",
+      "toolkit_number": 13,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/14-from-false-reassurance-to-biblical-truth.md",
+      "title": "From False Reassurance to Biblical Truth",
+      "toolkit_number": 14,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/15-the-philippians-4-8-pastoral-attention-test.md",
+      "title": "The Philippians 4:8 Pastoral Attention Test",
+      "toolkit_number": 15,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/16-the-six-movement-prayer.md",
+      "title": "The Six-Movement Prayer",
+      "toolkit_number": 16,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/17-today-later-or-release.md",
+      "title": "Today, Later or Release?",
+      "toolkit_number": 17,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m3/resources/18-the-faithful-decision-sheet.md",
+      "title": "The Faithful Decision Sheet",
+      "toolkit_number": 18,
+      "printable": true,
+      "group_sharing": false,
+      "not_for_group_sharing": true,
+      "group_sharing_note": "one of the two foundation-course worksheets prohibited from group sharing",
+      "private": true,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m4/resources/19-what-am-i-waiting-to-know-before-i-permit-myself-to-rest.md",
+      "title": "What Am I Waiting to Know Before I Permit Myself to Rest?",
+      "toolkit_number": 19,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m4/resources/20-my-peace-supporting-weekly-rhythm.md",
+      "title": "My Peace-Supporting Weekly Rhythm",
+      "toolkit_number": 20,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m0/resources/21-overthinking-reflection.md",
+      "title": "Overthinking Reflection",
+      "toolkit_number": 21,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m5/resources/22-common-triggers.md",
+      "title": "Common Triggers",
+      "toolkit_number": 22,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m2/resources/23-the-worry-cycle-map.md",
+      "title": "The Worry-Cycle Map",
+      "toolkit_number": 23,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m0/resources/24-control-influence-or-surrender.md",
+      "title": "Control, Influence or Surrender",
+      "toolkit_number": 24,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m0/resources/25-night-time-thought-download.md",
+      "title": "Night-Time Thought Download",
+      "toolkit_number": 25,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m4/resources/26-personal-digital-boundary.md",
+      "title": "Personal Digital Boundary",
+      "toolkit_number": 26,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m4/resources/27-support-map.md",
+      "title": "Support Map",
+      "toolkit_number": 27,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m5/resources/28-when-i-need-additional-help.md",
+      "title": "When I Need Additional Help",
+      "toolkit_number": 28,
+      "printable": true,
+      "group_sharing": false,
+      "not_for_group_sharing": true,
+      "group_sharing_note": "private journey resource, outside the group plan",
+      "private": true,
+      "safety_box_required_before_prompts": true,
+      "optional": false,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    },
+    {
+      "file": "m5/resources/29-thirty-day-tracker.md",
+      "title": "30-Day Tracker",
+      "toolkit_number": 29,
+      "printable": true,
+      "group_sharing": true,
+      "not_for_group_sharing": false,
+      "group_sharing_note": null,
+      "private": false,
+      "safety_box_required_before_prompts": false,
+      "optional": true,
+      "never_prompt_repeat": true,
+      "counts_towards_completion": false
+    }
+  ],
+  "resource_path_resolution": "Page front matter refers to resources as resources/[filename].md. Resolve by exact filename against this top-level resources registry, which holds the real module path (e.g. m2/resources/06-...). Do not resolve relative to the lesson directory.",
+  "leaders_section": {
+    "reached_from": "course home, outside the three learner entry points",
+    "gate": "leaders/pages/00-using-this-course-with-others.md",
+    "member_gated": true,
+    "part_of_learner_pathway": false,
+    "pages": [
+      "leaders/pages/00-using-this-course-with-others.md",
+      "leaders/pages/01-what-this-course-is-and-what-it-is-not.md",
+      "leaders/pages/02-who-should-lead.md",
+      "leaders/pages/03-confidentiality-and-its-limits.md",
+      "leaders/pages/04-safeguarding.md",
+      "leaders/pages/05-suicide-and-self-harm.md",
+      "leaders/pages/06-domestic-abuse-and-coercive-control.md",
+      "leaders/pages/07-responding-to-a-disclosure.md",
+      "leaders/pages/08-referral-when-to-send-someone-on.md",
+      "leaders/pages/09-worksheets-are-not-diagnosis.md",
+      "leaders/pages/10-running-the-six-weeks.md",
+      "leaders/pages/11-one-to-one-use.md",
+      "leaders/pages/12-a-word-about-theology-in-the-room.md",
+      "leaders/pages/13-leader-s-checklist.md"
+    ],
+    "downloads": [
+      "leaders/resources/group-agreement.md",
+      "leaders/resources/leaders-checklist.md",
+      "leaders/downloads/leaders-guidance.pdf"
+    ],
+    "downloads_require_acknowledgement": "read_safety_and_safeguarding",
+    "downloads_reachable_by_direct_url_without_acknowledgement": false,
+    "acknowledgement_unlocks": "group downloads only",
+    "generates_certificate": false,
+    "records_approval": false,
+    "stores": "checked status and acknowledgement date only"
+  },
+  "downloads": [
+    {
+      "file": "downloads/course-journal-and-practical-toolkit.pdf",
+      "title": "The Course Journal and Practical Toolkit",
+      "member_gated": true,
+      "pages": 75,
+      "version": "v2, 15 September 2026",
+      "linked_from": [
+        "m0/lessons/00-welcome.md",
+        "course home",
+        "m4/lessons/20-a-rule-of-life-for-a-restless-mind.md"
+      ],
+      "verify_before_launch": [
+        "orientation, journey and emergency pages present",
+        "embedded fonts, no character-spacing defect",
+        "cross-reference table wraps without collisions",
+        "Worksheet 24 ends with 'or “safety.”'",
+        "no orphan pages"
+      ]
+    }
+  ],
+  "completion": {
+    "certificate": {
+      "eligible_after": "Lessons 1-21 all marked finished",
+      "excludes": [
+        "Module 0",
+        "module pauses",
+        "check-ins",
+        "journal responses",
+        "worksheets",
+        "next-faithful-step responses",
+        "Module 5"
+      ],
+      "generated_on_request": true,
+      "member_enters_name": true,
+      "includes_journal_content": false,
+      "format": "A4 landscape",
+      "wording": "This certifies that [Member's Name] has completed the foundation course — When Your Mind Won't Rest: A Christian Course for Overthinking, Worry, Fear, and Renewing Your Mind — with Pastor Richmond Kobe.",
+      "footer": "Faithful Path Community · Certificate of Participation and Completion.",
+      "implies_accreditation": false
+    },
+    "badge": {
+      "name": "30-Day Mind-Renewal Journey",
+      "generated_on_request": true,
+      "requires": "Day 30 visited",
+      "certifies_completion_of_all_days": false,
+      "medical_or_therapeutic_achievement": false,
+      "includes_journal_content": false
+    },
+    "also_update": {
+      "course": "christian-spiritual-reset",
+      "change": "reword the certificate to match this course",
+      "wording": "… has completed …, with Pastor Richmond Kobe",
+      "footer": "Faithful Path Community · Certificate of Participation and Completion."
+    }
+  },
+  "privacy": {
+    "journal_and_reflections": {
+      "in_analytics_or_event_logs": false,
+      "in_admin_completion_views": false,
+      "member_can_edit": true,
+      "member_can_delete": true,
+      "pdf_export": true,
+      "monitored": false,
+      "triggers_alerts": false
+    },
+    "intention_answers": {
+      "private": true,
+      "optional": true,
+      "stored_by_stable_id": true
+    },
+    "action_responses": {
+      "private": true,
+      "optional": true,
+      "in_admin_views": false
+    },
+    "module_pauses": {
+      "private": true,
+      "optional": true,
+      "gates_completion": false
+    },
+    "check_ins": {
+      "private": true,
+      "unscored": true,
+      "not_clinical_information": true
+    },
+    "safety_acknowledgement": {
+      "stores": "checked status and date only",
+      "in_analytics": false,
+      "in_admin_views": false,
+      "is_safety_assessment": false,
+      "is_consent_to_treatment": false,
+      "locks_course": false
+    },
+    "saved_text": {
+      "escaped": true,
+      "sanitised": true
+    },
+    "progress_storage": "status information only",
+    "no_alerting_built": true
+  },
+  "audio": {
+    "launch": [
+      {
+        "id": "welcome",
+        "page": "m0/lessons/00-welcome.md"
+      },
+      {
+        "id": "night-time",
+        "page": "m0/lessons/08-night-time.md"
+      },
+      {
+        "id": "six-movement-prayer",
+        "page": "m3/lessons/16-prayer-that-does-not-become-more-worry.md"
+      },
+      {
+        "id": "give-tomorrow-back-to-god",
+        "page": "m3/lessons/17-give-tomorrow-back-to-god.md"
+      },
+      {
+        "id": "peace-before-answers",
+        "page": "m4/lessons/19-peace-before-answers.md"
+      },
+      {
+        "id": "final-prayer-of-surrender",
+        "pages": [
+          "m4/lessons/21-you-do-not-have-to-solve-your-whole-life-tonight.md",
+          "m5/days/30-commitment.md"
+        ]
+      }
+    ],
+    "phase_two": [
+      "audio for all 21 lessons",
+      "remaining guided prayers",
+      "module introduction videos"
+    ],
+    "storage": "private Supabase bucket course-media, signed URLs for active members, as for the Christian Spiritual Reset"
+  }
+}
