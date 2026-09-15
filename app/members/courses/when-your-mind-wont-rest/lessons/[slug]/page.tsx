@@ -5,6 +5,7 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   findPageBySlug,
   findResource,
+  linkCourseReferences,
   getCountingLessons,
   getFoundationPages,
   readPageFile,
@@ -205,9 +206,12 @@ export default async function MindLesson({ params }: Props) {
       )}
 
       {support && (
-        <p className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-4 text-sm leading-relaxed text-[#4A4038]">
-          {support}
-        </p>
+        <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-4 text-sm leading-relaxed text-[#4A4038]">
+          {/* The support note comes from front matter rather than the body, so
+              it misses the linking that readPageFile does — and two lessons
+              name Finding Help Where You Live inside it. */}
+          <MindMarkdown source={linkCourseReferences(support, page.file)} tight />
+        </div>
       )}
     </main>
   );

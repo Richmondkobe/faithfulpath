@@ -116,10 +116,19 @@ const components: Components = {
   ),
 };
 
-export default function MindMarkdown({ source }: { source: string }) {
+export default function MindMarkdown({
+  source,
+  tight = false,
+}: {
+  source: string;
+  /** Drops the leading margin, for prose inside a box that sets its own. */
+  tight?: boolean;
+}) {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-      {source}
-    </ReactMarkdown>
+    <div className={tight ? "[&>*:first-child]:mt-0" : undefined}>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+        {source}
+      </ReactMarkdown>
+    </div>
   );
 }

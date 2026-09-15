@@ -281,6 +281,86 @@ const AUTHOR_NOTES: Record<string, string[]> = {
   ],
 };
 
+/**
+ * Pages the content names in prose but never links to.
+ *
+ * The course text says "Open Finding Help Where You Live" and leaves it as
+ * words — there is not one Markdown link in the whole of the content. Between
+ * them these two pages are named 111 times, and they are the two a member in
+ * difficulty is being sent to, so leaving them unclickable is the worst place
+ * to make someone hunt through a menu.
+ *
+ * Linked at render, by exact title. The titles are distinctive multi-word
+ * phrases, so there is nothing else they could match by accident.
+ */
+const LINKED_PAGES: { title: string; file: string }[] = [
+  { title: "Finding Help Where You Live", file: "m0/lessons/06-finding-help-where-you-live.md" },
+  { title: "When This Course Is Not Enough", file: "m0/lessons/04-when-this-course-is-not-enough.md" },
+  { title: "My Mind Is Restless Right Now", file: "m0/lessons/07-my-mind-is-restless-right-now.md" },
+];
+
+export function linkedPageTitles(): { title: string; file: string }[] {
+  return LINKED_PAGES;
+}
+
+const COURSE_BASE = "/members/courses/when-your-mind-wont-rest";
+
+/**
+ * Turns those page names into links.
+ *
+ * Headings are left alone — a linked heading on the page's own title reads as
+ * a mistake — and so is any name on the page it refers to, which would
+ * otherwise link to itself. An occurrence already inside a link is skipped, so
+ * running this twice changes nothing.
+ */
+export function linkCourseReferences(body: string, selfFile?: string): string {
+  const lines = body.split(/\r?\n/);
+
+  return lines
+    .map((line) => {
+      // Headings, code fences and indented code stay as they are.
+      if (/^\s{0,3}#/.test(line) || /^\s*```/.test(line) || /^\s{4,}\S/.test(line)) {
+        return line;
+      }
+
+      let out = line;
+      for (const page of LINKED_PAGES) {
+        if (page.file === selfFile) continue;
+        const slug = page.file.split("/").pop()!.replace(/\.md$/, "");
+        const href = `${COURSE_BASE}/lessons/${slug}`;
+
+        // Skip an occurrence that is already the text of a link.
+        const pattern = new RegExp(`(?<!\\[)\\b${page.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b(?!\\])`, "g");
+        out = out.replace(pattern, `[${page.title}](${href})`);
+      }
+      return out;
+    })
+    .join("\n");
+}
+
+/**
+ * The restless-now page's Markdown list.
+ *
+ * The visible list is generated from the `entries` front matter, and this one
+ * is the plain-Markdown fallback the build checks it against — so on the page
+ * it was rendering as a second, unclickable copy directly above the real one.
+ */
+function stripFallbackList(file: string, body: string): string {
+  if (file !== "m0/lessons/07-my-mind-is-restless-right-now.md") return body;
+
+  const lines = body.split(/\r?\n/);
+  const start = lines.findIndex((l) => /^[-*]\s+\*\*/.test(l));
+  if (start === -1) return body;
+
+  let end = start;
+  while (end < lines.length && (/^[-*]\s+/.test(lines[end]) || !lines[end].trim())) end++;
+
+  return [...lines.slice(0, start), ...lines.slice(end)]
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 /** The notes this file carries, for the build assertion to check against. */
 export function authorNotesFor(file: string): string[] {
   return AUTHOR_NOTES[file] ?? [];
@@ -307,8 +387,13 @@ export const readPageFile = cache((file: string): PageFile | null => {
 
   return {
     front: (front ?? {}) as Record<string, YamlValue>,
-    // Stripped here rather than in each route, so no render path can miss it.
-    body: stripAuthorNotes(file, raw.replace(FRONT_MATTER, "").trim()),
+    // All three happen here rather than in each route, so no render path can
+    // miss them: the author notes go, the restless-now fallback list goes, and
+    // the two safety pages become links wherever they are named.
+    body: linkCourseReferences(
+      stripFallbackList(file, stripAuthorNotes(file, raw.replace(FRONT_MATTER, "").trim())),
+      file
+    ),
   };
 });
 
