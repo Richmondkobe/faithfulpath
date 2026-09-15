@@ -454,3 +454,42 @@ export function splitPauseQuestions(body: string): PauseBody {
     after: lines.slice(last + 1).join("\n").trim(),
   };
 }
+
+/* -------------------------------------------------------------- leaders */
+
+export type LeadersSection = {
+  gate: string;
+  pages: string[];
+  downloads: string[];
+  downloads_require_acknowledgement: string;
+};
+
+export const getLeadersSection = cache((): LeadersSection => {
+  return getMindCourse().leaders_section as unknown as LeadersSection;
+});
+
+/** A leaders' page by its filename slug, or null. */
+export const findLeadersPage = cache((slug: string): string | null =>
+  getLeadersSection().pages.find(
+    (f) => f.split("/").pop()!.replace(/\.md$/, "") === slug
+  ) ?? null
+);
+
+/** A leaders' download by its filename slug, or null. */
+export const findLeadersDownload = cache((slug: string): string | null =>
+  getLeadersSection().downloads.find(
+    (f) => f.split("/").pop()!.replace(/\.(md|pdf)$/, "") === slug
+  ) ?? null
+);
+
+/** The absolute path of a file inside this course's content folder. */
+export function coursePath(file: string): string {
+  return join(ROOT, file);
+}
+
+/** The toolkit and any other member download named in the manifest. */
+export const findDownload = cache((slug: string) =>
+  getMindCourse().downloads.find(
+    (d) => d.file.split("/").pop()!.replace(/\.pdf$/, "") === slug
+  ) ?? null
+);

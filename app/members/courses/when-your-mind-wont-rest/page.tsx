@@ -7,13 +7,21 @@ import {
   getCheckins,
   checkinSlug,
 } from "@/lib/mind-course";
-import { getFinishedLessons, getJourneyProgress, visitedWording } from "@/lib/mind-progress";
+import {
+  getFinishedLessons,
+  getJourneyProgress,
+  getPageAnswers,
+  visitedWording,
+  CERT_NAME_INDEX,
+} from "@/lib/mind-progress";
+import CertificateBlock from "@/components/mind/CertificateBlock";
 import {
   mindCheckinHref,
   mindJourneyHref,
   mindLeadersHref,
   mindLessonHref,
   slugFromFile,
+  MIND_BASE,
 } from "@/lib/mind-links";
 
 export const metadata: Metadata = {
@@ -38,9 +46,10 @@ export default async function MindCourseHome() {
 
   const course = getMindCourse();
   const lessons = getCountingLessons();
-  const [finished, journey] = await Promise.all([
+  const [finished, journey, certAnswers] = await Promise.all([
     getFinishedLessons(),
     getJourneyProgress(),
+    getPageAnswers("certificate"),
   ]);
 
   const done = lessons.filter((l) => finished.get(slugFromFile(l.file))?.finished).length;
@@ -117,6 +126,31 @@ export default async function MindCourseHome() {
           );
         })}
       </ul>
+
+      <CertificateBlock
+        savedName={(certAnswers.get(CERT_NAME_INDEX) ?? "").trim()}
+        done={done}
+        total={lessons.length}
+        journeyReached30={journey.has(30)}
+      />
+
+      {/* The toolkit, linked from the course home as the manifest requires. */}
+      <section className="mt-12 border-t border-[#E5D9C7] pt-8">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Your toolkit
+        </h2>
+        {course.downloads.map((download) => (
+          <div key={download.file} className="mt-4">
+            <Link
+              href={`${MIND_BASE}/downloads/${slugFromFile(download.file).replace(/\.pdf$/, "")}`}
+              prefetch={false}
+              className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              {download.title ?? "Download the toolkit"} (PDF)
+            </Link>
+          </div>
+        ))}
+      </section>
 
       {/* The pauses and the Pattern Finder. Listed apart from the entry points
           because none of them is a way into the course — they are optional

@@ -84,7 +84,7 @@ export async function buildCertificate({
 
   drawCentred(
     page,
-    [{ text: "Certificate of Completion", font: regular, size: 30 }],
+    [{ text: "Certificate of Participation and Completion", font: regular, size: 26 }],
     pageHeight - 140
   );
 
@@ -112,10 +112,13 @@ export async function buildCertificate({
   }
   drawCentred(page, [{ text: name, font: regular, size: nameSize }], pageHeight - 276);
 
+  // Worded to match the When Your Mind Won't Rest certificate, which
+  // course.json asks this one to follow: "… has completed …, with Pastor
+  // Richmond Kobe".
   drawCentred(
     page,
     [
-      { text: "completed ", font: regular, size: 13 },
+      { text: "has completed ", font: regular, size: 13 },
       { text: "The Christian Spiritual Reset", font: italic, size: 13 },
       { text: ", a guided retreat and 30-day renewal journey,", font: regular, size: 13 },
     ],
@@ -127,7 +130,14 @@ export async function buildCertificate({
     month: "long",
     year: "numeric",
   });
-  drawCentred(page, [{ text: `on ${date}.`, font: regular, size: 13 }], pageHeight - 352);
+  drawCentred(
+    page,
+    [
+      { text: "with Pastor Richmond Kobe, on ", font: regular, size: 13 },
+      { text: `${date}.`, font: regular, size: 13 },
+    ],
+    pageHeight - 352
+  );
 
   drawCentred(
     page,
@@ -145,7 +155,14 @@ export async function buildCertificate({
   drawCentred(page, [{ text: "Richmond Kobe, Pastor", font: regular, size: 13 }], 118);
   drawCentred(
     page,
-    [{ text: "faithfulpathcommunity.com", font: regular, size: 11, color: MUTED }],
+    [
+      {
+        text: "Faithful Path Community · Certificate of Participation and Completion.",
+        font: regular,
+        size: 10.5,
+        color: MUTED,
+      },
+    ],
     98
   );
 

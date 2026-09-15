@@ -11,7 +11,9 @@ import {
 } from "@/lib/mind-course";
 import {
   ACKNOWLEDGEMENT_INDEX,
+  CERT_NAME_INDEX,
   CHECKIN_INDEX,
+  LEADERS_ACK_INDEX,
   INTENTION_INDEX,
   PATTERN_FINDER_INDEX,
   NEXT_STEP_INDEX,
@@ -19,7 +21,12 @@ import {
   isNextStep,
   type NextStep,
 } from "@/lib/mind-progress";
-import { mindCheckinHref, mindLessonHref, MIND_BASE } from "@/lib/mind-links";
+import {
+  mindCheckinHref,
+  mindLeadersHref,
+  mindLessonHref,
+  MIND_BASE,
+} from "@/lib/mind-links";
 
 /**
  * Every action re-checks the membership. A Server Action is reachable by direct
@@ -292,4 +299,54 @@ export async function savePatternFinder(
   if (error) throw new Error(error.message);
 
   revalidatePath(mindCheckinHref(checkinSlug));
+}
+
+/* ---------------------------------------------------------- leaders */
+
+/**
+ * The leaders' acknowledgement.
+ *
+ * It unlocks the group downloads and nothing else. It generates no
+ * certificate, records no approval by Faithful Path, and stores only the tick
+ * and the date — the gate page says all three, and this function does no more
+ * than it says.
+ */
+export async function saveLeadersAcknowledgement(checked: boolean): Promise<void> {
+  const { supabase, userId } = await memberClient();
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      lesson_slug: "leaders",
+      question_index: LEADERS_ACK_INDEX,
+      answer: JSON.stringify({
+        read_safety_and_safeguarding: checked,
+        at: checked ? new Date().toISOString() : null,
+      }),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindLeadersHref());
+}
+
+/** The name a member wants on the certificate or the badge. */
+export async function saveMindCertificateName(name: string): Promise<void> {
+  const { supabase, userId } = await memberClient();
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      lesson_slug: "certificate",
+      question_index: CERT_NAME_INDEX,
+      answer: name.trim().slice(0, 120),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(MIND_BASE);
 }
