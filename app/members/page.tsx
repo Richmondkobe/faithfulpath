@@ -21,6 +21,7 @@ import ProgressBar from "@/components/course/ProgressBar";
 import CertificateButton from "@/components/course/CertificateButton";
 import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
+import MindCourseCard from "@/components/mind/MindCourseCard";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -274,6 +275,7 @@ export default async function Members() {
       </div>
 
       <CourseCard />
+      <MindCourseCard />
 
       {member?.cancel_at_period_end && member.current_period_end && (
         <p className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-sm leading-relaxed text-[#6B5F53]">
