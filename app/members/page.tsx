@@ -26,11 +26,16 @@ import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
 
+// Written for both courses. The route chooser and Quick Start it used to name
+// belong to the Spiritual Reset alone; what is said here has to be true of the
+// other course as well, so the wayfinding moved to each course's own home and
+// this says only what both share.
 const WELCOME = [
   "You are in the right place.",
-  "Everything here moves at a pace you can safely manage. There are no grades, deadlines, or rewards for finishing quickly. You may shorten an exercise, pause a session, or return to the retreat later.",
-  "Begin with the welcome, then choose the route that matches the capacity you have today.",
-  "If you are already exhausted, choose the Quick Start route. Complete the essential safety and preparation steps, then begin with a shorter reset.",
+  "Everything here moves at a pace you can safely manage. There are no grades, deadlines, or rewards for finishing quickly. You may shorten an exercise, pause a session, or come back to it later.",
+  "There are two courses below. Begin with either one; neither has to be finished before the other is started.",
+  "Each begins by asking what you have room for today, and each keeps a shorter way in for when that is very little.",
+  "If your mind is restless right now, you do not have to start at the beginning. There is a page that takes you straight to the part that matches.",
   "You do not have to carry the whole course at once.",
   "The rest will be here when you are ready.",
 ];
