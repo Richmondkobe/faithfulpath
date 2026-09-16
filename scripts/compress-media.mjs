@@ -4,6 +4,7 @@
 //
 //   npm run media:compress -- ~/Desktop/welcome.mp4
 //   npm run media:compress -- talk.mov --height 1080 --crf 21
+//   npm run media:compress -- prayer.mp3 --bitrate 64k
 //
 // Writes <name>-web.mp4 beside the source and leaves the original untouched.
 //
@@ -34,6 +35,7 @@ if (!existsSync(source)) die(`No such file: ${source}`);
 
 const height = Number(flag("height", 720));
 const crf = Number(flag("crf", 23));
+const bitrate = flag("bitrate", "96k");
 const audioOnly = extname(source).toLowerCase() === ".mp3";
 
 const out = join(
@@ -43,7 +45,7 @@ const out = join(
 
 const before = statSync(source).size;
 console.log(`\n  ${source}`);
-console.log(`  ${(before / 1048576).toFixed(1)} MB -> ${audioOnly ? "mp3 96k" : `${height}p, crf ${crf}`}`);
+console.log(`  ${(before / 1048576).toFixed(1)} MB -> ${audioOnly ? `mp3 ${bitrate}, channels unchanged` : `${height}p, crf ${crf}`}`);
 
 const videoArgs = [
   "-vf", `scale=-2:${height}`,
@@ -53,7 +55,10 @@ const videoArgs = [
   // moov atom at the front, so playback starts before the file has arrived.
   "-movflags", "+faststart",
 ];
-const audioArgs = ["-c:a", "libmp3lame", "-b:a", "96k", "-ac", "2"];
+// Channels are left as they are. These recordings are one voice speaking, and
+// the sources are mono: upmixing to stereo would spend half the bitrate
+// duplicating a channel, which is worse audio in a larger file.
+const audioArgs = ["-c:a", "libmp3lame", "-b:a", bitrate];
 
 try {
   execFileSync(

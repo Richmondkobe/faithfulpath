@@ -11,9 +11,11 @@ import {
 } from "@/lib/mind-course";
 import { getJourneyProgress } from "@/lib/mind-progress";
 import { recordDayVisit } from "@/app/members/courses/when-your-mind-wont-rest/actions";
+import { signedMediaUrl } from "@/lib/course-media";
 import { mindDayHref, mindJourneyHref, mindResourceHref, slugFromFile } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import DayStatusControl from "@/components/mind/DayStatus";
+import PrayerAudio from "@/components/mind/PrayerAudio";
 
 export const metadata: Metadata = {
   title: "The 30-Day Mind-Renewal Journey | Faithful Path Community",
@@ -56,6 +58,9 @@ export default async function JourneyDay({ params }: Props) {
   const progress = await getJourneyProgress();
   const state = progress.get(day);
 
+  const audioId = typeof file.front.audio === "string" ? file.front.audio : null;
+  const audioSrc = audioId ? await signedMediaUrl("audio", `${audioId}.mp3`) : null;
+
   const worksheets = (page.resources ?? [])
     .map((ref) => findResource(ref))
     .filter((r): r is NonNullable<typeof r> => r !== null);
@@ -82,6 +87,8 @@ export default async function JourneyDay({ params }: Props) {
       <article className="mt-2">
         <MindMarkdown source={file.body} />
       </article>
+
+      {audioId && <PrayerAudio src={audioSrc} title={page.title} />}
 
       {worksheets.length > 0 && (
         <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">

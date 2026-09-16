@@ -140,6 +140,7 @@ export type MindManifest = {
   downloads: { id?: string; file: string; title?: string; label?: string }[];
   completion: Record<string, unknown>;
   privacy: Record<string, unknown>;
+  audio?: Record<string, unknown>;
 };
 
 export const getMindCourse = cache((): MindManifest => {
@@ -623,6 +624,21 @@ export const findDownload = cache((slug: string) =>
     (d) => d.file.split("/").pop()!.replace(/\.pdf$/, "") === slug
   ) ?? null
 );
+
+/* ---------------------------------------------------------------- audio */
+
+export type MindAudio = { id: string; page?: string; pages?: string[] };
+
+/** The recordings that exist at launch, from the manifest's audio.launch. */
+export const getLaunchAudio = cache((): MindAudio[] => {
+  const audio = getMindCourse().audio as { launch?: MindAudio[] } | undefined;
+  return audio?.launch ?? [];
+});
+
+/** Which pages a recording belongs to — one page, or several. */
+export function audioPages(entry: MindAudio): string[] {
+  return entry.pages ?? (entry.page ? [entry.page] : []);
+}
 
 /* -------------------------------------------------------------- journey */
 

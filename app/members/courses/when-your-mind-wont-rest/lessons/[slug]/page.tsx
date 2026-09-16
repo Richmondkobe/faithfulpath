@@ -23,6 +23,7 @@ import {
   isNextStep,
   type NextStep,
 } from "@/lib/mind-progress";
+import { signedMediaUrl } from "@/lib/course-media";
 import { mindResourceHref, MIND_BASE } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import ChapterDisclosure from "@/components/mind/ChapterDisclosure";
@@ -33,6 +34,7 @@ import Intentions from "@/components/mind/Intentions";
 import Acknowledgement, { type AckState } from "@/components/mind/Acknowledgement";
 import RestlessList, { type RestlessEntry } from "@/components/mind/RestlessList";
 import EraseEntries from "@/components/mind/EraseEntries";
+import PrayerAudio from "@/components/mind/PrayerAudio";
 
 export const metadata: Metadata = {
   title: "When Your Mind Won't Rest | Faithful Path Community",
@@ -102,6 +104,11 @@ export default async function MindLesson({ params }: Props) {
       .map((l) => [l.order as number, l.slug ?? l.file.split("/").pop()!.replace(/\.md$/, "")])
   ) as Record<number, string>;
 
+  // The recording this page carries, if any. A missing object signs as null,
+  // which is what keeps the "not available yet" note showing for phase two.
+  const audioId = typeof file.front.audio === "string" ? file.front.audio : null;
+  const audioSrc = audioId ? await signedMediaUrl("audio", `${audioId}.mp3`) : null;
+
   const action = typeof file.front.action === "string" ? file.front.action : null;
   const support = typeof file.front.support === "string" ? file.front.support : null;
 
@@ -129,6 +136,8 @@ export default async function MindLesson({ params }: Props) {
       <article className="mt-2">
         <MindMarkdown source={main} />
       </article>
+
+      {audioId && <PrayerAudio src={audioSrc} title={page.title} />}
 
       {chapter && <ChapterDisclosure chapter={chapter} lessonTitle={page.title} />}
 
