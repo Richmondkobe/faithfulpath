@@ -8,7 +8,10 @@ import {
 import { MIND_BASE, slugFromFile } from "@/lib/mind-links";
 
 /**
- * The second course, on the members page.
+ * When Your Mind Won't Rest, on the members page.
+ *
+ * Presented exactly as the Spiritual Reset's card is — same heading, same
+ * descriptor line, same spacing — because neither course is the secondary one.
  *
  * It shows where the member has been and nothing about where they should be.
  * The two progress lines are separate because the course keeps them separate:
@@ -39,12 +42,9 @@ export default async function MindCourseCard() {
   const started = done > 0 || journey.size > 0;
 
   return (
-    <section className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        Also in your membership
-      </p>
+    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
       <h2
-        className="mt-2 text-2xl text-[#2B2118]"
+        className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {course.title}

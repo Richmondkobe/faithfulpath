@@ -74,16 +74,16 @@ async function CourseCard() {
   const next = nextLessonFor(COURSE_SLUG, lessons, countable, progress, route);
 
   return (
-    <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        Your course
-      </p>
+    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
       <h2
-        className="mt-2 text-2xl text-[#2B2118]"
+        className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {course.title}
       </h2>
+      <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+        {course.description}
+      </p>
 
       {completion.complete && (
         <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
@@ -279,8 +279,17 @@ export default async function Members() {
         ))}
       </div>
 
-      <CourseCard />
-      <MindCourseCard />
+      {/* Two courses, presented alike. Neither is the main one: a member may
+          have come for either, and the membership includes both. */}
+      <section className="mt-12">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Your courses
+        </h2>
+        <div className="mt-4 space-y-6">
+          <CourseCard />
+          <MindCourseCard />
+        </div>
+      </section>
 
       {member?.cancel_at_period_end && member.current_period_end && (
         <p className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-sm leading-relaxed text-[#6B5F53]">
