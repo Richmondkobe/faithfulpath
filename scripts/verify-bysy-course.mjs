@@ -143,7 +143,16 @@ ok("the export policy excludes every part answered alone, and all of Lesson 19")
 
 // Any export built later must consult the policy. While none exists, assert
 // that none has appeared without doing so.
-const exportish = codeFiles.filter((f) => /bysy/i.test(f) && /export/i.test(readFileSync(f, "utf8")) && /pdf|download|buildExport/i.test(readFileSync(f, "utf8")));
+//
+// Matched on what an export actually does — serves a file — rather than on the
+// word "export", which appears in every module, or "download", which appears in
+// prose about §4. A heuristic that fires on documentation teaches people to
+// ignore the check.
+const exportish = codeFiles.filter((f) => {
+  if (!/bysy|before-you-say-yes/i.test(f)) return false;
+  const code = readFileSync(f, "utf8");
+  return /application\/pdf|Content-Disposition|buildJournalPdf|new NextResponse\(/.test(code);
+});
 for (const f of exportish) {
   if (!readFileSync(f, "utf8").includes("bysy-export-policy")) {
     fail(`${f} looks like an export path but does not consult lib/bysy-export-policy`);
