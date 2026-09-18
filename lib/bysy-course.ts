@@ -375,8 +375,12 @@ export function splitAtHeading(
   const start = lines.findIndex((l) => l.trim() === heading);
   if (start === -1) return null;
 
+  // Ends at the next heading of the same level or higher, so splitting an H3
+  // part does not swallow the parts after it.
+  const level = (heading.match(/^#+/) ?? ["##"])[0].length;
+  const ends = new RegExp(`^#{1,${level}}\\s+(?!#)`);
   let end = start + 1;
-  while (end < lines.length && !/^##\s+(?!#)/.test(lines[end])) end++;
+  while (end < lines.length && !ends.test(lines[end])) end++;
 
   return {
     before: lines.slice(0, start).join("\n").trim(),

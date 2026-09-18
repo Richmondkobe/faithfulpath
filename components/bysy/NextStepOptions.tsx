@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { bysySupportHref, bysyPageHref } from "@/lib/bysy-links";
+import { NOTHING_SCORES, WRITE_ELSEWHERE } from "@/lib/bysy-wording";
 
 /**
  * Lesson 6's next faithful step.
@@ -127,7 +128,7 @@ export default function NextStepOptions() {
     <section className="mt-6">
       <p className="leading-relaxed">
         Choose the one that fits, then write the name of one person you will talk
-        to and the date you will do it. Write it somewhere outside this course.
+        to and the date you will do it. {WRITE_ELSEWHERE}
       </p>
 
       <ul className="mt-5 space-y-3">
@@ -158,9 +159,8 @@ export default function NextStepOptions() {
       </ul>
 
       <p className="mt-5 text-sm leading-relaxed text-[#6B5F53]">
-        No combination of answers produces this decision, and nothing here is
-        scored. Your selection is not saved — it is yours to act on, not a
-        record for us to keep.
+        {NOTHING_SCORES} Your selection is not saved — it is yours to act on,
+        not a record for us to keep.
       </p>
     </section>
   );

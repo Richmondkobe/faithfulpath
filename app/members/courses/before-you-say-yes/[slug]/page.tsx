@@ -7,9 +7,10 @@ import {
   positionOnRoute, readPage, readSupportPage, splitAtHeading,
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
-import { getStoredRoute } from "@/lib/bysy-progress";
+import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextStepOptions from "@/components/bysy/NextStepOptions";
+import EvidenceTable from "@/components/bysy/EvidenceTable";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -58,6 +59,14 @@ export default async function BysyPage({ params }: Props) {
   const nextStep =
     page.lesson === 6 ? splitAtHeading(body, "## Next faithful step") : null;
 
+  // Lesson 4 Part B: §7 names this table specifically — the learner adds rows
+  // rather than being offered a fixed three.
+  const evidence =
+    page.lesson === 4 ? splitAtHeading(body, "### Part B — What I feel and what I know") : null;
+  const evidenceRows = evidence
+    ? (await getToolAnswer<string[][]>(slug, "B")) ?? []
+    : [];
+
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
 
@@ -77,7 +86,25 @@ export default async function BysyPage({ params }: Props) {
       </p>
 
       <article className="mt-2">
-        {nextStep ? (
+        {evidence ? (
+          <>
+            <MindMarkdown source={linkReferences(evidence.before, page.file)} />
+            <h3
+              className="mt-8 text-xl text-[#2B2118]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            >
+              Part B — What I feel and what I know
+            </h3>
+            <EvidenceTable
+              pageSlug={slug}
+              part="B"
+              columns={["What I feel about them", "What I know about them, with evidence"]}
+              saved={evidenceRows}
+              guidance="In the second column, every entry needs evidence: something you have actually seen or heard, and when. Keep each entry short — a line, not an account."
+            />
+            <MindMarkdown source={linkReferences(evidence.after, page.file)} />
+          </>
+        ) : nextStep ? (
           <>
             <MindMarkdown source={linkReferences(nextStep.before, page.file)} />
             <h2
