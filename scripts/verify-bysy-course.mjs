@@ -337,6 +337,105 @@ if (!existsSync(recallComponent)) {
   }
 }
 
+/* §5: the joint tools.
+
+   The private part is completed alone and first; the shared section opens only
+   behind a gate; and the interface must never suggest the other person has
+   access. The gate is the part that can fail while still looking right, so
+   these check the two ways it silently stops gating.
+
+   Passing the shared section in as `children` renders it on the server and
+   ships it in the page payload — the record is in the page source and the
+   browser cache while the gate still looks shut. That is how it was built
+   first, and a seeded shared record was readable in Lesson 8's page source with
+   the gate closed. The gate fetches what it shows instead.
+
+   And a safety answer has to replace the section, not caption it. A gate that
+   says "if you are afraid, take care" and then shows the fields anyway has
+   written a disclaimer, not a gate. */
+
+const gate = join("components", "bysy", "JointGate.tsx");
+if (!existsSync(gate)) {
+  fail(`${gate} is missing — §5 requires a gate on every joint section`);
+} else {
+  const g = readFileSync(gate, "utf8");
+  const bare = g.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+
+  if (/\bchildren\b/.test(bare)) {
+    fail(`${gate} takes its shared section as children — it would be rendered into the page while the gate is closed`);
+  } else if (!/fetchToolRows/.test(bare)) {
+    fail(`${gate} does not fetch the shared record — it must not be handed one while closed`);
+  } else {
+    ok("the joint gate fetches its shared section rather than being handed one");
+  }
+
+  // The refusal branch must return before anything that renders the section.
+  const refusal = bare.indexOf('safe === "no"');
+  const afterRefusal = refusal < 0 ? "" : bare.slice(refusal, bare.indexOf("if (!privatePartDone"));
+  if (refusal < 0) {
+    fail(`${gate} has no branch for a learner who cannot do this part safely`);
+  } else if (/PrivateWorksheet/.test(afterRefusal)) {
+    fail(`${gate} still renders the shared section after a safety answer — §3's route must replace the options, not sit beside them`);
+  } else {
+    ok("a safety answer replaces the joint section rather than captioning it");
+  }
+
+  if (/saveToolRows|saveTool|\bsave\(/.test(bare)) {
+    fail(`${gate} saves something — §4 forbids storing that a learner took a safety path`);
+  } else {
+    ok("nothing the gate asks is stored");
+  }
+}
+
+/* Every §5 page must actually have one wired. */
+const JOINT_PAGES = [
+  ["lesson-08-boundaries-without-shame", "Lesson 8"],
+  ["lesson-15-can-we-build-a-life", "Lesson 15"],
+  ["module-6-02-questions-before-engagement", "Questions Before Engagement"],
+];
+if (existsSync(recallPage)) {
+  const src = readFileSync(recallPage, "utf8");
+  // Check each tool where it is actually declared. Searching the source for a
+  // slug reports a tool that does not exist: all three slugs appear as recall
+  // targets too, and Questions Before Engagement kept passing on its recall
+  // entry after its tool had been renamed out of existence.
+  const mapAt = src.indexOf("const JOINT:");
+  const mapEnd = src.indexOf("const jointSpec");
+  const jointMap = mapAt >= 0 && mapEnd > mapAt ? src.slice(mapAt, mapEnd) : "";
+  const qbeFile = /const QBE_FILE = "([^"]+)"/.exec(src)?.[1] ?? "";
+  const qbeBranch = src.slice(src.indexOf("{qbe ? ("), src.indexOf(") : joint ? ("));
+
+  if (!/<JointGate/.test(src)) {
+    fail("no joint gate is wired — §5 requires one on each of the three joint tools");
+  } else {
+    for (const [slug, name] of JOINT_PAGES) {
+      // Match the whole name, not a prefix of it. `<JointGate` matches
+      // `<JointGateXX`, and a map key renamed to "…-a-lifeX" still contains the
+      // slug it used to be — both reported wired while neither was.
+      const declared =
+        slug === "module-6-02-questions-before-engagement"
+          ? qbeFile === `${slug}.md` && /<JointGate[\s/>]/.test(qbeBranch)
+          : jointMap.includes(`"${slug}": {`);
+      if (!declared) fail(`${name} (${slug}) is not wired as a joint tool — §5 names all three`);
+    }
+    ok("all three joint tools are wired, each where it is declared");
+  }
+}
+
+/* A part is a letter, optionally numbered. Reading only the first character
+   mapped Q1 through Q10 onto part Q — ten sections overwriting one row, with
+   nothing visible but answers that kept disappearing. */
+
+const progress = readFileSync(join("lib", "bysy-progress.ts"), "utf8");
+const indexFn = progress.slice(progress.indexOf("export function toolIndex"));
+if (/charCodeAt\(0\)/.test(indexFn.slice(0, indexFn.indexOf("}")))) {
+  fail("lib/bysy-progress.ts derives a tool index from the first character alone — numbered parts would collide");
+} else if (!/\^\(\[A-Za-z\]\)\(\\d/.test(indexFn)) {
+  fail("lib/bysy-progress.ts no longer anchors a tool part to a letter with an optional number");
+} else {
+  ok("numbered tool parts get their own storage, not the letter's");
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

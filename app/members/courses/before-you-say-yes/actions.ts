@@ -37,7 +37,10 @@ export async function saveToolRows(
 ): Promise<void> {
   const page = findPage(pageSlug);
   if (!page) throw new Error("Unknown page.");
-  if (!/^[A-Z]$/i.test(part.trim())) throw new Error("Unknown part.");
+  // A part is a letter, optionally numbered: Questions Before Engagement stores
+  // one part per section. toolIndex() is the real authority and throws on
+  // anything else; this rejects the obvious nonsense before it gets there.
+  if (!/^[A-Za-z]\d{0,2}$/.test(part.trim())) throw new Error("Unknown part.");
 
   const { supabase, userId } = await memberClient();
 
@@ -111,4 +114,40 @@ export async function fetchEarlierAnswers(
   );
 
   return results;
+}
+
+/**
+ * One tool's saved rows, fetched on request.
+ *
+ * This exists because a Server Component cannot hand a shared record to a
+ * closed gate. Passing it as `children` renders it on the server and ships it
+ * in the page payload, so the text sits in the page source and the browser
+ * cache while the gate still looks shut — which on a monitored device is the
+ * same exposure as not having a gate at all. It was found by seeding a shared
+ * record and reading the page source with the gate closed.
+ *
+ * There is no parameter for whose rows these are. RLS answers that.
+ */
+export async function fetchToolRows(pageSlug: string, part: string): Promise<string[][]> {
+  const page = findPage(pageSlug);
+  if (!page) throw new Error("Unknown page.");
+  if (!/^[A-Za-z]\d{0,2}$/.test(part.trim())) throw new Error("Unknown part.");
+
+  const { supabase, userId } = await memberClient();
+  const { data } = await supabase
+    .from("course_reflections")
+    .select("answer")
+    .eq("user_id", userId)
+    .eq("course_slug", BYSY_SLUG)
+    .eq("lesson_slug", pageSlug)
+    .eq("question_index", toolIndex(part))
+    .maybeSingle();
+
+  if (!data?.answer) return [];
+  try {
+    const rows = JSON.parse(data.answer);
+    return Array.isArray(rows) ? (rows as string[][]) : [];
+  } catch {
+    return [];
+  }
 }

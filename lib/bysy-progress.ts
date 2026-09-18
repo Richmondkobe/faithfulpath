@@ -51,9 +51,29 @@ export async function getStoredRoute(): Promise<string | null> {
  */
 export const TOOL_INDEX_BASE = 200;
 
+/**
+ * The reserved question_index for one part of one tool.
+ *
+ * Plain letters keep the numbers they already have: A = 201, B = 202, and so on
+ * up to Z = 226. Rows written under that scheme stay where they are.
+ *
+ * A part may also carry a number — Questions Before Engagement has ten sections
+ * and 64 questions, which is past the 40-row cap for a single part, so it
+ * stores one part per section. Those live above 300 so they cannot collide with
+ * a plain letter. Reading only the first character, as this did, silently
+ * mapped Q1 through Q10 onto part Q: ten sections writing over each other in
+ * one row, with nothing to see but answers that kept disappearing.
+ */
 export function toolIndex(part: string): number {
-  const letter = part.trim().toUpperCase().charCodeAt(0);
-  return TOOL_INDEX_BASE + (letter - 64); // A = 201
+  const match = /^([A-Za-z])(\d{1,2})?$/.exec(part.trim());
+  if (!match) throw new Error(`unsupported tool part: ${part}`);
+
+  const letter = match[1].toUpperCase().charCodeAt(0) - 64; // A = 1
+  if (!match[2]) return TOOL_INDEX_BASE + letter; // A = 201
+
+  const suffix = Number(match[2]);
+  if (suffix < 1 || suffix > 19) throw new Error(`unsupported tool part: ${part}`);
+  return 300 + letter * 20 + suffix; // A1 = 321, Q1 = 641
 }
 
 /** A tool's stored answers, or null when the learner has written nothing. */

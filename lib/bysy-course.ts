@@ -388,3 +388,65 @@ export function splitAtHeading(
     after: lines.slice(end).join("\n").trim(),
   };
 }
+
+/**
+ * A section split into its prose and its bullet lists, in order.
+ *
+ * Questions Before Engagement asks 64 questions across ten sections, and the
+ * questions are bullets with prose between them — Section 3's material-facts
+ * paragraph sits in the middle of its list. Retyping all 64 into the route
+ * would put the same words in two files, and the day they disagreed the form
+ * would be asking something the page does not say.
+ *
+ * So the form is built from the page. A "list" block becomes fields; a "prose"
+ * block is rendered as it is written.
+ */
+export type SectionBlock =
+  | { kind: "prose"; text: string }
+  | { kind: "list"; items: string[] };
+
+export function splitBulletBlocks(markdown: string): SectionBlock[] {
+  const blocks: SectionBlock[] = [];
+  let prose: string[] = [];
+  let items: string[] | null = null;
+
+  const flushProse = () => {
+    const text = prose.join("\n").trim();
+    if (text) blocks.push({ kind: "prose", text });
+    prose = [];
+  };
+  const flushList = () => {
+    if (items && items.length > 0) blocks.push({ kind: "list", items });
+    items = null;
+  };
+
+  for (const line of markdown.split("\n")) {
+    const bullet = /^-\s+(.*)$/.exec(line);
+    if (bullet) {
+      flushProse();
+      items ??= [];
+      items.push(bullet[1].trim());
+      continue;
+    }
+    // A wrapped bullet is indented and belongs to the one above it.
+    if (items && /^\s+\S/.test(line)) {
+      items[items.length - 1] += " " + line.trim();
+      continue;
+    }
+    if (line.trim() === "" && items) continue;
+    flushList();
+    prose.push(line);
+  }
+  flushProse();
+  flushList();
+  return blocks;
+}
+
+/** Inline emphasis removed, for a field label that is read rather than rendered. */
+export function plainText(markdown: string): string {
+  return markdown
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .trim();
+}
