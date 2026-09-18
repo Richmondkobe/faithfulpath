@@ -603,6 +603,47 @@ if (!existsSync(record)) {
   }
 }
 
+/* Nothing links to the course until the checklist has been run.
+
+   BYSY_PUBLISHED is the switch. A link added anywhere outside the course that
+   does not go through it would put a learner into a course with an unproven §4
+   item in it, which is the one thing the unlinked state exists to prevent. */
+
+const published = /export const BYSY_PUBLISHED = (true|false)/.exec(
+  readFileSync(join("lib", "bysy-links.ts"), "utf8")
+)?.[1];
+
+if (!published) {
+  fail("lib/bysy-links.ts no longer declares BYSY_PUBLISHED");
+} else {
+  let unguarded = 0;
+  for (const f of codeFiles) {
+    // The course's own files reach themselves; that is not a way in.
+    if (/bysy/i.test(f) || f.includes(join("courses", "before-you-say-yes"))) continue;
+    const code = readFileSync(f, "utf8");
+    const bare = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    // Pulling in one of the course's components is a way in even when the URL
+    // itself is inside that component — which is exactly how the members card
+    // slipped past a check that looked only for the path.
+    const reaches =
+      /BYSY_BASE|\/members\/courses\/before-you-say-yes/.test(bare) ||
+      /from "@\/components\/bysy\//.test(bare) ||
+      /from "@\/lib\/bysy-/.test(bare);
+    if (!reaches) continue;
+    if (!/BYSY_PUBLISHED/.test(bare)) {
+      unguarded++;
+      fail(`${f} links to Before You Say Yes without going through BYSY_PUBLISHED`);
+    }
+  }
+  if (unguarded === 0) {
+    ok(
+      published === "true"
+        ? "the course is published, and every way in goes through BYSY_PUBLISHED"
+        : "the course is unlinked: every way in goes through BYSY_PUBLISHED, which is false"
+    );
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

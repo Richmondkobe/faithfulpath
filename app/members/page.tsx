@@ -22,6 +22,8 @@ import CertificateButton from "@/components/course/CertificateButton";
 import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
 import MindCourseCard from "@/components/mind/MindCourseCard";
+import BysyCourseCard from "@/components/bysy/BysyCourseCard";
+import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -288,6 +290,9 @@ export default async function Members() {
         <div className="mt-4 space-y-6">
           <CourseCard />
           <MindCourseCard />
+          {/* Built, and deliberately not reachable: the course stays unlinked
+              until the pre-publish checklist has been run in full. */}
+          {BYSY_PUBLISHED && <BysyCourseCard />}
         </div>
       </section>
 
