@@ -146,7 +146,15 @@ rather than a question about them: §5 protects the private part of a joint tool
 in the interface, and an export is a second way for the same content to reach
 the other person — in a file that can be forwarded, printed or found.
 
-**Excluded from any export by default:**
+**Nothing is exportable unless something says it is.** This started as a list of
+exclusions, which was the wrong shape: "How This Course Works" tells learners to
+complete most tools alone first, and Lessons 1, 2, 4, 7, 8, 9 and 10 each repeat
+it for their own tool, so a list of exclusions is always one lesson behind the
+content — and the lesson it is behind is the one nobody re-read. Two pages were
+missed by reading and found by the check. The allowlist is empty; an export must
+name what it includes, which is what §4 requires it to tell the learner anyway.
+
+**Named explicitly, and never exportable:**
 
 - The private parts of the three joint tools — Lesson 8 Part A, Lesson 15 Part A,
   and each person's separately-answered questions before engagement.

@@ -139,7 +139,31 @@ for (const [file, what] of [
   if (!policy.includes(file)) fail(`the export policy no longer excludes ${what}`);
 }
 if (!/parts:\s*"all"/.test(policy)) fail("Lesson 19 is no longer excluded in full");
+for (const [file, what] of [
+  ["lesson-07-quiet-green-flags.md", "Lesson 7 Parts A to C"],
+  ["lesson-02-equally-yoked.md", "Lesson 2"],
+  ["lesson-04-attraction-is-not-discernment.md", "Lesson 4"],
+]) {
+  if (!policy.includes(file)) fail(`the export policy no longer excludes ${what}, which the page says is answered alone`);
+}
 ok("the export policy excludes every part answered alone, and all of Lesson 19");
+
+// Default deny. An allowlist that quietly grows is the failure this guards.
+if (!/const EXPORTABLE[^=]*=\s*\[\s*\]/.test(policy)) {
+  fail("EXPORTABLE is no longer empty — something has been made exportable; confirm it is a deliberate §4 decision and that the learner is told what the file contains");
+}
+ok("nothing is exportable: the allowlist is empty and the default is deny");
+
+// Every page the content tells the learner to answer alone is named. Read from
+// the pages rather than from a list, so a new one cannot be missed.
+const aloneRe = /for you alone|Answer alone|alone and first|yours alone|Complete Part [A-Z] alone/i;
+for (const file of listed) {
+  const raw = readFileSync(join(ROOT, file), "utf8");
+  if (aloneRe.test(raw) && !policy.includes(file)) {
+    fail(`${file} tells the learner to answer alone but is not named in the export policy`);
+  }
+}
+ok("every page that says answer alone is named in the export policy");
 
 // Any export that can reach this course's content must consult the policy.
 //

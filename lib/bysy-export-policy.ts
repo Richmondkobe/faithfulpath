@@ -51,19 +51,68 @@ export const NEVER_EXPORT: ExportExclusion[] = [
     parts: ["A"],
     why: "Answered alone.",
   },
+  {
+    file: "lesson-07-quiet-green-flags.md",
+    parts: ["A", "B", "C"],
+    why: 'The page says "Parts A to C are for you alone".',
+  },
+  {
+    file: "lesson-02-equally-yoked.md",
+    parts: "all",
+    why: 'The tool says "Answer alone, in writing".',
+  },
+  {
+    file: "lesson-04-attraction-is-not-discernment.md",
+    parts: "all",
+    why: 'The tool says "Answer alone, in writing".',
+  },
+  {
+    file: "lesson-01-why-do-you-want-a-relationship.md",
+    parts: "all",
+    why: 'The tool says "Answer alone, in writing". Found by the verifier, not by reading.',
+  },
+  {
+    file: "lesson-10-family-patterns.md",
+    parts: ["A"],
+    why: 'The page says "Part A is yours alone". Found by the verifier, not by reading.',
+  },
 ];
+
+/**
+ * Nothing is exportable unless something says it is.
+ *
+ * This began as a list of exclusions and that was the wrong shape. The course
+ * tells learners on "How This Course Works" to complete most tools alone
+ * first, and Lessons 2, 4, 7, 8 and 9 each repeat it for their own tool — so a
+ * list of what is excluded is always one lesson behind the content, and the
+ * lesson it is behind is the one nobody re-read.
+ *
+ * Default deny puts the burden the right way round: an export has to name what
+ * it includes, which is also what §4 requires it to tell the learner. A page
+ * added later is private until somebody decides otherwise, rather than public
+ * until somebody remembers.
+ *
+ * EXPORTABLE is empty today because no export exists. Adding to it is a
+ * decision about someone's safety, not a convenience.
+ */
+const EXPORTABLE: { file: string; parts: string[] | "all" }[] = [];
 
 /** Whether a page may contribute anything at all to an export. */
 export function pageIsExportable(file: string): boolean {
-  return !NEVER_EXPORT.some((e) => e.file === file && e.parts === "all");
+  if (NEVER_EXPORT.some((e) => e.file === file && e.parts === "all")) return false;
+  return EXPORTABLE.some((e) => e.file === file);
 }
 
 /** Whether one part of a page may appear in an export. */
 export function partIsExportable(file: string, part: string): boolean {
-  const rule = NEVER_EXPORT.find((e) => e.file === file);
-  if (!rule) return true;
-  if (rule.parts === "all") return false;
-  return !rule.parts.includes(part.trim().toUpperCase());
+  const letter = part.trim().toUpperCase();
+
+  const never = NEVER_EXPORT.find((e) => e.file === file);
+  if (never && (never.parts === "all" || never.parts.includes(letter))) return false;
+
+  const allowed = EXPORTABLE.find((e) => e.file === file);
+  if (!allowed) return false;
+  return allowed.parts === "all" || allowed.parts.includes(letter);
 }
 
 /**
