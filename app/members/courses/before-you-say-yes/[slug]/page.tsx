@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  findPage, findRoute, getPages, linkReferences, pageSlug, positionOnRoute, readPage,
+  SUPPORT_FILE, findPage, findRoute, getPages, linkReferences, pageSlug,
+  positionOnRoute, readPage, readSupportPage,
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute } from "@/lib/bysy-progress";
@@ -33,8 +34,21 @@ export default async function BysyPage({ params }: Props) {
   const page = findPage(slug);
   if (!page) notFound();
 
-  const body = readPage(page.file);
+  // The support page is composed from two sources: its guidance is course text,
+  // its country lists and review date come from the shared resources file.
+  const support = page.file === SUPPORT_FILE ? readSupportPage() : null;
+  const body = support ? support.markdown : readPage(page.file);
   if (!body) notFound();
+
+  // A named section missing from the shared file would leave a hole where the
+  // helplines belong. Say so rather than render a support page that looks
+  // complete and is not.
+  if (support && support.missing.length > 0) {
+    console.error(
+      "Support page: sections missing from the shared resources file:",
+      support.missing.join(", ")
+    );
+  }
 
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
@@ -57,6 +71,17 @@ export default async function BysyPage({ params }: Props) {
       <article className="mt-2">
         <MindMarkdown source={linkReferences(body, page.file)} />
       </article>
+
+      {support && support.missing.length > 0 && (
+        <p
+          role="alert"
+          className="mt-8 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-5 py-4 text-sm leading-relaxed text-[#8B3A2E]"
+        >
+          Some country listings could not be loaded. Use the global directories
+          above, or tell us at info@faithfulpathcommunity.com. If you are in
+          immediate danger, contact the emergency service where you are.
+        </p>
+      )}
 
       <div className="mt-12 border-t border-[#E5D9C7] pt-8">
         <Link

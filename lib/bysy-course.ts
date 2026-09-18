@@ -2,6 +2,11 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
 import { BYSY_SLUG, bysyPageHref } from "@/lib/bysy-links";
+import {
+  REVIEW_IN_PROGRESS,
+  renderSharedSections,
+  sharedReviewDate,
+} from "@/lib/bysy-resources";
 
 // Reader for "Before You Say Yes".
 //
@@ -306,4 +311,46 @@ export function linkHomeCalls(body: string): string {
     out = out.split(`**${text}**`).join(`**[${text}](${href})**`);
   }
   return out;
+}
+
+/* ------------------------------------------------- the support page (§6) */
+
+export const SUPPORT_FILE = "05-finding-help.md";
+
+/** Where the shared country lists are spliced in. */
+const COUNTRY_HEADING = "## Where to begin, by country";
+
+/**
+ * The support page, composed from its two sources.
+ *
+ * Its guidance is course text and lives in the file. Its country lists and its
+ * review date come from the shared resources file, so the helplines exist in
+ * one place and the date on this page is whatever the shared file actually
+ * says — never a copy of it that can fall out of step.
+ */
+export function readSupportPage(): { markdown: string; missing: string[] } | null {
+  const body = readPage(SUPPORT_FILE);
+  if (!body) return null;
+
+  const { markdown: countries, missing } = renderSharedSections();
+  const date = sharedReviewDate();
+
+  // The review line at the top. When the shared file states no date, §6 wants
+  // the review-in-progress notice rather than a date worked out from anything
+  // else, so the whole sentence is replaced rather than the date alone.
+  let out = body.replace(
+    /\*Last reviewed:[^*]*\*/,
+    date
+      ? `*Last reviewed: ${date}. Helplines, hours and websites change. If a number here does not work, use one of the global directories below — they are maintained by the services themselves.*`
+      : `*${REVIEW_IN_PROGRESS}*`
+  );
+
+  // The country lists, under the heading the page already carries.
+  const at = out.indexOf(COUNTRY_HEADING);
+  if (at !== -1) {
+    const after = at + COUNTRY_HEADING.length;
+    out = out.slice(0, after) + "\n\n" + countries + "\n\n" + out.slice(after);
+  }
+
+  return { markdown: out, missing };
 }
