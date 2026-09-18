@@ -356,3 +356,31 @@ export function readSupportPage():
 
   return { markdown: out, missing, unavailable };
 }
+
+/* ---------------------------------------------------- splicing a section */
+
+/**
+ * Splits a page at one `## Heading`, returning the heading and its prose
+ * separately from what follows.
+ *
+ * Lesson 6 needs its next-step list replaced by a control that routes rather
+ * than lists. Splitting the body is how the rest of the page — the journal
+ * reflection, the support section, the Continue — stays exactly as written.
+ */
+export function splitAtHeading(
+  body: string,
+  heading: string
+): { before: string; section: string; after: string } | null {
+  const lines = body.split(/\r?\n/);
+  const start = lines.findIndex((l) => l.trim() === heading);
+  if (start === -1) return null;
+
+  let end = start + 1;
+  while (end < lines.length && !/^##\s+(?!#)/.test(lines[end])) end++;
+
+  return {
+    before: lines.slice(0, start).join("\n").trim(),
+    section: lines.slice(start, end).join("\n").trim(),
+    after: lines.slice(end).join("\n").trim(),
+  };
+}

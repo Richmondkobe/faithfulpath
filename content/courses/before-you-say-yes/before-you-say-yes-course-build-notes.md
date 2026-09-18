@@ -139,6 +139,28 @@ administrative screens.
 - Account numbers, passwords, card details and document identifiers are never
   requested anywhere in the course (Lesson 11 states this explicitly).
 
+### Export
+
+Decided 18 September 2026, during implementation. This was a gap in these notes
+rather than a question about them: §5 protects the private part of a joint tool
+in the interface, and an export is a second way for the same content to reach
+the other person — in a file that can be forwarded, printed or found.
+
+**Excluded from any export by default:**
+
+- The private parts of the three joint tools — Lesson 8 Part A, Lesson 15 Part A,
+  and each person's separately-answered questions before engagement.
+- Lesson 9 Part A and Lesson 12 Part A.
+- Any tool whose page instructs the learner to answer alone.
+
+**Nothing from Lesson 19 is exportable at all.** Not Part A, which is not stored
+in the first place, and not Parts B to E.
+
+If inclusion is ever offered it is a separate, deliberately worded choice that
+names what would be included and warns that an exported file can be read by
+anyone who obtains it. **Never a single "export everything" button** — the
+learner must know what is in the file before it exists.
+
 ### Monitoring-privacy note
 Standard note shown on the tools for Lessons 5, 6, 9, 10, 11, 12, 13, 14, 15,
 16, 17, 18, 19, 20 and on Questions Before Engagement, and before any download,

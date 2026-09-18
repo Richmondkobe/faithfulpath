@@ -4,11 +4,12 @@ import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   SUPPORT_FILE, findPage, findRoute, getPages, linkReferences, pageSlug,
-  positionOnRoute, readPage, readSupportPage,
+  positionOnRoute, readPage, readSupportPage, splitAtHeading,
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute } from "@/lib/bysy-progress";
 import MindMarkdown from "@/components/mind/MindMarkdown";
+import NextStepOptions from "@/components/bysy/NextStepOptions";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -51,6 +52,12 @@ export default async function BysyPage({ params }: Props) {
     );
   }
 
+  // Lesson 6's next-step list becomes a control that routes rather than lists:
+  // §3 requires a safety selection to replace the other options rather than sit
+  // beside them, and §4 requires that none of it is stored.
+  const nextStep =
+    page.lesson === 6 ? splitAtHeading(body, "## Next faithful step") : null;
+
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
 
@@ -70,7 +77,21 @@ export default async function BysyPage({ params }: Props) {
       </p>
 
       <article className="mt-2">
-        <MindMarkdown source={linkReferences(body, page.file)} />
+        {nextStep ? (
+          <>
+            <MindMarkdown source={linkReferences(nextStep.before, page.file)} />
+            <h2
+              className="mt-10 text-2xl text-[#2B2118]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            >
+              Next faithful step
+            </h2>
+            <NextStepOptions />
+            <MindMarkdown source={linkReferences(nextStep.after, page.file)} />
+          </>
+        ) : (
+          <MindMarkdown source={linkReferences(body, page.file)} />
+        )}
       </article>
 
       {/* Silence is the worst failure this page has. If the listings are not

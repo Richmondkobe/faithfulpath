@@ -124,6 +124,33 @@ if (/answer:\s*route\.label|answer:\s*label|\.label\s*\}\s*\)/.test(lib)) {
 }
 ok("routes are stored by opaque id, never by label");
 
+/* §4 Export: the policy exists, names the right pages, and nothing has quietly
+   built an "export everything" affordance */
+
+const policy = readFileSync(join("lib", "bysy-export-policy.ts"), "utf8");
+for (const [file, what] of [
+  ["lesson-19-when-to-walk-away.md", "Lesson 19 (all of it)"],
+  ["lesson-08-boundaries-without-shame.md", "Lesson 8 Part A"],
+  ["lesson-15-can-we-build-a-life.md", "Lesson 15 Part A"],
+  ["module-6-02-questions-before-engagement.md", "Questions Before Engagement Part A"],
+  ["lesson-09-sexual-boundaries.md", "Lesson 9 Part A"],
+  ["lesson-12-their-past.md", "Lesson 12 Part A"],
+]) {
+  if (!policy.includes(file)) fail(`the export policy no longer excludes ${what}`);
+}
+if (!/parts:\s*"all"/.test(policy)) fail("Lesson 19 is no longer excluded in full");
+ok("the export policy excludes every part answered alone, and all of Lesson 19");
+
+// Any export built later must consult the policy. While none exists, assert
+// that none has appeared without doing so.
+const exportish = codeFiles.filter((f) => /bysy/i.test(f) && /export/i.test(readFileSync(f, "utf8")) && /pdf|download|buildExport/i.test(readFileSync(f, "utf8")));
+for (const f of exportish) {
+  if (!readFileSync(f, "utf8").includes("bysy-export-policy")) {
+    fail(`${f} looks like an export path but does not consult lib/bysy-export-policy`);
+  }
+}
+ok(`${exportish.length} export paths in this course, all consulting the policy`);
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
