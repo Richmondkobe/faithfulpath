@@ -133,6 +133,10 @@ Two pieces of copy remain undrafted:
 
 ## Check before publishing
 
+Implementation status, and what has already been proven against this list, is in
+`before-you-say-yes-build-handover.md`.
+
+
 - 35 content pages, excluding the course home (build notes §1)
 - No page stores a safety selection, planned action or timing (§4)
 - Lesson 19 Part A runs locally; Part E has no input fields (§4)

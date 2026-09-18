@@ -1,5 +1,10 @@
 # Before You Say Yes — Course Build Notes
 
+> **Implementation in progress.** See `before-you-say-yes-build-handover.md` in
+> this folder for what is built, what remains, and the export exclusion list as
+> it now stands. The course is not live and must not be linked until the
+> pre-publish checklist has been run in full.
+
 Implementation decisions agreed during the content build, 17 September 2026.
 These are constraints, not suggestions. Several exist because a learner using
 this course may be monitored by the person the course is about.
