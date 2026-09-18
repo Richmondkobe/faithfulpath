@@ -45,8 +45,9 @@ export default async function BysyPage({ params }: Props) {
   // complete and is not.
   if (support && support.missing.length > 0) {
     console.error(
-      "Support page: sections missing from the shared resources file:",
-      support.missing.join(", ")
+      support.unavailable
+        ? "Support page: the shared resources file is missing, unreadable or empty."
+        : `Support page: sections missing from the shared resources file: ${support.missing.join(", ")}`
     );
   }
 
@@ -72,15 +73,46 @@ export default async function BysyPage({ params }: Props) {
         <MindMarkdown source={linkReferences(body, page.file)} />
       </article>
 
+      {/* Silence is the worst failure this page has. If the listings are not
+          there, say so — and when the whole file is gone, do not point at
+          global directories that are gone with it. */}
       {support && support.missing.length > 0 && (
-        <p
+        <div
           role="alert"
           className="mt-8 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-5 py-4 text-sm leading-relaxed text-[#8B3A2E]"
         >
-          Some country listings could not be loaded. Use the global directories
-          above, or tell us at info@faithfulpathcommunity.com. If you are in
-          immediate danger, contact the emergency service where you are.
-        </p>
+          {/* Judged on what the reader can actually see, not on why. If no
+              listing rendered, pointing at directories "above" is pointing at
+              nothing — whether the file was missing or merely empty of
+              sections. */}
+          {support.missing.length === 8 ? (
+            <>
+              <p className="font-medium">
+                The list of services by country could not be loaded. This is a
+                fault on our side, not an absence of help.
+              </p>
+              <p className="mt-2">
+                If you are in immediate danger, contact the emergency service
+                where you are, or go to the safest place available to you. To
+                find a service, search for a domestic abuse or crisis helpline
+                in your country, or try findahelpline.com, which lists services
+                in more than 150 countries. Please tell us at
+                info@faithfulpathcommunity.com so we can put it right.
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="font-medium">
+                Some of the listings below could not be loaded.
+              </p>
+              <p className="mt-2">
+                Use the global directories above, or tell us at
+                info@faithfulpathcommunity.com. If you are in immediate danger,
+                contact the emergency service where you are.
+              </p>
+            </>
+          )}
+        </div>
       )}
 
       <div className="mt-12 border-t border-[#E5D9C7] pt-8">

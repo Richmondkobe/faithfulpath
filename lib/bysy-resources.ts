@@ -24,9 +24,28 @@ export const COURSE_SECTIONS = [
   "A note on this list",
 ] as const;
 
-export const readShared = cache((): string | null =>
-  existsSync(SHARED) ? readFileSync(SHARED, "utf8") : null
-);
+/**
+ * The shared file, or null when it is missing, unreadable or empty.
+ *
+ * All three are treated alike and none is allowed to pass quietly. A support
+ * page that renders an empty country section looks finished, and someone
+ * scrolling it for a number would conclude there is no help listed for their
+ * country rather than that the page is broken.
+ */
+export const readShared = cache((): string | null => {
+  if (!existsSync(SHARED)) return null;
+  try {
+    const raw = readFileSync(SHARED, "utf8");
+    return raw.trim() ? raw : null;
+  } catch {
+    return null;
+  }
+});
+
+/** Whether the shared file could be read at all, as against a section missing. */
+export function sharedAvailable(): boolean {
+  return readShared() !== null;
+}
 
 /**
  * The review date, read from the shared file rather than written into any page.
@@ -73,10 +92,16 @@ export function sharedSection(name: string): string | null {
   return lines.slice(start, end).join("\n").trim() || null;
 }
 
-export type SharedRender = { markdown: string; missing: string[] };
+export type SharedRender = {
+  markdown: string;
+  missing: string[];
+  /** The file itself is missing, unreadable or empty — not merely a section. */
+  unavailable: boolean;
+};
 
 /** The country lists, as one block of Markdown, plus anything not found. */
 export const renderSharedSections = cache((): SharedRender => {
+  const unavailable = !sharedAvailable();
   const parts: string[] = [];
   const missing: string[] = [];
 
@@ -86,5 +111,5 @@ export const renderSharedSections = cache((): SharedRender => {
     else missing.push(name);
   }
 
-  return { markdown: parts.join("\n\n"), missing };
+  return { markdown: parts.join("\n\n"), missing, unavailable };
 });

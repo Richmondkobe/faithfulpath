@@ -328,11 +328,13 @@ const COUNTRY_HEADING = "## Where to begin, by country";
  * one place and the date on this page is whatever the shared file actually
  * says — never a copy of it that can fall out of step.
  */
-export function readSupportPage(): { markdown: string; missing: string[] } | null {
+export function readSupportPage():
+  | { markdown: string; missing: string[]; unavailable: boolean }
+  | null {
   const body = readPage(SUPPORT_FILE);
   if (!body) return null;
 
-  const { markdown: countries, missing } = renderSharedSections();
+  const { markdown: countries, missing, unavailable } = renderSharedSections();
   const date = sharedReviewDate();
 
   // The review line at the top. When the shared file states no date, §6 wants
@@ -352,5 +354,5 @@ export function readSupportPage(): { markdown: string; missing: string[] } | nul
     out = out.slice(0, after) + "\n\n" + countries + "\n\n" + out.slice(after);
   }
 
-  return { markdown: out, missing };
+  return { markdown: out, missing, unavailable };
 }
