@@ -29,7 +29,14 @@ Two checks written for this course were wrong:
   it, so the list it scanned was always empty and it reported `ok` on
   everything. It would have sat there looking like protection indefinitely.
 
-Both were found by simulating the failure the check exists to catch, and
+A third was wrong the same way: the no-scheduling check scanned `lib` and the
+route folder but not `components/`, which is where every component lives, so a
+`setInterval` added to a dated-entries component was scanned by nothing. **Both
+false negatives in this course have been a scan set that did not include the
+file the rule was about** — check what a check looks at before believing what it
+says.
+
+All three were found by simulating the failure the check exists to catch, and
 watching whether it failed. Do that before believing any of them. When the
 page-reading check was tested this way it also found two pages that had been
 missed by reading — Lessons 1 and 10.
@@ -89,6 +96,15 @@ attached to one, so those are not fields and the instruction says to write it
 somewhere outside the course. The two serious options take over the section
 rather than sitting beneath it.
 
+**Dated entries (§7).** `components/bysy/DatedEntries.tsx` — a log the learner
+adds to over time, on Lesson 5's nine windows and Lesson 7's ten green flags,
+with the page's own list as the categories. It never prompts, never counts and
+never totals; the copy says outright that we will not remind them, because a
+course that nudged someone to keep watching the person they are dating would
+teach the habit it exists to interrupt. Lesson 5's privacy note comes from its
+page text and is not duplicated; Lesson 7 is not on §4's list and has none.
+Entries display newest first without reordering what is stored.
+
 **Evidence tables (§7).** `components/bysy/EvidenceTable.tsx` — addable rows,
 300-character fields enforced in the browser and again on the server, no counts
 or totals anywhere. Wired to Lesson 4 Part B. The monitoring note is a prop, not
@@ -101,19 +117,12 @@ the course feel unsafe rather than safety-aware.
 
 In this order.
 
-1. **Dated entries (§7)** — Lesson 5's Character Observation Sheet and Lesson
-   7's green flags. Records kept over time; support returning and adding dated
-   entries, and **do not prompt on a schedule**, which turns observation into
-   monitoring. Lesson 5 already carries its own privacy note in the page text —
-   do not add a second. Lesson 7 is not in §4's monitoring-note list and needs
-   none. Neither may count or total; §8 also forbids green flags acting as
-   credits that offset harm.
-2. **Cross-lesson recall (§7)** — Lessons 7, 15, 17, 18 and Questions Before
+1. **Cross-lesson recall (§7)** — Lessons 7, 15, 17, 18 and Questions Before
    Engagement. A collapsed, learner-initiated control such as `View my earlier
    answers`. Never display previous answers automatically, show the
    monitoring-privacy note before opening them, and never include recalled
    answers in notifications, previews or emails.
-3. **The three joint tools (§5)** — Lesson 8 Part B, Lesson 15 Part B, Questions
+2. **The three joint tools (§5)** — Lesson 8 Part B, Lesson 15 Part B, Questions
    Before Engagement. Private part completed alone and first; it is never
    visible to the other person in the interface or in any export. The tool saves
    to one account and is not a two-person form. The shared section is entered by
@@ -121,14 +130,14 @@ In this order.
    never suggest the other person has access. Every joint section carries a gate:
    do not complete it together where fear, coercion, monitoring or retaliation is
    present.
-4. **Verification metadata file** — beside `content/before-you-say-yes-resources-page.md`,
+3. **Verification metadata file** — beside `content/before-you-say-yes-resources-page.md`,
    per §6. Outstanding since the review-date decision; the page's own review
    statement stands in for it meanwhile.
-5. **Link from `/members`** — a card beside the other two courses. Build it but
+4. **Link from `/members`** — a card beside the other two courses. Build it but
    **do not link it** until the checklist passes.
-6. **Completion record** — label must never use *ready*, *prepared*, *certified*
+5. **Completion record** — label must never use *ready*, *prepared*, *certified*
    or any equivalent. "Completed Before You Say Yes" is acceptable.
-7. **Pre-publish checklist** — at the foot of the file list. Run last, in full.
+6. **Pre-publish checklist** — at the foot of the file list. Run last, in full.
    Four of its seven items are already proven; the rest depend on the tools.
 
 Also unapplied: the pattern where a safety route **replaces** the other options

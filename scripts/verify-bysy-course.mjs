@@ -109,7 +109,13 @@ const walk = (dir, into) => {
     else if (/\.(ts|tsx)$/.test(p)) into.push(p);
   }
 };
-for (const dir of [join("lib"), join("app", "members", "courses")]) if (existsSync(dir)) walk(dir, codeFiles);
+// lib, the routes, and components — the last of which was missing, so a
+// scheduled prompt added to a component was scanned by nothing at all. Both
+// false negatives found in this course have been a scan set that did not
+// include the file the rule was about.
+for (const dir of [join("lib"), join("app"), join("components")]) {
+  if (existsSync(dir)) walk(dir, codeFiles);
+}
 let flagged = 0;
 for (const f of codeFiles) {
   if (!/bysy|before-you-say-yes/i.test(f + readFileSync(f, "utf8").slice(0, 400))) continue;
@@ -204,6 +210,25 @@ if (failures === failuresBefore) {
       : `${exportPaths.length} export path(s) reach this course, all consulting the policy`
   );
 }
+
+/* §7: the records kept over time must never prompt on a schedule, which turns
+   observation into monitoring. Nothing in this course may schedule, remind or
+   notify. */
+
+const SCHEDULES = /setInterval|cron|schedule[A-Z]|scheduleWakeup|sendReminder|remindAt|nextPromptAt|notifyAfter|Notification\(|requestPermission/;
+let schedulers = 0;
+for (const f of codeFiles) {
+  if (!/bysy|before-you-say-yes/i.test(f)) continue;
+  const code = readFileSync(f, "utf8");
+  // Strip comments: the reason these are forbidden is written in several of
+  // them, and a check that trips on its own rationale gets ignored.
+  const bare = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  if (SCHEDULES.test(bare)) {
+    schedulers++;
+    fail(`${f} schedules, reminds or notifies — §7 forbids prompting on a schedule, which turns observation into monitoring`);
+  }
+}
+if (schedulers === 0) ok("nothing in this course schedules a prompt, reminder or notification");
 
 console.log(
   failures === 0

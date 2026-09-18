@@ -11,6 +11,7 @@ import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextStepOptions from "@/components/bysy/NextStepOptions";
 import EvidenceTable from "@/components/bysy/EvidenceTable";
+import DatedEntries from "@/components/bysy/DatedEntries";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -59,6 +60,41 @@ export default async function BysyPage({ params }: Props) {
   const nextStep =
     page.lesson === 6 ? splitAtHeading(body, "## Next faithful step") : null;
 
+  // §7's records kept over time. The categories are the page's own — the nine
+  // windows and the ten green flags — so the list a learner picks from is the
+  // list they have just read.
+  const WINDOWS = [
+    "Family relationships and boundaries",
+    "People from whom they have nothing to gain",
+    "Former partners",
+    "Authority, responsibility and accountability",
+    "Money",
+    "Disappointment, including when I am the cause",
+    "Correction",
+    "Temptation and small dishonesties",
+    "How they speak about other people",
+  ];
+  const GREEN_FLAGS = [
+    "They respect my no",
+    "They make room for honest disagreement",
+    "They take responsibility and repair harm",
+    "Their words and behaviour increasingly align",
+    "They respect my separate relationships and identity",
+    "They show emotional steadiness without demanding perfection",
+    "They tell relevant truths even when inconvenient",
+    "They are teachable and able to reconsider",
+    "They celebrate healthy growth without controlling its direction",
+    "The relationship allows mutuality",
+  ];
+
+  const dated =
+    page.lesson === 5
+      ? splitAtHeading(body, "### Part A — The nine windows")
+      : page.lesson === 7
+        ? splitAtHeading(body, "### Part A — Green flags I have actually seen")
+        : null;
+  const datedRows = dated ? (await getToolAnswer<string[][]>(slug, "A")) ?? [] : [];
+
   // Lesson 4 Part B: §7 names this table specifically — the learner adds rows
   // rather than being offered a fixed three.
   const evidence =
@@ -86,7 +122,43 @@ export default async function BysyPage({ params }: Props) {
       </p>
 
       <article className="mt-2">
-        {evidence ? (
+        {dated ? (
+          <>
+            <MindMarkdown source={linkReferences(dated.before, page.file)} />
+            <h3
+              className="mt-8 text-xl text-[#2B2118]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            >
+              {page.lesson === 5
+                ? "Part A — The nine windows"
+                : "Part A — Green flags I have actually seen"}
+            </h3>
+            <MindMarkdown source={linkReferences(dated.section.split("\n").slice(1).join("\n"), page.file)} />
+            <DatedEntries
+              pageSlug={slug}
+              part="A"
+              saved={datedRows}
+              categories={page.lesson === 5 ? WINDOWS : GREEN_FLAGS}
+              categoryLabel={page.lesson === 5 ? "Window" : "Green flag"}
+              statuses={
+                page.lesson === 7
+                  ? ["Observed", "Not yet observed", "Mixed evidence", "Concern observed"]
+                  : undefined
+              }
+              evidenceLabel={
+                page.lesson === 5
+                  ? "What I actually observed"
+                  : "Evidence — what was said or done"
+              }
+              guidance={
+                page.lesson === 5
+                  ? "Return to this as ordinary life provides new evidence. Write what you observed, not what you concluded. If a window is still empty, that is information too."
+                  : "Evidence, not impression. “Seems kind” is not evidence; what they did, and when, is."
+              }
+            />
+            <MindMarkdown source={linkReferences(dated.after, page.file)} />
+          </>
+        ) : evidence ? (
           <>
             <MindMarkdown source={linkReferences(evidence.before, page.file)} />
             <h3
