@@ -450,3 +450,79 @@ export function plainText(markdown: string): string {
     .replace(/`([^`]+)`/g, "$1")
     .trim();
 }
+
+/**
+ * The choices a page offers, parsed from the page itself.
+ *
+ * Two shapes appear in this course: bold-titled paragraphs (the Module 4 pause,
+ * My Next Faithful Step) and bold-titled bullets (Lesson 16). Both are read
+ * here so the control offers exactly the options the page names, in its
+ * wording — retyping them into the route is how a list quietly comes to differ
+ * from the one the learner just read.
+ *
+ * Which options are safety routes is read from the content too, not decided
+ * here. An option that says it replaces the others is the §3 route: it takes
+ * over the section when chosen. An option that carries a conditional safety
+ * caveat — if you fear their reaction, where coercion or threats are present —
+ * leads with that caveat rather than trailing it, because §3 puts the safety
+ * fork before the ordinary procedural advice on the same page.
+ */
+import type { Choice } from "@/lib/bysy-types";
+export type { Choice };
+
+
+const REPLACES = /replaces the others/i;
+const CAVEAT =
+  /(if you fear[^.]*\.|where family coercion[^.]*\.|where coercion[^.]*\.|if you are afraid[^.]*\.)/i;
+
+export function parseChoices(section: string): Choice[] {
+  // Join wrapped bullets first. Lesson 16's titles run across two lines, so the
+  // closing ** falls on the next one — parsing line by line found three of its
+  // six options and silently dropped the rest.
+  const lines: string[] = [];
+  for (const raw of section.split("\n")) {
+    if (/^\s+\S/.test(raw) && lines.length > 0 && /^-\s/.test(lines[lines.length - 1])) {
+      lines[lines.length - 1] += " " + raw.trim();
+    } else {
+      lines.push(raw);
+    }
+  }
+  const out: Choice[] = [];
+  let current: { title: string; body: string[] } | null = null;
+
+  const push = () => {
+    if (!current) return;
+    const body = current.body.join(" ").replace(/\s+/g, " ").trim();
+    out.push({
+      id: String(out.length + 1),
+      title: plainText(current.title).replace(/[.:]\s*$/, ""),
+      body: plainText(body),
+      replaces: REPLACES.test(body),
+      caveat: REPLACES.test(body) ? null : (CAVEAT.exec(plainText(body))?.[1] ?? null),
+    });
+    current = null;
+  };
+
+  for (const line of lines) {
+    const bullet = /^-\s+\*\*(.+?)\*\*\s*(?:—|-|–)?\s*(.*)$/.exec(line.trim());
+    const para = /^\*\*(.+?)\*\*\s*$/.exec(line.trim());
+    if (bullet) {
+      push();
+      current = { title: bullet[1], body: bullet[2] ? [bullet[2]] : [] };
+      continue;
+    }
+    if (para) {
+      push();
+      current = { title: para[1], body: [] };
+      continue;
+    }
+    if (current) {
+      // A wrapped bullet or the paragraph under a bold title.
+      if (line.trim() === "" && current.body.length > 0 && out.length >= 0) continue;
+      if (/^#{1,6}\s/.test(line.trim())) { push(); continue; }
+      if (line.trim()) current.body.push(line.trim());
+    }
+  }
+  push();
+  return out;
+}

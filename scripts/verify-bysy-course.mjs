@@ -403,7 +403,12 @@ if (existsSync(recallPage)) {
   const mapEnd = src.indexOf("const jointSpec");
   const jointMap = mapAt >= 0 && mapEnd > mapAt ? src.slice(mapAt, mapEnd) : "";
   const qbeFile = /const QBE_FILE = "([^"]+)"/.exec(src)?.[1] ?? "";
-  const qbeBranch = src.slice(src.indexOf("{qbe ? ("), src.indexOf(") : joint ? ("));
+  // Anchored on the branch, not on what precedes it: inserting another branch
+  // ahead of it turned "{qbe ? (" into ") : qbe ? (" and the check reported the
+  // tool missing.
+  const qbeAt = src.indexOf("qbe ? (");
+  const qbeEnd = src.indexOf(") : joint ? (");
+  const qbeBranch = qbeAt >= 0 && qbeEnd > qbeAt ? src.slice(qbeAt, qbeEnd) : "";
 
   if (!/<JointGate/.test(src)) {
     fail("no joint gate is wired — §5 requires one on each of the three joint tools");
@@ -434,6 +439,87 @@ if (/charCodeAt\(0\)/.test(indexFn.slice(0, indexFn.indexOf("}")))) {
   fail("lib/bysy-progress.ts no longer anchors a tool part to a letter with an optional number");
 } else {
   ok("numbered tool parts get their own storage, not the letter's");
+}
+
+/* §3's routing rule, on the pages that offer a safety route among ordinary
+   choices: the route is displayed immediately and replaces the other options.
+
+   Which options are safety routes is read from the content — an option that
+   says it replaces the others, or one carrying a conditional caveat about fear,
+   coercion or threats. That is the right way round, but it fails silently: if
+   the page is reworded, the marker stops matching, every option becomes an
+   ordinary one, and the list still renders perfectly. Nothing about the page
+   would look wrong. So the markers are asserted against the content. */
+
+const SAFETY_MARKERS = [
+  ["pause-04-what-does-the-evidence-require.md", "## Where that leaves you", /replaces the others/i],
+  ["my-next-faithful-step.md", "## Choose one", /replaces the others/i],
+  [
+    "lesson-16-good-christians-wrong-for-each-other.md",
+    "## Next faithful step",
+    /if you fear|where family coercion|where coercion|if you are afraid/i,
+  ],
+];
+
+let markersLost = 0;
+for (const [file, heading, marker] of SAFETY_MARKERS) {
+  const text = readFileSync(join(ROOT, file), "utf8");
+  const at = text.indexOf(heading);
+  if (at < 0) {
+    markersLost++;
+    fail(`${file} no longer has the section "${heading}" the choice list is built from`);
+    continue;
+  }
+  const rest = text.slice(at + heading.length);
+  const end = rest.search(/^##\s/m);
+  const section = end > 0 ? rest.slice(0, end) : rest;
+  if (!marker.test(section)) {
+    markersLost++;
+    fail(`${file} no longer marks a safety route in "${heading}" — every option would render as an ordinary one`);
+  }
+}
+if (markersLost === 0) ok("each choice list still names a safety route the code can find");
+
+const choiceList = join("components", "bysy", "ChoiceList.tsx");
+if (!existsSync(choiceList)) {
+  fail(`${choiceList} is missing — §3's routing rule is not built`);
+} else {
+  const c = readFileSync(choiceList, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const replacesAt = c.indexOf("chosen?.replaces");
+  const listAt = c.indexOf("choices.map(");
+  if (replacesAt < 0) {
+    fail(`${choiceList} no longer routes on an option that replaces the others`);
+  } else if (listAt >= 0 && replacesAt > listAt) {
+    fail(`${choiceList} renders the option list before the safety route — §3 requires the route to replace them`);
+  } else {
+    ok("a safety route replaces the option list rather than sitting in it");
+  }
+  if (/saveToolRows|useTransition|fetch\(/.test(c)) {
+    fail(`${choiceList} stores or sends something — §4 forbids storing a safety selection`);
+  } else {
+    ok("nothing selected in a choice list is stored or sent");
+  }
+}
+
+/* And each of those pages, plus Lesson 6, must actually have one wired. */
+if (existsSync(recallPage)) {
+  const src = readFileSync(recallPage, "utf8");
+  const mapAt = src.indexOf("const CHOICES:");
+  const mapEnd = src.indexOf("const choiceSpec");
+  const choiceMap = mapAt >= 0 && mapEnd > mapAt ? src.slice(mapAt, mapEnd) : "";
+  let unwired = 0;
+  for (const [file] of SAFETY_MARKERS) {
+    const slug = file.replace(/\.md$/, "");
+    if (!choiceMap.includes(`"${slug}": {`)) {
+      unwired++;
+      fail(`${slug} offers a safety route among ordinary choices but has no choice list wired`);
+    }
+  }
+  if (!/<NextStepOptions/.test(src)) {
+    unwired++;
+    fail("Lesson 6's next step is no longer wired — it is the same rule");
+  }
+  if (unwired === 0) ok("all four pages offering a safety route route it");
 }
 
 console.log(

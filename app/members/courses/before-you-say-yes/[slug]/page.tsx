@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   SUPPORT_FILE, findPage, findRoute, getPages, linkReferences, pageSlug,
-  plainText, positionOnRoute, readPage, readSupportPage, splitAtHeading,
-  splitBulletBlocks,
+  parseChoices, plainText, positionOnRoute, readPage, readSupportPage,
+  splitAtHeading, splitBulletBlocks,
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
@@ -17,6 +17,7 @@ import EarlierAnswers, { type Recall } from "@/components/bysy/EarlierAnswers";
 import PrivateWorksheet from "@/components/bysy/PrivateWorksheet";
 import JointGate from "@/components/bysy/JointGate";
 import QuestionSet from "@/components/bysy/QuestionSet";
+import ChoiceList from "@/components/bysy/ChoiceList";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -278,6 +279,36 @@ export default async function BysyPage({ params }: Props) {
     rows.some((row) => row.some((cell) => cell.trim() !== ""))
   );
 
+  // §3's routing rule on the three remaining pages that offer a safety route
+  // among ordinary choices. The options and which of them are safety routes are
+  // read from each page, not restated here.
+  const CHOICES: Record<string, { heading: string; title: string; prompt: string }> = {
+    "pause-04-what-does-the-evidence-require": {
+      heading: "## Where that leaves you",
+      title: "Where that leaves you",
+      prompt: "Choose the one that fits now. You may change it, and none is a better result than the others.",
+    },
+    "my-next-faithful-step": {
+      heading: "## Choose one",
+      title: "Choose one",
+      prompt: "One step. Not the eventual hope — the next thing.",
+    },
+    "lesson-16-good-christians-wrong-for-each-other": {
+      heading: "## Next faithful step",
+      title: "Next faithful step",
+      prompt: "Choose the one that fits. None is better than the others, and you may return and change it.",
+    },
+  };
+  const choiceSpec = CHOICES[slug];
+  const choices = (() => {
+    if (!choiceSpec) return null;
+    const at = splitAtHeading(body, choiceSpec.heading);
+    if (!at) return null;
+    const items = parseChoices(at.section.split("\n").slice(1).join("\n"));
+    if (items.length === 0) return null;
+    return { spec: choiceSpec, before: at.before, items, after: at.after };
+  })();
+
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
 
@@ -297,7 +328,19 @@ export default async function BysyPage({ params }: Props) {
       </p>
 
       <article className="mt-2">
-        {qbe ? (
+        {choices ? (
+          <>
+            <MindMarkdown source={linkReferences(choices.before, page.file)} />
+            <h2
+              className="mt-10 text-2xl text-[#2B2118]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+            >
+              {choices.spec.title}
+            </h2>
+            <ChoiceList choices={choices.items} prompt={choices.spec.prompt} />
+            <MindMarkdown source={linkReferences(choices.after, page.file)} />
+          </>
+        ) : qbe ? (
           <>
             <MindMarkdown source={linkReferences(qbe.intro, page.file)} />
             {qbe.sections.map((section) => (

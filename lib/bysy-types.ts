@@ -1,0 +1,17 @@
+// Types shared by the reader and the server.
+//
+// lib/bysy-course.ts imports node:fs, so a Client Component cannot import from
+// it even for a type — the same mistake broke the build twice on the previous
+// course. Anything both sides need lives here.
+
+/** One option in a list of next steps, as the page itself writes it. */
+export type Choice = {
+  id: string;
+  title: string;
+  body: string;
+  /** Says outright that it replaces the others: it takes over the section. */
+  replaces: boolean;
+  /** Carries a conditional safety caveat: the caveat comes first. */
+  caveat: string | null;
+};
+
