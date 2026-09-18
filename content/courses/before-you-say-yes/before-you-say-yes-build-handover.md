@@ -7,10 +7,14 @@ constraints, and several exist because a learner may be monitored by the person
 the course is about. This file says only what has been done against them and
 what has not.
 
-**Status: not live.** The course is in the repo and reachable at
-`/members/courses/before-you-say-yes` by anyone with an active membership who
-types the URL. Nothing links to it. It must not be linked until the pre-publish
-checklist at the foot of the file list has been run in full.
+**Status: built, checklist passed, still unlinked.** Every item on the
+pre-publish checklist has been run and passes (the results are at the foot of
+this file). `BYSY_PUBLISHED` in `lib/bysy-links.ts` is still `false`, so nothing
+links to the course; the members card is built and waiting behind it. Flipping
+that constant is the act of publishing, and it is the owner's to make — one
+thing is open, and it is in §6 rather than in the code: the resources page shows
+a review date while the verification register beside it holds no evidence for
+any entry.
 
 ---
 
@@ -41,6 +45,24 @@ watching whether it failed. Do that before believing any of them. When the
 page-reading check was tested this way it also found two pages that had been
 missed by reading — Lessons 1 and 10.
 
+Six more checks written since then failed to fire the first time, and every one
+of them was reading the wrong text rather than reasoning wrongly:
+
+- Two read an **import line** instead of the JSX, so the monitoring note looked
+  present and looked early whatever the component rendered.
+- Three matched a **substring**: `<JointGate` matched `<JointGateXX`, a map key
+  renamed to `…-a-lifeX` still contained the slug it used to be, and `reveal()`
+  did not match `onClick={reveal}`.
+- One searched the **whole file** for a slug that also appears as a recall
+  target, and reported all three joint tools wired while one of them had none.
+- One looked for the course's **URL** to prove nothing links to it, but the URL
+  lives inside the card component, so rendering that card from an unguarded page
+  matched nothing.
+
+The pattern across all of them: the check looked at text that was true for a
+reason other than the one it was testing. Before believing a check, break the
+thing it is about and watch it fail.
+
 ---
 
 ## What is built
@@ -55,7 +77,7 @@ missed by reading — Lessons 1 and 10.
 | Export policy (§4) | `lib/bysy-export-policy.ts` |
 | Save action for tools | `app/members/courses/before-you-say-yes/actions.ts` |
 | Course home, page route, safety chrome | `app/members/courses/before-you-say-yes/` |
-| Exit control, Lesson 6 options, evidence table | `components/bysy/` |
+| Exit control, options, tables, gates, recall | `components/bysy/` |
 | Assertions | `scripts/verify-bysy-course.mjs` → `npm run verify:bysy` |
 
 **Structure.** This course has no `course.json`. Its structure is the file list
@@ -115,39 +137,25 @@ the course feel unsafe rather than safety-aware.
 
 ## What remains
 
-In this order.
+1. **The verification register is empty.** `content/before-you-say-yes-resources-verification.json`
+   has a record for all 61 entries and evidence for none. The page shows
+   *Last reviewed: 18 September 2026*; §6 permits that only once a human has
+   checked each entry against an authoritative source, and the register is where
+   that record belongs. I have not filled it in, because a generated record
+   saying a helpline was checked when nobody checked it is worse than no record.
+   Whoever did the review should complete the fields.
+2. **A migration is waiting.** `supabase/migrations/20260919090000_course_progress_delete.sql`
+   adds the delete policy so "Remove this from my account" removes the row
+   rather than emptying it. Until it is applied the control clears the timestamp
+   instead, which works and is honest, but leaves a row.
+3. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. That is
+   the whole of it: the card, the checks and the course are built.
 
-1. **Cross-lesson recall (§7)** — Lessons 7, 15, 17, 18 and Questions Before
-   Engagement. A collapsed, learner-initiated control such as `View my earlier
-   answers`. Never display previous answers automatically, show the
-   monitoring-privacy note before opening them, and never include recalled
-   answers in notifications, previews or emails.
-2. **The three joint tools (§5)** — Lesson 8 Part B, Lesson 15 Part B, Questions
-   Before Engagement. Private part completed alone and first; it is never
-   visible to the other person in the interface or in any export. The tool saves
-   to one account and is not a two-person form. The shared section is entered by
-   the account holder after both have agreed the wording. The interface must
-   never suggest the other person has access. Every joint section carries a gate:
-   do not complete it together where fear, coercion, monitoring or retaliation is
-   present.
-3. **Verification metadata file** — beside `content/before-you-say-yes-resources-page.md`,
-   per §6. Outstanding since the review-date decision; the page's own review
-   statement stands in for it meanwhile.
-4. **Link from `/members`** — a card beside the other two courses. Build it but
-   **do not link it** until the checklist passes.
-5. **Completion record** — label must never use *ready*, *prepared*, *certified*
-   or any equivalent. "Completed Before You Say Yes" is acceptable.
-6. **Pre-publish checklist** — at the foot of the file list. Run last, in full.
-   Four of its seven items are already proven; the rest depend on the tools.
-
-Also unapplied: the pattern where a safety route **replaces** the other options
-rather than sitting beneath them is agreed for the **Module 4 pause**, **My Next
-Faithful Step** and **Lesson 16's next faithful step**. Lesson 6 is the worked
-example.
-
-Where a page asks for something §4 forbids storing, use `WRITE_ELSEWHERE` from
-`lib/bysy-wording.ts` — one wording everywhere, so a learner recognises it rather
-than reading it afresh.
+Worth a decision, not a blocker: the site-wide signup form in the footer renders
+a name and email field on all 35 course pages, as it does everywhere on the
+site. It is not course content and stores nothing from the course, but a form
+asking for a name on every page of a course written for people who may be
+monitored is worth looking at deliberately.
 
 ---
 
@@ -202,10 +210,25 @@ correctly once imported.
 - **`splitAtHeading` ends at a heading of the same level or higher**, so
   splitting an H3 part does not swallow the parts after it.
 
+## The checklist, run in full
+
+Run on 19 September 2026 against the live course, 35 pages fetched with a real
+member session — not read off the code.
+
+| Item | Result |
+|---|---|
+| 35 content pages, excluding the course home (§1) | 35 pages, all HTTP 200 |
+| No page stores a safety selection, planned action or timing (§4) | The four safety controls — the exit control, Lesson 6's next step, the choice lists and the joint gate — import no write action and make no fetch. Every write in the course goes through `saveToolRows` or `markCourseComplete`, and neither is reachable from any of them. |
+| Lesson 19 Part A runs locally; Part E has no input fields (§4) | No textarea, select or form on the page, and no course input of any kind. The two `<input>` elements are the site footer's signup form, present on every page of the site including `/members`. |
+| No analytics label names abuse, fear, leaving or coercion (§4) | No analytics call of any kind exists in the course — no gtag, no dataLayer, no tracker. There is no label to name anything. |
+| Joint tools save to one account only (§5) | No write action takes a user, partner or account parameter; every `user_id` comes from the session. An unauthenticated caller invoking the fetch action directly got an empty result. |
+| Completion record avoids "ready", "prepared", "certified" (§2) | Labelled "Completed Before You Say Yes". The only uses of those words are denials, and the check distinguishes a claim from a denial. |
+| Every page carries the persistent support link and the exit control (§3) | Present on all 35, along with `noindex`. |
+
 ## Commands
 
 ```
-npm run verify:bysy      structure, labels, routes, export policy
+npm run verify:bysy      structure, labels, routes, export policy, §3/§5/§6/§7
 npm run verify:mind      the other course, unaffected
 npm run verify:privacy   privacy and non-gating assertions
 ```
