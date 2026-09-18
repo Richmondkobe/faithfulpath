@@ -522,6 +522,39 @@ if (existsSync(recallPage)) {
   if (unwired === 0) ok("all four pages offering a safety route route it");
 }
 
+/* §6: verification metadata lives beside the source file.
+
+   The point of the register is not that it is full — most of it is honestly
+   marked "not recorded" — but that a helpline cannot be added to the page
+   without one. An entry with no record at all is an entry nobody has been asked
+   to check, and this is what asks. */
+
+const REGISTER = join("content", "before-you-say-yes-resources-verification.json");
+const RESOURCES = join("content", "before-you-say-yes-resources-page.md");
+if (!existsSync(REGISTER)) {
+  fail(`${REGISTER} is missing — §6 requires verification metadata beside the source file`);
+} else if (!existsSync(RESOURCES)) {
+  fail(`${RESOURCES} is missing`);
+} else {
+  const register = JSON.parse(readFileSync(REGISTER, "utf8"));
+  const { readEntries } = await import("./bysy-resource-register.mjs");
+  const onPage = readEntries(readFileSync(RESOURCES, "utf8"));
+  const recorded = new Set(register.entries.map((e) => `${e.section}::${e.name}`));
+  const missing = onPage.filter((e) => !recorded.has(`${e.section}::${e.name}`));
+
+  if (missing.length > 0) {
+    for (const e of missing.slice(0, 5)) {
+      fail(`"${e.name}" (${e.section}) is on the resources page with no verification record`);
+    }
+    if (missing.length > 5) fail(`…and ${missing.length - 5} more with no verification record`);
+  } else {
+    const filed = register.entries.filter((e) =>
+      register.fields.every((f) => e[f] !== "not recorded")
+    ).length;
+    ok(`all ${onPage.length} resource entries have a verification record (${filed} with evidence filed)`);
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
