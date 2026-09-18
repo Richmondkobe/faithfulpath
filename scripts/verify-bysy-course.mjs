@@ -695,11 +695,21 @@ if (!existsSync(rootLayout)) {
     // Loose on purpose: the guard reads `startsWith(BYSY_BASE)`, and a pattern
     // built from [^)] cannot cross that inner bracket — it failed on the
     // correct file.
-    const guard = /BYSY_BASE[\s\S]{0,40}return null/.test(fs);
-    if (!guard) {
-      fail(`${footerSignup} no longer returns null on this course's routes — the signup form would be back on all 35 pages`);
+    //
+    // Both pages, separately. The public resources page is the same helplines
+    // outside the member gate, read by the same people; one guard passing is
+    // not evidence about the other.
+    const guards = [
+      ["BYSY_BASE", "this course's 35 pages"],
+      ["BYSY_RESOURCES_PATH", "the public resources page"],
+    ].filter(([name]) => !new RegExp(`${name}[\\s\\S]{0,40}return null`).test(fs));
+
+    if (guards.length > 0) {
+      for (const [, where] of guards) {
+        fail(`${footerSignup} no longer returns null on ${where} — the signup form would be back on it`);
+      }
     } else {
-      ok("no page of this course carries the site's name-and-email form");
+      ok("neither this course nor its public resources page carries the site's name-and-email form");
     }
   }
 }

@@ -226,10 +226,12 @@ people who may be monitored.
 
 `components/FooterSignup.tsx` now returns null on this course's routes. It is
 done there rather than in the course's own layout because a nested layout cannot
-remove what a parent has already rendered. The form is unchanged everywhere else
-on the site, including the public resources page at
-`/before-you-say-yes/resources`, which is outside the course and was not in
-scope — worth a separate decision, since it serves the same readers.
+remove what a parent has already rendered. The public resources page at `/before-you-say-yes/resources` is now covered
+too: it is the same helplines outside the member gate, read by the same people
+for the same reasons. The form is unchanged everywhere else on the site.
+
+Both guards are asserted separately. One passing is not evidence about the
+other, and it would be easy to remove the one that is not being tested.
 
 ## Commands
 

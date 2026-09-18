@@ -6,6 +6,15 @@ export const BYSY_SLUG = "before-you-say-yes";
 
 export const BYSY_BASE = `/members/courses/${BYSY_SLUG}`;
 
+/**
+ * The public resources page — the same helplines as the course's support page,
+ * outside the member gate.
+ *
+ * It is named here because the two pages share more than a source file: anyone
+ * reading either of them may be doing it on a device somebody else can see.
+ */
+export const BYSY_RESOURCES_PATH = `/${BYSY_SLUG}/resources`;
+
 /** The course home. Not one of the 35 content pages. */
 export function bysyHomeHref(): string {
   return BYSY_BASE;
