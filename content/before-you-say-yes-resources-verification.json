@@ -762,6 +762,6 @@
       "source_used": "not recorded"
     }
   ],
-  "review_date_shown_on_page": "18 September 2026",
-  "note_on_this_file": "The page states that it was reviewed entry by entry on 18 September 2026. The per-entry evidence for that review is not in this file: it was not filed here at the time, and it has not been reconstructed, because a reconstructed record of a safety helpline check is worth less than no record at all. Whoever carried out the review should fill these fields in. Until then this file is the register, not the evidence."
+  "note_on_this_file": "No review date is shown on the resources page, and none may be shown until the fields below are filled in from an actual check. §6 permits a 'last reviewed' date only once a human has checked each entry against an authoritative source, and this file is where that record lives. The page previously showed 18 September 2026; that date was removed rather than have the register filled with generated evidence, because a record saying a helpline was checked when nobody checked it is worse than no record — the people relying on these numbers cannot find out otherwise. Fill these fields in from the real check, then restore the date.",
+  "review_date_shown_on_page": null
 }

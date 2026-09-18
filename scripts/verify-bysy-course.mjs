@@ -552,6 +552,23 @@ if (!existsSync(REGISTER)) {
       register.fields.every((f) => e[f] !== "not recorded")
     ).length;
     ok(`all ${onPage.length} resource entries have a verification record (${filed} with evidence filed)`);
+
+    // §6: a review date may be shown only once a human has checked each entry
+    // against an authoritative source. The register is that record, so the date
+    // and the register have to agree — a date on the page with an empty
+    // register is the page claiming a check nobody can produce.
+    const shown = /Last reviewed:\s*(\d{1,2}\s+\w+\s+\d{4})/.exec(
+      readFileSync(RESOURCES, "utf8")
+    )?.[1];
+    if (shown && filed < onPage.length) {
+      fail(
+        `the resources page shows "Last reviewed: ${shown}" but ${onPage.length - filed} of ${onPage.length} entries have no evidence in the register — §6 permits a date only once each entry has been checked`
+      );
+    } else if (shown) {
+      ok(`the review date is shown, and all ${onPage.length} entries have evidence behind it`);
+    } else {
+      ok("no review date is shown, and §6's review-in-progress notice stands in its place");
+    }
   }
 }
 
@@ -622,13 +639,25 @@ if (!published) {
     if (/bysy/i.test(f) || f.includes(join("courses", "before-you-say-yes"))) continue;
     const code = readFileSync(f, "utf8");
     const bare = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    // Comparing against the path is not linking to it. A component that hides
+    // itself on the course's routes mentions the path in order to stay away
+    // from it, which is the opposite of a way in.
+    // Importing the constant is not using it, and comparing against the path is
+    // not linking to it — a component that hides itself on the course's routes
+    // names the path in order to stay away from it.
+    const uses = bare
+      .replace(/^\s*import[\s\S]*?from\s*["'][^"']*["'];?$/gm, "")
+      .replace(
+        /(startsWith|includes|indexOf|match|test)\(\s*(BYSY_BASE|["'`]\/members\/courses\/before-you-say-yes[^"'`]*["'`])/g,
+        ""
+      );
+
     // Pulling in one of the course's components is a way in even when the URL
     // itself is inside that component — which is exactly how the members card
     // slipped past a check that looked only for the path.
     const reaches =
-      /BYSY_BASE|\/members\/courses\/before-you-say-yes/.test(bare) ||
-      /from "@\/components\/bysy\//.test(bare) ||
-      /from "@\/lib\/bysy-/.test(bare);
+      /BYSY_BASE|\/members\/courses\/before-you-say-yes/.test(uses) ||
+      /from "@\/components\/bysy\//.test(bare);
     if (!reaches) continue;
     if (!/BYSY_PUBLISHED/.test(bare)) {
       unguarded++;
@@ -641,6 +670,37 @@ if (!published) {
         ? "the course is published, and every way in goes through BYSY_PUBLISHED"
         : "the course is unlinked: every way in goes through BYSY_PUBLISHED, which is false"
     );
+  }
+}
+
+/* No page of this course asks who the learner is.
+
+   The site's footer mailing-list form rendered a name and email field on all 35
+   pages, including Lesson 19. It stored nothing from the course and was never
+   course content, which is exactly why it survived every other check here —
+   and it was still the wrong thing at the foot of a page about leaving safely. */
+
+const rootLayout = join("app", "layout.tsx");
+const footerSignup = join("components", "FooterSignup.tsx");
+if (!existsSync(rootLayout)) {
+  fail(`${rootLayout} is missing`);
+} else {
+  const layout = readFileSync(rootLayout, "utf8").replace(/^\s*\/\/.*$/gm, "");
+  if (/<SignupForm\b/.test(layout)) {
+    fail(`${rootLayout} renders the signup form directly — it would appear on every page of this course`);
+  } else if (!existsSync(footerSignup)) {
+    fail(`${footerSignup} is missing — nothing keeps the signup form off the course`);
+  } else {
+    const fs = readFileSync(footerSignup, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+    // Loose on purpose: the guard reads `startsWith(BYSY_BASE)`, and a pattern
+    // built from [^)] cannot cross that inner bracket — it failed on the
+    // correct file.
+    const guard = /BYSY_BASE[\s\S]{0,40}return null/.test(fs);
+    if (!guard) {
+      fail(`${footerSignup} no longer returns null on this course's routes — the signup form would be back on all 35 pages`);
+    } else {
+      ok("no page of this course carries the site's name-and-email form");
+    }
   }
 }
 

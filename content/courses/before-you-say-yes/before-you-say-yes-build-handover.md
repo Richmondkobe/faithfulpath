@@ -11,10 +11,13 @@ what has not.
 pre-publish checklist has been run and passes (the results are at the foot of
 this file). `BYSY_PUBLISHED` in `lib/bysy-links.ts` is still `false`, so nothing
 links to the course; the members card is built and waiting behind it. Flipping
-that constant is the act of publishing, and it is the owner's to make — one
-thing is open, and it is in §6 rather than in the code: the resources page shows
-a review date while the verification register beside it holds no evidence for
-any entry.
+that constant is the act of publishing, and it is the owner's to make.
+
+The §6 problem is resolved the honest way: **the review date has been removed**
+and the resources page now carries §6's review-in-progress notice instead. The
+register was not filled with generated evidence. Both the public page and the
+course support page follow the shared file, so both changed together, and a
+check now fails if the date returns while the register is still empty.
 
 ---
 
@@ -137,25 +140,13 @@ the course feel unsafe rather than safety-aware.
 
 ## What remains
 
-1. **The verification register is empty.** `content/before-you-say-yes-resources-verification.json`
-   has a record for all 61 entries and evidence for none. The page shows
-   *Last reviewed: 18 September 2026*; §6 permits that only once a human has
-   checked each entry against an authoritative source, and the register is where
-   that record belongs. I have not filled it in, because a generated record
-   saying a helpline was checked when nobody checked it is worse than no record.
-   Whoever did the review should complete the fields.
-2. **A migration is waiting.** `supabase/migrations/20260919090000_course_progress_delete.sql`
-   adds the delete policy so "Remove this from my account" removes the row
-   rather than emptying it. Until it is applied the control clears the timestamp
-   instead, which works and is honest, but leaves a row.
-3. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. That is
-   the whole of it: the card, the checks and the course are built.
-
-Worth a decision, not a blocker: the site-wide signup form in the footer renders
-a name and email field on all 35 course pages, as it does everywhere on the
-site. It is not course content and stores nothing from the course, but a form
-asking for a name on every page of a course written for people who may be
-monitored is worth looking at deliberately.
+1. **The register still needs filling in from a real check.** Every entry in
+   `content/before-you-say-yes-resources-verification.json` has a record and
+   none has evidence. Nothing is claimed on the page meanwhile: it says a review
+   is in progress, which is true. When the check is done, fill the fields in and
+   restore the date — `npm run verify:bysy` fails if the date is restored first.
+2. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. The card,
+   the checks and the course are built and waiting on it.
 
 ---
 
@@ -219,11 +210,26 @@ member session — not read off the code.
 |---|---|
 | 35 content pages, excluding the course home (§1) | 35 pages, all HTTP 200 |
 | No page stores a safety selection, planned action or timing (§4) | The four safety controls — the exit control, Lesson 6's next step, the choice lists and the joint gate — import no write action and make no fetch. Every write in the course goes through `saveToolRows` or `markCourseComplete`, and neither is reachable from any of them. |
-| Lesson 19 Part A runs locally; Part E has no input fields (§4) | No textarea, select or form on the page, and no course input of any kind. The two `<input>` elements are the site footer's signup form, present on every page of the site including `/members`. |
+| Lesson 19 Part A runs locally; Part E has no input fields (§4) | No input, textarea, select or form on the page at all. The site footer's signup form used to render a name and email field here, and on the other 34 pages; it no longer does. |
 | No analytics label names abuse, fear, leaving or coercion (§4) | No analytics call of any kind exists in the course — no gtag, no dataLayer, no tracker. There is no label to name anything. |
 | Joint tools save to one account only (§5) | No write action takes a user, partner or account parameter; every `user_id` comes from the session. An unauthenticated caller invoking the fetch action directly got an empty result. |
 | Completion record avoids "ready", "prepared", "certified" (§2) | Labelled "Completed Before You Say Yes". The only uses of those words are denials, and the check distinguishes a claim from a denial. |
 | Every page carries the persistent support link and the exit control (§3) | Present on all 35, along with `noindex`. |
+
+## The signup form
+
+The site's footer mailing-list form rendered a name and email field on all 35
+pages, Lesson 19 included. It was never course content and stored nothing from
+the course, which is why every other check here passed it — and it was still the
+wrong thing at the foot of a page about leaving safely, on a course written for
+people who may be monitored.
+
+`components/FooterSignup.tsx` now returns null on this course's routes. It is
+done there rather than in the course's own layout because a nested layout cannot
+remove what a parent has already rendered. The form is unchanged everywhere else
+on the site, including the public resources page at
+`/before-you-say-yes/resources`, which is outside the course and was not in
+scope — worth a separate decision, since it serves the same readers.
 
 ## Commands
 
