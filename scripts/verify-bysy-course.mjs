@@ -102,14 +102,14 @@ ok(`${withComments} pages still carry an implementation comment in source (strip
 
 const FORBIDDEN = /\b(abuse|afraid|fear|coerc|forced[_ -]?marriage|leaving|safety[_ -]?concern)\w*\s*[:=]\s*["'`]|["'`][^"'`]*\b(abuse_|exit_plan|afraid_to|fear_)/i;
 const codeFiles = [];
-const walk = (dir) => {
+const walk = (dir, into) => {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const p = join(dir, entry.name);
-    if (entry.isDirectory()) walk(p);
-    else if (/\.(ts|tsx)$/.test(p)) codeFiles.push(p);
+    if (entry.isDirectory()) walk(p, into);
+    else if (/\.(ts|tsx)$/.test(p)) into.push(p);
   }
 };
-for (const dir of [join("lib"), join("app", "members", "courses")]) if (existsSync(dir)) walk(dir);
+for (const dir of [join("lib"), join("app", "members", "courses")]) if (existsSync(dir)) walk(dir, codeFiles);
 let flagged = 0;
 for (const f of codeFiles) {
   if (!/bysy|before-you-say-yes/i.test(f + readFileSync(f, "utf8").slice(0, 400))) continue;
@@ -141,24 +141,45 @@ for (const [file, what] of [
 if (!/parts:\s*"all"/.test(policy)) fail("Lesson 19 is no longer excluded in full");
 ok("the export policy excludes every part answered alone, and all of Lesson 19");
 
-// Any export built later must consult the policy. While none exists, assert
-// that none has appeared without doing so.
+// Any export that can reach this course's content must consult the policy.
 //
-// Matched on what an export actually does — serves a file — rather than on the
-// word "export", which appears in every module, or "download", which appears in
-// prose about §4. A heuristic that fires on documentation teaches people to
-// ignore the check.
-const exportish = codeFiles.filter((f) => {
-  if (!/bysy|before-you-say-yes/i.test(f)) return false;
+// Matched on what an export actually does — serves a file or builds a document
+// — rather than on the word "export", which appears in every module, or
+// "download", which appears in prose about §4. A heuristic that fires on
+// documentation teaches people to ignore the check.
+//
+// Scanned across the whole app rather than only this course's folder, because
+// the likelier way the exclusion gets lost is not a new route here. It is the
+// shared journal export gaining this course: that file already carries two
+// courses, and adding a third is one line, in a path with no "bysy" in it.
+const everyFile = [];
+for (const dir of ["lib", join("app")]) if (existsSync(dir)) walk(dir, everyFile);
+
+const SERVES_A_FILE = /application\/pdf|Content-Disposition|buildJournalPdf|buildExport/;
+const REACHES_THIS_COURSE = /before-you-say-yes|BYSY_SLUG|bysy-course|bysy-progress/;
+
+const exportPaths = everyFile.filter((f) => {
   const code = readFileSync(f, "utf8");
-  return /application\/pdf|Content-Disposition|buildJournalPdf|new NextResponse\(/.test(code);
+  return SERVES_A_FILE.test(code) && REACHES_THIS_COURSE.test(code);
 });
-for (const f of exportish) {
+
+const failuresBefore = failures;
+for (const f of exportPaths) {
   if (!readFileSync(f, "utf8").includes("bysy-export-policy")) {
-    fail(`${f} looks like an export path but does not consult lib/bysy-export-policy`);
+    fail(
+      `${f} can put this course's content in a file but does not consult lib/bysy-export-policy — ` +
+      `see build notes §4 (Export): the private parts of the joint tools, the parts answered alone, ` +
+      `and all of Lesson 19 are excluded by default`
+    );
   }
 }
-ok(`${exportish.length} export paths in this course, all consulting the policy`);
+if (failures === failuresBefore) {
+  ok(
+    exportPaths.length === 0
+      ? "no export path can reach this course's content yet"
+      : `${exportPaths.length} export path(s) reach this course, all consulting the policy`
+  );
+}
 
 console.log(
   failures === 0

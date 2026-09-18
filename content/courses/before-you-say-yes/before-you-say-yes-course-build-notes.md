@@ -161,6 +161,17 @@ names what would be included and warns that an exported file can be read by
 anyone who obtains it. **Never a single "export everything" button** — the
 learner must know what is in the file before it exists.
 
+**Enforced by `npm run verify:bysy`.** Any file that both serves a document and
+reaches this course's content must import `lib/bysy-export-policy`, or the check
+fails. It was tested by simulating the two ways the exclusion would plausibly be
+lost: a new export route inside the course, and the shared journal export gaining
+this course in a path with no "bysy" in its name. Both fail the check.
+
+What the check cannot do is judge whether the policy was *applied* correctly
+once imported. It proves the author met the rule, not that they obeyed it. The
+exclusions themselves — Lesson 19 in full, and the parts answered alone — are
+asserted separately against `lib/bysy-export-policy.ts`.
+
 ### Monitoring-privacy note
 Standard note shown on the tools for Lessons 5, 6, 9, 10, 11, 12, 13, 14, 15,
 16, 17, 18, 19, 20 and on Questions Before Engagement, and before any download,
