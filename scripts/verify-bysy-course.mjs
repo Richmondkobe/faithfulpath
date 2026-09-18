@@ -555,6 +555,54 @@ if (!existsSync(REGISTER)) {
   }
 }
 
+/* §2: the completion record's label.
+
+   "Completed Before You Say Yes" is acceptable; ready, prepared, certified or
+   any equivalent is not, and §2 gives the reason — the name is what a learner
+   may show someone else, so a record reading as a verdict on a relationship is
+   a document that can be produced in an argument about one.
+
+   The check has to tell a claim from a denial. "Not that you are ready for
+   anything" contains the forbidden word and is the opposite of the forbidden
+   claim, so a check that simply greps for it fails on the sentence written to
+   satisfy it — and the obvious repair is to delete the honest sentence. */
+
+const record = join("components", "bysy", "CompletionRecord.tsx");
+if (!existsSync(record)) {
+  fail(`${record} is missing — §2's completion record is not built`);
+} else {
+  const r = readFileSync(record, "utf8")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+
+  if (!r.includes("Completed Before You Say Yes")) {
+    fail(`${record} no longer carries the label §2 permits`);
+  } else {
+    ok("the completion record is labelled \"Completed Before You Say Yes\"");
+  }
+
+  const CLAIM = /\b(ready|prepared|certified|certificate|qualified|passed)\b/i;
+  const DENIED = /\b(not|never|no)\b/i;
+  const claims = r
+    .split(/(?<=[.!?])\s+|\n\s*\n/)
+    .map((sentence) => sentence.replace(/<[^>]*>/g, " ").trim())
+    .filter((sentence) => CLAIM.test(sentence) && !DENIED.test(sentence));
+
+  if (claims.length > 0) {
+    for (const c of claims.slice(0, 3)) {
+      fail(`${record} claims readiness: "${c.replace(/\s+/g, " ").slice(0, 80)}" — §2 forbids it`);
+    }
+  } else {
+    ok("the completion record claims no readiness, preparation or certification");
+  }
+
+  if (/download|application\/pdf|Content-Disposition/i.test(r)) {
+    fail(`${record} offers a file — a completion file is one the other person can be shown`);
+  } else {
+    ok("the completion record produces no file");
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

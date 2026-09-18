@@ -9,6 +9,7 @@ import {
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
+import { getCourseComplete } from "../actions";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextStepOptions from "@/components/bysy/NextStepOptions";
 import EvidenceTable from "@/components/bysy/EvidenceTable";
@@ -18,6 +19,7 @@ import PrivateWorksheet from "@/components/bysy/PrivateWorksheet";
 import JointGate from "@/components/bysy/JointGate";
 import QuestionSet from "@/components/bysy/QuestionSet";
 import ChoiceList from "@/components/bysy/ChoiceList";
+import CompletionRecord from "@/components/bysy/CompletionRecord";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -309,6 +311,10 @@ export default async function BysyPage({ params }: Props) {
     return { spec: choiceSpec, before: at.before, items, after: at.after };
   })();
 
+  // §2's completion record, on the last page of the course.
+  const isFinalPage = page.n === getPages().length;
+  const courseComplete = isFinalPage ? await getCourseComplete() : false;
+
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
 
@@ -556,6 +562,8 @@ export default async function BysyPage({ params }: Props) {
       )}
 
       {recall && <EarlierAnswers refs={recall} />}
+
+      {isFinalPage && <CompletionRecord complete={courseComplete} />}
 
       <div className="mt-12 border-t border-[#E5D9C7] pt-8">
         <Link

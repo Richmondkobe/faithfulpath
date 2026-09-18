@@ -27,6 +27,13 @@ import type { Choice } from "@/lib/bysy-types";
  * the same page, so the caveat leads and the ordinary step follows it, rather
  * than trailing at the end of a paragraph where it reads as a footnote.
  *
+ * §2 asks that an ordinary choice be reflected back and remain changeable, and
+ * that a safety-related one never be reflected at all. So the reflection below
+ * is only ever of an ordinary option, and it lives in the session rather than
+ * the account: reflecting it without storing it satisfies both halves, and a
+ * store that had to decide which choices were safe enough to keep would only
+ * need to be wrong once.
+ *
  * Nothing here is stored. §4 forbids storing a safety selection or any planned
  * action arising from one, and the way to honour that is to have nothing that
  * could: no action, no fetch, no state that outlives the page.
@@ -134,6 +141,19 @@ export default function ChoiceList({
           );
         })}
       </ul>
+
+      {chosen && !chosen.replaces && (
+        <p className="mt-5 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+          You chose: <strong className="font-medium text-[#2B2118]">{chosen.title}</strong>.{" "}
+          <button
+            type="button"
+            onClick={() => setChosen(null)}
+            className="underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          >
+            Change this
+          </button>
+        </p>
+      )}
 
       <p className="mt-5 text-sm leading-relaxed text-[#6B5F53]">
         {NOTHING_SCORES} Your selection is not saved — it is yours to act on,
