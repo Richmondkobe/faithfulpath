@@ -63,3 +63,52 @@ export async function saveToolRows(
 
   revalidatePath(bysyPageHref(pageSlug));
 }
+
+/**
+ * Fetches the learner's own earlier answers, on request only.
+ *
+ * §7 says a recall control is collapsed and learner-initiated, and that
+ * previous answers are never displayed automatically. Rendering them into a
+ * collapsed element would satisfy the letter of that and not the point: the
+ * answers would be in the page source, in the browser cache and in anything
+ * that saved the page, before the learner asked for anything. On a monitored
+ * device that is the exposure the rule exists to prevent.
+ *
+ * So nothing is fetched until this is called, and it is called only when the
+ * learner has read the privacy note and asked twice.
+ *
+ * Reads go through the cookie-backed client, so RLS returns this member's rows
+ * and nobody else's. There is no parameter here for whose answers to fetch.
+ */
+export async function fetchEarlierAnswers(
+  refs: { pageSlug: string; part: string }[]
+): Promise<{ pageSlug: string; part: string; rows: string[][] }[]> {
+  const { supabase } = await memberClient();
+
+  const wanted = refs
+    .filter((r) => findPage(r.pageSlug) && /^[A-Z]$/i.test(r.part.trim()))
+    .slice(0, 12);
+
+  const results = await Promise.all(
+    wanted.map(async ({ pageSlug, part }) => {
+      const { data } = await supabase
+        .from("course_reflections")
+        .select("answer")
+        .eq("course_slug", BYSY_SLUG)
+        .eq("lesson_slug", pageSlug)
+        .eq("question_index", toolIndex(part))
+        .maybeSingle();
+
+      let rows: string[][] = [];
+      try {
+        const parsed = data?.answer ? JSON.parse(data.answer) : [];
+        if (Array.isArray(parsed)) rows = parsed as string[][];
+      } catch {
+        rows = [];
+      }
+      return { pageSlug, part, rows };
+    })
+  );
+
+  return results;
+}

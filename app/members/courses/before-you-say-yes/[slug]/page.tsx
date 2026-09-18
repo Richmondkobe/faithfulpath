@@ -12,6 +12,7 @@ import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextStepOptions from "@/components/bysy/NextStepOptions";
 import EvidenceTable from "@/components/bysy/EvidenceTable";
 import DatedEntries from "@/components/bysy/DatedEntries";
+import EarlierAnswers, { type Recall } from "@/components/bysy/EarlierAnswers";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -102,6 +103,40 @@ export default async function BysyPage({ params }: Props) {
   const evidenceRows = evidence
     ? (await getToolAnswer<string[][]>(slug, "B")) ?? []
     : [];
+
+  // §7's cross-lesson recall. The targets are the tools each page names, so the
+  // control offers what the content asks the learner to check — not everything
+  // they have ever written.
+  const RECALL: Record<number, Recall[]> = {
+    7: [
+      { pageSlug: "lesson-02-equally-yoked", part: "A", label: "Lesson 2 — Spiritual Compatibility" },
+      { pageSlug: "lesson-03-know-yourself", part: "A", label: "Lesson 3 — Requirements" },
+      { pageSlug: "lesson-05-character-before-charisma", part: "A", label: "Lesson 5 — Character Observation Sheet" },
+      { pageSlug: "lesson-06-red-flags-christians-spiritualise", part: "B", label: "Lesson 6 — Red Flag Checklist" },
+    ],
+    15: [
+      { pageSlug: "lesson-05-character-before-charisma", part: "A", label: "Lesson 5 — Character Observation Sheet" },
+      { pageSlug: "lesson-07-quiet-green-flags", part: "A", label: "Lesson 7 — Green flags I have seen" },
+    ],
+    17: [
+      { pageSlug: "lesson-05-character-before-charisma", part: "A", label: "Lesson 5 — Character Observation Sheet" },
+      { pageSlug: "lesson-07-quiet-green-flags", part: "A", label: "Lesson 7 — Green flags I have seen" },
+      { pageSlug: "lesson-06-red-flags-christians-spiritualise", part: "B", label: "Lesson 6 — Red Flag Checklist" },
+    ],
+    18: [
+      { pageSlug: "lesson-06-red-flags-christians-spiritualise", part: "B", label: "Lesson 6 — Red Flag Checklist" },
+      { pageSlug: "lesson-05-character-before-charisma", part: "A", label: "Lesson 5 — Character Observation Sheet" },
+    ],
+  };
+  const recall: Recall[] | null =
+    (page.lesson !== undefined ? RECALL[page.lesson] : undefined) ??
+    (page.file === "module-6-02-questions-before-engagement.md"
+      ? [
+          { pageSlug: "lesson-05-character-before-charisma", part: "A", label: "Lesson 5 — Character Observation Sheet" },
+          { pageSlug: "lesson-07-quiet-green-flags", part: "A", label: "Lesson 7 — Green flags I have seen" },
+          { pageSlug: "lesson-15-can-we-build-a-life", part: "A", label: "Lesson 15 — Life Compatibility Reflection" },
+        ]
+      : null);
 
   const route = findRoute(await getStoredRoute());
   const onRoute = route ? positionOnRoute(route, page.file) : null;
@@ -234,6 +269,8 @@ export default async function BysyPage({ params }: Props) {
           )}
         </div>
       )}
+
+      {recall && <EarlierAnswers refs={recall} />}
 
       <div className="mt-12 border-t border-[#E5D9C7] pt-8">
         <Link

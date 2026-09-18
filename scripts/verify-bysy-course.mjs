@@ -230,6 +230,113 @@ for (const f of codeFiles) {
 }
 if (schedulers === 0) ok("nothing in this course schedules a prompt, reminder or notification");
 
+/* §7: cross-lesson recall.
+
+   Three things have to hold, and each of them fails silently if it stops
+   holding — which is why they are assertions rather than a note.
+
+   A ref naming a page that does not exist produces "You have not written
+   anything here yet" forever. That is the most dangerous possible failure of
+   this feature: it is indistinguishable from the truth, so a learner reads it
+   as an answer about themselves rather than a bug.
+
+   Recall must also stay on demand. If a Server Component ever fetches earlier
+   answers, they land in the page source and the browser cache before the
+   learner has asked for anything — the exposure §7 exists to prevent on a
+   monitored device, and invisible from the rendered page, which looks the same
+   either way.
+
+   And nothing that reads earlier answers may also send mail or raise a
+   notification. §7 forbids recalled answers reaching notifications, previews or
+   emails; this course sends none today, and this is what notices the day one is
+   added next to the reader. */
+
+const recallPage = join("app", "members", "courses", "before-you-say-yes", "[slug]", "page.tsx");
+if (!existsSync(recallPage)) {
+  fail(`${recallPage} is missing — cross-lesson recall is wired there`);
+} else {
+  const src = readFileSync(recallPage, "utf8");
+  const slugs = new Set(listed.map((f) => f.replace(/\.md$/, "")));
+  const refs = [...src.matchAll(/pageSlug:\s*"([^"]+)"/g)].map((m) => m[1]);
+
+  if (refs.length === 0) {
+    fail("no cross-lesson recall refs found — §7's recall is not wired");
+  } else {
+    const unknown = refs.filter((r) => !slugs.has(r));
+    if (unknown.length > 0) {
+      for (const r of new Set(unknown)) {
+        fail(`recall names "${r}", which is not a page in this course — it would show "nothing written yet" forever`);
+      }
+    } else {
+      ok(`${new Set(refs).size} recall target(s) all resolve to real pages`);
+    }
+  }
+
+  if (/fetchEarlierAnswers/.test(src)) {
+    fail(`${recallPage} fetches earlier answers on the server — §7 forbids displaying previous answers automatically`);
+  } else {
+    ok("recall is requested by the learner, never fetched while the page renders");
+  }
+}
+
+const MAIL = /resend|sendMail|sendEmail|nodemailer|Notification\(|push[A-Z]?[Nn]otification|@react-email/;
+let recallSenders = 0;
+for (const f of codeFiles) {
+  const code = readFileSync(f, "utf8");
+  if (!/fetchEarlierAnswers/.test(code)) continue;
+  const bare = code.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  if (MAIL.test(bare)) {
+    recallSenders++;
+    fail(`${f} both reads earlier answers and sends mail or a notification — §7 forbids recalled answers reaching notifications, previews or emails`);
+  }
+}
+if (recallSenders === 0) ok("nothing that reads earlier answers sends mail or a notification");
+
+const recallComponent = join("components", "bysy", "EarlierAnswers.tsx");
+if (!existsSync(recallComponent)) {
+  fail(`${recallComponent} is missing`);
+} else {
+  const c = readFileSync(recallComponent, "utf8");
+
+  // Read the branches, not the file. Checking whether MONITORING_NOTE appears
+  // anywhere passes on the import line alone, and checking whether it appears
+  // *before* the fetch passes on the import line too — the reveal function is
+  // declared above all the JSX, so source order says nothing about what the
+  // learner sees first. What carries the rule is which state each thing is in:
+  // the note belongs in the state that offers to open the answers, and the
+  // state before it must not be able to fetch anything.
+  const closedAt = c.indexOf('state === "closed"');
+  const askedAt = c.indexOf('state === "asked"');
+  const openAt = c.lastIndexOf("return (");
+
+  if (closedAt < 0 || askedAt < 0 || askedAt < closedAt) {
+    fail(`${recallComponent} no longer has a closed state before an asked state — §7 requires the note before the answers open`);
+  } else {
+    const closedBranch = c.slice(closedAt, askedAt);
+    const askedBranch = c.slice(askedAt, openAt > askedAt ? openAt : c.length);
+
+    if (!/\{\s*MONITORING_NOTE\s*\}/.test(askedBranch)) {
+      fail(`${recallComponent} does not show the monitoring note in the state that offers to open the answers — §7 requires it before they open`);
+    } else {
+      ok("the monitoring note is shown in the state that offers to open the answers");
+    }
+
+    // A bare `reveal` counts: onClick={reveal} fetches just as surely as
+    // reveal(), and matching only the call missed exactly that.
+    if (/\breveal\b|\bfetchEarlierAnswers\b/.test(closedBranch)) {
+      fail(`${recallComponent} can fetch from its closed state — §7 forbids displaying previous answers automatically`);
+    } else {
+      ok("nothing is fetched until the learner has passed the monitoring note");
+    }
+  }
+
+  if (!/useState<[^>]*>\(\s*"closed"\s*\)/.test(c)) {
+    fail(`${recallComponent} does not start closed — §7 forbids displaying previous answers automatically`);
+  } else {
+    ok("recall starts closed");
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
