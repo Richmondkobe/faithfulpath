@@ -43,3 +43,7 @@ next-env.d.ts
 # course recordings — these live in the private Supabase bucket, never in git
 *.mp4
 *.mp3
+
+# Supabase CLI scratch — written by `supabase link`, holds the linked
+# project ref and a pooler connection string. Not ours to commit.
+supabase/.temp/
