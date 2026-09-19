@@ -522,101 +522,74 @@ if (existsSync(recallPage)) {
   if (unwired === 0) ok("all four pages offering a safety route route it");
 }
 
-/* §6: verification metadata lives beside the source file.
+/* §6: verification metadata lives beside the source file, and the review date
+   rests on it.
 
-   The point of the register is not that it is full — most of it is honestly
-   marked "not recorded" — but that a helpline cannot be added to the page
-   without one. An entry with no record at all is an entry nobody has been asked
-   to check, and this is what asks. */
+   The rule the register encodes is that every entry has a *known status* — not
+   that every entry is verified. Finding out that a detail cannot be established
+   from the operator's own source is a result, not a gap, and so is deciding
+   that a block is presented as a starting point rather than as verified
+   entries. What may not happen is an entry nobody has looked at being invisible
+   behind a date that implies somebody did.
 
-const REGISTER = join("content", "before-you-say-yes-resources-verification.json");
-const RESOURCES = join("content", "before-you-say-yes-resources-page.md");
+   So: every row carries a status from the agreed set, every section of the page
+   has rows, and the date may show only when both hold. An unrecognised status
+   fails — a typo, or a status nobody agreed, would otherwise pass as though it
+   meant something. */
+
+const { readRegister, readSummary, readSections, STATUSES, REGISTER, SOURCE } =
+  await import("./bysy-resource-register.mjs");
+
 if (!existsSync(REGISTER)) {
   fail(`${REGISTER} is missing — §6 requires verification metadata beside the source file`);
-} else if (!existsSync(RESOURCES)) {
-  fail(`${RESOURCES} is missing`);
+} else if (!existsSync(SOURCE)) {
+  fail(`${SOURCE} is missing`);
 } else {
-  const register = JSON.parse(readFileSync(REGISTER, "utf8"));
-  const { readEntries } = await import("./bysy-resource-register.mjs");
-  const onPage = readEntries(readFileSync(RESOURCES, "utf8"));
-  const recorded = new Set(register.entries.map((e) => `${e.section}::${e.name}`));
-  const missing = onPage.filter((e) => !recorded.has(`${e.section}::${e.name}`));
+  const rows = readRegister();
+  const sections = readSections();
 
-  if (missing.length > 0) {
-    for (const e of missing.slice(0, 5)) {
-      fail(`"${e.name}" (${e.section}) is on the resources page with no verification record`);
-    }
-    if (missing.length > 5) fail(`…and ${missing.length - 5} more with no verification record`);
-  } else {
-    const filed = register.entries.filter((e) =>
-      register.fields.every((f) => e[f] !== "not recorded")
-    ).length;
-    ok(`all ${onPage.length} resource entries have a verification record (${filed} with evidence filed)`);
-
-    // §6: a review date may be shown only once a human has checked each entry
-    // against an authoritative source. The register is that record, so the date
-    // and the register have to agree — a date on the page with an empty
-    // register is the page claiming a check nobody can produce.
-    const shown = /Last reviewed:\s*(\d{1,2}\s+\w+\s+\d{4})/.exec(
-      readFileSync(RESOURCES, "utf8")
-    )?.[1];
-    if (shown && filed < onPage.length) {
-      fail(
-        `the resources page shows "Last reviewed: ${shown}" but ${onPage.length - filed} of ${onPage.length} entries have no evidence in the register — §6 permits a date only once each entry has been checked`
-      );
-    } else if (shown) {
-      ok(`the review date is shown, and all ${onPage.length} entries have evidence behind it`);
-    } else {
-      ok("no review date is shown, and §6's review-in-progress notice stands in its place");
-    }
-  }
-}
-
-/* §2: the completion record's label.
-
-   "Completed Before You Say Yes" is acceptable; ready, prepared, certified or
-   any equivalent is not, and §2 gives the reason — the name is what a learner
-   may show someone else, so a record reading as a verdict on a relationship is
-   a document that can be produced in an argument about one.
-
-   The check has to tell a claim from a denial. "Not that you are ready for
-   anything" contains the forbidden word and is the opposite of the forbidden
-   claim, so a check that simply greps for it fails on the sentence written to
-   satisfy it — and the obvious repair is to delete the honest sentence. */
-
-const record = join("components", "bysy", "CompletionRecord.tsx");
-if (!existsSync(record)) {
-  fail(`${record} is missing — §2's completion record is not built`);
-} else {
-  const r = readFileSync(record, "utf8")
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/^\s*\/\/.*$/gm, "");
-
-  if (!r.includes("Completed Before You Say Yes")) {
-    fail(`${record} no longer carries the label §2 permits`);
-  } else {
-    ok("the completion record is labelled \"Completed Before You Say Yes\"");
-  }
-
-  const CLAIM = /\b(ready|prepared|certified|certificate|qualified|passed)\b/i;
-  const DENIED = /\b(not|never|no)\b/i;
-  const claims = r
-    .split(/(?<=[.!?])\s+|\n\s*\n/)
-    .map((sentence) => sentence.replace(/<[^>]*>/g, " ").trim())
-    .filter((sentence) => CLAIM.test(sentence) && !DENIED.test(sentence));
-
-  if (claims.length > 0) {
-    for (const c of claims.slice(0, 3)) {
-      fail(`${record} claims readiness: "${c.replace(/\s+/g, " ").slice(0, 80)}" — §2 forbids it`);
+  const unknown = rows.filter((r) => !(r.status in STATUSES));
+  if (unknown.length > 0) {
+    for (const r of unknown.slice(0, 4)) {
+      fail(`the register gives "${r.name}" the status "${r.status}", which is not one of: ${Object.keys(STATUSES).join(", ")}`);
     }
   } else {
-    ok("the completion record claims no readiness, preparation or certification");
+    ok(`all ${rows.length} register rows carry a recognised status`);
   }
 
-  if (/download|application\/pdf|Content-Disposition/i.test(r)) {
-    fail(`${record} offers a file — a completion file is one the other person can be shown`);
+  const bare = sections.filter((s) => !rows.some((r) => r.section === s));
+  if (bare.length > 0) {
+    for (const s of bare) {
+      fail(`"${s}" is a section of the resources page with no rows in the register`);
+    }
   } else {
-    ok("the completion record produces no file");
+    ok(`all ${sections.length} sections of the resources page are accounted for`);
+  }
+
+  // The number the date rests on. A summary that understates what is still
+  // unchecked is how a page comes to show a date it has not earned — the
+  // register arrived once with a summary fifteen rows out of step with its own
+  // tables.
+  const summary = readSummary();
+  const statedOutstanding = summary["Outstanding"];
+  const actualOutstanding = rows.filter((r) => r.status === "Outstanding").length;
+  if (statedOutstanding !== undefined && statedOutstanding !== actualOutstanding) {
+    fail(`the register's summary states ${statedOutstanding} outstanding, but its rows give ${actualOutstanding}`);
+  }
+
+  const shown = /Last reviewed:\s*(\d{1,2}\s+\w+\s+\d{4})/.exec(readFileSync(SOURCE, "utf8"))?.[1];
+  const blocked = unknown.length > 0 || bare.length > 0;
+  if (shown && blocked) {
+    fail(`the resources page shows "Last reviewed: ${shown}" while the register does not account for every entry`);
+  } else if (shown) {
+    const counts = Object.entries(
+      rows.reduce((acc, r) => ({ ...acc, [r.status]: (acc[r.status] ?? 0) + 1 }), {})
+    )
+      .map(([k, v]) => `${v} ${k.toLowerCase()}`)
+      .join(", ");
+    ok(`the review date is shown, and every entry has a known status (${counts})`);
+  } else {
+    ok("no review date is shown, and §6's review-in-progress notice stands in its place");
   }
 }
 

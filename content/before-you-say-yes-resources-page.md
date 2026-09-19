@@ -2,7 +2,7 @@
 
 *This is the live version of the resources page printed at the back of* Before You Say Yes, *and the support page for the* Before You Say Yes *course.*
 
-*Resource review in progress. Always confirm current details on the service's official website. If a number or link is wrong, please tell us at info@faithfulpathcommunity.com so it can be corrected for everyone.*
+*Last reviewed: 18 September 2026, entry by entry, against each service's own published information. Two details remain outstanding and three are being confirmed with the services directly; all five are named at the foot of this page. The emergency numbers are a starting point rather than a verified list — see the note beside them. If a number or link is wrong, please tell us at info@faithfulpathcommunity.com so it can be corrected for everyone.*
 
 This page lists places to begin. It cannot list everything, and helpline numbers, hours and websites change. If you are not in immediate danger and can search safely, begin with the global directories below; they are maintained by the services themselves. If you are in immediate danger, contact the appropriate emergency service or move to the safest available place without delaying to search this page.
 
@@ -19,7 +19,7 @@ This page lists places to begin. It cannot list everything, and helpline numbers
 - Australia: 000
 - New Zealand: 111
 - South Africa: 112 from a mobile; police 10111
-- Kenya: 999, 112 or 911
+- Kenya: 999 or 112 — 911 connects on some networks only, so use 999 or 112
 - Nigeria: 112; local availability may vary
 - Ghana: 112 or 191
 - India, and most of the European Union: 112
@@ -28,7 +28,7 @@ This page lists places to begin. It cannot list everything, and helpline numbers
 - Singapore: police 999; ambulance and fire 995
 - Thailand: police 191; emergency medical assistance 1669
 
-Numbers may change or operate differently by region, network or type of emergency. Confirm the appropriate local number when it is safe to do so.
+**Confirm the appropriate local number when it is safe to do so.** Numbers may change or operate differently by region, network or type of emergency. Unlike the rest of this page, these have not been checked entry by entry — establishing each one properly needs a government or regulator source, and for most countries only press and directory reporting is available. Treat them as a starting point rather than a verified list.
 
 ---
 
@@ -244,6 +244,6 @@ A Christian counselling association may help you assess faith alignment, but mem
 
 Numbers, hours and services change. Find A Helpline and Lila.help are periodically maintained global directories, but no printed or online directory can guarantee immediate availability. If one contact does not work, try another verified service. If you are in immediate danger, contact the appropriate emergency service or move to the safest available place. A disconnected number does not mean that help is unavailable.
 
-**Being confirmed directly.** Three details could not be established from the services' own published information and are being confirmed with them: the Ark Foundation's telephone number in Ghana, the current helpline email address for Karma Nirvana, and MoneyTalks' weekend hours in New Zealand. Entry-by-entry verification of this page is in progress; until it is complete, confirm any detail you are relying on with the service itself.
+**Still open at this review.** Five entries are not fully verified, and they are named here rather than left for you to discover. Three details could not be established from the services' own published information and are being confirmed with them directly: the Ark Foundation's telephone number in Ghana, the current helpline email address for Karma Nirvana, and MoneyTalks' weekend hours in New Zealand. Two entries have not yet been checked against the operator's own source: Thailand's Department of Mental Health line 1323, and Credit Counselling Canada. Confirm any of these five with the service itself before relying on it.
 
 **Where sources disagreed**, this page follows the operator's own website rather than third-party directories, council pages or aggregated helpline lists, which frequently carry numbers and hours that are years out of date.

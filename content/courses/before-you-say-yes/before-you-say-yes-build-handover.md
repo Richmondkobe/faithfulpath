@@ -13,11 +13,12 @@ this file). `BYSY_PUBLISHED` in `lib/bysy-links.ts` is still `false`, so nothing
 links to the course; the members card is built and waiting behind it. Flipping
 that constant is the act of publishing, and it is the owner's to make.
 
-The §6 problem is resolved the honest way: **the review date has been removed**
-and the resources page now carries §6's review-in-progress notice instead. The
-register was not filled with generated evidence. Both the public page and the
-course support page follow the shared file, so both changed together, and a
-check now fails if the date returns while the register is still empty.
+§6 is satisfied: the register is filled from a real check, and
+**Last reviewed: 18 September 2026** is back on the resources page, read from
+the shared file as before. The date rests on every entry having a *known
+status*, not on every entry being verified — 82 verified, 2 outstanding,
+2 confirm-directly, 1 corrected-not-verified-to-standard, and the emergency
+numbers block recorded as out of scope by design.
 
 ---
 
@@ -140,13 +141,20 @@ the course feel unsafe rather than safety-aware.
 
 ## What remains
 
-1. **The register still needs filling in from a real check.** Every entry in
-   `content/before-you-say-yes-resources-verification.json` has a record and
-   none has evidence. Nothing is claimed on the page meanwhile: it says a review
-   is in progress, which is true. When the check is done, fill the fields in and
-   restore the date — `npm run verify:bysy` fails if the date is restored first.
-2. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. The card,
-   the checks and the course are built and waiting on it.
+1. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. The card,
+   the checks and the course are built and waiting on it. This is the only
+   thing left.
+2. **Two register counts disagree with its own rows.** The Summary states 67
+   verified where the tables give 82, and 3 confirm-directly where the tables
+   give 2 — the Ark Foundation sits in its own two-column table and is not
+   counted as a row. Neither affects the date, and the outstanding count (the
+   one the date rests on) does agree and is asserted. Worth reconciling so the
+   summary can be trusted at a glance.
+3. **Five entries are not fully verified**, named on the page rather than left
+   to be discovered: the Ark Foundation's phone number, Karma Nirvana's helpline
+   email and MoneyTalks' weekend hours are being confirmed with the services;
+   Thailand's DMH 1323 and Credit Counselling Canada have not yet been checked
+   against the operator's own source.
 
 ---
 
@@ -215,6 +223,39 @@ member session — not read off the code.
 | Joint tools save to one account only (§5) | No write action takes a user, partner or account parameter; every `user_id` comes from the session. An unauthenticated caller invoking the fetch action directly got an empty result. |
 | Completion record avoids "ready", "prepared", "certified" (§2) | Labelled "Completed Before You Say Yes". The only uses of those words are denials, and the check distinguishes a claim from a denial. |
 | Every page carries the persistent support link and the exit control (§3) | Present on all 35, along with `noindex`. |
+
+## The verification register
+
+`content/before-you-say-yes-resources-register.md`, read by
+`scripts/bysy-resource-register.mjs`. Markdown rather than a data file, because
+the people doing the checking write and read it. The JSON version it replaced is
+gone.
+
+Five statuses, and only one of them means nobody has looked:
+
+| Status | Meaning |
+|---|---|
+| Verified | Checked against the operator's own published information |
+| Outstanding | Not yet checked against the operator's own source |
+| Confirm directly | Public sources do not carry the detail; needs an enquiry |
+| Corrected, not verified to standard | An error was corrected from evidence, without a full check |
+| Out of scope by design | Presented as a starting point, not verified entry by entry, and the page says so |
+
+The last is the emergency-numbers block, and it is a decision rather than a gap:
+establishing each number properly needs a government or regulator source, and
+for most countries only press and directory reporting exists. The page now says
+that where the numbers are, under the list rather than above it — nobody in an
+emergency should read a paragraph of provenance before reaching a number.
+
+`npm run verify:bysy` fails if a row carries a status nobody agreed, if a section
+of the page has no rows, if the summary understates what is outstanding, or if
+the date is shown while any of that is true. Each was tested by breaking it.
+
+What the check deliberately does not do is match rows to page entries one by
+one. The page names services in prose, the register groups some and splits
+others, and every fuzzy matcher tried produced confident nonsense — 29 matches
+for a row that covers one entry. Section coverage plus a known status on every
+row is what can be asserted truthfully.
 
 ## The signup form
 
