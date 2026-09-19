@@ -10,6 +10,7 @@
 //
 //   node scripts/bysy-resource-register.mjs        what the register accounts for
 //   node scripts/bysy-resource-register.mjs --full the full reconciliation
+//   node scripts/bysy-resource-register.mjs --scan  register against the page
 
 import { readFileSync } from "node:fs";
 
@@ -101,6 +102,43 @@ if (process.argv[1]?.endsWith("bysy-resource-register.mjs")) {
       const actual = byStatus[label] ?? 0;
       console.log(`  ${label}: states ${stated}, rows give ${actual}${stated === actual ? "" : "   ← disagree"}`);
     }
+  }
+
+  if (process.argv.includes("--scan")) {
+    // A recorded check is not a changed page. Five findings sat in the register
+    // without reaching the page — a correction to StepChange's coverage, two
+    // verified numbers, and two regulatory findings — and before them, Kenya's
+    // 911, which the page still listed as national.
+    //
+    // What this compares is exact strings: numbers recorded against numbers
+    // printed. A correction phrased in wording the pattern below does not
+    // recognise, or an opening time that moved without any digit changing,
+    // passes unseen.
+    const page = readFileSync(SOURCE, "utf8");
+    const digits = (text) => {
+      const out = new Map();
+      for (const m of text.matchAll(/\+?\d[\d\s().\-–]{3,}\d/g)) {
+        const d = m[0].replace(/\D/g, "");
+        if (d.length >= 3 && d.length <= 15) out.set(d, m[0].trim());
+      }
+      return out;
+    };
+    const pageDigits = digits(page);
+    const pageFlat = page.replace(/\D/g, "");
+
+    const absent = [];
+    for (const r of rows.filter((x) => x.status === "Verified")) {
+      for (const [d, shown] of digits(r.verified)) {
+        if (!pageDigits.has(d) && !pageFlat.includes(d)) absent.push({ row: r, shown });
+      }
+    }
+    console.log(`\nverified numbers not found on the page: ${absent.length}`);
+    for (const a of absent) console.log(`  ${a.row.name} — ${a.shown}`);
+
+    const CORRECTION = /correct|removed|no longer|instead|rather than|is not\b|not a /i;
+    const corrections = rows.filter((r) => r.status === "Verified" && CORRECTION.test(r.verified));
+    console.log(`\nrows recording a correction — check each reached the page (${corrections.length}):`);
+    for (const r of corrections) console.log(`  ${r.name}\n      ${r.verified.slice(0, 120)}`);
   }
 
   if (process.argv.includes("--full")) {

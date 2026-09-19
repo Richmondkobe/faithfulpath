@@ -157,11 +157,46 @@ Nothing blocking. Two things worth doing:
    Thailand's DMH 1323 and Credit Counselling Canada have not yet been checked
    against the operator's own source.
 
-Worth a look when the register is next touched: the Kenya correction sat in the
-register without reaching the page, which listed 911 alongside 999 and 112 as
-though it were national. A correction recorded but not applied is the failure
-mode to watch for here — the register is evidence that a check happened, not
-evidence that the page was changed.
+## The register is evidence of a check, not of a changed page
+
+This is the failure mode to watch, and it has happened six times.
+
+A row in the register records that somebody checked something and what they
+found. It does not record that the page was then edited. Kenya's 911 was
+corrected in the register — it connects on some networks only — while the page
+went on listing it beside 999 and 112 as though it were national. Scanning for
+the rest found five more:
+
+| Recorded | What the page said |
+|---|---|
+| StepChange covers all four UK nations; approved money adviser in Scotland | Read as England-and-Wales, with Scottish and NI readers sent elsewhere |
+| CAS Money Talk Team 0800 028 1456 | Named the organisation, gave no number |
+| Advice NI 0800 0838 018, Mon–Fri 9:30am–5:30pm | Named the organisation, gave no number |
+| Australia: counselling is not regulated under the National Scheme | Sent counsellors to PACFA/ACA without saying so |
+| New Zealand: *counsellor* is not a protected title | Sent counsellors to NZAC without saying so |
+
+All six are now applied. The last two are worth noticing as a pattern: the page
+carries that warning for the UK, where it was written, and omitted it for the
+two countries where it had actually been verified.
+
+`node scripts/bysy-resource-register.mjs --scan` re-runs it.
+
+**What the scan proves.** It compares exact strings — every phone number in a
+verified row against the numbers printed on the page, in both directions — and
+it lists the rows whose notes use correction language, for a human to check one
+by one. Numbers and domains are what it can settle.
+
+**What it does not prove.** A correction recorded in wording the pattern does
+not recognise will not be listed. An opening time, an eligibility rule or a
+confidentiality statement that changed without any digit changing will pass
+unseen. Nor can it tell whether a verified row was ever true — only whether the
+page agrees with what the row says. And it cannot match rows to page entries one
+by one: the page names services in prose, the register groups some and splits
+others, and every matcher tried produced confident nonsense.
+
+So the scan narrows the gap; it does not close it. **The register remains
+evidence that a check happened, not evidence that the page was changed.** After
+any review, read the corrections list against the page by hand.
 
 ---
 
