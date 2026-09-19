@@ -566,15 +566,23 @@ if (!existsSync(REGISTER)) {
     ok(`all ${sections.length} sections of the resources page are accounted for`);
   }
 
-  // The number the date rests on. A summary that understates what is still
-  // unchecked is how a page comes to show a date it has not earned — the
-  // register arrived once with a summary fifteen rows out of step with its own
-  // tables.
+  // Every count in the summary, against the tables it summarises. A summary
+  // that understates what is unchecked is how a page comes to show a date it
+  // has not earned — this register arrived once claiming 55 verified and 15
+  // outstanding where its tables gave 71 and 13, and again claiming 67 verified
+  // where they gave 82. Only the outstanding count was asserted then, so the
+  // other two drifted unnoticed until they were read by hand.
   const summary = readSummary();
-  const statedOutstanding = summary["Outstanding"];
-  const actualOutstanding = rows.filter((r) => r.status === "Outstanding").length;
-  if (statedOutstanding !== undefined && statedOutstanding !== actualOutstanding) {
-    fail(`the register's summary states ${statedOutstanding} outstanding, but its rows give ${actualOutstanding}`);
+  const actual = {};
+  for (const r of rows) actual[r.status] = (actual[r.status] ?? 0) + 1;
+
+  const drifted = Object.entries(summary).filter(([label, stated]) => stated !== (actual[label] ?? 0));
+  if (drifted.length > 0) {
+    for (const [label, stated] of drifted) {
+      fail(`the register's summary states ${stated} ${label.toLowerCase()}, but its rows give ${actual[label] ?? 0}`);
+    }
+  } else if (Object.keys(summary).length > 0) {
+    ok(`the register's summary agrees with its tables on all ${Object.keys(summary).length} counts`);
   }
 
   const shown = /Last reviewed:\s*(\d{1,2}\s+\w+\s+\d{4})/.exec(readFileSync(SOURCE, "utf8"))?.[1];

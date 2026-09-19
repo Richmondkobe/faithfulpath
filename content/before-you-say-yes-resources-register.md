@@ -83,6 +83,7 @@ numbers and hours that are years out of date.
 | Lagos DSVA (Nigeria) | lagosdsva.org | 18 Sep 2026 | 0800 033 3333, 24/7, WhatsApp 0916 984 8920, statutory basis, any age, Lagos only, services | Verified |
 | DOVVSU (Ghana) | police.gov.gh | 18 Sep 2026 | Police unit status, legal basis, free services, One-Stop Centre — no hotline number published | Verified |
 | The Ark Foundation (Ghana) | arkfoundationghana.org | 18 Sep 2026 | Independent Christian NGO, services, locations, works alongside police without requiring it | Verified |
+| The Ark Foundation telephone number | arkfoundationghana.org | — | Own pages refer to a hotline but do not publish the number | Confirm directly |
 | Women Helpline 181 (India) | MWCD; Mission Shakti | 18 Sep 2026 | 181, 24/7, referral function, 34 states/UTs, police and OSC pathways | Verified |
 | One Stop Centres (India) | MWCD | 18 Sep 2026 | 969 operational Mar 2026, services incl. FIR support | Verified |
 | Childline 1098 (India) | childlineindia.org | 18 Sep 2026 | 1098 | Verified |
@@ -153,25 +154,27 @@ Two specific corrections were made from evidence:
 | Kenya — 911 is not a national line | Kenyan press and directory reporting | 19 Sep 2026 | 999 and 112 are the national lines; 911 connects on some networks only | Corrected, not verified to standard |
 | All other emergency numbers | — | — | Presented as unverified on the page | Out of scope by design |
 
-## Other outstanding
-
-| Item | Note |
-|---|---|
-| The Ark Foundation telephone number | Own pages refer to a hotline but do not publish the number. Confirm directly. |
-
----
-
 ## Summary
 
-- **Verified:** 67
+- **Verified:** 82
 - **Outstanding:** 2
 - **Confirm directly:** 3
-- **Out of scope by design:** the emergency numbers block
+- **Corrected, not verified to standard:** 1
+- **Out of scope by design:** 1
 
-Two items remain outstanding: Thailand's DMH 1323 and Credit Counselling Canada.
-Neither blocks the review date on its own, but both should be checked before the
-next review.
+These are row counts, and `npm run verify:bysy` fails if they drift from the
+tables above. They are larger than the number of services on the page because
+some rows record a *finding about* an entry rather than an entry itself — a
+correction, or a detail that could not be established — and those sit beside the
+row for the service they concern. `node scripts/bysy-resource-register.mjs`
+prints them from the tables.
 
-The review date may return to the resources page once the outstanding rows carry
-evidence. The three confirm-directly items are named at the foot of the page and
-do not block it.
+Two entries remain outstanding: Thailand's DMH 1323 and Credit Counselling
+Canada. Three details are being confirmed with the services directly: the Ark
+Foundation's telephone number, Karma Nirvana's helpline email address, and
+MoneyTalks' weekend hours. All five are named at the foot of the resources page.
+
+The emergency-numbers block is out of scope by design: establishing each number
+properly needs a government or regulator source, and for most countries only
+press and directory reporting is available. The page presents those numbers as a
+starting point and says so.

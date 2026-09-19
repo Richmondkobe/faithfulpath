@@ -161,14 +161,9 @@ the course feel unsafe rather than safety-aware.
 
 ## What remains
 
-Nothing blocking. Two things worth doing:
+Nothing blocking.
 
-1. **Two register counts disagree with its own rows.** The Summary states 67
-   verified where the tables give 82, and 3 confirm-directly where the tables
-   give 2 — the Ark Foundation sits in its own two-column table and is not
-   counted as a row. Neither affects the date, and the outstanding count, which
-   the date does rest on, agrees and is asserted.
-2. **Five entries are not fully verified**, named on the page rather than left
+1. **Five entries are not fully verified**, named on the page rather than left
    to be discovered: the Ark Foundation's phone number, Karma Nirvana's helpline
    email and MoneyTalks' weekend hours are being confirmed with the services;
    Thailand's DMH 1323 and Credit Counselling Canada have not yet been checked
@@ -197,6 +192,20 @@ carries that warning for the UK, where it was written, and omitted it for the
 two countries where it had actually been verified.
 
 `node scripts/bysy-resource-register.mjs --scan` re-runs it.
+
+**The summary is derived, not written.** It drifted twice — once claiming 55
+verified and 15 outstanding where the tables gave 71 and 13, and again claiming
+67 verified where they gave 82. Only the outstanding count was asserted at the
+time, so the other two went unnoticed until somebody read them. Every count is
+now checked against the tables, and the counts are row counts: larger than the
+number of services on the page, because some rows record a *finding about* an
+entry rather than an entry itself, and sit beside the row for the service they
+concern.
+
+The Ark Foundation's missing telephone number used to live in a separate
+two-column table, which is why it was not counted among the confirm-directly
+rows. It is now an ordinary row beside the Ark Foundation's own, the same shape
+as "MoneyTalks weekend hours" and "Karma Nirvana email address".
 
 **What the scan proves.** It compares exact strings — every phone number in a
 verified row against the numbers printed on the page, in both directions — and
