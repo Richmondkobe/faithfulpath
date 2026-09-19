@@ -585,6 +585,43 @@ if (!existsSync(REGISTER)) {
     ok(`the register's summary agrees with its tables on all ${Object.keys(summary).length} counts`);
   }
 
+  // Entries against findings. The next review needs to know how many services
+  // are on the page, not how many rows are in the table, and those differ.
+  const entries = rows.filter((r) => r.kind === "entry");
+  const findings = rows.filter((r) => r.kind === "finding");
+
+  const statedEntries = /\*\*(\d+) services\*\*/.exec(readFileSync(REGISTER, "utf8"))?.[1];
+  const statedFindings = /\*\*(\d+) findings\*\*/.exec(readFileSync(REGISTER, "utf8"))?.[1];
+  if (statedEntries !== undefined && Number(statedEntries) !== entries.length) {
+    fail(`the register says ${statedEntries} services are listed, but its rows give ${entries.length}`);
+  } else if (statedFindings !== undefined && Number(statedFindings) !== findings.length) {
+    fail(`the register says ${statedFindings} findings are recorded, but its rows give ${findings.length}`);
+  } else {
+    ok(`the register accounts for ${entries.length} services and ${findings.length} findings about them`);
+  }
+
+  // A finding belongs beside the entry it concerns. One had drifted three rows
+  // from its own — StepChange's coverage correction — which is how a finding
+  // comes to be read as a service, and counted as one.
+  const orphans = [];
+  for (const section of new Set(rows.map((r) => r.section))) {
+    const inSection = rows.filter((r) => r.section === section);
+    // A section with no entries at all is the emergency block: out of scope by
+    // design, so its findings have nothing to sit beneath and that is correct.
+    if (!inSection.some((r) => r.kind === "entry")) continue;
+    inSection.forEach((r, i) => {
+      if (r.kind !== "finding") return;
+      // It may follow its entry, or another finding about the same entry. What
+      // it may not do is open the section, with no entry above it.
+      if (i === 0) orphans.push(r);
+    });
+  }
+  if (orphans.length > 0) {
+    for (const o of orphans) fail(`the finding "${o.name}" does not sit beneath an entry`);
+  } else {
+    ok("every finding sits beneath the entry it concerns");
+  }
+
   const shown = /Last reviewed:\s*(\d{1,2}\s+\w+\s+\d{4})/.exec(readFileSync(SOURCE, "utf8"))?.[1];
   const blocked = unknown.length > 0 || bare.length > 0;
   if (shown && blocked) {

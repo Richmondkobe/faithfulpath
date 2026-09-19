@@ -7,12 +7,20 @@ Evidence for the review date on
 directories, council pages and aggregated helpline lists, which frequently carry
 numbers and hours that are years out of date.
 
+**Rows.** An **entry** is a service a reader could contact. A **finding** records
+a correction, or something that could not be established, about one; it is
+marked `↳` and sits directly beneath the entry it concerns.
+
 **Status key**
 - **Verified** — checked against the operator's own published information on the
   date shown, with what was verified recorded.
 - **Outstanding** — not yet checked against the operator's own source.
 - **Confirm directly** — public sources do not carry the detail; needs an enquiry
   to the service.
+- **Corrected, not verified to standard** — an error was corrected from evidence,
+  without a full check of the entry.
+- **Out of scope by design** — presented on the page as a starting point rather
+  than as verified entries, and the page says so.
 
 ---
 
@@ -83,7 +91,7 @@ numbers and hours that are years out of date.
 | Lagos DSVA (Nigeria) | lagosdsva.org | 18 Sep 2026 | 0800 033 3333, 24/7, WhatsApp 0916 984 8920, statutory basis, any age, Lagos only, services | Verified |
 | DOVVSU (Ghana) | police.gov.gh | 18 Sep 2026 | Police unit status, legal basis, free services, One-Stop Centre — no hotline number published | Verified |
 | The Ark Foundation (Ghana) | arkfoundationghana.org | 18 Sep 2026 | Independent Christian NGO, services, locations, works alongside police without requiring it | Verified |
-| The Ark Foundation telephone number | arkfoundationghana.org | — | Own pages refer to a hotline but do not publish the number | Confirm directly |
+| ↳ The Ark Foundation telephone number | arkfoundationghana.org | — | Own pages refer to a hotline but do not publish the number | Confirm directly |
 | Women Helpline 181 (India) | MWCD; Mission Shakti | 18 Sep 2026 | 181, 24/7, referral function, 34 states/UTs, police and OSC pathways | Verified |
 | One Stop Centres (India) | MWCD | 18 Sep 2026 | 969 operational Mar 2026, services incl. FIR support | Verified |
 | Childline 1098 (India) | childlineindia.org | 18 Sep 2026 | 1098 | Verified |
@@ -100,7 +108,7 @@ numbers and hours that are years out of date.
 | Entry | Source | Checked | Verified | Status |
 |---|---|---|---|---|
 | Karma Nirvana (UK) | karmanirvana.org.uk | 18 Sep 2026 | 0800 5999 247, Mon–Fri 9am–5pm, languages, confidentiality statement, never shares with family, callback | Verified |
-| Karma Nirvana email address | karmanirvana.org.uk | — | support@ used; a council listing gives info@ | Confirm directly |
+| ↳ Karma Nirvana email address | karmanirvana.org.uk | — | support@ used; a council listing gives info@ | Confirm directly |
 | Forced Marriage Unit (UK) | gov.uk/guidance/forced-marriage | 18 Sep 2026 | 020 7008 0151, out-of-hours 020 7008 1500, overseas number, fmu@fcdo.gov.uk, eligibility inside/outside UK, no-mediation guidance, contact card | Verified |
 | My Blue Sky (Australia) | mybluesky.org.au | 18 Sep 2026 | (02) 9514 8115, text 0481 070 844, email, response times, interpreters, 14–18, AFP 131 237 | Verified |
 | Tahirih FMI (US) | preventforcedmarriage.org | 18 Sep 2026 | 571-282-6161, FMI@tahirih.org, Mon–Fri 9am–5:30pm ET, not a 24-hour hotline, eligibility | Verified |
@@ -110,14 +118,14 @@ numbers and hours that are years out of date.
 | Entry | Source | Checked | Verified | Status |
 |---|---|---|---|---|
 | StepChange (UK) | stepchange.org | 18 Sep 2026 | 0800 138 1111, Mon–Fri 8am–8pm, Sat 9am–2pm, BSL video interpreter, WhatsApp is existing-clients only | Verified |
+| ↳ StepChange UK-wide coverage | stepchange.org | 19 Sep 2026 | Correction: covers England, Scotland, Wales and Northern Ireland; approved money adviser in Scotland | Verified |
 | National Debtline (UK) | nationaldebtline.org | 18 Sep 2026 | 0808 808 4000, Mon–Fri 9am–8pm, Sat 9:30am–1pm, webchat, England and Wales only, scam-warning page | Verified |
 | Scotland — free debt provision | mygov.scot; moneyadvicescotland.org.uk | 19 Sep 2026 | Government-funded providers named; CAS Money Talk Team 0800 028 1456; Advice Direct Scotland; postcode tool | Verified |
 | Advice NI | stepchange.org; adviceni.net | 19 Sep 2026 | 0800 0838 018, Mon–Fri 9:30am–5:30pm | Verified |
-| StepChange UK-wide coverage | stepchange.org | 19 Sep 2026 | Correction: covers England, Scotland, Wales and Northern Ireland; approved money adviser in Scotland | Verified |
 | MABS (Ireland) | mabs.ie | 18 Sep 2026 | 0818 07 2000, Mon–Fri 9am–8pm, chat hours, email, 58 offices, confidentiality statement, WhatsApp closed, Traveller MABS | Verified |
 | National Debt Helpline (Australia) | ndh.org.au | 18 Sep 2026 | 1800 007 007, weekdays 9:30am–4:30pm, chat 9am–8pm, TIS 131 450, NRS | Verified |
 | MoneyTalks (NZ) | moneytalks.co.nz | 18 Sep 2026 | 0800 345 123, text 4029, email, chat, FinCap/MSD operator; weekday hours confirmed | Verified |
-| MoneyTalks weekend hours | moneytalks.co.nz | — | Sources conflict: Work and Income gives Sat 9–4 and Sun 10–2; own brochure gives Sat 10–2 only | Confirm directly |
+| ↳ MoneyTalks weekend hours | moneytalks.co.nz | — | Sources conflict: Work and Income gives Sat 9–4 and Sun 10–2; own brochure gives Sat 10–2 only | Confirm directly |
 | NFCC (US) | nfcc.org | 19 Sep 2026 | Agency Finder tool; accredited non-profit member agencies | Verified |
 | Credit Counselling Canada | creditcounsellingcanada.ca | — | — | Outstanding |
 
@@ -150,11 +158,19 @@ Two specific corrections were made from evidence:
 
 | Entry | Source | Checked | Verified | Status |
 |---|---|---|---|---|
-| Canada — 911 not available in Nunavut | sheltersafe.ca | 18 Sep 2026 | Correction applied | Verified |
-| Kenya — 911 is not a national line | Kenyan press and directory reporting | 19 Sep 2026 | 999 and 112 are the national lines; 911 connects on some networks only | Corrected, not verified to standard |
-| All other emergency numbers | — | — | Presented as unverified on the page | Out of scope by design |
+| ↳ Canada — 911 not available in Nunavut | sheltersafe.ca | 18 Sep 2026 | Correction applied | Verified |
+| ↳ Kenya — 911 is not a national line | Kenyan press and directory reporting | 19 Sep 2026 | 999 and 112 are the national lines; 911 connects on some networks only | Corrected, not verified to standard |
+| ↳ All other emergency numbers | — | — | Presented as unverified on the page | Out of scope by design |
 
 ## Summary
+
+**82 services** are listed on the page, with **7 findings** recorded
+about them — a finding is a correction, or a detail that could not be
+established, and sits directly beneath the entry it concerns, marked `↳`. The
+two numbers are what the next review needs: whoever re-checks the page is
+checking 82 services, not 89 rows.
+
+By status, across all 89 rows:
 
 - **Verified:** 82
 - **Outstanding:** 2
@@ -162,19 +178,18 @@ Two specific corrections were made from evidence:
 - **Corrected, not verified to standard:** 1
 - **Out of scope by design:** 1
 
-These are row counts, and `npm run verify:bysy` fails if they drift from the
-tables above. They are larger than the number of services on the page because
-some rows record a *finding about* an entry rather than an entry itself — a
-correction, or a detail that could not be established — and those sit beside the
-row for the service they concern. `node scripts/bysy-resource-register.mjs`
-prints them from the tables.
+`npm run verify:bysy` fails if any of these drift from the tables above.
+`node scripts/bysy-resource-register.mjs` prints them, with a services-and-findings
+count for each section.
 
 Two entries remain outstanding: Thailand's DMH 1323 and Credit Counselling
 Canada. Three details are being confirmed with the services directly: the Ark
 Foundation's telephone number, Karma Nirvana's helpline email address, and
 MoneyTalks' weekend hours. All five are named at the foot of the resources page.
 
-The emergency-numbers block is out of scope by design: establishing each number
-properly needs a government or regulator source, and for most countries only
-press and directory reporting is available. The page presents those numbers as a
-starting point and says so.
+The emergency-numbers block has findings and no entries, which is correct: it is
+out of scope by design. Establishing each number properly needs a government or
+regulator source, and for most countries only press and directory reporting is
+available, so the page presents those numbers as a starting point and says so.
+The two findings there are corrections that were applied — Canada's Nunavut note
+and Kenya's 911.

@@ -193,19 +193,35 @@ two countries where it had actually been verified.
 
 `node scripts/bysy-resource-register.mjs --scan` re-runs it.
 
+**Entries and findings, and why the distinction is in the file.** An **entry**
+is a service a reader could contact. A **finding** records a correction, or
+something that could not be established, about one; it is marked `↳` and sits
+directly beneath the entry it concerns. The register holds **82 services and 7
+findings** — 89 rows.
+
+That is the number the next review needs. Whoever re-checks the page is checking
+82 services, not 89 rows, and a summary that gives only the row count sends them
+looking for seven things that are not there. The counts are derived from the
+marks rather than typed, so they cannot drift from the tables.
+
+The emergency section has findings and no entries, which is correct rather than
+a gap: the block is out of scope by design, so nothing in it is an entry anybody
+verified. Its two findings are the corrections that were applied — Canada's
+Nunavut note and Kenya's 911.
+
 **The summary is derived, not written.** It drifted twice — once claiming 55
 verified and 15 outstanding where the tables gave 71 and 13, and again claiming
 67 verified where they gave 82. Only the outstanding count was asserted at the
 time, so the other two went unnoticed until somebody read them. Every count is
-now checked against the tables, and the counts are row counts: larger than the
-number of services on the page, because some rows record a *finding about* an
-entry rather than an entry itself, and sit beside the row for the service they
-concern.
+now checked against the tables.
 
-The Ark Foundation's missing telephone number used to live in a separate
-two-column table, which is why it was not counted among the confirm-directly
-rows. It is now an ordinary row beside the Ark Foundation's own, the same shape
-as "MoneyTalks weekend hours" and "Karma Nirvana email address".
+Two rows had been misfiled in ways that made the counts wrong rather than the
+work wrong. The Ark Foundation's missing telephone number sat in a separate
+two-column table, so it was not counted among the confirm-directly rows; it is
+now an ordinary finding beside the Ark Foundation's entry. And StepChange's
+coverage correction sat three rows from StepChange, which is how a finding comes
+to be read as a service and counted as one — findings now have to sit beneath
+their entry, and the verifier says so.
 
 **What the scan proves.** It compares exact strings — every phone number in a
 verified row against the numbers printed on the page, in both directions — and

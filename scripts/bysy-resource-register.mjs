@@ -38,6 +38,24 @@ export const STATUSES = {
   "Out of scope by design": "presented as a starting point, not verified entry by entry, and the page says so",
 };
 
+/**
+ * Entries and findings.
+ *
+ * An **entry** is a service a reader could contact. A **finding** records a
+ * correction, or something that could not be established, about one — and sits
+ * directly beneath the entry it concerns, marked with `↳`.
+ *
+ * The distinction is for the next review rather than for this one: somebody
+ * re-checking the page needs to know how many services are on it, not how many
+ * rows are in the table. Those numbers differ, and the row count is the larger
+ * and the less useful of the two.
+ *
+ * The emergency-numbers section has findings and no entries, which is correct:
+ * its block is out of scope by design, so nothing in it is an entry anybody
+ * verified.
+ */
+export const FINDING_MARK = "↳";
+
 /** Every row of the register, with the section it sits under. */
 export function readRegister(markdown = readFileSync(REGISTER, "utf8")) {
   const rows = [];
@@ -52,7 +70,16 @@ export function readRegister(markdown = readFileSync(REGISTER, "utf8")) {
     if (/^\|\s*(Entry|Item)\s*\|/.test(line)) continue;
     const cells = line.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim());
     if (cells.length < 5) continue;
-    rows.push({ section, name: cells[0], source: cells[1], checked: cells[2], verified: cells[3], status: cells[4] });
+    const marked = cells[0].startsWith(FINDING_MARK);
+    rows.push({
+      section,
+      name: marked ? cells[0].slice(FINDING_MARK.length).trim() : cells[0],
+      kind: marked ? "finding" : "entry",
+      source: cells[1],
+      checked: cells[2],
+      verified: cells[3],
+      status: cells[4],
+    });
   }
   return rows;
 }
@@ -83,16 +110,22 @@ if (process.argv[1]?.endsWith("bysy-resource-register.mjs")) {
   const byStatus = {};
   for (const r of rows) byStatus[r.status] = (byStatus[r.status] ?? 0) + 1;
 
-  console.log(`${rows.length} rows in the register\n`);
+  const entries = rows.filter((r) => r.kind === "entry");
+  const findings = rows.filter((r) => r.kind === "finding");
+  console.log(`${entries.length} services listed on the page`);
+  console.log(`${findings.length} findings recorded about them`);
+  console.log(`${rows.length} rows in total\n`);
   for (const [status, n] of Object.entries(byStatus)) {
     const known = status in STATUSES ? "" : "   ← not a recognised status";
     console.log(`  ${String(n).padStart(3)}  ${status}${known}`);
   }
 
-  console.log("\nsections of the resources page:");
+  console.log("\nsections of the resources page (services · findings):");
   for (const s of sections) {
-    const n = rows.filter((r) => r.section === s).length;
-    console.log(`  ${String(n).padStart(3)}  ${s}${n === 0 ? "   ← no register rows" : ""}`);
+    const e = entries.filter((r) => r.section === s).length;
+    const f = findings.filter((r) => r.section === s).length;
+    const note = e + f === 0 ? "   ← no register rows" : "";
+    console.log(`  ${String(e).padStart(3)} · ${String(f).padEnd(2)} ${s}${note}`);
   }
 
   const summary = readSummary();
