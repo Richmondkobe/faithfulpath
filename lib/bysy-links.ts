@@ -49,4 +49,4 @@ export function bysyRouteChooserHref(routeId?: string): string {
  * because the failure it prevents is a course about somebody's safety going
  * live with an unproven §4 item in it.
  */
-export const BYSY_PUBLISHED = false;
+export const BYSY_PUBLISHED = true;

@@ -7,11 +7,14 @@ constraints, and several exist because a learner may be monitored by the person
 the course is about. This file says only what has been done against them and
 what has not.
 
-**Status: built, checklist passed, still unlinked.** Every item on the
-pre-publish checklist has been run and passes (the results are at the foot of
-this file). `BYSY_PUBLISHED` in `lib/bysy-links.ts` is still `false`, so nothing
-links to the course; the members card is built and waiting behind it. Flipping
-that constant is the act of publishing, and it is the owner's to make.
+**Status: live.** `BYSY_PUBLISHED` in `lib/bysy-links.ts` is `true`, published
+19 September 2026, and the members card links to the course. Every item on the
+pre-publish checklist was run and passed first (the results are at the foot of
+this file), and the checklist was re-run against the published build.
+
+Setting that constant back to `false` withdraws the course cleanly: the card
+disappears and nothing links to it, while the pages keep answering for anyone
+already part-way through.
 
 §6 is satisfied: the register is filled from a real check, and
 **Last reviewed: 18 September 2026** is back on the resources page, read from
@@ -141,20 +144,24 @@ the course feel unsafe rather than safety-aware.
 
 ## What remains
 
-1. **Publishing.** Set `BYSY_PUBLISHED = true` in `lib/bysy-links.ts`. The card,
-   the checks and the course are built and waiting on it. This is the only
-   thing left.
-2. **Two register counts disagree with its own rows.** The Summary states 67
+Nothing blocking. Two things worth doing:
+
+1. **Two register counts disagree with its own rows.** The Summary states 67
    verified where the tables give 82, and 3 confirm-directly where the tables
    give 2 — the Ark Foundation sits in its own two-column table and is not
-   counted as a row. Neither affects the date, and the outstanding count (the
-   one the date rests on) does agree and is asserted. Worth reconciling so the
-   summary can be trusted at a glance.
-3. **Five entries are not fully verified**, named on the page rather than left
+   counted as a row. Neither affects the date, and the outstanding count, which
+   the date does rest on, agrees and is asserted.
+2. **Five entries are not fully verified**, named on the page rather than left
    to be discovered: the Ark Foundation's phone number, Karma Nirvana's helpline
    email and MoneyTalks' weekend hours are being confirmed with the services;
    Thailand's DMH 1323 and Credit Counselling Canada have not yet been checked
    against the operator's own source.
+
+Worth a look when the register is next touched: the Kenya correction sat in the
+register without reaching the page, which listed 911 alongside 999 and 112 as
+though it were national. A correction recorded but not applied is the failure
+mode to watch for here — the register is evidence that a check happened, not
+evidence that the page was changed.
 
 ---
 
