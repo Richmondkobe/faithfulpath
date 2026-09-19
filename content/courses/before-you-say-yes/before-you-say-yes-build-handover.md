@@ -358,6 +358,45 @@ for the same reasons. The form is unchanged everywhere else on the site.
 Both guards are asserted separately. One passing is not evidence about the
 other, and it would be easy to remove the one that is not being tested.
 
+## How a member is matched, and one trap left open
+
+All three courses sit behind the same gate: `requireActiveMember` →
+`getMemberByEmail` → `isActive`. There is one lookup, shared by the member area,
+the journal and its download, every certificate, badge and course download, and
+the billing-portal route. Anything true of it is true of all of them.
+
+**Fixed: ILIKE wildcards.** The address was matched case-insensitively, which
+means ILIKE, which means the search term is a *pattern* — and `_` and `%` are
+legal in the local part of an address and are wildcards to Postgres. Signing in
+as `a_b@example.com` returned the member row for `axb@example.com`, with that
+member's status and Stripe customer id. `emailPattern()` escapes them;
+`verify:privacy` fails if an address reaches `ilike` unescaped.
+
+**Left open, deliberately: plus-aliases.** `richmondkobe+test@gmail.com` does
+not match `richmondkobe@gmail.com`. Gmail delivers both to one mailbox, so
+somebody can pay with one form and sign in with the other and be told they have
+no membership — the exact symptom of a payment that appears not to have
+attached, and worth recognising quickly in support.
+
+It is not normalised, and that is a decision rather than an oversight. Stripping
+everything after a `+` is only correct for providers that treat it as an alias.
+Others treat it as an ordinary character, where two addresses differing only
+after the `+` belong to **two different people** — and there the normalisation
+merges their accounts, which is a worse failure than the one it fixes: it hands
+one person another's membership, journal and downloads. A per-provider rule
+would be defensible; a universal one is not, and this is not the kind of thing
+to be approximately right about.
+
+If it is addressed later, the safe shapes are to normalise only for known
+provider domains, or to leave matching alone and resolve it in support by
+looking the payment up in Stripe.
+
+**Not affected.** Sign-in itself goes through Supabase Auth's own exact
+matching, not this lookup. Purchases and downloads match on
+`stripe_session_id`, `download_token` or row id — all `eq`. The admin screens
+match on id; their one `search` parameter is a storage filename filter, not an
+identity lookup.
+
 ## Commands
 
 ```
