@@ -775,6 +775,41 @@ if (!existsSync(exitControl)) {
   }
 }
 
+/* "Help Me Right Now" lists a lesson, what it covers, and sometimes a second
+   lesson — three things per entry, on three lines in the source.
+
+   Markdown collapses a single newline into a space, so all three rendered as
+   one run-on sentence: "Lesson 8 — Boundaries Without Shame What a boundary
+   actually is…". The fix is a hard break at the end of the line, written as a
+   trailing backslash rather than two trailing spaces — two spaces are
+   invisible, and the first formatter to strip trailing whitespace would undo it
+   silently, which is how this would come back. */
+
+const HELP_PAGE = join(ROOT, "06-help-me-right-now.md");
+if (!existsSync(HELP_PAGE)) {
+  fail("06-help-me-right-now.md is missing");
+} else {
+  const helpLines = readFileSync(HELP_PAGE, "utf8").split("\n");
+  const runOn = [];
+  helpLines.forEach((line, i) => {
+    const next = helpLines[i + 1] ?? "";
+    const needsBreak =
+      (line.startsWith("→ **") && next.trim() !== "" && !next.startsWith("*Also useful")) ||
+      (next.startsWith("*Also useful") && line.trim() !== "");
+    if (needsBreak && !line.endsWith("\\")) runOn.push(line.slice(0, 54));
+  });
+
+  if (runOn.length > 0) {
+    for (const line of runOn.slice(0, 4)) {
+      fail(`06-help-me-right-now.md: "${line}…" runs into the line below it — it needs a trailing backslash`);
+    }
+    if (runOn.length > 4) fail(`…and ${runOn.length - 4} more lines that run on`);
+  } else {
+    const breaks = helpLines.filter((l) => l.endsWith("\\")).length;
+    ok(`every entry on Help Me Right Now breaks onto its own line (${breaks} hard breaks)`);
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
