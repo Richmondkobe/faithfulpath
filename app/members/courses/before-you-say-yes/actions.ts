@@ -5,6 +5,19 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { requireActiveMember } from "@/lib/member-gate";
 import { BYSY_SLUG, bysyPageHref } from "@/lib/bysy-links";
 import { findPage, getPages, pageSlug as bysyPageSlug } from "@/lib/bysy-course";
+import { findSimplePage } from "@/lib/bysy-simple";
+
+/**
+ * A slug this course will write under.
+ *
+ * Two layers now share these tables: the detailed pages keep their own slugs
+ * ("lesson-02-equally-yoked") and the simple pages keep theirs ("lesson-02"),
+ * so the two never write to the same row. Anything not in one of those two
+ * lists is not a page of this course and gets nothing.
+ */
+function knownPage(slug: string): boolean {
+  return Boolean(findPage(slug) ?? findSimplePage(slug));
+}
 import { toolIndex } from "@/lib/bysy-progress";
 import { FIELD_LIMIT } from "@/lib/bysy-wording";
 
@@ -35,8 +48,7 @@ export async function saveToolRows(
   part: string,
   rows: string[][]
 ): Promise<void> {
-  const page = findPage(pageSlug);
-  if (!page) throw new Error("Unknown page.");
+  if (!knownPage(pageSlug)) throw new Error("Unknown page.");
   // A part is a letter, optionally numbered: Questions Before Engagement stores
   // one part per section. toolIndex() is the real authority and throws on
   // anything else; this rejects the obvious nonsense before it gets there.
@@ -129,8 +141,7 @@ export async function fetchEarlierAnswers(
  * There is no parameter for whose rows these are. RLS answers that.
  */
 export async function fetchToolRows(pageSlug: string, part: string): Promise<string[][]> {
-  const page = findPage(pageSlug);
-  if (!page) throw new Error("Unknown page.");
+  if (!knownPage(pageSlug)) throw new Error("Unknown page.");
   if (!/^[A-Za-z]\d{0,2}$/.test(part.trim())) throw new Error("Unknown part.");
 
   const { supabase, userId } = await memberClient();

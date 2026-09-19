@@ -15,3 +15,12 @@ export type Choice = {
   caveat: string | null;
 };
 
+
+/** One screen of a "Go deeper" workbook, as the page itself writes it. */
+export type Screen = {
+  n: number;
+  title: string;
+  body: string;
+  prompts: string[];
+  options: string[];
+};

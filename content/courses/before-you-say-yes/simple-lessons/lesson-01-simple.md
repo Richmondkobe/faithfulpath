@@ -229,3 +229,15 @@ If the second sentence is hard to finish, that is not failure. It is important, 
 > **If this brings up hopeless thoughts or thoughts of harming yourself, stop here. Contact an emergency service, crisis line, qualified professional, or trusted person today. Find help where you live →**
 
 *Keep this workbook. You will look at it again in Lesson 18.*
+
+<!--
+IMPLEMENTATION NOTE — remove before publishing. Supplied by the course owner on
+20 September 2026, this page having arrived without one. No scoring, totals or
+counts anywhere; Screen 7 ("What your answers may show") is a reading guide, not
+a result. All workbook screens are ordinary private screens and may save, except
+that nothing may be summarised or reflected automatically. Screen 11 (Private
+journal) keeps its crisis box visible on the screen itself, never behind an
+expander. The "Need support?" crisis wording on the lesson page stays visible,
+not collapsed. "Find help where you live" links to 05-finding-help.md. The
+workbook is referred back to in Lesson 18 through the "View my earlier answers"
+control only. -->

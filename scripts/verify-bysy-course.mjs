@@ -810,6 +810,78 @@ if (!existsSync(HELP_PAGE)) {
   }
 }
 
+/* The simple layer.
+
+   Two things about it can fail silently. Its 32 pages are declared in code, so
+   a renamed or missing file shows as a 404 nobody visits rather than an error.
+   And each page's scripts are written for whoever records them — they open
+   with "About seven minutes. Read slowly and naturally…" and carry "[Pause for
+   five seconds.]" — which are instructions to a narrator. The first of those
+   was on all 32 pages' transcripts before anyone noticed. */
+
+const SIMPLE_DIR = join(ROOT, "simple-lessons");
+const simpleLib = readFileSync(join("lib", "bysy-simple.ts"), "utf8");
+const declaredSimple = [...simpleLib.matchAll(/file:\s*"([^"]+\.md)"/g)].map((m) => m[1]);
+
+if (declaredSimple.length !== 32) {
+  fail(`lib/bysy-simple.ts declares ${declaredSimple.length} simple pages, expected 32`);
+} else {
+  const absent = declaredSimple.filter((f) => !existsSync(join(SIMPLE_DIR, f)));
+  if (absent.length > 0) {
+    for (const f of absent.slice(0, 4)) fail(`the simple layer declares ${f}, which is not on disk`);
+  } else {
+    ok("all 32 simple pages are declared and present");
+  }
+}
+
+let leaks = 0;
+for (const f of declaredSimple) {
+  const path = join(SIMPLE_DIR, f);
+  if (!existsSync(path)) continue;
+  const raw = readFileSync(path, "utf8");
+  // What readSimplePage() and transcriptOf() between them must remove.
+  const stripped = raw
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/^\s*\*\(About[^)]*\)\*\s*$/gm, "")
+    .replace(/\*\[[^\]]*\]\*/g, "");
+  if (/IMPLEMENTATION NOTE/.test(stripped)) {
+    leaks++;
+    fail(`${f}: an implementation note survives stripping — it would reach a reader`);
+  }
+  if (/place this inside the closed|Pause for five seconds/.test(stripped)) {
+    leaks++;
+    fail(`${f}: a recording direction survives stripping — it would be read as spoken words`);
+  }
+}
+if (leaks === 0) ok("no implementation note or recording direction survives into a simple page");
+
+const simpleLinks = readFileSync(join("lib", "bysy-simple-links.ts"), "utf8");
+const simplePublished = /export const BYSY_SIMPLE_PUBLISHED = (true|false)/.exec(simpleLinks)?.[1];
+if (!simplePublished) {
+  fail("lib/bysy-simple-links.ts no longer declares BYSY_SIMPLE_PUBLISHED");
+} else {
+  let ways = 0;
+  for (const f of codeFiles) {
+    if (/bysy-simple/i.test(f) || f.includes(join("simple", "[slug]"))) continue;
+    const bare = readFileSync(f, "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/^\s*\/\/.*$/gm, "")
+      .replace(/^\s*import[\s\S]*?from\s*["'][^"']*["'];?$/gm, "");
+    if (!/SIMPLE_BASE|simpleHref\(/.test(bare)) continue;
+    if (!/BYSY_SIMPLE_PUBLISHED/.test(bare)) {
+      ways++;
+      fail(`${f} links to the simple layer without going through BYSY_SIMPLE_PUBLISHED`);
+    }
+  }
+  if (ways === 0) {
+    ok(
+      simplePublished === "true"
+        ? "the simple layer is published, and every way in goes through BYSY_SIMPLE_PUBLISHED"
+        : "the simple layer is unlinked: BYSY_SIMPLE_PUBLISHED is false and nothing links to it"
+    );
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
