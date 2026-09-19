@@ -197,6 +197,29 @@ if (status.progress_wording !== "x of 30 days visited") {
 }
 ok("the journey still has no streaks, no overdue, no catch-up and no scoring");
 
+/* Membership lookup: an email is matched case-insensitively, which means
+   ILIKE, which means the search term is a pattern — and `_` and `%` are legal
+   in the local part of an address and are wildcards to Postgres. Someone
+   signing in as `a_b@example.com` was handed the membership belonging to
+   `axb@example.com`, demonstrated against the real table. The escaping is the
+   fix; this is what stops it being undone by someone reading `emailPattern` as
+   needless ceremony. */
+
+const members = readFileSync(join("lib", "members.ts"), "utf8");
+const bareIlike = [...members.matchAll(/\.ilike\(\s*"email"\s*,\s*([^)]+)\)/g)]
+  .map((m) => m[1].trim())
+  .filter((arg) => !arg.startsWith("emailPattern("));
+
+if (bareIlike.length > 0) {
+  for (const arg of bareIlike) {
+    fail(`lib/members.ts matches an email with ilike on ${arg} — _ and % in an address are wildcards, and would match another member's row`);
+  }
+} else if (!/function emailPattern/.test(members)) {
+  fail("lib/members.ts has lost emailPattern — email lookups would match wildcards again");
+} else {
+  ok("email lookups escape ILIKE wildcards before matching");
+}
+
 console.log(
   failures === 0
     ? "\nWhen Your Mind Won't Rest: privacy and non-gating assertions hold.\n"

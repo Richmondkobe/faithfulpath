@@ -42,11 +42,30 @@ export function membershipPriceId(): string {
   return price;
 }
 
+/**
+ * An email made safe to use as an ILIKE pattern.
+ *
+ * Addresses are matched case-insensitively, which means ILIKE, which means the
+ * search term is a *pattern* — and `_` and `%` are legal in the local part of an
+ * address and are wildcards to Postgres. Someone signing in as
+ * `a_b@example.com` therefore matched a member row for `axb@example.com` and was
+ * handed that member's active subscription. Demonstrated against the real table
+ * before this was written, and again after, with the row it used to reach.
+ *
+ * Escaping the wildcards keeps the case-insensitivity and removes the pattern.
+ * `eq` on a lowercased address would also work, but only while every stored
+ * address is already lowercase, and that is not something this function can
+ * check.
+ */
+function emailPattern(email: string): string {
+  return email.trim().replace(/([\\%_])/g, "\\$1");
+}
+
 export async function getMemberByEmail(email: string): Promise<Member | null> {
   const { data, error } = await supabaseAdmin
     .from("members")
     .select("*")
-    .ilike("email", email.trim())
+    .ilike("email", emailPattern(email))
     .maybeSingle();
 
   if (error) throw new Error(`Could not load member: ${error.message}`);
@@ -105,7 +124,7 @@ export async function syncMemberFromSubscription(
   const existing =
     byCustomer ??
     (email
-      ? (await supabaseAdmin.from("members").select("id").ilike("email", email).maybeSingle()).data
+      ? (await supabaseAdmin.from("members").select("id").ilike("email", emailPattern(email)).maybeSingle()).data
       : null);
 
   if (existing) {
