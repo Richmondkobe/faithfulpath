@@ -104,10 +104,27 @@ from it.
 **Safety chrome (§3).** Support link, standing support line and the exit control
 are in the layout, so a page added later cannot be the one that lacks them.
 Verified present on all 35. The exit control leaves in the same tab to
-`https://www.bbc.co.uk/weather` via `location.replace`, records nothing at all —
-no analytics, no progress write, no server call — and says underneath that it
-does not erase browsing history and that someone monitoring the device may still
-see it.
+`https://www.bbc.co.uk/weather` via `location.replace`, and records nothing at
+all — no analytics, no progress write, no server call.
+
+It is a small pill in the corner, not a panel. It began as a bordered block with
+a full-width black button and two permanent lines about being monitored, and
+that was wrong twice over: on a phone it covered the content it was fixed above
+— on the course home, the question the page opens with and the first way in —
+and it was the most conspicuous thing on the screen. A block reading "leave this
+page" and "someone who monitors this device" tells anyone glancing over a
+reader's shoulder exactly what kind of page they are on, which is the situation
+the control exists for. Discreet is safer than prominent here, as long as it
+stays easy to find; the phrase on it is the one the course text uses when it
+points here.
+
+The note is unchanged and still true. It appears on hover, on keyboard focus, or
+on tapping the quiet ⓘ beside the button, and it is in the document at all times
+for screen readers — hidden visually rather than conditionally rendered, so
+nobody is told less about what the button does than anybody else. Leaving stays
+one action: the worst moment to add a tap is the moment somebody needs this. The
+verifier fails if the note becomes conditional, if `location.replace` goes, or
+if a confirmation step appears.
 
 **Support page (§6).** Its guidance is course text in the file; its eight
 country sections and its review date render from

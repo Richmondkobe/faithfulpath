@@ -687,6 +687,49 @@ if (!existsSync(rootLayout)) {
   }
 }
 
+/* §3's exit control, and the two ways this version of it can quietly fail.
+
+   It is a small pill now rather than a panel, because the panel covered the
+   content on a phone and because a block reading "leave this page" and
+   "someone who monitors this device" tells anyone glancing over a reader's
+   shoulder what kind of page they are on. The note it used to display
+   permanently now appears on hover, focus or tap.
+
+   Which introduces a regression nobody would see: render the note only when it
+   is open and it leaves the accessibility tree too, so a screen-reader user is
+   told less about what the button does than a sighted one — on the one control
+   where being wrong about what it does is dangerous. The note must be in the
+   document always, hidden visually.
+
+   And leaving must stay one action. A confirmation step, or a note that has to
+   be dismissed first, puts a tap between somebody and the reason they reached
+   for this. */
+
+const exitControl = join("components", "bysy", "ExitControl.tsx");
+if (!existsSync(exitControl)) {
+  fail(`${exitControl} is missing — §3 requires a persistent exit control`);
+} else {
+  const e = readFileSync(exitControl, "utf8")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+
+  if (!/sr-only/.test(e)) {
+    fail(`${exitControl} no longer hides its note visually — either it is permanently displayed again, or it has left the accessibility tree`);
+  } else if (/\{\s*show\w*\s*&&[\s\S]{0,200}\{NOTE\}/.test(e)) {
+    fail(`${exitControl} renders its note conditionally — a screen reader would not reach it`);
+  } else {
+    ok("the exit control's note is always in the document, shown on request");
+  }
+
+  if (!/location\.replace/.test(e)) {
+    fail(`${exitControl} no longer leaves via location.replace — the course would stay in the Back history`);
+  } else if (/confirm\(|window\.confirm|"Are you sure/.test(e)) {
+    fail(`${exitControl} asks for confirmation — leaving must stay one action`);
+  } else {
+    ok("leaving is one action, and the course does not become the Back target");
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

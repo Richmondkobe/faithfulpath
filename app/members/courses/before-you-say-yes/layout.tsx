@@ -33,7 +33,7 @@ export default function BysyLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       {/* Room at the foot so the exit control never sits over the last line. */}
-      <div className="pb-32">{children}</div>
+      <div className="pb-20">{children}</div>
 
       <ExitControl />
     </>
