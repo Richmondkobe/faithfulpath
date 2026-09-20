@@ -85,7 +85,13 @@ export default async function SimpleLessonPage({ params }: Props) {
   const next = SIMPLE_PAGES[at + 1] ?? null;
   const md = (source: string) => <MindMarkdown source={source} />;
   const renderedScreens: Record<number, React.ReactNode> = {};
-  for (const screen of screens) renderedScreens[screen.n] = md(screen.body);
+  const renderedAfter: Record<number, React.ReactNode> = {};
+  const renderedInstructions: Record<number, React.ReactNode> = {};
+  for (const screen of screens) {
+    renderedScreens[screen.n] = md(screen.body);
+    if (screen.after) renderedAfter[screen.n] = md(screen.after);
+    if (screen.instructions) renderedInstructions[screen.n] = md(screen.instructions);
+  }
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-10 sm:pt-14">
@@ -115,7 +121,45 @@ export default async function SimpleLessonPage({ params }: Props) {
           );
         }
 
-        // Replaced by real links at the foot of the page.
+        // "What would you like to do next?" becomes the real controls, in the
+        // place the page puts it — which §3 has before "Need support?".
+        if (key === "what would you like to do next?") {
+          return (
+            <nav key={i} className="mt-10 flex flex-wrap items-center gap-5">
+              {next && (
+                <Link
+                  href={simpleHref(next.slug)}
+                  className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                >
+                  Continue to {next.title}
+                </Link>
+              )}
+              <Link
+                href={BYSY_BASE}
+                className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              >
+                Stop here for today
+              </Link>
+              {screens.length > 0 && (
+                <a
+                  href="#go-deeper"
+                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                >
+                  Open the workbook
+                </a>
+              )}
+              {page.chapter && (
+                <Link
+                  href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
+                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                >
+                  Read the book chapter
+                </Link>
+              )}
+            </nav>
+          );
+        }
+
         if (HANDLED_HEADINGS.has(key)) return null;
 
         // The preamble has no heading of its own: §3's safety notice, which
@@ -128,7 +172,25 @@ export default async function SimpleLessonPage({ params }: Props) {
           );
         }
 
-        const quiet = /^(today's question|one truth to remember|key scripture|need support\?)$/.test(key);
+        // The lesson's one sentence to carry away, set apart on every page. It
+        // was a shaded box on Lesson 2 and plain text on Lesson 1 because the
+        // styling followed the template's own list of headings rather than the
+        // page's.
+        if (key === "one truth to remember") {
+          return (
+            <section
+              key={i}
+              className="mt-10 rounded-sm border-l-2 border-[#8B5E34] bg-[#F7F1E6] px-5 py-4"
+            >
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                {heading}
+              </h2>
+              {md(section)}
+            </section>
+          );
+        }
+
+        const quiet = /^(today's question|key scripture|need support\?)$/.test(key);
         return (
           <section key={i} className={quiet ? "mt-8" : "mt-10"}>
             {quiet ? (
@@ -149,12 +211,16 @@ export default async function SimpleLessonPage({ params }: Props) {
       })}
 
       {screens.length > 0 && (
+        <div id="go-deeper">
         <Workbook
           pageSlug={slug}
           screens={screens}
           saved={saved}
           rendered={renderedScreens}
+          renderedAfter={renderedAfter}
+          renderedInstructions={renderedInstructions}
         />
+        </div>
       )}
 
       <p className="mt-8">
@@ -166,30 +232,6 @@ export default async function SimpleLessonPage({ params }: Props) {
         </Link>
       </p>
 
-      <nav className="mt-12 flex flex-wrap items-center gap-5 border-t border-[#E5D9C7] pt-8">
-        {next && (
-          <Link
-            href={simpleHref(next.slug)}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
-          >
-            Continue to {next.title}
-          </Link>
-        )}
-        <Link
-          href={BYSY_BASE}
-          className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-        >
-          Stop here for today
-        </Link>
-        {page.chapter && (
-          <Link
-            href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-          >
-            Read the book chapter
-          </Link>
-        )}
-      </nav>
     </main>
   );
 }

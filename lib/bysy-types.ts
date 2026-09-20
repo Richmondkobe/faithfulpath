@@ -22,7 +22,31 @@ export type Screen = {
   title: string;
   /** "Part 2 — My patterns", when the workbook groups its screens. */
   group?: string | null;
+  /** Prose above the questions. */
   body: string;
+  /**
+   * Prose below the questions, kept separate because it belongs there.
+   * Lesson 1's Screen 11 ends with a crisis notice and "Keep this workbook";
+   * rendering all the prose first put both of those above the two sentences
+   * they are about.
+   */
+  after?: string;
+  /** "How to answer", shown once above the first screen that uses it. */
+  instructions?: string;
   prompts: string[];
   options: string[];
+  /**
+   * What the learner does on this screen.
+   *
+   * `questions` — one answer per numbered statement.
+   * `tick` — a checkbox list written as "☐" bullets; the screen's prose says
+   *   whether one or several may be chosen.
+   * `write` — one free-text box, for a screen that asks a question without
+   *   numbering it.
+   * `read` — nothing to fill in. A reading guide is not a form, and giving it
+   *   an empty box invites an answer to a question nobody asked.
+   */
+  kind: "questions" | "tick" | "write" | "read";
+  /** The "☐" items, for a tick screen. */
+  ticks: string[];
 };

@@ -35,6 +35,8 @@ export default function Workbook({
   nonSaved = [],
   readOnly = [],
   rendered,
+  renderedAfter,
+  renderedInstructions,
 }: {
   pageSlug: string;
   screens: Screen[];
@@ -50,14 +52,18 @@ export default function Workbook({
    * markdown rendering belongs on the server anyway.
    */
   rendered: Record<number, React.ReactNode>;
+  /** Prose that follows the questions, rendered after the answer boxes. */
+  renderedAfter: Record<number, React.ReactNode>;
+  /** "How to answer", above the first screen it applies to. */
+  renderedInstructions: Record<number, React.ReactNode>;
 }) {
   const [open, setOpen] = useState(false);
   const [at, setAt] = useState(0);
   const [rows, setRows] = useState<Record<number, string[][]>>(() => {
     const start: Record<number, string[][]> = {};
     for (const s of screens) {
-      const prompts = s.prompts.length > 0 ? s.prompts : [""];
-      start[s.n] = prompts.map((_, i) => saved[s.n]?.[i] ?? ["", ""]);
+      const slots = s.kind === "tick" ? s.ticks : s.prompts.length > 0 ? s.prompts : [""];
+      start[s.n] = slots.map((_, i) => saved[s.n]?.[i] ?? ["", ""]);
     }
     return start;
   });
@@ -133,6 +139,8 @@ export default function Workbook({
           {screen.title}
         </h4>
 
+        {screen.instructions && renderedInstructions[screen.n]}
+
         {rendered[screen.n]}
 
         {isNonSaved && (
@@ -142,7 +150,25 @@ export default function Workbook({
           </p>
         )}
 
-        {!isReadOnly && (
+        {!isReadOnly && screen.kind === "tick" && (
+          <ul className="mt-5 space-y-2">
+            {screen.ticks.map((item, i) => (
+              <li key={item}>
+                <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]">
+                  <input
+                    type="checkbox"
+                    checked={(rows[screen.n]?.[i]?.[0] ?? "") === item}
+                    onChange={(e) => setCell(i, 0, e.target.checked ? item : "")}
+                    className="mt-1 h-4 w-4 accent-[#8B5E34]"
+                  />
+                  <span>{item}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {!isReadOnly && screen.kind !== "read" && screen.kind !== "tick" && (
           <div className="mt-5 space-y-4">
             {prompts.map((prompt, i) => (
               <div key={i} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
@@ -185,6 +211,8 @@ export default function Workbook({
           </div>
         )}
 
+        {renderedAfter[screen.n]}
+
         <div className="mt-5 flex flex-wrap items-center gap-4">
           <button
             type="button"
@@ -195,7 +223,7 @@ export default function Workbook({
             Back
           </button>
 
-          {!isReadOnly && !isNonSaved && (
+          {!isReadOnly && !isNonSaved && screen.kind !== "read" && (
             <button
               type="button"
               disabled={pending}

@@ -136,6 +136,10 @@ import type { Screen } from "@/lib/bysy-types";
 export type { Screen };
 
 const OPTION_LINE = /Answer each with\s+\*\*([^*]+)\*\*/i;
+// "1 = Not true · 2 = A little true · 3 = Partly true …" — Lesson 1's shape.
+const OPTION_SCALE = /\d+\s*=\s*([^·\n]+)/g;
+/** A screen without numbered statements still asks for writing when it says so. */
+const WRITING_CUE = /\bwrite\b|\bfinish\b|\bname\b|\blist\b|\bdescribe\b|\?\s*$/im;
 const OPTION_BULLET = /^-\s+\*\*([^*]+)\*\*\s*(?:—|-|–)/;
 
 /**
@@ -153,11 +157,15 @@ const OPTION_BULLET = /^-\s+\*\*([^*]+)\*\*\s*(?:—|-|–)/;
  * rather than numbered; dropping only the numbered line would leave the tail of
  * each statement stranded in the prose.
  */
-function withoutNumberedList(body: string): string {
-  const out: string[] = [];
+function splitAroundList(body: string): { before: string; after: string } {
+  const before: string[] = [];
+  const after: string[] = [];
+  let seenList = false;
   let inItem = false;
+
   for (const line of body.split("\n")) {
     if (/^\d+\.\s+/.test(line)) {
+      seenList = true;
       inItem = true;
       continue;
     }
@@ -167,9 +175,11 @@ function withoutNumberedList(body: string): string {
       continue;
     }
     inItem = false;
-    out.push(line);
+    (seenList ? after : before).push(line);
   }
-  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+
+  const tidy = (lines: string[]) => lines.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+  return { before: tidy(before), after: tidy(after) };
 }
 
 /**
@@ -217,6 +227,7 @@ export function parseScreens(workbook: string): Screen[] {
   // "## Part 2 — My patterns" groups the screens under it. Kept so a learner
   // on Screen 7 can see which part of the workbook they are in.
   let group: string | null = null;
+  let instructionsShown = false;
   let current: Screen | null = null;
 
   const push = () => {
@@ -224,9 +235,37 @@ export function parseScreens(workbook: string): Screen[] {
       const body = current.body.trim();
       current.prompts = [...body.matchAll(/^\d+\.\s+(.*)$/gm)].map((m) => m[1].trim());
       // Each prompt becomes its own labelled answer box, so leaving the
-      // numbered list in the prose printed every statement twice — once to
-      // read and again above the box for it.
-      current.body = current.prompts.length > 0 ? withoutNumberedList(body) : body;
+      // numbered list in the prose printed every statement twice. What is
+      // above the list stays above the boxes and what is below stays below —
+      // a note written after the questions is about them.
+      current.ticks = [...body.matchAll(/^\s*[*-]\s*☐\s*(.+)$/gm)].map((m) => m[1].trim());
+
+      if (current.prompts.length > 0) {
+        const { before, after } = splitAroundList(body);
+        current.body = before;
+        current.after = after;
+        current.kind = "questions";
+      } else if (current.ticks.length > 0) {
+        current.body = body;
+        current.after = "";
+        current.kind = "tick";
+      } else {
+        current.body = body;
+        current.after = "";
+        // A screen with no numbered statements and no tick list either asks
+        // the learner to write something or it does not. "This is not a
+        // result. It is a way to read your own answers" is not a question, and
+        // a box under it asks one that was never put.
+        // Read the screen's own instruction, not its examples. Lesson 1's
+        // Screen 7 is a reading guide whose bullets include "Write it down" as
+        // advice about what to do later; taking that as a cue put a box on the
+        // one screen its rules say is not a result.
+        const instruction = body
+          .split("\n")
+          .filter((l) => !/^\s*[*->]/.test(l))
+          .join("\n");
+        current.kind = WRITING_CUE.test(instruction) ? "write" : "read";
+      }
       screens.push(current);
     }
     current = null;
@@ -251,20 +290,37 @@ export function parseScreens(workbook: string): Screen[] {
         const inRange =
           pendingRange === null || (n >= pendingRange[0] && n <= pendingRange[1]);
         const inherited = inRange ? pending.join("\n") : "";
+        const scale = [...inherited.matchAll(OPTION_SCALE)].map((m) => m[1].trim());
         const options = [
           ...(OPTION_LINE.exec(inherited)?.[1] ?? "").split("/").map((o) => o.trim()),
           ...inherited
             .split("\n")
             .map((l) => OPTION_BULLET.exec(l.trim())?.[1]?.trim())
             .filter((o): o is string => Boolean(o)),
+          ...scale,
         ].filter(Boolean);
-        current = { n, title: screen[2].trim(), group, body: "", prompts: [], options };
+        // Shown once, above the first screen the instructions apply to.
+        const instructions = inRange && !instructionsShown ? pending.join("\n").trim() : "";
+        if (instructions) instructionsShown = true;
+        current = {
+          n,
+          title: screen[2].trim(),
+          group,
+          body: "",
+          after: "",
+          instructions,
+          prompts: [],
+          options,
+          kind: "read",
+          ticks: [],
+        };
         continue;
       }
       // An instruction block: it applies to the screens it names, or to those
       // that follow when it names none.
       push();
       pending = [];
+      instructionsShown = false;
       const range = /Screens?\s+(\d+)\s*(?:–|—|-|to)\s*(\d+)/i.exec(title);
       pendingRange = range ? [Number(range[1]), Number(range[2])] : null;
       continue;
@@ -273,6 +329,16 @@ export function parseScreens(workbook: string): Screen[] {
     else pending.push(line);
   }
   push();
+
+  // Options inherited from an unranged instruction block run until a screen
+  // stops being a question screen. Lesson 1's "1 = Not true … 5 = Very true"
+  // covers Screens 1 to 6; Screen 7 is a reading guide, and the scale has
+  // nothing to do with it or with the journal on Screen 11.
+  let carrying = true;
+  for (const s of screens) {
+    if (s.kind !== "questions") carrying = false;
+    if (!carrying) s.options = [];
+  }
 
   // A screen may also name its own options inline.
   for (const s of screens) {
