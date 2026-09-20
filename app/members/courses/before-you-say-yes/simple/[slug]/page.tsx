@@ -398,15 +398,6 @@ export default async function SimpleLessonPage({ params }: Props) {
         />
       )}
 
-      <p className="mt-8">
-        <Link
-          href={bysySupportHref()}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-        >
-          Finding Help Where You Live
-        </Link>
-      </p>
-
     </main>
   );
 }
