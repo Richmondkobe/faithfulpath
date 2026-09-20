@@ -146,6 +146,66 @@ const OPTION_BULLET = /^-\s+\*\*([^*]+)\*\*\s*(?:—|-|–)/;
  * 3–8" carries the four choices those six screens use, and the screens
  * themselves never repeat them.
  */
+/**
+ * The screen's prose with its numbered list removed, wrapped lines included.
+ *
+ * A numbered item may run over several lines, and the continuation is indented
+ * rather than numbered; dropping only the numbered line would leave the tail of
+ * each statement stranded in the prose.
+ */
+function withoutNumberedList(body: string): string {
+  const out: string[] = [];
+  let inItem = false;
+  for (const line of body.split("\n")) {
+    if (/^\d+\.\s+/.test(line)) {
+      inItem = true;
+      continue;
+    }
+    if (inItem && /^\s+\S/.test(line)) continue;
+    if (inItem && line.trim() === "") {
+      inItem = false;
+      continue;
+    }
+    inItem = false;
+    out.push(line);
+  }
+  return out.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+/**
+ * The workbook, from its heading to the end of the page.
+ *
+ * It cannot be taken from sectionsOf(): most workbooks are grouped into
+ * "## Part 1 — Who I am" and the like, and a section map that splits on `##`
+ * ends the workbook at the first of them. Eighteen of the twenty lessons lost
+ * every screen that way, silently — the page rendered, with no workbook.
+ */
+export function workbookOf(markdown: string): string | null {
+  const lines = markdown.split("\n");
+
+  let start = lines.findIndex((l) => /^#\s+(?!#)\s*Go deeper/i.test(l));
+  if (start !== -1) {
+    const rest = lines.slice(start + 1);
+    const end = rest.findIndex((l) => /^#\s+(?!#)/.test(l));
+    return (end === -1 ? rest : rest.slice(0, end)).join("\n").trim() || null;
+  }
+
+  // Questions Before Engagement has no "Go deeper" heading: the questions are
+  // the page rather than an optional extra. Its screens begin under "How to
+  // answer", which carries the choices they all use, so the workbook starts
+  // there — at the last `##` heading before the first screen that is still an
+  // instruction rather than a group of questions.
+  const firstScreen = lines.findIndex((l) => /^###\s+Screen\s+\d+/.test(l));
+  if (firstScreen === -1) return null;
+  for (let i = firstScreen; i >= 0; i--) {
+    const h2 = /^##\s+(?!#)(.*)$/.exec(lines[i]);
+    if (!h2) continue;
+    if (/how to answer/i.test(h2[1])) { start = i; break; }
+    if (start === -1) start = i;
+  }
+  return start === -1 ? null : lines.slice(start).join("\n").trim() || null;
+}
+
 export function parseScreens(workbook: string): Screen[] {
   const screens: Screen[] = [];
   let pending: string[] = [];
@@ -154,18 +214,33 @@ export function parseScreens(workbook: string): Screen[] {
   // guide, a question to choose, a list of mistakes and a journal — none of
   // them answerable with "Seen" or "Not talked about".
   let pendingRange: [number, number] | null = null;
+  // "## Part 2 — My patterns" groups the screens under it. Kept so a learner
+  // on Screen 7 can see which part of the workbook they are in.
+  let group: string | null = null;
   let current: Screen | null = null;
 
   const push = () => {
     if (current) {
-      current.body = current.body.trim();
-      current.prompts = [...current.body.matchAll(/^\d+\.\s+(.*)$/gm)].map((m) => m[1].trim());
+      const body = current.body.trim();
+      current.prompts = [...body.matchAll(/^\d+\.\s+(.*)$/gm)].map((m) => m[1].trim());
+      // Each prompt becomes its own labelled answer box, so leaving the
+      // numbered list in the prose printed every statement twice — once to
+      // read and again above the box for it.
+      current.body = current.prompts.length > 0 ? withoutNumberedList(body) : body;
       screens.push(current);
     }
     current = null;
   };
 
   for (const line of workbook.split("\n")) {
+    const h2 = /^##\s+(?!#)(.*)$/.exec(line);
+    if (h2) {
+      push();
+      group = h2[1].trim();
+      pending = [];
+      pendingRange = null;
+      continue;
+    }
     const h3 = /^###\s+(.*)$/.exec(line);
     if (h3) {
       const title = h3[1].trim();
@@ -183,7 +258,7 @@ export function parseScreens(workbook: string): Screen[] {
             .map((l) => OPTION_BULLET.exec(l.trim())?.[1]?.trim())
             .filter((o): o is string => Boolean(o)),
         ].filter(Boolean);
-        current = { n, title: screen[2].trim(), body: "", prompts: [], options };
+        current = { n, title: screen[2].trim(), group, body: "", prompts: [], options };
         continue;
       }
       // An instruction block: it applies to the screens it names, or to those
@@ -241,3 +316,81 @@ export function lengthOf(listen: string | null, transcript: string | null): stri
   const fromScript = /\*\(About\s+([a-z0-9]+\s+minutes?)/i.exec(transcript ?? "")?.[1];
   return fromScript ? `about ${fromScript}` : null;
 }
+
+/**
+ * The simple page a reader came from, for a detailed page opened as a book
+ * chapter.
+ *
+ * Validated against the page list rather than trusted: it arrives in the URL,
+ * and it decides what a heading says and where a link goes.
+ */
+export function chapterReferrer(from: string | undefined): SimplePage | null {
+  if (!from) return null;
+  return SIMPLE_PAGES.find((p) => p.slug === from) ?? null;
+}
+
+/** "Lesson 2", from a simple page — what a book chapter is a chapter *for*. */
+export function lessonLabel(page: SimplePage): string {
+  const n = /^lesson-(\d+)$/.exec(page.slug)?.[1];
+  return n ? `Lesson ${Number(n)}` : page.title;
+}
+
+/** Straight quotes, lowercase — for comparing headings that differ only in typography. */
+export function normaliseHeading(heading: string): string {
+  return heading
+    .replace(/[\u2018\u2019]/g, "'")
+    .replace(/[\u201C\u201D]/g, '"')
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * The page's sections above the workbook, in the page's own order.
+ *
+ * Rendering only the headings a template knows about drops everything it does
+ * not — which is how "Before you continue", the safety notice §3 puts at the
+ * top of Lessons 6, 9, 10, 13 and 19, rendered nowhere at all. The files
+ * already follow §3's order, so the page's order is the right one; what the
+ * template does is move the transcript under the Listen control and replace
+ * two sections with real controls.
+ */
+export function pageSections(markdown: string): { heading: string; body: string }[] {
+  const lines = markdown.split("\n");
+  const workbookAt = lines.findIndex(
+    (l) => /^#\s+(?!#)\s*Go deeper/i.test(l) || /^##\s+(?!#)\s*How to answer/i.test(l)
+  );
+  const above = (workbookAt === -1 ? lines : lines.slice(0, workbookAt)).join("\n");
+
+  const out: { heading: string; body: string }[] = [];
+  // Starts as "" rather than null so the preamble is a section in its own
+  // right. §3's "Before you begin" notice sits above the first heading on
+  // Lessons 6, 9, 10, 13 and 19, as does Lesson 20's crisis notice and Start
+  // Here 4's — seven pages whose safety notice rendered nowhere while this
+  // waited for a heading before it would keep anything.
+  let heading: string | null = "";
+  let body: string[] = [];
+  const flush = () => {
+    if (heading !== null) out.push({ heading, body: body.join("\n").trim() });
+    body = [];
+  };
+  for (const line of above.split("\n")) {
+    const h2 = /^##\s+(?!#)(.*)$/.exec(line);
+    if (h2) {
+      flush();
+      heading = h2[1].trim();
+      continue;
+    }
+    if (/^#\s+(?!#)/.test(line)) continue; // the page title
+    body.push(line);
+  }
+  flush();
+  return out.filter((s) => s.body || s.heading);
+}
+
+/** Headings the template replaces with a control rather than rendering. */
+export const HANDLED_HEADINGS = new Set([
+  "listen",
+  "listen to the lesson",
+  "audio script and transcript",
+  "what would you like to do next?",
+]);

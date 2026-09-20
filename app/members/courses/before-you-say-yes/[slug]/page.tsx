@@ -9,6 +9,8 @@ import {
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
+import { chapterReferrer, lessonLabel } from "@/lib/bysy-simple";
+import { simpleHref } from "@/lib/bysy-simple-links";
 import { getCourseComplete } from "../actions";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextStepOptions from "@/components/bysy/NextStepOptions";
@@ -26,7 +28,10 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<{ from?: string }>;
+};
 
 export function generateStaticParams() {
   return getPages().map((p) => ({ slug: pageSlug(p) }));
@@ -38,10 +43,14 @@ export function generateStaticParams() {
  * No page is locked by a route. A route is a starting point: it decides what
  * position the progress line reports, never what may be opened.
  */
-export default async function BysyPage({ params }: Props) {
+export default async function BysyPage({ params, searchParams }: Props) {
   await requireActiveMember();
 
   const { slug } = await params;
+  // Arrived from a simple lesson as its "Read the book chapter"? Then this page
+  // is a chapter, not page 9 of 35 — a reader following a link from Lesson 2
+  // should not be told they are somewhere else in a course they are not on.
+  const cameFrom = chapterReferrer((await searchParams).from);
   const page = findPage(slug);
   if (!page) notFound();
 
@@ -320,17 +329,26 @@ export default async function BysyPage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-10 sm:pt-14">
-      <Link href={BYSY_BASE} className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        ← Before You Say Yes
+      <Link
+        href={cameFrom ? simpleHref(cameFrom.slug) : BYSY_BASE}
+        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+      >
+        {cameFrom ? `← Back to ${lessonLabel(cameFrom)}` : "← Before You Say Yes"}
       </Link>
 
       <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        {page.module}
-        {/* Position, never a percentage against a target and never a streak.
-            A learner off their route sees their place in the whole course. */}
-        {onRoute
-          ? ` · Page ${onRoute.at} of ${onRoute.of} on your route`
-          : ` · Page ${page.n} of ${getPages().length}`}
+        {cameFrom ? (
+          `Book chapter for ${lessonLabel(cameFrom)}`
+        ) : (
+          <>
+            {page.module}
+            {/* Position, never a percentage against a target and never a streak.
+                A learner off their route sees their place in the whole course. */}
+            {onRoute
+              ? ` · Page ${onRoute.at} of ${onRoute.of} on your route`
+              : ` · Page ${page.n} of ${getPages().length}`}
+          </>
+        )}
       </p>
 
       <article className="mt-2">

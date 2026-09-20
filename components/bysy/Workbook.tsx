@@ -113,7 +113,8 @@ export default function Workbook({
     <section className="mt-8 rounded-sm border border-[#D9CDBA]">
       <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[#E5D9C7] bg-[#F7F1E6] px-5 py-3">
         <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-          Go deeper · Screen {screen.n} of {screens[screens.length - 1].n}
+          {screen.group ?? "Go deeper"} · Screen {screen.n} of{" "}
+          {screens[screens.length - 1].n}
         </h3>
         <button
           type="button"

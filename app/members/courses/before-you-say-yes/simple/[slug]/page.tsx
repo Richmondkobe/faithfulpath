@@ -3,8 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  SIMPLE_PAGES, findSimplePage, lengthOf, parseScreens, readSimplePage,
-  sectionsOf, transcriptOf,
+  HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, normaliseHeading,
+  pageSections, parseScreens, readSimplePage, sectionsOf, transcriptOf,
+  workbookOf,
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
 import { BYSY_BASE, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
@@ -25,18 +26,16 @@ export function generateStaticParams() {
   return SIMPLE_PAGES.map((p) => ({ slug: p.slug }));
 }
 
-/** The section headings the addendum's §3 template names, in its order. */
-const S = {
-  question: "Today's question",
-  listen: "Listen to the lesson",
-  truth: "One truth to remember",
-  scripture: "Key Scripture",
-  transcript: "Audio script and transcript",
-  pause: "Pause and think",
-  step: "One step for today",
-  next: "What would you like to do next?",
-  support: "Need support?",
-};
+/**
+ * Headings looked up by meaning rather than by exact text.
+ *
+ * The files spell them two ways — "Listen" on twelve pages and "Listen to the
+ * lesson" on twenty, "Today's question" with a straight apostrophe on
+ * twenty-three and a curly one on five. Matching the string exactly dropped
+ * whichever spelling the template did not happen to name.
+ */
+const LISTEN = ["listen", "listen to the lesson"];
+const TRANSCRIPT = ["audio script and transcript"];
 
 /**
  * One page of the simple layer.
@@ -62,15 +61,20 @@ export default async function SimpleLessonPage({ params }: Props) {
   if (!body) notFound();
 
   const sections = sectionsOf(body);
-  const get = (name: string) => sections.get(name)?.trim() || null;
+  const get = (names: string[]) => {
+    for (const [heading, section] of sections) {
+      if (names.includes(normaliseHeading(heading))) return section.trim() || null;
+    }
+    return null;
+  };
 
-  const workbookHeading = [...sections.keys()].find((k) => k.startsWith("Go deeper"));
-  const screens = workbookHeading ? parseScreens(sections.get(workbookHeading) ?? "") : [];
+  const workbook = workbookOf(body);
+  const screens = workbook ? parseScreens(workbook) : [];
 
   const src = await signedMediaUrl("audio", `${page.audio}.mp3`);
   // The length is read from the script's own note before that note is stripped.
-  const transcript = transcriptOf(get(S.transcript));
-  const length = lengthOf(get(S.listen), get(S.transcript));
+  const transcript = transcriptOf(get(TRANSCRIPT));
+  const length = lengthOf(get(LISTEN), get(TRANSCRIPT));
 
   const saved: Record<number, string[][]> = {};
   for (const screen of screens) {
@@ -100,62 +104,49 @@ export default async function SimpleLessonPage({ params }: Props) {
         {page.title}
       </h1>
 
-      {get(S.question) && (
-        <section className="mt-8">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-            Today&rsquo;s question
-          </h2>
-          {md(get(S.question)!)}
-        </section>
-      )}
+      {pageSections(body).map(({ heading, body: section }, i) => {
+        const key = normaliseHeading(heading);
 
-      <SimpleAudio
-        src={src}
-        length={length}
-        transcript={md(transcript)}
-      />
+        // The Listen control stands where the page puts its Listen section,
+        // with the transcript closed underneath it.
+        if (key === "listen" || key === "listen to the lesson") {
+          return (
+            <SimpleAudio key={i} src={src} length={length} transcript={md(transcript)} />
+          );
+        }
 
-      {get(S.truth) && (
-        <section className="mt-10 rounded-sm border-l-2 border-[#8B5E34] bg-[#F7F1E6] px-5 py-4">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-            One truth to remember
-          </h2>
-          {md(get(S.truth)!)}
-        </section>
-      )}
+        // Replaced by real links at the foot of the page.
+        if (HANDLED_HEADINGS.has(key)) return null;
 
-      {get(S.scripture) && (
-        <section className="mt-8">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-            Key Scripture
-          </h2>
-          {md(get(S.scripture)!)}
-        </section>
-      )}
+        // The preamble has no heading of its own: §3's safety notice, which
+        // must be the first thing on the page.
+        if (heading === "") {
+          return (
+            <section key={i} className="mt-8">
+              {md(section)}
+            </section>
+          );
+        }
 
-      {get(S.pause) && (
-        <section className="mt-10">
-          <h2
-            className="text-2xl text-[#2B2118]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-          >
-            Pause and think
-          </h2>
-          {md(get(S.pause)!)}
-        </section>
-      )}
-
-      {get(S.step) && (
-        <section className="mt-10">
-          <h2
-            className="text-2xl text-[#2B2118]"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-          >
-            One step for today
-          </h2>
-          {md(get(S.step)!)}
-        </section>
-      )}
+        const quiet = /^(today's question|one truth to remember|key scripture|need support\?)$/.test(key);
+        return (
+          <section key={i} className={quiet ? "mt-8" : "mt-10"}>
+            {quiet ? (
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                {heading}
+              </h2>
+            ) : (
+              <h2
+                className="text-2xl text-[#2B2118]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                {heading}
+              </h2>
+            )}
+            {md(section)}
+          </section>
+        );
+      })}
 
       {screens.length > 0 && (
         <Workbook
@@ -166,22 +157,14 @@ export default async function SimpleLessonPage({ params }: Props) {
         />
       )}
 
-      {get(S.support) && (
-        <section className="mt-12 border-t border-[#E5D9C7] pt-8">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-            Need support?
-          </h2>
-          {md(get(S.support)!)}
-          <p className="mt-3">
-            <Link
-              href={bysySupportHref()}
-              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-            >
-              Finding Help Where You Live
-            </Link>
-          </p>
-        </section>
-      )}
+      <p className="mt-8">
+        <Link
+          href={bysySupportHref()}
+          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+        >
+          Finding Help Where You Live
+        </Link>
+      </p>
 
       <nav className="mt-12 flex flex-wrap items-center gap-5 border-t border-[#E5D9C7] pt-8">
         {next && (
@@ -200,7 +183,7 @@ export default async function SimpleLessonPage({ params }: Props) {
         </Link>
         {page.chapter && (
           <Link
-            href={bysyPageHref(page.chapter.replace(/\.md$/, ""))}
+            href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
             className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
           >
             Read the book chapter

@@ -863,6 +863,23 @@ if (!simplePublished) {
   let ways = 0;
   for (const f of codeFiles) {
     if (/bysy-simple/i.test(f) || f.includes(join("simple", "[slug]"))) continue;
+
+    // The detailed lesson route links back to the simple layer, but only for a
+    // reader who arrived from it: the link renders when `from` names a real
+    // simple page and not otherwise. That is a way back, not a way in — and it
+    // has to be shown to be, rather than waved through.
+    if (f === recallPage) {
+      const src = readFileSync(f, "utf8");
+      const guarded =
+        /chapterReferrer\(/.test(src) &&
+        /cameFrom \? simpleHref\(/.test(src) &&
+        !/href=\{simpleHref\([^)]*\)\}/.test(src.replace(/cameFrom \? simpleHref\([^)]*\)/g, ""));
+      if (!guarded) {
+        ways++;
+        fail(`${f} links to the simple layer other than as a way back from a book chapter`);
+      }
+      continue;
+    }
     const bare = readFileSync(f, "utf8")
       .replace(/\/\*[\s\S]*?\*\//g, "")
       .replace(/^\s*\/\/.*$/gm, "")
@@ -880,6 +897,55 @@ if (!simplePublished) {
         : "the simple layer is unlinked: BYSY_SIMPLE_PUBLISHED is false and nothing links to it"
     );
   }
+}
+
+/* Nothing in a simple page may be dropped on the way to the reader.
+
+   The template used to render only the headings it knew by name, and the files
+   spell them more than one way — "Listen" on twelve pages, "Listen to the
+   lesson" on twenty; a straight apostrophe in "Today's question" on
+   twenty-three, a curly one on five. Worse, §3's "Before you begin" notice sits
+   *above* the first heading on Lessons 6, 9, 10, 13 and 19, as does Lesson 20's
+   crisis notice, and a splitter that waited for a heading threw all of it away.
+   Seven pages rendered without the safety notice that is the reason they have
+   one, and every one of them returned 200.
+
+   So: every page's sections, and its preamble, must survive parsing. */
+
+{
+  const simpleFiles = declaredSimple.filter((f) => existsSync(join(SIMPLE_DIR, f)));
+  const { pageSections, parseScreens, workbookOf } = await import("../lib/bysy-simple.mjs")
+    .catch(() => ({}));
+
+  let dropped = 0;
+  for (const f of simpleFiles) {
+    const raw = readFileSync(join(SIMPLE_DIR, f), "utf8").replace(/<!--[\s\S]*?-->/g, "");
+    const lines = raw.split("\n");
+
+    // A preamble is anything with letters between the title and the first `##`.
+    const firstHeading = lines.findIndex((l) => /^##\s+(?!#)/.test(l));
+    if (firstHeading > 1) {
+      const preamble = lines.slice(1, firstHeading).join("\n").trim();
+      if (preamble && /^>/m.test(preamble)) {
+        // It is a notice. The renderer must have a section with no heading,
+        // which is what pageSections produces for it.
+        if (!/let heading: string \| null = ""/.test(readFileSync(join("lib", "bysy-simple.ts"), "utf8"))) {
+          dropped++;
+          fail(`${f} opens with a notice above its first heading, and pageSections would discard it`);
+        }
+      }
+    }
+  }
+  if (dropped === 0) ok("a page's opening notice survives parsing");
+
+  // Screen counts: what the file has is what the parser finds.
+  const libSrc = readFileSync(join("lib", "bysy-simple.ts"), "utf8");
+  if (!/export function workbookOf/.test(libSrc)) {
+    fail("lib/bysy-simple.ts has lost workbookOf — workbooks grouped into Parts would find no screens");
+  } else {
+    ok("workbooks are taken whole, not cut short at their first Part heading");
+  }
+  void pageSections; void parseScreens; void workbookOf;
 }
 
 console.log(

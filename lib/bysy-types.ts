@@ -20,6 +20,8 @@ export type Choice = {
 export type Screen = {
   n: number;
   title: string;
+  /** "Part 2 — My patterns", when the workbook groups its screens. */
+  group?: string | null;
   body: string;
   prompts: string[];
   options: string[];
