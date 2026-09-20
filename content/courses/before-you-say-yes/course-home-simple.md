@@ -5,7 +5,7 @@
 ---
 
 Twenty short lessons you can listen to, drawn from the book *Before You Say Yes*
-by Pastor Richmond Kobe. Each one is a recording of about six to ten minutes,
+by Pastor Richmond Kobe. Each one is a recording of about six to eleven minutes,
 with one truth to remember, one question to sit with, and one step to take.
 
 > **Listen. Think. Take one step.**
@@ -77,8 +77,9 @@ down, when it is time to walk away, and the fear that no one else will come.
 **Optional Engagement Section.** Whether you are ready to discuss engagement,
 the questions to answer before it, and what comes next.
 
-After each module there is a check-in: a short recording and a few questions to
-notice what you have seen so far.
+After each of the first four modules there is a check-in: a short recording and
+a few questions to notice what you have seen so far. Module 5 ends with My Next
+Faithful Step.
 
 ---
 
@@ -114,8 +115,8 @@ the corner of every page if you need to go somewhere else quickly.
 
 ---
 
-*If you become engaged, the next step is* **Talk Before You Marry**, *the
-premarital course.*
+*When it is available,* **Talk Before You Marry** *will be the natural next
+course if you become engaged.*
 
 <!--
 IMPLEMENTATION NOTE — remove before publishing. The simple layer's course home,
