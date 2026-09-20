@@ -548,6 +548,7 @@ export const HANDLED_HEADINGS = new Set([
  */
 export type Marker =
   | { kind: "link"; label: string; href: string; strong: boolean }
+  | { kind: "route"; label: string; routeId: string; href: string }
   | { kind: "write"; label: string; hint?: string }
   | { kind: "acknowledge"; label: string; href: string }
   | { kind: "drop" };
@@ -615,13 +616,27 @@ export function resolveMarker(
     return { kind: "link", label: text, href: base.detailed("06-help-me-right-now"), strong: false };
   }
 
-  // Start Here 3's four routes.
+  // Start Here 3's four routes. The id is the whole of what is remembered;
+  // the destinations are the ones the page's own note names.
   const startWith = /^start with lesson (\d+)$/i.exec(lower);
   if (startWith) {
-    return { kind: "link", label: text, href: base.simple(`lesson-${startWith[1].padStart(2, "0")}`), strong: true };
+    const n = startWith[1].padStart(2, "0");
+    return {
+      kind: "route",
+      label: text,
+      routeId: n === "01" ? "r1" : "r2",
+      href: base.simple(`lesson-${n}`),
+    };
   }
   if (/^go to safety and support/i.test(lower)) {
-    return { kind: "link", label: text, href: base.simple("safety-and-support"), strong: true };
+    // Both go to Safety and Support first; which lesson follows is what
+    // separates them, and that is what the route id carries.
+    return {
+      kind: "route",
+      label: text,
+      routeId: /lesson 13/i.test(lower) ? "r4" : "r3",
+      href: base.simple("safety-and-support"),
+    };
   }
 
   if (/^continue to/i.test(lower)) {
@@ -761,4 +776,59 @@ export function rulesFor(slug: string, screens: Screen[]): Required<ScreenRules>
     guides: expand(r.guides),
     safety: expand(r.safety),
   };
+}
+
+import type { ChoiceOption } from "@/lib/bysy-types";
+export type { ChoiceOption };
+
+/**
+ * The `### ☐ …` options inside a section.
+ *
+ * The four check-ins and My Next Faithful Step write their choices as tick
+ * headings with a paragraph under each. Rendered as markdown they are headings
+ * with a box character — something to read past rather than something to
+ * choose.
+ */
+export function parseChoiceOptions(section: string): ChoiceOption[] {
+  const out: ChoiceOption[] = [];
+  let current: ChoiceOption | null = null;
+  for (const line of section.split("\n")) {
+    const heading = /^###\s*☐\s*(.+)$/.exec(line.trim());
+    if (heading) {
+      if (current) out.push(current);
+      current = { title: heading[1].trim(), body: "" };
+      continue;
+    }
+    if (current) current.body += line + "\n";
+  }
+  if (current) out.push(current);
+  // The placeholder sits under the last option on two pages, so stripping it
+  // from a section's prose alone left it inside the option's own text.
+  return out.map((o) => ({ ...o, body: withoutChoicePlaceholder(o.body.trim()) }));
+}
+
+/** The section's prose with its `### ☐` options removed. */
+export function withoutChoiceOptions(section: string): string {
+  const at = section.search(/^###\s*☐/m);
+  return (at === -1 ? section : section.slice(0, at)).trim();
+}
+
+/**
+ * The line that was to be replaced by the learner's own choice.
+ *
+ * Three pages carry "**Your current choice:** [Display the learner's selected
+ * non-safety choice here.]" — an instruction to whoever built the page, which
+ * rendered to learners as a bracketed sentence about themselves in the third
+ * person. The control writes the real line; this removes the placeholder.
+ */
+export function withoutChoicePlaceholder(section: string): string {
+  return section
+    .replace(/^\*\*Your current(?: ordinary)? choice:\*\*\s*\[[^\]]*\]\s*$/gim, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+/** Whether a section's options are the separate safety route. */
+export function isSafetyRouteSection(heading: string): boolean {
+  return /separate safety route/i.test(heading);
 }

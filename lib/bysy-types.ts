@@ -76,3 +76,6 @@ export type Screen = {
    */
   example: boolean;
 };
+
+/** One selectable option on a check-in or the closing page. */
+export type ChoiceOption = { title: string; body: string };

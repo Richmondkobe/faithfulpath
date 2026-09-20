@@ -5,8 +5,9 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, markersIn,
   normaliseHeading, pageSections, parseScreens, readSimplePage, resolveMarker,
-  linkSupport, rulesFor, sectionsOf, transcriptOf, withoutBuilderText,
-  withoutMarkers, workbookNote, workbookOf,
+  isSafetyRouteSection, linkSupport, parseChoiceOptions, rulesFor, sectionsOf,
+  transcriptOf, withoutBuilderText, withoutChoiceOptions,
+  withoutChoicePlaceholder, withoutMarkers, workbookNote, workbookOf,
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
 import { getCourseComplete } from "../../actions";
@@ -19,6 +20,8 @@ import Workbook from "@/components/bysy/Workbook";
 import PauseAnswer from "@/components/bysy/PauseAnswer";
 import Acknowledge from "@/components/bysy/Acknowledge";
 import CompletionRecord from "@/components/bysy/CompletionRecord";
+import RouteCard from "@/components/bysy/RouteCard";
+import PageChoice from "@/components/bysy/PageChoice";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -107,6 +110,14 @@ export default async function SimpleLessonPage({ params }: Props) {
   // §2's completion record, on the last page of the layer. "What Comes Next?"
   // says a completion record means only that the material was completed, and
   // the label may never claim readiness — the control enforces that wording.
+  // The check-ins and the closing page offer a choice. The ordinary one saves;
+  // the separate safety route never does, so it is read from the page and
+  // handed over without any storage behind it.
+  const allSections = pageSections(body);
+  const safetySection = allSections.find((s) => isSafetyRouteSection(s.heading));
+  const safetyOption = safetySection ? parseChoiceOptions(safetySection.body)[0] ?? null : null;
+  const savedChoice = ((await getToolAnswer<string[][]>(slug, "C")) ?? [])[0]?.[0] ?? "";
+
   const isFinalPage = page.n === SIMPLE_PAGES.length;
   const courseComplete = isFinalPage ? await getCourseComplete() : false;
   // Every reference to the support page becomes a link before it is rendered.
@@ -261,6 +272,13 @@ export default async function SimpleLessonPage({ params }: Props) {
         }
 
         const quiet = /^(today's question|key scripture|need support\?)$/.test(key);
+        // A section whose body carries "### ☐" options becomes the control.
+        const choiceOptions = parseChoiceOptions(section);
+        const isSafetyRoute = isSafetyRouteSection(heading);
+        const prose = withoutChoicePlaceholder(
+          choiceOptions.length > 0 ? withoutChoiceOptions(section) : section
+        );
+
         const controls = markersIn(section)
           .map((label) => resolveMarker(label, page, linkBase))
           .filter((m) => m.kind !== "drop");
@@ -279,7 +297,16 @@ export default async function SimpleLessonPage({ params }: Props) {
                 {heading}
               </h2>
             )}
-            {md(withoutBuilderText(withoutMarkers(section)))}
+            {md(withoutBuilderText(withoutMarkers(prose)))}
+
+            {choiceOptions.length > 0 && !isSafetyRoute && (
+              <PageChoice
+                pageSlug={slug}
+                options={choiceOptions}
+                safetyOption={safetyOption}
+                saved={savedChoice}
+              />
+            )}
 
             {controls.map((control, c) => {
               if (control.kind === "write") {
@@ -291,6 +318,17 @@ export default async function SimpleLessonPage({ params }: Props) {
                     hint={control.hint}
                     saved={pauseAnswer}
                   />
+                );
+              }
+              if (control.kind === "route") {
+                return (
+                  <div key={c} className="mt-3">
+                    <RouteCard
+                      routeId={control.routeId}
+                      href={control.href}
+                      label={control.label}
+                    />
+                  </div>
                 );
               }
               if (control.kind === "acknowledge") {

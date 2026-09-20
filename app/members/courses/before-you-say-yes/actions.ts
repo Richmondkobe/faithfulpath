@@ -18,7 +18,7 @@ import { findSimplePage } from "@/lib/bysy-simple";
 function knownPage(slug: string): boolean {
   return Boolean(findPage(slug) ?? findSimplePage(slug));
 }
-import { toolIndex } from "@/lib/bysy-progress";
+import { ROUTE_INDEX, toolIndex } from "@/lib/bysy-progress";
 import { FIELD_LIMIT } from "@/lib/bysy-wording";
 
 /**
@@ -273,6 +273,37 @@ export async function recordPageProgress(pageSlug: string): Promise<void> {
       completed_at: new Date().toISOString(),
     },
     { onConflict: "user_id,course_slug,lesson_slug" }
+  );
+  if (error) throw new Error(error.message);
+}
+
+/**
+ * The learner's route, stored as an opaque id.
+ *
+ * Both layers share one row: the detailed course has read this since it was
+ * built and nothing ever wrote it, so a route chosen on the simple Start Here
+ * 3 is the route the detailed pages report a position against.
+ *
+ * Only the id — "r3" — is written, never the label. "I am deciding whether to
+ * continue" sitting in an account history would say something about the
+ * learner's relationship that this course has no business recording, and §7 is
+ * explicit that the descriptive label may not appear in analytics, account
+ * history, notifications or reflected answers. There is deliberately no
+ * parameter here for a label to arrive through.
+ */
+export async function saveRoute(routeId: string): Promise<void> {
+  if (!/^r[1-4]$|^rc$/.test(routeId)) throw new Error("Unknown route.");
+
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: BYSY_SLUG,
+      lesson_slug: "03-choose-your-route",
+      question_index: ROUTE_INDEX,
+      answer: routeId,
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
   );
   if (error) throw new Error(error.message);
 }

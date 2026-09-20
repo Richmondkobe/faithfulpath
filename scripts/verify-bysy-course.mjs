@@ -1067,6 +1067,51 @@ if (!simplePublished) {
   if (lost === 0) ok("the screens §5 names as repeating still say so");
 }
 
+/* The separate safety route, and the route id.
+
+   §7: "Safety routes are shown separately from ordinary choices, never saved,
+   and display the support route locally for that session only." The control
+   that offers both has one save call, and the safety option must not be able
+   to reach it.
+
+   And §7 again on routes: only an opaque identifier is stored, never the
+   descriptive label. "I am deciding whether to continue" in an account history
+   is a sentence about somebody's relationship. */
+
+{
+  const choice = readFileSync(join("components", "bysy", "PageChoice.tsx"), "utf8")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+
+  // The safety branch sets state and nothing else.
+  const safetyHandler = /onClick=\{\(\) => setSafetyChosen\(/.test(choice);
+  const savesInChoose = (choice.match(/saveToolRows\(/g) ?? []).length;
+  if (!safetyHandler) {
+    fail("components/bysy/PageChoice.tsx no longer keeps the safety route to a local state change");
+  } else if (savesInChoose !== 1) {
+    fail(`components/bysy/PageChoice.tsx has ${savesInChoose} save calls — the safety route must reach none of them`);
+  } else {
+    ok("the separate safety route is never saved");
+  }
+
+  const routeCard = readFileSync(join("components", "bysy", "RouteCard.tsx"), "utf8");
+  if (/label.*saveRoute|saveRoute\(\s*(label|title|description)/.test(routeCard)) {
+    fail("components/bysy/RouteCard.tsx passes a descriptive label to saveRoute");
+  } else {
+    ok("a route is stored by id, never by label");
+  }
+
+  const actions = readFileSync(
+    join("app", "members", "courses", "before-you-say-yes", "actions.ts"),
+    "utf8"
+  );
+  if (!/\^r\[1-4\]\$\|\^rc\$/.test(actions)) {
+    fail("saveRoute no longer restricts what may be written as a route — a label could be stored");
+  } else {
+    ok("saveRoute accepts route ids only");
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"
