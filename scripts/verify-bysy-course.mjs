@@ -1141,6 +1141,51 @@ if (!simplePublished) {
   }
 }
 
+/* The two course homes describe two different courses.
+
+   The detailed one names six Start Here pages, four module pauses and module
+   names like "Before You Start Dating". The simple one names four Start Here
+   pages, check-ins, and the addendum's §2 names. Whichever is switched off
+   must not be the one on screen, and neither may quietly acquire the other's
+   module names. */
+
+{
+  const simpleHome = join(ROOT, "course-home-simple.md");
+  if (!existsSync(simpleHome)) {
+    fail("course-home-simple.md is missing — the simple layer would show the detailed course's home");
+  } else {
+    const home = readFileSync(simpleHome, "utf8");
+    const MODULES = [
+      "Start With Yourself",
+      "Learn What to Look For",
+      "Date With Your Eyes Open",
+      "Make a Wise Decision",
+      "Choose Your Next Step",
+      "Optional Engagement Section",
+    ];
+    const absent = MODULES.filter((m) => !home.includes(m));
+    const stale = ["Before You Start Dating", "Choosing Wisely", "Discernment."].filter((m) =>
+      home.includes(m)
+    );
+
+    if (absent.length > 0) {
+      fail(`course-home-simple.md is missing §2 module name(s): ${absent.join(", ")}`);
+    } else if (stale.length > 0) {
+      fail(`course-home-simple.md still uses the old module name(s): ${stale.join(", ")}`);
+    } else {
+      ok("the simple course home uses the addendum's module names");
+    }
+
+    if (!/readPage\(BYSY_SIMPLE_PUBLISHED \? "course-home-simple\.md" : "course-home\.md"\)/.test(
+      readFileSync(join("lib", "bysy-course.ts"), "utf8")
+    )) {
+      fail("lib/bysy-course.ts no longer picks the course home by the switch");
+    } else {
+      ok("the course home follows the switch");
+    }
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

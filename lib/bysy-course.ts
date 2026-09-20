@@ -218,7 +218,18 @@ export const readPage = cache((file: string): string | null => {
 });
 
 /** The course home copy, comments stripped, same as any page. */
-export const readCourseHome = cache((): string | null => readPage("course-home.md"));
+/**
+ * The course home, for whichever layer is published.
+ *
+ * Two files, because the two homes describe different courses. The detailed
+ * one names six Start Here pages, four module pauses and module names like
+ * "Before You Start Dating"; the simple one names four Start Here pages,
+ * check-ins, and the addendum's §2 module names. Rewriting one file to serve
+ * both would have left whichever layer was switched off describing the other.
+ */
+export const readCourseHome = cache((): string | null =>
+  readPage(BYSY_SIMPLE_PUBLISHED ? "course-home-simple.md" : "course-home.md")
+);
 
 /* ------------------------------------------------------------------- links */
 
