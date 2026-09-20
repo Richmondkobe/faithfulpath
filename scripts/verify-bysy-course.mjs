@@ -337,93 +337,51 @@ if (!existsSync(recallComponent)) {
   }
 }
 
-/* §5: the joint tools.
+/* §5's joint tools are gone, and that is the assertion now.
 
-   The private part is completed alone and first; the shared section opens only
-   behind a gate; and the interface must never suggest the other person has
-   access. The gate is the part that can fail while still looking right, so
-   these check the two ways it silently stops gating.
+   §6.2 of the addendum retired them: "the shared section is entered by the
+   account holder after both agree the wording" no longer applies, and every
+   part meant for two people is a non-saved conversation guide in the simple
+   layer instead. The detailed pages are the book chapters behind those
+   lessons, so they are reading — all their text renders, and none of it is a
+   form.
 
-   Passing the shared section in as `children` renders it on the server and
-   ships it in the page payload — the record is in the page source and the
-   browser cache while the gate still looks shut. That is how it was built
-   first, and a seeded shared record was readable in Lesson 8's page source with
-   the gate closed. The gate fetches what it shows instead.
+   What this guards is the direction of travel. A saved shared section
+   reappearing on a book chapter would be the retired design coming back by
+   the back door, on the pages whose own notes are strictest about it. */
 
-   And a safety answer has to replace the section, not caption it. A gate that
-   says "if you are afraid, take care" and then shows the fields anyway has
-   written a disclaimer, not a gate. */
-
-const gate = join("components", "bysy", "JointGate.tsx");
-if (!existsSync(gate)) {
-  fail(`${gate} is missing — §5 requires a gate on every joint section`);
-} else {
-  const g = readFileSync(gate, "utf8");
-  const bare = g.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
-
-  if (/\bchildren\b/.test(bare)) {
-    fail(`${gate} takes its shared section as children — it would be rendered into the page while the gate is closed`);
-  } else if (!/fetchToolRows/.test(bare)) {
-    fail(`${gate} does not fetch the shared record — it must not be handed one while closed`);
-  } else {
-    ok("the joint gate fetches its shared section rather than being handed one");
-  }
-
-  // The refusal branch must return before anything that renders the section.
-  const refusal = bare.indexOf('safe === "no"');
-  const afterRefusal = refusal < 0 ? "" : bare.slice(refusal, bare.indexOf("if (!privatePartDone"));
-  if (refusal < 0) {
-    fail(`${gate} has no branch for a learner who cannot do this part safely`);
-  } else if (/PrivateWorksheet/.test(afterRefusal)) {
-    fail(`${gate} still renders the shared section after a safety answer — §3's route must replace the options, not sit beside them`);
-  } else {
-    ok("a safety answer replaces the joint section rather than captioning it");
-  }
-
-  if (/saveToolRows|saveTool|\bsave\(/.test(bare)) {
-    fail(`${gate} saves something — §4 forbids storing that a learner took a safety path`);
-  } else {
-    ok("nothing the gate asks is stored");
+for (const gone of [
+  join("components", "bysy", "JointGate.tsx"),
+  join("components", "bysy", "PrivateWorksheet.tsx"),
+  join("components", "bysy", "QuestionSet.tsx"),
+]) {
+  if (existsSync(gone)) {
+    fail(`${gone} is back — §6.2 retired the joint worksheets`);
   }
 }
 
-/* Every §5 page must actually have one wired. */
-const JOINT_PAGES = [
-  ["lesson-08-boundaries-without-shame", "Lesson 8"],
-  ["lesson-15-can-we-build-a-life", "Lesson 15"],
-  ["module-6-02-questions-before-engagement", "Questions Before Engagement"],
-];
-if (existsSync(recallPage)) {
-  const src = readFileSync(recallPage, "utf8");
-  // Check each tool where it is actually declared. Searching the source for a
-  // slug reports a tool that does not exist: all three slugs appear as recall
-  // targets too, and Questions Before Engagement kept passing on its recall
-  // entry after its tool had been renamed out of existence.
-  const mapAt = src.indexOf("const JOINT:");
-  const mapEnd = src.indexOf("const jointSpec");
-  const jointMap = mapAt >= 0 && mapEnd > mapAt ? src.slice(mapAt, mapEnd) : "";
-  const qbeFile = /const QBE_FILE = "([^"]+)"/.exec(src)?.[1] ?? "";
-  // Anchored on the branch, not on what precedes it: inserting another branch
-  // ahead of it turned "{qbe ? (" into ") : qbe ? (" and the check reported the
-  // tool missing.
-  const qbeAt = src.indexOf("qbe ? (");
-  const qbeEnd = src.indexOf(") : joint ? (");
-  const qbeBranch = qbeAt >= 0 && qbeEnd > qbeAt ? src.slice(qbeAt, qbeEnd) : "";
-
-  if (!/<JointGate/.test(src)) {
-    fail("no joint gate is wired — §5 requires one on each of the three joint tools");
+{
+  const src = existsSync(recallPage) ? readFileSync(recallPage, "utf8") : "";
+  const revived = ["JointGate", "PrivateWorksheet", "QuestionSet"].filter((c) =>
+    new RegExp(`<${c}[\\s/>]`).test(src)
+  );
+  if (revived.length > 0) {
+    fail(`the detailed lesson route renders ${revived.join(", ")} — those pages are reading now`);
   } else {
-    for (const [slug, name] of JOINT_PAGES) {
-      // Match the whole name, not a prefix of it. `<JointGate` matches
-      // `<JointGateXX`, and a map key renamed to "…-a-lifeX" still contains the
-      // slug it used to be — both reported wired while neither was.
-      const declared =
-        slug === "module-6-02-questions-before-engagement"
-          ? qbeFile === `${slug}.md` && /<JointGate[\s/>]/.test(qbeBranch)
-          : jointMap.includes(`"${slug}": {`);
-      if (!declared) fail(`${name} (${slug}) is not wired as a joint tool — §5 names all three`);
-    }
-    ok("all three joint tools are wired, each where it is declared");
+    ok("the retired joint worksheets are gone, and the book chapters are reading only");
+  }
+
+  // The three pages must still render in full: text, not fields.
+  const JOINT_FILES = [
+    "lesson-08-boundaries-without-shame.md",
+    "lesson-15-can-we-build-a-life.md",
+    "module-6-02-questions-before-engagement.md",
+  ];
+  const absent = JOINT_FILES.filter((f) => !existsSync(join(ROOT, f)));
+  if (absent.length > 0) {
+    for (const f of absent) fail(`${f} is missing — its text must stay, only the fields went`);
+  } else {
+    ok("all three pages still exist in full as book chapters");
   }
 }
 

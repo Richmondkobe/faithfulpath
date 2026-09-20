@@ -4,8 +4,7 @@ import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   SUPPORT_FILE, findPage, findRoute, getPages, linkReferences, pageSlug,
-  parseChoices, plainText, positionOnRoute, readPage, readSupportPage,
-  splitAtHeading, splitBulletBlocks,
+  parseChoices, positionOnRoute, readPage, readSupportPage, splitAtHeading,
 } from "@/lib/bysy-course";
 import { BYSY_BASE, bysySupportHref } from "@/lib/bysy-links";
 import { getStoredRoute, getToolAnswer } from "@/lib/bysy-progress";
@@ -17,9 +16,6 @@ import NextStepOptions from "@/components/bysy/NextStepOptions";
 import EvidenceTable from "@/components/bysy/EvidenceTable";
 import DatedEntries from "@/components/bysy/DatedEntries";
 import EarlierAnswers, { type Recall } from "@/components/bysy/EarlierAnswers";
-import PrivateWorksheet from "@/components/bysy/PrivateWorksheet";
-import JointGate from "@/components/bysy/JointGate";
-import QuestionSet from "@/components/bysy/QuestionSet";
 import ChoiceList from "@/components/bysy/ChoiceList";
 import CompletionRecord from "@/components/bysy/CompletionRecord";
 
@@ -154,142 +150,6 @@ export default async function BysyPage({ params, searchParams }: Props) {
         ]
       : null);
 
-  // §5's joint tools. Two halves on one page: a private part that saves to this
-  // account and nowhere else, and a shared part that opens only behind the gate.
-  // The areas and prompts are the page's own, in its own wording, so the form
-  // asks exactly what the learner has just read.
-  const JOINT: Record<string, {
-    a: { heading: string; title: string; areas: string[]; prompts: string[]; rowLabel: string; guidance: string };
-    b: { heading: string; title: string; prompts: string[]; guidance: string };
-  }> = {
-    "lesson-08-boundaries-without-shame": {
-      a: {
-        heading: "### Part A — My boundaries",
-        title: "Part A — My boundaries",
-        rowLabel: "Area",
-        areas: ["Emotional", "Spiritual", "Digital", "Financial", "Time", "Relational"],
-        prompts: [
-          "The value or need this boundary protects:",
-          "I will:",
-          "I will not:",
-          "How I will communicate it:",
-          "If this line is crossed, the action realistically within my control:",
-          "Who can support me if maintaining it becomes difficult:",
-        ],
-        guidance: "Be specific. “I will be careful about money” is not a boundary; “I will not lend or borrow money in this relationship” is.",
-      },
-      b: {
-        heading: "### Part B — Our agreement",
-        title: "Part B — Our agreement",
-        prompts: [
-          "My boundary:",
-          "Their boundary:",
-          "Requests either of us made:",
-          "Our shared agreement:",
-          "Any unresolved difference, and whether it reveals incompatibility:",
-        ],
-        guidance: "Write what you have both agreed may be written down. Do not let the more assertive person’s preference become “our agreement” by default.",
-      },
-    },
-    "lesson-15-can-we-build-a-life": {
-      a: {
-        heading: "### Part A — Alone",
-        title: "Part A — Alone",
-        rowLabel: "Area",
-        areas: [
-          "Personality and temperament",
-          "Communication and conflict",
-          "Calling and direction",
-          "Location",
-          "Expectations of marriage",
-          "Children",
-          "Lifestyle",
-        ],
-        prompts: [
-          "What I know about myself:",
-          "What I have observed about them:",
-          "The difference, if any:",
-        ],
-        guidance: "The questions under each area above are what to think about. Write only what you want to keep.",
-      },
-      b: {
-        heading: "### Part B — Together",
-        title: "Part B — Together",
-        prompts: [
-          "Where we agree:",
-          "Where we differ:",
-          "Whether the difference is preference or conviction:",
-          "Whether either of us has been assuming the other had accepted something we never said:",
-        ],
-        guidance: "Area by area, after you have shared what each of you wrote.",
-      },
-    },
-  };
-
-  const jointSpec = JOINT[slug];
-  const joint = (() => {
-    if (!jointSpec) return null;
-    const a = splitAtHeading(body, jointSpec.a.heading);
-    if (!a) return null;
-    const b = splitAtHeading(a.after, jointSpec.b.heading);
-    if (!b) return null;
-    return { spec: jointSpec, intro: a.before, aBody: a.section, between: b.before, bBody: b.section, rest: b.after };
-  })();
-  const jointA = joint ? (await getToolAnswer<string[][]>(slug, "A")) ?? [] : [];
-  // Only whether the private part has anything in it — never the shared record
-  // itself, which the gate fetches for itself once it is open.
-  const jointADone = jointA.some((row) => row.some((cell) => cell.trim() !== ""));
-
-  // Questions Before Engagement: ten sections, 64 questions, built from the
-  // page rather than retyped into it. One part per section, because a part
-  // holds 40 rows. The whole of it is the private half of a joint tool — §4
-  // names it, and nothing here is exportable.
-  const QBE_FILE = "module-6-02-questions-before-engagement.md";
-  const qbe = page.file === QBE_FILE ? (() => {
-    const headings = body
-      .split("\n")
-      .map((l) => l.trim())
-      .filter((l) => /^### \d+\. /.test(l));
-    if (headings.length === 0) return null;
-
-    const first = splitAtHeading(body, headings[0]);
-    if (!first) return null;
-
-    const sections = headings.map((heading, i) => {
-      const at = splitAtHeading(body, heading);
-      const inner = at ? at.section.split("\n").slice(1).join("\n") : "";
-      const blocks = splitBulletBlocks(inner);
-      // Section 10 opens with a three-way answer rather than a question.
-      const isDecision = /^### 10\./.test(heading);
-      const lists = blocks.filter((b) => b.kind === "list");
-      const choiceItems = isDecision && lists.length > 1 ? lists[0].items : null;
-      const questions = (choiceItems ? lists.slice(1) : lists).flatMap((b) => b.items);
-      return {
-        heading: plainText(heading.replace(/^###\s+/, "")),
-        part: `Q${i + 1}`,
-        blocks,
-        choiceItems,
-        questions: questions.map(plainText),
-      };
-    });
-
-    // "Comparing your answers" is where the two of you speak. It is the shared
-    // section of this tool, and it goes behind the gate.
-    const comparing = splitAtHeading(body, "## Comparing your answers");
-    if (!comparing) return null;
-
-    return { intro: first.before, sections, comparing };
-  })() : null;
-
-  const qbeSaved = qbe
-    ? await Promise.all(
-        qbe.sections.map((s) => getToolAnswer<string[][]>(slug, s.part).then((r) => r ?? []))
-      )
-    : [];
-  const qbePrivateDone = qbeSaved.some((rows) =>
-    rows.some((row) => row.some((cell) => cell.trim() !== ""))
-  );
-
   // §3's routing rule on the three remaining pages that offer a safety route
   // among ordinary choices. The options and which of them are safety routes are
   // read from each page, not restated here.
@@ -363,108 +223,6 @@ export default async function BysyPage({ params, searchParams }: Props) {
             </h2>
             <ChoiceList choices={choices.items} prompt={choices.spec.prompt} />
             <MindMarkdown source={linkReferences(choices.after, page.file)} />
-          </>
-        ) : qbe ? (
-          <>
-            <MindMarkdown source={linkReferences(qbe.intro, page.file)} />
-            {qbe.sections.map((section) => (
-              <section key={section.part} className="mt-10">
-                <h3
-                  className="text-xl text-[#2B2118]"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-                >
-                  {section.heading}
-                </h3>
-                {section.blocks
-                  .filter((b) => b.kind === "prose")
-                  .map((b, i) => (
-                    <MindMarkdown key={i} source={linkReferences(b.text, page.file)} />
-                  ))}
-                <QuestionSet
-                  pageSlug={slug}
-                  part={section.part}
-                  questions={section.questions}
-                  saved={qbeSaved[qbe.sections.indexOf(section)]}
-                  showMonitoringNote={section.part === "Q1"}
-                  choice={
-                    section.choiceItems
-                      ? {
-                          prompt: "Choose one.",
-                          options: section.choiceItems.map((o) => plainText(o)),
-                        }
-                      : undefined
-                  }
-                />
-              </section>
-            ))}
-            <h2
-              className="mt-12 text-2xl text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-            >
-              Comparing your answers
-            </h2>
-            <MindMarkdown
-              source={linkReferences(qbe.comparing.section.split("\n").slice(1).join("\n"), page.file)}
-            />
-            <JointGate
-              privatePartDone={qbePrivateDone}
-              privatePartLabel="Answering the questions separately"
-              shared={{
-                pageSlug: slug,
-                part: "S",
-                areas: ["What we agreed to write down"],
-                prompts: [
-                  "Where our answers differed, and what each of us meant:",
-                  "What remains unresolved:",
-                  "What we agreed to do next:",
-                ],
-                rowLabel: "Together",
-                guidance:
-                  "Only what you have both agreed may be written down. Neither of you is required to show the other your own answers.",
-              }}
-            />
-            <MindMarkdown source={linkReferences(qbe.comparing.after, page.file)} />
-          </>
-        ) : joint ? (
-          <>
-            <MindMarkdown source={linkReferences(joint.intro, page.file)} />
-            <h3
-              className="mt-8 text-xl text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-            >
-              {joint.spec.a.title}
-            </h3>
-            <MindMarkdown source={linkReferences(joint.aBody.split("\n").slice(1).join("\n"), page.file)} />
-            <PrivateWorksheet
-              pageSlug={slug}
-              part="A"
-              areas={joint.spec.a.areas}
-              prompts={joint.spec.a.prompts}
-              rowLabel={joint.spec.a.rowLabel}
-              saved={jointA}
-              guidance={joint.spec.a.guidance}
-            />
-            <MindMarkdown source={linkReferences(joint.between, page.file)} />
-            <h3
-              className="mt-8 text-xl text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-            >
-              {joint.spec.b.title}
-            </h3>
-            <MindMarkdown source={linkReferences(joint.bBody.split("\n").slice(1).join("\n"), page.file)} />
-            <JointGate
-              privatePartDone={jointADone}
-              privatePartLabel={joint.spec.a.title}
-              shared={{
-                pageSlug: slug,
-                part: "B",
-                areas: joint.spec.a.areas,
-                prompts: joint.spec.b.prompts,
-                rowLabel: joint.spec.a.rowLabel,
-                guidance: joint.spec.b.guidance,
-              }}
-            />
-            <MindMarkdown source={linkReferences(joint.rest, page.file)} />
           </>
         ) : dated ? (
           <>
