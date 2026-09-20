@@ -35,7 +35,7 @@ const COURSE_SLUG = "christian-spiritual-reset";
 const WELCOME = [
   "You are in the right place.",
   "Everything here moves at a pace you can safely manage. There are no grades, deadlines, or rewards for finishing quickly. You may shorten an exercise, pause a session, or come back to it later.",
-  "There are two courses below. Begin with either one; neither has to be finished before the other is started.",
+  "There are three courses below. Begin with any of them; none has to be finished before another is started.",
   "Each begins by asking what you have room for today, and each keeps a shorter way in for when that is very little.",
   "If your mind is restless right now, you do not have to start at the beginning. There is a page that takes you straight to the part that matches.",
   "You do not have to carry the whole course at once.",
