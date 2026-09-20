@@ -2,9 +2,38 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
+import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { saveToolRows } from "@/app/members/courses/before-you-say-yes/actions";
 import { bysySupportHref } from "@/lib/bysy-links";
 import type { ChoiceOption } from "@/lib/bysy-types";
+
+/**
+ * An option's body, which is markdown and sits inside the option's own button.
+ *
+ * A button may hold phrasing content only, so a paragraph becomes a block
+ * span rather than a <p> and nothing here introduces a <div>. Without this the
+ * body was rendered as a raw string: Check-in 1's "I want to strengthen one
+ * area" showed its ** around three prompts and ran them onto one line, and the
+ * bold in thirteen options across three pages never arrived.
+ */
+const OPTION_BODY: Components = {
+  p: ({ children }) => <span className="mt-2 block first:mt-0">{children}</span>,
+  strong: ({ children }) => (
+    <strong className="font-medium text-[#2B2118]">{children}</strong>
+  ),
+  em: ({ children }) => <em>{children}</em>,
+};
+
+function OptionBody({ source }: { source: string }) {
+  return (
+    <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={OPTION_BODY}>
+        {source}
+      </ReactMarkdown>
+    </span>
+  );
+}
 
 /**
  * The choice on a check-in or the closing page, to §2 and §7.
@@ -71,11 +100,7 @@ export default function PageChoice({
                 }`}
               >
                 <span className="block font-medium text-[#2B2118]">{option.title}</span>
-                {option.body && (
-                  <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
-                    {option.body}
-                  </span>
-                )}
+                {option.body && <OptionBody source={option.body} />}
               </button>
             </li>
           );
@@ -104,11 +129,7 @@ export default function PageChoice({
             }`}
           >
             <span className="block font-medium text-[#2B2118]">{safetyOption.title}</span>
-            {safetyOption.body && (
-              <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
-                {safetyOption.body}
-              </span>
-            )}
+            {safetyOption.body && <OptionBody source={safetyOption.body} />}
           </button>
 
           {safetyChosen && (
