@@ -223,39 +223,46 @@ export default async function SimpleLessonPage({ params }: Props) {
         // place the page puts it — which §3 has before "Need support?".
         if (key === "what would you like to do next?") {
           return (
-            <nav
-              key={i}
-              className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5"
-            >
-              {next && (
+            <nav key={i} className="mt-10">
+              {/* Three ways on from the lesson, then the book chapter apart
+                  from them. It is not a next step: it is the same material at
+                  length, for a reader who wants it now or later. Sitting in
+                  the row it read as a fourth choice of equal weight, and under
+                  the Continue button on a phone it read as the one after it. */}
+              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+                {next && (
+                  <Link
+                    href={simpleHref(next.slug)}
+                    className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                  >
+                    Continue to {next.title}
+                  </Link>
+                )}
                 <Link
-                  href={simpleHref(next.slug)}
-                  className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                  href={BYSY_BASE}
+                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:text-[#5C5147] sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
                 >
-                  Continue to {next.title}
+                  Stop here for today
                 </Link>
-              )}
-              <Link
-                href={BYSY_BASE}
-                className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:text-[#5C5147] sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
-              >
-                Stop here for today
-              </Link>
-              {screens.length > 0 && (
-                <a
-                  href="#go-deeper"
-                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
-                >
-                  Open the workbook
-                </a>
-              )}
+                {screens.length > 0 && (
+                  <a
+                    href="#go-deeper"
+                    className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+                  >
+                    Open the workbook
+                  </a>
+                )}
+              </div>
+
               {page.chapter && (
-                <Link
-                  href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
-                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
-                >
-                  Read the book chapter
-                </Link>
+                <div className="mt-6 flex flex-col items-stretch sm:mt-5 sm:block">
+                  <Link
+                    href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
+                    className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+                  >
+                    Read the book chapter
+                  </Link>
+                </div>
               )}
             </nav>
           );
@@ -304,7 +311,13 @@ export default async function SimpleLessonPage({ params }: Props) {
           .filter((m) => m.kind !== "drop");
 
         return (
-          <section key={i} className={quiet ? "mt-8" : "mt-10"}>
+          <section
+            key={i}
+            // "Need support?" follows the next-step controls on every page §3
+            // orders that way, and at mt-8 it read as the last line of them
+            // rather than as the section a reader goes looking for.
+            className={key === "need support?" ? "mt-16" : quiet ? "mt-8" : "mt-10"}
+          >
             {quiet ? (
               <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
                 {heading}
