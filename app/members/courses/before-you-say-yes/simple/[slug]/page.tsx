@@ -5,7 +5,8 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, markersIn,
   normaliseHeading, pageSections, parseScreens, readSimplePage, resolveMarker,
-  sectionsOf, transcriptOf, withoutBuilderText, withoutMarkers, workbookOf,
+  linkSupport, rulesFor, sectionsOf, transcriptOf, withoutBuilderText,
+  withoutMarkers, workbookNote, workbookOf,
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
 import { BYSY_BASE, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
@@ -72,15 +73,21 @@ export default async function SimpleLessonPage({ params }: Props) {
 
   const workbook = workbookOf(body);
   const screens = workbook ? parseScreens(workbook) : [];
+  const openingNote = workbook ? withoutBuilderText(workbookNote(workbook)) : "";
 
   const src = await signedMediaUrl("audio", `${page.audio}.mp3`);
   // The length is read from the script's own note before that note is stripped.
   const transcript = transcriptOf(get(TRANSCRIPT));
   const length = lengthOf(get(LISTEN), get(TRANSCRIPT));
 
+  // §6.3, plus each page's own note. A non-saved screen is never read back
+  // either: nothing about it is stored, so there is nothing to return.
+  const rules = rulesFor(slug, screens);
   const saved: Record<number, string[][]> = {};
   for (const screen of screens) {
-    saved[screen.n] = (await getToolAnswer<string[][]>(slug, `W${screen.n}`)) ?? [];
+    saved[screen.n] = rules.nonSaved.includes(screen.n)
+      ? []
+      : (await getToolAnswer<string[][]>(slug, `W${screen.n}`)) ?? [];
   }
 
   const at = SIMPLE_PAGES.findIndex((p) => p.slug === slug);
@@ -94,13 +101,16 @@ export default async function SimpleLessonPage({ params }: Props) {
     detailed: (s: string) => bysyPageHref(s),
   };
   const pauseAnswer = ((await getToolAnswer<string[][]>(slug, "P")) ?? [])[0]?.[0] ?? "";
-  const md = (source: string) => <MindMarkdown source={source} />;
+  // Every reference to the support page becomes a link before it is rendered.
+  const md = (source: string) => (
+    <MindMarkdown source={linkSupport(source, bysySupportHref())} />
+  );
   // The client gets what it needs to draw controls and nothing else. Passing
   // the screens whole shipped their raw markdown into the page source — the
   // builder instructions included, stripped from the prose but still there for
   // anyone reading the payload.
   const clientScreens = screens.map(
-    ({ n, title, group, prompts, options, kind, ticks, example }) => ({
+    ({ n, title, group, prompts, options, kind, ticks, categories, example }) => ({
       n,
       title,
       group,
@@ -108,6 +118,7 @@ export default async function SimpleLessonPage({ params }: Props) {
       options,
       kind,
       ticks,
+      categories,
       example,
       body: "",
       after: "",
@@ -292,6 +303,11 @@ export default async function SimpleLessonPage({ params }: Props) {
           pageSlug={slug}
           screens={clientScreens}
           saved={saved}
+          nonSaved={rules.nonSaved}
+          readOnly={rules.readOnly}
+          guides={rules.guides}
+          safety={rules.safety}
+          openingNote={openingNote ? md(openingNote) : null}
           rendered={renderedScreens}
           renderedAfter={renderedAfter}
           renderedInstructions={renderedInstructions}

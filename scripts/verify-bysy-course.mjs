@@ -948,6 +948,55 @@ if (!simplePublished) {
   void pageSections; void parseScreens; void workbookOf;
 }
 
+/* §6.3's table of non-saved and read-only screens, against the code.
+
+   This is the table that decides whether an answer about fear, coercion or a
+   safety route is written to an account. It lives in two places — the addendum
+   and lib/bysy-simple.ts — and the only thing keeping them together is this. */
+
+{
+  // §6.3 only. §2's file-mapping table has a row per page too, and reading a
+  // filename as a screen list made "engagement-02-…" mean screen 2.
+  const whole = readFileSync(
+    join(ROOT, "before-you-say-yes-simple-course-build-notes.md"),
+    "utf8"
+  );
+  const from = whole.indexOf("### 6.3");
+  const to = whole.indexOf("### 6.4");
+  const addendum = from >= 0 && to > from ? whole.slice(from, to) : "";
+  if (!addendum) fail("§6.3's table of non-saved screens is not where it was");
+  const libSrc = readFileSync(join("lib", "bysy-simple.ts"), "utf8");
+
+  // Rows look like: | Lesson 7 | Screens 6–8 (guide) | — |
+  const numbers = (cell) => {
+    const out = new Set();
+    for (const m of cell.matchAll(/(\d+)\s*(?:–|—|-)\s*(\d+)/g)) {
+      for (let n = Number(m[1]); n <= Number(m[2]); n++) out.add(n);
+    }
+    for (const m of cell.replace(/(\d+)\s*(?:–|—|-)\s*(\d+)/g, "").matchAll(/\d+/g)) {
+      out.add(Number(m[0]));
+    }
+    return out;
+  };
+
+  let drift = 0;
+  for (const row of addendum.matchAll(/^\|\s*\**(Lesson (\d+)|Engagement 2)\**\s*\|([^|]*)\|([^|]*)\|/gm)) {
+    const slug = row[2] ? `lesson-${row[2].padStart(2, "0")}` : "engagement-02";
+    const stated = numbers(row[3]);
+    if (stated.size === 0) continue; // "Everything", or a dash.
+
+    const entry = new RegExp(`"${slug}":\\s*\\{([^}]*)\\}`).exec(libSrc)?.[1] ?? "";
+    const coded = numbers(/nonSaved:\s*\[([^\]]*)\]/.exec(entry)?.[1] ?? "");
+
+    const missing = [...stated].filter((n) => !coded.has(n));
+    if (missing.length > 0) {
+      drift++;
+      fail(`§6.3 marks ${slug} screen(s) ${missing.join(", ")} non-saved, and lib/bysy-simple.ts does not`);
+    }
+  }
+  if (drift === 0) ok("every non-saved screen §6.3 names is non-saved in the code");
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { saveToolRows } from "@/app/members/courses/before-you-say-yes/actions";
 import { FIELD_LIMIT } from "@/lib/bysy-wording";
+import SafetyCheck from "@/components/bysy/SafetyCheck";
 import type { Screen } from "@/lib/bysy-types";
 
 /**
@@ -34,6 +35,9 @@ export default function Workbook({
   saved,
   nonSaved = [],
   readOnly = [],
+  guides = [],
+  safety = [],
+  openingNote,
   rendered,
   renderedAfter,
   renderedInstructions,
@@ -46,11 +50,17 @@ export default function Workbook({
   nonSaved?: number[];
   /** Screens with no input fields at all. */
   readOnly?: number[];
+  /** Conversation guides, which carry §6.2's gate. */
+  guides?: number[];
+  /** Screens where any Yes shows the specialist route at once. */
+  safety?: number[];
   /**
    * Each screen's prose, already rendered. It arrives as nodes rather than as a
    * render function: a function cannot cross the server/client boundary, and
    * markdown rendering belongs on the server anyway.
    */
+  /** The workbook's own opening note, shown on its first screen. */
+  openingNote: React.ReactNode | null;
   rendered: Record<number, React.ReactNode>;
   /** Prose that follows the questions, rendered after the answer boxes. */
   renderedAfter: Record<number, React.ReactNode>;
@@ -62,7 +72,16 @@ export default function Workbook({
   const [rows, setRows] = useState<Record<number, string[][]>>(() => {
     const start: Record<number, string[][]> = {};
     for (const s of screens) {
-      const slots = s.kind === "tick" ? s.ticks : s.prompts.length > 0 ? s.prompts : [""];
+      const slots =
+        s.kind === "tick"
+          ? s.ticks
+          : s.kind === "sort"
+            ? s.categories
+            : s.kind === "choose"
+              ? [""]
+              : s.prompts.length > 0
+                ? s.prompts
+                : [""];
       start[s.n] = slots.map((_, i) => saved[s.n]?.[i] ?? ["", ""]);
     }
     return start;
@@ -91,7 +110,10 @@ export default function Workbook({
   const screen = screens[at];
   const isReadOnly = readOnly.includes(screen.n);
   const isNonSaved = nonSaved.includes(screen.n);
+  const isGuide = guides.includes(screen.n);
+  const isSafety = safety.includes(screen.n);
   const prompts = screen.prompts.length > 0 ? screen.prompts : [""];
+  const wantsNote = /\bwrite\b|\bnote\b|\bdate\b/i.test(screen.title + " " + (screen.after ?? ""));
 
   function setCell(row: number, col: number, value: string) {
     setRows((cur) => ({
@@ -139,18 +161,43 @@ export default function Workbook({
           {screen.title}
         </h4>
 
+        {at === 0 && openingNote && (
+          <div className="mb-4 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+            {openingNote}
+          </div>
+        )}
+
         {renderedInstructions[screen.n]}
 
         {rendered[screen.n]}
 
-        {isNonSaved && (
+        {isGuide && (
+          <div className="mt-4 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-4">
+            <h5 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              Before you use this together
+            </h5>
+            <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+              Use this only if you can both speak freely and safely — if either
+              of you could not disagree, say <em>not yet</em>, or ask someone
+              else for advice without fearing what would follow, this is not the
+              right tool. Seek individual guidance first.
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+              This is a guide for talking, not a form. Nothing here is saved,
+              there is nowhere for the other person to write, and they have no
+              access to your account.
+            </p>
+          </div>
+        )}
+
+        {isNonSaved && !isGuide && (
           <p className="mt-4 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
             Nothing on this screen is saved. What you write here stays on this
             screen for now and is gone when you leave it.
           </p>
         )}
 
-        {!isReadOnly && screen.kind === "tick" && (
+        {!isSafety && !isReadOnly && screen.kind === "tick" && (
           <ul className="mt-5 space-y-2">
             {screen.ticks.map((item, i) => (
               <li key={item}>
@@ -168,7 +215,67 @@ export default function Workbook({
           </ul>
         )}
 
-        {!isReadOnly && screen.kind !== "read" && screen.kind !== "tick" && (
+        {isSafety && <SafetyCheck items={screen.prompts} />}
+
+        {!isSafety && !isReadOnly && screen.kind === "sort" && (
+          <div className="mt-5 space-y-4">
+            {screen.categories.map((category, i) => (
+              <div key={category} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
+                <label
+                  htmlFor={`${screen.n}-sort-${i}`}
+                  className="block text-sm font-medium text-[#2B2118]"
+                >
+                  {category}
+                </label>
+                <textarea
+                  id={`${screen.n}-sort-${i}`}
+                  rows={3}
+                  maxLength={FIELD_LIMIT}
+                  value={rows[screen.n]?.[i]?.[1] ?? ""}
+                  onChange={(e) => setCell(i, 1, e.target.value)}
+                  className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!isSafety && !isReadOnly && screen.kind === "choose" && (
+          <div className="mt-5 space-y-2">
+            {screen.categories.map((option) => (
+              <label
+                key={option}
+                className="flex cursor-pointer items-start gap-3 rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]"
+              >
+                <input
+                  type="radio"
+                  name={`screen-${screen.n}`}
+                  checked={(rows[screen.n]?.[0]?.[0] ?? "") === option}
+                  onChange={() => setCell(0, 0, option)}
+                  className="mt-1 h-4 w-4 accent-[#8B5E34]"
+                />
+                <span>{option}</span>
+              </label>
+            ))}
+            {wantsNote && (
+              <textarea
+                rows={2}
+                maxLength={FIELD_LIMIT}
+                aria-label="A note, if you want one"
+                value={rows[screen.n]?.[0]?.[1] ?? ""}
+                onChange={(e) => setCell(0, 1, e.target.value)}
+                className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+              />
+            )}
+          </div>
+        )}
+
+        {!isSafety &&
+          !isReadOnly &&
+          screen.kind !== "read" &&
+          screen.kind !== "tick" &&
+          screen.kind !== "sort" &&
+          screen.kind !== "choose" && (
           <div className="mt-5 space-y-4">
             {prompts.map((prompt, i) => (
               <div key={i} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
@@ -226,7 +333,7 @@ export default function Workbook({
             Back
           </button>
 
-          {!isReadOnly && !isNonSaved && screen.kind !== "read" && (
+          {!isSafety && !isReadOnly && !isNonSaved && screen.kind !== "read" && (
             <button
               type="button"
               disabled={pending}

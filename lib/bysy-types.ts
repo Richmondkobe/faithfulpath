@@ -46,9 +46,18 @@ export type Screen = {
    * `read` — nothing to fill in. A reading guide is not a form, and giving it
    *   an empty box invites an answer to a question nobody asked.
    */
-  kind: "questions" | "tick" | "write" | "read";
+  kind: "questions" | "tick" | "sort" | "choose" | "write" | "read";
   /** The "☐" items, for a tick screen. */
   ticks: string[];
+  /**
+   * The named boxes of a sorting screen.
+   *
+   * Lesson 3's Screen 10 names four — must-haves for everyone, my personal
+   * must-haves, nice-to-haves, rules from old hurts — and asks the learner to
+   * put each item into one. Without somewhere to write, the exercise could be
+   * read and not done.
+   */
+  categories: string[];
   /**
    * Whether the screen asks for a short example beside each choice.
    *

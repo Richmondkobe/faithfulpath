@@ -138,6 +138,10 @@ export type { Screen };
 const OPTION_LINE = /Answer each with\s+\*\*([^*]+)\*\*/i;
 // "1 = Not true · 2 = A little true · 3 = Partly true …" — Lesson 1's shape.
 const OPTION_SCALE = /\d+\s*=\s*([^·\n]+)/g;
+/** A screen that names boxes and asks for things to go in them. */
+const SORTING_CUE = /\bput each\b|\bsort\b|\binto one box\b|\bplace each\b|\bgroup\b/i;
+/** A screen naming alternatives and asking for one of them. */
+const CHOOSE_CUE = /\bchoose one\b|\bpick one\b|\bselect one\b|\bone of these\b|\bchoose your\b|\bnext step\b/i;
 /** A screen without numbered statements still asks for writing when it says so. */
 const WRITING_CUE = /\bwrite\b|\bfinish\b|\bname\b|\blist\b|\bdescribe\b|\?\s*$/im;
 const OPTION_BULLET = /^-\s+\*\*([^*]+)\*\*\s*(?:—|-|–)/;
@@ -216,6 +220,26 @@ export function workbookOf(markdown: string): string | null {
   return start === -1 ? null : lines.slice(start).join("\n").trim() || null;
 }
 
+/**
+ * The workbook's opening note — the privacy paragraph and whatever the page
+ * adds to it, such as Lesson 3's "You do not need to finish this in one
+ * sitting."
+ *
+ * It is everything above the first heading inside the workbook. Lesson 1 puts
+ * Screen 1 straight after it and it survived as that screen's instructions;
+ * Lesson 3 puts "## Part 1 — Who I am" in between, which cleared the pending
+ * text and lost the note entirely. It is read separately so the grouping
+ * cannot swallow it.
+ */
+export function workbookNote(workbook: string): string {
+  const lines: string[] = [];
+  for (const line of workbook.split("\n")) {
+    if (/^#{1,3}\s+(?!#)/.test(line)) break;
+    lines.push(line);
+  }
+  return lines.join("\n").trim();
+}
+
 export function parseScreens(workbook: string): Screen[] {
   const screens: Screen[] = [];
   let pending: string[] = [];
@@ -242,6 +266,10 @@ export function parseScreens(workbook: string): Screen[] {
       // above the list stays above the boxes and what is below stays below —
       // a note written after the questions is about them.
       current.ticks = [...body.matchAll(/^\s*[*-]\s*☐\s*(.+)$/gm)].map((m) => m[1].trim());
+      // "- **Must-haves for everyone** — needed for any safe…": a named box.
+      current.categories = [...body.matchAll(/^\s*[*-]\s*\*\*([^*]+)\*\*\s*(?:—|–|-|→)/gm)]
+        .map((m) => m[1].trim())
+        .filter((c) => !c.startsWith("☐"));
 
       if (current.prompts.length > 0) {
         const { before, after } = splitAroundList(body);
@@ -252,6 +280,20 @@ export function parseScreens(workbook: string): Screen[] {
         current.body = body;
         current.after = "";
         current.kind = "tick";
+      } else if (current.categories.length > 1 && SORTING_CUE.test(body)) {
+        current.body = body;
+        current.after = "";
+        current.kind = "sort";
+      } else if (
+        current.categories.length > 1 &&
+        (CHOOSE_CUE.test(body) || CHOOSE_CUE.test(current.title))
+      ) {
+        // One of the named alternatives, not a box for each. Lesson 7's Screen
+        // 12 is Yes / Not yet / No, and its own note calls those naming
+        // choices rather than thresholds — so they are chosen, never counted.
+        current.body = body;
+        current.after = "";
+        current.kind = "choose";
       } else {
         current.body = body;
         current.after = "";
@@ -317,6 +359,7 @@ export function parseScreens(workbook: string): Screen[] {
           options,
           kind: "read",
           ticks: [],
+          categories: [],
           example: /\bexample\b/i.test(inherited),
         };
         continue;
@@ -619,4 +662,101 @@ export function withoutBuilderText(markdown: string): string {
     .replace(/\*\s*\*/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
+}
+
+/**
+ * Support references turned into real links.
+ *
+ * The pages name the support page in prose — "**Find help where you live →**"
+ * — 121 times across the 32, and every one of them rendered as bold text that
+ * did nothing. The detailed layer wires the same references with
+ * linkReferences(); this is the same idea, narrowed to the one destination the
+ * simple pages point at, and to the one that matters most on a course written
+ * for people who may need it in a hurry.
+ *
+ * Headings are left alone: a linked heading reads as a fault.
+ */
+export function linkSupport(body: string, supportHref: string): string {
+  const PHRASE = /(\*\*)?(Find(?:ing)? [Hh]elp [Ww]here [Yy]ou [Ll]ive)(\s*→)?(\*\*)?/g;
+
+  return body
+    .split(/\r?\n/)
+    .map((line) => {
+      if (/^\s{0,3}#/.test(line) || /^\s*```/.test(line) || /^\s{4,}\S/.test(line)) return line;
+      // Already a link? Leave it.
+      if (/\]\([^)]*\)/.test(line) && /[Hh]elp [Ww]here [Yy]ou [Ll]ive/.test(line)) return line;
+      return line.replace(PHRASE, (_m, bold, text, arrow) => {
+        const label = `${text}${arrow ? " →" : ""}`;
+        const linked = `[${label}](${supportHref})`;
+        return bold ? `**${linked}**` : linked;
+      });
+    })
+    .join("\n");
+}
+
+/**
+ * Which screens may not be saved, and which have no fields at all.
+ *
+ * This is addendum §6.3's table, written out. Where a page's own
+ * implementation note disagrees with it, §6.3 says the note wins — so the
+ * notes were read alongside it and the differences are marked below.
+ *
+ * A **guide** is a conversation guide: non-saved, and carrying the gate that
+ * §6.2 requires on every part meant for two people. Guides replaced the joint
+ * worksheets of the original §5 entirely — there are no shared fields anywhere
+ * in this layer, and nothing may suggest the other person has an account.
+ */
+export type ScreenRules = {
+  nonSaved?: number[];
+  readOnly?: number[];
+  guides?: number[];
+  /**
+   * Screens where any Yes shows the specialist route at once.
+   *
+   * Seven pages say this in their own notes, in the same words: the items are
+   * answered locally, which of them were ticked is never stored, and a single
+   * Yes routes immediately rather than at the end. §3's rule again — the
+   * support route replaces the rest rather than waiting behind it.
+   */
+  safety?: number[];
+};
+
+const ALL_SCREENS = [-1];
+
+export const SCREEN_RULES: Record<string, ScreenRules> = {
+  // Any Yes on Screens 1–2 shows the specialist route at once; Screen 15's
+  // selection is a safety route and is never stored.
+  "lesson-06": { nonSaved: [1, 2, 15], safety: [1, 2] },
+  "lesson-07": { nonSaved: [6, 7, 8], guides: [6, 7, 8] },
+  "lesson-08": { nonSaved: [4], guides: [4] },
+  "lesson-09": { nonSaved: [3, 4, 5, 7], guides: [3, 4, 5, 7], readOnly: [8] },
+  "lesson-10": { nonSaved: [6, 7, 8, 11, 12, 13], guides: [6, 7, 8], safety: [11, 12] },
+  "lesson-11": { nonSaved: [7, 8], safety: [7, 8] },
+  "lesson-12": { nonSaved: [9], safety: [9] },
+  "lesson-13": { nonSaved: [7, 8], safety: [7, 8] },
+  "lesson-14": { nonSaved: [7, 8], safety: [7, 8] },
+  "lesson-15": { nonSaved: [5], guides: [5] },
+  "lesson-16": { nonSaved: [9] },
+  "lesson-17": { nonSaved: [10], guides: [10] },
+  "lesson-18": { nonSaved: [3, 4, 13, 15], guides: [3, 4, 15], readOnly: [2, 8] },
+  // The strictest page in the course: nothing on it is saved, and its workbook
+  // has no input fields at all.
+  "lesson-19": { nonSaved: ALL_SCREENS, readOnly: ALL_SCREENS, safety: [1, 2] },
+  "engagement-02": { nonSaved: [1, 5, 9, 11, 12, 15, 16], guides: [16] },
+};
+
+/** Every screen, for a page where the rule is "all of them". */
+export const ALL_SCREENS_MARK = -1;
+
+export function rulesFor(slug: string, screens: Screen[]): Required<ScreenRules> {
+  const r = SCREEN_RULES[slug] ?? {};
+  const all = screens.map((s) => s.n);
+  const expand = (list?: number[]) =>
+    list?.includes(ALL_SCREENS_MARK) ? all : (list ?? []);
+  return {
+    nonSaved: expand(r.nonSaved),
+    readOnly: expand(r.readOnly),
+    guides: expand(r.guides),
+    safety: expand(r.safety),
+  };
 }
