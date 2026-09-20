@@ -49,4 +49,12 @@ export type Screen = {
   kind: "questions" | "tick" | "write" | "read";
   /** The "☐" items, for a tick screen. */
   ticks: string[];
+  /**
+   * Whether the screen asks for a short example beside each choice.
+   *
+   * Lesson 2 says "Answer each with Yes / Partly / Not yet, and add one short
+   * example"; Lesson 1 says only "choose how true it is for you right now".
+   * Offering a box on Lesson 1 asked for writing the page never requested.
+   */
+  example: boolean;
 };

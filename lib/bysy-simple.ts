@@ -227,6 +227,9 @@ export function parseScreens(workbook: string): Screen[] {
   // "## Part 2 — My patterns" groups the screens under it. Kept so a learner
   // on Screen 7 can see which part of the workbook they are in.
   let group: string | null = null;
+  // Screens whose options came from a block that named them ("How to answer
+  // Screens 3–8"). Those are not guesses and must never be cleared.
+  const ranged = new Set<number>();
   let instructionsShown = false;
   let current: Screen | null = null;
 
@@ -302,6 +305,7 @@ export function parseScreens(workbook: string): Screen[] {
         // Shown once, above the first screen the instructions apply to.
         const instructions = inRange && !instructionsShown ? pending.join("\n").trim() : "";
         if (instructions) instructionsShown = true;
+        if (pendingRange !== null && inRange) ranged.add(n);
         current = {
           n,
           title: screen[2].trim(),
@@ -313,6 +317,7 @@ export function parseScreens(workbook: string): Screen[] {
           options,
           kind: "read",
           ticks: [],
+          example: /\bexample\b/i.test(inherited),
         };
         continue;
       }
@@ -337,15 +342,18 @@ export function parseScreens(workbook: string): Screen[] {
   let carrying = true;
   for (const s of screens) {
     if (s.kind !== "questions") carrying = false;
-    if (!carrying) s.options = [];
+    if (!carrying && !ranged.has(s.n)) s.options = [];
   }
 
-  // A screen may also name its own options inline.
+  // A screen may also name its own options inline, and ask for its own example.
   for (const s of screens) {
     if (s.options.length === 0) {
       const own = OPTION_LINE.exec(s.body)?.[1];
       if (own) s.options = own.split("/").map((o) => o.trim()).filter(Boolean);
     }
+    if (!s.example && /\bexample\b/i.test(s.body)) s.example = true;
+    // No choices means the writing *is* the answer, so the box stays.
+    if (s.options.length === 0) s.example = true;
   }
   return screens;
 }
@@ -425,7 +433,30 @@ export function pageSections(markdown: string): { heading: string; body: string 
   const workbookAt = lines.findIndex(
     (l) => /^#\s+(?!#)\s*Go deeper/i.test(l) || /^##\s+(?!#)\s*How to answer/i.test(l)
   );
-  const above = (workbookAt === -1 ? lines : lines.slice(0, workbookAt)).join("\n");
+
+  // The workbook is a span, not a tail. Questions Before Engagement puts its
+  // "Need support?" and its Continue *after* the last screen, and cutting
+  // everything from the workbook onwards lost both — the page ended on a
+  // conversation guide with no way forward and no support section.
+  let resume = lines.length;
+  if (workbookAt !== -1) {
+    const lastScreen = lines.reduce(
+      (found, line, i) => (/^###\s+Screen\s+\d+/.test(line) ? i : found),
+      -1
+    );
+    if (lastScreen !== -1) {
+      const after = lines.findIndex(
+        (l, i) => i > lastScreen && /^##\s+(?!#)(?!\s*Part\s)/.test(l)
+      );
+      resume = after === -1 ? lines.length : after;
+    }
+  }
+
+  const above = (
+    workbookAt === -1
+      ? lines
+      : [...lines.slice(0, workbookAt), ...lines.slice(resume)]
+  ).join("\n");
 
   const out: { heading: string; body: string }[] = [];
   // Starts as "" rather than null so the preamble is a section in its own
@@ -460,3 +491,132 @@ export const HANDLED_HEADINGS = new Set([
   "audio script and transcript",
   "what would you like to do next?",
 ]);
+
+/**
+ * A `**[ … ]**` marker in the source, and what it becomes on the page.
+ *
+ * The files write their controls as bracketed labels — "[ Continue to Start
+ * Here 2 — How to Use the Course ]", "[ Write my answer ]". Rendered as
+ * markdown they are words that look like buttons and do nothing, which left
+ * the twelve pages without a "What would you like to do next?" section with no
+ * way forward at all.
+ */
+export type Marker =
+  | { kind: "link"; label: string; href: string; strong: boolean }
+  | { kind: "write"; label: string; hint?: string }
+  | { kind: "acknowledge"; label: string; href: string }
+  | { kind: "drop" };
+
+/** Markers the lesson nav already renders, so the prose should not repeat them. */
+const NAV_MARKERS = /^(stop here for today|open the workbook|read the book chapter|read the transcript)$/i;
+
+export function markersIn(body: string): string[] {
+  return [...body.matchAll(/\*\*\[\s*([^\]]+?)\s*\]\*\*/g)].map((m) => m[1].trim());
+}
+
+/** The prose with its markers taken out, so they can be rendered as controls. */
+export function withoutMarkers(body: string): string {
+  return body
+    .replace(/\*\*\[\s*[^\]]+?\s*\]\*\*\s*(\*\(optional\)\*)?/g, "")
+    .split("\n")
+    .filter((l, i, all) => !(l.trim() === "" && all[i - 1]?.trim() === ""))
+    .join("\n")
+    .trim();
+}
+
+/**
+ * Where a marker goes.
+ *
+ * "Continue to …" is resolved against the page list rather than the label: the
+ * sequence is linear, and a label that has drifted from the order should not
+ * quietly send a learner to the wrong page. The label is still shown, so a
+ * mismatch is visible rather than silent.
+ */
+export function resolveMarker(
+  label: string,
+  page: SimplePage,
+  base: { home: string; simple: (slug: string) => string; detailed: (slug: string) => string }
+): Marker {
+  const text = label.replace(/\s+/g, " ").trim();
+  const lower = text.toLowerCase();
+
+  if (NAV_MARKERS.test(lower)) return { kind: "drop" };
+
+  if (lower === "write my answer") {
+    // §4 and both pages' own notes: Lessons 6 and 19 have no answer box.
+    if (page.slug === "lesson-06" || page.slug === "lesson-19") return { kind: "drop" };
+    return {
+      kind: "write",
+      label: text,
+      hint: page.slug === "lesson-14" ? "Use initials only." : undefined,
+    };
+  }
+
+  if (lower === "i understand — continue" || lower === "i understand - continue") {
+    const at = SIMPLE_PAGES.findIndex((p) => p.slug === page.slug);
+    const next = SIMPLE_PAGES[at + 1];
+    return { kind: "acknowledge", label: text, href: next ? base.simple(next.slug) : base.home };
+  }
+
+  if (/return to the course home/i.test(lower)) {
+    return { kind: "link", label: text, href: base.home, strong: /finish/i.test(lower) };
+  }
+
+  if (/^read: if you are not sure you belong to christ$/i.test(lower)) {
+    return { kind: "link", label: text, href: base.detailed("01-belonging-to-christ"), strong: false };
+  }
+
+  if (/help me with my relationship right now/i.test(lower)) {
+    return { kind: "link", label: text, href: base.detailed("06-help-me-right-now"), strong: false };
+  }
+
+  // Start Here 3's four routes.
+  const startWith = /^start with lesson (\d+)$/i.exec(lower);
+  if (startWith) {
+    return { kind: "link", label: text, href: base.simple(`lesson-${startWith[1].padStart(2, "0")}`), strong: true };
+  }
+  if (/^go to safety and support/i.test(lower)) {
+    return { kind: "link", label: text, href: base.simple("safety-and-support"), strong: true };
+  }
+
+  if (/^continue to/i.test(lower)) {
+    const at = SIMPLE_PAGES.findIndex((p) => p.slug === page.slug);
+    const next = SIMPLE_PAGES[at + 1];
+    return { kind: "link", label: text, href: next ? base.simple(next.slug) : base.home, strong: true };
+  }
+
+  // Anything unrecognised keeps its words rather than vanishing.
+  return { kind: "drop" };
+}
+
+/**
+ * Text addressed to whoever builds the page, removed before a learner sees it.
+ *
+ * The workbook preambles open by telling the builder when to show the workbook
+ * and how long each screen is — "Only shown when the learner taps 'Open the
+ * workbook.' Each screen below is one short page." — and then continue into
+ * the privacy paragraph, which the learner does need. One italic block, two
+ * audiences. The transcripts had the same problem and are handled where they
+ * are read.
+ *
+ * Lesson 1's "1 = Not true · 2 = A little true …" goes too. It describes a
+ * numeric scale the page does not use: the choices are offered by name, and
+ * showing a number key beside them only invites the arithmetic the whole
+ * course refuses to do.
+ */
+const BUILDER_TEXT: RegExp[] = [
+  /Only shown when the learner taps\s*[“"']?Open the workbook\.?[”"']?\s*/gi,
+  /Each screen below is one short page\.\s*/gi,
+  /On the course page,\s*place this inside the closed\s*[“"']?Read the transcript[”"']?\s*section\.\s*/gi,
+  /^\s*\d+\s*=\s*[^\n]*(?:·[^\n]*)+$/gm,
+];
+
+export function withoutBuilderText(markdown: string): string {
+  let out = markdown;
+  for (const pattern of BUILDER_TEXT) out = out.replace(pattern, "");
+  return out
+    // An italic block that held only builder text leaves empty emphasis behind.
+    .replace(/\*\s*\*/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}

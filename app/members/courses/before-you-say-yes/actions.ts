@@ -251,3 +251,28 @@ export async function getCourseComplete(): Promise<boolean> {
     .maybeSingle();
   return Boolean(data?.completed_at);
 }
+
+/**
+ * Ordinary page progress, for Start Here 4's single acknowledgement.
+ *
+ * §3 is exact about this one: one button, no tick boxes, no stored
+ * per-statement responses, and "stored as ordinary page progress only, never as
+ * a specially named record". So it writes the same row every other page would
+ * write, and there is deliberately nothing here that could record *what* was
+ * acknowledged — only that the page was reached.
+ */
+export async function recordPageProgress(pageSlug: string): Promise<void> {
+  if (!knownPage(pageSlug)) throw new Error("Unknown page.");
+
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase.from("course_progress").upsert(
+    {
+      user_id: userId,
+      course_slug: BYSY_SLUG,
+      lesson_slug: pageSlug,
+      completed_at: new Date().toISOString(),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug" }
+  );
+  if (error) throw new Error(error.message);
+}

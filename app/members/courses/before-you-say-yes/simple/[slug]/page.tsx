@@ -3,9 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, normaliseHeading,
-  pageSections, parseScreens, readSimplePage, sectionsOf, transcriptOf,
-  workbookOf,
+  HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, markersIn,
+  normaliseHeading, pageSections, parseScreens, readSimplePage, resolveMarker,
+  sectionsOf, transcriptOf, withoutBuilderText, withoutMarkers, workbookOf,
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
 import { BYSY_BASE, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
@@ -14,6 +14,8 @@ import { signedMediaUrl } from "@/lib/course-media";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import SimpleAudio from "@/components/bysy/SimpleAudio";
 import Workbook from "@/components/bysy/Workbook";
+import PauseAnswer from "@/components/bysy/PauseAnswer";
+import Acknowledge from "@/components/bysy/Acknowledge";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -83,14 +85,46 @@ export default async function SimpleLessonPage({ params }: Props) {
 
   const at = SIMPLE_PAGES.findIndex((p) => p.slug === slug);
   const next = SIMPLE_PAGES[at + 1] ?? null;
+
+  // The bracketed labels in the source become real controls. Resolving them
+  // here keeps the destinations on the server, where the page list lives.
+  const linkBase = {
+    home: BYSY_BASE,
+    simple: simpleHref,
+    detailed: (s: string) => bysyPageHref(s),
+  };
+  const pauseAnswer = ((await getToolAnswer<string[][]>(slug, "P")) ?? [])[0]?.[0] ?? "";
   const md = (source: string) => <MindMarkdown source={source} />;
+  // The client gets what it needs to draw controls and nothing else. Passing
+  // the screens whole shipped their raw markdown into the page source — the
+  // builder instructions included, stripped from the prose but still there for
+  // anyone reading the payload.
+  const clientScreens = screens.map(
+    ({ n, title, group, prompts, options, kind, ticks, example }) => ({
+      n,
+      title,
+      group,
+      prompts,
+      options,
+      kind,
+      ticks,
+      example,
+      body: "",
+      after: "",
+      instructions: "",
+    })
+  );
+
   const renderedScreens: Record<number, React.ReactNode> = {};
   const renderedAfter: Record<number, React.ReactNode> = {};
   const renderedInstructions: Record<number, React.ReactNode> = {};
   for (const screen of screens) {
-    renderedScreens[screen.n] = md(screen.body);
-    if (screen.after) renderedAfter[screen.n] = md(screen.after);
-    if (screen.instructions) renderedInstructions[screen.n] = md(screen.instructions);
+    renderedScreens[screen.n] = md(withoutBuilderText(screen.body));
+    if (screen.after) renderedAfter[screen.n] = md(withoutBuilderText(screen.after));
+    if (screen.instructions) {
+      const shown = withoutBuilderText(screen.instructions);
+      if (shown) renderedInstructions[screen.n] = md(shown);
+    }
   }
 
   return (
@@ -167,7 +201,7 @@ export default async function SimpleLessonPage({ params }: Props) {
         if (heading === "") {
           return (
             <section key={i} className="mt-8">
-              {md(section)}
+              {md(withoutBuilderText(withoutMarkers(section)))}
             </section>
           );
         }
@@ -185,12 +219,16 @@ export default async function SimpleLessonPage({ params }: Props) {
               <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
                 {heading}
               </h2>
-              {md(section)}
+              {md(withoutBuilderText(withoutMarkers(section)))}
             </section>
           );
         }
 
         const quiet = /^(today's question|key scripture|need support\?)$/.test(key);
+        const controls = markersIn(section)
+          .map((label) => resolveMarker(label, page, linkBase))
+          .filter((m) => m.kind !== "drop");
+
         return (
           <section key={i} className={quiet ? "mt-8" : "mt-10"}>
             {quiet ? (
@@ -205,7 +243,45 @@ export default async function SimpleLessonPage({ params }: Props) {
                 {heading}
               </h2>
             )}
-            {md(section)}
+            {md(withoutBuilderText(withoutMarkers(section)))}
+
+            {controls.map((control, c) => {
+              if (control.kind === "write") {
+                return (
+                  <PauseAnswer
+                    key={c}
+                    pageSlug={slug}
+                    label={control.label}
+                    hint={control.hint}
+                    saved={pauseAnswer}
+                  />
+                );
+              }
+              if (control.kind === "acknowledge") {
+                return (
+                  <Acknowledge
+                    key={c}
+                    pageSlug={slug}
+                    label={control.label}
+                    href={control.href}
+                  />
+                );
+              }
+              return (
+                <p key={c} className="mt-4">
+                  <Link
+                    href={control.href}
+                    className={
+                      control.strong
+                        ? "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                        : "text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                    }
+                  >
+                    {control.label}
+                  </Link>
+                </p>
+              );
+            })}
           </section>
         );
       })}
@@ -214,7 +290,7 @@ export default async function SimpleLessonPage({ params }: Props) {
         <div id="go-deeper">
         <Workbook
           pageSlug={slug}
-          screens={screens}
+          screens={clientScreens}
           saved={saved}
           rendered={renderedScreens}
           renderedAfter={renderedAfter}

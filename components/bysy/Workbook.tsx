@@ -139,7 +139,7 @@ export default function Workbook({
           {screen.title}
         </h4>
 
-        {screen.instructions && renderedInstructions[screen.n]}
+        {renderedInstructions[screen.n]}
 
         {rendered[screen.n]}
 
@@ -174,7 +174,7 @@ export default function Workbook({
               <div key={i} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
                 {prompt && (
                   <label
-                    htmlFor={`${screen.n}-${i}`}
+                    htmlFor={screen.example ? `${screen.n}-${i}` : undefined}
                     className="block text-sm leading-relaxed text-[#2B2118]"
                   >
                     {prompt}
@@ -183,6 +183,7 @@ export default function Workbook({
                 <div className="mt-2 flex flex-wrap items-start gap-3">
                   {screen.options.length > 0 && (
                     <select
+                      id={screen.example ? undefined : `${screen.n}-${i}`}
                       aria-label={`Your answer to: ${prompt || screen.title}`}
                       value={rows[screen.n]?.[i]?.[0] ?? ""}
                       onChange={(e) => setCell(i, 0, e.target.value)}
@@ -196,15 +197,17 @@ export default function Workbook({
                       ))}
                     </select>
                   )}
-                  <textarea
-                    id={`${screen.n}-${i}`}
-                    rows={2}
-                    maxLength={FIELD_LIMIT}
-                    placeholder={screen.options.length > 0 ? "One short example" : ""}
-                    value={rows[screen.n]?.[i]?.[1] ?? ""}
-                    onChange={(e) => setCell(i, 1, e.target.value)}
-                    className="min-w-0 flex-1 rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
-                  />
+                  {screen.example && (
+                    <textarea
+                      id={`${screen.n}-${i}`}
+                      rows={2}
+                      maxLength={FIELD_LIMIT}
+                      placeholder={screen.options.length > 0 ? "One short example" : ""}
+                      value={rows[screen.n]?.[i]?.[1] ?? ""}
+                      onChange={(e) => setCell(i, 1, e.target.value)}
+                      className="min-w-0 flex-1 rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                    />
+                  )}
                 </div>
               </div>
             ))}
