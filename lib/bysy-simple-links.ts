@@ -20,4 +20,4 @@ export function simpleHref(slug: string): string {
  * they can be looked at, and nothing links to them. Turning this on is the act
  * of switching the course over, and it is the owner's to make.
  */
-export const BYSY_SIMPLE_PUBLISHED = false;
+export const BYSY_SIMPLE_PUBLISHED = true;
