@@ -30,6 +30,16 @@ export type SimplePage = {
   module: string;
   /** The recording for this page, without its extension. */
   audio: string;
+  /**
+   * How long the recording actually runs, to the nearest minute.
+   *
+   * Measured from the files rather than taken from the pages: the scripts
+   * estimate a length while they are being written, and the recording is what
+   * the learner is deciding whether to start. Lesson 1's page says seven
+   * minutes and the recording is 5:48; Lesson 19's says twelve and it is
+   * 10:55.
+   */
+  length: string;
   kind: SimpleKind;
   /** The detailed page this one replaces, for "Read the book chapter". */
   chapter?: string;
@@ -47,45 +57,45 @@ const M = {
 } as const;
 
 export const SIMPLE_PAGES: SimplePage[] = [
-  { n: 1, slug: "welcome", file: "start-01-welcome.md", title: "Welcome", module: M.start, audio: "01-start-welcome", kind: "start", chapter: "00-welcome.md" },
-  { n: 2, slug: "how-to-use", file: "start-02-how-to-use-the-course.md", title: "How to Use the Course", module: M.start, audio: "02-start-how-to-use", kind: "start", chapter: "02-how-this-course-works.md" },
-  { n: 3, slug: "where-to-begin", file: "start-03-choose-where-to-begin.md", title: "Choose Where to Begin", module: M.start, audio: "03-start-choose-where-to-begin", kind: "start", chapter: "03-choose-your-route.md" },
-  { n: 4, slug: "safety-and-support", file: "start-04-safety-and-support.md", title: "Safety and Support", module: M.start, audio: "04-start-safety-and-support", kind: "start", chapter: "04-a-note-on-safety.md" },
+  { n: 1, slug: "welcome", file: "start-01-welcome.md", title: "Welcome", module: M.start, audio: "01-start-welcome", length: "about 3 minutes", kind: "start", chapter: "00-welcome.md" },
+  { n: 2, slug: "how-to-use", file: "start-02-how-to-use-the-course.md", title: "How to Use the Course", module: M.start, audio: "02-start-how-to-use", length: "about 3 minutes", kind: "start", chapter: "02-how-this-course-works.md" },
+  { n: 3, slug: "where-to-begin", file: "start-03-choose-where-to-begin.md", title: "Choose Where to Begin", module: M.start, audio: "03-start-choose-where-to-begin", length: "about 2 minutes", kind: "start", chapter: "03-choose-your-route.md" },
+  { n: 4, slug: "safety-and-support", file: "start-04-safety-and-support.md", title: "Safety and Support", module: M.start, audio: "04-start-safety-and-support", length: "about 2 minutes", kind: "start", chapter: "04-a-note-on-safety.md" },
 
-  { n: 5, slug: "lesson-01", file: "lesson-01-simple.md", title: "Why Do I Want a Relationship?", module: M.m1, audio: "05-lesson-01", kind: "lesson", chapter: "lesson-01-why-do-you-want-a-relationship.md" },
-  { n: 6, slug: "lesson-02", file: "lesson-02-simple.md", title: "Does Our Faith Point in the Same Direction?", module: M.m1, audio: "06-lesson-02", kind: "lesson", chapter: "lesson-02-equally-yoked.md" },
-  { n: 7, slug: "lesson-03", file: "lesson-03-simple.md", title: "Know Yourself Before You Choose Someone", module: M.m1, audio: "07-lesson-03", kind: "lesson", chapter: "lesson-03-know-yourself.md" },
-  { n: 8, slug: "checkin-01", file: "checkin-01-am-i-ready.md", title: "Am I Ready to Date Wisely?", module: M.m1, audio: "08-checkin-01", kind: "checkin", chapter: "pause-01-am-i-ready-to-date.md" },
+  { n: 5, slug: "lesson-01", file: "lesson-01-simple.md", title: "Why Do I Want a Relationship?", module: M.m1, audio: "05-lesson-01", length: "about 6 minutes", kind: "lesson", chapter: "lesson-01-why-do-you-want-a-relationship.md" },
+  { n: 6, slug: "lesson-02", file: "lesson-02-simple.md", title: "Does Our Faith Point in the Same Direction?", module: M.m1, audio: "06-lesson-02", length: "about 6 minutes", kind: "lesson", chapter: "lesson-02-equally-yoked.md" },
+  { n: 7, slug: "lesson-03", file: "lesson-03-simple.md", title: "Know Yourself Before You Choose Someone", module: M.m1, audio: "07-lesson-03", length: "about 6 minutes", kind: "lesson", chapter: "lesson-03-know-yourself.md" },
+  { n: 8, slug: "checkin-01", file: "checkin-01-am-i-ready.md", title: "Am I Ready to Date Wisely?", module: M.m1, audio: "08-checkin-01", length: "about 2 minutes", kind: "checkin", chapter: "pause-01-am-i-ready-to-date.md" },
 
-  { n: 9, slug: "lesson-04", file: "lesson-04-simple.md", title: "Attraction Is Not the Same as Wisdom", module: M.m2, audio: "09-lesson-04", kind: "lesson", chapter: "lesson-04-attraction-is-not-discernment.md" },
-  { n: 10, slug: "lesson-05", file: "lesson-05-simple.md", title: "Look at Character, Not Just Charm", module: M.m2, audio: "10-lesson-05", kind: "lesson", chapter: "lesson-05-character-before-charisma.md" },
-  { n: 11, slug: "lesson-06", file: "lesson-06-simple.md", title: "Red Flags Christians Sometimes Excuse", module: M.m2, audio: "11-lesson-06", kind: "lesson", chapter: "lesson-06-red-flags-christians-spiritualise.md" },
-  { n: 12, slug: "lesson-07", file: "lesson-07-simple.md", title: "Green Flags That Really Matter", module: M.m2, audio: "12-lesson-07", kind: "lesson", chapter: "lesson-07-quiet-green-flags.md" },
-  { n: 13, slug: "checkin-02", file: "checkin-02-what-have-i-seen.md", title: "What Have I Actually Seen?", module: M.m2, audio: "13-checkin-02", kind: "checkin", chapter: "pause-02-what-have-i-observed.md" },
+  { n: 9, slug: "lesson-04", file: "lesson-04-simple.md", title: "Attraction Is Not the Same as Wisdom", module: M.m2, audio: "09-lesson-04", length: "about 6 minutes", kind: "lesson", chapter: "lesson-04-attraction-is-not-discernment.md" },
+  { n: 10, slug: "lesson-05", file: "lesson-05-simple.md", title: "Look at Character, Not Just Charm", module: M.m2, audio: "10-lesson-05", length: "about 7 minutes", kind: "lesson", chapter: "lesson-05-character-before-charisma.md" },
+  { n: 11, slug: "lesson-06", file: "lesson-06-simple.md", title: "Red Flags Christians Sometimes Excuse", module: M.m2, audio: "11-lesson-06", length: "about 9 minutes", kind: "lesson", chapter: "lesson-06-red-flags-christians-spiritualise.md" },
+  { n: 12, slug: "lesson-07", file: "lesson-07-simple.md", title: "Green Flags That Really Matter", module: M.m2, audio: "12-lesson-07", length: "about 7 minutes", kind: "lesson", chapter: "lesson-07-quiet-green-flags.md" },
+  { n: 13, slug: "checkin-02", file: "checkin-02-what-have-i-seen.md", title: "What Have I Actually Seen?", module: M.m2, audio: "13-checkin-02", length: "about 5 minutes", kind: "checkin", chapter: "pause-02-what-have-i-observed.md" },
 
-  { n: 14, slug: "lesson-08", file: "lesson-08-simple.md", title: "Set Boundaries Without Feeling Guilty", module: M.m3, audio: "14-lesson-08", kind: "lesson", chapter: "lesson-08-boundaries-without-shame.md" },
-  { n: 15, slug: "lesson-09", file: "lesson-09-simple.md", title: "Talk Honestly About Physical Boundaries", module: M.m3, audio: "15-lesson-09", kind: "lesson", chapter: "lesson-09-sexual-boundaries.md" },
-  { n: 16, slug: "lesson-10", file: "lesson-10-simple.md", title: "Notice Family Patterns", module: M.m3, audio: "16-lesson-10", kind: "lesson", chapter: "lesson-10-family-patterns.md" },
-  { n: 17, slug: "lesson-11", file: "lesson-11-simple.md", title: "Talk About Money Early Enough", module: M.m3, audio: "17-lesson-11", kind: "lesson", chapter: "lesson-11-money.md" },
-  { n: 18, slug: "lesson-12", file: "lesson-12-simple.md", title: "Understand Their Past Wisely", module: M.m3, audio: "18-lesson-12", kind: "lesson", chapter: "lesson-12-their-past.md" },
-  { n: 19, slug: "checkin-03", file: "checkin-03-pattern-or-one-event.md", title: "Is This a Pattern or One Event?", module: M.m3, audio: "19-checkin-03", kind: "checkin", chapter: "pause-03-patterns-not-impressions.md" },
+  { n: 14, slug: "lesson-08", file: "lesson-08-simple.md", title: "Set Boundaries Without Feeling Guilty", module: M.m3, audio: "14-lesson-08", length: "about 7 minutes", kind: "lesson", chapter: "lesson-08-boundaries-without-shame.md" },
+  { n: 15, slug: "lesson-09", file: "lesson-09-simple.md", title: "Talk Honestly About Physical Boundaries", module: M.m3, audio: "15-lesson-09", length: "about 8 minutes", kind: "lesson", chapter: "lesson-09-sexual-boundaries.md" },
+  { n: 16, slug: "lesson-10", file: "lesson-10-simple.md", title: "Notice Family Patterns", module: M.m3, audio: "16-lesson-10", length: "about 8 minutes", kind: "lesson", chapter: "lesson-10-family-patterns.md" },
+  { n: 17, slug: "lesson-11", file: "lesson-11-simple.md", title: "Talk About Money Early Enough", module: M.m3, audio: "17-lesson-11", length: "about 8 minutes", kind: "lesson", chapter: "lesson-11-money.md" },
+  { n: 18, slug: "lesson-12", file: "lesson-12-simple.md", title: "Understand Their Past Wisely", module: M.m3, audio: "18-lesson-12", length: "about 9 minutes", kind: "lesson", chapter: "lesson-12-their-past.md" },
+  { n: 19, slug: "checkin-03", file: "checkin-03-pattern-or-one-event.md", title: "Is This a Pattern or One Event?", module: M.m3, audio: "19-checkin-03", length: "about 5 minutes", kind: "checkin", chapter: "pause-03-patterns-not-impressions.md" },
 
-  { n: 20, slug: "lesson-13", file: "lesson-13-simple.md", title: "What If Someone Says, “God Told Me”?", module: M.m4, audio: "20-lesson-13", kind: "lesson", chapter: "lesson-13-god-told-me.md" },
-  { n: 21, slug: "lesson-14", file: "lesson-14-simple.md", title: "Whose Advice Should You Trust?", module: M.m4, audio: "21-lesson-14", kind: "lesson", chapter: "lesson-14-who-has-a-voice.md" },
-  { n: 22, slug: "lesson-15", file: "lesson-15-simple.md", title: "Can You Build a Life Together?", module: M.m4, audio: "22-lesson-15", kind: "lesson", chapter: "lesson-15-can-we-build-a-life.md" },
-  { n: 23, slug: "lesson-16", file: "lesson-16-simple.md", title: "Can Two Good Christians Be Wrong for Each Other?", module: M.m4, audio: "23-lesson-16", kind: "lesson", chapter: "lesson-16-good-christians-wrong-for-each-other.md" },
-  { n: 24, slug: "checkin-04", file: "checkin-04-what-does-the-evidence-show.md", title: "What Does the Evidence Show?", module: M.m4, audio: "24-checkin-04", kind: "checkin", chapter: "pause-04-what-does-the-evidence-require.md" },
+  { n: 20, slug: "lesson-13", file: "lesson-13-simple.md", title: "What If Someone Says, “God Told Me”?", module: M.m4, audio: "20-lesson-13", length: "about 7 minutes", kind: "lesson", chapter: "lesson-13-god-told-me.md" },
+  { n: 21, slug: "lesson-14", file: "lesson-14-simple.md", title: "Whose Advice Should You Trust?", module: M.m4, audio: "21-lesson-14", length: "about 8 minutes", kind: "lesson", chapter: "lesson-14-who-has-a-voice.md" },
+  { n: 22, slug: "lesson-15", file: "lesson-15-simple.md", title: "Can You Build a Life Together?", module: M.m4, audio: "22-lesson-15", length: "about 8 minutes", kind: "lesson", chapter: "lesson-15-can-we-build-a-life.md" },
+  { n: 23, slug: "lesson-16", file: "lesson-16-simple.md", title: "Can Two Good Christians Be Wrong for Each Other?", module: M.m4, audio: "23-lesson-16", length: "about 9 minutes", kind: "lesson", chapter: "lesson-16-good-christians-wrong-for-each-other.md" },
+  { n: 24, slug: "checkin-04", file: "checkin-04-what-does-the-evidence-show.md", title: "What Does the Evidence Show?", module: M.m4, audio: "24-checkin-04", length: "about 5 minutes", kind: "checkin", chapter: "pause-04-what-does-the-evidence-require.md" },
 
-  { n: 25, slug: "lesson-17", file: "lesson-17-simple.md", title: "When It Is Wise to Continue", module: M.m5, audio: "25-lesson-17", kind: "lesson", chapter: "lesson-17-when-to-continue.md" },
-  { n: 26, slug: "lesson-18", file: "lesson-18-simple.md", title: "When It Is Wise to Slow Down", module: M.m5, audio: "26-lesson-18", kind: "lesson", chapter: "lesson-18-when-to-slow-down.md" },
-  { n: 27, slug: "lesson-19", file: "lesson-19-simple.md", title: "When It Is Time to Walk Away", module: M.m5, audio: "27-lesson-19", kind: "lesson", chapter: "lesson-19-when-to-walk-away.md" },
-  { n: 28, slug: "lesson-20", file: "lesson-20-simple.md", title: "When You Fear No One Else Will Come", module: M.m5, audio: "28-lesson-20", kind: "lesson", chapter: "lesson-20-afraid-no-one-else.md" },
+  { n: 25, slug: "lesson-17", file: "lesson-17-simple.md", title: "When It Is Wise to Continue", module: M.m5, audio: "25-lesson-17", length: "about 8 minutes", kind: "lesson", chapter: "lesson-17-when-to-continue.md" },
+  { n: 26, slug: "lesson-18", file: "lesson-18-simple.md", title: "When It Is Wise to Slow Down", module: M.m5, audio: "26-lesson-18", length: "about 8 minutes", kind: "lesson", chapter: "lesson-18-when-to-slow-down.md" },
+  { n: 27, slug: "lesson-19", file: "lesson-19-simple.md", title: "When It Is Time to Walk Away", module: M.m5, audio: "27-lesson-19", length: "about 11 minutes", kind: "lesson", chapter: "lesson-19-when-to-walk-away.md" },
+  { n: 28, slug: "lesson-20", file: "lesson-20-simple.md", title: "When You Fear No One Else Will Come", module: M.m5, audio: "28-lesson-20", length: "about 10 minutes", kind: "lesson", chapter: "lesson-20-afraid-no-one-else.md" },
 
-  { n: 29, slug: "next-faithful-step", file: "my-next-faithful-step.md", title: "My Next Faithful Step", module: M.closing, audio: "29-my-next-faithful-step", kind: "closing", chapter: "my-next-faithful-step.md" },
+  { n: 29, slug: "next-faithful-step", file: "my-next-faithful-step.md", title: "My Next Faithful Step", module: M.closing, audio: "29-my-next-faithful-step", length: "about 5 minutes", kind: "closing", chapter: "my-next-faithful-step.md" },
 
-  { n: 30, slug: "engagement-01", file: "engagement-01-are-we-ready.md", title: "Are We Ready to Discuss Engagement?", module: M.m6, audio: "30-engagement-01", kind: "engagement", chapter: "module-6-01-before-engagement.md" },
-  { n: 31, slug: "engagement-02", file: "engagement-02-questions-before-engagement.md", title: "Questions to Answer Before Engagement", module: M.m6, audio: "31-engagement-02", kind: "engagement", chapter: "module-6-02-questions-before-engagement.md" },
-  { n: 32, slug: "engagement-03", file: "engagement-03-what-comes-next.md", title: "What Comes Next?", module: M.m6, audio: "32-engagement-03", kind: "engagement", chapter: "module-6-03-what-comes-next.md" },
+  { n: 30, slug: "engagement-01", file: "engagement-01-are-we-ready.md", title: "Are We Ready to Discuss Engagement?", module: M.m6, audio: "30-engagement-01", length: "about 7 minutes", kind: "engagement", chapter: "module-6-01-before-engagement.md" },
+  { n: 31, slug: "engagement-02", file: "engagement-02-questions-before-engagement.md", title: "Questions to Answer Before Engagement", module: M.m6, audio: "31-engagement-02", length: "about 5 minutes", kind: "engagement", chapter: "module-6-02-questions-before-engagement.md" },
+  { n: 32, slug: "engagement-03", file: "engagement-03-what-comes-next.md", title: "What Comes Next?", module: M.m6, audio: "32-engagement-03", length: "about 6 minutes", kind: "engagement", chapter: "module-6-03-what-comes-next.md" },
 ];
 
 export const findSimplePage = cache(
@@ -429,7 +439,15 @@ export function transcriptOf(section: string | null): string {
 }
 
 /** "about 7 minutes", as the page states it, for the Listen control. */
-export function lengthOf(listen: string | null, transcript: string | null): string | null {
+export function lengthOf(
+  page: SimplePage,
+  listen: string | null,
+  transcript: string | null
+): string | null {
+  // The measured length wins. The page's own figure is an estimate made while
+  // the script was being written, and every one of the 32 differs from what
+  // was recorded.
+  if (page.length) return page.length;
   const fromButton = /Listen\s*(?:—|-|–)\s*([^*\n]+)/.exec(listen ?? "")?.[1]?.trim();
   if (fromButton) return fromButton;
   const fromScript = /\*\(About\s+([a-z0-9]+\s+minutes?)/i.exec(transcript ?? "")?.[1];
@@ -831,4 +849,31 @@ export function withoutChoicePlaceholder(section: string): string {
 /** Whether a section's options are the separate safety route. */
 export function isSafetyRouteSection(heading: string): boolean {
   return /separate safety route/i.test(heading);
+}
+
+/** The href that marks a "Leave this page" link for the renderer. */
+export const EXIT_HREF = "#leave-this-page";
+
+/**
+ * "Leave this page →" in the prose, turned into a link the renderer can catch.
+ *
+ * It cannot be an ordinary href: leaving has to replace the page rather than
+ * add to the history, which is a thing only a control can do. So the text
+ * becomes a link to a sentinel, and the page renders that sentinel as the exit.
+ */
+export function linkExit(body: string): string {
+  return body
+    .split(/\r?\n/)
+    .map((line) => {
+      if (/^\s{0,3}#/.test(line) || /^\s*```/.test(line)) return line;
+      if (/\]\([^)]*\)/.test(line) && /Leave this page/.test(line)) return line;
+      return line.replace(
+        /(\*\*)?(Leave this page)(\s*→)?(\*\*)?/g,
+        (_m, bold, text, arrow) => {
+          const linked = `[${text}${arrow ? " →" : ""}](${EXIT_HREF})`;
+          return bold ? `**${linked}**` : linked;
+        }
+      );
+    })
+    .join("\n");
 }

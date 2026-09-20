@@ -1112,6 +1112,35 @@ if (!simplePublished) {
   }
 }
 
+/* The quick exit named in the prose, and the lengths on the Listen controls.
+
+   Six pages write "Leave this page →" into their text, including the safety
+   notice at the top of Lessons 6, 9, 10, 13 and 19. It rendered as bold words:
+   the one instruction on those pages that looked like a control and was not.
+
+   And the lengths: every page states one in its script, written while the
+   script was, and every one of the 32 differs from the recording. Lesson 1
+   says seven minutes against 5:48; Lesson 19 says twelve against 10:55. A
+   length is a promise about what someone is about to start. */
+
+{
+  const simpleLib = readFileSync(join("lib", "bysy-simple.ts"), "utf8");
+
+  if (!/export function linkExit\b/.test(simpleLib)) {
+    fail("lib/bysy-simple.ts has lost linkExit — the exit named in the prose would be plain text again");
+  } else {
+    ok("the quick exit written into the course text is a control");
+  }
+
+  const withLength = [...simpleLib.matchAll(/length:\s*"about \d+ minutes?"/g)].length;
+  const pageCount = [...simpleLib.matchAll(/\bslug:\s*"/g)].length;
+  if (withLength !== pageCount) {
+    fail(`${pageCount - withLength} simple page(s) have no measured audio length`);
+  } else {
+    ok(`all ${withLength} pages carry the length of their own recording`);
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

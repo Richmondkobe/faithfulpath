@@ -90,6 +90,9 @@ export default function Workbook({
   // "Go back to the questions" is still there for a Yes marked by mistake, and
   // Back still works. What goes is the invitation to carry on past it.
   const [safetyRouteShown, setSafetyRouteShown] = useState(false);
+  // Screens the learner was told not to use. Back from the destination returns
+  // to the safety check rather than walking them through what was skipped.
+  const [skipped, setSkipped] = useState<number[]>([]);
   const [savedAt, setSavedAt] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -116,6 +119,13 @@ export default function Workbook({
   const isNonSaved = nonSaved.includes(screen.n);
   const isGuide = guides.includes(screen.n);
   const isSafety = safety.includes(screen.n);
+  // "Go straight to Screen 8" — the destination the stop box itself names.
+  const jumpTo = isSafety
+    ? Number(/go straight to screen (\d+)/i.exec(screen.after ?? "")?.[1])
+    : NaN;
+  const jumpTarget = Number.isFinite(jumpTo)
+    ? screens.find((s) => s.n === jumpTo) ?? null
+    : null;
   const prompts = screen.prompts.length > 0 ? screen.prompts : [""];
   const entries = screen.repeats
     ? Math.max(1, Math.ceil((rows[screen.n]?.length ?? prompts.length) / prompts.length))
@@ -199,8 +209,17 @@ export default function Workbook({
 
         {isNonSaved && !isGuide && (
           <p className="mt-4 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
-            Nothing on this screen is saved. What you write here stays on this
-            screen for now and is gone when you leave it.
+            Nothing on this screen is saved.
+            {/* The second sentence is about writing, so it belongs only on a
+                screen that has somewhere to write. A read-only screen has no
+                fields at all, and a tick or a choice is not writing. */}
+            {!isReadOnly &&
+              (screen.kind === "questions" ||
+                screen.kind === "write" ||
+                screen.kind === "sort") && (
+                <> What you write here stays on this screen for now and is gone
+                when you leave it.</>
+              )}
           </p>
         )}
 
@@ -227,6 +246,22 @@ export default function Workbook({
             items={screen.prompts}
             route={renderedAfter[screen.n]}
             routeOptions={screen.categories}
+            jumpTo={
+              jumpTarget
+                ? {
+                    label: `Go to Screen ${jumpTarget.n} — ${jumpTarget.title}`,
+                    go: () => {
+                      setSkipped(
+                        screens
+                          .filter((s) => s.n > screen.n && s.n < jumpTarget.n)
+                          .map((s) => s.n)
+                      );
+                      setSafetyRouteShown(false);
+                      setAt(screens.findIndex((s) => s.n === jumpTarget.n));
+                    },
+                  }
+                : null
+            }
             onRoute={setSafetyRouteShown}
           />
         )}
@@ -385,7 +420,11 @@ export default function Workbook({
             disabled={at === 0}
             onClick={() => {
               setSafetyRouteShown(false);
-              setAt((i) => Math.max(0, i - 1));
+              setAt((i) => {
+                let next = i - 1;
+                while (next > 0 && skipped.includes(screens[next].n)) next--;
+                return Math.max(0, next);
+              });
             }}
             className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
           >

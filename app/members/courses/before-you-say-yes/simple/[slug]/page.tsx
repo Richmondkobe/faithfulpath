@@ -5,7 +5,8 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   HANDLED_HEADINGS, SIMPLE_PAGES, findSimplePage, lengthOf, markersIn,
   normaliseHeading, pageSections, parseScreens, readSimplePage, resolveMarker,
-  isSafetyRouteSection, linkSupport, parseChoiceOptions, rulesFor, sectionsOf,
+  EXIT_HREF, isSafetyRouteSection, linkExit, linkSupport, parseChoiceOptions,
+  rulesFor, sectionsOf,
   transcriptOf, withoutBuilderText, withoutChoiceOptions,
   withoutChoicePlaceholder, withoutMarkers, workbookNote, workbookOf,
 } from "@/lib/bysy-simple";
@@ -22,6 +23,7 @@ import Acknowledge from "@/components/bysy/Acknowledge";
 import CompletionRecord from "@/components/bysy/CompletionRecord";
 import RouteCard from "@/components/bysy/RouteCard";
 import PageChoice from "@/components/bysy/PageChoice";
+import ExitLink from "@/components/bysy/ExitLink";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -83,7 +85,7 @@ export default async function SimpleLessonPage({ params }: Props) {
   const src = await signedMediaUrl("audio", `${page.audio}.mp3`, BYSY_SLUG);
   // The length is read from the script's own note before that note is stripped.
   const transcript = transcriptOf(get(TRANSCRIPT));
-  const length = lengthOf(get(LISTEN), get(TRANSCRIPT));
+  const length = lengthOf(page, get(LISTEN), get(TRANSCRIPT));
 
   // §6.3, plus each page's own note. A non-saved screen is never read back
   // either: nothing about it is stored, so there is nothing to return.
@@ -122,7 +124,22 @@ export default async function SimpleLessonPage({ params }: Props) {
   const courseComplete = isFinalPage ? await getCourseComplete() : false;
   // Every reference to the support page becomes a link before it is rendered.
   const md = (source: string) => (
-    <MindMarkdown source={linkSupport(source, bysySupportHref())} />
+    <MindMarkdown
+      source={linkExit(linkSupport(source, bysySupportHref()))}
+      extra={{
+        a: ({ href, children }) =>
+          href === EXIT_HREF ? (
+            <ExitLink>{children}</ExitLink>
+          ) : (
+            <a
+              href={href}
+              className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              {children}
+            </a>
+          ),
+      }}
+    />
   );
   // The client gets what it needs to draw controls and nothing else. Passing
   // the screens whole shipped their raw markdown into the page source — the

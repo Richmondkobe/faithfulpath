@@ -119,14 +119,21 @@ const components: Components = {
 export default function MindMarkdown({
   source,
   tight = false,
+  extra,
 }: {
   source: string;
   /** Drops the leading margin, for prose inside a box that sets its own. */
   tight?: boolean;
+  /**
+   * Renderers layered over the defaults, for a course that needs one element
+   * to behave differently — Before You Say Yes turns its "Leave this page"
+   * links into the quick exit.
+   */
+  extra?: Components;
 }) {
   return (
     <div className={tight ? "[&>*:first-child]:mt-0" : undefined}>
-      <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+      <ReactMarkdown remarkPlugins={[remarkGfm]} components={{ ...components, ...extra }}>
         {source}
       </ReactMarkdown>
     </div>

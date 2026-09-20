@@ -26,6 +26,7 @@ export default function SafetyCheck({
   intro,
   route,
   routeOptions = [],
+  jumpTo,
   onRoute,
 }: {
   items: string[];
@@ -42,6 +43,14 @@ export default function SafetyCheck({
   route?: React.ReactNode;
   /** Routes the page offers to choose between, shown as a list. Never stored. */
   routeOptions?: string[];
+  /**
+   * The screen the stop box tells the learner to go to.
+   *
+   * Lesson 19's says "do not use Screens 3–7, go straight to Screen 8" while
+   * Next is withdrawn — so the instruction named a destination with no way to
+   * reach it. The screens in between stay skipped rather than walked through.
+   */
+  jumpTo?: { label: string; go: () => void } | null;
   /** Told when the route appears, so the page can stop offering "Next". */
   onRoute?: (showing: boolean) => void;
 }) {
@@ -90,6 +99,18 @@ export default function SafetyCheck({
             Finding Help Where You Live
           </Link>
         </div>
+        {jumpTo && (
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={jumpTo.go}
+              className="rounded-sm border border-[#D9CDBA] bg-[#FDFAF4] px-6 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+            >
+              {jumpTo.label}
+            </button>
+          </div>
+        )}
+
         <button
           type="button"
           onClick={() => setAnswers({})}
