@@ -110,7 +110,7 @@ export default async function SimpleLessonPage({ params }: Props) {
   // builder instructions included, stripped from the prose but still there for
   // anyone reading the payload.
   const clientScreens = screens.map(
-    ({ n, title, group, prompts, options, kind, ticks, categories, example }) => ({
+    ({ n, title, group, prompts, options, kind, ticks, categories, repeats, example }) => ({
       n,
       title,
       group,
@@ -119,6 +119,7 @@ export default async function SimpleLessonPage({ params }: Props) {
       kind,
       ticks,
       categories,
+      repeats,
       example,
       body: "",
       after: "",

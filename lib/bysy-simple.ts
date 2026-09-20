@@ -265,6 +265,7 @@ export function parseScreens(workbook: string): Screen[] {
       // numbered list in the prose printed every statement twice. What is
       // above the list stays above the boxes and what is below stays below —
       // a note written after the questions is about them.
+      current.repeats = /\brepeat (?:this screen )?for each\b/i.test(body);
       current.ticks = [...body.matchAll(/^\s*[*-]\s*☐\s*(.+)$/gm)].map((m) => m[1].trim());
       // "- **Must-haves for everyone** — needed for any safe…": a named box.
       current.categories = [...body.matchAll(/^\s*[*-]\s*\*\*([^*]+)\*\*\s*(?:—|–|-|→)/gm)]
@@ -360,6 +361,7 @@ export function parseScreens(workbook: string): Screen[] {
           kind: "read",
           ticks: [],
           categories: [],
+          repeats: false,
           example: /\bexample\b/i.test(inherited),
         };
         continue;

@@ -50,6 +50,15 @@ export type Screen = {
   /** The "☐" items, for a tick screen. */
   ticks: string[];
   /**
+   * Whether the screen is one entry the learner adds more of.
+   *
+   * Lesson 14's Screens 1 and 3 say "Repeat this screen for each person" and
+   * "Repeat for each concern or encouragement" — one set of questions, asked
+   * again per adviser. A fixed set of boxes lets a learner record one person
+   * and quietly lose the rest.
+   */
+  repeats: boolean;
+  /**
    * The named boxes of a sorting screen.
    *
    * Lesson 3's Screen 10 names four — must-haves for everyone, my personal

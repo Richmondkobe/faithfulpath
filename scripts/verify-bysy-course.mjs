@@ -1036,6 +1036,37 @@ if (!simplePublished) {
   }
 }
 
+/* §5: "Where a screen says 'Repeat this screen' (for example Lesson 8 Screen 2,
+   Lesson 14 Screens 1 and 3), the learner must be able to add more entries."
+
+   A fixed set of boxes on one of these looks finished and is not: it records
+   the first adviser and gives the second nowhere to go. The screens are found
+   by what they say, so this checks that the ones §5 names are still among
+   them — a reworded instruction would otherwise turn an addable screen back
+   into a single one, with nothing to see. */
+
+{
+  const named = [
+    ["lesson-08-simple.md", 2],
+    ["lesson-14-simple.md", 1],
+    ["lesson-14-simple.md", 3],
+  ];
+  let lost = 0;
+  for (const [file, n] of named) {
+    const path = join(SIMPLE_DIR, file);
+    if (!existsSync(path)) continue;
+    const raw = readFileSync(path, "utf8");
+    const from = raw.indexOf(`### Screen ${n} `);
+    const next = raw.indexOf("### Screen ", from + 10);
+    const screen = raw.slice(from, next === -1 ? undefined : next);
+    if (!/repeat (?:this screen )?for each/i.test(screen)) {
+      lost++;
+      fail(`${file} Screen ${n} no longer says it repeats — §5 requires it to take more entries`);
+    }
+  }
+  if (lost === 0) ok("the screens §5 names as repeating still say so");
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

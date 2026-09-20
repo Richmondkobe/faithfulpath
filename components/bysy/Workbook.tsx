@@ -117,6 +117,9 @@ export default function Workbook({
   const isGuide = guides.includes(screen.n);
   const isSafety = safety.includes(screen.n);
   const prompts = screen.prompts.length > 0 ? screen.prompts : [""];
+  const entries = screen.repeats
+    ? Math.max(1, Math.ceil((rows[screen.n]?.length ?? prompts.length) / prompts.length))
+    : 1;
   const wantsNote = /\bwrite\b|\bnote\b|\bdate\b/i.test(screen.title + " " + (screen.after ?? ""));
 
   function setCell(row: number, col: number, value: string) {
@@ -302,8 +305,16 @@ export default function Workbook({
           screen.kind !== "sort" &&
           screen.kind !== "choose" && (
           <div className="mt-5 space-y-4">
-            {prompts.map((prompt, i) => (
+            {Array.from({ length: entries }).flatMap((_, e) =>
+              prompts.map((prompt, j) => {
+                const i = e * prompts.length + j;
+                return (
               <div key={i} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
+                {screen.repeats && j === 0 && (
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                    Entry {e + 1}
+                  </p>
+                )}
                 {prompt && (
                   <label
                     htmlFor={screen.example ? `${screen.n}-${i}` : undefined}
@@ -342,7 +353,27 @@ export default function Workbook({
                   )}
                 </div>
               </div>
-            ))}
+                );
+              })
+            )}
+
+            {screen.repeats && (
+              <button
+                type="button"
+                onClick={() =>
+                  setRows((cur) => ({
+                    ...cur,
+                    [screen.n]: [
+                      ...(cur[screen.n] ?? []),
+                      ...prompts.map(() => ["", ""]),
+                    ],
+                  }))
+                }
+                className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+              >
+                Add another
+              </button>
+            )}
           </div>
         )}
 
