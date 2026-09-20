@@ -126,12 +126,28 @@ export default async function SimpleLessonPage({ params }: Props) {
     })
   );
 
+  // A safety check written across two screens states its instruction once,
+  // under the second — "If any answer on Screen 11 or 12 is Yes, do not
+  // arrange a family meeting…". A Yes on the first must show it too, so a pair
+  // shares the text of whichever of them carries it.
+  const routeText: Record<number, string> = {};
+  for (const screen of screens) {
+    if (!rules.safety.includes(screen.n)) continue;
+    if (screen.after) {
+      routeText[screen.n] = screen.after;
+      continue;
+    }
+    const later = screens.find((s) => s.n > screen.n && rules.safety.includes(s.n) && s.after);
+    if (later?.after) routeText[screen.n] = later.after;
+  }
+
   const renderedScreens: Record<number, React.ReactNode> = {};
   const renderedAfter: Record<number, React.ReactNode> = {};
   const renderedInstructions: Record<number, React.ReactNode> = {};
   for (const screen of screens) {
     renderedScreens[screen.n] = md(withoutBuilderText(screen.body));
-    if (screen.after) renderedAfter[screen.n] = md(withoutBuilderText(screen.after));
+    const after = routeText[screen.n] ?? screen.after;
+    if (after) renderedAfter[screen.n] = md(withoutBuilderText(after));
     if (screen.instructions) {
       const shown = withoutBuilderText(screen.instructions);
       if (shown) renderedInstructions[screen.n] = md(shown);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { bysySupportHref } from "@/lib/bysy-links";
 
@@ -24,12 +24,33 @@ import { bysySupportHref } from "@/lib/bysy-links";
 export default function SafetyCheck({
   items,
   intro,
+  route,
+  routeOptions = [],
+  onRoute,
 }: {
   items: string[];
   intro?: React.ReactNode;
+  /**
+   * The page's own instruction for a Yes, rendered instead of a general one.
+   *
+   * These differ in ways that matter and are not interchangeable. Lesson 10's
+   * says not to arrange a family meeting and not to tell the relatives
+   * involved that help is being sought; Lesson 12's says not to obtain
+   * records, contact former partners, or ask friends to investigate. Writing a
+   * single reassuring paragraph for all seven would have lost both.
+   */
+  route?: React.ReactNode;
+  /** Routes the page offers to choose between, shown as a list. Never stored. */
+  routeOptions?: string[];
+  /** Told when the route appears, so the page can stop offering "Next". */
+  onRoute?: (showing: boolean) => void;
 }) {
   const [answers, setAnswers] = useState<Record<number, "yes" | "no">>({});
   const anyYes = Object.values(answers).includes("yes");
+
+  useEffect(() => {
+    onRoute?.(anyYes);
+  }, [anyYes, onRoute]);
 
   if (anyYes) {
     return (
@@ -46,10 +67,21 @@ export default function SafetyCheck({
           specialist service can help you think about what to do next, and about
           timing and safety, in a way a workbook cannot.
         </p>
-        <p className="mt-3 leading-relaxed text-[#4A4038]">
-          Do not raise it with the person using anything from this course, and
-          do not announce a decision to someone whose reaction you fear.
-        </p>
+
+        {route}
+
+        {routeOptions.length > 0 && (
+          <ul className="mt-4 space-y-2">
+            {routeOptions.map((option) => (
+              <li
+                key={option}
+                className="rounded-sm border border-[#E5D9C7] bg-[#FDFAF4] px-4 py-3 text-sm leading-relaxed text-[#4A4038]"
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="mt-5">
           <Link
             href={bysySupportHref()}

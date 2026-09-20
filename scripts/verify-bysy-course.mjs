@@ -997,6 +997,45 @@ if (!simplePublished) {
   if (drift === 0) ok("every non-saved screen §6.3 names is non-saved in the code");
 }
 
+/* A conversation guide has no fields, and a safety check stores nothing.
+
+   §6.2 retired the joint worksheets: every part meant for two people is a
+   non-saved guide, with no shared response fields and nothing implying the
+   other person has an account. A guide that renders a writing box under each
+   question is back to being a worksheet — which is what it did until someone
+   opened Lesson 7 and looked. */
+
+{
+  const wb = readFileSync(join("components", "bysy", "Workbook.tsx"), "utf8")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+
+  const inputBlocks = [...wb.matchAll(/\{([^{}]*?)&&\s*\(\s*<(?:div|ol|ul)/g)].map((m) => m[1]);
+  const guardless = inputBlocks.filter(
+    (guard) => /screen\.kind ===/.test(guard) && !/!isGuide/.test(guard)
+  );
+  if (guardless.length > 0) {
+    fail(`components/bysy/Workbook.tsx renders ${guardless.length} input block(s) a conversation guide would reach`);
+  } else {
+    ok("a conversation guide renders no fields of any kind");
+  }
+
+  if (!/safetyRouteShown/.test(wb) || !/\{!safetyRouteShown &&/.test(wb)) {
+    fail("components/bysy/Workbook.tsx offers Next while a safety route is showing");
+  } else {
+    ok("Next is withdrawn while a safety route is on screen");
+  }
+
+  const sc = readFileSync(join("components", "bysy", "SafetyCheck.tsx"), "utf8")
+    .replace(/\/\*[\s\S]*?\*\//g, "")
+    .replace(/^\s*\/\/.*$/gm, "");
+  if (/saveToolRows|fetch\(|useTransition/.test(sc)) {
+    fail("components/bysy/SafetyCheck.tsx stores or sends something — §4 forbids recording a safety answer");
+  } else {
+    ok("a safety check stores nothing and sends nothing");
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

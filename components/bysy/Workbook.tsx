@@ -86,6 +86,10 @@ export default function Workbook({
     }
     return start;
   });
+  // Raised by a safety check when its route is on screen. Nothing is locked:
+  // "Go back to the questions" is still there for a Yes marked by mistake, and
+  // Back still works. What goes is the invitation to carry on past it.
+  const [safetyRouteShown, setSafetyRouteShown] = useState(false);
   const [savedAt, setSavedAt] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
@@ -197,7 +201,7 @@ export default function Workbook({
           </p>
         )}
 
-        {!isSafety && !isReadOnly && screen.kind === "tick" && (
+        {!isSafety && !isGuide && !isReadOnly && screen.kind === "tick" && (
           <ul className="mt-5 space-y-2">
             {screen.ticks.map((item, i) => (
               <li key={item}>
@@ -215,9 +219,29 @@ export default function Workbook({
           </ul>
         )}
 
-        {isSafety && <SafetyCheck items={screen.prompts} />}
+        {isSafety && (
+          <SafetyCheck
+            items={screen.prompts}
+            route={renderedAfter[screen.n]}
+            routeOptions={screen.categories}
+            onRoute={setSafetyRouteShown}
+          />
+        )}
 
-        {!isSafety && !isReadOnly && screen.kind === "sort" && (
+        {isGuide && screen.prompts.length > 0 && (
+          <ol className="mt-5 space-y-3">
+            {screen.prompts.map((prompt, i) => (
+              <li
+                key={i}
+                className="rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]"
+              >
+                {prompt}
+              </li>
+            ))}
+          </ol>
+        )}
+
+        {!isSafety && !isGuide && !isReadOnly && screen.kind === "sort" && (
           <div className="mt-5 space-y-4">
             {screen.categories.map((category, i) => (
               <div key={category} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
@@ -240,7 +264,7 @@ export default function Workbook({
           </div>
         )}
 
-        {!isSafety && !isReadOnly && screen.kind === "choose" && (
+        {!isSafety && !isGuide && !isReadOnly && screen.kind === "choose" && (
           <div className="mt-5 space-y-2">
             {screen.categories.map((option) => (
               <label
@@ -271,6 +295,7 @@ export default function Workbook({
         )}
 
         {!isSafety &&
+          !isGuide &&
           !isReadOnly &&
           screen.kind !== "read" &&
           screen.kind !== "tick" &&
@@ -321,19 +346,22 @@ export default function Workbook({
           </div>
         )}
 
-        {renderedAfter[screen.n]}
+        {!isSafety && renderedAfter[screen.n]}
 
         <div className="mt-5 flex flex-wrap items-center gap-4">
           <button
             type="button"
             disabled={at === 0}
-            onClick={() => setAt((i) => Math.max(0, i - 1))}
+            onClick={() => {
+              setSafetyRouteShown(false);
+              setAt((i) => Math.max(0, i - 1));
+            }}
             className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
           >
             Back
           </button>
 
-          {!isSafety && !isReadOnly && !isNonSaved && screen.kind !== "read" && (
+          {!isSafety && !isGuide && !isReadOnly && !isNonSaved && screen.kind !== "read" && (
             <button
               type="button"
               disabled={pending}
@@ -344,14 +372,16 @@ export default function Workbook({
             </button>
           )}
 
-          <button
-            type="button"
-            disabled={at === screens.length - 1}
-            onClick={() => setAt((i) => Math.min(screens.length - 1, i + 1))}
-            className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
-          >
-            Next screen
-          </button>
+          {!safetyRouteShown && (
+            <button
+              type="button"
+              disabled={at === screens.length - 1}
+              onClick={() => setAt((i) => Math.min(screens.length - 1, i + 1))}
+              className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
+            >
+              Next screen
+            </button>
+          )}
 
           {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
         </div>
