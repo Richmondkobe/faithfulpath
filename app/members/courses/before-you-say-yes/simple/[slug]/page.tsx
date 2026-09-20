@@ -9,6 +9,7 @@ import {
   withoutMarkers, workbookNote, workbookOf,
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
+import { getCourseComplete } from "../../actions";
 import { BYSY_BASE, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
 import { getToolAnswer } from "@/lib/bysy-progress";
 import { signedMediaUrl } from "@/lib/course-media";
@@ -17,6 +18,7 @@ import SimpleAudio from "@/components/bysy/SimpleAudio";
 import Workbook from "@/components/bysy/Workbook";
 import PauseAnswer from "@/components/bysy/PauseAnswer";
 import Acknowledge from "@/components/bysy/Acknowledge";
+import CompletionRecord from "@/components/bysy/CompletionRecord";
 
 export const metadata: Metadata = {
   title: "Before You Say Yes | Faithful Path Community",
@@ -101,6 +103,12 @@ export default async function SimpleLessonPage({ params }: Props) {
     detailed: (s: string) => bysyPageHref(s),
   };
   const pauseAnswer = ((await getToolAnswer<string[][]>(slug, "P")) ?? [])[0]?.[0] ?? "";
+
+  // §2's completion record, on the last page of the layer. "What Comes Next?"
+  // says a completion record means only that the material was completed, and
+  // the label may never claim readiness — the control enforces that wording.
+  const isFinalPage = page.n === SIMPLE_PAGES.length;
+  const courseComplete = isFinalPage ? await getCourseComplete() : false;
   // Every reference to the support page becomes a link before it is rendered.
   const md = (source: string) => (
     <MindMarkdown source={linkSupport(source, bysySupportHref())} />
@@ -313,6 +321,8 @@ export default async function SimpleLessonPage({ params }: Props) {
           </section>
         );
       })}
+
+      {isFinalPage && <CompletionRecord complete={courseComplete} />}
 
       {screens.length > 0 && (
         <div id="go-deeper">
