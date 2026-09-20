@@ -11,7 +11,7 @@ import {
 } from "@/lib/bysy-simple";
 import { simpleHref } from "@/lib/bysy-simple-links";
 import { getCourseComplete } from "../../actions";
-import { BYSY_BASE, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
+import { BYSY_BASE, BYSY_SLUG, bysyPageHref, bysySupportHref } from "@/lib/bysy-links";
 import { getToolAnswer } from "@/lib/bysy-progress";
 import { signedMediaUrl } from "@/lib/course-media";
 import MindMarkdown from "@/components/mind/MindMarkdown";
@@ -80,7 +80,7 @@ export default async function SimpleLessonPage({ params }: Props) {
   const screens = workbook ? parseScreens(workbook) : [];
   const openingNote = workbook ? withoutBuilderText(workbookNote(workbook)) : "";
 
-  const src = await signedMediaUrl("audio", `${page.audio}.mp3`);
+  const src = await signedMediaUrl("audio", `${page.audio}.mp3`, BYSY_SLUG);
   // The length is read from the script's own note before that note is stripped.
   const transcript = transcriptOf(get(TRANSCRIPT));
   const length = lengthOf(get(LISTEN), get(TRANSCRIPT));

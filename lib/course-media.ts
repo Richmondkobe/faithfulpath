@@ -14,9 +14,22 @@ const SIGNED_URL_SECONDS = 60 * 60;
 
 export type MediaKind = "videos" | "audio";
 
-function keyFor(kind: MediaKind, file: string): string | null {
+/**
+ * Where a recording lives in the bucket.
+ *
+ * The Spiritual Reset's audio sits directly under `audio/`, which is where it
+ * has always been. A course added later gets a folder of its own so three
+ * courses' recordings are not one flat list — and so a file named the same on
+ * two courses cannot overwrite the other.
+ *
+ * Both parts are checked rather than trusted: the name comes from a page
+ * definition today, and a path that could carry `..` through it would be worth
+ * nothing as a private bucket.
+ */
+function keyFor(kind: MediaKind, file: string, course?: string): string | null {
   if (!/^[a-z0-9-]+\.(mp4|mp3)$/.test(file)) return null;
-  return `${kind}/${file}`;
+  if (course !== undefined && !/^[a-z0-9-]+$/.test(course)) return null;
+  return course ? `${kind}/${course}/${file}` : `${kind}/${file}`;
 }
 
 /**
@@ -26,9 +39,10 @@ function keyFor(kind: MediaKind, file: string): string | null {
  */
 export async function signedMediaUrl(
   kind: MediaKind,
-  file: string
+  file: string,
+  course?: string
 ): Promise<string | null> {
-  const key = keyFor(kind, file);
+  const key = keyFor(kind, file, course);
   if (!key) return null;
 
   const { data, error } = await supabaseAdmin.storage
