@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
 import { BYSY_SLUG, bysyPageHref } from "@/lib/bysy-links";
+import { BYSY_SIMPLE_PUBLISHED, simpleHref } from "@/lib/bysy-simple-links";
 import {
   REVIEW_IN_PROGRESS,
   renderSharedSections,
@@ -299,10 +300,22 @@ export function linkReferences(body: string, selfFile?: string): string {
  * Safety and the discernment lessons that Module 6 assumes.
  */
 export function linkHomeCalls(body: string): string {
+  // The switch is read here rather than passed in, so the one place that
+  // decides where a learner lands is the one place that names the flag.
+  const simple = BYSY_SIMPLE_PUBLISHED;
+  // Where the home's three ways in lead. When the simple layer is published
+  // they lead there; the detailed pages stay exactly where they are and become
+  // the book chapters each simple lesson links to at its foot.
+  const start = simple ? simpleHref("welcome") : bysyPageHref("00-welcome");
+  const route = simple
+    ? simpleHref("where-to-begin")
+    : `${bysyPageHref("03-choose-your-route")}?route=r4`;
+
   const calls: [string, string][] = [
-    ["Start here →", bysyPageHref("00-welcome")],
+    ["Start here →", start],
+    // "Find your situation" and "Get support" point at pages both layers share.
     ["Find your situation →", bysyPageHref("06-help-me-right-now")],
-    ["Choose the engagement route →", `${bysyPageHref("03-choose-your-route")}?route=r4`],
+    ["Choose the engagement route →", route],
     ["Get support →", bysyPageHref("05-finding-help")],
   ];
 

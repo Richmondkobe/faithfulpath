@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { getPages, readCourseHome } from "@/lib/bysy-course";
+import { SIMPLE_PAGES } from "@/lib/bysy-simple";
 import { getStoredRoute } from "@/lib/bysy-progress";
 import { BYSY_BASE } from "@/lib/bysy-links";
+import { BYSY_SIMPLE_PUBLISHED, simpleHref } from "@/lib/bysy-simple-links";
 
 /**
  * Before You Say Yes, on the members page.
@@ -53,13 +55,14 @@ export default async function BysyCourseCard() {
 
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
-          href={BYSY_BASE}
+          href={route || !BYSY_SIMPLE_PUBLISHED ? BYSY_BASE : simpleHref("welcome")}
           className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
           {route ? "Go to the course" : "Start the course"}
         </Link>
         <span className="text-sm text-[#6B5F53]">
-          {getPages().length} pages · you will be shown a shorter way through
+          {BYSY_SIMPLE_PUBLISHED ? SIMPLE_PAGES.length : getPages().length} pages
+          · you will be shown a shorter way through
         </span>
       </div>
     </section>
