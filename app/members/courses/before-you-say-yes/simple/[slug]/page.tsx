@@ -270,6 +270,13 @@ export default async function SimpleLessonPage({ params }: Props) {
 
         if (HANDLED_HEADINGS.has(key)) return null;
 
+        // The safety route's own section renders nothing. Its single option is
+        // read from here and handed to the choice list above, which shows it
+        // apart from the ordinary ones under a heading of its own — §7 keeps
+        // the two things separate, and PageChoice is where that happens. All
+        // that is left in place is the heading, over nothing.
+        if (isSafetyRouteSection(heading)) return null;
+
         // The preamble has no heading of its own: §3's safety notice, which
         // must be the first thing on the page.
         if (heading === "") {
