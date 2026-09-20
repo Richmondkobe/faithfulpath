@@ -706,8 +706,14 @@ export function withoutBuilderText(markdown: string): string {
   let out = markdown;
   for (const pattern of BUILDER_TEXT) out = out.replace(pattern, "");
   return out
-    // An italic block that held only builder text leaves empty emphasis behind.
-    .replace(/\*\s*\*/g, "")
+    // An italic block that held only builder text leaves its emphasis behind,
+    // alone on its line — Lesson 19's workbook note is the one place in the
+    // course where it happens. The line is what makes it safe to remove:
+    // "\*\s*\*" also matches the "**" of ordinary bold, and took the emphasis
+    // off 302 phrases across all 32 pages. Where the file bulleted with "*"
+    // it ate the bullet too, gluing a stray asterisk to the text and running
+    // the list into one paragraph.
+    .replace(/^[ \t]*\*{2,}[ \t]*$/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
