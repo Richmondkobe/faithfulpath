@@ -1144,6 +1144,48 @@ if (!simplePublished) {
   }
 }
 
+/* The next-step controls are one set, and each of them appears once.
+
+   "Open the workbook" was on the page twice — once among the next-step
+   controls and again at the workbook itself — and the two were separated by
+   the whole of "Need support?", so they read as different things rather than
+   as a duplicate. §3 settles it: the workbook is "hidden until the learner
+   taps Open the workbook", so there is nothing where it will appear until it
+   is asked for, and the one control lives with the other three.
+
+   And they stack. Lesson 8's "Continue to Talk Honestly About Physical
+   Boundaries" is the widest button in the course; on a phone it took a line of
+   its own and left the other three trailing under it, where the last of them
+   was missed by the person who wrote the page. */
+
+{
+  const route = join(
+    "app", "members", "courses", "before-you-say-yes", "simple", "[slug]", "page.tsx"
+  );
+  const wb = join("components", "bysy", "Workbook.tsx");
+
+  if (!existsSync(route) || !existsSync(wb)) {
+    fail("the simple layer's route or workbook is missing");
+  } else {
+    const src = readFileSync(route, "utf8");
+    const workbook = readFileSync(wb, "utf8");
+
+    const inRoute = (src.match(/>\s*Open the workbook\s*</g) ?? []).length;
+    const inWorkbook = (workbook.match(/>\s*Open the workbook\s*</g) ?? []).length;
+    if (inRoute + inWorkbook !== 1) {
+      fail(`"Open the workbook" appears ${inRoute + inWorkbook} times — a learner sees it twice`);
+    } else {
+      ok("each next-step control appears exactly once");
+    }
+
+    if (!/flex-col[^"]*sm:flex-row/.test(src)) {
+      fail("the next-step controls no longer stack on a narrow screen");
+    } else {
+      ok("the next-step controls stack as one set on a narrow screen");
+    }
+  }
+}
+
 console.log(
   failures === 0
     ? "\nBefore You Say Yes: structure matches the file list and the navigation document.\n"

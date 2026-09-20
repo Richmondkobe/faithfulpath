@@ -223,25 +223,28 @@ export default async function SimpleLessonPage({ params }: Props) {
         // place the page puts it — which §3 has before "Need support?".
         if (key === "what would you like to do next?") {
           return (
-            <nav key={i} className="mt-10 flex flex-wrap items-center gap-5">
+            <nav
+              key={i}
+              className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5"
+            >
               {next && (
                 <Link
                   href={simpleHref(next.slug)}
-                  className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                  className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
                 >
                   Continue to {next.title}
                 </Link>
               )}
               <Link
                 href={BYSY_BASE}
-                className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:text-[#5C5147] sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
               >
                 Stop here for today
               </Link>
               {screens.length > 0 && (
                 <a
                   href="#go-deeper"
-                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
                 >
                   Open the workbook
                 </a>
@@ -249,7 +252,7 @@ export default async function SimpleLessonPage({ params }: Props) {
               {page.chapter && (
                 <Link
                   href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
-                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
                 >
                   Read the book chapter
                 </Link>
@@ -380,7 +383,6 @@ export default async function SimpleLessonPage({ params }: Props) {
       {isFinalPage && <CompletionRecord complete={courseComplete} />}
 
       {screens.length > 0 && (
-        <div id="go-deeper">
         <Workbook
           pageSlug={slug}
           screens={clientScreens}
@@ -394,7 +396,6 @@ export default async function SimpleLessonPage({ params }: Props) {
           renderedAfter={renderedAfter}
           renderedInstructions={renderedInstructions}
         />
-        </div>
       )}
 
       <p className="mt-8">

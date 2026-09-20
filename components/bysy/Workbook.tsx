@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { saveToolRows } from "@/app/members/courses/before-you-say-yes/actions";
 import { FIELD_LIMIT } from "@/lib/bysy-wording";
 import SafetyCheck from "@/components/bysy/SafetyCheck";
@@ -97,22 +97,20 @@ export default function Workbook({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  if (!open) {
-    return (
-      <div className="mt-8">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-6 py-4 text-[15px] text-[#2B2118] transition-colors hover:border-[#8B5E34]"
-        >
-          Open the workbook
-        </button>
-        <p className="mt-2 text-sm text-[#6B5F53]">
-          Optional, and longer. It keeps your place if you leave it.
-        </p>
-      </div>
-    );
-  }
+  // §3: "the workbook, hidden until the learner taps Open the workbook". The
+  // tap happens in the next-step set further up the page, which sets the hash;
+  // until then there is nothing here at all, and no second control competing
+  // with the first.
+  useEffect(() => {
+    const openIfAsked = () => {
+      if (window.location.hash === "#go-deeper") setOpen(true);
+    };
+    openIfAsked();
+    window.addEventListener("hashchange", openIfAsked);
+    return () => window.removeEventListener("hashchange", openIfAsked);
+  }, []);
+
+  if (!open) return <span id="go-deeper" />;
 
   const screen = screens[at];
   const isReadOnly = readOnly.includes(screen.n);
