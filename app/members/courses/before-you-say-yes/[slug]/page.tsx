@@ -341,14 +341,21 @@ export default async function BysyPage({ params, searchParams }: Props) {
 
       {isFinalPage && <CompletionRecord complete={courseComplete} />}
 
-      <div className="mt-12 border-t border-[#E5D9C7] pt-8">
-        <Link
-          href={bysySupportHref()}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-        >
-          Finding Help Where You Live
-        </Link>
-      </div>
+      {/* Every page carries a way to the support page, including the four at
+          the front of the course whose text never names it. Not this page:
+          linkReferences already declines to link the phrase to the page it is
+          on, and a link at the foot saying "Finding Help Where You Live" to
+          someone reading Finding Help Where You Live is a dead end. */}
+      {page.file !== SUPPORT_FILE && (
+        <div className="mt-12 border-t border-[#E5D9C7] pt-8">
+          <Link
+            href={bysySupportHref()}
+            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          >
+            Finding Help Where You Live
+          </Link>
+        </div>
+      )}
     </main>
   );
 }
