@@ -482,6 +482,18 @@ export function normaliseHeading(heading: string): string {
 }
 
 /**
+ * The rule that ends a section is the file's own furniture, not the page's.
+ *
+ * These files separate the learner-facing page from the production material
+ * below it with a "---", and sections are cut at "##", so the rule is never a
+ * divider *between* sections — it lands at the tail of whichever one precedes
+ * it. Rendered, it became 82 stray rules across all 32 pages, and under a
+ * table it read as a second bottom border in the table's own colour.
+ */
+const withoutTrailingRule = (body: string): string =>
+  body.trim().replace(/(?:(?:^|\n)[ \t]*-{3,}[ \t]*)+$/, "").trim();
+
+/**
  * The page's sections above the workbook, in the page's own order.
  *
  * Rendering only the headings a template knows about drops everything it does
@@ -530,7 +542,8 @@ export function pageSections(markdown: string): { heading: string; body: string 
   let heading: string | null = "";
   let body: string[] = [];
   const flush = () => {
-    if (heading !== null) out.push({ heading, body: body.join("\n").trim() });
+    if (heading !== null)
+      out.push({ heading, body: withoutTrailingRule(body.join("\n")) });
     body = [];
   };
   for (const line of above.split("\n")) {
