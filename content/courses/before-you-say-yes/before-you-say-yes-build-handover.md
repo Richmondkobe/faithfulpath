@@ -174,6 +174,22 @@ love stay honest and freely given." Both change together when the lesson is
 re-recorded, and the new file replaces the old at
 `audio/before-you-say-yes/14-lesson-08.mp3`.
 
+**Lesson 8's Matthew 5:37 commentary.** Agreed on 21 September 2026:
+
+> Jesus was teaching people not to hide dishonesty behind impressive promises.   ← as recorded
+> Jesus was teaching people not to hide dishonesty behind elaborate oaths.       ← agreed wording
+
+Held back for the same reason: the sentence is spoken in `14-lesson-08.mp3`.
+It appears twice in `lesson-08-simple.md`, once in each layer, and the second
+is not word-for-word the first. Line 23, under Key Scripture, is the wording
+above. Line 70, inside the audio script, carries the same sentence with the
+subject shortened to a pronoun because the quotation precedes it — "He was
+teaching people not to hide dishonesty behind impressive promises." Both change
+together when the lesson is re-recorded, so the audio-script line reads "He was
+teaching people not to hide dishonesty behind elaborate oaths."
+
+Both changes ride on the same re-recording of `14-lesson-08.mp3`.
+
 Nothing else is waiting on a recording.
 
 ## What remains
