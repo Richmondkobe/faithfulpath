@@ -8,7 +8,7 @@ Who are the few wise people I should listen to, and how do I weigh what they say
 
 **▶ Listen — about 9 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -35,7 +35,7 @@ Proverbs praises good advice many times. Scripture also gives examples of advice
 
 ## Audio script and transcript
 
-*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 14.
 

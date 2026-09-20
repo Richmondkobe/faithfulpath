@@ -8,7 +8,7 @@ Are we at the point where talking seriously about engagement is wise?
 
 **▶ Listen — about 7 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ You met this verse in Lesson 15. It fits here too. Engagement is when two people
 
 ## Audio script and transcript
 
-*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 This course has been about dating. It has deliberately stopped before engagement. But some of you are in a relationship that has been considered carefully, and you are now facing a different question. Not “Should we continue?” but “Are we ready to move towards marriage?”
 

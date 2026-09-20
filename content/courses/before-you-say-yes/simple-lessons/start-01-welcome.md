@@ -4,7 +4,7 @@
 
 **▶ Listen — about 4 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -20,7 +20,7 @@ Learn how to date wisely, notice healthy and unhealthy patterns, set clear bound
 
 ## Audio script and transcript
 
-*(About four minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About four minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Before You Say Yes. I'm Pastor Richmond Kobe, and I'm glad you are here.
 

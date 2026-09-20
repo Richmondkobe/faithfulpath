@@ -8,7 +8,7 @@ What have I actually seen this person do, especially in small things?
 
 **▶ Listen — about 7 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ Jesus was teaching about faithfulness and stewardship, not about choosing a spou
 
 ## Audio script and transcript
 
-*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 5.
 

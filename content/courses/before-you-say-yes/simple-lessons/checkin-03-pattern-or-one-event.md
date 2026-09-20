@@ -8,7 +8,7 @@ What happened when I spoke up, set a limit, or shared something honest?
 
 **▶ Listen — about 5 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -16,7 +16,7 @@ What happened when I spoke up, set a limit, or shared something honest?
 
 ## Audio script and transcript
 
-*(About five minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the transcript” section.)*
+*(About five minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the full transcript” section.)*
 
 You have reached the third check-in in this course.
 

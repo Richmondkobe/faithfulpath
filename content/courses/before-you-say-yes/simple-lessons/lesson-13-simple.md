@@ -13,7 +13,7 @@ How can I test a claim that God has spoken about my relationship — whether it 
 
 **▶ Listen — about 9 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -31,7 +31,7 @@ Paul wrote this to a church that valued prophecy. He did not tell them to stop l
 
 ## Audio script and transcript
 
-*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 13.
 

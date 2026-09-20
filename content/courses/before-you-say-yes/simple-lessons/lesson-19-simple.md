@@ -16,7 +16,7 @@ If it is time to end this relationship, how do I do it honestly, kindly, and saf
 
 **▶ Listen — about 12 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -43,7 +43,7 @@ David wrote this about God's people in trouble, not about dating. But the promis
 
 ## Audio script and transcript
 
-*(About twelve minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About twelve minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 19.
 

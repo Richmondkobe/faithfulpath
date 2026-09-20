@@ -34,7 +34,7 @@ export default function VideoBlock({
         {video.script.trim() && (
           <details className="group mt-3">
             <summary className="cursor-pointer list-none text-sm text-[#8B5E34] underline underline-offset-4">
-              Read the transcript
+              Read the full transcript
             </summary>
             <div className="border-l-2 border-[#E5D9C7] pl-5">
               <ArticleBody source={video.script} />

@@ -8,7 +8,7 @@ After everything I have learned, what is my one next step?
 
 **▶ Listen — about 6 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ God does not always show us the whole road at once. Often, his word gives enough
 
 ## Audio script and transcript
 
-*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 You have reached the end of the teaching in this course. Well done.
 

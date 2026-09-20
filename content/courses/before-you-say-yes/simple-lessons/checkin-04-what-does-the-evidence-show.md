@@ -8,7 +8,7 @@ Looking at everything I have learned, what is my next wise step?
 
 **▶ Listen — about 6 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -16,7 +16,7 @@ Looking at everything I have learned, what is my next wise step?
 
 ## Audio script and transcript
 
-*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the transcript” section.)*
+*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the full transcript” section.)*
 
 You have reached the fourth check-in in this course.
 

@@ -8,7 +8,7 @@ If I choose to continue, am I choosing it with my eyes open, or just drifting?
 
 **▶ Listen — about 8 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -37,7 +37,7 @@ Paul is describing life in the church, not dating. But humility, gentleness, and
 
 ## Audio script and transcript
 
-*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 17.
 

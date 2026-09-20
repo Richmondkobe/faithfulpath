@@ -4,7 +4,7 @@
 
 **▶ Listen — about 2 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -12,7 +12,7 @@
 
 ## Audio script and transcript
 
-*(About two minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About two minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 People come to this course from different places, so you do not have to begin with Lesson 1. Let me make this simple. There are four starting points.
 

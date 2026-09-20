@@ -72,7 +72,7 @@ Every teaching lesson uses this order:
 4. One truth to remember
 5. Key Scripture, with two or three plain sentences
 6. Optional page panel (some lessons only — for example the tables in Lessons 6, 8, 15 and 17)
-7. Audio script and transcript — **inside a closed "Read the transcript" section**
+7. Audio script and transcript — **inside a closed "Read the full transcript" section**
 8. Pause and think — one question, optional **Write my answer** button (no answer box on Lessons 6 and 19)
 9. One step for today
 10. What would you like to do next? — Continue · Stop here for today · Open the workbook · Read the book chapter

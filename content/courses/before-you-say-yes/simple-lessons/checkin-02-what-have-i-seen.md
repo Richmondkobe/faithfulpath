@@ -8,7 +8,7 @@ What do I genuinely know about this person, and what have I hoped, assumed, or n
 
 **▶ Listen — about 4 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -16,7 +16,7 @@ What do I genuinely know about this person, and what have I hoped, assumed, or n
 
 ## Audio script and transcript
 
-*(About four minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the transcript” section.)*
+*(About four minutes. Read slowly and naturally. On the course page, place this inside the closed “Read the full transcript” section.)*
 
 You have reached the second check-in in this course.
 

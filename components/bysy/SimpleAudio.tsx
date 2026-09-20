@@ -83,9 +83,9 @@ export default function SimpleAudio({
 
       <details className="group mt-4 rounded-sm border border-[#E5D9C7]">
         <summary className="cursor-pointer list-none px-4 py-3 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
-          <span className="font-medium">Read the transcript</span>
+          <span className="font-medium">Read the full transcript</span>
           <span className="ml-2 text-[#6B5F53]">
-            — the words of the recording, in full
+            — every word of the recording, in writing
           </span>
         </summary>
         <div className="border-t border-[#E5D9C7] px-4 pb-4">{transcript}</div>

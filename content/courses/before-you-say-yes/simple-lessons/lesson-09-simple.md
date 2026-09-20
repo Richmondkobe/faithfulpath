@@ -14,7 +14,7 @@ What is my line, and what is my plan for keeping it?
 
 **▶ Listen — about 9 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -32,7 +32,7 @@ Paul is writing about sinful desire in general, not dating. But his words give p
 
 ## Audio script and transcript
 
-*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 9.
 

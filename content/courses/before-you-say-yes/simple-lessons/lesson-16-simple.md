@@ -8,7 +8,7 @@ What if we are both good people, and it still may not be right?
 
 **▶ Listen — about 10 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ David asks God to examine him, not to approve him. That is the attitude this les
 
 ## Audio script and transcript
 
-*(About ten minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About ten minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 16.
 

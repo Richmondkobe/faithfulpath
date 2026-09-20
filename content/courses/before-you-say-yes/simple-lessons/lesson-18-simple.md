@@ -8,7 +8,7 @@ If my honest answer is "not yet," how do I say it wisely, without drifting or ke
 
 **▶ Listen — about 8 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ This proverb is about life in general, not dating. But the principle fits well. 
 
 ## Audio script and transcript
 
-*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 18.
 

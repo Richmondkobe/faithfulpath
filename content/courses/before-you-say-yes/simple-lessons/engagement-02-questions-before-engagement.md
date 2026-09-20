@@ -8,7 +8,7 @@ Are we both freely and honestly ready to declare that we intend to marry?
 
 **▶ Listen — about 5 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -34,7 +34,7 @@ James was teaching Christians how to receive truth with humility. The principle 
 
 ## Audio script and transcript
 
-*(About five minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About five minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to the second engagement page.
 

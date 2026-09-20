@@ -8,7 +8,7 @@
 
 **▶ Listen — about 3 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -16,7 +16,7 @@
 
 ## Audio script and transcript
 
-*(About three minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About three minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Before you begin the lessons, I need to say something important about safety.
 

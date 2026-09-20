@@ -8,7 +8,7 @@ What healthy signs have I actually seen, and not just hoped for?
 
 **▶ Listen — about 8 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -39,7 +39,7 @@ Paul was praying for a whole church, not for a dating couple. But notice what he
 
 ## Audio script and transcript
 
-*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 7.
 

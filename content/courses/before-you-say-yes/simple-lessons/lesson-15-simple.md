@@ -8,7 +8,7 @@ We may share the same faith, but do the lives we want actually fit together?
 
 **▶ Listen — about 8 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -34,7 +34,7 @@ This proverb is about households in general, not choosing a spouse. But notice t
 
 ## Audio script and transcript
 
-*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 15.
 

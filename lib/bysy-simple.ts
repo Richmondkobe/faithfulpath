@@ -685,7 +685,7 @@ export function resolveMarker(
 const BUILDER_TEXT: RegExp[] = [
   /Only shown when the learner taps\s*[“"']?Open the workbook\.?[”"']?\s*/gi,
   /Each screen below is one short page\.\s*/gi,
-  /On the course page,\s*place this inside the closed\s*[“"']?Read the transcript[”"']?\s*section\.\s*/gi,
+  /On the course page,\s*place this inside the closed\s*[“"']?Read the (?:full )?transcript[”"']?\s*section\.\s*/gi,
   /^\s*\d+\s*=\s*[^\n]*(?:·[^\n]*)+$/gm,
 ];
 

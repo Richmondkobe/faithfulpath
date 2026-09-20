@@ -12,7 +12,7 @@ What did my family teach me about relationships, and what did theirs teach them?
 
 **▶ Listen — about 8 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -30,7 +30,7 @@ Cultures understand "leaving" in different ways. In many places, it does not mea
 
 ## Audio script and transcript
 
-*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eight minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 10.
 

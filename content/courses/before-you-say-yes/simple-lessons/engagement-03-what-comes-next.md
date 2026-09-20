@@ -8,7 +8,7 @@ Where am I standing now, and what is my next faithful step from here?
 
 **▶ Listen — about 6 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ You do not need to know your whole future today. You do need to look honestly at
 
 ## Audio script and transcript
 
-*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About six minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 You have reached the end of this course.
 

@@ -8,7 +8,7 @@ What do I need to know about someone's past, and what is not mine to know?
 
 **▶ Listen — about 9 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ This psalm describes how completely God forgives a repentant person. It does not
 
 ## Audio script and transcript
 
-*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About nine minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 12.
 

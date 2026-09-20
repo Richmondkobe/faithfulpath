@@ -10,7 +10,7 @@ Is the fear of being alone making my decisions for me?
 
 **▶ Listen — about 11 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -28,7 +28,7 @@ David says to God what many polite Christians would not dare to say. The psalm d
 
 ## Audio script and transcript
 
-*(About eleven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About eleven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 20.
 

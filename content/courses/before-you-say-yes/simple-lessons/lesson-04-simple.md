@@ -8,7 +8,7 @@ What do I feel about this person, and what do I actually know?
 
 **▶ Listen — about 7 minutes**
 
-**[ Read the transcript ]**
+**[ Read the full transcript ]**
 
 *The transcript stays closed unless the learner chooses to open it.*
 
@@ -26,7 +26,7 @@ Samuel was looking for Israel’s next king, not a spouse. He saw someone whose 
 
 ## Audio script and transcript
 
-*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the transcript" section.)*
+*(About seven minutes. Read slowly and naturally. On the course page, place this inside the closed "Read the full transcript" section.)*
 
 Welcome to Lesson 4.
 
