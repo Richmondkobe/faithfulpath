@@ -1151,12 +1151,12 @@ if (!simplePublished) {
    the whole of "Need support?", so they read as different things rather than
    as a duplicate. §3 settles it: the workbook is "hidden until the learner
    taps Open the workbook", so there is nothing where it will appear until it
-   is asked for, and the one control lives with the other three.
+   is asked for, and the one control lives with the others.
 
-   And they stack. Lesson 8's "Continue to Talk Honestly About Physical
-   Boundaries" is the widest button in the course; on a phone it took a line of
-   its own and left the other three trailing under it, where the last of them
-   was missed by the person who wrote the page. */
+   And they stack. Lesson 8's "Next: Talk Honestly About Physical Boundaries"
+   is the widest button in the course; on a phone it took a line of its own and
+   left the others trailing under it, where the last of them was missed by the
+   person who wrote the page. */
 
 {
   const route = join(

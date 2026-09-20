@@ -235,7 +235,7 @@ export default async function SimpleLessonPage({ params }: Props) {
                     href={simpleHref(next.slug)}
                     className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
                   >
-                    Continue to {next.title}
+                    Next: {next.title}
                   </Link>
                 )}
                 <Link
