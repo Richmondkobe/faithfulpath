@@ -10,11 +10,36 @@ Upload a recording with:
 
     npm run media:upload -- path/to/welcome.mp4
     npm run media:upload -- path/to/01-come-as-you-are.mp3
+    npm run media:upload -- path/to/14-lesson-08.mp3 --course before-you-say-yes
     npm run media:upload -- --list        # what is in the bucket now
 
 The key is taken from the file name: `welcome.mp4` becomes `videos/welcome.mp4`
 and `01-come-as-you-are.mp3` becomes `audio/01-come-as-you-are.mp3`, which is
 what the lessons look for. Use `--as <id>` if the file is named something else.
+
+An upload replaces a file of the same key, so a recording is re-recorded by
+uploading it again. There is nothing to delete first.
+
+## Courses with a folder of their own
+
+The Spiritual Reset's audio sits directly under `audio/`, where it has always
+been. A course added since has a folder, so two courses can hold a file of the
+same name without one overwriting the other. Pass `--course <slug>` and the key
+becomes `audio/<slug>/<id>.mp3`:
+
+    npm run media:upload -- path/to/14-lesson-08.mp3 --course before-you-say-yes
+    #  ->  course-media/audio/before-you-say-yes/14-lesson-08.mp3
+
+**Before You Say Yes** — `audio/before-you-say-yes/`, one recording per page of
+the simple layer, 32 of them. The file name is the `audio` field of that page's
+entry in `SIMPLE_PAGES` (`lib/bysy-simple.ts`), plus `.mp3` — Lesson 8 is
+`14-lesson-08.mp3`. That list is what the page asks the bucket for, so it is the
+authority on the name, not this page.
+
+Get the folder wrong and nothing reports an error: the lesson finds no file at
+the key it asked for and goes on showing the previous recording, or the "coming
+soon" note. `npm run media:upload -- --list` descends into the course folders,
+which is the quickest way to see where a file actually landed.
 
 Until a recording is uploaded the lesson shows the script (for video) or a short
 "coming soon" note (for audio), so nothing is broken by a file that is not ready.
