@@ -14,13 +14,13 @@ What are my limits, and can I state them clearly without feeling guilty?
 
 ## One truth to remember
 
-Clear limits help love stay honest and freely given.
+Clear limits keep love honest and freely chosen.
 
 ## Key Scripture
 
 “Let what you say be simply ‘Yes’ or ‘No’; anything more than this comes from evil.” — Matthew 5:37 (ESV)
 
-Jesus was teaching people not to hide dishonesty behind impressive promises. His words also remind us to speak truthfully and clearly. A sincere yes and an honest no both matter.
+Jesus was teaching people not to hide dishonesty behind elaborate oaths. His words also remind us to speak truthfully and clearly. A sincere yes and an honest no both matter.
 
 ## Four words that are often confused
 
@@ -67,11 +67,11 @@ Now, why should Christians not feel guilty about boundaries?
 
 Some Christians believe that a truly loving person has no limits. But look at Jesus. The Bible says he often withdrew from the crowds to pray. He did not do everything people asked. He let people walk away. Nobody would call him unloving.
 
-Jesus said, “Let what you say be simply ‘Yes’ or ‘No.’” He was teaching people not to hide dishonesty behind impressive promises. His words remind us to speak truthfully and clearly. When your yes and no are honest, people can know where you stand.
+Jesus said, “Let what you say be simply ‘Yes’ or ‘No.’” He was teaching people not to hide dishonesty behind elaborate oaths. His words remind us to speak truthfully and clearly. When your yes and no are honest, people can know where you stand.
 
 Paul says, “Bear one another’s burdens.” A few verses later he says, “Each will have to bear his own load.” So we help each other with what is too heavy. But we do not take over what belongs to someone else.
 
-Here is the main point: clear limits help love stay honest and freely given. If you cannot safely refuse something, your yes is not freely given. Healthy love does not depend on fear, guilt, or pressure.
+Here is the main point: clear limits keep love honest and freely chosen. If you cannot safely refuse something, your yes is not freely given. Healthy love does not depend on fear, guilt, or pressure.
 
 Boundaries also go both ways. The person you are dating may have limits too. That does not mean every limit they name is wise. But if only one person in a relationship is allowed to say “this far and no further,” that is not a relationship with boundaries. That is a relationship with a ruler.
 

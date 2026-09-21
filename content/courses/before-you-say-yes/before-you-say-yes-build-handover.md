@@ -159,39 +159,6 @@ the course feel unsafe rather than safety-aware.
 
 ---
 
-## Waiting on a re-recording
-
-**Lesson 8's "One truth to remember".** Agreed on 21 September 2026:
-
-> Clear limits help love stay honest and freely given.   ← as recorded
-> Clear limits keep love honest and freely chosen.       ← agreed wording
-
-Not applied, because the line is spoken in `14-lesson-08.mp3` and changing
-the page would leave the shaded box and the transcript disagreeing with the
-voice. It appears twice in `lesson-08-simple.md`: line 17, the truth line, and
-line 74, inside the audio script — "Here is the main point: clear limits help
-love stay honest and freely given." Both change together when the lesson is
-re-recorded, and the new file replaces the old at
-`audio/before-you-say-yes/14-lesson-08.mp3`.
-
-**Lesson 8's Matthew 5:37 commentary.** Agreed on 21 September 2026:
-
-> Jesus was teaching people not to hide dishonesty behind impressive promises.   ← as recorded
-> Jesus was teaching people not to hide dishonesty behind elaborate oaths.       ← agreed wording
-
-Held back for the same reason: the sentence is spoken in `14-lesson-08.mp3`.
-It appears twice in `lesson-08-simple.md`, once in each layer, and the second
-is not word-for-word the first. Line 23, under Key Scripture, is the wording
-above. Line 70, inside the audio script, carries the same sentence with the
-subject shortened to a pronoun because the quotation precedes it — "He was
-teaching people not to hide dishonesty behind impressive promises." Both change
-together when the lesson is re-recorded, so the audio-script line reads "He was
-teaching people not to hide dishonesty behind elaborate oaths."
-
-Both changes ride on the same re-recording of `14-lesson-08.mp3`.
-
-Nothing else is waiting on a recording.
-
 ## What remains
 
 Nothing blocking.
