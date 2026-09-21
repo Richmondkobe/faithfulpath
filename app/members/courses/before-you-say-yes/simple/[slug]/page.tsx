@@ -224,12 +224,21 @@ export default async function SimpleLessonPage({ params }: Props) {
         if (key === "what would you like to do next?") {
           return (
             <nav key={i} className="mt-10">
+              {/* The section's own heading, which the controls replaced along
+                  with the marker text under it. §3 lists it as a page element
+                  in its own right, and the twenty lesson files all write it
+                  the same way — but it is rendered from the file rather than
+                  written here, so an edit to any of them carries through. */}
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                {heading}
+              </h2>
+
               {/* Three ways on from the lesson, then the book chapter apart
                   from them. It is not a next step: it is the same material at
                   length, for a reader who wants it now or later. Sitting in
                   the row it read as a fourth choice of equal weight, and under
                   the Continue button on a phone it read as the one after it. */}
-              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+              <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
                 {next && (
                   <Link
                     href={simpleHref(next.slug)}
