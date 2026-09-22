@@ -99,6 +99,11 @@ const BUILT = new Set([
   "session-08",
   "session-09",
   "session-10",
+  "lesson-20",
+  "lesson-21",
+  "lesson-22",
+  "lesson-23",
+  "lesson-24",
 ]);
 
 export default async function ResetSimplePage({ params }: Props) {
@@ -129,6 +134,7 @@ export default async function ResetSimplePage({ params }: Props) {
   const needsPlan =
     page.slug === "lesson-05" ||
     page.slug === "retreat-plan" ||
+    page.slug === "lesson-24" ||
     page.slug.startsWith("session-");
   const chosenPlan = needsPlan ? await getResetPlan() : null;
   const answers = await getLessonReflections(RESET_SLUG, page.slug);
@@ -178,6 +184,35 @@ export default async function ResetSimplePage({ params }: Props) {
     page.video && (chosenPlan === null || chosenPlan === "p3d")
       ? await signedMediaUrl("videos", `${page.video}.mp4`)
       : null;
+
+  // Lesson 24's month carries the four weekly encouragement videos, which the
+  // course already has, one per week. Its note places them inside "Your month
+  // at a glance" rather than in a block of their own.
+  const WEEKS = [
+    { n: 1, id: "week-1-landing", name: "Landing" },
+    { n: 2, id: "week-2-doing", name: "Doing" },
+    { n: 3, id: "week-3-shaping", name: "Shaping" },
+    { n: 4, id: "week-4-settling", name: "Settling" },
+  ];
+  const weekVideos =
+    page.slug === "lesson-24"
+      ? await Promise.all(
+          WEEKS.map(async (w) => ({
+            ...w,
+            src: await signedMediaUrl("videos", `${w.id}.mp4`),
+          }))
+        )
+      : [];
+
+  // And it offers the flex sessions only to a three-day learner who still has
+  // one to take. Offering them to anybody else describes a retreat they did
+  // not do; offering them to somebody who took all three is simply wrong.
+  const flexLeft =
+    page.slug === "lesson-24" &&
+    chosenPlan === "p3d" &&
+    ["session-06", "session-08", "session-09"].some(
+      (s) => !progress.get(`${s}-p3d`)?.completed_at
+    );
 
   const sections = resetSections(bodyOf(markdown));
 
@@ -484,7 +519,59 @@ export default async function ResetSimplePage({ params }: Props) {
         // What to do in danger, set apart so it is not read as one more
         // section. It comes first on the pages that carry it, and a learner in
         // crisis has to be able to find it without reading anything else.
-        if (/^if you need help right now$/i.test(heading)) {
+        // Lesson 24's month: the four weekly videos become real links, and
+        // the flex-session line is shown only to the learners it is true for.
+        if (page.slug === "lesson-24" && /month at a glance/i.test(heading)) {
+          const month = body
+            .replace(/^\s*\*Optional: short weekly encouragement videos[^*\n]*\*\s*$/gm, "")
+            .replace(
+              flexLeft ? /$^/ : /^\s*\*If you took the three-day retreat[^*\n]*\*\s*$/gm,
+              ""
+            );
+          return (
+            <section key={i} className="mt-10">
+              <h2
+                className="text-2xl text-[#2B2118]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                {heading}
+              </h2>
+              <MindMarkdown
+                source={linkSessions(
+                  linkLandmarks(withoutMarkers(withoutSubtitle(month)), to),
+                  resetSimpleHref
+                )}
+                tight
+              />
+              {weekVideos.some((w) => w.src) && (
+                <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                    Weekly encouragement (optional)
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    {weekVideos.map((w) =>
+                      w.src ? (
+                        <li key={w.id}>
+                          <a
+                            href={w.src}
+                            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                          >
+                            Week {w.n} — {w.name}
+                          </a>
+                        </li>
+                      ) : null
+                    )}
+                  </ul>
+                </div>
+              )}
+            </section>
+          );
+        }
+
+        // Lessons 20 and 24 head theirs "Important: safety comes first" and
+        // "Safety comes first". Their notes say the block may not be
+        // collapsed, so it is set apart and open, like the others.
+        if (/^(if you need help right now|(important: )?safety comes first)$/i.test(heading)) {
           return (
             <section
               key={i}
