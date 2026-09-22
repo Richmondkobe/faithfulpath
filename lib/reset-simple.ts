@@ -654,10 +654,20 @@ export function blocksOf(body: string, heading = "", withPlans = false): Block[]
     // The retreat choice: the cards, the disclosure and its four formats are
     // one control, emitted where the first card stands.
     if (/^\*\*\[\s*Card\s*\]/.test(line.trim())) {
-      // Only where a template knows what the cards are. Welcome Home writes
-      // its next pause as cards too, and consuming them here would take them
-      // off a page that has nothing ready to render them.
-      if (!withPlans) { prose.push(line); continue; }
+      // Welcome Home's next pause is four cards that are chosen on the page
+      // and nowhere else: its note forbids saving, sending or scheduling
+      // anything from them, so they become local ticks rather than a control
+      // that writes. Lesson 5's are the plans, which do write a code.
+      if (!withPlans) {
+        const label = /^\*\*\[\s*Card\s*\]\s*(.+?)\s*\*\*$/.exec(line.trim())?.[1];
+        if (label) {
+          flush();
+          checks.push(label);
+          continue;
+        }
+        prose.push(line);
+        continue;
+      }
       flush();
       flushChecks();
       if (!out.some((b) => b.kind === "plans")) out.push({ kind: "plans" });
@@ -857,6 +867,87 @@ export function sessionInPlan(slug: string, plan: string | null): boolean {
   if (!plans) return true;
   if (plan === null || !["p3d", "p1d", "p3h"].includes(plan)) return true;
   return plans.includes(plan);
+}
+
+/**
+ * What each route asks a learner to finish, for Welcome Home's acknowledgement.
+ *
+ * The full-course rule is the note's own, word for word: Parts 1 and 2, the
+ * three-day retreat's core sessions, Session 10, and the five Bring It Home
+ * lessons. Sessions 6, 8 and 9 are not required, and neither is the Day 30
+ * Review — it is a follow-up a month later, and finishing must not wait on it.
+ *
+ * The two shorter routes are not stated in one place, so they are written out
+ * here to be argued with. The one-day retreat times Sessions 1, 2, 3, 7 and
+ * 10, and its note says Session 7 may be skipped, so it is not required; the
+ * preparation lessons are, because a one-day learner comes through them.
+ *
+ * The three-hour reset asks for neither. It is reached from Quick Start by
+ * somebody who said they need a short pause soon, and that view exists to let
+ * them begin without working through eleven preparation pages first. Requiring
+ * those pages before telling them they had completed a three-hour reset would
+ * withhold the acknowledgement for work that route never asked of them. So it
+ * needs its four sessions and the four Bring It Home lessons — not Lesson 20,
+ * which Lesson 21's note says that route reaches it without.
+ */
+const PART_1_AND_2 = [
+  "lesson-01",
+  "lesson-02",
+  "lesson-03",
+  "lesson-04",
+  "checkin-01",
+  "lesson-05",
+  "lesson-06",
+  "lesson-07",
+  "lesson-08",
+  "lesson-09",
+  "checkin-02",
+];
+
+const BRING_IT_HOME = ["lesson-20", "lesson-21", "lesson-22", "lesson-23", "lesson-24"];
+
+export const ROUTE_REQUIRES: Record<string, { sessions: string[]; pages: string[] }> = {
+  p3d: {
+    sessions: ["session-01", "session-02", "session-03", "session-04", "session-05", "session-07", "session-10"],
+    pages: [...PART_1_AND_2, ...BRING_IT_HOME],
+  },
+  p1d: {
+    sessions: ["session-01", "session-02", "session-03", "session-10"],
+    pages: [...PART_1_AND_2, ...BRING_IT_HOME],
+  },
+  p3h: {
+    sessions: ["session-01", "session-02", "session-03", "session-10"],
+    pages: BRING_IT_HOME.filter((p) => p !== "lesson-20"),
+  },
+};
+
+/**
+ * Whether the learner has finished their route, and what is next if not.
+ *
+ * A specialist format is measured against the full course, which its note
+ * requires: those retreats are run from their own programme pages, so there is
+ * no shorter route to acknowledge.
+ *
+ * Nothing here is a gate. A learner who has not finished still reaches this
+ * page and is told so gently, with the next thing named.
+ */
+export function routeFinished(
+  plan: string | null,
+  isDone: (slug: string) => boolean
+): { finished: boolean; kind: "full" | "oneday" | "threehour"; next: string | null } {
+  const kind = plan === "p1d" ? "oneday" : plan === "p3h" ? "threehour" : "full";
+  const spec = ROUTE_REQUIRES[plan ?? "p3d"] ?? ROUTE_REQUIRES.p3d;
+  const planFor = plan ?? "p3d";
+
+  for (const slug of spec.pages) {
+    if (!isDone(slug)) return { finished: false, kind, next: slug };
+  }
+  for (const slug of spec.sessions) {
+    if (!isDone(sessionProgressSlug(slug, planFor))) {
+      return { finished: false, kind, next: slug };
+    }
+  }
+  return { finished: true, kind, next: null };
 }
 
 /** Which version of a session a plan code opens. */

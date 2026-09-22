@@ -39,6 +39,7 @@ import {
   checkinGuidance,
   checkinQuestions,
   routeCards,
+  routeFinished,
   withoutMarkers,
   withoutSubtitle,
   withoutRouteCards,
@@ -104,6 +105,8 @@ const BUILT = new Set([
   "lesson-22",
   "lesson-23",
   "lesson-24",
+  "welcome-home",
+  "day-30-review",
 ]);
 
 export default async function ResetSimplePage({ params }: Props) {
@@ -135,6 +138,7 @@ export default async function ResetSimplePage({ params }: Props) {
     page.slug === "lesson-05" ||
     page.slug === "retreat-plan" ||
     page.slug === "lesson-24" ||
+    page.slug === "welcome-home" ||
     page.slug.startsWith("session-");
   const chosenPlan = needsPlan ? await getResetPlan() : null;
   const answers = await getLessonReflections(RESET_SLUG, page.slug);
@@ -213,6 +217,16 @@ export default async function ResetSimplePage({ params }: Props) {
     ["session-06", "session-08", "session-09"].some(
       (s) => !progress.get(`${s}-p3d`)?.completed_at
     );
+
+  // Welcome Home says one of three things, or gently says not yet. Which, is
+  // decided by what the learner has actually finished on their own route.
+  const finish =
+    page.slug === "welcome-home"
+      ? routeFinished(chosenPlan, (s) => Boolean(progress.get(s)?.completed_at))
+      : null;
+
+  const welcomeHomeVideo =
+    page.slug === "welcome-home" ? await signedMediaUrl("videos", "welcome-home.mp4") : null;
 
   const sections = resetSections(bodyOf(markdown));
 
@@ -404,12 +418,25 @@ export default async function ResetSimplePage({ params }: Props) {
         // closed underneath it, where the page puts it.
         if (/^listen$/i.test(heading)) {
           return (
-            <ResetAudio
-              key={i}
-              src={src}
-              length={page.length}
-              transcript={<MindMarkdown source={transcript} tight />}
-            />
+            <div key={i}>
+              <ResetAudio
+                src={src}
+                length={page.length}
+                transcript={<MindMarkdown source={transcript} tight />}
+              />
+              {/* Welcome Home's video sits under the audio, where its note
+                  moves it to from the old Lesson 24 page. */}
+              {welcomeHomeVideo && (
+                <p className="mt-4">
+                  <a
+                    href={welcomeHomeVideo}
+                    className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  >
+                    Watch the Welcome Home video (optional)
+                  </a>
+                </p>
+              )}
+            </div>
           );
         }
 
@@ -519,6 +546,70 @@ export default async function ResetSimplePage({ params }: Props) {
         // What to do in danger, set apart so it is not read as one more
         // section. It comes first on the pages that carry it, and a learner in
         // crisis has to be able to find it without reading anything else.
+        // Welcome Home's acknowledgement: one of the three, or the gentle line.
+        //
+        // The three are "### " blocks inside this section, and only the one
+        // that is true is rendered. Somebody who has not finished is not shown
+        // a completion message they could mistake for their own, and no
+        // certificate is offered — its note is explicit that the certificate
+        // goes with the full-course acknowledgement and nothing else.
+        if (finish && /^YOUR ACKNOWLEDGEMENT$/i.test(heading)) {
+          const wanted =
+            finish.kind === "oneday"
+              ? /^One-day route/i
+              : finish.kind === "threehour"
+                ? /^Three-hour route/i
+                : /^Full course/i;
+          const block = checkinGuidance(body).length
+            ? null
+            : body
+                .split(/^###\s+/m)
+                .slice(1)
+                .find((b) => wanted.test(b));
+
+          if (!finish.finished) {
+            const nextPage = finish.next ? findResetSimplePage(finish.next) : null;
+            return (
+              <section
+                key={i}
+                className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5"
+              >
+                <p className="text-[15px] leading-relaxed text-[#4A4038]">
+                  You have not finished every step yet. That is all right.
+                  {nextPage ? " Your next step is:" : ""}
+                </p>
+                {nextPage && (
+                  <p className="mt-4">
+                    <Link
+                      href={resetSimpleHref(nextPage.slug)}
+                      className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+                    >
+                      {nextPage.title}
+                    </Link>
+                  </p>
+                )}
+              </section>
+            );
+          }
+
+          return (
+            <section key={i} className="mt-10">
+              {block && (
+                <MindMarkdown
+                  source={withoutMarkers(
+                    withoutSubtitle(
+                      // The heading of the block is the route's name, which the
+                      // acknowledgement itself already says.
+                      block.replace(/^[^\n]*\n/, "")
+                    )
+                  )}
+                  tight
+                />
+              )}
+            </section>
+          );
+        }
+
         // Lesson 24's month: the four weekly videos become real links, and
         // the flex-session line is shown only to the learners it is true for.
         if (page.slug === "lesson-24" && /month at a glance/i.test(heading)) {
