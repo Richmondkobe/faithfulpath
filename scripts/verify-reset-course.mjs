@@ -306,6 +306,67 @@ if (!/export function routeFinished/.test(lib) || !/ROUTE_REQUIRES/.test(lib)) {
   }
 }
 
+/* ------------------------------------------------------- the certificate */
+
+const cert = read(join("lib", "reset-certificate.ts"));
+const certRoute = read(
+  join("app", "members", "courses", "[courseSlug]", "certificate", "route.ts")
+);
+
+if (!cert) {
+  fail("lib/reset-certificate.ts is missing");
+} else if (!/finish\.kind !== "full"/.test(cert)) {
+  fail("the certificate is no longer withheld from the one-day and three-hour routes");
+} else {
+  ok("the certificate belongs to the full course alone");
+}
+
+if (!/finish\.kind === "full"/.test(route)) {
+  fail("Welcome Home now offers the certificate on an acknowledgement that is not the full course");
+} else {
+  ok("Welcome Home offers the certificate only with the full-course acknowledgement");
+}
+
+if (!certRoute) {
+  fail("the shared certificate route is missing");
+} else {
+  // The other two courses must be untouched by the Reset's second layer.
+  if (!/courseSlug === RESET_SLUG/.test(certRoute)) {
+    fail("the certificate route's simple-layer branch is no longer limited to the Reset");
+  } else {
+    ok("only the Reset consults the simple layer for completion; other courses are unchanged");
+  }
+  // And a learner who finished the 38-page course keeps their certificate.
+  if (!/!completion\.complete && courseSlug === RESET_SLUG/.test(certRoute)) {
+    fail("the simple layer now overrides the existing course's completion rather than falling back to it");
+  } else {
+    ok("the existing course's completion is still tried first and still wins when it holds");
+  }
+  // The route builds from the member's own record, so a certificate cannot
+  // exist for somebody who has not finished, whatever a page believes.
+  if (!/if \(!completion\.complete \|\| !completion\.name\)/.test(certRoute)) {
+    fail("the certificate route no longer refuses an unfinished or unnamed request");
+  } else {
+    ok("the certificate route still refuses anyone unfinished or unnamed");
+  }
+}
+
+// Its note allows the name and the date, and no other personal content.
+if (actions.includes("saveResetCertificateName")) {
+  const fn = actions.slice(actions.indexOf("export async function saveResetCertificateName"));
+  const body = fn.slice(0, fn.indexOf("\n}"));
+  const stores = [...body.matchAll(/answer:\s*([A-Za-z_$][\w$.]*)/g)].map((m) => m[1]);
+  if (stores.length !== 1 || stores[0] !== "clean") {
+    fail(
+      `the certificate name action stores ${stores.join(", ") || "nothing"}, expected the trimmed name alone`
+    );
+  } else {
+    ok("the certificate stores a name and nothing else about the learner");
+  }
+} else {
+  fail("saveResetCertificateName is missing, so no name can be printed");
+}
+
 console.log(
   failures === 0
     ? "\nThe Christian Spiritual Reset: the simple layer holds to what its notes require.\n"

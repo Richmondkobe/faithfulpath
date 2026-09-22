@@ -4,6 +4,8 @@ import { getMemberByEmail, isActive } from "@/lib/members";
 import { getCourse, getLessons } from "@/lib/course";
 import { getCompletion } from "@/lib/course-progress";
 import { buildCertificate } from "@/lib/certificate";
+import { resetSimpleCompletion } from "@/lib/reset-certificate";
+import { RESET_SLUG } from "@/lib/reset-simple-links";
 
 /**
  * The completion certificate, generated on request.
@@ -33,10 +35,17 @@ export async function GET(
     return NextResponse.json({ error: "Not found." }, { status: 404 });
   }
 
-  const completion = await getCompletion(
-    courseSlug,
-    lessons[lessons.length - 1].slug
-  );
+  // The Reset now has two layers, and a learner may have finished either. The
+  // simple layer keeps its own progress and its own name, so its completion is
+  // read from there; the 38-page course answers exactly as it did before, and
+  // so does every other course. Whichever says finished wins — somebody who
+  // completed the old course does not lose their certificate because the new
+  // layer exists.
+  let completion = await getCompletion(courseSlug, lessons[lessons.length - 1].slug);
+  if (!completion.complete && courseSlug === RESET_SLUG) {
+    const simple = await resetSimpleCompletion();
+    if (simple.complete) completion = simple;
+  }
 
   // Not finished, or no name to print: send them to the course rather than
   // refusing outright, since both are things they can put right.

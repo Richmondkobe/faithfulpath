@@ -161,3 +161,51 @@ export async function getResetPlan(): Promise<string | null> {
     ? (data!.answer as string)
     : null;
 }
+
+/**
+ * The name to print on the certificate, and nothing else about the learner.
+ *
+ * Its note is strict about the certificate: the learner's name and completion
+ * date only, no other personal or reflective content. So this stores one
+ * string, on a row of its own, and the page asks for it only once the full
+ * course is finished — there is nothing to print before then.
+ *
+ * Kept apart from the old course's certificate name, which lives at a
+ * different index on a different lesson's row. A member who finished the
+ * 38-page course keeps that; this is the simple layer's own.
+ */
+const CERT_PAGE = "simple-certificate-name";
+const NAME_LIMIT = 120;
+
+export async function saveResetCertificateName(name: string): Promise<void> {
+  const clean = name.trim().slice(0, NAME_LIMIT);
+  if (!clean) throw new Error("A name is needed to print the certificate.");
+
+  const { supabase, userId } = await memberClient();
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: RESET_SLUG,
+      lesson_slug: CERT_PAGE,
+      question_index: ROUTE_INDEX,
+      answer: clean,
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+}
+
+export async function getResetCertificateName(): Promise<string | null> {
+  await requireActiveMember();
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("course_reflections")
+    .select("answer")
+    .eq("course_slug", RESET_SLUG)
+    .eq("lesson_slug", CERT_PAGE)
+    .eq("question_index", ROUTE_INDEX)
+    .maybeSingle();
+
+  if (error) throw new Error(`Could not load your name: ${error.message}`);
+  return data?.answer?.trim() || null;
+}

@@ -13,10 +13,12 @@ import ResetPlanCards from "@/components/reset/ResetPlanCards";
 import ResetBegin from "@/components/reset/ResetBegin";
 import ResetTimer from "@/components/reset/ResetTimer";
 import ResetChangePlan from "@/components/reset/ResetChangePlan";
+import ResetCertificate from "@/components/reset/ResetCertificate";
 import { requireActiveMember } from "@/lib/member-gate";
 import { signedMediaUrl } from "@/lib/course-media";
 import { getCourseProgress } from "@/lib/course-progress";
 import {
+  getResetCertificateName,
   getResetPlan,
   getResetRoute,
 } from "@/app/members/courses/christian-spiritual-reset/actions";
@@ -227,6 +229,10 @@ export default async function ResetSimplePage({ params }: Props) {
 
   const welcomeHomeVideo =
     page.slug === "welcome-home" ? await signedMediaUrl("videos", "welcome-home.mp4") : null;
+
+  // The name is asked for only where there is something to print it on.
+  const certName =
+    finish?.finished && finish.kind === "full" ? await getResetCertificateName() : null;
 
   const sections = resetSections(bodyOf(markdown));
 
@@ -592,6 +598,12 @@ export default async function ResetSimplePage({ params }: Props) {
             );
           }
 
+          // The block carries the certificate's own disclaimer, which stays
+          // with the certificate rather than floating in the prose above it.
+          const disclaimer = block
+            ? /^\s*\*(This certificate records[^*\n]*)\*\s*$/m.exec(block)?.[1] ?? null
+            : null;
+
           return (
             <section key={i} className="mt-10">
               {block && (
@@ -602,8 +614,17 @@ export default async function ResetSimplePage({ params }: Props) {
                       // acknowledgement itself already says.
                       block.replace(/^[^\n]*\n/, "")
                     )
-                  )}
+                  ).replace(/^\s*\*This certificate records[^*\n]*\*\s*$/m, "")}
                   tight
+                />
+              )}
+              {/* Only with the full-course acknowledgement. Its note allows it
+                  there and nowhere else. */}
+              {finish.kind === "full" && (
+                <ResetCertificate
+                  courseHref={`${RESET_BASE}/certificate`}
+                  saved={certName}
+                  note={disclaimer}
                 />
               )}
             </section>
