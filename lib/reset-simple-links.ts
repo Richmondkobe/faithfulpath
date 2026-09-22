@@ -22,4 +22,4 @@ export function resetSimpleHref(slug: string): string {
  * they can be looked at, and nothing links to them. Turning this on is the act
  * of switching the course over, and it is the owner's to make.
  */
-export const RESET_SIMPLE_PUBLISHED = false;
+export const RESET_SIMPLE_PUBLISHED = true;

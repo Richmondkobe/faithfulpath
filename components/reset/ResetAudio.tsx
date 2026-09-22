@@ -77,7 +77,10 @@ export default function ResetAudio({
                 {r}×
               </button>
             ))}
-            {length && <span className="text-sm text-[#6B5F53]">· {length}</span>}
+            {/* No separator. The row is a flex with its own gap, so the
+                middot that used to join this to the speed buttons sat as a
+                stray mark rather than between two things. */}
+            {length && <span className="text-sm text-[#6B5F53]">{length}</span>}
           </div>
         </div>
       ) : (
