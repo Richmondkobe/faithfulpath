@@ -158,7 +158,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = await getPublishedProductBySlug(slug);
 
-  if (!guide) return { title: "Guide not found | Faithful Path Community" };
+  if (!guide) return { title: "Book not found | Faithful Path Community" };
 
   const description =
     guide.subtitle ??
@@ -205,7 +205,7 @@ export default async function Guide({ params }: Props) {
         href="/guides"
         className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
       >
-        ← All guides
+        ← All books
       </Link>
 
       {/* 2fr/3fr is the ~40/60 split. `self-start` keeps the cover column from
