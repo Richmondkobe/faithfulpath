@@ -12,7 +12,8 @@
     "media:compress": "node scripts/compress-media.mjs",
     "verify:mind": "node scripts/verify-mind-course.mjs",
     "verify:privacy": "node scripts/verify-mind-privacy.mjs",
-    "verify:bysy": "node scripts/verify-bysy-course.mjs"
+    "verify:bysy": "node scripts/verify-bysy-course.mjs",
+    "verify:reset": "node scripts/verify-reset-course.mjs"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
