@@ -53,7 +53,9 @@ export const metadata: Metadata = {
 const NAV = [
   { href: "/", label: "Home" },
   { href: "/articles", label: "Articles" },
-  { href: "/guides", label: "Guides" },
+  // The URL stays /guides: the pages, their links and anything already shared
+  // are unaffected by what the menu calls them.
+  { href: "/guides", label: "Books" },
   { href: "/membership", label: "Courses" },
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
   { href: "/about", label: "About" },
@@ -83,7 +85,9 @@ export default function RootLayout({
               </span>
             </Link>
 
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            {/* One nav at both widths — it wraps rather than becoming a menu —
+                so the weight here is the weight on a phone too. */}
+            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium">
               {NAV.map((item) => (
                 <Link
                   key={item.href}
