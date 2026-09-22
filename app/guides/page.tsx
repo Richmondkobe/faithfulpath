@@ -10,10 +10,12 @@ import { SITE } from "@/lib/site";
 // rows edited directly in Supabase.
 export const revalidate = 60;
 
+// The URL stays /guides. What these are called changed; where they live did
+// not, so every link already shared still lands.
 export const metadata: Metadata = {
-  title: "Guides | Faithful Path Community",
+  title: "Books | Faithful Path Community",
   description:
-    "Short, practical guides on marriage, ministry and faith — written from twenty years of pastoral work.",
+    "Short, practical books on marriage, ministry and faith — written from twenty years of pastoral work.",
 };
 
 export default async function Guides() {
@@ -25,13 +27,13 @@ export default async function Guides() {
         className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
-        Guides
+        Books
       </h1>
       <p
         className="mt-5 max-w-xl text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        Short, practical guides you can read in an evening and use the same
+        Short, practical books you can read in an evening and use the same
         week. Written from what people actually bring me.
       </p>
 
@@ -41,7 +43,7 @@ export default async function Guides() {
             className="text-xl leading-snug text-[#2B2118]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
-            The first guide is being written.
+            The first book is being written.
           </p>
           <p className="mt-3 max-w-lg leading-relaxed">
             It is coming out of the conversations I am having now, so that it
