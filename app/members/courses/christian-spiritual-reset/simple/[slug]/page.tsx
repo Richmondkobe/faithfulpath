@@ -10,6 +10,9 @@ import ResetReflection from "@/components/reset/ResetReflection";
 import ResetCheckin from "@/components/reset/ResetCheckin";
 import ResetLocalChecks from "@/components/reset/ResetLocalChecks";
 import ResetPlanCards from "@/components/reset/ResetPlanCards";
+import ResetBegin from "@/components/reset/ResetBegin";
+import ResetTimer from "@/components/reset/ResetTimer";
+import ResetChangePlan from "@/components/reset/ResetChangePlan";
 import { requireActiveMember } from "@/lib/member-gate";
 import { signedMediaUrl } from "@/lib/course-media";
 import { getCourseProgress } from "@/lib/course-progress";
@@ -25,7 +28,14 @@ import {
   linkLandmarks,
   afterSafety,
   cardsIn,
+  PROGRAMME_PAGE,
+  SESSION_PLANS,
+  linkSessions,
   planCards,
+  planViewFor,
+  sessionInPlan,
+  sessionProgressSlug,
+  sessionVersionFor,
   checkinGuidance,
   checkinQuestions,
   routeCards,
@@ -78,6 +88,17 @@ const BUILT = new Set([
   "lesson-08",
   "lesson-09",
   "checkin-02",
+  "retreat-plan",
+  "session-01",
+  "session-02",
+  "session-03",
+  "session-04",
+  "session-05",
+  "session-06",
+  "session-07",
+  "session-08",
+  "session-09",
+  "session-10",
 ]);
 
 export default async function ResetSimplePage({ params }: Props) {
@@ -99,14 +120,25 @@ export default async function ResetSimplePage({ params }: Props) {
   const next = RESET_SIMPLE_PAGES[at + 1];
 
   const chosenRoute =
-    page.slug === "choose-starting-point" || page.slug === "safety-and-support"
+    page.slug === "choose-starting-point" ||
+    page.slug === "safety-and-support" ||
+    page.slug === "retreat-plan"
       ? await getResetRoute()
       : null;
   // Lesson 5 is where a retreat is chosen, and its completion waits on one.
-  const chosenPlan = page.slug === "lesson-05" ? await getResetPlan() : null;
+  const needsPlan =
+    page.slug === "lesson-05" ||
+    page.slug === "retreat-plan" ||
+    page.slug.startsWith("session-");
+  const chosenPlan = needsPlan ? await getResetPlan() : null;
   const answers = await getLessonReflections(RESET_SLUG, page.slug);
   const progress = await getCourseProgress(RESET_SLUG);
-  const done = Boolean(progress.get(page.slug)?.completed_at);
+  // A session is finished on the route it was taken on, not for every length
+  // of itself. Every other page is simply its own slug.
+  const stepSlug = page.slug.startsWith("session-")
+    ? sessionProgressSlug(page.slug, chosenPlan)
+    : page.slug;
+  const done = Boolean(progress.get(stepSlug)?.completed_at);
 
   // Each page names its own Go Deeper destination; Safety and Support is the
   // same page for everyone, and is not linked from itself.
@@ -116,6 +148,36 @@ export default async function ResetSimplePage({ params }: Props) {
     safety: page.slug === "safety-and-support" ? null : resetSimpleHref("safety-and-support"),
     help,
   };
+
+  const view = page.slug === "retreat-plan" ? planViewFor(chosenPlan, chosenRoute) : null;
+
+  // "Change my plan" offers the same seven choices as Lesson 5, read from
+  // Lesson 5's own file rather than written out again here — one list, so the
+  // two pages cannot come to disagree about what the retreats are.
+  const planChoices = (() => {
+    if (page.slug !== "retreat-plan") return null;
+    const l5 = findResetSimplePage("lesson-05");
+    const md5 = l5 ? readResetSimplePage(l5.file) : null;
+    if (!md5) return null;
+    const step = resetSections(bodyOf(md5)).find((x) => /take one step/i.test(x.heading));
+    return step ? planCards(step.body) : null;
+  })();
+
+  // A session shows one version, chosen by the retreat the learner is on.
+  const version = page.slug.startsWith("session-") ? sessionVersionFor(chosenPlan) : null;
+
+  // The guided prayer is the recording the course already has, under the flat
+  // audio/ folder where the Spiritual Reset's prayers have always lived. It is
+  // not re-recorded for this layer.
+  const prayerSrc = page.prayer ? await signedMediaUrl("audio", `${page.prayer}.mp3`) : null;
+
+  // The day introduction, offered only on the full version — the plan it
+  // belongs to. The Spiritual Reset's videos sit flat under videos/, where
+  // they have always been.
+  const videoSrc =
+    page.video && (chosenPlan === null || chosenPlan === "p3d")
+      ? await signedMediaUrl("videos", `${page.video}.mp4`)
+      : null;
 
   const sections = resetSections(bodyOf(markdown));
 
@@ -137,6 +199,105 @@ export default async function ResetSimplePage({ params }: Props) {
   // "What you will do here:" opens the page above the first heading.
   const opening = sections.find((s) => !s.heading)?.body ?? "";
 
+  // Five sessions have one version and no "## … VERSION" heading: they belong
+  // to the three-day retreat alone, so their whole body is the page.
+  const isSession = page.slug.startsWith("session-");
+  const oneVersion = isSession && !sections.some((s) => /VERSION/i.test(s.heading));
+
+  // And a session the learner's retreat does not contain is not rendered as
+  // though it were part of it.
+  const inPlan = isSession ? sessionInPlan(page.slug, chosenPlan) : true;
+
+  // A session's body, whichever version it is — and five sessions have only
+  // one, written without a "## … VERSION" heading because the three-day
+  // retreat is the only retreat that contains them. Both paths render the same
+  // way: the narration, the day's video where there is one, the guided prayer,
+  // then the session itself.
+  const sessionBody = (heading: string, body: string, key: number | string) => {
+    const day = /day-(\d)-introduction/.exec(page.video ?? "")?.[1];
+    return (
+      <section key={key} className="mt-10">
+        <ResetAudio
+          src={src}
+          length={page.length}
+          transcript={<MindMarkdown source={transcript} tight />}
+        />
+        {videoSrc && day && (
+          <p className="mt-4">
+            <a
+              href={videoSrc}
+              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              Watch the Day {day} introduction (optional)
+            </a>
+          </p>
+        )}
+        {prayerSrc && (
+          <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              Guided prayer
+            </p>
+            <audio controls preload="none" className="mt-3 w-full">
+              <source src={prayerSrc} type="audio/mpeg" />
+              Your browser cannot play this recording.
+            </audio>
+          </div>
+        )}
+        {blocksOf(body, heading).map((block, b) => {
+          if (block.kind === "prose") {
+            return (
+              <MindMarkdown
+                key={b}
+                source={linkSessions(
+                  linkLandmarks(withoutMarkers(withoutSubtitle(block.text)), to),
+                  resetSimpleHref
+                )}
+                tight={b === 0}
+              />
+            );
+          }
+          if (block.kind === "timer") return <ResetTimer key={b} minutes={block.minutes} />;
+          if (block.kind === "checks") return <ResetLocalChecks key={b} items={block.items} />;
+          if (block.kind === "box") {
+            return (
+              <ResetReflection
+                key={b}
+                pageSlug={page.slug}
+                index={0}
+                label={block.label}
+                saved={answers.get(0) ?? ""}
+              />
+            );
+          }
+          if (block.kind === "step") {
+            return (
+              <ResetStep key={b} pageSlug={stepSlug} label={block.label} done={done} />
+            );
+          }
+          if (block.kind === "skip") {
+            // Two different things are written the same way. "Skip the written
+            // exercise" moves down the page to Close — Session 5's note says
+            // so, and says it records nothing, not even that it was skipped.
+            // The others leave the session for the plan. Neither marks
+            // anything complete: skipping is not finishing.
+            const inPage = /written exercise/i.test(block.label);
+            return (
+              <p key={b} className="mt-5">
+                <a
+                  href={inPage ? "#close" : resetSimpleHref("retreat-plan")}
+                  className="inline-flex w-full items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:w-auto"
+                >
+                  {block.label}
+                </a>
+              </p>
+            );
+          }
+          return null;
+        })}
+      </section>
+    );
+  };
+
   return (
     <main className="mx-auto max-w-2xl px-5 pb-24 pt-10 text-[#2B2118] sm:px-8">
       <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
@@ -157,13 +318,51 @@ export default async function ResetSimplePage({ params }: Props) {
         </p>
       )}
 
-      {opening && (
+      {planChoices && planChoices.main.length > 0 && (
+        <ResetChangePlan
+          label="Change my plan"
+          main={planChoices.main}
+          others={planChoices.others}
+          chosen={chosenPlan}
+          othersLabel={planChoices.othersLabel ?? "Show other retreat formats"}
+        />
+      )}
+
+      {/* A session that belongs to a longer retreat than the one the learner
+          chose. They are told so, and where to go, rather than being shown a
+          session their plan does not contain or a page that refuses to load. */}
+      {!inPlan && (
+        <section className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
+          <p className="text-[15px] leading-relaxed text-[#4A4038]">
+            This session belongs to the three-day retreat
+            {SESSION_PLANS[page.slug]?.includes("p1d") ? " and the one-day retreat" : ""}, and
+            the retreat you chose does not include it. Nothing is locked — you
+            can change your plan at any time, and everything you have finished
+            stays finished.
+          </p>
+          <p className="mt-4">
+            <Link
+              href={resetSimpleHref("retreat-plan")}
+              className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+            >
+              Back to my retreat plan
+            </Link>
+          </p>
+        </section>
+      )}
+
+      {/* Five sessions are written without a version heading, so their whole
+          body is the opening block. It gets the session treatment, not the
+          plain prose one. */}
+      {inPlan && oneVersion && opening && sessionBody("", opening, "one-version")}
+
+      {inPlan && !oneVersion && opening && (
         <div className="mt-6 text-[#4A4038]">
           <MindMarkdown source={linkLandmarks(withoutSubtitle(withoutMarkers(opening)), to)} tight />
         </div>
       )}
 
-      {sections.map(({ heading, body }, i) => {
+      {inPlan && sections.map(({ heading, body }, i) => {
         if (!heading) return null;
 
         // The Listen section becomes the real control, with the transcript
@@ -245,6 +444,43 @@ export default async function ResetSimplePage({ params }: Props) {
           }
         }
 
+        // A session's versions: one is rendered, the others are not.
+        if (version && /VERSION/i.test(heading)) {
+          if (!version.test(heading)) return null;
+          return sessionBody(heading, body, i);
+        }
+
+        // My Retreat Plan carries five views and shows one. The others are
+        // not hidden with CSS; they are not rendered, so a learner cannot
+        // reach a retreat they did not choose by reading the page source.
+        if (view && /^(PLAN VIEW|QUICK START VIEW|OTHER RETREAT FORMATS)/i.test(heading)) {
+          if (!view.heading.test(heading)) return null;
+          return (
+            <section key={i} className="mt-10">
+              <h2
+                className="text-2xl text-[#2B2118]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
+              >
+                {heading.replace(/^(PLAN VIEW:|QUICK START VIEW)\s*/i, "").replace(/\s*\*\([^)]*\)\*\s*$/, "") || "Your plan"}
+              </h2>
+              {blocksOf(body, heading).map((block, b) =>
+                block.kind === "checks" ? (
+                  <ResetLocalChecks key={b} items={block.items} />
+                ) : block.kind === "prose" ? (
+                  <MindMarkdown
+                    key={b}
+                    source={linkSessions(
+                      linkLandmarks(withoutMarkers(withoutSubtitle(block.text)), to),
+                      resetSimpleHref
+                    )}
+                    tight={b === 0}
+                  />
+                ) : null
+              )}
+            </section>
+          );
+        }
+
         // What to do in danger, set apart so it is not read as one more
         // section. It comes first on the pages that carry it, and a learner in
         // crisis has to be able to find it without reading anything else.
@@ -258,7 +494,7 @@ export default async function ResetSimplePage({ params }: Props) {
                 {heading}
               </h2>
               <MindMarkdown
-                source={withoutMarkers(linkLandmarks(body, to))}
+                source={withoutMarkers(withoutSubtitle(linkLandmarks(body, to)))}
                 tight
               />
             </section>
@@ -282,7 +518,7 @@ export default async function ResetSimplePage({ params }: Props) {
               >
                 {heading}
               </h2>
-              <MindMarkdown source={linkLandmarks(withoutMarkers(withoutRouteCards(body)), to)} tight />
+              <MindMarkdown source={linkLandmarks(withoutMarkers(withoutSubtitle(withoutRouteCards(body))), to)} tight />
               <ResetRouteCards
                 cards={cards}
                 chosen={chosenRoute}
@@ -330,7 +566,7 @@ export default async function ResetSimplePage({ params }: Props) {
                 return (
                   <MindMarkdown
                     key={b}
-                    source={linkLandmarks(withoutMarkers(block.text), to)}
+                    source={linkLandmarks(withoutMarkers(withoutSubtitle(block.text)), to)}
                     tight={b === 0}
                   />
                 );
@@ -363,10 +599,13 @@ export default async function ResetSimplePage({ params }: Props) {
                   />
                 );
               }
+              if (block.kind === "timer") {
+                return <ResetTimer key={b} minutes={block.minutes} />;
+              }
               return (
                 <ResetStep
                   key={b}
-                  pageSlug={page.slug}
+                  pageSlug={stepSlug}
                   label={block.label}
                   done={done}
                   disabled={hasPlans && !chosenPlan}
@@ -382,7 +621,39 @@ export default async function ResetSimplePage({ params }: Props) {
           as markers. The ordinary next-step block is not shown beneath them: a
           third way on, phrased as the obvious one, is the opposite of what a
           page about knowing when to stop should end with. */}
-      {questions.length > 0 ? null : page.slug === "safety-and-support" ? (
+      {/* One primary button, below whichever view was shown. For a specialist
+          format it opens that programme page instead, which is where that
+          plan actually lives. */}
+      {view && view.kind !== "none" && (
+        <ResetBegin
+          pageSlug={page.slug}
+          href={
+            view.kind === "other"
+              ? lessonHref(RESET_SLUG, PROGRAMME_PAGE[chosenPlan ?? ""] ?? "23-choose-your-retreat-format")
+              : resetSimpleHref("session-01")
+          }
+          label={view.kind === "other" ? "Open my retreat plan" : "Begin Session 1"}
+          setPlanToThreeHour={view.kind === "quickstart" && chosenPlan === null}
+        />
+      )}
+
+      {view && view.kind === "none" && (
+        <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
+          <p className="text-[15px] leading-relaxed text-[#4A4038]">
+            You have not chosen a retreat yet, so there is no plan to show.
+          </p>
+          <p className="mt-4">
+            <Link
+              href={resetSimpleHref("lesson-05")}
+              className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+            >
+              Choose your retreat first
+            </Link>
+          </p>
+        </section>
+      )}
+
+      {questions.length > 0 || view || version ? null : page.slug === "safety-and-support" ? (
         <ResetContinue
           pageSlug={page.slug}
           continueHref={resetSimpleHref(afterSafety(chosenRoute))}

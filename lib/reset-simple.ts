@@ -68,6 +68,18 @@ export type ResetSimplePage = {
    * depends on the plan chosen, so it is decided when that template is built.
    */
   deeper: string[];
+  /**
+   * The session's guided prayer, which is an existing recording under the flat
+   * `audio/` folder. The Spiritual Reset's prayers have always lived there and
+   * are reused rather than re-recorded; only the sessions have one.
+   */
+  prayer?: string;
+  /**
+   * The day introduction video, on the three sessions that open a day of the
+   * three-day retreat. An optional link, and only in the full version: its
+   * note is explicit that it belongs to that plan and nowhere else.
+   */
+  video?: string;
 };
 
 /**
@@ -97,16 +109,16 @@ export const RESET_SIMPLE_PAGES: ResetSimplePage[] = [
   { n: 15, slug: "checkin-02", file: "checkin-02-ready-to-begin.md", title: "Ready to Begin", part: PART.prepare, audio: null, length: null , deeper: [] },
 
   { n: 16, slug: "retreat-plan", file: "retreat-00-my-retreat-plan.md", title: "My Retreat Plan", part: PART.retreat, audio: "14-retreat-plan", length: "about 4 minutes" , deeper: [] },
-  { n: 17, slug: "session-01", file: "session-01-come-as-you-are.md", title: "Come As You Are", part: PART.retreat, audio: "15-session-01", length: "about 6 minutes" , deeper: ["13-come-as-you-are"] },
-  { n: 18, slug: "session-02", file: "session-02-be-still.md", title: "Be Still and Become Present", part: PART.retreat, audio: "16-session-02", length: "about 6 minutes" , deeper: ["14-be-still-and-become-present"] },
-  { n: 19, slug: "session-03", file: "session-03-put-down-what-you-carry.md", title: "Put Down What You Are Carrying", part: PART.retreat, audio: "17-session-03", length: "about 5 minutes" , deeper: ["15-release-what-you-are-carrying"] },
-  { n: 20, slug: "session-04", file: "session-04-honest-prayer.md", title: "Honest Prayer When It Hurts", part: PART.retreat, audio: "18-session-04", length: "about 5 minutes" , deeper: ["16-lament-grief-and-honest-prayer"] },
-  { n: 21, slug: "session-05", file: "session-05-confession-and-grace.md", title: "Confession and Grace", part: PART.retreat, audio: "19-session-05", length: "about 7 minutes" , deeper: ["17-confession-and-grace"] },
-  { n: 22, slug: "session-06", file: "session-06-forgiving.md", title: "Forgiving Others and Yourself", part: PART.retreat, audio: "20-session-06", length: "about 8 minutes" , deeper: ["18-forgiving-others-and-yourself"] },
-  { n: 23, slug: "session-07", file: "session-07-listening.md", title: "Listening for God's Direction", part: PART.retreat, audio: "21-session-07", length: "about 8 minutes" , deeper: ["19-listening-for-god-s-direction"] },
-  { n: 24, slug: "session-08", file: "session-08-remember-who-you-are.md", title: "Remember Who You Are", part: PART.retreat, audio: "22-session-08", length: "about 6 minutes" , deeper: ["20-rediscovering-your-identity"] },
-  { n: 25, slug: "session-09", file: "session-09-renewing-your-purpose.md", title: "Renewing Your Purpose", part: PART.retreat, audio: "23-session-09", length: "about 7 minutes" , deeper: ["21-renewing-your-purpose"] },
-  { n: 26, slug: "session-10", file: "session-10-going-home.md", title: "Going Home With a New Rhythm", part: PART.retreat, audio: "24-session-10", length: "about 6 minutes" , deeper: ["22-returning-with-a-new-rhythm"] },
+  { n: 17, slug: "session-01", file: "session-01-come-as-you-are.md", title: "Come As You Are", part: PART.retreat, audio: "15-session-01", length: "about 6 minutes" , deeper: ["13-come-as-you-are"], prayer: "01-come-as-you-are", video: "day-1-introduction" },
+  { n: 18, slug: "session-02", file: "session-02-be-still.md", title: "Be Still and Become Present", part: PART.retreat, audio: "16-session-02", length: "about 6 minutes" , deeper: ["14-be-still-and-become-present"], prayer: "02-be-still-and-become-present" },
+  { n: 19, slug: "session-03", file: "session-03-put-down-what-you-carry.md", title: "Put Down What You Are Carrying", part: PART.retreat, audio: "17-session-03", length: "about 5 minutes" , deeper: ["15-release-what-you-are-carrying"], prayer: "03-release-what-you-are-carrying", video: "day-2-introduction" },
+  { n: 20, slug: "session-04", file: "session-04-honest-prayer.md", title: "Honest Prayer When It Hurts", part: PART.retreat, audio: "18-session-04", length: "about 5 minutes" , deeper: ["16-lament-grief-and-honest-prayer"], prayer: "04-lament-grief-and-honest-prayer" },
+  { n: 21, slug: "session-05", file: "session-05-confession-and-grace.md", title: "Confession and Grace", part: PART.retreat, audio: "19-session-05", length: "about 7 minutes" , deeper: ["17-confession-and-grace"], prayer: "05-confession-and-grace" },
+  { n: 22, slug: "session-06", file: "session-06-forgiving.md", title: "Forgiving Others and Yourself", part: PART.retreat, audio: "20-session-06", length: "about 8 minutes" , deeper: ["18-forgiving-others-and-yourself"], prayer: "06-forgiving-others-and-yourself" },
+  { n: 23, slug: "session-07", file: "session-07-listening.md", title: "Listening for God's Direction", part: PART.retreat, audio: "21-session-07", length: "about 8 minutes" , deeper: ["19-listening-for-god-s-direction"], prayer: "07-listening-for-gods-direction", video: "day-3-introduction" },
+  { n: 24, slug: "session-08", file: "session-08-remember-who-you-are.md", title: "Remember Who You Are", part: PART.retreat, audio: "22-session-08", length: "about 6 minutes" , deeper: ["20-rediscovering-your-identity"], prayer: "08-rediscovering-your-identity" },
+  { n: 25, slug: "session-09", file: "session-09-renewing-your-purpose.md", title: "Renewing Your Purpose", part: PART.retreat, audio: "23-session-09", length: "about 7 minutes" , deeper: ["21-renewing-your-purpose"], prayer: "09-renewing-your-purpose" },
+  { n: 26, slug: "session-10", file: "session-10-going-home.md", title: "Going Home With a New Rhythm", part: PART.retreat, audio: "24-session-10", length: "about 6 minutes" , deeper: ["22-returning-with-a-new-rhythm"], prayer: "10-returning-with-a-new-rhythm" },
 
   { n: 27, slug: "lesson-20", file: "lesson-20-test-what-you-heard.md", title: "Test What You Think You Heard", part: PART.home, audio: "25-lesson-20", length: "about 6 minutes" , deeper: ["24-testing-what-you-believe-you-heard"] },
   { n: 28, slug: "lesson-21", file: "lesson-21-take-one-faithful-step.md", title: "Take One Faithful Step", part: PART.home, audio: "26-lesson-21", length: "about 6 minutes" , deeper: ["25-turning-insight-into-action"] },
@@ -469,6 +481,22 @@ export function withoutLocalChecks(body: string): string {
 export function withoutSubtitle(body: string): string {
   return body
     .replace(/^\s*\*(?:Part\s+\d+[^*\n]*|Start Here[^*\n]*|Finish[^*\n]*|Follow-up[^*\n]*)\*\s*$/m, "")
+    // Notes to whoever builds the page, written in italics rather than inside
+    // the implementation comment, so nothing was stripping them.
+    //
+    // Matched on what they have in common rather than phrase by phrase. Every
+    // one of them either speaks about "the learner" in the third person, or
+    // announces how many versions the file holds, or instructs whoever is
+    // building what to show. The course itself never does any of that: it
+    // addresses the reader as "you" throughout. Chasing the wording instead
+    // meant fixing four and leaving "This is a flex session. It has one
+    // version." on two more.
+    .replace(/^\s*\*[^*\n]*\bthe learner\b[^*\n]*\*\s*$/gim, "")
+    .replace(/^\s*\*[^*\n]*\bit has one version\b[^*\n]*\*\s*$/gim, "")
+    .replace(/^\s*\*(?:Do not show|Show only)[^*\n]*\*\s*$/gim, "")
+    // The day introduction is offered as a real link where the video is, so
+    // the italic line describing it would be the same offer twice.
+    .replace(/^\s*\*Optional: Watch [^*\n]*introduction\.?\*\s*$/gm, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
@@ -569,7 +597,9 @@ export type Block =
   | { kind: "plans" }
   | { kind: "box"; label: string }
   | { kind: "checks"; items: string[] }
-  | { kind: "step"; label: string };
+  | { kind: "step"; label: string }
+  | { kind: "timer"; minutes: number[] }
+  | { kind: "skip"; label: string };
 
 /**
  * A section as an ordered list of prose and controls.
@@ -581,7 +611,8 @@ export type Block =
  */
 export function blocksOf(body: string, heading = "", withPlans = false): Block[] {
   const lines = body.split("\n");
-  const isStep = /take one step/i.test(heading);
+  const isStep =
+    /take one step/i.test(heading) || /VERSION/i.test(heading) || heading === "";
 
   // The completion line is the last "☐" in a step section; every other one is
   // a local tick.
@@ -644,6 +675,29 @@ export function blocksOf(body: string, heading = "", withPlans = false): Block[]
       continue;
     }
 
+    const timer = /^\s*\*\*\[\s*Timer:([^\]]+?)\]\*\*\s*$/.exec(line);
+    if (timer) {
+      const mins = [...timer[1].matchAll(/\d+/g)].map((x) => Number(x[0]));
+      if (mins.length) {
+        flush();
+        flushChecks();
+        out.push({ kind: "timer", minutes: mins });
+        continue;
+      }
+    }
+
+    // A way past something, offered where the page offers it. Session 4's
+    // "Skip this session for now" stands before the listening, which is where
+    // somebody deciding whether to do the session at all needs it — not at the
+    // foot of a session they have already been through.
+    const skip = /^\s*\*\*\[\s*((?:Skip|Leave this for later)[^\]]*?)\s*\]\*\*\s*$/.exec(line);
+    if (skip) {
+      flush();
+      flushChecks();
+      out.push({ kind: "skip", label: skip[1] });
+      continue;
+    }
+
     const box = /^\s*\*\[\s*(Optional:[^\]]+?)\s*\]\*\s*$/.exec(line);
     if (box) {
       flush();
@@ -674,6 +728,163 @@ export function blocksOf(body: string, heading = "", withPlans = false): Block[]
   flush();
   flushChecks();
   return out;
+}
+
+/**
+ * Which of My Retreat Plan's views a learner sees.
+ *
+ * One view, never more. The page carries five — three lengths, a Quick Start
+ * and the specialist formats — and showing two would be showing somebody a
+ * retreat they did not choose.
+ *
+ * Quick Start stands in for the ordinary three-hour view when the starting
+ * point was "I need a short pause soon". Its note is specific: route r2, and
+ * a plan that is either three hours or not yet chosen.
+ */
+export function planViewFor(
+  plan: string | null,
+  route: string | null
+): { heading: RegExp; kind: "plan" | "quickstart" | "other" | "none" } {
+  if (route === "r2" && (plan === null || plan === "p3h")) {
+    return { heading: /^QUICK START VIEW/i, kind: "quickstart" };
+  }
+  if (plan === "p3d") return { heading: /^PLAN VIEW: THREE-DAY/i, kind: "plan" };
+  if (plan === "p1d") return { heading: /^PLAN VIEW: ONE-DAY/i, kind: "plan" };
+  if (plan === "p3h") return { heading: /^PLAN VIEW: THREE-HOUR/i, kind: "plan" };
+  if (plan) return { heading: /^OTHER RETREAT FORMATS/i, kind: "other" };
+  return { heading: /$^/, kind: "none" };
+}
+
+/** The existing programme page a specialist plan opens. */
+export const PROGRAMME_PAGE: Record<string, string> = {
+  phome: "34-the-at-home-retreat",
+  pcouple: "35-the-retreat-for-couples",
+  pgroup: "36-the-small-group-and-church-retreat",
+  pleader: "37-the-retreat-for-pastors-and-christian-leaders",
+};
+
+/**
+ * "Session 3 — Put Down What You Are Carrying" turned into a link.
+ *
+ * The title is matched against the page list, not guessed at with a pattern.
+ * A greedy match ran past the end of the name and swallowed whatever followed
+ * it: "Session 5 — Confession and Grace only if you feel rested" became the
+ * link text, "Session 6 — Forgiving Others and Yourself (optional" took the
+ * bracket with it, and trimming the result closed the gap before the word
+ * after it — "Remember Who You Are **or**" came out as "Areor".
+ *
+ * So the title is consumed only when it is exactly the session's own, and
+ * "Session 5" on its own is linked as just those two words.
+ */
+export function linkSessions(body: string, href: (slug: string) => string): string {
+  const titleOf = (n: string) =>
+    RESET_SIMPLE_PAGES.find((p) => p.slug === `session-${n.padStart(2, "0")}`);
+
+  return body
+    .split("\n")
+    .map((line) => {
+      if (/^\s{0,3}#/.test(line)) return line;
+      if (/\]\(/.test(line)) return line; // already carries a link
+      // "**[ Begin Session 1 ]**" and "**[ Skip Session 7 and rest ]**" are
+      // controls. They are rendered as buttons elsewhere and linking inside
+      // one would nest a link in a marker.
+      if (/\*\*\[/.test(line)) return line;
+
+      let out = "";
+      let i = 0;
+      const re = /\bSession (\d{1,2})\b/g;
+      let m: RegExpExecArray | null;
+      while ((m = re.exec(line)) !== null) {
+        const page = titleOf(m[1]);
+        if (!page) continue;
+
+        // The name only counts when the dash and the title follow exactly.
+        const after = line.slice(m.index + m[0].length);
+        const dash = /^(\s*[—–-]\s*)/.exec(after);
+        const title = page.title;
+        const hasTitle =
+          dash !== null &&
+          after.slice(dash[1].length, dash[1].length + title.length).toLowerCase() ===
+            title.toLowerCase();
+
+        const text = hasTitle ? `${m[0]}${dash![1]}${title}` : m[0];
+        out += line.slice(i, m.index) + `[${text}](${href(page.slug)})`;
+        i = m.index + text.length;
+        re.lastIndex = i;
+      }
+      return out + line.slice(i);
+    })
+    .join("\n");
+}
+
+/**
+ * Which sessions each retreat includes, as the plan views time them.
+ *
+ * The three-day retreat takes all ten. The one-day retreat takes five, and the
+ * three-hour reset four — and the sessions they leave out are the ones that go
+ * into grief, confession, forgiveness, identity and purpose. That is not an
+ * accident of length: the three-hour view says so in its own words, that it
+ * "does not include lament, confession, forgiveness, identity, purpose or long
+ * listening".
+ *
+ * So a learner on a shorter plan is not shown a session their retreat does not
+ * contain. It is not hidden from them either — they are told it belongs to a
+ * longer retreat, and how to get to one.
+ */
+export const SESSION_PLANS: Record<string, string[]> = {
+  "session-01": ["p3d", "p1d", "p3h"],
+  "session-02": ["p3d", "p1d", "p3h"],
+  "session-03": ["p3d", "p1d", "p3h"],
+  "session-04": ["p3d"],
+  "session-05": ["p3d"],
+  "session-06": ["p3d"],
+  "session-07": ["p3d", "p1d"],
+  "session-08": ["p3d"],
+  "session-09": ["p3d"],
+  "session-10": ["p3d", "p1d", "p3h"],
+};
+
+/**
+ * Whether this session belongs to the retreat the learner is on.
+ *
+ * A plan that is not one of the three lengths — a specialist format, or none
+ * chosen yet — sees everything: those retreats are run from their own
+ * programme pages, and somebody simply reading ahead should not be turned
+ * away from a page.
+ */
+export function sessionInPlan(slug: string, plan: string | null): boolean {
+  const plans = SESSION_PLANS[slug];
+  if (!plans) return true;
+  if (plan === null || !["p3d", "p1d", "p3h"].includes(plan)) return true;
+  return plans.includes(plan);
+}
+
+/** Which version of a session a plan code opens. */
+export function sessionVersionFor(plan: string | null): RegExp {
+  if (plan === "p1d") return /^ONE-DAY VERSION/i;
+  if (plan === "p3h") return /^THREE-HOUR VERSION/i;
+  // The three-day retreat is the full one, and it is what a specialist format
+  // or an unchosen plan sees: it is the version the others are cut down from.
+  return /^FULL VERSION/i;
+}
+
+/**
+ * A session's progress slug, which carries the route it was finished on.
+ *
+ * Its note is explicit: finishing the three-hour version does not mark the
+ * full version done. They are different lengths of the same session and a
+ * learner who later takes the full retreat has not already done it.
+ */
+export function sessionProgressSlug(slug: string, plan: string | null): string {
+  return plan ? `${slug}-${plan}` : slug;
+}
+
+/** The minutes a "[ Timer: 5 · 10 · 20 · 30 minutes ]" marker offers. */
+export function timerMinutes(body: string): number[] | null {
+  const m = /\*\*\[\s*Timer:([^\]]+?)\]\*\*/.exec(body);
+  if (!m) return null;
+  const mins = [...m[1].matchAll(/\d+/g)].map((x) => Number(x[0]));
+  return mins.length ? mins : null;
 }
 
 export function markersIn(body: string): string[] {
