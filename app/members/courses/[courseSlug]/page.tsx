@@ -18,6 +18,8 @@ import {
 import ProgressBar from "@/components/course/ProgressBar";
 import CourseFooter from "@/components/course/CourseFooter";
 import CertificateButton from "@/components/course/CertificateButton";
+import ResetSimpleOverview from "@/components/reset/ResetSimpleOverview";
+import { RESET_SIMPLE_PUBLISHED, RESET_SLUG } from "@/lib/reset-simple-links";
 import JournalButton from "@/components/course/JournalButton";
 
 export const metadata: Metadata = {
@@ -35,6 +37,15 @@ export default async function CourseOverview({
   const { courseSlug } = await params;
   const course = getCourse(courseSlug);
   if (!course) notFound();
+
+  // The Reset's simple layer, once it is published, is the way into that
+  // course: its own overview, its own parts, and progress measured against the
+  // retreat the learner chose. Guarded on the course and on the flag, so while
+  // the flag is off this page behaves exactly as it always has, and the other
+  // two courses never reach it at all.
+  if (courseSlug === RESET_SLUG && RESET_SIMPLE_PUBLISHED) {
+    return <ResetSimpleOverview />;
+  }
 
   const lessons = getLessons(courseSlug);
   // Reference lessons are listed and readable, but there is nothing to finish

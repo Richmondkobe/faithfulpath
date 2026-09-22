@@ -950,6 +950,43 @@ export function routeFinished(
   return { finished: true, kind, next: null };
 }
 
+/**
+ * How far along a learner is, measured against their own route.
+ *
+ * Not against the course. The three retreats ask for different pages — the
+ * three-hour reset asks for eight, the full course twenty-three — and a
+ * learner on the short one is not two-thirds behind. Counting everybody
+ * against the longest would invent a target the course refuses to set, and do
+ * it on the members page before they have chosen anything.
+ *
+ * The Day 30 Review is outside it, being a follow-up a month later, and so are
+ * the Start Here pages: nothing in them is finished, they are read.
+ */
+export function resetRouteProgress(
+  plan: string | null,
+  isDone: (slug: string) => boolean
+): { done: number; total: number } {
+  const spec = ROUTE_REQUIRES[plan ?? "p3d"] ?? ROUTE_REQUIRES.p3d;
+  const planFor = plan ?? "p3d";
+  const slugs = [
+    ...spec.pages,
+    ...spec.sessions.map((s) => sessionProgressSlug(s, planFor)),
+  ];
+  return { done: slugs.filter(isDone).length, total: slugs.length };
+}
+
+/** The pages of one part, for the course home's list. */
+export function pagesInPart(part: ResetPart): ResetSimplePage[] {
+  return RESET_SIMPLE_PAGES.filter((p) => p.part === part);
+}
+
+/** Every part, in the order a learner meets them. */
+export function resetParts(): ResetPart[] {
+  const seen: ResetPart[] = [];
+  for (const p of RESET_SIMPLE_PAGES) if (!seen.includes(p.part)) seen.push(p.part);
+  return seen;
+}
+
 /** Which version of a session a plan code opens. */
 export function sessionVersionFor(plan: string | null): RegExp {
   if (plan === "p1d") return /^ONE-DAY VERSION/i;

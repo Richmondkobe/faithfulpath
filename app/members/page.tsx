@@ -23,6 +23,9 @@ import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
 import MindCourseCard from "@/components/mind/MindCourseCard";
 import BysyCourseCard from "@/components/bysy/BysyCourseCard";
+import { getResetPlan } from "@/app/members/courses/christian-spiritual-reset/actions";
+import { resetRouteProgress, routeFinished } from "@/lib/reset-simple";
+import { RESET_SIMPLE_PUBLISHED, resetSimpleHref } from "@/lib/reset-simple-links";
 import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
@@ -75,6 +78,34 @@ async function CourseCard() {
   const done = completedCount(progress, countable);
   const next = nextLessonFor(COURSE_SLUG, lessons, countable, progress, route);
 
+  // Once the simple layer is published it is what this card offers: the way in,
+  // the count and the progress all come from there. The 38-page course stays
+  // exactly where it is and becomes the Go Deeper Library behind it. While the
+  // flag is off none of this is reached and the card is unchanged.
+  let simple = null as null | {
+    href: string;
+    label: string;
+    done: number;
+    total: number;
+  };
+  if (RESET_SIMPLE_PUBLISHED) {
+    try {
+      const plan = await getResetPlan();
+      const isDone = (slug: string) => Boolean(progress.get(slug)?.completed_at);
+      const counted = resetRouteProgress(plan, isDone);
+      const finish = routeFinished(plan, isDone);
+      const started = progress.size > 0 || plan !== null;
+      simple = {
+        href: resetSimpleHref(started && finish.next ? finish.next : "welcome"),
+        label: started ? "Go to the course" : "Start the course",
+        ...counted,
+      };
+    } catch (err) {
+      // The card falls back to the existing course rather than disappearing.
+      console.error("Simple layer progress unreadable, showing the course:", err);
+    }
+  }
+
   return (
     <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
       <h2
@@ -94,17 +125,23 @@ async function CourseCard() {
       )}
 
       <div className="mt-5">
-        <ProgressBar done={done} total={countable.length} label="Your progress" />
+        <ProgressBar
+          done={simple ? simple.done : done}
+          total={simple ? simple.total : countable.length}
+          label="Your progress"
+        />
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
-          href={`/members/courses/${COURSE_SLUG}`}
+          href={simple ? simple.href : `/members/courses/${COURSE_SLUG}`}
           className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
         >
-          {progress.size === 0 && route === null
-            ? "Start the course"
-            : "Go to the course"}
+          {simple
+            ? simple.label
+            : progress.size === 0 && route === null
+              ? "Start the course"
+              : "Go to the course"}
         </Link>
         {completion.complete && (
           <CertificateButton
@@ -113,7 +150,10 @@ async function CourseCard() {
             nameFieldHref={`${lessonHref(COURSE_SLUG, lessons[lessons.length - 1].slug)}#certificate-name`}
           />
         )}
-        {done > 0 && done < countable.length && (
+        {/* The simple layer's own button already says continue and goes to the
+            right page, so a second link beside it would be the same offer
+            twice under two different names. */}
+        {!simple && done > 0 && done < countable.length && (
           <Link
             href={lessonHref(COURSE_SLUG, next.slug)}
             className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"

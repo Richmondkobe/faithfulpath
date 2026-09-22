@@ -306,6 +306,49 @@ if (!/export function routeFinished/.test(lib) || !/ROUTE_REQUIRES/.test(lib)) {
   }
 }
 
+/* ------------------------------------ the switch: card, home, page counts */
+
+const members = read(join("app", "members", "page.tsx"));
+const home = read(join("app", "members", "courses", "[courseSlug]", "page.tsx"));
+
+for (const [src, where, name] of [
+  [members, "the members card", "app/members/page.tsx"],
+  [home, "the course home", "app/members/courses/[courseSlug]/page.tsx"],
+]) {
+  if (!src) {
+    fail(`${name} is missing`);
+    continue;
+  }
+  if (!/RESET_SIMPLE_PUBLISHED/.test(src)) {
+    fail(`${where} does not go through RESET_SIMPLE_PUBLISHED, so it would switch without the flag`);
+  } else {
+    ok(`${where} switches only behind the flag`);
+  }
+}
+
+// The course home's branch must be limited to this course, or the other two
+// would be served the Reset's overview.
+if (home && !/courseSlug === RESET_SLUG && RESET_SIMPLE_PUBLISHED/.test(home)) {
+  fail("the course home's branch is not limited to the Reset and the flag together");
+} else if (home) {
+  ok("only the Reset's own course home switches; the other two are untouched");
+}
+
+// Progress is measured against the learner's retreat, not the longest one.
+if (!/export function resetRouteProgress/.test(lib)) {
+  fail("resetRouteProgress is gone, so a count would have to be against the whole course");
+} else if (!/ROUTE_REQUIRES\[plan \?\? "p3d"\]/.test(lib)) {
+  fail("progress is no longer counted against the learner's own route");
+} else {
+  ok("progress is counted against the retreat the learner chose");
+}
+
+if (members && !/resetRouteProgress\(/.test(members)) {
+  fail("the members card no longer counts the simple layer's own progress");
+} else if (members) {
+  ok("the members card counts the simple layer, not the 38-page course");
+}
+
 /* ------------------------------------------------------- the certificate */
 
 const cert = read(join("lib", "reset-certificate.ts"));
