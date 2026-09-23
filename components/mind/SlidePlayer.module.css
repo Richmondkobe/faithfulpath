@@ -1,0 +1,416 @@
+/*
+ * The slide player, ported from each lesson's pilot page.
+ *
+ * The pilot is a whole document: its rules are written against html, body,
+ * main, h1, table. Here the same player sits inside a lesson page that has its
+ * own headings and tables, so every rule is scoped to .player and the slide
+ * bodies' own class names are kept global — the HTML in slides.json is written
+ * with plain classes like .sub and .card, and a hashed name would not match it.
+ *
+ * The colours, sizes and animations are the pilot's, unchanged. What differs is
+ * the box: the pilot fills the screen, and this has to be a section of a page.
+ */
+
+.player {
+  --cream: #f7f3ec;
+  --navy: #1e2a3a;
+  --gold: #c78a2c;
+  --mute: #5e6674;
+  --card: #fffdf9;
+  --line: #e4ddd0;
+
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-slide-sans), "Source Sans 3", Arial, sans-serif;
+}
+
+/* The slide itself. The pilot gives this the viewport; here it is given a
+   height that holds the tallest slide without the page jumping as they change,
+   and scrolls within itself if a slide is longer than that. */
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5vh 6vw;
+  min-height: clamp(400px, 62vh, 620px);
+  transition: background 0.4s, color 0.4s;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  overflow: auto;
+}
+
+@media (min-width: 700px) {
+  .stage {
+    padding: 48px 56px;
+  }
+}
+
+.dark {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+/* ---------------------------------------------- the slide's own markup */
+
+.player :global(.label) {
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: clamp(12px, 2.6vw, 15px);
+  margin: 0 0 0.8em;
+}
+
+.player :global(h1) {
+  font-family: var(--font-slide-serif), "Source Serif 4", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(26px, 6.4vw, 46px);
+  line-height: 1.2;
+  margin: 0 0 0.6em;
+}
+
+.player :global(.sub) {
+  color: var(--mute);
+  font-size: clamp(16px, 3.8vw, 22px);
+  margin: 0;
+}
+
+.dark :global(.sub) {
+  color: #d8dde5;
+}
+
+.player :global(.body) {
+  font-size: clamp(18px, 4.4vw, 26px);
+  line-height: 1.4;
+  margin: 0 0 1em;
+}
+
+.player :global(.badge) {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--cream);
+  font-weight: 600;
+  padding: 0.5em 1.1em;
+  border-radius: 2em;
+  font-size: clamp(13px, 3vw, 16px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.player :global(.flow) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  align-items: center;
+  font-size: clamp(16px, 3.8vw, 22px);
+}
+
+.player :global(.flow span) {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 0.5em;
+  padding: 0.5em 0.9em;
+}
+
+.player :global(.flow i) {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.player :global(.loop) {
+  width: min(60vw, 320px);
+  display: block;
+  margin: 0.5em auto 0;
+}
+
+.player :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(15px, 3.8vw, 22px);
+}
+
+.player :global(th) {
+  background: var(--navy);
+  color: var(--cream);
+  text-align: left;
+  padding: 0.7em 0.8em;
+  font-weight: 600;
+}
+
+.player :global(td) {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 0.7em 0.8em;
+}
+
+.player :global(.prayer) {
+  font-family: var(--font-slide-serif), "Source Serif 4", Georgia, serif;
+  font-size: clamp(20px, 5vw, 30px);
+  line-height: 1.5;
+}
+
+.player :global(.prayer p) {
+  margin: 0 0 0.9em;
+  color: inherit;
+}
+
+.player :global(.art) {
+  display: block;
+  margin: 0 auto 1em;
+  width: min(70vw, 360px);
+  height: auto;
+  overflow: visible;
+}
+
+/* Two cards side by side on anything wider than a phone, stacked below it. */
+.player :global(.cmp) {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (min-width: 700px) {
+  .player :global(.cmp) {
+    flex-direction: row;
+  }
+  .player :global(.cmp .card) {
+    flex: 1;
+  }
+}
+
+.player :global(.card) {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.player :global(.card h2) {
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-slide-sans), "Source Sans 3", Arial, sans-serif;
+  font-weight: 600;
+  font-size: clamp(17px, 4.2vw, 22px);
+  padding: 0.6em 0.9em;
+}
+
+.player :global(.card ul) {
+  margin: 0;
+  padding: 0.4em 0.9em 0.6em 1.9em;
+  font-size: clamp(16px, 4vw, 22px);
+  line-height: 1.7;
+}
+
+.pausedNote {
+  margin-top: 1em;
+  font-size: clamp(15px, 3.6vw, 18px);
+  color: var(--mute);
+}
+
+.dark .pausedNote {
+  color: #d8dde5;
+}
+
+/* ------------------------------------------------------------- the footer */
+
+.footer {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 12px 4vw calc(12px + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #b9c0cb;
+}
+
+.row b {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.footer audio {
+  width: 100%;
+}
+
+.nav {
+  background: none;
+  border: 1px solid #4b586b;
+  color: var(--cream);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.nav:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #4b586b;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dotOn {
+  background: var(--gold);
+}
+
+/* --------------------------------------------------------- the animations */
+
+.player :global(.in) {
+  animation: rise 0.7s ease-out both;
+}
+.player :global(.in2) {
+  animation: rise 0.7s 0.35s ease-out both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.player :global(.flow span:nth-child(1)) { animation: rise 0.6s 0.2s both; }
+.player :global(.flow i:nth-child(2)) { animation: rise 0.6s 0.9s both; }
+.player :global(.flow span:nth-child(3)) { animation: rise 0.6s 1.2s both; }
+.player :global(.flow i:nth-child(4)) { animation: rise 0.6s 1.9s both; }
+.player :global(.flow span:nth-child(5)) { animation: rise 0.6s 2.2s both; }
+
+.player :global(table tr:nth-child(2)) { animation: rise 0.6s 0.4s both; }
+.player :global(table tr:nth-child(3)) { animation: rise 0.6s 1.4s both; }
+.player :global(table tr:nth-child(4)) { animation: rise 0.6s 2.4s both; }
+
+.player :global(.prayer p:nth-child(1)) { animation: rise 0.8s 0.2s both; }
+.player :global(.prayer p:nth-child(2)) { animation: rise 0.8s 1.6s both; }
+.player :global(.prayer p:nth-child(3)) { animation: rise 0.8s 3s both; }
+.player :global(.prayer p:nth-child(4)) { animation: rise 0.8s 4.6s both; }
+
+.player :global(.cmp .card:nth-child(1)) { animation: rise 0.6s 0.2s both; }
+.player :global(.cmp .card:nth-child(2)) { animation: rise 0.6s 1.6s both; }
+
+.player :global(.loop path),
+.player :global(.loop polygon) {
+  transform-origin: 200px 200px;
+  animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.player :global(.drift) { animation: drift 4s ease-in-out infinite; }
+.player :global(.drift.d2) { animation-delay: 1.3s; }
+.player :global(.drift.d3) { animation-delay: 2.6s; }
+
+@keyframes drift {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-48px); }
+}
+
+.player :global(.stars circle) { animation: twinkle 3s ease-in-out infinite; }
+.player :global(.stars circle:nth-child(2)) { animation-delay: 1s; }
+.player :global(.stars circle:nth-child(3)) { animation-delay: 2s; }
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.player :global(.bubble) { animation: cycle 6s ease-in-out infinite; opacity: 0; }
+.player :global(.bubble.b2) { animation-delay: 2s; }
+.player :global(.bubble.b3) { animation-delay: 4s; }
+
+@keyframes cycle {
+  0%, 33% { opacity: 0; }
+  5%, 28% { opacity: 1; }
+}
+
+.player :global(.bt) { opacity: 0; animation: btcycle 6s ease-in-out infinite; }
+.player :global(.bt.b2) { animation-delay: 2s; }
+.player :global(.bt.b3) { animation-delay: 4s; }
+
+@keyframes btcycle {
+  0% { opacity: 0; }
+  8%, 30% { opacity: 1; }
+  38%, 100% { opacity: 0; }
+}
+
+.player :global(.ink) {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  animation: write 2.2s 0.6s ease-out forwards;
+}
+
+@keyframes write {
+  to { stroke-dashoffset: 0; }
+}
+
+.player :global(.glow) { animation: glow 4s ease-in-out infinite; }
+
+@keyframes glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
+}
+
+.player :global(.qmark) { animation: bob 3s ease-in-out infinite; }
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Movement is the pilot's, and so is turning all of it off. */
+@media (prefers-reduced-motion: reduce) {
+  .player *,
+  .player :global(*) {
+    animation: none !important;
+    transition: none !important;
+  }
+  .player :global(.prayer p),
+  .player :global(.card),
+  .player :global(.flow span),
+  .player :global(.flow i),
+  .player :global(.in),
+  .player :global(.in2),
+  .player :global(.bt),
+  .player :global(.bubble) {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
