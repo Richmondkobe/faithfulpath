@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "naming",
+      "kind": "reflection",
+      "prompt": "What have you been calling discernment that was really a search for certainty?"
+    },
+    {
+      "id": "providence",
+      "kind": "reflection",
+      "prompt": "If God's providence is larger than your decisions, what does that change about the one you keep circling?"
+    }
+  ]
+}

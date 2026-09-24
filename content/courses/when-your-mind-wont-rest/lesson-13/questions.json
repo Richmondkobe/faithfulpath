@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "misread",
+      "kind": "reflection",
+      "prompt": "Which of the four things the verse does not say had you believed that it did?"
+    },
+    {
+      "id": "maturity",
+      "kind": "reflection",
+      "prompt": "What changes if maturity is a faithful response to a noisy mind rather than a quiet one?"
+    }
+  ]
+}

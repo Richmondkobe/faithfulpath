@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "first",
+      "kind": "reflection",
+      "prompt": "What does your mind usually predict first when something is left uncertain?"
+    },
+    {
+      "id": "forty",
+      "kind": "reflection",
+      "prompt": "If you have prepared for the same disaster many times over, what has that preparation actually given you?"
+    }
+  ]
+}

@@ -341,7 +341,15 @@ export default async function MindLesson({ params }: Props) {
           <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
             Go deeper
           </h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          {/* Two cards side by side, or one at full width — Lesson 21 has no
+              worksheet, and a half-empty row would read as something missing. */}
+          <div
+            className={`mt-4 grid gap-4 ${
+              worksheets.length > 0 && chapter && chapterNumber
+                ? "sm:grid-cols-2"
+                : ""
+            }`}
+          >
             {worksheets.length > 0 && (
               <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
                 <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">

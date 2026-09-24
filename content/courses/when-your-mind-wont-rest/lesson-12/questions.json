@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "question",
+      "kind": "reflection",
+      "prompt": "Which of the five questions would have stopped you picking up a weight that was never yours?"
+    },
+    {
+      "id": "belief",
+      "kind": "reflection",
+      "prompt": "What do you quietly believe would happen if you stopped worrying about them?"
+    }
+  ]
+}

@@ -23,6 +23,16 @@ const fail = (message) => {
 };
 const ok = (message) => console.log(`  ok    ${message}`);
 
+/** A missing or unparseable file reads as null, so the caller says why. */
+const readJsonOrNull = (path) => {
+  if (!existsSync(path)) return null;
+  try {
+    return JSON.parse(readFileSync(path, "utf8"));
+  } catch {
+    return null;
+  }
+};
+
 /* every page, check-in, worksheet and download the manifest names exists */
 
 const pages = manifest.modules.flatMap((m) => m.pages);
@@ -76,6 +86,53 @@ for (const lesson of counting) {
   if (!lesson.finish_label) fail(`no finish_label on ${lesson.file}`);
 }
 ok(`${counting.length} counting lessons, all with a finish label`);
+
+/* every lesson page is built to the same template, so every lesson needs the
+   per-lesson pieces that template renders: the slide lecture and its
+   transcript, the objectives under the player, the two optional prompts at the
+   end, and the chapter behind the Go deeper card. A lesson missing one of
+   these does not break — the route falls back — it simply renders as a
+   different page from the other twenty, which is the thing worth catching. */
+
+let templated = 0;
+for (const lesson of counting) {
+  const folder = join(ROOT, `lesson-${String(lesson.order).padStart(2, "0")}`);
+  const where = `Lesson ${lesson.order}`;
+
+  if (!existsSync(join(folder, "slides.json"))) {
+    fail(`${where}: no slides.json — the page would render as written text`);
+    continue;
+  }
+
+  const n = String(lesson.order).padStart(2, "0");
+  const hasNarration = [`lesson-${n}-narration.txt`, `wymwr-lesson-${n}-narration.txt`]
+    .some((name) => existsSync(join(folder, name)));
+  if (!hasNarration) fail(`${where}: no narration file — the transcript would be missing`);
+
+  const objectives = readJsonOrNull(join(folder, "objectives.json"))?.objectives;
+  if (!Array.isArray(objectives) || objectives.length < 3 || objectives.length > 4) {
+    fail(`${where}: objectives.json must list three or four objectives`);
+  }
+
+  const questions = readJsonOrNull(join(folder, "questions.json"))?.questions;
+  if (!Array.isArray(questions) || questions.length < 1 || questions.length > 2) {
+    fail(`${where}: questions.json must hold one or two prompts`);
+  } else if (questions.some((q) => q.kind !== "reflection")) {
+    // Let it settle is not a test. Recall and true-or-false made it read as
+    // marking, which is why they were taken out.
+    fail(`${where}: a prompt is scored or has an answer — only reflections belong here`);
+  }
+
+  const raw = readFileSync(join(ROOT, lesson.file), "utf8");
+  if (!/^##\s+Read the complete chapter\s*$/im.test(raw)) {
+    fail(`${where}: no complete chapter in the lesson file — the Go deeper card would vanish`);
+  } else if (!/^chapter:\s*\d+\s*$/m.test(raw)) {
+    fail(`${where}: a complete chapter but no chapter number to name it by`);
+  } else {
+    templated++;
+  }
+}
+ok(`${templated} lessons built to the template: slides, transcript, objectives, prompts, chapter`);
 
 /* the journey is thirty contiguous days */
 

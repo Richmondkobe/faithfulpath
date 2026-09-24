@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "question",
+      "kind": "reflection",
+      "prompt": "Which of the six questions is the one you would rather not ask?"
+    },
+    {
+      "id": "crowded",
+      "kind": "reflection",
+      "prompt": "What has been crowded out of your attention by things that were true but not worth an evening?"
+    }
+  ]
+}

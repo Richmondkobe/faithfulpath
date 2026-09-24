@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "holding",
+      "kind": "reflection",
+      "prompt": "Which of the five areas has been quietly holding your week together?"
+    },
+    {
+      "id": "return",
+      "kind": "reflection",
+      "prompt": "What would returning without a reckoning look like, the next time you miss a day?"
+    }
+  ]
+}

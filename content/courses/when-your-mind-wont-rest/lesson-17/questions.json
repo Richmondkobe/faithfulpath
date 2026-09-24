@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "house",
+      "kind": "reflection",
+      "prompt": "Which tomorrow have you been living in most often?"
+    },
+    {
+      "id": "cost",
+      "kind": "reflection",
+      "prompt": "What has living there cost the day you are actually in?"
+    }
+  ]
+}

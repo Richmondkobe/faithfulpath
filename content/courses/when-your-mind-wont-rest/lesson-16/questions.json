@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "stops",
+      "kind": "reflection",
+      "prompt": "Where do your prayers usually stop — pouring out, asking, remembering, or entrusting?"
+    },
+    {
+      "id": "heard",
+      "kind": "reflection",
+      "prompt": "What would it mean to you to believe God heard it the first time?"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "moving",
+      "kind": "reflection",
+      "prompt": "Where in your life has the standard kept moving just as you reached it?"
+    },
+    {
+      "id": "finish",
+      "kind": "reflection",
+      "prompt": "What would it mean to finish something rather than only stop?"
+    }
+  ]
+}

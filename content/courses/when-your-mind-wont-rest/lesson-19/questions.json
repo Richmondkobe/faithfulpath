@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "watching",
+      "kind": "reflection",
+      "prompt": "What have you been treating as necessary watching that is really anxious watching?"
+    },
+    {
+      "id": "givenbefore",
+      "kind": "reflection",
+      "prompt": "Christ gave his peace on the night before the cross, with nothing resolved. What does that say to what you are waiting on?"
+    }
+  ]
+}

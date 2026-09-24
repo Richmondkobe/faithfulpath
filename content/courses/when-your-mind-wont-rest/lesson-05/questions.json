@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "elijah",
+      "kind": "reflection",
+      "prompt": "What do you notice about God feeding Elijah before he questioned him?"
+    },
+    {
+      "id": "tired",
+      "kind": "reflection",
+      "prompt": "Which conclusions about yourself or your faith have you reached while exhausted, hungry or unwell?"
+    }
+  ]
+}

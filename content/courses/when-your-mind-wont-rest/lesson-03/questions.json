@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "learned",
+      "kind": "reflection",
+      "prompt": "Where did you first learn that being anxious meant something was wrong with your faith?"
+    },
+    {
+      "id": "friend",
+      "kind": "reflection",
+      "prompt": "What would you say to a friend who told you they were ashamed of being afraid?"
+    }
+  ]
+}

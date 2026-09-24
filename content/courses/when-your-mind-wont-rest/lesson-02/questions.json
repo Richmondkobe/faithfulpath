@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "kind",
+      "kind": "reflection",
+      "prompt": "Of the seven kinds of thinking, which one do you do most, and when does it usually start?"
+    },
+    {
+      "id": "stopping",
+      "kind": "reflection",
+      "prompt": "What would an ordinary week look like if you stopped once the thinking was finished?"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "verdict",
+      "kind": "reflection",
+      "prompt": "Where have you treated an interpretation as something you knew?"
+    },
+    {
+      "id": "unknowing",
+      "kind": "reflection",
+      "prompt": "What makes it hard to say “I do not know” about what someone else is thinking?"
+    }
+  ]
+}

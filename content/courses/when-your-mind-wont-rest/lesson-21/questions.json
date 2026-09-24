@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "needed",
+      "kind": "reflection",
+      "prompt": "Which lesson in this course did you most need, and what has it changed?"
+    },
+    {
+      "id": "tonight",
+      "kind": "reflection",
+      "prompt": "You do not have to solve your whole life tonight. What does that leave you free to do instead?"
+    }
+  ]
+}

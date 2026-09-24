@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "reach",
+      "kind": "reflection",
+      "prompt": "Which of the four do you reach for most — denial, false reassurance, forced optimism, or suppression?"
+    },
+    {
+      "id": "naming",
+      "kind": "reflection",
+      "prompt": "What have you avoided naming out loud because naming it felt like agreeing with it?"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "reaching",
+      "kind": "reflection",
+      "prompt": "Which of the four is your replaying usually reaching for?"
+    },
+    {
+      "id": "payment",
+      "kind": "reflection",
+      "prompt": "What makes it hard to believe that feeling bad is not a payment you still owe?"
+    }
+  ]
+}

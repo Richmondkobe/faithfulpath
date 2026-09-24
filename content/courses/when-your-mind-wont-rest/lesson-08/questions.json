@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "voice",
+      "kind": "reflection",
+      "prompt": "Whose part does your mind write for them most often, and what does it usually have them say?"
+    },
+    {
+      "id": "hearing",
+      "kind": "reflection",
+      "prompt": "What would it cost you to go into that conversation intending to hear?"
+    }
+  ]
+}

@@ -7,7 +7,7 @@ chapter: 1
 type: teaching
 key_scripture: "Psalm 94:19"
 outcome: "By the end of this lesson you will be able to name what has been occupying your mind, without trying to solve it tonight, and recognise the difference between thinking that moves and thinking that circles."
-action: "If you have a safe and trustworthy person, consider telling them in one sentence that your mind has been restless lately. You do not need to explain it or ask for anything. If you are not ready to share, write the sentence privately as a first step."
+action: "If you have a safe and trustworthy person, consider telling them in one sentence that your mind has been restless lately. You do not need to explain it or ask for anything. If you are not ready to share, choose “Not today.” You can return to this whenever you want."
 action_responses: ["I intend to try this", "Not today", "This is not appropriate for me"]
 finish_label: "I have finished this lesson for today"
 worksheet: "What Has Been Occupying My Mind?"

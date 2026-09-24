@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "waiting",
+      "kind": "reflection",
+      "prompt": "Which of the five ways of waiting do you recognise in yourself?"
+    },
+    {
+      "id": "never",
+      "kind": "reflection",
+      "prompt": "What would you do if the feeling of certainty never arrived?"
+    }
+  ]
+}

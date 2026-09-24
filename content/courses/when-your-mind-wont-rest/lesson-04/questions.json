@@ -1,0 +1,15 @@
+{
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
+  "questions": [
+    {
+      "id": "familiar",
+      "kind": "reflection",
+      "prompt": "Which of the fears named in this lesson do you recognise most easily in yourself?"
+    },
+    {
+      "id": "hidden",
+      "kind": "reflection",
+      "prompt": "What makes it hard to bring a fear to God as a request rather than hide it as a problem?"
+    }
+  ]
+}
