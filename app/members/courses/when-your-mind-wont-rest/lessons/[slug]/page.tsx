@@ -26,7 +26,6 @@ import {
 import { signedMediaUrl } from "@/lib/course-media";
 import { mindResourceHref, MIND_BASE, MIND_COURSE_SLUG } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
-import ChapterDisclosure from "@/components/mind/ChapterDisclosure";
 import NextFaithfulStep from "@/components/mind/NextFaithfulStep";
 import FinishLesson from "@/components/mind/FinishLesson";
 import PathChoice from "@/components/mind/PathChoice";
@@ -71,7 +70,9 @@ export default async function MindLesson({ params }: Props) {
   const file = readPageFile(page.file);
   if (!file) notFound();
 
-  const { main, chapter } = splitChapter(file.body);
+  // The chapter is still lifted out of the body so it does not render inline;
+  // it is no longer offered as a disclosure of its own.
+  const { main } = splitChapter(file.body);
 
   // Lessons carry a step and a finish button; the Start Here pages are
   // orientation and count towards nothing, so they carry neither.
@@ -218,16 +219,16 @@ export default async function MindLesson({ params }: Props) {
         </>
       )}
 
-      {/* Read as "Go deeper" once there is a lecture above it: the chapter and
-          the worksheet become the two ways further in, rather than the body of
-          the page. */}
-      {slides && (chapter || worksheets.length > 0) && (
+      {/* Read as "Go deeper" once there is a lecture above it: the worksheet
+          is the way further in, rather than the body of the page.
+          The complete chapter used to sit here as well. It is still in each
+          lesson's file, and splitChapter still lifts it out of the body so it
+          does not reappear inline — it is simply no longer offered. */}
+      {slides && worksheets.length > 0 && (
         <h2 className="mt-12 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
           Go deeper
         </h2>
       )}
-
-      {chapter && <ChapterDisclosure chapter={chapter} lessonTitle={page.title} />}
 
       {/* The Start Here pages that do something beyond reading. Each is driven
           by its own front-matter block, so the page's author decides what it
