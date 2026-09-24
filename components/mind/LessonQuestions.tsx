@@ -6,20 +6,24 @@ import { saveLessonQuestions } from "@/app/members/courses/when-your-mind-wont-r
 import type { LessonQuestion } from "@/lib/mind-slides";
 
 /**
- * The questions that follow a lesson's slides.
+ * One or two optional prompts at the end of a lesson.
  *
- * They are not a test. Nothing is marked, nothing is counted, and finishing
- * the lesson does not wait on them — which is the rule everywhere else in this
- * course and the reason they sit after the teaching rather than in front of
- * anything.
+ * Not a test, and no longer shaped like one. An earlier draft asked ten
+ * questions with Scripture blanks, true-or-false and an answer to reveal; it
+ * read as marking, which is not what the end of a lesson about a restless mind
+ * should feel like. What is left is somewhere to write, if writing helps.
  *
- * A recall or true/false question keeps its answer hidden until the member
- * asks for it. Showing it immediately would make the page a marking scheme;
- * hiding it entirely would make it a quiz they could fail privately. This way
- * they can think, then check, in their own time.
+ * Nothing is scored, required or counted, and the lesson finishes whether or
+ * not a word is typed here.
  *
- * Reflections have no answer to reveal. They are the member's own words, kept
- * on their own row and read back to nobody.
+ * On what is claimed about privacy: these go to the member's own row, and row
+ * level security scopes every read in the course to the member who wrote them.
+ * No page, admin screen or export in this codebase reads them back — the
+ * privacy suite holds that. What cannot honestly be said is that nobody else
+ * *could* ever read them: the text is stored in an ordinary column, and whoever
+ * administers the database can reach it. So the wording below says what is
+ * true — it is not shown to anyone and not used for anything — rather than
+ * promising a secrecy the storage does not provide.
  */
 export default function LessonQuestions({
   lessonSlug,
@@ -33,14 +37,8 @@ export default function LessonQuestions({
   saved: Record<string, string>;
 }) {
   const [answers, setAnswers] = useState<Record<string, string>>(saved);
-  const [shown, setShown] = useState<Record<string, boolean>>({});
   const [state, setState] = useState<"idle" | "saved" | "error">("idle");
   const [pending, startTransition] = useTransition();
-
-  function set(id: string, value: string) {
-    setAnswers((prev) => ({ ...prev, [id]: value }));
-    setState("idle");
-  }
 
   function save() {
     startTransition(async () => {
@@ -60,72 +58,43 @@ export default function LessonQuestions({
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">{intro}</p>
 
-      <ol className="mt-6 space-y-7">
-        {questions.map((q, i) => (
-          <li key={q.id}>
-            <p className="text-[15px] leading-relaxed text-[#2B2118]">
-              <span className="text-[#8B5E34]">{i + 1}.</span> {q.prompt}
-            </p>
-
-            {q.kind === "true_false" ? (
-              <div className="mt-3 flex gap-3">
-                {["true", "false"].map((v) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => set(q.id, v)}
-                    aria-pressed={answers[q.id] === v}
-                    className={`rounded-sm border px-5 py-2 text-sm capitalize transition-colors ${
-                      answers[q.id] === v
-                        ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                        : "border-[#D9CDBA] text-[#5C5147] hover:border-[#8B5E34]"
-                    }`}
-                  >
-                    {v}
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <textarea
-                value={answers[q.id] ?? ""}
-                onChange={(e) => set(q.id, e.target.value)}
-                rows={q.kind === "reflection" ? 3 : 1}
-                className="mt-3 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-2 text-[15px] leading-relaxed text-[#2B2118] focus:border-[#8B5E34] focus:outline-none"
-              />
-            )}
-
-            {q.answer && (
-              <div className="mt-2">
-                <button
-                  type="button"
-                  onClick={() => setShown((p) => ({ ...p, [q.id]: !p[q.id] }))}
-                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
-                >
-                  {shown[q.id] ? "Hide what the lesson said" : "What did the lesson say?"}
-                </button>
-                {shown[q.id] && (
-                  <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
-                    {q.answer}
-                    {q.note && <span className="block mt-1 text-[#6B5F53]">{q.note}</span>}
-                  </p>
-                )}
-              </div>
-            )}
-          </li>
+      <div className="mt-6 space-y-6">
+        {questions.map((q) => (
+          <div key={q.id}>
+            <label
+              htmlFor={`q-${q.id}`}
+              className="block text-[15px] leading-relaxed text-[#2B2118]"
+            >
+              {q.prompt}
+            </label>
+            <textarea
+              id={`q-${q.id}`}
+              value={answers[q.id] ?? ""}
+              onChange={(e) => {
+                setAnswers((prev) => ({ ...prev, [q.id]: e.target.value }));
+                setState("idle");
+              }}
+              rows={3}
+              className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-[15px] leading-relaxed text-[#2B2118] focus:border-[#8B5E34] focus:outline-none"
+            />
+          </div>
         ))}
-      </ol>
+      </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-3">
+      <div className="mt-5 flex flex-wrap items-center gap-3">
         <button
           type="button"
           onClick={save}
           disabled={pending}
           className="rounded-sm border border-[#D9CDBA] bg-white px-4 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
         >
-          {pending ? "Saving…" : "Save my answers"}
+          {pending ? "Saving…" : "Save my private reflection"}
         </button>
         {state === "saved" && (
-          <span className="text-sm text-[#6B5F53]">Saved. Only you can read these.</span>
+          <span className="text-sm text-[#6B5F53]">
+            Saved. It is not shown to anyone in the course and is not used to
+            measure anything.
+          </span>
         )}
         {state === "error" && (
           <span role="alert" className="text-sm text-[#8B3A2E]">

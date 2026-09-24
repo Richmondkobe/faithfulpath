@@ -1,65 +1,15 @@
 {
-  "intro": "A few questions to help the lesson settle. Nothing here is scored or seen by anyone but you, and you may leave any of them blank.",
+  "intro": "Two prompts, if you want them. You do not need to complete this to finish the lesson.",
   "questions": [
     {
-      "id": "q1",
-      "kind": "recall",
-      "prompt": "Psalm 94:19 — \"When the cares of my heart are many, your ______ cheer my soul.\"",
-      "answer": "consolations"
-    },
-    {
-      "id": "q2",
-      "kind": "true_false",
-      "prompt": "In Psalm 94:19 the writer is describing a mind that has become calm.",
-      "answer": "false",
-      "note": "The cares are still many. God's comfort reaches him in the middle of them, not after they stop."
-    },
-    {
-      "id": "q3",
-      "kind": "recall",
-      "prompt": "What is the one question this lesson asks you to put to a thought that keeps running?",
-      "answer": "Where is this thought taking me?"
-    },
-    {
-      "id": "q4",
-      "kind": "true_false",
-      "prompt": "Thinking itself is the problem this lesson is trying to solve.",
-      "answer": "false",
-      "note": "Thinking is not the enemy. Good thinking goes somewhere and then stops."
-    },
-    {
-      "id": "q5",
-      "kind": "recall",
-      "prompt": "Good thinking leads to understanding, to a decision, or to what third thing?",
-      "answer": "an action — or rest"
-    },
-    {
-      "id": "q6",
-      "kind": "true_false",
-      "prompt": "Grace's difficulty was that her faith was weak.",
-      "answer": "false",
-      "note": "Her problem was not weak faith. It was a mind that had learnt to run without a destination."
-    },
-    {
-      "id": "q7",
-      "kind": "recall",
-      "prompt": "Useful thinking has a stopping point. What does mental circling often go looking for instead?",
-      "answer": "complete certainty — a guarantee"
-    },
-    {
-      "id": "q8",
+      "id": "truth",
       "kind": "reflection",
-      "prompt": "Where does your own mind most often circle — the future, another person's thoughts, or an outcome you cannot control?"
+      "prompt": "What is one truth from this lesson you want to remember?"
     },
     {
-      "id": "q9",
+      "id": "circling",
       "kind": "reflection",
-      "prompt": "Name one matter your mind keeps returning to. One sentence. You are not solving it here."
-    },
-    {
-      "id": "q10",
-      "kind": "reflection",
-      "prompt": "The lesson says a crowded mind is not proof of weak faith. Is that hard for you to believe? You may say so plainly."
+      "prompt": "Where do you notice your own mind circling most often?"
     }
   ]
 }

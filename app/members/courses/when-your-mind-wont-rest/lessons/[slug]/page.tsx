@@ -198,8 +198,8 @@ export default async function MindLesson({ params }: Props) {
                 so the page says what the recording says. */}
             {willLearn && (
               <p className="mt-3 text-lg leading-relaxed text-[#2B2118]">
-                <span className="text-[#6B5F53]">What you&rsquo;ll learn: </span>
-                {willLearn}
+                In this lesson, you will learn{" "}
+                {willLearn.charAt(0).toLowerCase() + willLearn.slice(1)}
               </p>
             )}
             <div className={`mt-3 ${slideFontVars}`}>
@@ -222,6 +222,29 @@ export default async function MindLesson({ params }: Props) {
             )}
           </section>
 
+          {/* The transcript sits directly under the recording it belongs to, so
+              somebody who would rather read than listen finds it where the
+              listening was rather than at the foot of the page. Closed by
+              default: a member who never opens the player loses nothing, which
+              is also what makes the player safe to require JavaScript for. */}
+          {narration.length > 0 && (
+            <details className="group mt-12 rounded-sm border border-[#E5D9C7]">
+              <summary className="cursor-pointer list-none px-5 py-4 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
+                <span className="font-medium">Read the transcript</span>
+                <span className="ml-2 text-[#6B5F53]">
+                  — every word of the recording, in writing
+                </span>
+              </summary>
+              <div className="border-t border-[#E5D9C7] px-5 pb-5">
+                {narration.map((paragraph, i) => (
+                  <p key={i} className="mt-4 leading-relaxed text-[#4A4038]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </details>
+          )}
+
           {practice && (
             <section className="mt-12">
               <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
@@ -238,6 +261,21 @@ export default async function MindLesson({ params }: Props) {
                   {line}
                 </p>
               ))}
+
+              {/* Telling someone is a suggestion, not a second requirement.
+                  Naming the matter is the practice this lesson asks for; this
+                  sits under it, quieter, for a member who has someone safe to
+                  tell and wants to. */}
+              {isLesson && action && (
+                <div className="mt-8 border-t border-[#E5D9C7] pt-6">
+                  <NextFaithfulStep
+                    lessonSlug={slug}
+                    action={action}
+                    saved={nextStep}
+                    secondary
+                  />
+                </div>
+              )}
             </section>
           )}
         </>
@@ -317,31 +355,10 @@ export default async function MindLesson({ params }: Props) {
             ))}
           </ul>
           <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
-            Optional, and yours alone. Nothing here counts towards finishing the
-            course.
+            Optional, and yours alone. You do not need to complete this to
+            finish the lesson.
           </p>
         </section>
-      )}
-
-      {/* Every word of the recording, closed. A member who would rather read
-          than listen, or cannot listen, loses nothing by never starting it —
-          which is also what makes the player safe to require JavaScript for. */}
-      {narration.length > 0 && (
-        <details className="group mt-12 rounded-sm border border-[#E5D9C7]">
-          <summary className="cursor-pointer list-none px-5 py-4 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
-            <span className="font-medium">Read the transcript</span>
-            <span className="ml-2 text-[#6B5F53]">
-              — every word of the recording, in writing
-            </span>
-          </summary>
-          <div className="border-t border-[#E5D9C7] px-5 pb-5">
-            {narration.map((paragraph, i) => (
-              <p key={i} className="mt-4 leading-relaxed text-[#4A4038]">
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </details>
       )}
 
       {questions && (
@@ -353,7 +370,8 @@ export default async function MindLesson({ params }: Props) {
         />
       )}
 
-      {isLesson && action && (
+      {/* Pages without a slide lecture keep it where it always was. */}
+      {!slides && isLesson && action && (
         <NextFaithfulStep lessonSlug={slug} action={action} saved={nextStep} />
       )}
 
@@ -361,7 +379,9 @@ export default async function MindLesson({ params }: Props) {
         <FinishLesson
           lessonSlug={slug}
           label={
-            slides ? "I have completed this lesson" : page.finish_label ?? "I have finished this lesson for today"
+            slides
+              ? "Stop here for today"
+              : page.finish_label ?? "I have finished this lesson for today"
           }
           finished={Boolean(finished.get(slug)?.finished)}
           next={
@@ -369,6 +389,7 @@ export default async function MindLesson({ params }: Props) {
               ? {
                   href: mindLessonHref(slugFromFile(nextLesson.file)),
                   title: nextLesson.title,
+                  order: nextLesson.order ?? null,
                 }
               : null
           }
