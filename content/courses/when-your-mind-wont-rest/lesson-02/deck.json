@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-22T16:10:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 2: Thinking, Worrying or Overthinking?",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-daniel","05-seven","06-fruit","07-five","08-four","09-daniel-again","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn, key Scripture", "start": "01-title"},
+    "story": {"description": "Daniel's six weeks", "start": "04-daniel"},
+    "teach": {"description": "Seven kinds, the fruit test, five questions, four responses, back to Daniel", "start": "05-seven"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

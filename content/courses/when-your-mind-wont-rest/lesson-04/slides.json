@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Module 1 · Notice What Is Happening · Lesson 4",
+    "h": "Why does this thought keep coming back, even after you have dealt with it?",
+    "body": "<svg class=\"art\" viewBox=\"0 0 300 220\" style=\"width:min(55vw,260px)\" aria-hidden=\"true\"><line x1=\"10\" y1=\"90\" x2=\"290\" y2=\"90\" stroke=\"#c78a2c\" stroke-width=\"3\" stroke-dasharray=\"8 8\"/><polygon points=\"150,30 110,90 190,90\" fill=\"#f7f3ec\"/><polygon class=\"deep\" points=\"110,90 190,90 230,150 150,210 80,160\" fill=\"#3b4a60\"/><text x=\"150\" y=\"70\" text-anchor=\"middle\" font-size=\"15\" fill=\"#1e2a3a\">the thought</text><text class=\"deep\" x=\"152\" y=\"158\" text-anchor=\"middle\" font-size=\"15\" fill=\"#f7f3ec\">the fear</text></svg>",
+    "dark": true,
+    "t": 0
+  },
+  {
+    "label": "Today You Will Learn",
+    "h": "How to ask, gently, whether a repeated thought is connected to a deeper fear.",
+    "body": "<p class=\"sub\">About 8 minutes, plus one short pause · one small practice · no homework list</p>",
+    "dark": false,
+    "t": 27
+  },
+  {
+    "label": "Key Scripture",
+    "h": "\"Search me, O God, and know my heart! Try me and know my thoughts!\"",
+    "body": "<p class=\"sub\">Psalm 139:23 (ESV)</p>",
+    "dark": false,
+    "t": 47.1
+  },
+  {
+    "label": "Meet Samuel",
+    "h": "The numbers were fine.<br>He still could not stop checking them.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 200\" aria-hidden=\"true\"><rect x=\"40\" y=\"20\" width=\"280\" height=\"160\" rx=\"10\" fill=\"#f7f3ec\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"40\" y1=\"52\" x2=\"320\" y2=\"52\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"40\" y1=\"84\" x2=\"320\" y2=\"84\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"40\" y1=\"116\" x2=\"320\" y2=\"116\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"40\" y1=\"148\" x2=\"320\" y2=\"148\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"110\" y1=\"20\" x2=\"110\" y2=\"180\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"180\" y1=\"20\" x2=\"180\" y2=\"180\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><line x1=\"250\" y1=\"20\" x2=\"250\" y2=\"180\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><text x=\"52\" y=\"46\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"122\" y=\"46\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"192\" y=\"46\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"262\" y=\"46\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"52\" y=\"78\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"122\" y=\"78\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"192\" y=\"78\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"262\" y=\"78\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"52\" y=\"110\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"122\" y=\"110\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"192\" y=\"110\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"262\" y=\"110\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"52\" y=\"142\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"122\" y=\"142\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"192\" y=\"142\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><text x=\"262\" y=\"142\" font-size=\"18\" fill=\"#2e7d5b\">✓</text><g class=\"lens\"><circle cx=\"230\" cy=\"110\" r=\"40\" fill=\"none\" stroke=\"#c78a2c\" stroke-width=\"6\"/><line x1=\"258\" y1=\"138\" x2=\"292\" y2=\"172\" stroke=\"#c78a2c\" stroke-width=\"10\" stroke-linecap=\"round\"/></g></svg>",
+    "dark": true,
+    "t": 89.3
+  },
+  {
+    "label": "Name The Problem",
+    "h": "The spreadsheet was real.<br>It had also become the place the fear chose to live.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 300 220\" style=\"width:min(50vw,240px)\" aria-hidden=\"true\"><rect x=\"80\" y=\"20\" width=\"140\" height=\"200\" rx=\"8\" fill=\"#5e6674\"/><rect x=\"90\" y=\"30\" width=\"120\" height=\"190\" fill=\"#141c28\"/><text class=\"behind\" x=\"150\" y=\"130\" text-anchor=\"middle\" font-size=\"17\" fill=\"#f7f3ec\">the fear</text><g class=\"doorleaf\"><rect x=\"90\" y=\"30\" width=\"120\" height=\"190\" fill=\"#8a6b34\"/><rect x=\"104\" y=\"48\" width=\"92\" height=\"70\" rx=\"4\" fill=\"none\" stroke=\"#6f5527\" stroke-width=\"3\"/><rect x=\"104\" y=\"134\" width=\"92\" height=\"70\" rx=\"4\" fill=\"none\" stroke=\"#6f5527\" stroke-width=\"3\"/><circle cx=\"192\" cy=\"126\" r=\"6\" fill=\"#c78a2c\"/></g></svg>",
+    "dark": false,
+    "t": 155.6
+  },
+  {
+    "label": "The Main Truth",
+    "h": "When a thought returns after the facts are settled, the surface subject may not be the whole issue.",
+    "body": "<p class=\"sub\">Sometimes the mind is responding to what the situation seems to mean about your worth, your safety, your future or your trust in God.</p>",
+    "dark": false,
+    "t": 187.1
+  },
+  {
+    "label": "The Tool · One Question, Asked Downwards",
+    "h": "If this happened, what would it mean to me?",
+    "body": "<div class=\"down\"><span>If this happened, what would it mean to me?</span><i>↓</i><span>And if that were true?</span><i>↓</i><span>And if that were true?</span></div><p class=\"sub\">No more than three times. Stop earlier if a fear becomes clear, nothing comes, or it gets uncomfortable.</p>",
+    "dark": true,
+    "t": 237.1
+  },
+  {
+    "label": "Fears That Appear Again And Again",
+    "h": "",
+    "body": "<div class=\"chips a\"><span>Being rejected</span><span>Failing</span><span>Losing money</span><span>Disappointing people</span><span>Choosing wrongly</span><span>Losing control</span><span>God not coming through</span><span>The past repeating</span></div><p class=\"sub\" style=\"margin-top:1em\">Not for self-diagnosis. So you can recognise what you find.</p>",
+    "dark": false,
+    "t": 278.8
+  },
+  {
+    "label": "Back To Samuel",
+    "h": "\"Will the elders be happy?\" cannot be settled in advance.<br>\"Am I secure in Christ either way?\" can.",
+    "body": "",
+    "dark": false,
+    "t": 330.4
+  },
+  {
+    "label": "Do This Now · Optional And Private",
+    "h": "Take one thought that keeps returning. Ask once: if this happened, what would it mean to me?",
+    "body": "<p class=\"body\">Ask it of your answer, up to three times. Then write: <i>I am afraid that…</i> or <i>No deeper fear appeared.</i></p><p class=\"sub\" style=\"margin-bottom:1em\">Stop if it becomes too much. Then name where you are and one true thing about now. Nothing you write needs to be shared with anyone.</p><svg class=\"art\" viewBox=\"0 0 360 120\" aria-hidden=\"true\"><line x1=\"30\" y1=\"90\" x2=\"330\" y2=\"90\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><path class=\"ink\" d=\"M40 82c20-14 30 6 50 0s30-18 50-4 30 10 50 0 30-14 50-2 30 8 50 0\" fill=\"none\" stroke=\"#1e2a3a\" stroke-width=\"3\" stroke-linecap=\"round\"/><g transform=\"translate(300 40) rotate(40)\"><rect x=\"-6\" y=\"-40\" width=\"12\" height=\"60\" rx=\"3\" fill=\"#c78a2c\"/><polygon points=\"-6,20 6,20 0,34\" fill=\"#1e2a3a\"/></g></svg><p class=\"badge\">Pause the audio</p>",
+    "dark": false,
+    "t": 400
+  },
+  {
+    "label": "Remember",
+    "h": "A fear that has been named can be brought to God as a request, instead of hidden from him as a problem.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 120\" style=\"width:min(40vw,200px)\" aria-hidden=\"true\"><circle class=\"glow\" cx=\"100\" cy=\"70\" r=\"46\" fill=\"#c78a2c\"/><rect x=\"88\" y=\"60\" width=\"24\" height=\"46\" rx=\"6\" fill=\"#f7f3ec\"/><path d=\"M100 30c-9 12-9 22 0 30 9-8 9-18 0-30z\" fill=\"#c78a2c\"/></svg>",
+    "dark": true,
+    "t": 455.3
+  },
+  {
+    "label": "Prayer",
+    "h": "",
+    "body": "<div class=\"prayer\"><p>Search me, O God, and know my heart.</p><p>You see the fear beneath my thoughts<br>before I do.</p><p>I bring it to you as it is,<br>and I am not turned away.</p><p>Amen.</p></div>",
+    "dark": false,
+    "t": 479.9
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Module 1 · Notice What Is Happening · Lesson 2",
+    "h": "Is this careful thinking, or has it stopped being useful?",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 200\" style=\"width:min(36vw,170px)\" aria-hidden=\"true\"><g fill=\"none\" stroke=\"#c78a2c\" stroke-width=\"6\" stroke-linejoin=\"round\"><path d=\"M60 30h80M60 170h80M70 30v20l30 40 30-40V30M70 170v-20l30-40 30 40v20\"/></g><path class=\"sand\" d=\"M80 50h40l-20 30z\" fill=\"#c78a2c\"/><path d=\"M82 168h36l-18-26z\" fill=\"#c78a2c\" opacity=\".6\"/></svg>",
+    "dark": true,
+    "t": 0
+  },
+  {
+    "label": "Today You Will Learn",
+    "h": "Five questions that tell you when thinking has done its work, and what to do next.",
+    "body": "<p class=\"sub\">About 8 minutes, plus one short pause · one small practice · no homework list</p>",
+    "dark": false,
+    "t": 27.3
+  },
+  {
+    "label": "Key Scripture",
+    "h": "\"For everything there is a season, and a time for every matter under heaven.\"",
+    "body": "<p class=\"sub\">Ecclesiastes 3:1 (ESV)</p>",
+    "dark": false,
+    "t": 47.3
+  },
+  {
+    "label": "Meet Daniel",
+    "h": "Six weeks. Two extended deadlines.<br>Nothing new since week two.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 220\" aria-hidden=\"true\"><rect x=\"30\" y=\"30\" width=\"300\" height=\"170\" rx=\"14\" fill=\"#f7f3ec\" stroke=\"#c78a2c\" stroke-width=\"3\"/><rect x=\"30\" y=\"30\" width=\"300\" height=\"40\" rx=\"14\" fill=\"#c78a2c\"/><text x=\"180\" y=\"58\" text-anchor=\"middle\" font-size=\"20\" fill=\"#1e2a3a\" font-weight=\"600\">SIX WEEKS</text><g class=\"wk w0\"><rect x=\"48\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"67\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">1</text></g><g class=\"wk w1\"><rect x=\"94\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"113\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">2</text></g><g class=\"wk w2\"><rect x=\"140\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"159\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">3</text></g><g class=\"wk w3\"><rect x=\"186\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"205\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">4</text></g><g class=\"wk w4\"><rect x=\"232\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"251\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">5</text></g><g class=\"wk w5\"><rect x=\"278\" y=\"90\" width=\"38\" height=\"38\" rx=\"6\" fill=\"#fffdf9\" stroke=\"#e4ddd0\"/><text x=\"297\" y=\"115\" text-anchor=\"middle\" font-size=\"18\" fill=\"#1e2a3a\">6</text></g><text x=\"180\" y=\"165\" text-anchor=\"middle\" font-size=\"19\" fill=\"#5e6674\">deadline extended · twice</text><g class=\"nn\"><rect x=\"186\" y=\"82\" width=\"144\" height=\"54\" rx=\"8\" fill=\"#b3482e\" opacity=\".12\"/><text x=\"258\" y=\"150\" text-anchor=\"middle\" font-size=\"16\" fill=\"#b3482e\">nothing new</text></g></svg>",
+    "dark": true,
+    "t": 84.9
+  },
+  {
+    "label": "Not All Thinking Is The Same",
+    "h": "Seven kinds of thinking",
+    "body": "<p class=\"grp good\">Four that go somewhere</p><div class=\"chips a\"><span>Reflection</span><span>Planning</span><span>Discernment</span><span>Problem-solving</span></div><p class=\"grp bad\">Three that circle</p><div class=\"chips b\"><span>Worry</span><span>Rumination</span><span>Obsessive thinking</span></div>",
+    "dark": false,
+    "t": 142
+  },
+  {
+    "label": "The Main Truth",
+    "h": "The difference is the fruit, not the subject.",
+    "body": "<p class=\"sub\">You can reflect on a conversation, or ruminate on it. Plan for a meeting, or worry about it.</p>",
+    "dark": false,
+    "t": 214.1
+  },
+  {
+    "label": "The Tool · Five Questions",
+    "h": "",
+    "body": "<ol class=\"five\"><li>Is this producing a clear action?</li><li>Am I learning anything new?</li><li>Is this within my control?</li><li>Have I already decided this?</li><li>Is this helping me obey God today?</li></ol>",
+    "dark": true,
+    "t": 264.9
+  },
+  {
+    "label": "When Thinking Is Finished, Choose One",
+    "h": "",
+    "body": "<div class=\"four\"><div><b>Act</b><span>A clear responsibility is mine now.</span></div><div><b>Wait</b><span>Action may be needed, but not yet.</span></div><div><b>Seek help</b><span>I lack information, skill, safety or support.</span></div><div><b>Surrender</b><span>The outcome does not belong to me.</span></div></div><p class=\"body\" style=\"margin-top:1em\">What comes next is not more thought. It is one of these four.</p>",
+    "dark": false,
+    "t": 319.5
+  },
+  {
+    "label": "Back To Daniel",
+    "h": "Stopping when the thinking has done its work is not carelessness. It is trust.",
+    "body": "",
+    "dark": false,
+    "t": 357.9
+  },
+  {
+    "label": "Do This Now",
+    "h": "Choose one subject your mind returned to today.",
+    "body": "<p class=\"body\">Ask the five questions once. Write a yes or no beside each.</p><svg class=\"art\" viewBox=\"0 0 360 120\" aria-hidden=\"true\"><line x1=\"30\" y1=\"90\" x2=\"330\" y2=\"90\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><path class=\"ink\" d=\"M40 82c20-14 30 6 50 0s30-18 50-4 30 10 50 0 30-14 50-2 30 8 50 0\" fill=\"none\" stroke=\"#1e2a3a\" stroke-width=\"3\" stroke-linecap=\"round\"/><g transform=\"translate(300 40) rotate(40)\"><rect x=\"-6\" y=\"-40\" width=\"12\" height=\"60\" rx=\"3\" fill=\"#c78a2c\"/><polygon points=\"-6,20 6,20 0,34\" fill=\"#1e2a3a\"/></g></svg><p class=\"badge\">Pause the audio</p>",
+    "dark": false,
+    "t": 416.3
+  },
+  {
+    "label": "Remember",
+    "h": "There is a time to think, and a time to stop thinking.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 120\" style=\"width:min(40vw,200px)\" aria-hidden=\"true\"><circle class=\"glow\" cx=\"100\" cy=\"70\" r=\"46\" fill=\"#c78a2c\"/><rect x=\"88\" y=\"60\" width=\"24\" height=\"46\" rx=\"6\" fill=\"#f7f3ec\"/><path d=\"M100 30c-9 12-9 22 0 30 9-8 9-18 0-30z\" fill=\"#c78a2c\"/></svg>",
+    "dark": true,
+    "t": 466.6
+  },
+  {
+    "label": "Prayer",
+    "h": "",
+    "body": "<div class=\"prayer\"><p>Father, you know the questions<br>I keep reopening.</p><p>Show me when my thinking has done its work.</p><p>Give me courage to act, patience to wait,<br>humility to ask for help, and faith to let go.</p><p>Amen.</p></div>",
+    "dark": false,
+    "t": 499.9
+  }
+]

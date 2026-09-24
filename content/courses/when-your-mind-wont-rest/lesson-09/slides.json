@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Module 2 · Name The Pattern · Lesson 9",
+    "h": "How much of what you \"know\" about other people did they actually tell you?",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 180\" aria-hidden=\"true\"><circle cx=\"90\" cy=\"120\" r=\"22\" fill=\"#d9c2a5\"/><path d=\"M56 180v-24a34 34 0 0 1 68 0v24z\" fill=\"#c78a2c\"/><circle cx=\"270\" cy=\"120\" r=\"22\" fill=\"#d9c2a5\"/><path d=\"M236 180v-24a34 34 0 0 1 68 0v24z\" fill=\"#3b4a60\"/><g class=\"q1\"><circle cx=\"118\" cy=\"82\" r=\"5\" fill=\"#f7f3ec\"/><ellipse cx=\"150\" cy=\"45\" rx=\"42\" ry=\"28\" fill=\"#f7f3ec\"/><text x=\"150\" y=\"55\" text-anchor=\"middle\" font-size=\"28\" fill=\"#1e2a3a\">?</text></g><g class=\"q2\"><circle cx=\"242\" cy=\"82\" r=\"5\" fill=\"#f7f3ec\"/><ellipse cx=\"210\" cy=\"45\" rx=\"42\" ry=\"28\" fill=\"#f7f3ec\"/><text x=\"210\" y=\"55\" text-anchor=\"middle\" font-size=\"28\" fill=\"#1e2a3a\">?</text></g></svg>",
+    "dark": true,
+    "t": 0
+  },
+  {
+    "label": "Today You Will Learn",
+    "h": "How to tell an observation from an interpretation, consider other explanations, and choose whether to ask, wait or let go.",
+    "body": "<p class=\"sub\">About 8 minutes, plus one short pause · one small practice · no homework list</p><p class=\"body warn\">This lesson is about stories built from too little evidence. A clear pattern of harm is a reason to seek help, not to keep interpreting.</p>",
+    "dark": false,
+    "t": 32.3
+  },
+  {
+    "label": "Key Scripture",
+    "h": "\"Love bears all things, believes all things, hopes all things, endures all things.\"",
+    "body": "<p class=\"sub\">1 Corinthians 13:7 (ESV)</p>",
+    "dark": false,
+    "t": 75.7
+  },
+  {
+    "label": "Meet Mark",
+    "h": "Three weeks of silence.<br>Two men, each certain he knew what the other was thinking. Each wrong.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 170\" aria-hidden=\"true\"><g class=\"m m1\"><rect x=\"20\" y=\"20\" width=\"150\" height=\"34\" rx=\"12\" fill=\"#f7f3ec\"/><text x=\"95\" y=\"43\" text-anchor=\"middle\" font-size=\"15\" fill=\"#1e2a3a\">See you Thursday?</text></g><g class=\"m m2\"><rect x=\"190\" y=\"64\" width=\"150\" height=\"34\" rx=\"12\" fill=\"#c78a2c\"/><text x=\"265\" y=\"87\" text-anchor=\"middle\" font-size=\"15\" fill=\"#1e2a3a\">ok</text></g><g class=\"m m3\"><rect x=\"20\" y=\"108\" width=\"150\" height=\"34\" rx=\"12\" fill=\"#f7f3ec\"/><text x=\"95\" y=\"131\" text-anchor=\"middle\" font-size=\"15\" fill=\"#1e2a3a\">You all right?</text></g><g class=\"m m4\"><text x=\"265\" y=\"132\" text-anchor=\"middle\" font-size=\"18\" fill=\"#b9c0cb\">· · ·</text><text x=\"265\" y=\"160\" text-anchor=\"middle\" font-size=\"14\" fill=\"#b9c0cb\">three weeks</text></g></svg>",
+    "dark": true,
+    "t": 120
+  },
+  {
+    "label": "Name The Pattern · Mind-Reading",
+    "h": "Assuming you know what someone thinks, feels or intends, without enough evidence, and responding to the assumption as fact.",
+    "body": "<p class=\"sub\">Acted on, it can produce the very outcome it predicted.</p>",
+    "dark": false,
+    "t": 200.6
+  },
+  {
+    "label": "The Main Truth · Four Different Kinds Of \"Knowing\"",
+    "h": "",
+    "body": "<div class=\"four\"><div><b>Observation</b><span>\"He has not replied to my last four messages.\"</span></div><div><b>Interpretation</b><span>\"He is avoiding me.\"</span></div><div><b>Pattern</b><span>Observations that repeat over months.</span></div><div><b>Knowledge</b><span>Established by evidence or disclosure.</span></div></div><p class=\"body\" style=\"margin-top:1em\">The moment a word like \"ignored\" or \"snubbed\" enters the sentence, you have left observation.</p>",
+    "dark": false,
+    "t": 249.4
+  },
+  {
+    "label": "The Tool · Other Possible Explanations",
+    "h": "Generate two or three. Then stop.",
+    "body": "<p class=\"sub\">Not to prove the kind one true. To show yourself that the unkind one is not the only one, and therefore that you do not know.</p>",
+    "dark": true,
+    "t": 311.4
+  },
+  {
+    "label": "A Common Belief · \"I Am Not Assuming. I Am Discerning.\"",
+    "h": "",
+    "body": "<div class=\"four\"><div><b style=\"color:#2e7d5b\">Discernment</b><span>Notices, holds it loosely, tests it, is willing to ask, is willing to be wrong.</span></div><div><b style=\"color:#b3482e\">Mind-reading</b><span>Notices, concludes, closes. Rarely asks. Has usually already acted.</span></div></div><p class=\"body\" style=\"margin-top:1em\">The test: can I state the evidence, stay open to correction, and revise when new information appears?</p>",
+    "dark": false,
+    "t": 364.5
+  },
+  {
+    "label": "Then Choose One",
+    "h": "",
+    "body": "<div class=\"four three\"><div><b>Ask</b><span>Where it is safe and worth it. Once. \"I noticed you've been quiet lately. Is everything all right?\"</span></div><div><b>Wait</b><span>When asking is not yet appropriate. Ordinary respect meanwhile.</span></div><div><b>Let it go</b><span>When you do not know, it does not much matter, and the story has one observation in it.</span></div></div>",
+    "dark": false,
+    "t": 411.9
+  },
+  {
+    "label": "Do This Now",
+    "h": "Take one person you have been \"reading\" this week. Write the observation on one line, and your interpretation on the next.",
+    "body": "<p class=\"body\">Then two other explanations. Then one word: Ask, Wait, or Let go.</p><svg class=\"art\" viewBox=\"0 0 360 120\" aria-hidden=\"true\"><line x1=\"30\" y1=\"90\" x2=\"330\" y2=\"90\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><path class=\"ink\" d=\"M40 82c20-14 30 6 50 0s30-18 50-4 30 10 50 0 30-14 50-2 30 8 50 0\" fill=\"none\" stroke=\"#1e2a3a\" stroke-width=\"3\" stroke-linecap=\"round\"/><g transform=\"translate(300 40) rotate(40)\"><rect x=\"-6\" y=\"-40\" width=\"12\" height=\"60\" rx=\"3\" fill=\"#c78a2c\"/><polygon points=\"-6,20 6,20 0,34\" fill=\"#1e2a3a\"/></g></svg><p class=\"badge\">Pause the audio</p>",
+    "dark": false,
+    "t": 466.4
+  },
+  {
+    "label": "Remember",
+    "h": "Charity fills the gaps in the evidence. It is not a substitute for it.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 120\" style=\"width:min(40vw,200px)\" aria-hidden=\"true\"><circle class=\"glow\" cx=\"100\" cy=\"70\" r=\"46\" fill=\"#c78a2c\"/><rect x=\"88\" y=\"60\" width=\"24\" height=\"46\" rx=\"6\" fill=\"#f7f3ec\"/><path d=\"M100 30c-9 12-9 22 0 30 9-8 9-18 0-30z\" fill=\"#c78a2c\"/></svg>",
+    "dark": true,
+    "t": 505.8
+  },
+  {
+    "label": "Prayer",
+    "h": "",
+    "body": "<div class=\"prayer\"><p>Father, you alone see the heart.</p><p>Forgive me for the verdicts<br>I have passed on silence.</p><p>Give me the humility to say \"I do not know,\"<br>and the courage to ask.</p><p>Amen.</p></div>",
+    "dark": false,
+    "t": 532.4
+  }
+]

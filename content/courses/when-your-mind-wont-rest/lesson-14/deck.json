@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T10:55:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 14: Renewing Your Mind Is Not Positive Thinking",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-naomi","05-four","06-belief","07-sound","08-promises","09-practice","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the low-mood safety note, key Scripture", "start": "01-title"},
+    "story": {"description": "Naomi and the declarations", "start": "04-naomi"},
+    "teach": {"description": "Four things mistaken for renewal, the agreeing-with-it belief, what renewal sounds like, a caution about promises, the practice", "start": "05-four"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

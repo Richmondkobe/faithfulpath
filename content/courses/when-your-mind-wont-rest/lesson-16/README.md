@@ -1,0 +1,1 @@
+# Lesson 16 — Prayer That Does Not Become More Worry (23 Sept 2026). Module 3. Same layout as lesson-01. Audio 9:31. Practice is the Six-Movement Prayer itself; link the existing Six-Movement Prayer audio under the slides.
