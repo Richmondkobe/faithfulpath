@@ -8,6 +8,7 @@ import {
   linkCourseReferences,
   getCountingLessons,
   getFoundationPages,
+  getMindCourse,
   readPageFile,
   resourceSlug,
   splitChapter,
@@ -46,6 +47,7 @@ import LessonQuestions from "@/components/mind/LessonQuestions";
 import {
   practiceFrom,
   readNarration,
+  readObjectives,
   readQuestions,
   readSlides,
   slideAudioId,
@@ -85,9 +87,11 @@ export default async function MindLesson({ params }: Props) {
   const file = readPageFile(page.file);
   if (!file) notFound();
 
-  // The chapter is still lifted out of the body so it does not render inline;
-  // it is no longer offered as a disclosure of its own.
-  const { main } = splitChapter(file.body);
+  // The chapter is lifted out of the body so it does not render inline. It is
+  // offered under Go deeper as a page of its own instead.
+  const { main, chapter } = splitChapter(file.body);
+  const chapterNumber =
+    typeof file.front.chapter === "number" ? file.front.chapter : null;
 
   // Lessons carry a step and a finish button; the Start Here pages are
   // orientation and count towards nothing, so they carry neither.
@@ -138,7 +142,10 @@ export default async function MindLesson({ params }: Props) {
     : null;
   const narration = slides && order ? readNarration(order) : [];
   const practice = slides ? practiceFrom(slides) : null;
-  const willLearn = slides ? willLearnFrom(slides) : null;
+  const objectives = order ? readObjectives(order) : null;
+  // Only where the lesson has no written objectives yet: the single line from
+  // its own slide 2, which is what every lesson showed before.
+  const willLearn = slides && !objectives ? willLearnFrom(slides) : null;
   const questions = order ? readQuestions(order) : null;
   const savedQuestions = readJson<Record<string, string>>(answers, LESSON_QUESTIONS_INDEX) ?? {};
 
@@ -155,6 +162,20 @@ export default async function MindLesson({ params }: Props) {
 
   const action = typeof file.front.action === "string" ? file.front.action : null;
   const support = typeof file.front.support === "string" ? file.front.support : null;
+
+  // The course's own "when this course is not enough" page. It is one of the
+  // two links the manifest requires in the footer of every page; a lesson also
+  // names it above the finish button, so somebody who is struggling meets it
+  // before they are asked whether they are done rather than only after.
+  const supportPage = getMindCourse().footer_links.find((link) =>
+    link.opens.endsWith("04-when-this-course-is-not-enough.md")
+  );
+  const supportHref = supportPage
+    ? mindLessonHref(slugFromFile(supportPage.opens))
+    : null;
+  const supportPageTitle = supportPage
+    ? findPageBySlug(slugFromFile(supportPage.opens))?.page.title ?? null
+    : null;
 
   // A lesson with no worksheet — Lesson 21 — renders no worksheet section at
   // all rather than an empty one. Worksheets resolve by filename against the
@@ -194,8 +215,29 @@ export default async function MindLesson({ params }: Props) {
             <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
               Watch or listen
             </h2>
-            {/* The deck's own second slide is headed "Today you will learn",
-                so the page says what the recording says. */}
+            {/* What this lesson sets out to teach. Written from its own slides,
+                so the list says what the recording actually does rather than
+                something that would fit any lesson in the course. */}
+            {objectives && (
+              <>
+                <p className="mt-3 text-[15px] leading-relaxed text-[#4A4038]">
+                  In this lesson, you will learn to:
+                </p>
+                <ul className="mt-2 space-y-2">
+                  {objectives.map((objective) => (
+                    <li
+                      key={objective}
+                      className="relative pl-5 leading-relaxed text-[#2B2118] before:absolute before:left-0 before:top-[0.7em] before:h-1 before:w-1 before:rounded-full before:bg-[#8B5E34]"
+                    >
+                      {objective}
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {/* Lessons not yet written up keep the single line from the deck's
+                own second slide, which is headed "Today you will learn". */}
             {willLearn && (
               <p className="mt-3 text-lg leading-relaxed text-[#2B2118]">
                 In this lesson, you will learn{" "}
@@ -289,15 +331,67 @@ export default async function MindLesson({ params }: Props) {
         </>
       )}
 
-      {/* Read as "Go deeper" once there is a lecture above it: the worksheet
-          is the way further in, rather than the body of the page.
-          The complete chapter used to sit here as well. It is still in each
-          lesson's file, and splitChapter still lifts it out of the body so it
-          does not reappear inline — it is simply no longer offered. */}
-      {slides && worksheets.length > 0 && (
-        <h2 className="mt-12 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-          Go deeper
-        </h2>
+      {/* Read as "Go deeper" once there is a lecture above it: these are the
+          ways further in, rather than the body of the page. Two cards, both
+          optional and both saying so — the worksheet to write on, and the
+          chapter the lesson was drawn from, for a member who wants the whole
+          teaching rather than the eight minutes of it. */}
+      {slides && (worksheets.length > 0 || (chapter && chapterNumber)) && (
+        <section className="mt-12">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            Go deeper
+          </h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {worksheets.length > 0 && (
+              <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                  {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
+                </h3>
+                <ul className="mt-3 space-y-3">
+                  {worksheets.map((resource) => (
+                    <li key={resource.file}>
+                      <Link
+                        href={mindResourceHref(resourceSlug(resource))}
+                        className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                      >
+                        {resource.toolkit_number}. {resource.title}
+                      </Link>
+                      {resource.not_for_group_sharing && (
+                        <span className="mt-1 block text-sm text-[#6B5F53]">
+                          Private — not for group sharing.
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+                  Optional, and yours alone. You do not need to complete this to
+                  finish the lesson.
+                </p>
+              </div>
+            )}
+
+            {chapter && chapterNumber && (
+              <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                  Complete chapter
+                </h3>
+                <p className="mt-3">
+                  <Link
+                    href={`${mindLessonHref(slug)}/chapter`}
+                    className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                  >
+                    Read Chapter {chapterNumber}: {page.title}
+                  </Link>
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+                  Optional. Read this if you want the complete teaching from the
+                  book. You do not need to read it to finish the lesson.
+                </p>
+              </div>
+            )}
+          </div>
+        </section>
       )}
 
       {/* The Start Here pages that do something beyond reading. Each is driven
@@ -332,7 +426,9 @@ export default async function MindLesson({ params }: Props) {
       {/* Only where there is something of theirs to delete. */}
       {(intention || answers.size > 0) && <EraseEntries pageSlug={slug} />}
 
-      {worksheets.length > 0 && (
+      {/* Pages without a slide lecture keep the single worksheet box they have
+          always had; the slide lessons put it in a Go deeper card above. */}
+      {!slides && worksheets.length > 0 && (
         <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
           <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
             {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
@@ -375,15 +471,52 @@ export default async function MindLesson({ params }: Props) {
         <NextFaithfulStep lessonSlug={slug} action={action} saved={nextStep} />
       )}
 
+      {/* A quiet block rather than a bordered box. The words are the lesson's
+          own and they stay: each names the particular thing that lesson's
+          subject can mask — a prayer that cannot be stopped, a routine that
+          must be done in order, a person who is not safe. What changed is that
+          it no longer reads as a clinical warning panel interrupting the page,
+          and that it now comes before the finish button rather than after it.
+
+          The sentence comes from front matter rather than the body, so it
+          misses the linking readPageFile does, and two lessons name Finding
+          Help Where You Live inside it. */}
+      {(support || (isLesson && supportHref)) && (
+        <section className="mt-12 border-t border-[#E5D9C7] pt-6">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            Need more support?
+          </h2>
+          {support && (
+            <div className="mt-3 text-sm leading-relaxed text-[#6B5F53] [&_p]:mt-0">
+              <MindMarkdown
+                source={linkCourseReferences(support, page.file)}
+                tight
+              />
+            </div>
+          )}
+          {isLesson && supportHref && (
+            <p className="mt-3">
+              <Link
+                href={supportHref}
+                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              >
+                {supportPageTitle ?? "When this course is not enough"}
+              </Link>
+            </p>
+          )}
+        </section>
+      )}
+
       {isLesson && (
         <FinishLesson
           lessonSlug={slug}
           label={
             slides
-              ? "Stop here for today"
+              ? "Mark this lesson complete"
               : page.finish_label ?? "I have finished this lesson for today"
           }
           finished={Boolean(finished.get(slug)?.finished)}
+          courseHref={MIND_BASE}
           next={
             nextLesson
               ? {
@@ -396,20 +529,6 @@ export default async function MindLesson({ params }: Props) {
         />
       )}
 
-      {/* A quiet line rather than a bordered box. The words are the lesson's
-          own and they stay: each names the particular thing that lesson's
-          subject can mask — a prayer that cannot be stopped, a routine that
-          must be done in order, a person who is not safe. What changed is that
-          it no longer reads as a clinical warning panel interrupting the page.
-
-          It comes from front matter rather than the body, so it misses the
-          linking readPageFile does, and two lessons name Finding Help Where
-          You Live inside it. */}
-      {support && (
-        <div className="mt-10 border-t border-[#E5D9C7] pt-6 text-sm leading-relaxed text-[#6B5F53] [&_p]:mt-0">
-          <MindMarkdown source={linkCourseReferences(support, page.file)} tight />
-        </div>
-      )}
     </main>
   );
 }

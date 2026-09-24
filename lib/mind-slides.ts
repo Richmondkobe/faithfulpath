@@ -112,6 +112,32 @@ export const readQuestions = cache((order: number): LessonQuestions | null => {
 });
 
 /**
+ * What this particular lesson sets out to teach, in three or four lines.
+ *
+ * Written per lesson and drawn from its own slides — Lesson 1's come from the
+ * slides on useful thinking against circling, the one question to ask of a
+ * thought, what sits underneath the circling, and the practice at the end. They
+ * are not generated and not generic: a list that would fit any lesson in the
+ * course tells a member nothing about this one.
+ *
+ * A lesson without the file falls back to the single line on its own slide 2,
+ * which is what every lesson showed before.
+ */
+export const readObjectives = cache((order: number): string[] | null => {
+  const path = join(process.cwd(), ROOT, lessonFolder(order), "objectives.json");
+  if (!existsSync(path)) return null;
+  try {
+    const parsed = JSON.parse(readFileSync(path, "utf8")) as {
+      objectives?: string[];
+    };
+    const list = parsed.objectives?.filter((o) => o.trim()) ?? [];
+    return list.length ? list : null;
+  } catch {
+    return null;
+  }
+});
+
+/**
  * The line each deck already carries on its second slide.
  *
  * Every lesson's slide 2 is headed "Today you will learn", so the page says
