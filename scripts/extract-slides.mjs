@@ -127,8 +127,11 @@ for (const lesson of wanted) {
   writeFileSync(join(ROOT, lesson, "slides.json"), JSON.stringify(out, null, 2) + "\n");
   written++;
   const last = out[out.length - 1];
+  // Round the whole thing first: rounding the seconds on their own turns
+  // 7:59.6 into "7:60".
+  const whole = Math.round(last.t);
   console.log(
-    `  ${lesson}  ${out.length} slides, ${out.filter((s) => s.dark).length} dark, last starts ${Math.floor(last.t / 60)}:${String(Math.round(last.t % 60)).padStart(2, "0")}`
+    `  ${lesson}  ${out.length} slides, ${out.filter((s) => s.dark).length} dark, last starts ${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, "0")}`
   );
 }
 
