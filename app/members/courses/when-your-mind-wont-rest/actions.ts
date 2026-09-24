@@ -9,11 +9,13 @@ import {
   findPageBySlug,
   readPageFile,
 } from "@/lib/mind-course";
+import { readQuestions } from "@/lib/mind-slides";
 import {
   ACKNOWLEDGEMENT_INDEX,
   CERT_NAME_INDEX,
   CHECKIN_INDEX,
   LEADERS_ACK_INDEX,
+  LESSON_QUESTIONS_INDEX,
   INTENTION_INDEX,
   PATTERN_FINDER_INDEX,
   NEXT_STEP_INDEX,
@@ -455,4 +457,50 @@ export async function setDayStatus(
 
   revalidatePath(mindDayHref(day));
   revalidatePath(mindJourneyHref());
+}
+
+/**
+ * The questions that follow a lesson's slides.
+ *
+ * Private, and stored the way every other answer in this course is: the
+ * member's own row, read back only by them. Nothing is scored, nothing is
+ * required, and leaving them all blank finishes the lesson exactly as well as
+ * answering them does.
+ *
+ * Only ids the lesson actually asks are kept, so a posted body cannot write
+ * arbitrary keys into the row.
+ */
+export async function saveLessonQuestions(
+  lessonSlug: string,
+  answers: Record<string, string>
+): Promise<void> {
+  const { supabase, userId } = await memberClient();
+
+  const found = findPageBySlug(lessonSlug);
+  const order = found?.page.order;
+  if (typeof order !== "number") throw new Error("Unknown lesson.");
+
+  const set = readQuestions(order);
+  if (!set) throw new Error("This lesson asks no questions.");
+  const ids = new Set(set.questions.map((q) => q.id));
+
+  const stored: Record<string, string> = {};
+  for (const [id, text] of Object.entries(answers)) {
+    if (!ids.has(id)) continue;
+    stored[id] = String(text).slice(0, 4000);
+  }
+
+  const { error } = await supabase.from("course_reflections").upsert(
+    {
+      user_id: userId,
+      course_slug: MIND_COURSE_SLUG,
+      lesson_slug: lessonSlug,
+      question_index: LESSON_QUESTIONS_INDEX,
+      answer: JSON.stringify(stored),
+    },
+    { onConflict: "user_id,course_slug,lesson_slug,question_index" }
+  );
+  if (error) throw new Error(error.message);
+
+  revalidatePath(mindLessonHref(lessonSlug));
 }

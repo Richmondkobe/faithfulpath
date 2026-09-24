@@ -79,3 +79,47 @@ export const readNarration = cache((order: number): string[] => {
   }
   return [];
 });
+
+export type LessonQuestion = {
+  id: string;
+  kind: "recall" | "true_false" | "reflection";
+  prompt: string;
+  /** What the lesson said. Absent on a reflection, which has no answer. */
+  answer?: string;
+  /** A sentence of why, shown with the answer. */
+  note?: string;
+};
+
+export type LessonQuestions = { intro: string; questions: LessonQuestion[] };
+
+/**
+ * The questions that follow a lesson's slides.
+ *
+ * Nothing here is scored, required or counted, which is the course's rule
+ * everywhere else and the reason these sit after the teaching rather than
+ * guarding anything. A recall question shows what the lesson said when the
+ * member asks to see it; a reflection has no answer to show.
+ */
+export const readQuestions = cache((order: number): LessonQuestions | null => {
+  const path = join(process.cwd(), ROOT, lessonFolder(order), "questions.json");
+  if (!existsSync(path)) return null;
+  try {
+    const parsed = JSON.parse(readFileSync(path, "utf8")) as LessonQuestions;
+    return parsed.questions?.length ? parsed : null;
+  } catch {
+    return null;
+  }
+});
+
+/**
+ * The line each deck already carries on its second slide.
+ *
+ * Every lesson's slide 2 is headed "Today you will learn", so the page says
+ * what the deck says rather than repeating it in a second place that could
+ * drift from the recording.
+ */
+export function willLearnFrom(slides: Slide[]): string | null {
+  const slide = slides[1];
+  if (!slide || !/today you will learn/i.test(slide.label)) return null;
+  return slide.h.replace(/<[^>]+>/g, "").trim() || null;
+}

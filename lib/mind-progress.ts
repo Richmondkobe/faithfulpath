@@ -35,6 +35,8 @@ export const ACKNOWLEDGEMENT_INDEX = 113;
 export const CHECKIN_INDEX = 114;
 export const PATTERN_FINDER_INDEX = 115;
 export const LEADERS_ACK_INDEX = 116;
+/** The questions that follow a lesson's slides. Private, unscored, optional. */
+export const LESSON_QUESTIONS_INDEX = 117;
 /** The name a member wants on the certificate, as the other course stores it. */
 export const CERT_NAME_INDEX = 103;
 

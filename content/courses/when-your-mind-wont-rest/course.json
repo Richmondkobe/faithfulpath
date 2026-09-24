@@ -26,7 +26,7 @@
       "id": "foundation",
       "label": "Begin the Foundation Course",
       "blurb": "Follow the complete 21-lesson journey and learn how to understand, recognise and respond to a restless mind.",
-      "opens": "m0/lessons/00-welcome.md"
+      "opens": "m1/lessons/01-when-your-mind-will-not-switch-off.md"
     },
     {
       "id": "restless_now",

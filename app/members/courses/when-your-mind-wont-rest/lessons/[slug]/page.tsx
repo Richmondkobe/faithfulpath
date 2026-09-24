@@ -18,13 +18,20 @@ import {
   readJson,
   ACKNOWLEDGEMENT_INDEX,
   INTENTION_INDEX,
+  LESSON_QUESTIONS_INDEX,
   NEXT_STEP_INDEX,
   PATH_INDEX,
   isNextStep,
   type NextStep,
 } from "@/lib/mind-progress";
 import { signedMediaUrl } from "@/lib/course-media";
-import { mindResourceHref, MIND_BASE, MIND_COURSE_SLUG } from "@/lib/mind-links";
+import {
+  mindResourceHref,
+  mindLessonHref,
+  slugFromFile,
+  MIND_BASE,
+  MIND_COURSE_SLUG,
+} from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import NextFaithfulStep from "@/components/mind/NextFaithfulStep";
 import FinishLesson from "@/components/mind/FinishLesson";
@@ -35,7 +42,15 @@ import RestlessList, { type RestlessEntry } from "@/components/mind/RestlessList
 import EraseEntries from "@/components/mind/EraseEntries";
 import PrayerAudio from "@/components/mind/PrayerAudio";
 import SlidePlayer from "@/components/mind/SlidePlayer";
-import { practiceFrom, readNarration, readSlides, slideAudioId } from "@/lib/mind-slides";
+import LessonQuestions from "@/components/mind/LessonQuestions";
+import {
+  practiceFrom,
+  readNarration,
+  readQuestions,
+  readSlides,
+  slideAudioId,
+  willLearnFrom,
+} from "@/lib/mind-slides";
 import { slideFontVars } from "@/lib/slide-fonts";
 
 export const metadata: Metadata = {
@@ -123,6 +138,15 @@ export default async function MindLesson({ params }: Props) {
     : null;
   const narration = slides && order ? readNarration(order) : [];
   const practice = slides ? practiceFrom(slides) : null;
+  const willLearn = slides ? willLearnFrom(slides) : null;
+  const questions = order ? readQuestions(order) : null;
+  const savedQuestions = readJson<Record<string, string>>(answers, LESSON_QUESTIONS_INDEX) ?? {};
+
+  // Where "I have completed this lesson" goes. The last lesson has nowhere
+  // further to send anybody, so it simply marks the lesson done.
+  const nextLesson = order
+    ? getCountingLessons().find((l) => l.order === order + 1) ?? null
+    : null;
 
   // How long the recording runs, taken from the slides rather than written
   // down: the last slide's start plus the time it holds the screen is close
@@ -170,6 +194,14 @@ export default async function MindLesson({ params }: Props) {
             <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
               Watch or listen
             </h2>
+            {/* The deck's own second slide is headed "Today you will learn",
+                so the page says what the recording says. */}
+            {willLearn && (
+              <p className="mt-3 text-lg leading-relaxed text-[#2B2118]">
+                <span className="text-[#6B5F53]">What you&rsquo;ll learn: </span>
+                {willLearn}
+              </p>
+            )}
             <div className={`mt-3 ${slideFontVars}`}>
               <SlidePlayer
                 slides={slides}
@@ -312,6 +344,15 @@ export default async function MindLesson({ params }: Props) {
         </details>
       )}
 
+      {questions && (
+        <LessonQuestions
+          lessonSlug={slug}
+          intro={questions.intro}
+          questions={questions.questions}
+          saved={savedQuestions}
+        />
+      )}
+
       {isLesson && action && (
         <NextFaithfulStep lessonSlug={slug} action={action} saved={nextStep} />
       )}
@@ -319,16 +360,32 @@ export default async function MindLesson({ params }: Props) {
       {isLesson && (
         <FinishLesson
           lessonSlug={slug}
-          label={page.finish_label ?? "I have finished this lesson for today"}
+          label={
+            slides ? "I have completed this lesson" : page.finish_label ?? "I have finished this lesson for today"
+          }
           finished={Boolean(finished.get(slug)?.finished)}
+          next={
+            nextLesson
+              ? {
+                  href: mindLessonHref(slugFromFile(nextLesson.file)),
+                  title: nextLesson.title,
+                }
+              : null
+          }
         />
       )}
 
+      {/* A quiet line rather than a bordered box. The words are the lesson's
+          own and they stay: each names the particular thing that lesson's
+          subject can mask — a prayer that cannot be stopped, a routine that
+          must be done in order, a person who is not safe. What changed is that
+          it no longer reads as a clinical warning panel interrupting the page.
+
+          It comes from front matter rather than the body, so it misses the
+          linking readPageFile does, and two lessons name Finding Help Where
+          You Live inside it. */}
       {support && (
-        <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-4 text-sm leading-relaxed text-[#4A4038]">
-          {/* The support note comes from front matter rather than the body, so
-              it misses the linking that readPageFile does — and two lessons
-              name Finding Help Where You Live inside it. */}
+        <div className="mt-10 border-t border-[#E5D9C7] pt-6 text-sm leading-relaxed text-[#6B5F53] [&_p]:mt-0">
           <MindMarkdown source={linkCourseReferences(support, page.file)} tight />
         </div>
       )}

@@ -11,7 +11,6 @@ import {
   getFinishedLessons,
   getJourneyProgress,
   getPageAnswers,
-  visitedWording,
   CERT_NAME_INDEX,
 } from "@/lib/mind-progress";
 import CertificateBlock from "@/components/mind/CertificateBlock";
@@ -83,49 +82,45 @@ export default async function MindCourseHome() {
         This course is pastoral formation. It is not a {course.promise_excludes.join(", a ")}.
       </p>
 
-      <h2 className="mt-12 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-        Where would you like to begin?
-      </h2>
+      {/* One way in. The course is a sequence, and asking a new member to
+          choose between three of them before they have read anything made the
+          first decision of the course a navigational one.
 
-      <ul className="mt-5 space-y-4">
-        {course.entry_points.map((entry) => {
-          const href =
-            entry.id === "journey"
-              ? mindJourneyHref()
-              : mindLessonHref(slugFromFile(entry.opens));
+          The other two ways in are kept, quietly, below the button: the
+          restless-now page is written for somebody who needs it this minute,
+          and the journey has thirty days of its own. Neither should need the
+          URL to reach. */}
+      <div className="mt-12">
+        <Link
+          href={`${MIND_BASE}/start`}
+          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        >
+          {done > 0 ? "Continue the course" : "Start the Course"}
+        </Link>
+        {done > 0 && (
+          <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            {done} of {lessons.length} lessons finished
+          </p>
+        )}
 
-          const note =
-            entry.id === "foundation" && done > 0
-              ? `${done} of ${lessons.length} lessons finished`
-              : entry.id === "journey" && journey.size > 0
-                ? visitedWording(journey)
-                : null;
-
-          return (
-            <li key={entry.id}>
+        <div className="mt-6 flex flex-col gap-2">
+          {course.entry_points
+            .filter((entry) => entry.id !== "foundation")
+            .map((entry) => (
               <Link
-                href={href}
-                className="group block rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5 transition-colors hover:border-[#8B5E34]"
+                key={entry.id}
+                href={
+                  entry.id === "journey"
+                    ? mindJourneyHref()
+                    : mindLessonHref(slugFromFile(entry.opens))
+                }
+                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
               >
-                <p
-                  className="text-xl text-[#2B2118] transition-colors group-hover:text-[#8B5E34]"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-                >
-                  {entry.label}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
-                  {entry.blurb}
-                </p>
-                {note && (
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
-                    {note}
-                  </p>
-                )}
+                {entry.label}
               </Link>
-            </li>
-          );
-        })}
-      </ul>
+            ))}
+        </div>
+      </div>
 
       <CertificateBlock
         savedName={(certAnswers.get(CERT_NAME_INDEX) ?? "").trim()}
