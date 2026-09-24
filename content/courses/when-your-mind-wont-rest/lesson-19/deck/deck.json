@@ -1,0 +1,52 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-23T14:00:00Z"
+  },
+  "title": "When Your Mind Won't Rest — Lesson 19: Peace Before Answers",
+  "cover": "01-title",
+  "order": [
+    "01-title",
+    "02-learn",
+    "03-scripture",
+    "04-caleb",
+    "05-horizon",
+    "06-not",
+    "07-watching",
+    "08-belief",
+    "09-practice",
+    "10-do-this",
+    "11-remember",
+    "12-prayer"
+  ],
+  "sections": {
+    "open": {
+      "description": "Title question, what you will learn with the medical-wait safety note, John 14:27",
+      "start": "01-title"
+    },
+    "story": {
+      "description": "Caleb's six-week scan",
+      "start": "04-caleb"
+    },
+    "teach": {
+      "description": "The moving horizon, what Christ's peace is not, necessary vs anxious watching, the common belief",
+      "start": "05-horizon"
+    },
+    "apply": {
+      "description": "Do this now, remember, prayer",
+      "start": "10-do-this"
+    }
+  },
+  "faces": {
+    "source-serif-4": {
+      "family": "Source Serif 4",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"
+    },
+    "source-sans-3": {
+      "family": "Source Sans 3",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"
+    }
+  },
+  "designSystems": []
+}

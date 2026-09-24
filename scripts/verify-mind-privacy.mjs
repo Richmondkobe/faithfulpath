@@ -70,12 +70,35 @@ ok("nothing in the course code can notify anyone — no alerting exists");
 
 /* ------- privacy: answers are never rendered as markup, only as text ------- */
 
+// The slide player is the one place that sets markup directly, because a slide
+// body is inline SVG and cards that no Markdown renderer will produce. What it
+// renders comes from slides.json, which is extracted from the lesson's own deck
+// and committed — course content, like the Markdown everywhere else.
+//
+// It is named here rather than exempted quietly, and what it is allowed to set
+// is checked below: a second source arriving in that component has to be added
+// to this list deliberately.
+const SETS_MARKUP = join("components", "mind", "SlidePlayer.tsx");
+
 for (const [file, code] of source) {
-  if (/dangerouslySetInnerHTML/.test(code)) {
+  if (!/dangerouslySetInnerHTML/.test(code)) continue;
+  if (file !== SETS_MARKUP) {
     fail(`${file} uses dangerouslySetInnerHTML`);
+    continue;
+  }
+  // Only the slide's own fields. Member answers never reach this component —
+  // it is passed slides and an audio URL and nothing else.
+  for (const match of code.matchAll(/dangerouslySetInnerHTML=\{\{\s*__html:\s*([^}]+?)\s*\}\}/g)) {
+    const expr = match[1].trim();
+    if (!/^slide\.(h|body)$/.test(expr)) {
+      fail(`${file} sets '${expr}' as markup — is it member input?`);
+    }
+  }
+  if (/answers|getPageAnswers|course_reflections/.test(code)) {
+    fail(`${file} now touches member answers, which it may not while it sets markup`);
   }
 }
-ok("no dangerouslySetInnerHTML in the course code — member text is escaped by React");
+ok("only the slide player sets markup, and only from its own slides");
 
 // Member writing must never be fed to the Markdown renderer, which would let a
 // member's own text become markup.

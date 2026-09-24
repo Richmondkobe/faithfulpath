@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T10:40:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 13: Take Every Thought Captive: What Does That Mean?",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-benjamin","05-not-say","06-belief","07-six","08-truth","09-cautions","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Module 3 opens; what you will learn with the intrusive-thoughts safety note; key Scripture in context", "start": "01-title"},
+    "story": {"description": "Benjamin losing a war", "start": "04-benjamin"},
+    "teach": {"description": "What the verse does not say, the spiritual-enough belief, six movements, refuse authority not existence, two cautions", "start": "05-not-say"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Module 1 · Lesson 1",
+    "h": "Does your mind keep working when you want to rest?",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 200\" aria-hidden=\"true\"><g class=\"stars\" fill=\"#f7f3ec\"><circle cx=\"40\" cy=\"30\" r=\"2.5\"/><circle cx=\"300\" cy=\"22\" r=\"2\"/><circle cx=\"330\" cy=\"70\" r=\"2.5\"/></g><path d=\"M250 30a34 34 0 1 0 30 50 28 28 0 0 1-30-50z\" fill=\"#c78a2c\"/><rect x=\"40\" y=\"130\" width=\"280\" height=\"40\" rx=\"10\" fill=\"#2f3d52\"/><rect x=\"40\" y=\"110\" width=\"80\" height=\"30\" rx=\"8\" fill=\"#3b4a60\"/><rect x=\"30\" y=\"165\" width=\"12\" height=\"25\" fill=\"#2f3d52\"/><rect x=\"318\" y=\"165\" width=\"12\" height=\"25\" fill=\"#2f3d52\"/><g fill=\"none\" stroke=\"#c78a2c\" stroke-width=\"3\"><circle class=\"drift\" cx=\"90\" cy=\"100\" r=\"6\"/><circle class=\"drift d2\" cx=\"110\" cy=\"96\" r=\"9\"/><circle class=\"drift d3\" cx=\"135\" cy=\"90\" r=\"12\"/></g></svg>",
+    "dark": true,
+    "t": 0
+  },
+  {
+    "label": "Today you will learn",
+    "h": "How to tell when useful thinking has become mental circling.",
+    "body": "<p class=sub>About 8 minutes, plus one short pause · one small practice · no homework list</p>",
+    "dark": false,
+    "t": 38.3
+  },
+  {
+    "label": "Key Scripture",
+    "h": "<em>“When the cares of my heart are many, your consolations cheer my soul.”</em>",
+    "body": "<p class=sub>Psalm 94:19 (ESV)</p>",
+    "dark": false,
+    "t": 57
+  },
+  {
+    "label": "Meet Grace",
+    "h": "Her body was in bed.<br>Her mind was still in meetings.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 220\" aria-hidden=\"true\"><rect x=\"46\" y=\"96\" width=\"14\" height=\"88\" rx=\"4\" fill=\"#3b4a60\"/><rect x=\"46\" y=\"96\" width=\"62\" height=\"14\" rx=\"4\" fill=\"#3b4a60\"/><rect x=\"60\" y=\"150\" width=\"270\" height=\"34\" rx=\"10\" fill=\"#3b4a60\"/><rect x=\"60\" y=\"178\" width=\"12\" height=\"26\" fill=\"#3b4a60\"/><rect x=\"318\" y=\"178\" width=\"12\" height=\"26\" fill=\"#3b4a60\"/><rect x=\"66\" y=\"132\" width=\"76\" height=\"24\" rx=\"10\" fill=\"#e9e1d3\"/><path d=\"M128 156 h202 v-14 a12 12 0 0 0 -12 -12 H128 z\" fill=\"#8a6b34\"/><path d=\"M120 122 a30 30 0 0 1 60 0 v34 H120 z\" fill=\"#4a3b2c\"/><circle cx=\"150\" cy=\"128\" r=\"17\" fill=\"#d9c2a5\"/><path d=\"M133 122 a17 17 0 0 1 34 0 v-8 a17 17 0 0 0 -34 0 z\" fill=\"#4a3b2c\"/><circle cx=\"168\" cy=\"100\" r=\"3.5\" fill=\"#c78a2c\"/><circle cx=\"178\" cy=\"86\" r=\"5.5\" fill=\"#c78a2c\"/><g class=\"bub\"><rect x=\"150\" y=\"16\" width=\"160\" height=\"56\" rx=\"14\" fill=\"#f7f3ec\" stroke=\"#c78a2c\" stroke-width=\"3\"/><text class=\"bt b1\" x=\"230\" y=\"51\" text-anchor=\"middle\" font-size=\"19\" fill=\"#1e2a3a\">the meeting</text><text class=\"bt b2\" x=\"230\" y=\"51\" text-anchor=\"middle\" font-size=\"19\" fill=\"#1e2a3a\">his exams</text><text class=\"bt b3\" x=\"230\" y=\"51\" text-anchor=\"middle\" font-size=\"19\" fill=\"#1e2a3a\">that bill</text></g></svg>",
+    "dark": true,
+    "t": 87.3
+  },
+  {
+    "label": "Thinking is not the enemy",
+    "h": "Good thinking goes somewhere.",
+    "body": "<div class=flow><span>Understanding</span><i>→</i><span>A decision</span><i>→</i><span>An action, or rest</span></div>",
+    "dark": false,
+    "t": 151.8
+  },
+  {
+    "label": "Mental circling is different",
+    "h": "It returns to the same question and produces nothing new.",
+    "body": "<svg viewBox=\"0 0 400 400\" class=loop aria-label=\"A looping arrow returning to its start\"><path d=\"M 200 60 A 140 140 0 1 1 90 120\" fill=\"none\" stroke=\"#c78a2c\" stroke-width=\"18\" stroke-linecap=\"round\"/><polygon points=\"70,90 120,110 85,150\" fill=\"#c78a2c\"/><text x=\"200\" y=\"215\" text-anchor=\"middle\" font-size=\"34\" fill=\"currentColor\">Same question</text><text x=\"200\" y=\"260\" text-anchor=\"middle\" font-size=\"34\" fill=\"currentColor\">Same worry</text></svg>",
+    "dark": false,
+    "t": 178.8
+  },
+  {
+    "label": "Ask one question",
+    "h": "Where is this thought taking me?",
+    "body": "<svg class=\"art qmark\" viewBox=\"0 0 120 120\" style=\"width:min(30vw,120px)\" aria-hidden=\"true\"><circle cx=\"60\" cy=\"60\" r=\"54\" fill=\"none\" stroke=\"#c78a2c\" stroke-width=\"4\"/><text x=\"60\" y=\"82\" text-anchor=\"middle\" font-family=\"Source Serif 4,Georgia,serif\" font-size=\"70\" fill=\"#c78a2c\">?</text></svg><p class=sub>If the honest answer is “back to where I started,” you are circling.</p>",
+    "dark": true,
+    "t": 206.7
+  },
+  {
+    "label": "Thinking or circling?",
+    "h": "",
+    "body": "<div class=\"cmp\"><div class=\"card\"><h2>Useful thinking</h2><ul><li>Gathers facts</li><li>Moves towards action</li><li>Has a stopping point</li></ul></div><div class=\"card\"><h2>Mental circling</h2><ul><li>Repeats fears</li><li>Returns to the beginning</li><li>Often seeks complete certainty</li></ul></div></div>",
+    "dark": false,
+    "t": 237
+  },
+  {
+    "label": "What may be underneath it",
+    "h": "<em>“I am trying to feel completely certain before I allow myself to rest.”</em>",
+    "body": "",
+    "dark": false,
+    "t": 272.8
+  },
+  {
+    "label": "Do this now",
+    "h": "Name one matter your mind keeps returning to.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 120\" aria-hidden=\"true\"><line x1=\"30\" y1=\"90\" x2=\"330\" y2=\"90\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><path class=\"ink\" d=\"M40 82c20-14 30 6 50 0s30-18 50-4 30 10 50 0 30-14 50-2 30 8 50 0\" fill=\"none\" stroke=\"#1e2a3a\" stroke-width=\"3\" stroke-linecap=\"round\"/><g transform=\"translate(300 40) rotate(40)\"><rect x=\"-6\" y=\"-40\" width=\"12\" height=\"60\" rx=\"3\" fill=\"#c78a2c\"/><polygon points=\"-6,20 6,20 0,34\" fill=\"#1e2a3a\"/></g></svg><p class=body>Write it in one sentence. Do not solve it. Just name it.</p><p class=badge>Pause the audio</p>",
+    "dark": false,
+    "t": 329.7
+  },
+  {
+    "label": "Remember",
+    "h": "A crowded mind is not proof of weak faith.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 120\" style=\"width:min(40vw,200px)\" aria-hidden=\"true\"><circle class=\"glow\" cx=\"100\" cy=\"70\" r=\"46\" fill=\"#c78a2c\"/><rect x=\"88\" y=\"60\" width=\"24\" height=\"46\" rx=\"6\" fill=\"#f7f3ec\"/><path d=\"M100 30c-9 12-9 22 0 30 9-8 9-18 0-30z\" fill=\"#c78a2c\"/></svg>",
+    "dark": true,
+    "t": 370.1
+  },
+  {
+    "label": "Prayer",
+    "h": "",
+    "body": "<div class=prayer><p>Father, you already know<br>what my mind keeps returning to.</p><p>I bring it to you as it is — unsolved.</p><p>When the cares of my heart are many,<br>let your comfort cheer my soul.</p><p>Amen.</p></div>",
+    "dark": false,
+    "t": 415.4
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-23T14:30:00Z"
+  },
+  "title": "When Your Mind Won't Rest — Lesson 20: A Rule of Life for a Restless Mind",
+  "cover": "01-title",
+  "order": [
+    "01-title",
+    "02-learn",
+    "03-scripture",
+    "04-jonathan",
+    "05-trellis",
+    "06-five",
+    "07-caution",
+    "08-belief",
+    "09-practice",
+    "10-do-this",
+    "11-remember",
+    "12-prayer"
+  ],
+  "sections": {
+    "open": {
+      "description": "Title question, what you will learn with the rigid-rule safety note, Mark 1:35",
+      "start": "01-title"
+    },
+    "story": {
+      "description": "Jonathan's busy quarter",
+      "start": "04-jonathan"
+    },
+    "teach": {
+      "description": "Trellis not law, five areas, honest limits, the common belief",
+      "start": "05-trellis"
+    },
+    "apply": {
+      "description": "Do this now, remember, prayer",
+      "start": "10-do-this"
+    }
+  },
+  "faces": {
+    "source-serif-4": {
+      "family": "Source Serif 4",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"
+    },
+    "source-sans-3": {
+      "family": "Source Sans 3",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"
+    }
+  },
+  "designSystems": []
+}

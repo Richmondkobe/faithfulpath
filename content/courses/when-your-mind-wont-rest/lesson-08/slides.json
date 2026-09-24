@@ -1,0 +1,86 @@
+[
+  {
+    "label": "Module 2 · Name The Pattern · Lesson 8",
+    "h": "Have you ever won an argument with someone who was not in the room?",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 180\" aria-hidden=\"true\"><circle cx=\"70\" cy=\"120\" r=\"18\" fill=\"#d9c2a5\"/><path d=\"M42 178v-30a28 28 0 0 1 56 0v30z\" fill=\"#c78a2c\"/><g class=\"b1\"><rect x=\"110\" y=\"20\" width=\"120\" height=\"56\" rx=\"14\" fill=\"#f7f3ec\"/><polygon points=\"120,76 130,92 140,76\" fill=\"#f7f3ec\"/><text x=\"170\" y=\"54\" text-anchor=\"middle\" font-size=\"16\" fill=\"#1e2a3a\">my perfect line</text></g><g class=\"b2\"><rect x=\"230\" y=\"70\" width=\"110\" height=\"56\" rx=\"14\" fill=\"none\" stroke=\"#b9c0cb\" stroke-width=\"3\" stroke-dasharray=\"8 6\"/><text x=\"285\" y=\"104\" text-anchor=\"middle\" font-size=\"15\" fill=\"#b9c0cb\">(nobody there)</text></g><circle class=\"ghost\" cx=\"300\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#b9c0cb\" stroke-width=\"3\" stroke-dasharray=\"6 5\"/></svg>",
+    "dark": true,
+    "t": 0
+  },
+  {
+    "label": "Today You Will Learn",
+    "h": "How to separate what a person actually said from what you imagined, prepare only your own part, and go in intending to hear.",
+    "body": "<p class=\"sub\">About 8 minutes, plus one short pause · one small practice · no homework list</p><p class=\"body warn\">If the person you are rehearsing for has been abusive, coercive or unsafe, do not use this lesson to prepare contact. Seek specialist advice first; the wise decision may be no conversation at all.</p>",
+    "dark": false,
+    "t": 31.2
+  },
+  {
+    "label": "Key Scripture",
+    "h": "\"If one gives an answer before he hears, it is his folly and shame.\"",
+    "body": "<p class=\"sub\">Proverbs 18:13 (ESV)</p>",
+    "dark": false,
+    "t": 72.9
+  },
+  {
+    "label": "Meet Hannah",
+    "h": "Forty rehearsals. Thirty-eight wins.<br>Then her mother-in-law said sorry at the door.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 360 150\" aria-hidden=\"true\"><g class=\"tk t0\" transform=\"translate(28 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t1\" transform=\"translate(70 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t2\" transform=\"translate(112 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t3\" transform=\"translate(154 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t4\" transform=\"translate(196 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t5\" transform=\"translate(238 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t6\" transform=\"translate(280 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><g class=\"tk t7\" transform=\"translate(322 22)\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"8\" y1=\"0\" x2=\"8\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"16\" y1=\"0\" x2=\"16\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"24\" y1=\"0\" x2=\"24\" y2=\"30\" stroke=\"#f7f3ec\" stroke-width=\"4\" stroke-linecap=\"round\"/><line x1=\"-4\" y1=\"26\" x2=\"34\" y2=\"4\" stroke=\"#c78a2c\" stroke-width=\"4\" stroke-linecap=\"round\"/></g><text x=\"180\" y=\"132\" text-anchor=\"middle\" font-size=\"18\" fill=\"#b9c0cb\">40 rehearsals · 38 wins · 0 real conversations</text></svg>",
+    "dark": true,
+    "t": 107.6
+  },
+  {
+    "label": "Name The Pattern · Rehearsal",
+    "h": "",
+    "body": "<div class=\"four three\"><div><b>The confrontation</b><span>They grow more unreasonable; you grow more eloquent.</span></div><div><b>The defence</b><span>An answer to the criticism, then to the follow-up, then the next.</span></div><div><b>The explanation</b><span>An apology polished for the perfect wording that never arrives.</span></div></div>",
+    "dark": false,
+    "t": 188.2
+  },
+  {
+    "label": "The Main Truth",
+    "h": "Rehearsal supplies evidence that does not exist, and makes you arrive already in the middle.",
+    "body": "<p class=\"sub\">Most often, it replaces the conversation altogether.</p>",
+    "dark": false,
+    "t": 225.1
+  },
+  {
+    "label": "Three Things That Look Alike",
+    "h": "",
+    "body": "<div class=\"four three dk\"><div><b style=\"color:#c78a2c\">Preparation</b><span>Your facts, your purpose, your opening words. Has an end. Leaves you ready to listen.</span></div><div><b style=\"color:#c78a2c\">Bounded planning</b><span>A few realistic responses, held as possibilities. Responsible for hard conversations.</span></div><div><b style=\"color:#b3482e\">Rehearsal</b><span>Scripts the other person. Treats the script as evidence. Never ends.</span></div></div>",
+    "dark": true,
+    "t": 274.5
+  },
+  {
+    "label": "A Common Belief",
+    "h": "\"If I do not rehearse, I will be caught out.\"",
+    "body": "<p class=\"sub\">Your responsibility is faithfulness and clarity, not control of another person's response.</p>",
+    "dark": false,
+    "t": 330.5
+  },
+  {
+    "label": "The Tool",
+    "h": "",
+    "body": "<ol class=\"five\"><li>Notice: \"I am rehearsing.\"</li><li>What has this person actually said to me about this?</li><li>Is a real conversation needed? Choose a time and a method.</li><li>Prepare only my part: two or three opening sentences.</li><li>Go in intending to hear.</li></ol>",
+    "dark": false,
+    "t": 376.9
+  },
+  {
+    "label": "Do This Now",
+    "h": "Take the conversation you have been rehearsing most. Write only what the other person has actually said, and when.",
+    "body": "<p class=\"body\">Then one line: <i>Everything after that was mine.</i> Or: <i>They have said more than one thing, and a conversation is needed.</i></p><svg class=\"art\" viewBox=\"0 0 360 120\" aria-hidden=\"true\"><line x1=\"30\" y1=\"90\" x2=\"330\" y2=\"90\" stroke=\"#e4ddd0\" stroke-width=\"2\"/><path class=\"ink\" d=\"M40 82c20-14 30 6 50 0s30-18 50-4 30 10 50 0 30-14 50-2 30 8 50 0\" fill=\"none\" stroke=\"#1e2a3a\" stroke-width=\"3\" stroke-linecap=\"round\"/><g transform=\"translate(300 40) rotate(40)\"><rect x=\"-6\" y=\"-40\" width=\"12\" height=\"60\" rx=\"3\" fill=\"#c78a2c\"/><polygon points=\"-6,20 6,20 0,34\" fill=\"#1e2a3a\"/></g></svg><p class=\"badge\">Pause the audio</p>",
+    "dark": false,
+    "t": 445
+  },
+  {
+    "label": "Remember",
+    "h": "My part is prepared. Their part is not mine to write.",
+    "body": "<svg class=\"art\" viewBox=\"0 0 200 120\" style=\"width:min(40vw,200px)\" aria-hidden=\"true\"><circle class=\"glow\" cx=\"100\" cy=\"70\" r=\"46\" fill=\"#c78a2c\"/><rect x=\"88\" y=\"60\" width=\"24\" height=\"46\" rx=\"6\" fill=\"#f7f3ec\"/><path d=\"M100 30c-9 12-9 22 0 30 9-8 9-18 0-30z\" fill=\"#c78a2c\"/></svg>",
+    "dark": true,
+    "t": 491.8
+  },
+  {
+    "label": "Prayer",
+    "h": "",
+    "body": "<div class=\"prayer\"><p>Father, you know the conversations<br>I have been holding alone.</p><p>Give me words for my part,<br>and ears for theirs.</p><p>The outcome is yours.</p><p>Amen.</p></div>",
+    "dark": false,
+    "t": 523
+  }
+]

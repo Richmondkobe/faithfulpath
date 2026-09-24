@@ -24,7 +24,7 @@ import {
   type NextStep,
 } from "@/lib/mind-progress";
 import { signedMediaUrl } from "@/lib/course-media";
-import { mindResourceHref, MIND_BASE } from "@/lib/mind-links";
+import { mindResourceHref, MIND_BASE, MIND_COURSE_SLUG } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import ChapterDisclosure from "@/components/mind/ChapterDisclosure";
 import NextFaithfulStep from "@/components/mind/NextFaithfulStep";
@@ -35,6 +35,9 @@ import Acknowledgement, { type AckState } from "@/components/mind/Acknowledgemen
 import RestlessList, { type RestlessEntry } from "@/components/mind/RestlessList";
 import EraseEntries from "@/components/mind/EraseEntries";
 import PrayerAudio from "@/components/mind/PrayerAudio";
+import SlidePlayer from "@/components/mind/SlidePlayer";
+import { practiceFrom, readNarration, readSlides, slideAudioId } from "@/lib/mind-slides";
+import { slideFontVars } from "@/lib/slide-fonts";
 
 export const metadata: Metadata = {
   title: "When Your Mind Won't Rest | Faithful Path Community",
@@ -109,6 +112,22 @@ export default async function MindLesson({ params }: Props) {
   const audioId = typeof file.front.audio === "string" ? file.front.audio : null;
   const audioSrc = audioId ? await signedMediaUrl("audio", `${audioId}.mp3`) : null;
 
+  // The slide lecture, where the lesson has one. Its recording lives in the
+  // course's own folder in the bucket, apart from the guided prayers that have
+  // always sat directly under audio/.
+  const order = typeof page.order === "number" ? page.order : null;
+  const slides = order ? readSlides(order) : null;
+  const slideAudio = slides && order
+    ? await signedMediaUrl("audio", `${slideAudioId(order)}.mp3`, MIND_COURSE_SLUG)
+    : null;
+  const narration = slides && order ? readNarration(order) : [];
+  const practice = slides ? practiceFrom(slides) : null;
+
+  // How long the recording runs, taken from the slides rather than written
+  // down: the last slide's start plus the time it holds the screen is close
+  // enough for "about N minutes", and it cannot drift from the deck.
+  const runtimeMinutes = slides ? (slides[slides.length - 1].t + 40) / 60 : 0;
+
   const action = typeof file.front.action === "string" ? file.front.action : null;
   const support = typeof file.front.support === "string" ? file.front.support : null;
 
@@ -133,11 +152,80 @@ export default async function MindLesson({ params }: Props) {
         {page.key_scripture && <> · {page.key_scripture}</>}
       </p>
 
-      <article className="mt-2">
-        <MindMarkdown source={main} />
-      </article>
+      {/* A lesson that has a slide lecture is watched or listened to; one that
+          does not is read, exactly as before. The lessons are converted a deck
+          at a time, so both have to work at once, and which a lesson gets is
+          decided by whether its slides.json exists. */}
+      {slides ? (
+        <>
+          <h1
+            className="mt-2 text-[2rem] leading-[1.15] text-[#2B2118]"
+            style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+          >
+            {page.title}
+          </h1>
 
-      {audioId && <PrayerAudio src={audioSrc} title={page.title} />}
+          <section className="mt-8">
+            <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              Watch or listen
+            </h2>
+            <div className={`mt-3 ${slideFontVars}`}>
+              <SlidePlayer
+                slides={slides}
+                audioUrl={slideAudio}
+                lessonTitle={page.title}
+              />
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+              About {Math.round(runtimeMinutes)} minutes, plus one short pause.
+            </p>
+
+            {/* Lesson 16's prayer is a recording of its own, and the lesson is
+                about praying it rather than about listening to a talk. */}
+            {audioId && (
+              <div className="mt-5">
+                <PrayerAudio src={audioSrc} title={page.title} />
+              </div>
+            )}
+          </section>
+
+          {practice && (
+            <section className="mt-12">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                Take one step
+              </h2>
+              <p
+                className="mt-3 text-xl leading-snug text-[#2B2118]"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+              >
+                {practice.heading}
+              </p>
+              {practice.lines.map((line) => (
+                <p key={line} className="mt-3 leading-relaxed text-[#4A4038]">
+                  {line}
+                </p>
+              ))}
+            </section>
+          )}
+        </>
+      ) : (
+        <>
+          <article className="mt-2">
+            <MindMarkdown source={main} />
+          </article>
+
+          {audioId && <PrayerAudio src={audioSrc} title={page.title} />}
+        </>
+      )}
+
+      {/* Read as "Go deeper" once there is a lecture above it: the chapter and
+          the worksheet become the two ways further in, rather than the body of
+          the page. */}
+      {slides && (chapter || worksheets.length > 0) && (
+        <h2 className="mt-12 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Go deeper
+        </h2>
+      )}
 
       {chapter && <ChapterDisclosure chapter={chapter} lessonTitle={page.title} />}
 
@@ -200,6 +288,27 @@ export default async function MindLesson({ params }: Props) {
             course.
           </p>
         </section>
+      )}
+
+      {/* Every word of the recording, closed. A member who would rather read
+          than listen, or cannot listen, loses nothing by never starting it —
+          which is also what makes the player safe to require JavaScript for. */}
+      {narration.length > 0 && (
+        <details className="group mt-12 rounded-sm border border-[#E5D9C7]">
+          <summary className="cursor-pointer list-none px-5 py-4 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
+            <span className="font-medium">Read the transcript</span>
+            <span className="ml-2 text-[#6B5F53]">
+              — every word of the recording, in writing
+            </span>
+          </summary>
+          <div className="border-t border-[#E5D9C7] px-5 pb-5">
+            {narration.map((paragraph, i) => (
+              <p key={i} className="mt-4 leading-relaxed text-[#4A4038]">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </details>
       )}
 
       {isLesson && action && (

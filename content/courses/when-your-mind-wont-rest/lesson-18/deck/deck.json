@@ -1,0 +1,52 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-23T13:30:00Z"
+  },
+  "title": "When Your Mind Won't Rest — Lesson 18: When Discernment Is Finished",
+  "cover": "01-title",
+  "order": [
+    "01-title",
+    "02-learn",
+    "03-scripture",
+    "04-miriam",
+    "05-two-kinds",
+    "06-belief",
+    "07-waiting",
+    "08-sheet",
+    "09-responses",
+    "10-do-this",
+    "11-remember",
+    "12-prayer"
+  ],
+  "sections": {
+    "open": {
+      "description": "Title question, what you will learn with the safety note, Proverbs 3:5–6",
+      "start": "01-title"
+    },
+    "story": {
+      "description": "Miriam's fourteen months",
+      "start": "04-miriam"
+    },
+    "teach": {
+      "description": "Missing something vs waiting for a feeling, God's will, five ways of waiting, the Faithful Decision Sheet, five responses",
+      "start": "05-two-kinds"
+    },
+    "apply": {
+      "description": "Do this now, remember (closes Module 3), prayer",
+      "start": "10-do-this"
+    }
+  },
+  "faces": {
+    "source-serif-4": {
+      "family": "Source Serif 4",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"
+    },
+    "source-sans-3": {
+      "family": "Source Sans 3",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"
+    }
+  },
+  "designSystems": []
+}

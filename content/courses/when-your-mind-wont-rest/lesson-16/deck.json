@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T11:20:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 16: Prayer That Does Not Become More Worry",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-elizabeth","05-patterns","06-repetition","07-belief","08-six","09-where","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the compulsive-prayer and depression note, Psalm 62", "start": "01-title"},
+    "story": {"description": "Elizabeth's forty minutes", "start": "04-elizabeth"},
+    "teach": {"description": "When prayer becomes rehearsal, repetition is not unbelief, the feeling belief, the six-movement prayer, where anxious prayer stays", "start": "05-patterns"},
+    "apply": {"description": "Pray the six movements, remember, closing prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

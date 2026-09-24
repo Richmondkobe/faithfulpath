@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T07:00:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 10: When Discernment Becomes Obsession",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-rebecca","05-two","06-one-right","07-four","08-question","09-three","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the safety note, key Scripture", "start": "01-title"},
+    "story": {"description": "Rebecca's three weeks", "start": "04-rebecca"},
+    "teach": {"description": "Discernment vs confirmation-seeking, the one-right-choice belief, four responses, the honest question, information or courage", "start": "05-two"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

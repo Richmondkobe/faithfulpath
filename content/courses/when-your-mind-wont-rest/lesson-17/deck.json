@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T13:00:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 17: Give Tomorrow Back to God",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-philip","05-prep","06-belief","07-check","08-three","09-cautions","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the real-hardship note, Matthew 6:25–34", "start": "01-title"},
+    "story": {"description": "Philip's forty evenings", "start": "04-philip"},
+    "teach": {"description": "Preparing vs living in tomorrow, the trust belief, the urgency check, Today/Later/Release, three cautions", "start": "05-prep"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

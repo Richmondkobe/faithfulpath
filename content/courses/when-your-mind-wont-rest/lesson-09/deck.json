@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T04:55:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 9: Trying to Read Other People's Minds",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-mark","05-mindreading","06-levels","07-alternatives","08-discerning","09-three","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the harm caution, key Scripture", "start": "01-title"},
+    "story": {"description": "Mark and his friend's silence", "start": "04-mark"},
+    "teach": {"description": "Mind-reading named, four kinds of knowing, other explanations, discernment vs mind-reading, ask/wait/let go", "start": "05-mindreading"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

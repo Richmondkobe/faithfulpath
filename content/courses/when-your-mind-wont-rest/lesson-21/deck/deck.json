@@ -1,0 +1,52 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-23T15:00:00Z"
+  },
+  "title": "When Your Mind Won't Rest — Lesson 21: You Do Not Have to Solve Your Whole Life Tonight",
+  "cover": "01-title",
+  "order": [
+    "01-title",
+    "02-learn",
+    "03-scripture",
+    "04-story",
+    "05-not",
+    "06-has",
+    "07-five",
+    "08-sentence",
+    "09-small",
+    "10-do-this",
+    "11-remember",
+    "12-prayer"
+  ],
+  "sections": {
+    "open": {
+      "description": "Title, what you will learn with the good-outcome safety note, Matthew 6:34",
+      "start": "01-title"
+    },
+    "story": {
+      "description": "Grace, Miriam, Caleb, Jonathan and the other illustrative figures",
+      "start": "04-story"
+    },
+    "teach": {
+      "description": "What the course has and has not promised, the five faithful responses, the one sentence, why the practices are small",
+      "start": "05-not"
+    },
+    "apply": {
+      "description": "Do this now, remember (course complete), the Final Prayer of Surrender",
+      "start": "10-do-this"
+    }
+  },
+  "faces": {
+    "source-serif-4": {
+      "family": "Source Serif 4",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"
+    },
+    "source-sans-3": {
+      "family": "Source Sans 3",
+      "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"
+    }
+  },
+  "designSystems": []
+}

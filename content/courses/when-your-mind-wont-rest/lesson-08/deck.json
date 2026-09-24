@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-23T04:45:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 8: Rehearsing Conversations That Have Not Happened",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-hannah","05-forms","06-costs","07-three","08-caught-out","09-practice","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn with the safety caution, key Scripture", "start": "01-title"},
+    "story": {"description": "Hannah's fortnight", "start": "04-hannah"},
+    "teach": {"description": "Forms of rehearsal, what it costs, three look-alikes, the caught-out belief, the tool", "start": "05-forms"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}

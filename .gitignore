@@ -44,6 +44,17 @@ next-env.d.ts
 *.mp4
 *.mp3
 
+# Slide-lecture pilot pages. Each one is the working player for a lesson and is
+# the source of truth for that lesson's slides and timings — but it carries its
+# own mp3 embedded as base64, so the twenty-one of them come to 234 MB. They
+# stay on disk and out of git; what gets committed is the slides.json extracted
+# from them.
+pilot.html
+*-pilot-page.html
+
+# Reviewer packs — rounds of review, superseded by the pilot pages themselves.
+*-Pilot-Review-Pack.pdf
+
 # Supabase CLI scratch — written by `supabase link`, holds the linked
 # project ref and a pooler connection string. Not ours to commit.
 supabase/.temp/

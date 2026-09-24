@@ -1,0 +1,18 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-09-22T16:45:00Z"},
+  "title": "When Your Mind Won't Rest — Lesson 3: Anxiety, Faith and Shame",
+  "cover": "01-title",
+  "order": ["01-title","02-learn","03-scripture","04-ruth","05-two-burdens","06-truth","07-four","08-sentences","09-paul","10-do-this","11-remember","12-prayer"],
+  "sections": {
+    "open": {"description": "Title question, what you will learn, key Scripture", "start": "01-title"},
+    "story": {"description": "Ruth's two burdens", "start": "04-ruth"},
+    "teach": {"description": "Fear and trust, the four things, the shaming sentences, Paul's instruction", "start": "05-two-burdens"},
+    "apply": {"description": "Do this now, remember, prayer", "start": "10-do-this"}
+  },
+  "faces": {
+    "source-serif-4": {"family": "Source Serif 4", "href": "https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,300..700;1,300..700&display=swap"},
+    "source-sans-3": {"family": "Source Sans 3", "href": "https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300..700&display=swap"}
+  },
+  "designSystems": []
+}
