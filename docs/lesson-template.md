@@ -56,7 +56,7 @@ Sections should appear in this order whenever they are included. Required sectio
 ### 2. Objectives
 - 3 to 4 bullets, pulled from that lesson's real content. Never generic filler.
 - Phrase as what the learner will see, understand, or practise, in gentle language.
-- Lead-in line: "In this lesson you will…"
+- Lead-in line: "In this lesson, you will learn to:" — each bullet completes that sentence.
 
 ### 3. Watch or listen
 - Video and/or audio player.
@@ -88,8 +88,11 @@ Sections should appear in this order whenever they are included. Required sectio
 
 ### 8. Let it settle
 - Exactly two optional reflection prompts.
-- Reflection only: nothing scored, nothing answerable on the page, no text boxes, no saved responses.
+- Reflection only: nothing scored, nothing graded, nothing with a right answer to reveal. No recall questions, no true-or-false, no fill-in-the-blank.
+- Each prompt has a text box, and the learner may save what they write. The writing is private, optional, and counted towards nothing — the lesson finishes whether or not a word is typed.
+- Say what is true about where the writing goes. It is not shown to anyone in the course and is not used to measure anything; do not promise a secrecy the storage does not provide (see "Privacy wording" in Section 5).
 - Prompts are phrased as quiet questions for prayer or thought, not homework.
+- Prompts must not repeat the practice "Take one step" has already asked for. This is the easiest mistake to make, because a prompt pattern reused across a course will collide with some of its lessons.
 
 ### 9. Need more support?
 - Placed **before** completion, not after.
@@ -109,10 +112,15 @@ Flow, in this exact order:
 
 Notes:
 - "Stop here for today" is primary by design. Rest is the default, continuing is the option.
+- Both buttons mark the lesson complete. The only difference is whether the learner is carried onward.
+- Completion is pressed, never inferred. No scroll tracking, no observer at the foot of the page, no handler on the end of the recording — reaching the bottom does nothing. Keep it to one call site.
 - On the final lesson, replace the "Continue" button with a course-completion message and a pointer to the next course or resource.
+  **Not built yet.** Lesson 21 of *When Your Mind Won't Rest* currently shows "Stop here for today" and simply omits the Continue button, with no completion message. This is the one part of the template the shipped pages do not yet meet.
 
 ### 11. Footer links and citation notice
-- Standard footer links: Home, Course overview, Contact, Privacy, Terms.
+- The course's persistent support links, then the citation notice. In *When Your Mind Won't Rest* that is two links — **Need more support?** and **My Mind Is Restless Right Now** — followed by the ESV notice.
+- The links come from the course manifest and are rendered by the course layout, not by the lesson route. Put them on each page individually and one page will eventually be missed.
+- A new course chooses its own support links. Two is the shipped pattern: one for a learner who needs help beyond the course, one for a learner in difficulty right now.
 - **Scripture courses:** ESV copyright notice (or the translation used, with its required notice).
 - **Non-Scripture courses:** the equivalent citation or legal notice, such as book copyright, quotation permissions, or a paraphrase note.
 - Where a course leans on paraphrase, include a line encouraging learners to read the passage in a Bible they trust.
@@ -125,7 +133,7 @@ Notes:
 # Lesson [N]: [Title]
 **Scripture:** [Reference] — "[short text]"
 
-## In this lesson you will
+## In this lesson, you will learn to:
 - [Objective 1]
 - [Objective 2]
 - [Objective 3]
@@ -149,8 +157,9 @@ About [X] minutes, plus one short pause.
 (single full-width card if one is missing)
 
 ## Let it settle
-- [Reflection prompt 1]
-- [Reflection prompt 2]
+- [Reflection prompt 1]  [text box]
+- [Reflection prompt 2]  [text box]
+[Save my private reflection]  (optional, private, counted towards nothing)
 
 ## Need more support?
 [Pastoral invitation + link + topic safety line if needed]
@@ -162,7 +171,7 @@ About [X] minutes, plus one short pause.
   → [Mark it unfinished]
 
 ---
-[Footer links] · [ESV notice or equivalent citation notice]
+[Need more support?] [My Mind Is Restless Right Now] · [ESV notice or equivalent citation notice]
 ```
 
 ---
@@ -171,6 +180,16 @@ About [X] minutes, plus one short pause.
 
 Change freely: content, Scripture, wording of prompts, number of lessons, topic-specific support lines.
 Do not change: section order, the completion flow, the "nothing scored" rule, "Need more support?" before completion, one main practice per lesson.
+
+**Written fresh, every time**
+
+Objectives, reflection prompts, worksheet and chapter links, and support wording are written per lesson from that lesson's own content. Never copied from another lesson, and never genericised into something that would fit any lesson in the course. A bullet that would be true of every lesson tells the learner nothing about this one.
+
+**Privacy wording**
+
+Saved reflections go to the learner's own row, and row level security scopes every read to the learner who wrote them. No page, admin screen or export reads them back, and `verify:privacy` holds that. What is not true is that nobody else *could* read them: the text sits in an ordinary column, and whoever administers the database can reach it. There is no application-level encryption.
+
+So the page says what is true — *"It is not shown to anyone in the course and is not used to measure anything"* — rather than "seen only by you". Check this against the actual storage before writing any privacy line in a new course. The wording is a claim, and a claim about storage has to be true of the storage.
 
 **Topic notes**
 - **Worry, burnout, grief (e.g. *When Your Mind Won't Rest*):** keep support language gentle and pastoral. No diagnostic framing.
@@ -208,3 +227,4 @@ Please read one finished lesson page against this list and answer in your own wo
 |------|--------|
 | 2026-09-25 | First written reference, captured from the shipped *When Your Mind Won't Rest* lesson page. |
 | 2026-09-25 | Version 1.0 after review: table header fixed, "optional" clarified for section 6, short-lesson rule and page-type scope added. |
+| 2026-09-25 | Reconciled with what shipped: Let it settle keeps its saved private reflections; footer is the course's two support links plus the citation notice; objectives lead-in is "In this lesson, you will learn to:". Added the privacy wording, the written-fresh rule, the completion-is-pressed rule, and a note that the final-lesson completion message is not built. |

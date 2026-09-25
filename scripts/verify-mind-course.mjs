@@ -115,8 +115,8 @@ for (const lesson of counting) {
   }
 
   const questions = readJsonOrNull(join(folder, "questions.json"))?.questions;
-  if (!Array.isArray(questions) || questions.length < 1 || questions.length > 2) {
-    fail(`${where}: questions.json must hold one or two prompts`);
+  if (!Array.isArray(questions) || questions.length !== 2) {
+    fail(`${where}: questions.json must hold exactly two prompts`);
   } else if (questions.some((q) => q.kind !== "reflection")) {
     // Let it settle is not a test. Recall and true-or-false made it read as
     // marking, which is why they were taken out.
