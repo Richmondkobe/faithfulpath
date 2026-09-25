@@ -1,0 +1,26 @@
+{
+  "slug": "talk-before-you-marry",
+  "title": "Talk Before You Marry",
+  "description": "A fourteen-lesson Christian course that helps couples talk honestly about the things that are hard, before they marry.",
+  "lesson_count": 14,
+
+  "//saved_reflections": "Design doc Section 7, decision 2: this course stores nothing a learner writes. The lesson route has no input of any kind, and the flag is here so a future page cannot quietly add one without contradicting the manifest.",
+  "saved_reflections": false,
+
+  "//footer_links": "Rule 6 of the build brief: lessons carry the short footer, two support links then the notice. Neither destination exists yet — the Safety and Support page is step 4 of the brief, and the second support link is still bracketed in the draft — so both are null and render as visible development placeholders rather than dead links.",
+  "footer_links": [
+    { "label": "Need more support?", "href": null },
+    { "label": "Safety and Support", "href": null }
+  ],
+
+  "notice": "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book Talk Before You Marry © 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.",
+
+  "lessons": [
+    {
+      "order": 1,
+      "slug": "01-name-what-you-are-afraid-of",
+      "title": "Name What You're Afraid Of",
+      "file": "lessons/01-name-what-you-are-afraid-of.md"
+    }
+  ]
+}

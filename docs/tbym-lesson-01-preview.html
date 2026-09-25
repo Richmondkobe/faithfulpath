@@ -1,0 +1,208 @@
+<title>Lesson 1 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans);padding-inline:16px;padding-block:32px 56px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.6rem;margin-bottom:12px}
+p{margin:0 0 14px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px 24px}
+.card.plain{background:transparent}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bar{height:8px;border-radius:4px;background:var(--track);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;width:0;background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:0 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:8px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:16px}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;height:6px;border-radius:3px;background:var(--track)}
+.note{font-size:14px;color:var(--mute);margin-top:12px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:14px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:16px 28px;cursor:pointer;text-decoration:none}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;margin-top:18px}
+.done{display:none;font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-top:14px}
+.done.on{display:block}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Talk Before You Marry</span><span class="label">Lesson 1 of 14</span></div>
+
+<section class="card">
+<span class="label">Lesson 1</span>
+<h1 style="margin-top:10px">Name What You&rsquo;re Afraid Of</h1>
+<p class="sub">Stop treating avoidance as harmony.</p>
+<div class="bar" aria-hidden="true"><i></i></div>
+</section>
+
+<section class="card plain">
+<p class="scripture">&ldquo;Therefore, having put away falsehood, let each one of you speak the truth with his neighbor, for we are members one of another.&rdquo;</p>
+<span class="ref">Ephesians 4:25 (ESV)</span>
+</section>
+
+<section class="card">
+<h2>In this lesson, you will learn to:</h2>
+<ul>
+<li>See why silence can feel like peace, and what it quietly costs.</li>
+<li>Recognise six common patterns that keep hard conversations from happening.</li>
+<li>Notice what each of you learned about conflict before you met.</li>
+<li>Understand that a healthy engagement is not one where you never disagree.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="label" style="color:var(--mute)">0:00 / 12:00</span>
+</div>
+<p class="note">About 12 minutes, plus one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 1.</p>
+<p>Let's begin with Scripture. Ephesians chapter 4, verse 25.</p>
+<p>"Therefore, having put away falsehood, let each one of you speak the truth with his neighbor, for we are members one of another."</p>
+<p>Paul is writing to believers about how to live together now that they belong to Christ. And notice the reason he gives. It is not "because honesty is a rule." It is "for we are members one of another." What you say, and what you deliberately hide when it materially affects a relationship, touches the people you belong to.</p>
+<p>Paul is speaking about believers as members of Christ's body. The principle also matters deeply in marriage: what you say, conceal or distort affects the person with whom you are building a covenant life.</p>
+<p>Paul contrasts falsehood with truth. The Greek word translated "falsehood" is <em>pseudos</em>. It refers to what is false or deceptive. Paul is calling believers to a way of life in which what they say and what is real belong together. The point is not that we must voice every thought the moment we have it. It is that we should not build our shared life on concealment, on misleading impressions, or on realities one person has been kept from seeing.</p>
+<p>And a word of care. Elsewhere in this same chapter, Paul says this truth is to be spoken in love. Truth and love travel together. Nothing here asks a couple to say everything, in every mood, at every moment. It asks something simpler and harder: that we would put away what is false, and let what is true be said, because we belong to one another.</p>
+<p>So here is the truth I want you to carry into this course.</p>
+<p>Peace is not the absence of noise.</p>
+<p>Silence can look like peace, because nobody is arguing. But real peace can include a difference that both people are free to talk about. Avoidance hides the difference, and makes it harder to reach.</p>
+<p>A strong marriage is not one where the couple never disagrees. It is one where they can disagree without either of them feeling the ground shift. Where they can speak honestly, listen without defending, forgive properly, and come back together afterwards.</p>
+<p>A few years ago, a couple sat in my office and told me, with some pride, that they never fought.</p>
+<p>I have learned to slow down when I hear that.</p>
+<p>As we talked, a pattern came out. When he was hurt, he went quiet. When she was angry, she withdrew. Neither wanted a confrontation, so the hard conversations simply stopped happening. No shouting. No slammed doors. And no vulnerability either.</p>
+<p>It held for years. Then one of them made a decision that affected the other deeply, and instead of talking about it, they both went silent. Days passed. Then weeks. They kept eating together, going to church, raising their family. But something underneath had gone cold.</p>
+<p>The wife said something I have never forgotten. She said, "I thought we were at peace. I didn't realise we had just stopped talking."</p>
+<p>That is the danger. So let me show you six ways it happens. These are not diagnoses, and they are not fixed personality types. They are habits, and habits can be noticed.</p>
+<p><strong>Pattern one is avoidance.</strong> It sounds reasonable. It sounds considerate. "It's not the right time." "I don't want to upset them." "We'll deal with it later."</p>
+<p>Picture an engaged couple deep in wedding planning: venue, flowers, the guest list. They talk for hours. And one of them is carrying debt the other has never seen the size of. Both know the conversation needs to happen. One thinks, we'll figure it out after we're married. The other thinks, I don't want to start an argument before the wedding.</p>
+<p>Here is what I tell couples: if you cannot talk about money while you are engaged, marriage will not make that conversation easier. It will make it more expensive.</p>
+<p><strong>Pattern two is assumption.</strong> Avoidance knows there is a conversation and dodges it. Assumption does not know there is a conversation at all.</p>
+<p>A couple says, "We're going to build our life together," and both mean it. But he pictures moving near his parents, because that is what his family does. She pictures a home of their own, at a distance. Neither raises it, because to each of them it is not a question. It is obvious. And nobody lied. They simply filled in the blanks, each in their own handwriting, and assumed they were reading the same page.</p>
+<p>The small correction is this: replace "I assume you…" with "Tell me what you think about…", and keep asking, even about things you are sure you already know.</p>
+<p><strong>Pattern three is people-pleasing.</strong> They are talking about Christmas. She wants to be with her own family. He wants to be with his parents, and says so with some force. She feels the room tighten, and hears herself say, "Whatever you want is fine."</p>
+<p>It is not fine. She has traded an honest answer for a calm evening. Her partner is now making a real decision without knowing what she actually wants.</p>
+<p>Kindness is not the problem. Marriage needs a great deal of it. But kindness is not the same as a constant yes. Sometimes the most loving sentence you have is: "I love you, but I see this differently. Can we talk about it?"</p>
+<p><strong>Pattern four is defensiveness.</strong> She says, "I'm worried your work is taking so much of your time, and I'm concerned about what our life will look like." He hears an accusation. "So you think I'm a bad partner? I'm working hard for our future!"</p>
+<p>Look at what happened. She came to talk about time. Within one sentence the subject became whether he is a good man, and now she is reassuring him. And she has learned something quieter: what it costs to raise a concern with him. Do that a few times, and she stops.</p>
+<p>The one question that helps is: "Help me understand why this matters to you."</p>
+<p><strong>Pattern five is conflict avoidance.</strong> Some people learned very early that raised voices mean danger, or punishment, or someone leaving. That lesson does not stay in childhood. It lives in the body. So he raises his voice, just a little, and she says, "Fine, we'll do it your way." Ask her later why, and she will not say, "I didn't want him to think badly of me." She will say, "I just wanted the argument to stop."</p>
+<p>If that sounds familiar, sit quietly with this question: when my partner disagrees with me, am I afraid of losing this relationship, or am I afraid of what happens when someone is angry with me?</p>
+<p><strong>Pattern six is unspoken expectations.</strong> This is close to assumption, but different. Assumption says, "I believe I know what you expect." An unspoken expectation says, "I expect something from you, and I have never told you what it is."</p>
+<p>The clearest place to see it is running a home. A couple can be deeply in love and never once have discussed who cooks, who cleans, who manages the money. Then they marry, and the thinking begins. "Why isn't he helping? He can see what needs doing." "Why does she expect me to do that? We never agreed." They are not really arguing about dishes. They are discovering that they married each other holding two different pictures of marriage, and neither ever showed the other theirs.</p>
+<p>So say the obvious things out loud. Money. Children. Housework. In-laws. Church. Careers. What the words "husband" and "wife" actually mean to each of you. Especially the obvious things, because what is obvious to you was learned in one house, and the person you are marrying grew up in another.</p>
+<p>These six patterns describe ordinary habits couples can learn to recognise and change. If you are silent because you fear retaliation or do not feel free to disagree, that is different. Pause the joint exercise and use the Safety and Support page.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>One more thing before your step. Much of what you learned about disagreement, you learned by watching. Whether your parents raised their voices or went quiet. Whether a quarrel was finished that night, or three days later, or never. Whether anyone apologised, and what an apology sounded like.</p>
+<p>By the time you were an adult, you had a map. You did not choose it, and you have probably never examined it. But you are using it, and so is the person you are marrying.</p>
+<p>One lesson will not completely rewrite that map, but it can help you recognise it and begin choosing a different way. And you can do something more: tell your future spouse what it is. So that when one of you goes quiet while the other keeps talking, you both understand what is really happening.</p>
+<p>Underneath all six patterns there is usually one unspoken question. <em>What does this disagreement mean about us?</em> Many couples quietly wonder, "If we're arguing this much before the wedding, what happens after?" Here is a straight answer. Disagreement is not a prediction of failure. It is a sign that you are marrying an actual person, not a reflection of yourself.</p>
+<p>Better questions to ask: Can we disagree without attacking each other's character? Can one of us tell the truth without being punished for it? Can we listen when we do not like what we hear? Can we repair properly after one of us has hurt the other? Can we remain truthful, respectful and patient while a difference is still unresolved?</p>
+<p>A healthy engagement is not one where you never disagree. It is one where you have learned, from repeated experience with each other, that disagreeing does not mean you are losing each other.</p>
+<p>So here is your step. Each of you, on your own, will write down three subjects you have been steering around. Not to solve them. Only to name them. Then, together, you will exchange only the three titles, read them in silence, and choose one to carry forward into Lesson 4.</p>
+<p>Do the alone part alone. Answers written with your partner watching are answers written for an audience.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, we want to speak the truth in love. Where we have called silence peace, open our eyes. Give us courage to name what we are afraid of, and gentleness to hear each other. Keep us as members one of another. Amen.</p>
+<p>I'll see you in Lesson 2.</p></div>
+</details>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Name three subjects you have been steering around.</strong></p>
+<p>Each of you, in a separate room, writes down three subjects you have been avoiding in this relationship. About 20 minutes. The worksheet gives you the questions to help you find them.</p>
+<p>Then, at another time, sit down together (about 30 minutes) and exchange only the three subject titles. Your private notes underneath them remain yours. Read both sets of titles in silence. Tonight you are not solving anything. You are only acknowledging what is there.</p>
+<p>Choose one manageable subject to carry into Lesson 4, where you will prepare how to raise it. You will first work through Lessons 2 and 3, and the conversation itself comes after Lesson 5.</p>
+<p>It is fine to do this imperfectly, or to come back to it another day.</p>
+</section>
+
+<section class="card plain">
+<h2>If it helps, tell someone</h2>
+<p>If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share anything you would rather keep between the two of you.</p>
+</section>
+
+<section class="card">
+<h2>Go deeper</h2>
+<div class="tools"><a class="btn line" href="#worksheet" onclick="document.getElementById('ws').open=true">Worksheet: The Three Subjects</a><a class="btn line" href="#" onclick="return false">Complete chapter: Chapter 1</a></div>
+<details id="ws"><summary id="worksheet">Worksheet preview</summary><div class="body"><p><em>From the book's Chapter 1 exercise. Downloadable. Complete on your own device or on paper.</em></p>
+<p><strong>Part One. On your own (about 20 minutes, separately)</strong></p>
+<p>Complete this part separately, where each of you can think without being watched or hurried. Each of you writes down three subjects you have been steering around in this relationship. To find them, ask yourself:</p>
+<ul><li>What have I decided we'll deal with after the wedding?</li><li>What have I started to bring up and then changed my mind about?</li><li>What do I hope they already know, because I don't want to have to say it?</li><li>What did I say I was fine with when I wasn't?</li><li>What would I be relieved to never have to discuss? (This last question is usually the most productive one.)</li></ul>
+<p>For each of your three subjects, answer separately:</p>
+<ul><li>The subject:</li><li>How long I've been avoiding it:</li><li>What I'm afraid will happen if I raise it: (Be specific. Not "an argument". What kind of argument, and what would it mean about us?) This part is for you alone.</li></ul>
+<p><strong>Part Two. Together (about 30 minutes)</strong></p>
+<p>Exchange only the three subject titles, unless both of you freely choose to share the preparation underneath them. Your private notes remain yours. Before you discuss anything, read both sets of titles all the way through in silence.</p>
+<p>Tonight you are not solving any of these. Simply acknowledge the subjects. Some may overlap.</p>
+<p>Questions to guide you:</p>
+<ul><li>Did any subject surprise you?</li><li>Which subject seems manageable enough to carry into Lesson 4?</li><li>Is there anything you want your partner to understand before you close?</li></ul>
+<p>Close after acknowledging the subjects. If something urgent has emerged, arrange appropriate support rather than treating the time limit as a reason to ignore it.</p>
+<p><strong>Part Three. Before you close</strong></p>
+<p>Choose one manageable subject to prepare in Lesson 4. Do not begin that conversation yet. Lessons 2 to 5 will help you prepare for it; the conversation itself comes after Lesson 5. The date is a prompt to prepare, not a deadline to force a disclosure.</p>
+<ul><li>The subject we'll carry into Lesson 4:</li></ul>
+<p><strong>A note if your list is blank</strong></p>
+<p>A blank list can mean several things: you may already discuss difficult subjects, you may need more time to notice them, or you may not feel safe writing them down. Do not invent a problem to complete the exercise. If you do not feel safe, do not make that admission in a joint exercise if it could expose you to retaliation. Pause and seek confidential support independently.</p></div></details>
+</section>
+
+<section class="card">
+<h2>Let it settle</h2>
+<ul class="prompts">
+<li>What am I calling peace that may really be silence?</li>
+<li>Lord, what am I afraid will happen if I say what is true?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card plain">
+<h2>Need more support?</h2>
+<p>If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner&rsquo;s response or do not feel free to speak, pause the joint exercise and <a class="link" href="#" onclick="return false">visit Safety and Support</a>.</p>
+</section>
+
+<section class="card">
+<h2>Ready to finish for today?</h2>
+<button class="btn" id="mark" type="button" aria-pressed="false">Mark this lesson complete</button>
+<p class="done" id="done" role="status">Lesson 1 complete</p>
+<div class="row">
+<a class="btn line" href="#" onclick="return false">Stop here for today</a>
+<a class="link" href="#" onclick="return false">Continue to Lesson 2: Build a Relationship That Can Hold Disagreement</a>
+</div>
+<div class="row" style="margin-top:12px"><button class="link" id="undo" type="button" style="color:var(--mute);border-color:var(--mute)" hidden>Mark it unfinished</button></div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need more support?</a><a href="#" onclick="return false">Safety and Support</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Talk Before You Marry</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var m=document.getElementById('mark'),d=document.getElementById('done'),u=document.getElementById('undo'),bar=document.querySelector('.bar i');
+function set(on){m.hidden=on;d.classList.toggle('on',on);u.hidden=!on;m.setAttribute('aria-pressed',on);bar.style.width=on?"7.1%":"0"}
+m.addEventListener('click',function(){set(true)});
+u.addEventListener('click',function(){set(false)});
+</script>

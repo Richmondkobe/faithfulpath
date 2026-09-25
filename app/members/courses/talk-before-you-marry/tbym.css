@@ -1,0 +1,119 @@
+/* "Talk Before You Marry" — the palette from the approved Lesson 1 preview.
+ *
+ * Scoped to .tbym so it cannot reach the rest of the site, which is light-only
+ * and painted in literal colours. This course was designed with a dark theme,
+ * so it carries tokens instead: every colour is defined once on .tbym, and the
+ * dark values are redefined under prefers-color-scheme and again under an
+ * explicit [data-theme="dark"], so a stated preference wins in both directions.
+ */
+
+.tbym {
+  --tb-bg: #ffffff;
+  --tb-card: #f0e9dd;
+  --tb-line: #e0d6c6;
+  --tb-ink: #2a211b;
+  --tb-mute: #5f5247;
+  --tb-accent: #8b5e3c;
+  --tb-btn: #2a211b;
+  --tb-btn-ink: #ffffff;
+  --tb-track: #e0d6c6;
+  --tb-focus: #8b5e3c;
+
+  background: var(--tb-bg);
+  color: var(--tb-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tbym {
+    --tb-bg: #171310;
+    --tb-card: #221c17;
+    --tb-line: #3a3128;
+    --tb-ink: #efe7db;
+    --tb-mute: #b9ab9b;
+    --tb-accent: #d0a273;
+    --tb-btn: #efe7db;
+    --tb-btn-ink: #171310;
+    --tb-track: #3a3128;
+    --tb-focus: #d0a273;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] .tbym {
+  --tb-bg: #171310;
+  --tb-card: #221c17;
+  --tb-line: #3a3128;
+  --tb-ink: #efe7db;
+  --tb-mute: #b9ab9b;
+  --tb-accent: #d0a273;
+  --tb-btn: #efe7db;
+  --tb-btn-ink: #171310;
+  --tb-track: #3a3128;
+  --tb-focus: #d0a273;
+  color-scheme: dark;
+}
+
+/* One visible outline for every interactive element, in both themes. */
+.tbym a:focus-visible,
+.tbym button:focus-visible,
+.tbym summary:focus-visible {
+  outline: 2px solid var(--tb-focus);
+  outline-offset: 3px;
+}
+
+/* The transcript and worksheet disclosures. The marker is drawn here so the
+   default triangle can go without losing the open/closed signal. */
+.tbym summary {
+  list-style: none;
+}
+.tbym summary::-webkit-details-marker {
+  display: none;
+}
+.tbym summary::after {
+  content: "+";
+  font-size: 18px;
+  line-height: 1;
+}
+.tbym details[open] > summary::after {
+  content: "\2212";
+}
+
+/* Prose inside a card: the course's own rhythm, set once. */
+.tbym .prose > * {
+  margin-top: 0.875rem;
+}
+.tbym .prose > *:first-child {
+  margin-top: 0;
+}
+.tbym .prose p,
+.tbym .prose li {
+  line-height: 1.65;
+}
+.tbym .prose ul {
+  padding-left: 1.2em;
+  list-style: disc;
+}
+.tbym .prose li {
+  margin-bottom: 0.5rem;
+}
+.tbym .prose li:last-child {
+  margin-bottom: 0;
+}
+.tbym .prose strong {
+  font-weight: 600;
+}
+.tbym .prose em {
+  font-style: italic;
+}
+/* The pause direction in the transcript, written as a blockquote. */
+.tbym .prose blockquote {
+  border-block: 1px dashed var(--tb-line);
+  padding: 10px 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tb-accent);
+  font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
+  font-weight: 500;
+}

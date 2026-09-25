@@ -23,10 +23,12 @@ import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
 import MindCourseCard from "@/components/mind/MindCourseCard";
 import BysyCourseCard from "@/components/bysy/BysyCourseCard";
+import TbymCourseCard from "@/components/tbym/TbymCourseCard";
 import { getResetPlan } from "@/app/members/courses/christian-spiritual-reset/actions";
 import { resetRouteProgress, routeFinished } from "@/lib/reset-simple";
 import { RESET_SIMPLE_PUBLISHED, resetSimpleHref } from "@/lib/reset-simple-links";
 import { BYSY_PUBLISHED } from "@/lib/bysy-links";
+import { TBYM_PUBLISHED } from "@/lib/tbym-course";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -333,6 +335,10 @@ export default async function Members() {
           {/* Built, and deliberately not reachable: the course stays unlinked
               until the pre-publish checklist has been run in full. */}
           {BYSY_PUBLISHED && <BysyCourseCard />}
+          {/* One lesson of fourteen is written. Same reasoning as the card
+              above it: built, and deliberately not reachable until the course
+              is finished. */}
+          {TBYM_PUBLISHED && <TbymCourseCard />}
         </div>
       </section>
 
