@@ -1,197 +1,210 @@
-# The lesson template
+# Faithful Path Lesson Template
 
-The shape every lesson page in a Faithful Path course should take, written down
-after "When Your Mind Won't Rest" was rebuilt to it and shipped. It is the
-standard pattern for new courses, not a description of one course.
+**Standard pattern for all Faithful Path courses.**
+Source: the *When Your Mind Won't Rest* lesson page, as built and shipped.
+Status: Faithful Path master lesson template — Version 1.0. Adjust per topic (see "Adapting to a new course").
 
-The working implementation is
-`app/members/courses/when-your-mind-wont-rest/lessons/[slug]/page.tsx`. Read
-that before building a new one; this page explains what it is doing and why, so
-that a second course does not have to rediscover it by argument.
+**Scope:** this is a *lesson-page* template. It is not the structure for retreat sessions, check-ins, route-selection pages, safety pages, course introductions, or final course-completion pages. Those page types need their own templates.
 
-## The principle
+**Short lessons:** the standard structure should remain recognisable, but brevity is permitted. Sections should not be filled with unnecessary content merely to make the page look complete.
 
-**A lesson is built for somebody with no prior instruction.** A learner who has
-never seen the course before should be able to open a page and know what to do
-next without being told, and without reading anything that explains the page
-itself. Aim it at a capable sixteen-year-old: not because members are not
-adults, but because someone arriving anxious, tired or interrupted has roughly
-that much attention to spare, and a page that needs concentration to navigate
-has spent the concentration the lesson needed.
+---
 
-In practice that means:
+## 1. Purpose and voice
 
-- **Short sentences.** If a sentence has two clauses of instruction in it, it is
-  two sentences.
-- **One action per step.** A section that asks for two things is two sections,
-  or one of them is not really being asked for.
-- **Nothing timed, scored or counted** except the single completion flag. No
-  streaks, no percentages, no "you have answered 7 of 10", no marking.
-- **Everything optional except the one main practice** — and even that does not
-  gate completion. A member may finish a lesson having decided the step is not
-  for them, and the page says so in as many words.
-- **Say what is true rather than what is comforting.** "Seen only by you" is a
-  claim about storage; if the storage does not provide it, the page does not say
-  it. See "Privacy wording" below.
+Every lesson page should feel like a pastor sitting beside the learner, not a clinic handout or a scored program.
 
-## The section order
+**Voice rules**
+- Pastoral, warm, unhurried. Plain words. Short sentences.
+- Invite, never command. "Take one step," not "Complete this task."
+- Nothing is scored, graded, timed against the learner, or diagnostic.
+- Scripture (or the course's source text) is the anchor, not decoration.
+- Avoid clinical vocabulary (symptoms, assessment, treatment, patient, disorder, intervention). Prefer: burden, season, step, rest, practice, care, walk with someone.
+- Rest is allowed. Stopping for today is a good outcome, never a failure.
+- Where a topic is sensitive, point gently to a pastor, a trusted person, or a qualified professional. Do not play counsellor or doctor on the page.
 
-Exactly this, top to bottom. The order is the interface: a member who learns it
-on Lesson 1 does not have to learn it again.
+---
 
-1. **Lesson title and Scripture.** The module name and key verse reference as a
-   quiet uppercase line above the title.
-2. **Objectives** — three or four bullets, introduced by "In this lesson, you
-   will learn to:". Written from that lesson's real content. See "Written fresh,
-   every time" below.
-3. **Watch or listen** — the player, then the duration line: *"About X minutes,
-   plus one short pause."* X is computed from the deck (the last slide's start
-   plus the time it holds the screen) rather than typed in, so it cannot drift
-   from the recording.
-4. **Read the transcript** — a closed disclosure directly under the recording it
-   belongs to, labelled "Read the transcript — every word of the recording, in
-   writing". It sits here, not at the foot of the page, so a member who would
-   rather read finds it where the listening was. A member who never opens the
-   player loses nothing, which is also what makes a JavaScript player safe.
-5. **Take one step** — the one main practice, in the recording's own words.
-6. **If it helps, tell someone** — secondary and optional, *inside* the previous
-   section under a hairline rule, in the quiet label style. It is a suggestion
-   for a member who has someone safe to tell, not a second requirement. Giving it
-   a full-sized heading of its own makes the lesson look like it asks for two
-   things.
-7. **Go deeper** — the worksheet card and the complete-chapter card, side by
-   side. When a lesson has only one of them, the single card runs full width
-   rather than leaving half an empty row that reads as a broken link. Both cards
-   say they are optional and that the lesson finishes without them.
-8. **Let it settle** — one or two reflection prompts with somewhere to write.
-   Reflection only: nothing scored, nothing with an answer to reveal, no recall
-   questions and no true-or-false. An earlier draft had ten questions with
-   Scripture blanks and an answer link; it read as marking, which is the wrong
-   way to end a lesson about a restless mind.
-9. **Need more support?** — the lesson's own safety sentence plus the link to
-   the course's "when this course is not enough" page. **Before** the completion
-   panel, not after: somebody struggling should meet it before being asked
-   whether they are done.
-10. **Completion**, in this sequence and no other:
-    - "Ready to finish for today?", then the note that the worksheet, the chapter
-      and the reflection prompts are not required, then **Mark this lesson
-      complete**.
-    - Only that press writes completion. Afterwards: "You have finished this
-      lesson. It stays open to you. Come back whenever you want to.", then
-      **Stop here for today** (primary, dark, returns to the course home) and
-      **Continue to Lesson N** (secondary, outlined, with the next lesson's
-      title underneath), then **Mark it unfinished** as a quiet link.
-11. **Footer links and the citation notice** — the persistent support links and
-    the ESV notice, or the equivalent citation or legal notice for a course that
-    does not quote Scripture. These belong in the course layout, not on each
-    route, or one page will eventually be missed.
+## 2. Section order (fixed)
 
-### Why stopping is the primary button
+Sections should appear in this order whenever they are included. Required sections must not be removed, reordered or merged without updating this file. Section 6 may be omitted when it would not serve the learner safely or appropriately.
 
-Both completion buttons mark the lesson finished; the only difference is whether
-the member is carried onward. Stopping is the dark one on purpose. A course
-about a mind that will not stop, whose page pushes hardest towards the next
-lesson, is teaching the opposite of what it says. Neither button is a
-requirement — the lesson is already finished by the time they appear.
+| # | Section | Requirement |
+|---|---------|-------------|
+| 1 | Lesson title and Scripture | Required |
+| 2 | Objectives | Required |
+| 3 | Watch or listen | Required |
+| 4 | Read the transcript | Required |
+| 5 | Take one step | Required |
+| 6 | If it helps, tell someone | Optional |
+| 7 | Go deeper | Required; layout varies |
+| 8 | Let it settle | Required |
+| 9 | Need more support? | Required |
+| 10 | Completion block | Required |
+| 11 | Footer links and citation notice | Required |
 
-### Completion is pressed, never inferred
+---
 
-There is no scroll tracking, no `IntersectionObserver` at the foot of the page,
-and no handler on the end of the recording. Reaching the bottom does nothing.
-Exactly one call site writes the flag — the button in
-`components/mind/FinishLesson.tsx` — and a new course should keep it that way. A
-page that quietly decides on a member's behalf that they are done has taken the
-one decision the lesson was leaving to them.
+## 3. Section specifications
 
-## Written fresh, every time
+### 1. Lesson title and Scripture
+- Lesson number and title.
+- One primary Scripture passage: reference plus the short quoted text (or a faithful paraphrase where the licence requires it).
+- Optional single-line subtitle in a pastoral tone.
+- Non-Scripture courses: use the course's anchor quotation or source line in the same position.
 
-Objectives, reflection prompts, the worksheet and chapter links, and the support
-wording are **written per lesson from that lesson's own content**. They are never
-copied from another lesson and never genericised into something that would fit
-any lesson in the course.
+### 2. Objectives
+- 3 to 4 bullets, pulled from that lesson's real content. Never generic filler.
+- Phrase as what the learner will see, understand, or practise, in gentle language.
+- Lead-in line: "In this lesson you will…"
 
-- **Objectives** come from the lesson's own slides. Lesson 7's are repair, learn,
-  continue and release because those are the four things its tool actually names;
-  Lesson 16's are its six movements; Lesson 20's are its trellis and its five
-  areas. A bullet that would be true of every lesson tells a member nothing about
-  this one.
-- **Prompts must not repeat the lesson's own practice.** If "Take one step"
-  already asks the member to write a shaming sentence and rewrite it truthfully,
-  the prompts at the foot of the page ask something else — where that sentence
-  was learned, what they would say to a friend who felt it. Asking the same thing
-  twice at opposite ends of a page is the single easiest mistake to make here,
-  because a prompt pattern reused across twenty lessons will collide with some of
-  them.
-- **Support wording is the lesson's own.** Each names the particular thing that
-  lesson's subject can mask — a prayer that cannot be stopped, a routine that
-  must be done in order, a person who is not safe. It is a quiet sentence in the
-  lesson's pastoral voice, not a bordered clinical warning panel.
+### 3. Watch or listen
+- Video and/or audio player.
+- Duration line, in this form: **"About X minutes, plus one short pause."**
+- If there is no pause point in the lesson, drop the "plus one short pause" clause. Do not leave it in by default.
 
-Per-lesson writing lives beside the deck, one file each:
+### 4. Read the transcript
+- Full transcript, collapsed by default and expandable.
+- Same wording as the recording. Readable headings and paragraph breaks.
+- Supports learners who prefer reading, are hard of hearing, or are somewhere they cannot play audio.
 
-    content/courses/<slug>/lesson-NN/objectives.json   { "objectives": [ … ] }
-    content/courses/<slug>/lesson-NN/questions.json    { "intro": …, "questions": [ … ] }
+### 5. Take one step
+- **One** main practice. Not a list of tasks.
+- Short pastoral framing, then the practice in plain steps.
+- Closing line that gives permission: it is fine to do it imperfectly or come back later.
+- The step must come from the lesson's actual teaching.
 
-## Privacy wording
+### 6. If it helps, tell someone
+- Included when appropriate; always optional for the learner.
+- Some lessons, particularly grief or unsafe-relationship lessons, should not automatically encourage disclosure. Leave this section out there.
+- Secondary and visually lighter than "Take one step."
+- One or two sentences suggesting the learner share the lesson or what they are carrying with a trusted person (spouse, friend, pastor, small group).
+- Never implies the learner must disclose anything.
 
-Member answers go to the member's own row, and row level security scopes every
-read to the member who wrote them. No page, admin screen or export reads them
-back, and `verify:privacy` holds that. What is **not** true is that nobody else
-*could* read them: the text sits in an ordinary column, and whoever administers
-the database can reach it. There is no application-level encryption.
+### 7. Go deeper
+- Two cards side by side: **Worksheet** and **Complete chapter**.
+- If one is missing (for example, a lesson with no worksheet), show a **single full-width card** for what exists. Never show an empty or disabled placeholder card.
+- Each card: title, one line of description, one clear button.
 
-So the page says what is true — *"It is not shown to anyone in the course and is
-not used to measure anything"* — rather than "seen only by you". Check this
-against the actual storage before writing any privacy line in a new course. The
-wording is a claim, and a claim about storage has to be true of the storage.
+### 8. Let it settle
+- Exactly two optional reflection prompts.
+- Reflection only: nothing scored, nothing answerable on the page, no text boxes, no saved responses.
+- Prompts are phrased as quiet questions for prayer or thought, not homework.
 
-## Enforce the template, do not just describe it
+### 9. Need more support?
+- Placed **before** completion, not after.
+- Pastoral invitation: talk to a pastor, a trusted believer, or a qualified professional when the burden is heavier than one lesson can carry.
+- Link or contact route to Faithful Path pastoral guidance (per the site's current offer).
+- Topic-specific safety line where needed (see Section 5).
 
-A document drifts. This one will. The structure itself is held by an automated
-check, and a new course should add its own rather than trusting this page.
+### 10. Completion block
+Flow, in this exact order:
 
-`scripts/verify-mind-course.mjs` (`npm run verify:mind`) walks every counting
-lesson and fails the build when one is not built to the template:
+1. Prompt: **"Ready to finish for today?"**
+2. Button: **"Mark this lesson complete."**
+3. After it is marked, show three actions:
+   - **"Stop here for today"** (primary)
+   - **"Continue to Lesson [N]: [Next lesson title]"** (secondary; replaced on the final lesson)
+   - **"Mark it unfinished"** (tertiary, low emphasis)
 
-- `slides.json` exists — otherwise the page silently renders as written text
-- a narration file exists — otherwise the transcript is quietly missing
-- `objectives.json` lists **three or four** objectives
-- `questions.json` holds **one or two** prompts, every one of them
-  `kind: "reflection"` — a scored or answerable prompt fails
-- the lesson file contains the complete chapter *and* a `chapter:` number to
-  name it by — otherwise the Go deeper card vanishes with no error
+Notes:
+- "Stop here for today" is primary by design. Rest is the default, continuing is the option.
+- On the final lesson, replace the "Continue" button with a course-completion message and a pointer to the next course or resource.
 
-These are the failures worth catching precisely because none of them is an
-error. Each one falls back to something that still renders, so the lesson does
-not break; it simply becomes a different page from the other twenty, and nobody
-notices until a member does.
+### 11. Footer links and citation notice
+- Standard footer links: Home, Course overview, Contact, Privacy, Terms.
+- **Scripture courses:** ESV copyright notice (or the translation used, with its required notice).
+- **Non-Scripture courses:** the equivalent citation or legal notice, such as book copyright, quotation permissions, or a paraphrase note.
+- Where a course leans on paraphrase, include a line encouraging learners to read the passage in a Bible they trust.
 
-**Test the check by breaking it.** A verification that has never failed has not
-been verified. Truncate an objectives list, delete a `questions.json`, confirm
-both fail, then restore. The same applies to any check added for a new course.
+---
 
-## What the route provides, and what a course provides
+## 4. Page skeleton (copy for each new lesson)
 
-The route renders the template; the course supplies the content. Nothing about
-the ordering, the styling or the button logic should be re-decided per lesson —
-that is what makes it a template rather than twenty-one similar pages.
+```md
+# Lesson [N]: [Title]
+**Scripture:** [Reference] — "[short text]"
 
-| Piece | Where it comes from |
-| --- | --- |
-| Section order, styling, button logic | the lesson route, once, for every lesson |
-| Slides, timings, duration line | `lesson-NN/slides.json`, extracted from the deck |
-| Transcript | `lesson-NN/*-narration.txt`, one paragraph per slide |
-| Objectives | `lesson-NN/objectives.json` |
-| Reflection prompts | `lesson-NN/questions.json` |
-| The one practice | the deck's "Do this now" slide, read by `practiceFrom` |
-| Tell someone | the lesson file's `action:` front matter |
-| Worksheet | the manifest's resource registry, by filename |
-| Complete chapter | the lesson file's chapter section and `chapter:` number |
-| Support sentence | the lesson file's `support:` front matter |
-| Footer links, citation notice | the course manifest, rendered by the layout |
+## In this lesson you will
+- [Objective 1]
+- [Objective 2]
+- [Objective 3]
+- [Objective 4, optional]
 
-Relevant code: `lib/mind-slides.ts` (readers for all of the per-lesson files),
-`components/mind/FinishLesson.tsx`, `components/mind/NextFaithfulStep.tsx` (its
-`secondary` prop is the tell-someone styling),
-`components/mind/LessonQuestions.tsx`, and the chapter route at
-`lessons/[slug]/chapter/page.tsx`.
+## Watch or listen
+[Player]
+About [X] minutes, plus one short pause.
+
+## Read the transcript
+[Collapsed transcript]
+
+## Take one step
+[One practice, in plain pastoral language]
+
+## If it helps, tell someone
+[Include only when appropriate. One or two optional sentences.]
+
+## Go deeper
+[ Worksheet card ]  [ Complete chapter card ]
+(single full-width card if one is missing)
+
+## Let it settle
+- [Reflection prompt 1]
+- [Reflection prompt 2]
+
+## Need more support?
+[Pastoral invitation + link + topic safety line if needed]
+
+## Ready to finish for today?
+[Mark this lesson complete]
+  → [Stop here for today] (primary)
+  → [Continue to Lesson N+1: Title] (secondary)
+  → [Mark it unfinished]
+
+---
+[Footer links] · [ESV notice or equivalent citation notice]
+```
+
+---
+
+## 5. Adapting to a new course
+
+Change freely: content, Scripture, wording of prompts, number of lessons, topic-specific support lines.
+Do not change: section order, the completion flow, the "nothing scored" rule, "Need more support?" before completion, one main practice per lesson.
+
+**Topic notes**
+- **Worry, burnout, grief (e.g. *When Your Mind Won't Rest*):** keep support language gentle and pastoral. No diagnostic framing.
+- **Marriage and premarital (e.g. *Talk Before You Marry*):**
+  - "Take one step" is often a conversation between two people. Frame it as an invitation to sit down together, and keep private writing private.
+  - "If it helps, tell someone" can point to a pastor or mentor couple.
+  - "Need more support?" must include a plain safety line: if there is fear, coercion, or intimidation, stop joint exercises and seek confidential help from a trained person outside the relationship. Do not present joint exercises as the answer to unsafe situations.
+  - Footer: book copyright line (© Richmond Kobe, Faithful Path Community) in place of, or alongside, the ESV notice.
+- **Leadership and ministry (e.g. *Lead Before You're Ready*):** "Take one step" may be a small act of service or a conversation with an overseer.
+- **Dating and discernment (e.g. *Before You Say Yes*):** same safety line as marriage where relevant.
+- **Content boundary:** keep materials within the author's stated Christian teaching scope; do not add material outside it.
+
+---
+
+## 6. Review checklist (for the third-party reviewer)
+
+Please read one finished lesson page against this list and answer in your own words.
+
+1. Does the tone feel like a pastor speaking, or like a clinic or a course platform?
+2. Is any wording too clinical, too technical, or too pushy?
+3. Is it clear the learner may rest and stop at any time?
+4. Is there exactly **one** main step, and is it doable in ordinary life?
+5. Does "Let it settle" read as quiet reflection, with nothing that feels like a quiz or homework?
+6. Is "Need more support?" easy to find, kind, and clear about when to seek help outside the course?
+7. Does the completion flow feel gentle, with "Stop here for today" as the natural first choice?
+8. Are the citation and legal notices accurate and visible?
+9. Would a first-time visitor know what to do next at every point?
+10. What would you change, add, or remove?
+
+---
+
+## 7. Change log
+
+| Date | Change |
+|------|--------|
+| 2026-09-25 | First written reference, captured from the shipped *When Your Mind Won't Rest* lesson page. |
+| 2026-09-25 | Version 1.0 after review: table header fixed, "optional" clarified for section 6, short-lesson rule and page-type scope added. |
