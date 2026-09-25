@@ -37,7 +37,7 @@ You do not have to settle everything in one evening. Name the actual figure or t
 You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded one boundary and the matters you still need to discuss.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share details about your families or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share details about your families, or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Conversation Record (Room 3) ]   [ Complete chapter: Chapter 6, Room 3 ]

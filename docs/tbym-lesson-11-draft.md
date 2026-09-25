@@ -37,7 +37,7 @@ Bring the passages that shape your conviction, but bring them to understand one 
 You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded any important difference that remains unresolved.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor, ideally one who will help you both think rather than one who will simply confirm whichever of you already agrees with them. You do not have to share your answers, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor, ideally one who will help you both think rather than one who will simply confirm whichever of you already agrees with them. You do not have to share your answers, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Conversation Record (Room 6), with optional follow-up: Household Responsibilities Sheet ]   [ Complete chapter: Chapter 6, Room 6 ]

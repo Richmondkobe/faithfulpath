@@ -32,7 +32,7 @@ Have the rules you agreed in Lesson 2 in front of you when the time comes.
 You may mark this lesson complete once you have prepared your opening and chosen the time. Do not begin the conversation yet. Lesson 5 prepares the person receiving it.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share the subject you chose, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share the subject you chose, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Conversation Record ]   [ Complete chapter: Chapter 4 ]

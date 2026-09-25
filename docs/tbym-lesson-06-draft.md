@@ -40,7 +40,7 @@ Your inventory from Lesson 3 is yours. Keep it beside you as a reference. You ar
 You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded one rule and one matter still to check.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share your figures, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share your figures, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Money Snapshot and Conversation (optional follow-up included: First Household Budget) ]   [ Complete chapter: Chapter 6, Room 1 ]

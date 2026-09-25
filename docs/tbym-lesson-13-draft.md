@@ -35,7 +35,7 @@ Three things are needed from this conversation:
 You may stop after the private preparation and return another day. Mark this lesson complete after you have held the conversation and recorded whether any further time, information or professional advice is needed, including the date for any co-parenting conversation.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or mentor, or, for a legal or financial obligation, a qualified adviser in your area. You do not have to share your lists, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or mentor, or, for a legal or financial obligation, a qualified adviser in your area. You do not have to share your lists, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Existing Obligations Sheet ]   [ Complete chapter: Chapter 6, Room 8 ]

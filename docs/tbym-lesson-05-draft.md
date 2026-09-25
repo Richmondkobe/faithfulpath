@@ -35,7 +35,7 @@ Before you begin, the receiver takes 15 minutes alone to answer three questions 
 You may stop after preparing and come back another day. Mark this lesson complete after you have held the conversation. Later, when you are both ready, you can swap roles and have a second conversation. Nothing here is a deadline.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share the subject you discussed, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share the subject you discussed, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Conversation Record (Listening) ]   [ Complete chapter: Chapter 5 ]

@@ -1,34 +1,34 @@
-*Editorial note (not part of the page): Talk Before You Marry, Lesson 2, Draft 2, for review. Built on the Faithful Path Lesson Template, the approved course design (Version 1.1) and Chapter 2 of the book. Words in [square brackets] are notes and are not part of the page.*
-
+---
+title: "Build a Relationship That Can Hold Disagreement"
+subtitle: "Make honesty safe before you ask for it."
+order: 2
+slug: 02-build-a-relationship-that-can-hold-disagreement
+scripture_ref: "1 Corinthians 13:4-7 (ESV)"
+scripture_text: "Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things."
+supporting_passage: "Malachi 2:14"
+chapter: 2
+chapter_href: null
+worksheet_title: "Your Rules of Engagement"
+duration: "About 12 minutes, plus one short pause."
+audio: null
 ---
 
-# Lesson 2: Build a Relationship That Can Hold Disagreement
-*Make honesty safe before you ask for it.*
-
-**Scripture:** 1 Corinthians 13:4 to 7: "Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things." (ESV)
-*Supporting passage in the teaching: Malachi 2:14.*
-
 ## In this lesson, you will learn to:
+
 - Understand the difference between covenant and contract, and why it matters for honesty.
 - Agree rules that help both of you speak honestly and listen without punishment or intimidation.
 - Choose the right moment for a hard conversation, and keep the appointment.
 - Learn what real repair sounds like.
 
-## Watch or listen
-[Player]
-About 12 minutes, plus one short pause. [Replace with the actual duration after recording.]
-
-## Read the transcript
-[Collapsed transcript. Full text below.]
-
 ## Take one step
+
 **Agree your Rules of Engagement.**
 
 Set aside an hour when neither of you is tired.
 
-*Shown on the page as three labelled stages.*
+### Prepare separately
 
-**1. Prepare separately.** First, on your own (about 15 minutes), answer three questions:
+First, on your own (about 15 minutes), answer three questions:
 
 - which rule will be hardest for me to keep
 - which rule do I most need my partner to keep
@@ -36,53 +36,38 @@ Set aside an hour when neither of you is tired.
 
 Your answers are yours until you choose to share them.
 
-**2. Agree the rules together.** Then together (about 30 minutes), go through the eleven rules and put them in words you can remember. Each of you may share anything from the third question that you freely want included; private background does not have to be explained. Agree on a neutral phrase either person can use to pause the conversation. Also agree that the request will be respected and decide when you will check in again.
+### Agree the rules together
 
-**3. Write them down.** Write your rules down in words you both understand. If it helps, add a date when you will revisit them together. The worksheet gives you the full list.
+Then together (about 30 minutes), go through the eleven rules and put them in words you can remember. Each of you may share anything from the third question that you freely want included; private background does not have to be explained. Agree on a neutral phrase either person can use to pause the conversation. Also agree that the request will be respected and decide when you will check in again.
+
+### Write them down
+
+Write your rules down in words you both understand. If it helps, add a date when you will revisit them together. The worksheet gives you the full list.
+
+---
 
 Nothing here has to be perfect. You can return to it another day.
 
 ## If it helps, tell someone
+
 If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share private details or anything you are not ready to discuss.
 
-## Go deeper
-[ Open the worksheet: Your Rules of Engagement ]
-
-The worksheet is optional. You do not need it to finish the lesson. The worksheet is yours to print or fill in on your own device; nothing you write on it is sent anywhere or stored here.
-
-*The complete chapter card is hidden while the chapter has no link. When one exists, the card returns beside the worksheet and the sentence above becomes "Both are optional. You do not need either one to finish the lesson."*
-
 ## Let it settle
+
 - Which of these rules will be hardest for me to keep?
 - Lord, is there something I need to repair, or to name, today?
 
 ## Need more support?
+
 If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
-## Ready to finish for today?
-[ Mark this lesson complete ]
-Then: **Stop here for today** (primary button) · **Continue to Lesson 3: Tell Yourself the Truth First** (secondary button) · **Mark it unfinished** (text link)
-
-The note above the button reads: "The worksheet and the reflection questions are not required. Nothing here is scored, and nothing you write is stored." It names the chapter too once the chapter card is showing.
-
----
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
-
----
-
-# Recording script and transcript
-
-*Author's note: this follows the five-movement teaching pattern. The italic headings are for your guidance and are not spoken. It is written to be read aloud in your own voice, in about 12 minutes (roughly 1,500 words, including the Scripture reading and the pause). Change anything that does not sound like you.*
-
-*Movement 1. Read the passage*
+## Transcript
 
 Welcome to Lesson 2.
 
 Let's begin with Scripture. First Corinthians chapter 13, verses 4 to 7.
 
 "Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things."
-
-*Movement 2. Explain the passage*
 
 You have probably heard these words at a wedding. But Paul did not first write them for a wedding. He wrote them to a church in Corinth that was full of gifted people who were often hard on each other. So he describes what love actually looks like when people are together: patient, kind, not irritable, not resentful.
 
@@ -91,8 +76,6 @@ And notice one line in the middle. Love "does not rejoice at wrongdoing, but rej
 Notice too that love "bears all things" and "endures all things." Christian love is patient and enduring, but it does not require silence about wrongdoing or ask someone to remain in harm.
 
 Hold that thought, because it is the whole lesson.
-
-*Movement 3. Draw out the biblical truth*
 
 Last time, we ended with a question that many couples quietly ask: are we going to make it?
 
@@ -112,8 +95,6 @@ That one shift changes what a couple can say to each other. It makes room for: "
 
 The question quietly changes. It stops being, how do I keep my partner happy enough to stay? It becomes, how do we become the kind of people who can speak truthfully, listen humbly and prepare to make covenant promises with integrity? That is not a softer question. It asks more of both of you. But it is the one that makes honesty survivable.
 
-*Movement 4. Make it real*
-
 So how do you build that safety? You do it before the difficult conversation, not during it.
 
 Every couple already has rules for conflict. Most have never said them out loud. They were set by whoever escalated hardest the first few times, or by whoever gave in fastest, and then they hardened into habit. Nobody agreed to them.
@@ -132,7 +113,7 @@ Timing matters too. Picture it: a quarter to midnight. Both are tired. One has w
 
 But be careful, because avoidance loves to dress up as good timing. "Let's talk about it later" is a door quietly closing. Compare it with: "This matters to me, and I don't want us to argue about it while we're this tired. Can we talk tomorrow after dinner?" That names the subject, the reason and the time. It is a postponement with a return date. And then you keep the appointment.
 
-*[Short pause. On the page: "Pause here. Which of these rules will be hardest for you to keep? Take a moment before you go on."]*
+> Pause here. Which of these rules will be hardest for you to keep? Take a moment before you go on.
 
 Now, sometimes it will go badly anyway. A conversation about money gets hot. He says, "You're impossible to talk to." She says, "And you're selfish." They go to bed angry.
 
@@ -145,8 +126,6 @@ Look at what that does. It does not withdraw the concern. It separates the probl
 Four steps help. Acknowledge that something went wrong. Own your part, without a "but". Offer an appropriate step towards reconnection, if it is welcome. And return to the issue, or the subject only gets buried warmly.
 
 And here is the sentence I would most want you to keep: "We're not finished with this problem. But we're finished hurting each other."
-
-*Movement 5. Practise it today*
 
 So here is your step. Set aside an hour when neither of you is tired.
 
@@ -168,71 +147,70 @@ Lord, we want a love that rejoices with the truth. Make our home a place where h
 
 I'll see you in Lesson 3.
 
----
-
-# Worksheet: Your Rules of Engagement
+## Worksheet
 
 *From the book's Chapter 2 exercise. Downloadable. Complete on your own device or on paper. Set aside an hour when neither of you is tired.*
 
 **Part One. On your own (about 15 minutes, separately)**
+
 Complete this part separately, where each of you can think without being watched or hurried. Your answers are yours until you choose to share them.
+
 - Which of the eleven rules will be hardest for me personally to keep? (If you cannot find yours, look at the last argument you had, with anyone.)
 - Which rule do I most need my partner to keep, and why?
 - Is there something not on the list that I need in order to feel safe telling the truth? (Your list may need a twelfth rule that exists because of something in your history. For example: not raising voices in the kitchen; not following one another from room to room; not being touched during an argument; not having the conversation over text. These are reasonable requests, and much easier to make now than to explain later.)
 
 **Part Two. Together (about 30 minutes)**
+
 Go through the eleven rules one at a time. Put them in language you can remember. Adapt the wording, but do not remove freedom to pause, access to independent help, or protection from intimidation. Each person may share anything from question three that they freely want included. Add only the protections you both understand and freely agree to. Private background or explanation does not have to be disclosed.
 
 **The eleven rules**
+
 *How we speak*
+
 1. We will tell the truth without trying to wound.
 2. We will keep to one issue.
 3. We will speak from our own experience.
 4. We will not use Scripture as a weapon.
 
 *How we handle tension*
+
 5. We will listen before we defend.
 6. Either of us can ask for a break, and we will agree when to check in.
 7. We will not use silence as punishment.
 8. We will not use threats of separation to win an argument. (This does not prevent either person from leaving an unsafe situation, taking an agreed break, or honestly reconsidering the engagement.)
 
 *What we do afterwards*
+
 9. We will not confuse explanation with excuse.
 10. We will seek support without recruiting people to shame each other.
 11. We will repair the harm we cause.
 
 **Two practical decisions**
+
 - How will we pause? Our usual break length: ______  Our check-in time: ______ (If either needs longer, name a new time rather than disappearing.)
 - What is our signal? A neutral phrase, such as "I need a break," that either of us can say to pause the conversation, which the other agrees to honour without arguing: ______ Before separating, agree when we will check in again, or send that time once we are calm enough to do so.
 
 **Part Three. Write it down**
+
 Write or type your final list in a format you can both access. Each of you keeps a copy.
+
 - Our rules, agreed on:
 - Date we will revisit these: ______
+
 Keep it somewhere you can both access safely, so you can return to it when a conversation becomes difficult.
 
 **Part Four. In six weeks**
+
 Put a reminder in both your phones now. When it goes off, answer two questions together:
+
 - Which rule have we already broken?
 - Which one turned out to be the one we needed?
+
 If you have broken a rule, name it and decide what needs to change. The purpose of the list is accountability, not permission to keep repeating the same behaviour.
 
 **When it goes badly: repair**
+
 1. Acknowledge that something went wrong. Do not explain it yet.
 2. Own your part, without a "but".
 3. Offer an appropriate step towards reconnection, if it is welcome. This might be a calmer conversation, practical repair or affection, but do not require reassurance, touch or immediate forgiveness.
 4. Return to the issue, and name when.
-
----
-
-# Notes for the reviewer
-
-1. **Length and time.** The script is about 1,500 words. Read at a calm pastoral pace, with the Scripture reading and the pause, that should be about 12 minutes. Replace the estimate with the actual duration after recording.
-2. **Anchor passage.** 1 Corinthians 13:4 to 7 (from the book). The script states plainly that Paul first wrote it to a church, not for a wedding, and draws out the line "rejoices with the truth". Malachi 2:14 is used only as a supporting passage, one sentence.
-3. **Original-language material.** None in this lesson. The design allows one optional word only; none is used, to avoid overcrowding a lesson that already covers covenant, the rules, timing and repair.
-4. **Sequencing.** The subject chosen in Lesson 1 is prepared in Lesson 4, and the conversation is held after Lesson 5. This lesson and Lessons 3 to 5 prepare for it.
-5. **Privacy.** Part One answers stay private until the learner chooses to share. Only the agreed rules are shared, and the couple keeps its own copy. The site does not store learners' answers, draft rules or worksheet content. It stores only the account and lesson-completion information described in Start Here.
-6. **Safety.** The standard "Need more support?" block, plus the rules themselves, which are protective by design (freedom to pause, no intimidation, access to independent help). The one caution on covenant ("control using the language of covenant") is kept because it is a theological definition of covenant, not only a safety note. Engagement is distinguished from the marriage covenant throughout, so nothing implies a learner must stay. No fuller warning is needed in this lesson.
-7. **Wedding-reading note.** The claim that Paul did not first write 1 Corinthians 13 for a wedding is standard, but please confirm it against a commentary.
-8. **Questions for the author.** Does the voice sound like you? Is the prayer right? Is the "Scripture as a weapon" passage strong enough?
-9. **Checks before publication.** ESV wording of 1 Corinthians 13:4 to 7 and Malachi 2:14; the legal notices; the second support link; the "Mark it unfinished" and completion buttons.

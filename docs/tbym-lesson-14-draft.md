@@ -42,7 +42,7 @@ If a joint conversation would not be safe, do not hold it. You may mark this les
 You may stop after preparing and return another day. Otherwise, mark this lesson complete after you have held the conversation and written your covenant, or recorded what you still need in order to write it.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor, mentor or qualified counsellor. Choose someone who will help you both see clearly, not someone who helps one of you win. You do not have to share your answers, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor, mentor or qualified counsellor. Choose someone who will help you both see clearly, not someone who helps one of you win. You do not have to share your answers, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheets: Conflict Covenant, Rules and Repair Plan, Readiness Review (not a second required practice, and never a score), Weekly Check-In ]   [ Complete chapter: Chapter 6, Room 9 ]

@@ -39,7 +39,7 @@ Do not treat uncertainty as agreement. Do not settle a genuine difference by per
 You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded each person's present position.
 
 ## If it helps, tell someone
-If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share your answers, or anything you would rather keep between the two of you.
+If you would like, you might share what you are learning with a trusted pastor or a mentor couple. You do not have to share your answers, private details or anything you are not ready to discuss.
 
 ## Go deeper
 [ Worksheet: Conversation Record (Room 4) ]   [ Complete chapter: Chapter 6, Room 4 ]

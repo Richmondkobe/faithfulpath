@@ -192,7 +192,7 @@ For each of your three subjects, answer separately:
 
 **Part Two. Together (about 30 minutes)**
 Exchange only the three subject titles, unless both of you freely choose to share the preparation underneath them. Your private notes remain yours. Before you discuss anything, read both sets of titles all the way through in silence.
-Tonight you are not solving any of these. Simply acknowledge the subjects. Some may overlap.
+In this conversation, you are not solving any of these. Simply acknowledge the subjects. Some may overlap.
 Questions to guide you:
 - Did any subject surprise you?
 - Which subject seems manageable enough to carry into Lesson 4?
