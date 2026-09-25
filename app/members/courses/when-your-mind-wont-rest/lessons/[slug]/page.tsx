@@ -65,6 +65,11 @@ type Props = { params: Promise<{ slug: string }> };
 /**
  * Every foundation page: the nine Start Here pages and the twenty-one lessons.
  *
+ * The section order and the interface this route renders are the standard
+ * lesson template for every course, written down in docs/lesson-template.md.
+ * Change the order here and that page is out of date; change it for one course
+ * and the courses no longer teach the same interface.
+ *
  * There are no prerequisite locks anywhere in this course, which the manifest
  * states outright. Any page may be opened at any time; the member's chosen path
  * suggests an order and never enforces one, and a page written for someone in
