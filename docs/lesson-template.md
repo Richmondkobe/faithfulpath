@@ -107,15 +107,15 @@ Flow, in this exact order:
 2. Button: **"Mark this lesson complete."**
 3. After it is marked, show three actions:
    - **"Stop here for today"** (primary)
-   - **"Continue to Lesson [N]: [Next lesson title]"** (secondary; replaced on the final lesson)
+   - **"Continue to Lesson [N]"** with the next lesson's title beneath it (secondary; replaced by the completion message on the final lesson)
    - **"Mark it unfinished"** (tertiary, low emphasis)
 
 Notes:
 - "Stop here for today" is primary by design. Rest is the default, continuing is the option.
 - Both buttons mark the lesson complete. The only difference is whether the learner is carried onward.
 - Completion is pressed, never inferred. No scroll tracking, no observer at the foot of the page, no handler on the end of the recording — reaching the bottom does nothing. Keep it to one call site.
-- On the final lesson, replace the "Continue" button with a course-completion message and a pointer to the next course or resource.
-  **Not built yet.** Lesson 21 of *When Your Mind Won't Rest* currently shows "Stop here for today" and simply omits the Continue button, with no completion message. This is the one part of the template the shipped pages do not yet meet.
+- On the final lesson, replace the "Continue" button with a course-completion message. It stands exactly where Continue stands on every other lesson, in the same quiet register as the rest of the page — no banner, no congratulation, nothing that treats finishing as a score. "Stop here for today" stays.
+- The message is content, not chrome: it lives in the final lesson's `completion_message:` front matter, so each course writes its own. `verify:mind` fails the build if the last lesson has none.
 
 ### 11. Footer links and citation notice
 - The course's persistent support links, then the citation notice. In *When Your Mind Won't Rest* that is two links — **Need more support?** and **My Mind Is Restless Right Now** — followed by the ESV notice.

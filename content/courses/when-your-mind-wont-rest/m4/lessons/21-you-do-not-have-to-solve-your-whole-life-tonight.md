@@ -10,6 +10,7 @@ outcome: "By the end of this lesson you will be able to name what this course ha
 action: "Choose one practice from this course to carry forward into the coming weeks, and write where it will live in your week. One is enough. Then, if it is helpful, read or listen again to the Final Prayer of Surrender above."
 action_responses: ["I intend to try this", "Not today", "This is not appropriate for me"]
 finish_label: "I have finished this lesson for today"
+completion_message: "You have come to the end of this course. Thank you for walking it slowly and honestly. You do not have to feel finished to be finished for today. Keep close the one step that helped you most, and come back to any lesson, at any pace, whenever worry rises again. May the peace of God guard your heart and your mind in Christ Jesus."
 audio: final-prayer-of-surrender
 audio_placement: with the guided prayer
 capstone: true

@@ -25,6 +25,7 @@ export default function FinishLesson({
   finished,
   next,
   courseHref,
+  finalMessage,
 }: {
   lessonSlug: string;
   label: string;
@@ -33,6 +34,12 @@ export default function FinishLesson({
   next?: { href: string; title: string; order?: number | null } | null;
   /** Where "Stop here for today" goes once the lesson is finished. */
   courseHref?: string;
+  /**
+   * The last lesson's closing word, shown once it is marked complete, where
+   * the Continue button stands on every other lesson. A course that ends
+   * without one ends on an absence, which is not the note to finish on.
+   */
+  finalMessage?: string | null;
 }) {
   const [done, setDone] = useState(finished);
   const [error, setError] = useState<string | null>(null);
@@ -71,6 +78,18 @@ export default function FinishLesson({
           <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
             It stays open to you. Come back whenever you want to.
           </p>
+
+          {/* On the last lesson this stands where Continue stands everywhere
+              else. Same quiet register as the rest of the page: no banner, no
+              congratulation, nothing that treats finishing as a score. */}
+          {!next && finalMessage && (
+            <p
+              className="mt-5 border-t border-[#D9C9AE] pt-5 text-lg leading-relaxed text-[#2B2118]"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+            >
+              {finalMessage}
+            </p>
+          )}
 
           <div className="mt-5 flex flex-wrap gap-3">
             {courseHref && (

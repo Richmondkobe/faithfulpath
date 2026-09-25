@@ -530,6 +530,11 @@ export default async function MindLesson({ params }: Props) {
           }
           finished={Boolean(finished.get(slug)?.finished)}
           courseHref={MIND_BASE}
+          finalMessage={
+            typeof file.front.completion_message === "string"
+              ? file.front.completion_message
+              : null
+          }
           next={
             nextLesson
               ? {

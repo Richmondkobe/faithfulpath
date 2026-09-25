@@ -134,6 +134,18 @@ for (const lesson of counting) {
 }
 ok(`${templated} lessons built to the template: slides, transcript, objectives, prompts, chapter`);
 
+/* the last lesson has nowhere to send anybody, so it needs the closing word
+   that stands where Continue stands on every other lesson. Without it the
+   course ends on an absence: a finished panel with one button and no reply. */
+
+const last = counting.reduce((a, b) => (b.order > a.order ? b : a));
+const lastRaw = readFileSync(join(ROOT, last.file), "utf8");
+if (!/^completion_message:\s*"[^"]{40,}"\s*$/m.test(lastRaw)) {
+  fail(`Lesson ${last.order} is the last lesson and has no completion_message`);
+} else {
+  ok(`Lesson ${last.order} closes the course with a completion message`);
+}
+
 /* the journey is thirty contiguous days */
 
 const journey = manifest.modules.find((m) => m.id === "m5");
