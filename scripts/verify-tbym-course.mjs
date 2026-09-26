@@ -171,7 +171,13 @@ for (const lesson of manifest.lessons) {
     // Support. Requiring the whole block word for word would have forced a
     // lesson to choose between the design's wording and its own subject.
     for (const [part, present] of [
-      ["the opening route to help", support.includes(STANDARD_SUPPORT.split(". ")[0])],
+      // The same route-out test the fuller warnings use. Lesson 13 sends a
+      // learner to a qualified counsellor rather than a qualified
+      // professional, and says "may also speak" because its own legal and
+      // child-welfare routing comes first; neither is a weaker offer, and
+      // demanding the design's opening sentence verbatim would fail a block
+      // that does everything the sentence exists to do.
+      ["anyone to turn to", SUPPORT_ROUTES.some((route) => route.test(support))],
       ["the instruction to pause the joint exercise", /pause the joint exercise/.test(support)],
       ["the pointer to Safety and Support", /Safety and Support/.test(support)],
     ]) {
