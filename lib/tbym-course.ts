@@ -278,12 +278,10 @@ export const readTbymStartHere = cache((): TbymStartHere => {
 });
 
 /**
- * Safety and Support, and the regional directory behind its country chooser.
+ * Safety and Support.
  *
- * The page's prose is read the same way Start Here's is: sections in the order
- * they are written. "Services in your country" is deliberately an empty section
- * in the file — the chooser is a control, not prose, and the page puts it under
- * that heading.
+ * Its prose is read the same way Start Here's is: sections in the order they
+ * are written. The page renders them and knows the name of none of them.
  */
 export type TbymSafety = {
   title: string;
@@ -292,23 +290,6 @@ export type TbymSafety = {
   quickExitNote: string;
   intro: string;
   sections: { title: string; body: string }[];
-};
-
-export type TbymSafetyEntry = {
-  name: string;
-  what: string;
-  contact: string;
-  hours: string;
-  languages: string;
-  cost: string;
-  phone_bill: string;
-  source: string;
-  verified: string;
-};
-
-export type TbymSafetyCountries = {
-  countries: { code: string; name: string; entries: TbymSafetyEntry[] }[];
-  international_directory: string | null;
 };
 
 export const readTbymSafety = cache((): TbymSafety => {
@@ -328,11 +309,6 @@ export const readTbymSafety = cache((): TbymSafety => {
     })),
   };
 });
-
-export const readTbymSafetyCountries = cache(
-  (): TbymSafetyCountries =>
-    JSON.parse(readFileSync(join(ROOT, "safety-countries.json"), "utf8"))
-);
 
 /**
  * The Facilitator Guide.

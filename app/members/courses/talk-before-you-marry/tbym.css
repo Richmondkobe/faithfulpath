@@ -146,3 +146,11 @@
 .tbym .prose td {
   color: var(--tb-ink);
 }
+
+/* A link inside prose. Nothing in this course linked from its body text until
+   Safety and Support named an email address. */
+.tbym .prose a {
+  color: var(--tb-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}

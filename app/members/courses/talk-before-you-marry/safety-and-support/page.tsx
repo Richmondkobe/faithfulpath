@@ -4,13 +4,11 @@ import Link from "next/link";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   readTbymSafety,
-  readTbymSafetyCountries,
   tbymStartHereHref,
   TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymQuickExit from "@/components/tbym/TbymQuickExit";
-import TbymCountryHelp from "@/components/tbym/TbymCountryHelp";
 import TbymFooter from "@/components/tbym/TbymFooter";
 
 export const metadata: Metadata = {
@@ -33,7 +31,6 @@ export default async function TbymSafetyAndSupport() {
   await requireActiveMember();
 
   const page = readTbymSafety();
-  const directory = readTbymSafetyCountries();
 
   return (
     <>
@@ -72,17 +69,9 @@ export default async function TbymSafetyAndSupport() {
             >
               {section.title}
             </h2>
-            {section.body && (
-              <div className="text-[var(--tb-ink)]">
-                <TbymMarkdown source={section.body} />
-              </div>
-            )}
-
-            {/* The directory is a control rather than prose, so the content
-                file leaves this section empty and it is rendered here. */}
-            {section.title === "Services in your country" && (
-              <TbymCountryHelp directory={directory} />
-            )}
+            <div className="text-[var(--tb-ink)]">
+              <TbymMarkdown source={section.body} />
+            </div>
           </section>
         ))}
 

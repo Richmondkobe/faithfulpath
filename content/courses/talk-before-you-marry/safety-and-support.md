@@ -61,7 +61,11 @@ Different situations need different help. You may need more than one.
 
 Listen and believe them. Do not tell them to work it out, to pray harder or to be more forgiving. Do not confront the person they fear on their behalf, because that can increase the danger. Ask what would help, and help them reach specialist support.
 
-## Services in your country
+## Get help near you
+
+You can contact any qualified help professional in your own country or area. You can also email Richmond at info@faithfulpathcommunity.com to book a live session.
+
+This is not an emergency service, and replies may take some time. If you need urgent help, please use the emergency number where you are.
 
 ## You are not alone
 

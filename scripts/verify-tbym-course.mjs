@@ -62,8 +62,11 @@ const OMIT_TELL_SOMEONE = new Set([3, 7, 12]);
 // above; this only checks that the lesson supplies one.
 const NEEDS_LISTENING_NOTE = new Set([3, 7, 12, 14]);
 
+// Curly apostrophe, matching the content. It was straight until the content was
+// converted, and this quietly began reporting six lessons as having reworded a
+// block they had not touched.
 const STANDARD_SUPPORT =
-  "If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.";
+  "If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.";
 
 // Safety works at three levels (design, Section 5). Level 2 is the standard
 // block, which most lessons carry word for word. Level 3 replaces it with a
@@ -327,19 +330,18 @@ if (/IntersectionObserver|addEventListener\(\s*["']scroll|onEnded/.test(finish))
   ok("completion is written by the button and by nothing else");
 }
 
-/* Safety and Support holds to rule 7 */
+/* Safety and Support holds to what is left of rule 7 */
 
-// The rules worth enforcing here are the ones a well-meaning edit would break.
-// Location must be chosen, never detected. The quick exit must be present and
-// must not claim more than it does. And no entry may be published unverified:
-// an unverified helpline on this page is worse than none, because somebody may
-// ring it in the worst hour of their life.
+// The country chooser and its directory are gone, at the author's direction:
+// the page now points to any qualified professional locally, and to the
+// author's own email for a live session. So the checks that guarded a
+// directory have gone with it.
+//
+// What still holds, and is still worth enforcing: the page must not work out
+// where the visitor is, and the quick exit must take this page out of the back
+// history rather than leave it one press behind.
 const SAFETY_PAGE = join(PAGES, "safety-and-support", "page.tsx");
-const SAFETY_PARTS = [
-  SAFETY_PAGE,
-  join("components", "tbym", "TbymCountryHelp.tsx"),
-  join("components", "tbym", "TbymQuickExit.tsx"),
-];
+const SAFETY_PARTS = [SAFETY_PAGE, join("components", "tbym", "TbymQuickExit.tsx")];
 
 let safety = 0;
 for (const file of SAFETY_PARTS) {
@@ -349,10 +351,9 @@ for (const file of SAFETY_PARTS) {
     continue;
   }
   const source = readFileSync(file, "utf8");
-  // Anything that would work out where the visitor is without being asked.
   for (const sniff of [/navigator\.language/, /Intl\.DateTimeFormat\(\)\.resolvedOptions/, /geolocation/, /ipapi|ipinfo|geoip/i]) {
     if (sniff.test(source)) {
-      fail(`${file}: detects the visitor's location — rule 7 says they choose it`);
+      fail(`${file}: works out where the visitor is — this page never needs to`);
       safety++;
     }
   }
@@ -366,38 +367,25 @@ if (!/window\.location\.replace\s*\(/.test(quickExit)) {
   safety++;
 }
 
-const directory = JSON.parse(readFileSync(join(ROOT, "safety-countries.json"), "utf8"));
-const REQUIRED_ENTRY_FIELDS = [
-  "name", "what", "contact", "hours", "languages", "cost", "phone_bill", "source", "verified",
-];
-for (const country of directory.countries) {
-  for (const entry of country.entries) {
-    const missing = REQUIRED_ENTRY_FIELDS.filter((f) => !entry[f]);
-    if (missing.length) {
-      fail(`${country.name}: a service entry is missing ${missing.join(", ")} — rule 7 publishes nothing unverified`);
-      safety++;
-    }
-  }
-}
-
-// The page must say the plain thing where nothing is verified, and it must
-// still give the emergency route.
-const countryHelp = readFileSync(join("components", "tbym", "TbymCountryHelp.tsx"), "utf8");
+// The two things the page must still say: where to go in an emergency, and
+// where to find help near you.
+const safetyContent = readFileSync(join(ROOT, "safety-and-support.md"), "utf8");
 for (const [what, present] of [
-  ["the plain statement that nothing is listed", /No verified service is listed for/.test(countryHelp)],
-  ["the emergency-service message", /contact the emergency service where/i.test(countryHelp)],
-  ["a statement that the choice is not saved", /not saved|not stored/i.test(countryHelp)],
+  ["the emergency-service section", /^## If you are in immediate danger$/m.test(safetyContent)],
+  ["the section pointing to local help", /^## Get help near you$/m.test(safetyContent)],
+  ["a way to reach the author", /info@faithfulpathcommunity\.com/.test(safetyContent)],
+  // The contact route must never read as a route to help in a crisis. The
+  // draft's own directory note asked for this in as many words.
+  ["the line saying that contact is not an emergency service", /not an emergency service/.test(safetyContent)],
 ]) {
   if (!present) {
-    fail(`the country chooser is missing ${what}`);
+    fail(`Safety and Support is missing ${what}`);
     safety++;
   }
 }
 
 if (safety === 0) {
-  const listed = directory.countries.length;
-  const withEntries = directory.countries.filter((c) => c.entries.length > 0).length;
-  ok(`Safety and Support: location chosen not detected, quick exit replaces history, ${withEntries} of ${listed} countries verified`);
+  ok("Safety and Support: nothing detects location, the quick exit replaces history, emergency and local help both named");
 }
 
 /* every page renders a footer, and the right one */
