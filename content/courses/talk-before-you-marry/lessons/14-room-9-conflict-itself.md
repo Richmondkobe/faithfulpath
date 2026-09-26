@@ -12,7 +12,7 @@ worksheet_title: "Conflict Covenant, Rules and Repair Plan, Readiness Review and
 duration: "About 13 minutes, plus one short pause."
 listening_note: "A note before you listen: this lesson is about ordinary disagreement between two people who can safely disagree. If disagreement in your relationship makes you afraid, you may prefer to listen privately, or to read the transcript instead, and to read “Need more support?” first. You may stop at any time."
 completion_message: "You have come to the end of this route, but the conversation does not end here. Finishing does not declare that you are ready or not ready to marry. It means you have begun bringing your relationship into the light and learning to speak the truth in love. Keep your weekly check-in, return to these rooms when life changes, and continue seeking God's wisdom together. May the God of peace lead you in truth, love and faithfulness."
-audio: null
+audio: lesson-14
 ---
 
 ## In this lesson, you will learn to:

@@ -10,7 +10,7 @@ chapter_href: null
 worksheet_title: "Private Inventory Sheet"
 duration: "About 12 minutes, plus one short pause."
 listening_note: "A note before you listen: this lesson asks you to be honest with yourself about difficult things, and some of it may be painful. You may prefer to listen privately, with headphones, or to read the transcript instead. You may stop at any time."
-audio: null
+audio: lesson-03
 ---
 
 ## In this lesson, you will learn to:

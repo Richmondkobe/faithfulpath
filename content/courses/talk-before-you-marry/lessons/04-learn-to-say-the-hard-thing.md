@@ -9,7 +9,7 @@ chapter: 4
 chapter_href: null
 worksheet_title: "Conversation Record"
 duration: "About 13 minutes, plus one short pause."
-audio: null
+audio: lesson-04
 ---
 
 ## In this lesson, you will learn to:

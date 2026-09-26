@@ -11,7 +11,7 @@ chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Money Snapshot and Conversation"
 duration: "About 13 minutes, plus one short pause."
-audio: null
+audio: lesson-06
 ---
 
 ## In this lesson, you will learn to:

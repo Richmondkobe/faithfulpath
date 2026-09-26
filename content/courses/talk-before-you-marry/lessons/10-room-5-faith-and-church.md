@@ -10,7 +10,7 @@ chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 5)"
 duration: "About 13 minutes, plus one short pause."
-audio: null
+audio: lesson-10
 ---
 
 ## In this lesson, you will learn to:

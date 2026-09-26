@@ -11,7 +11,7 @@ chapter_href: null
 worksheet_title: "Conversation Record (Room 7)"
 duration: "About 13 minutes, plus one short pause."
 listening_note: "A note before you listen: this lesson speaks carefully about past relationships, and some of it may touch painful memories. You may prefer to listen privately, with headphones, or to read the transcript instead. You may stop at any time."
-audio: null
+audio: lesson-12
 ---
 
 ## In this lesson, you will learn to:

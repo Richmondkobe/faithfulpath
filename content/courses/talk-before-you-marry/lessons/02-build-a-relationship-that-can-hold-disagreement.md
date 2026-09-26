@@ -10,7 +10,7 @@ chapter: 2
 chapter_href: null
 worksheet_title: "Your Rules of Engagement"
 duration: "About 12 minutes, plus one short pause."
-audio: null
+audio: lesson-02
 ---
 
 ## In this lesson, you will learn to:
