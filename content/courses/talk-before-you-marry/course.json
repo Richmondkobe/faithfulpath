@@ -7,10 +7,10 @@
   "//saved_reflections": "Design doc Section 7, decision 2: this course stores nothing a learner writes. The lesson route has no input of any kind, and the flag is here so a future page cannot quietly add one without contradicting the manifest.",
   "saved_reflections": false,
 
-  "//footer_links": "Rule 6 of the build brief: lessons carry the short footer, two support links then the notice. Neither destination exists yet — the Safety and Support page is step 4 of the brief, and the second support link is still bracketed in the draft — so both are null and render as visible development placeholders rather than dead links.",
+  "//footer_links": "Rule 6: lessons carry the short footer, two support links then the notice. The first now resolves to the Safety and Support page. The second is still bracketed as \"[second support link]\" in every lesson draft, so it stays null and renders as a placeholder until the author names it.",
   "footer_links": [
-    { "label": "Need more support?", "href": null },
-    { "label": "Safety and Support", "href": null }
+    { "label": "Safety and Support", "href": "/members/courses/talk-before-you-marry/safety-and-support" },
+    { "label": "Need more support?", "href": null }
   ],
 
   "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms have no pages in this site yet, and the Start Here publication checklist asks for them before it goes live, so both are null and render as placeholders.",
@@ -20,7 +20,7 @@
     { "label": "Contact", "href": "/contact" },
     { "label": "Privacy", "href": null },
     { "label": "Terms", "href": null },
-    { "label": "Need more support?", "href": null }
+    { "label": "Need more support?", "href": "/members/courses/talk-before-you-marry/safety-and-support" }
   ],
 
   "notice": "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book Talk Before You Marry © 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.",

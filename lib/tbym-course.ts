@@ -277,6 +277,65 @@ export const readTbymStartHere = cache((): TbymStartHere => {
   };
 });
 
+/**
+ * Safety and Support, and the regional directory behind its country chooser.
+ *
+ * The page's prose is read the same way Start Here's is: sections in the order
+ * they are written. "Services in your country" is deliberately an empty section
+ * in the file — the chooser is a control, not prose, and the page puts it under
+ * that heading.
+ */
+export type TbymSafety = {
+  title: string;
+  subtitle: string;
+  quickExitLabel: string;
+  quickExitNote: string;
+  intro: string;
+  sections: { title: string; body: string }[];
+};
+
+export type TbymSafetyEntry = {
+  name: string;
+  what: string;
+  contact: string;
+  hours: string;
+  languages: string;
+  cost: string;
+  phone_bill: string;
+  source: string;
+  verified: string;
+};
+
+export type TbymSafetyCountries = {
+  countries: { code: string; name: string; entries: TbymSafetyEntry[] }[];
+  international_directory: string | null;
+};
+
+export const readTbymSafety = cache((): TbymSafety => {
+  const raw = readFileSync(join(ROOT, "safety-and-support.md"), "utf8");
+  const front = parseFront(raw.match(FRONT_MATTER)?.[1] ?? "");
+  const parts = raw.replace(FRONT_MATTER, "").split(/^##[ \t]+(.+?)[ \t]*$/m);
+
+  return {
+    title: front.title ?? "",
+    subtitle: front.subtitle ?? "",
+    quickExitLabel: front.quick_exit_label ?? "",
+    quickExitNote: front.quick_exit_note ?? "",
+    intro: front.intro ?? "",
+    sections: Array.from({ length: (parts.length - 1) / 2 }, (_, i) => ({
+      title: parts[i * 2 + 1].trim(),
+      body: parts[i * 2 + 2].trim(),
+    })),
+  };
+});
+
+export const readTbymSafetyCountries = cache(
+  (): TbymSafetyCountries =>
+    JSON.parse(readFileSync(join(ROOT, "safety-countries.json"), "utf8"))
+);
+
+export const tbymSafetyHref = `${TBYM_BASE}/safety-and-support`;
+
 export const tbymStartHereHref = `${TBYM_BASE}/start-here`;
 
 export const tbymLessonHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}`;

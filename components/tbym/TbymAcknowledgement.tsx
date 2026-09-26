@@ -26,12 +26,14 @@ export default function TbymAcknowledgement({
   beginLabel,
   beginHref,
   stopHref,
+  safetyHref,
 }: {
   acknowledgement: string;
   beginLabel: string;
   beginHref: string;
   /** Where "Stop here for today" goes. It records nothing on the way. */
   stopHref: string;
+  safetyHref: string;
 }) {
   const [acknowledged, setAcknowledged] = useState(false);
   const id = useId();
@@ -65,12 +67,12 @@ export default function TbymAcknowledgement({
           >
             Stop here for today
           </Link>
-          <span
-            className="rounded-sm border border-dashed border-[var(--tb-accent)] px-3 py-2 text-[13px] text-[var(--tb-mute)]"
-            style={{ fontFamily: "var(--font-tbym-mono)" }}
+          <Link
+            href={safetyHref}
+            className="text-[17px] text-[var(--tb-accent)] underline underline-offset-4"
           >
-            Visit Safety and Support — page not built yet
-          </span>
+            Visit Safety and Support
+          </Link>
         </div>
       )}
     </div>

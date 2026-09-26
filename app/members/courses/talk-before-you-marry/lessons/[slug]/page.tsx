@@ -10,6 +10,7 @@ import {
   nextTbymLesson,
   readTbymLesson,
   tbymLessonHref,
+  tbymSafetyHref,
   tbymWorksheetHref,
   TBYM_BASE,
   TBYM_SLUG,
@@ -59,18 +60,6 @@ function Heading({ children }: { children: React.ReactNode }) {
     >
       {children}
     </h2>
-  );
-}
-
-/** A destination that does not exist yet, shown rather than silently dropped. */
-function Placeholder({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      className="inline-block rounded-sm border border-dashed border-[var(--tb-accent)] px-3 py-2 text-[13px] text-[var(--tb-mute)]"
-      style={{ fontFamily: "var(--font-tbym-mono)" }}
-    >
-      {children}
-    </span>
   );
 }
 
@@ -321,7 +310,12 @@ export default async function TbymLessonPage({ params }: Props) {
           <TbymMarkdown source={lesson.needMoreSupport} />
         </div>
         <p className="mt-4">
-          <Placeholder>Safety and Support — page not built yet</Placeholder>
+          <Link
+            href={tbymSafetyHref}
+            className="text-[15px] text-[var(--tb-accent)] underline underline-offset-4"
+          >
+            Visit Safety and Support
+          </Link>
         </p>
       </Card>
 

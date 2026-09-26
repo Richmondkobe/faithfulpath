@@ -327,6 +327,79 @@ if (/IntersectionObserver|addEventListener\(\s*["']scroll|onEnded/.test(finish))
   ok("completion is written by the button and by nothing else");
 }
 
+/* Safety and Support holds to rule 7 */
+
+// The rules worth enforcing here are the ones a well-meaning edit would break.
+// Location must be chosen, never detected. The quick exit must be present and
+// must not claim more than it does. And no entry may be published unverified:
+// an unverified helpline on this page is worse than none, because somebody may
+// ring it in the worst hour of their life.
+const SAFETY_PAGE = join(PAGES, "safety-and-support", "page.tsx");
+const SAFETY_PARTS = [
+  SAFETY_PAGE,
+  join("components", "tbym", "TbymCountryHelp.tsx"),
+  join("components", "tbym", "TbymQuickExit.tsx"),
+];
+
+let safety = 0;
+for (const file of SAFETY_PARTS) {
+  if (!existsSync(file)) {
+    fail(`${file}: Safety and Support is missing a part it needs`);
+    safety++;
+    continue;
+  }
+  const source = readFileSync(file, "utf8");
+  // Anything that would work out where the visitor is without being asked.
+  for (const sniff of [/navigator\.language/, /Intl\.DateTimeFormat\(\)\.resolvedOptions/, /geolocation/, /ipapi|ipinfo|geoip/i]) {
+    if (sniff.test(source)) {
+      fail(`${file}: detects the visitor's location — rule 7 says they choose it`);
+      safety++;
+    }
+  }
+}
+
+const quickExit = readFileSync(join("components", "tbym", "TbymQuickExit.tsx"), "utf8");
+// The call, not the sentence about it: the doc comment names location.replace
+// too, and matched a file whose call had been changed to assign.
+if (!/window\.location\.replace\s*\(/.test(quickExit)) {
+  fail("the quick exit does not use location.replace, so this page stays one press behind in history");
+  safety++;
+}
+
+const directory = JSON.parse(readFileSync(join(ROOT, "safety-countries.json"), "utf8"));
+const REQUIRED_ENTRY_FIELDS = [
+  "name", "what", "contact", "hours", "languages", "cost", "phone_bill", "source", "verified",
+];
+for (const country of directory.countries) {
+  for (const entry of country.entries) {
+    const missing = REQUIRED_ENTRY_FIELDS.filter((f) => !entry[f]);
+    if (missing.length) {
+      fail(`${country.name}: a service entry is missing ${missing.join(", ")} — rule 7 publishes nothing unverified`);
+      safety++;
+    }
+  }
+}
+
+// The page must say the plain thing where nothing is verified, and it must
+// still give the emergency route.
+const countryHelp = readFileSync(join("components", "tbym", "TbymCountryHelp.tsx"), "utf8");
+for (const [what, present] of [
+  ["the plain statement that nothing is listed", /No verified service is listed for/.test(countryHelp)],
+  ["the emergency-service message", /contact the emergency service where/i.test(countryHelp)],
+  ["a statement that the choice is not saved", /not saved|not stored/i.test(countryHelp)],
+]) {
+  if (!present) {
+    fail(`the country chooser is missing ${what}`);
+    safety++;
+  }
+}
+
+if (safety === 0) {
+  const listed = directory.countries.length;
+  const withEntries = directory.countries.filter((c) => c.entries.length > 0).length;
+  ok(`Safety and Support: location chosen not detected, quick exit replaces history, ${withEntries} of ${listed} countries verified`);
+}
+
 /* every page renders a footer, and the right one */
 
 // The footer used to live in the layout, which made it impossible to forget and
@@ -336,6 +409,7 @@ if (/IntersectionObserver|addEventListener\(\s*["']scroll|onEnded/.test(finish))
 const FOOTER_VARIANT = {
   "page.tsx": "full",
   "start-here/page.tsx": "full",
+  "safety-and-support/page.tsx": "safety",
   "lessons/[slug]/page.tsx": "short",
   "lessons/[slug]/worksheet/page.tsx": "short",
 };

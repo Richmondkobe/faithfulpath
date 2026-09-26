@@ -6,6 +6,7 @@ import {
   getTbymCourse,
   readTbymStartHere,
   tbymLessonHref,
+  tbymSafetyHref,
   TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
@@ -20,7 +21,14 @@ export const metadata: Metadata = {
 /** Sections whose prose names something that does not exist on the site yet. */
 const UNBUILT: Record<string, string> = {
   "Who it is for": "Facilitator guide — page not built yet",
-  "Safety and support": "Safety and Support — page not built yet",
+};
+
+/** Sections whose prose names a page that does exist, linked at its foot. */
+const LINKED: Record<string, { label: string; href: string }> = {
+  "Safety and support": {
+    label: "Visit Safety and Support",
+    href: tbymSafetyHref,
+  },
 };
 
 export default async function TbymStartHere() {
@@ -107,6 +115,17 @@ export default async function TbymStartHere() {
               </p>
             )}
 
+            {LINKED[section.title] && (
+              <p className="mt-4">
+                <Link
+                  href={LINKED[section.title].href}
+                  className="text-[15px] text-[var(--tb-accent)] underline underline-offset-4"
+                >
+                  {LINKED[section.title].label}
+                </Link>
+              </p>
+            )}
+
             {/* The tick, and the way into Lesson 1 behind it, belong to the
                 last section rather than standing apart from its words. */}
             {section.title === "Ready to begin?" && firstLesson && (
@@ -116,6 +135,7 @@ export default async function TbymStartHere() {
                   beginLabel={page.beginLabel}
                   beginHref={tbymLessonHref(firstLesson.slug)}
                   stopHref="/members"
+                  safetyHref={tbymSafetyHref}
                 />
               </div>
             )}

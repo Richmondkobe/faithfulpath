@@ -1,0 +1,17 @@
+{
+  "//": "The regional directory behind the country chooser on Safety and Support.",
+
+  "//not_detected": "Rule 7: the visitor chooses their country. Nothing here detects location, and nothing about the choice is stored or sent anywhere — it changes what the page shows and is forgotten when the page is.",
+
+  "//nothing_verified": "Every country below has an empty entries list, so every choice shows the emergency-service message and the plain statement that no service is listed for that country yet. That is the honest state: the candidate directories for Thailand and Canada are marked NOT VERIFIED in docs/, and rule 7 forbids publishing them as they are. Only the country names are used here, never their entries.",
+
+  "//before_publishing": "An entry may be added only once it records, per the draft: the official source; countries or regions served; hours and contact methods; languages; cost and eligibility; whether contact may appear on a phone bill; and the date last verified. Every country needs an emergency number, a national domestic-abuse or sexual-violence helpline, a crisis or mental-health line, and a legal-advice or legal-aid service. Re-verify at least every six months.",
+
+  "countries": [
+    { "code": "TH", "name": "Thailand", "entries": [] },
+    { "code": "CA", "name": "Canada", "entries": [] }
+  ],
+
+  "//international_directory": "The draft asks for a link to an independently maintained international directory where no verified entry exists. None has been chosen, so it renders as a placeholder.",
+  "international_directory": null
+}
