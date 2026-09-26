@@ -69,6 +69,12 @@
       "slug": "09-room-4-children",
       "title": "Room 4, Children",
       "file": "lessons/09-room-4-children.md"
+    },
+    {
+      "order": 10,
+      "slug": "10-room-5-faith-and-church",
+      "title": "Room 5, Faith and Church",
+      "file": "lessons/10-room-5-faith-and-church.md"
     }
   ]
 }

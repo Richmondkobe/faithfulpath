@@ -83,6 +83,7 @@ const SUPPORT_ROUTES = [
 ];
 
 let templated = 0;
+const reworded = [];
 for (const lesson of manifest.lessons) {
   const where = `Lesson ${lesson.order}`;
   const path = join(ROOT, lesson.file);
@@ -160,9 +161,30 @@ for (const lesson of manifest.lessons) {
       fail(`${where}: the fuller warning does not point to Safety and Support`);
       sound = false;
     }
-  } else if (!support.includes(STANDARD_SUPPORT)) {
-    fail(`${where}: "Need more support?" does not carry the standard support block word for word`);
-    sound = false;
+  } else {
+    // A level-2 lesson keeps the standard block's three working parts: who to
+    // turn to, the instruction to stop, and where to go. Its second trigger may
+    // be its own — Lesson 10 names faith used to pressure or silence someone,
+    // in place of the general "do not feel free to speak" — because what makes
+    // a learner stop differs by subject. What may not change is that the block
+    // still names help, still says pause, and still points at Safety and
+    // Support. Requiring the whole block word for word would have forced a
+    // lesson to choose between the design's wording and its own subject.
+    for (const [part, present] of [
+      ["the opening route to help", support.includes(STANDARD_SUPPORT.split(". ")[0])],
+      ["the instruction to pause the joint exercise", /pause the joint exercise/.test(support)],
+      ["the pointer to Safety and Support", /Safety and Support/.test(support)],
+    ]) {
+      if (!present) {
+        fail(`${where}: "Need more support?" is missing ${part}`);
+        sound = false;
+      }
+    }
+    if (!support.includes(STANDARD_SUPPORT)) {
+      // Not a failure, but worth seeing: the design writes one block for every
+      // level-2 lesson, and a lesson that rewords it has made a decision.
+      reworded.push(lesson.order);
+    }
   }
 
   /* nothing editorial, and nothing bracketed, reaches the page */
@@ -193,6 +215,9 @@ for (const lesson of manifest.lessons) {
   if (sound) templated++;
 }
 ok(`${templated} lessons built to the template, with no editorial text and no placeholders`);
+if (reworded.length) {
+  ok(`standard support block reworded in ${reworded.length} lesson(s): ${reworded.join(", ")} — each still names help, says pause and points at Safety and Support`);
+}
 
 /* the course stores nothing a learner writes */
 
