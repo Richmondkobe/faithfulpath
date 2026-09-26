@@ -38,7 +38,7 @@ If you are unsure, go slowly and ask again in a few weeks.
 - **Lessons 6 to 13: the rooms.** Money, sex, family, children, faith, roles, past relationships and what each is bringing into the marriage. Each has a private preparation, then a conversation of 45 to 60 minutes.
 - **Lesson 14: conflict itself.** They write a Conflict Covenant and consider what they have learned.
 
-Each lesson takes about 13 minutes to watch or listen to, plus the preparation and conversation.
+Each lesson takes about 11 to 14 minutes to watch or listen to, plus the preparation and conversation.
 
 ## Suggested pace
 
