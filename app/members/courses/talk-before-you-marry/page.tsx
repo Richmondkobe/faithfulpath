@@ -4,12 +4,13 @@ import Link from "next/link";
 import { requireActiveMember } from "@/lib/member-gate";
 import { getCourseProgress } from "@/lib/course-progress";
 import {
+  TBYM_SLUG,
   getTbymCourse,
-  tbymLessonHref,
+  requireTbymPublished,
   tbymFacilitatorHref,
+  tbymLessonHref,
   tbymSafetyHref,
   tbymStartHereHref,
-  TBYM_SLUG,
 } from "@/lib/tbym-course";
 import TbymFooter from "@/components/tbym/TbymFooter";
 
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
  */
 export default async function TbymCourseHome() {
   await requireActiveMember();
+  requireTbymPublished();
 
   const course = getTbymCourse();
   const progress = await getCourseProgress(TBYM_SLUG);

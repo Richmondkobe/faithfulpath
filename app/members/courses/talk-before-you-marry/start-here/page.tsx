@@ -3,12 +3,13 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
+  TBYM_BASE,
   getTbymCourse,
   readTbymStartHere,
-  tbymLessonHref,
+  requireTbymPublished,
   tbymFacilitatorHref,
+  tbymLessonHref,
   tbymSafetyHref,
-  TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymAcknowledgement from "@/components/tbym/TbymAcknowledgement";
@@ -33,6 +34,7 @@ const LINKED: Record<string, { label: string; href: string }> = {
 
 export default async function TbymStartHere() {
   await requireActiveMember();
+  requireTbymPublished();
 
   const course = getTbymCourse();
   const page = readTbymStartHere();

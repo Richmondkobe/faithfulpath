@@ -6,15 +6,16 @@ import { requireActiveMember } from "@/lib/member-gate";
 import { getCourseProgress } from "@/lib/course-progress";
 import { signedMediaUrl } from "@/lib/course-media";
 import {
+  TBYM_BASE,
+  TBYM_SLUG,
   getTbymCourse,
   nextTbymLesson,
   readTbymLesson,
   readTbymSlides,
+  requireTbymPublished,
   tbymLessonHref,
   tbymSafetyHref,
   tbymWorksheetHref,
-  TBYM_BASE,
-  TBYM_SLUG,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymFooter from "@/components/tbym/TbymFooter";
@@ -69,6 +70,7 @@ function Heading({ children }: { children: React.ReactNode }) {
 
 export default async function TbymLessonPage({ params }: Props) {
   await requireActiveMember();
+  requireTbymPublished();
 
   const { slug } = await params;
   const lesson = readTbymLesson(slug);

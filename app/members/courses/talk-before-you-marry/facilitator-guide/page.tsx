@@ -3,10 +3,11 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
+  TBYM_BASE,
   readTbymFacilitatorGuide,
+  requireTbymPublished,
   tbymSafetyHref,
   tbymStartHereHref,
-  TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymFooter from "@/components/tbym/TbymFooter";
@@ -33,6 +34,7 @@ const LINKED: Record<string, true> = {
 
 export default async function TbymFacilitatorGuide() {
   await requireActiveMember();
+  requireTbymPublished();
 
   const page = readTbymFacilitatorGuide();
 

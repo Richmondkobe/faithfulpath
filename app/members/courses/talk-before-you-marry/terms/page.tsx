@@ -3,9 +3,10 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  readTbymProsePage,
-  tbymTermsHref,
   TBYM_BASE,
+  readTbymProsePage,
+  requireTbymPublished,
+  tbymTermsHref,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymFooter from "@/components/tbym/TbymFooter";
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
  */
 export default async function TbymTerms() {
   await requireActiveMember();
+  requireTbymPublished();
 
   const page = readTbymProsePage("terms.md");
 

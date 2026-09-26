@@ -3,10 +3,11 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
+  TBYM_BASE,
   readTbymSafety,
+  requireTbymPublished,
   tbymSafetyHref,
   tbymStartHereHref,
-  TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymQuickExit from "@/components/tbym/TbymQuickExit";
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
  */
 export default async function TbymSafetyAndSupport() {
   await requireActiveMember();
+  requireTbymPublished();
 
   const page = readTbymSafety();
 

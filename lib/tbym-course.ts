@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { notFound } from "next/navigation";
 import { cache } from "react";
 
 // "Talk Before You Marry" — the manifest, and the lessons it names.
@@ -415,13 +416,31 @@ export const tbymLessonHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}`;
 export const tbymWorksheetHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}/worksheet`;
 
 /**
- * Whether the course appears on the members page.
+ * Whether the course is published.
  *
- * All fourteen lessons are built, with Start Here, Safety and Support, the
- * Facilitator Guide, Privacy and Terms. What is not finished is outside this
- * repository: no recording exists yet, the Scripture on Lessons 11, 13 and 14
- * has not been compared with the licensed ESV text, and Safety and Support has
- * not been read by a domestic-abuse specialist. Turning this off again is one
- * word, and nothing else depends on it.
+ * All fourteen lessons are built and recorded, with Start Here, Safety and
+ * Support, the Facilitator Guide, Privacy and Terms. What is not finished is
+ * outside this repository: the Scripture on Lessons 11, 13 and 14 and on Start
+ * Here has not been compared with the licensed ESV text, and Safety and
+ * Support has not been read by a domestic-abuse specialist. Until it has, the
+ * course is off.
  */
-export const TBYM_PUBLISHED = true;
+export const TBYM_PUBLISHED = false;
+
+/**
+ * The gate every page of this course sits behind, alongside the membership
+ * check.
+ *
+ * The flag above used to hide the card on the members page and nothing else,
+ * which made "unpublished" mean "unlinked": any member who had a URL — a
+ * bookmark, a link someone sent them — still reached the whole course. That is
+ * the wrong failure for a course whose Safety and Support page is waiting on a
+ * specialist to read it, so the flag now closes the routes too.
+ *
+ * notFound() rather than a redirect or a notice, because while the course is
+ * off these pages are not a thing a member has been shut out of; they are a
+ * thing that does not exist yet.
+ */
+export function requireTbymPublished() {
+  if (!TBYM_PUBLISHED) notFound();
+}

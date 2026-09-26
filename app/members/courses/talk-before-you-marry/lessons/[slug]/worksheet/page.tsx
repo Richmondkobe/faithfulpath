@@ -6,6 +6,7 @@ import { requireActiveMember } from "@/lib/member-gate";
 import {
   getTbymCourse,
   readTbymLesson,
+  requireTbymPublished,
   tbymLessonHref,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
@@ -34,6 +35,7 @@ export function generateStaticParams() {
  */
 export default async function TbymWorksheetPage({ params }: Props) {
   await requireActiveMember();
+  requireTbymPublished();
 
   const { slug } = await params;
   const lesson = readTbymLesson(slug);

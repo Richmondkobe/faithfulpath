@@ -528,6 +528,23 @@ if (pageFiles !== Object.keys(FOOTER_VARIANT).length) {
   ok(`${footers} pages, each rendering the footer the build brief gives it`);
 }
 
+// Every page of the course sits behind the publish gate as well as the
+// membership check. The flag alone once hid only the card on the members page,
+// which meant an unpublished course was merely unlinked and any member holding
+// a URL still walked in. A page that forgets this line reopens that hole
+// silently, so it is checked rather than trusted.
+let gated = 0;
+for (const rel of Object.keys(FOOTER_VARIANT)) {
+  const path = join(PAGES, ...rel.split("/"));
+  if (!existsSync(path)) continue;
+  const source = readFileSync(path, "utf8");
+  if (/requireTbymPublished\s*\(\s*\)/.test(source)) gated++;
+  else fail(`${rel}: does not call requireTbymPublished(), so it is reachable while the course is off`);
+}
+if (gated === Object.keys(FOOTER_VARIANT).length) {
+  ok(`${gated} pages, each behind the publish gate as well as the membership check`);
+}
+
 const writers = files.filter((f) => /setLessonComplete/.test(readFileSync(f, "utf8")));
 if (writers.length !== 1) {
   fail(`completion is written from ${writers.length} places; it should be the one button`);
