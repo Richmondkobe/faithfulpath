@@ -42,21 +42,21 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 4.
 
-Let's begin with Scripture. Ephesians chapter 4, verses 29 to 32.
+Let’s begin with Scripture. Ephesians chapter 4, verses 29 to 32.
 
-"Let no corrupting talk come out of your mouths, but only such as is good for building up, as fits the occasion, that it may give grace to those who hear. And do not grieve the Holy Spirit of God, by whom you were sealed for the day of redemption. Let all bitterness and wrath and anger and clamor and slander be put away from you, along with all malice. Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you."
+“Let no corrupting talk come out of your mouths, but only such as is good for building up, as fits the occasion, that it may give grace to those who hear. And do not grieve the Holy Spirit of God, by whom you were sealed for the day of redemption. Let all bitterness and wrath and anger and clamor and slander be put away from you, along with all malice. Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.”
 
 This is the same chapter as Lesson 1. There, Paul told believers to put away falsehood and speak truth. Here he tells them how to speak it.
 
-Notice that Paul does not say, "Say nothing." He says, no corrupting talk, only what is good for building up. He is not against hard words. He is against words that tear down.
+Notice that Paul does not say, “Say nothing.” He says, no corrupting talk, only what is good for building up. He is not against hard words. He is against words that tear down.
 
-And notice the phrase "as fits the occasion." Words are meant to fit the moment and the person hearing them. Then comes the purpose: "that it may give grace to those who hear." The aim is not merely to release what is inside us. Our words should serve the other person's good, even when the truth is difficult to hear.
+And notice the phrase “as fits the occasion.” Words are meant to fit the moment and the person hearing them. Then comes the purpose: “that it may give grace to those who hear.” The aim is not merely to release what is inside us. Our words should serve the other person’s good, even when the truth is difficult to hear.
 
 So here is the truth this lesson stands on. Honesty and kindness are not rivals. Scripture asks for both in the same sentence.
 
@@ -68,23 +68,23 @@ The truth does not need to be weakened. But its timing, tone and form should be 
 
 And there is a further point. Sometimes a sharp opening is really a wish to make the other person feel your hurt. Notice that impulse. You can name your hurt directly without using it to punish.
 
-So how does it sound in practice? Let's begin with the first sentence.
+So how does it sound in practice? Let’s begin with the first sentence.
 
 An opening that works describes a concern. An opening that fails delivers a verdict.
 
-Take a man who feels his partner has been making decisions without him. The verdict version: "You always do whatever you want. You don't respect me at all."
+Take a man who feels his partner has been making decisions without him. The verdict version: “You always do whatever you want. You don’t respect me at all.”
 
-Look at what is doing the damage. It is not the concern. The concern is legitimate. It is the words *always* and *at all*. Those turn a specific complaint into a permanent description of her character, and now the only response available is to prove it false. "That's not true. Last month I asked you about the car." And now the conversation is about whether she is a respectful person, which cannot be answered, and the decisions are forgotten.
+Look at what is doing the damage. It is not the concern. The concern is legitimate. It is the words *always* and *at all*. Those turn a specific complaint into a permanent description of her character, and now the only response available is to prove it false. “That’s not true. Last month I asked you about the car.” And now the conversation is about whether she is a respectful person, which cannot be answered, and the decisions are forgotten.
 
-Now the version with somewhere to go: "Can we talk about something I've been sitting with? When decisions get made without us discussing them first, I feel left out, and I'd like us to find a better way of handling those."
+Now the version with somewhere to go: “Can we talk about something I’ve been sitting with? When decisions get made without us discussing them first, I feel left out, and I’d like us to find a better way of handling those.”
 
 That names what happened. It says what it did to you. And it points at a solution, not at a person.
 
-A caution. There is nothing magic about the word "I." You can deliver a full verdict inside it. "I feel like you're a selfish person" is an accusation in costume. The point is not the grammar. The point is to describe your own experience, because that is the only thing you have direct access to.
+A caution. There is nothing magic about the word “I.” You can deliver a full verdict inside it. “I feel like you’re a selfish person” is an accusation in costume. The point is not the grammar. The point is to describe your own experience, because that is the only thing you have direct access to.
 
-Second, say what actually happened. "I feel like you don't respect me" may be entirely sincere, but it is too large to do anything about. Your partner does not know which behaviour you mean. So name it. "When I was explaining my worry about the wedding budget, and you looked at your phone and walked out of the room, I felt dismissed."
+Second, say what actually happened. “I feel like you don’t respect me” may be entirely sincere, but it is too large to do anything about. Your partner does not know which behaviour you mean. So name it. “When I was explaining my worry about the wedding budget, and you looked at your phone and walked out of the room, I felt dismissed.”
 
-Now there is something on the table. He can answer it. He might say, "I wasn't dismissing you. My brother was messaging about the car, and I should have told you." Or you may discover you were wrong. Perhaps he was reading a message about his mother's hospital appointment. That happens far more often than couples expect, and it cannot happen if you lead with a conclusion.
+Now there is something on the table. He can answer it. He might say, “I wasn’t dismissing you. My brother was messaging about the car, and I should have told you.” Or you may discover you were wrong. Perhaps he was reading a message about his mother’s hospital appointment. That happens far more often than couples expect, and it cannot happen if you lead with a conclusion.
 
 The pattern is three steps. What happened. How it affected me. What I am asking for now.
 
@@ -92,41 +92,41 @@ The pattern is three steps. What happened. How it affected me. What I am asking 
 
 Third, say it clearly, without hinting.
 
-Here is a pattern that costs couples more than almost anything else. A woman wants more of her partner's weekends. What she could say is, "I'd like us to have Saturday evenings together. Can we make that ours?" What she actually says, over three weeks, is: "You're going out again?" Then: "You've got a lot of friends who need you." Then: "It's fine. Do whatever you want."
+Here is a pattern that costs couples more than almost anything else. A woman wants more of her partner’s weekends. What she could say is, “I’d like us to have Saturday evenings together. Can we make that ours?” What she actually says, over three weeks, is: “You’re going out again?” Then: “You’ve got a lot of friends who need you.” Then: “It’s fine. Do whatever you want.”
 
-And then the argument arrives at its destination: "You should know what I want without me having to ask." That sentence is where resentment lives. It turns his failure to read her mind into proof that he does not care. He cannot win, because he was never told the game had started.
+And then the argument arrives at its destination: “You should know what I want without me having to ask.” That sentence is where resentment lives. It turns his failure to read her mind into proof that he does not care. He cannot win, because he was never told the game had started.
 
-Do not make your partner pass a test you never explained. Say it once, clearly, and give them the chance to answer. Say the thing. Instead of "you don't really make time for me," say, "I want one evening a week that's just ours. Can we agree on that?" That is a request about the future, specific enough to be answered.
+Do not make your partner pass a test you never explained. Say it once, clearly, and give them the chance to answer. Say the thing. Instead of “you don’t really make time for me,” say, “I want one evening a week that’s just ours. Can we agree on that?” That is a request about the future, specific enough to be answered.
 
-And then ask: "This is what I want. How do you feel about it?" That leaves room for the answer to be no, or partly, or "not Saturdays, but Sundays would work."
+And then ask: “This is what I want. How do you feel about it?” That leaves room for the answer to be no, or partly, or “not Saturdays, but Sundays would work.”
 
 Two things follow, and they are the harder half. A clear no gives you information. It might mean understanding the reasons, or weighing whether the difference matters for your decision to marry. Saying it once does not forbid an agreed follow-up. It means you do not repeat a request until the other person gives in. Repeating a request until someone gives in is pressure, not agreement. And a no to intimacy is always respected immediately.
 
-Finally, decide whether to raise it at all. Three questions. Is this important? Is this becoming a pattern? If I don't address it, will I eventually resent it? The third does most of the work.
+Finally, decide whether to raise it at all. Three questions. Is this important? Is this becoming a pattern? If I don’t address it, will I eventually resent it? The third does most of the work.
 
 One instance of clothes on the floor may be a passing irritation. But if you have asked several times, and each time it was waved off, the clothes stopped being the subject a while ago. What you would be raising now is whether your requests count for anything.
 
-The opposite mistake also does damage. Do not turn every irritation into an indictment. Sometimes love is being able to say to yourself, "That bothered me, and it is not important enough to carry." But letting go is not burying. If you say "it's fine" while keeping a private list, you have not let it go. You have filed it, and it will come out later, all at once, in an argument about something else.
+The opposite mistake also does damage. Do not turn every irritation into an indictment. Sometimes love is being able to say to yourself, “That bothered me, and it is not important enough to carry.” But letting go is not burying. If you say “it’s fine” while keeping a private list, you have not let it go. You have filed it, and it will come out later, all at once, in an argument about something else.
 
 So: let go of the insignificant. Discuss the recurring. And seek support for the harmful. Dishonesty, hidden debt, pressure around sexual boundaries, intimidation, anything that frightens you: these do not belong in the letting-go pile. If you fear retaliation, a better opening sentence is not the answer. Seek confidential, independent support.
 
 Now your step. Alone, take the subject you chose in Lesson 1 and write three sentences. What happened, specific if you can. How it affected you, in one sentence. And what you are asking for now, as a request, not a complaint.
 
-Then check them against four questions. Have I used "always" or "never" as an exaggeration? Replace it with something accurate, but do not weaken something true. Have I described their character anywhere? Rewrite that part. Could they actually answer it? And am I saying the whole of what I mean? If you have softened it into something you do not mean, put it back.
+Then check them against four questions. Have I used “always” or “never” as an exaggeration? Replace it with something accurate, but do not weaken something true. Have I described their character anywhere? Rewrite that part. Could they actually answer it? And am I saying the whole of what I mean? If you have softened it into something you do not mean, put it back.
 
 Then choose a real evening for the conversation, after you have both completed Lesson 5. Do not begin it yet. This lesson prepares the one who speaks. The next prepares the one who listens, and then you will be ready together. Set aside about fifty minutes: up to forty for the conversation, and ten to review how it went. Have the rules you agreed in Lesson 2 in front of you.
 
-When the time comes, you will finish with a few simple things. Review the conversation, not the subject. What went well? Where did it nearly go wrong? Which rule was hardest to keep? And if you held something back, say so. "There's more to this and I wasn't ready to say it tonight" is a complete and honest sentence. Then name a day to come back to it. That is what separates an unfinished conversation from an abandoned one.
+When the time comes, you will finish with a few simple things. Review the conversation, not the subject. What went well? Where did it nearly go wrong? Which rule was hardest to keep? And if you held something back, say so. “There’s more to this and I wasn’t ready to say it tonight” is a complete and honest sentence. Then name a day to come back to it. That is what separates an unfinished conversation from an abandoned one.
 
 Let me close with a short prayer.
 
 Lord, give me words that build up and not words that tear down. Help me say what is true, and say it with grace. Take away bitterness and the wish to wound. Make me kind, tender-hearted and forgiving, as You have been with me. Amen.
 
-I'll see you in Lesson 5.
+I’ll see you in Lesson 5.
 
 ## Worksheet
 
-*From the book's Chapter 4 exercise, "The First Real Conversation". Downloadable. Complete on your own device or on paper.*
+*From the book’s Chapter 4 exercise, “The First Real Conversation”. Downloadable. Complete on your own device or on paper.*
 
 **Before you begin**
 
@@ -148,7 +148,7 @@ The person raising the subject writes three sentences on paper, before the conve
 
 Then check them against four tests:
 
-- Does it use "always" or "never" as an exaggeration? Replace it with an accurate description. Do not weaken a truthful statement simply to avoid a particular word.
+- Does it use “always” or “never” as an exaggeration? Replace it with an accurate description. Do not weaken a truthful statement simply to avoid a particular word.
 - Does it describe their character anywhere? Rewrite that part.
 - Could they answer it? If there is no answerable question or request in it, you have written a verdict.
 - Am I saying the whole of what I mean? If you have softened it into something you do not mean, put it back.
@@ -169,7 +169,7 @@ During this review, focus only on how you handled the conversation. Do not revie
 - Where did it nearly go wrong?
 - Which of our rules was hardest to keep?
 
-Then the one who raised it answers one more, honestly: *Did I say the whole of what I meant, or did I hold something back?* If you held something back, say so now. You do not have to give the content. "There's more to this and I wasn't ready to say it tonight" is a complete and useful sentence.
+Then the one who raised it answers one more, honestly: *Did I say the whole of what I meant, or did I hold something back?* If you held something back, say so now. You do not have to give the content. “There’s more to this and I wasn’t ready to say it tonight” is a complete and useful sentence.
 
 **Part Four. Write it down**
 
@@ -178,11 +178,11 @@ After that review, briefly record:
 - The subject we discussed:
 - What we agreed, if anything:
 - What we still need to come back to:
-- Date we'll come back to it:
+- Date we’ll come back to it:
 
 Most first conversations do not finish. Naming a return date separates an unfinished conversation from an abandoned one.
 
-**Should I raise it?** If you are unsure, ask three questions: Is this important? Is this becoming a pattern? If I don't address it, will I eventually resent it? *Let go of the insignificant. Discuss the recurring. Seek support for the harmful.*
+**Should I raise it?** If you are unsure, ask three questions: Is this important? Is this becoming a pattern? If I don’t address it, will I eventually resent it? *Let go of the insignificant. Discuss the recurring. Seek support for the harmful.*
 
 **If it went badly**
 

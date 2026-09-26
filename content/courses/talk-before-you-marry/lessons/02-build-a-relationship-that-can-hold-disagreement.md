@@ -59,21 +59,21 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 2.
 
-Let's begin with Scripture. First Corinthians chapter 13, verses 4 to 7.
+Let’s begin with Scripture. First Corinthians chapter 13, verses 4 to 7.
 
-"Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things."
+“Love is patient and kind; love does not envy or boast; it is not arrogant or rude. It does not insist on its own way; it is not irritable or resentful; it does not rejoice at wrongdoing, but rejoices with the truth. Love bears all things, believes all things, hopes all things, endures all things.”
 
 You have probably heard these words at a wedding. But Paul did not first write them for a wedding. He wrote them to a church in Corinth that was full of gifted people who were often hard on each other. So he describes what love actually looks like when people are together: patient, kind, not irritable, not resentful.
 
-And notice one line in the middle. Love "does not rejoice at wrongdoing, but rejoices with the truth." Love and truth are not opposites. Love is not the thing that keeps the truth quiet. Love is what makes it safe for the truth to be spoken.
+And notice one line in the middle. Love “does not rejoice at wrongdoing, but rejoices with the truth.” Love and truth are not opposites. Love is not the thing that keeps the truth quiet. Love is what makes it safe for the truth to be spoken.
 
-Notice too that love "bears all things" and "endures all things." Christian love is patient and enduring, but it does not require silence about wrongdoing or ask someone to remain in harm.
+Notice too that love “bears all things” and “endures all things.” Christian love is patient and enduring, but it does not require silence about wrongdoing or ask someone to remain in harm.
 
 Hold that thought, because it is the whole lesson.
 
@@ -83,7 +83,7 @@ This lesson is about building a relationship where that question stops being liv
 
 If, underneath, you think of marriage as a contract, then the working question becomes: what am I getting from this, and what happens if you stop providing it? That is not cynicism. It is simply how agreements work. But it makes honesty expensive. If my partner is disappointed in me, or angry, then the arrangement itself may be in question. And the safest thing I can do is keep them satisfied. Which is exactly how you end up with the six patterns from Lesson 1.
 
-Scripture describes something different. The prophet Malachi speaks of a wife as "your wife by covenant." Christian marriage is a covenant made before God. It is a promise, not a temporary arrangement maintained only while everything is convenient. Covenant calls husband and wife to faithfulness, truth, repentance and enduring love.
+Scripture describes something different. The prophet Malachi speaks of a wife as “your wife by covenant.” Christian marriage is a covenant made before God. It is a promise, not a temporary arrangement maintained only while everything is convenient. Covenant calls husband and wife to faithfulness, truth, repentance and enduring love.
 
 But you are not there yet. Engagement is not yet the marriage covenant. It is the season in which you discern whether you are ready to make that covenant faithfully and truthfully. And the way you handle honesty now is part of that preparation. You are learning whether the two of you can bring truth into the relationship without using disagreement to punish, manipulate or threaten each other.
 
@@ -91,7 +91,7 @@ That means preparing for covenant is a refusal to build the relationship on conc
 
 Now a word of care, because the language of covenant has been misused. Covenant does not mean tolerating abuse, or staying silent about wrongdoing, or absorbing harm and calling it faithfulness. That is not covenant faithfulness. It is control using the language of covenant, and God is not honoured by it.
 
-That one shift changes what a couple can say to each other. It makes room for: "This hurt me." "I don't agree with you." "I think we're handling this badly." "That behaviour needs to change." And it allows the sentence that has to sit underneath all four: "I will listen before I decide what this means, and I will not punish you simply for speaking honestly."
+That one shift changes what a couple can say to each other. It makes room for: “This hurt me.” “I don’t agree with you.” “I think we’re handling this badly.” “That behaviour needs to change.” And it allows the sentence that has to sit underneath all four: “I will listen before I decide what this means, and I will not punish you simply for speaking honestly.”
 
 The question quietly changes. It stops being, how do I keep my partner happy enough to stay? It becomes, how do we become the kind of people who can speak truthfully, listen humbly and prepare to make covenant promises with integrity? That is not a softer question. It asks more of both of you. But it is the one that makes honesty survivable.
 
@@ -101,7 +101,7 @@ Every couple already has rules for conflict. Most have never said them out loud.
 
 So decide them on purpose, now, while nothing is at stake. There are eleven rules, in three groups.
 
-How we speak. We tell the truth without trying to wound. We keep to one issue. We speak from our own experience: "I felt ignored when you took that call," rather than "you never care about me." And we do not use Scripture as a weapon. Please hear that one carefully. Do not quote a verse to end a conversation or to win a point, or to put your partner where disagreeing with you means disobeying God. Scripture is for pursuing truth, humility and repentance, including your own.
+How we speak. We tell the truth without trying to wound. We keep to one issue. We speak from our own experience: “I felt ignored when you took that call,” rather than “you never care about me.” And we do not use Scripture as a weapon. Please hear that one carefully. Do not quote a verse to end a conversation or to win a point, or to put your partner where disagreeing with you means disobeying God. Scripture is for pursuing truth, humility and repentance, including your own.
 
 How we handle tension. We listen before we defend. Either of us can ask for a break, and we agree when to check in. We do not use silence as punishment. And we do not use threats of separation to win an argument.
 
@@ -109,23 +109,23 @@ What we do afterwards. We do not confuse explanation with excuse. We seek suppor
 
 Notice that most of these are not about arguing well. They are about making it safe to be told something you do not want to hear. No technique will help in a relationship where telling the truth costs more than it is worth.
 
-Timing matters too. Picture it: a quarter to midnight. Both are tired. One has work in the morning. And someone says, "We need to talk about something that's really bothering me." That may be an honest concern at a poor time. So do not choose the moment when you are most desperate to say it. Choose the moment when you are both most capable of hearing it.
+Timing matters too. Picture it: a quarter to midnight. Both are tired. One has work in the morning. And someone says, “We need to talk about something that’s really bothering me.” That may be an honest concern at a poor time. So do not choose the moment when you are most desperate to say it. Choose the moment when you are both most capable of hearing it.
 
-But be careful, because avoidance loves to dress up as good timing. "Let's talk about it later" is a door quietly closing. Compare it with: "This matters to me, and I don't want us to argue about it while we're this tired. Can we talk tomorrow after dinner?" That names the subject, the reason and the time. It is a postponement with a return date. And then you keep the appointment.
+But be careful, because avoidance loves to dress up as good timing. “Let’s talk about it later” is a door quietly closing. Compare it with: “This matters to me, and I don’t want us to argue about it while we’re this tired. Can we talk tomorrow after dinner?” That names the subject, the reason and the time. It is a postponement with a return date. And then you keep the appointment.
 
 > Pause here. Which of these rules will be hardest for you to keep? Take a moment before you go on.
 
-Now, sometimes it will go badly anyway. A conversation about money gets hot. He says, "You're impossible to talk to." She says, "And you're selfish." They go to bed angry.
+Now, sometimes it will go badly anyway. A conversation about money gets hot. He says, “You’re impossible to talk to.” She says, “And you’re selfish.” They go to bed angry.
 
 The next morning one of them has a decision to make, not about the money but about the night before. They can act as though it never happened. By lunchtime things will feel normal. But nothing was removed. It was only filed.
 
-Or they can repair. "I was angry last night, and calling you selfish was wrong. I still think we have to sort out the money, but I want us to do that conversation differently."
+Or they can repair. “I was angry last night, and calling you selfish was wrong. I still think we have to sort out the money, but I want us to do that conversation differently.”
 
-Look at what that does. It does not withdraw the concern. It separates the problem from the damage done while trying to solve it. You can be entirely right about the money and still owe an apology for how you spoke at eleven o'clock at night.
+Look at what that does. It does not withdraw the concern. It separates the problem from the damage done while trying to solve it. You can be entirely right about the money and still owe an apology for how you spoke at eleven o’clock at night.
 
-Four steps help. Acknowledge that something went wrong. Own your part, without a "but". Offer an appropriate step towards reconnection, if it is welcome. And return to the issue, or the subject only gets buried warmly.
+Four steps help. Acknowledge that something went wrong. Own your part, without a “but”. Offer an appropriate step towards reconnection, if it is welcome. And return to the issue, or the subject only gets buried warmly.
 
-And here is the sentence I would most want you to keep: "We're not finished with this problem. But we're finished hurting each other."
+And here is the sentence I would most want you to keep: “We’re not finished with this problem. But we’re finished hurting each other.”
 
 So here is your step. Set aside an hour when neither of you is tired.
 
@@ -133,7 +133,7 @@ First, on your own, ask yourself three questions. Which rule will be hardest for
 
 Then together, go through the eleven rules one at a time, and put them in words you can remember. Reword them, but keep their protections: freedom to pause, honest speech, and no intimidation. If either of you freely chooses to share something from that third question, consider whether it belongs in your final rules. You do not have to explain private history in order to request a reasonable boundary.
 
-Agree how you will pause. Choose a neutral phrase, such as "I need a break." When either of you uses it, the conversation pauses, and the other honours it without arguing. Before you separate, agree when you will check in again, or send that time once you are calm enough to do so.
+Agree how you will pause. Choose a neutral phrase, such as “I need a break.” When either of you uses it, the conversation pauses, and the other honours it without arguing. Before you separate, agree when you will check in again, or send that time once you are calm enough to do so.
 
 Then write it down, and, if it helps, add a date when you will revisit it together. This list is a reminder of your intentions. It is not a legal contract, and it is not a promise to go ahead with the wedding.
 
@@ -145,11 +145,11 @@ Let me close with a short prayer.
 
 Lord, we want a love that rejoices with the truth. Make our home a place where honesty is safe. Teach us to speak without wounding and to listen without defending. And when we fail, give us the humility to repair. Amen.
 
-I'll see you in Lesson 3.
+I’ll see you in Lesson 3.
 
 ## Worksheet
 
-*From the book's Chapter 2 exercise. Downloadable. Complete on your own device or on paper. Set aside an hour when neither of you is tired.*
+*From the book’s Chapter 2 exercise. Downloadable. Complete on your own device or on paper. Set aside an hour when neither of you is tired.*
 
 **Part One. On your own (about 15 minutes, separately)**
 
@@ -188,7 +188,7 @@ Go through the eleven rules one at a time. Put them in language you can remember
 **Two practical decisions**
 
 - How will we pause? Our usual break length: ______  Our check-in time: ______ (If either needs longer, name a new time rather than disappearing.)
-- What is our signal? A neutral phrase, such as "I need a break," that either of us can say to pause the conversation, which the other agrees to honour without arguing: ______ Before separating, agree when we will check in again, or send that time once we are calm enough to do so.
+- What is our signal? A neutral phrase, such as “I need a break,” that either of us can say to pause the conversation, which the other agrees to honour without arguing: ______ Before separating, agree when we will check in again, or send that time once we are calm enough to do so.
 
 **Part Three. Write it down**
 
@@ -211,6 +211,6 @@ If you have broken a rule, name it and decide what needs to change. The purpose 
 **When it goes badly: repair**
 
 1. Acknowledge that something went wrong. Do not explain it yet.
-2. Own your part, without a "but".
+2. Own your part, without a “but”.
 3. Offer an appropriate step towards reconnection, if it is welcome. This might be a calmer conversation, practical repair or affection, but do not require reassurance, touch or immediate forgiveness.
 4. Return to the issue, and name when.

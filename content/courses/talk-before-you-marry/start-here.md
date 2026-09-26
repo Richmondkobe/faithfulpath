@@ -43,7 +43,7 @@ The goal is not to become a couple who agrees about everything. It is to become 
 There are **fourteen lessons**, in a deliberate order. Each one depends on the one before it, so please do not skip ahead to the rooms because they look like the practical part.
 
 - **Lessons 1 to 5** build the ability to notice what you avoid, build a relationship in which honesty can be heard, know your own mind, raise something difficult and listen well when your partner speaks.
-- **Lessons 6 to 14** spend that ability in nine "rooms": money, sex, family and boundaries, children, faith and church, roles, past relationships, what you are marrying into, and conflict itself.
+- **Lessons 6 to 14** spend that ability in nine “rooms”: money, sex, family and boundaries, children, faith and church, roles, past relationships, what you are marrying into, and conflict itself.
 
 **One lesson a week is the suggested pace, not a deadline.** All lessons are open to you. Follow the course in order, but do not postpone an urgent concern simply because its room comes later. Address it carefully, and seek appropriate help where needed. Repeat a week whenever a conversation needs more time.
 
@@ -56,8 +56,8 @@ You may stop at any time. Stopping for today is a good way to end.
 ## How to use it
 
 - **Watch, listen or read.** Every lesson has a recording you can watch or listen to, and a full written transcript. Worksheets can be downloaded.
-- **Each of you uses your own account.** Your private preparation belongs to you. Doing a conversation together does not give either of you a right to see the other's private notes.
-- **Do the alone parts alone.** Private preparation gives each of you room to think without watching the other person's reaction. It can help you recognise what you actually believe before you begin the shared conversation.
+- **Each of you uses your own account.** Your private preparation belongs to you. Doing a conversation together does not give either of you a right to see the other’s private notes.
+- **Do the alone parts alone.** Private preparation gives each of you room to think without watching the other person’s reaction. It can help you recognise what you actually believe before you begin the shared conversation.
 - **Use two notebooks, or two copies of each worksheet.** Several exercises ask you to write separately before you compare.
 - **Choose a time when neither of you is tired or rushed.** Take breaks. Adapt the exercises to your language, energy and circumstances. Neither speed nor eloquence is a measure of honesty.
 - **If you are apart,** choose a private video or phone call, agree how to pause, and check that neither of you is being overheard. Do not record personal conversations unless both of you freely agree.
@@ -77,7 +77,7 @@ You may stop at any time. Stopping for today is a good way to end.
 
 Some conversations may feel awkward, tiring or emotional. You may pause, take a break or return another day.
 
-Some situations, however, are different. If you are afraid of your partner's response, or you do not feel free to speak honestly, pause the joint exercises and seek confidential help from someone trained to support you. If you are in immediate danger, contact the emergency service where you are, if you can safely do so.
+Some situations, however, are different. If you are afraid of your partner’s response, or you do not feel free to speak honestly, pause the joint exercises and seek confidential help from someone trained to support you. If you are in immediate danger, contact the emergency service where you are, if you can safely do so.
 
 The full guidance, and where to find help in your country, is on the Safety and Support page. Every lesson links back to it.
 

@@ -31,7 +31,7 @@ Then set aside 45 to 60 minutes, in a private place, when neither of you is tire
 Three things are needed from this conversation:
 
 - Talk about what you were each taught, what you believe now, and what you are nervous about.
-- Agree how you will tell each other what you want and what you do not, and that a "no" will always be respected and never punished.
+- Agree how you will tell each other what you want and what you do not, and that a “no” will always be respected and never punished.
 - Record one agreement, and one matter you will return to or seek help with.
 
 This conversation uses words only. It does not ask you to do anything physical, and it is not a way of testing compatibility.
@@ -47,29 +47,29 @@ You may stop after preparing and return another day. Mark this lesson complete a
 
 ## Need more support?
 
-If you are afraid, feel pressured, or a "no" is not being accepted, stop the joint exercises and seek confidential support independently. You do not have to persuade anyone that your boundary is valid. If you have experienced abuse or coercion, it was not your fault. What happened to you does not reduce your worth or make you unworthy of love. You deserve support at a pace you choose, and you may still need time, care and wise support when deciding whether you are ready for marriage. Visit Safety and Support. If pain or difficulty is involved, speak with a qualified healthcare professional.
+If you are afraid, feel pressured, or a “no” is not being accepted, stop the joint exercises and seek confidential support independently. You do not have to persuade anyone that your boundary is valid. If you have experienced abuse or coercion, it was not your fault. What happened to you does not reduce your worth or make you unworthy of love. You deserve support at a pace you choose, and you may still need time, care and wise support when deciding whether you are ready for marriage. Visit Safety and Support. If pain or difficulty is involved, speak with a qualified healthcare professional.
 
 ## Transcript
 
 Welcome to Lesson 7. This is a lesson about intimacy in marriage, and I want to begin by saying that you may listen privately, and you may stop at any time.
 
-Let's begin with Scripture. First Corinthians chapter 7, verses 3 to 5.
+Let’s begin with Scripture. First Corinthians chapter 7, verses 3 to 5.
 
-"The husband should give to his wife her conjugal rights, and likewise the wife to her husband. For the wife does not have authority over her own body, but the husband does. Likewise the husband does not have authority over his own body, but the wife does. Do not deprive one another, except perhaps by agreement for a limited time, that you may devote yourselves to prayer; but then come together again, so that Satan may not tempt you because of your lack of self-control."
+“The husband should give to his wife her conjugal rights, and likewise the wife to her husband. For the wife does not have authority over her own body, but the husband does. Likewise the husband does not have authority over his own body, but the wife does. Do not deprive one another, except perhaps by agreement for a limited time, that you may devote yourselves to prayer; but then come together again, so that Satan may not tempt you because of your lack of self-control.”
 
 Let me say first what this passage is. Paul is writing to married people in Corinth, answering questions the church had asked him. These words are about marriage. For you, engaged, they shape how you prepare and what you are preparing for.
 
-Now notice how the passage is built. Almost everything in it is said twice. The husband, and likewise the wife. The wife does not have authority over her own body, but the husband does. Likewise the husband does not have authority over his own body, but the wife does. Paul speaks to both spouses, in the same terms, with the same weight. In many settings of his day, duties in marriage were commonly described from the husband's side. Here Paul describes them from both.
+Now notice how the passage is built. Almost everything in it is said twice. The husband, and likewise the wife. The wife does not have authority over her own body, but the husband does. Likewise the husband does not have authority over his own body, but the wife does. Paul speaks to both spouses, in the same terms, with the same weight. In many settings of his day, duties in marriage were commonly described from the husband’s side. Here Paul describes them from both.
 
-Notice what Paul is doing. He addresses each spouse's responsibility to the other. Neither spouse is presented only as a person who may demand. Both are called to give, to care and to act with mutual honour. The older translation "conjugal rights" can sound as if one person holds a claim over the other. Hear it in Paul's own frame: a responsibility of love, in both directions.
+Notice what Paul is doing. He addresses each spouse’s responsibility to the other. Neither spouse is presented only as a person who may demand. Both are called to give, to care and to act with mutual honour. The older translation “conjugal rights” can sound as if one person holds a claim over the other. Hear it in Paul’s own frame: a responsibility of love, in both directions.
 
-And notice the line that is easiest to miss. When Paul speaks of abstaining for a time, he requires agreement: "except perhaps by agreement." That reinforces the mutual pattern running through the passage. Nothing here gives either spouse permission to use force, threats or pressure.
+And notice the line that is easiest to miss. When Paul speaks of abstaining for a time, he requires agreement: “except perhaps by agreement.” That reinforces the mutual pattern running through the passage. Nothing here gives either spouse permission to use force, threats or pressure.
 
 That is the truth this lesson stands on. In marriage, intimacy is mutual. Mutual honour, mutual love, and freely given.
 
-That has sometimes been taught badly. The idea that "each belongs to the other" has occasionally been used as a claim of entitlement, and that reading has done real damage in Christian marriages. So let me say it plainly. Marriage does not give either spouse ownership of the other's body in the sense of removing consent. This passage cannot justify coercion. It is about each person's responsibilities in love, not a method of claiming access to a body against that person's will.
+That has sometimes been taught badly. The idea that “each belongs to the other” has occasionally been used as a claim of entitlement, and that reading has done real damage in Christian marriages. So let me say it plainly. Marriage does not give either spouse ownership of the other’s body in the sense of removing consent. This passage cannot justify coercion. It is about each person’s responsibilities in love, not a method of claiming access to a body against that person’s will.
 
-Consent must be freely given, and it can be withdrawn at any time. Silence, a previous yes, or the marriage itself is not continuing permission. And a "no" must be safe in your marriage. If it is not, that is not a difference of expectation. It is something else, and it needs help from outside the two of you.
+Consent must be freely given, and it can be withdrawn at any time. Silence, a previous yes, or the marriage itself is not continuing permission. And a “no” must be safe in your marriage. If it is not, that is not a difference of expectation. It is something else, and it needs help from outside the two of you.
 
 That is the positive centre of this lesson: honour, love, and intimacy freely given. The rest is preparation for that.
 
@@ -77,13 +77,13 @@ So what usually goes wrong?
 
 The first is silence. Some couples have been taught, rightly, to reserve sex for marriage. Almost none were taught how to talk about it beforehand. So they arrive at the wedding having thoroughly discussed the venue, the finances and where they will live, and having said almost nothing about intimacy.
 
-The second is shame about the questions themselves. Someone has real questions about desire, their body, their history or their fears, and cannot ask them, because a voice says a good Christian shouldn't even be thinking about this. That produces a lonely position: holding expectations while feeling guilty for having questions.
+The second is shame about the questions themselves. Someone has real questions about desire, their body, their history or their fears, and cannot ask them, because a voice says a good Christian shouldn’t even be thinking about this. That produces a lonely position: holding expectations while feeling guilty for having questions.
 
 The third is mistaking attraction for preparation. A couple can have strong feelings and completely different expectations about affection, initiation, frequency and boundaries. Feelings tell you almost nothing about those.
 
 The fourth is imported expectations, from films, from friends, from pornography, from romantic novels. Most people do not know they are carrying them until reality contradicts them.
 
-And the largest misconception of all: "Once we're married, it will all happen naturally." Within the Christian understanding used in this course, the wedding changes the relationship's commitments. It does not make comfort, confidence or shared desire automatic.
+And the largest misconception of all: “Once we’re married, it will all happen naturally.” Within the Christian understanding used in this course, the wedding changes the relationship’s commitments. It does not make comfort, confidence or shared desire automatic.
 
 > Pause here. What did you learn about this subject growing up, from your family, your church or your friends? Take a moment before you go on.
 
@@ -93,7 +93,7 @@ Here are the kinds of questions that help. What did my family teach me about sex
 
 Take the pressure off the wedding night. Films have trained us to expect something effortless and unforgettable. The reality is often less cinematic. You may be exhausted. You may be nervous. You may laugh. You may need to stop. None of that means anything is wrong with your marriage. The wedding night is the beginning of learning each other. It is not an examination. And the first months will have a learning curve, because there is one. Do not turn your first experiences into a verdict on your marriage.
 
-What you need is the ability to say, without drama, "Can we try that differently?" "I like this." "I'm not comfortable with that." "I need more time." And, "I'm not in the mood tonight, but I want to be close to you." That last one is optional. You do not owe affection, an alternative or an immediate explanation to make a no valid. When it feels safe, a later conversation may help you understand and care for one another.
+What you need is the ability to say, without drama, “Can we try that differently?” “I like this.” “I’m not comfortable with that.” “I need more time.” And, “I’m not in the mood tonight, but I want to be close to you.” That last one is optional. You do not owe affection, an alternative or an immediate explanation to make a no valid. When it feels safe, a later conversation may help you understand and care for one another.
 
 A few plain words about health. Pain is a reason to stop, not a test of commitment. If intimacy is painful or remains difficult, speak with a qualified healthcare professional rather than trying to endure it. Before marriage, ask a healthcare professional about sexual health testing, contraception and any medication concerns. That is preparation, not accusation.
 
@@ -105,19 +105,19 @@ Then set aside 45 to 60 minutes, in a private place, when neither of you is tire
 
 Then agree together how you will tell each other what you want, and what you do not. And agree that a no will always be respected and never punished. Record one agreement, and one matter you will return to or seek help with.
 
-Finally, if you both feel able, each answer one question: "Is there anything about my history, my struggles or my expectations that you need to know before we marry?" You do not owe graphic details, and you do not owe an account of experiences you did not choose. Share what is relevant to health, consent, current commitments and expectations, at a pace you control. If something difficult comes out, listen without pressing for details. Thank the person, ask what support they want, and allow time before you respond further.
+Finally, if you both feel able, each answer one question: “Is there anything about my history, my struggles or my expectations that you need to know before we marry?” You do not owe graphic details, and you do not owe an account of experiences you did not choose. Share what is relevant to health, consent, current commitments and expectations, at a pace you control. If something difficult comes out, listen without pressing for details. Thank the person, ask what support they want, and allow time before you respond further.
 
 This conversation uses words only. Nothing in it asks you to do anything physical.
 
 Let me close with a short prayer.
 
-Lord, You made us for love, and You call us to honour. Keep us from shame, and keep us from pressure. Give us words to speak with honesty and patience. Where we are afraid, give us courage. Where we carry pain, give us care. Make our marriage a place where a "no" is safe and a "yes" is freely given. Amen.
+Lord, You made us for love, and You call us to honour. Keep us from shame, and keep us from pressure. Give us words to speak with honesty and patience. Where we are afraid, give us courage. Where we carry pain, give us care. Make our marriage a place where a “no” is safe and a “yes” is freely given. Amen.
 
-I'll see you in Lesson 8.
+I’ll see you in Lesson 8.
 
 ## Worksheet
 
-*From the book's Chapter 6, Room 2. Downloadable. Complete on your own device or on paper. Keep private health details out of any shared worksheet unless you freely choose to include them.*
+*From the book’s Chapter 6, Room 2. Downloadable. Complete on your own device or on paper. Keep private health details out of any shared worksheet unless you freely choose to include them.*
 
 **Before you begin**
 
@@ -165,7 +165,7 @@ If something difficult comes out, listen without pressing for details. Thank the
 **If you find a real difference**
 
 - **Different expectations about frequency.** Discuss the difference without declaring one level correct or promising a quota. Consent applies each time. If the difference causes ongoing distress, seek qualified support together, but only where the relationship is safe.
-- **Different comfort levels.** The more cautious person's boundary holds in that moment and must never be pressured. Any later change must be freely chosen, not treated as an obstacle the other person is entitled to overcome.
+- **Different comfort levels.** The more cautious person’s boundary holds in that moment and must never be pressured. Any later change must be freely chosen, not treated as an obstacle the other person is entitled to overcome.
 - **Pornography, past or present.** If either of you is struggling, say so now. Pornography does not place anyone beyond grace, but marriage will not resolve it. An active or concealed pattern needs honest attention, accountability and appropriate help, and it may be wise to postpone marriage while it is being addressed.
 - **Painful experiences that still affect you.** Abuse or coercion was not your fault. What happened to you does not reduce your worth or make you unworthy of love. You deserve support at a pace you choose, and a qualified counsellor with trauma expertise can help. You may still need time, care and wise support when deciding whether you are ready for marriage.
 - **Pressure, coercion, or a refusal not being accepted.** Stop the joint exercises and seek confidential support independently. You do not have to persuade your partner that your boundary is valid.

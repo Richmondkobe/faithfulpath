@@ -33,11 +33,11 @@ Three things are needed from this conversation:
 
 - Say honestly where you each stand on becoming parents, and whether either of you is uncertain.
 - Talk about the timing and family size you presently imagine, and whether you are each saying yes because you mean it.
-- Record each person's present position, and choose which of the further conversations you will continue and when.
+- Record each person’s present position, and choose which of the further conversations you will continue and when.
 
 Do not treat uncertainty as agreement. Do not settle a genuine difference by persuading, pressing or promising something you do not mean.
 
-You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded each person's present position.
+You may stop after preparing and return another day. Mark this lesson complete after you have held the conversation and recorded each person’s present position.
 
 ## If it helps, tell someone
 
@@ -50,21 +50,21 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 9. This room is about children, and it is one where two people can say the same word and mean very different things.
 
-Let's begin with Scripture. James chapter 4, verses 13 to 15.
+Let’s begin with Scripture. James chapter 4, verses 13 to 15.
 
-"Come now, you who say, 'Today or tomorrow we will go into such and such a town and spend a year there and trade and make a profit'; yet you do not know what tomorrow will bring. What is your life? For you are a mist that appears for a little time and then vanishes. Instead you ought to say, 'If the Lord wills, we will live and do this or that.'"
+“Come now, you who say, ‘Today or tomorrow we will go into such and such a town and spend a year there and trade and make a profit’; yet you do not know what tomorrow will bring. What is your life? For you are a mist that appears for a little time and then vanishes. Instead you ought to say, ‘If the Lord wills, we will live and do this or that.’”
 
 First, what this passage is not. It is not about children, and it is not a rule against planning. James is speaking to people who make confident business plans, a town, a year, a profit, as though tomorrow were theirs to command.
 
-His concern is not planning. It is presumption: speaking as though the future belongs to us. "You do not know what tomorrow will bring." Our lives, he says, are like a mist that appears for a little while and then vanishes.
+His concern is not planning. It is presumption: speaking as though the future belongs to us. “You do not know what tomorrow will bring.” Our lives, he says, are like a mist that appears for a little while and then vanishes.
 
-And then his instruction: hold your plans with humility. "If the Lord wills." That is not a formula to avoid honest conversation, and it is not a reason to plan nothing. It is a way of holding what we plan with open hands.
+And then his instruction: hold your plans with humility. “If the Lord wills.” That is not a formula to avoid honest conversation, and it is not a reason to plan nothing. It is a way of holding what we plan with open hands.
 
 That is the truth this lesson stands on. You can plan for children. You cannot control how parenthood unfolds.
 
@@ -76,9 +76,9 @@ So do not only discuss the child you hope for. Discuss how you will treat each o
 
 Here is how it usually goes wrong.
 
-Two people say, "We both want children," and hold an enormous disagreement without knowing it. They agree on the destination and never discuss the journey. Underneath the yes: one pictures three children and the other has always assumed two. One assumes a parent stays home for the first years. The other assumes both keep working. One expects firm discipline because that is how they were raised. The other believes in something much gentler. One expects grandparents deeply involved. The other wants a self-contained household.
+Two people say, “We both want children,” and hold an enormous disagreement without knowing it. They agree on the destination and never discuss the journey. Underneath the yes: one pictures three children and the other has always assumed two. One assumes a parent stays home for the first years. The other assumes both keep working. One expects firm discipline because that is how they were raised. The other believes in something much gentler. One expects grandparents deeply involved. The other wants a self-contained household.
 
-Then the question of timing, which catches more couples than any of these. "I'd like children fairly soon after we marry." "I assumed we'd have a few years to ourselves first." Both said yes. Neither said when. So name the years, not the vague intention.
+Then the question of timing, which catches more couples than any of these. “I’d like children fairly soon after we marry.” “I assumed we’d have a few years to ourselves first.” Both said yes. Neither said when. So name the years, not the vague intention.
 
 Sometimes the real disagreement is about what children mean. For one person, they are family, continuity, the point of it all. For another they are responsibility, financial pressure, or something closer to fear. Those meanings drive the practical positions, and they rarely get said out loud.
 
@@ -92,7 +92,7 @@ Another question prepares you for the central fact of parenthood: how would we s
 
 If you are unable to have the children you hoped for, you need to be able to grieve together rather than looking for whose fault it is. Grief does not look the same in two people, and the quieter one is not indifferent. If you come to disagree about treatment, or adoption, or when to stop trying, those conversations need compassion rather than accusation. They are among the hardest a marriage can face.
 
-Now, one more thing, and it needs to be said plainly, because it happens. One says, "You promised me we'd have children." The other says, "I know what I said when we were engaged. I don't feel the same way now." There is no clean answer to that. You cannot make someone genuinely want to be a parent, and a change of mind here has profound consequences. A change of mind about parenthood can bring profound grief and may create a difference the couple cannot resolve.
+Now, one more thing, and it needs to be said plainly, because it happens. One says, “You promised me we’d have children.” The other says, “I know what I said when we were engaged. I don’t feel the same way now.” There is no clean answer to that. You cannot make someone genuinely want to be a parent, and a change of mind here has profound consequences. A change of mind about parenthood can bring profound grief and may create a difference the couple cannot resolve.
 
 So here is the instruction for right now: do not make a promise about children casually because you are afraid of losing the relationship. That is the people-pleasing from Lesson 1, applied to the highest-stakes subject available. And do not assume that marriage will settle it, that if you say yes now you will come to mean it, or that they will come round.
 
@@ -100,7 +100,7 @@ If one of you definitely wants children and the other definitely does not, that 
 
 If one of you is simply unsure, ask what the uncertainty means without assuming it is fear to be overcome. It may reflect priorities, health, ambivalence or a wish not to parent. Allow honest uncertainty and avoid persuasion disguised as reassurance.
 
-Where you are united in wanting children, the most useful preparation is not agreeing about names or schools. It is being able to say, and mean: "We don't know what parenthood will bring. Whatever comes, we will not turn on each other because it didn't match what we imagined."
+Where you are united in wanting children, the most useful preparation is not agreeing about names or schools. It is being able to say, and mean: “We don’t know what parenthood will bring. Whatever comes, we will not turn on each other because it didn’t match what we imagined.”
 
 Your step has two parts. First, about twenty minutes alone with the questions in the worksheet. Do I want to become a parent, not plan to become a parent, or am I uncertain? What do I imagine children will bring? Am I afraid of anything about becoming a parent? How was I disciplined, and what would I keep? What would I never repeat? You do not have to write anything down.
 
@@ -110,17 +110,17 @@ If you feel uncertain, name it honestly now. You do not need immediate certainty
 
 There are other important conversations: work and childcare, discipline, and what you will do if it does not go to plan. You do not need to finish them today. Choose which you will continue, and when.
 
-Before you leave, record each person's present position on children and timing. Do not treat uncertainty as agreement. And list any information or professional advice you need.
+Before you leave, record each person’s present position on children and timing. Do not treat uncertainty as agreement. And list any information or professional advice you need.
 
 Let me close with a short prayer.
 
-Lord, we hold our plans before You. Give us honesty about what we want and what we fear. If children come, make us gentle. If they do not, or if the way is hard, keep us from turning on each other. Teach us to say "If the Lord wills," without losing our courage to speak the truth. Amen.
+Lord, we hold our plans before You. Give us honesty about what we want and what we fear. If children come, make us gentle. If they do not, or if the way is hard, keep us from turning on each other. Teach us to say “If the Lord wills,” without losing our courage to speak the truth. Amen.
 
-I'll see you in Lesson 10.
+I’ll see you in Lesson 10.
 
 ## Worksheet
 
-*From the book's Chapter 6, Room 4. Downloadable. Complete on your own device or on paper.*
+*From the book’s Chapter 6, Room 4. Downloadable. Complete on your own device or on paper.*
 
 **Before you begin**
 
@@ -153,15 +153,15 @@ You do not need to finish these today. Choose which you will continue, and when.
 
 **If you find a real difference**
 
-- **Different numbers.** Two versus four may be negotiable, or may reflect a deeper difference. Do not assume having one child will change anyone's mind. Treat decisions about each pregnancy and family size as requiring continuing, freely given agreement.
+- **Different numbers.** Two versus four may be negotiable, or may reflect a deeper difference. Do not assume having one child will change anyone’s mind. Treat decisions about each pregnancy and family size as requiring continuing, freely given agreement.
 - **Different timing.** Very common and genuinely important. Name the years, not the vague intention.
-- **Different parenting philosophies.** Discuss differences respectfully and privately where possible. If a child is being frightened, humiliated or harmed, intervene calmly to protect them. Presenting a united front never takes priority over a child's safety.
+- **Different parenting philosophies.** Discuss differences respectfully and privately where possible. If a child is being frightened, humiliated or harmed, intervene calmly to protect them. Presenting a united front never takes priority over a child’s safety.
 - **One wants children, one is unsure.** Ask what the uncertainty means without assuming it is fear to be overcome. Allow honest uncertainty and avoid persuasion disguised as reassurance.
 - **One wants children, one does not.** Take this seriously as a possible fundamental incompatibility. Seek help to understand your choices, not to pressure either person into parenthood. Do not marry on the assumption that one of you will change your mind.
 
 **Before you leave the room**
 
-- Each person's present position on parenthood and timing (do not treat uncertainty as agreement):
+- Each person’s present position on parenthood and timing (do not treat uncertainty as agreement):
 - How we will treat each other if it does not go to plan:
 - Information or professional advice we need:
 - Date we will return to it:

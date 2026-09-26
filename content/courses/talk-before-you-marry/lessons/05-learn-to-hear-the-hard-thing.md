@@ -45,67 +45,67 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 5.
 
-Let's begin with Scripture. James chapter 1, verses 19 and 20.
+Let’s begin with Scripture. James chapter 1, verses 19 and 20.
 
-"Know this, my beloved brothers: let every person be quick to hear, slow to speak, slow to anger; for the anger of man does not produce the righteousness of God."
+“Know this, my beloved brothers: let every person be quick to hear, slow to speak, slow to anger; for the anger of man does not produce the righteousness of God.”
 
 James is writing to believers who are under strain, scattered and facing pressure. In the middle of that, he gives a very ordinary instruction about how to conduct yourself with other people.
 
 Notice the order. Quick to hear. Slow to speak. Slow to anger. It is a deliberate sequence. Listening comes first, and it is meant to be quick, eager, ready. Speaking is meant to be slower. And anger is held back further still.
 
-Then James gives his reason: "the anger of man does not produce the righteousness of God." He is not saying we should never feel anger. He is saying that human anger does not produce the righteousness God desires.
+Then James gives his reason: “the anger of man does not produce the righteousness of God.” He is not saying we should never feel anger. He is saying that human anger does not produce the righteousness God desires.
 
 Notice what this means for a hard conversation. In Lesson 4, we spoke about the person who raises something difficult. This lesson is about the person who receives it, and it is the harder side. Most people find it easier to raise a difficult subject than to sit still while one is raised about them.
 
 James does not ask you to agree with everything. He asks you to be quick to hear. Hearing is where wisdom begins, and the book of Proverbs says the same. Proverbs 12:1 links loving knowledge with being willing to receive correction. That verse is a challenge to me: am I willing to learn? It is not a verse to quote at my partner. Humility is not thinking poorly of yourself. It is being genuinely willing to discover that you were wrong about something, from the person who has to live with the effect of it. Your partner is well placed to tell you how your behaviour has affected them, even when you understand the situation differently.
 
-So let's look at what happens when we do the opposite.
+So let’s look at what happens when we do the opposite.
 
-A partner says, "I feel like you don't listen to me when we're making decisions."
+A partner says, “I feel like you don’t listen to me when we’re making decisions.”
 
-The defensive reply is: "That's not true. I listen to you all the time. You're always complaining about something."
+The defensive reply is: “That’s not true. I listen to you all the time. You’re always complaining about something.”
 
 Notice the two moves in that one sentence. It denies her experience. And then it makes her the problem for having reported it. Both happen in under three seconds.
 
 The first time, she will probably argue back. The second time, she will explain less, a shorter version, offered more carefully. The third or fourth time, she may not bring it up at all.
 
-Here is what makes this so dangerous. The relationship will appear to improve. You will notice, with some relief, that you hardly argue any more. What has actually happened is that one person has learned a lesson: when I tell the truth about how I feel, I pay for it. So they begin to edit. "I'm fine" when they are not. Whole subjects quietly disappear. And you will not see it happening, because from where you stand, everything is calm.
+Here is what makes this so dangerous. The relationship will appear to improve. You will notice, with some relief, that you hardly argue any more. What has actually happened is that one person has learned a lesson: when I tell the truth about how I feel, I pay for it. So they begin to edit. “I’m fine” when they are not. Whole subjects quietly disappear. And you will not see it happening, because from where you stand, everything is calm.
 
 If you punish honesty, do not be surprised when you eventually receive silence.
 
 Now, defensiveness can come from shame, fear, feeling misunderstood, or habit. You may be feeling all of that. You can feel threatened by criticism and still choose not to attack, dismiss or silence the person speaking. But your partner cannot see your shame. They can only see the door closing.
 
-Here is the alternative, and it is simple. When she says, "I feel like your work is becoming more important than our relationship," he does not need to reply straight away. He can say, "What makes you feel that way?" And then he listens. Without correcting, without explaining, without inserting the context that would make it all reasonable. Those things can wait five minutes. They will not become less true in that time.
+Here is the alternative, and it is simple. When she says, “I feel like your work is becoming more important than our relationship,” he does not need to reply straight away. He can say, “What makes you feel that way?” And then he listens. Without correcting, without explaining, without inserting the context that would make it all reasonable. Those things can wait five minutes. They will not become less true in that time.
 
 > Pause here. When someone criticises you, what do you usually do? Go quiet, explain, counter-attack, or apologise quickly to make it stop? Take a moment before you go on.
 
 Understanding is not agreement. You can understand exactly why she felt neglected while also believing your hours were necessary. Both can be true. Listening first does not concede the point. It just puts the two halves in a workable order.
 
-So here is the most useful technique I know. Before you respond, summarise the other person's point and ask whether you have it right. "So you're not saying I can't work late. You're saying that when I work late without telling you, you feel like you weren't part of the decision. Have I got that right?" That does not agree, and it does not apologise. It checks. And it gives her something valuable: the experience of being accurately understood by the person she is upset with. It also often shows that you had it wrong. He assumed she was objecting to the work. She was objecting to being told after the fact. Those need completely different responses.
+So here is the most useful technique I know. Before you respond, summarise the other person’s point and ask whether you have it right. “So you’re not saying I can’t work late. You’re saying that when I work late without telling you, you feel like you weren’t part of the decision. Have I got that right?” That does not agree, and it does not apologise. It checks. And it gives her something valuable: the experience of being accurately understood by the person she is upset with. It also often shows that you had it wrong. He assumed she was objecting to the work. She was objecting to being told after the fact. Those need completely different responses.
 
 Then it becomes a conversation, and both of you speak. If repeated attempts do not help, pause and ask for support. Neither person should control the conversation by withholding permission to reply. And you do not have to stay in a conversation that becomes harmful.
 
-Next, find the information. Criticism comes in two parts: what is said, and how it was said. Your partner says, "You never listen to me." And the word "never" is not accurate. So the door opens: "That's ridiculous. I listen to you all the time." Now the conversation is about the word "never." You will probably win that argument, and you will have won nothing. Underneath is something real: there are times when I do not feel heard by you.
+Next, find the information. Criticism comes in two parts: what is said, and how it was said. Your partner says, “You never listen to me.” And the word “never” is not accurate. So the door opens: “That’s ridiculous. I listen to you all the time.” Now the conversation is about the word “never.” You will probably win that argument, and you will have won nothing. Underneath is something real: there are times when I do not feel heard by you.
 
-There is a question that separates the two. "The way you said that hurt me. But is there something you're trying to tell me that I need to understand?" That registers the hurt, and it still goes after the content.
+There is a question that separates the two. “The way you said that hurt me. But is there something you’re trying to tell me that I need to understand?” That registers the hurt, and it still goes after the content.
 
-Now, not everything you hear will be true. Sometimes your partner will misunderstand, or exaggerate, or speak out of a bad day. Marriage does not require you to accept every accusation. A person who does that ends up apologising for things they did not do, which is its own kind of dishonesty. But you are not choosing between "everything my partner says is true" and "everything my partner says is an attack." There is a third position: let me listen for what may be true in what I am hearing. There may be something true in what you hear. Examine it honestly, without accepting what is untrue.
+Now, not everything you hear will be true. Sometimes your partner will misunderstand, or exaggerate, or speak out of a bad day. Marriage does not require you to accept every accusation. A person who does that ends up apologising for things they did not do, which is its own kind of dishonesty. But you are not choosing between “everything my partner says is true” and “everything my partner says is an attack.” There is a third position: let me listen for what may be true in what I am hearing. There may be something true in what you hear. Examine it honestly, without accepting what is untrue.
 
-And listening has to arrive somewhere. Being heard, then seeing nothing change, is discouraging. So when you have heard a hard thing, decide what a faithful response would be. Sometimes it requires an apology. Sometimes a change in behaviour, with specifics. "I'll do better" is not a plan. "From now on, anything over this amount we decide together" is. Sometimes a boundary. Sometimes another conversation at a better time. And sometimes: "I understand your concern, and I don't agree." Any of these can be right. What must not happen is pretending the conversation never occurred. Give an honest response, even if you need time or do not agree.
+And listening has to arrive somewhere. Being heard, then seeing nothing change, is discouraging. So when you have heard a hard thing, decide what a faithful response would be. Sometimes it requires an apology. Sometimes a change in behaviour, with specifics. “I’ll do better” is not a plan. “From now on, anything over this amount we decide together” is. Sometimes a boundary. Sometimes another conversation at a better time. And sometimes: “I understand your concern, and I don’t agree.” Any of these can be right. What must not happen is pretending the conversation never occurred. Give an honest response, even if you need time or do not agree.
 
-If what you heard is too big to answer straight away, you may say so: "I need to think about this properly. I'll come back to it on Thursday." That is a good sentence, unless it becomes an escape. Name the day, and come back.
+If what you heard is too big to answer straight away, you may say so: “I need to think about this properly. I’ll come back to it on Thursday.” That is a good sentence, unless it becomes an escape. Name the day, and come back.
 
 Your step is to hold the conversation you prepared in Lesson 4. Set aside about 75 minutes.
 
 If you are the one who will listen, spend fifteen minutes first on three questions. What do I usually do when I feel criticised? Go quiet, explain, counter-attack, apologise to make it stop, get logical? Name yours. You have one. What is my early warning sign? Perhaps a tightness, a heat, a sudden clarity about what you are about to say. When you feel it, that is your signal to ask a question instead. And what is the sentence I most want to say tonight, and am going to hold? Write it down so it is out of your head and on the page.
 
-Then begin. The one raising it reads their three sentences and stops. The listener asks a question first. "Help me understand what that was like." Then say back what you heard, in your own words, and ask whether it is accurate. Only then respond. If you notice your warning sign, ask another question instead of answering. That substitution, a question in place of a defence, is the whole skill.
+Then begin. The one raising it reads their three sentences and stops. The listener asks a question first. “Help me understand what that was like.” Then say back what you heard, in your own words, and ask whether it is accurate. Only then respond. If you notice your warning sign, ask another question instead of answering. That substitution, a question in place of a defence, is the whole skill.
 
 Then give a faithful response, out loud. Here is what I am going to change, specifically. Or, here is what I understand, and here is where I disagree. Or, I need time, and I will come back on this day. Or, here is what I can do, and here is what I cannot.
 
@@ -115,17 +115,17 @@ Let me close with a short prayer.
 
 Lord, make me quick to hear, and slow to speak, and slow to anger. When I am criticised, keep me from defending myself before I have understood. Help me receive what is true, examine what is uncertain, and respond without contempt. And where I have to disagree, help me do it kindly. Amen.
 
-I'll see you in Lesson 6.
+I’ll see you in Lesson 6.
 
 ## Worksheet
 
-*From the book's Chapter 5 exercise, "The Other Side", adapted for the course sequence. Downloadable. Complete on your own device or on paper.*
+*From the book’s Chapter 5 exercise, “The Other Side”, adapted for the course sequence. Downloadable. Complete on your own device or on paper.*
 
 **Before you begin**
 
 This is the conversation you prepared in Lesson 4. Review the rules you agreed in Lesson 2 together for a few minutes. Then confirm the three practical points: who raises the subject, when, and a forty-minute limit for the conversation, with ten more minutes to review it.
 
-Before you start, the receiver may reflect privately on this question: *What response am I already preparing before I have listened?* You do not have to share your answer. The preparation should make space for the speaker's voice.
+Before you start, the receiver may reflect privately on this question: *What response am I already preparing before I have listened?* You do not have to share your answer. The preparation should make space for the speaker’s voice.
 
 **Part One. Prepare (15 minutes, separately)**
 
@@ -153,18 +153,18 @@ If you notice your warning sign at any point, ask another question instead of an
 
 Do not end on understanding alone. The receiver answers, out loud, one of these four:
 
-- *Here is what I'm going to change, specifically:*
+- *Here is what I’m going to change, specifically:*
 - *Here is what I understand, and here is where I disagree:*
-- *I need time to think about this properly. I'll come back to it on:*
-- *Here is what I can do, and here is what I can't:*
+- *I need time to think about this properly. I’ll come back to it on:*
+- *Here is what I can do, and here is what I can’t:*
 
 Then write it down:
 
 - What I heard:
-- What I'm going to do about it:
+- What I’m going to do about it:
 - By when:
 
-A vague commitment such as "I'll do better" is not a plan. Make it specific enough that you will both recognise whether it happened. You do not have to confess to something untrue in order to end the conversation.
+A vague commitment such as “I’ll do better” is not a plan. Make it specific enough that you will both recognise whether it happened. You do not have to confess to something untrue in order to end the conversation.
 
 **Part Four. Review together (10 minutes)**
 

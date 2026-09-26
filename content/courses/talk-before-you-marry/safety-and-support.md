@@ -26,9 +26,9 @@ Please stop the joint exercises and seek help from someone trained to support yo
 - You are afraid of how your partner will respond to something you want to say.
 - You do not feel free to say no, to disagree, or to speak honestly.
 - You are threatened, insulted, followed, monitored or controlled, or your money, phone, movements or friendships are controlled.
-- Anger, jealousy or "concern" is used to make you change what you say or do.
+- Anger, jealousy or “concern” is used to make you change what you say or do.
 - You have been pressured, forced or frightened in a sexual way.
-- Your partner uses Scripture, "roles" or your faith to silence you or to make you feel that refusing or leaving would be sinful.
+- Your partner uses Scripture, “roles” or your faith to silence you or to make you feel that refusing or leaving would be sinful.
 - You have been hurt, or you are afraid you will be.
 
 You do not need to choose a label or make a final decision today. These signs are enough reason to pause and seek private specialist advice, because a joint conversation is not the safest next step. Abuse is not a communication problem that two people share equally, and it is never the fault of the person who is being harmed.
@@ -39,7 +39,7 @@ If you are the one who is causing fear or harm to your partner, please stop, and
 
 If someone else may see your phone, computer or accounts:
 
-- Use a device and account the other person cannot access, if you can safely do so, such as a library or a trusted friend's device.
+- Use a device and account the other person cannot access, if you can safely do so, such as a library or a trusted friend’s device.
 - Private browsing may leave less information on the device after you close it, but it cannot hide activity from every form of monitoring.
 - Sign out when you finish. On a public or shared device, do not save passwords or downloads.
 - Keep worksheets on paper somewhere private, or do not write sensitive things down at all. You may hold the reflections in thought or prayer.

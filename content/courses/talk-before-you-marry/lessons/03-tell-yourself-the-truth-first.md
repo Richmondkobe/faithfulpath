@@ -26,7 +26,7 @@ audio: null
 
 Start with three questions. They take about 30 minutes. Choose a private time and place, and write in whatever way helps you think honestly, or hold your answers in thought and prayer.
 
-1. When have I thought, "of course they should have known better"? What was the rule underneath it?
+1. When have I thought, “of course they should have known better”? What was the rule underneath it?
 2. What did my family always do that I assumed every married couple does?
 3. What would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all?
 
@@ -47,21 +47,21 @@ You may mark this lesson complete after you have worked through the first three 
 
 ## Need more support?
 
-If you are working through this alone and it stirs up something painful, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response, or someone might use what you write to harm you, keep nothing written where they could find it, and visit Safety and Support.
+If you are working through this alone and it stirs up something painful, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response, or someone might use what you write to harm you, keep nothing written where they could find it, and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 3.
 
-Let's begin with Scripture. Psalm 139, verses 23 and 24.
+Let’s begin with Scripture. Psalm 139, verses 23 and 24.
 
-"Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!"
+“Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!”
 
-Notice how personal this prayer is. The psalmist is speaking directly to God: "Search me... know my heart... lead me." Before this truth is discussed with anyone else, it is brought honestly before God.
+Notice how personal this prayer is. The psalmist is speaking directly to God: “Search me... know my heart... lead me.” Before this truth is discussed with anyone else, it is brought honestly before God.
 
-Notice, too, who does the searching. The psalmist does not say, "Let me examine myself and report back." He says, "Search me, O God." He asks God to look into places he cannot see clearly himself.
+Notice, too, who does the searching. The psalmist does not say, “Let me examine myself and report back.” He says, “Search me, O God.” He asks God to look into places he cannot see clearly himself.
 
-And notice where the prayer goes. It begins with "search me" and it ends with "lead me." It is not an invitation to self-condemnation. It is an invitation to be honestly known, and then guided.
+And notice where the prayer goes. It begins with “search me” and it ends with “lead me.” It is not an invitation to self-condemnation. It is an invitation to be honestly known, and then guided.
 
 That is the truth this lesson stands on. You cannot say what you have not admitted. And it is difficult to bring an honest self into marriage if you have never taken time to meet that self alone before God.
 
@@ -79,31 +79,31 @@ Here is how it often looks.
 
 A couple marries, and within a few months she finds that he makes plans with friends without mentioning them to her first. She is not mildly irritated. She is deeply upset, in a way that surprises even her.
 
-"What did you expect him to do instead?" "I don't know. I just thought he would know to tell me."
+“What did you expect him to do instead?” “I don’t know. I just thought he would know to tell me.”
 
-That sentence is where the work starts. So we slow down. "Why did you think he would know?" A pause. And then: "Because that's what my father did. He and my mother always talked about plans first."
+That sentence is where the work starts. So we slow down. “Why did you think he would know?” A pause. And then: “Because that’s what my father did. He and my mother always talked about plans first.”
 
 There it is. She was not being unreasonable. She held a picture of what consideration looks like in a marriage, real and specific, and nobody had ever asked her to say it aloud. To her it was not an expectation at all. It was simply what married people do.
 
 We all carry rules like that. Much of your idea of normal was shaped by your family, culture, church and earlier relationships. You absorbed it long before you chose it, and you stopped noticing it the way you stopped noticing your own accent. Other expectations may come from convictions you have examined and chosen. The important thing is to know the difference. And the person you are preparing to marry absorbed theirs somewhere else.
 
-So here is a useful question to ask yourself: When have I thought, about anyone, "of course they should have known better"? That sentence may point to a rule you have never named.
+So here is a useful question to ask yourself: When have I thought, about anyone, “of course they should have known better”? That sentence may point to a rule you have never named.
 
 Now, before you decide that your partner is inconsiderate, selfish or distant, put one question in front of that conclusion: have they broken an agreement we made, or a rule I never told them existed? A broken agreement calls for accountability. An unspoken expectation calls for clarification. Neither excuses disrespect or harm.
 
-> Pause here. When have you thought, "of course they should have known better"? Take a moment before you go on.
+> Pause here. When have you thought, “of course they should have known better”? Take a moment before you go on.
 
 Next, not every expectation weighs the same. Sort them into three.
 
-A preference is something you would like and could live without. "I'd prefer we spend most evenings together."
+A preference is something you would like and could live without. “I’d prefer we spend most evenings together.”
 
-A conviction is something you hold because of your faith, your values or your understanding of what marriage is. It deserves real discussion, because everything else is built on top of it. But calling something a conviction does not automatically make your interpretation correct. A conviction should still be examined carefully in Scripture, explained honestly and discussed without using God's name to silence the other person.
+A conviction is something you hold because of your faith, your values or your understanding of what marriage is. It deserves real discussion, because everything else is built on top of it. But calling something a conviction does not automatically make your interpretation correct. A conviction should still be examined carefully in Scripture, explained honestly and discussed without using God’s name to silence the other person.
 
 A deal-breaker is something you could not accept in a marriage at all.
 
 Two questions help you begin the sorting. Is this something I need, something I believe, or something I simply like? And: if this never changed, could I freely and faithfully choose this marriage without quietly expecting my partner to become someone different? These questions begin the sorting. They do not settle it. Look at the practical consequences, not only the label.
 
-Two failures are common. The first is inflation: turning a preference into a test of love. "If you loved me, you would do this." That sentence is very effective, which is why people reach for it, and it is almost always untrue. Your partner can love you entirely and still not have known you wanted the dishes done before bed.
+Two failures are common. The first is inflation: turning a preference into a test of love. “If you loved me, you would do this.” That sentence is very effective, which is why people reach for it, and it is almost always untrue. Your partner can love you entirely and still not have known you wanted the dishes done before bed.
 
 The second is the opposite. Some people deflate everything. They talk themselves out of every expectation, decide nothing is worth raising, and arrive at the wedding having agreed to a marriage they never actually wanted. That is not humility. That is Lesson 1 with better vocabulary.
 
@@ -111,13 +111,13 @@ And there is a trap especially for Christians. It is very easy to turn a prefere
 
 Do not call something a deal-breaker because you are angry about it today. But a boundary can still be real when you are upset. If you find a serious concern, you may pause the conversation, or the engagement, and seek advice. You do not need to suppress it to keep the atmosphere calm.
 
-Last, be specific. Couples tell me, "We agree about money. We agree about children. We're on the same page about faith." Then I ask what that means in practice, and the room goes quiet. They have exchanged headlines and assumed the articles underneath were the same. "I want us to be financially responsible" tells you nothing. "I want us to talk before either of us spends more than a figure we agree on" is something you can act on.
+Last, be specific. Couples tell me, “We agree about money. We agree about children. We’re on the same page about faith.” Then I ask what that means in practice, and the room goes quiet. They have exchanged headlines and assumed the articles underneath were the same. “I want us to be financially responsible” tells you nothing. “I want us to talk before either of us spends more than a figure we agree on” is something you can act on.
 
-So don't only tell yourself what you believe. Write down what you want your life to look like. And if you find you do not know what you want, that is a real answer. "I don't know how I feel about my mother living with us eventually" is far more useful than a confident answer you invented to avoid looking unprepared.
+So don’t only tell yourself what you believe. Write down what you want your life to look like. And if you find you do not know what you want, that is a real answer. “I don’t know how I feel about my mother living with us eventually” is far more useful than a confident answer you invented to avoid looking unprepared.
 
 Your step is to begin the Private Inventory, alone.
 
-Start with three questions, about 30 minutes in all. When have I thought, "of course they should have known better," and what was the rule underneath? What did my family always do that I assumed every married couple does? And what would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all? The third is the sharpest. Give it time.
+Start with three questions, about 30 minutes in all. When have I thought, “of course they should have known better,” and what was the rule underneath? What did my family always do that I assumed every married couple does? And what would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all? The third is the sharpest. Give it time.
 
 The rest of the inventory is longer, so spread it over several sittings.
 
@@ -133,11 +133,11 @@ Let me close with a short prayer.
 
 Lord, You know me better than I know myself. Search me, and show me what I have not yet seen. Where I have been dishonest with myself, forgive me. Where I have carried expectations without examining them, give me wisdom to understand them. Show me what to keep, what to speak and what to release. Lead me in the way everlasting. Amen.
 
-I'll see you in Lesson 4.
+I’ll see you in Lesson 4.
 
 ## Worksheet
 
-*From the book's Chapter 3 exercise. Downloadable. Complete on your own device or on paper. This is for you alone.*
+*From the book’s Chapter 3 exercise. Downloadable. Complete on your own device or on paper. This is for you alone.*
 
 **Read this first.** You will not be asked or required to show these answers to your partner. They remain yours unless you freely decide to share something later. If you find yourself softening an answer, note that in the margin. Wanting to soften something is information.
 
@@ -147,7 +147,7 @@ Keep your notes somewhere private and secure. If writing something down would no
 
 **Part One. The three questions (about 30 minutes, alone)**
 
-1. When have I thought, "of course they should have known better"? What was the rule underneath it?
+1. When have I thought, “of course they should have known better”? What was the rule underneath it?
 2. What did my family always do that I assumed every married couple does?
 3. What would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all?
 
@@ -157,7 +157,7 @@ Use sentences, notes or any format that helps you think honestly. Allow extra ti
 
 Work through each area in two passes.
 
-- **First pass: what I want.** Be specific enough that someone reading it could act on it. "I want us to be careful with money" is not an answer. "I want us to talk before either of us spends more than X" is.
+- **First pass: what I want.** Be specific enough that someone reading it could act on it. “I want us to be careful with money” is not an answer. “I want us to talk before either of us spends more than X” is.
 - **Second pass: where it came from.** For each answer, write one line: my family, my church, a previous relationship, something I read, or something I have actually thought through and decided.
 
 Then give each answer a provisional mark: **P** for preference, **C** for conviction or **D** for deal-breaker. Give each answer the mark that fits it best for now. You may change the mark as you think, pray and learn more. If an expectation genuinely contains more than one part, separate those parts before marking them. Ask: if this never changed, could I freely and faithfully choose this marriage without quietly expecting my partner to become someone different?
@@ -180,13 +180,13 @@ Use a separate page for each. If you do not know what you want, write that. It i
 2. What have I already decided I will simply put up with?
 3. Is there anything here I have been hoping marriage will change?
 
-Marriage does not usually change these things. It reveals them, and often amplifies them. Anything you have quietly filed under "it will be different once we're married" should be moved to the top of your list, not the bottom.
+Marriage does not usually change these things. It reveals them, and often amplifies them. Anything you have quietly filed under “it will be different once we’re married” should be moved to the top of your list, not the bottom.
 
 **Part Four. Together (about 20 minutes)**
 
 Do something very limited. Do not exchange inventories. Not today, and possibly not at all. Lessons 4 and 5 will help you learn how to raise something difficult and how to listen when your partner speaks.
 
-If you wish, each of you may answer one question aloud: *What surprised me about the process of completing this inventory?* You do not have to reveal any answer, subject or conclusion. Either person may simply say, "I would prefer to keep that private for now."
+If you wish, each of you may answer one question aloud: *What surprised me about the process of completing this inventory?* You do not have to reveal any answer, subject or conclusion. Either person may simply say, “I would prefer to keep that private for now.”
 
 If you are both ready, acknowledge together: *We will return to our inventories as we work through the nine room lessons, beginning with Lesson 6. We do not have to exchange the private pages.*
 

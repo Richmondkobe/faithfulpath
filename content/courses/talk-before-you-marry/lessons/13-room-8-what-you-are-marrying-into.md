@@ -31,7 +31,7 @@ Three things are needed from this conversation:
 
 - Compare your lists. Note what was new to either of you, and who knew about each item, and when.
 - Answer honestly: What am I asking you to accept that I have never actually discussed with you? What part of this frightens me most?
-- Ask the hard question together — if a child is involved, how will we protect the child's welfare while also caring for our marriage when responsibilities pull us in different directions? — and record what you agree.
+- Ask the hard question together — if a child is involved, how will we protect the child’s welfare while also caring for our marriage when responsibilities pull us in different directions? — and record what you agree.
 
 You may stop after the private preparation and return another day. Mark this lesson complete after you have held the conversation and recorded whether any further time, information or professional advice is needed, including the date for any co-parenting conversation.
 
@@ -46,29 +46,29 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-Some obligations cannot be settled by a couple's private agreement. Questions about custody, child support, previous divorce, property or debt call for a qualified professional in your area. If contact with an ex is unsafe, or a child is telling you something that concerns you, follow any legal arrangements, take it seriously, and speak with someone outside the relationship. Visit Safety and Support. If this conversation feels too heavy to carry alone, you may also speak with a trusted pastor, mentor or qualified counsellor. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+Some obligations cannot be settled by a couple’s private agreement. Questions about custody, child support, previous divorce, property or debt call for a qualified professional in your area. If contact with an ex is unsafe, or a child is telling you something that concerns you, follow any legal arrangements, take it seriously, and speak with someone outside the relationship. Visit Safety and Support. If this conversation feels too heavy to carry alone, you may also speak with a trusted pastor, mentor or qualified counsellor. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 13. This lesson asks what you are each bringing into the marriage that already exists.
 
-Let's begin with Scripture. Galatians chapter 6, verses 2 to 5.
+Let’s begin with Scripture. Galatians chapter 6, verses 2 to 5.
 
-"Bear one another's burdens, and so fulfill the law of Christ. For if anyone thinks he is something, when he is nothing, he deceives himself. But let each one test his own work, and then his reason to boast will be in himself alone and not in his neighbor. For each will have to bear his own load."
+“Bear one another’s burdens, and so fulfill the law of Christ. For if anyone thinks he is something, when he is nothing, he deceives himself. But let each one test his own work, and then his reason to boast will be in himself alone and not in his neighbor. For each will have to bear his own load.”
 
 Paul is writing to believers in the churches of Galatia, and he is describing how Christians live with one another. This is not a passage about marriage. Applying it to a couple is an application, and I will say so as we go.
 
-Now notice something that looks like a contradiction. Verse 2 says, "Bear one another's burdens." Verse 5 says, "Each will have to bear his own load." Which is it? Do we carry each other, or does each person carry their own?
+Now notice something that looks like a contradiction. Verse 2 says, “Bear one another’s burdens.” Verse 5 says, “Each will have to bear his own load.” Which is it? Do we carry each other, or does each person carry their own?
 
-Look at what sits between them. Verses 3 and 4 are about honest self-examination. "Let each one test his own work." Paul warns against thinking you are something when you are not, and against measuring yourself by your neighbour. In other words, look honestly at what is yours.
+Look at what sits between them. Verses 3 and 4 are about honest self-examination. “Let each one test his own work.” Paul warns against thinking you are something when you are not, and against measuring yourself by your neighbour. In other words, look honestly at what is yours.
 
 So the two commands are not competing. They belong together. Paul calls believers both to help one another and to examine their own responsibilities honestly. Help that erases responsibility can create confusion and resentment. Responsibility without help can become isolation. Paul wants both.
 
-Here is the truth this lesson stands on. In a Christian marriage, you will carry one another's burdens. But marriage does not make one person's earlier obligations invisible, and it does not automatically transfer all the responsibility to the other.
+Here is the truth this lesson stands on. In a Christian marriage, you will carry one another’s burdens. But marriage does not make one person’s earlier obligations invisible, and it does not automatically transfer all the responsibility to the other.
 
-Think about what each half of that protects. "Bear one another's burdens" means that when you marry, what weighs on one of you becomes a matter for both of you to think about. You cannot say, "That is your problem, not mine." The one you marry has a say in how it fits into your shared life.
+Think about what each half of that protects. “Bear one another’s burdens” means that when you marry, what weighs on one of you becomes a matter for both of you to think about. You cannot say, “That is your problem, not mine.” The one you marry has a say in how it fits into your shared life.
 
-"Each will bear his own load" points to honest self-examination. Applied to marriage, it means offering real help without concealing, denying or simply transferring responsibilities that already exist. No one should bring an obligation in quietly and expect the other to absorb it without a conversation, or present it as a done deal.
+“Each will bear his own load” points to honest self-examination. Applied to marriage, it means offering real help without concealing, denying or simply transferring responsibilities that already exist. No one should bring an obligation in quietly and expect the other to absorb it without a conversation, or present it as a done deal.
 
 So here is the task, and it is not to pretend that the past does not exist. It is to bring what already exists into the light, and decide together how it fits into the new covenant, so that it does not quietly govern the future.
 
@@ -76,23 +76,23 @@ Something that matters here: a previous obligation can be entirely legitimate wi
 
 Let me make it concrete. The clearest case is a child.
 
-If one of you has a child, contact with the child's other parent may need to continue after the wedding. School decisions, transport, holidays, health and expenses may all require it. So the first mistake is assuming it will end at the wedding. It may not, and it need not.
+If one of you has a child, contact with the child’s other parent may need to continue after the wedding. School decisions, transport, holidays, health and expenses may all require it. So the first mistake is assuming it will end at the wedding. It may not, and it need not.
 
-Then jealousy arrives. The new spouse sees the messages and thinks, "Why are you talking to them this much?" The parent answers, "We have a child together. What am I supposed to do?" Necessary parenting contact can be mistaken for romantic attachment. Ask what the communication is for, rather than treating every message as evidence of disloyalty.
+Then jealousy arrives. The new spouse sees the messages and thinks, “Why are you talking to them this much?” The parent answers, “We have a child together. What am I supposed to do?” Necessary parenting contact can be mistaken for romantic attachment. Ask what the communication is for, rather than treating every message as evidence of disloyalty.
 
-The opposite failure is just as real. A parent says, "The child needs me," and uses it to justify almost unlimited access for the child's other parent, expecting the new spouse to accept it without discussion. The new spouse slowly feels like a guest in their own marriage.
+The opposite failure is just as real. A parent says, “The child needs me,” and uses it to justify almost unlimited access for the child’s other parent, expecting the new spouse to accept it without discussion. The new spouse slowly feels like a guest in their own marriage.
 
-Here is a principle that carries you through most of this. The child's other parent remains part of the parenting arrangement, but is not a third partner in the new marriage. Not every co-parent is a former spouse or romantic partner. If a parent is hiding conversations, discussing marital problems with the other parent, or seeking emotional comfort there, that is a real boundary failure. But necessary communication about a child is not that, and a new spouse who treats every message as suspicious makes an ordinary arrangement impossible.
+Here is a principle that carries you through most of this. The child’s other parent remains part of the parenting arrangement, but is not a third partner in the new marriage. Not every co-parent is a former spouse or romantic partner. If a parent is hiding conversations, discussing marital problems with the other parent, or seeking emotional comfort there, that is a real boundary failure. But necessary communication about a child is not that, and a new spouse who treats every message as suspicious makes an ordinary arrangement impossible.
 
 > Pause here. What already has a claim on our marriage that we have not yet named? Take a moment before you go on.
 
-The step-parent's role needs the same honesty. Two pieces of advice cause trouble. One says, "You're the parent now." The other says, "It's not your child, stay out of it." Neither produces a workable household. Especially early in the marriage, the child's legal parent will usually carry primary responsibility for discipline and major decisions, subject to existing arrangements and local law. That is not a demotion. Authority with a child is earned over time, and a wedding cannot transfer it. But the step-parent is also an adult in that home, and should not live there with no legitimate voice. So decide specifically: what authority does the step-parent have, what are the rules of our home, and how do we make sure the child never feels responsible for choosing between their parent and the new spouse?
+The step-parent’s role needs the same honesty. Two pieces of advice cause trouble. One says, “You’re the parent now.” The other says, “It’s not your child, stay out of it.” Neither produces a workable household. Especially early in the marriage, the child’s legal parent will usually carry primary responsibility for discipline and major decisions, subject to existing arrangements and local law. That is not a demotion. Authority with a child is earned over time, and a wedding cannot transfer it. But the step-parent is also an adult in that home, and should not live there with no legitimate voice. So decide specifically: what authority does the step-parent have, what are the rules of our home, and how do we make sure the child never feels responsible for choosing between their parent and the new spouse?
 
-Two instructions, one for each of you. To the parent: make room for your spouse's concerns without making the child compete for care. To the step-parent: do not try to replace the child's other parent. Your role is not to erase anyone's mother or father. It is to become a trustworthy adult who loves this child while respecting the relationships that already exist.
+Two instructions, one for each of you. To the parent: make room for your spouse’s concerns without making the child compete for care. To the step-parent: do not try to replace the child’s other parent. Your role is not to erase anyone’s mother or father. It is to become a trustworthy adult who loves this child while respecting the relationships that already exist.
 
-One caution. A couple's private agreement cannot override a court order, a child's rights or existing legal duties. For questions about custody, support, previous divorce or property, consult a qualified professional where you live.
+One caution. A couple’s private agreement cannot override a court order, a child’s rights or existing legal duties. For questions about custody, support, previous divorce or property, consult a qualified professional where you live.
 
-And it goes well beyond an ex. Someone has supported an elderly mother for years, and learns, during the engagement, that this is expected to continue. He says, "She is my responsibility. I would never abandon her." She says, "I respect that. I also thought our income would mostly build our own household." Neither is wrong. But a large expectation sat between them, never negotiated, and it would have surfaced in the first year.
+And it goes well beyond an ex. Someone has supported an elderly mother for years, and learns, during the engagement, that this is expected to continue. He says, “She is my responsibility. I would never abandon her.” She says, “I respect that. I also thought our income would mostly build our own household.” Neither is wrong. But a large expectation sat between them, never negotiated, and it would have surfaced in the first year.
 
 The same applies to a business partnership from before, a debt, support payments, shared property or a dependent relative. Three questions cover all of it. What existed before this marriage that will still affect it? Who knew about it, and when? And what does it require of us: time, money, emotional energy, space in our home?
 
@@ -100,23 +100,23 @@ Then ask what boundaries protect the marriage while the obligation is honoured.
 
 Your step has two parts. First, separately, about twenty minutes. Each of you writes a list of the obligations you bring into this marriage. For each one, write what it requires of you in time, money and energy. Then exchange lists, and read both before anyone speaks.
 
-Then set aside 45 to 60 minutes, in a private place, when neither of you is tired. Have your Lesson 2 rules in front of you. Work through three main questions. First: compare your lists. What was new to either of you? Who knew, and when? Second, the person with the obligation answers: what am I asking you to accept that I have never actually discussed with you? That question uncovers more hidden expectation than any other in this room. The other person answers: what part of this frightens me most? Push past the first answer. It may be jealousy, exclusion, fear that an ex still holds emotional power, or fear of becoming financially responsible for something you did not create. Name which. Third, both answer the hard question: how will we protect the child's welfare while also caring for our marriage when responsibilities pull us in different directions?
+Then set aside 45 to 60 minutes, in a private place, when neither of you is tired. Have your Lesson 2 rules in front of you. Work through three main questions. First: compare your lists. What was new to either of you? Who knew, and when? Second, the person with the obligation answers: what am I asking you to accept that I have never actually discussed with you? That question uncovers more hidden expectation than any other in this room. The other person answers: what part of this frightens me most? Push past the first answer. It may be jealousy, exclusion, fear that an ex still holds emotional power, or fear of becoming financially responsible for something you did not create. Name which. Third, both answer the hard question: how will we protect the child’s welfare while also caring for our marriage when responsibilities pull us in different directions?
 
-A child's safety and welfare come first. That does not mean the spouse's needs are unimportant; it means neither relationship should be protected by asking the child to carry an adult conflict. Many of these pressures can be managed more faithfully when expectations, legal limits and responsibilities are discussed early, by a couple who have decided that they are on the same side of the problem.
+A child’s safety and welfare come first. That does not mean the spouse’s needs are unimportant; it means neither relationship should be protected by asking the child to carry an adult conflict. Many of these pressures can be managed more faithfully when expectations, legal limits and responsibilities are discussed early, by a couple who have decided that they are on the same side of the problem.
 
-If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in this sitting, but put a date on it. If something on the other person's list is new information, stop and take time with it. Sometimes the obligation itself needs careful discernment; sometimes the deeper injury is that it was not disclosed.
+If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in this sitting, but put a date on it. If something on the other person’s list is new information, stop and take time with it. Sometimes the obligation itself needs careful discernment; sometimes the deeper injury is that it was not disclosed.
 
 If at any point one of you cannot speak honestly without fear, stop, and speak to someone outside the relationship. Do the same if a child tells you something that concerns you.
 
 Let me close with a short prayer.
 
-Lord, thank You for Christ, who carried what we could not. Teach us to bear one another's burdens, and to honestly carry our own. Show us what we are bringing in. Give us honesty about what has not been said, and courage to say it. Help us protect this marriage while we honour what we owe. Amen.
+Lord, thank You for Christ, who carried what we could not. Teach us to bear one another’s burdens, and to honestly carry our own. Show us what we are bringing in. Give us honesty about what has not been said, and courage to say it. Help us protect this marriage while we honour what we owe. Amen.
 
-I'll see you in Lesson 14.
+I’ll see you in Lesson 14.
 
 ## Worksheet
 
-*From the book's Chapter 6, Room 8. Downloadable. Complete on your own device or on paper. Keep private financial and legal details out of any shared worksheet. This is not legal or financial advice.*
+*From the book’s Chapter 6, Room 8. Downloadable. Complete on your own device or on paper. Keep private financial and legal details out of any shared worksheet. This is not legal or financial advice.*
 
 **Before you begin**
 
@@ -133,22 +133,22 @@ Exchange the nature and impact of each obligation, not sensitive documents or id
 
 1. **Compare the lists.** What existed before this marriage that will still affect this marriage? Who knew about each item, and when? What does each require: time, money, emotional energy, space in our home? What boundaries protect the marriage while the obligation is honoured?
 2. **What has not been said.** The person with the obligation: *What am I asking you to accept that I have never actually discussed with you?* The other person: *What part of this frightens me most?* Push past the first answer, and name whether it is jealousy, exclusion, fear that an ex still holds emotional power, fear of becoming financially responsible for something you did not create, or something else.
-3. **The hard question.** Both answer: *How will we protect the child's welfare while also caring for our marriage when responsibilities pull us in different directions?* A child's safety and welfare come first. That does not mean the spouse's needs are unimportant; it means neither relationship should be protected by asking the child to carry an adult conflict. Decide together that you are on the same side of the problem.
+3. **The hard question.** Both answer: *How will we protect the child’s welfare while also caring for our marriage when responsibilities pull us in different directions?* A child’s safety and welfare come first. That does not mean the spouse’s needs are unimportant; it means neither relationship should be protected by asking the child to carry an adult conflict. Decide together that you are on the same side of the problem.
 
 **Important conversations to continue before marriage**
 
 You do not need to finish these today. Choose which apply to you, and when you will continue them.
 
 - **Money.** What leaves our household every month for obligations from before? Is it fixed, or could it increase? Who decides if it increases? What happens if we cannot afford it in a difficult year?
-- **Co-parenting, if it applies (schedule this before the wedding).** How much contact is there with the child's other parent now, and what is it for? What requires contact and what does not? How does necessary contact happen (phone, text, email, shared calendar), and how will it remain appropriately transparent while protecting the child's privacy and confidential information? How do holidays work? Who makes medical and school decisions? Where does the child stay, and when? What happens when plans change at short notice? How are disagreements between the parents handled, and is the new spouse present?
+- **Co-parenting, if it applies (schedule this before the wedding).** How much contact is there with the child’s other parent now, and what is it for? What requires contact and what does not? How does necessary contact happen (phone, text, email, shared calendar), and how will it remain appropriately transparent while protecting the child’s privacy and confidential information? How do holidays work? Who makes medical and school decisions? Where does the child stay, and when? What happens when plans change at short notice? How are disagreements between the parents handled, and is the new spouse present?
 - **The household, if it applies.** What authority does the step-parent have from day one? What are our house rules, and who enforces them? How will we respond when household rules differ or a child receives conflicting answers? What do we never say about the other parent in front of the child? What information about the child is private?
-- **About the child's other parent or a former partner.** Is this relationship genuinely about co-parenting, or is there still emotional attachment? Remember the principle: the child's other parent remains part of the parenting arrangement, but is not a third partner in the new marriage.
+- **About the child’s other parent or a former partner.** Is this relationship genuinely about co-parenting, or is there still emotional attachment? Remember the principle: the child’s other parent remains part of the parenting arrangement, but is not a third partner in the new marriage.
 - **Legal obligations.** Which of these are negotiable arrangements, and which are legal duties that need a professional or a formal process?
 
 **If you find a real difference**
 
 - **Undisclosed obligations.** If something on one list is new, stop and take time with it. Sometimes the obligation itself needs careful discernment; sometimes the deeper injury is that it was not disclosed.
-- **Different expectations about the step-parent's role.** Very common. Settle it explicitly, and agree to revisit it in six months, because it will change as trust builds.
+- **Different expectations about the step-parent’s role.** Very common. Settle it explicitly, and agree to revisit it in six months, because it will change as trust builds.
 - **Contact with an ex beyond parenting.** Some contact concerns property, legal matters or other legitimate obligations. Discuss its purpose and agree boundaries. Concealed romantic involvement or emotional reliance that undermines the marriage needs direct attention.
 - **A financial obligation to a parent or relative that neither of you has quantified.** Get the actual number. Then decide together what happens if it grows.
 - **A child who is resistant to the marriage.** Listen without assuming the reason. They may be grieving, worried about change or reporting something that needs attention. Seek appropriate child or family support and take any safety concern seriously.

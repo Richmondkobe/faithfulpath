@@ -48,21 +48,21 @@ If you would like, you might share what you are learning with a trusted pastor o
 
 ## Need more support?
 
-If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
+If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner’s response or do not feel free to speak, pause the joint exercise and visit Safety and Support.
 
 ## Transcript
 
 Welcome to Lesson 8. This room is about the families you came from, and the household you are forming.
 
-Let's begin with Scripture. Genesis chapter 2, verse 24.
+Let’s begin with Scripture. Genesis chapter 2, verse 24.
 
-"Therefore a man shall leave his father and his mother and hold fast to his wife, and they shall become one flesh."
+“Therefore a man shall leave his father and his mother and hold fast to his wife, and they shall become one flesh.”
 
 This is one of the earliest statements about marriage in the Bible. It comes at the very beginning, in the account of creation, and it describes a movement with three steps. Leave. Hold fast. Become one.
 
-Let's take the first two carefully.
+Let’s take the first two carefully.
 
-To "leave" does not mean to stop loving your parents, or to abandon them. Scripture is clear elsewhere that honouring father and mother remains a command, and honour includes practical care. Jesus himself rebuked people who used religious excuses to avoid caring for their parents. Marriage creates a new covenant loyalty. The couple must learn to make decisions together, even when they remain closely connected to their wider families.
+To “leave” does not mean to stop loving your parents, or to abandon them. Scripture is clear elsewhere that honouring father and mother remains a command, and honour includes practical care. Jesus himself rebuked people who used religious excuses to avoid caring for their parents. Marriage creates a new covenant loyalty. The couple must learn to make decisions together, even when they remain closely connected to their wider families.
 
 One more caution. This verse is a statement about the pattern of marriage. It is not a description of how every household in every culture must be arranged. Many families live close together, or in the same home, across generations, and that is not wrong. The principle holds in every setting: the married couple learns to decide together.
 
@@ -70,25 +70,25 @@ So here is the truth this lesson stands on. You can honour your parents and stil
 
 Honour your parents. Leave your parents. Hold fast to your spouse. Build a marriage where extended family is loved without being allowed to govern it.
 
-A boundary, then, is not rejection. Often it is the opposite. It says, "I love you enough to have an honest relationship with you, and I will not let this relationship run our marriage." You may support your parents financially while still making household decisions together. You can visit often without letting them govern your marriage. You can disagree with them respectfully and remain a son or daughter who honours them.
+A boundary, then, is not rejection. Often it is the opposite. It says, “I love you enough to have an honest relationship with you, and I will not let this relationship run our marriage.” You may support your parents financially while still making household decisions together. You can visit often without letting them govern your marriage. You can disagree with them respectfully and remain a son or daughter who honours them.
 
 Here is how it usually goes wrong.
 
-A couple can genuinely love their parents, mean well in every direction, and still create serious problems, because they have never clarified how their responsibilities to their families change when a new household begins. They talk about their families in terms of feeling rather than arrangement. "I love my parents." "My family is very important to me." Both true. Neither answers a single practical question.
+A couple can genuinely love their parents, mean well in every direction, and still create serious problems, because they have never clarified how their responsibilities to their families change when a new household begins. They talk about their families in terms of feeling rather than arrangement. “I love my parents.” “My family is very important to me.” Both true. Neither answers a single practical question.
 
 Who makes decisions about your home? How often will parents visit? Can a parent stay indefinitely? How much money will you provide? What happens when one of them criticises your spouse? And the one underneath all the others: when your spouse and your parents disagree, whose expectations will govern the decisions of your marriage, and how will you respond honourably?
 
-Here is a common scene. One partner's mother expects to visit whenever she likes, because that is how the family has always worked. The other expects visits to be arranged in advance, because that is how theirs has worked. Neither has ever said so, because to each of them, that is simply how families behave. Then they are married, and it happens, and one says, "That's my mother. You can't tell her she needs permission to come to her son's house." And what the other hears is, "My mother's comfort matters more than yours."
+Here is a common scene. One partner’s mother expects to visit whenever she likes, because that is how the family has always worked. The other expects visits to be arranged in advance, because that is how theirs has worked. Neither has ever said so, because to each of them, that is simply how families behave. Then they are married, and it happens, and one says, “That’s my mother. You can’t tell her she needs permission to come to her son’s house.” And what the other hears is, “My mother’s comfort matters more than yours.”
 
-They now appear to be arguing about a visit. They are not. They are arguing about something far larger: are we a married couple who decides things together, or are you still operating primarily as your parents' child?
+They now appear to be arguing about a visit. They are not. They are arguing about something far larger: are we a married couple who decides things together, or are you still operating primarily as your parents’ child?
 
 And there is a second failure: loyalty conflict. Someone feels that setting any boundary with a parent is betrayal. So they will not say no to their family, and expect their spouse to absorb the consequences quietly. Resentment builds fast, and it builds toward the spouse, not the parent, which is precisely backwards.
 
 > Pause here. Where might loyalty to your family make it difficult for you to form your own household? Take a moment before you go on.
 
-There is also a trap for Christians. "Honour your father and mother" is sometimes treated as though it means parents keep authority over you permanently. That is not what the Bible teaches about marriage. And the danger comes when Scripture is used as leverage. One says, "My mother is my mother. The Bible says I have to honour her." The other replies, "I'm your spouse. You're supposed to choose me." Now you are in a loyalty contest with verses as ammunition, which is exactly what our rule in Lesson 2 forbids.
+There is also a trap for Christians. “Honour your father and mother” is sometimes treated as though it means parents keep authority over you permanently. That is not what the Bible teaches about marriage. And the danger comes when Scripture is used as leverage. One says, “My mother is my mother. The Bible says I have to honour her.” The other replies, “I’m your spouse. You’re supposed to choose me.” Now you are in a loyalty contest with verses as ammunition, which is exactly what our rule in Lesson 2 forbids.
 
-The question before the wedding is not "Do you like my family?" It is: what boundaries will protect our marriage while we continue to love our families well?
+The question before the wedding is not “Do you like my family?” It is: what boundaries will protect our marriage while we continue to love our families well?
 
 So be practical. Six questions are at the heart of this conversation.
 
@@ -104,11 +104,11 @@ Fifth, criticism. What do we do when one of my parents criticises you?
 
 Sixth, who communicates a boundary. Who speaks to their own parents when a boundary needs setting? Where it is safe and practical, each of you should take responsibility for communicating boundaries to your own relatives. The point is not to leave one partner alone to absorb hostility.
 
-If you have time, there is one more question, and it is an honest one: when our families' expectations conflict with decisions we have made together, how will we decide faithfully what to do, and how will we communicate it with kindness? You cannot keep everyone comfortable all the time.
+If you have time, there is one more question, and it is an honest one: when our families’ expectations conflict with decisions we have made together, how will we decide faithfully what to do, and how will we communicate it with kindness? You cannot keep everyone comfortable all the time.
 
 There are other questions, such as keys, how long a parent may stay, and who decides when a parent needs money. Return to them when they become relevant.
 
-Some differences deserve extra care. Financial support for parents is one of the most serious differences in Christian marriages, and it is rarely only about money. It touches culture, duty and what a good son or daughter owes. Name the actual amount and the actual expectation, and do not resolve it in one evening. If one set of parents does not accept the marriage, it will not resolve itself after the wedding, and it should not be managed by the person they disapprove of. If one of you cannot presently make a significant decision without a parent's approval, be honest about it now. It may be worth a conversation with someone outside both families. And if an ageing parent will need care, say so now and talk about what that will mean. Respect cultural differences, but do not use them to excuse intrusion, isolation or control.
+Some differences deserve extra care. Financial support for parents is one of the most serious differences in Christian marriages, and it is rarely only about money. It touches culture, duty and what a good son or daughter owes. Name the actual amount and the actual expectation, and do not resolve it in one evening. If one set of parents does not accept the marriage, it will not resolve itself after the wedding, and it should not be managed by the person they disapprove of. If one of you cannot presently make a significant decision without a parent’s approval, be honest about it now. It may be worth a conversation with someone outside both families. And if an ageing parent will need care, say so now and talk about what that will mean. Respect cultural differences, but do not use them to excuse intrusion, isolation or control.
 
 Your step has two parts. First, about twenty minutes alone with the questions in the worksheet. Where might loyalty to my family make it difficult for us to form our own household? What did I grow up believing about parents and marriage? What am I afraid of saying to my parents?
 
@@ -120,11 +120,11 @@ Let me close with a short prayer.
 
 Lord, thank You for the families that raised us. Help us honour them well. Teach us to leave, to hold fast, and to build a home that is faithful and free. Where we are afraid of disappointing someone, give us courage and kindness. Amen.
 
-I'll see you in Lesson 9.
+I’ll see you in Lesson 9.
 
 ## Worksheet
 
-*From the book's Chapter 6, Room 3. Downloadable. Complete on your own device or on paper.*
+*From the book’s Chapter 6, Room 3. Downloadable. Complete on your own device or on paper.*
 
 **Before you begin**
 
@@ -150,7 +150,7 @@ These answers are yours. You do not have to share them.
 
 **One more question, if you have time**
 
-*When our families' expectations conflict with decisions we have made together, how will we decide faithfully what to do, and how will we communicate it with kindness?* You cannot keep everyone comfortable all the time. Discuss how you will make a fair decision, taking each person's needs seriously.
+*When our families’ expectations conflict with decisions we have made together, how will we decide faithfully what to do, and how will we communicate it with kindness?* You cannot keep everyone comfortable all the time. Discuss how you will make a fair decision, taking each person’s needs seriously.
 
 **Additional questions**
 
@@ -166,7 +166,7 @@ Return to these when they become relevant.
 - **Different expectations about closeness.** Agree on visits, notice and private time in ways you can both freely accept. Respect cultural differences without using them to excuse intrusion, isolation or control.
 - **Financial obligation to parents.** This is rarely only about money. Name the actual amount and the actual expectation. Do not resolve it in one evening. See also Lesson 6.
 - **A parent who does not accept the marriage.** It will not resolve itself after the wedding, and it should not be managed by the person they disapprove of. Talk about it plainly, and decide together what you will and will not accept.
-- **A parent who is already governing decisions.** If one of you cannot make a significant decision without a parent's approval, be honest about it now. It may be worth a conversation with someone outside both families.
+- **A parent who is already governing decisions.** If one of you cannot make a significant decision without a parent’s approval, be honest about it now. It may be worth a conversation with someone outside both families.
 - **A parent who will need care.** If one of you is the likely carer, or the only child, say so now and talk about where they would live, who provides and what it costs.
 
 **Before you leave the room**

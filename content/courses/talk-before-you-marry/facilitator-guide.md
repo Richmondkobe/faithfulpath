@@ -5,7 +5,7 @@ subtitle: "For pastors, counsellors and mentors who walk with a couple through t
 
 ## What this guide is for
 
-*Talk Before You Marry* is a fourteen-lesson course that helps an engaged or seriously courting couple tell each other the truth about the things that are hard to say, before they make a covenant. Each lesson is a short recording with a Scripture, a private preparation and a couple's conversation.
+*Talk Before You Marry* is a fourteen-lesson course that helps an engaged or seriously courting couple tell each other the truth about the things that are hard to say, before they make a covenant. Each lesson is a short recording with a Scripture, a private preparation and a couple’s conversation.
 
 You do not need to run the course for the couple. The course is designed so that a couple can work through it on their own. Your role is to accompany them: to listen, to help them make sense of what they find, and to notice when something needs more than the course can give.
 
@@ -53,9 +53,9 @@ A simple pattern for your own meetings, if you are meeting them:
 
 ## The lessons at a glance
 
-| Lesson | Scripture | The couple's step | What to watch for |
+| Lesson | Scripture | The couple’s step | What to watch for |
 |---|---|---|---|
-| 1. Name What You're Afraid Of | Ephesians 4:25 | Name three subjects they have been steering around | Avoidance that they are calling "peace" |
+| 1. Name What You’re Afraid Of | Ephesians 4:25 | Name three subjects they have been steering around | Avoidance that they are calling “peace” |
 | 2. Build a Relationship That Can Hold Disagreement | 1 Corinthians 13:4 to 7 | Agree their Rules of Engagement | Whether each rule was freely agreed, and whether either can stop a conversation |
 | 3. Tell Yourself the Truth First | Psalm 139:23 to 24 | Begin a Private Inventory, alone | Private lesson. Do not ask to see it. Encourage safe keeping |
 | 4. Learn to Say the Hard Thing | Ephesians 4:29 to 32 | Prepare three sentences | Whether a request is being disguised as a complaint |
@@ -64,10 +64,10 @@ A simple pattern for your own meetings, if you are meeting them:
 | 7. Sex | 1 Corinthians 7:3 to 5 | Prepare privately, then one honest conversation | Consent, pressure, shame. Words only |
 | 8. Family and Boundaries | Genesis 2:24 | Agree one boundary | Family pressure, loyalty conflicts |
 | 9. Children | James 4:13 to 15 | Talk through the picture of family life each holds | A real difference over whether to have children |
-| 10. Faith and Church | Colossians 3:16 to 17 | Describe each person's faith honestly | "Marrying someone's spiritual potential" |
+| 10. Faith and Church | Colossians 3:16 to 17 | Describe each person’s faith honestly | “Marrying someone’s spiritual potential” |
 | 11. Roles | Ephesians 5:21 to 33 | Describe an ordinary Tuesday five years ahead | Authority used to silence. Represent both positions fairly |
 | 12. Past Relationships | Colossians 3:9 to 10 | Prepare privately, then hold the conversation | Harm done to someone is not their sin to confess |
-| 13. What You're Marrying Into | Galatians 6:2 to 5 | List existing obligations, then talk | A child's welfare comes first, undisclosed obligations |
+| 13. What You’re Marrying Into | Galatians 6:2 to 5 | List existing obligations, then talk | A child’s welfare comes first, undisclosed obligations |
 | 14. Conflict Itself | Ephesians 4:26 to 27 | Build a Conflict Covenant | Whether both can speak freely |
 
 ## The lessons that need particular care
@@ -78,17 +78,17 @@ A simple pattern for your own meetings, if you are meeting them:
 
 **Lesson 7 (sex).** The conversation uses words only. It is never a way of testing compatibility. If either person has experienced sexual abuse or coercion, do not press for details, and offer private, specialist help.
 
-**Lesson 11 (roles).** The course does not declare complementarian or egalitarian marriage the winner. Represent both positions fairly and help the couple see what their words mean in ordinary life. Do not let anyone use "roles" or Scripture to silence a partner.
+**Lesson 11 (roles).** The course does not declare complementarian or egalitarian marriage the winner. Represent both positions fairly and help the couple see what their words mean in ordinary life. Do not let anyone use “roles” or Scripture to silence a partner.
 
 **Lesson 12 (past relationships).** Separate what a person chose from what was done to them. A person who has been abused has nothing to confess. They control whether, when and how they tell that story. If a partner is demanding a full account, treat that as its own issue.
 
-**Lesson 14 (conflict).** Abuse is not a shared communication loop, and the language of "our cycle" must never be used to assign equal blame for abusive conduct.
+**Lesson 14 (conflict).** Abuse is not a shared communication loop, and the language of “our cycle” must never be used to assign equal blame for abusive conduct.
 
 ## When someone tells you something
 
 - Listen, and thank them. Do not promise to keep secrets you cannot keep.
 - Know the limits of your own confidentiality before you begin, and tell each partner about them at the start, including any legal duty to report, which differs by country and by your role. Check this in your own jurisdiction.
-- Do not confront the other partner on someone's behalf.
+- Do not confront the other partner on someone’s behalf.
 - Where there is fear or harm, help the person reach specialist support, and a private safety plan comes before any joint work.
 - Where a person is thinking of harming themselves, help them reach emergency or crisis support at once.
 
@@ -107,4 +107,4 @@ Suggest more help when the same issue keeps returning with no progress; when con
 
 ## What the site stores
 
-The site stores each person's account and their lesson-completion progress. It does not store their worksheets or answers, and one partner cannot see the other's account or progress. As facilitator, you do not have access to their information on the site unless they choose to share it with you.
+The site stores each person’s account and their lesson-completion progress. It does not store their worksheets or answers, and one partner cannot see the other’s account or progress. As facilitator, you do not have access to their information on the site unless they choose to share it with you.
