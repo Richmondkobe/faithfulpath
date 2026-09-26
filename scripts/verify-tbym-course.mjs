@@ -239,6 +239,42 @@ for (const lesson of manifest.lessons) {
 }
 ok(`${templated} lessons built to the template, with no editorial text and no placeholders`);
 
+/* a shared chapter number is named, not repeated */
+
+// The book's Chapter 6 holds all nine rooms, so nine Go deeper cards would
+// otherwise read "Chapter 6" and look like nine links to nine different things.
+// A lesson that shares its chapter number with another must carry a
+// chapter_label; one with a chapter to itself needs none.
+const byChapter = new Map();
+for (const lesson of manifest.lessons) {
+  const raw = readFileSync(join(ROOT, lesson.file), "utf8");
+  const num = raw.match(/^chapter:\s*(\d+)\s*$/m)?.[1];
+  if (!num) continue;
+  byChapter.set(num, [...(byChapter.get(num) ?? []), { lesson, raw }]);
+}
+
+let labelled = 0;
+for (const [num, group] of byChapter) {
+  if (group.length === 1) continue;
+  const labels = new Set();
+  for (const { lesson, raw } of group) {
+    const label = raw.match(/^chapter_label:\s*"([^"]+)"\s*$/m)?.[1];
+    if (!label) {
+      fail(`Lesson ${lesson.order}: shares chapter ${num} with ${group.length - 1} other lesson(s) and has no chapter_label`);
+    } else {
+      labels.add(label);
+    }
+  }
+  if (labels.size > 1) {
+    fail(`chapter ${num} is named ${labels.size} different ways across its lessons`);
+  } else if (labels.size === 1) {
+    labelled += group.length;
+  }
+}
+if (labelled) {
+  ok(`${labelled} lessons share a chapter and name it the same way`);
+}
+
 /* the last lesson closes the course */
 
 // There is nowhere to continue to from Lesson 14, so the closing word is what

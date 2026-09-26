@@ -6,6 +6,7 @@ slug: 08-room-3-family-and-boundaries
 scripture_ref: "Genesis 2:24 (ESV)"
 scripture_text: "Therefore a man shall leave his father and his mother and hold fast to his wife, and they shall become one flesh."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 3)"
 duration: "About 13 minutes, plus one short pause."

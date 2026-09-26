@@ -6,6 +6,7 @@ slug: 07-room-2-sex
 scripture_ref: "1 Corinthians 7:3-5 (ESV)"
 scripture_text: "The husband should give to his wife her conjugal rights, and likewise the wife to her husband. For the wife does not have authority over her own body, but the husband does. Likewise the husband does not have authority over his own body, but the wife does. Do not deprive one another, except perhaps by agreement for a limited time, that you may devote yourselves to prayer; but then come together again, so that Satan may not tempt you because of your lack of self-control."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 2)"
 duration: "About 13 minutes, plus one short pause."

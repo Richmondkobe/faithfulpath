@@ -7,6 +7,7 @@ scripture_ref: "Proverbs 27:23-24 (ESV)"
 scripture_text: "Know well the condition of your flocks, and give attention to your herds, for riches do not last forever; and does a crown endure to all generations?"
 supporting_passage: "Luke 14:28"
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Money Snapshot and Conversation"
 duration: "About 13 minutes, plus one short pause."

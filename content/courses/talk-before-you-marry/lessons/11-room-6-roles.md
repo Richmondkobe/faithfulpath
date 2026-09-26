@@ -7,6 +7,7 @@ scripture_ref: "Ephesians 5:21-33 (ESV)"
 scripture_text: "Submitting to one another out of reverence for Christ."
 scripture_note: "Read the whole passage in context. The recording reads it in full, and the transcript prints it in full. The line above is where it begins."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 6)"
 duration: "About 14 minutes, plus one short pause."

@@ -78,6 +78,14 @@ export type TbymLesson = {
    * chapter_href is written into the lesson's front matter.
    */
   chapter: number;
+  /**
+   * How the Go deeper card names the chapter.
+   *
+   * Defaults to "Chapter N". The book's Chapter 6 holds all nine rooms, so
+   * Lessons 6 to 14 override it — nine cards reading "Chapter 6" would look
+   * like nine links to nine different things.
+   */
+  chapterLabel: string;
   chapterHref: string | null;
   worksheetTitle: string;
   /** The line under the player. Provisional until the recording is made. */
@@ -212,6 +220,7 @@ export const readTbymLesson = cache((slug: string): TbymLesson | null => {
     scriptureRef: front.scripture_ref ?? "",
     scriptureNote: front.scripture_note,
     chapter: Number(front.chapter),
+    chapterLabel: front.chapter_label ?? `Chapter ${Number(front.chapter)}`,
     chapterHref: front.chapter_href,
     worksheetTitle: front.worksheet_title ?? "",
     duration: front.duration ?? "",

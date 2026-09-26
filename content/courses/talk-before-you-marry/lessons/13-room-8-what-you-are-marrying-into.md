@@ -6,6 +6,7 @@ slug: 13-room-8-what-you-are-marrying-into
 scripture_ref: "Galatians 6:2-5 (ESV)"
 scripture_text: "Bear one another's burdens, and so fulfill the law of Christ. For if anyone thinks he is something, when he is nothing, he deceives himself. But let each one test his own work, and then his reason to boast will be in himself alone and not in his neighbor. For each will have to bear his own load."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Existing Obligations Sheet"
 duration: "About 13 minutes, plus one short pause."

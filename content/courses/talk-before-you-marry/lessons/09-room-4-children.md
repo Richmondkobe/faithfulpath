@@ -6,6 +6,7 @@ slug: 09-room-4-children
 scripture_ref: "James 4:13-15 (ESV)"
 scripture_text: "Come now, you who say, 'Today or tomorrow we will go into such and such a town and spend a year there and trade and make a profit'; yet you do not know what tomorrow will bring. What is your life? For you are a mist that appears for a little time and then vanishes. Instead you ought to say, 'If the Lord wills, we will live and do this or that.'"
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 4)"
 duration: "About 13 minutes, plus one short pause."

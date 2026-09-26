@@ -6,6 +6,7 @@ slug: 14-room-9-conflict-itself
 scripture_ref: "Ephesians 4:26-27 (ESV)"
 scripture_text: "Be angry and do not sin; do not let the sun go down on your anger, and give no opportunity to the devil."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conflict Covenant, Rules and Repair Plan, Readiness Review and Weekly Check-In"
 duration: "About 13 minutes, plus one short pause."

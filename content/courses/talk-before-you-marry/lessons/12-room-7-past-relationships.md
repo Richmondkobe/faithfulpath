@@ -6,6 +6,7 @@ slug: 12-room-7-past-relationships
 scripture_ref: "Colossians 3:9-10 (ESV)"
 scripture_text: "Do not lie to one another, seeing that you have put off the old self with its practices and have put on the new self, which is being renewed in knowledge after the image of its creator."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 7)"
 duration: "About 13 minutes, plus one short pause."

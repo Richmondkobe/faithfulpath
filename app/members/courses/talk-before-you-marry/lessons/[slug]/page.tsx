@@ -270,7 +270,7 @@ export default async function TbymLessonPage({ params }: Props) {
               href={lesson.chapterHref}
               className="inline-flex items-center justify-center rounded-md border border-[var(--tb-ink)] px-6 py-3 text-[17px] text-[var(--tb-ink)]"
             >
-              Complete chapter: Chapter {lesson.chapter}
+              Complete chapter: {lesson.chapterLabel}
             </Link>
           )}
         </div>

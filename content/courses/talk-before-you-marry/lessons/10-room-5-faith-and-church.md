@@ -6,6 +6,7 @@ slug: 10-room-5-faith-and-church
 scripture_ref: "Colossians 3:16-17 (ESV)"
 scripture_text: "Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God. And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him."
 chapter: 6
+chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 5)"
 duration: "About 13 minutes, plus one short pause."
