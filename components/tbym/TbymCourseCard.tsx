@@ -9,7 +9,7 @@ import { getTbymCourse, TBYM_BASE, TBYM_SLUG } from "@/lib/tbym-course";
  *
  * Presented as the other cards are, for the same reason they are presented
  * alike: none of them is the secondary one. The card is rendered only behind
- * TBYM_PUBLISHED, which is off while the course is one lesson of fourteen.
+ * TBYM_PUBLISHED, which is where the course is taken down if it needs to be.
  *
  * The progress bar counts against all fourteen lessons rather than against the
  * lessons that happen to be written, so it never reads as complete on a course

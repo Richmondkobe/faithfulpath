@@ -9,6 +9,7 @@ import {
   getTbymCourse,
   nextTbymLesson,
   readTbymLesson,
+  readTbymSlides,
   tbymLessonHref,
   tbymSafetyHref,
   tbymWorksheetHref,
@@ -18,6 +19,9 @@ import {
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymFooter from "@/components/tbym/TbymFooter";
 import TbymRecording from "@/components/tbym/TbymRecording";
+import TbymSlidePlayer, {
+  type TbymSlide,
+} from "@/components/tbym/TbymSlidePlayer";
 import TbymFinishLesson from "@/components/tbym/TbymFinishLesson";
 
 export const metadata: Metadata = {
@@ -79,6 +83,9 @@ export default async function TbymLessonPage({ params }: Props) {
   const audioSrc = lesson.audio
     ? await signedMediaUrl("audio", `${lesson.audio}.mp3`, TBYM_SLUG)
     : null;
+
+  // A lesson with a slide lecture plays it; the rest show the plain player.
+  const deck = readTbymSlides(lesson.order);
 
   const next = nextTbymLesson(lesson.order);
 
@@ -183,11 +190,25 @@ export default async function TbymLessonPage({ params }: Props) {
             {lesson.listeningNote}
           </p>
         )}
-        <TbymRecording
-          src={audioSrc}
-          duration={lesson.duration}
-          lessonTitle={lesson.title}
-        />
+        {deck ? (
+          <>
+            <TbymSlidePlayer
+              slides={deck.slides as TbymSlide[]}
+              timings={deck.timings}
+              audioUrl={audioSrc}
+              lessonTitle={lesson.title}
+            />
+            <p className="mt-3 text-sm text-[var(--tb-mute)]">
+              {lesson.duration}
+            </p>
+          </>
+        ) : (
+          <TbymRecording
+            src={audioSrc}
+            duration={lesson.duration}
+            lessonTitle={lesson.title}
+          />
+        )}
 
         <details className="mt-4 border-t border-[var(--tb-line)]">
           <summary

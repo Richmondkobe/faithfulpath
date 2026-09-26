@@ -378,6 +378,32 @@ export const readTbymProsePage = cache((file: string): TbymProsePage => {
   };
 });
 
+/**
+ * A lesson's slide lecture, where one has been built.
+ *
+ * The file is copied from the lesson's own pilot folder, which is the thing the
+ * slides were timed against and is not in git. A lesson without one falls back
+ * to the plain recording player, which is how the other thirteen render.
+ */
+export type TbymSlideDeck = {
+  slides: Record<string, unknown>[];
+  timings: number[];
+};
+
+export const readTbymSlides = cache((order: number): TbymSlideDeck | null => {
+  const folder = `lesson-${String(order).padStart(2, "0")}`;
+  const path = join(ROOT, folder, "slides.json");
+  if (!existsSync(path)) return null;
+  try {
+    const deck = JSON.parse(readFileSync(path, "utf8"));
+    return Array.isArray(deck.slides) && Array.isArray(deck.timings) ? deck : null;
+  } catch {
+    // A deck that will not parse falls back to the plain player rather than
+    // rendering a lecture with nothing in it.
+    return null;
+  }
+});
+
 export const tbymPrivacyHref = `${TBYM_BASE}/privacy`;
 export const tbymTermsHref = `${TBYM_BASE}/terms`;
 
@@ -389,9 +415,13 @@ export const tbymLessonHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}`;
 export const tbymWorksheetHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}/worksheet`;
 
 /**
- * Built, and deliberately not reachable from the members page.
+ * Whether the course appears on the members page.
  *
- * One lesson of fourteen exists. The card goes up when the course does; until
- * then the pages are there to be opened directly and reviewed.
+ * All fourteen lessons are built, with Start Here, Safety and Support, the
+ * Facilitator Guide, Privacy and Terms. What is not finished is outside this
+ * repository: no recording exists yet, the Scripture on Lessons 11, 13 and 14
+ * has not been compared with the licensed ESV text, and Safety and Support has
+ * not been read by a domestic-abuse specialist. Turning this off again is one
+ * word, and nothing else depends on it.
  */
-export const TBYM_PUBLISHED = false;
+export const TBYM_PUBLISHED = true;

@@ -286,6 +286,49 @@ if (labelled) {
   ok(`${labelled} lessons share a chapter and name it the same way`);
 }
 
+/* a slide lecture, where a lesson has one */
+
+// A deck is only as good as its timings. Every slide needs a start time, they
+// must run forward, and a lesson that declares a pause must have exactly one —
+// the player stops at the end of that slide and waits, and two would strand a
+// learner twice.
+for (const lesson of manifest.lessons) {
+  const folder = `lesson-${String(lesson.order).padStart(2, "0")}`;
+  const deckPath = join(ROOT, folder, "slides.json");
+  if (!existsSync(deckPath)) continue;
+
+  const deck = JSON.parse(readFileSync(deckPath, "utf8"));
+  const where = `Lesson ${lesson.order}`;
+  let sound = true;
+
+  if (deck.slides.length !== deck.timings.length) {
+    fail(`${where}: ${deck.slides.length} slides but ${deck.timings.length} timings`);
+    sound = false;
+  }
+  for (let i = 1; i < deck.timings.length; i++) {
+    if (deck.timings[i] <= deck.timings[i - 1]) {
+      fail(`${where}: slide ${i + 1} starts at or before the slide before it`);
+      sound = false;
+      break;
+    }
+  }
+  const pauses = deck.slides.filter((s) => s.autoPause).length;
+  if (pauses > 1) {
+    fail(`${where}: ${pauses} slides ask the recording to pause; the player expects at most one`);
+    sound = false;
+  }
+  const raw = readFileSync(join(ROOT, lesson.file), "utf8");
+  // "null" is non-whitespace, so testing for any value passed a lesson whose
+  // audio was null. It has to be a real id.
+  if (!/^audio:\s*(?!null\s*$)\S+\s*$/m.test(raw)) {
+    fail(`${where}: has slides but no audio in its front matter`);
+    sound = false;
+  }
+  if (sound) {
+    ok(`${where}: ${deck.slides.length} slides, timings in order, ${pauses} pause, recording named`);
+  }
+}
+
 /* the last lesson closes the course */
 
 // There is nowhere to continue to from Lesson 14, so the closing word is what

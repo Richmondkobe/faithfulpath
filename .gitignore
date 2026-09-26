@@ -58,3 +58,9 @@ pilot.html
 # Supabase CLI scratch — written by `supabase link`, holds the linked
 # project ref and a pooler connection string. Not ours to commit.
 supabase/.temp/
+
+# Talk Before You Marry source folders. The recording, the pilot player and the
+# narration splits are the working material a lesson was built from; slides.json
+# is copied into content/ and is what ships. Same reasoning as the pilot pages
+# above: the mp3 is large and the pilot embeds it.
+tbym-lesson-*-source/

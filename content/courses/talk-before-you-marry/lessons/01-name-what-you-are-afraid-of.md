@@ -8,8 +8,8 @@ scripture_text: "Therefore, having put away falsehood, let each one of you speak
 chapter: 1
 chapter_href: null
 worksheet_title: "The Three Subjects"
-duration: "About 12 minutes, plus one short pause."
-audio: null
+duration: "About 13 minutes, plus one short pause."
+audio: lesson-01
 ---
 
 ## In this lesson, you will learn to:

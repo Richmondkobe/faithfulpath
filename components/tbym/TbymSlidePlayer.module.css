@@ -1,0 +1,237 @@
+/* Talk Before You Marry's slide lecture.
+ *
+ * The layout is the pilot's: illustration beside the words on a wide screen,
+ * stacked with the illustration above on a phone. Colours are the course's own
+ * tokens, so the player follows the theme like every other page here. */
+
+.player {
+  border: 1px solid var(--tb-line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--tb-card);
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 32px 28px;
+  min-height: 340px;
+  cursor: pointer;
+}
+
+/* Phone: the illustration goes above the words, and gets smaller. */
+@media (max-width: 640px) {
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 20px 18px;
+    min-height: 0;
+  }
+  .art {
+    max-width: 200px;
+    margin-inline: auto;
+  }
+}
+
+.art {
+  width: 100%;
+  max-width: 300px;
+}
+.art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: none;
+  stroke: var(--tb-accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.art :global(.s2) {
+  stroke: var(--tb-ink);
+}
+.art :global(.faded) {
+  opacity: 0.45;
+}
+.art :global(.f) {
+  fill: var(--tb-accent);
+  stroke: none;
+}
+
+/* The stroke draws itself on, then a dot or two pops in after it. */
+.art :global(.draw) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 1.5s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+.art :global(.pop) {
+  opacity: 0;
+  animation: pop 0.4s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pop {
+  to { opacity: 1; }
+}
+
+.kicker {
+  font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tb-accent);
+  margin: 0 0 10px;
+}
+
+.title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 3.4vw, 1.85rem);
+  line-height: 1.2;
+  color: var(--tb-ink);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.words p {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tb-ink);
+  margin: 12px 0 0;
+}
+.words .sub {
+  color: var(--tb-mute);
+  font-size: 15px;
+}
+.words blockquote {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  line-height: 1.45;
+  color: var(--tb-ink);
+  margin: 0;
+}
+.words .ref {
+  font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tb-accent);
+  margin-top: 10px;
+}
+.words .prayer p {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.words ul,
+.words ol {
+  margin: 12px 0 0;
+  padding-left: 1.2em;
+}
+.words li {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--tb-ink);
+  margin-bottom: 6px;
+}
+.chips {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+.chips li {
+  border: 1px solid var(--tb-line);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-size: 15px;
+  margin: 0;
+}
+.note {
+  font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tb-accent);
+  margin-top: 14px;
+}
+
+.pausedNote {
+  margin-top: 16px;
+  border-top: 1px dashed var(--tb-line);
+  padding-top: 12px;
+  font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tb-accent);
+}
+
+.footer {
+  border-top: 1px solid var(--tb-line);
+  padding: 14px 18px 18px;
+  background: var(--tb-bg);
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--tb-mute);
+  margin: 0 0 10px;
+}
+.nav {
+  border: 1px solid var(--tb-line);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--tb-ink);
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.nav:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.footer audio {
+  width: 100%;
+}
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--tb-accent);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.dotOn {
+  background: var(--tb-accent);
+}
+
+/* Nothing moves for anyone who has asked for less motion. The illustrations
+   still appear; they simply arrive finished. */
+@media (prefers-reduced-motion: reduce) {
+  .art :global(.draw),
+  .art :global(.pop) {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
