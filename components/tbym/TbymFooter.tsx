@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getTbymCourse, tbymSafetyHref as TBYM_SAFETY_HREF } from "@/lib/tbym-course";
+import { getTbymCourse } from "@/lib/tbym-course";
 
 /**
  * The two footers this course uses.
@@ -11,27 +11,25 @@ import { getTbymCourse, tbymSafetyHref as TBYM_SAFETY_HREF } from "@/lib/tbym-co
  * one, because those are the pages a learner arrives at rather than works
  * through, and the ordinary links belong there.
  *
- * A third variant exists for Safety and Support itself, which takes the fuller
- * footer minus the link to the page it is.
+ * `omit` drops a single link, for a page that would otherwise link to itself.
+ * Safety and Support, Privacy and Terms all appear in the fuller footer, and
+ * each passes its own href.
  *
  * A destination that does not exist yet renders as a marked placeholder rather
- * than as a link that goes nowhere. Privacy and Terms have no pages in this
- * site, and the publication checklist asks for them before this page goes live.
+ * than as a link that goes nowhere.
  */
 export default function TbymFooter({
   variant,
+  omit,
 }: {
-  variant: "short" | "full" | "safety";
+  variant: "short" | "full";
+  /** A link to leave out, named by the page that link points at. */
+  omit?: string;
 }) {
   const course = getTbymCourse();
-  const links =
-    variant === "short"
-      ? course.footer_links
-      : variant === "safety"
-        // Safety and Support takes the fuller footer without the link back to
-        // itself: the learner is already reading the page it points at.
-        ? course.full_footer_links.filter((l) => l.href !== TBYM_SAFETY_HREF)
-        : course.full_footer_links;
+  const links = (
+    variant === "short" ? course.footer_links : course.full_footer_links
+  ).filter((link) => !omit || link.href !== omit);
 
   return (
     <footer className="mx-auto max-w-[760px] px-4 pb-14">

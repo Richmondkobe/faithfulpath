@@ -3,35 +3,29 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  readTbymSafety,
-  tbymSafetyHref,
-  tbymStartHereHref,
+  readTbymProsePage,
+  tbymTermsHref,
   TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
-import TbymQuickExit from "@/components/tbym/TbymQuickExit";
 import TbymFooter from "@/components/tbym/TbymFooter";
 
 export const metadata: Metadata = {
-  title: "Safety and Support | Faithful Path Community",
+  title: "Terms | Faithful Path Community",
   robots: { index: false, follow: false },
 };
 
 /**
- * Safety and Support.
+ * Terms, for this course.
  *
- * Every lesson's "Need more support?" block points here, which is the whole
- * design: telephone numbers and service names change, so they live on one page
- * that can be corrected without touching fourteen lessons or re-recording
- * anything.
- *
- * The quick exit is the first thing on the page, above the title, because
- * somebody who needs it needs it immediately.
+ * Scoped to the course rather than the whole site, because everything it says
+ * is about what this course does — and saying it site-wide would be claiming
+ * more than anyone has checked.
  */
-export default async function TbymSafetyAndSupport() {
+export default async function TbymTerms() {
   await requireActiveMember();
 
-  const page = readTbymSafety();
+  const page = readTbymProsePage("terms.md");
 
   return (
     <>
@@ -39,7 +33,14 @@ export default async function TbymSafetyAndSupport() {
         className="mx-auto flex max-w-[760px] flex-col gap-5 px-4 pt-8 pb-14"
         style={{ fontFamily: "var(--font-sans)" }}
       >
-        <TbymQuickExit label={page.quickExitLabel} note={page.quickExitNote} />
+        <div
+          className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+          style={{ fontFamily: "var(--font-tbym-mono)" }}
+        >
+          <Link href={TBYM_BASE} className="underline underline-offset-4">
+            Talk Before You Marry
+          </Link>
+        </div>
 
         <section className="rounded-md border border-[var(--tb-line)] bg-[var(--tb-card)] px-6 py-7">
           <h1
@@ -53,9 +54,6 @@ export default async function TbymSafetyAndSupport() {
             style={{ fontFamily: "var(--font-display)" }}
           >
             {page.subtitle}
-          </p>
-          <p className="mt-4 text-[17px] leading-relaxed text-[var(--tb-ink)]">
-            {page.intro}
           </p>
         </section>
 
@@ -75,26 +73,10 @@ export default async function TbymSafetyAndSupport() {
             </div>
           </section>
         ))}
-
-        <p className="flex flex-wrap gap-x-5 gap-y-2 px-6 text-[15px]">
-          <Link
-            href={tbymStartHereHref}
-            className="text-[var(--tb-accent)] underline underline-offset-4"
-          >
-            Return to Start Here
-          </Link>
-          <Link
-            href={TBYM_BASE}
-            className="text-[var(--tb-accent)] underline underline-offset-4"
-          >
-            Return to your lessons
-          </Link>
-        </p>
       </main>
 
-      {/* The fuller footer, without a link back to this page: the learner is
-          already reading it. */}
-      <TbymFooter variant="full" omit={tbymSafetyHref} />
+      {/* The fuller footer, without a link back to the page you are reading. */}
+      <TbymFooter variant="full" omit={tbymTermsHref} />
     </>
   );
 }

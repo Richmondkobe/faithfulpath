@@ -349,6 +349,36 @@ export const readTbymFacilitatorGuide = cache((): TbymFacilitatorGuide => {
 
 export const tbymFacilitatorHref = `${TBYM_BASE}/facilitator-guide`;
 
+/**
+ * A plain page of prose: a title, a subtitle, and sections in the order they
+ * are written. Privacy and Terms are read this way, and so could the others be
+ * — Start Here, Safety and Support and the Facilitator Guide each have their
+ * own reader because each grew its own front matter first.
+ */
+export type TbymProsePage = {
+  title: string;
+  subtitle: string;
+  sections: { title: string; body: string }[];
+};
+
+export const readTbymProsePage = cache((file: string): TbymProsePage => {
+  const raw = readFileSync(join(ROOT, file), "utf8");
+  const front = parseFront(raw.match(FRONT_MATTER)?.[1] ?? "");
+  const parts = raw.replace(FRONT_MATTER, "").split(/^##[ \t]+(.+?)[ \t]*$/m);
+
+  return {
+    title: front.title ?? "",
+    subtitle: front.subtitle ?? "",
+    sections: Array.from({ length: (parts.length - 1) / 2 }, (_, i) => ({
+      title: parts[i * 2 + 1].trim(),
+      body: parts[i * 2 + 2].trim(),
+    })),
+  };
+});
+
+export const tbymPrivacyHref = `${TBYM_BASE}/privacy`;
+export const tbymTermsHref = `${TBYM_BASE}/terms`;
+
 export const tbymSafetyHref = `${TBYM_BASE}/safety-and-support`;
 
 export const tbymStartHereHref = `${TBYM_BASE}/start-here`;

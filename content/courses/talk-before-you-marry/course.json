@@ -13,13 +13,13 @@
     { "label": "Need more support?", "href": null }
   ],
 
-  "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms have no pages in this site yet, and the Start Here publication checklist asks for them before it goes live, so both are null and render as placeholders.",
+  "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms are scoped to this course, not the whole site, because everything they say is about what this course does.",
   "full_footer_links": [
     { "label": "Home", "href": "/" },
     { "label": "Course overview", "href": "/members/courses/talk-before-you-marry" },
     { "label": "Contact", "href": "/contact" },
-    { "label": "Privacy", "href": null },
-    { "label": "Terms", "href": null },
+    { "label": "Privacy", "href": "/members/courses/talk-before-you-marry/privacy" },
+    { "label": "Terms", "href": "/members/courses/talk-before-you-marry/terms" },
     { "label": "Need more support?", "href": "/members/courses/talk-before-you-marry/safety-and-support" }
   ],
 

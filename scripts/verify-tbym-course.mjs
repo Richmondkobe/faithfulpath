@@ -433,10 +433,20 @@ if (safety === 0) {
 const FOOTER_VARIANT = {
   "page.tsx": "full",
   "start-here/page.tsx": "full",
-  "safety-and-support/page.tsx": "safety",
+  "safety-and-support/page.tsx": "full",
   "facilitator-guide/page.tsx": "full",
+  "privacy/page.tsx": "full",
+  "terms/page.tsx": "full",
   "lessons/[slug]/page.tsx": "short",
   "lessons/[slug]/worksheet/page.tsx": "short",
+};
+
+// A page that appears in the fuller footer must drop its own link, or its
+// footer offers the reader the page they are already on.
+const FOOTER_OMITS = {
+  "safety-and-support/page.tsx": "tbymSafetyHref",
+  "privacy/page.tsx": "tbymPrivacyHref",
+  "terms/page.tsx": "tbymTermsHref",
 };
 
 let footers = 0;
@@ -449,6 +459,8 @@ for (const [rel, variant] of Object.entries(FOOTER_VARIANT)) {
   const source = readFileSync(path, "utf8");
   if (!new RegExp(`<TbymFooter\\s+variant="${variant}"`).test(source)) {
     fail(`${rel}: does not render the ${variant} footer`);
+  } else if (FOOTER_OMITS[rel] && !source.includes(`omit={${FOOTER_OMITS[rel]}}`)) {
+    fail(`${rel}: appears in the fuller footer and does not omit its own link`);
   } else {
     footers++;
   }
