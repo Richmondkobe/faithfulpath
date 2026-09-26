@@ -54,6 +54,14 @@ const REQUIRED = [
 const TELL_SOMEONE = "If it helps, tell someone";
 const OMIT_TELL_SOMEONE = new Set([3, 7, 12]);
 
+// A word before the recording, on the lessons whose subject makes where and how
+// you listen worth a sentence. The design names 3, 7 and 12; Lesson 14 was
+// written with one too, and it belongs — a learner who is afraid of
+// disagreement should be told they may read instead before the talk about
+// conflict begins. The note is no use below the player, so the route puts it
+// above; this only checks that the lesson supplies one.
+const NEEDS_LISTENING_NOTE = new Set([3, 7, 12, 14]);
+
 const STANDARD_SUPPORT =
   "If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.";
 
@@ -132,6 +140,12 @@ for (const lesson of manifest.lessons) {
   }
   if (!OMIT_TELL_SOMEONE.has(lesson.order) && !hasTell) {
     fail(`${where}: "${TELL_SOMEONE}" is missing, and this lesson is not one of the three that omit it`);
+    sound = false;
+  }
+
+  const hasNote = /^listening_note:\s*"[^"]{40,}"\s*$/m.test(raw);
+  if (NEEDS_LISTENING_NOTE.has(lesson.order) && !hasNote) {
+    fail(`${where}: no listening_note — this lesson's subject needs a word before the recording starts`);
     sound = false;
   }
 

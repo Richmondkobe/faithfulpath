@@ -7,6 +7,8 @@
 
 **Scripture:** Psalm 139:23 to 24: "Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!" (ESV)
 
+*A note before you listen: this lesson asks you to be honest with yourself about difficult things, and some of it may be painful. You may prefer to listen privately, with headphones, or to read the transcript instead. You may stop at any time.*
+
 ## In this lesson, you will learn to:
 - Recognise the expectations you have never named.
 - Sort what you want into preference, conviction or deal-breaker.
