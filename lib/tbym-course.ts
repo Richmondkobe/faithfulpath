@@ -419,13 +419,16 @@ export const tbymWorksheetHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}
  * Whether the course is published.
  *
  * All fourteen lessons are built and recorded, with Start Here, Safety and
- * Support, the Facilitator Guide, Privacy and Terms. What is not finished is
- * outside this repository: the Scripture on Lessons 11, 13 and 14 and on Start
- * Here has not been compared with the licensed ESV text, and Safety and
- * Support has not been read by a domestic-abuse specialist. Until it has, the
- * course is off.
+ * Support, the Facilitator Guide, Privacy and Terms. The four passages that
+ * had not been compared with the licensed ESV text have now been checked.
+ *
+ * One thing outside this repository is still outstanding: Safety and Support
+ * has not been read by a domestic-abuse specialist. The author has published
+ * with that review pending. It is the page every lesson sends a frightened
+ * reader to, so it is the first thing to correct when the reading comes back,
+ * and turning this off again closes the whole course in one word.
  */
-export const TBYM_PUBLISHED = false;
+export const TBYM_PUBLISHED = true;
 
 /**
  * The gate every page of this course sits behind, alongside the membership
