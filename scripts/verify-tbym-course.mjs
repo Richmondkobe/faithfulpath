@@ -221,6 +221,34 @@ for (const lesson of manifest.lessons) {
   if (sound) templated++;
 }
 ok(`${templated} lessons built to the template, with no editorial text and no placeholders`);
+
+/* the last lesson closes the course */
+
+// There is nowhere to continue to from Lesson 14, so the closing word is what
+// stands where Continue stands on every other lesson. Without it the course
+// ends on a finished panel with one button and nothing said.
+if (manifest.lessons.length === manifest.lesson_count) {
+  const last = manifest.lessons.reduce((a, b) => (b.order > a.order ? b : a));
+  const raw = readFileSync(join(ROOT, last.file), "utf8");
+  if (!/^completion_message:\s*"[^"]{40,}"\s*$/m.test(raw)) {
+    fail(`Lesson ${last.order} is the last lesson and has no completion_message`);
+  } else {
+    ok(`Lesson ${last.order} closes the course with a completion message`);
+  }
+}
+
+// A quote inside a front-matter value has to be curly, not backslash-escaped:
+// the parser strips the wrapping quotes and a \" would reach the page with its
+// backslash still attached. Lesson 14's listening note did exactly that.
+let escaped = 0;
+for (const lesson of manifest.lessons) {
+  const front = readFileSync(join(ROOT, lesson.file), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (front && /\\"/.test(front[1])) {
+    fail(`Lesson ${lesson.order}: a backslash-escaped quote in front matter would render as \\" — use curly quotes`);
+    escaped++;
+  }
+}
+if (escaped === 0) ok("no backslash-escaped quotes in any lesson's front matter");
 if (reworded.length) {
   ok(`standard support block reworded in ${reworded.length} lesson(s): ${reworded.join(", ")} — each still names help, says pause and points at Safety and Support`);
 }

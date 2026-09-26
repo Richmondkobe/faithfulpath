@@ -89,6 +89,11 @@ export type TbymLesson = {
    * pressed play.
    */
   listeningNote: string | null;
+  /**
+   * The course's closing word, on the last lesson only. It is shown once that
+   * lesson is marked complete, where every other lesson offers Continue.
+   */
+  completionMessage: string | null;
   /** The recording's id in the media bucket, or null while none exists. */
   audio: string | null;
   objectives: string[];
@@ -120,7 +125,13 @@ function parseFront(block: string): Record<string, string | null> {
     const match = line.match(/^([A-Za-z_][\w-]*):\s*(.*)$/);
     if (!match) continue;
     const value = match[2].trim();
-    out[match[1]] = value === "null" || value === "" ? null : value.replace(/^"|"$/g, "");
+    // Quotes wrap the value; a quote inside it may be escaped, and the
+    // backslash must not survive onto the page. Lesson 14's listening note
+    // names "Need more support?" and rendered the backslashes until this.
+    out[match[1]] =
+      value === "null" || value === ""
+        ? null
+        : value.replace(/^"|"$/g, "").replace(/\\"/g, '"');
   }
   return out;
 }
@@ -204,6 +215,7 @@ export const readTbymLesson = cache((slug: string): TbymLesson | null => {
     worksheetTitle: front.worksheet_title ?? "",
     duration: front.duration ?? "",
     listeningNote: front.listening_note,
+    completionMessage: front.completion_message,
     audio: front.audio,
     objectives: bullets(need("In this lesson, you will learn to:")),
     takeOneStep: parseStep(need("Take one step")),

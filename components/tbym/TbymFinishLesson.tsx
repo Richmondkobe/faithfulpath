@@ -15,9 +15,14 @@ import { setLessonComplete } from "@/app/members/courses/actions";
  * nothing watching the end of the recording, so reaching the foot of the page
  * does nothing at all.
  *
- * Afterwards the three ways on appear. "Stop here for today" marks nothing — it
- * is a door, not a button that does something quietly on the way out — and
- * "Mark it unfinished" undoes the completion.
+ * Afterwards the ways on appear. "Stop here for today" marks nothing — it is a
+ * door, not a button that does something quietly on the way out — and "Mark it
+ * unfinished" undoes the completion.
+ *
+ * The last lesson ends differently. There is nowhere to continue to, so instead
+ * of a Continue button it shows the course's closing word and points both back
+ * to the overview and forward to whatever comes next. It is also the one lesson
+ * not finishing "for today", so it asks "Ready to finish?" instead.
  *
  * One partner cannot see the other's progress. Each row is keyed to the
  * learner's own user id and row level security scopes every read to it; two
@@ -31,6 +36,8 @@ export default function TbymFinishLesson({
   next,
   stopHref,
   hasChapter,
+  completionMessage,
+  courseHref,
 }: {
   courseSlug: string;
   lessonSlug: string;
@@ -45,6 +52,14 @@ export default function TbymFinishLesson({
    * optional, so it must not list a card the learner cannot see.
    */
   hasChapter: boolean;
+  /**
+   * The course's closing word, shown once the last lesson is marked complete.
+   * Only the last lesson has one, and it is what stands where Continue stands
+   * everywhere else.
+   */
+  completionMessage?: string | null;
+  /** Where "Return to Course Overview" goes, on the last lesson. */
+  courseHref?: string;
 }) {
   const [done, setDone] = useState(finished);
   const [error, setError] = useState<string | null>(null);
@@ -80,7 +95,7 @@ export default function TbymFinishLesson({
         className="text-[1.6rem] leading-tight text-[var(--tb-ink)]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
-        Ready to finish for today?
+        {next ? "Ready to finish for today?" : "Ready to finish?"}
       </h2>
 
       {done ? (
@@ -89,16 +104,45 @@ export default function TbymFinishLesson({
             Lesson {lessonOrder} complete
           </p>
 
+          {/* The course's closing word, on the last lesson only. It sits
+              above the buttons, where the learner reads it before deciding
+              where to go, rather than after. */}
+          {!next && completionMessage && (
+            <p
+              className="mt-5 border-t border-[var(--tb-line)] pt-5 text-[1.15rem] leading-relaxed text-[var(--tb-ink)]"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {completionMessage}
+            </p>
+          )}
+
           <div className="mt-5 flex flex-wrap items-center gap-4">
             <Link href={stopHref} className={primary}>
               Stop here for today
             </Link>
-            {next && (
+            {next ? (
               <Link href={next.href} className={secondary}>
                 Continue to Lesson {next.order}: {next.title}
               </Link>
+            ) : (
+              courseHref && (
+                <Link href={courseHref} className={secondary}>
+                  Return to Course Overview
+                </Link>
+              )
             )}
           </div>
+
+          {/* Forward, not back. There is no page to send anybody to yet, so it
+              says so rather than being a link that goes nowhere. */}
+          {!next && (
+            <p
+              className="mt-5 inline-block rounded-sm border border-dashed border-[var(--tb-accent)] px-3 py-2 text-[13px] text-[var(--tb-mute)]"
+              style={{ fontFamily: "var(--font-tbym-mono)" }}
+            >
+              Explore your next Faithful Path course or resource — not built yet
+            </p>
+          )}
 
           <button
             type="button"

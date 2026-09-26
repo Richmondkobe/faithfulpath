@@ -331,6 +331,8 @@ export default async function TbymLessonPage({ params }: Props) {
         finished={finished}
         stopHref="/members"
         hasChapter={Boolean(lesson.chapterHref)}
+        completionMessage={lesson.completionMessage}
+        courseHref={TBYM_BASE}
         next={
           next
             ? {
