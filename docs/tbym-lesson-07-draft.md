@@ -57,7 +57,7 @@ If you are afraid, feel pressured, or a "no" is not being accepted, stop the joi
 Then: **Stop here for today** (primary) · **Continue to Lesson 8: Room 3, Family and Boundaries** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

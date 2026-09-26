@@ -54,7 +54,7 @@ If "roles" language is being used to silence you, control you or override what y
 Then: **Stop here for today** (primary) · **Continue to Lesson 12: Room 7, Past Relationships** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

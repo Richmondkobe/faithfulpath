@@ -57,7 +57,7 @@ If money is being used to control, threaten or trap you, that is a safety matter
 Then: **Stop here for today** (primary) · **Continue to Lesson 7: Room 2, Sex** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

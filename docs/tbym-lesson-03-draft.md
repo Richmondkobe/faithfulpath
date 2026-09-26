@@ -56,7 +56,7 @@ If you are working through this alone and it stirs up something painful, you may
 Then: **Stop here for today** (primary) · **Continue to Lesson 4: Learn to Say the Hard Thing** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 [Design note: the "If it helps, tell someone" section is deliberately omitted from this lesson. The inventory is private, and the lesson should not encourage disclosure.]
 

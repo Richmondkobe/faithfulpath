@@ -52,7 +52,7 @@ Some obligations cannot be settled by a couple's private agreement. Questions ab
 Then: **Stop here for today** (primary) · **Continue to Lesson 14: Room 9, Conflict Itself** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

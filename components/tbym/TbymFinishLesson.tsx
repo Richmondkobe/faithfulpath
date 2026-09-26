@@ -38,6 +38,7 @@ export default function TbymFinishLesson({
   hasChapter,
   completionMessage,
   courseHref,
+  nextResource,
 }: {
   courseSlug: string;
   lessonSlug: string;
@@ -60,6 +61,8 @@ export default function TbymFinishLesson({
   completionMessage?: string | null;
   /** Where "Return to Course Overview" goes, on the last lesson. */
   courseHref?: string;
+  /** Where the last lesson points onward, after the course's closing word. */
+  nextResource?: { label: string; href: string } | null;
 }) {
   const [done, setDone] = useState(finished);
   const [error, setError] = useState<string | null>(null);
@@ -133,14 +136,16 @@ export default function TbymFinishLesson({
             )}
           </div>
 
-          {/* Forward, not back. There is no page to send anybody to yet, so it
-              says so rather than being a link that goes nowhere. */}
-          {!next && (
-            <p
-              className="mt-5 inline-block rounded-sm border border-dashed border-[var(--tb-accent)] px-3 py-2 text-[13px] text-[var(--tb-mute)]"
-              style={{ fontFamily: "var(--font-tbym-mono)" }}
-            >
-              Explore your next Faithful Path course or resource — not built yet
+          {/* Forward, not back. It leaves the members area, so it is a plain
+              anchor rather than a router link. */}
+          {!next && nextResource && (
+            <p className="mt-5">
+              <a
+                href={nextResource.href}
+                className="text-[17px] text-[var(--tb-accent)] underline underline-offset-4"
+              >
+                {nextResource.label}
+              </a>
             </p>
           )}
 

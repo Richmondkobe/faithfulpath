@@ -33,8 +33,19 @@ if (manifest.lesson_count !== 14) {
 if (manifest.saved_reflections !== false) {
   fail("saved_reflections must be false — this course stores nothing a learner writes");
 }
-if (manifest.footer_links.length !== 2) {
-  fail(`lessons take the short footer of two support links; found ${manifest.footer_links.length}`);
+// One, not the two rule 6 asked for: both ended up naming Safety and Support,
+// and a reader met the same destination twice under two labels.
+if (manifest.footer_links.length !== 1) {
+  fail(`lessons take the short footer of one support link; found ${manifest.footer_links.length}`);
+}
+// Every footer destination is real. A null here renders as a placeholder, which
+// was right while the pages did not exist and is now just a dead end.
+for (const link of [...manifest.footer_links, ...manifest.full_footer_links]) {
+  if (!link.href) fail(`footer link "${link.label}" has no destination`);
+}
+// And the last lesson has somewhere to point after the course's closing word.
+if (!manifest.next_resource?.href || !manifest.next_resource?.label) {
+  fail("next_resource needs a label and a destination for the last lesson's forward link");
 }
 ok(`manifest: ${manifest.lessons.length} of ${manifest.lesson_count} lessons built, reflections off`);
 

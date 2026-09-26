@@ -329,6 +329,7 @@ export default async function TbymLessonPage({ params }: Props) {
         hasChapter={Boolean(lesson.chapterHref)}
         completionMessage={lesson.completionMessage}
         courseHref={TBYM_BASE}
+        nextResource={course.next_resource}
         next={
           next
             ? {

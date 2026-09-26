@@ -59,10 +59,10 @@ This lesson is about ordinary conflict between people who can safely disagree. A
 
 **Course completion message (shown after Lesson 14 is complete):** "You have come to the end of this route, but the conversation does not end here. Finishing does not declare that you are ready or not ready to marry. It means you have begun bringing your relationship into the light and learning to speak the truth in love. Keep your weekly check-in, return to these rooms when life changes, and continue seeking God's wisdom together. May the God of peace lead you in truth, love and faithfulness."
 
-Then: **Stop here for today** (primary) · **Return to Course Overview** (secondary) · A text link: **Explore your next Faithful Path course or resource** · **Mark it unfinished** (tertiary)
+Then: **Stop here for today** (primary) · **Return to Course Overview** (secondary) · A text link: **Explore your next Faithful Path course or resource** (https://faithfulpathcommunity.com) · **Mark it unfinished** (tertiary)
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

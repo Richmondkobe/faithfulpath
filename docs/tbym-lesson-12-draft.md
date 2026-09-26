@@ -57,7 +57,7 @@ If a painful experience from your past is stirred by this lesson, you control th
 Then: **Stop here for today** (primary) · **Continue to Lesson 13: Room 8, What You're Marrying Into** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

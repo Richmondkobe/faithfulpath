@@ -38,6 +38,8 @@ export type TbymCourse = {
   saved_reflections: boolean;
   footer_links: TbymFooterLink[];
   full_footer_links: TbymFooterLink[];
+  /** The forward link on the last lesson, once its closing word is shown. */
+  next_resource: { label: string; href: string };
   notice: string;
   lessons: TbymLessonEntry[];
 };

@@ -54,7 +54,7 @@ If this conversation feels too heavy to carry alone, you may speak with a truste
 Then: **Stop here for today** (primary) · **Continue to Lesson 11: Room 6, Roles** (secondary) · **Mark it unfinished**
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 

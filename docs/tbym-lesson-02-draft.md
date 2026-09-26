@@ -66,7 +66,7 @@ Then: **Stop here for today** (primary button) · **Continue to Lesson 3: Tell Y
 The note above the button reads: "The worksheet and the reflection questions are not required. Nothing here is scored, and nothing you write is stored." It names the chapter too once the chapter card is showing.
 
 ---
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
+*Footer links: Safety and Support · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
 
 ---
 
