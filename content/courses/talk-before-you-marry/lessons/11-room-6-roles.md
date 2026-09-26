@@ -4,7 +4,7 @@ subtitle: "Say what your words mean in an ordinary week."
 order: 11
 slug: 11-room-6-roles
 scripture_ref: "Ephesians 5:21-33 (ESV)"
-scripture_text: "Submitting to one another out of reverence for Christ."
+scripture_text: "submitting to one another out of reverence for Christ."
 scripture_note: "Read the whole passage in context. The recording reads it in full, and the transcript prints it in full. The line above is where it begins."
 chapter: 6
 chapter_label: "Chapter 6: The Nine Rooms"
@@ -58,7 +58,7 @@ Welcome to Lesson 11. This room is about roles. It is where two people can use t
 
 Let’s begin with Scripture. Ephesians chapter 5, verses 21 to 33. We will read the whole passage, because it should be read whole.
 
-“Submitting to one another out of reverence for Christ. Wives, submit to your own husbands, as to the Lord. For the husband is the head of the wife even as Christ is the head of the church, his body, and is himself its Savior. Now as the church submits to Christ, so also wives should submit in everything to their husbands. Husbands, love your wives, as Christ loved the church and gave himself up for her, that he might sanctify her, having cleansed her by the washing of water with the word, so that he might present the church to himself in splendor, without spot or wrinkle or any such thing, that she might be holy and without blemish. In the same way husbands should love their wives as their own bodies. He who loves his wife loves himself. For no one ever hated his own flesh, but nourishes and cherishes it, just as Christ does the church, because we are members of his body. ‘Therefore a man shall leave his father and mother and hold fast to his wife, and the two shall become one flesh.’ This mystery is profound, and I am saying that it refers to Christ and the church. However, let each one of you love his wife as himself, and let the wife see that she respects her husband.”
+“submitting to one another out of reverence for Christ. Wives, submit to your own husbands, as to the Lord. For the husband is the head of the wife even as Christ is the head of the church, his body, and is himself its Savior. Now as the church submits to Christ, so also wives should submit in everything to their husbands. Husbands, love your wives, as Christ loved the church and gave himself up for her, that he might sanctify her, having cleansed her by the washing of water with the word, so that he might present the church to himself in splendor, without spot or wrinkle or any such thing, that she might be holy and without blemish. In the same way husbands should love their wives as their own bodies. He who loves his wife loves himself. For no one ever hated his own flesh, but nourishes and cherishes it, just as Christ does the church, because we are members of his body. ‘Therefore a man shall leave his father and mother and hold fast to his wife, and the two shall become one flesh.’ This mystery is profound, and I am saying that it refers to Christ and the church. However, let each one of you love his wife as himself, and let the wife see that she respects her husband.”
 
 This is one of the most discussed passages in the Bible, so let’s go carefully.
 
