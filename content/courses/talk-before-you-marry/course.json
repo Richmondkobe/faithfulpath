@@ -63,6 +63,12 @@
       "slug": "08-room-3-family-and-boundaries",
       "title": "Room 3, Family and Boundaries",
       "file": "lessons/08-room-3-family-and-boundaries.md"
+    },
+    {
+      "order": 9,
+      "slug": "09-room-4-children",
+      "title": "Room 4, Children",
+      "file": "lessons/09-room-4-children.md"
     }
   ]
 }
