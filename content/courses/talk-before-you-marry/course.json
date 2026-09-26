@@ -51,6 +51,12 @@
       "slug": "06-room-1-money",
       "title": "Room 1, Money",
       "file": "lessons/06-room-1-money.md"
+    },
+    {
+      "order": 7,
+      "slug": "07-room-2-sex",
+      "title": "Room 2, Sex",
+      "file": "lessons/07-room-2-sex.md"
     }
   ]
 }

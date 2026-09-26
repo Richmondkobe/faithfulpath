@@ -178,6 +178,13 @@ export default async function TbymLessonPage({ params }: Props) {
       {/* 3. Watch or listen, and 4. the transcript under it */}
       <Card>
         <Heading>Watch or listen</Heading>
+        {/* Above the player, not below it: a note about listening privately is
+            no use to somebody who has already pressed play. */}
+        {lesson.listeningNote && (
+          <p className="mb-4 text-[15px] leading-relaxed text-[var(--tb-mute)]">
+            {lesson.listeningNote}
+          </p>
+        )}
         <TbymRecording
           src={audioSrc}
           duration={lesson.duration}

@@ -73,6 +73,14 @@ export type TbymLesson = {
   worksheetTitle: string;
   /** The line under the player. Provisional until the recording is made. */
   duration: string;
+  /**
+   * A word before the recording starts, on the lessons whose subject makes
+   * where and how you listen worth a sentence. The design gives one to Lessons
+   * 3, 7 and 12. It sits above the player rather than below it, because a note
+   * telling somebody they may prefer headphones is no use after they have
+   * pressed play.
+   */
+  listeningNote: string | null;
   /** The recording's id in the media bucket, or null while none exists. */
   audio: string | null;
   objectives: string[];
@@ -186,6 +194,7 @@ export const readTbymLesson = cache((slug: string): TbymLesson | null => {
     chapterHref: front.chapter_href,
     worksheetTitle: front.worksheet_title ?? "",
     duration: front.duration ?? "",
+    listeningNote: front.listening_note,
     audio: front.audio,
     objectives: bullets(need("In this lesson, you will learn to:")),
     takeOneStep: parseStep(need("Take one step")),

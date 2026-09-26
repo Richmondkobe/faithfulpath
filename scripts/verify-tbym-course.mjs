@@ -68,6 +68,20 @@ const STANDARD_SUPPORT =
 // weaker than the block it replaced, which is the failure worth catching.
 const FULLER_WARNING = new Set([3, 6, 7, 11, 12, 14]);
 
+// Which people a fuller warning sends somebody to is the lesson's own decision,
+// and it should be: Lesson 6 sends them for independent financial advice,
+// Lesson 7 for confidential support and a healthcare professional rather than
+// to a pastor first. What may not happen is a warning that names a danger and
+// then names nobody at all, so this asks only that at least one real route out
+// is offered.
+const SUPPORT_ROUTES = [
+  /trusted pastor, mentor or qualified professional/,
+  /qualified (healthcare |mental-health )?professional/,
+  /confidential support/,
+  /independent advice/,
+  /qualified counsellor/,
+];
+
 let templated = 0;
 for (const lesson of manifest.lessons) {
   const where = `Lesson ${lesson.order}`;
@@ -138,8 +152,8 @@ for (const lesson of manifest.lessons) {
 
   const support = sections.get("Need more support?") ?? "";
   if (FULLER_WARNING.has(lesson.order)) {
-    if (!/trusted pastor, mentor or qualified professional/.test(support)) {
-      fail(`${where}: the fuller warning does not name a pastor, mentor or qualified professional`);
+    if (!SUPPORT_ROUTES.some((route) => route.test(support))) {
+      fail(`${where}: the fuller warning names a danger but nobody to turn to`);
       sound = false;
     }
     if (!/Safety and Support/.test(support)) {
