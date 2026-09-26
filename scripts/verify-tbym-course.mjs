@@ -99,6 +99,17 @@ for (const lesson of manifest.lessons) {
     sound = false;
   }
 
+  // An H2 is how a section begins, so an H2 anywhere else silently ends the
+  // section it was written inside. Lesson 6's worksheet has three of its own
+  // headings; written as H2 they would have cut the worksheet off at the first
+  // one, with no error and a page that simply stopped early. Sub-headings are
+  // H3 for that reason, and this is what keeps them there.
+  const stray = headings.filter((h) => !REQUIRED.includes(h) && h !== TELL_SOMEONE);
+  if (stray.length) {
+    fail(`${where}: "${stray[0]}" is an H2 the template does not know — a heading inside a section must be H3, or it ends that section`);
+    sound = false;
+  }
+
   const hasTell = sections.has(TELL_SOMEONE);
   if (OMIT_TELL_SOMEONE.has(lesson.order) && hasTell) {
     fail(`${where}: "${TELL_SOMEONE}" must be omitted — the design does not invite disclosure here`);

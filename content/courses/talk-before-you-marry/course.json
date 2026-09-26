@@ -45,6 +45,12 @@
       "slug": "05-learn-to-hear-the-hard-thing",
       "title": "Learn to Hear the Hard Thing",
       "file": "lessons/05-learn-to-hear-the-hard-thing.md"
+    },
+    {
+      "order": 6,
+      "slug": "06-room-1-money",
+      "title": "Room 1, Money",
+      "file": "lessons/06-room-1-money.md"
     }
   ]
 }
