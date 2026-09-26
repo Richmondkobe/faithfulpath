@@ -9,7 +9,7 @@ chapter: 6
 chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Conversation Record (Room 2)"
-duration: "About 13 minutes, plus one short pause."
+duration: "About 12 minutes, plus one short pause."
 listening_note: "A note before you listen: this lesson speaks modestly and respectfully about intimacy in marriage. You may prefer to listen privately, with headphones, or to read the transcript instead. You may stop at any time."
 audio: lesson-07
 ---

@@ -9,7 +9,7 @@ supporting_passage: "Proverbs 12:1"
 chapter: 5
 chapter_href: null
 worksheet_title: "Conversation Record (Listening)"
-duration: "About 13 minutes, plus one short pause."
+duration: "About 12 minutes, plus one short pause."
 audio: lesson-05
 ---
 

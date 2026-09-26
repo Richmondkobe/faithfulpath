@@ -8,7 +8,7 @@ scripture_text: "Let no corrupting talk come out of your mouths, but only such a
 chapter: 4
 chapter_href: null
 worksheet_title: "Conversation Record"
-duration: "About 13 minutes, plus one short pause."
+duration: "About 11 minutes, plus one short pause."
 audio: lesson-04
 ---
 

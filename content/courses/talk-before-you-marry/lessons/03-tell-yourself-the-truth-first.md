@@ -8,7 +8,7 @@ scripture_text: "Search me, O God, and know my heart! Try me and know my thought
 chapter: 3
 chapter_href: null
 worksheet_title: "Private Inventory Sheet"
-duration: "About 12 minutes, plus one short pause."
+duration: "About 11 minutes, plus one short pause."
 listening_note: "A note before you listen: this lesson asks you to be honest with yourself about difficult things, and some of it may be painful. You may prefer to listen privately, with headphones, or to read the transcript instead. You may stop at any time."
 audio: lesson-03
 ---

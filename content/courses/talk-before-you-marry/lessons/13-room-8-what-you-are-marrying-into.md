@@ -9,7 +9,7 @@ chapter: 6
 chapter_label: "Chapter 6: The Nine Rooms"
 chapter_href: null
 worksheet_title: "Existing Obligations Sheet"
-duration: "About 13 minutes, plus one short pause."
+duration: "About 12 minutes, plus one short pause."
 audio: lesson-13
 ---
 
