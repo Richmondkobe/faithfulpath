@@ -79,6 +79,33 @@
   to { opacity: 1; }
 }
 
+/* Two slow idle movements, once the drawing has finished: .loop breathes a
+   shape in and out, .flick makes a flame waver. Both come from the pilot page
+   and are used by six of the illustrations — the heart in "love", the flame in
+   "candle", and the shape in "body", "pause", "pulse" and "shield".
+   transform-box keeps the origin on the shape's own box rather than on the
+   whole SVG, or the shape would swing about the canvas centre instead of
+   growing in place. */
+.art :global(.loop) {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 3.2s ease-in-out 1.6s infinite;
+}
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.art :global(.flick) {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: flick 2.4s ease-in-out 1.4s infinite;
+}
+@keyframes flick {
+  0%, 100% { transform: scale(1, 1); }
+  40% { transform: scale(0.94, 1.06); }
+  70% { transform: scale(1.04, 0.96); }
+}
+
 .kicker {
   font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
   font-size: 12px;
@@ -233,5 +260,11 @@
     animation: none;
     stroke-dashoffset: 0;
     opacity: 1;
+  }
+  /* The idle movements stop outright. They carry no meaning, so there is
+     nothing to leave behind in a finished state. */
+  .art :global(.loop),
+  .art :global(.flick) {
+    animation: none;
   }
 }
