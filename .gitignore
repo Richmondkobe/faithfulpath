@@ -64,3 +64,10 @@ supabase/.temp/
 # is copied into content/ and is what ships. Same reasoning as the pilot pages
 # above: the mp3 is large and the pilot embeds it.
 tbym-lesson-*-source/
+tbym-slides-02-14/
+
+# The recordings for all fourteen lessons. Listed twice because the folder on
+# disk has a trailing space in its name, and the tidy spelling is here so a
+# renamed folder stays ignored too.
+Teaching recordings/
+Teaching recordings /
