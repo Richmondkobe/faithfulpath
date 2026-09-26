@@ -111,7 +111,7 @@ Your step has two parts. First, alone, about 30 minutes. Fill in the Money Snaps
 
 Then, together, 45 to 60 minutes, when neither of you is tired. Have your Lesson 2 rules in front of you. Exchange the relevant figures and read both in silence before either of you speaks. Then talk about what the money means: what money felt like in the house you grew up in, what spending means to you, what saving means to you, and when you have felt ashamed about money.
 
-Then look at the areas in the worksheet: joint or separate accounts, the amount either of you can spend without asking, giving, what you each owe to your families, saving, and who pays the bills and how the other stays informed. You will not settle all of these tonight. Agree one rule today, and record the other matters you need to revisit. The First Household Budget can wait for another day.
+Then look at the areas in the worksheet: joint or separate accounts, the amount either of you can spend without asking, giving, what you each owe to your families, saving, and who pays the bills and how the other stays informed. You will not settle all of these in this sitting. Agree one rule today, and record the other matters you need to revisit. The First Household Budget can wait for another day.
 
 Then finish with the hard question, out loud: "Is there anything about my finances I have not told you?" And wait. Do not fill the silence.
 

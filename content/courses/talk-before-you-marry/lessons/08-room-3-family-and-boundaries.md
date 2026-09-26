@@ -114,7 +114,7 @@ Your step has two parts. First, about twenty minutes alone with the questions in
 
 Then set aside 45 to 60 minutes, together, when neither of you is tired. Have your Lesson 2 rules in front of you. Work through the six main questions. Be specific. If you cannot answer a question specifically, that is the discussion.
 
-Then choose one boundary that will protect the household you are forming. Decide who will communicate it, and when you will review it. It might be about visits, about money, or about what is shared. And record where you still disagree. Agreement is not required on everything tonight.
+Then choose one boundary that will protect the household you are forming. Decide who will communicate it, and when you will review it. It might be about visits, about money, or about what is shared. And record where you still disagree. Agreement is not required on everything today.
 
 Let me close with a short prayer.
 

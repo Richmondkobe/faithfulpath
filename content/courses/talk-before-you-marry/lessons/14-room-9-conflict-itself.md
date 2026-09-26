@@ -162,7 +162,7 @@ Keep it with the rules you wrote in Lesson 2. That document told you what to do.
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which you will continue, and when.
+You do not need to finish these today. Choose which you will continue, and when.
 
 - What usually starts a difficult conversation between us? Who pursues, and who withdraws? Do roles change by topic?
 - What happens to each of us physically when we start becoming overwhelmed (a raised voice, sudden silence, tears, pacing, leaving the room, sarcasm)? What happens when I feel overwhelmed or misunderstood?

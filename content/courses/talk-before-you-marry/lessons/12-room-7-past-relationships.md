@@ -103,7 +103,7 @@ Your step has two parts. First, about twenty minutes alone. Is there anything in
 
 Take responsibility for choices you made. Harm done to you is not your sin to confess, and you control the details of that story.
 
-Then set aside 45 to 60 minutes, in a private place, when neither of you is tired. Have your Lesson 2 rules in front of you. Either of you may stop at any time. Work through three main questions. First: is there anything material my partner needs to know in order to decide, or do I have nothing material to add? Share only what is needed. The one receiving it uses what we learned in Lesson 5: a question first, repeat it back, then respond. And here is a rule for tonight: the receiver may ask what they need to know in order to decide. They may not ask for detail whose only function is to picture it. If you are not sure which you are asking for, ask yourself what you would do with the answer.
+Then set aside 45 to 60 minutes, in a private place, when neither of you is tired. Have your Lesson 2 rules in front of you. Either of you may stop at any time. Work through three main questions. First: is there anything material my partner needs to know in order to decide, or do I have nothing material to add? Share only what is needed. The one receiving it uses what we learned in Lesson 5: a question first, repeat it back, then respond. And here is a rule for this conversation: the receiver may ask what they need to know in order to decide. They may not ask for detail whose only function is to picture it. If you are not sure which you are asking for, ask yourself what you would do with the answer.
 
 Second: how does the past show up in the present? Do I compare you to anyone? What makes me jealous, and what fear sits underneath that jealousy? Am I still in contact with anyone from my past? Is there any present contact I am hiding because I know it crosses a boundary we have agreed? That last one is a question to ask yourself honestly, not a demand to hand over a phone.
 
@@ -144,7 +144,7 @@ Your written answers remain private. If they reveal information that materially 
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which you will continue, and when.
+You do not need to finish these today. Choose which you will continue, and when.
 
 - What did my most significant previous relationship teach me about myself, what to expect and what to fear? What pattern do I recognise across more than one relationship?
 - What am I afraid will happen again? What do I now expect from a partner because of what happened before?

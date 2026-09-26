@@ -133,7 +133,7 @@ Exchange your Tuesdays and read both before either of you speaks.
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which you will continue, and when.
+You do not need to finish these today. Choose which you will continue, and when.
 
 - **Different convictions.** Each explains their conviction without attacking the other's. Which passages or principles matter most to me, and how did I come to hold them? What would this belief actually require of my spouse in everyday married life? Listen using Lesson 5: question first, repeat it back, then respond.
 - **What counts as a major decision.** How do we make one when we agree? When we do not? Is there a final decision-maker for some matters, and which decisions need both our free agreements?

@@ -25,7 +25,7 @@ audio: null
 
 First, separately (about 20 minutes), each of you writes on paper: What obligations do I bring into this marriage? Think of children, an ex, a dependent relative, a debt, a business, property, a legal commitment or a promise. For each one, what does it require of me in time, money and emotional energy? Most couples bring something into this room. Do the exercise even if you think you do not. Exchange your lists and read both before anyone speaks.
 
-Then set aside 45 to 60 minutes, in a private place, when neither of you is tired or rushed. Have the rules you agreed in Lesson 2 in front of you. Work through the three main questions in the worksheet. If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in tonight's sitting, but record the date.
+Then set aside 45 to 60 minutes, in a private place, when neither of you is tired or rushed. Have the rules you agreed in Lesson 2 in front of you. Work through the three main questions in the worksheet. If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in this sitting, but record the date.
 
 Three things are needed from this conversation:
 
@@ -104,7 +104,7 @@ Then set aside 45 to 60 minutes, in a private place, when neither of you is tire
 
 A child's safety and welfare come first. That does not mean the spouse's needs are unimportant; it means neither relationship should be protected by asking the child to carry an adult conflict. Many of these pressures can be managed more faithfully when expectations, legal limits and responsibilities are discussed early, by a couple who have decided that they are on the same side of the problem.
 
-If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in tonight's sitting, but put a date on it. If something on the other person's list is new information, stop and take time with it. Sometimes the obligation itself needs careful discernment; sometimes the deeper injury is that it was not disclosed.
+If either of you has a child, schedule the co-parenting and household conversation before completing your premarital preparation. It does not have to be finished in this sitting, but put a date on it. If something on the other person's list is new information, stop and take time with it. Sometimes the obligation itself needs careful discernment; sometimes the deeper injury is that it was not disclosed.
 
 If at any point one of you cannot speak honestly without fear, stop, and speak to someone outside the relationship. Do the same if a child tells you something that concerns you.
 
@@ -137,7 +137,7 @@ Exchange the nature and impact of each obligation, not sensitive documents or id
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which apply to you, and when you will continue them.
+You do not need to finish these today. Choose which apply to you, and when you will continue them.
 
 - **Money.** What leaves our household every month for obligations from before? Is it fixed, or could it increase? Who decides if it increases? What happens if we cannot afford it in a difficult year?
 - **Co-parenting, if it applies (schedule this before the wedding).** How much contact is there with the child's other parent now, and what is it for? What requires contact and what does not? How does necessary contact happen (phone, text, email, shared calendar), and how will it remain appropriately transparent while protecting the child's privacy and confidential information? How do holidays work? Who makes medical and school decisions? Where does the child stay, and when? What happens when plans change at short notice? How are disagreements between the parents handled, and is the new spouse present?

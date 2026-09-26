@@ -1,7 +1,7 @@
 ---
 title: "Start Here: Before You Begin"
 subtitle: "A guided biblical route for engaged couples learning to speak the truth in love before marriage."
-reading_time: "Reading time: about 10 minutes."
+reading_time: "Reading time: about 10 minutes"
 scripture_ref: "Ephesians 4:15 (ESV)"
 scripture_text: "speaking the truth in love"
 scripture_note: "Truth and love are not opposites. This course will help you practise both as you prepare for marriage."

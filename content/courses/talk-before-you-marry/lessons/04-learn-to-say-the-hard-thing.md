@@ -133,7 +133,7 @@ I'll see you in Lesson 5.
 Prepare your three sentences now. Hold the conversation only after both of you have completed Lesson 5, which prepares the person receiving it. Have the rules you agreed in Lesson 2 in front of you, and review them together for a few minutes. Then agree on three points.
 
 - **Who begins.** One of you introduces the subject. Both of you may respond to that subject. Next time, swap who introduces an issue. Do not use this conversation to add unrelated grievances.
-- **When.** An actual evening, not tonight if either of you is tired. Choose when you can both hear, not when one of you most wants to speak.
+- **When.** An actual evening, not now if either of you is tired. Choose when you can both hear, not when one of you most wants to speak.
 - **How long.** Agree to stop at 40 minutes, whether or not it is resolved, and set aside 10 more minutes to review how it went.
 
 Your three sentences are private preparation. You may keep them to yourself until you read them aloud.

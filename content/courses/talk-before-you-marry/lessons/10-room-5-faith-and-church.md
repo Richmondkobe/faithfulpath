@@ -110,7 +110,7 @@ Then set aside 45 to 60 minutes, together, when neither of you is tired. Have yo
 
 If you find a real difference, do not smooth it over. Record it. Some convictions are non-negotiable, and infant baptism, for instance, becomes concrete the moment there is a baby. Identify those now, not in a maternity ward.
 
-The other important questions, about giving, authority and decisions, and how your children will be raised in the faith, are worth continuing over the coming weeks. You do not need to settle them tonight.
+The other important questions, about giving, authority and decisions, and how your children will be raised in the faith, are worth continuing over the coming weeks. You do not need to settle them today.
 
 Let me close with a short prayer.
 
@@ -145,7 +145,7 @@ These answers are yours. You do not have to share them.
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which you will continue, and when.
+You do not need to finish these today. Choose which you will continue, and when.
 
 - **Authority and decisions.** What does spiritual leadership mean to me, concretely? How do we decide when we disagree about something we both consider a matter of faith? Who do we go to when we need counsel? What happens if one of us wants to leave our church?
 - **Giving.** What do we give, and how do we decide?

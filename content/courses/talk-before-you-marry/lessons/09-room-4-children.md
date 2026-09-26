@@ -108,7 +108,7 @@ Then set aside 45 to 60 minutes, together, when neither of you is tired. Have yo
 
 If you feel uncertain, name it honestly now. You do not need immediate certainty, but uncertainty must not be presented as agreement.
 
-There are other important conversations: work and childcare, discipline, and what you will do if it does not go to plan. You do not need to finish them tonight. Choose which you will continue, and when.
+There are other important conversations: work and childcare, discipline, and what you will do if it does not go to plan. You do not need to finish them today. Choose which you will continue, and when.
 
 Before you leave, record each person's present position on children and timing. Do not treat uncertainty as agreement. And list any information or professional advice you need.
 
@@ -145,7 +145,7 @@ These answers are yours. You do not have to share them.
 
 **Important conversations to continue before marriage**
 
-You do not need to finish these tonight. Choose which you will continue, and when.
+You do not need to finish these today. Choose which you will continue, and when.
 
 - **Work, childcare and household.** What arrangement do we presently imagine for paid work, childcare, nights and household responsibilities? What financial assumptions are behind that picture? What do we do when a child is ill and we both have work? What role do our parents have?
 - **How we were raised.** How was I disciplined, and what would I keep or never repeat? Scripture tells parents not to provoke their children to anger, but to bring them up in the instruction of the Lord (Ephesians 6:4). Agree to teach boundaries without hitting, threats, humiliation or shaming.
