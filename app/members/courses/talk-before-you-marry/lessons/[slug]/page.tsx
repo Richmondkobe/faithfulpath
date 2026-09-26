@@ -161,6 +161,13 @@ export default async function TbymLessonPage({ params }: Props) {
         >
           {lesson.scriptureRef}
         </p>
+        {/* Where a lesson reads more than the quoted line, it says so here
+            rather than letting the quote stand in for the passage. */}
+        {lesson.scriptureNote && (
+          <p className="mt-3 text-sm leading-relaxed text-[var(--tb-mute)]">
+            {lesson.scriptureNote}
+          </p>
+        )}
       </Card>
 
       {/* 2. Objectives */}

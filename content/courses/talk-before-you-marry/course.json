@@ -75,6 +75,12 @@
       "slug": "10-room-5-faith-and-church",
       "title": "Room 5, Faith and Church",
       "file": "lessons/10-room-5-faith-and-church.md"
+    },
+    {
+      "order": 11,
+      "slug": "11-room-6-roles",
+      "title": "Room 6, Roles",
+      "file": "lessons/11-room-6-roles.md"
     }
   ]
 }

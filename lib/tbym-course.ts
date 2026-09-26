@@ -61,6 +61,14 @@ export type TbymLesson = {
   scriptureText: string;
   scriptureRef: string;
   /**
+   * A word about the passage itself, under the reference.
+   *
+   * Lesson 11 reads the whole of Ephesians 5:21 to 33 because the passage has
+   * so often been quoted in halves, and the page says so rather than showing
+   * one verse and leaving a learner to assume that is all of it.
+   */
+  scriptureNote: string | null;
+  /**
    * The book chapter this lesson is drawn from, and where it can be read.
    *
    * The number stays whatever the lesson is worth; the link is null until the
@@ -190,6 +198,7 @@ export const readTbymLesson = cache((slug: string): TbymLesson | null => {
     subtitle: front.subtitle ?? "",
     scriptureText: front.scripture_text ?? "",
     scriptureRef: front.scripture_ref ?? "",
+    scriptureNote: front.scripture_note,
     chapter: Number(front.chapter),
     chapterHref: front.chapter_href,
     worksheetTitle: front.worksheet_title ?? "",
