@@ -410,6 +410,7 @@ const FOOTER_VARIANT = {
   "page.tsx": "full",
   "start-here/page.tsx": "full",
   "safety-and-support/page.tsx": "safety",
+  "facilitator-guide/page.tsx": "full",
   "lessons/[slug]/page.tsx": "short",
   "lessons/[slug]/worksheet/page.tsx": "short",
 };

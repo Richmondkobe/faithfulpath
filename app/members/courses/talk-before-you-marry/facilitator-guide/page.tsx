@@ -3,40 +3,38 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  getTbymCourse,
-  readTbymStartHere,
-  tbymLessonHref,
-  tbymFacilitatorHref,
+  readTbymFacilitatorGuide,
   tbymSafetyHref,
+  tbymStartHereHref,
   TBYM_BASE,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
-import TbymAcknowledgement from "@/components/tbym/TbymAcknowledgement";
 import TbymFooter from "@/components/tbym/TbymFooter";
 
 export const metadata: Metadata = {
-  title: "Talk Before You Marry | Faithful Path Community",
+  title: "Facilitator Guide | Faithful Path Community",
   robots: { index: false, follow: false },
 };
 
-/** Sections whose prose names a page, linked at the foot of that section. */
-const LINKED: Record<string, { label: string; href: string }> = {
-  "Who it is for": {
-    label: "Read the Facilitator Guide",
-    href: tbymFacilitatorHref,
-  },
-  "Safety and support": {
-    label: "Visit Safety and Support",
-    href: tbymSafetyHref,
-  },
+/**
+ * The Facilitator Guide.
+ *
+ * Read by a pastor or mentor rather than by the couple, which is why it opens
+ * by saying so. It is the one page of this course that talks about the learners
+ * instead of to them, and its firmest instruction is the one it shares with
+ * every lesson: where there is fear, do not arrange a joint conversation.
+ *
+ * Two sections name the Safety and Support page, so both link to it.
+ */
+const LINKED: Record<string, true> = {
+  "Before you begin: meet each person alone": true,
+  "When to bring in someone else": true,
 };
 
-export default async function TbymStartHere() {
+export default async function TbymFacilitatorGuide() {
   await requireActiveMember();
 
-  const course = getTbymCourse();
-  const page = readTbymStartHere();
-  const firstLesson = course.lessons.find((l) => l.order === 1);
+  const page = readTbymFacilitatorGuide();
 
   return (
     <>
@@ -49,9 +47,9 @@ export default async function TbymStartHere() {
           style={{ fontFamily: "var(--font-tbym-mono)" }}
         >
           <Link href={TBYM_BASE} className="underline underline-offset-4">
-            {course.title}
+            Talk Before You Marry
           </Link>
-          <span>{page.readingTime}</span>
+          <span>For facilitators</span>
         </div>
 
         <section className="rounded-md border border-[var(--tb-line)] bg-[var(--tb-card)] px-6 py-7">
@@ -69,26 +67,6 @@ export default async function TbymStartHere() {
           </p>
         </section>
 
-        <section className="rounded-md border border-transparent px-6 py-7">
-          <blockquote
-            className="text-[1.3rem] leading-[1.5] text-[var(--tb-ink)]"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            &ldquo;{page.scriptureText}&rdquo;
-          </blockquote>
-          <p
-            className="mt-3 text-[13px] uppercase tracking-[0.1em] text-[var(--tb-accent)]"
-            style={{ fontFamily: "var(--font-tbym-mono)", fontWeight: 500 }}
-          >
-            {page.scriptureRef}
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-[var(--tb-mute)]">
-            {page.scriptureNote}
-          </p>
-        </section>
-
-        {/* Rendered in the order the file writes them, so a section added to
-            the content appears here without a code change. */}
         {page.sections.map((section) => (
           <section
             key={section.title}
@@ -107,29 +85,30 @@ export default async function TbymStartHere() {
             {LINKED[section.title] && (
               <p className="mt-4">
                 <Link
-                  href={LINKED[section.title].href}
+                  href={tbymSafetyHref}
                   className="text-[15px] text-[var(--tb-accent)] underline underline-offset-4"
                 >
-                  {LINKED[section.title].label}
+                  Visit Safety and Support
                 </Link>
               </p>
             )}
-
-            {/* The tick, and the way into Lesson 1 behind it, belong to the
-                last section rather than standing apart from its words. */}
-            {section.title === "Ready to begin?" && firstLesson && (
-              <div className="mt-5">
-                <TbymAcknowledgement
-                  acknowledgement={page.acknowledgement}
-                  beginLabel={page.beginLabel}
-                  beginHref={tbymLessonHref(firstLesson.slug)}
-                  stopHref="/members"
-                  safetyHref={tbymSafetyHref}
-                />
-              </div>
-            )}
           </section>
         ))}
+
+        <p className="flex flex-wrap gap-x-5 gap-y-2 px-6 text-[15px]">
+          <Link
+            href={tbymStartHereHref}
+            className="text-[var(--tb-accent)] underline underline-offset-4"
+          >
+            Return to Start Here
+          </Link>
+          <Link
+            href={TBYM_BASE}
+            className="text-[var(--tb-accent)] underline underline-offset-4"
+          >
+            Return to the course
+          </Link>
+        </p>
       </main>
 
       <TbymFooter variant="full" />

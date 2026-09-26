@@ -7,6 +7,13 @@ import remarkGfm from "remark-gfm";
 // when the theme did.
 
 const components: Components = {
+  // A wide table scrolls inside its own box instead of pushing the page
+  // sideways. The Facilitator Guide has the only one in this course.
+  table: ({ children }) => (
+    <div className="table-scroll">
+      <table>{children}</table>
+    </div>
+  ),
   // The lesson files carry no H1 or H2 inside a section; if one ever appears it
   // renders as ordinary emphasis rather than competing with the page's own
   // heading hierarchy.

@@ -117,3 +117,32 @@
   font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
   font-weight: 500;
 }
+
+/* The Facilitator Guide's lesson table. Fourteen rows of four columns will not
+   fit a phone, so it scrolls inside its own box rather than pushing the page
+   sideways — the one element allowed to be wider than the column. */
+.tbym .prose .table-scroll {
+  overflow-x: auto;
+  margin-top: 0.875rem;
+}
+.tbym .prose table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 34rem;
+  font-size: 14px;
+}
+.tbym .prose th,
+.tbym .prose td {
+  border-bottom: 1px solid var(--tb-line);
+  padding: 8px 12px 8px 0;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.tbym .prose th {
+  font-weight: 600;
+  color: var(--tb-ink);
+}
+.tbym .prose td {
+  color: var(--tb-ink);
+}

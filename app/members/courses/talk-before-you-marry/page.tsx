@@ -6,6 +6,8 @@ import { getCourseProgress } from "@/lib/course-progress";
 import {
   getTbymCourse,
   tbymLessonHref,
+  tbymFacilitatorHref,
+  tbymSafetyHref,
   tbymStartHereHref,
   TBYM_SLUG,
 } from "@/lib/tbym-course";
@@ -19,10 +21,8 @@ export const metadata: Metadata = {
 /**
  * The course overview.
  *
- * Minimal on purpose: one lesson of fourteen is written, and this page exists
- * so the lesson has somewhere to come from and go back to. Start Here, Safety
- * and Support and the Facilitator Guide are separate pages in the build brief
- * and are not built yet; when they are, they belong here.
+ * The hub: Start Here, the fourteen lessons in order, and the two pages that
+ * sit beside them — Safety and Support, and the Facilitator Guide.
  */
 export default async function TbymCourseHome() {
   await requireActiveMember();
@@ -108,14 +108,19 @@ export default async function TbymCourseHome() {
         ))}
       </ul>
 
-      {/* What is still missing, said on the page rather than only in a commit
-          message. It goes when the last two pages are built. */}
-      <p
-        className="mt-6 rounded-sm border border-dashed border-[var(--tb-accent)] px-4 py-3 text-[13px] leading-relaxed text-[var(--tb-mute)]"
-        style={{ fontFamily: "var(--font-tbym-mono)" }}
-      >
-        {course.lessons.length} of {course.lesson_count} lessons built. Safety
-        and Support and the Facilitator Guide are not built yet.
+      <p className="mt-8 flex flex-wrap gap-x-5 gap-y-2 text-[15px]">
+        <Link
+          href={tbymSafetyHref}
+          className="text-[var(--tb-accent)] underline underline-offset-4"
+        >
+          Safety and Support
+        </Link>
+        <Link
+          href={tbymFacilitatorHref}
+          className="text-[var(--tb-accent)] underline underline-offset-4"
+        >
+          Facilitator Guide
+        </Link>
       </p>
     </main>
 

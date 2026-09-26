@@ -334,6 +334,36 @@ export const readTbymSafetyCountries = cache(
     JSON.parse(readFileSync(join(ROOT, "safety-countries.json"), "utf8"))
 );
 
+/**
+ * The Facilitator Guide.
+ *
+ * Written for the pastor or mentor walking beside a couple, not for the couple,
+ * and it says so in its first line. It is member-gated like everything else
+ * here: a facilitator working with a couple on this course has an account.
+ */
+export type TbymFacilitatorGuide = {
+  title: string;
+  subtitle: string;
+  sections: { title: string; body: string }[];
+};
+
+export const readTbymFacilitatorGuide = cache((): TbymFacilitatorGuide => {
+  const raw = readFileSync(join(ROOT, "facilitator-guide.md"), "utf8");
+  const front = parseFront(raw.match(FRONT_MATTER)?.[1] ?? "");
+  const parts = raw.replace(FRONT_MATTER, "").split(/^##[ \t]+(.+?)[ \t]*$/m);
+
+  return {
+    title: front.title ?? "",
+    subtitle: front.subtitle ?? "",
+    sections: Array.from({ length: (parts.length - 1) / 2 }, (_, i) => ({
+      title: parts[i * 2 + 1].trim(),
+      body: parts[i * 2 + 2].trim(),
+    })),
+  };
+});
+
+export const tbymFacilitatorHref = `${TBYM_BASE}/facilitator-guide`;
+
 export const tbymSafetyHref = `${TBYM_BASE}/safety-and-support`;
 
 export const tbymStartHereHref = `${TBYM_BASE}/start-here`;
