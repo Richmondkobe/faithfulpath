@@ -1,26 +1,26 @@
-*Editorial note (not part of the page): Talk Before You Marry, Lesson 3, Draft 3, for review. Built on the Faithful Path Lesson Template, the approved course design (Version 1.1), Chapter 3 of the book, and the corrections made to Lessons 1 and 2. Words in [square brackets] are notes and are not part of the page.*
-
+---
+title: "Tell Yourself the Truth First"
+subtitle: "You cannot say what you have not admitted."
+order: 3
+slug: 03-tell-yourself-the-truth-first
+scripture_ref: "Psalm 139:23-24 (ESV)"
+scripture_text: "Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!"
+chapter: 3
+chapter_href: null
+worksheet_title: "Private Inventory Sheet"
+duration: "About 12 minutes, plus one short pause."
+audio: null
 ---
 
-# Lesson 3: Tell Yourself the Truth First
-*You cannot say what you have not admitted.*
-
-**Scripture:** Psalm 139:23 to 24: "Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!" (ESV)
-
 ## In this lesson, you will learn to:
+
 - Recognise the expectations you have never named.
 - Sort what you want into preference, conviction or deal-breaker.
 - Say what you actually want in specific, everyday terms.
 - Understand why private preparation should come before the shared conversation.
 
-## Watch or listen
-[Player]
-About 12 minutes, plus one short pause. [Replace with the actual duration after recording.]
-
-## Read the transcript
-[Collapsed transcript. Full text below.]
-
 ## Take one step
+
 **Begin your Private Inventory, alone.**
 
 Start with three questions. They take about 30 minutes. Choose a private time and place, and write in whatever way helps you think honestly, or hold your answers in thought and prayer.
@@ -39,32 +39,16 @@ Keep it somewhere private and secure. If writing something down would not feel s
 
 You may mark this lesson complete after you have worked through the first three questions and made a realistic plan for finishing the remaining sections. You do not need to finish the whole inventory today.
 
-## Go deeper
-[ Worksheet: Private Inventory Sheet ]   [ Complete chapter: Chapter 3 ]
-
 ## Let it settle
+
 - What have I already decided I will simply put up with?
 - Lord, where have I not been honest with myself?
 
 ## Need more support?
+
 If you are working through this alone and it stirs up something painful, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response, or someone might use what you write to harm you, keep nothing written where they could find it, and visit Safety and Support.
 
-## Ready to finish for today?
-[ Mark this lesson complete ]
-Then: **Stop here for today** (primary) · **Continue to Lesson 4: Learn to Say the Hard Thing** (secondary) · **Mark it unfinished**
-
----
-*Footer links: [Need more support?] · [second support link] · Scripture quotations are from the ESV® Bible. [ESV notice.] Course material © Richmond Kobe, Faithful Path Community. [Book copyright line.]*
-
-[Design note: the "If it helps, tell someone" section is deliberately omitted from this lesson. The inventory is private, and the lesson should not encourage disclosure.]
-
----
-
-# Recording script and transcript
-
-*Author's note: this follows the five-movement teaching pattern. The italic headings are for your guidance and are not spoken. About 1,500 words, to be read in your own voice in about 12 minutes, including the Scripture reading and the pause. Change anything that does not sound like you.*
-
-*Movement 1. Read the passage*
+## Transcript
 
 Welcome to Lesson 3.
 
@@ -72,17 +56,11 @@ Let's begin with Scripture. Psalm 139, verses 23 and 24.
 
 "Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!"
 
-*Movement 2. Explain the passage*
-
 Notice how personal this prayer is. The psalmist is speaking directly to God: "Search me... know my heart... lead me." Before this truth is discussed with anyone else, it is brought honestly before God.
 
 Notice, too, who does the searching. The psalmist does not say, "Let me examine myself and report back." He says, "Search me, O God." He asks God to look into places he cannot see clearly himself.
 
 And notice where the prayer goes. It begins with "search me" and it ends with "lead me." It is not an invitation to self-condemnation. It is an invitation to be honestly known, and then guided.
-
-[Optional original-language note, one word only. Keep it if it feels natural; drop it if not.] The Hebrew word translated "search" is *ḥāqar*. It carries the sense of examining or searching something thoroughly. The same word appears in Proverbs 25:2, where it speaks of searching out a matter.
-
-*Movement 3. Draw out the biblical truth*
 
 That is the truth this lesson stands on. You cannot say what you have not admitted. And it is difficult to bring an honest self into marriage if you have never taken time to meet that self alone before God.
 
@@ -95,8 +73,6 @@ It does not mean every expectation you hold is wrong and must be surrendered. So
 Nor does it mean every strong reaction is an overreaction. Sometimes the reaction is right, and the other person really did behave badly.
 
 The work is narrower than either. Find it. Trace where it came from. Then decide, deliberately and not by accident, whether it needs to be spoken, adjusted or let go.
-
-*Movement 4. Make it real*
 
 Here is how it often looks.
 
@@ -114,7 +90,7 @@ So here is a useful question to ask yourself: When have I thought, about anyone,
 
 Now, before you decide that your partner is inconsiderate, selfish or distant, put one question in front of that conclusion: have they broken an agreement we made, or a rule I never told them existed? A broken agreement calls for accountability. An unspoken expectation calls for clarification. Neither excuses disrespect or harm.
 
-*[Short pause. On the page: "Pause here. When have you thought, 'of course they should have known better'? Take a moment before you go on."]*
+> Pause here. When have you thought, "of course they should have known better"? Take a moment before you go on.
 
 Next, not every expectation weighs the same. Sort them into three.
 
@@ -138,8 +114,6 @@ Last, be specific. Couples tell me, "We agree about money. We agree about childr
 
 So don't only tell yourself what you believe. Write down what you want your life to look like. And if you find you do not know what you want, that is a real answer. "I don't know how I feel about my mother living with us eventually" is far more useful than a confident answer you invented to avoid looking unprepared.
 
-*Movement 5. Practise it today*
-
 Your step is to begin the Private Inventory, alone.
 
 Start with three questions, about 30 minutes in all. When have I thought, "of course they should have known better," and what was the rule underneath? What did my family always do that I assumed every married couple does? And what would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all? The third is the sharpest. Give it time.
@@ -160,9 +134,7 @@ Lord, You know me better than I know myself. Search me, and show me what I have 
 
 I'll see you in Lesson 4.
 
----
-
-# Worksheet: Private Inventory Sheet
+## Worksheet
 
 *From the book's Chapter 3 exercise. Downloadable. Complete on your own device or on paper. This is for you alone.*
 
@@ -173,6 +145,7 @@ Allow about two hours and twenty minutes for the private work, and about twenty 
 Keep your notes somewhere private and secure. If writing something down would not feel safe, hold it in thought and prayer instead.
 
 **Part One. The three questions (about 30 minutes, alone)**
+
 1. When have I thought, "of course they should have known better"? What was the rule underneath it?
 2. What did my family always do that I assumed every married couple does?
 3. What would make me think something was wrong with our marriage, even if my partner saw nothing wrong at all?
@@ -180,7 +153,9 @@ Keep your notes somewhere private and secure. If writing something down would no
 Use sentences, notes or any format that helps you think honestly. Allow extra time for the third question.
 
 **Part Two. The five areas (about 90 minutes, alone)**
+
 Work through each area in two passes.
+
 - **First pass: what I want.** Be specific enough that someone reading it could act on it. "I want us to be careful with money" is not an answer. "I want us to talk before either of us spends more than X" is.
 - **Second pass: where it came from.** For each answer, write one line: my family, my church, a previous relationship, something I read, or something I have actually thought through and decided.
 
@@ -189,6 +164,7 @@ Then give each answer a provisional mark: **P** for preference, **C** for convic
 Review each D carefully, but do not impose a quota. Ask whether it describes a genuine limit or a way of pressing for your preference. Never downgrade a safety concern to make the inventory look more agreeable.
 
 The five areas:
+
 - **Money:** accounts, bills, spending, debt, saving, property, family support and differences in income.
 - **Sex:** expectations, initiation, consent, boundaries, communication and the messages you were taught.
 - **Children:** whether to become parents, timing, uncertainty, care, work, discipline and extended family.
@@ -198,6 +174,7 @@ The five areas:
 Use a separate page for each. If you do not know what you want, write that. It is a real answer.
 
 **Part Three. The three hardest questions (about 20 minutes, alone)**
+
 1. What is the one thing on this inventory I most hope my partner does not ask me about?
 2. What have I already decided I will simply put up with?
 3. Is there anything here I have been hoping marriage will change?
@@ -205,6 +182,7 @@ Use a separate page for each. If you do not know what you want, write that. It i
 Marriage does not usually change these things. It reveals them, and often amplifies them. Anything you have quietly filed under "it will be different once we're married" should be moved to the top of your list, not the bottom.
 
 **Part Four. Together (about 20 minutes)**
+
 Do something very limited. Do not exchange inventories. Not today, and possibly not at all. Lessons 4 and 5 will help you learn how to raise something difficult and how to listen when your partner speaks.
 
 If you wish, each of you may answer one question aloud: *What surprised me about the process of completing this inventory?* You do not have to reveal any answer, subject or conclusion. Either person may simply say, "I would prefer to keep that private for now."
@@ -214,19 +192,3 @@ If you are both ready, acknowledge together: *We will return to our inventories 
 We expect to begin the room lessons on: ______
 
 **A last note.** Keep useful notes securely. You may revise an answer if your thinking changes; date the revision so you can recognise the change. Protecting privacy is different from withholding information that materially affects the decision to marry. Return to these pages as you enter each relevant room, and later when your circumstances change.
-
----
-
-# Notes for the reviewer
-
-1. **Length and time.** About 1,500 words; roughly 12 minutes with the reading and pause. Replace with actual duration after recording.
-2. **Scripture.** Psalm 139:23 to 24, as approved. Please check the ESV wording.
-3. **Original-language material.** One optional word only: *ḥāqar* ("search"), with Proverbs 25:2 as a second use. The design also named *yādaʿ*; it is left out to keep to one word. Please verify the meaning and the Proverbs 25:2 usage against a lexicon before recording, and drop the note if it does not hold. The lesson works without it.
-4. **Biblical emphasis.** The psalm is read as a deeply personal prayer in which God does the searching and the direction is "lead me", not self-condemnation. The lesson does not claim the psalm is about premarital expectations; it draws out the principle of honesty before God.
-5. **Engagement and covenant.** Consistent with Lesson 2. The lesson says a serious concern may lead to pausing the conversation or the engagement, and that privacy is different from withholding what materially affects the decision to marry.
-6. **Privacy (the privacy-critical lesson).** The design gives this lesson the fuller warning. It appears in the page, the script and the worksheet, and is limited to what the book says: keep notes secure, do not keep anything where someone could use it to harm you, and it is fine to hold it in thought and prayer instead. The lesson has no place to type or save inventory answers. The site stores the account and lesson-completion progress, but it does not store this worksheet or the learner's answers. This matches Start Here.
-7. **Safety.** The fuller warning is about privacy of notes, not about risk in the teaching. The one sentence about being afraid of a partner's response is inside the standard support block.
-8. **Tell someone.** Omitted by design.
-9. **Sequencing.** The inventory is completed over several sittings, so a learner may be part-way through it when they reach Lesson 4. The lesson says learners return to the inventory through the nine room lessons, beginning with Lesson 6, and states that the lesson may be marked complete after the first three questions and a realistic plan.
-10. **Questions for the author.** Does the voice sound like you? Is the "verse attached to a preference" section strong enough? Is the prayer right?
-11. **Checks before publication.** ESV wording of Psalm 139:23 to 24; the original-language note; the legal notices; the second support link; the completion buttons.

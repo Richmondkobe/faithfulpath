@@ -57,6 +57,17 @@ const OMIT_TELL_SOMEONE = new Set([3, 7, 12]);
 const STANDARD_SUPPORT =
   "If this conversation feels too heavy to carry alone, you may speak with a trusted pastor, mentor or qualified professional. If you are afraid of your partner's response or do not feel free to speak, pause the joint exercise and visit Safety and Support.";
 
+// Safety works at three levels (design, Section 5). Level 2 is the standard
+// block, which most lessons carry word for word. Level 3 replaces it with a
+// fuller warning written for that lesson's subject — the privacy of a private
+// inventory, financial control, consent, authority used to silence, past
+// experiences, and abuse mistaken for a communication problem. Those six are
+// not held to the standard wording, but they must still do the two things the
+// standard block does: name the people a learner can turn to, and point at
+// Safety and Support. A fuller warning that quietly dropped either would be
+// weaker than the block it replaced, which is the failure worth catching.
+const FULLER_WARNING = new Set([3, 6, 7, 11, 12, 14]);
+
 let templated = 0;
 for (const lesson of manifest.lessons) {
   const where = `Lesson ${lesson.order}`;
@@ -114,9 +125,17 @@ for (const lesson of manifest.lessons) {
     sound = false;
   }
 
-  // Every lesson carries the standard support block (design, Section 5, level
-  // 2). A lesson may add a fuller warning; none may replace this.
-  if (!(sections.get("Need more support?") ?? "").includes(STANDARD_SUPPORT)) {
+  const support = sections.get("Need more support?") ?? "";
+  if (FULLER_WARNING.has(lesson.order)) {
+    if (!/trusted pastor, mentor or qualified professional/.test(support)) {
+      fail(`${where}: the fuller warning does not name a pastor, mentor or qualified professional`);
+      sound = false;
+    }
+    if (!/Safety and Support/.test(support)) {
+      fail(`${where}: the fuller warning does not point to Safety and Support`);
+      sound = false;
+    }
+  } else if (!support.includes(STANDARD_SUPPORT)) {
     fail(`${where}: "Need more support?" does not carry the standard support block word for word`);
     sound = false;
   }
