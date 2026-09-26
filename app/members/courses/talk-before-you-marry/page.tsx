@@ -3,7 +3,13 @@ import Link from "next/link";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import { getCourseProgress } from "@/lib/course-progress";
-import { getTbymCourse, tbymLessonHref, TBYM_SLUG } from "@/lib/tbym-course";
+import {
+  getTbymCourse,
+  tbymLessonHref,
+  tbymStartHereHref,
+  TBYM_SLUG,
+} from "@/lib/tbym-course";
+import TbymFooter from "@/components/tbym/TbymFooter";
 
 export const metadata: Metadata = {
   title: "Talk Before You Marry | Faithful Path Community",
@@ -26,6 +32,7 @@ export default async function TbymCourseHome() {
   const doneCount = [...progress.values()].filter((p) => p.completed_at).length;
 
   return (
+    <>
     <main
       className="mx-auto max-w-[760px] px-4 pt-8 pb-14"
       style={{ fontFamily: "var(--font-sans)" }}
@@ -65,6 +72,15 @@ export default async function TbymCourseHome() {
         {doneCount} of {course.lesson_count} lessons complete
       </p>
 
+      <p className="mt-8">
+        <Link
+          href={tbymStartHereHref}
+          className="inline-flex items-center justify-center rounded-md bg-[var(--tb-btn)] px-7 py-4 text-[17px] font-medium text-[var(--tb-btn-ink)]"
+        >
+          Start Here: Before You Begin
+        </Link>
+      </p>
+
       <ul className="mt-8 space-y-3">
         {course.lessons.map((lesson) => (
           <li key={lesson.slug}>
@@ -92,15 +108,18 @@ export default async function TbymCourseHome() {
         ))}
       </ul>
 
-      {course.lessons.length < course.lesson_count && (
-        <p
-          className="mt-6 rounded-sm border border-dashed border-[var(--tb-accent)] px-4 py-3 text-[13px] leading-relaxed text-[var(--tb-mute)]"
-          style={{ fontFamily: "var(--font-tbym-mono)" }}
-        >
-          {course.lessons.length} of {course.lesson_count} lessons built. Start
-          Here, Safety and Support and the Facilitator Guide are not built yet.
-        </p>
-      )}
+      {/* What is still missing, said on the page rather than only in a commit
+          message. It goes when the last two pages are built. */}
+      <p
+        className="mt-6 rounded-sm border border-dashed border-[var(--tb-accent)] px-4 py-3 text-[13px] leading-relaxed text-[var(--tb-mute)]"
+        style={{ fontFamily: "var(--font-tbym-mono)" }}
+      >
+        {course.lessons.length} of {course.lesson_count} lessons built. Safety
+        and Support and the Facilitator Guide are not built yet.
+      </p>
     </main>
+
+    <TbymFooter variant="full" />
+    </>
   );
 }

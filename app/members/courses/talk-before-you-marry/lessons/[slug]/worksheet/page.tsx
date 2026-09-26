@@ -9,6 +9,7 @@ import {
   tbymLessonHref,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
+import TbymFooter from "@/components/tbym/TbymFooter";
 
 export const metadata: Metadata = {
   title: "Talk Before You Marry | Faithful Path Community",
@@ -39,6 +40,7 @@ export default async function TbymWorksheetPage({ params }: Props) {
   if (!lesson) notFound();
 
   return (
+    <>
     <main
       className="mx-auto max-w-[760px] px-4 pt-8 pb-14"
       style={{ fontFamily: "var(--font-sans)" }}
@@ -84,5 +86,8 @@ export default async function TbymWorksheetPage({ params }: Props) {
         </Link>
       </p>
     </main>
+
+    <TbymFooter variant="short" />
+    </>
   );
 }

@@ -13,6 +13,16 @@
     { "label": "Safety and Support", "href": null }
   ],
 
+  "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms have no pages in this site yet, and the Start Here publication checklist asks for them before it goes live, so both are null and render as placeholders.",
+  "full_footer_links": [
+    { "label": "Home", "href": "/" },
+    { "label": "Course overview", "href": "/members/courses/talk-before-you-marry" },
+    { "label": "Contact", "href": "/contact" },
+    { "label": "Privacy", "href": null },
+    { "label": "Terms", "href": null },
+    { "label": "Need more support?", "href": null }
+  ],
+
   "notice": "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), copyright © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book Talk Before You Marry © 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.",
 
   "lessons": [

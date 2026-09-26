@@ -37,6 +37,7 @@ export type TbymCourse = {
   lesson_count: number;
   saved_reflections: boolean;
   footer_links: TbymFooterLink[];
+  full_footer_links: TbymFooterLink[];
   notice: string;
   lessons: TbymLessonEntry[];
 };
@@ -232,6 +233,51 @@ export const readTbymLesson = cache((slug: string): TbymLesson | null => {
 export function nextTbymLesson(order: number): TbymLessonEntry | null {
   return getTbymCourse().lessons.find((l) => l.order === order + 1) ?? null;
 }
+
+/**
+ * Start Here: Before You Begin.
+ *
+ * Its sections are rendered in the order they are written rather than by name,
+ * because this page is prose with headings rather than a fixed template: the
+ * lesson contract does not apply to it, and a section added to the file should
+ * appear on the page without a code change.
+ */
+export type TbymStartHere = {
+  title: string;
+  subtitle: string;
+  readingTime: string;
+  scriptureRef: string;
+  scriptureText: string;
+  scriptureNote: string;
+  /** What the learner ticks before the way into Lesson 1 appears. */
+  acknowledgement: string;
+  beginLabel: string;
+  sections: { title: string; body: string }[];
+};
+
+export const readTbymStartHere = cache((): TbymStartHere => {
+  const raw = readFileSync(join(ROOT, "start-here.md"), "utf8");
+  const front = parseFront(raw.match(FRONT_MATTER)?.[1] ?? "");
+  const body = raw.replace(FRONT_MATTER, "");
+  const parts = body.split(/^##[ \t]+(.+?)[ \t]*$/m);
+
+  return {
+    title: front.title ?? "",
+    subtitle: front.subtitle ?? "",
+    readingTime: front.reading_time ?? "",
+    scriptureRef: front.scripture_ref ?? "",
+    scriptureText: front.scripture_text ?? "",
+    scriptureNote: front.scripture_note ?? "",
+    acknowledgement: front.acknowledgement ?? "",
+    beginLabel: front.begin_label ?? "",
+    sections: Array.from({ length: (parts.length - 1) / 2 }, (_, i) => ({
+      title: parts[i * 2 + 1].trim(),
+      body: parts[i * 2 + 2].trim(),
+    })),
+  };
+});
+
+export const tbymStartHereHref = `${TBYM_BASE}/start-here`;
 
 export const tbymLessonHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}`;
 export const tbymWorksheetHref = (slug: string) => `${TBYM_BASE}/lessons/${slug}/worksheet`;

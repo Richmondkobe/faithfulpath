@@ -284,12 +284,24 @@ const walk = (dir) => {
 walk(PAGES);
 walk(join("components", "tbym"));
 
+// The rule is that nothing a learner writes is stored, so what this looks for
+// is somewhere to write and anywhere it could go. A checkbox is neither: Start
+// Here's safety acknowledgement is one, it holds no words, and it is never
+// persisted — it reveals the buttons and is forgotten when the page is. Every
+// other input, a textarea and a form are still refused outright, and so is any
+// store a value could be quietly put into.
 let inputs = 0;
 for (const file of files) {
   const source = readFileSync(file, "utf8");
-  for (const element of ["<textarea", "<input", "<form"]) {
+  for (const element of ["<textarea", "<form"]) {
     if (source.includes(element)) {
       fail(`${file}: ${element} — this course has no field a learner can write in`);
+      inputs++;
+    }
+  }
+  for (const tag of source.match(/<input[^>]*>/g) ?? []) {
+    if (!/type=["{]?["']?checkbox/.test(tag)) {
+      fail(`${file}: an input that is not a checkbox — this course has no field a learner can write in`);
       inputs++;
     }
   }
@@ -297,9 +309,13 @@ for (const file of files) {
     fail(`${file}: writes to the reflections store, which this course opted out of`);
     inputs++;
   }
+  if (/localStorage|sessionStorage|document\.cookie/.test(source)) {
+    fail(`${file}: keeps something in the browser — nothing a learner does here is remembered`);
+    inputs++;
+  }
 }
 if (inputs === 0) {
-  ok(`${files.length} course files: no input, no form, nothing written to the reflections store`);
+  ok(`${files.length} course files: no writable field, no form, nothing stored in a browser or a reflections table`);
 }
 
 /* completion is pressed, and only for the learner who pressed it */
@@ -309,6 +325,42 @@ if (/IntersectionObserver|addEventListener\(\s*["']scroll|onEnded/.test(finish))
   fail("the completion block infers completion from scrolling or playback — it must be pressed");
 } else {
   ok("completion is written by the button and by nothing else");
+}
+
+/* every page renders a footer, and the right one */
+
+// The footer used to live in the layout, which made it impossible to forget and
+// impossible to vary. This course needs both variants — the short one on
+// lessons, the fuller one on the pages a learner arrives at — so each page
+// renders its own, and this is what replaces the layout's guarantee.
+const FOOTER_VARIANT = {
+  "page.tsx": "full",
+  "start-here/page.tsx": "full",
+  "lessons/[slug]/page.tsx": "short",
+  "lessons/[slug]/worksheet/page.tsx": "short",
+};
+
+let footers = 0;
+for (const [rel, variant] of Object.entries(FOOTER_VARIANT)) {
+  const path = join(PAGES, ...rel.split("/"));
+  if (!existsSync(path)) {
+    fail(`${rel}: named as a page of this course and not on disk`);
+    continue;
+  }
+  const source = readFileSync(path, "utf8");
+  if (!new RegExp(`<TbymFooter\\s+variant="${variant}"`).test(source)) {
+    fail(`${rel}: does not render the ${variant} footer`);
+  } else {
+    footers++;
+  }
+}
+// A page added later without a footer would not be listed above, so this also
+// checks that no page file has been added that the list does not know about.
+const pageFiles = files.filter((f) => /[\\/]page\.tsx$/.test(f)).length;
+if (pageFiles !== Object.keys(FOOTER_VARIANT).length) {
+  fail(`${pageFiles} page files, but the footer list knows ${Object.keys(FOOTER_VARIANT).length} — a new page needs a footer and a line here`);
+} else if (footers === pageFiles) {
+  ok(`${footers} pages, each rendering the footer the build brief gives it`);
 }
 
 const writers = files.filter((f) => /setLessonComplete/.test(readFileSync(f, "utf8")));

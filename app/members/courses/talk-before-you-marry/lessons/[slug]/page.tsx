@@ -15,6 +15,7 @@ import {
   TBYM_SLUG,
 } from "@/lib/tbym-course";
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
+import TbymFooter from "@/components/tbym/TbymFooter";
 import TbymRecording from "@/components/tbym/TbymRecording";
 import TbymFinishLesson from "@/components/tbym/TbymFinishLesson";
 
@@ -93,6 +94,7 @@ export default async function TbymLessonPage({ params }: Props) {
   const next = nextTbymLesson(lesson.order);
 
   return (
+    <>
     <main
       className="mx-auto flex max-w-[760px] flex-col gap-5 px-4 pt-8 pb-14"
       style={{ fontFamily: "var(--font-sans)" }}
@@ -344,7 +346,10 @@ export default async function TbymLessonPage({ params }: Props) {
         }
       />
 
-      {/* 11. Footer links and citation notice are in the course layout. */}
+      {/* 11. Footer links and citation notice. */}
     </main>
+
+    <TbymFooter variant="short" />
+    </>
   );
 }
