@@ -33,6 +33,12 @@
       "slug": "03-tell-yourself-the-truth-first",
       "title": "Tell Yourself the Truth First",
       "file": "lessons/03-tell-yourself-the-truth-first.md"
+    },
+    {
+      "order": 4,
+      "slug": "04-learn-to-say-the-hard-thing",
+      "title": "Learn to Say the Hard Thing",
+      "file": "lessons/04-learn-to-say-the-hard-thing.md"
     }
   ]
 }
