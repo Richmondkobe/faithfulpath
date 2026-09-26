@@ -81,6 +81,12 @@
       "slug": "11-room-6-roles",
       "title": "Room 6, Roles",
       "file": "lessons/11-room-6-roles.md"
+    },
+    {
+      "order": 12,
+      "slug": "12-room-7-past-relationships",
+      "title": "Room 7, Past Relationships",
+      "file": "lessons/12-room-7-past-relationships.md"
     }
   ]
 }
