@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
 import FooterSignup from "@/components/FooterSignup";
+import JsonLd from "@/components/JsonLd";
+import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
 import "./globals.css";
 
@@ -109,6 +111,10 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
+
+        {/* Organization and WebSite, once for the site. Every other page
+            refers to these by @id rather than repeating them. */}
+        <JsonLd data={organizationAndWebSite()} />
 
         {children}
 

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+import JsonLd from "@/components/JsonLd";
+import { abs, graph, orgRef } from "@/lib/schema";
 
 const TITLE =
   "The Christian Spiritual Reset — Online Course | Faithful Path Community";
@@ -91,9 +93,45 @@ function Faq({
   );
 }
 
+// Course, not an accredited programme. There is deliberately no
+// educationalCredentialAwarded and no EducationalOccupationalCredential: the
+// course ends in a certificate of completion, which is not a qualification, and
+// claiming otherwise in structured data would be a claim about accreditation.
+const COURSE_SCHEMA = graph({
+  "@type": "Course",
+  name: "The Christian Spiritual Reset",
+  url: abs("/membership"),
+  description:
+    "The complete online edition of The Christian Spiritual Reset \u2014 a guided Christian retreat for people who are exhausted, spiritually dry, or unable to hear God.",
+  provider: orgRef,
+  inLanguage: "en",
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "online",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "19.00",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: abs("/membership"),
+    seller: orgRef,
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "19.00",
+      priceCurrency: "USD",
+      billingDuration: 1,
+      billingIncrement: 1,
+      unitCode: "MON",
+    },
+  },
+});
+
 export default function Membership() {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
+      <JsonLd data={COURSE_SCHEMA} />
+
       <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
         Membership
       </p>

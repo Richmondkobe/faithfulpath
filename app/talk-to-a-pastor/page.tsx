@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+import JsonLd from "@/components/JsonLd";
+import { abs, graph, orgRef } from "@/lib/schema";
 import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 
@@ -67,12 +69,36 @@ const STAGES = [
   },
 ];
 
+const SERVICE_SCHEMA = graph({
+  "@type": "Service",
+  name: "Talk to a Pastor",
+  serviceType: "Pastoral counselling",
+  url: abs("/talk-to-a-pastor"),
+  provider: orgRef,
+  areaServed: "Worldwide",
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: abs("/talk-to-a-pastor"),
+    availableLanguage: "en",
+  },
+  offers: {
+    "@type": "Offer",
+    price: "60.00",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: abs("/talk-to-a-pastor"),
+    seller: orgRef,
+  },
+});
+
 export default function Home() {
   return (
     <main
       className={`${display.variable} ${sans.variable} min-h-screen bg-[#FDFAF4] text-[#4A4038]`}
       style={{ fontFamily: "var(--font-sans)" }}
     >
+      <JsonLd data={SERVICE_SCHEMA} />
+
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
         <p className="text-[11px] uppercase tracking-[0.22em] text-[#8B5E34]">

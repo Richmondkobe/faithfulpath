@@ -11,6 +11,8 @@ import { displayDate, isoDay } from "@/lib/article";
 import { categoryHref, getCategory } from "@/lib/categories";
 import { AUTHOR } from "@/lib/types";
 import { SITE } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 
 // Saving in the admin calls revalidatePath("/articles/[slug]"); this is the
 // backstop for rows edited directly in Supabase.
@@ -70,31 +72,38 @@ export default async function ArticlePage({
   const iso = isoDay(a.published_at);
   const category = getCategory(a.category);
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: a.title,
-    description: a.meta_description,
-    datePublished: iso,
-    dateModified: iso,
-    ...(category ? { articleSection: category.label } : {}),
-    author: {
-      "@type": "Person",
-      name: AUTHOR.name,
-      description: AUTHOR.credential,
+  // dateModified is the row's updated_at, not the publication date: saying a
+  // corrected article was last modified the day it went out is simply untrue.
+  // The image is the site card, because articles carry no image of their own —
+  // one per article would be better, and would belong here.
+  const schema = graph(
+    {
+      "@type": "Article",
+      headline: a.title,
+      url: abs(`/articles/${a.slug}`),
+      mainEntityOfPage: abs(`/articles/${a.slug}`),
+      description: a.meta_description,
+      datePublished: iso,
+      dateModified: isoDay(a.updated_at) || iso,
+      image: abs("/og-default.png"),
+      inLanguage: "en",
+      ...(category ? { articleSection: category.label } : {}),
+      author: personRef,
+      publisher: orgRef,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Faithful Path Community",
-    },
-  };
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Articles", path: "/articles" },
+      ...(category
+        ? [{ name: category.label, path: categoryHref(category.slug) }]
+        : []),
+      { name: a.title },
+    ])
+  );
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <JsonLd data={schema} />
 
       <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
         {date}

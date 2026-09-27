@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+import JsonLd from "@/components/JsonLd";
+import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
 import { getPublishedProductBySlug } from "@/lib/products-db";
@@ -202,8 +204,42 @@ export default async function Guide({ params }: Props) {
   const cover = coverPublicUrl(guide.cover_path);
   const related = RELATED_ARTICLES[slug];
 
+  // The price comes from the row, not a constant: structured data that says 29
+  // while the button charges something else is worse than none at all.
+  // numberOfPages is absent because the products table does not record it.
+  const schema = graph(
+    {
+      "@type": "Book",
+      name: guide.title,
+      url: abs(`/guides/${slug}`),
+      author: personRef,
+      publisher: orgRef,
+      ...(guide.subtitle || guide.description
+        ? { description: guide.subtitle ?? guide.description }
+        : {}),
+      ...(cover ? { image: cover } : {}),
+      bookFormat: "https://schema.org/EBook",
+      inLanguage: "en",
+      offers: {
+        "@type": "Offer",
+        price: (guide.price_cents / 100).toFixed(2),
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: abs(`/guides/${slug}`),
+        seller: orgRef,
+      },
+    },
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Books", path: "/guides" },
+      { name: guide.title },
+    ])
+  );
+
   return (
     <main className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
+      <JsonLd data={schema} />
+
       <Link
         href="/guides"
         className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"

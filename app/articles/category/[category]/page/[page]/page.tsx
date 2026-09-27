@@ -6,6 +6,8 @@ import {
 } from "@/lib/articles-db";
 import { CATEGORIES, categoryHref, getCategory } from "@/lib/categories";
 import ArticleIndex from "@/components/ArticleIndex";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbs, graph } from "@/lib/schema";
 
 export const revalidate = 300;
 
@@ -70,8 +72,19 @@ export default async function CategoryPagePaged({ params }: Props) {
 
   if (articles.length === 0) notFound();
 
+  const schema = graph(
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Articles", path: "/articles" },
+      { name: category.label, path: categoryHref(category.slug) },
+      { name: `Page ${page}` },
+    ])
+  );
+
   return (
-    <ArticleIndex
+    <>
+      <JsonLd data={schema} />
+      <ArticleIndex
       articles={articles}
       page={page}
       pageCount={pageCount}
@@ -81,5 +94,6 @@ export default async function CategoryPagePaged({ params }: Props) {
       category={category.slug}
       basePath={categoryHref(category.slug)}
     />
+    </>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { COUNTRIES, SITE } from "@/lib/site";
+import JsonLd from "@/components/JsonLd";
+import { graph, personRichmond } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "About Pastor Richmond Kobe | Faithful Path Community",
@@ -12,7 +14,9 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+    <>
+      <JsonLd data={graph(personRichmond())} />
+      <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
         className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -72,5 +76,6 @@ export default function About() {
         </Link>
       </div>
     </main>
+      </>
   );
 }
