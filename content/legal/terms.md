@@ -16,6 +16,8 @@ You must be eighteen or older to buy a book, join the membership or book a sessi
 
 **Refunds.** Because a PDF cannot be returned once downloaded, book purchases are final. Every book has a free sample — the contents and the whole first chapter — so you can see exactly what you are buying before you pay. If a file is faulty, a download link does not work, or you were charged twice, email info@faithfulpathcommunity.com and we will put it right straight away.
 
+At checkout you are asked to agree to immediate delivery and to waive any statutory right to cancel; this is why book purchases are final.
+
 **Lost downloads.** If your link expires or you lose the file, email us and we will send it again at no charge.
 
 ## 3. Membership

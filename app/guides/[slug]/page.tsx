@@ -298,6 +298,15 @@ export default async function Guide({ params }: Props) {
 
           <form action="/api/checkout" method="POST" className="mt-6">
             <input type="hidden" name="slug" value={guide.slug} />
+
+            {/* Above the button, not below it: this is the thing the reader is
+                agreeing to by pressing it, and Stripe asks them to tick the
+                same agreement on the next screen. */}
+            <FinePrint className="mb-4 mt-0">
+              By buying you agree to immediate download and to our{" "}
+              <FinePrintLink href="/terms#books">Terms</FinePrintLink>.
+            </FinePrint>
+
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <TrackedSubmit
                 event="buy_book_click"
