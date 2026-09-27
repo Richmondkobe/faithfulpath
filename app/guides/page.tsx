@@ -70,7 +70,7 @@ export default async function Guides() {
                     {cover && (
                       <Image
                         src={cover}
-                        alt={g.title}
+                        alt={`Cover of ${g.title}`}
                         fill
                         sizes="(min-width: 1024px) 20rem, (min-width: 640px) 40vw, 90vw"
                         className="object-contain transition-opacity group-hover:opacity-90"

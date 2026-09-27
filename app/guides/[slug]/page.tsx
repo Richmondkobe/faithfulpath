@@ -8,7 +8,7 @@ import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
 import { getPublishedProductBySlug } from "@/lib/products-db";
-import { coverPublicUrl } from "@/lib/supabase/admin";
+import { coverPublicUrl, listSampleSlugs } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
@@ -172,7 +172,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Page metadata replaces the root layout's openGraph/twitter objects wholesale
   // rather than merging into them, so siteName and the image have to be repeated
   // here or guide pages would ship without either.
-  const images = [OG_IMAGES[slug] ?? "/og-default.png"];
+  //
+  // A purpose-built 1200x630 card wins where one exists. Only where there is
+  // none does the cover stand in: a cover is portrait 2/3 and a social card
+  // crops to about 1.91/1, so it arrives with the top and bottom cut off — still
+  // better than the generic site card, which says nothing about the book, but
+  // worse than a card drawn for the shape.
+  const images = [
+    OG_IMAGES[slug] ?? coverPublicUrl(guide.cover_path) ?? "/og-default.png",
+  ];
 
   return {
     title: `${guide.title} | Faithful Path Community`,
@@ -202,6 +210,7 @@ export default async function Guide({ params }: Props) {
   if (!guide) notFound();
 
   const cover = coverPublicUrl(guide.cover_path);
+  const hasSample = (await listSampleSlugs()).has(slug);
   const related = RELATED_ARTICLES[slug];
 
   // The price comes from the row, not a constant: structured data that says 29
@@ -258,7 +267,7 @@ export default async function Guide({ params }: Props) {
             {cover && (
               <Image
                 src={cover}
-                alt={guide.title}
+                alt={`Cover of ${guide.title}`}
                 fill
                 priority
                 sizes="(min-width: 768px) 40vw, 90vw"
@@ -288,12 +297,28 @@ export default async function Guide({ params }: Props) {
 
           <form action="/api/checkout" method="POST" className="mt-6">
             <input type="hidden" name="slug" value={guide.slug} />
-            <button
-              type="submit"
-              className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
-            >
-              Buy — {formatPrice(guide.price_cents)}
-            </button>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+              >
+                Buy — {formatPrice(guide.price_cents)}
+              </button>
+
+              {/* Secondary by design: the sample is there for the reader who is
+                  not ready to decide, and should not compete with Buy. It opens
+                  in a new tab so the book's page is still behind it. */}
+              {hasSample && (
+                <a
+                  href={`/guides/${slug}/sample`}
+                  target="_blank"
+                  rel="noopener nofollow"
+                  className="inline-flex items-center justify-center rounded-sm border border-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+                >
+                  Read a free sample
+                </a>
+              )}
+            </div>
 
             <FinePrint>
               PDF, instant download · 14-day refund, no questions asked ·{" "}

@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 import { createClient } from "@supabase/supabase-js";
 import { COVERS_BUCKET, GUIDES_BUCKET } from "@/lib/storage";
 
@@ -36,3 +38,31 @@ export function coverPublicUrl(path: string | null): string | null {
   return supabaseAdmin.storage.from(COVERS_BUCKET).getPublicUrl(path).data
     .publicUrl;
 }
+
+/**
+ * The free sample of a book, in the public covers bucket.
+ *
+ * `samplePublicUrl` is the file's own address; the pages link to
+ * /guides/<slug>/sample instead, which streams it from our own domain so the
+ * response can carry X-Robots-Tag. A header cannot be set on a Supabase public
+ * object, so a link straight to the bucket could not be kept out of an index.
+ */
+export const samplePath = (slug: string) => `samples/${slug}-sample.pdf`;
+
+export function samplePublicUrl(slug: string): string {
+  return supabaseAdmin.storage.from(COVERS_BUCKET).getPublicUrl(samplePath(slug))
+    .data.publicUrl;
+}
+
+/** The slugs that actually have a sample uploaded. Read once per request. */
+export const listSampleSlugs = cache(async (): Promise<Set<string>> => {
+  const { data, error } = await supabaseAdmin.storage
+    .from(COVERS_BUCKET)
+    .list("samples", { limit: 200 });
+  if (error || !data) return new Set();
+  return new Set(
+    data
+      .map((o) => o.name.match(/^(.+)-sample\.pdf$/)?.[1])
+      .filter((s): s is string => Boolean(s))
+  );
+});
