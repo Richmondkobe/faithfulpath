@@ -73,9 +73,12 @@ export function personRichmond() {
     description: AUTHOR.credential,
     url: abs("/about"),
     image: abs(AUTHOR.image),
+    // The profiles that are his rather than the ministry's. The Lulu spotlight
+    // is where the other thirteen books are, and /about names it.
     sameAs: [
       "https://www.linkedin.com/in/richmondkobe/",
       "https://www.youtube.com/@ChristianHeritageHub",
+      "https://www.lulu.com/spotlight/toptierconsultant",
     ],
     worksFor: orgRef,
   };
