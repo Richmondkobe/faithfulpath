@@ -14,7 +14,9 @@
     "verify:privacy": "node scripts/verify-mind-privacy.mjs",
     "verify:bysy": "node scripts/verify-bysy-course.mjs",
     "verify:reset": "node scripts/verify-reset-course.mjs",
-    "verify:tbym": "node scripts/verify-tbym-course.mjs"
+    "verify:tbym": "node scripts/verify-tbym-course.mjs",
+    "verify:a11y": "node scripts/axe-audit.mjs",
+    "verify:a11y:local": "node scripts/axe-audit.mjs --base http://localhost:3100"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
