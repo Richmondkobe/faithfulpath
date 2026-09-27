@@ -4,7 +4,6 @@ import type { NextConfig } from "next";
 // Each one now points somewhere sensible on the new site.
 // As articles get rewritten, change the destination to the new article.
 const OLD_PATHS = [
-  "christian-mens-retreat-themes",
   "hidden-gems-lesser-known-parables-of-jesus",
   "christian-dating-and-finances",
   "orthodox-dating",
@@ -88,6 +87,11 @@ const nextConfig: NextConfig = {
       {
         source: "/christian-marriage-retreats",
         destination: "/articles/christian-marriage-help-real-problem",
+        permanent: true,
+      },
+      {
+        source: "/christian-mens-retreat-themes",
+        destination: "/articles/christian-mens-retreat-themes",
         permanent: true,
       },
       // Old service pages that map onto the offer
