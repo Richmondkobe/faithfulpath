@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+
 const TITLE =
   "The Christian Spiritual Reset — Online Course | Faithful Path Community";
 const DESCRIPTION =
@@ -62,6 +64,12 @@ function JoinButton({ label }: { label: string }) {
       >
         {label}
       </button>
+
+      {/* Both Join buttons render through here, so both carry it. */}
+      <FinePrint>
+        Cancel any time · Full refund within 7 days of your first payment ·{" "}
+        <FinePrintLink href="/terms">Terms</FinePrintLink>
+      </FinePrint>
     </form>
   );
 }

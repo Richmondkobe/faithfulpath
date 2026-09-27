@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -95,6 +97,11 @@ export default function Contact() {
           >
             {status === "sending" ? "Sending..." : "Send message"}
           </button>
+
+          <FinePrint className="mt-0">
+            Your message is handled as described in our{" "}
+            <FinePrintLink href="/privacy">Privacy Policy</FinePrintLink>.
+          </FinePrint>
         </div>
       )}
 

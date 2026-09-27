@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
 import { getPublishedProductBySlug } from "@/lib/products-db";
@@ -255,6 +257,11 @@ export default async function Guide({ params }: Props) {
             >
               Buy — {formatPrice(guide.price_cents)}
             </button>
+
+            <FinePrint>
+              PDF, instant download · 14-day refund, no questions asked ·{" "}
+              <FinePrintLink href="/terms">Terms</FinePrintLink>
+            </FinePrint>
           </form>
 
           {COURSE_EDITION.has(slug) && (

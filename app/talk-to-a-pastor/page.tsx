@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import Link from "next/link";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 
@@ -102,6 +104,13 @@ export default function Home() {
             One 60-minute session. No church membership required.
           </p>
         </div>
+
+          <FinePrint className="mt-4">
+            Reschedule or cancel free up to 24 hours before ·{" "}
+            <FinePrintLink href="/pastoral-terms">
+              Read the Pastoral Conversation Terms
+            </FinePrintLink>
+          </FinePrint>
       </section>
 
       {/* Credential band */}
@@ -277,6 +286,13 @@ export default function Home() {
         >
           Book a conversation — US$60
         </a>
+
+        <FinePrint className="mt-4">
+          Reschedule or cancel free up to 24 hours before ·{" "}
+          <FinePrintLink href="/pastoral-terms">
+            Read the Pastoral Conversation Terms
+          </FinePrintLink>
+        </FinePrint>
       </section>
 
       <footer className="border-t border-[#E5D9C7] py-10">

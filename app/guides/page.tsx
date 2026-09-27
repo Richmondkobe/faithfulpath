@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import { listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
@@ -89,6 +91,14 @@ export default async function Guides() {
                     {formatPrice(g.price_cents)}
                   </p>
                 </Link>
+
+                {/* Outside the card's own link, not inside it: the Terms link
+                    is an anchor, and an anchor inside an anchor is invalid and
+                    swallows the click. */}
+                <FinePrint>
+                  PDF, instant download · 14-day refund, no questions asked ·{" "}
+                  <FinePrintLink href="/terms">Terms</FinePrintLink>
+                </FinePrint>
               </li>
             );
           })}

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+
 export default function SignupForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -106,6 +108,14 @@ export default function SignupForm() {
             {status === "loading" ? "Adding\u2026" : "Subscribe"}
           </button>
         </div>
+
+        {/* Under the field, not above it: it answers the question a reader has
+            once they are looking at the box, which is what happens to the
+            address they are about to type. */}
+        <FinePrint className="mt-3">
+          No spam. Unsubscribe any time. See our{" "}
+          <FinePrintLink href="/privacy">Privacy Policy</FinePrintLink>.
+        </FinePrint>
       </div>
 
       {status === "error" && (
