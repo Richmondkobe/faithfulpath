@@ -58,10 +58,21 @@ function Bold({ children }: { children: React.ReactNode }) {
   return <strong className="font-medium text-[#2B2118]">{children}</strong>;
 }
 
-/** Both Join buttons post to the same existing Stripe checkout route. */
-function JoinButton({ label }: { label: string }) {
+/**
+ * Both Join buttons post to the same existing Stripe checkout route.
+ *
+ * `id` is set on the first one only, so /membership#join lands on it. The home
+ * page's course block links there rather than to the top of this page, where a
+ * reader who has already decided would have to find the button themselves.
+ */
+function JoinButton({ label, id }: { label: string; id?: string }) {
   return (
-    <form action="/api/membership/checkout" method="POST" className="mt-8">
+    <form
+      action="/api/membership/checkout"
+      method="POST"
+      className="mt-8"
+      id={id}
+    >
       <button
         type="submit"
         className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
@@ -171,7 +182,7 @@ export default function Membership() {
       <p className="mt-3 leading-relaxed">
         US$19 per month. Cancel from your account whenever you need to.
       </p>
-      <JoinButton label="Join the membership" />
+      <JoinButton label="Join the membership" id="join" />
 
       <WhichIsRight here="/membership" />
 

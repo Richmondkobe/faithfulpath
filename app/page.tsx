@@ -112,12 +112,23 @@ export default async function Home() {
           for you, and printable workbooks, all read online. It opens with
           membership at US$19 a month, and you can stop whenever you need to.
         </p>
-        <Link
-          href="/membership"
-          className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
-        >
-          See the course
-        </Link>
+        {/* The hero's pair, in the same order and the same two styles: the
+            primary goes straight to the Join button, the secondary to the page
+            for someone still reading. */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link
+            href="/membership#join"
+            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          >
+            Start the Spiritual Reset — US$19/month
+          </Link>
+          <Link
+            href="/membership"
+            className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            See what is included
+          </Link>
+        </div>
       </section>
 
       <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
