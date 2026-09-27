@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+ * A visible focus ring on everything a keyboard can reach.
+ *
+ * Several components set `outline-none` on their own focus styling — the form
+ * fields change their border colour, which is a mouse-user's cue and not a
+ * keyboard user's. :focus-visible only fires for keyboard focus, so this adds
+ * the ring for that case without putting an outline on a clicked button.
+ *
+ * Offset and a light inner ring so it stays visible against both the page
+ * ground and the darker buttons.
+ */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #8b5e34;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* The skip link's target should not draw a ring when it is focused
+   programmatically after the jump — the heading below it is the cue. */
+#main:focus,
+#main:focus-visible {
+  outline: none;
+}

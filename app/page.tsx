@@ -153,7 +153,7 @@ export default async function Home() {
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
+          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B5F53]">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
@@ -230,7 +230,7 @@ export default async function Home() {
           )}
           <Link
             href="/articles"
-            className="mt-8 inline-block text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
+            className="mt-8 inline-flex min-h-11 items-center text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
           >
             All articles
           </Link>

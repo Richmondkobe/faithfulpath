@@ -28,7 +28,7 @@ const SOCIALS = [
 
 export default function SocialLinks() {
   return (
-    <div className="flex flex-wrap items-center gap-5">
+    <div className="-ml-3 flex flex-wrap items-center gap-1">
       {SOCIALS.map((s) => (
         <a
           key={s.label}
@@ -36,7 +36,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={s.label}
-          className="text-[#8B7D6E] transition-colors hover:text-[#8B5E34]"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-[#8B7D6E] transition-colors hover:text-[#8B5E34]"
         >
           <svg
             viewBox="0 0 24 24"

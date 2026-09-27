@@ -100,7 +100,7 @@ export default function About() {
         />
 
         <div className="mt-10 border-y border-[#E5D9C7] py-8">
-          <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
+          <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B5F53]">
             {COUNTRY_LINE}
           </p>
         </div>

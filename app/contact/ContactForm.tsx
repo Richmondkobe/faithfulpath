@@ -63,25 +63,39 @@ export default function ContactForm() {
       ) : (
         <div className="mt-12 space-y-6">
           <div>
-            <label className={label}>Your name</label>
+            <label className={label} htmlFor="contact-name">
+              Your name
+            </label>
             <input
+              id="contact-name"
+              name="name"
+              autoComplete="name"
               className={field}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
             />
           </div>
           <div>
-            <label className={label}>Your email</label>
+            <label className={label} htmlFor="contact-email">
+              Your email
+            </label>
             <input
+              id="contact-email"
+              name="email"
               type="email"
+              autoComplete="email"
               className={field}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
           </div>
           <div>
-            <label className={label}>Your message</label>
+            <label className={label} htmlFor="contact-message">
+              Your message
+            </label>
             <textarea
+              id="contact-message"
+              name="message"
               rows={7}
               className={field}
               value={form.message}

@@ -252,7 +252,7 @@ export default async function Guide({ params }: Props) {
 
       <Link
         href="/guides"
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
       >
         ← All books
       </Link>

@@ -22,9 +22,11 @@ export default function ArticlePagination({
   // Page one is the base path itself, never …/page/1.
   const href = (n: number) => (n <= 1 ? basePath : `${basePath}/page/${n}`);
 
+  // min-h-11 is 44px: the Newer/Older links were 20px tall, which is a hard
+  // thing to hit with a thumb at the bottom of a long index.
   const link =
-    "text-sm text-[#2C5651] underline underline-offset-4 transition-colors hover:text-[#17222B]";
-  const disabled = "text-sm text-[#9AA8A3]";
+    "inline-flex min-h-11 items-center text-sm text-[#2C5651] underline underline-offset-4 transition-colors hover:text-[#17222B]";
+  const disabled = "inline-flex min-h-11 items-center text-sm text-[#7A7066]";
 
   return (
     <nav
@@ -45,14 +47,14 @@ export default function ArticlePagination({
             {n === page ? (
               <span
                 aria-current="page"
-                className="inline-flex h-9 min-w-9 items-center justify-center rounded-sm border border-[#2C5651] px-3 text-[#17222B]"
+                className="inline-flex h-11 min-w-11 items-center justify-center rounded-sm border border-[#2C5651] px-3 text-[#17222B]"
               >
                 {n}
               </span>
             ) : (
               <Link
                 href={href(n)}
-                className="inline-flex h-9 min-w-9 items-center justify-center rounded-sm border border-[#D6DBD8] px-3 text-[#5A6A73] transition-colors hover:border-[#2C5651] hover:text-[#17222B]"
+                className="inline-flex h-11 min-w-11 items-center justify-center rounded-sm border border-[#D6DBD8] px-3 text-[#5A6A73] transition-colors hover:border-[#2C5651] hover:text-[#17222B]"
               >
                 <span className="sr-only">Page </span>
                 {n}

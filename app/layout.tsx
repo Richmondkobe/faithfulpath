@@ -83,9 +83,16 @@ export default function RootLayout({
         className="min-h-screen bg-[#FDFAF4] text-[#4A4038] antialiased"
         style={{ fontFamily: "var(--font-sans)" }}
       >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[#2B2118] focus:px-5 focus:py-3 focus:text-[15px] focus:font-medium focus:text-[#FDFAF4]"
+        >
+          Skip to main content
+        </a>
+
         <header className="border-b border-[#E5D9C7] bg-[#FDFAF4]">
           <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <Link href="/">
+            <Link href="/" className="flex min-h-[44px] flex-col justify-center">
               <span
                 className="block text-xl leading-none text-[#2B2118]"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
@@ -99,12 +106,12 @@ export default function RootLayout({
 
             {/* One nav at both widths — it wraps rather than becoming a menu —
                 so the weight here is the weight on a phone too. */}
-            <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium">
+            <nav className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium">
               {NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
                 >
                   {item.label}
                 </Link>
@@ -117,7 +124,9 @@ export default function RootLayout({
             refers to these by @id rather than repeating them. */}
         <JsonLd data={organizationAndWebSite()} />
 
-        {children}
+        <div id="main" tabIndex={-1}>
+          {children}
+        </div>
 
         <footer className="border-t border-[#E5D9C7] bg-[#F3EADC]">
           <div className="mx-auto max-w-5xl px-6 py-12">
@@ -132,12 +141,12 @@ export default function RootLayout({
               Pastoral and spiritual guidance online. Not a substitute for
               therapy, medical care, or emergency services.
             </p>
-            <nav className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <nav className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
               {NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
                 >
                   {item.label}
                 </Link>
@@ -160,7 +169,7 @@ export default function RootLayout({
                   )}
                   <Link
                     href={item.href}
-                    className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                    className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
                   >
                     {item.label}
                   </Link>

@@ -129,7 +129,7 @@ export default function Home() {
           >
             Book a conversation — US$60
           </TrackedAnchor>
-          <p className="text-sm text-[#7C7065]">
+          <p className="text-sm text-[#6B5F53]">
             One 60-minute session. No church membership required.
           </p>
         </div>
@@ -175,7 +175,7 @@ export default function Home() {
             ))}
           </dl>
 
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#7C7065]">
+          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B5F53]">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
@@ -335,7 +335,7 @@ export default function Home() {
       </section>
 
       <footer className="border-t border-[#E5D9C7] py-10">
-        <p className="mx-auto max-w-3xl px-6 text-[13px] text-[#7C7065]">
+        <p className="mx-auto max-w-3xl px-6 text-[13px] text-[#6B5F53]">
           Faithful Path Community
         </p>
       </footer>
