@@ -15,10 +15,10 @@ type Props = { params: Promise<{ category: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = getCategory((await params).category);
-  if (!category) return { title: "Not found | Faithful Path Community" };
+  if (!category) return { title: "Not found" };
 
   return {
-    title: `${category.label} | Faithful Path Community`,
+    title: `${category.label}`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug) },
   };

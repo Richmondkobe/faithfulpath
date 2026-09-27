@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = getCategory(slug);
   const page = parsePage(rawPage);
   if (!category || page === null) {
-    return { title: "Not found | Faithful Path Community" };
+    return { title: "Not found" };
   }
 
   return {
-    title: `${category.label} — page ${page} | Faithful Path Community`,
+    title: `${category.label} — page ${page}`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug, page) },
   };

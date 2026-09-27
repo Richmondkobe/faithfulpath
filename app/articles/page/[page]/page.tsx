@@ -30,10 +30,10 @@ function parsePage(raw: string): number | null {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = parsePage((await params).page);
-  if (page === null) return { title: "Not found | Faithful Path Community" };
+  if (page === null) return { title: "Not found" };
 
   return {
-    title: `Articles — page ${page} | Faithful Path Community`,
+    title: `Articles — page ${page}`,
     description: `Writing and teaching on faith, marriage, grief, and staying with God when it is hard — page ${page}.`,
     // Each page is its own canonical. Pointing them all at /articles would be
     // telling Google that pages two and up are duplicates, which is how their

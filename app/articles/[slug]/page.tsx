@@ -32,6 +32,11 @@ export async function generateMetadata({
   const a = await getPublishedArticleBySlug(slug);
   if (!a) return {};
 
+  // No " | Faithful Path Community" here, and none in meta_title either: Google
+  // appends the site name to a result itself, and a title that carries it as
+  // well is the name twice in a listing, at the cost of the words that would
+  // have been shown instead. The rest of the site keeps the suffix — those
+  // pages are the site, and their own names are short.
   const title = a.meta_title ?? a.title;
   const description = a.meta_description ?? undefined;
   const url = `/articles/${slug}`;
