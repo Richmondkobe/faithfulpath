@@ -24,7 +24,7 @@ Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path C
 
 **Talk to a Pastor sessions.** Your name, email address and time zone for scheduling; your answers to the written intake questions; the notes Richmond writes before and after the session; and, if you agree at booking, a transcript of the conversation used only to write your follow-up.
 
-**Technical information.** Our hosting provider records standard server logs (IP address, browser type, pages requested) for security and to keep the site running. We do not currently use analytics cookies. If we add analytics in future, it will be a privacy-respecting service that does not identify you personally, and this page will be updated.
+**Technical information.** Our hosting provider records standard server logs (IP address, browser type, pages requested) for security and to keep the site running. We use Vercel Web Analytics, which counts page views and button clicks without cookies and without identifying you. It is not used on the course pages inside your membership.
 
 ## What we do not do
 
@@ -76,7 +76,7 @@ Write to info@faithfulpathcommunity.com and we will respond within thirty days. 
 
 ## Cookies
 
-The site sets a cookie only when it has to: to keep you signed in as a member, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies.
+The site sets a cookie only when it has to: to keep you signed in as a member, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies, and our analytics sets none.
 
 ## Children
 

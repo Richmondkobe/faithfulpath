@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
+import { TrackedAnchor, TrackedSubmit } from "@/components/analytics/Tracked";
 import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
@@ -298,25 +299,28 @@ export default async function Guide({ params }: Props) {
           <form action="/api/checkout" method="POST" className="mt-6">
             <input type="hidden" name="slug" value={guide.slug} />
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button
-                type="submit"
+              <TrackedSubmit
+                event="buy_book_click"
+                slug={slug}
                 className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
               >
                 Buy — {formatPrice(guide.price_cents)}
-              </button>
+              </TrackedSubmit>
 
               {/* Secondary by design: the sample is there for the reader who is
                   not ready to decide, and should not compete with Buy. It opens
                   in a new tab so the book's page is still behind it. */}
               {hasSample && (
-                <a
+                <TrackedAnchor
+                  event="sample_click"
+                  slug={slug}
                   href={`/guides/${slug}/sample`}
                   target="_blank"
                   rel="noopener nofollow"
                   className="inline-flex items-center justify-center rounded-sm border border-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
                 >
                   Read a free sample
-                </a>
+                </TrackedAnchor>
               )}
             </div>
 

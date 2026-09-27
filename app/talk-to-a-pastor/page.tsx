@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+import { TrackedAnchor } from "@/components/analytics/Tracked";
 import JsonLd from "@/components/JsonLd";
 import { abs, graph, orgRef } from "@/lib/schema";
 import Link from "next/link";
@@ -121,12 +122,13 @@ export default function Home() {
         </p>
 
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <a
+          <TrackedAnchor
+            event="book_session_click"
             href="https://cal.com/getclb/talk-to-a-pastor"
             className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-8 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
           >
             Book a conversation — US$60
-          </a>
+          </TrackedAnchor>
           <p className="text-sm text-[#7C7065]">
             One 60-minute session. No church membership required.
           </p>
@@ -316,12 +318,13 @@ export default function Home() {
         >
           One honest hour can help you name what is happening and identify a responsible next step.
         </p>
-        <a
+        <TrackedAnchor
+          event="book_session_click"
           href="https://cal.com/getclb/talk-to-a-pastor"
           className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-8 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
         >
           Book a conversation — US$60
-        </a>
+        </TrackedAnchor>
 
         <FinePrint className="mt-4">
           Reschedule or cancel free up to 24 hours before ·{" "}

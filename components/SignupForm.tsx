@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@vercel/analytics";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 
@@ -39,6 +40,9 @@ export default function SignupForm() {
       const data = await res.json();
 
       if (res.ok) {
+        // The event carries no properties at all: the only thing this form
+        // collects is a name and an email address, and neither belongs here.
+        track("newsletter_subscribe");
         setStatus("done");
         setEmail("");
         setName("");

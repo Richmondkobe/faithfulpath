@@ -4,6 +4,7 @@ import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
 import FooterSignup from "@/components/FooterSignup";
 import JsonLd from "@/components/JsonLd";
+import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
 import "./globals.css";
@@ -184,6 +185,8 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+
+        <VercelAnalytics />
       </body>
     </html>
   );

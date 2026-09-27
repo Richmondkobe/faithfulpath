@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
+import { TrackedSubmit } from "@/components/analytics/Tracked";
 import WhichIsRight from "@/components/WhichIsRight";
 import { abs, graph, orgRef } from "@/lib/schema";
 
@@ -73,12 +74,13 @@ function JoinButton({ label, id }: { label: string; id?: string }) {
       className="mt-8"
       id={id}
     >
-      <button
-        type="submit"
+      {/* Both Join buttons render through here, so both report the click. */}
+      <TrackedSubmit
+        event="join_click"
         className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
       >
         {label}
-      </button>
+      </TrackedSubmit>
 
       {/* Both Join buttons render through here, so both carry it. */}
       <FinePrint>
