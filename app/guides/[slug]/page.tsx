@@ -286,17 +286,6 @@ export default async function Guide({ params }: Props) {
             {formatPrice(guide.price_cents)} · PDF, instant download
           </p>
 
-          {COURSE_EDITION.has(slug) && (
-            <FinePrint>
-              Prefer to be walked through it? The full online edition is in the
-              membership —{" "}
-              <FinePrintLink href="/membership">
-                US$19 a month
-              </FinePrintLink>
-              .
-            </FinePrint>
-          )}
-
           <form action="/api/checkout" method="POST" className="mt-6">
             <input type="hidden" name="slug" value={guide.slug} />
             <button
