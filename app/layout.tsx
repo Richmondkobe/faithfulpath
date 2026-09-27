@@ -62,6 +62,15 @@ const NAV = [
   { href: "/contact", label: "Contact" },
 ];
 
+// The footer's Legal row. Separate from NAV because these belong at the foot of
+// the page only — putting them in the header menu would give them a prominence
+// they do not need.
+const LEGAL_LINKS = [
+  { href: "/privacy", label: "Privacy" },
+  { href: "/terms", label: "Terms" },
+  { href: "/pastoral-terms", label: "Pastoral Conversation Terms" },
+];
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -127,6 +136,43 @@ export default function RootLayout({
                 </Link>
               ))}
             </nav>
+            {/* Legal, on its own row under the site navigation rather than
+                mixed into it: these are pages a reader goes looking for
+                deliberately, and burying them among the nav links makes them
+                harder to find, not tidier. */}
+            <nav
+              aria-label="Legal"
+              className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm"
+            >
+              {LEGAL_LINKS.map((item, i) => (
+                <span key={item.href} className="flex items-center gap-x-3">
+                  {i > 0 && (
+                    <span aria-hidden="true" className="text-[#A2968A]">
+                      ·
+                    </span>
+                  )}
+                  <Link
+                    href={item.href}
+                    className="text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                  >
+                    {item.label}
+                  </Link>
+                </span>
+              ))}
+            </nav>
+
+            {/* Who the reader is actually buying from. Required on a page that
+                takes payment, and the address is the one the legal pages name. */}
+            <p className="mt-6 text-sm leading-relaxed text-[#6B5F53]">
+              Richmond Kobe, trading as Faithful Path Community, Thailand ·{" "}
+              <a
+                href="mailto:info@faithfulpathcommunity.com"
+                className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              >
+                info@faithfulpathcommunity.com
+              </a>
+            </p>
+
             <div className="mt-8">
               <SocialLinks />
             </div>
