@@ -13,6 +13,8 @@ import { AUTHOR } from "@/lib/types";
 import { SITE } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
+import BookPromo from "@/components/BookPromo";
+import { bookForArticle } from "@/lib/book-promo";
 
 // Saving in the admin calls revalidatePath("/articles/[slug]"); this is the
 // backstop for rows edited directly in Supabase.
@@ -76,6 +78,11 @@ export default async function ArticlePage({
   const date = displayDate(a.published_at);
   const iso = isoDay(a.published_at);
   const category = getCategory(a.category);
+
+  const bodyAlreadySellsABook = /\/guides\/[a-z0-9-]+/.test(a.body_md);
+  const promoBook = bodyAlreadySellsABook
+    ? null
+    : bookForArticle(a.slug, a.category);
 
   // dateModified is the row's updated_at, not the publication date: saying a
   // corrected article was last modified the day it went out is simply untrue.
@@ -142,6 +149,16 @@ export default async function ArticlePage({
       </div>
 
       <ArticleBody source={a.body_md} title={a.title} />
+
+      {/* Only where the prose does not already sell a book. Thirty-four of the
+          articles have a promo written into them by hand, in three different
+          shapes, and adding a second one below would be the same pitch twice.
+          So the box fills the gap rather than replacing the work: a new article
+          gets one without anybody remembering, and an old one keeps its own.
+
+          The test is a link to /guides/ anywhere in the body, which is what
+          every one of those hand-written promos ends with. */}
+      {promoBook && <BookPromo book={promoBook} />}
 
       <div className="mt-16 border-t border-[#E5D9C7] pt-10">
         <p

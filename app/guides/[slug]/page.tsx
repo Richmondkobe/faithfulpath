@@ -49,6 +49,16 @@ const RELATED_ARTICLES: Record<
   ],
   "talk-before-you-marry": [
     {
+      href: "/articles/christian-premarital-counselling-what-to-expect",
+      title:
+        "Christian Premarital Counselling: What to Expect and How to Prepare",
+    },
+    {
+      href: "/articles/questions-to-ask-before-marriage-christian",
+      title:
+        "25 Questions to Ask Before Marriage: A Christian Guide for Serious Couples",
+    },
+    {
       href: "/articles/couples-spiritual-reset-weekend",
       title:
         "How to Take a Christian Couples' Retreat Without Turning It Into Marriage Therapy",
