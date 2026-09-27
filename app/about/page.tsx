@@ -4,9 +4,10 @@ import Link from "next/link";
 import { COUNTRIES, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About | Faithful Path Community",
+  title: "About Pastor Richmond Kobe | Faithful Path Community",
   description:
-    "Richmond — pastor of more than twenty years across ten countries, author of eighteen books.",
+    "Richmond Kobe has pastored for more than twenty years across ten countries. Here is who he is and how he works with people one at a time.",
+  alternates: { canonical: "/about" },
 };
 
 export default function About() {

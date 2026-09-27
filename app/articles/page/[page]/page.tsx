@@ -34,8 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `Articles — page ${page} | Faithful Path Community`,
-    description:
-      "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
+    description: `Writing and teaching on faith, marriage, grief, and staying with God when it is hard — page ${page}.`,
     // Each page is its own canonical. Pointing them all at /articles would be
     // telling Google that pages two and up are duplicates, which is how their
     // articles stop being indexed.

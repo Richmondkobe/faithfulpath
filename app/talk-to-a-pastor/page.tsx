@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   title: "Talk to a Pastor — Online Pastoral Counselling (US$60)",
   description:
     "One hour online with a pastor of twenty years. Written intake, a live conversation, and a written follow-up within 24 hours. US$60.",
+  alternates: { canonical: "/talk-to-a-pastor" },
 };
 
 const COUNTRIES = [

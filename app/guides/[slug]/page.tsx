@@ -175,6 +175,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${guide.title} | Faithful Path Community`,
     description,
+    alternates: { canonical: `/guides/${slug}` },
     openGraph: {
       type: "website",
       url: `/guides/${slug}`,

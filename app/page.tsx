@@ -1,7 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SITE, COUNTRIES } from "@/lib/site";
 import { listPublishedArticles } from "@/lib/articles-db";
+
+// The title and description are the root layout's, which were written for this
+// page. Only the canonical is set here: without it the home page is reachable
+// as itself and as any tracking-parameter variant, with nothing saying which is
+// the real one.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // Matches /articles: revalidatePath on save keeps this fresh, and this is the
 // backstop for rows edited directly in Supabase.

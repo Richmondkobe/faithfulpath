@@ -17,7 +17,8 @@ export const revalidate = 60;
 export const metadata: Metadata = {
   title: "Books | Faithful Path Community",
   description:
-    "Short, practical books on marriage, ministry and faith — written from twenty years of pastoral work.",
+    "Five practical Christian books as instant PDF downloads: overthinking and worry, dating discernment, spiritual burnout, church leadership and premarital preparation.",
+  alternates: { canonical: "/guides" },
 };
 
 export default async function Guides() {
