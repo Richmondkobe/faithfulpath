@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
+import WhichIsRight from "@/components/WhichIsRight";
 import { listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
@@ -39,6 +40,8 @@ export default async function Guides() {
         Short, practical books you can read in an evening and use the same
         week. Written from what people actually bring me.
       </p>
+
+      <WhichIsRight here="/guides" />
 
       {guides.length === 0 ? (
         <div className="mt-14 max-w-2xl rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-7 py-10">
@@ -96,8 +99,11 @@ export default async function Guides() {
                 {/* Outside the card's own link, not inside it: the Terms link
                     is an anchor, and an anchor inside an anchor is invalid and
                     swallows the click. */}
+                {/* The products table records no page count — only a
+                    pdf_path — so this is the short form. Add a column and the
+                    "N pages" belongs between the two. */}
                 <FinePrint>
-                  PDF, instant download · 14-day refund, no questions asked ·{" "}
+                  PDF · instant download · 14-day refund, no questions asked ·{" "}
                   <FinePrintLink href="/terms">Terms</FinePrintLink>
                 </FinePrint>
               </li>

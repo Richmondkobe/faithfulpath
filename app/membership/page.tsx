@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
+import WhichIsRight from "@/components/WhichIsRight";
 import { abs, graph, orgRef } from "@/lib/schema";
 
 const TITLE =
@@ -170,6 +172,8 @@ export default function Membership() {
         US$19 per month. Cancel from your account whenever you need to.
       </p>
       <JoinButton label="Join the membership" />
+
+      <WhichIsRight here="/membership" />
 
       <H2>What Your Membership Includes</H2>
       <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">
@@ -345,7 +349,14 @@ export default function Membership() {
       </p>
       <p className="mt-3 leading-relaxed">
         If your answers indicate that you may need additional support, the course
-        will direct you to the <Bold>Finding Help Where You Live</Bold> page and
+        will direct you to the{" "}
+        <Link
+          href="/before-you-say-yes/resources"
+          className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+        >
+          <Bold>Finding Help Where You Live</Bold>
+        </Link>{" "}
+        page and
         explain the appropriate next step.
       </p>
       <p className="mt-3 leading-relaxed">
@@ -414,6 +425,11 @@ export default function Membership() {
         <Faq question="Are the workbook and Session Guide included?">
           Yes. Both are included as printable PDFs inside the course, along with
           the other printable resources.
+        </Faq>
+        <Faq question="Do I need the book as well?">
+          No. The membership contains the complete online edition, the printable
+          workbook and the Session Guide. The US$29 PDF is for people who prefer
+          to read and print the whole book on their own.
         </Faq>
         <Faq question="How long do I keep access?">
           For as long as your membership is active. When you cancel, you keep
