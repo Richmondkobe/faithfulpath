@@ -33,6 +33,12 @@ const STATIC_PATHS = [
   "/talk-to-a-pastor",
   "/contact",
   "/before-you-say-yes/resources",
+  // The legal pages. Crawlable on purpose: a reader deciding whether to buy
+  // should be able to find the refund terms without being sold to first, and a
+  // payment provider checking the site expects to reach them from a search.
+  "/privacy",
+  "/terms",
+  "/pastoral-terms",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
