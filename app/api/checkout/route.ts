@@ -3,7 +3,13 @@ import type Stripe from "stripe";
 import { stripe, siteUrl } from "@/lib/stripe";
 import { getPublishedProductBySlug } from "@/lib/products-db";
 
-/** Whether Stripe refused a session only because the ToS URL is not set. */
+/**
+ * Whether Stripe refused a session because the ToS URL is not set.
+ *
+ * Only used to say so in the log. The session is not retried without the
+ * consent: a book sale that did not collect the immediate-delivery agreement
+ * is a sale the refund policy does not cover, so it is better not made.
+ */
 function isMissingTosUrl(err: unknown): boolean {
   const message = err instanceof Error ? err.message : String(err);
   return /terms.of.service/i.test(message) && /url|dashboard|settings/i.test(message);
@@ -23,16 +29,12 @@ export async function POST(request: NextRequest) {
 
     const origin = siteUrl();
 
-    // The consent checkbox needs a Terms of service URL in the account's public
-    // details, and test mode and live mode hold that setting separately. If it
-    // is missing, Stripe refuses the whole session — which would stop every
-    // purchase, not just the consent.
-    //
-    // So the consent is attempted, and a failure caused only by the missing URL
-    // falls back to a session without it rather than breaking the store. The
-    // fallback logs loudly, because while it is in use the "all sales final"
-    // policy has no recorded agreement behind it for a UK or EU buyer. Set the
-    // URL and this path stops being taken; it can be deleted once it is.
+    // The consent is not optional. Stripe refuses the whole session if the
+    // account has no Terms of service URL, and that refusal is allowed to stand:
+    // "all sales final" only holds against a UK or EU buyer who agreed to
+    // immediate delivery, so a sale made without collecting that agreement is
+    // one the policy does not cover. Failing here is loud and fixable; selling
+    // without it is quiet and is not.
     const base: Stripe.Checkout.SessionCreateParams = {
       mode: "payment",
       line_items: [
@@ -53,11 +55,6 @@ export async function POST(request: NextRequest) {
       // immediate delivery and acknowledged losing the statutory cancellation
       // right. This is that agreement: a checkbox they have to tick before they
       // can pay, and a record on the session that they did.
-      //
-      // Stripe requires a terms of service URL in the account's public details
-      // for this to be accepted — dashboard.stripe.com/settings/public. Without
-      // it the session creation fails, which is why the catch below now says
-      // which setting is missing rather than only "could not start checkout".
       consent_collection: { terms_of_service: "required" },
       custom_text: {
         terms_of_service_acceptance: {
@@ -80,17 +77,15 @@ export async function POST(request: NextRequest) {
     try {
       session = await stripe.checkout.sessions.create(base);
     } catch (err) {
-      if (!isMissingTosUrl(err)) throw err;
-      console.error(
-        "STRIPE CONFIG: no Terms of service URL set in the account's public details " +
-          "(dashboard.stripe.com/settings/public). Selling without the immediate-delivery " +
-          "consent checkbox until it is set — the all-sales-final policy is unenforceable " +
-          "for UK and EU buyers in the meantime."
-      );
-      const withoutConsent = { ...base };
-      delete withoutConsent.consent_collection;
-      delete withoutConsent.custom_text;
-      session = await stripe.checkout.sessions.create(withoutConsent);
+      if (isMissingTosUrl(err)) {
+        console.error(
+          "STRIPE CONFIG: no Terms of service URL in the account's public details for this " +
+            "mode (dashboard.stripe.com/settings/public — test and live hold it separately). " +
+            "Book checkout is refusing to sell rather than sell without the immediate-delivery " +
+            "consent. Set it to https://faithfulpathcommunity.com/terms."
+        );
+      }
+      throw err;
     }
 
     if (!session.url) {
