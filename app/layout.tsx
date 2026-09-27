@@ -21,7 +21,7 @@ const sans = IBM_Plex_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://faithfulpathcommunity.com"),
-  title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
+  title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
   description:
     "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
   authors: [{ name: "Richmond Kobe" }],
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Faithful Path Community",
     url: "https://faithfulpathcommunity.com",
-    title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
+    title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Faithful Path Community — Online Christian Counselling & Spiritual Guidance",
+    title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
     images: ["/og-default.png"],

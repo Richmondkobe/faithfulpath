@@ -18,7 +18,7 @@ const sans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Talk to a Pastor — Online Christian Counselling | Faithful Path Community",
+  title: "Talk to a Pastor — Online Pastoral Counselling (US$60)",
   description:
     "One hour online with a pastor of twenty years. Written intake, a live conversation, and a written follow-up within 24 hours. US$60.",
 };
@@ -105,12 +105,21 @@ export default function Home() {
           </p>
         </div>
 
-          <FinePrint className="mt-4">
-            Reschedule or cancel free up to 24 hours before ·{" "}
-            <FinePrintLink href="/pastoral-terms">
-              Read the Pastoral Conversation Terms
-            </FinePrintLink>
-          </FinePrint>
+        {/* What the hour is, before anyone books it. Above the rescheduling
+            line because the scope of the session matters more than its
+            cancellation policy to somebody deciding whether this is the right
+            kind of help at all. */}
+        <FinePrint className="mt-4">
+          Pastoral support from an ordained minister — not psychotherapy,
+          medical treatment or an emergency service.
+        </FinePrint>
+
+        <FinePrint className="mt-2">
+          Reschedule or cancel free up to 24 hours before ·{" "}
+          <FinePrintLink href="/pastoral-terms">
+            Read the Pastoral Conversation Terms
+          </FinePrintLink>
+        </FinePrint>
       </section>
 
       {/* Credential band */}
@@ -278,7 +287,7 @@ export default function Home() {
           className="mx-auto max-w-lg text-2xl leading-snug text-[#2B2118] sm:text-3xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
         >
-          One hour is usually enough to stop going in circles.
+          One honest hour can help you name what is happening and identify a responsible next step.
         </p>
         <a
           href="https://cal.com/getclb/talk-to-a-pastor"
