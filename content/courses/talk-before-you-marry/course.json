@@ -12,13 +12,13 @@
     { "label": "Safety and Support", "href": "/members/courses/talk-before-you-marry/safety-and-support" }
   ],
 
-  "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms are scoped to this course, not the whole site, because everything they say is about what this course does.",
+  "//full_footer_links": "Rule 6: Start Here and Safety and Support take the fuller footer. Privacy and Terms point at the site-wide pages: the operator, the data handling and the refund terms are the same whichever door a reader came in by, and one page kept current beats two that drift apart.",
   "full_footer_links": [
     { "label": "Home", "href": "/" },
     { "label": "Course overview", "href": "/members/courses/talk-before-you-marry" },
     { "label": "Contact", "href": "/contact" },
-    { "label": "Privacy", "href": "/members/courses/talk-before-you-marry/privacy" },
-    { "label": "Terms", "href": "/members/courses/talk-before-you-marry/terms" },
+    { "label": "Privacy", "href": "/privacy" },
+    { "label": "Terms", "href": "/terms" },
     { "label": "Need more support?", "href": "/members/courses/talk-before-you-marry/safety-and-support" }
   ],
 
