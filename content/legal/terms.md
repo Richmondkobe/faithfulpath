@@ -14,7 +14,7 @@ You must be eighteen or older to buy a book, join the membership or book a sessi
 
 **Licence.** Your purchase gives you a personal, non-transferable licence to read the book and to print it for your own use. You may not share the file, post it online, resell it or use it in a course or group without written permission. Church leaders who want to use a book with a group are welcome to ask — write to info@faithfulpathcommunity.com.
 
-**Refunds.** If a book is not what you expected, email within fourteen days of purchase and you will receive a full refund, no questions asked. Refunds are returned to the card you paid with and usually appear within five to ten working days.
+**Refunds.** Because a PDF cannot be returned once downloaded, book purchases are final. Every book has a free sample — the contents and the whole first chapter — so you can see exactly what you are buying before you pay. If a file is faulty, a download link does not work, or you were charged twice, email info@faithfulpathcommunity.com and we will put it right straight away.
 
 **Lost downloads.** If your link expires or you lose the file, email us and we will send it again at no charge.
 

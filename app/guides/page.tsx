@@ -103,8 +103,8 @@ export default async function Guides() {
                     pdf_path — so this is the short form. Add a column and the
                     "N pages" belongs between the two. */}
                 <FinePrint>
-                  PDF · instant download · 14-day refund, no questions asked ·{" "}
-                  <FinePrintLink href="/terms">Terms</FinePrintLink>
+                  PDF · instant download · All sales final — read the free sample first ·{" "}
+                  <FinePrintLink href="/terms#books">Terms</FinePrintLink>
                 </FinePrint>
               </li>
             );

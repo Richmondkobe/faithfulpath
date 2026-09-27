@@ -325,8 +325,8 @@ export default async function Guide({ params }: Props) {
             </div>
 
             <FinePrint>
-              PDF, instant download · 14-day refund, no questions asked ·{" "}
-              <FinePrintLink href="/terms">Terms</FinePrintLink>
+              PDF · instant download · All sales final — read the free sample first ·{" "}
+              <FinePrintLink href="/terms#books">Terms</FinePrintLink>
             </FinePrint>
           </form>
 

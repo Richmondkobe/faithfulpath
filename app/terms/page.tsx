@@ -5,7 +5,7 @@ import { readLegal } from "@/lib/legal";
 
 const TITLE = "Terms of Purchase and Use";
 const DESCRIPTION =
-  "Terms for the books and the Faithful Path membership: prices, delivery, the fourteen-day book refund, cancelling, and the seven-day membership refund.";
+  "Terms for the books and the Faithful Path membership: prices, delivery, why book sales are final, cancelling, and the seven-day membership refund.";
 const PATH = "/terms";
 
 // Read once, at build time — the page is static.

@@ -4,10 +4,41 @@ import ReactMarkdown, {
   type Options,
 } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import type { ReactNode } from "react";
 
 // Longform article typography. The block styling deliberately mirrors what the
 // articles used before they moved into Supabase, so migrated posts render
 // identically — a body with no markdown in it is still just paragraphs.
+
+/**
+ * A heading's anchor id, from its own text: "2. Books" -> "books".
+ *
+ * The leading clause number goes, so a link written by hand stays right when a
+ * clause is renumbered — /terms#books should not become /terms#3-books because
+ * a section was inserted above it. Anything unreadable falls back to no id,
+ * which is better than an id nobody can guess.
+ */
+function headingId(children: ReactNode): string | undefined {
+  const text = toText(children);
+  const slug = text
+    .toLowerCase()
+    .replace(/^\s*\d+[.)]?\s+/, "")
+    .replace(/[\u2018\u2019\u201c\u201d]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return slug || undefined;
+}
+
+/** The plain text inside a heading, however it is nested. */
+function toText(node: ReactNode): string {
+  if (node == null || node === false || node === true) return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(toText).join("");
+  if (typeof node === "object" && "props" in node) {
+    return toText((node as { props: { children?: ReactNode } }).props?.children);
+  }
+  return "";
+}
 
 const DISPLAY = "var(--font-display)";
 
@@ -66,7 +97,8 @@ const components: Components = {
   ),
   h2: ({ children }) => (
     <h2
-      className="pt-6 text-2xl leading-snug text-[#2B2118] sm:text-3xl"
+      id={headingId(children)}
+      className="pt-6 text-2xl leading-snug text-[#2B2118] sm:text-3xl scroll-mt-6"
       style={{ fontFamily: DISPLAY, fontWeight: 400 }}
     >
       {children}

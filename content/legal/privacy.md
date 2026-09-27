@@ -18,7 +18,7 @@ Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path C
 
 **Contact form.** Your name, email address and message, so that we can reply.
 
-**Book purchases.** Your email address and the purchase record. Payment card details are entered directly with Stripe, our payment processor; we never see or store your card number. We keep the purchase record so that we can re-send your download and honour refunds.
+**Book purchases.** Your email address and the purchase record. Payment card details are entered directly with Stripe, our payment processor; we never see or store your card number. We keep the purchase record so that we can re-send your download, and put right a faulty file or a double charge.
 
 **Membership.** Your email address (used to sign you in with a one-time code), your subscription status, your progress through the course, your answers to the reflection prompts and check-ins, your route and retreat choices, and the name you ask to appear on your completion certificate. Written questions you send to Richmond through the membership are stored with your account.
 
