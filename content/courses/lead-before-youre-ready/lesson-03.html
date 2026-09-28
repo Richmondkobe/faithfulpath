@@ -1,0 +1,230 @@
+<title>Lead Lesson 3 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.check{list-style:none;padding:0;margin:0 0 12px}
+.check li{margin-bottom:8px}
+.check label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:17px;cursor:pointer;padding:4px 0}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--accent)}
+.outcomes{margin:6px 0 0;display:grid;gap:10px}
+.outcomes dt{font-weight:600;font-size:16px}
+.outcomes dd{margin:2px 0 0;font-size:15px;color:var(--mute);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.outcomes dd:last-child{border-bottom:0}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 3 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 3 &middot; Start With Yourself</span>
+<h1 style="margin-top:10px">Knowing Your Role</h1>
+<p class="sub">What are you responsible for, and what are you not responsible for?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 2 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;For I too am a man under authority, with soldiers under me. And I say to one, &lsquo;Go,&rsquo; and he goes, and to another, &lsquo;Come,&rsquo; and he comes, and to my servant, &lsquo;Do this,&rsquo; and he does it.&rdquo;</p>
+<span class="ref">Matthew 8:9 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Recognise how unclear responsibilities can create avoidable leadership conflict.</li>
+<li>Consider what the centurion&rsquo;s words illustrate about delegated authority, and understand what Christian submission does and does not mean.</li>
+<li>Agree with your pastor or ministry head what you may decide, what needs approval and what must be reported.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 3.</p>
+<p>In this lesson you will learn how unclear responsibilities create avoidable conflict in a first year of leading, what a Roman soldier's words illustrate about authority, and the four questions that will settle where your role begins and ends.</p>
+<p>Let's begin with Scripture. Matthew chapter 8, verse 9. A centurion is speaking to Jesus.</p>
+<p>"For I too am a man under authority, with soldiers under me. And I say to one, 'Go,' and he goes, and to another, 'Come,' and he comes, and to my servant, 'Do this,' and he does it."</p>
+<p>This happens in Capernaum, a garrison town on the Sea of Galilee. A centurion commanded around eighty men, and he stood inside a chain of command that ran all the way up to Rome. He comes to Jesus about a paralysed servant. Jesus offers to come to the house, and the centurion says that is not necessary. Just say the word. Then he explains his reasoning, and this is the part to sit with.</p>
+<p>The word he uses is <em>exousia</em>. In the New Testament, <em>exousia</em> is not raw power. It is delegated authority, the right to act because someone above you has given you that right. And notice the logic. He does not say, "I am a man with authority." He says, "I am a man under authority." His ability to give an order rests entirely on the fact that he stands inside a chain. When he says "go," what makes it work is not his personality. It is the empire standing behind him.</p>
+<p>Jesus calls this the greatest faith he has found in Israel. Let me be careful here. Matthew 8 is primarily about the centurion's faith in Jesus' authority. His description of being under authority also gives us a useful illustration, but not a complete model, of how delegated responsibility works. A Roman army is not a blueprint for a church. But the soldier grasped something the religious professionals had missed.</p>
+<p>Now apply that to yourself. Whatever authority you carry in your ministry is delegated. It came down to you, it is not generated by you, and it operates only within the area it was given for. That is not a demotion. It is the only kind of authority that holds weight.</p>
+<p>Here is why this matters so much in your first year. Many first-year conflicts grow out of unclear responsibilities. You made a decision you thought was yours and discovered it wasn't. You waited for permission on something everyone assumed you would just handle. You told a volunteer something the pastor had already told them differently. You were criticised for a decision you had no part in making. Situations like those often reflect unclear boundaries rather than poor character, and boundaries can be drawn.</p>
+<p>Scripture speaks to both sides of this. Hebrews 13:17 tells believers to submit to their leaders, because those leaders keep watch over souls as people who must give an account, and it adds a reason that is easy to skip: so that they may do it with joy and not with grief. Your pastor carries a weight of responsibility. Making that weight heavier costs everyone, including you. And 1 Peter 5 speaks to the other side: elders are to shepherd willingly, not lording it over those entrusted to them, but being examples. Leaders who serve without domination, and a community that cooperates with humility. Accountability belongs on both sides.</p>
+<p>But let me be clear about what submission is not. Submission is not silence, and it is not agreement. In Galatians 2, Paul confronts Peter in Antioch, to his face, in public, because Peter's behaviour was pulling the church apart. Peter was senior to Paul in every visible way, and Paul still spoke. Acts 15 shows the whole church arguing out a serious dispute in the open, in the right room, and reaching a decision together. Honest disagreement, raised constructively, is part of a healthy church. What is not healthy is undermining decisions through gossip, or recruiting allies against someone. And one more thing: concerns about harm, coercion or misconduct are different again. Those follow a reporting route, and they should never be suppressed for the sake of appearances. You do not have to confront the person first, and you do not wait for an implicated leader's permission.</p>
+<p>So pause here for a moment. Think of one decision you made in this role in the last month. Were you certain it was yours to make? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is the tool for this week. Four questions, in one twenty-minute conversation with whoever you report to.</p>
+<p>Question one: what decisions may I make independently? Get real examples. Spending up to what amount, changing a meeting time, choosing songs, adding a volunteer.</p>
+<p>Question two: what requires approval, and what requires prompt reporting? Spending, teaching, appointments, changes of role. Safeguarding concerns always follow the reporting process, whatever else is agreed.</p>
+<p>Question three: what do you want to hear about even when I've handled it? A complaint, a volunteer quitting, a pastoral situation in the team.</p>
+<p>Question four: how do you want me to raise a disagreement, and when?</p>
+<p>So this is your step. Ask your pastor or ministry head for twenty minutes this week, and take the four questions with you. Write the answers down while you are there. Then email them back the same day: "Here is what I understand we agreed." A clear record prevents misunderstandings later. Record only the role agreement; keep names and sensitive pastoral details out of an ordinary email. And if an urgent concern needs attention, use the appropriate route now, rather than waiting for this meeting.</p>
+<p>One truth to carry with you this week. Delegated authority is the only kind that holds weight. Know where yours begins and ends, and you will lead with far more freedom, not less.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, thank you that I do not have to generate my own authority. Help me to serve gladly under the people you have placed over me, to speak honestly when I disagree, and never to stay silent where someone could be harmed. Give me clarity about my role this week, and peace inside its limits. Amen.</p>
+<p>I'll see you in Lesson 4.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>Which part of my authority am I presently assuming rather than knowing?</li>
+<li>Is there a concern I have stayed quiet about because I thought submission required it? What would be the appropriate way to raise it?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Twenty minutes. Four questions.</strong></p>
+<p>Ask your pastor or ministry head for twenty minutes this week, and take these four questions with you:</p>
+<ul>
+<li>What decisions may I make independently? Ask for real examples.</li>
+<li>What requires approval, and what requires prompt reporting?</li>
+<li>What do you want to hear about even when I&rsquo;ve handled it?</li>
+<li>How do you want me to raise a disagreement, and when?</li>
+</ul>
+<p style="margin-top:12px">Write the answers down while you are there. The same day, email them back: &ldquo;Here is what I understand we agreed.&rdquo; Keep that record in your church&rsquo;s usual system, not in this course. Record only the role agreement; do not include names or sensitive details from pastoral or safeguarding situations in an ordinary email.</p>
+<p class="safety"><strong>Do not wait for permission to report a safeguarding concern.</strong> Safeguarding concerns always follow your church&rsquo;s reporting process, whatever else is agreed. If an urgent concern needs attention, use the appropriate route now rather than waiting for this meeting.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 3</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 3 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Write down three decisions you have made in this role in the last month. Beside each, mark whether you were certain it was yours to make.</li>
+<li>Read the centurion&rsquo;s words in Matthew 8:9 again. Whose authority stands behind yours in this church? Can you name the chain?</li>
+<li>Is there a concern you are carrying? What is the appropriate route: direct conversation, confidential advice, a formal complaint or safeguarding reporting?</li>
+<li>Hebrews 13:17 joins leadership with accountability. How can you cooperate responsibly while remaining honest about concerns?</li>
+<li>What is one thing you assumed you needed permission for that you probably don&rsquo;t?</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Ask your pastor or ministry head for twenty minutes and take the four questions with you. Write the answers down while you&rsquo;re there, and email them back the same day for confirmation. If an urgent concern needs attention, use the appropriate route now rather than waiting for the meeting.</p>
+<p><strong>Ten-Week Practice Plan, Week 3</strong></p>
+<p>Focus: role clarity. Main action: agree decisions, limits and reporting routes. The toolkit&rsquo;s Role and Decision Agreement gives you a page to record what was agreed, and Concerns, Care and Reporting helps you choose the right route for a concern.</p></div></details>
+</section>
+
+<section class="plain">
+<h2>Before you go on <small>a short check-in</small></h2>
+<p>You have finished the first part of the course, Start With Yourself. The next part assumes that you have some basic support and role clarity. Tick what is true for you. This does not block your progress, and nothing is saved.</p>
+<ul class="check">
+<li><label for="c1"><input type="checkbox" id="c1"><span>I know who supervises me.</span></label></li>
+<li><label for="c2"><input type="checkbox" id="c2"><span>I know what I may decide on my own.</span></label></li>
+<li><label for="c3"><input type="checkbox" id="c3"><span>I know what requires approval.</span></label></li>
+<li><label for="c4"><input type="checkbox" id="c4"><span>I know how to report harm, misconduct or a safeguarding concern.</span></label></li>
+<li><label for="c5"><input type="checkbox" id="c5"><span>I have someone with whom I can speak honestly about my leadership and well-being.</span></label></li>
+<li><label for="c6"><input type="checkbox" id="c6"><span>I can name at least one area in which I need further training or support.</span></label></li>
+</ul>
+<dl class="outcomes">
+<dt>I can tick all six</dt><dd>Continue to Lesson 4. Keep clarifying your role as you lead.</dd>
+<dt>I am unsure what I may decide or what requires approval</dt><dd>Continue, but arrange the role-clarity conversation this week.</dd>
+<dt>I do not know who supervises me or how to report harm</dt><dd>Pause before putting the later lessons into practice. Ask an appropriate church leader to clarify supervision and reporting procedures. You may still read ahead.</dd>
+<dt>Something needs reporting now</dt><dd>Do not wait for the next lesson or the role-clarity meeting. Use the appropriate safeguarding, complaints or independent reporting route now.</dd>
+</dl>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<h3>Concern about harm or misconduct?</h3>
+<p>Use your church&rsquo;s safeguarding or reporting procedure. You do not need to confront the person first. If someone is in immediate danger, contact your local emergency service. This course and its email address are not monitored as emergency or safeguarding-reporting channels. For help choosing the right route, see <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a>.</p>
+<h3>Want to talk about the course or your leadership?</h3>
+<p>You may write to Pastor Richmond at info@faithfulpathcommunity.com. Please do not send confidential safeguarding reports or sensitive personal records by ordinary email.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 3</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 3 finished</p>
+<p>Your step for this week is the twenty-minute conversation with the four questions, and the email afterwards.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 4: Building a Volunteer Team</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[2].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?3:2)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

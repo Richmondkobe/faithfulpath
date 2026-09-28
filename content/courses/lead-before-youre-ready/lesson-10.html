@@ -1,0 +1,197 @@
+<title>Lead Lesson 10 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap}
+.top .label{white-space:nowrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 10 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 10 &middot; Face What Tests You</span>
+<h1 style="margin-top:10px">Growing the Next Leader</h1>
+<p class="sub">Whose shoulders will carry responsibility after yours?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 9 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;And what you have heard from me in the presence of many witnesses entrust to faithful men, who will be able to teach others also.&rdquo;</p>
+<span class="ref">2 Timothy 2:2 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Measure leadership by what will still be standing after you leave, and who will be running it.</li>
+<li>See how Barnabas made room for Saul, and name honestly what stops leaders from raising a successor.</li>
+<li>Invite one potentially suitable person to explore leadership, then give them one supported, low-risk responsibility this month.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 10:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About ten minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 10, the last lesson of the course.</p>
+<p>In this lesson you will learn the measure of leadership nobody uses, why Barnabas is the person most of us should copy, what actually stops leaders from raising a successor, and how to invite one person into real responsibility this month.</p>
+<p>Let's begin with Scripture. Second Timothy chapter 2, verse 2.</p>
+<p>"And what you have heard from me in the presence of many witnesses entrust to faithful men, who will be able to teach others also."</p>
+<p>Paul is writing from prison, near the end of his life. And in one sentence he counts four generations: Paul, to Timothy, to faithful people, to others. The word translated "entrust" is <em>paratithēmi</em>. It was used for placing something valuable in someone's safekeeping, a deposit you expect to be guarded and passed on intact. Paul is not asking Timothy to be a gifted teacher. He is asking him to be a link in a chain. Notice the criterion again: faithful, and able to teach others. Not the most gifted. Not the most eager. Reliable, and able to pass it on.</p>
+<p>Most of us measure our leadership by what is happening now: attendance, the rota, whether last Sunday went smoothly. There is a better measure, and it is uncomfortable. What will still be standing five years after you leave, and who will be running it? By that measure, a leader whose thriving ministry collapses the week he moves away has not really succeeded. And a leader who quietly raises four people who go on to lead has, even if his own numbers were unremarkable. This is the last lesson because it is the last thing new leaders think about. It should be one of the first.</p>
+<p>If you want one person in Scripture to imitate in this, take Barnabas. Acts 9: Saul, newly converted, arrives in Jerusalem and the disciples are all afraid of him. Barnabas takes him to the apostles and vouches for him. Somebody had to stake their reputation on a man everyone distrusted. Acts 11: when the church at Antioch grows, Barnabas goes to Tarsus to look for Saul, finds him, and brings him back. He went and fetched him. Then watch the word order across a few chapters. In Acts 13:2 the Spirit says to set apart Barnabas and Saul. By Acts 13:13, Luke writes about Paul and his companions. The mentor's name moves to second place, and Barnabas never makes an issue of it. And in Acts 15 he takes John Mark, the young man who had deserted them, and disappears from the story to invest in a failure. That failure became the man Paul later asked for by name. Barnabas is not remembered for what he built. He is remembered for who he made possible.</p>
+<p>Moses did the same in public. In Numbers 27 God tells him to commission Joshua in front of the whole assembly, giving him some of his own authority. Authority visibly transferred. And notice: Joshua had been in the room for forty years, watching Moses meet with God, lead difficult people, and fail. The commissioning was the last step of a very long apprenticeship. You cannot produce that in a training course. It comes from letting someone be near you while you work.</p>
+<p>Now let us be honest about the obstacle, because it is not time and it is not a shortage of people. It is that raising a successor means admitting you are replaceable. If the person you train turns out to be better at this than you, more gifted, more liked, more effective, what exactly are you for? That fear is why leaders keep the interesting work, hand out the tasks, and train nobody. It is rarely conscious. It usually presents itself as high standards. John the Baptist's answer, when his own disciples worried that everyone was going to Jesus instead, was: he must become greater, and I must become less. He said it without bitterness, as the friend of the bridegroom who is full of joy. If someone else's growth threatens you, bring that honestly to God and to a trusted mentor. Their development is part of the work you have been entrusted with.</p>
+<p>So pause here for a moment. If you left in three months, what would fall over? And who could grow if you gave them genuine responsibility and suitable support? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is how to do it, practically. Spot them by faithfulness: the person already doing something small, well, without being chased. Bring them into the thinking, not just the doing: say out loud why you decided something, including the option you rejected. Give them something real, early. Not the chairs; a piece of work with decisions attached and their name on it, using the four training steps from Lesson 5. Let them learn in low-risk work, and intervene when safety, safeguarding, money or serious consequences are at stake. Let them do it differently. Their way at eighty percent, owned, beats your way at a hundred, borrowed. Talk about their future, not your vacancy, even if it leads out of your ministry. And when the time comes, hand over in the open, say publicly that this person now carries this, and then visibly stop deciding it. When someone brings you a question that is now theirs, send them on.</p>
+<p>So this is your step, in this order. Identify one potentially suitable person. Then, before you say anything to them, confirm the opportunity with your leader: that you are authorised to develop someone in this area, what supervision and boundaries apply, and any eligibility or safeguarding requirements. Then invite the person without pressure. Tell them you would like to help them explore and develop in leadership over the coming year, make clear it is not a promise of appointment, and ask whether they are willing. A no is a full answer. If they say yes, agree one meaningful, low-risk piece of work they can carry this month with support, with real decisions attached, ideally in the area you have been most reluctant to release. Agree what they may decide, when they must seek help, and when you will review it together. And when they do it differently from you, let them, provided it stays safe, faithful and within what was agreed.</p>
+<p>One truth to carry with you from this whole course. You will not lead this forever. Leave it better documented, better staffed and better understood than you found it. And make it clear the next person has your full confidence, and then stay quiet.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you entrusted your work to ordinary, faithful people and told them to pass it on. Make me a Barnabas. Give me eyes for the person nobody has noticed, courage to hand over what I enjoy most, and joy when they surpass me. Let what you have started here outlast me. Amen.</p>
+<p>That is the last lesson. The Finish page is waiting for you when you are ready.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>Who could grow if I gave them genuine responsibility and suitable support?</li>
+<li>Lord, how would I honestly feel if the person I trained became better at this than me?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>One person. One real piece of work.</strong></p>
+<ol class="steps">
+<li>Identify one potentially suitable person: someone showing character, faithfulness and teachability while already handling something small well.</li>
+<li>Confirm the opportunity with your leader. Agree that you are authorised to develop someone in this area, clarify supervision and boundaries, and understand any eligibility, reference or safeguarding requirements.</li>
+<li>Invite the person without pressure. Explain that you would like to help them explore and develop in leadership over the coming year. Make clear that this is not a promise of appointment. Ask whether they are willing. A no is a full answer.</li>
+<li>Agree one meaningful, low-risk piece of work they can carry this month with support. Give it clear ownership and appropriate decisions, preferably in an area you have been reluctant to release.</li>
+<li>Agree what they may decide, when they must seek help and when you will review the work together. If responsibility is later transferred permanently, make the handover clear to everyone affected.</li>
+</ol>
+<p style="margin-top:12px">And when they do it differently from you, let them, provided it remains safe, faithful and within what was agreed.</p>
+<p class="safety">Low-risk work is where people learn. Intervene when safety, safeguarding, money or serious consequences are at stake; avoidable harm is never a training exercise.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 10</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 10 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>If you left in three months, what would fall over? Who would pick it up?</li>
+<li>Read 2 Timothy 2:2 again. Name one faithful person in your ministry who could teach others. Are you investing in them, or just using them?</li>
+<li>Barnabas vouched for Saul when nobody trusted him. Who in your church needs someone to take a risk on them?</li>
+<li>Be honest about John 3:30. How would you feel if the person you trained became better at this than you?</li>
+<li>What is the most interesting part of your role, the part you enjoy most and would least like to hand over? That is probably the part you should be training someone in.</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Identify one person. Confirm with your leader that you are authorised to develop someone in this area and what checks apply. Then tell the person you would like to help them develop in leadership over the next year, not as a promise of appointment, and ask if they are willing. This month, agree one real piece of work with decisions attached, including something from your answer to question 5. And when they do it differently from you, let them.</p>
+<p><strong>Ten-Week Practice Plan, Week 10</strong></p>
+<p>Focus: developing others. Main action: invite one person into a supported learning plan. The toolkit&rsquo;s Developing a Leader and Handover page is where to plan it.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 10</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 10 finished</p>
+<p>Your step for this month is to confirm the opportunity with your leader, invite one person, and agree one real piece of work with support.</p>
+<a class="btn" href="#" onclick="return false">Continue to Finish: Lead Before You Feel Ready</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[9].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?10:9)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

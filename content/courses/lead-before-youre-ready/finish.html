@@ -1,0 +1,150 @@
+<title>Lead Finish Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap}
+.top .label{white-space:nowrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.parts{display:grid;gap:12px;margin:8px 0 0}
+.part{border-left:3px solid var(--accent);padding:2px 0 2px 14px}
+.part b{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:500}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:8px}
+.flow div{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:12px}
+.flow b{display:block;font-family:var(--serif);font-size:1.1rem;font-weight:500;margin-bottom:4px}
+.flow p{font-size:14px;color:var(--mute);margin:0}
+@media (max-width:560px){.flow{grid-template-columns:1fr 1fr}}
+.sentences li{font-family:var(--serif);font-size:1.2rem;line-height:1.5;margin-bottom:10px}
+.habits{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:6px}
+.habits label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;cursor:pointer;padding:6px 0;font-size:17px}
+.habits input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--accent)}
+.certify{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:12px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Finish</span></div>
+
+<section class="card">
+<span class="label">Finish</span>
+<h1 style="margin-top:10px">Lead Before You Feel Ready</h1>
+<p class="sub">You have finished all ten lessons. Take about five minutes here.</p>
+<div class="progress"><span class="label">Course progress: 10 of 10 lessons completed</span>
+<div class="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;Not that we are sufficient in ourselves to claim anything as coming from us, but our sufficiency is from God.&rdquo;</p>
+<span class="ref">2 Corinthians 3:5 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>Look back</h2>
+<p>You may have begun this course feeling unqualified. Now that you have completed all ten lessons, finish these four sentences privately:</p>
+<ul class="sentences">
+<li>One thing I understand more clearly about my role is&hellip;</li>
+<li>One leadership habit I have started is&hellip;</li>
+<li>One area in which I still need help or training is&hellip;</li>
+<li>One person I will continue meeting for support is&hellip;</li>
+</ul>
+<p class="note">These are for prayer and thought, or for your own notebook. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Choose one habit to continue</h2>
+<p>You now have a practical framework. You do not need to keep all of it in view at once. Choose the one habit you will keep repeating:</p>
+<ul class="habits">
+<li><label><input type="radio" name="habit"><span>Protect time with God.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Ask for help early.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Clarify authority before acting.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Recruit without pressure.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Support volunteers personally.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Prepare meetings properly.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Address concerns through the right route.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Protect capacity and rest.</span></label></li>
+<li><label><input type="radio" name="habit"><span>Develop another leader.</span></label></li>
+</ul>
+<p class="note">Your choice is for you. It is not saved.</p>
+</section>
+
+<section class="plain">
+<h2>A closing prayer</h2>
+<p class="scripture" style="font-size:1.15rem">Lord, I cannot lead faithfully in my own strength, and I still do not feel completely ready. Thank you that my sufficiency is from you. Keep me willing, teachable and honest about what I do not know. Help me to serve faithfully within the authority and accountability you have given, to care for the people you have placed with me, and to make room for those who will come after me. Lead me before I feel ready, and stay with me as you were with Moses. Amen.</p>
+</section>
+
+<section class="card">
+<h2>You have completed Lead Before You&rsquo;re Ready</h2>
+<p>A ten-lesson course in practical church leadership from Faithful Path Community.</p>
+<p>Keep practising these habits, one at a time. Keep learning, welcome correction, and help the next person grow.</p>
+<p class="certify">Completing this course records your participation. It does not confer ordination, appointment, professional qualification, safeguarding clearance or authority to lead within a church. Those remain decisions for your church&rsquo;s authorised leadership.</p>
+<div class="row" style="margin-top:18px"><a class="btn line" href="#" onclick="return false">Back to the course overview</a><a class="btn line" href="#" onclick="return false">Read the book again</a></div>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>

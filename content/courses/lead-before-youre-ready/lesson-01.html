@@ -1,0 +1,196 @@
+<title>Lead Lesson 1 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 1 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 1 &middot; Start With Yourself</span>
+<h1 style="margin-top:10px">Called, Not Qualified</h1>
+<p class="sub">What if they have chosen the wrong person?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 0 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;Not that we are sufficient in ourselves to claim anything as coming from us, but our sufficiency is from God, who has made us sufficient to be ministers of a new covenant.&rdquo;</p>
+<span class="ref">2 Corinthians 3:5&ndash;6 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Understand why feeling unqualified does not necessarily mean you were wrongly chosen.</li>
+<li>See how God answered Moses and Jeremiah when they felt unable to lead.</li>
+<li>Identify one area where you need help and take a practical step this week.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 1.</p>
+<p>In this lesson you will learn why feeling unqualified does not mean you were wrongly chosen, what God actually said to the leaders who argued with him, and one small step you can take now that could protect your leadership for years.</p>
+<p>Let's begin with Scripture. Second Corinthians chapter 3, verses 5 and 6.</p>
+<p>"Not that we are sufficient in ourselves to claim anything as coming from us, but our sufficiency is from God, who has made us sufficient to be ministers of a new covenant."</p>
+<p>Paul wrote this letter to the church in Corinth, a wealthy, status-conscious port city, and he wrote it under attack. Some in that church were questioning whether he was qualified at all. In that world, travelling teachers arrived with letters of recommendation, and Paul had none to show. So a chapter earlier he asked the question every new leader eventually asks: "Who is sufficient for these things?" Chapter 3 is his answer.</p>
+<p>The word Paul uses is <em>hikanos</em>. It means sufficient, adequate, enough. Enough for the task. And Paul, trained under Gamaliel, more familiar with the Scriptures than almost anyone alive, says plainly that he is not <em>hikanos</em> in himself. His sufficiency comes from God. If that is true of Paul, then the pressure you are feeling to be enough is a pressure God never put on you.</p>
+<p>Let me take you to a story. In Exodus 3, Moses is eighty years old and keeping sheep in the desert of Midian. He is not a rising leader. He is a man who tried to help his people forty years earlier, got it badly wrong, and ran. God speaks to him from a burning bush and tells him to go to Pharaoh. And Moses argues. Who am I, that I should go? What if they ask your name? What if they don't believe me? I have never been a good speaker. And finally, in Exodus 4, verse 13: please, send someone else.</p>
+<p>Five objections. God answers four of them patiently. He is angry only at the fifth, and not because Moses felt inadequate, but because Moses used his inadequacy as a reason to refuse.</p>
+<p>Now notice what God never does. He never tells Moses he is wrong about himself. He never says, "Actually, you're an excellent speaker." He answers a completely different question. In Exodus 3:12 he says simply, "I will be with you." The issue was never Moses' capacity. It was God's presence.</p>
+<p>Jeremiah heard the same thing. He said, "I am too young." God did not argue about his age. He said, go where I send you, say what I tell you, and do not be afraid of them, because I am with you. Presence, not capacity.</p>
+<p>So here is where you are. Somebody asked you to lead. Maybe the pastor, maybe a ministry head, maybe nobody asked and the need was simply sitting there until you picked it up. You said yes. And somewhere between saying yes and today, a quiet thought arrived: they've made a mistake. I'm not the right person for this.</p>
+<p>I want to tell you something before we go one step further. That feeling is normal. Feeling inadequate does not, by itself, mean you were wrongly chosen. Several leaders in Scripture voiced serious doubts when God called them. Their stories invite us to bring our doubts to God and ask for help, rather than treating confidence as the test of a calling.</p>
+<p>But let me be careful, because "called" can be misunderstood in two directions.</p>
+<p>First, calling is not the same as feeling certain. Most people never get a supernatural confirmation. More often the call arrives as a need you can see, a nudge you cannot shake, and the confirmation of people who know you. If your pastor and your church see something in you, take that seriously. God frequently speaks through the body before he speaks in your emotions.</p>
+<p>Second, calling is not permission to stay as you are. God did not require Moses to be qualified, but he did require him to go. When Paul describes an overseer in 1 Timothy 3, he talks about character: self-control, gentleness, the ability to teach and to care for people. Character is central, and character grows. Being called does not download the skills of running a meeting or recruiting a volunteer into you. You will need to learn them, and this course exists so that you can. And calling is never permission to bypass the training, supervision or safeguarding requirements of your role.</p>
+<p>So pause here for a moment. Finish this sentence without softening it: the main reason I feel unqualified to lead is&hellip; Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is the tool for this week. I call it Three Things I Do Not Know.</p>
+<p>In Acts 4:13, the trained religious leaders of Jerusalem looked at Peter and John and saw that they were, in the Greek, <em>agrammatos</em>: unlettered, without formal rabbinic training. Fishermen, standing in front of the theological faculty of their nation. And the verse ends with the detail that matters: the council recognised that these men had been with Jesus. Their courage did not depend on credentials. Neither does yours. But notice that Peter and John had spent three years learning. Being with Jesus was their training. Your uncertainty can keep you teachable, and it should also show you exactly where you need help.</p>
+<p>So this is your step. Write down three things you do not know how to do in this role. Be specific. Not "leadership," but "how to prepare Thursday's meeting," or "how to train a new volunteer." Then take that list to the person who put you in the position, and ask them to help you with one of the three. Do it this week.</p>
+<p>Asking for help early sets a pattern that will protect you for years. Waiting until you are drowning sets a very different one.</p>
+<p>One truth to carry with you this week. You are not required to be ready. You are required to be willing, teachable, and honest about what you do not know.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, I did not choose myself for this, and I do not feel ready. Thank you that my sufficiency is from you and not from me. Where I am tempted to say "send someone else," give me the courage to go. Where I do not know what I am doing, give me the humility to ask. Be with me, as you were with Moses. Amen.</p>
+<p>I'll see you in Lesson 2.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>What did the person who asked me to lead see in me?</li>
+<li>Lord, which part of this role have I quietly hoped someone else would take?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Three Things I Do Not Know.</strong></p>
+<p>Write down three things you do not know how to do in this role. Be specific: not "leadership," but "how to prepare Thursday's meeting" or "how to train a new volunteer." Take about ten minutes. Write privately on paper or on your phone.</p>
+<p>Then take the list to the person who put you in the position and ask them to help you with one of the three. Do it this week.</p>
+<p>You do not need to solve all three. One conversation, one request for help, is the whole step.</p>
+<p class="opt"><strong>Optional:</strong> you may also tell a trusted mentor or experienced leader what you are learning. Share only what you are comfortable sharing.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 1</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 1 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Finish this sentence without softening it: The main reason I feel unqualified to lead is&hellip;</li>
+<li>Look back at the list in 1 Timothy 3:1&ndash;7. Which one or two items on that list are genuine weak points for you right now? Not the ones you're worried others will notice; the ones you know about.</li>
+<li>Who first suggested you might lead? What do you think they saw?</li>
+<li>Moses' final objection was "send someone else." Is there a part of the role you have quietly hoped someone else would take? Name it.</li>
+<li>Read Acts 4:13 again. The council's conclusion was that these men had been with Jesus. If someone watched you lead for a month, what would they conclude you had been spending your time with?</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Write down three things you do not know how to do in this role. Take that list to the person who put you in the position, and ask them to help you with one of the three. Do it this week.</p>
+<p><strong>Ten-Week Practice Plan, Week 1</strong></p>
+<p>Focus: calling and preparation. Main action: ask for help with one skill you need. Allow about 20&ndash;30 minutes for reading and reflection, plus time for the week's action.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 1</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 1 finished</p>
+<p>Your step for this week is to ask for help with one of the three things you identified.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 2: Leading Yourself First</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[0].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?1:0)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

@@ -1,0 +1,193 @@
+<title>Lead Lesson 2 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 2 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 2 &middot; Start With Yourself</span>
+<h1 style="margin-top:10px">Leading Yourself First</h1>
+<p class="sub">Are you tending your own vineyard?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 1 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;Keep a close watch on yourself and on the teaching. Persist in this, for by so doing you will save both yourself and your hearers.&rdquo;</p>
+<span class="ref">1 Timothy 4:16 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Understand why your own life with God cannot be replaced by your service.</li>
+<li>See how Jesus and the apostles protected prayer while responding responsibly to real needs.</li>
+<li>Protect one appointment with God and approach one person who could ask you honest questions.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 2.</p>
+<p>In this lesson you will learn why your own life with God cannot be replaced by your service, how Jesus protected his time with the Father when the need was at its highest, and two practical decisions that will keep you spiritually alive while you lead.</p>
+<p>Let's begin with Scripture. First Timothy chapter 4, verse 16.</p>
+<p>"Keep a close watch on yourself and on the teaching. Persist in this, for by so doing you will save both yourself and your hearers."</p>
+<p>Paul is writing to Timothy, a young leader he has left in charge of the church in Ephesus. Ephesus was a large, wealthy city with a famous temple, competing teachers, and a church full of strong opinions. Timothy was not old, he was not naturally confident, and Paul knew it. So this letter is full of direct instruction. And in the middle of it comes one of the most direct instructions to a leader anywhere in Scripture: watch yourself, and watch what you teach.</p>
+<p>The word Paul uses for "keep a close watch" is <em>epech&#333;</em>. It means to hold your attention on something, to fix your eyes on it and not let go. It is the word you would use for a sailor watching the coastline. And notice that Paul joins two things together: your life and your teaching. Not one or the other. What Timothy teaches and how Timothy lives both matter to the people he serves. A leader's conduct can support the message, or quietly undermine it.</p>
+<p>There is a line in Song of Songs that has followed me through twenty years of ministry. In chapter 1, verse 6, the young woman says that they made her keeper of the vineyards, but her own vineyard she has not kept. In context she is talking about working in the family's fields under the sun while her own appearance suffered. But every leader I have ever met eventually reads that verse and goes quiet, because it describes exactly what happens to us. You are put in charge of other people's spiritual growth, and somewhere in the middle of it, you stop tending your own.</p>
+<p>It happens faster than you would expect. Within a few months of leading, you notice that you have started reading the Bible only to find something to say. Your prayer life has become planning. You are producing spiritual food constantly and eating almost none of it.</p>
+<p>If anyone could have justified skipping personal prayer for the sake of urgent ministry, it was Jesus. Mark chapter 1 describes an exhausting evening in Capernaum. The whole town gathered at the door, and Jesus healed many. The next verse tells us that very early, while it was still dark, he got up, went out to a solitary place, and prayed. Simon and the others came looking for him, and there is an edge in their words: everyone is searching for you. They could not understand why he had disappeared when everyone wanted him. Luke tells us this was not a one-off. Jesus regularly withdrew to quiet places and prayed, even as the crowds grew. If the Son of God, in a three-year ministry, made time to be alone with the Father while people were literally waiting outside the door, then your ministry is not too urgent for it either.</p>
+<p>So here is the truth for this lesson. Your public service cannot replace your private life with God. You are the instrument here. Nobody else can maintain it for you.</p>
+<p>Let me add one more picture, from Acts 6. The Greek-speaking widows in the Jerusalem church were being overlooked in the daily food distribution. This was a real injustice in a fast-growing church. And the Twelve said something striking: it would not be right for us to neglect the word of God in order to wait on tables. They did not dismiss the problem. They arranged for seven trusted people to take responsibility for it, and they protected their own responsibility for prayer and the word. You will face a version of this in your first year. There will be a real need, you will be the obvious person, and saying yes will quietly cost you the hours you were using to stay spiritually alive. Learning to say, "this matters, and here is who should carry it," is a skill we will come back to in Lesson 5.</p>
+<p>So pause here for a moment. When did you last read the Bible with no intention of using it for anyone else? Be honest about the date. Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is the tool for this week. It has two parts, and both are small.</p>
+<p>First, a fixed time, not a hopeful intention. "I'll pray when I get a chance" reliably becomes no prayer. A modest fixed time you actually keep beats an ambitious one you abandon by February.</p>
+<p>Second, a trustworthy person who can ask honest questions. A mature peer, a pastor, a mentor, or an experienced leader outside your direct team, someone discreet, who can ask about your conduct, your relationships and your spiritual life. Agree what you will discuss, how often you will meet, and the limits of confidentiality. This is not surrendering your privacy. It is making sure someone can see you.</p>
+<p>So this is your step. Put one protected appointment for prayer and personal Bible reading in your calendar this week. Make it modest enough to keep. Then, as a follow-up, approach one trustworthy person and ask whether they would consider meeting with you once a month. If nobody comes to mind, ask the person who appointed or supervises you to suggest someone. Protect the prayer appointment before you fill your calendar with the next round of ministry tasks.</p>
+<p>One truth to carry with you this week. Keep your own vineyard. You cannot feed people from a field you have stopped tending.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you know how quickly I begin reading your word only to find something to say. Give me back the hunger to hear from you for myself. Help me keep the time I set aside, and give me one person who can ask me honest questions. Keep me close to you while I serve. Amen.</p>
+<p>I'll see you in Lesson 3.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>When did I last read the Bible with no intention of using it for anyone else?</li>
+<li>Lord, who could ask me honest questions about my life, not only about my ministry, and receive an honest answer from me?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>One protected time. One honest person.</strong></p>
+<p>Put one protected appointment for prayer and personal Bible reading in your calendar this week. Make it modest enough to keep: a time you will actually protect, not the time you wish you had.</p>
+<p>As a follow-up, approach one trustworthy person and ask whether they would consider meeting with you once a month. A mature peer, pastor, mentor or experienced leader outside your direct team may be suitable. Choose someone discreet and able to speak honestly with you.</p>
+<p>Agree what you will discuss, how often you will meet and the limits of confidentiality.</p>
+<p>The prayer appointment is the step. Contacting someone is the follow-up. Protect the appointment before filling your calendar with anything else.</p>
+<p class="opt"><strong>If nobody comes to mind:</strong> ask the person who appointed or supervises you to suggest someone suitable.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 2</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 2 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>When did you last read the Bible with no intention of using it for anyone else? Be specific about the date if you can.</li>
+<li>Paul told Timothy to watch his life and his doctrine. Which of the two are you currently giving more attention to, and by how much?</li>
+<li>Read Acts 6:1&ndash;4 again. What legitimate need has been handed to you recently that someone else could carry?</li>
+<li>Proverbs 4:23 talks about guarding the source. What is one thing currently feeding your heart that you would not want the people you lead to know about?</li>
+<li>Who can ask you honest questions about your conduct and well-being? If nobody comes to mind, identify two trustworthy people you could approach.</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Put one protected appointment for prayer and personal Bible reading in your calendar this week. Make it modest enough to keep. As a follow-up, contact one of the people you identified in question 5 and ask about meeting monthly.</p>
+<p><strong>Ten-Week Practice Plan, Week 2</strong></p>
+<p>Focus: leading yourself. Main action: protect time for prayer and personal reading. The toolkit&rsquo;s Capacity and Support Plan has space to record the appointment and the support arrangement.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 2</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 2 finished</p>
+<p>Your step for this week is to keep the prayer appointment you set, and then to approach one person about meeting monthly.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 3: Knowing Your Role</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[1].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?2:1)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

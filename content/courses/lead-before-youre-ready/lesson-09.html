@@ -1,0 +1,216 @@
+<title>Lead Lesson 9 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45;overflow-wrap:anywhere}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.check{list-style:none;padding:0;margin:0 0 12px}
+.check li{margin-bottom:8px}
+.check label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:17px;cursor:pointer;padding:4px 0}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--accent)}
+.outcomes{margin:6px 0 0;display:grid;gap:10px}
+.outcomes dt{font-weight:600;font-size:16px}
+.outcomes dd{margin:2px 0 0;font-size:15px;color:var(--mute);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.outcomes dd:last-child{border-bottom:0}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+.routes{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0 4px}
+.routes th,.routes td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.routes th{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.routes tr:last-child td{border-bottom:0}
+.routewrap{overflow-x:auto}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 9 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 9 &middot; Face What Tests You</span>
+<h1 style="margin-top:10px">Burnout and Boundaries</h1>
+<p class="sub">Are you tired, or are you eroding?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 8 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls. For my yoke is easy, and my burden is light.&rdquo;</p>
+<span class="ref">Matthew 11:28&ndash;30 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Recognise the early signs of erosion, and see that exhaustion is not a spiritual failure.</li>
+<li>Learn from Elijah and from Jesus that rest is God&rsquo;s instruction, and that rest alone is not always enough.</li>
+<li>Put one protected day off and one longer break in your calendar, and talk honestly with someone close about ministry&rsquo;s effect on your shared life.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 10:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About ten minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 9.</p>
+<p>In this lesson you will learn how leaders actually burn out, what God did for an exhausted prophet before he said a single corrective word, the difference between being tired and being unwell, and two dates to put in your calendar this week.</p>
+<p>Let's begin with Scripture. Matthew chapter 11, verses 28 to 30.</p>
+<p>"Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find rest for your souls. For my yoke is easy, and my burden is light."</p>
+<p>Jesus says this to crowds carrying a religious load their teachers had made heavier and heavier. The word translated "easy" is <em>chrēstos</em>. It does not mean effortless. It means kind, good, well-fitting. A yoke was a wooden frame shaped to an ox's shoulders; a well-made one let the animal pull without being rubbed raw. A yoke is still work. But if what you are carrying feels nothing like that, it is worth asking how much of the weight he actually gave you.</p>
+<p>Here is how it happens. Leaders do not usually collapse in a dramatic way. They erode: something wears away a little at a time, and you do not notice until a lot of it is gone. You start dreading Sunday morning slightly. You are short with the people at home on the drive back. A volunteer cancels and your reaction is out of proportion. Prayer feels like paperwork. You catch yourself thinking you would be relieved if the whole thing quietly ended. These signs do not diagnose a condition, but they signal that your workload, support or health needs care. And this happens to leaders who are doing everything right. Burnout is not the punishment for laziness. It is usually what happens to the conscientious.</p>
+<p>Look at Elijah. First Kings 18 ends with his triumph on Mount Carmel: fire from heaven, rain after three years of drought. Then in chapter 19 Jezebel threatens his life, and he flees into the wilderness, sits under a broom tree, and asks God to take his life. Now look at what God does, and the order of it. First, sleep. Second, food: an angel touches him, and there is bread and water. Third, more sleep and more food; the journey is too much for him. Only after all of that does Elijah travel to Horeb, where God is not in the wind, the earthquake or the fire, but in the low whisper. Then a wider perspective: Elijah says he alone is left, and God tells him there are seven thousand who have not bowed to Baal. His distress was real, but he did not know the whole picture. And finally, a colleague: anoint Elisha to succeed you. The answer to Elijah's exhaustion included another person. Sleep, food, presence, truth, company. God did not begin with a rebuke or a Bible study. He let his prophet sleep and fed him twice.</p>
+<p>Jesus did the same with his team. In Mark 6, straight after the disciples return from their mission, he tells them to come away to a quiet place and rest, because so many people were coming and going that they did not even have a chance to eat. The demand was real, the ministry was fruitful, and Jesus called a halt. Rest was his instruction, not their indulgence. The Sabbath is written into how the world is made. Ignoring it is not extra devotion; it is a quiet claim that the work depends on you. Psalm 127 says it sharply: he gives sleep to those he loves.</p>
+<p>Now the uncomfortable part. In 1 Timothy 3, Paul makes the home the qualifying ground for leadership, not the leftover. This is where new leaders do the most damage without noticing, because ministry provides such excellent cover. Nobody criticises you for missing dinner to visit a sick member. So: does your family, or the household you share, get your best hours or your leftover ones? And a harder one: is any part of you using ministry to avoid something at home? Ministry is a socially applauded way to be absent. If that question landed, it is worth talking to someone about this month.</p>
+<p>And learn to say no. Most overload is not one huge commitment. It is fifteen small yeses given in corridors. Three rules. Pause before accepting: "Let me check my calendar and come back to you tomorrow." If you share a household, involve those affected; and you do not need a spouse to have limits worth respecting. Decide your capacity in advance, and when something new comes, ask what it replaces. If nothing can come off, the answer is no, and that is a full answer. And say no to good things. In Mark 1, when everyone in Capernaum is looking for Jesus, he moves on to the next villages. There were still sick people in Capernaum when he left. He did not meet every need in front of him, because he knew which work was his. You will not either. That is not failure. It is having a calling rather than a compulsion.</p>
+<p>So pause here for a moment. Are you tired, or are you eroding? Which of the signs I described are true of you right now? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>One thing before your step. Be honest with yourself about the difference between being tired and being unwell. If the flatness does not lift after rest, if you have lost interest in things you used to enjoy, if you are not sleeping or are sleeping constantly, if you feel hopeless about things generally rather than just about the ministry, that is worth taking to a doctor, not just to a prayer meeting. Seeing a professional is not a lack of faith, any more than setting a broken arm is. And if you are thinking about harming yourself, seek urgent help now rather than waiting for rest to work. Contact local emergency services, and tell a trusted person who can stay with you while help is arranged. Recovery deserves time and support, whether or not you return to the same role. Your worth is not measured by your usefulness to a church.</p>
+<p>So this is your step. Open your calendar and put in two things: one protected day off within the next two weeks, and one break of several days within the next six months. Agree the necessary arrangements with the appropriate leader or supervisor, arrange cover in advance, and tell the people who need to know. Then, as part of that plan, ask your spouse, a family member or a trusted friend how ministry has been affecting your shared life. Listen before explaining. And agree one manageable change.</p>
+<p>One truth to carry with you this week. God let his prophet sleep and fed him twice. Rest is his instruction, not your indulgence.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you know how tired I am, and you are not disappointed by it. Give me the humility to rest, the honesty to notice when I am eroding, and the courage to say no to good things that are not mine. Fit the yoke to my shoulders. Give sleep to the one you love. Amen.</p>
+<p>I'll see you in Lesson 10.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>What signs of erosion are already present in my life, my relationships or my ministry?</li>
+<li>Lord, what did I say yes to last month that I should have declined, and why did I say yes?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Two dates. One honest conversation.</strong></p>
+<p>Open your calendar and put in two things:</p>
+<ol class="steps">
+<li>One protected day off within the next two weeks. If possible, choose the day you intend to protect regularly. Put your phone away and tell your family and team in advance.</li>
+<li>One break of several days within the next six months. Ask for the necessary permission and arrange cover in advance rather than hoping for a quiet fortnight.</li>
+</ol>
+<p style="margin-top:12px">Agree the necessary arrangements with the appropriate leader or supervisor, and tell the people who need to know.</p>
+<p>Then, as part of that plan, ask your spouse, a family member or a trusted friend how ministry has been affecting your shared life. Listen before explaining. Agree one manageable change.</p>
+<p class="safety"><strong>If it is more than tiredness.</strong> If low mood, hopelessness, loss of interest or serious changes in sleep continue beyond ordinary tiredness, seek professional help. Seeing a doctor is not a lack of faith. If you may harm yourself or cannot remain safe, seek urgent local help now and tell a trusted person who can stay with you. Then tell someone you trust in the church and ask about reducing or pausing responsibilities. Your worth is not measured by your usefulness to a church.</p>
+<p class="opt"><strong>Keep in mind:</strong> the monthly honest-question person from Lesson 2 is part of this plan. Give them permission to ask how you are actually doing.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 9</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 9 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Read the list of erosion signs in the first section. Which ones are true of you right now?</li>
+<li>Elijah believed he was the only one left, and he was wrong. Where is your thinking currently more isolated than the facts justify?</li>
+<li>Ask your spouse or closest family member or friend this question and write down their answer without defending yourself: has my ministry been good for us this year?</li>
+<li>What did you say yes to in the last month that you should have declined? Why did you say yes?</li>
+<li>When is your next full day off, and your next break longer than a weekend? If you cannot name dates, that is the answer.</li>
+</ul>
+<p><strong>What to put in place</strong> (from the chapter): one protected day a week; a finishing time on ministry evenings; a quarterly conversation with your spouse, family member or trusted friend about the effect of ministry; a break each year longer than a weekend, with cover arranged; the monthly honest-question person; and care for the body, because sleep, food and some walking are spiritual disciplines in disguise.</p>
+<p><strong>This week's action</strong></p>
+<p>Open your calendar and put in two things: one protected day off within the next two weeks, and one break of several days within the next six months. Agree the arrangements with the appropriate leader and tell the people who need to know. As part of that plan, discuss the effect of ministry with your spouse, a family member or a trusted friend. Listen before explaining, and agree one manageable change.</p>
+<p><strong>Ten-Week Practice Plan, Week 9</strong></p>
+<p>Focus: capacity. Main action: agree one workable rest and cover plan. The toolkit&rsquo;s Capacity and Support Plan page is where to record it.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<h3>If you are struggling</h3>
+<p>If the signs in this lesson describe you and rest is not helping, speak to a doctor. If you may harm yourself or cannot stay safe, contact your local emergency service now and tell a trusted person who can stay with you. This course and its email address are not monitored as emergency channels.</p>
+<h3>Concern about harm or misconduct?</h3>
+<p>Use your church&rsquo;s safeguarding or reporting procedure. You do not need to confront the person first. For help choosing the right route, see <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a>.</p>
+<h3>Want to talk about the course or your leadership?</h3>
+<p>You may write to Pastor Richmond at info@faithfulpathcommunity.com. Please do not send confidential safeguarding reports or sensitive personal records by ordinary email.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 9</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 9 finished</p>
+<p>Your step for this week is two dates in the calendar, cover arranged, and one honest conversation about ministry&rsquo;s effect on your shared life.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 10: Growing the Next Leader</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[8].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?9:8)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>
