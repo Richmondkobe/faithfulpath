@@ -15,8 +15,8 @@
 // different places. What must hold is that nothing is lost.
 
 import { readFileSync } from "node:fs";
-import { readLbyrLesson, readLbyrPage } from "./lib/lbyr-course";
-import { inlineText, type Block } from "./lib/lbyr-html";
+import { readLbyrLesson, readLbyrPage } from "../lib/lbyr-course";
+import { inlineText, type Block, type Inline } from "../lib/lbyr-html";
 
 const words = (s: string) =>
   s.replace(/\s+/g, " ").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+([.,;:!?])/g, "$1").trim();
@@ -47,7 +47,7 @@ function blockText(bs: Block[]): string {
         case "p": case "h": case "label": case "ref": return inlineText(b.c);
         case "list": return b.items.map(blockText).join(" ");
         case "term": return inlineText(b.term) + " " + blockText(b.body);
-        case "dl": return b.items.map((i) => inlineText(i.term) + " " + blockText(i.desc)).join(" ");
+        case "dl": return b.items.map((i: { term: Inline[]; desc: Block[] }) => inlineText(i.term) + " " + blockText(i.desc)).join(" ");
         case "table": return [...b.head, ...b.rows.flat()].map(inlineText).join(" ");
         case "details": return inlineText(b.summary) + " " + blockText(b.body);
       }
@@ -133,7 +133,7 @@ const shChrome = [
   "Need help with your next step?",
   "Concerns, Care and Reporting",
 ].join(" ");
-const shRendered = words([shChrome, sh.title, sh.sub ?? "", ...sh.sections.map((s) => s.heading + " " + blockText(s.blocks))].join(" "));
+const shRendered = words([shChrome, sh.title, sh.sub ?? "", ...sh.sections.map((sec: { heading: string; blocks: Block[] }) => sec.heading + " " + blockText(sec.blocks))].join(" "));
 const shSrcText = sourceText("start-here.html");
 const shMissing = dropped(shSrcText, shRendered);
 console.log(
