@@ -1,0 +1,213 @@
+<title>Lead Lesson 8 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45;overflow-wrap:anywhere}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.check{list-style:none;padding:0;margin:0 0 12px}
+.check li{margin-bottom:8px}
+.check label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:17px;cursor:pointer;padding:4px 0}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--accent)}
+.outcomes{margin:6px 0 0;display:grid;gap:10px}
+.outcomes dt{font-weight:600;font-size:16px}
+.outcomes dd{margin:2px 0 0;font-size:15px;color:var(--mute);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.outcomes dd:last-child{border-bottom:0}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+.routes{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0 4px}
+.routes th,.routes td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.routes th{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.routes tr:last-child td{border-bottom:0}
+.routewrap{overflow-x:auto}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 8 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 8 &middot; Face What Tests You</span>
+<h1 style="margin-top:10px">Criticism, Control, and Ongoing Pastoral Needs</h1>
+<p class="sub">Should you come down from the wall?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 7 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;And I sent messengers to them, saying, &lsquo;I am doing a great work and I cannot come down. Why should the work stop while I leave it and come down to you?&rsquo;&rdquo;</p>
+<span class="ref">Nehemiah 6:3 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>See how Nehemiah answered four kinds of opposition, and where &ldquo;do not come down&rdquo; does and does not apply.</li>
+<li>Distinguish criticism to assess, over-centralised responsibility to restructure, and ongoing pastoral need to share.</li>
+<li>Choose one appropriate, authorised response to the situation taking most of your attention.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 10:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About ten minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 8, and to the last part of the course: Face What Tests You.</p>
+<p>In this lesson you will learn how Nehemiah handled sustained opposition, why criticism, controlling behaviour and ongoing pastoral need are three different situations, and how to choose one appropriate response instead of being consumed by all of them. One note on words: when I say control in this lesson, I mean responsibility that has become concentrated in one person. Controlling behaviour that involves intimidation, coercion, threats, isolation or retaliation is a different matter, and it needs safeguarding or independent advice, not a management fix.</p>
+<p>Let's begin with Scripture. Nehemiah chapter 6, verse 3.</p>
+<p>"And I sent messengers to them, saying, 'I am doing a great work and I cannot come down. Why should the work stop while I leave it and come down to you?'"</p>
+<p>Nehemiah is rebuilding the wall of Jerusalem around 445 BC, and two men, Sanballat and Tobiah, try four tactics to stop him. Mockery: a fox climbing the wall would break it down. Nehemiah prays, and the wall reaches half its height. The endless invitation to meet, down on the plain of Ono. Nehemiah recognises they intend harm and sends the reply I would engrave on many leaders' desks: I am doing a great work and I cannot come down. Four times they asked; four times he answered the same way. A false accusation in writing; his reply is one sentence: you are inventing it. And the subtlest: a spiritual-sounding trap, a man named Shemaiah urging him to hide in the temple. Nehemiah refuses, and realises Shemaiah had been hired to frighten him into sinning.</p>
+<p>The Hebrew word for "work" in that verse is <em>melakhah</em>: an assigned task, a commission. It is the same word Genesis uses for the work God finished on the seventh day. Nehemiah is not saying "I am busy." He is saying, this is the work I was given, and I will not be pulled off it. Four tactics: ridicule, distraction, slander, and pressure dressed up as spiritual counsel. If you lead anything for long, you will meet all four. Nehemiah's pattern is consistent every time. Pray, answer briefly, and do not come down off the wall.</p>
+<p>But let me be careful with that sentence, because it has been misused. Nehemiah refused to meet hostile opponents who meant him harm. That is not permission to ignore complaints, or to dismiss people in distress. Last lesson dealt with a specific problem between you and a reasonable person. This lesson is about the ongoing patterns. And the key is to sort the situation, not the person. Criticism, over-centralised responsibility and ongoing distress need different responses, and they can overlap in the same person. Describe what is happening and what help is needed, rather than assigning a fixed label.</p>
+<p>So, criticism. Not all criticism is opposition. The faithful critic tells you directly, usually privately, and is often right. That person is a gift, even when the delivery stings. Protect them and thank them; a leader who punishes honesty ends up surrounded by people who warn him about nothing. Repeated criticism can become disruptive, but frequency alone does not tell you whether the concern is valid. Ask for specific examples and check the substance. An anonymous or relayed concern should be assessed on its content, not dismissed because the person did not come to you; fear or a power imbalance may explain the route. For all criticism, ask what is accurate and what needs checking before you respond to the delivery.</p>
+<p>Then over-centralised responsibility. Third John is a short and startling passage. John writes that Diotrephes, who loves to be first, will not welcome them, gossips maliciously, and puts out of the church those who want to. One man, controlling access, controlling reputation, removing people who crossed him. You will recognise the modern version: a territory, the kitchen, the sound desk, the accounts, held for years. Information is not shared, keys are not handed over, new volunteers do not last. Three principles. Do not fight over the territory; change the structure: written procedures, more than one person trained, keys held centrally. You dissolve a single point of dependency by removing the dependency, not by confronting the person. Be clear about your own authority; this is where Lesson 3 pays off. And involve the appropriate leader early. Titus 3 says there is a limit to how long divisive behaviour must be absorbed, but reaching that limit should follow a fair, documented process, and it is a decision for the church's authorised leadership, not for a new ministry leader acting alone.</p>
+<p>And then the hardest one: the person in genuine pain who is absorbing every hour you have, because your instinct to help is right. In John 5, Jesus asks a man who had been unable to walk for thirty-eight years whether he wants to get well, listens to the obstacles he describes, and heals him. That passage does not justify treating long-term illness or repeated distress as evidence that someone does not want help. Listen to the obstacles first. Then, practically: set a shape. "I can meet for an hour on the first Tuesday of the month" is more sustainable than being available at all hours until you quietly stop replying. Do not be their only support; sole dependence on one leader is bad for them and dangerous for you. And know where your competence ends. Where there is depression, trauma, addiction, or anything you are not trained for, encourage professional help alongside spiritual support, and involve your pastor. Saying "I'll keep walking with you, and I also think you should see a doctor about this" is not a failure of faith. It is honest care.</p>
+<p>So pause here for a moment. Think of the situation taking most of your attention right now. Is it criticism to assess, over-centralised responsibility to restructure, a care need to share, or a combination? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>So this is your step. Choose one appropriate, authorised response to that situation. For criticism: the specific concern, what needs checking, and who should respond. For over-centralised responsibility: one system or area of access held by a single person, moved to authorised shared oversight. For ongoing care: a sustainable time and scope for your support, and a conversation about appropriate additional help. Whichever it is, respond thoughtfully and pray for wisdom. And do not delay urgent reporting while you wait to feel calm.</p>
+<p>One truth to carry with you this week. Sort the situation, not the person. Then pray, answer briefly, and get back on the wall.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you gave Nehemiah the wisdom to know which voices to answer and which to leave. Give me the same. Help me to hear the faithful critic, to change structures rather than fight people, and to care for the hurting without becoming their only support. Keep me on the work you have given me. Amen.</p>
+<p>I'll see you in Lesson 9.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>Is the situation taking most of my attention criticism to assess, over-centralised responsibility to restructure, an ongoing pastoral need to share, or a combination?</li>
+<li>Lord, whose criticism have I dismissed that was actually right?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Sort the situation. Choose one response.</strong></p>
+<p>Take the situation you named. Choose one appropriate, authorised action that matches what it actually is:</p>
+<div class="routewrap"><table class="routes">
+<tr><th>If it mainly involves</th><th>This week</th></tr>
+<tr><td>Criticism</td><td>Identify the specific concern, what needs checking, and who should respond. Give a realistic follow-up date where possible.</td></tr>
+<tr><td>Over-centralised responsibility</td><td>Identify one responsibility, system or area of access held by a single person, and agree an authorised plan for shared oversight with your leader. Record access only in your church&rsquo;s approved system; do not place passwords in a workbook or ordinary email.</td></tr>
+<tr><td>Ongoing pastoral need</td><td>Agree a sustainable time and scope for your support, then discuss appropriate additional help with the person. Share personal information only with consent, only as necessary and through the proper channels, except where safeguarding or legal duties require appropriate reporting.</td></tr>
+</table></div>
+<p style="margin-top:12px">Whichever action you choose, respond thoughtfully and pray for wisdom.</p>
+<p class="safety"><strong>Do not delay urgent reporting while waiting to feel calm.</strong> Controlling behaviour involving intimidation, coercion, threats, isolation or retaliation is not merely a management problem; seek safeguarding or independent advice. If a situation involves harm, abuse or a safeguarding concern, follow your church&rsquo;s reporting route. Do not investigate an allegation yourself or alert the person accused without guidance. If someone is in immediate danger, contact your local emergency service.</p>
+<p class="opt"><strong>Keep in mind:</strong> reaching the limit with a persistently divisive person should follow a fair, documented process and is a decision for the church&rsquo;s authorised leadership, not for a new ministry leader acting alone. If the concern involves your pastor, use a suitable independent route.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 8</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 8 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Describe the situation currently taking most of your attention. Is it criticism to assess, controlling behaviour to address, a care need to support, or a combination?</li>
+<li>Take the last criticism that stung. What was accurate, and what needs checking?</li>
+<li>Is there an area of your ministry that depends entirely on one person&rsquo;s knowledge or keys? What would break if they left tomorrow?</li>
+<li>Who are you currently the sole support for? Who else needs to be involved?</li>
+<li>How much of your attention last week went to one unresolved situation? What support or boundary would help you respond responsibly?</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Choose one appropriate action for the situation you described in question 1: for over-centralised responsibility, one system moved to authorised shared oversight; for ongoing care, a sustainable time and scope plus a conversation about additional help; for criticism, the specific concern, what needs checking and who should respond. Do not delay urgent reporting while waiting to feel calm.</p>
+<p><strong>Ten-Week Practice Plan, Week 8</strong></p>
+<p>Focus: continuing challenges. Main action: address one pattern with a suitable response. The toolkit&rsquo;s Concerns, Care and Reporting page helps you choose the route.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<h3>Concern about harm or misconduct?</h3>
+<p>Use your church&rsquo;s safeguarding or reporting procedure. You do not need to confront the person first. If someone is in immediate danger, contact your local emergency service. This course and its email address are not monitored as emergency or safeguarding-reporting channels. For help choosing the right route, see <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a>.</p>
+<h3>Want to talk about the course or your leadership?</h3>
+<p>You may write to Pastor Richmond at info@faithfulpathcommunity.com. Please do not send confidential safeguarding reports or sensitive personal records by ordinary email.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 8</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 8 finished</p>
+<p>Your step for this week is one appropriate, authorised response to the situation taking most of your attention.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 9: Burnout and Boundaries</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[7].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?8:7)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

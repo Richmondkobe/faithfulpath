@@ -1,0 +1,210 @@
+<title>Lead Lesson 5 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 5 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 5 &middot; Learn the Craft</span>
+<h1 style="margin-top:10px">Helping Volunteers Stay and Grow</h1>
+<p class="sub">Why do good volunteers quietly disappear?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 4 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ.&rdquo;</p>
+<span class="ref">Ephesians 4:11&ndash;12 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Understand that recruiting someone is the beginning of leadership, not the end.</li>
+<li>See how Jesus briefed, sent and debriefed the people he trained.</li>
+<li>Learn the four training steps and three review questions, then have one unhurried conversation with a volunteer.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 5.</p>
+<p>In this lesson you will learn why recruiting is the easy part, how Jesus trained people by sending them out and then debriefing them, and one conversation that will do more for your team than any appeal from the front.</p>
+<p>Let's begin with Scripture. Ephesians chapter 4, verses 11 and 12.</p>
+<p>"And he gave the apostles, the prophets, the evangelists, the shepherds and teachers, to equip the saints for the work of ministry, for building up the body of Christ."</p>
+<p>Paul is writing to the church in Ephesus about how Christ has structured his body. And notice what leaders are for. They are given to equip the saints for the work of ministry. The emphasis is on preparing people to participate, not on keeping ministry in the hands of a few.</p>
+<p>The word translated "equip" is <em>katartismos</em>. It comes from a verb used in Mark 1 for James and John mending their nets, and it was used by physicians for setting a broken bone. It means to restore something to working order, to fit it for its purpose. That is your job description with volunteers. Not to use them. To mend, fit and prepare them, so that they can serve well.</p>
+<p>Now here is what actually happens in most ministries. People say yes, serve for a few months, drift to the back of the rota, and then quietly stop. Nobody has a conversation about it. The leader concludes the church is uncommitted, and starts asking for volunteers again. A ministry can look as if it has a recruitment problem when it really has a retention problem.</p>
+<p>People leave for many good reasons: work, health, caring responsibilities, a move, a change of calling. But three preventable problems deserve your attention. They never knew exactly what was expected. Nobody ever said thank you in a way that landed. And they stopped growing: year three looked exactly like year one, and nobody asked what they wanted to become.</p>
+<p>Look at how Jesus did it. Mark 6 says he called the Twelve and began to send them out two by two. He did not send them alone, and he did not send them empty-handed. Matthew 10 records the briefing he gave first: where to go, what to say, what to take, what to do when a town would not receive them. Then Mark 6:30 records what happened when they came back. The apostles gathered around Jesus and reported to him all they had done and taught. That is the pattern. Brief, send in pairs, debrief.</p>
+<p>And when the seventy-two came back in Luke 10, thrilled that even the demons submitted to them, Jesus did not dismiss the joy. He redirected it: do not rejoice that the spirits submit to you, rejoice that your names are written in heaven. He debriefed the people, not just the results. He was interested in what serving was doing to them. Most of us send volunteers out with a vague description and never ask how it went. Then we wonder why they fade.</p>
+<p>So here is the truth for this lesson. Recruiting someone is the beginning of leadership, not the end. If your only contact with your volunteers is about their tasks, you have a rota, not a team.</p>
+<p>So pause here for a moment. Name the volunteer most at risk of quietly fading out in the next three months. What is actually going on with them? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is the tool for this week. It has two parts.</p>
+<p>The first is the training sequence that actually transfers a skill. Four steps. I do it, you watch: explain what you are doing as you go, including the small judgement calls. We do it together. You do it, I watch: they lead, you say nothing unless something is going badly wrong, and you give feedback afterwards, privately. And finally, you do it, I'm available: you step out. You are reachable, but you are not standing there. Most leaders jump from step one to step four and call it delegation. The person fails, the leader takes the job back, and both conclude the volunteer wasn't up to it. And when you do hand something over, delegate the outcome, not just the task. "Make sure the room feels welcoming by nine-thirty" produces someone who notices the heating is off and fixes it. "Put out forty chairs" produces someone who puts out chairs. Agree the outcome, the limits and the standard first. Safety, accuracy and the responsible handling of money are never optional standards.</p>
+<p>The second part is the review. Every role should have a review date, the six-month point from last week's invitation. At the review, ask three questions and mean all three. What part of this do you most enjoy? What part drains you? Do you want to continue, change, or stop? Make "stop" a genuinely acceptable answer. A volunteer who leaves well, thanked and blessed, tells other people that serving here is a good experience. A volunteer who leaves by disappearing tells them the opposite. And when someone isn't working out, never let a reliability or attitude problem run for months without a direct conversation. Consider whether a different role would fit better. But concerns about abuse, dishonesty or unsafe conduct go through the appropriate process. You do not transfer that kind of problem to another team.</p>
+<p>So this is your step. Take the person you thought of a moment ago, and invite them to an unhurried conversation this week, in an appropriate setting, with no agenda about tasks. Tell them beforehand that you want to hear how serving is affecting them, not to assess their performance. Ask three things: what do you enjoy about serving? What has been difficult or draining? And, is there anything affecting your capacity that you would like me to know? Let them share only what they are comfortable sharing, and listen without trying to solve everything. Then thank them for one specific thing you have watched them do. Name the action, and name why it mattered. And if they tell you they want to stop, receive that without guilt or pressure. That single conversation will do more for your team than anything else in this lesson.</p>
+<p>One truth to carry with you this week. You have a team when you know the people, not just the rota.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you sent your disciples out and then sat with them when they came back. Teach me to do the same. Help me to notice the person who is quietly fading, to thank people in ways that land, and to equip rather than use the people you have given me. Build up your body through this team. Amen.</p>
+<p>I'll see you in Lesson 6.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>Which volunteer is receiving tasks from me without enough attention, training or support?</li>
+<li>Lord, when did I last ask someone how serving is affecting them, rather than how the task went?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>One unhurried conversation. No task agenda.</strong></p>
+<p>Think of one volunteer who may be receiving tasks without enough attention, training or support. Invite them to an unhurried check-in this week, in an appropriate setting. Tell them that you want to hear how serving is affecting them, not assess their performance.</p>
+<p>Ask three questions and listen:</p>
+<ol class="steps">
+<li>What do you enjoy about serving?</li>
+<li>What has been difficult or draining?</li>
+<li>Is there anything affecting your capacity that you would like me to know? Share only what you are comfortable sharing.</li>
+</ol>
+<p style="margin-top:12px">Thank them for one specific thing you have watched them do. Name the action and explain why it mattered.</p>
+<p>If they want to stop, receive their decision without guilt or pressure. Thank them and agree any necessary handover. If they want a lighter load or a temporary break, listen first and agree what happens next, involving your supervisor where approval or cover is needed.</p>
+<p class="safety">Listen without trying to solve everything or investigate a disclosure. Do not promise absolute confidentiality. If they disclose harm or a safeguarding concern, explain what you need to do next and follow the appropriate reporting procedure.</p>
+<p class="opt"><strong>Keep in mind:</strong> the four training steps and three review questions are in the transcript and the worksheet. This week&rsquo;s step is only the conversation.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 5</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 5 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Take each person on your team. Can you write down, in one sentence, exactly what they think their role is? Would they write the same sentence?</li>
+<li>When did you last debrief a volunteer about how serving is affecting them, rather than how the task went?</li>
+<li>Which of the four training steps do you habitually skip?</li>
+<li>Is there something you delegated and then quietly took back? What did that teach the person?</li>
+<li>Name the volunteer most at risk of quietly fading out in the next three months. What is actually going on with them?</li>
+</ul>
+<p><strong>The four training steps</strong></p>
+<ol class="steps">
+<li>I do it, you watch. Explain the small judgement calls as you go.</li>
+<li>We do it together.</li>
+<li>You do it, I watch. Feedback afterwards, privately.</li>
+<li>You do it, I&rsquo;m available. Reachable, but not standing there.</li>
+</ol>
+<p><strong>The three review questions</strong> (at the six-month review): What part of this do you most enjoy? What part drains you? Do you want to continue, change, or stop?</p>
+<p><strong>This week's action</strong></p>
+<p>Pick the person from question 5. Take them for coffee this week with no agenda about tasks. Ask what they enjoy, what drains them, and what else they are carrying at the moment. Then thank them for one specific thing you have watched them do.</p>
+<p><strong>Ten-Week Practice Plan, Week 5</strong></p>
+<p>Focus: volunteer support. Main action: listen to one volunteer and agree useful support. The toolkit&rsquo;s Volunteer Invitation and First Month page includes the training steps and review questions.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 5</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 5 finished</p>
+<p>Your step for this week is one unhurried conversation with a volunteer, and one specific thank-you.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 6: Running a Meeting People Want to Attend</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[4].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?5:4)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

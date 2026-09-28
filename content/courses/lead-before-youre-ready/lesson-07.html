@@ -1,0 +1,222 @@
+<title>Lead Lesson 7 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45;overflow-wrap:anywhere}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.check{list-style:none;padding:0;margin:0 0 12px}
+.check li{margin-bottom:8px}
+.check label{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:17px;cursor:pointer;padding:4px 0}
+.check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--accent)}
+.outcomes{margin:6px 0 0;display:grid;gap:10px}
+.outcomes dt{font-weight:600;font-size:16px}
+.outcomes dd{margin:2px 0 0;font-size:15px;color:var(--mute);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.outcomes dd:last-child{border-bottom:0}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+.routes{width:100%;border-collapse:collapse;font-size:15px;margin:10px 0 4px}
+.routes th,.routes td{text-align:left;vertical-align:top;padding:8px 10px 8px 0;border-bottom:1px solid var(--line)}
+.routes th{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.routes tr:last-child td{border-bottom:0}
+.routewrap{overflow-x:auto}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 7 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 7 &middot; Learn the Craft</span>
+<h1 style="margin-top:10px">The Conversation You&rsquo;re Avoiding</h1>
+<p class="sub">You already know who it is with. But is a direct conversation the right route?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 6 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;Rather, speaking the truth in love, we are to grow up in every way into him who is the head, into Christ.&rdquo;</p>
+<span class="ref">Ephesians 4:15 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>Recognise the stories leaders tell themselves while avoiding a conversation, and why avoidance is not patience.</li>
+<li>Decide which route a concern needs: a direct conversation, advice, an agreed oversight or complaints route, or formal reporting.</li>
+<li>Prepare an opening that seeks understanding rather than delivering a verdict.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 7.</p>
+<p>In this lesson you will learn why avoidance is not patience, what Jesus actually said about approaching someone who has wronged you, how to decide whether a direct conversation is even the right route, and an opening sentence that changes the whole shape of the conversation.</p>
+<p>Let's begin with Scripture. Ephesians chapter 4, verse 15.</p>
+<p>"Rather, speaking the truth in love, we are to grow up in every way into him who is the head, into Christ."</p>
+<p>Paul is describing how a body matures. And notice that in the Greek, "speaking the truth" is a single verb, <em>alētheuō</em>: truthing, if we had such a word. Living and speaking what is true. Paul attaches "in love" to it as one movement. The honesty and the love are not in tension. They are the same act. Most of us collapse it in one of two directions. We are loving and never truthful, so nothing changes and resentment builds. Or we are truthful and not loving, so we win the point and lose the person.</p>
+<p>Before we go one line further, name the person. There is one. A volunteer who keeps arriving late. Someone whose comment last month is still sitting in you. A team member whose attitude everyone has noticed and nobody has addressed. You know who it is. You have known for weeks. You have rehearsed the conversation in the car and not had it.</p>
+<p>New leaders tell themselves several stories about why they are waiting. "I'm praying about it." Sometimes true. Often it means waiting for the situation to resolve itself. "I don't want to make it worse." It is already worse. Unaddressed problems harden into a permanent feature of the team. "It's not that serious." Then why are you still thinking about it in the shower? And one more: "I'm not the right person." Sometimes that one is true; sometimes the conversation belongs to your manager or a safeguarding lead, and we will come to that. But work out what is actually making you hesitate before assuming the answer is simply more courage. The kindest leaders I know are not the ones who avoid hard conversations. They are the ones who have them early, while they are still small.</p>
+<p>Now look at where Jesus put his instruction. Matthew 18, verses 15 to 17, is the clearest process he gives for handling a wrong between believers. Go and point out the fault, just between the two of you. If they listen, you have won them over. If not, take one or two others. And he placed it, deliberately, immediately after the parable of the shepherd who leaves ninety-nine sheep to go after one that wandered. The whole framing is recovery, not punishment. Three details matter. It starts with you going. The stated goal is winning the person, not winning the argument. And in Matthew 5, when it is the other way round, when they have something against you, you are still the one who goes.</p>
+<p>But here is the thing that must be said clearly. In this lesson, Matthew 18 is applied to ordinary wrongdoing or conflict between believers. It does not forbid confidential advice, and it must never be used to require anyone to meet privately with a person who may harm them. Safeguarding concerns, abuse, intimidation and suspected crime go through the appropriate reporting process, not a compulsory private meeting. So before you act, choose the route. An ordinary misunderstanding, or a performance concern you are responsible for addressing: prepare for a conversation. A concern about a leader's conduct that does not involve harm or safeguarding: use the agreed oversight or complaints route. Harm, abuse, intimidation or a safeguarding concern: follow the reporting procedure, and do not investigate it yourself. A conflict of interest, or a fear of retaliation: seek independent advice first.</p>
+<p>So pause here for a moment. Is the situation you named an ordinary disagreement, or does it need advice, support or formal reporting? Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>If it is an ordinary conversation, here is the tool. Two proverbs first. Proverbs 18:13: answering before listening is folly. Proverbs 18:17: the first to present his case seems right, until another comes and questions him. You are walking in with one side of the story. The volunteer who keeps arriving late may be caring for a parent every morning and be too proud to say so. So go in to find out, not to deliver a verdict.</p>
+<p>That is why the opening sentence matters so much. What I've noticed. What I assumed. And I want to check whether I've got that right. "I've noticed you've arrived after we start for the last three weeks. I assumed something might have changed at home, but I don't actually know. What's going on?" Compare that to: "You've been late three weeks running." Same fact, completely different conversation. Then stop talking. Let the silence sit. Address the behaviour, not the character; people defend labels. Say what you need, specifically, and check they have agreed to it. And leave a door open where that is honest.</p>
+<p>Galatians 6:1 gives the posture. Restore, gently, and watch yourself. You are about to correct someone in an area where you are not perfect either. If it goes badly, stay calm and offer a pause. End the conversation if there are threats, intimidation or a safety concern, and seek support. If they cry, stop pressing. And if they raise something you did, resist explaining. Say "let me think about that properly," and mean it. Romans 12:18 should relieve you: if it is possible, as far as it depends on you, live at peace with everyone. Do your part promptly, gently and through the appropriate route. Then recognise what is beyond your control.</p>
+<p>So this is your step. Choose the route first. For an ordinary disagreement, arrange the conversation this week, and prepare three things: your opening sentence, the concern you need to explain and any change you may need to request, and a genuine question. For anything involving harm, intimidation or misconduct, use the support or reporting route instead. Then write down afterwards how it actually went, compared with how you imagined it. Most leaders discover the conversation they dreaded for a month took eleven minutes.</p>
+<p>One truth to carry with you this week. Go in to find out, not to deliver a verdict.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you came after the one who wandered. Give me the courage to go, the humility to listen first, and the wisdom to know which route is right. Keep my voice gentle and my aim on the person, not the argument. And where peace does not depend on me, help me leave it in your hands. Amen.</p>
+<p>I'll see you in Lesson 8.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>What have I actually observed, and what have I merely assumed?</li>
+<li>Lord, is there anyone who has something against me whom I should approach first?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>Choose the route first. Then take the first step.</strong></p>
+<p>Name the situation you have been avoiding. Before you do anything, decide which route it needs:</p>
+<div class="routewrap"><table class="routes">
+<tr><th>Situation</th><th>Appropriate next step</th></tr>
+<tr><td>Ordinary misunderstanding, or a performance concern you are responsible for addressing</td><td>Prepare for a suitable conversation</td></tr>
+<tr><td>Concern about a leader&rsquo;s conduct that does not involve harm, abuse, suspected crime or safeguarding</td><td>Use the agreed oversight or complaints route</td></tr>
+<tr><td>Harm, abuse, intimidation, suspected crime or a safeguarding concern</td><td>Follow the reporting procedure. Do not investigate through a private conversation</td></tr>
+<tr><td>Conflict of interest or fear of retaliation</td><td>Seek suitable independent advice first</td></tr>
+</table></div>
+<p class="safety"><strong>You do not have to confront someone who may harm you.</strong> In this lesson, Matthew 18 is applied to ordinary wrongdoing or conflict between believers. It should not be used to require a private meeting about abuse, safeguarding concerns or suspected crime; those go through your church&rsquo;s reporting procedure. If you are unsure which route applies, ask for confidential advice before acting.</p>
+<p style="margin-top:14px"><strong>For an ordinary conversation,</strong> arrange it this week in a private, unhurried and appropriate setting (a call or a carefully written message may be more accessible or safer). Prepare three things:</p>
+<ol class="steps">
+<li>Your opening sentence: <em>what I&rsquo;ve noticed &hellip; what I assumed &hellip; help me understand.</em></li>
+<li>The concern you need to explain, and any change you may need to request.</li>
+<li>A genuine question, and room to listen.</li>
+</ol>
+<p style="margin-top:12px">Afterwards, write down how it actually went compared with how you imagined it.</p>
+<p class="opt"><strong>If it goes badly:</strong> stay calm and offer a pause. End the conversation if there are threats, intimidation or a safety concern, and seek support. If they raise something you did, say &ldquo;let me think about that properly,&rdquo; and mean it.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 7</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 7 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Write the name of the person you thought of first. What exactly are you afraid will happen if you speak to them?</li>
+<li>Is this an ordinary disagreement suitable for a direct conversation, or does it require advice, support or formal reporting? What makes that route appropriate?</li>
+<li>Proverbs 18:17 warns that the first account always sounds right. What might you not know about their side?</li>
+<li>Write your opening sentence out, using the what I noticed / what I assumed / help me understand structure. Read it aloud. Does it sound like an accusation?</li>
+<li>Is there anyone who has something against you that Matthew 5:23&ndash;24 says you should be the one to approach?</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Take the appropriate next step this week. For an ordinary disagreement, arrange the conversation with the person you named. If the concern involves harm, intimidation or misconduct, use the relevant support or reporting route instead. For a direct conversation, prepare your opening sentence, the specific change you need and a genuine question. Then write down afterwards how it actually went compared with how you imagined it.</p>
+<p><strong>Ten-Week Practice Plan, Week 7</strong></p>
+<p>Focus: difficult conversations. Main action: take the appropriate next step on one concern. The toolkit&rsquo;s Conversation Preparation page helps you plan the conversation, and Concerns, Care and Reporting helps you choose the route.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<h3>Concern about harm or misconduct?</h3>
+<p>Use your church&rsquo;s safeguarding or reporting procedure. You do not need to confront the person first. If someone is in immediate danger, contact your local emergency service. This course and its email address are not monitored as emergency or safeguarding-reporting channels. For help choosing the right route, see <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a>.</p>
+<h3>Want to talk about the course or your leadership?</h3>
+<p>You may write to Pastor Richmond at info@faithfulpathcommunity.com. Please do not send confidential safeguarding reports or sensitive personal records by ordinary email.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 7</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 7 finished</p>
+<p>Your step for this week is to choose the right route for one concern, and take the first step on it.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 8: Criticism, Control, and Ongoing Pastoral Needs</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[6].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?7:6)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>

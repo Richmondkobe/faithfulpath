@@ -1,0 +1,199 @@
+<title>Lead Lesson 6 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+:root{--bg:#ffffff;--card:#f0e9dd;--line:#e0d6c6;--ink:#2a211b;--mute:#5f5247;--accent:#8b5e3c;--btn:#2a211b;--btn-ink:#ffffff;--track:#e0d6c6;--focus:#8b5e3c;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171310;--card:#221c17;--line:#3a3128;--ink:#efe7db;--mute:#b9ab9b;--accent:#d0a273;--btn:#efe7db;--btn-ink:#171310;--track:#3a3128;--focus:#d0a273;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--sans);padding-inline:16px;padding-block:28px 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.label{font:500 12px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2rem,6vw,2.75rem)}
+h2{font-size:1.55rem;margin-bottom:10px}
+h2 small{font-family:var(--serif);font-size:1.2rem;color:var(--mute)}
+p{margin:0 0 12px}p:last-child{margin-bottom:0}
+.sub{font-family:var(--serif);font-size:1.3rem;color:var(--mute);margin:8px 0 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.plain{padding:6px 2px}
+.top{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap}
+.top .label{white-space:nowrap}
+.progress{margin-top:16px}
+.progress .label{color:var(--mute)}
+.segs{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:6px}
+.segs i{display:block;height:8px;border-radius:2px;background:var(--track)}
+.segs i.on{background:var(--accent)}
+.scripture{font-family:var(--serif);font-size:1.3rem;line-height:1.5;margin:8px 0 10px}
+.ref{font:500 13px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+ul{margin:0;padding-left:1.2em}li{margin-bottom:6px}li:last-child{margin-bottom:0}
+.player{display:flex;align-items:center;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:14px 16px;flex-wrap:wrap}
+.play{flex:none;width:52px;height:52px;border-radius:50%;background:var(--btn);border:0;display:grid;place-items:center;opacity:.55}
+.play svg{width:20px;height:20px;fill:var(--btn-ink);margin-left:3px}
+.scrub{flex:1;min-width:120px;height:6px;border-radius:3px;background:var(--track)}
+.ctl{font:500 13px var(--mono);color:var(--mute);display:flex;gap:14px;flex-wrap:wrap}
+.note{font-size:14px;color:var(--mute);margin-top:10px}
+details{border-top:1px solid var(--line);margin-top:6px}
+summary{cursor:pointer;padding:12px 0;font:500 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:18px}
+details[open] summary::after{content:"\2212"}
+.body{padding-bottom:8px;max-width:65ch}
+.pause{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border-block:1px dashed var(--line);padding:10px 0;text-align:center}
+.btn{display:inline-block;font:500 17px var(--sans);background:var(--btn);color:var(--btn-ink);border:0;border-radius:6px;padding:15px 26px;cursor:pointer;text-decoration:none;text-align:center}
+.btn.line{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.link{font:400 17px var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px solid var(--accent);padding:0 0 2px;cursor:pointer;text-decoration:none}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:16px}
+.done{font:500 13px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.prompts li{font-family:var(--serif);font-size:1.25rem;line-height:1.45}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:4px;max-width:520px}
+.opt{font-size:15px;color:var(--mute);border-top:1px solid var(--line);padding-top:12px;margin-top:14px}
+.safety{font-size:15px;border-left:3px solid var(--accent);padding:2px 0 2px 12px;margin-top:14px}
+ol.steps{margin:8px 0 0;padding-left:1.3em}
+ol.steps li{margin-bottom:6px}
+.help h3{font:500 18px var(--sans);margin:0 0 4px}
+.help p{margin-bottom:14px}
+footer{font-size:13px;line-height:1.6;color:var(--mute);border-top:1px solid var(--line);padding-top:18px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:12px}
+footer a{color:var(--accent)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.preview{background:var(--card);border:1px dashed var(--accent);border-radius:6px;padding:10px 14px;font:400 13px/1.5 var(--mono);color:var(--mute)}
+@media (max-width:520px){
+ .tools{grid-template-columns:1fr}
+ .row{flex-direction:column;align-items:stretch}
+ .btn{width:100%}
+ .link{align-self:flex-start}
+}
+</style>
+<div class="wrap">
+<div class="preview">Preview only. Buttons and the recording are not connected to the site yet.</div>
+<div class="top"><span class="label">Lead Before You&rsquo;re Ready</span><span class="label">Lesson 6 of 10</span></div>
+
+<section class="card">
+<span class="label">Lesson 6 &middot; Learn the Craft</span>
+<h1 style="margin-top:10px">Running a Meeting People Want to Attend</h1>
+<p class="sub">What did we actually decide?</p>
+<div class="progress"><span class="label" id="plabel">Course progress: 5 of 10 lessons completed</span>
+<div class="segs" id="segs" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</section>
+
+<section class="plain">
+<span class="label">Key Scripture</span>
+<p class="scripture">&ldquo;For God is not a God of confusion but of peace.&rdquo; &hellip; &ldquo;But all things should be done decently and in order.&rdquo;</p>
+<span class="ref">1 Corinthians 14:33, 40 (ESV)</span>
+</section>
+
+<section class="plain">
+<h2>In this lesson, you will:</h2>
+<ul>
+<li>See why a meeting needs a clear purpose, and how thoughtful order can be an act of pastoral care rather than mere bureaucracy.</li>
+<li>Learn from Nehemiah 2 and Acts 15 what a well-run meeting contains.</li>
+<li>Write a one-page agenda, send it two days ahead, and finish your next meeting on time.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Watch or listen</h2>
+<div class="player" role="group" aria-label="Recording placeholder">
+<button class="play" type="button" disabled aria-label="Play (recording not yet added)"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></button>
+<div class="scrub" aria-hidden="true"></div>
+<span class="ctl"><span>0:00 / 9:00</span><span>&#8634; 15s</span><span>1&times;</span></span>
+</div>
+<p class="note">About nine minutes, including one short pause.</p>
+<details>
+<summary>Read the transcript</summary>
+<div class="body"><p>Welcome to Lesson 6.</p>
+<p>In this lesson you will learn why volunteers resent wasted evenings more than hard work, what a two-verse meeting in Nehemiah and a long one in Acts 15 have in common, and a one-page agenda that will change your next meeting.</p>
+<p>Let's begin with Scripture. First Corinthians chapter 14, verses 33 and 40.</p>
+<p>"For God is not a God of confusion but of peace." And: "But all things should be done decently and in order."</p>
+<p>Paul is dealing with Corinthian gatherings that had become chaotic: people speaking in tongues over each other, prophecies interrupting prophecies. And in verse 33 he gives his reason for insisting on structure. God is not a God of confusion but of peace. He closes the whole section with verse 40: everything should be done decently and in order.</p>
+<p>The phrase "in order" is <em>kata taxin</em>. <em>Taxis</em> was the word for an arranged formation, soldiers standing in rank, things placed where they belong. Paul is not being bureaucratic. He treats disorder as the thing that blocks people from being built up. Order is not the enemy of the Spirit. Now, Paul is speaking here about order in the gathered church, not giving instructions for an administrative meeting. But the broader principle is still useful: confusion does not become spiritual simply because it happens in church. Order can help people participate, understand what has been decided, and use their time responsibly. Applied to your leadership meeting, that means starting on time and finishing on time can be a pastoral act. Finishing when you said you would tells a mother of three that you respect her babysitter arrangement. It is one of the clearest ways you communicate that you value people.</p>
+<p>Here is the problem. A volunteer will give you a Saturday morning cheerfully. What they will not give you, twice, is ninety minutes on a weeknight that achieved nothing they could name on the drive home. Bad meetings are one of the most common reasons good people go cold on a ministry, and new leaders create them without realising, usually with the best intentions. We call everyone together because togetherness feels like leadership. Then we fill the time, because we called it.</p>
+<p>Let me show you a meeting that moved a city. Nehemiah 2, verses 17 and 18. Nehemiah, cupbearer to the Persian king, has arrived in Jerusalem and inspected the ruined walls quietly, by night. Then he gathers the priests, nobles and officials, and says three things. You see the trouble we are in: Jerusalem lies in ruins and its gates are burned. Come, let us rebuild the wall, so that we will no longer be in disgrace. And then he tells them how God's hand had been on him, and what the king had said. Their answer in verse 18: let us start rebuilding. The problem, named honestly. The action, stated clearly. The evidence that God is in it. That is the whole meeting. And notice: he had walked the walls himself first. He did not call the meeting to find out what the situation was. He came knowing.</p>
+<p>Acts 15 shows the same thing at a much larger scale. The question was whether Gentile believers had to keep the law of Moses, a dispute serious enough to threaten the unity of the whole church. Watch the structure. The apostles and elders met to consider one specific question. There was real, open debate. Peter spoke from experience. Barnabas and Paul reported what God had done. James summarised, tied it to Scripture, and proposed a judgement. And then the part everyone forgets: they wrote it down and sent it out, with people to carry it and explain it. One clear question. Evidence from people who had been there. Genuine debate. A stated decision. A written record to those affected. Most church meetings fail on the first item and the last two.</p>
+<p>So here is the truth for this lesson. A useful meeting has a purpose, makes room for real participation, and ends with clear responsibility. Do the thinking before, not during. Proverbs 15:22 says plans succeed with many advisers. That is an argument for consulting people. It is not an argument for doing your thinking out loud in a room of twelve. Arrive with a proposal, not a blank page. "Here's what I'm thinking, and here's why. Tell me what I've got wrong." This is not pre-deciding. If nobody can change your mind, you did not need the meeting.</p>
+<p>So pause here for a moment. Think of your last team meeting. Can you say what was decided, who owns each item, and by when? If you cannot, that is the answer. Take a moment before you go on.</p>
+<p class="pause">Pause here. Take a moment before you go on.</p>
+<p>Here is the tool for this week: the one-page agenda, sent at least two days ahead. Before the meeting: state the purpose in one sentence. Give each item a time allowance and label it decide, discuss or inform. Move routine information to a message. During the meeting: start on time. Pray meaningfully. Take the most demanding item while people are fresh. Invite different perspectives; ask to hear from someone who hasn't spoken yet, and give the quieter people a way to contribute now or afterwards, without putting them on the spot. And record each decision with its owner and its deadline. If an item needs more time, agree a follow-up rather than assuming everyone can stay. After the meeting: send a brief record of decisions, owners and deadlines. Keep confidential matters in the appropriate restricted record, not in the general note. Then check progress before the next meeting. That last habit is what stops your next meeting becoming a review of everything that didn't happen.</p>
+<p>So this is your step. Write the one-page agenda for your next meeting: one clear purpose, timed items labelled decide, discuss or inform, and space for decisions and next steps. Send it two days ahead. Then finish that meeting at the time you promised, carrying ordinary unfinished items to another time. The one exception is an immediate safety or safeguarding concern: follow the appropriate procedure rather than postponing necessary action, and do not discuss sensitive details in the general meeting. And if half your meetings have nothing to decide, meet less often, and give the time you free to what your volunteers actually want: someone taking an interest in them personally.</p>
+<p>One truth to carry with you this week. Finishing on time is a pastoral act.</p>
+<p>Let me close with a short prayer.</p>
+<p>Lord, you are a God of peace and not of confusion. Help me to prepare before I gather people, to name problems honestly, to listen to the quiet voices, and to honour the time people give. Let our meetings build your people up, and let what we decide actually happen. Amen.</p>
+<p>I'll see you in Lesson 7.</p></div>
+</details>
+</section>
+
+<section class="plain">
+<h2>Think &mdash; <small>Let it settle</small></h2>
+<ul class="prompts">
+<li>Does my next meeting need to be a meeting? What is it for?</li>
+<li>Who has spoken least in our recent meetings? Have I made a suitable opportunity for them to contribute, and what might they be seeing?</li>
+</ul>
+<p class="note">These questions are for prayer and thought. There is nowhere to type an answer, and nothing is saved.</p>
+</section>
+
+<section class="card">
+<h2>Take one step</h2>
+<p><strong>One page. Two days ahead. Finish on time.</strong></p>
+<p>Write the one-page agenda for your next meeting:</p>
+<ol class="steps">
+<li>The purpose, in one sentence.</li>
+<li>List each item with a time allowance and label it <strong>Decide</strong>, <strong>Discuss</strong> or <strong>Inform</strong>. Move routine information that does not require the meeting&rsquo;s attention to a message instead.</li>
+<li>Leave space to record each decision, who owns it, when it is due, and when it will be reviewed.</li>
+</ol>
+<p style="margin-top:12px">Send it at least two days ahead. Finish the meeting at the time you promised, carrying ordinary unfinished items to another time.</p>
+<p class="safety">If an immediate safety or safeguarding concern arises, follow the appropriate procedure rather than postponing necessary action or discussing sensitive details in the general meeting.</p>
+<p>Afterwards, send a brief record of decisions, owners and deadlines. Keep confidential matters in your church&rsquo;s appropriate restricted record, not in the general note.</p>
+<p class="opt"><strong>If you do not have a meeting coming up:</strong> write the agenda anyway for the next one, or use the week to ask whether the team needs to meet as often as it does.</p>
+</section>
+
+<section class="plain">
+<h2>Go deeper <small>optional</small></h2>
+<p>The lesson is complete without these. Use them now, or come back later if you want to explore the subject more fully.</p>
+<div class="tools"><a class="btn line" href="#" onclick="return false">Open the worksheet</a><a class="btn line" href="#" onclick="return false">Read Chapter 6</a></div>
+<details id="ws"><summary>Preview the worksheet</summary><div class="body"><p><em>From the book's Chapter 6 Reflect and Act page. Answer privately, in a format you can use comfortably. Keep your responses specific.</em></p>
+<ul>
+<li>Think of your last team meeting. Write down what was decided, who owns each item, and by when. If you cannot, that is the answer.</li>
+<li>Which items on your usual agenda are purely information that could be sent in a message instead?</li>
+<li>Do you arrive with a proposal, or with an open question? What has that produced?</li>
+<li>Nehemiah had walked the walls before he called the meeting. What do you need to go and see for yourself before your next one?</li>
+<li>Who on your team has spoken least in the last three meetings? What might they be seeing?</li>
+</ul>
+<p><strong>This week's action</strong></p>
+<p>Write the one-page agenda for your next meeting: one clear purpose, timed items labelled decide, discuss or inform, and a space for decisions and next steps. Move routine information to a message where possible. Send the agenda out two days ahead, and finish that meeting at the time you promised, even if you have to carry an item.</p>
+<p><strong>Ten-Week Practice Plan, Week 6</strong></p>
+<p>Focus: meetings. Main action: use a timed agenda and record next steps. The toolkit&rsquo;s Meeting Agenda and Action Record page is the template for both.</p></div></details>
+</section>
+
+<section class="plain help">
+<h2>Need help with your next step?</h2>
+<p>See <a class="link" href="#" onclick="return false">Concerns, Care and Reporting</a> if something involves harm or misconduct. For questions about the course or your leadership development, contact Pastor Richmond at info@faithfulpathcommunity.com.</p>
+</section>
+
+<section class="card" id="finish">
+<h2>Ready to finish for today?</h2>
+<div id="before">
+<button class="btn" id="mark" type="button">Finish Lesson 6</button>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically.</p>
+</div>
+<div id="after" hidden>
+<p class="done" role="status">Lesson 6 finished</p>
+<p>Your step for this week is the one-page agenda, sent two days ahead, and a meeting that finishes on time.</p>
+<a class="btn" href="#" onclick="return false">Continue to Lesson 7: The Conversation You&rsquo;re Avoiding</a>
+<div class="row"><a class="btn line" href="#" onclick="return false">Stop here for today</a></div>
+<p class="note">Your course progress is saved automatically. <button class="link" id="undo" type="button" style="font-size:14px;color:var(--mute);border-color:var(--mute)">Mark it unfinished</button></p>
+</div>
+</section>
+
+<footer>
+<nav><a href="#" onclick="return false">Need help with your next step?</a><a href="#" onclick="return false">Concerns, Care and Reporting</a></nav>
+<p>Scripture quotations are from the ESV&reg; Bible (The Holy Bible, English Standard Version&reg;), copyright &copy; 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. Course material and the book <em>Lead Before You&rsquo;re Ready</em> &copy; 2026 Richmond Kobe, published by Faithful Path Community. All rights reserved.</p>
+</footer>
+</div>
+<script>
+var b=document.getElementById('before'),a=document.getElementById('after'),seg=document.querySelectorAll('#segs i');
+function set(on){b.hidden=on;a.hidden=!on;seg[5].classList.toggle('on',on);document.getElementById('plabel').textContent='Course progress: '+(on?6:5)+' of 10 lessons completed'}
+document.getElementById('mark').addEventListener('click',function(){set(true)});
+document.getElementById('undo').addEventListener('click',function(){set(false)});
+</script>
