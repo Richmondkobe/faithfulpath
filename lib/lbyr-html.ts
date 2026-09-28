@@ -62,7 +62,7 @@ export function parseInline(html: string): Inline[] {
   const out: Inline[] = [];
   let rest = html;
   while (rest.length) {
-    const open = rest.match(/<(em|strong|b|small|a)\b([^>]*)>/i);
+    const open = rest.match(/<(em|strong|b|small|a|span)\b([^>]*)>/i);
     if (!open || open.index === undefined) {
       if (rest.trim()) out.push({ t: "text", v: decode(rest) });
       break;
@@ -81,6 +81,8 @@ export function parseInline(html: string): Inline[] {
       out.push({ t: "a", href: attr(open[2], "href") ?? "#", c: children });
     } else if (name === "b") {
       out.push({ t: "strong", c: children });          // <b> is <strong> here
+    } else if (name === "span") {
+      out.push(...children);                            // a wrapper, unwrapped
     } else {
       out.push({ t: name as "em" | "strong" | "small", c: children });
     }

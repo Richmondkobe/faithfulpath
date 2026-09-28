@@ -74,6 +74,9 @@ function sourceText(file: string): string {
        .replace(/&hellip;/g, "…").replace(/&middot;/g, "·").replace(/&amp;/g, "&")
        .replace(/&nbsp;/g, " ").replace(/&times;/g, "×").replace(/&copy;/g, "©")
        .replace(/&reg;/g, "®").replace(/&#8634;/g, "↺")
+       // Numeric entities, which the pages use for the transliterated Greek.
+       .replace(/&#x([0-9a-fA-F]+);/g, (_m: string, h: string) => String.fromCodePoint(parseInt(h, 16)))
+       .replace(/&#(\d+);/g, (_m: string, d: string) => String.fromCodePoint(Number(d)))
   );
 }
 
@@ -123,25 +126,41 @@ for (let n = 1; n <= 10; n++) {
     console.log(`  L${n}: all ${total} words carried through, in order`);
   }
 }
-const sh = readLbyrPage("start-here");
-const shChrome = [
-  inlineText(readLbyrLesson(1).notice),
-  "Need help with your next step?",
-  "Lead Before You're Ready Start Here A ten-lesson course",
-  `Begin Lesson 1: ${readLbyrLesson(1).title}`,
-  "Course progress: 0 of 10 lessons completed",
-  "Need help with your next step?",
-  "Concerns, Care and Reporting",
-].join(" ");
-const shRendered = words([shChrome, sh.title, sh.sub ?? "", ...sh.sections.map((sec: { heading: string; blocks: Block[] }) => sec.heading + " " + blockText(sec.blocks))].join(" "));
-const shSrcText = sourceText("start-here.html");
-const shMissing = dropped(shSrcText, shRendered);
-console.log(
-  shMissing.length
-    ? `  start-here: ${shMissing.length} of ${shSrcText.split(" ").length} words missing\n      ${shMissing.slice(0, 18).join(" ")}`
-    : `  start-here: all ${shSrcText.split(" ").length} words carried through, in order`
-);
-if (bad === 0 && shMissing.length === 0) {
+for (const name of ["start-here", "finish"] as const) {
+  const pg = readLbyrPage(name);
+  const chrome =
+    name === "start-here"
+      ? [
+          inlineText(readLbyrLesson(1).notice),
+          "Need help with your next step?",
+          "Lead Before You're Ready Start Here A ten-lesson course",
+          `Begin Lesson 1: ${readLbyrLesson(1).title}`,
+          "Course progress: 0 of 10 lessons completed",
+          "Concerns, Care and Reporting",
+        ].join(" ")
+      : [
+          inlineText(readLbyrLesson(1).notice),
+          "Need help with your next step?",
+          "Lead Before You're Ready Finish Finish",
+          "Course progress: 10 of 10 lessons completed",
+          "Back to the course overview Read the book again",
+          "Concerns, Care and Reporting",
+        ].join(" ");
+  const out = words(
+    [chrome, pg.title, pg.sub ?? "", ...pg.sections.map((sec: { heading: string; blocks: Block[] }) => sec.heading + " " + blockText(sec.blocks))].join(" ")
+  );
+  const src = sourceText(`${name}.html`);
+  const miss = dropped(src, out);
+  if (miss.length) {
+    bad++;
+    console.log(`  ${name}: ${miss.length} of ${src.split(" ").length} words missing`);
+    console.log(`      ${miss.slice(0, 18).join(" ")}`);
+  } else {
+    console.log(`  ${name}: all ${src.split(" ").length} words carried through, in order`);
+  }
+}
+
+if (bad === 0) {
   console.log("\n  Every word of every page reaches the site.\n");
 } else {
   console.log("\n  Words are missing — see above.\n");

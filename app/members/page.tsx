@@ -24,11 +24,13 @@ import MemberQuestionForm from "@/components/MemberQuestionForm";
 import MindCourseCard from "@/components/mind/MindCourseCard";
 import BysyCourseCard from "@/components/bysy/BysyCourseCard";
 import TbymCourseCard from "@/components/tbym/TbymCourseCard";
+import LbyrCourseCard from "@/components/lbyr/LbyrCourseCard";
 import { getResetPlan } from "@/app/members/courses/christian-spiritual-reset/actions";
 import { resetRouteProgress, routeFinished } from "@/lib/reset-simple";
 import { RESET_SIMPLE_PUBLISHED, resetSimpleHref } from "@/lib/reset-simple-links";
 import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
+import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -339,6 +341,7 @@ export default async function Members() {
               above it: built, and deliberately not reachable until the course
               is finished. */}
           {TBYM_PUBLISHED && <TbymCourseCard />}
+          {LBYR_PUBLISHED && <LbyrCourseCard />}
         </div>
       </section>
 

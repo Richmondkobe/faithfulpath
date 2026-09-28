@@ -19,6 +19,7 @@ import LbyrShell, { Panel, Plain, SectionHeading } from "@/components/lbyr/LbyrS
 import LbyrProgress from "@/components/lbyr/LbyrProgress";
 import LbyrRecording from "@/components/lbyr/LbyrRecording";
 import LbyrFinishLesson from "@/components/lbyr/LbyrFinishLesson";
+import LbyrCheckList from "@/components/lbyr/LbyrCheckList";
 
 export const metadata: Metadata = {
   title: "Lead Before You’re Ready | Faithful Path Community",
@@ -163,7 +164,21 @@ export default async function LbyrLessonPage({ params }: Props) {
       {lesson.checkIn && (
         <Plain>
           <SectionHeading>Before you go on — a short check-in</SectionHeading>
-          <Blocks blocks={lesson.checkIn} />
+          {lesson.checkIn.map((b, i) =>
+            /* The six tick-boxes become real ones. Everything either side of
+               them — the sentence above, the four outcome cards below — is
+               ordinary content. */
+            b.t === "list" && b.cls === "check" ? (
+              <LbyrCheckList
+                key={i}
+                items={b.items.map((item) =>
+                  item.flatMap((n) => (n.t === "p" ? n.c : []))
+                )}
+              />
+            ) : (
+              <Blocks key={i} blocks={[b]} />
+            )
+          )}
         </Plain>
       )}
 

@@ -8,6 +8,7 @@ import {
   LBYR_SLUG,
   lbyrLessonHref,
   lbyrLessonSlug,
+  lbyrFinishHref,
   lbyrStartHereHref,
   requireLbyrPublished,
 } from "@/lib/lbyr-course";
@@ -37,5 +38,7 @@ export default async function LbyrCourse() {
   const next = Array.from({ length: LBYR_LESSON_COUNT }, (_, i) => i + 1).find(
     (n) => !done(n)
   );
-  redirect(next ? lbyrLessonHref(next) : lbyrStartHereHref);
+  // All ten finished: the Finish page is where the course ends, and it is
+  // reachable from here as well as from Lesson 10's Continue button.
+  redirect(next ? lbyrLessonHref(next) : lbyrFinishHref);
 }
