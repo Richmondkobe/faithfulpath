@@ -200,7 +200,9 @@ export default async function TbymLessonPage({ params }: Props) {
               timings={deck.timings}
               audioUrl={audioSrc}
               lessonTitle={lesson.title}
-              art={(key) => (key ? TBYM_SLIDE_ART[key] ?? null : null)}
+              art={(deck.slides as LectureSlide[]).map((s) =>
+                s.art ? TBYM_SLIDE_ART[s.art] ?? null : null
+              )}
             />
             <p className="mt-3 text-sm text-[var(--tb-mute)]">
               {lesson.duration}

@@ -125,7 +125,9 @@ export default async function LbyrLessonPage({ params }: Props) {
                 timings={deck.timings}
                 audioUrl={audioUrl}
                 lessonTitle={lesson.title}
-                art={(key) => artFor(order, key)}
+                art={(deck.slides as LectureSlide[]).map((s) =>
+                  artFor(order, s.art)
+                )}
               />
               <p className="mt-3 text-[15px] leading-relaxed text-[#6B5F53]">
                 {lesson.duration}

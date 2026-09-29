@@ -58,11 +58,16 @@ export default function SlideLecture({
   audioUrl: string | null;
   lessonTitle: string;
   /**
-   * The illustration for a slide's `art` name. Passed in rather than imported,
-   * because each course draws its own set and two of them use the same names
-   * for different pictures.
+   * One illustration per slide, already resolved, in slide order.
+   *
+   * An array rather than a lookup function: this is a Client Component, and
+   * React cannot serialise a function across that boundary — passing one threw
+   * "Functions cannot be passed directly to Client Components" at request
+   * time, on a page too dynamic for the build to catch it. Elements serialise
+   * fine, so each course resolves its own names on the server and sends the
+   * pictures.
    */
-  art: (key: string | undefined) => ReactNode;
+  art: ReactNode[];
 }) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -167,7 +172,7 @@ export default function SlideLecture({
         aria-label={`${lessonTitle}: slide ${current + 1} of ${slides.length}`}
       >
         <div className={styles.art} key={`art-${current}`}>
-          {art(slide.art)}
+          {art[current] ?? null}
         </div>
 
         <div className={styles.words}>
