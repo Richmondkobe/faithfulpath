@@ -103,15 +103,27 @@ async function linesOf(pageNumber) {
   return lines;
 }
 
-/** The inline runs of a line, merged and with bold marked. */
+/**
+ * The inline runs of a line, merged and with bold marked.
+ *
+ * A space is put between two runs unless one side already has one. The book
+ * sets a bold lead-in and the sentence after it as separate runs on the same
+ * baseline — "Someone asked you to lead." then "Maybe it was the pastor" —
+ * with the gap carried by their positions rather than by a space character.
+ * Joining them without one ran the two together.
+ */
+const joinInto = (out, text, bold) => {
+  const last = out[out.length - 1];
+  const gap = out.length > 0 && !/\s$/.test(last.text) && !/^\s/.test(text);
+  if (last && last.bold === bold) last.text += (gap ? " " : "") + text;
+  else out.push({ text: (gap ? " " : "") + text, bold });
+};
+
 const inlineOf = (line) => {
   const out = [];
   for (const run of line.runs) {
     if (run.role === "bullet") continue;
-    const bold = run.role === "strong";
-    const last = out[out.length - 1];
-    if (last && last.bold === bold) last.text += run.text;
-    else out.push({ text: run.text, bold });
+    joinInto(out, run.text, run.role === "strong");
   }
   return out.filter((r) => r.text.length);
 };
@@ -163,18 +175,27 @@ for (let n = 1; n <= CHAPTERS; n++) {
       const prev = lines[i - 1];
       const gap = prev ? prev.y - line.y : 0;
       if (!para || (prev && gap > 20)) { flush(); para = { t: "p", c: [] }; }
-      for (const run of inline) {
-        const lastRun = para.c[para.c.length - 1];
-        const joiner = para.c.length ? " " : "";
-        if (lastRun && lastRun.bold === run.bold) lastRun.text += joiner + run.text;
-        else para.c.push({ ...run, text: (joiner && para.c.length ? "" : "") + run.text });
+      else if (para.c.length) {
+        // A line break inside a paragraph is a space, not a join.
+        const last = para.c[para.c.length - 1];
+        if (!/\s$/.test(last.text)) last.text += " ";
       }
+      for (const run of inline) joinInto(para.c, run.text, run.bold);
     }
   }
   flush();
 
-  // Tidy the doubled spaces line joining leaves behind.
-  for (const b of blocks) for (const r of b.c) r.text = r.text.replace(/\s+/g, " ").trim();
+  // Tidy the doubled spaces line joining leaves behind. Only the first and last
+  // run of a block are trimmed: a run in the middle may legitimately open with
+  // a space, which is what separates a bold lead-in from the sentence after it.
+  for (const b of blocks) {
+    for (const r of b.c) r.text = r.text.replace(/\s+/g, " ");
+    if (b.c.length) {
+      b.c[0].text = b.c[0].text.replace(/^\s+/, "");
+      b.c[b.c.length - 1].text = b.c[b.c.length - 1].text.replace(/\s+$/, "");
+    }
+    b.c = b.c.filter((r) => r.text.length);
+  }
 
   const title = blocks.find((b) => b.t === "title");
   const words = blocks.flatMap((b) => b.c.map((r) => r.text)).join(" ").split(/\s+/).filter(Boolean).length;
