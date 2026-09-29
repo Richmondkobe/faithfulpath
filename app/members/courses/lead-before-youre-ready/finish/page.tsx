@@ -79,7 +79,7 @@ export default async function LbyrFinish() {
             )}
 
             {closing && (
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6">
                 <Link
                   href={LBYR_BASE}
                   className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
@@ -94,16 +94,6 @@ export default async function LbyrFinish() {
                     navigation asks for the page itself and cannot hit that.
                     The overview button above stays a Link: it stays inside
                     /members, where the navigation works. */}
-                {/* eslint-disable-next-line @next/next/no-html-link-for-pages --
-                    the document navigation is the point; see above. A relative
-                    href rather than an absolute one so a reader reviewing a
-                    preview stays on that preview. */}
-                <a
-                  href="/guides/lead-before-youre-ready"
-                  className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
-                >
-                  Read the book again
-                </a>
               </div>
             )}
           </Section>

@@ -178,13 +178,26 @@ export default async function LbyrLessonPage({ params }: Props) {
           Go deeper <span className="text-[0.75em] text-[#6B5F53]">optional</span>
         </SectionHeading>
         <Blocks blocks={lesson.goDeeper.intro} />
+        {/* Two equal buttons, as the preview pages have them. Both are inside
+            the members' area: the worksheet is a page, the chapter is the
+            book's own pages streamed from the private bucket. Neither sends a
+            reader to the store, because the course does not assume they own
+            the book. */}
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          <span className="inline-flex min-h-11 items-center justify-center rounded-sm border border-dashed border-[#D9CDBA] px-5 py-3 text-[15px] text-[#6B5F53]">
-            Open the worksheet — coming soon
-          </span>
-          <span className="inline-flex min-h-11 items-center justify-center rounded-sm border border-dashed border-[#D9CDBA] px-5 py-3 text-[15px] text-[#6B5F53]">
-            Read Chapter {lesson.goDeeper.chapter} — coming soon
-          </span>
+          <Link
+            href={`${lbyrLessonHref(order)}/worksheet`}
+            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-5 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            Open the worksheet
+          </Link>
+          {/* An anchor, because the chapter is a PDF served by a route handler
+              rather than a page to route to. */}
+          <a
+            href={`${lbyrLessonHref(order)}/chapter`}
+            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-5 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            Read Chapter {lesson.goDeeper.chapter}
+          </a>
         </div>
         <details className="mt-5 border-t border-[#E5D9C7]">
           <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
