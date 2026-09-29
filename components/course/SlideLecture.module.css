@@ -1,14 +1,29 @@
-/* Talk Before You Marry's slide lecture.
+/* The shared slide lecture, used by Talk Before You Marry and by Lead Before
+ * You're Ready.
  *
  * The layout is the pilot's: illustration beside the words on a wide screen,
- * stacked with the illustration above on a phone. Colours are the course's own
- * tokens, so the player follows the theme like every other page here. */
+ * stacked with the illustration above on a phone.
+ *
+ * Colours come from --lecture-* tokens defined on .player below. Each falls
+ * back through the course's own token to a literal, so the component styles
+ * itself wherever it is used. It was written for Talk Before You Marry and
+ * read --tb-* directly; on a course that does not load tbym.css every one of
+ * those resolved to nothing, which left `stroke: var(--lecture-accent)` invalid and
+ * every illustration invisible. A course that wants its own palette sets the
+ * --lecture-* tokens on an ancestor. */
 
 .player {
-  border: 1px solid var(--tb-line);
+  --lecture-line: var(--tb-line, #e5d9c7);
+  --lecture-card: var(--tb-card, #f3eadc);
+  --lecture-bg: var(--tb-bg, #fdfaf4);
+  --lecture-ink: var(--tb-ink, #2b2118);
+  --lecture-mute: var(--tb-mute, #6b5f53);
+  --lecture-accent: var(--tb-accent, #8b5e34);
+
+  border: 1px solid var(--lecture-line);
   border-radius: 6px;
   overflow: hidden;
-  background: var(--tb-card);
+  background: var(--lecture-card);
 }
 
 .stage {
@@ -44,19 +59,19 @@
   width: 100%;
   height: auto;
   fill: none;
-  stroke: var(--tb-accent);
+  stroke: var(--lecture-accent);
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 .art :global(.s2) {
-  stroke: var(--tb-ink);
+  stroke: var(--lecture-ink);
 }
 .art :global(.faded) {
   opacity: 0.45;
 }
 .art :global(.f) {
-  fill: var(--tb-accent);
+  fill: var(--lecture-accent);
   stroke: none;
 }
 
@@ -112,7 +127,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--tb-accent);
+  color: var(--lecture-accent);
   margin: 0 0 10px;
 }
 
@@ -121,7 +136,7 @@
   font-weight: 500;
   font-size: clamp(1.4rem, 3.4vw, 1.85rem);
   line-height: 1.2;
-  color: var(--tb-ink);
+  color: var(--lecture-ink);
   margin: 0;
   text-wrap: balance;
 }
@@ -129,18 +144,18 @@
 .words p {
   font-size: 17px;
   line-height: 1.6;
-  color: var(--tb-ink);
+  color: var(--lecture-ink);
   margin: 12px 0 0;
 }
 .words .sub {
-  color: var(--tb-mute);
+  color: var(--lecture-mute);
   font-size: 15px;
 }
 .words blockquote {
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(1.15rem, 3vw, 1.45rem);
   line-height: 1.45;
-  color: var(--tb-ink);
+  color: var(--lecture-ink);
   margin: 0;
 }
 .words .ref {
@@ -148,7 +163,7 @@
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--tb-accent);
+  color: var(--lecture-accent);
   margin-top: 10px;
 }
 .words .prayer p {
@@ -164,7 +179,7 @@
 .words li {
   font-size: 16px;
   line-height: 1.5;
-  color: var(--tb-ink);
+  color: var(--lecture-ink);
   margin-bottom: 6px;
 }
 .chips {
@@ -176,7 +191,7 @@
   gap: 8px;
 }
 .chips li {
-  border: 1px solid var(--tb-line);
+  border: 1px solid var(--lecture-line);
   border-radius: 4px;
   padding: 8px 10px;
   font-size: 15px;
@@ -187,25 +202,25 @@
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--tb-accent);
+  color: var(--lecture-accent);
   margin-top: 14px;
 }
 
 .pausedNote {
   margin-top: 16px;
-  border-top: 1px dashed var(--tb-line);
+  border-top: 1px dashed var(--lecture-line);
   padding-top: 12px;
   font-family: var(--font-tbym-mono), ui-monospace, Menlo, monospace;
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--tb-accent);
+  color: var(--lecture-accent);
 }
 
 .footer {
-  border-top: 1px solid var(--tb-line);
+  border-top: 1px solid var(--lecture-line);
   padding: 14px 18px 18px;
-  background: var(--tb-bg);
+  background: var(--lecture-bg);
 }
 .row {
   display: flex;
@@ -214,14 +229,14 @@
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: var(--tb-mute);
+  color: var(--lecture-mute);
   margin: 0 0 10px;
 }
 .nav {
-  border: 1px solid var(--tb-line);
+  border: 1px solid var(--lecture-line);
   border-radius: 4px;
   background: transparent;
-  color: var(--tb-ink);
+  color: var(--lecture-ink);
   padding: 6px 12px;
   font-size: 14px;
   cursor: pointer;
@@ -243,13 +258,13 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 1px solid var(--tb-accent);
+  border: 1px solid var(--lecture-accent);
   background: transparent;
   padding: 0;
   cursor: pointer;
 }
 .dotOn {
-  background: var(--tb-accent);
+  background: var(--lecture-accent);
 }
 
 /* Nothing moves for anyone who has asked for less motion. The illustrations
