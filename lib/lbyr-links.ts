@@ -27,5 +27,5 @@ export const lbyrStartHereHref = `${LBYR_BASE}/start-here`;
 export const lbyrFinishHref = `${LBYR_BASE}/finish`;
 export const lbyrConcernsHref = `${LBYR_BASE}/concerns-care-and-reporting`;
 
-/** Whether the course is visible to members. Off until the author says so. */
-export const LBYR_PUBLISHED = false;
+/** Whether the course is visible to members. */
+export const LBYR_PUBLISHED = true;

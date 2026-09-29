@@ -47,15 +47,12 @@ export {
 
 /**
  * The gate every page of this course sits behind, alongside the membership
- * check. Off until the author says publish, and it closes the routes rather
- * than only hiding the card — an unpublished course any member could still
- * reach by URL would only be an unlinked one.
+ * check.
  *
- * Preview and development builds are the exception, so the course can be
- * reviewed before it is published. A member on the live site cannot reach it
- * either way; only someone holding a Vercel preview URL can, which is the
- * point of the preview. When LBYR_PUBLISHED becomes true this whole check
- * stops mattering and can go.
+ * Published now, so this passes. It is kept rather than removed: turning
+ * LBYR_PUBLISHED back to false is how the course comes down, and it closes the
+ * routes rather than only hiding the card — an unpublished course any member
+ * could still reach by URL would only be an unlinked one.
  */
 export function requireLbyrPublished() {
   if (LBYR_PUBLISHED) return;
