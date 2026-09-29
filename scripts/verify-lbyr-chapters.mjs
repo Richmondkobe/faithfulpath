@@ -110,6 +110,22 @@ for (let n = 1; n <= 10; n++) {
     continue;
   }
 
+  // No block may begin mid-sentence. A hanging-indent continuation read as a
+  // new paragraph split a list item in two — "agree a follow-up" ended the
+  // bullet and "rather than assuming everyone can stay." became a paragraph of
+  // its own. A word count cannot see that, because every word is still there.
+  const midSentence = shown
+    .map((b, k) => ({ k, t: b.t, text: b.c.map((r) => r.text).join("").trim() }))
+    .filter((b) => /^[a-z]/.test(b.text));
+  if (midSentence.length) {
+    bad++;
+    console.log(`  ch${String(n).padStart(2)}: ${midSentence.length} block(s) begin mid-sentence`);
+    for (const b of midSentence.slice(0, 3)) {
+      console.log(`        block ${b.k} (${b.t}): "${b.text.slice(0, 70)}"`);
+    }
+    continue;
+  }
+
   const missing = dropped(source, rendered);
   const extra = invented(source, rendered);
   const total = source.split(" ").filter(Boolean).length;

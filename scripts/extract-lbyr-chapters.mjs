@@ -33,6 +33,8 @@ import { join } from "node:path";
 
 const dry = process.argv.includes("--dry");
 const ROOT = join("content", "courses", "lead-before-youre-ready");
+/** A line starting at or past this x continues the block above it. */
+const CONTINUATION_X = 90;
 const CHAPTERS = 10;
 
 const url = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? "").trim();
@@ -169,6 +171,22 @@ for (let n = 1; n <= CHAPTERS; n++) {
       if (line.role === "title") { flush(); blocks.push({ t: "title", c: inline }); continue; }
       if (line.role === "h2" || line.role === "h3") { flush(); blocks.push({ t: "h", c: inline }); continue; }
       if (line.role === "bullet") { flush(); blocks.push({ t: "li", c: inline }); continue; }
+
+      // A hanging indent. Across the ten chapters there are exactly three
+      // line-start positions: 72 for body and headings, 86 for a list item,
+      // and 99 for a line that continues one. A continuation belongs to the
+      // block above it — read as a new paragraph it split a list item in two,
+      // which is how "agree a follow-up" lost "rather than assuming everyone
+      // can stay."
+      if (line.x >= CONTINUATION_X) {
+        const above = para ?? blocks[blocks.length - 1];
+        if (above) {
+          const last = above.c[above.c.length - 1];
+          if (last && !/\s$/.test(last.text)) last.text += " ";
+          for (const run of inline) joinInto(above.c, run.text, run.bold);
+          continue;
+        }
+      }
 
       // A new paragraph where the gap to the line above is bigger than the
       // leading, which is how the book separates them.

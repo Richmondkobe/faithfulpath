@@ -437,16 +437,7 @@
       "t": "li",
       "c": [
         {
-          "text": "Record each decision, its owner and its deadline. If an item needs more time, agree a follow-up",
-          "bold": false
-        }
-      ]
-    },
-    {
-      "t": "p",
-      "c": [
-        {
-          "text": "rather than assuming everyone can stay.",
+          "text": "Record each decision, its owner and its deadline. If an item needs more time, agree a follow-up rather than assuming everyone can stay.",
           "bold": false
         }
       ]
@@ -464,7 +455,7 @@
       "t": "li",
       "c": [
         {
-          "text": "Send a brief record of decisions, owners and deadlines, with any context people need. Keep",
+          "text": "Send a brief record of decisions, owners and deadlines, with any context people need. Keep confidential matters in the appropriate restricted record. Check progress before the next meeting.",
           "bold": false
         }
       ]
@@ -473,7 +464,7 @@
       "t": "p",
       "c": [
         {
-          "text": "confidential matters in the appropriate restricted record. Check progress before the next meeting. That last habit – checking in between meetings – is what stops your next meeting from becoming a review of everything that didn’t happen.",
+          "text": "That last habit – checking in between meetings – is what stops your next meeting from becoming a review of everything that didn’t happen.",
           "bold": false
         }
       ]
