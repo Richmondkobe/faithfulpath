@@ -86,12 +86,24 @@ export default async function LbyrFinish() {
                 >
                   Back to the course overview
                 </Link>
-                <Link
+                {/* A plain anchor, not a Link, and the one on this page that
+                    is. It leaves the members area for the public store, and a
+                    client-side RSC fetch across that boundary failed on the
+                    preview — the router got a redirect where it wanted a
+                    payload and reported "This page couldn't load". A document
+                    navigation asks for the page itself and cannot hit that.
+                    The overview button above stays a Link: it stays inside
+                    /members, where the navigation works. */}
+                {/* eslint-disable-next-line @next/next/no-html-link-for-pages --
+                    the document navigation is the point; see above. A relative
+                    href rather than an absolute one so a reader reviewing a
+                    preview stays on that preview. */}
+                <a
                   href="/guides/lead-before-youre-ready"
                   className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
                 >
                   Read the book again
-                </Link>
+                </a>
               </div>
             )}
           </Section>
