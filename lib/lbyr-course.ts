@@ -285,12 +285,13 @@ export const readLbyrSlides = cache((order: number): LbyrSlideDeck | null => {
 /**
  * The lessons whose recordings are wired in.
  *
- * Deliberately a list rather than "does slides.json exist": all ten decks were
- * extracted at once, but the recordings go up one at a time and a deck with no
- * audio behind it would give the player a dead file. A lesson joins this when
- * its mp3 is in the bucket.
+ * Deliberately a list rather than "does slides.json exist": the decks were all
+ * extracted at once, and a deck with no audio behind it would hand the player
+ * a dead file. All ten recordings are now in the bucket, so all ten are here —
+ * kept as a list rather than removed, because it is what a lesson is taken out
+ * of if a recording has to be pulled.
  */
-export const LBYR_WIRED = new Set<number>([1]);
+export const LBYR_WIRED = new Set<number>([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
 export type LbyrProsePage = { title: string; sub: string | null; sections: { heading: string; blocks: Block[] }[] };
 
