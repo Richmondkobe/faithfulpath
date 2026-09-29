@@ -54,6 +54,16 @@ function dropped(src, out) {
  */
 const invented = (src, out) => dropped(out, src);
 
+/** The chapter titles as the book's contents page gives them. */
+const contents = new Map();
+for (const m of text[2].replace(/\s+/g, " ").matchAll(/(\d+)\.\s*([^.]+?)\.{3,}\s*\d+/g)) {
+  contents.set(Number(m[1]), m[2].trim());
+}
+if (contents.size !== 10) {
+  console.error(`\n  The contents page yielded ${contents.size} chapter titles, not 10.\n`);
+  process.exitCode = 1;
+}
+
 console.log();
 let bad = 0;
 for (let n = 1; n <= 10; n++) {
@@ -61,13 +71,15 @@ for (let n = 1; n <= 10; n++) {
   const doc = JSON.parse(readFileSync(path, "utf8"));
   const [first, last] = doc.pages;
 
-  // Exactly as the page builds it: runs are concatenated with nothing between
-  // them, because that is what React does with adjacent spans. Joining them
-  // with a space here was the reason a missing one went unseen — the check was
-  // measuring a string the page never produces.
-  const rendered = norm(
-    doc.blocks.map((b) => b.c.map((r) => r.text).join("")).join(" ")
-  );
+  // Exactly as the page builds it, in two respects. Runs are concatenated with
+  // nothing between them, because that is what React does with adjacent spans —
+  // joining them with a space here was why a missing one went unseen. And the
+  // page renders the FIRST title block and then every non-title block, so a
+  // second title block is not rendered at all. Both of those were bugs this
+  // check called perfect: a lost space, then a chapter title cut in half.
+  const title = doc.blocks.find((b) => b.t === "title");
+  const shown = [...(title ? [title] : []), ...doc.blocks.filter((b) => b.t !== "title")];
+  const rendered = norm(shown.map((b) => b.c.map((r) => r.text).join("")).join(" "));
   // Page by page, so the page number is removed where it actually sits — at the
   // foot — rather than anywhere that number happens to appear. Stripping every
   // matching number also removed real ones from the prose, which then read as
@@ -83,6 +95,20 @@ for (let n = 1; n <= 10; n++) {
         .replace(new RegExp(`\\s${pageNumber}\\s*$`), " ");
     }).join(" ")
   );
+
+  // The title the page will show, against the book's contents page. A title
+  // that wrapped onto a second line used to arrive as two blocks, and the page
+  // showed only the first — "Running a Meeting People Want to", without
+  // "Attend". Nothing in a word count notices that.
+  const shownTitle = norm(title ? title.c.map((r) => r.text).join("") : "");
+  const expected = norm(`Chapter ${n} \u2013 ${contents.get(n) ?? ""}`);
+  if (shownTitle !== expected) {
+    bad++;
+    console.log(`  ch${String(n).padStart(2)}: title does not match the contents page`);
+    console.log(`        page:     "${shownTitle}"`);
+    console.log(`        contents: "${expected}"`);
+    continue;
+  }
 
   const missing = dropped(source, rendered);
   const extra = invented(source, rendered);

@@ -185,6 +185,22 @@ for (let n = 1; n <= CHAPTERS; n++) {
   }
   flush();
 
+  // A chapter title that wraps runs onto a second line, which arrives as a
+  // second title block. Merged, or the page — which renders the first title and
+  // nothing else — would show "Running a Meeting People Want to" and drop
+  // "Attend".
+  for (let i = blocks.length - 1; i > 0; i--) {
+    if (blocks[i].t === "title" && blocks[i - 1].t === "title") {
+      const tail = blocks[i].c;
+      const head = blocks[i - 1].c;
+      const last = head[head.length - 1];
+      const gap = last && !/\s$/.test(last.text) && tail[0] && !/^\s/.test(tail[0].text);
+      if (gap) last.text += " ";
+      head.push(...tail);
+      blocks.splice(i, 1);
+    }
+  }
+
   // Tidy the doubled spaces line joining leaves behind. Only the first and last
   // run of a block are trimmed: a run in the middle may legitimately open with
   // a space, which is what separates a bold lead-in from the sentence after it.
@@ -197,7 +213,12 @@ for (let n = 1; n <= CHAPTERS; n++) {
     b.c = b.c.filter((r) => r.text.length);
   }
 
-  const title = blocks.find((b) => b.t === "title");
+  const titles = blocks.filter((b) => b.t === "title");
+  if (titles.length !== 1) {
+    console.error(`\n  chapter ${n}: ${titles.length} title blocks, expected 1 — the page renders only the first.\n`);
+    process.exit(1);
+  }
+  const title = titles[0];
   const words = blocks.flatMap((b) => b.c.map((r) => r.text)).join(" ").split(/\s+/).filter(Boolean).length;
   rows.push({ n, first, last, blocks: blocks.length, words, title: title ? title.c.map((r) => r.text).join("") : "?" });
 
