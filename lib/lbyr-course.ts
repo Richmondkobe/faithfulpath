@@ -257,6 +257,29 @@ export const readLbyrLesson = cache((order: number): LbyrLesson => {
   };
 });
 
+export type ChapterRun = { text: string; bold: boolean };
+export type ChapterBlock = { t: "title" | "h" | "p" | "li"; c: ChapterRun[] };
+export type LbyrChapter = { chapter: number; pages: [number, number]; blocks: ChapterBlock[] };
+
+/**
+ * A lesson's book chapter, as blocks.
+ *
+ * Extracted from the book by scripts/extract-lbyr-chapters.mjs and rendered as
+ * an ordinary page, so the chapter reads like the rest of the course rather
+ * than as a PDF in a viewer. The wording is the book's, checked back against it
+ * by scripts/verify-lbyr-chapters.mjs.
+ */
+export const readLbyrChapter = cache((order: number): LbyrChapter | null => {
+  const path = join(ROOT, `lesson-${String(order).padStart(2, "0")}`, "chapter.json");
+  if (!existsSync(path)) return null;
+  try {
+    const doc = JSON.parse(readFileSync(path, "utf8"));
+    return Array.isArray(doc.blocks) ? doc : null;
+  } catch {
+    return null;
+  }
+});
+
 export type LbyrSlideDeck = {
   lesson: number;
   title: string;

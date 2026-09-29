@@ -190,14 +190,12 @@ export default async function LbyrLessonPage({ params }: Props) {
           >
             Open the worksheet
           </Link>
-          {/* An anchor, because the chapter is a PDF served by a route handler
-              rather than a page to route to. */}
-          <a
+          <Link
             href={`${lbyrLessonHref(order)}/chapter`}
             className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-5 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
           >
             Read Chapter {lesson.goDeeper.chapter}
-          </a>
+          </Link>
         </div>
         <details className="mt-5 border-t border-[#E5D9C7]">
           <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
