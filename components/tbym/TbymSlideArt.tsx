@@ -8,7 +8,7 @@ import type { CSSProperties, ReactElement } from "react";
  * of these; the other thirteen lessons reuse those and add six — coins, ear,
  * hourglass, house, scales and sunrise. Each is drawn with a stroke that
  * animates on, and the animation is dropped entirely under
- * prefers-reduced-motion — see TbymSlidePlayer.module.css.
+ * prefers-reduced-motion — see components/course/SlideLecture.module.css.
  *
  * A slide names one of these in its "art" field. An unknown name renders
  * nothing, which is what an illustration should do when it is missing.

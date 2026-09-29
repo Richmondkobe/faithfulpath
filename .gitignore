@@ -71,3 +71,10 @@ tbym-slides-02-14/
 # renamed folder stays ignored too.
 Teaching recordings/
 Teaching recordings /
+
+# Lead Before You're Ready working material. The mp3s and the pilot pages are
+# already covered above by *.mp3 and pilot.html; these are the narration
+# splits that sit beside them. Scoped to the lesson folders so the reference
+# copy at the top of the course folder, which came with the source pages and
+# is committed, is not swept up with them.
+content/courses/lead-before-youre-ready/lesson-*/lbyr-lesson-*-narration.txt

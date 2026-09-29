@@ -20,9 +20,10 @@ import {
 import TbymMarkdown from "@/components/tbym/TbymMarkdown";
 import TbymFooter from "@/components/tbym/TbymFooter";
 import TbymRecording from "@/components/tbym/TbymRecording";
-import TbymSlidePlayer, {
-  type TbymSlide,
-} from "@/components/tbym/TbymSlidePlayer";
+import SlideLecture, {
+  type LectureSlide,
+} from "@/components/course/SlideLecture";
+import { TBYM_SLIDE_ART } from "@/components/tbym/TbymSlideArt";
 import TbymFinishLesson from "@/components/tbym/TbymFinishLesson";
 
 export const metadata: Metadata = {
@@ -194,11 +195,12 @@ export default async function TbymLessonPage({ params }: Props) {
         )}
         {deck ? (
           <>
-            <TbymSlidePlayer
-              slides={deck.slides as TbymSlide[]}
+            <SlideLecture
+              slides={deck.slides as LectureSlide[]}
               timings={deck.timings}
               audioUrl={audioSrc}
               lessonTitle={lesson.title}
+              art={(key) => (key ? TBYM_SLIDE_ART[key] ?? null : null)}
             />
             <p className="mt-3 text-sm text-[var(--tb-mute)]">
               {lesson.duration}

@@ -257,6 +257,41 @@ export const readLbyrLesson = cache((order: number): LbyrLesson => {
   };
 });
 
+export type LbyrSlideDeck = {
+  lesson: number;
+  title: string;
+  slides: unknown[];
+  timings: number[];
+};
+
+/**
+ * A lesson's slide deck, where its recording has been wired.
+ *
+ * slides.json is written by scripts/extract-lbyr-slides.mjs from the pilot
+ * page, which is the player the slides were timed against. A lesson without
+ * one shows the "Recording coming soon" panel instead.
+ */
+export const readLbyrSlides = cache((order: number): LbyrSlideDeck | null => {
+  const path = join(ROOT, `lesson-${String(order).padStart(2, "0")}`, "slides.json");
+  if (!existsSync(path)) return null;
+  try {
+    const deck = JSON.parse(readFileSync(path, "utf8"));
+    return Array.isArray(deck.slides) && Array.isArray(deck.timings) ? deck : null;
+  } catch {
+    return null;
+  }
+});
+
+/**
+ * The lessons whose recordings are wired in.
+ *
+ * Deliberately a list rather than "does slides.json exist": all ten decks were
+ * extracted at once, but the recordings go up one at a time and a deck with no
+ * audio behind it would give the player a dead file. A lesson joins this when
+ * its mp3 is in the bucket.
+ */
+export const LBYR_WIRED = new Set<number>([1]);
+
 export type LbyrProsePage = { title: string; sub: string | null; sections: { heading: string; blocks: Block[] }[] };
 
 /** Start Here and Finish: a title, then a run of headed sections. */

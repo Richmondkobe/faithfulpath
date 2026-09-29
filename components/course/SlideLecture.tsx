@@ -1,11 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
-import { TBYM_SLIDE_ART } from "@/components/tbym/TbymSlideArt";
-import styles from "./TbymSlidePlayer.module.css";
+import styles from "./SlideLecture.module.css";
 
-export type TbymSlide = {
+export type LectureSlide = {
   /** The illustration to draw, by name. Unknown names draw nothing. */
   art?: string;
   kicker?: string;
@@ -22,8 +21,8 @@ export type TbymSlide = {
   autoPause?: boolean;
 };
 
-export type TbymSlides = {
-  slides: TbymSlide[];
+export type LectureSlides = {
+  slides: LectureSlide[];
   /** Where each slide begins, in seconds into the recording. */
   timings: number[];
 };
@@ -49,12 +48,22 @@ export type TbymSlides = {
  * It stores nothing. No progress, no position, nothing in the browser: reload
  * the page and it starts at the first slide, like the rest of this course.
  */
-export default function TbymSlidePlayer({
+export default function SlideLecture({
   slides,
   timings,
   audioUrl,
   lessonTitle,
-}: TbymSlides & { audioUrl: string | null; lessonTitle: string }) {
+  art,
+}: LectureSlides & {
+  audioUrl: string | null;
+  lessonTitle: string;
+  /**
+   * The illustration for a slide's `art` name. Passed in rather than imported,
+   * because each course draws its own set and two of them use the same names
+   * for different pictures.
+   */
+  art: (key: string | undefined) => ReactNode;
+}) {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
   const audio = useRef<HTMLAudioElement>(null);
@@ -158,7 +167,7 @@ export default function TbymSlidePlayer({
         aria-label={`${lessonTitle}: slide ${current + 1} of ${slides.length}`}
       >
         <div className={styles.art} key={`art-${current}`}>
-          {slide.art ? TBYM_SLIDE_ART[slide.art] ?? null : null}
+          {art(slide.art)}
         </div>
 
         <div className={styles.words}>

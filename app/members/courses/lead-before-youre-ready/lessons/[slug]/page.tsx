@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import { getCourseProgress } from "@/lib/course-progress";
+import { signedMediaUrl } from "@/lib/course-media";
 import {
   LBYR_BASE,
   LBYR_LESSON_COUNT,
@@ -11,13 +12,17 @@ import {
   lbyrFinishHref,
   lbyrLessonHref,
   lbyrLessonSlug,
+  LBYR_WIRED,
   readLbyrLesson,
+  readLbyrSlides,
   requireLbyrPublished,
 } from "@/lib/lbyr-course";
 import Blocks, { Inlines } from "@/components/lbyr/Blocks";
 import LbyrShell, { Panel, Plain, SectionHeading } from "@/components/lbyr/LbyrShell";
 import LbyrProgress from "@/components/lbyr/LbyrProgress";
 import LbyrRecording from "@/components/lbyr/LbyrRecording";
+import SlideLecture, { type LectureSlide } from "@/components/course/SlideLecture";
+import { artFor } from "@/components/lbyr/LbyrSlideArt";
 import LbyrFinishLesson from "@/components/lbyr/LbyrFinishLesson";
 import LbyrCheckList from "@/components/lbyr/LbyrCheckList";
 
@@ -46,6 +51,12 @@ export default async function LbyrLessonPage({ params }: Props) {
   const progress = await getCourseProgress(LBYR_SLUG);
   const finished = Boolean(progress.get(lesson.slug)?.completed_at);
   const completed = [...progress.values()].filter((p) => p.completed_at).length;
+
+  // The deck plays only where the recording is actually in the bucket.
+  const deck = LBYR_WIRED.has(order) ? readLbyrSlides(order) : null;
+  const audioUrl = deck
+    ? await signedMediaUrl("audio", `lbyr-lesson-${lesson.slug}.mp3`, LBYR_SLUG)
+    : null;
 
   const isLast = order === LBYR_LESSON_COUNT;
   const nextHref = isLast ? lbyrFinishHref : lbyrLessonHref(order + 1);
@@ -107,7 +118,30 @@ export default async function LbyrLessonPage({ params }: Props) {
       <Panel>
         <SectionHeading>Watch or listen</SectionHeading>
         <div className="mt-4">
-          <LbyrRecording duration={lesson.duration} transcript={lesson.transcript} />
+          {deck ? (
+            <>
+              <SlideLecture
+                slides={deck.slides as LectureSlide[]}
+                timings={deck.timings}
+                audioUrl={audioUrl}
+                lessonTitle={lesson.title}
+                art={(key) => artFor(order, key)}
+              />
+              <p className="mt-3 text-[15px] leading-relaxed text-[#6B5F53]">
+                {lesson.duration}
+              </p>
+              <details className="mt-4 border-t border-[#E5D9C7]">
+                <summary className="flex cursor-pointer justify-between py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
+                  Read the transcript
+                </summary>
+                <div className="max-w-[65ch] pb-3">
+                  <Blocks blocks={lesson.transcript} />
+                </div>
+              </details>
+            </>
+          ) : (
+            <LbyrRecording duration={lesson.duration} transcript={lesson.transcript} />
+          )}
         </div>
       </Panel>
 
