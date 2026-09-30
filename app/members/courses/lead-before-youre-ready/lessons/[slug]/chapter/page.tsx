@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 
 import { requireActiveMember } from "@/lib/member-gate";
 import {
-  LBYR_BASE,
   LBYR_LESSON_COUNT,
   lbyrLessonHref,
+  lbyrOverviewHref,
   readLbyrChapter,
   readLbyrLesson,
   requireLbyrPublished,
@@ -60,7 +60,7 @@ export default async function LbyrChapterPage({ params }: Props) {
           <Link href={lbyrLessonHref(order)} className="underline underline-offset-4">
             ← Lesson {order}: {lesson.title}
           </Link>
-          <Link href={LBYR_BASE} className="underline underline-offset-4">
+          <Link href={lbyrOverviewHref} className="underline underline-offset-4">
             Course overview
           </Link>
         </div>
