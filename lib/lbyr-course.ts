@@ -40,6 +40,7 @@ export {
   moduleFor,
   lbyrLessonSlug,
   lbyrLessonHref,
+  lbyrOverviewHref,
   lbyrStartHereHref,
   lbyrFinishHref,
   lbyrConcernsHref,

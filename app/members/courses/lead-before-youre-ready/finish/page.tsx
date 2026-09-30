@@ -4,7 +4,7 @@ import Link from "next/link";
 import { requireActiveMember } from "@/lib/member-gate";
 import { getCourseProgress } from "@/lib/course-progress";
 import {
-  LBYR_BASE,
+  lbyrOverviewHref,
   LBYR_SLUG,
   readLbyrLesson,
   readLbyrPage,
@@ -81,7 +81,7 @@ export default async function LbyrFinish() {
             {closing && (
               <div className="mt-6">
                 <Link
-                  href={LBYR_BASE}
+                  href={lbyrOverviewHref}
                   className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
                 >
                   Back to the course overview
