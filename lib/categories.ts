@@ -7,8 +7,9 @@
 // no label instead of breaking a page.
 //
 // The order below is the order they appear in the row at the top of /articles.
-// It runs inward to outward — the inner life, then relationships, then leading
-// other people — rather than by article count.
+// It runs from the beginning of faith outward — becoming a Christian, then the
+// inner life, then relationships, then leading other people — rather than by
+// article count.
 
 export type Category = {
   slug: string;
@@ -18,6 +19,12 @@ export type Category = {
 };
 
 export const CATEGORIES: readonly Category[] = [
+  {
+    slug: "new-to-faith-and-discipleship",
+    label: "New to Faith & Discipleship",
+    description:
+      "Beginning with Christ, and the first steps of following him: baptism, the Bible, prayer and belonging to a church.",
+  },
   {
     slug: "burnout-rest-and-retreats",
     label: "Burnout, Rest & Retreats",

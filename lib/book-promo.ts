@@ -16,10 +16,12 @@ export type BookSlug =
   | "before-you-say-yes"
   | "when-your-mind-wont-rest"
   | "the-christian-spiritual-reset"
-  | "lead-before-youre-ready";
+  | "lead-before-youre-ready"
+  | "following-jesus-book-1-begin";
 
 /** The default for each category. Every category has one. */
 export const BOOK_BY_CATEGORY: Record<string, BookSlug> = {
+  "new-to-faith-and-discipleship": "following-jesus-book-1-begin",
   "marriage-and-premarital": "talk-before-you-marry",
   "dating-and-discernment": "before-you-say-yes",
   "overthinking-and-worry": "when-your-mind-wont-rest",
@@ -56,6 +58,12 @@ export function bookForArticle(
  * not the same sentence as one that follows an article.
  */
 export const BOOK_COPY: Record<BookSlug, { title: string; hook: string; body: string }> = {
+  "following-jesus-book-1-begin": {
+    title: "Following Jesus, Book 1: Begin",
+    hook: "New to the faith, or still exploring?",
+    body:
+      "a first course in following Jesus across eight chapters \u2014 the good news itself, repentance and grace, being born again, your new identity and assurance, and beginning with the Bible, with prayer and in a church. It is written for adults starting out, and for anyone still deciding.",
+  },
   "talk-before-you-marry": {
     title: "Talk Before You Marry",
     hook: "About to marry, or newly engaged?",
