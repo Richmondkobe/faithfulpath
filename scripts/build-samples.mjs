@@ -93,11 +93,17 @@ function chaptersFromOutline(doc, bookTitle) {
   if (!found.length) return [];
 
   // An explicit "Chapter N" outline, where it exists.
+  // No word boundary is required after the digits: these outlines run the
+  // number straight into the title ("Chapter 9The Bible"), and there is no
+  // boundary between "9" and "T". Requiring one matched nothing, which dropped
+  // a book whose chapters start at 9 into the fallback below, where its own
+  // front matter was read as chapter one and chapter 9 as chapter two — a
+  // sample of five pages containing none of the chapter it was meant to show.
   const numbered = found
     .map((e) => {
-      const m = deSpace(e.title).match(/^Chapter\s*(\d+|one|two|three)\b/i);
+      const m = deSpace(e.title).match(/^Chapter\s*(?:(\d+)|(one|two|three)\b)/i);
       if (!m) return null;
-      const n = /^\d+$/.test(m[1]) ? Number(m[1]) : WORD_NUMBERS[m[1].toLowerCase()];
+      const n = m[1] ? Number(m[1]) : WORD_NUMBERS[m[2].toLowerCase()];
       return n ? { n, page: e.page, title: e.title } : null;
     })
     .filter(Boolean)
@@ -108,7 +114,7 @@ function chaptersFromOutline(doc, bookTitle) {
   // follow it are the chapters whatever they are called. The book's own title
   // is front matter too — it is the title page, and treating it as chapter one
   // cuts the sample off before the real first chapter has started.
-  const frontMatter = /^(contents|copyright|title page|toolkit|practical toolkit|toolkit contents|introduction|why this book exists|before you begin|a note|about the author|dedication|foreword|preface|acknowledge)/i;
+  const frontMatter = /^(contents|copyright|title page|toolkit|practical toolkit|toolkit contents|introduction|why this book exists|before you begin|starting book|a note|about the author|dedication|foreword|preface|acknowledge)/i;
   const norm = (x) => x.replace(/[^a-z0-9]/gi, "").toLowerCase();
   const body = found.filter(
     (e) => !frontMatter.test(e.title) && norm(e.title) !== norm(bookTitle ?? "")
