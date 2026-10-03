@@ -18,15 +18,48 @@ import { SITE } from "@/lib/site";
 // The URL stays /guides. What these are called changed; where they live did
 // not, so every link already shared still lands. Filtering is a query string
 // for the same reason — one canonical URL for the store.
+const TITLE = "Books | Faithful Path Community";
+
 // No count in the description. The previous one opened "Five practical
 // Christian books" and was still saying so at ten, which is how a number in
 // metadata goes: nobody revisits it when a book is published. The four
 // category names carry the same information and do not expire.
+const DESCRIPTION =
+  "Short, practical Christian books as instant PDF downloads: following Jesus " +
+  "from the beginning, dating and marriage, rest and worry, and church leadership.";
+
+// The shared card. Every book has its own 1200x630 image, but the store is not
+// any one of them, and a portrait cover would crop to a band in a social card —
+// see the note above OG_IMAGES in app/guides/[slug]/page.tsx.
+const OG_IMAGE = {
+  url: "/og-default.png",
+  width: 1200,
+  height: 630,
+  alt: "Faithful Path Community",
+};
+
 export const metadata: Metadata = {
-  title: "Books | Faithful Path Community",
-  description:
-    "Short, practical Christian books as instant PDF downloads: following Jesus from the beginning, dating and marriage, rest and worry, and church leadership.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/guides" },
+  // Page metadata replaces the root layout's openGraph/twitter objects
+  // wholesale rather than merging into them, so siteName and the url have to be
+  // repeated. Without this block the store shared a link showing the site-wide
+  // blurb about pastoral counselling, which says nothing about books.
+  openGraph: {
+    type: "website",
+    url: "/guides",
+    siteName: "Faithful Path Community",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
 };
 
 /** One book in the grid. Its title is an h3, under the category's h2. */
