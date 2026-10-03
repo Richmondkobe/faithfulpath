@@ -57,10 +57,44 @@ if (!url || !key) {
 }
 const sb = createClient(url, key, { auth: { persistSession: false } });
 
-/** "C H A P T E R" -> "CHAPTER", so a letter-spaced heading still matches. */
-const deSpace = (s) => s.replace(/\b(?:[A-Za-z]\s){2,}[A-Za-z]\b/g, (m) => m.replace(/\s+/g, ""));
+/**
+ * "C H A P T E R  1 0" -> "CHAPTER10", so a letter-spaced heading still matches.
+ *
+ * The digits are collapsed along with the letters. Letters alone left "CHAPTER
+ * 1 0", whose first number reads as 1 — so a book numbered from 10 upwards
+ * would have had its tenth section detected as its first.
+ */
+const deSpace = (s) =>
+  s.replace(/\b(?:[A-Za-z0-9]\s){2,}[A-Za-z0-9]\b/g, (m) => m.replace(/\s+/g, ""));
 
 const WORD_NUMBERS = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+
+/**
+ * A numbered section heading, however the book names its sections.
+ *
+ * "Chapter" is not the only word used: the Life Guides booklet numbers twenty
+ * "Life Guide" sections, and matching only "Chapter" found none of them — which
+ * left the fallback to treat the booklet's own introduction as section one and
+ * Life Guide 1 as section two.
+ *
+ * No word boundary is required after the digits, because these outlines run the
+ * number straight into the title ("Life Guide 1When Your Family Opposes Your
+ * Faith"); one IS required after a word number, so "oneself" is not a section.
+ *
+ * Only the two words the books actually use. "Part" was tempting, and wrong:
+ * three of these books open with a "Part One" divider page a page or two before
+ * chapter one, so matching it would make the divider section one — and in a
+ * book whose "Part Two" divider fell before chapter two, section two as well,
+ * cutting the sample off before the first chapter ended.
+ */
+const SECTION = /^(?:chapter|life\s*guide)\s*(?:(\d+)|(one|two|three|four|five)\b)/i;
+
+/** The section number a heading carries, or null if it is not one. */
+const sectionNumber = (title) => {
+  const m = deSpace(title).match(SECTION);
+  if (!m) return null;
+  return m[1] ? Number(m[1]) : (WORD_NUMBERS[m[2].toLowerCase()] ?? null);
+};
 
 /** Page numbers of the first two chapters, from the PDF's own outline. */
 function chaptersFromOutline(doc, bookTitle) {
@@ -93,17 +127,9 @@ function chaptersFromOutline(doc, bookTitle) {
   if (!found.length) return [];
 
   // An explicit "Chapter N" outline, where it exists.
-  // No word boundary is required after the digits: these outlines run the
-  // number straight into the title ("Chapter 9The Bible"), and there is no
-  // boundary between "9" and "T". Requiring one matched nothing, which dropped
-  // a book whose chapters start at 9 into the fallback below, where its own
-  // front matter was read as chapter one and chapter 9 as chapter two — a
-  // sample of five pages containing none of the chapter it was meant to show.
   const numbered = found
     .map((e) => {
-      const m = deSpace(e.title).match(/^Chapter\s*(?:(\d+)|(one|two|three)\b)/i);
-      if (!m) return null;
-      const n = m[1] ? Number(m[1]) : WORD_NUMBERS[m[2].toLowerCase()];
+      const n = sectionNumber(e.title);
       return n ? { n, page: e.page, title: e.title } : null;
     })
     .filter(Boolean)
@@ -114,7 +140,7 @@ function chaptersFromOutline(doc, bookTitle) {
   // follow it are the chapters whatever they are called. The book's own title
   // is front matter too — it is the title page, and treating it as chapter one
   // cuts the sample off before the real first chapter has started.
-  const frontMatter = /^(contents|copyright|title page|toolkit|practical toolkit|toolkit contents|introduction|why this book exists|before you begin|starting book|a note|about the author|dedication|foreword|preface|acknowledge)/i;
+  const frontMatter = /^(contents|copyright|title page|toolkit|practical toolkit|toolkit contents|introduction|why this book exists|before you begin|starting book|about this|a note|about the author|dedication|foreword|preface|acknowledge)/i;
   const norm = (x) => x.replace(/[^a-z0-9]/gi, "").toLowerCase();
   const body = found.filter(
     (e) => !frontMatter.test(e.title) && norm(e.title) !== norm(bookTitle ?? "")
@@ -134,10 +160,7 @@ async function chaptersFromText(bytes) {
   const { text } = await extractText(pdf, { mergePages: false });
   const opens = new Map();
   text.forEach((raw, i) => {
-    const t = deSpace(raw.replace(/\s+/g, " ").trim());
-    const m = t.match(/^CHAPTER\s*(\d+|ONE|TWO|THREE|FOUR|FIVE)\b/i);
-    if (!m) return;
-    const n = /^\d+$/.test(m[1]) ? Number(m[1]) : WORD_NUMBERS[m[1].toLowerCase()];
+    const n = sectionNumber(raw.replace(/\s+/g, " ").trim());
     if (n && !opens.has(n)) opens.set(n, i + 1);
   });
   return [...opens.entries()]
@@ -191,7 +214,7 @@ for (const book of books) {
   let last, note;
   if (chapters.length >= 2) {
     last = chapters[1].page - 1;
-    note = `${how}: ch1 p${chapters[0].page}, ch2 p${chapters[1].page}`;
+    note = `${how}: #${chapters[0].n} p${chapters[0].page}, #${chapters[1].n} p${chapters[1].page}`;
   } else {
     last = Math.min(FALLBACK_PAGES, total);
     note = `no chapter boundary found — first ${last} pages`;
