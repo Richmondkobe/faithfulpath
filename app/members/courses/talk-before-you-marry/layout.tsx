@@ -1,16 +1,12 @@
-import { IBM_Plex_Mono } from "next/font/google";
+import { tbymMono as mono } from "@/lib/fonts";
 
 import "./tbym.css";
 
 // The approved preview sets its small uppercase labels in IBM Plex Mono. The
 // site already uses the other two faces from that design — Newsreader for
 // display and IBM Plex Sans for text — so this is the only one to add, and it
-// is self-hosted by next/font like the others rather than fetched at runtime.
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-tbym-mono",
-});
+// is self-hosted from a committed file like the others rather than fetched at
+// runtime or at build time.
 
 /**
  * Chrome every page of this course carries.

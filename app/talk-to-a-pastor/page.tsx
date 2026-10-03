@@ -5,20 +5,7 @@ import { TrackedAnchor } from "@/components/analytics/Tracked";
 import JsonLd from "@/components/JsonLd";
 import { abs, graph, orgRef } from "@/lib/schema";
 import Link from "next/link";
-import { Newsreader, IBM_Plex_Sans } from "next/font/google";
-
-const display = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-});
-
-const sans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sans",
-});
+import { display, sans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Talk to a Pastor — Online Pastoral Counselling (US$60)",

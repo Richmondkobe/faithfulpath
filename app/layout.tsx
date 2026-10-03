@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Newsreader, IBM_Plex_Sans } from "next/font/google";
+import { display, sans } from "@/lib/fonts";
 import { SITE } from "@/lib/site";
 import FooterSignup from "@/components/FooterSignup";
 import JsonLd from "@/components/JsonLd";
@@ -8,19 +8,6 @@ import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
 import "./globals.css";
-
-const display = Newsreader({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-});
-
-const sans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://faithfulpathcommunity.com"),
