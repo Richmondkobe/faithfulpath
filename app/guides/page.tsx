@@ -18,10 +18,14 @@ import { SITE } from "@/lib/site";
 // The URL stays /guides. What these are called changed; where they live did
 // not, so every link already shared still lands. Filtering is a query string
 // for the same reason — one canonical URL for the store.
+// No count in the description. The previous one opened "Five practical
+// Christian books" and was still saying so at ten, which is how a number in
+// metadata goes: nobody revisits it when a book is published. The four
+// category names carry the same information and do not expire.
 export const metadata: Metadata = {
   title: "Books | Faithful Path Community",
   description:
-    "Five practical Christian books as instant PDF downloads: overthinking and worry, dating discernment, spiritual burnout, church leadership and premarital preparation.",
+    "Short, practical Christian books as instant PDF downloads: following Jesus from the beginning, dating and marriage, rest and worry, and church leadership.",
   alternates: { canonical: "/guides" },
 };
 
