@@ -4,6 +4,11 @@
 //
 //   node --env-file=.env.local scripts/build-samples.mjs          # build and upload
 //   node --env-file=.env.local scripts/build-samples.mjs --dry    # report the cuts only
+//   node --env-file=.env.local scripts/build-samples.mjs --only <slug>   # one book
+//
+// Without --only every published book is rebuilt. That is the right default
+// after a change to how the cut is chosen, but publishing one new book does not
+// need the other five rewritten, so --only narrows it to that slug.
 //
 // The sample is the front matter, the contents page and the first chapter: every
 // page up to the one where chapter two begins. Re-run it after revising a book —
@@ -29,6 +34,20 @@ import { extractText, getDocumentProxy } from "unpdf";
 const FALLBACK_PAGES = 12;
 const SAMPLES_PREFIX = "samples";
 const dry = process.argv.includes("--dry");
+
+/** The slug given to --only, as either "--only slug" or "--only=slug". */
+const only = (() => {
+  const i = process.argv.findIndex((a) => a === "--only" || a.startsWith("--only="));
+  if (i === -1) return null;
+  const value = process.argv[i].startsWith("--only=")
+    ? process.argv[i].slice("--only=".length)
+    : process.argv[i + 1];
+  if (!value || value.startsWith("--")) {
+    console.error("\n  --only needs a book slug, e.g. --only following-jesus-book-1-begin\n");
+    process.exit(1);
+  }
+  return value;
+})();
 
 const url = (process.env.NEXT_PUBLIC_SUPABASE_URL ?? "").trim();
 const key = (process.env.SUPABASE_SERVICE_ROLE_KEY ?? "").trim();
@@ -120,13 +139,23 @@ async function chaptersFromText(bytes) {
     .map(([n, page]) => ({ n, page, title: `Chapter ${n}` }));
 }
 
-const { data: books, error } = await sb
+const { data: allBooks, error } = await sb
   .from("products")
   .select("slug,title,pdf_path")
   .eq("published", true)
   .order("slug");
 if (error) {
   console.error(`\n  Could not list products: ${error.message}\n`);
+  process.exit(1);
+}
+
+// An unmatched --only stops rather than quietly building nothing, which would
+// otherwise print an empty table and read as success.
+const books = only ? allBooks.filter((b) => b.slug === only) : allBooks;
+if (only && !books.length) {
+  console.error(`\n  No published book has the slug "${only}". Published books are:`);
+  for (const b of allBooks) console.error(`    ${b.slug}`);
+  console.error();
   process.exit(1);
 }
 
@@ -194,4 +223,8 @@ for (const r of rows) {
       `${(r.out / 1024).toFixed(0).padStart(5)}KB  ${r.note}`
   );
 }
-console.log(dry ? "\n  Dry run — nothing uploaded.\n" : `\n  Uploaded ${rows.length} sample(s) to covers/${SAMPLES_PREFIX}/.\n`);
+console.log(
+  dry
+    ? `\n  Dry run — nothing uploaded.${only ? ` Only ${only}.` : ""}\n`
+    : `\n  Uploaded ${rows.length} sample(s) to covers/${SAMPLES_PREFIX}/.\n`
+);
