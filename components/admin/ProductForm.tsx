@@ -4,6 +4,7 @@ import { useActionState, useState } from "react";
 import Link from "next/link";
 import { saveProduct, type ProductFormState } from "@/app/admin/actions";
 import { slugify, type Product } from "@/lib/products";
+import { BOOK_CATEGORIES } from "@/lib/book-categories";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import {
   COVERS_BUCKET,
@@ -215,6 +216,45 @@ export default function ProductForm({
           defaultValue={
             product ? (product.price_cents / 100).toFixed(2) : ""
           }
+          className={inputClass + " max-w-[12rem]"}
+        />
+      </Field>
+
+      {/* The options come from lib/book-categories.ts, so the dropdown cannot
+          offer a slug the database would reject — products_category_check
+          allows exactly these four. Adding a category means editing that file
+          and widening the constraint. */}
+      <Field
+        label="Category"
+        htmlFor="category"
+        hint="Where this book appears in the store. Left unset, it lists under “Other books”."
+      >
+        <select
+          id="category"
+          name="category"
+          defaultValue={product?.category ?? ""}
+          className={inputClass + " max-w-[22rem]"}
+        >
+          <option value="">No category</option>
+          {BOOK_CATEGORIES.map((c) => (
+            <option key={c.slug} value={c.slug}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+      </Field>
+
+      <Field
+        label="Order within category"
+        htmlFor="sort_order"
+        hint="Lowest first. The Following Jesus series runs 1 to 5; books sharing a number fall back to newest first."
+      >
+        <input
+          id="sort_order"
+          name="sort_order"
+          type="number"
+          step="1"
+          defaultValue={product ? String(product.sort_order) : "0"}
           className={inputClass + " max-w-[12rem]"}
         />
       </Field>

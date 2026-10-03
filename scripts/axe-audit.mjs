@@ -29,6 +29,10 @@ const PATHS = [
   "/articles",
   "/articles/signs-of-spiritual-burnout",
   "/guides",
+  // The filtered store as well as the whole one: the category row renders the
+  // active category as a marked span rather than a link, and that state only
+  // exists here.
+  "/guides?category=rest-worry-and-renewal",
   "/guides/talk-before-you-marry",
   "/membership",
   "/talk-to-a-pastor",

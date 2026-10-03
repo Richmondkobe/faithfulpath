@@ -6,6 +6,7 @@ import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
 import { TrackedAnchor, TrackedSubmit } from "@/components/analytics/Tracked";
 import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
+import { bookCategoryHref, getBookCategory } from "@/lib/book-categories";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
 import { getPublishedProductBySlug } from "@/lib/products-db";
@@ -256,6 +257,8 @@ export default async function Guide({ params }: Props) {
     ])
   );
 
+  const category = getBookCategory(guide.category);
+
   return (
     <main className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
       <JsonLd data={schema} />
@@ -289,6 +292,18 @@ export default async function Guide({ params }: Props) {
         </div>
 
         <div>
+          {/* Where this book sits in the store, and a way back to the rest of
+              its category. A book filed under a slug this code does not know
+              shows no label rather than a broken filter. */}
+          {category && (
+            <Link
+              href={bookCategoryHref(category.slug)}
+              className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            >
+              {category.label}
+            </Link>
+          )}
+
           <h1
             className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}

@@ -6,6 +6,7 @@ import { requireAdmin } from "@/lib/auth";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { COVERS_BUCKET, GUIDES_BUCKET, STORAGE_PATH } from "@/lib/storage";
 import { slugify } from "@/lib/products";
+import { isBookCategorySlug } from "@/lib/book-categories";
 
 export type ProductFormState = { error: string | null };
 
@@ -52,6 +53,8 @@ export async function saveProduct(
   const description = String(formData.get("description") ?? "").trim();
   const priceInput = String(formData.get("price") ?? "").trim();
   const published = formData.get("published") === "on";
+  const categoryInput = String(formData.get("category") ?? "").trim();
+  const sortInput = String(formData.get("sort_order") ?? "").trim();
 
   if (!title) return { error: "Give the guide a title." };
 
@@ -64,6 +67,19 @@ export async function saveProduct(
   }
   const price_cents = Math.round(price * 100);
 
+  // Checked here as well as by the dropdown, because a Server Action is
+  // reachable by direct POST. The database would refuse an unknown slug too,
+  // but a named category reads better than a constraint violation.
+  if (categoryInput && !isBookCategorySlug(categoryInput)) {
+    return { error: `"${categoryInput}" is not one of the book categories.` };
+  }
+  const category = categoryInput || null;
+
+  const sort_order = sortInput === "" ? 0 : Number(sortInput);
+  if (!Number.isInteger(sort_order)) {
+    return { error: "Enter the order within the category as a whole number." };
+  }
+
   const coverPath = String(formData.get("cover_path") ?? "").trim();
   const pdfPath = String(formData.get("pdf_path") ?? "").trim();
 
@@ -74,6 +90,8 @@ export async function saveProduct(
     description: description || null,
     price_cents,
     published,
+    category,
+    sort_order,
   };
 
   try {

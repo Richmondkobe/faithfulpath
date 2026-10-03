@@ -12,6 +12,10 @@ export type Product = {
   cover_path: string | null;
   pdf_path: string | null;
   published: boolean;
+  /** A slug from lib/book-categories.ts, or null for a book not yet filed. */
+  category: string | null;
+  /** Position within the category. Lower first; ties fall back to newest. */
+  sort_order: number;
   created_at: string;
 };
 
