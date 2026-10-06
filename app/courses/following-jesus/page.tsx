@@ -6,7 +6,7 @@ import { formatPrice } from "@/lib/products";
 
 const TITLE = "Following Jesus — Four Video Courses | Faithful Path Community";
 const DESCRIPTION =
-  "Four video courses with Pastor Richmond Kobe for the first steps of following Jesus: Begin, Establish, Grow and Multiply.";
+  "Four video courses with Pastor Richmond Kobe, from new life in Christ to helping others follow Jesus: Begin, Establish, Grow and Multiply.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -60,6 +60,7 @@ export default async function FollowingJesusSeries() {
               <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
                 <h2 className="text-2xl text-[#2B2118]" style={heading}>
                   {course.title}
+                  <span className="block text-lg text-[#6B5F53]">{course.subtitle}</span>
                 </h2>
                 {course.launched ? (
                   <Link

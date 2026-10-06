@@ -22,7 +22,9 @@ export type FjCourse = {
   /** Book number in the series, 1 to 4. */
   book: number;
   title: string;
-  /** The welcome page's heading, which is also its browser tab title. */
+  /** "New Life in Christ": shown on the series page, and part of the full title. */
+  subtitle: string;
+  /** "Begin: New Life in Christ", the welcome page's heading and its tab title. */
   fullTitle: string;
   /** The course_slug in course_progress, course_completions and course_private_answers. */
   key: string;
@@ -45,6 +47,7 @@ export const COURSES: FjCourse[] = [
     slug: "begin",
     book: 1,
     title: "Begin",
+    subtitle: "New Life in Christ",
     fullTitle: "Begin: New Life in Christ",
     key: "following-jesus-begin",
     launched: true,
@@ -60,9 +63,9 @@ export const COURSES: FjCourse[] = [
     ]),
     completionPage: { slug: "my-first-steps", title: "My First Steps" },
   },
-  { slug: "establish", book: 2, title: "Establish", fullTitle: "Establish", key: "following-jesus-establish", launched: false, lessons: [], completionPage: null },
-  { slug: "grow", book: 3, title: "Grow", fullTitle: "Grow", key: "following-jesus-grow", launched: false, lessons: [], completionPage: null },
-  { slug: "multiply", book: 4, title: "Multiply", fullTitle: "Multiply", key: "following-jesus-multiply", launched: false, lessons: [], completionPage: null },
+  { slug: "establish", book: 2, title: "Establish", subtitle: "Strong Foundations", fullTitle: "Establish: Strong Foundations", key: "following-jesus-establish", launched: false, lessons: [], completionPage: null },
+  { slug: "grow", book: 3, title: "Grow", subtitle: "Becoming Like Jesus", fullTitle: "Grow: Becoming Like Jesus", key: "following-jesus-grow", launched: false, lessons: [], completionPage: null },
+  { slug: "multiply", book: 4, title: "Multiply", subtitle: "Helping Others Follow Jesus", fullTitle: "Multiply: Helping Others Follow Jesus", key: "following-jesus-multiply", launched: false, lessons: [], completionPage: null },
 ];
 
 export function findCourse(slug: string): FjCourse | null {

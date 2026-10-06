@@ -55,7 +55,7 @@ export default async function FollowingJesusThankYou({
 
   if (!paid) {
     return (
-      <Shell title="Nothing to show">
+      <Shell title="We couldn’t find your payment">
         <p className="mt-6 leading-relaxed">
           This page appears after buying a course. If you have just paid and see
           this, your receipt is on its way by email; you can{" "}
