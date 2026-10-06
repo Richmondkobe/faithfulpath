@@ -2,6 +2,7 @@ import {
   OFFERS,
   SERIES_PATH,
   coursePath,
+  downloadPath,
   offersOpenCourse,
   type FjCourse,
   type FjOffer,
@@ -114,6 +115,7 @@ function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgre
   <h2 id="h-yours">${escapeHtml(course.title)} is yours</h2>
   ${lead}
   <ul class="fj-progress" aria-label="Your lessons">${list}</ul>
+  <div class="btns"><a class="btn" href="${downloadPath(course, "leaders-guide.pdf")}">⬇ Download the Leader's Guide (PDF)</a></div>
   <div class="fj-who">Signed in as <b>${escapeHtml(learner.email)}</b>. ${signOutForm(base)}</div>
  </section>`;
 }
