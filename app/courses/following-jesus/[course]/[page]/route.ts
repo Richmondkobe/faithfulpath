@@ -5,6 +5,7 @@ import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
 import { completionPage, lessonPage } from "@/lib/fj-lessons";
 import { getCourseProgress } from "@/lib/fj-progress";
+import { answersApiPath, getAnswers, withAnswers } from "@/lib/fj-answers";
 
 /**
  * A lesson (lesson-01 … lesson-08) or the completion page. For buyers only:
@@ -28,8 +29,15 @@ export async function GET(
     return NextResponse.redirect(new URL(`${coursePath(course)}#buy`, request.url), 307);
   }
 
+  const pageSlug = lesson ? lesson.slug : page;
+  const [progress, answers] = await Promise.all([
+    lesson ? getCourseProgress(course) : null,
+    getAnswers(course, pageSlug),
+  ]);
   const html = lesson
-    ? await lessonPage(course, lesson, { completed: (await getCourseProgress(course)).completed.has(lesson.slug) })
+    ? await lessonPage(course, lesson, { completed: progress?.completed.has(lesson.slug) ?? false })
     : await completionPage(course);
-  return htmlResponse(html, { cache: "private" });
+
+  // The learner's own answers go back into the page, and save as they type.
+  return htmlResponse(withAnswers(html, answersApiPath(course, pageSlug), answers), { cache: "private" });
 }
