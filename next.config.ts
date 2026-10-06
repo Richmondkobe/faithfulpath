@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "25mb",
     },
   },
+  // The Following Jesus pages and their fonts are read from disk at request
+  // time. The tracer usually finds files read through process.cwd(), but these
+  // routes serve nothing else, so say so rather than rely on it.
+  outputFileTracingIncludes: {
+    "/courses/following-jesus/**/*": ["./content/courses/following-jesus/**/*.html"],
+    "/courses/following-jesus/fonts/*": ["./fonts/fj-*.woff2"],
+  },
   images: {
     remotePatterns: supabaseHost
       ? [

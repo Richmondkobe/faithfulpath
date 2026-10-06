@@ -22,9 +22,18 @@ const buttonClass =
 
 export default function MemberLoginForm({
   defaultEmail = "",
+  next,
+  restartHref = "/members/login",
 }: {
   defaultEmail?: string;
+  /** Where to land once signed in. The actions accept only an allowed path. */
+  next?: string;
+  /** This page, for "send another code" and "use a different email". */
+  restartHref?: string;
 }) {
+  const nextField = next ? <input type="hidden" name="next" value={next} /> : null;
+  const withEmail = (email: string) =>
+    `${restartHref}${restartHref.includes("?") ? "&" : "?"}email=${encodeURIComponent(email)}`;
   const [sendState, sendAction, sending] = useActionState(
     sendMemberLink,
     initialSend
@@ -52,6 +61,7 @@ export default function MemberLoginForm({
 
         <form action={codeAction} className="mt-8 space-y-4">
           <input type="hidden" name="email" value={sendState.sent} />
+          {nextField}
           <div>
             <label htmlFor="token" className={labelClass}>
               Enter the 6-digit code from your email
@@ -83,14 +93,14 @@ export default function MemberLoginForm({
 
         <p className="mt-6 text-sm text-[#6B5F53]">
           <a
-            href={`/members/login?email=${encodeURIComponent(sendState.sent)}`}
+            href={withEmail(sendState.sent)}
             className="underline underline-offset-4 hover:text-[#8B5E34]"
           >
             Send another code
           </a>{" "}
           or{" "}
           <a
-            href="/members/login"
+            href={restartHref}
             className="underline underline-offset-4 hover:text-[#8B5E34]"
           >
             use a different email
@@ -103,6 +113,7 @@ export default function MemberLoginForm({
 
   return (
     <form action={sendAction} className="mt-10 max-w-md space-y-4">
+      {nextField}
       <div>
         <label htmlFor="email" className={labelClass}>
           Email you paid with

@@ -59,16 +59,30 @@ const FACES = [
   { file: "source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400" },
   { file: "source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400" },
   { file: "source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..600" },
+  // The Following Jesus pages, served as their reviewed HTML. They asked Google
+  // for serif 400 and 600, serif italic 400 and sans 400 to 700, so these cover
+  // exactly that; the faces above stay as the other courses use them. "ḥ" is in
+  // the Begin transcripts, and the dashes are throughout.
+  { file: "fj-source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400..600", extra: "ḥ–—" },
+  { file: "fj-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400", extra: "ḥ–—" },
+  { file: "fj-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: "ḥ–—" },
 ];
+
+// --only <prefix>: fetch just the faces whose file starts with it, leaving the
+// others untouched.
+const onlyIndex = process.argv.indexOf("--only");
+const only = onlyIndex >= 0 ? process.argv[onlyIndex + 1] : null;
 
 if (!existsSync(OUT)) mkdirSync(OUT, { recursive: true });
 
 console.log();
 let changed = 0;
 for (const face of FACES) {
+  if (only && !face.file.startsWith(only)) continue;
+  const chars = CHARS + (face.extra ?? "");
   const cssUrl =
     `https://fonts.googleapis.com/css2?family=${face.family}` +
-    `&text=${encodeURIComponent(CHARS)}&display=swap`;
+    `&text=${encodeURIComponent(chars)}&display=swap`;
   const cssRes = await fetch(cssUrl, { headers: { "User-Agent": UA } });
   if (!cssRes.ok) {
     console.error(`  ${face.file}: css request failed — ${cssRes.status}`);
@@ -109,7 +123,7 @@ for (const face of FACES) {
   }
   // A character the face simply has no glyph for is left out by Google, which is
   // information rather than a fault — but a face missing a letter would not be.
-  const missing = [...CHARS].filter((ch) => !covered.has(ch.codePointAt(0)));
+  const missing = [...chars].filter((ch) => !covered.has(ch.codePointAt(0)));
   const missingLetters = missing.filter((ch) => /\p{L}/u.test(ch));
   if (missingLetters.length) {
     console.error(`  ${face.file}: no glyph for ${missingLetters.length} letter(s): ${missingLetters.slice(0, 12).join(" ")}`);

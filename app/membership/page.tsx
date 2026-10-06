@@ -188,6 +188,20 @@ export default function Membership() {
 
       <WhichIsRight here="/membership" />
 
+      {/* Following Jesus is sold on its own. Said here, next to "every Faithful
+          Path course" below, so no one joins expecting it to be included. */}
+      <p className="mt-6 max-w-2xl leading-relaxed text-[#6B5F53]">
+        New to faith, or helping someone who is?{" "}
+        <Link
+          href="/courses/following-jesus"
+          className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+        >
+          Following Jesus
+        </Link>{" "}
+        is a separate series of four video courses, bought on its own rather than
+        included in the membership.
+      </p>
+
       <H2>What Your Membership Includes</H2>
       <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">
         <li>

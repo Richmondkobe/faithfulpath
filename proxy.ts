@@ -54,6 +54,10 @@ export const config = {
     "/admin/:path*",
     "/login",
     "/members/:path*",
+    // The Following Jesus courses sign people in with the same accounts, and
+    // their lessons are behind it.
+    "/courses/:path*",
+    "/api/courses/:path*",
     "/auth/:path*",
     // The gone URLs. Spelled out rather than built from GONE_PATHS, because a
     // matcher is read at build time; lib/gone-paths.ts keeps the two together.

@@ -1,0 +1,31 @@
+import { notFound } from "next/navigation";
+import { NextResponse, type NextRequest } from "next/server";
+import { SERIES_PATH, findCourse } from "@/lib/following-jesus";
+import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
+import { htmlResponse, readCoursePage, websitePage } from "@/lib/fj-html";
+import { welcomePage } from "@/lib/fj-welcome";
+
+/**
+ * A course's welcome page. Public, so anyone can see what the course is before
+ * buying; under it, the ways to buy and the sign-in, or the owner's way in.
+ *
+ * A route handler rather than a page: the reviewed HTML is a whole document,
+ * and serving it as one keeps it exactly as approved — and keeps the site
+ * layout, with its analytics, off it entirely.
+ */
+export async function GET(
+  request: NextRequest,
+  ctx: RouteContext<"/courses/following-jesus/[course]">
+) {
+  const { course: slug } = await ctx.params;
+  const course = findCourse(slug);
+  if (!course) notFound();
+  // Establish, Grow and Multiply are on the series page as "Coming soon".
+  if (!course.launched) return NextResponse.redirect(new URL(SERIES_PATH, request.url), 307);
+
+  const learner = await getLearner();
+  const offers = learner ? await getOwnedOffers() : new Set<never>();
+
+  const html = websitePage(await readCoursePage(course, "welcome.html"), { indexable: true });
+  return htmlResponse(welcomePage(html, course, learner, offers), { cache: "public" });
+}

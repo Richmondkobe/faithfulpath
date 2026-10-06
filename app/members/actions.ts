@@ -15,6 +15,17 @@ import {
 import { siteUrl } from "@/lib/stripe";
 
 export type MemberLoginState = { error: string | null; sent: string | null };
+
+/**
+ * Where to go once signed in. /members, unless the form came from a Following
+ * Jesus course, whose buyers are not members and belong back on their course.
+ * Only paths inside the series are accepted, so this cannot be pointed
+ * anywhere else.
+ */
+function afterSignIn(formData: FormData): string {
+  const next = String(formData.get("next") ?? "");
+  return /^\/courses\/following-jesus(\/[a-z0-9-]+)*$/.test(next) ? next : "/members";
+}
 export type MemberCodeState = { error: string | null };
 
 /**
@@ -42,7 +53,7 @@ export async function sendMemberLink(
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${siteUrl()}/auth/callback?next=/members`,
+      emailRedirectTo: `${siteUrl()}/auth/callback?next=${encodeURIComponent(afterSignIn(formData))}`,
       shouldCreateUser: true,
     },
   });
@@ -94,7 +105,7 @@ export async function verifyMemberCode(
     };
   }
 
-  redirect("/members");
+  redirect(afterSignIn(formData));
 }
 
 export async function memberLogout() {
