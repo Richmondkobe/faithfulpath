@@ -2,7 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { findCourse, findLesson } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { readCoursePage } from "@/lib/fj-html";
-import { pageFields, saveAnswers } from "@/lib/fj-answers";
+import { saveAnswers } from "@/lib/fj-answers";
+import { pageFields } from "@/lib/fj-answers-page";
 import { fromThisSite } from "@/lib/fj-request";
 
 /**

@@ -84,11 +84,11 @@ export async function lessonPage(
   html = swap(
     html,
     DONE_BUTTON,
-    `${DONE_BUTTON}\n  <p class="sub mark" id="fj-done-error" role="alert" hidden>That did not save. Please check your connection and try again.</p>`
+    `${DONE_BUTTON}\n  <p data-fj class="sub mark" id="fj-done-error" role="alert" hidden>That did not save. Please check your connection and try again.</p>`
   );
   html = beforeBodyEnd(
     html,
-    `<script>
+    `<script data-fj>
 (function(){
   var btn=document.getElementById('done'),fin=document.getElementById('finish'),err=document.getElementById('fj-done-error');
   btn.onclick=function(){
@@ -120,7 +120,7 @@ export async function playerPage(course: FjCourse, lesson: FjLesson, audioUrl: s
 
   return beforeBodyEnd(
     html,
-    `<script>
+    `<script data-fj>
 (function(){
   var aud=document.getElementById('aud'),tries=0,wanted=false;
   aud.addEventListener('play',function(){wanted=true;});

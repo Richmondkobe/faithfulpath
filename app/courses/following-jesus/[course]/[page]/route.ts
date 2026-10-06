@@ -5,7 +5,8 @@ import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
 import { completionPage, lessonPage } from "@/lib/fj-lessons";
 import { getCourseProgress } from "@/lib/fj-progress";
-import { answersApiPath, getAnswers, withAnswers } from "@/lib/fj-answers";
+import { getAnswers } from "@/lib/fj-answers";
+import { answersApiPath, withAnswers } from "@/lib/fj-answers-page";
 
 /**
  * A lesson (lesson-01 … lesson-08) or the completion page. For buyers only:

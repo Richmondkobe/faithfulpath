@@ -86,13 +86,3 @@ export async function completeLesson(
   }
   return { courseCompleted: true };
 }
-
-/** "6 October 2026", as the pages write dates. */
-export function formatDay(iso: string): string {
-  return new Date(iso).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  });
-}

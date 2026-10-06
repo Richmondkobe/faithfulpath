@@ -1,6 +1,7 @@
 import {
   OFFERS,
   SERIES_PATH,
+  formatDay,
   coursePath,
   downloadPath,
   offersOpenCourse,
@@ -11,14 +12,18 @@ import {
 import { formatPrice } from "@/lib/products";
 import { escapeHtml, swap } from "@/lib/fj-html";
 import type { Learner } from "@/lib/following-jesus-access";
-import { formatDay, type CourseProgress } from "@/lib/fj-progress";
+import type { CourseProgress } from "@/lib/fj-progress";
 
 // What goes under a course's welcome page: the two ways to buy it and the
 // sign-in, or, for someone who already has it, their way in. Written with the
 // page's own classes (card, kicker, sub, btn) so it sits in the page's style,
 // plus the few rules below for what the page has no class for.
 
-const STYLE = `<style>
+const STYLE = `<style data-fj>
+/* The page's small gold text (--gold-d, #a8792b) is 3.7:1 on its cream, under
+   the 4.5:1 that WCAG AA asks of text this size. In what the site adds, the
+   same gold a shade deeper: 5.0:1. The reviewed page itself is left as it is. */
+[data-fj]{--gold-d:#8f6420}
 .fj-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:12px 0 6px}
 .fj-offer{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;display:flex;flex-direction:column}
 .fj-offer h3{margin:0;font-size:19px;line-height:1.3}
@@ -64,7 +69,7 @@ function buySection(course: FjCourse, learner: Learner | null): string {
     : `<div class="fj-who">Already bought ${escapeHtml(course.title)}? <a href="${signIn}">Sign in</a> with the email you paid with.</div>`;
 
   return `
- <section class="card" id="buy" aria-labelledby="h-buy">
+ <section data-fj class="card" id="buy" aria-labelledby="h-buy">
   <p class="kicker">Take the course</p>
   <h2 id="h-buy">Two ways to start</h2>
   <p class="sub">The Following Jesus courses are sold on their own, separately from the Faithful Path membership.</p>
@@ -110,7 +115,7 @@ function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgre
   }
 
   return `
- <section class="card" id="your-course" aria-labelledby="h-yours">
+ <section data-fj class="card" id="your-course" aria-labelledby="h-yours">
   <p class="kicker">Your course</p>
   <h2 id="h-yours">${escapeHtml(course.title)} is yours</h2>
   ${lead}

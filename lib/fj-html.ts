@@ -48,6 +48,10 @@ export function beforeHeadEnd(html: string, markup: string): string {
 
 /* ------------------------------------------------- swaps every page needs */
 
+// Everything the site adds to a page carries a data-fj attribute, so that
+// scripts/verify-fj-pages.mjs can set it aside and prove the rest of the page
+// is the reviewed file. Keep it on anything added here or in fj-*.ts.
+
 const GOOGLE_FONTS =
   '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">';
 
@@ -55,7 +59,7 @@ const FONT_PATH = `${SERIES_PATH}/fonts`;
 
 // The same two families, the same weights, from this site. Nothing about the
 // page asks Google for anything, so a visitor's address goes nowhere else.
-const SELF_HOSTED_FONTS = `<style>
+const SELF_HOSTED_FONTS = `<style data-fj>
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(${FONT_PATH}/fj-source-serif-4-normal.woff2) format('woff2')}
 @font-face{font-family:'Source Serif 4';font-style:italic;font-weight:400;font-display:swap;src:url(${FONT_PATH}/fj-source-serif-4-italic.woff2) format('woff2')}
 @font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400 700;font-display:swap;src:url(${FONT_PATH}/fj-source-sans-3-normal.woff2) format('woff2')}
@@ -90,7 +94,7 @@ export function websitePage(
 
   out = swap(out, DEAD_HELP_LINK, '<a href="/contact">Need help?</a>');
   if (!indexable) {
-    out = beforeHeadEnd(out, '<meta name="robots" content="noindex, nofollow">');
+    out = beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
   }
   return out;
 }
@@ -98,7 +102,7 @@ export function websitePage(
 /** The player is framed inside the lesson page; it gets the fonts and nothing else. */
 export function websitePlayer(html: string, title: string): string {
   const out = retitle(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), title);
-  return beforeHeadEnd(out, '<meta name="robots" content="noindex, nofollow">');
+  return beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
 }
 
 /* ------------------------------------------------------------- responses */

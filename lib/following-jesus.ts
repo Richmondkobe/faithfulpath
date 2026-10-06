@@ -151,3 +151,13 @@ export function downloadFiles(course: FjCourse): string[] {
 export function downloadPath(course: FjCourse, file: string): string {
   return `${coursePath(course)}/downloads/${file}`;
 }
+
+/** "6 October 2026", as the pages write dates. */
+export function formatDay(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
