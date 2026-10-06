@@ -1,0 +1,662 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 8</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#16213a;--navy:#1f2d45;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f2d45;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#121b30 0%,#1f2d45 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar.seek{cursor:pointer;height:8px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,760px);margin:0 0 .6em}.method div{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffaf0;border:2px solid #d4a24c;border-radius:14px;padding:8px 6px;font-size:clamp(12px,1.7vw,16px);color:#1f2d45;text-align:center}.method svg{width:34px;height:34px;color:#a8792b}
+.method.five{grid-template-columns:repeat(5,1fr)}.method.dark div{background:rgba(243,231,201,.06);color:#f3e7c9;border-color:#d4a24c}.method.dark svg{color:#e8c98a}.method small{font-size:.78em;opacity:.8}.method .dim,.method .step{opacity:.35;transition:opacity .6s}.method .step.on{opacity:1}
+.checks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;width:min(100%,760px);text-align:left}.checks li{position:relative;padding-left:1.6em;font-size:clamp(14px,1.9vw,18px);color:#1f2d45}.checks li::before{content:'\2713';position:absolute;left:0;color:#a8792b;font-weight:700}@media(max-width:560px){.checks{grid-template-columns:1fr}}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-lord" viewBox="0 0 60 60"><path d="M14 54V30h32v24" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 54h40M14 38h32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 22l3-14 9 8 9-8 3 14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cost" viewBox="0 0 60 60"><path d="M12 54V22h16v32M20 22V10h4v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M8 54h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="34" y="26" width="18" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 33h10M38 40h7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-obey" viewBox="0 0 60 60"><ellipse cx="20" cy="42" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-banner" viewBox="0 0 60 60"><path d="M14 56V6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 8h34l-8 10 8 10H14" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M28 14v8M24 18h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-spoken" viewBox="0 0 60 60"><path d="M6 48c8-4 16-4 24 0 8-4 16-4 24 0V20c-8-4-16-4-24 0-8-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v28" stroke="currentColor" stroke-width="3"/><path d="M22 10c4-4 12-4 16 0M18 4c7-5 17-5 24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-points" viewBox="0 0 60 60"><path d="M6 54c10-4 14-12 22-16s14-8 18-18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M46 6v20M40 12h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-daily" viewBox="0 0 60 60"><rect x="6" y="12" width="34" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 22h34M14 8v8M32 8v8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 50c0-6 12-6 12 0l-2 4h-8z" fill="currentColor"/><path d="M50 44c-2-4 0-7 0-9 2 3 3 6 0 9z" fill="currentColor"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-notice" viewBox="0 0 60 60"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="4"/><path d="M36 36l16 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="sans-serif">?</text></symbol>
+
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4a24c"/></marker>
+</defs></svg>
+<!-- ============ L8 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Begin · Lesson 8</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f3e7c9"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="80" r="1.6"/></g>
+   <g class="b up" data-at="Welcome to Lesson 8 the last lesson" data-until="Many people today are interested in Jesus">
+     <text x="320" y="96" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#d4a24c">Lesson 8 · the last lesson of Begin</text>
+     <text x="320" y="146" text-anchor="middle" font-weight="700" font-size="38" fill="#f3e7c9">Belonging to Christ’s Church</text>
+     <g style="color:#d4a24c"><use href="#i-father" x="190" y="186" width="44" height="44"/><use href="#i-honest" x="260" y="186" width="44" height="44"/><use href="#i-pattern" x="330" y="186" width="44" height="44"/><use href="#i-keep" x="400" y="186" width="44" height="44"/></g>
+     <text x="320" y="262" text-anchor="middle" font-size="16" fill="#cfd3db">Lesson 7: beginning with prayer</text>
+   </g>
+   <g class="b" data-at="Many people today are interested in Jesus" data-until="So here is our question">
+     <g fill="#f3e7c9"><circle cx="320" cy="150" r="14"/><path d="M304 240c0-46 7-70 16-70s16 24 16 70z"/></g>
+     <g class="b pop" data-at="I can pray at home read my Bible"><use href="#i-spoken" x="230" y="200" width="40" height="40" style="color:#e8c98a"/><rect x="372" y="200" width="26" height="42" rx="5" fill="none" stroke="#e8c98a" stroke-width="3"/><path d="M380 214l10 6-10 6z" fill="#e8c98a"/></g>
+     <g font-size="15" text-anchor="middle" fill="#cfd3db">
+       <text class="b up" data-at="Some have been disappointed by Christians" x="150" y="90">disappointed</text>
+       <text class="b up" data-at="Some are shy busy or far from a church" x="490" y="90">shy</text>
+       <text class="b up" data-at="Some are shy busy or far from a church" x="130" y="150">busy</text>
+       <text class="b up" data-at="Some are shy busy or far from a church" x="510" y="150">far away</text>
+       <text class="b up" data-at="Others simply think of faith as a private matter" x="320" y="70">a private matter?</text>
+     </g>
+   </g>
+  </svg>
+  <h1 class="b up" data-at="So here is our question" style="font-size:clamp(22px,3.8vw,40px)">Can I follow Jesus on my own? Why do I need a church?</h1>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Acts 2:41–42</p>
+  <p class="scripture" style="font-size:clamp(16px,2.3vw,24px)">
+   <span class="ph" data-at="So those who received his word were baptized">“So those who received his word were baptized, and there were added that day about three thousand souls.</span>
+   <span class="ph" data-at="And they devoted themselves to the apostles' teaching"><b>And they devoted themselves to the apostles’ teaching and the fellowship, to the breaking of bread and the prayers.”</b></span>
+   <span class="ref">Acts 2:41–42 · ESV</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 160" aria-hidden="true">
+    <g font-size="16" text-anchor="middle" font-weight="700" fill="#1f2d45">
+     <g class="b up" data-at="They learned together"><rect x="20" y="20" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><path d="M70 70c10-4 20-4 25 0 5-4 15-4 25 0v-26c-10-4-20-4-25 0-5-4-15-4-25 0z" fill="none" stroke="#a8792b" stroke-width="2.5"/><text x="95" y="104">teaching</text></g>
+     <g class="b up" data-at="They shared life together"><rect x="185" y="20" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><g fill="#a8792b"><circle cx="245" cy="50" r="8"/><circle cx="275" cy="50" r="8"/></g><path d="M240 70c10 8 30 8 40 0" stroke="#a8792b" stroke-width="3" fill="none"/><text x="260" y="104">fellowship</text></g>
+     <g class="b up" data-at="They broke bread together"><rect x="350" y="20" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><ellipse cx="410" cy="62" rx="20" ry="11" fill="#e8c98a" stroke="#a8792b" stroke-width="2"/><path d="M440 48h14l-3 26h-8z" fill="none" stroke="#a8792b" stroke-width="2.5"/><text x="425" y="104">breaking bread</text></g>
+     <g class="b up" data-at="And they prayed together"><rect x="515" y="20" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><use href="#i-pray" x="570" y="34" width="40" height="40" style="color:#a8792b"/><text x="590" y="104">prayers</text></g>
+    </g>
+    <text class="b up" data-at="And notice the word devoted" x="340" y="152" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="19" fill="#a8792b">“devoted”: not once, but a way of life</text>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Acts 2:43–47</p>
+  <div class="stack">
+   <div class="b up" data-at="Listen to verses" data-until="Notice where they met">
+    <p class="scripture" style="color:#f3e7c9;font-size:clamp(14px,2vw,21px)">
+     <span class="ph" data-at="And awe came upon every soul">“And awe came upon every soul, and many wonders and signs were being done through the apostles.</span>
+     <span class="ph" data-at="And all who believed were together">And all who believed were together and had all things in common. And they were selling their possessions and belongings and distributing the proceeds to all, as any had need.</span>
+     <span class="ph" data-at="And day by day attending the temple together"><b>And day by day, attending the temple together and breaking bread in their homes, they received their food with glad and generous hearts,</b></span>
+     <span class="ph" data-at="praising God and having favor">praising God and having favor with all the people. And the Lord added to their number day by day those who were being saved.”</span>
+     <span class="ref" style="color:#cfd3db">Acts 2:43–47 · ESV</span>
+    </p>
+   </div>
+   <svg class="scene b" data-at="Notice where they met" viewBox="0 0 680 280" aria-hidden="true">
+     <g class="b up" data-at="in the temple courts as a large gathering">
+       <rect x="40" y="70" width="260" height="140" fill="none" stroke="#cfd3db" stroke-width="2.5"/><g stroke="#cfd3db" stroke-width="5"><path d="M70 80v120M110 80v120M150 80v120M190 80v120M230 80v120M270 80v120"/></g><path d="M30 70h280l-140-40z" fill="none" stroke="#cfd3db" stroke-width="2.5"/>
+       <g fill="#e8c98a"><circle cx="90" cy="230" r="6"/><circle cx="120" cy="234" r="6"/><circle cx="150" cy="230" r="6"/><circle cx="180" cy="234" r="6"/><circle cx="210" cy="230" r="6"/><circle cx="240" cy="234" r="6"/></g>
+       <text x="170" y="266" text-anchor="middle" font-size="16" fill="#cfd3db">temple courts</text>
+     </g>
+     <g class="b up" data-at="and in their homes as smaller groups around a meal">
+       <path d="M400 210v-70l50-36 50 36v70z" fill="rgba(243,231,201,.07)" stroke="#d4a24c" stroke-width="2.5"/><rect x="434" y="160" width="32" height="26" fill="#e8c98a" fill-opacity=".6"/>
+       <path d="M530 210v-60l40-30 40 30v60z" fill="rgba(243,231,201,.07)" stroke="#d4a24c" stroke-width="2.5"/><rect x="556" y="164" width="28" height="22" fill="#e8c98a" fill-opacity=".6"/>
+       <text x="505" y="266" text-anchor="middle" font-size="16" fill="#cfd3db">homes</text>
+     </g>
+     <text class="b up" data-at="they shared generously with anyone in need" x="340" y="16" text-anchor="middle" font-size="15" fill="#e8c98a">glad and generous hearts · sharing with anyone in need</text>
+     <text class="b up" data-at="the Lord himself" x="505" y="100" text-anchor="middle" font-size="15" fill="#f3e7c9">the Lord added to their number</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <div class="stack">
+   <svg class="scene b" data-at="Let us look at the background" data-until="Remember what we learned in Lesson 6 some passages describe" viewBox="0 0 680 290" aria-hidden="true">
+     <g class="b" data-at="Let us look at the background" data-until="So the people in our passage">
+       <path d="M60 230v-80h60v-30h50v30h60v80zM400 230v-100h50v-40h40v40h60v100z" fill="#e3d6b8"/>
+       <g font-size="13" fill="#5d6676" text-anchor="middle"><text x="140" y="260">Jerusalem at Pentecost</text></g>
+       <g fill="#7d7a5e"><circle cx="280" cy="200" r="7"/><circle cx="300" cy="196" r="7"/><circle cx="320" cy="200" r="7"/><circle cx="360" cy="200" r="7"/><circle cx="380" cy="196" r="7"/></g>
+       <g fill="#1f2d45"><circle cx="340" cy="130" r="12"/><path d="M328 190c0-36 6-50 12-50s12 14 12 50z"/></g>
+       <text class="b up" data-at="Jewish pilgrims from many nations" x="340" y="40" text-anchor="middle" font-size="17" fill="#1f2d45">Jewish pilgrims from many nations</text>
+       <g class="b up" data-at="He told the crowd that God had raised Jesus"><text x="540" y="70" text-anchor="middle" font-size="16" fill="#a8792b">crucified · raised</text><text x="540" y="94" text-anchor="middle" font-size="16" font-weight="700" fill="#a8792b">Lord and Christ</text></g>
+       <text class="b up" data-at="Repent and be baptized every one of you" x="340" y="284" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#a8792b">“Repent and be baptized every one of you…” Acts 2:38</text>
+     </g>
+     <g class="b" data-at="So the people in our passage">
+       <path d="M60 220c40-10 80 10 120 0s80-10 120 0" stroke="#5f86b0" stroke-width="5" fill="none"/>
+       <g fill="#1f2d45"><circle cx="180" cy="150" r="12"/><path d="M168 220c0-40 6-56 12-56s12 16 12 56z"/></g>
+       <path class="draw b" data-at="As soon as they believed and were baptised" style="--len:140" d="M220 180h110" stroke="#d4a24c" stroke-width="4" marker-end="url(#arrow)"/>
+       <g class="b up" data-at="they were added to a community of believers"><g fill="#a8792b"><circle cx="420" cy="150" r="11"/><circle cx="460" cy="146" r="11"/><circle cx="500" cy="150" r="11"/><circle cx="540" cy="146" r="11"/><circle cx="480" cy="190" r="11"/><circle cx="440" cy="194" r="11" fill="#1f2d45"/></g><text x="480" y="250" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2d45">added to a community</text></g>
+       <text x="340" y="50" text-anchor="middle" font-size="18" fill="#5d6676">brand-new believers, like many taking this course</text>
+     </g>
+   </svg>
+   <svg class="scene b" data-at="Remember what we learned in Lesson 6 some passages describe" viewBox="0 0 680 290" aria-hidden="true">
+     <text x="340" y="44" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2d45">Describing or commanding?</text>
+     <g class="b up" data-at="these believers sold possessions"><rect x="60" y="80" width="260" height="110" rx="14" fill="#fffaf0" stroke="#9aa3b5" stroke-width="2"/><text x="190" y="124" text-anchor="middle" font-size="17" fill="#1f2d45">they sold possessions</text><text x="190" y="152" text-anchor="middle" font-size="14" fill="#5d6676">voluntary, for real need</text></g>
+     <g class="b up" data-at="Peter tells a man that his property"><rect x="360" y="80" width="260" height="110" rx="14" fill="#efe6d2"/><text x="490" y="116" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#1f2d45">“While it remained unsold,</text><text x="490" y="138" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#1f2d45">did it not remain your own?”</text><text x="490" y="166" text-anchor="middle" font-size="13" letter-spacing="1" fill="#a8792b">ACTS 5:4</text></g>
+     <g class="b up" data-at="its priorities remain a guide for churches everywhere"><rect x="140" y="214" width="400" height="52" rx="14" fill="#d4a24c"/><text x="340" y="246" text-anchor="middle" font-size="17" font-weight="700" fill="#16213a">its priorities remain a guide</text></g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="dark" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="Our first original word" style="color:#cfd3db">Church · Greek</p>
+  <p class="word b up" data-at="In Greek it is ekklēsia" style="color:#f3e7c9">ekklēsia</p>
+  <p class="gloss b up" data-at="The word was commonly used for an assembly" style="color:#e8c98a;font-weight:600">an assembly, a gathering of people</p>
+  <svg class="scene" viewBox="0 0 680 200" aria-hidden="true">
+    <g class="b up" data-at="In Acts chapter 19 the same word"><path d="M40 150a90 60 0 0 1 180 0" fill="none" stroke="#9aa3b5" stroke-width="3"/><path d="M60 150a70 44 0 0 1 140 0" fill="none" stroke="#9aa3b5" stroke-width="2"/><g fill="#cfd3db"><circle cx="100" cy="120" r="5"/><circle cx="130" cy="110" r="5"/><circle cx="160" cy="120" r="5"/></g><text x="130" y="176" text-anchor="middle" font-size="13" fill="#cfd3db">the town’s assembly</text><text x="130" y="194" text-anchor="middle" font-size="12" fill="#9aa3b5">Acts 19:39</text></g>
+    <g class="b up" data-at="it is not first talking about a building"><rect x="270" y="80" width="80" height="70" fill="none" stroke="#7b8190" stroke-width="2"/><path d="M262 80h96l-48-30z" fill="none" stroke="#7b8190" stroke-width="2"/><path d="M262 150l96-70" stroke="#d4a24c" stroke-width="3"/><text x="310" y="176" text-anchor="middle" font-size="13" fill="#cfd3db">not first a building</text></g>
+    <g class="b up" data-at="Paul writes to the church of God that is in Corinth"><g fill="#e8c98a"><circle cx="420" cy="110" r="8"/><circle cx="446" cy="104" r="8"/><circle cx="472" cy="110" r="8"/><circle cx="446" cy="130" r="8"/></g><text x="446" y="176" text-anchor="middle" font-size="13" fill="#cfd3db">a local church</text><text x="446" y="194" text-anchor="middle" font-size="12" fill="#9aa3b5">1 Corinthians 1:2</text></g>
+    <g class="b up" data-at="and for Christ's church more broadly"><circle cx="590" cy="110" r="40" fill="none" stroke="#d4a24c" stroke-width="2" stroke-dasharray="4 6"/><g fill="#e8c98a"><circle cx="575" cy="96" r="5"/><circle cx="605" cy="100" r="5"/><circle cx="590" cy="124" r="5"/><circle cx="566" cy="122" r="5"/><circle cx="612" cy="126" r="5"/></g><text x="590" y="176" text-anchor="middle" font-size="13" fill="#cfd3db">“my church”</text><text x="590" y="194" text-anchor="middle" font-size="12" fill="#9aa3b5">Matthew 16:18</text></g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="Our second word">Fellowship · Greek</p>
+  <p class="word b up" data-at="In Greek it is koinōnia">koinōnia</p>
+  <p class="gloss b up" data-at="It means sharing partnership participation" style="color:#a8792b;font-weight:600">sharing · partnership · participation</p>
+  <svg class="scene" viewBox="0 0 680 190" aria-hidden="true">
+    <g class="b up" data-at="It is much more than friendly conversation"><rect x="30" y="70" width="170" height="60" rx="12" fill="#efe6d2"/><text x="115" y="106" text-anchor="middle" font-size="15" fill="#5d6676">only a friendly chat?</text><path d="M50 101h130" stroke="#d4a24c" stroke-width="2"/></g>
+    <g class="b up" data-at="Paul uses it when he thanks the Philippians"><g fill="#1f2d45"><circle cx="270" cy="70" r="10"/><path d="M260 140c0-36 4-52 10-52s10 16 10 52z"/></g><g fill="#a8792b"><circle cx="350" cy="70" r="10"/><path d="M340 140c0-36 4-52 10-52s10 16 10 52z"/></g><rect x="284" y="96" width="52" height="30" rx="4" fill="#e8c98a" stroke="#1f2d45" stroke-width="2"/><text x="310" y="166" text-anchor="middle" font-size="13" fill="#5d6676">“partnership in the gospel”</text><text x="310" y="184" text-anchor="middle" font-size="12" fill="#a8792b">Philippians 1:5</text></g>
+    <g class="b up" data-at="our fellowship is with the Father"><g fill="#5d6676"><circle cx="490" cy="130" r="8"/><circle cx="530" cy="134" r="8"/><circle cx="570" cy="130" r="8"/></g><path d="M490 120l40-60M530 124v-64M570 120l-40-60" stroke="#d4a24c" stroke-width="2"/><circle cx="530" cy="50" r="14" fill="#e8c98a"/><text x="530" y="166" text-anchor="middle" font-size="13" fill="#5d6676">“with the Father and with his Son”</text><text x="530" y="184" text-anchor="middle" font-size="12" fill="#a8792b">1 John 1:3</text></g>
+  </svg>
+  <p class="gloss b up" data-at="It is sharing a life together because we share in Christ" style="font-weight:700;color:#1f2d45">sharing a life together, because we share in Christ</p>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">Understand the Teaching</p>
+  <h2 class="b up" data-at="Here is the short answer" style="margin-bottom:.3em">The short answer</h2>
+  <p class="scripture" style="font-size:clamp(18px,2.6vw,28px)">
+    <span class="ph" data-at="Following Jesus is personal but it was never meant to be private"><b>Following Jesus is personal, but it was never meant to be private.</b></span>
+    <span class="ph" data-at="When God makes us his children he brings us into his family">When God makes us his children, he brings us into his family.</span>
+    <span class="ph" data-at="knowing that no church is perfect">No church is perfect, but we belong and grow together.</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 130" aria-hidden="true" style="color:#1f2d45">
+    <g class="b pop" data-at="four parts belong to his family gather"><use href="#i-family" x="50" y="0" width="70" height="70" style="color:#d4a24c"/><text x="85" y="100" text-anchor="middle" font-size="18" font-weight="700">Belong to</text><text x="85" y="122" text-anchor="middle" font-size="18" font-weight="700">His Family</text></g>
+    <g class="b pop" data-at="gather together care for one another"><use href="#i-gather" x="220" y="0" width="70" height="70"/><text x="255" y="100" text-anchor="middle" font-size="18" font-weight="700">Gather Together</text></g>
+    <g class="b pop" data-at="care for one another and find"><use href="#i-care" x="390" y="0" width="70" height="70"/><text x="425" y="100" text-anchor="middle" font-size="18" font-weight="700">Care for</text><text x="425" y="122" text-anchor="middle" font-size="18" font-weight="700">One Another</text></g>
+    <g class="b pop" data-at="and find a healthy church"><use href="#i-healthy" x="560" y="0" width="70" height="70"/><text x="595" y="100" text-anchor="middle" font-size="18" font-weight="700">Find a Healthy</text><text x="595" y="122" text-anchor="middle" font-size="18" font-weight="700">Church</text></g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="dark" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-family"/></svg>1 · Belong to His Family</p>
+  <svg class="scene" viewBox="0 0 680 300" aria-hidden="true">
+    <g class="b" data-at="The first part belong to his family" data-until="The church is not first a building">
+      <path d="M340 70l140 90v120H200V160z" fill="rgba(232,201,138,.1)" stroke="#d4a24c" stroke-width="3" stroke-linejoin="round"/>
+      <g fill="#f3e7c9"><circle cx="280" cy="200" r="10"/><circle cx="320" cy="196" r="10"/><circle cx="360" cy="200" r="10"/><circle cx="400" cy="196" r="10" fill="#e8c98a"/></g>
+      <g class="b" data-at="So then you are no longer strangers"><g fill="#9aa3b5"><circle cx="100" cy="200" r="10"/><path d="M90 260c0-30 4-44 10-44s10 14 10 44z"/></g><path class="draw b" data-at="members of the household of God" style="--len:140" d="M120 230h110" stroke="#d4a24c" stroke-width="3" marker-end="url(#arrow)"/></g>
+      <text class="b up" data-at="So then you are no longer strangers" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#e8c98a">“…no longer strangers… members of the household of God.” Ephesians 2:19</text>
+    </g>
+    <g class="b" data-at="The church is not first a building">
+      <g fill="none" stroke="#cfd3db" stroke-width="3"><circle cx="340" cy="80" r="22"/><path d="M340 102v90M340 120l-50 40M340 120l50 40M340 192l-30 70M340 192l30 70"/></g>
+      <g font-size="14" text-anchor="middle" fill="#e8c98a">
+       <g class="b pop" data-at="In a body every part belongs"><circle cx="330" cy="76" r="5" fill="#e8c98a"/><text x="230" y="80">eye</text></g>
+       <g class="b pop" data-at="The eye cannot say to the hand"><circle cx="290" cy="160" r="7" fill="#e8c98a"/><text x="250" y="170">hand</text></g>
+       <g class="b pop" data-at="and every part needs the others"><circle cx="310" cy="262" r="7" fill="#e8c98a"/><text x="270" y="280">foot</text></g>
+      </g>
+      <text class="b up" data-at="Now you are the body of Christ" x="520" y="120" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#e8c98a">“…the body of Christ”</text>
+      <text class="b up" data-at="Now you are the body of Christ" x="520" y="142" text-anchor="middle" font-size="13" fill="#cfd3db">1 Corinthians 12:27</text>
+      <text class="b up" data-at="But if you belong to Christ you belong to his people" x="520" y="220" text-anchor="middle" font-size="18" font-weight="700" fill="#f3e7c9">you belong</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge" style="color:#a8792b"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-gather"/></svg>2 · Gather Together</p>
+  <div class="stack">
+   <div class="b up" data-at="The second part gather together" data-until="Gathering can take many forms">
+    <p class="scripture b up" data-at="And let us consider how to stir up one another" style="font-size:clamp(16px,2.3vw,24px)">“And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but <b style="color:#a8792b">encouraging one another</b>…”<span class="ref">Hebrews 10:24–25</span></p>
+    <p class="gloss b up" data-at="we keep going better together than alone" style="font-weight:700;color:#1f2d45">we keep going better together than alone</p>
+   </div>
+   <svg class="scene b" data-at="Gathering can take many forms" viewBox="0 0 680 270" aria-hidden="true">
+     <g font-size="15" text-anchor="middle" fill="#1f2d45">
+      <g class="b pop" data-at="a Sunday service"><path d="M50 150v-60l50-30 50 30v60z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><path d="M100 40v20M92 48h16" stroke="#a8792b" stroke-width="3"/><text x="100" y="180">Sunday service</text></g>
+      <g class="b pop" data-at="a small group in a home"><path d="M210 150v-50l40-28 40 28v50z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><g fill="#a8792b"><circle cx="236" cy="128" r="6"/><circle cx="252" cy="124" r="6"/><circle cx="268" cy="128" r="6"/></g><text x="250" y="180">home group</text></g>
+      <g class="b pop" data-at="a prayer meeting"><use href="#i-pray" x="375" y="80" width="56" height="56" style="color:#a8792b"/><text x="403" y="180">prayer meeting</text></g>
+      <g class="b pop" data-at="a meal with other believers"><ellipse cx="560" cy="126" rx="56" ry="14" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><circle cx="545" cy="118" r="8" fill="#e07b39"/><circle cx="575" cy="120" r="8" fill="#7d9a5e"/><text x="560" y="180">a meal together</text></g>
+     </g>
+     <g class="b up" data-at="Not everyone can attend in the same way"><rect x="140" y="204" width="400" height="56" rx="14" fill="#efe6d2"/><text x="340" y="238" text-anchor="middle" font-size="16" fill="#1f2d45">cannot attend? a realistic way to stay connected</text></g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="dark" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-care"/></svg>3 · Care for One Another</p>
+  <svg class="scene" viewBox="0 0 680 300" aria-hidden="true">
+    <g class="b" data-at="The third part care for one another" data-until="And everyone has something to give">
+      <g fill="#cfd3db"><circle cx="270" cy="110" r="13"/><path d="M256 220c0-50 6-74 14-74s14 24 14 74z"/></g>
+      <g fill="#e8c98a"><circle cx="410" cy="110" r="13"/><path d="M396 220c0-50 6-74 14-74s14 24 14 74z"/></g>
+      <rect class="b" data-at="Bear one another's burdens" x="296" y="150" width="88" height="44" rx="8" fill="#7a6a55" stroke="#cfd3db" stroke-width="2"/>
+      <path class="b" data-at="Bear one another's burdens" d="M284 160l14 6M396 160l-14 6" stroke="#cfd3db" stroke-width="5" stroke-linecap="round"/>
+      <text class="b up" data-at="Bear one another's burdens" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#e8c98a">“Bear one another’s burdens…” Galatians 6:2</text>
+      <text class="b up" data-at="Everyone needs care sometimes" x="340" y="262" text-anchor="middle" font-size="15" fill="#cfd3db">illness · grief · money trouble · family difficulty · doubt</text>
+    </g>
+    <g class="b" data-at="And everyone has something to give">
+      <text x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#e8c98a">“As each has received a gift, use it to serve one another…” 1 Peter 4:10</text>
+      <g font-size="15" text-anchor="middle" fill="#f3e7c9">
+       <g class="b pop" data-at="You might welcome a newcomer"><rect x="40" y="80" width="130" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c"/><path d="M85 140v-34h40v34" fill="none" stroke="#e8c98a" stroke-width="3"/><text x="105" y="196">welcome</text></g>
+       <g class="b pop" data-at="pray for someone"><rect x="200" y="80" width="130" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c"/><use href="#i-pray" x="243" y="94" width="44" height="44" style="color:#e8c98a"/><text x="265" y="196">pray</text></g>
+       <g class="b pop" data-at="help with a practical task"><rect x="360" y="80" width="130" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c"/><rect x="402" y="112" width="46" height="28" rx="4" fill="none" stroke="#e8c98a" stroke-width="3"/><path d="M415 112v-8h20v8M402 124h46" stroke="#e8c98a" stroke-width="3"/><text x="425" y="196">practical help</text></g>
+       <g class="b pop" data-at="or simply listen"><rect x="520" y="80" width="130" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c"/><use href="#i-hear" x="563" y="94" width="44" height="44" style="color:#e8c98a"/><text x="585" y="196">listen</text></g>
+      </g>
+      <text class="b up" data-at="Love one another with brotherly affection" x="340" y="240" text-anchor="middle" font-size="16" fill="#e8c98a">brotherly affection · honour · hospitality · Romans 12:10–13</text>
+      <text class="b up" data-at="They are what family members do for one another" x="340" y="274" text-anchor="middle" font-size="17" font-weight="700" fill="#f3e7c9">what family members do for one another</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="badge" style="color:#a8792b"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-healthy"/></svg>4 · Find a Healthy Church</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The fourth part find a healthy church" data-until="Here are some biblical priorities" viewBox="0 0 680 280" aria-hidden="true">
+     <path d="M230 230v-100l110-70 110 70v100z" fill="#fffaf0" stroke="#1f2d45" stroke-width="3" stroke-linejoin="round"/><path d="M340 30v30M328 42h24" stroke="#a8792b" stroke-width="4"/>
+     <path class="b" data-at="No church is perfect" d="M400 150l-10 20 12 14-8 22" stroke="#9aa3b5" stroke-width="2.5" fill="none"/>
+     <text class="b up" data-at="No church is perfect" x="560" y="120" text-anchor="middle" font-size="16" fill="#5d6676">no church is perfect</text>
+     <text class="b up" data-at="But ordinary imperfection is not the same" x="120" y="120" text-anchor="middle" font-size="15" fill="#5d6676">imperfection ≠ manipulation</text>
+     <text class="b up" data-at="So what does a healthy church look like" x="340" y="262" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#a8792b">“…not domineering… but being examples to the flock.” 1 Peter 5:3</text>
+   </svg>
+   <div class="b up" data-at="Here are some biblical priorities" data-until="You do not need to join a church immediately">
+    <p class="gloss" style="font-weight:700;color:#1f2d45;margin-bottom:.5em">Biblical priorities and wise signs</p>
+    <ul class="checks">
+     <li class="b up" data-at="It is centred on Jesus">Centred on Jesus; the gospel clearly proclaimed</li>
+     <li class="b up" data-at="It teaches the Bible faithfully">Teaches the Bible faithfully</li>
+     <li class="b up" data-at="It prays It loves people">Prays</li>
+     <li class="b up" data-at="It loves people including newcomers">Loves people, including newcomers and the struggling</li>
+     <li class="b up" data-at="It handles money responsibly">Handles money responsibly and openly</li>
+     <li class="b up" data-at="And its leaders serve">Leaders serve, are accountable, and do not stand above Scripture</li>
+    </ul>
+   </div>
+   <svg class="scene b" data-at="You do not need to join a church immediately" viewBox="0 0 680 280" aria-hidden="true">
+     <g fill="#1f2d45"><circle class="b" data-at="It is wise to visit several times" cx="140" cy="140" r="10"/><circle class="b" data-at="ask questions and see how people are treated" cx="220" cy="140" r="10"/><circle class="b" data-at="Churches differ in how they are led" cx="300" cy="140" r="10"/></g>
+     <path d="M100 170h420" stroke="#9aa3b5" stroke-width="3"/><path d="M540 170v-70l40-26 40 26v70z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/>
+     <text x="300" y="60" text-anchor="middle" font-size="18" font-weight="700" fill="#1f2d45">visit · ask questions · take your time</text>
+     <text class="b up" data-at="faithful churches can differ in these ways" x="340" y="220" text-anchor="middle" font-size="16" fill="#5d6676">different leadership and styles · the same gospel</text>
+     <text class="b up" data-at="And online services can be a real help" x="340" y="252" text-anchor="middle" font-size="16" fill="#5d6676">online services can help · meeting in person wherever possible</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="dark" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="label">Two practices Jesus gave his church</p>
+  <svg class="scene" viewBox="0 0 680 300" aria-hidden="true">
+    <g class="b up" data-at="The first is baptism">
+      <rect x="40" y="40" width="280" height="200" rx="18" fill="rgba(243,231,201,.06)" stroke="#d4a24c" stroke-width="2"/>
+      <path d="M70 180c25-10 50 10 75 0s50-10 75 0 50 10 75 0" stroke="#5f86b0" stroke-width="4" fill="none"/><path d="M70 200c25-10 50 10 75 0s50-10 75 0 50 10 75 0" stroke="#5f86b0" stroke-width="4" fill="none"/>
+      <g fill="#f3e7c9"><circle cx="180" cy="120" r="12"/><path d="M166 180c0-30 6-46 14-46s14 16 14 46z"/></g>
+      <text x="180" y="76" text-anchor="middle" font-size="20" font-weight="700" fill="#f3e7c9">Baptism</text>
+      <text x="180" y="226" text-anchor="middle" font-size="13" fill="#cfd3db">Acts 2:41 · Lesson 4</text>
+    </g>
+    <g class="b up" data-at="The second is the Lord's Supper">
+      <rect x="360" y="40" width="280" height="200" rx="18" fill="rgba(243,231,201,.06)" stroke="#d4a24c" stroke-width="2"/>
+      <ellipse cx="460" cy="160" rx="34" ry="14" fill="#e8c98a"/><path d="M520 120h30l-6 50h-18z" fill="none" stroke="#e8c98a" stroke-width="3"/><path d="M520 120h30" stroke="#e8c98a" stroke-width="3"/>
+      <text x="500" y="76" text-anchor="middle" font-size="20" font-weight="700" fill="#f3e7c9">The Lord’s Supper</text>
+      <text class="b up" data-at="Do this in remembrance of me" x="500" y="104" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#e8c98a">“Do this in remembrance of me.”</text>
+      <text class="b up" data-at="you proclaim the Lord's death until he comes" x="500" y="210" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="14" fill="#e8c98a">“…until he comes.” 1 Corinthians 11:26</text>
+    </g>
+    <text class="b up" data-at="Christians understand and practise both" x="340" y="270" text-anchor="middle" font-size="16" fill="#cfd3db">practised in different ways · taught fully in Book 2</text>
+    <text class="b up" data-at="both of them are practised together in the church" x="340" y="294" text-anchor="middle" font-size="16" font-weight="700" fill="#f3e7c9">practised together, in the church</text>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">A Story · Osaka, Japan</p>
+  <h1 class="b up" data-at="Let me tell you about Kenji" style="font-size:clamp(26px,4.4vw,46px)">Kenji’s story</h1>
+  <div class="stack">
+   <svg class="scene b" data-at="Kenji works long hours" data-until="The next Sunday an older man" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b" data-at="Kenji works long hours" data-until="His online mentor encouraged him">
+       <rect x="160" y="60" width="320" height="170" rx="6" fill="#1f2d45"/><g fill="#e8c98a" opacity=".6"><rect x="180" y="80" width="30" height="20"/><rect x="230" y="80" width="30" height="20"/><rect x="380" y="80" width="30" height="20"/><rect x="430" y="110" width="30" height="20"/></g>
+       <g fill="#cfd3db"><circle cx="300" cy="160" r="11"/><path d="M288 226c0-36 5-50 12-50s12 14 12 50z"/></g><rect x="320" y="166" width="22" height="34" rx="4" fill="#e8c98a"/>
+       <text class="b up" data-at="They will all know each other" x="320" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#5d6676">“They will all know each other.”</text>
+     </g>
+     <g class="b" data-at="His online mentor encouraged him">
+       <rect x="80" y="130" width="140" height="70" rx="6" fill="#9aa3b5"/><text x="150" y="172" text-anchor="middle" font-size="13" fill="#fffaf0">station</text>
+       <path d="M380 220v-80l70-46 70 46v80z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2.5"/><path d="M450 70v24M442 80h16" stroke="#a8792b" stroke-width="3"/>
+       <g fill="#1f2d45"><circle cx="300" cy="170" r="10"/><path d="M290 226c0-30 4-44 10-44s10 14 10 44z"/></g>
+       <text class="b up" data-at="Kenji sat at the back and left before the end" x="320" y="40" text-anchor="middle" font-size="16" fill="#5d6676">sat at the back · left early</text>
+     </g>
+   </svg>
+   <svg class="scene b" data-at="The next Sunday an older man" data-until="Kenji now attends most Sundays" viewBox="0 0 640 260" aria-hidden="true">
+     <g fill="#1f2d45"><circle cx="250" cy="110" r="13"/><path d="M237 200c0-44 6-62 13-62s13 18 13 62z"/></g>
+     <g fill="#7d7a5e"><circle cx="370" cy="106" r="13"/><path d="M357 200c0-46 6-64 13-64s13 18 13 64z"/></g>
+     <path d="M264 150c30 6 60 6 90 0" stroke="#5d6676" stroke-width="5" stroke-linecap="round" fill="none"/>
+     <text x="370" y="70" text-anchor="middle" font-size="16" fill="#a8792b">“Kenji!”</text>
+     <g class="b up" data-at="Over noodles"><ellipse cx="320" cy="232" rx="120" ry="14" fill="#b19475"/><g fill="#fffaf0" stroke="#1f2d45" stroke-width="1.5"><path d="M250 224a16 10 0 0 0 32 0z"/><path d="M304 224a16 10 0 0 0 32 0z"/><path d="M358 224a16 10 0 0 0 32 0z"/></g></g>
+     <text class="b up" data-at="asking questions about the Bible" x="320" y="30" text-anchor="middle" font-size="16" fill="#5d6676">questions about work · questions about the Bible</text>
+   </svg>
+   <svg class="scene b" data-at="Kenji now attends most Sundays" viewBox="0 0 640 260" aria-hidden="true">
+     <path d="M200 200v-70l60-40 60 40v70z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><g fill="#a8792b"><circle cx="234" cy="176" r="7"/><circle cx="252" cy="172" r="7"/><circle cx="270" cy="176" r="7"/><circle cx="288" cy="172" r="7" fill="#1f2d45"/></g>
+     <text x="260" y="230" text-anchor="middle" font-size="15" fill="#5d6676">Wednesday group</text>
+     <text class="b up" data-at="Groups still feel difficult for him sometimes" x="470" y="140" text-anchor="middle" font-size="15" fill="#5d6676">still hard sometimes · that is fine</text>
+     <text class="b up" data-at="one welcoming person often makes the difference" x="320" y="40" text-anchor="middle" font-size="17" font-weight="700" fill="#1f2d45">one welcoming person often makes the difference</text>
+     <text class="b up" data-at="One day that welcoming person could be you" x="320" y="74" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#a8792b">One day, that welcoming person could be you.</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="here are four common mistakes" style="font-size:clamp(22px,3.8vw,40px)">What belonging to the church is not</h1>
+  <div class="nots">
+   <div class="not b up" data-at="Church is a building I visit on Sundays"><span class="wrong">A building I visit<i class="b" data-at="The church is God's family his people"></i></span><span class="truth b" data-at="The church is God's family his people">God’s people, wherever they meet</span></div>
+   <div class="not b up" data-at="My Christian life is only between me and God"><span class="wrong">Only me and God<i class="b" data-at="God's children belong together and we need one another"></i></span><span class="truth b" data-at="God's children belong together and we need one another">We belong together</span></div>
+   <div class="not b up" data-at="Only my church's style is the true church"><span class="wrong">Only my style is true<i class="b" data-at="Faithful churches differ in structure and style"></i></span><span class="truth b" data-at="Faithful churches differ in structure and style">Different styles, same gospel</span></div>
+   <div class="not b up" data-at="I must join serve and give straight away"><span class="wrong">Join, serve, give at once<i class="b" data-at="You may visit ask questions and take your time"></i></span><span class="truth b" data-at="You may visit ask questions and take your time">Visit and take your time</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="Your assignment is to take one practical step" style="font-size:clamp(22px,3.6vw,38px)">Take one practical step towards a local church</h1>
+  <ol class="steps">
+    <li class="b up" data-at="First read Acts"><b>Read</b> Acts 2:41–47 again</li>
+    <li class="b up" data-at="Second write down one local church"><b>Write down:</b> <span class="b" data-at="one local church or Christian group">one church</span> · <span class="b" data-at="one person you could contact">one person</span> · <span class="b" data-at="and the date of their next gathering">one date</span></li>
+    <li class="b up" data-at="Third if you can attend one gathering"><b>Attend</b> one gathering if you can, or find a realistic way to stay connected</li>
+    <li class="b up" data-at="And fourth welcome one person"><b>Welcome</b> one person you do not know yet, or pray for one person in your church</li>
+  </ol>
+  <p class="gloss b up" data-at="If you already belong to a church" style="color:#a8792b;font-weight:600">Already in a church? Take one step deeper: a small group, one way to serve, one new person</p>
+  <div class="fs b up" data-at="This assignment belongs to your First Step">
+    <span>My faith</span><span>My Bible</span><span>My prayer</span><span class="lit b" data-at="called my church">My church</span><span>My witness</span>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="dark" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="Following Jesus is personal but it was never meant to be private">Following Jesus is personal, but it was never meant to be private.</h2>
+  <div class="remember">
+    <div class="b up" data-at="Belong to his family every believer"><svg viewBox="0 0 60 60"><use href="#i-family"/></svg><p><b>Belong to His Family</b>every believer is joined to God’s people, the body of Christ</p></div>
+    <div class="b up" data-at="Gather together we meet to worship"><svg viewBox="0 0 60 60"><use href="#i-gather"/></svg><p><b>Gather Together</b>worship, learn, pray and encourage one another</p></div>
+    <div class="b up" data-at="Care for one another we receive care"><svg viewBox="0 0 60 60"><use href="#i-care"/></svg><p><b>Care for One Another</b>receive care and give it; everyone has something to offer</p></div>
+    <div class="b up" data-at="Find a healthy church not a perfect church"><svg viewBox="0 0 60 60"><use href="#i-healthy"/></svg><p><b>Find a Healthy Church</b>centred on Jesus, faithful to Scripture, led by accountable servants</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 17 ============ -->
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="And with that you have completed Begin" cx="320" cy="340" r="120" fill="#e8c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">You have completed Begin</p>
+  <svg class="scene" viewBox="0 0 680 300" aria-hidden="true">
+    <path d="M20 81H660" stroke="#d4a24c" stroke-width="2" fill="none" stroke-dasharray="2 8" opacity=".6"/>
+    <g font-size="12" text-anchor="middle" fill="#f3e7c9" style="color:#e8c98a">
+     <g class="b pop" data-at="what the good news is"><use href="#i-crown" x="19" y="60" width="42" height="42"/><text x="40" y="124">Good News</text></g>
+     <g class="b pop" data-at="how we respond with repentance and faith"><use href="#i-grace" x="99" y="60" width="42" height="42"/><text x="120" y="124">Repentance</text></g>
+     <g class="b pop" data-at="what God does in the new birth"><use href="#i-new" x="179" y="60" width="42" height="42"/><text x="200" y="124">Born Again</text></g>
+     <g class="b pop" data-at="what it means to follow Jesus as Lord"><use href="#i-lord" x="259" y="60" width="42" height="42"/><text x="280" y="124">Jesus as Lord</text></g>
+     <g class="b pop" data-at="who you are in Christ"><use href="#i-child" x="339" y="60" width="42" height="42"/><text x="360" y="124">Identity</text></g>
+     <g class="b pop" data-at="how to begin with the Bible"><use href="#i-spoken" x="419" y="60" width="42" height="42"/><text x="440" y="124">The Bible</text></g>
+     <g class="b pop" data-at="with prayer and with Christ's church"><use href="#i-pray" x="499" y="60" width="42" height="42"/><text x="520" y="124">Prayer</text></g>
+     <g class="b pop" data-at="and with Christ's church"><use href="#i-family" x="579" y="60" width="42" height="42"/><text x="600" y="124">The Church</text></g>
+    </g>
+    <g class="b up" data-at="It brings together the five First Steps">
+      <text x="340" y="186" text-anchor="middle" font-size="16" font-weight="700" fill="#f3e7c9">My First Steps in Following Jesus</text>
+      <g font-size="14" text-anchor="middle" font-weight="700"><rect x="70" y="200" width="100" height="34" rx="17" fill="#d4a24c"/><text x="120" y="222" fill="#16213a">My faith</text><rect x="180" y="200" width="100" height="34" rx="17" fill="#d4a24c"/><text x="230" y="222" fill="#16213a">My Bible</text><rect x="290" y="200" width="100" height="34" rx="17" fill="#d4a24c"/><text x="340" y="222" fill="#16213a">My prayer</text><rect x="400" y="200" width="100" height="34" rx="17" fill="#d4a24c"/><text x="450" y="222" fill="#16213a">My church</text><rect x="510" y="200" width="100" height="34" rx="17" fill="#d4a24c"/><text x="560" y="222" fill="#16213a">My witness</text></g>
+    </g>
+    <text class="b up" data-at="Following Jesus is lifelong" x="340" y="266" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#e8c98a">Following Jesus is lifelong</text>
+    <text class="b up" data-at="the next stage is Book 2 Establish" x="340" y="292" text-anchor="middle" font-size="16" fill="#f3e7c9">Next: Book 2, Establish</text>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L8 SLIDE 18 ============ -->
+<section class="slide" data-n="18" data-theme="dark" aria-label="Slide 18">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e8c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer" style="font-size:clamp(15px,2.1vw,22px);line-height:1.4">
+   <p class="ph" data-at="Father thank you that you have made me your child">Father, thank you that you have made me your child and brought me into your family.</p>
+   <p class="ph" data-at="Thank you for your church imperfect">Thank you for your church, imperfect, but loved by you.</p>
+   <p class="ph" data-at="Lead me to a healthy church">Lead me to a healthy church where I can belong and grow.</p>
+   <p class="ph" data-at="Help me to receive care and to give it">Help me to receive care, and to give it.</p>
+   <p class="ph" data-at="Thank you for all you have begun in me">Thank you for all you have begun in me. Keep me following Jesus, one step at a time.</p>
+   <p class="ph" data-at="In Jesus' name Amen"><b>In Jesus’ name. Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:.6em">You may stop here for today.</p>
+ </div>
+</section>
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 17</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="begin-lesson-08.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1": "Welcome to Lesson 8, the last lesson of Begin. In Lesson 5, we saw that everyone who trusts Christ becomes a child of God. Today we ask what that means for our life together. If God is our Father, who are our brothers and sisters?\n\nMany people today are interested in Jesus but uncertain about church. Some have been disappointed by Christians. Some are shy, busy or far from a church. Others simply think of faith as a private matter between them and God. I can pray at home, read my Bible and watch sermons online, they say. Why do I need a church?\n\nSo here is our question: can I follow Jesus on my own? By the end of this lesson, you will see from Scripture why God brings his children together, and you will have one practical step to take.", "2": "Our passage is Acts chapter 2, verses 41 to 47. It describes the first church in Jerusalem, in the days after the Holy Spirit came at Pentecost. Verse 41: \"So those who received his word were baptized, and there were added that day about three thousand souls.\"\n\nThen verse 42 tells us what these new believers did: \"And they devoted themselves to the apostles' teaching and the fellowship, to the breaking of bread and the prayers.\"\n\nNotice four things. They learned together, from the apostles' teaching. They shared life together, in the fellowship. They broke bread together. And they prayed together. And notice the word devoted. This was not something they did once. It was a way of life.", "3": "Listen to verses 43 to 47: \"And awe came upon every soul, and many wonders and signs were being done through the apostles. And all who believed were together and had all things in common. And they were selling their possessions and belongings and distributing the proceeds to all, as any had need. And day by day, attending the temple together and breaking bread in their homes, they received their food with glad and generous hearts, praising God and having favor with all the people. And the Lord added to their number day by day those who were being saved.\"\n\nNotice where they met: in the temple courts, as a large gathering, and in their homes, as smaller groups around a meal. Notice how they treated one another: they shared generously with anyone in need. And notice who added people to the church: the Lord himself.", "4": "Let us look at the background. Pentecost was a Jewish festival, and Jerusalem was full of Jewish pilgrims from many nations. On that day the Holy Spirit came upon Jesus' followers, and Peter stood up and preached. He told the crowd that God had raised Jesus, whom they had crucified, from the dead and made him both Lord and Christ. Many were cut to the heart, and Peter said, \"Repent and be baptized every one of you in the name of Jesus Christ for the forgiveness of your sins.\"\n\nSo the people in our passage were brand-new believers, just like many who are taking this course. As soon as they believed and were baptised, they were added to a community of believers.\n\nRemember what we learned in Lesson 6: some passages describe, and some command. Acts 2 describes one early church. It is not a strict template for every detail. For example, these believers sold possessions to help those in need. But a few chapters later, Peter tells a man that his property had remained his own to keep or to sell. Their generosity was voluntary, in response to real need. Still, the passage shows us what belonging to Christ looks like, and its priorities remain a guide for churches everywhere.", "5": "Our first original word is the word translated \"church.\" In Greek it is ekkl\u0113sia. The word was commonly used for an assembly or gathering of people. In Acts chapter 19, the same word is used for the town's official assembly in Ephesus: \"it shall be settled in the regular assembly.\"\n\nSo when the New Testament speaks of the church, it is not first talking about a building. It is talking about people gathered together. Jesus said, \"I will build my church.\" Paul writes \"to the church of God that is in Corinth,\" meaning the believers who met in that city.\n\nThe New Testament can use the same word for a local church, as in Corinth, and for Christ's church more broadly, as in Matthew 16:18. When you belong to Christ, you belong to his church, and that belonging becomes visible when believers gather together.", "6": "Our second word is the word translated \"fellowship\" in verse 42. In Greek it is koin\u014dnia. It means sharing, partnership, participation: taking part together. It is much more than friendly conversation over tea.\n\nPaul uses it when he thanks the Philippians \"because of your partnership in the gospel.\" They shared in his work and supported it. And John uses it in a remarkable way: \"so that you too may have fellowship with us; and indeed our fellowship is with the Father and with his Son Jesus Christ.\"\n\nSo Christian fellowship is not only enjoying people we like. It is sharing a life together because we share in Christ. Those are our two words for today: ekkl\u0113sia, the church, God's people gathered, and koin\u014dnia, fellowship, sharing life in Christ.", "7": "So, can I follow Jesus on my own? Here is the short answer. Following Jesus is personal, but it was never meant to be private.\n\nWhen God makes us his children, he brings us into his family. We gather with his people, care for one another, and look for a healthy church where we can belong and grow, knowing that no church is perfect.\n\nThe rest of this lesson unpacks that answer in four parts: belong to his family, gather together, care for one another, and find a healthy church.", "8": "The first part: belong to his family. When we belong to Christ, we also belong to his people. Paul writes to believers from very different backgrounds: \"So then you are no longer strangers and aliens, but you are fellow citizens with the saints and members of the household of God.\"\n\nThe church is not first a building or a Sunday event. It is God's family, and the body of Christ. Paul says, \"Now you are the body of Christ and individually members of it.\" In a body, every part belongs, and every part needs the others. \"The eye cannot say to the hand, 'I have no need of you.'\"\n\nSo we were not made to follow Jesus in isolation. You may be very new, and you may feel you have little to offer. But if you belong to Christ, you belong to his people.", "9": "The second part: gather together. From the very beginning, Christians have met together regularly to worship God, hear his word, pray, share the Lord's Supper and share life. Hebrews encourages believers: \"And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another.\"\n\nNotice the reason given: encouragement. We gather not only to receive something for ourselves, but to stir up one another. Following Jesus is often hard, and we keep going better together than alone.\n\nGathering can take many forms: a Sunday service, a small group in a home, a prayer meeting, a meal with other believers. Not everyone can attend in the same way. Illness, work, caring for others or distance can make it difficult. If that is your situation, you have not failed. Look for a realistic way to stay connected, and let others care for you.", "10": "The third part: care for one another. In God's family, we both receive care and give it. Paul writes, \"Bear one another's burdens, and so fulfill the law of Christ.\" Everyone needs care sometimes: in illness, grief, money trouble, family difficulty or doubt. A healthy church is a place where people help carry one another's loads.\n\nAnd everyone has something to give, even a new believer. Peter writes, \"As each has received a gift, use it to serve one another.\" You might welcome a newcomer, pray for someone, help with a practical task, or simply listen.\n\nPaul's list of ways to love in Romans 12 includes this: \"Love one another with brotherly affection. Outdo one another in showing honor.\" And verse 13 says, \"Contribute to the needs of the saints and seek to show hospitality.\" None of these require special training. They are what family members do for one another.", "11": "The fourth part: find a healthy church. No church is perfect. Every church is made up of imperfect people who need God's grace, and you will be disappointed sometimes. That is not a reason to give up on church. But ordinary imperfection is not the same as manipulation or harm.\n\nSo what does a healthy church look like? Peter describes good leaders as shepherds who serve: \"shepherd the flock of God that is among you, exercising oversight, not under compulsion, but willingly\u2026 not for shameful gain, but eagerly; not domineering over those in your charge, but being examples to the flock.\"\n\nHere are some biblical priorities and wise signs to look for in a healthy church. It is centred on Jesus and proclaims the gospel clearly. It teaches the Bible faithfully. It prays. It loves people, including newcomers and those who are struggling. It handles money responsibly and openly. And its leaders serve, are accountable to others, and do not stand above Scripture. A healthy church will not be perfect, but it will be willing to listen, learn and put things right.\n\nYou do not need to join a church immediately. It is wise to visit several times, ask questions and see how people are treated. Churches differ in how they are led and in their style of worship, from quiet and liturgical to loud and spontaneous, and faithful churches can differ in these ways while sharing the same gospel. And online services can be a real help, especially for those who cannot attend, though many churches encourage meeting in person wherever possible, because the New Testament pictures believers who know and care for one another face to face.", "12": "Before we finish, a short word about two practices Jesus gave his church. The first is baptism. In Acts 2, those who received the word were baptised, and baptism appears from the beginning as part of the new believers' life with Christ and his people. We first saw baptism in Lesson 4.\n\nThe second is the Lord's Supper, which some churches call Communion. On the night before he died, Jesus took bread and the cup and said, \"Do this in remembrance of me.\" Paul adds, \"For as often as you eat this bread and drink the cup, you proclaim the Lord's death until he comes.\" When the first believers devoted themselves to the breaking of bread, many Christians understand this to include the Lord's Supper as well as shared meals.\n\nChristians understand and practise both of these in different ways, and Book 2 teaches them more fully. For now, notice this: both of them are practised together, in the church. They are part of belonging to God's family. If you have not yet been baptised, talk with a pastor about your next step.", "13": "Let me tell you about Kenji. His story is drawn from the experiences of many people. Kenji works long hours for a company in Osaka. He came to faith through watching online sermons late at night, and for a year that was his whole Christian life. He felt shy about walking into a church. \"They will all know each other,\" he thought. \"I won't know what to do.\"\n\nHis online mentor encouraged him to try a small local church near his train station. The first Sunday, Kenji sat at the back and left before the end.\n\nThe next Sunday, an older man named Mr Tanaka greeted him by name and invited him to lunch with a few others after the service. Over noodles, Kenji found himself answering questions about his work and asking questions about the Bible.\n\nKenji now attends most Sundays, and he has joined a small group that meets on Wednesday evenings, although some weeks his work makes it impossible. Groups still feel difficult for him sometimes, and that is fine. Many people find belonging hard at first, and one welcoming person often makes the difference. One day, that welcoming person could be you.", "14": "Because this subject is often misunderstood, here are four common mistakes.\n\n\"Church is a building I visit on Sundays.\" The church is God's family, his people, wherever they meet.\n\n\"My Christian life is only between me and God.\" God's children belong together, and we need one another.\n\n\"Only my church's style is the true church.\" Faithful churches differ in structure and style while sharing the same gospel.\n\nAnd \"I must join, serve and give straight away.\" You may visit, ask questions and take your time.", "15": "Now, here is what I would like you to do this week. Your assignment is to take one practical step towards being part of a local church.\n\nFirst, read Acts 2:41 to 47 again. Second, write down one local church or Christian group, one person you could contact, and the date of their next gathering. Third, if you can, attend one gathering this week. If you cannot attend in person, think of one realistic way to stay connected. And fourth, welcome one person you do not know yet, or pray for one person in your church.\n\nIf you already belong to a church, use this week to take one step deeper: join a small group, serve in one practical way, or get to know one new person. This assignment belongs to your First Step called my church. Below this lesson you will also find the seven-day reading plan.", "16": "Let us bring it together. Following Jesus is personal, but it was never meant to be private. Belong to his family: every believer is joined to God's people, the body of Christ. Gather together: we meet to worship, learn, pray and encourage one another, and if you cannot attend in person, find a realistic way to stay connected. Care for one another: we receive care and give it, and everyone has something to offer. Find a healthy church: not a perfect church, but one centred on Jesus, faithful to Scripture, and led by accountable servants.", "17": "And with that, you have completed Begin. Over these eight lessons, you have learned what the good news is, how we respond with repentance and faith, what God does in the new birth, what it means to follow Jesus as Lord, who you are in Christ, and how to begin with the Bible, with prayer, and with Christ's church.\n\nBelow this lesson, you will find a short, private page called My First Steps in Following Jesus. It brings together the five First Steps you have met throughout Begin: my faith, my Bible, my prayer, my church and my witness. Take a few minutes to write one simple, realistic step for each.\n\nCompleting Begin does not mean you have finished growing. Following Jesus is lifelong. But you have made a good beginning, and the next stage is Book 2, Establish.", "18": "Let us pray. Father, thank you that you have made me your child and brought me into your family. Thank you for your church, imperfect, but loved by you. Lead me to a healthy church where I can belong and grow. Help me to receive care, and to give it. Thank you for all you have begun in me through these lessons. Keep me following Jesus, one step at a time. In Jesus' name. Amen.\n\nYou may stop here for today. When you are ready, begin this week's assignment, the reading plan, and your My First Steps page."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.14, 0.61, 0.74, 1.24, 2.04, 2.5, 2.89, 3.03, 4.18, 4.33, 4.65, 4.71, 4.96, 6.22, 6.73, 6.93, 7.44, 8.26, 8.7, 8.78, 9.24, 9.36, 10.43, 10.75, 10.95, 11.35, 11.6, 11.82, 12.25, 12.43, 12.56, 12.9, 14.09, 14.23, 14.77, 14.91, 15.06, 16.12, 16.36, 16.67, 16.85, 17.45, 17.62, 18.71, 18.97, 19.31, 19.72, 19.93, 20.49, 20.64, 21.2, 21.66, 22.35, 22.66, 23.64, 24.05, 24.24, 24.5, 25.19, 25.35, 26.42, 26.83, 26.96, 27.54, 28.08, 28.32, 28.76, 28.99, 29.04, 30.24, 30.58, 31.04, 31.31, 31.41, 31.92, 32.06, 32.11, 32.65, 33.02, 33.51, 33.77, 33.91, 35.09, 35.23, 35.42, 35.69, 35.78, 36.49, 36.72, 36.91, 37.7, 37.88, 38.17, 38.69, 39.21, 39.35, 40.09, 40.47, 40.63, 40.72, 41.05, 41.08, 42.41, 42.6, 42.84, 42.97, 43.11, 44.37, 44.59, 44.76, 45.15, 45.66, 45.89, 46.14, 47.12, 47.26, 47.41, 47.58, 47.66, 47.89, 48.36, 48.53, 48.67, 48.98, 49.19, 49.72, 50.13, 50.47, 50.92, 51.11, 51.53, 52.39, 52.53, 52.65, 52.77, 53.05, 53.47, 54.03, 54.42, 54.53], "2": [55.64, 55.9, 56.44, 56.65, 57.02, 57.37, 57.63, 58.22, 58.36, 59.22, 59.33, 61.71, 62.16, 62.34, 63.6, 63.73, 63.8, 64.27, 64.57, 64.69, 65.03, 65.5, 65.84, 65.97, 67.39, 69.31, 69.58, 69.97, 70.14, 70.72, 70.93, 71.39, 71.55, 72.88, 73.05, 73.2, 73.45, 73.86, 74.14, 74.55, 74.96, 75.35, 76.04, 77.43, 77.78, 78.11, 78.29, 78.82, 79.08, 79.87, 80.11, 80.7, 81.61, 81.79, 81.93, 82.47, 83.13, 83.24, 83.39, 84.04, 84.74, 84.92, 84.99, 86.12, 86.24, 86.35, 86.85, 86.99, 87.73, 87.89, 87.96, 89.38, 89.9, 90.32, 91.83, 91.98, 92.5, 93.61, 93.8, 93.94, 94.79, 95.97, 96.15, 96.78, 97.23, 98.47, 98.6, 98.68, 100.0, 100.16, 100.72, 101.16, 102.27, 102.47, 102.61, 103.23, 104.44, 104.65, 105.09, 105.19, 105.89, 107.0, 107.19, 107.37, 107.61, 108.01, 108.16, 108.37, 109.06, 109.22, 109.39, 109.44, 109.79, 109.92], "3": [111.05, 111.39, 111.48, 113.26, 114.19, 114.56, 115.09, 115.46, 115.96, 116.34, 117.41, 117.61, 117.92, 118.46, 118.58, 119.04, 119.15, 119.45, 119.79, 120.01, 120.15, 121.31, 121.6, 121.96, 122.17, 122.72, 122.89, 123.89, 124.04, 124.42, 124.76, 125.23, 125.35, 126.49, 126.64, 126.74, 126.88, 127.36, 127.52, 128.31, 128.44, 129.15, 129.3, 130.05, 130.13, 130.89, 131.07, 131.81, 132.07, 132.32, 132.61, 133.64, 133.87, 134.17, 134.41, 135.23, 135.76, 135.85, 136.27, 137.23, 137.38, 137.89, 138.28, 138.43, 138.61, 139.62, 139.76, 140.43, 140.6, 141.17, 141.4, 141.86, 142.05, 142.56, 143.45, 144.06, 144.8, 144.92, 145.28, 145.8, 146.0, 146.47, 146.55, 147.69, 147.83, 147.9, 148.26, 148.74, 148.86, 149.01, 149.47, 149.87, 150.13, 150.74, 151.24, 151.37, 151.52, 151.89, 153.1, 153.54, 153.75, 153.89, 154.81, 154.94, 155.03, 155.44, 156.35, 156.53, 156.56, 157.18, 158.08, 158.37, 158.57, 158.75, 159.61, 159.8, 160.33, 160.84, 161.34, 161.37, 162.58, 162.95, 163.16, 163.31, 163.78, 164.0, 164.96, 165.13, 165.72, 166.66, 166.83, 167.5, 167.79, 168.85, 169.01, 169.48, 169.72, 170.11, 170.49, 170.62, 170.72, 171.68, 171.77, 172.09], "4": [173.12, 173.3, 173.47, 173.88, 174.0, 174.08, 175.26, 176.16, 176.34, 176.4, 176.88, 178.07, 178.21, 179.15, 179.34, 179.78, 179.95, 180.38, 181.21, 181.48, 181.74, 183.11, 183.29, 183.54, 183.84, 183.96, 184.29, 184.77, 185.03, 185.38, 185.86, 186.82, 187.03, 187.35, 187.67, 187.99, 188.22, 189.25, 189.41, 189.73, 189.84, 190.27, 190.44, 190.84, 191.05, 191.51, 192.3, 192.49, 192.66, 192.82, 193.82, 194.05, 194.13, 194.83, 195.03, 195.27, 195.5, 195.79, 196.27, 196.73, 197.98, 198.36, 198.52, 198.86, 198.98, 199.07, 199.96, 200.15, 200.44, 201.25, 202.27, 202.48, 202.63, 203.52, 203.94, 204.18, 204.29, 204.89, 205.06, 205.13, 205.57, 205.7, 206.17, 206.9, 207.07, 207.18, 207.9, 208.04, 208.23, 209.55, 209.75, 209.92, 210.31, 210.43, 210.57, 211.18, 211.39, 211.89, 212.1, 213.43, 213.71, 213.94, 214.28, 214.45, 214.53, 215.01, 215.23, 216.54, 216.71, 217.06, 217.21, 217.35, 217.92, 218.25, 218.35, 219.79, 219.89, 220.14, 220.56, 220.74, 220.78, 221.49, 221.6, 223.02, 223.45, 223.65, 223.82, 224.22, 224.36, 224.81, 225.23, 225.91, 226.35, 226.52, 226.68, 226.89, 227.07, 228.73, 231.31, 231.54, 231.72, 231.78, 231.84, 232.38, 232.73, 234.07, 234.79, 234.89, 235.01, 235.87, 236.34, 238.65, 239.0, 239.92, 240.43, 241.42, 241.58, 241.91, 242.49, 242.7, 243.52, 243.65, 243.69, 243.98, 244.5, 245.35, 245.67, 245.99, 246.03, 246.48, 246.64, 246.83, 247.74, 247.92, 248.37, 248.66, 249.36, 249.49, 250.21, 250.36, 250.48, 251.66, 251.91, 252.7, 252.96, 254.23, 254.36, 254.96, 255.17, 255.49, 256.43, 257.31, 257.38, 257.92, 258.36, 258.56, 258.82, 259.39, 259.52, 260.05, 260.39, 261.15, 261.28, 261.45, 262.29, 262.7, 262.76, 263.23, 263.39, 264.11], "5": [265.12, 265.33, 265.85, 266.4, 266.88, 267.04, 267.12, 267.45, 268.51, 269.64, 269.84, 270.39, 270.53, 270.88, 271.29, 272.33, 272.41, 272.78, 273.01, 273.52, 273.97, 274.22, 274.33, 275.2, 275.37, 275.88, 276.0, 277.1, 277.3, 277.72, 278.45, 279.17, 279.71, 279.98, 280.16, 280.58, 280.73, 280.81, 281.32, 281.78, 282.32, 282.42, 283.66, 283.8, 284.05, 284.18, 284.86, 285.01, 285.1, 285.66, 286.91, 287.52, 287.77, 287.85, 288.12, 288.7, 289.21, 289.34, 289.44, 290.41, 290.53, 290.71, 291.05, 291.52, 291.94, 292.26, 292.31, 293.38, 293.5, 293.72, 294.19, 294.58, 295.3, 295.82, 296.73, 297.18, 298.08, 298.3, 298.65, 299.26, 299.57, 300.9, 301.16, 302.19, 302.33, 302.45, 302.81, 302.93, 303.59, 303.78, 303.94, 304.08, 305.03, 305.42, 305.52, 306.26, 306.42, 306.74, 306.88, 307.11, 308.18, 308.26, 308.55, 309.2, 309.37, 309.65, 309.74, 310.16, 310.46, 310.64, 310.69, 311.1, 311.92, 312.13, 312.27, 313.19, 313.36, 313.46, 314.06, 314.49, 314.7, 315.64, 315.85, 315.97, 316.38, 318.35, 318.53, 318.92, 319.08, 319.86, 320.08, 320.53, 320.7, 320.95, 321.96, 322.17, 322.48, 323.1, 323.66, 324.22, 324.44, 325.07, 325.43], "6": [326.66, 326.84, 327.26, 327.72, 327.86, 327.93, 328.26, 328.96, 329.78, 329.94, 331.49, 331.7, 332.21, 332.33, 332.48, 333.02, 333.78, 333.89, 334.21, 335.16, 335.94, 337.51, 337.94, 338.3, 339.17, 339.29, 339.45, 339.83, 340.1, 340.32, 340.91, 341.77, 342.01, 343.05, 343.42, 343.95, 344.08, 344.27, 344.41, 344.92, 345.02, 346.19, 346.75, 346.88, 347.09, 347.97, 348.12, 348.2, 349.35, 349.49, 350.04, 350.15, 350.39, 351.06, 351.22, 351.82, 352.73, 352.92, 353.28, 353.75, 353.92, 354.13, 354.16, 354.87, 355.58, 355.8, 356.03, 356.36, 356.74, 356.97, 357.28, 357.93, 358.07, 358.8, 359.01, 359.65, 359.93, 360.66, 360.82, 361.05, 361.13, 361.98, 362.19, 362.4, 362.55, 363.08, 363.56, 364.81, 365.52, 366.0, 366.67, 366.86, 367.34, 367.86, 368.6, 369.03, 369.24, 370.21, 370.35, 370.49, 371.12, 371.24, 371.63, 372.58, 373.13, 373.29, 374.08, 374.23, 375.62, 376.0, 376.17, 376.43, 376.65, 377.14, 377.3, 378.39, 378.86, 379.76, 379.86, 380.95, 381.33, 381.75, 382.62, 382.85, 383.42, 384.14, 385.29, 385.79, 386.19, 386.34], "7": [387.6, 388.34, 388.6, 388.76, 389.2, 389.77, 389.89, 390.26, 391.13, 391.45, 391.57, 391.65, 392.04, 393.08, 393.57, 394.18, 394.37, 395.55, 395.68, 395.77, 395.95, 396.31, 396.71, 396.79, 396.96, 398.31, 398.48, 398.91, 399.25, 399.43, 399.67, 400.22, 400.41, 400.87, 401.07, 401.47, 401.71, 402.8, 402.93, 403.29, 403.51, 403.68, 404.41, 404.76, 404.93, 405.16, 405.9, 406.08, 406.33, 406.54, 406.58, 407.07, 407.55, 407.73, 407.89, 408.12, 408.7, 409.03, 409.85, 410.3, 410.5, 410.84, 411.45, 411.62, 412.79, 412.88, 413.25, 413.34, 413.59, 414.6, 415.23, 415.48, 416.19, 416.36, 416.72, 417.87, 418.26, 418.39, 418.59, 419.54, 419.84, 420.81, 421.1, 421.26, 421.47, 422.19, 422.35, 422.9, 422.97, 423.44], "8": [424.65, 424.72, 425.02, 426.0, 426.62, 426.8, 427.06, 428.15, 428.29, 428.48, 428.97, 429.11, 429.84, 430.05, 430.64, 431.15, 431.32, 431.55, 432.68, 432.98, 433.39, 433.53, 434.06, 434.34, 434.81, 435.3, 436.79, 437.01, 437.71, 437.85, 437.95, 438.16, 438.51, 439.2, 439.32, 440.32, 440.56, 440.71, 440.83, 441.27, 441.99, 442.19, 442.26, 443.03, 443.2, 443.73, 443.83, 443.91, 444.57, 444.69, 445.8, 445.9, 446.28, 446.43, 446.71, 447.07, 447.12, 447.75, 448.0, 448.03, 448.49, 449.46, 449.57, 449.73, 450.18, 451.11, 451.24, 451.3, 451.76, 451.88, 453.04, 453.47, 454.59, 454.96, 455.21, 455.33, 455.43, 455.84, 455.94, 457.03, 457.31, 458.16, 458.69, 458.82, 459.67, 459.81, 459.86, 460.82, 461.21, 461.62, 462.64, 462.91, 463.26, 463.67, 464.05, 464.23, 465.11, 465.29, 465.54, 465.92, 466.19, 466.3, 466.38, 467.32, 467.46, 467.75, 467.93, 468.24, 468.34, 469.22, 469.86, 470.06, 470.23, 470.55, 470.82, 470.92, 471.31, 471.96, 472.13, 473.58, 473.76, 473.95, 474.15, 474.5, 475.31, 475.48, 475.67, 475.87, 476.33, 476.54, 476.76, 477.13, 477.32, 478.33, 478.7, 478.89, 479.25, 479.75, 479.88, 480.78, 480.95, 481.46, 481.64, 481.89], "9": [483.01, 483.08, 483.52, 484.56, 484.95, 486.02, 486.21, 486.29, 486.62, 487.16, 487.75, 487.91, 488.21, 488.67, 489.82, 489.94, 490.45, 491.25, 491.57, 491.77, 492.56, 493.38, 493.72, 493.83, 494.19, 495.04, 495.21, 495.54, 496.72, 497.38, 498.12, 499.61, 500.41, 500.73, 500.96, 502.03, 502.27, 502.44, 502.9, 503.1, 503.35, 504.12, 504.31, 504.9, 505.15, 505.38, 506.35, 506.71, 507.46, 507.6, 507.88, 508.87, 509.24, 509.59, 509.67, 510.16, 510.26, 511.19, 511.39, 512.22, 512.41, 513.56, 514.04, 514.15, 514.68, 515.43, 517.05, 517.36, 517.81, 518.21, 518.69, 518.84, 519.31, 519.88, 520.12, 521.23, 521.46, 521.62, 522.34, 522.66, 522.99, 524.1, 524.69, 525.35, 525.66, 526.16, 526.68, 527.2, 527.42, 527.73, 528.12, 528.43, 529.14, 529.33, 530.38, 530.9, 531.09, 531.38, 531.65, 532.71, 532.77, 533.22, 534.19, 534.24, 534.66, 534.96, 535.06, 535.12, 535.96, 536.0, 536.36, 537.19, 537.26, 537.68, 537.94, 538.18, 539.27, 539.53, 540.04, 540.23, 540.66, 540.78, 540.85, 541.24, 542.22, 543.1, 543.91, 544.36, 544.6, 545.07, 545.17, 545.81, 546.0, 546.24, 546.36, 547.54, 547.7, 547.93, 548.08, 548.19, 549.38, 549.54, 549.74, 549.98, 550.96, 551.2, 551.4, 551.43, 552.15, 552.47, 552.61, 552.92, 553.82, 553.98, 554.27, 554.72, 555.0, 555.26], "10": [555.84, 555.92, 556.34, 557.19, 557.54, 557.73, 557.96, 558.92, 559.12, 559.54, 560.43, 560.55, 560.88, 561.44, 562.18, 562.42, 562.62, 563.47, 563.76, 564.67, 565.11, 565.43, 565.87, 566.71, 566.94, 567.33, 568.05, 568.13, 568.65, 568.79, 569.9, 570.5, 570.82, 571.22, 572.23, 572.39, 573.01, 573.73, 574.11, 574.74, 575.32, 576.03, 576.24, 577.42, 577.5, 577.98, 578.85, 579.0, 579.05, 579.42, 579.58, 580.03, 580.36, 580.82, 581.08, 581.55, 582.6, 582.92, 583.49, 583.66, 584.09, 584.18, 584.93, 585.51, 585.57, 586.1, 587.35, 587.64, 588.52, 588.82, 589.13, 589.35, 589.85, 589.94, 590.57, 590.88, 591.02, 591.12, 591.58, 591.77, 592.72, 592.83, 593.13, 593.54, 593.57, 594.46, 594.71, 594.89, 595.65, 595.94, 596.07, 596.12, 596.7, 597.56, 597.7, 598.13, 598.79, 599.22, 599.57, 599.69, 600.17, 600.28, 600.7, 600.89, 601.91, 602.54, 603.64, 604.0, 604.23, 604.89, 605.09, 605.66, 606.89, 607.46, 607.78, 608.3, 608.48, 609.03, 610.19, 610.34, 610.71, 610.88, 611.39, 611.47, 611.53, 612.47, 612.55, 612.89, 613.19, 613.51, 613.78, 614.08, 614.4, 617.61, 617.88, 618.05, 618.36, 618.99, 619.55, 620.39, 620.87, 621.08, 621.33, 621.79, 622.55, 622.85, 623.02, 623.26], "11": [624.3, 624.39, 624.71, 625.46, 626.11, 626.15, 626.63, 627.63, 627.92, 628.37, 628.57, 629.61, 629.9, 630.32, 630.53, 630.82, 631.12, 631.33, 632.06, 632.76, 632.93, 633.15, 633.55, 634.35, 634.54, 634.68, 634.86, 634.99, 635.69, 637.15, 637.41, 637.59, 637.88, 637.95, 638.47, 638.58, 638.84, 639.07, 639.25, 640.17, 640.48, 641.19, 642.1, 642.43, 642.74, 642.82, 643.33, 643.59, 644.58, 644.82, 645.65, 645.88, 646.21, 646.41, 646.46, 646.97, 647.43, 647.66, 648.63, 648.94, 649.66, 649.9, 650.55, 650.78, 651.5, 651.67, 652.8, 653.36, 653.44, 653.82, 653.97, 654.37, 654.51, 654.66, 654.98, 655.65, 656.47, 657.56, 657.93, 658.18, 659.25, 659.52, 660.73, 661.0, 661.13, 661.7, 662.39, 662.7, 663.95, 664.26, 665.1, 665.43, 665.9, 666.0, 666.2, 667.04, 667.27, 667.53, 668.38, 668.49, 668.6, 669.8, 670.17, 670.33, 670.65, 671.2, 672.12, 672.28, 672.75, 673.32, 673.42, 673.7, 674.02, 674.17, 674.21, 674.63, 675.75, 675.88, 676.01, 676.53, 676.76, 677.67, 677.86, 678.58, 678.67, 679.27, 680.4, 680.57, 681.05, 681.13, 681.59, 682.72, 682.89, 684.33, 684.48, 684.95, 685.72, 686.42, 687.51, 687.77, 688.18, 688.35, 688.44, 689.81, 689.95, 690.54, 690.89, 692.06, 692.34, 693.62, 693.79, 693.99, 694.48, 695.44, 695.62, 696.25, 696.46, 697.2, 697.42, 697.59, 697.89, 698.37, 698.69, 700.03, 700.07, 700.59, 701.05, 701.26, 701.63, 701.78, 702.81, 702.96, 703.08, 703.27, 703.42, 703.87, 704.02, 704.93, 705.77, 705.99, 706.22, 706.58, 707.4, 707.52, 707.66, 707.89, 708.15, 708.24, 708.6, 708.66, 709.06, 710.28, 710.39, 710.54, 711.05, 711.15, 711.54, 711.99, 712.92, 713.33, 714.15, 714.49, 714.82, 715.02, 715.46, 715.56, 716.82, 717.44, 717.85, 717.97, 718.27, 718.48, 718.59, 719.06, 719.3, 719.46, 719.61, 720.2, 720.3, 721.17, 721.38, 722.03, 722.19, 722.96, 723.21, 723.65, 723.81, 725.1, 725.31, 725.84, 726.41, 726.65, 727.04, 727.21, 727.46, 728.21, 728.55, 729.09, 729.17, 729.57, 730.87, 731.08, 731.59, 732.28, 732.5, 732.67, 732.71, 733.09, 733.91, 734.56, 734.71, 735.11, 735.23, 735.7, 736.66, 736.84, 737.15, 737.68, 738.26, 738.66, 738.78, 739.34, 739.72, 740.74, 741.28, 741.37, 741.67, 742.37, 743.34, 744.16, 744.34, 744.8, 745.04, 745.48, 745.63, 745.93, 746.32, 746.75, 746.87], "12": [748.11, 748.55, 748.69, 749.49, 749.55, 749.99, 750.29, 750.66, 750.94, 751.73, 752.16, 752.41, 752.61, 753.45, 753.53, 754.4, 754.58, 755.85, 756.0, 756.41, 756.5, 757.48, 758.09, 758.16, 758.59, 758.76, 760.0, 760.24, 760.83, 761.38, 761.56, 761.65, 762.22, 762.43, 762.83, 762.94, 763.03, 763.32, 763.9, 764.58, 764.76, 765.26, 765.39, 765.58, 766.74, 766.86, 767.22, 767.43, 768.13, 768.32, 769.89, 769.97, 770.62, 770.79, 770.91, 771.61, 772.56, 772.83, 773.22, 773.8, 774.18, 775.28, 775.45, 775.53, 775.83, 776.21, 776.35, 777.04, 777.52, 777.76, 778.2, 778.45, 778.53, 779.01, 779.15, 780.03, 780.27, 780.56, 780.85, 781.55, 781.67, 782.53, 782.88, 783.7, 783.9, 784.05, 784.43, 784.59, 784.8, 784.99, 785.2, 785.57, 785.8, 786.09, 786.16, 787.16, 787.28, 787.81, 787.88, 788.35, 788.66, 789.0, 789.16, 790.43, 790.6, 790.67, 791.05, 791.57, 792.06, 792.61, 792.72, 792.8, 793.25, 793.37, 794.15, 794.44, 795.0, 795.66, 795.89, 796.05, 796.49, 796.57, 796.94, 797.67, 797.84, 798.09, 798.17, 798.61, 799.78, 800.21, 800.9, 801.03, 801.48, 801.81, 801.92, 802.17, 802.32, 802.67, 803.55, 803.72, 803.94, 804.74, 804.92, 805.14, 806.19, 806.3, 807.1, 807.51, 808.41, 808.75, 808.87, 809.09, 809.26, 809.86, 810.88, 811.01, 811.09, 812.42, 812.58, 812.68, 813.15, 813.26, 813.92, 814.06, 814.53, 815.65, 815.77, 815.91, 816.04, 816.36, 816.77, 817.03, 818.25, 818.6, 818.73, 818.78, 819.39, 819.73, 819.87, 820.22], "13": [821.23, 821.42, 821.54, 821.78, 821.94, 822.25, 823.24, 823.36, 823.85, 824.0, 824.45, 824.62, 824.75, 825.83, 825.99, 826.39, 827.33, 827.77, 828.19, 828.56, 829.07, 829.23, 829.27, 829.85, 830.0, 831.08, 831.22, 831.49, 831.62, 832.21, 832.44, 832.88, 833.43, 834.02, 834.29, 834.44, 835.15, 835.28, 835.52, 835.56, 835.93, 836.23, 836.42, 836.6, 836.94, 837.5, 838.58, 838.67, 839.0, 839.48, 839.84, 840.33, 840.61, 840.65, 841.96, 842.11, 842.31, 842.6, 842.88, 843.1, 843.84, 843.98, 844.98, 845.08, 845.38, 845.57, 845.8, 845.95, 846.58, 846.86, 847.37, 847.92, 848.52, 848.67, 848.77, 849.24, 849.28, 849.78, 850.12, 850.61, 850.82, 851.02, 851.31, 852.4, 852.48, 852.88, 853.51, 853.92, 854.23, 854.33, 854.4, 854.84, 855.05, 855.58, 855.93, 856.1, 857.08, 857.15, 857.44, 858.31, 858.44, 858.8, 859.2, 859.59, 859.95, 860.9, 861.27, 861.49, 861.66, 862.14, 862.5, 863.01, 863.18, 863.29, 863.69, 863.87, 863.91, 864.27, 864.9, 865.15, 865.28, 866.31, 866.64, 867.23, 867.7, 868.05, 868.54, 869.2, 869.84, 870.15, 870.34, 871.07, 871.21, 871.82, 872.45, 872.77, 872.85, 874.0, 874.48, 874.77, 875.27, 875.66, 876.74, 876.86, 877.05, 877.27, 877.67, 877.72, 878.2, 878.68, 878.96, 879.38, 879.61, 880.27, 881.37, 881.75, 882.06, 882.69, 882.91, 883.37, 883.74, 884.03, 885.3, 885.7, 886.01, 886.29, 886.83, 886.95, 887.14, 888.24, 888.48, 888.84, 889.07, 890.17, 890.47, 890.8, 891.22, 891.71, 892.09, 892.22, 893.36, 893.56, 893.87, 894.47, 894.92, 895.42, 895.73, 895.82, 896.87, 897.17, 897.88, 898.21, 898.74, 899.58, 899.81, 899.93], "14": [900.71, 901.14, 901.39, 901.9, 902.13, 902.54, 903.78, 904.05, 904.11, 904.6, 905.06, 906.08, 906.45, 906.59, 906.63, 907.12, 907.24, 907.61, 907.77, 908.9, 908.99, 909.51, 909.77, 910.23, 910.93, 911.13, 911.72, 912.16, 912.32, 913.46, 913.78, 914.43, 914.79, 914.96, 915.29, 915.8, 916.05, 916.23, 917.35, 917.78, 918.34, 918.8, 919.87, 920.08, 920.22, 920.58, 920.81, 921.93, 922.31, 922.6, 923.2, 923.98, 924.26, 924.36, 924.86, 926.06, 926.65, 927.27, 927.69, 927.84, 928.46, 928.59, 929.37, 929.64, 930.19, 930.27, 930.67, 931.66, 931.96, 932.17, 932.54, 933.24, 933.87, 934.09, 934.37, 934.8, 935.71, 935.82, 935.98, 936.59, 936.91, 937.52, 937.67, 937.92, 938.03], "15": [939.2, 939.86, 940.21, 940.36, 940.65, 940.79, 941.0, 941.31, 941.47, 941.6, 941.9, 942.18, 943.38, 943.61, 944.31, 944.51, 944.63, 945.01, 945.41, 946.06, 946.54, 947.14, 947.48, 947.89, 947.99, 948.04, 948.49, 949.82, 950.62, 950.88, 951.39, 951.82, 952.77, 954.21, 955.26, 955.6, 955.92, 956.3, 956.73, 956.92, 957.44, 958.24, 958.55, 959.0, 959.13, 959.31, 960.3, 960.48, 960.56, 960.94, 961.07, 961.23, 961.62, 962.65, 963.53, 963.66, 963.81, 964.55, 964.98, 965.33, 965.86, 966.08, 967.02, 967.14, 967.3, 967.71, 968.13, 968.28, 969.13, 969.41, 969.56, 969.88, 970.61, 970.9, 971.04, 971.38, 972.43, 972.61, 973.58, 974.1, 974.4, 974.86, 975.03, 975.2, 975.47, 975.69, 976.48, 976.69, 977.09, 977.24, 977.64, 978.21, 978.34, 978.52, 979.84, 979.97, 980.16, 980.7, 981.15, 981.33, 981.37, 982.27, 982.71, 982.94, 983.4, 983.57, 983.91, 984.28, 984.84, 986.04, 986.42, 986.46, 986.89, 987.71, 988.17, 988.38, 988.78, 989.43, 990.32, 990.47, 990.74, 990.85, 991.1, 991.51, 991.74, 992.92, 993.16, 993.83, 994.31, 994.41, 994.61, 995.05, 995.71, 996.08, 996.4, 997.56, 997.9, 998.15, 998.74, 998.86, 999.03, 999.43, 999.87, 999.93, 1000.43, 1000.73, 1001.19], "16": [1002.26, 1002.44, 1002.57, 1002.82, 1002.93, 1003.96, 1004.4, 1004.91, 1005.1, 1006.05, 1006.17, 1006.27, 1006.43, 1006.75, 1007.08, 1007.16, 1007.31, 1008.46, 1008.94, 1009.07, 1009.32, 1010.28, 1010.64, 1011.17, 1011.38, 1011.8, 1011.88, 1012.35, 1013.12, 1013.19, 1013.64, 1013.72, 1015.04, 1015.47, 1016.55, 1016.68, 1017.15, 1017.28, 1018.32, 1019.24, 1019.78, 1020.04, 1020.64, 1020.89, 1021.6, 1021.98, 1022.07, 1022.24, 1022.67, 1023.08, 1023.25, 1024.11, 1024.57, 1024.64, 1025.49, 1025.99, 1026.11, 1026.48, 1027.78, 1028.64, 1028.88, 1029.16, 1030.07, 1030.26, 1030.76, 1031.7, 1031.88, 1032.15, 1032.79, 1033.09, 1033.69, 1033.9, 1034.5, 1034.67, 1035.47, 1035.83, 1035.89, 1036.32, 1037.18, 1037.42, 1037.51, 1037.9, 1038.32, 1038.62, 1038.95, 1039.43, 1039.63, 1040.46, 1041.01, 1041.13, 1041.9, 1042.1, 1042.43, 1042.65, 1043.25], "17": [1044.59, 1044.77, 1044.93, 1045.6, 1045.87, 1046.08, 1047.04, 1047.96, 1048.22, 1048.57, 1048.78, 1049.51, 1049.71, 1049.87, 1050.29, 1050.61, 1050.68, 1050.93, 1051.27, 1052.0, 1052.26, 1052.47, 1053.02, 1053.21, 1053.86, 1054.0, 1054.71, 1054.98, 1055.4, 1055.8, 1055.99, 1056.05, 1056.31, 1057.0, 1057.17, 1057.31, 1057.67, 1057.76, 1058.15, 1058.67, 1058.95, 1059.77, 1059.93, 1060.16, 1060.41, 1060.59, 1061.72, 1061.87, 1062.11, 1062.24, 1062.65, 1062.83, 1062.9, 1063.83, 1064.05, 1064.94, 1065.06, 1065.25, 1065.86, 1066.67, 1067.09, 1067.41, 1068.22, 1068.35, 1068.51, 1068.92, 1068.95, 1069.69, 1070.25, 1070.71, 1071.17, 1071.45, 1071.98, 1072.58, 1072.77, 1073.37, 1074.77, 1074.88, 1075.32, 1076.13, 1076.23, 1077.12, 1077.59, 1078.52, 1078.67, 1078.83, 1079.16, 1080.26, 1081.42, 1081.59, 1082.42, 1082.66, 1083.57, 1083.76, 1084.68, 1084.84, 1085.74, 1085.91, 1086.08, 1087.22, 1087.45, 1087.5, 1087.74, 1088.1, 1088.2, 1088.51, 1088.82, 1089.4, 1090.08, 1090.43, 1090.64, 1091.64, 1092.23, 1092.65, 1092.85, 1093.17, 1093.45, 1093.57, 1093.75, 1094.17, 1095.01, 1095.42, 1095.99, 1096.18, 1097.23, 1097.42, 1097.53, 1097.66, 1097.9, 1097.97, 1098.29, 1099.26, 1099.39, 1099.46, 1099.81, 1100.48, 1100.64, 1101.85], "18": [1103.38, 1103.56, 1103.69, 1104.46, 1105.42, 1105.71, 1105.83, 1105.98, 1106.12, 1106.27, 1106.58, 1106.68, 1106.93, 1107.62, 1107.83, 1108.1, 1108.28, 1108.5, 1108.66, 1109.61, 1109.93, 1110.05, 1110.24, 1110.41, 1111.33, 1112.51, 1112.68, 1113.07, 1113.24, 1114.29, 1114.62, 1114.78, 1115.0, 1115.06, 1115.59, 1116.08, 1116.46, 1116.56, 1116.79, 1117.38, 1117.69, 1118.67, 1118.87, 1119.04, 1119.17, 1119.69, 1120.66, 1120.96, 1121.05, 1121.3, 1122.26, 1122.53, 1122.67, 1122.87, 1123.17, 1123.35, 1123.53, 1123.95, 1124.11, 1124.3, 1124.56, 1124.83, 1125.96, 1126.24, 1126.42, 1127.05, 1127.96, 1128.31, 1129.09, 1129.22, 1129.29, 1130.37, 1130.54, 1131.2, 1131.94, 1132.76, 1132.88, 1133.03, 1133.37, 1133.61, 1133.76, 1134.88, 1135.05, 1135.21, 1135.33, 1135.97, 1136.34, 1136.65, 1136.99, 1137.95, 1138.04, 1138.45, 1139.24, 1139.42, 1139.59, 1139.93, 1140.51, 1140.99]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>{sentences.push({t:at(idx)-0.15,s});idx+=toks(s).length;});
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line.replace(/mashiach/g,'māšîaḥ');
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>

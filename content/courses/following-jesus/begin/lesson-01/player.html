@@ -1,0 +1,722 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 1 Preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#16213a;--navy:#1f2d45;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f2d45;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#121b30 0%,#1f2d45 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar.seek{cursor:pointer;height:8px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4a24c"/></marker>
+</defs></svg>
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Begin · Lesson 1</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f3e7c9"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="80" r="1.6"/><circle class="twinkle" cx="110" cy="96" r="1.6"/></g>
+   <g class="b up" data-at="Welcome to Lesson 1" data-until="The word is gospel">
+     <text x="320" y="120" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#d4a24c">Lesson 1</text>
+     <text x="320" y="172" text-anchor="middle" font-weight="700" font-size="40" fill="#f3e7c9">Jesus Christ and the Good News</text>
+     <path d="M250 200h140" stroke="#d4a24c" stroke-width="1.5"/>
+   </g>
+   <g class="b up" data-at="you are welcome" data-until="The word is gospel" fill="none" stroke="#e8c98a" stroke-width="3" stroke-linecap="round">
+     <path d="M300 250c0-14 40-14 40 0M312 236a8 8 0 1 1 16 0a8 8 0 1 1 -16 0"/>
+     <path d="M250 262c0-12 30-12 30 0M259 250a6 6 0 1 1 12 0a6 6 0 1 1 -12 0"/>
+     <path d="M360 262c0-12 30-12 30 0M369 250a6 6 0 1 1 12 0a6 6 0 1 1 -12 0"/>
+   </g>
+   <!-- the word gospel -->
+   <text class="b up" data-at="The word is gospel" data-until="That is our question" x="320" y="70" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="46" fill="#e8c98a">“gospel”</text>
+   <!-- church -->
+   <g class="b pop" data-at="You hear it in church" data-until="That is our question">
+     <path d="M110 230v-70l40-34 40 34v70z" fill="none" stroke="#f3e7c9" stroke-width="4" stroke-linejoin="round"/>
+     <path d="M150 92v34M138 104h24" stroke="#d4a24c" stroke-width="4" stroke-linecap="round"/>
+     <path d="M140 230v-30a10 10 0 0 1 20 0v30" fill="none" stroke="#f3e7c9" stroke-width="4"/>
+   </g>
+   <!-- songs -->
+   <g class="b pop" data-at="You hear it in songs" data-until="That is our question">
+     <g fill="#d4a24c"><path class="note" d="M300 210a12 9 0 1 0 0.1 0zM311 210v-56l26-8v52" stroke="#d4a24c" stroke-width="4" fill="none"/><circle class="note n2" cx="299" cy="211" r="10"/><circle class="note n3" cx="326" cy="203" r="10"/></g>
+     <path d="M300 140c20-20 40-20 60 0" fill="none" stroke="#f3e7c9" stroke-width="3" opacity=".6"/>
+   </g>
+   <!-- radio -->
+   <g class="b pop" data-at="sometimes on the radio" data-until="That is our question">
+     <rect x="440" y="168" width="110" height="64" rx="12" fill="none" stroke="#f3e7c9" stroke-width="4"/>
+     <circle cx="470" cy="200" r="16" fill="none" stroke="#d4a24c" stroke-width="4"/>
+     <path d="M500 188h36M500 200h36M500 212h24" stroke="#f3e7c9" stroke-width="3"/>
+     <path d="M462 168l40-30" stroke="#f3e7c9" stroke-width="3"/>
+   </g>
+   <!-- question mark replaces -->
+   <g class="b pop" data-at="That is our question">
+     <circle cx="320" cy="150" r="78" fill="none" stroke="#d4a24c" stroke-width="3" opacity=".6"/>
+     <text x="320" y="190" text-anchor="middle" font-family="Source Serif 4" font-size="120" fill="#e8c98a">?</text>
+   </g>
+   <!-- four simple parts -->
+   <g class="b up" data-at="in four simple parts" fill="#d4a24c"><circle cx="275" cy="270" r="6"/><circle cx="305" cy="270" r="6"/><circle cx="335" cy="270" r="6"/><circle cx="365" cy="270" r="6"/></g>
+  </svg>
+  <h1 class="b up" data-at="What actually is the gospel">What actually is the gospel?</h1>
+ </div>
+</section>
+
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture</p>
+  <svg class="scene b pop" data-at="Our passage is Mark" viewBox="0 0 200 60" style="width:min(36vw,170px)" aria-hidden="true">
+    <path d="M100 14C80 4 40 4 14 10v42c26-6 66-6 86 4 20-10 60-10 86-4V10C160 4 120 4 100 14z" fill="#fffaf0" stroke="#1f2d45" stroke-width="3"/>
+    <path d="M100 14v42" stroke="#1f2d45" stroke-width="3"/><path d="M100 16v-14" stroke="#d4a24c" stroke-width="4"/>
+  </svg>
+  <p class="scripture">
+   <span class="ph" data-at="Now after John was arrested">“Now after John was arrested,</span>
+   <span class="ph" data-at="Jesus came into Galilee">Jesus came into Galilee,</span>
+   <span class="ph" data-at="proclaiming the gospel of God">proclaiming the <u class="k" data-at="gospel of God 2">gospel</u> of God,</span>
+   <span class="ph" data-at="and saying The time is fulfilled">and saying, ‘The time is fulfilled,</span>
+   <span class="ph" data-at="and the kingdom of God is at hand">and the <u class="k" data-at="kingdom of God is at hand 2">kingdom of God</u> is at hand;</span>
+   <span class="ph" data-at="repent and believe in the gospel">
+     <u class="k" data-at="repent and believe in the gospel 2">repent</u> and <u class="k" data-at="believe in the gospel 2">believe</u> in the gospel.’”</span>
+   <span class="ref b" data-at="Now after John was arrested">Mark 1:14–15 · ESV</span>
+  </p>
+ </div>
+</section>
+
+<section class="slide" data-n="3" data-theme="light" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Read the Scripture</p>
+  <h1 class="b up" data-at="Notice three things">Three things to notice</h1>
+  <svg class="scene" viewBox="0 0 660 260" aria-hidden="true">
+   <g class="b up" data-at="this is Jesus' own message">
+     <circle cx="110" cy="62" r="16" fill="#1f2d45"/><path d="M110 80v60M110 96l-26 22M110 96l30-26" stroke="#1f2d45" stroke-width="6" stroke-linecap="round" fill="none"/>
+     <g fill="#7d7a5e"><circle cx="60" cy="150" r="9"/><circle cx="150" cy="152" r="9"/><circle cx="170" cy="138" r="8"/><circle cx="44" cy="136" r="8"/></g>
+     <text x="110" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">1 · Jesus’ own</text>
+     <text x="110" y="232" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">message</text>
+   </g>
+   <g class="b up" data-at="it is an announcement">
+     <rect x="270" y="40" width="120" height="110" rx="8" fill="#fffaf0" stroke="#d4a24c" stroke-width="3"/>
+     <rect x="262" y="30" width="136" height="16" rx="8" fill="#e8c98a"/><rect x="262" y="146" width="136" height="16" rx="8" fill="#e8c98a"/>
+     <path d="M290 74h80M290 96h80M290 118h56" stroke="#1f2d45" stroke-width="4" stroke-linecap="round"/>
+     <text x="330" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">2 · An</text>
+     <text x="330" y="232" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">announcement</text>
+   </g>
+   <g class="b up" data-at="it calls for a response">
+     <path d="M550 40v120" stroke="#7d7a5e" stroke-width="6" stroke-linecap="round"/>
+     <path d="M550 52h70l14 16-14 16h-70z" fill="#d4a24c"/><text x="585" y="75" text-anchor="middle" font-size="16" font-weight="700" fill="#16213a">Repent</text>
+     <path d="M550 96h-70l-14 16 14 16h70z" fill="#1f2d45"/><text x="515" y="119" text-anchor="middle" font-size="16" font-weight="700" fill="#f3e7c9">Believe</text>
+     <text x="550" y="205" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">3 · A call to</text>
+     <text x="550" y="232" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">respond</text>
+   </g>
+  </svg>
+  <h2 class="b up" data-at="So the gospel is news to hear">News to hear · an invitation to answer</h2>
+ </div>
+</section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="first written in Greek">Gospel · Greek</p>
+  <p class="word b up" data-at="The word Mark uses for gospel is euangelion">euangelion</p>
+  <p class="gloss b up" data-at="It simply means good news" style="color:#a8792b;font-weight:600">“good news”</p>
+  <svg class="scene" viewBox="0 0 640 170" aria-hidden="true">
+    <!-- town -->
+    <g class="b" data-at="important public announcements" data-until="Mark opens his whole book">
+      <path d="M430 150v-50l26-20 26 20v50zM490 150v-64h44v64zM540 150v-40l22-16 22 16v40z" fill="none" stroke="#1f2d45" stroke-width="3" stroke-linejoin="round"/>
+      <g fill="#1f2d45"><circle cx="452" cy="134" r="6"/><circle cx="512" cy="134" r="6"/><circle cx="560" cy="136" r="6"/></g>
+    </g>
+    <!-- running messenger with scroll -->
+    <g class="b run" data-at="important public announcements" data-until="Mark opens his whole book">
+      <circle cx="350" cy="72" r="11" fill="#1f2d45"/>
+      <path d="M350 84l-6 34M344 118l-16 30M344 118l14 28M348 94l-22 8M348 94l22-14" stroke="#1f2d45" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <rect x="368" y="70" width="16" height="22" rx="3" fill="#d4a24c"/>
+    </g>
+    <!-- Isaiah 52 scroll -->
+    <g class="b pop" data-at="deeply rooted in the Scriptures of Israel" data-until="Mark opens his whole book">
+      <rect x="70" y="60" width="150" height="70" rx="8" fill="#fffaf0" stroke="#d4a24c" stroke-width="3"/>
+      <circle cx="70" cy="95" r="12" fill="#e8c98a"/><circle cx="220" cy="95" r="12" fill="#e8c98a"/>
+      <text x="145" y="92" text-anchor="middle" font-family="Source Serif 4" font-size="20" fill="#1f2d45">Isaiah 52</text>
+      <text x="145" y="116" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#a8792b">“Your God reigns”</text>
+    </g>
+    <!-- Mark 1:1 -->
+    <g class="b up" data-at="Mark opens his whole book" data-until="So when Mark speaks">
+      <text x="320" y="80" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#1f2d45">“The beginning of the gospel of Jesus Christ,</text>
+      <text x="320" y="112" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#1f2d45">the Son of God.”</text>
+      <text x="320" y="144" text-anchor="middle" font-size="13" letter-spacing="3" fill="#5d6676">MARK 1:1</text>
+    </g>
+    <g class="b up" data-at="Advice tells you what to do" data-svg>
+      <rect x="80" y="40" width="230" height="96" rx="14" fill="#fffaf0" stroke="#e3d6b8" stroke-width="2"/>
+      <text x="102" y="76" font-size="14" letter-spacing="3" fill="#5d6676">ADVICE</text>
+      <text x="102" y="108" font-size="20" fill="#1f2d45">what you should do</text>
+    </g>
+    <g class="b up" data-at="News tells you what has happened">
+      <rect x="330" y="40" width="230" height="96" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="4"/>
+      <text x="352" y="76" font-size="14" letter-spacing="3" fill="#a8792b">NEWS</text>
+      <text x="352" y="108" font-size="20" fill="#1f2d45">what God has done</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<section class="slide" data-n="5" data-theme="dark" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="The second word is in verse 15">Kingdom · Greek</p>
+  <p class="word b up" data-at="The Greek word for kingdom is basileia" style="color:#f3e7c9">basileia</p>
+  <p class="gloss b up" data-at="Here Jesus is speaking especially about God's reign" style="color:#e8c98a;font-weight:600">“God’s royal reign”</p>
+  <div class="stack">
+  <svg class="scene" viewBox="0 0 640 180" aria-hidden="true">
+    <g class="b" data-at="a country with borders on a map" data-until="Here Jesus is speaking">
+      <path d="M200 30 L300 20 L360 60 L440 50 L460 120 L380 160 L260 150 L190 110 Z" fill="none" stroke="#9aa3b5" stroke-width="3" stroke-dasharray="8 6"/>
+      <text x="320" y="100" text-anchor="middle" font-size="20" fill="#9aa3b5">a country on a map?</text>
+    </g>
+    <g class="b pop" data-at="his rule his authority" data-until="These are the only two">
+      <g class="rays2" stroke="#d4a24c" stroke-width="3" opacity=".7"><path d="M200 90h-50M440 90h50M220 40l-34-24M420 40l34-24M220 140l-34 24M420 140l34 24"/></g>
+      <path d="M270 120 L276 64 L298 92 L320 52 L342 92 L364 64 L370 120 Z" fill="rgba(212,162,76,.2)" stroke="#d4a24c" stroke-width="5" stroke-linejoin="round"/>
+    </g>
+    <g class="b up" data-at="breaking into history through him" data-until="These are the only two">
+      <circle cx="320" cy="150" r="9" fill="#f3e7c9"/><path d="M320 160v14" stroke="#f3e7c9" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="320" cy="160" rx="70" ry="18" fill="rgba(232,201,138,.25)"/>
+    </g>
+    <g class="b up" data-at="These are the only two Greek words">
+      <rect x="90" y="50" width="210" height="80" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+      <text x="195" y="86" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="28" fill="#f3e7c9">euangelion</text>
+      <text x="195" y="114" text-anchor="middle" font-size="18" fill="#e8c98a">good news</text>
+      <rect x="340" y="50" width="210" height="80" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+      <text x="445" y="86" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="28" fill="#f3e7c9">basileia</text>
+      <text x="445" y="114" text-anchor="middle" font-size="18" fill="#e8c98a">God’s reign</text>
+      <text x="320" y="165" text-anchor="middle" font-size="16" letter-spacing="3" fill="#cfd3db">TWO WORDS TO REMEMBER</text>
+    </g>
+  </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="6" data-theme="dark" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <svg class="scene" viewBox="0 0 640 330" aria-hidden="true">
+    <!-- map -->
+    <g class="b" data-at="Galilee was a region" data-until="For centuries">
+      <path d="M190 10 C178 70 160 130 146 190 C134 240 122 290 110 325" fill="none" stroke="#7b8aa3" stroke-width="3" stroke-dasharray="5 7"/>
+      <text x="96" y="190" font-size="12" fill="#7b8aa3" letter-spacing="3" text-anchor="middle" transform="rotate(-76 96 190)">MEDITERRANEAN SEA</text>
+      <ellipse cx="262" cy="92" rx="11" ry="17" fill="#5f86b0"/>
+      <path d="M262 109 C268 150 256 190 264 226" stroke="#5f86b0" stroke-width="3" fill="none"/>
+      <ellipse cx="264" cy="252" rx="10" ry="27" fill="#5f86b0"/>
+      <text x="290" y="96" font-size="12" fill="#9fb4cc">Sea of Galilee</text>
+      <text x="284" y="256" font-size="12" fill="#9fb4cc">Dead Sea</text>
+      <circle cx="228" cy="246" r="5" fill="#f3e7c9"/><text x="218" y="250" text-anchor="end" font-size="14" fill="#f3e7c9">Jerusalem</text>
+      <text x="205" y="292" text-anchor="middle" font-size="13" letter-spacing="2" fill="#9aa3b5">JUDEA</text>
+      <ellipse cx="222" cy="86" rx="44" ry="36" fill="rgba(212,162,76,.28)" stroke="#d4a24c" stroke-width="2"/>
+      <text x="216" y="91" text-anchor="middle" font-size="18" font-weight="700" fill="#e8c98a">Galilee</text>
+    </g>
+    <!-- Rome -->
+    <g class="b" data-at="Roman imperial power" data-until="For centuries">
+      <g transform="translate(420 70)" fill="none" stroke="#cfd3db" stroke-width="3" opacity=".8">
+        <path d="M0 0c-18-14-40-12-52 4 16-2 28 2 36 12M0 0c18-14 40-12 52 4-16-2-28 2-36 12M0-4v40M-10 38h20"/>
+        <circle cx="0" cy="-10" r="8"/>
+      </g>
+      <text x="420" y="140" text-anchor="middle" font-size="14" letter-spacing="3" fill="#cfd3db">ROME</text>
+    </g>
+    <g class="b pop" data-at="ruled by Herod Antipas" data-until="For centuries">
+      <path d="M396 190l10-20 14 14 14-14 10 20z" fill="#d4a24c"/><rect x="396" y="190" width="48" height="8" fill="#d4a24c"/>
+      <text x="420" y="222" text-anchor="middle" font-size="14" fill="#f3e7c9">Herod Antipas</text>
+      <path d="M420 160v-6" stroke="#cfd3db" stroke-width="2" stroke-dasharray="2 3"/>
+    </g>
+    <!-- prison door -->
+    <g class="b pop" data-at="after John was arrested" data-until="For centuries">
+      <rect x="520" y="170" width="70" height="90" rx="6" fill="none" stroke="#f3e7c9" stroke-width="3"/>
+      <path d="M535 170v90M555 170v90M575 170v90" stroke="#f3e7c9" stroke-width="3"/>
+      <text x="555" y="282" text-anchor="middle" font-size="14" fill="#f3e7c9">John arrested</text>
+    </g>
+    <!-- promised King: oil + crown -->
+    <g class="b" data-at="For centuries">
+      <path d="M300 170 L306 118 L328 146 L350 106 L372 146 L394 118 L400 170 Z" fill="rgba(212,162,76,.18)" stroke="#d4a24c" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="306" cy="114" r="5" fill="#d4a24c"/><circle cx="350" cy="102" r="5" fill="#d4a24c"/><circle cx="394" cy="114" r="5" fill="#d4a24c"/>
+      <g class="b pop" data-at="anointed with oil">
+        <g transform="rotate(-35 380 50)"><path d="M370 30h20v8h-20z" fill="#e8c98a"/><path d="M366 38h28l6 36h-40z" fill="none" stroke="#e8c98a" stroke-width="4" stroke-linejoin="round"/></g>
+        <path d="M352 80c-2 6-4 10-2 14" stroke="#e8c98a" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <circle cx="350" cy="96" r="4" fill="#e8c98a"/>
+      </g>
+      <text class="b up" data-at="From it we get the title Messiah" x="350" y="222" text-anchor="middle" font-size="18" fill="#f3e7c9">Hebrew <tspan font-style="italic" font-family="Source Serif 4">māšîaḥ</tspan> → Messiah</text>
+      <text class="b up" data-at="The Greek equivalent is Christos" x="350" y="250" text-anchor="middle" font-size="18" fill="#f3e7c9">Greek <tspan font-style="italic" font-family="Source Serif 4">Christos</tspan> → Christ</text>
+      <text class="b up" data-at="Every time we say Jesus Christ" x="350" y="300" text-anchor="middle" font-size="30" font-weight="700" fill="#f3e7c9">Jesus <tspan fill="#d4a24c">Christ</tspan></text>
+      <text class="b up" data-at="Jesus is the promised King" x="350" y="326" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#e8c98a">the promised King</text>
+    </g>
+  </svg>
+  <h2 class="b up" data-at="So Christ is not Jesus' surname">Christ is a title, not a surname.</h2>
+ </div>
+</section>
+
+<section class="slide" data-n="7" data-theme="dark" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <div class="stack">
+   <div class="b up" data-at="This announcement did not come out of nowhere" data-until="Picture it">
+     <p class="scripture" style="color:#f3e7c9">
+      <span class="ph" data-at="How beautiful upon the mountains">“How beautiful upon the mountains are the feet of him who brings good news,</span>
+      <span class="ph" data-at="who publishes peace">who publishes peace, who brings good news of happiness,</span>
+      <span class="ph" data-at="who publishes salvation">who publishes salvation,</span>
+      <span class="ph" data-at="who says to Zion">who says to Zion, ‘<b style="color:#e8c98a;font-weight:600">Your God reigns</b>.’”</span>
+      <span class="ref" style="color:#cfd3db">Isaiah 52:7 · ESV</span>
+     </p>
+   </div>
+   <svg class="scene b" data-at="Picture it" viewBox="0 0 640 300" aria-hidden="true">
+     <g class="b" data-at="Picture it" data-until="Now listen to Jesus again">
+       <circle cx="320" cy="210" r="60" fill="#e8c98a" opacity=".35"/>
+       <path d="M0 230 L120 150 L200 200 L300 120 L420 210 L520 150 L640 220 V300 H0Z" fill="#3c4150"/>
+       <path d="M0 260 C160 230 320 270 640 240 V300 H0Z" fill="#2c3140"/>
+       <g class="run b" data-at="A messenger runs across the hills"><circle cx="210" cy="164" r="8" fill="#f3e7c9"/><path d="M210 172l-4 22M206 194l-10 18M206 194l10 16M208 180l-14 6M208 180l14-10" stroke="#f3e7c9" stroke-width="4" stroke-linecap="round" fill="none"/></g>
+       <g class="b" data-at="towards a waiting city" fill="#cfd3db"><rect x="500" y="196" width="18" height="30"/><rect x="522" y="186" width="22" height="40"/><rect x="548" y="200" width="16" height="26"/><path d="M520 186l13-14 13 14z"/></g>
+       <text class="b up" data-at="And what is the news" x="530" y="150" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="30" fill="#e8c98a">“Your God reigns”</text>
+     </g>
+     <g class="b up" data-at="Now listen to Jesus again">
+       <rect x="40" y="70" width="240" height="120" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+       <text x="160" y="104" text-anchor="middle" font-size="15" letter-spacing="3" fill="#cfd3db">ISAIAH 52:7</text>
+       <text x="160" y="148" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="26" fill="#f3e7c9">“Your God reigns”</text>
+       <rect x="360" y="70" width="240" height="120" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+       <text x="480" y="104" text-anchor="middle" font-size="15" letter-spacing="3" fill="#cfd3db">MARK 1:15</text>
+       <text x="480" y="140" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#f3e7c9">“the kingdom of God</text>
+       <text x="480" y="166" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#f3e7c9">is at hand”</text>
+       <path class="draw b" data-at="Do you hear the connection" style="--len:80" d="M284 130h72" stroke="#d4a24c" stroke-width="4" marker-end="url(#arrow)"/>
+       <text class="b up" data-at="the promised good news of God's reign is arriving" x="320" y="250" text-anchor="middle" font-size="22" fill="#e8c98a">The promised good news is arriving.</text>
+     </g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="label">Understand the Teaching</p>
+  <h2 class="b up" data-at="Here it is in one sentence" style="margin-bottom:.3em">The good news in one sentence</h2>
+  <p class="scripture" style="font-size:clamp(20px,3vw,32px)">
+    <span class="ph" data-at="Jesus the promised King has come"><b>Jesus, the promised King, has come.</b></span>
+    <span class="ph" data-at="He died for our sins and rose again">He died for our sins and rose again,</span>
+    <span class="ph" data-at="so that through him God now offers">so that through him God now offers</span>
+    <span class="ph" data-at="forgiveness reconciliation with God new life and hope">forgiveness, reconciliation with God, new life and hope</span>
+    <span class="ph" data-at="to everyone who turns to him and trusts him">to everyone who turns to him and trusts him.</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true" style="color:#1f2d45">
+    <g class="b pop" data-at="who Jesus is what Jesus announced"><use href="#i-crown" x="45" y="6" width="80" height="80"/><text x="85" y="116" text-anchor="middle" font-size="17" font-weight="700">Who Jesus Is</text></g>
+    <g class="b pop" data-at="what Jesus announced what Jesus did"><use href="#i-horn" x="215" y="6" width="80" height="80"/><text x="255" y="116" text-anchor="middle" font-size="17" font-weight="700">What Jesus</text><text x="255" y="138" text-anchor="middle" font-size="17" font-weight="700">Announced</text></g>
+    <g class="b pop" data-at="what Jesus did and why"><use href="#i-cross" x="385" y="6" width="80" height="80"/><text x="425" y="116" text-anchor="middle" font-size="17" font-weight="700">What Jesus Did</text></g>
+    <g class="b pop" data-at="why this is good news and how we respond"><use href="#i-gift" x="555" y="6" width="80" height="80"/><text x="595" y="116" text-anchor="middle" font-size="17" font-weight="700">Why It Is</text><text x="595" y="138" text-anchor="middle" font-size="17" font-weight="700">Good News</text></g>
+  </svg>
+ </div>
+</section>
+
+<section class="slide" data-n="9" data-theme="dark" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-crown"/></svg>1 · Who Jesus Is</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The first part" data-until="But the New Testament presents" viewBox="0 0 640 280" aria-hidden="true">
+     <g class="b up" data-at="worked as a carpenter or builder">
+       <rect x="70" y="150" width="220" height="16" rx="3" fill="#b19475"/><path d="M90 166v60M270 166v60" stroke="#b19475" stroke-width="10"/>
+       <path d="M120 150l40-26 6 8-40 26z" fill="#cfd3db"/><rect x="190" y="120" width="12" height="30" fill="#7d7a5e"/><rect x="180" y="112" width="32" height="12" rx="3" fill="#cfd3db"/>
+       <text x="180" y="262" text-anchor="middle" font-size="18" fill="#cfd3db">Nazareth · carpenter, builder</text>
+     </g>
+     <g class="b pop" data-at="He ate"><path d="M380 110a40 22 0 0 0 80 0z" fill="none" stroke="#f3e7c9" stroke-width="4"/><path d="M400 96c0-10 8-10 8-20M420 96c0-10 8-10 8-20" stroke="#e8c98a" stroke-width="3" fill="none"/><text x="420" y="160" text-anchor="middle" font-size="18" fill="#f3e7c9">ate</text></g>
+     <g class="b pop" data-at="he slept"><path d="M500 80a22 22 0 1 0 18 34 18 18 0 0 1-18-34z" fill="#e8c98a"/><text x="508" y="160" text-anchor="middle" font-size="18" fill="#f3e7c9">slept</text></g>
+     <g class="b pop" data-at="he wept"><path d="M590 76c-12 18-16 26-16 34a16 16 0 0 0 32 0c0-8-4-16-16-34z" fill="#5f86b0"/><text x="590" y="160" text-anchor="middle" font-size="18" fill="#f3e7c9">wept</text></g>
+     <text class="b up" data-at="He was fully human" x="490" y="220" text-anchor="middle" font-size="30" font-weight="700" fill="#f3e7c9">Fully human</text>
+   </svg>
+   <div class="b up" data-at="But the New Testament presents" data-until="So Christians say">
+     <p class="scripture" style="color:#f3e7c9">
+      <span class="ph" data-at="In the beginning was the Word">“In the beginning was the Word,</span>
+      <span class="ph" data-at="and the Word was with God">and the Word was with God,</span>
+      <span class="ph" data-at="and the Word was God">and the Word was God…</span>
+      <span class="ph" data-at="And the Word became flesh">And the Word became flesh and dwelt among us.”</span>
+      <span class="ref" style="color:#cfd3db">John 1:1, 14 · ESV</span>
+     </p>
+   </div>
+   <svg class="scene b" data-at="So Christians say" viewBox="0 0 640 280" aria-hidden="true">
+     <g class="b up" data-at="fully God and fully human">
+       <rect x="120" y="30" width="180" height="60" rx="30" fill="rgba(212,162,76,.18)" stroke="#d4a24c" stroke-width="2"/><text x="210" y="68" text-anchor="middle" font-size="24" font-weight="700" fill="#f3e7c9">Fully God</text>
+       <rect x="340" y="30" width="180" height="60" rx="30" fill="rgba(212,162,76,.18)" stroke="#d4a24c" stroke-width="2"/><text x="430" y="68" text-anchor="middle" font-size="24" font-weight="700" fill="#f3e7c9">Fully human</text>
+     </g>
+     <g class="b" data-at="God himself came close"><path d="M320 100 L270 230 H370 Z" fill="rgba(232,201,138,.22)"/><circle cx="320" cy="200" r="10" fill="#f3e7c9"/><path d="M320 210v22" stroke="#f3e7c9" stroke-width="6" stroke-linecap="round"/></g>
+     <g class="b pop" data-at="who now reigns as Lord" style="color:#d4a24c"><use href="#i-crown" x="290" y="96" width="60" height="60"/></g>
+     <text class="b up" data-at="And he is the Christ" x="320" y="270" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#e8c98a">the Christ · the promised King · Lord</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="10" data-theme="dark" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-horn"/></svg>2 · What Jesus Announced</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The second part" data-until="Jesus welcomes people" viewBox="0 0 640 300" aria-hidden="true">
+     <g class="b" data-at="God made the world good">
+       <circle cx="320" cy="140" r="100" fill="#3c6e8f"/><path d="M260 90c30 10 40-10 70 0s20 40 50 30M240 160c40-10 50 20 90 10" stroke="#7d9a6b" stroke-width="18" fill="none" stroke-linecap="round"/>
+     </g>
+     <g class="b" data-at="full of brokenness"><path d="M320 40 L300 100 L336 140 L296 190 L320 240" stroke="#16213a" stroke-width="7" fill="none"/><rect x="320" y="36" width="104" height="210" fill="rgba(22,33,58,.45)"/></g>
+     <g font-size="18" text-anchor="middle">
+       <text class="b up" data-at="love and cruelty" x="140" y="90" fill="#e8c98a">love</text><text class="b up" data-at="love and cruelty" x="510" y="90" fill="#9aa3b5">cruelty</text>
+       <text class="b up" data-at="joy and grief" x="120" y="150" fill="#e8c98a">joy</text><text class="b up" data-at="joy and grief" x="530" y="150" fill="#9aa3b5">grief</text>
+       <text class="b up" data-at="kindness and injustice" x="140" y="210" fill="#e8c98a">kindness</text><text class="b up" data-at="kindness and injustice" x="510" y="210" fill="#9aa3b5">injustice</text>
+     </g>
+     <text class="b up" data-at="put things right through his chosen King" x="320" y="290" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#e8c98a">“One day I will put things right.”</text>
+   </svg>
+   <svg class="scene b" data-at="Jesus welcomes people" data-until="It is like the first light" viewBox="0 0 640 300" aria-hidden="true">
+     <g class="b up" data-at="Jesus welcomes people"><circle cx="90" cy="70" r="14" fill="#f3e7c9"/><path d="M90 86v50M90 100l-34-14M90 100l34-14" stroke="#f3e7c9" stroke-width="6" stroke-linecap="round"/><text x="90" y="180" text-anchor="middle" font-size="18" fill="#f3e7c9">welcomes</text></g>
+     <g class="b up" data-at="He forgives sins"><path d="M240 80a22 22 0 0 1 36-10 22 22 0 0 1 36 10c0 30-36 50-36 50s-36-20-36-50z" fill="#d4a24c"/><text x="276" y="180" text-anchor="middle" font-size="18" fill="#f3e7c9">forgives</text></g>
+     <g class="b up" data-at="He heals the sick"><path d="M420 120c-10-20 0-50 10-50 6 0 6 20 6 20s2-30 10-30 8 30 8 30 2-24 10-24 8 24 8 30c0 30-20 40-36 40-10 0-12-6-16-16z" fill="#e8c98a"/><text x="450" y="180" text-anchor="middle" font-size="18" fill="#f3e7c9">heals · frees</text></g>
+     <g class="b up" data-at="He calls ordinary men and women"><path d="M540 120h90l-16 22h-58z" fill="#b19475"/><path d="M584 120V60l30 50z" fill="#f3e7c9"/><path d="M520 150c20 6 40-6 60 0s40 6 60 0" stroke="#5f86b0" stroke-width="4" fill="none"/><text x="585" y="180" text-anchor="middle" font-size="18" fill="#f3e7c9">calls</text></g>
+     <text class="b up" data-at="Wherever Jesus goes" x="320" y="240" text-anchor="middle" font-size="26" font-weight="700" fill="#f3e7c9">God’s kingdom breaks in</text>
+   </svg>
+   <svg class="scene b" data-at="It is like the first light" viewBox="0 0 640 300" aria-hidden="true">
+     <defs><clipPath id="horizon"><rect x="0" y="0" width="640" height="250"/></clipPath></defs>
+     <g clip-path="url(#horizon)"><circle class="b sunup" data-at="It is like the first light" cx="320" cy="250" r="70" fill="#e8c98a"/></g>
+     <g class="b" data-at="It is like the first light" stroke="#e8c98a" stroke-width="3" opacity=".6"><path d="M320 160v-40M240 190l-30-24M400 190l30-24M200 240h-46M440 240h46"/></g>
+     <path d="M150 250h340" stroke="#e8c98a" stroke-width="2" opacity=".5"/>
+     <text class="b up" data-at="his kingdom has begun" x="160" y="60" text-anchor="middle" font-size="24" font-weight="700" fill="#f3e7c9">Already begun</text>
+     <text class="b up" data-at="The full day has not come yet" x="480" y="60" text-anchor="middle" font-size="24" font-weight="700" fill="#cfd3db">Not yet complete</text>
+     <text class="b up" data-at="but the night is already over" x="320" y="110" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#e8c98a">The night is over. The full day is coming.</text>
+   </svg>
+ </div>
+</section>
+
+<section class="slide" data-n="11" data-theme="dark" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-cross"/></svg>3 · What Jesus Did</p>
+  <div class="stack">
+   <div class="b up" data-at="the apostle Paul wrote" data-until="There are four short claims">
+     <p class="scripture" style="color:#f3e7c9">
+      <span class="ph" data-at="that Christ died for our sins">“…that Christ died for our sins in accordance with the Scriptures,</span>
+      <span class="ph" data-at="that he was buried">that he was buried,</span>
+      <span class="ph" data-at="that he was raised on the third day">that he was raised on the third day in accordance with the Scriptures,</span>
+      <span class="ph" data-at="and that he appeared">and that he appeared…”</span>
+      <span class="ref" style="color:#cfd3db">1 Corinthians 15:3–5 · ESV</span>
+     </p>
+   </div>
+   <svg class="scene b" data-at="There are four short claims" viewBox="0 0 680 280" aria-hidden="true">
+     <g class="b up" data-at="Christ died for our sins 2">
+       <path d="M20 200c40-30 100-30 140 0" fill="#3c4150"/><path d="M90 70v130M62 104h56" stroke="#f3e7c9" stroke-width="9" stroke-linecap="round"/>
+       <text x="90" y="244" text-anchor="middle" font-size="22" font-weight="700" fill="#f3e7c9">Died</text></g>
+     <g class="b up" data-at="He was buried 2">
+       <path d="M190 200v-60a60 60 0 0 1 120 0v60z" fill="#3c4150"/><circle cx="250" cy="170" r="30" fill="#5d6676"/>
+       <text x="250" y="244" text-anchor="middle" font-size="22" font-weight="700" fill="#f3e7c9">Buried</text></g>
+     <g class="b up" data-at="He was raised on the third day 2">
+       <g class="b" data-at="The resurrection is the turning point"><circle cx="410" cy="150" r="70" fill="#e8c98a" opacity=".25"/></g>
+       <path d="M350 200v-60a60 60 0 0 1 120 0v60z" fill="#3c4150"/><path d="M380 200v-46a30 30 0 0 1 60 0v46z" fill="#e8c98a"/><circle cx="480" cy="182" r="26" fill="#5d6676"/>
+       <text x="410" y="244" text-anchor="middle" font-size="22" font-weight="700" fill="#e8c98a">Raised</text></g>
+     <g class="b up" data-at="And he appeared">
+       <g fill="#f3e7c9"><circle cx="560" cy="150" r="9"/><circle cx="590" cy="140" r="9"/><circle cx="620" cy="150" r="9"/><circle cx="650" cy="142" r="9"/><circle cx="575" cy="178" r="9"/><circle cx="605" cy="172" r="9"/><circle cx="635" cy="178" r="9"/></g>
+       <text class="b up" data-at="more than five hundred" x="605" y="112" text-anchor="middle" font-size="20" font-weight="700" fill="#e8c98a">500+</text>
+       <text x="605" y="244" text-anchor="middle" font-size="22" font-weight="700" fill="#f3e7c9">Appeared</text></g>
+     <text class="b up" data-at="death does not have the last word" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#e8c98a">Death does not have the last word.</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="badge" style="color:#a8792b"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-gift"/></svg>4 · Why It Is Good News and How We Respond</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The fourth part" data-until="Because Jesus died and rose again" viewBox="0 0 640 280" aria-hidden="true">
+     <g class="b up" data-at="It is a broken relationship">
+       <circle cx="80" cy="120" r="14" fill="#1f2d45"/><path d="M80 136v50" stroke="#1f2d45" stroke-width="7" stroke-linecap="round"/>
+       <circle cx="560" cy="110" r="34" fill="#e8c98a" opacity=".6"/><text x="560" y="168" text-anchor="middle" font-size="18" fill="#1f2d45">God</text>
+       <path d="M110 170 C180 130 240 130 290 150" stroke="#b19475" stroke-width="10" fill="none" stroke-linecap="round"/>
+       <path class="b" data-until="God acted first" data-at="It is a broken relationship" d="M350 150 C400 130 460 130 520 160" stroke="#b19475" stroke-width="10" fill="none" stroke-linecap="round"/>
+       <text x="320" y="230" text-anchor="middle" font-size="20" fill="#5d6676">a broken relationship</text>
+     </g>
+     <path class="b draw" data-at="God acted first" style="--len:440" d="M520 160 C440 120 340 120 290 150 C220 130 160 140 110 170" stroke="#d4a24c" stroke-width="10" fill="none" stroke-linecap="round"/>
+     <g class="b up" data-at="Paul writes in Romans">
+       <text x="320" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#1f2d45">“But God shows his love for us in that while we were</text>
+       <text x="320" y="68" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#1f2d45">still sinners, Christ died for us.” Romans 5:8</text>
+     </g>
+   </svg>
+   <svg class="scene b" data-at="Because Jesus died and rose again" data-until="And how do we respond" viewBox="0 0 680 260" aria-hidden="true">
+     <g font-size="19" font-weight="700" text-anchor="middle" fill="#1f2d45">
+     <g class="b pop" data-at="Forgiveness so our wrongs"><use href="#i-gift" x="40" y="30" width="110" height="110" style="color:#d4a24c"/><text x="95" y="170">Forgiveness</text></g>
+     <g class="b pop" data-at="Reconciliation so we can know him"><use href="#i-gift" x="205" y="30" width="110" height="110" style="color:#d4a24c"/><text x="260" y="170">Reconciliation</text></g>
+     <g class="b pop" data-at="New life as he begins"><use href="#i-gift" x="370" y="30" width="110" height="110" style="color:#d4a24c"/><text x="425" y="170">New life</text></g>
+     <g class="b pop" data-at="And hope that does not end"><use href="#i-gift" x="535" y="30" width="110" height="110" style="color:#d4a24c"/><text x="590" y="170">Hope</text></g>
+     </g>
+     <text class="b up" data-at="These are gifts not rewards" x="340" y="230" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="26" fill="#a8792b">Gifts, not rewards.</text>
+   </svg>
+   <svg class="scene b" data-at="And how do we respond" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b up" data-at="To repent means to turn" transform="translate(0 24)">
+       <path d="M130 170 V100 a50 50 0 0 1 100 0 V140" fill="none" stroke="#d4a24c" stroke-width="10" stroke-linecap="round"/><path d="M212 136l18 26 18-26z" fill="#d4a24c"/>
+       <text x="180" y="220" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2d45">Repent = turn</text></g>
+     <g class="b up" data-at="To believe means to trust" transform="translate(0 24)">
+       <path d="M400 150c10-30 30-40 50-40M520 150c-10-30-30-40-50-40" stroke="#1f2d45" stroke-width="8" fill="none" stroke-linecap="round"/><path d="M400 150h120" stroke="#1f2d45" stroke-width="8" stroke-linecap="round"/>
+       <text x="460" y="220" text-anchor="middle" font-size="24" font-weight="700" fill="#1f2d45">Believe = trust</text></g>
+     <text class="b up" data-at="It is an invitation to respond" x="320" y="34" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#a8792b">An invitation to respond</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">A Story · Kumasi, Ghana</p>
+  <h1 class="b up" data-at="Let me tell you about Ama" style="font-size:clamp(26px,4.4vw,46px)">Ama’s story</h1>
+  <div class="stack">
+   <svg class="scene b" data-at="Ama grew up" data-until="One evening" viewBox="0 0 640 260" aria-hidden="true">
+     <g><circle cx="320" cy="90" r="20" fill="#5b3b2a"/><path d="M290 220c0-70 14-100 30-100s30 30 30 100z" fill="#7a2e3a"/><path d="M300 126h40" stroke="#f3e7c9" stroke-width="5"/></g>
+     <g fill="#7d7a5e"><circle cx="230" cy="110" r="16"/><path d="M206 220c0-60 10-84 24-84s24 24 24 84z"/><circle cx="410" cy="110" r="16"/><path d="M386 220c0-60 10-84 24-84s24 24 24 84z"/></g>
+     <g class="b" data-at="She sang in the choir" fill="#d4a24c"><circle class="note" cx="370" cy="70" r="7"/><circle class="note n2" cx="270" cy="60" r="7"/><circle class="note n3" cx="350" cy="40" r="6"/></g>
+     <text x="320" y="252" text-anchor="middle" font-size="18" fill="#5d6676">choir · hymns by heart</text>
+   </svg>
+   <svg class="scene b" data-at="One evening" data-until="The next Sunday" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b" data-at="One evening" data-until="began to think carefully">
+       <circle cx="140" cy="120" r="18" fill="#5b3b2a"/><path d="M114 240c0-60 12-90 26-90s26 30 26 90z" fill="#7a2e3a"/>
+       <circle cx="500" cy="120" r="18" fill="#3b4a60"/><path d="M474 240c0-60 12-90 26-90s26 30 26 90z" fill="#3b4a60"/>
+       <g class="b up" data-at="a friend from work asked"><rect x="400" y="20" width="200" height="54" rx="16" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><text x="500" y="54" text-anchor="middle" font-size="20" fill="#1f2d45">“What is the gospel?”</text></g>
+       <g class="b up" data-at="Ama answered"><rect x="30" y="10" width="230" height="86" rx="16" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="145" y="40" text-anchor="middle" font-size="18" fill="#1f2d45">going to church</text><text x="145" y="62" text-anchor="middle" font-size="18" fill="#1f2d45">praying</text><text x="145" y="84" text-anchor="middle" font-size="18" fill="#1f2d45">a good life</text></g>
+     </g>
+     <g class="b" data-at="began to think carefully">
+       <circle cx="200" cy="120" r="18" fill="#5b3b2a"/><path d="M174 240c0-60 12-90 26-90s26 30 26 90z" fill="#7a2e3a"/>
+       <text x="420" y="70" text-anchor="middle" font-size="20" fill="#5d6676">what people do</text>
+       <text x="420" y="100" text-anchor="middle" font-size="18" fill="#5d6676">church · praying · a good life</text>
+       <g class="b up" data-at="She had said nothing about who Jesus is"><rect x="320" y="130" width="200" height="60" rx="14" fill="none" stroke="#d4a24c" stroke-width="3" stroke-dasharray="8 6"/><text x="420" y="168" text-anchor="middle" font-size="20" font-weight="700" fill="#a8792b">Jesus?</text></g>
+     </g>
+   </svg>
+   <svg class="scene b" data-at="The next Sunday" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b" data-at="But there was a beginning"><circle cx="320" cy="150" r="120" fill="#e8c98a" opacity=".4"/></g>
+     <rect x="200" y="170" width="240" height="14" rx="4" fill="#b19475"/>
+     <circle cx="230" cy="110" r="18" fill="#5b3b2a"/><path d="M204 220c0-50 12-74 26-74s26 24 26 74z" fill="#7a2e3a"/>
+     <circle cx="410" cy="106" r="18" fill="#3a2a22"/><path d="M384 220c0-50 12-78 26-78s26 28 26 78z" fill="#5d6676"/><path d="M398 100c4-14 20-14 24 0" stroke="#cfd3db" stroke-width="5" fill="none"/>
+     <path d="M320 166c-12-6-34-6-46 0v-18c12-6 34-6 46 0 12-6 34-6 46 0v18c-12-6-34-6-46 0z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/>
+     <text class="b up" data-at="They chose Mark" x="320" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2d45">Mark</text>
+     <text class="b up" data-at="every Tuesday after work" x="320" y="66" text-anchor="middle" font-size="18" fill="#5d6676">Tuesdays · a few verses · questions</text>
+     <text class="b up" data-at="But there was a beginning" x="320" y="250" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#a8792b">a beginning</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="it is often confused" style="font-size:clamp(26px,4.4vw,46px)">What the gospel is not</h1>
+  <div class="nots">
+   <div class="not b up" data-at="The gospel means being a good person"><span class="wrong">Advice to try harder<i class="b" data-at="Being good matters"></i></span><span class="truth b" data-at="It is news about what God has done">News of what God has done</span></div>
+   <div class="not b up" data-at="Jesus was only a good teacher"><span class="wrong">Only a good teacher<i class="b" data-at="He was a great teacher"></i></span><span class="truth b" data-at="he is the promised King who died">The promised King, crucified and risen</span></div>
+   <div class="not b up" data-at="I have always gone to church"><span class="wrong">Church attendance<i class="b" data-at="Belonging to a church is good"></i></span><span class="truth b" data-at="attending church is not the same">Personal trust in Christ</span></div>
+   <div class="not b up" data-at="The gospel promises that God will make me healthy"><span class="wrong">Health and wealth<i class="b" data-at="God cares about every part"></i></span><span class="truth b" data-at="Its centre is Jesus Christ">Jesus at the centre</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="Your assignment is to explain" style="font-size:clamp(24px,4vw,42px)">Explain the gospel in four parts</h1>
+  <ol class="steps">
+    <li class="b up" data-at="First read Mark"><b>Read</b> Mark 1:14–15 and 1 Corinthians 15:3–5 again</li>
+    <li class="b up" data-at="Second write one or two sentences"><b>Write</b> one or two sentences for each part</li>
+    <li class="b up" data-at="Third practise saying it out loud"><b>Say it aloud</b> in about two minutes</li>
+    <li class="b up" data-at="And finally look at the fourth part"><b>Respond:</b> How am I responding to Jesus? Tell God in a short prayer.</li>
+  </ol>
+  <p class="gloss b up" data-at="You do not need to memorise" style="font-style:italic">Use your own words. You do not need to memorise mine.</p>
+  <div class="fs b up" data-at="This assignment is part of your First Steps">
+    <span class="lit b" data-at="my faith and my witness">My faith</span><span>My Bible</span><span>My prayer</span><span>My church</span><span class="lit b" data-at="my faith and my witness">My witness</span>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="16" data-theme="dark" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="The gospel is good news about Jesus">The gospel is good news about Jesus</h2>
+  <div class="remember">
+    <div class="b up" data-at="Who Jesus is fully God"><svg viewBox="0 0 60 60"><use href="#i-crown"/></svg><p><b>Who Jesus Is</b>fully God and fully human, the promised King</p></div>
+    <div class="b up" data-at="What Jesus announced God's reign"><svg viewBox="0 0 60 60"><use href="#i-horn"/></svg><p><b>What Jesus Announced</b>God’s reign has come near</p></div>
+    <div class="b up" data-at="What Jesus did he died"><svg viewBox="0 0 60 60"><use href="#i-cross"/></svg><p><b>What Jesus Did</b>died for our sins · was buried · was raised · appeared</p></div>
+    <div class="b up" data-at="And why it is good news"><svg viewBox="0 0 60 60"><use href="#i-gift"/></svg><p><b>Why It Is Good News and How We Respond</b>forgiveness, reconciliation with God, new life and hope · turn and trust</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e8c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer">
+   <p class="ph" data-at="Father thank you for the good news">Father, thank you for the good news of Jesus.</p>
+   <p class="ph" data-at="Thank you that you did not wait">Thank you that you did not wait for us to fix ourselves, but loved us while we were still sinners.</p>
+   <p class="ph" data-at="Thank you that Jesus is the promised King">Thank you that Jesus is the promised King, who died for our sins and rose again.</p>
+   <p class="ph" data-at="Teach me to turn from my own way">Teach me to turn from my own way and trust Jesus more fully.</p>
+   <p class="ph" data-at="Help me to understand this good news">Help me to understand this good news, live in its truth and share it clearly.</p>
+   <p class="ph" data-at="In Jesus' name Amen"><b>In Jesus’ name. Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:1em">You may stop here for today.</p>
+ </div>
+</section>
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 17</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="begin-lesson-01.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1":"Welcome to Lesson 1 of Begin. I am glad you are here. Whether you have followed Jesus for a week, or you are returning to faith, or you are still exploring who he is, you are welcome. Let me start with a word you have probably heard many times. The word is gospel. You hear it in church. You hear it in songs, and sometimes on the radio. Some people say \"that's the gospel truth\" when they mean something is definitely true. Many Christians use the word every week. But if someone stopped you today and asked, \"What actually is the gospel?\", what would you say? That is our question for this lesson. By the end, you will be able to explain the gospel in your own words, in four simple parts. You do not need to believe it yet to understand it. You only need to listen carefully. So let us begin where every lesson in this course begins: with the Bible.","2":"Our passage is Mark chapter 1, verses 14 and 15. Mark's Gospel is one of four accounts of Jesus' life in the Bible, and it is the shortest. Very near the beginning, Mark sums up Jesus' whole message in two verses. Listen carefully. \"Now after John was arrested, Jesus came into Galilee, proclaiming the gospel of God, and saying, 'The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.'\" Let me read it once more, a little more slowly. \"Now after John was arrested, Jesus came into Galilee, proclaiming the gospel of God, and saying, 'The time is fulfilled, and the kingdom of God is at hand; repent and believe in the gospel.'\"","3":"Notice three things in these verses. First, this is Jesus' own message. The gospel did not begin with a church, a preacher or a denomination. Jesus himself came \"proclaiming the gospel of God.\" Second, it is an announcement. Jesus does not say, \"Here is some good advice.\" He says, \"The time is fulfilled.\" Something has happened. Third, it calls for a response. Jesus ends with two commands: repent and believe. So the gospel is news to hear, and it is also an invitation to answer. Keep those three things in mind. We will come back to each of them.","4":"The New Testament was first written in Greek. The word Mark uses for gospel is euangelion. It simply means good news. In the wider Greek-speaking world, this word could be used for important public announcements: good news of a victory, or of the rise of a ruler. But Mark's use is also deeply rooted in the Scriptures of Israel, especially passages such as Isaiah 52, which announce the good news that God reigns. We will look at that passage in a moment. Mark opens his whole book with this word: \"The beginning of the gospel of Jesus Christ, the Son of God.\" So when Mark speaks about the gospel of Jesus Christ, this is not advice about becoming a better person. It is an announcement of what God has done. Advice tells you what to do. News tells you what has happened. That difference matters, and we will see why later in this lesson.","5":"The second word is in verse 15: \"the kingdom of God is at hand.\" The Greek word for kingdom is basileia. When we hear \"kingdom\" today, we often think only of a country with borders on a map. Here Jesus is speaking especially about God's reign: his rule, his authority and his kingly power in action. So when Jesus says that the kingdom of God has come near, he is announcing that God's promised rule is breaking into history through him. Wherever Jesus goes, God's reign is breaking in. These are the only two Greek words I will ask you to remember today: euangelion, good news, and basileia, God's reign. If you remember just those two, Mark chapter 1 will already make more sense to you.","6":"Now let us step into the world where Jesus spoke these words. Galilee was a region in the north of Israel. In Jesus' day, the land was under Roman imperial power. Galilee itself was ruled by Herod Antipas, a client ruler whose authority depended on Rome. Roman imperial power, taxation and political control shaped everyday life. Notice how our verse begins: \"after John was arrested.\" John the Baptist had been put in prison by that same Herod. So when Jesus walks into Galilee announcing a kingdom, he is not speaking in a quiet, peaceful world. He is announcing God's reign right where earthly rulers seemed to hold all the power. For centuries, God's people had been waiting for a King God had promised: a King from the family of David who would put things right. In Israel, kings were anointed with oil when God chose them. The Hebrew word mashiach means \"anointed one.\" From it we get the title Messiah. The Greek equivalent is Christos, from which we get \"Christ.\" So Christ is not Jesus' surname. It is a title: Jesus is God's anointed King. Every time we say \"Jesus Christ,\" we are saying, \"Jesus is the promised King.\"","7":"This announcement did not come out of nowhere. Centuries before Jesus, the prophet Isaiah gave God's people a picture of hope for a time when they were defeated and far from home. Listen to Isaiah chapter 52, verse 7: \"How beautiful upon the mountains are the feet of him who brings good news, who publishes peace, who brings good news of happiness, who publishes salvation, who says to Zion, 'Your God reigns.'\" Picture it. A messenger runs across the hills towards a waiting city, calling out good news. And what is the news? \"Your God reigns.\" Now listen to Jesus again: \"The time is fulfilled, and the kingdom of God is at hand.\" Do you hear the connection? Jesus' announcement echoes that great biblical hope: the promised good news of God's reign is arriving. The moment God had been preparing for has come.","8":"So what is the gospel? Here it is in one sentence. Jesus, the promised King, has come. He died for our sins and rose again, so that through him God now offers forgiveness, reconciliation with God, new life and hope to everyone who turns to him and trusts him. The rest of this lesson unpacks that sentence in four parts: who Jesus is, what Jesus announced, what Jesus did, and why this is good news and how we respond. You will meet these four parts again and again in this course, so take your time with them.","9":"The first part: who Jesus is. The good news is about a person before it is about anything else. Jesus was a real man. He lived in Israel about two thousand years ago. He grew up in the town of Nazareth and worked as a carpenter or builder before he began to teach. He ate, he slept, he wept, and he got tired. He was fully human. But the New Testament presents Jesus as much more than a good teacher or prophet. John's Gospel begins with an extraordinary claim: \"In the beginning was the Word, and the Word was with God, and the Word was God… And the Word became flesh and dwelt among us.\" John uses \"the Word\" to speak of Jesus. He is telling us that the one who has always been with God, and who is God, became a human being and lived among us. So Christians say that Jesus is fully God and fully human. We will explore that more in Book 2. For now, hold on to this: in Jesus, God himself came close. And he is the Christ, the promised King, who now reigns as Lord.","10":"The second part: what Jesus announced. The Bible tells us that God made the world good, but human beings turned away from him. Since then the world has been full of beauty and full of brokenness, side by side: love and cruelty, joy and grief, kindness and injustice. Through the prophets, God promised that one day he would put things right through his chosen King. Jesus announced that this day had arrived. And as you read on in Mark, you see it happening. Jesus welcomes people others push away. He forgives sins. He heals the sick and sets people free from evil. He calls ordinary men and women to follow him. Wherever Jesus goes, God's kingdom breaks in. This does not mean everything is fixed straight away. Christians still suffer and struggle, and we still wait for the day when Jesus will make all things new. But the King has come, and his kingdom has begun. It is like the first light of sunrise. The full day has not come yet, but the night is already over.","11":"The third part: what Jesus did. If Jesus had only taught and healed, we might remember him as a great man. But the heart of the good news is what happened at the end of his life. Within the first generation after Jesus' death and resurrection, the apostle Paul wrote to the Christians in the city of Corinth. He reminded them of the message he called \"of first importance\": \"that Christ died for our sins in accordance with the Scriptures, that he was buried, that he was raised on the third day in accordance with the Scriptures, and that he appeared…\" There are four short claims here. Christ died for our sins. He was executed on a Roman cross, but his death was not an accident or a defeat. He died on our behalf, because of the wrong we have done. He was buried. He really died. He was raised on the third day: not as a ghost or a memory, but bodily and truly alive. And he appeared. Paul says the risen Jesus was seen by many people, once by more than five hundred at the same time, and Paul even notes that most of those witnesses were still alive when he wrote. The resurrection is the turning point of the whole story. It shows that Jesus is who he said he was, and that death does not have the last word.","12":"The fourth part: why this is good news, and how we respond. The Bible is honest about us. All of us have sinned. We have turned away from God and gone our own way, in what we think, say and do, and in the good we fail to do. Sin is not only breaking rules. It is a broken relationship with the God who made us. And we cannot repair it by trying harder or being more religious. But here is the good news. Paul writes in Romans chapter 5, verse 8: \"But God shows his love for us in that while we were still sinners, Christ died for us.\" Notice the order. God acted first. He did not wait for us to fix ourselves. Because Jesus died and rose again, God now offers four gifts. Forgiveness, so our wrongs are no longer held against us. Reconciliation, so we can know him as our loving Father. New life, as he begins to change us from the inside. And hope that does not end at death. These are gifts, not rewards. No one earns them. And how do we respond? Jesus said it in two words: repent and believe. To repent means to turn: to turn away from going our own way and turn back to God. To believe means to trust: to put our trust in Jesus and what he has done, rather than in ourselves. We will look closely at those two words in Lesson 2. For now, remember this: the gospel is not only something to understand. It is an invitation to respond.","13":"Let me tell you about Ama. Her story is drawn from the experiences of many people. Ama grew up in a church-going family in Kumasi, Ghana. She sang in the choir for years and knew most of the hymns by heart. One evening, a friend from work asked her a simple question: \"What is the gospel?\" Ama answered, \"It means going to church, praying and trying to live a good life.\" But afterwards, Ama began to think carefully about her answer. Everything she had said was about what people do. She had said nothing about who Jesus is or what God had done through him. The next Sunday, Ama asked an older woman in her church, Auntie Efua, if they could read one of the Gospels together. They chose Mark. They met every Tuesday after work, reading a few verses at a time and asking questions. There was no sudden, dramatic moment. But there was a beginning. Ama's experience is very common. It is possible to know a lot of church language without yet understanding the gospel clearly. If that describes you, you are in exactly the right place.","14":"Because the gospel is so important, it is often confused with other ideas. Here are four common ones. \"The gospel means being a good person.\" Being good matters, but the gospel is not advice to try harder. It is news about what God has done. \"Jesus was only a good teacher.\" He was a great teacher, but the gospel announces much more: he is the promised King who died for our sins and rose again. \"I have always gone to church, so I am fine.\" Belonging to a church is good, but attending church is not the same as trusting Christ. And \"The gospel promises that God will make me healthy and rich.\" God cares about every part of our lives, but the gospel does not promise wealth or success to everyone who believes. Its centre is Jesus Christ and what God has done through him.","15":"Now, because this is true, here is what I would like you to do this week. Your assignment is to explain the gospel in four parts, in your own words. First, read Mark 1:14 to 15 and 1 Corinthians 15:3 to 5 again. Second, write one or two sentences for each part: who Jesus is, what he announced, what he did, and why it is good news and how we respond. Third, practise saying it out loud, in about two minutes, as if a friend had just asked you, \"What is the gospel?\" And finally, look at the fourth part and ask yourself honestly: how am I responding to Jesus? Then tell God your answer in a short prayer. You do not need to memorise my exact words. The goal is to understand the gospel well enough to explain it simply and faithfully in your own words. This assignment is part of your First Steps in Following Jesus. It belongs to two of them: my faith, and my witness. Below this lesson you will also find a seven-day reading plan through Mark chapters 1 and 2, with one short question for each day.","16":"Let us bring it together. The gospel is good news about Jesus. Who Jesus is: fully God and fully human, the promised King. What Jesus announced: God's reign has come near. What Jesus did: he died for our sins, was buried, was raised on the third day, and appeared to many witnesses. And why it is good news: God offers forgiveness, reconciliation with God, new life and hope as a gift, and he calls us to turn and trust.","17":"Let us pray. Father, thank you for the good news of Jesus. Thank you that you did not wait for us to fix ourselves, but loved us while we were still sinners. Thank you that Jesus is the promised King, who died for our sins and rose again. Teach me to turn from my own way and trust Jesus more fully. Help me to understand this good news, live in its truth and share it clearly. In Jesus' name. Amen. You may stop here for today. When you are ready, begin this week's assignment and the reading plan."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.16, 0.63, 0.89, 1.78, 1.94, 3.14, 3.24, 3.44, 3.83, 4.01, 4.12, 5.21, 5.41, 5.6, 5.77, 6.22, 6.72, 6.94, 6.98, 7.63, 7.99, 8.18, 8.3, 8.85, 8.97, 10.02, 10.24, 10.45, 10.55, 10.93, 11.69, 11.92, 12.17, 13.0, 13.21, 13.32, 14.53, 14.73, 14.87, 15.26, 15.41, 15.44, 15.9, 16.05, 16.21, 16.71, 17.02, 17.31, 18.27, 18.34, 18.91, 19.08, 20.25, 20.4, 20.7, 20.84, 21.04, 21.91, 22.03, 22.3, 22.43, 22.61, 23.57, 23.72, 24.42, 24.56, 24.64, 25.79, 26.16, 26.5, 26.84, 27.17, 27.27, 27.86, 28.81, 28.98, 29.12, 29.44, 30.0, 30.24, 30.87, 31.92, 32.21, 32.86, 33.17, 33.26, 33.73, 34.12, 34.89, 35.03, 35.12, 35.6, 36.04, 36.16, 36.54, 36.67, 37.55, 37.85, 38.53, 38.68, 38.77, 39.86, 40.03, 40.21, 40.33, 41.43, 41.65, 41.78, 41.94, 42.48, 42.61, 42.85, 43.87, 44.03, 44.19, 44.95, 45.14, 45.3, 45.48, 45.72, 45.87, 46.43, 46.51, 47.2, 47.32, 47.51, 47.93, 48.81, 48.98, 49.48, 50.0, 51.06, 51.19, 51.33, 51.59, 51.81, 51.9, 52.25, 52.42, 52.94, 53.09, 53.7, 54.56, 54.78, 55.17, 55.47, 55.56, 55.99, 57.07, 57.32, 57.52, 57.68, 58.15, 58.49, 58.87, 59.32, 59.45, 59.65, 60.08, 61.24, 61.56, 61.65], "2": [62.77, 62.97, 63.56, 64.08, 64.75, 66.06, 67.28, 69.62, 70.05, 70.69, 70.94, 71.21, 71.31, 71.81, 72.45, 72.62, 73.28, 73.71, 73.93, 74.0, 74.89, 75.3, 75.55, 75.8, 75.95, 77.46, 77.86, 78.09, 78.17, 79.08, 79.47, 79.86, 80.07, 80.66, 80.99, 81.65, 81.83, 82.13, 83.4, 83.87, 85.18, 85.53, 85.96, 86.35, 86.55, 87.48, 88.0, 88.38, 88.57, 89.6, 90.34, 90.41, 91.02, 91.13, 91.82, 91.98, 92.84, 92.94, 93.48, 93.67, 94.77, 94.95, 95.03, 95.58, 95.74, 96.28, 96.47, 96.59, 97.51, 98.4, 98.65, 99.29, 99.63, 99.71, 101.05, 101.19, 101.33, 101.53, 101.68, 102.0, 102.69, 102.76, 103.07, 103.29, 104.61, 105.15, 105.53, 105.83, 106.05, 107.13, 107.62, 107.94, 108.16, 109.25, 109.95, 110.02, 110.58, 110.69, 111.46, 111.67, 112.54, 112.63, 113.14, 113.42, 114.8, 114.97, 115.13, 115.66, 115.82, 116.16, 116.32, 116.44, 117.39, 118.41, 118.63, 119.1, 119.22, 119.3], "3": [120.59, 121.11, 121.42, 121.97, 122.11, 122.39, 123.38, 124.23, 124.46, 124.63, 125.39, 125.72, 126.73, 126.82, 127.44, 127.61, 127.89, 128.23, 128.42, 128.48, 129.35, 129.43, 130.31, 130.52, 130.57, 132.02, 132.57, 133.2, 133.93, 134.67, 134.75, 135.32, 135.43, 136.56, 137.42, 137.55, 137.71, 137.82, 138.87, 139.33, 139.54, 139.77, 140.41, 140.77, 140.87, 141.08, 141.33, 142.34, 142.48, 143.13, 143.22, 143.71, 143.93, 144.83, 145.37, 145.55, 146.74, 147.48, 147.58, 148.08, 148.34, 148.37, 149.72, 150.21, 150.62, 150.87, 151.13, 152.23, 153.11, 153.36, 154.52, 154.69, 154.82, 155.35, 155.52, 155.94, 156.05, 156.6, 157.07, 157.2, 157.42, 158.07, 158.25, 159.11, 159.33, 160.34, 160.66, 160.99, 161.25, 161.7, 161.8, 162.93, 163.12, 163.34, 163.63, 164.05, 164.26, 164.58, 164.7], "4": [165.28, 165.35, 165.54, 166.14, 166.32, 166.65, 166.95, 167.03, 167.95, 168.02, 168.36, 168.74, 169.16, 169.26, 169.85, 170.08, 171.54, 171.67, 172.07, 172.77, 173.02, 174.27, 174.4, 174.47, 174.97, 175.33, 175.87, 176.5, 176.77, 177.17, 177.37, 177.46, 177.9, 178.1, 178.74, 179.09, 180.38, 180.63, 181.04, 181.14, 181.2, 182.23, 182.41, 182.52, 182.61, 183.11, 183.22, 183.26, 184.34, 184.52, 185.03, 185.54, 185.82, 186.3, 186.9, 187.45, 187.61, 187.68, 188.42, 188.53, 189.35, 189.94, 190.63, 190.97, 191.51, 193.0, 193.52, 194.01, 194.1, 194.44, 194.92, 195.06, 195.51, 196.7, 196.82, 197.0, 197.27, 197.4, 197.64, 198.19, 198.31, 198.34, 199.58, 199.99, 200.53, 200.72, 201.05, 201.41, 201.62, 201.83, 202.81, 202.9, 203.47, 203.69, 203.77, 204.38, 204.49, 204.96, 205.79, 205.9, 206.38, 206.62, 207.77, 208.5, 208.68, 209.05, 209.55, 209.85, 209.96, 210.47, 210.57, 211.05, 211.99, 212.19, 212.36, 212.62, 213.11, 213.41, 213.84, 213.88, 214.18, 215.27, 215.39, 215.57, 215.69, 216.5, 216.69, 216.97, 217.28, 217.57, 218.47, 219.1, 219.55, 219.72, 220.03, 220.15, 220.87, 221.44, 221.82, 221.95, 222.2, 222.38, 223.59, 223.87, 224.35, 225.29, 225.45, 225.61, 225.77, 226.04, 226.35, 226.85, 227.02, 227.28], "5": [228.11, 228.18, 228.58, 228.88, 229.01, 229.13, 229.44, 230.5, 231.06, 231.22, 231.7, 231.88, 231.99, 233.39, 233.49, 233.91, 234.25, 234.5, 235.37, 235.6, 236.85, 237.02, 237.16, 237.37, 237.88, 238.89, 239.03, 239.41, 239.82, 240.25, 240.35, 240.42, 240.97, 241.18, 241.85, 242.03, 242.07, 242.96, 243.24, 243.78, 243.86, 244.35, 244.98, 245.25, 245.66, 246.53, 246.7, 247.54, 247.7, 248.78, 248.93, 249.12, 249.61, 250.11, 250.27, 251.44, 251.66, 251.88, 252.34, 252.73, 252.91, 252.98, 253.45, 253.58, 253.88, 254.11, 254.4, 255.29, 255.47, 255.61, 256.33, 256.47, 256.97, 257.52, 257.95, 258.15, 258.71, 258.92, 259.49, 259.83, 260.78, 261.19, 261.69, 262.4, 262.82, 263.5, 263.67, 264.3, 265.15, 265.47, 265.52, 265.72, 266.15, 266.41, 266.73, 267.14, 267.23, 267.42, 267.75, 267.86, 267.99, 268.43, 269.43, 270.6, 270.82, 271.53, 271.8, 272.82, 273.17, 273.89, 274.02, 274.15, 274.65, 274.99, 275.28, 275.97, 276.38, 276.75, 277.37, 277.87, 278.17, 278.37, 278.79, 278.91], "6": [279.78, 280.13, 280.34, 280.49, 280.85, 281.09, 281.17, 281.62, 281.8, 282.37, 282.81, 283.08, 284.22, 284.84, 285.05, 285.1, 285.6, 285.81, 285.87, 286.34, 286.42, 287.46, 287.63, 288.28, 288.89, 288.99, 289.41, 289.58, 289.86, 290.38, 291.13, 291.96, 292.68, 293.29, 293.5, 293.95, 294.14, 294.57, 295.88, 295.99, 296.55, 296.93, 297.16, 297.81, 298.39, 298.61, 299.58, 299.99, 300.61, 301.44, 302.62, 302.81, 303.35, 303.92, 304.53, 305.05, 306.15, 306.62, 306.88, 307.12, 307.54, 308.9, 309.36, 309.77, 309.98, 311.14, 311.56, 311.64, 312.33, 312.57, 312.79, 313.08, 313.33, 313.83, 314.07, 314.3, 314.73, 315.89, 316.09, 316.37, 316.95, 317.45, 317.66, 318.55, 319.15, 319.2, 320.07, 320.22, 320.37, 320.6, 321.19, 321.29, 321.33, 321.96, 322.51, 323.41, 323.54, 323.69, 324.42, 324.85, 325.7, 326.03, 326.27, 326.87, 327.37, 327.8, 327.92, 328.3, 328.76, 328.85, 329.97, 330.07, 330.64, 331.03, 331.45, 331.66, 331.85, 332.23, 332.46, 332.49, 332.98, 333.35, 333.56, 334.54, 334.67, 335.04, 335.27, 335.34, 335.9, 335.99, 336.88, 336.99, 337.18, 337.45, 337.76, 338.83, 339.0, 340.04, 340.46, 340.65, 341.17, 341.45, 342.19, 342.38, 342.78, 343.23, 344.1, 344.19, 344.61, 344.95, 345.91, 346.66, 347.35, 348.19, 348.45, 348.62, 348.77, 349.02, 349.1, 349.8, 351.08, 351.17, 351.5, 352.16, 352.66, 353.72, 353.92, 354.14, 354.29, 354.87, 355.93, 356.15, 356.68, 356.93, 357.24, 357.66, 358.9, 359.03, 359.23, 359.28, 360.33, 361.13, 361.36, 361.95, 362.69, 363.7, 364.03, 364.38, 364.54, 365.15, 365.71, 366.66, 366.84, 366.95, 367.81, 368.66, 368.88, 368.99, 369.68], "7": [370.76, 370.97, 371.74, 371.92, 372.26, 372.46, 372.62, 372.72, 373.95, 374.59, 374.98, 375.92, 376.0, 376.48, 377.06, 377.36, 377.73, 378.15, 378.19, 378.7, 378.79, 379.47, 379.63, 379.68, 380.14, 380.34, 380.48, 380.61, 381.6, 381.77, 382.21, 382.44, 383.23, 383.58, 383.77, 384.28, 385.36, 386.73, 386.91, 387.68, 387.98, 388.04, 389.03, 389.16, 389.27, 389.72, 389.83, 390.67, 390.79, 391.24, 391.53, 392.45, 392.62, 393.22, 394.1, 394.25, 394.62, 394.92, 395.32, 395.39, 396.39, 396.51, 397.04, 398.13, 398.25, 398.6, 398.72, 399.68, 399.91, 400.34, 401.68, 402.11, 402.97, 403.05, 403.82, 404.12, 404.53, 404.61, 405.13, 405.63, 405.67, 406.2, 406.68, 407.39, 407.76, 408.14, 409.23, 409.42, 409.68, 409.86, 409.96, 411.25, 411.53, 411.84, 413.18, 413.39, 413.82, 413.93, 414.44, 415.48, 415.58, 416.13, 416.4, 417.52, 417.66, 417.74, 418.24, 418.4, 418.9, 419.06, 419.15, 420.23, 420.39, 420.61, 420.92, 421.03, 422.35, 422.95, 423.79, 424.28, 424.52, 425.06, 425.55, 426.43, 426.5, 427.13, 427.33, 427.79, 427.87, 428.32, 428.73, 428.99, 430.04, 430.12, 430.72, 431.06, 431.25, 431.45, 432.04, 432.38, 432.64], "8": [433.7, 433.9, 434.21, 434.38, 434.46, 435.68, 435.91, 436.01, 436.24, 436.35, 436.7, 438.03, 438.85, 438.95, 439.54, 439.99, 440.35, 441.36, 441.5, 441.91, 442.07, 442.21, 442.76, 442.92, 443.29, 444.25, 444.44, 444.67, 445.0, 445.57, 445.88, 446.19, 446.68, 447.7, 448.86, 449.06, 449.89, 450.14, 451.02, 451.15, 451.45, 451.64, 452.08, 452.25, 452.68, 452.8, 453.08, 453.31, 453.82, 454.71, 454.8, 455.14, 455.23, 455.46, 455.94, 456.56, 456.77, 457.34, 457.46, 457.77, 458.68, 458.83, 459.3, 459.99, 460.18, 460.59, 461.49, 461.7, 462.13, 462.76, 462.92, 463.24, 463.48, 463.62, 463.87, 464.58, 464.74, 464.97, 465.14, 466.55, 466.71, 466.9, 467.2, 467.6, 467.94, 468.52, 469.06, 469.27, 469.74, 469.96, 470.19, 470.94, 471.16, 471.52, 471.66, 472.04, 472.27], "9": [472.85, 472.92, 473.24, 474.04, 474.28, 474.77, 475.67, 475.76, 476.05, 476.47, 476.68, 476.92, 476.97, 477.61, 478.1, 478.19, 478.34, 478.76, 479.24, 480.32, 481.04, 481.23, 481.28, 481.62, 482.53, 482.68, 483.03, 483.15, 483.75, 484.08, 484.29, 484.79, 485.13, 485.96, 486.11, 486.43, 486.74, 486.86, 486.94, 487.37, 487.48, 488.45, 488.62, 489.05, 489.16, 489.2, 490.02, 490.18, 491.04, 491.47, 491.62, 492.02, 492.13, 493.37, 493.61, 494.32, 494.51, 495.33, 495.52, 496.33, 496.51, 496.63, 496.93, 497.86, 498.0, 498.26, 498.68, 499.85, 500.01, 500.1, 500.42, 501.02, 501.52, 502.19, 502.43, 502.84, 503.2, 503.41, 503.48, 503.84, 504.43, 504.62, 505.81, 506.24, 506.76, 507.3, 507.49, 507.6, 508.48, 509.58, 509.75, 509.85, 510.34, 510.59, 510.67, 511.63, 511.78, 511.85, 512.31, 512.54, 512.79, 513.91, 514.13, 514.2, 514.64, 514.93, 515.84, 516.0, 516.07, 516.52, 516.95, 517.48, 517.8, 518.22, 518.55, 519.59, 519.93, 520.5, 520.58, 521.37, 521.49, 521.89, 522.0, 523.31, 523.44, 523.6, 523.94, 524.16, 524.35, 524.41, 524.83, 525.07, 525.32, 525.86, 526.15, 526.33, 527.17, 527.33, 527.54, 527.75, 528.4, 528.79, 528.84, 529.33, 530.04, 530.28, 530.67, 531.01, 531.69, 531.93, 532.57, 533.35, 533.54, 534.12, 534.32, 534.69, 535.43, 535.63, 536.03, 537.03, 537.18, 537.35, 537.94, 538.24, 538.68, 538.87, 540.05, 540.24, 541.0, 541.32, 541.57, 541.71, 542.62, 542.81, 543.82, 544.15, 545.03, 545.34, 546.56, 546.8, 547.71, 548.02, 548.13, 549.16, 549.28, 550.01, 550.8, 550.93, 551.39, 552.02, 552.28], "10": [553.48, 553.55, 554.0, 554.83, 555.09, 555.6, 556.82, 556.92, 557.34, 557.71, 558.16, 558.33, 558.78, 559.08, 559.15, 559.65, 560.56, 560.81, 561.12, 562.03, 563.02, 563.43, 563.7, 564.64, 565.0, 565.3, 565.38, 565.74, 565.93, 566.13, 566.43, 566.52, 567.28, 567.49, 567.74, 567.85, 568.98, 569.41, 569.57, 570.5, 571.13, 571.32, 572.43, 573.01, 573.23, 574.09, 574.88, 575.07, 576.44, 576.66, 576.76, 577.8, 578.23, 578.73, 578.94, 579.3, 579.56, 579.75, 579.95, 580.26, 580.59, 580.99, 581.31, 581.54, 582.04, 583.07, 583.52, 584.06, 584.26, 584.56, 584.86, 585.1, 586.13, 586.28, 586.49, 586.66, 586.9, 587.19, 587.31, 588.05, 588.18, 588.43, 588.51, 589.47, 589.88, 590.44, 591.18, 591.59, 591.87, 592.54, 592.66, 593.14, 593.93, 594.09, 594.5, 594.6, 595.23, 595.4, 595.76, 596.13, 596.52, 596.77, 597.85, 598.0, 598.36, 598.97, 599.55, 599.71, 600.11, 600.24, 600.61, 601.2, 601.56, 602.1, 602.97, 603.34, 603.87, 604.27, 605.2, 605.38, 605.58, 605.81, 606.03, 606.58, 606.73, 607.15, 607.55, 608.39, 608.83, 609.13, 609.77, 609.94, 610.89, 611.0, 611.13, 611.5, 611.73, 611.86, 611.97, 612.36, 612.63, 613.08, 613.25, 613.61, 613.84, 614.27, 615.26, 615.42, 615.56, 615.88, 616.13, 617.06, 617.2, 617.4, 618.23, 618.45, 619.6, 619.73, 619.89, 620.16, 620.25, 620.76, 621.08, 621.15, 622.63, 622.7, 623.05, 623.36, 623.63, 623.89, 624.17, 624.78, 625.01, 625.08, 625.68, 625.92, 626.52], "11": [627.57, 627.67, 628.05, 628.95, 629.27, 629.87, 630.77, 630.93, 631.52, 631.8, 632.27, 632.9, 633.09, 633.9, 634.13, 634.45, 634.91, 635.3, 635.51, 635.58, 636.09, 637.03, 637.2, 637.28, 637.81, 637.96, 638.06, 638.39, 639.28, 639.47, 639.69, 640.19, 640.47, 640.66, 640.94, 641.05, 641.3, 642.46, 642.74, 642.87, 643.25, 644.01, 644.35, 644.98, 645.33, 645.44, 646.54, 646.68, 647.2, 647.64, 647.96, 648.06, 648.15, 648.91, 649.05, 649.11, 649.5, 649.59, 650.84, 650.99, 651.55, 651.84, 651.95, 652.04, 652.54, 652.66, 653.32, 653.43, 654.0, 655.43, 655.62, 656.35, 656.85, 657.02, 657.17, 657.76, 657.91, 658.52, 658.71, 658.78, 659.88, 660.04, 660.14, 660.35, 661.28, 661.43, 661.57, 661.79, 662.37, 662.52, 662.61, 663.15, 663.63, 663.79, 664.38, 664.57, 664.64, 665.7, 665.85, 666.01, 666.19, 667.49, 667.65, 667.75, 668.23, 668.68, 669.2, 670.01, 670.62, 671.03, 671.21, 671.36, 672.26, 672.38, 672.64, 673.3, 673.47, 673.51, 673.96, 674.8, 674.96, 675.18, 675.53, 675.73, 675.97, 676.05, 676.86, 677.07, 677.11, 678.14, 678.3, 678.72, 678.86, 679.01, 680.09, 680.37, 680.46, 680.56, 681.03, 681.16, 681.34, 682.33, 682.44, 682.66, 683.66, 683.85, 684.32, 685.38, 685.51, 685.75, 686.23, 686.37, 686.44, 686.93, 687.69, 687.96, 688.08, 688.13, 688.74, 688.95, 688.98, 689.88, 690.18, 690.82, 691.02, 691.58, 692.69, 692.85, 693.05, 694.28, 694.52, 694.99, 695.09, 695.51, 695.99, 696.16, 696.49, 696.67, 697.02, 697.84, 698.18, 698.34, 698.57, 698.78, 699.23, 699.73, 699.87, 699.94, 700.35, 701.13, 701.34, 701.72, 702.06, 702.46, 702.66, 703.05, 703.15, 703.43, 704.04, 704.19, 704.59, 705.04, 705.22, 705.37, 706.54, 706.64, 707.75, 707.93, 708.03, 708.57, 709.08, 709.23, 709.33, 709.66, 710.92, 711.05, 711.52, 711.69, 712.36, 712.62, 712.94, 713.11, 713.42, 713.6, 714.53, 714.69, 714.92, 715.37, 715.6, 715.96, 716.36, 716.46, 716.95], "12": [718.03, 718.09, 718.44, 719.22, 719.59, 719.83, 719.97, 720.2, 720.75, 720.98, 721.23, 721.44, 722.8, 722.88, 723.33, 723.62, 724.09, 724.41, 725.29, 725.56, 725.66, 725.9, 726.05, 727.18, 727.3, 727.44, 727.83, 728.1, 728.31, 728.74, 728.96, 729.22, 729.42, 729.62, 730.56, 730.71, 730.9, 731.06, 731.72, 732.36, 732.67, 733.48, 733.63, 733.75, 733.83, 734.49, 734.62, 735.09, 735.23, 735.97, 736.48, 736.76, 737.05, 737.36, 737.92, 738.89, 739.0, 739.13, 739.18, 739.66, 740.75, 740.9, 740.99, 741.39, 741.57, 741.89, 742.89, 743.07, 743.2, 743.65, 744.14, 744.54, 744.71, 745.21, 746.09, 746.23, 746.57, 746.87, 748.23, 748.39, 748.72, 748.91, 749.0, 749.27, 750.13, 750.51, 750.92, 751.03, 751.52, 751.89, 751.99, 753.7, 754.2, 754.63, 754.85, 755.13, 755.43, 755.64, 755.91, 756.1, 756.45, 756.6, 756.75, 757.11, 757.81, 758.38, 758.73, 758.96, 759.84, 760.33, 760.49, 761.52, 761.84, 762.37, 763.35, 763.51, 763.7, 763.94, 764.3, 764.5, 764.76, 764.9, 765.3, 766.73, 767.1, 767.77, 768.22, 768.41, 768.71, 769.59, 769.96, 770.25, 770.91, 771.34, 772.34, 773.62, 773.92, 774.1, 774.7, 774.85, 775.03, 775.47, 775.83, 776.32, 776.9, 778.44, 778.65, 778.81, 779.03, 779.31, 779.93, 780.1, 780.24, 780.65, 781.87, 782.23, 783.03, 783.2, 783.32, 783.82, 783.93, 784.41, 784.6, 784.8, 784.96, 786.0, 786.16, 786.52, 786.73, 786.97, 787.34, 787.59, 787.83, 788.7, 789.05, 789.14, 789.93, 790.28, 791.27, 791.52, 791.91, 792.3, 793.22, 793.4, 793.83, 793.97, 794.18, 795.56, 796.01, 796.26, 796.4, 796.58, 796.92, 797.9, 798.71, 798.95, 800.16, 800.3, 801.13, 801.49, 801.64, 802.68, 802.87, 803.2, 803.56, 803.83, 804.19, 804.39, 804.54, 805.25, 805.45, 805.79, 806.07, 806.23, 807.34, 807.45, 807.96, 808.35, 808.47, 809.59, 809.73, 809.94, 810.1, 810.52, 810.68, 811.4, 811.58, 811.78, 811.92, 812.14, 812.87, 813.28, 813.54, 813.76, 815.07, 815.3, 815.43, 815.7, 816.22, 816.33, 816.61, 816.84, 817.28, 817.41, 818.79, 818.96, 819.46, 819.95, 820.89, 820.99, 821.57, 821.71, 821.94, 822.26, 822.73, 822.91, 824.23, 824.33, 824.52, 824.73, 825.6, 825.76], "13": [827.22, 827.46, 827.61, 827.86, 828.09, 829.84, 830.09, 830.16, 830.62, 830.68, 831.36, 831.49, 831.58, 832.03, 832.11, 832.44, 833.39, 833.63, 833.96, 834.14, 834.26, 834.35, 834.75, 835.07, 835.72, 835.84, 836.78, 837.58, 837.77, 838.15, 838.23, 838.33, 838.8, 838.98, 839.74, 839.92, 840.17, 840.58, 840.68, 840.78, 841.19, 841.38, 842.22, 842.52, 843.27, 843.36, 843.78, 844.01, 844.47, 844.84, 845.03, 845.07, 845.52, 846.6, 846.78, 846.95, 847.04, 848.29, 848.69, 849.7, 849.87, 850.3, 850.67, 850.79, 851.62, 852.2, 852.42, 852.84, 852.96, 853.25, 853.33, 853.59, 854.9, 855.06, 856.15, 856.44, 856.91, 857.02, 857.37, 857.97, 858.28, 858.46, 859.76, 860.34, 860.55, 860.73, 861.12, 861.34, 861.69, 861.92, 862.29, 863.24, 863.45, 863.62, 863.9, 864.41, 864.75, 864.97, 865.48, 866.09, 866.24, 866.42, 866.86, 867.09, 867.39, 867.64, 868.23, 868.32, 868.6, 869.65, 869.97, 870.31, 870.4, 870.68, 871.04, 871.16, 871.3, 872.22, 872.61, 873.5, 873.65, 873.8, 874.06, 874.34, 874.53, 874.6, 874.71, 875.32, 876.37, 876.51, 876.92, 877.9, 878.08, 878.45, 878.78, 879.45, 879.8, 880.6, 881.02, 881.05, 881.34, 881.87, 882.01, 882.1, 882.76, 882.94, 883.42, 884.68, 884.8, 885.02, 885.25, 886.06, 886.71, 887.65, 887.89, 888.03, 888.77, 888.85, 890.09, 890.5, 891.39, 891.62, 891.98, 893.0, 893.11, 893.28, 893.9, 894.04, 894.34, 894.37, 894.69, 894.8, 895.23, 896.08, 896.52, 896.91, 897.72, 897.8, 898.4, 899.34, 899.5, 899.7, 900.29, 900.8, 901.04, 901.25, 901.35, 901.96, 902.07, 902.33], "14": [903.24, 903.66, 903.78, 904.33, 904.49, 904.85, 905.98, 906.1, 906.25, 906.6, 907.31, 907.58, 907.9, 909.06, 909.41, 909.49, 909.92, 910.31, 911.53, 911.61, 912.06, 912.37, 912.69, 912.76, 913.03, 914.11, 914.53, 914.86, 915.66, 915.82, 915.89, 916.41, 916.56, 916.8, 917.28, 917.39, 917.71, 918.68, 918.79, 918.96, 919.42, 919.75, 920.0, 920.29, 920.52, 921.45, 921.91, 922.11, 922.49, 922.56, 922.92, 923.88, 924.03, 924.23, 924.29, 924.73, 925.53, 925.72, 925.81, 926.42, 927.09, 927.46, 928.4, 928.57, 928.72, 928.8, 929.39, 930.17, 930.32, 930.8, 930.98, 931.11, 932.03, 932.25, 932.55, 933.58, 933.79, 934.07, 934.88, 935.19, 935.32, 936.29, 936.68, 936.96, 937.2, 938.68, 939.36, 939.57, 939.61, 940.13, 940.41, 941.18, 941.4, 941.97, 942.47, 942.69, 943.12, 943.2, 943.73, 943.99, 944.57, 945.89, 946.62, 946.76, 947.3, 947.96, 948.08, 948.46, 948.61, 948.89, 949.04, 949.59, 949.75, 950.77, 951.09, 951.53, 951.83, 952.15, 952.48, 952.59, 952.74, 953.46, 953.61, 953.69, 954.24, 954.48, 954.78, 955.19, 955.65, 955.84, 956.5, 956.72, 957.29, 957.48, 958.83, 959.13, 959.59, 959.93, 960.4, 961.25, 961.4, 961.69, 962.04, 962.34, 962.64, 962.95], "15": [963.66, 963.81, 964.15, 964.37, 964.51, 965.41, 965.7, 965.83, 966.03, 966.09, 966.28, 966.57, 966.68, 966.79, 967.11, 967.37, 968.33, 968.52, 969.19, 969.38, 969.52, 970.21, 970.29, 970.9, 971.11, 971.57, 972.77, 972.91, 973.14, 973.37, 974.59, 975.55, 976.03, 976.46, 976.64, 977.0, 977.76, 978.09, 978.59, 978.94, 979.19, 979.33, 979.49, 979.55, 980.07, 980.2, 980.51, 981.02, 981.08, 981.42, 981.49, 981.9, 983.07, 984.0, 984.92, 985.01, 985.19, 986.4, 986.61, 987.39, 987.76, 987.88, 988.47, 988.86, 989.57, 990.64, 994.02, 994.63, 995.19, 995.53, 995.59, 995.81, 996.5, 996.59, 996.93, 997.15, 997.92, 998.06, 998.19, 998.24, 998.6, 998.73, 998.99, 999.33, 999.82, 1000.28, 1000.46, 1000.54, 1001.79, 1002.09, 1003.16, 1003.48, 1003.77, 1003.85, 1004.34, 1005.21, 1005.42, 1005.89, 1006.58, 1007.64, 1008.01, 1008.2, 1008.33, 1009.16, 1009.29, 1010.36, 1010.65, 1011.03, 1011.41, 1011.66, 1012.39, 1012.53, 1012.57, 1013.04, 1014.18, 1014.31, 1014.48, 1014.73, 1015.11, 1015.22, 1015.93, 1016.14, 1016.68, 1017.78, 1017.86, 1018.37, 1018.62, 1018.78, 1019.36, 1019.43, 1020.08, 1020.32, 1020.97, 1021.12, 1021.68, 1021.82, 1022.56, 1022.78, 1023.82, 1023.96, 1024.14, 1024.46, 1025.75, 1025.94, 1026.65, 1026.79, 1027.15, 1027.23, 1027.39, 1027.87, 1028.3, 1028.44, 1028.96, 1030.07, 1030.22, 1030.71, 1030.82, 1031.13, 1031.22, 1031.84, 1032.01, 1032.86, 1032.97, 1033.13, 1034.43, 1034.79, 1035.04, 1035.54, 1035.69, 1035.92, 1036.35, 1036.81, 1036.84, 1037.32, 1037.54, 1037.96, 1038.37, 1038.62, 1038.99, 1039.68, 1041.08, 1041.24, 1041.67, 1042.15, 1042.92, 1043.09, 1043.56], "16": [1044.61, 1044.78, 1044.93, 1045.23, 1045.36, 1046.59, 1046.67, 1047.18, 1047.35, 1047.58, 1048.03, 1048.38, 1049.3, 1049.48, 1049.98, 1050.7, 1051.06, 1051.73, 1051.91, 1052.22, 1053.0, 1053.07, 1053.63, 1054.69, 1054.9, 1055.39, 1056.39, 1056.82, 1057.24, 1057.52, 1057.78, 1058.81, 1058.99, 1059.47, 1060.23, 1060.38, 1060.84, 1061.04, 1061.17, 1061.97, 1062.21, 1063.07, 1063.26, 1063.8, 1063.92, 1063.99, 1064.4, 1064.99, 1065.17, 1065.69, 1065.8, 1066.24, 1067.72, 1067.9, 1068.27, 1068.54, 1068.71, 1069.01, 1069.85, 1070.16, 1070.71, 1071.69, 1072.77, 1072.96, 1073.66, 1073.95, 1074.65, 1074.84, 1075.35, 1075.53, 1075.58, 1076.32, 1076.46, 1076.63, 1077.09, 1077.32, 1077.45, 1078.04, 1078.33], "17": [1079.59, 1079.75, 1079.9, 1080.66, 1081.6, 1081.84, 1082.0, 1082.19, 1082.28, 1082.56, 1082.92, 1083.02, 1084.04, 1084.29, 1084.41, 1084.6, 1084.7, 1084.88, 1085.13, 1085.41, 1085.57, 1085.75, 1085.85, 1086.21, 1087.24, 1087.43, 1087.83, 1088.07, 1088.35, 1088.49, 1088.62, 1088.96, 1090.26, 1090.52, 1090.7, 1090.86, 1091.5, 1091.65, 1091.73, 1092.31, 1093.08, 1093.22, 1093.62, 1093.8, 1093.93, 1094.5, 1094.63, 1094.98, 1095.9, 1096.26, 1096.44, 1096.56, 1097.02, 1097.22, 1097.46, 1097.69, 1098.46, 1098.65, 1099.22, 1099.75, 1099.97, 1101.07, 1101.26, 1101.4, 1101.59, 1102.27, 1102.46, 1102.69, 1103.55, 1103.81, 1103.92, 1104.14, 1104.55, 1104.7, 1105.12, 1105.19, 1106.29, 1106.46, 1107.0, 1108.09, 1109.05, 1109.17, 1109.35, 1109.75, 1110.0, 1110.21, 1111.34, 1111.5, 1111.69, 1111.84, 1112.6, 1113.07, 1113.33, 1113.69, 1114.56, 1114.76, 1114.84, 1115.33]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>{sentences.push({t:at(idx)-0.15,s});idx+=toks(s).length;});
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line.replace(/mashiach/g,'māšîaḥ');
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>

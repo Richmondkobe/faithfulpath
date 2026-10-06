@@ -6,6 +6,8 @@ Status: Faithful Path master lesson template — Version 1.0. Adjust per topic (
 
 **Scope:** this is a *lesson-page* template. It is not the structure for retreat sessions, check-ins, route-selection pages, safety pages, course introductions, or final course-completion pages. Those page types need their own templates.
 
+**Not for Following Jesus:** the four *Following Jesus* video courses (Begin, Establish, Grow, Multiply) are sold separately and arrive as reviewed, final HTML pages with their own structure. The site serves those files as they are, swapping only file paths, button links and the saving of answers (see `content/courses/following-jesus/`), so this template does not apply to them. Do not rebuild them to match it.
+
 **Short lessons:** the standard structure should remain recognisable, but brevity is permitted. Sections should not be filled with unnecessary content merely to make the page look complete.
 
 ---
@@ -228,3 +230,4 @@ Please read one finished lesson page against this list and answer in your own wo
 | 2026-09-25 | First written reference, captured from the shipped *When Your Mind Won't Rest* lesson page. |
 | 2026-09-25 | Version 1.0 after review: table header fixed, "optional" clarified for section 6, short-lesson rule and page-type scope added. |
 | 2026-09-25 | Reconciled with what shipped: Let it settle keeps its saved private reflections; footer is the course's two support links plus the citation notice; objectives lead-in is "In this lesson, you will learn to:". Added the privacy wording, the written-fresh rule, the completion-is-pressed rule, and a note that the final-lesson completion message is not built. |
+| 2026-10-06 | Scope note: the Following Jesus courses use their reviewed HTML pages as-is and are outside this template. |

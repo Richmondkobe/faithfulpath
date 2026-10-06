@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 2 Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#16213a;--navy:#1f2d45;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f2d45;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#121b30 0%,#1f2d45 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f2d45,#16213a);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>Following Jesus · Begin</b><span class="steps8" aria-label="Lesson 2 of 8"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 2 of 8</p>
+   <h1>Repentance, Faith and Receiving Grace</h1>
+   <p class="question">Do I have to fix my life before God will accept me?</p>
+   <div class="meta"><span class="chip">About 16 minutes</span><span class="chip">Luke 15:11–24</span><span class="chip">First Steps: My faith · My prayer</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#e9dcbc" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f7f1e3"/></svg>
+</header>
+
+<main class="container">
+
+ <section class="card learn" aria-labelledby="h-learn">
+  <p class="kicker">In this lesson</p>
+  <h2 id="h-learn">You will learn</h2>
+  <ul><li>Why Jesus told the story of the lost son, and what it shows about God</li><li>What "repent" (metanoeō) and "faith" (pistis) really mean</li><li>Grace, Turn, Trust, Receive: how God welcomes us and how we respond</li><li>Why good works are the fruit of grace, not its price</li></ul>
+ </section>
+
+ <section class="player" aria-label="Lesson video">
+  <iframe src="player.html" title="Lesson 2 teaching with narration" allow="autoplay"></iframe>
+ </section>
+
+ <section class="card">
+  <details class="transcript">
+   <summary>Transcript and Scripture references</summary>
+   <div class="tx"><h4>1 · The question</h4><p>Welcome to Lesson 2. In Lesson 1, we learned the gospel in four parts: who Jesus is, what Jesus announced, what Jesus did, and why it is good news and how we respond. And we heard Jesus' call in Mark 1:15: "repent and believe in the gospel." Today we look closely at those two words.</p><p>But first, a question many people quietly carry. Maybe you have heard someone say it, or said it yourself. "First I need to stop drinking." "First I need to sort out my marriage." "First I need to become a better person. Then I will come to God." It sounds humble. It sounds sensible.</p><p>So here is our question: do I have to fix my life before God will accept me? By the end of this lesson, you will be able to answer that question from the Bible, and explain what repentance and faith really mean.</p><h4>2 · Why Jesus told the story</h4><p>Our main passage is one of the best-known stories Jesus ever told: the story of the lost son in Luke chapter 15. But Luke first tells us why Jesus told it. Listen to Luke 15, verses 1 and 2:</p><p>"Now the tax collectors and sinners were all drawing near to hear him. And the Pharisees and the scribes grumbled, saying, 'This man receives sinners and eats with them.'"</p><p>In Jesus' world, eating with someone was a sign of welcome and acceptance. Tax collectors were seen as collaborators with the Roman system, and many were known for cheating. "Sinners" meant people whose lives were openly far from God's law. The religious leaders were shocked that Jesus welcomed such people to his table. So Jesus answered with three stories about something lost and found: a lost sheep, a lost coin and a lost son.</p><h4>3 · A son far from home</h4><p>The story begins with a younger son who asks his father for his share of the family property. In that culture, the request was deeply dishonouring. The son wanted the father's property while rejecting life with his father.</p><p>The father gives it to him. The son leaves for a distant country and wastes everything in reckless living. Then a famine comes. He ends up feeding pigs. For a Jewish listener, pigs were unclean animals, so this was about as low as anyone could fall. He is so hungry that he longs to eat the pigs' food, and no one gives him anything.</p><p>Jesus is painting a picture of someone completely lost: far from home, and far from his father.</p><h4>4 · He came to himself</h4><p>Then something changes. Luke 15, verses 17 to 19:</p><p>"But when he came to himself, he said, '… I will arise and go to my father, and I will say to him, "Father, I have sinned against heaven and before you. I am no longer worthy to be called your son. Treat me as one of your hired servants."'"</p><p>Notice what happens. He comes to himself: he sees his situation honestly. He makes a decision: "I will arise and go." And he plans to admit his sin. Then verse 20 says, "And he arose and came to his father." He actually turns around and walks home.</p><p>But notice also what he still believes. He thinks he must earn his way back as a servant.</p><h4>5 · The father runs</h4><p>Now comes the most surprising part of the story. Verse 20:</p><p>"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him."</p><p>The picture is deliberately striking. The father does not stand at a distance and make his son work his way back. He sees him, feels compassion, runs to him, embraces him and kisses him. The son begins his speech, but he never finishes it.</p><p>The father calls for the best robe, a ring for his hand, shoes for his feet and a feast. Together they publicly show that the father is receiving him back into the household as his son. Verse 24: "For this my son was dead, and is alive again; he was lost, and is found."</p><h4>6 · Repent = turn around</h4><p>Now let us look at two words that help us understand this story. The first is the word Jesus used in Mark 1:15: repent. The Greek verb translated "repent" is metanoeō. In the New Testament, repentance is not simply feeling sorry or changing an opinion. It is a real change of mind and direction: a turning from sin towards God.</p><p>This fits the great biblical call we hear in the prophets. Joel says, "Return to the LORD your God." Repentance is that kind of return.</p><p>Earlier in this same chapter, Jesus says there is joy in heaven over one sinner who repents. The son's return helps us see what that repentance looks like: he comes to himself, admits his sin and goes home.</p><h4>7 · Faith = trust</h4><p>The second word is faith. In English, "faith" and "believe" look like two different words. But in Greek they come from the same family: pistis is faith, and pisteuō is to believe.</p><p>Saving faith is not merely agreeing that certain facts are true. It means relying on Jesus: trusting who he is and what he has done. It is like putting your full weight on someone you trust.</p><p>So Jesus' call to "repent and believe" means turning to God and trusting the good news about Jesus. These are the two Greek words for today: metanoeō, repent, and pistis, faith.</p><h4>8 · The short answer</h4><p>So, do you have to fix your life before God will accept you? No. You could not do it even if you tried, and God does not ask you to fix yourself first.</p><p>Here is the answer in a few sentences. God comes to us in grace. We turn to him and trust Jesus, and we receive what God freely gives. Our changed lives are the fruit of his welcome, not the price of it.</p><p>The rest of this lesson unpacks that answer in four parts: grace, turn, trust and receive.</p><h4>9 · Truth 1: Grace</h4><p>The first part is grace. Grace means God's undeserved kindness: love that is given, not earned. Everything in our salvation begins here, with God moving towards us.</p><p>Through this father, Jesus gives us a powerful picture of God's welcoming grace towards the lost. Then Paul states it plainly in Ephesians 2: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast."</p><p>Saved means rescued: brought back to God, forgiven and given new life. Paul says this rescue is a gift. We cannot buy it with good deeds, religious ceremonies or money. No one can boast that they deserved it. That is why grace is such good news for people who know they have failed.</p><h4>10 · Truth 2: Turn</h4><p>The second part is turning, which is repentance. To repent means to turn away from sin and from insisting on our own way, and to turn towards God.</p><p>Repentance is more than feeling bad. Paul describes two kinds of sorrow in 2 Corinthians 7, verse 10: "For godly grief produces a repentance that leads to salvation without regret, whereas worldly grief produces death." Sorrow by itself is not repentance. Paul distinguishes godly grief, which produces repentance, from worldly grief, which leaves us trapped in sorrow without turning to God. In Acts 3, Peter's preaching makes the direction clear: "Repent therefore, and turn back, that your sins may be blotted out." The promise attached to turning is forgiveness.</p><p>And remember, repentance is a real turn, not instant perfection. The son came home with nothing fixed: no money, no clean clothes, no restored reputation. Christians still struggle with sin, and when we fall, we turn again. We also repent of our own sin, not of what others have done to us. If someone has wronged you, that was their sin, not yours, and God sees it.</p><h4>11 · Truth 3: Trust</h4><p>The third part is trust, which is faith. In the book of Acts, a prison guard in the city of Philippi, terrified after an earthquake, asked Paul and Silas, "Sirs, what must I do to be saved?" Their answer was simple: "Believe in the Lord Jesus, and you will be saved."</p><p>Faith is not the same as being certain about everything, or having strong religious feelings. Think of crossing a river on a bridge. A nervous person on a strong bridge is safe. A confident person on a rotten bridge is not. Faith is like stepping onto a strong bridge. What matters most is not the strength of your feelings, but the strength of the one you are trusting. Our confidence rests on Jesus.</p><p>So faith means we stop relying on our own goodness, on religious activity, on our feelings, or even on how strongly we believe. Instead, we rely on Jesus.</p><h4>12 · Truth 4: Receive</h4><p>The fourth part is receiving. John writes about Jesus: "But to all who did receive him, who believed in his name, he gave the right to become children of God." Notice that John puts receive and believe side by side. Receiving is not an extra task. It is what faith looks like: open hands.</p><p>In the story, the son had his speech ready: "Treat me as one of your hired servants." But the father would not let him finish. Instead of a servant's job, he received a robe, a ring and a party.</p><p>This does not mean that nothing changes afterwards. Straight after saying we are saved by grace, Paul adds in Ephesians 2, verse 10: "For we are his workmanship, created in Christ Jesus for good works, which God prepared beforehand, that we should walk in them." Good works matter very much. But they are the fruit of grace, not its price.</p><h4>13 · Niran's story</h4><p>Let me tell you about Niran. His story is drawn from the experiences of many people. Niran works in an office in Bangkok and grew up in a Buddhist family. When a colleague invited him to church, he answered politely, "Maybe later. First I need to sort out my life and do more good things. Then I will come."</p><p>His colleague did not argue. She asked if they could read one short story together during their lunch break. They read Luke 15. Niran stopped at verse 20 and read it again: "While he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him."</p><p>He was quiet for a moment. Then he said, "The son did not repair himself first. He did not earn his father's welcome. He just turned and came home."</p><p>Niran did not make any decision that day. But he asked whether they could read Luke's Gospel together each week. He still has many questions, and that is where his story stops for now.</p><p>Niran's way of thinking is common in every culture, and even among people who have gone to church all their lives. Many of us believe God's acceptance must be earned. Jesus' story shows us the Father's generous welcome of the returning lost.</p><h4>14 · What repentance and faith are not</h4><p>Because these words are so important, they are often misunderstood. Here are four common mistakes.</p><p>"I have to become good enough first." You do not make yourself good enough before coming to God. You come as you are, turning from sin and trusting Christ. Then God begins his transforming work in you.</p><p>"Repenting means feeling very guilty." Sorrow may come, but repentance is turning back to God, not sinking into shame.</p><p>"Faith means never having doubts." Faith is trusting Jesus, not feeling certain about everything. Even a small, shaky faith rests on a strong Saviour.</p><p>And "Saying the right prayer is what saves me." Praying simply and honestly can be a good way to express repentance and faith. But the words are not magic. It is Jesus who saves, not the words.</p><h4>15 · This week</h4><p>Now, because this is true, here is what I would like you to do this week. Your assignment is to respond to God's grace in one real, concrete way.</p><p>First, read Luke 15:11 to 24 again, slowly. Second, in private, ask yourself two questions. Where do I need to turn? Is there something I know is wrong that I need to turn away from, or an area of my life where I have been insisting on my own way? And where do I need to trust? Is there something I have been relying on instead of Jesus: my own goodness, my feelings, or my religious activity?</p><p>Third, choose one small, concrete step of turning and trusting, and take it this week. It might be saying sorry to someone, stopping something you know is wrong, or praying honestly each morning, "Lord, I trust you with this." And finally, receive. Thank God that his welcome is a gift, not a reward.</p><p>You do not have to share what you write. This is between you and God. This assignment belongs to two of your First Steps: my faith, and my prayer. Below this lesson you will also find the seven-day reading plan, and a short look back at the four parts of the gospel from Lesson 1.</p><h4>16 · Remember</h4><p>Let us bring it together. You do not have to fix your life before God will accept you. Grace: God moves towards us in undeserved kindness, as Jesus pictures in the father's welcome. Turn: repentance means turning from sin and self-rule towards God; it is a real turn, not instant perfection. Trust: faith means relying on Jesus, not on our goodness, our rituals, our feelings or the strength of our belief. Receive: we stop trying to earn, and receive what God gives. Good works are the fruit of grace, not its price.</p><h4>17 · Prayer</h4><p>Let us pray. Father, thank you for your grace. Thank you that I do not have to make myself good enough before coming to you. Thank you that through Jesus you welcome sinners who turn to you and trust him. I turn from my own way and from the things I know are wrong. I trust Jesus, not my goodness, my feelings or my efforts. I receive your grace with open hands. By your grace, change the way I live. In Jesus' name. Amen.</p><p>You may stop here for today. When you are ready, begin this week's assignment and the reading plan.</p></div>
+  </details>
+ </section>
+
+ <section class="card" aria-labelledby="h-assign">
+  <p class="kicker">This week’s assignment</p>
+  <h2 id="h-assign">Respond to God’s grace in one real way</h2>
+  <p class="sub">Because God comes to us in grace, respond to him this week.</p>
+  <ol class="assign">
+   <li><b>Read</b> Luke 15:11–24 again, slowly.</li>
+   <li><b>Ask privately:</b> Where do I need to turn? Where do I need to trust?</li>
+   <li><b>Take one step</b> of turning and trusting this week: perhaps saying sorry to someone, stopping something you know is wrong, or praying each morning, “Lord, I trust you with this.”</li>
+   <li><b>Receive:</b> thank God that his welcome is a gift, not a reward.</li>
+  </ol>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-turn"/></svg>Where do I need to turn?</span><textarea placeholder="Private…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-trust"/></svg>Where do I need to trust?</span><textarea placeholder="Private…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-receive"/></svg>My one step this week</span><textarea placeholder="Private…"></textarea></label>
+  </div>
+  <p class="note"><i>You do not have to share what you write. This is between you and God.</i> On the website, it is saved privately to your account.</p>
+  <div class="fsteps" aria-label="My First Steps"><span class="lit">My faith</span><span>My Bible</span><span class="lit">My prayer</span><span>My church</span><span>My witness</span></div>
+ </section>
+
+ <section class="card" aria-labelledby="h-look">
+  <p class="kicker">Look back at Lesson 1</p>
+  <h2 id="h-look">Explain the gospel again in four parts</h2>
+  <p class="sub">A learning exercise, not a test. Use the book if you wish.</p>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-crown"/></svg>Who Jesus Is</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-horn"/></svg>What Jesus Announced</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-cross"/></svg>What Jesus Did</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-gift"/></svg>Why It Is Good News and How We Respond</span><textarea placeholder="In my own words…"></textarea></label>
+  </div>
+ </section>
+
+ <section class="card" aria-labelledby="h-plan">
+  <p class="kicker">Read or listen</p>
+  <h2 id="h-plan">Seven-day reading plan</h2>
+  <p class="sub">One passage a day, from Luke 15 to Luke 19. If you miss a day, simply carry on with the next one.</p>
+  <div class="planbar" aria-hidden="true"><i id="pbar"></i></div>
+  <p class="note" id="pcount">0 of 7 days</p>
+  <ul class="plan"><li><input type="checkbox" id="d1" aria-label="Day 1 done"><label class="p" for="d1"><small>Day 1</small>Luke 15:1–10</label><span class="q">What does this show me about Jesus and the lost?</span></li><li><input type="checkbox" id="d2" aria-label="Day 2 done"><label class="p" for="d2"><small>Day 2</small>Luke 15:11–24</label><span class="q">What does the father's welcome show me about God?</span></li><li><input type="checkbox" id="d3" aria-label="Day 3 done"><label class="p" for="d3"><small>Day 3</small>Luke 15:25–32</label><span class="q">How does the older brother respond to grace?</span></li><li><input type="checkbox" id="d4" aria-label="Day 4 done"><label class="p" for="d4"><small>Day 4</small>Ephesians 2:1–10</label><span class="q">What has God done, and where do good works fit?</span></li><li><input type="checkbox" id="d5" aria-label="Day 5 done"><label class="p" for="d5"><small>Day 5</small>Psalm 51:1–12</label><span class="q">What does real repentance sound like?</span></li><li><input type="checkbox" id="d6" aria-label="Day 6 done"><label class="p" for="d6"><small>Day 6</small>Acts 16:25–34</label><span class="q">What did the jailer believe, and what changed?</span></li><li><input type="checkbox" id="d7" aria-label="Day 7 done"><label class="p" for="d7"><small>Day 7</small>Luke 19:1–10, then look back over the week</label><span class="q">What is one truth about grace I want to carry forward?</span></li></ul>
+ </section>
+
+ <section class="card" aria-labelledby="h-talk">
+  <p class="kicker">For groups, or with a friend</p>
+  <h2 id="h-talk">Talk about it</h2>
+  <ol class="talk"><li>What do people commonly think they must do before God will accept them?</li><li>In Luke 15, what did the son plan to say, and what did the father do?</li><li>Which of the four parts do you think people often find hardest to understand or believe? Why?</li></ol>
+ </section>
+
+ <section class="card" aria-labelledby="h-deeper">
+  <p class="kicker">Optional</p>
+  <h2 id="h-deeper">Go deeper</h2>
+  <p class="sub">Read the full chapter from the book, or print the worksheet.</p>
+  <div class="btns">
+   <a class="btn" href="#" onclick="return false">⬇ Chapter 2 (PDF)</a>
+   <a class="btn" href="#" onclick="return false">⬇ Lesson 2 worksheet</a>
+  </div>
+ </section>
+
+ <section class="card finish" id="finish" aria-labelledby="h-finish">
+  <h2 id="h-finish">Finished this lesson?</h2>
+  <p class="sub mark">Mark it complete when you have watched the teaching. You can do the assignment and reading plan during the week.</p>
+  <div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>
+  <div class="after" role="status">
+   <p>Well done. Lesson 2 is complete.</p>
+   <div class="btns"><button class="btn gold">Stop here for today</button><button class="btn">Continue to Lesson 3 ›</button></div>
+  </div>
+ </section>
+
+ <div class="preview-note">Preview: buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/7*100)+'%';cnt.textContent=`${n} of 7 days`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>

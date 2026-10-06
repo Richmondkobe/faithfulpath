@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 8 Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#16213a;--navy:#1f2d45;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f2d45;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#121b30 0%,#1f2d45 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f2d45,#16213a);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>Following Jesus · Begin</b><span class="steps8" aria-label="Lesson 8 of 8"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 8 of 8</p>
+   <h1>Belonging to Christ's Church</h1>
+   <p class="question">Can I follow Jesus on my own? Why do I need a church?</p>
+   <div class="meta"><span class="chip">About 19 minutes</span><span class="chip">Acts 2:41–47</span><span class="chip">First Steps: My church</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#e9dcbc" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f7f1e3"/></svg>
+</header>
+
+<main class="container">
+
+ <section class="card learn" aria-labelledby="h-learn">
+  <p class="kicker">In this lesson</p>
+  <h2 id="h-learn">You will learn</h2>
+  <ul><li>What the first believers devoted themselves to in Acts 2</li><li>What "church" (ekklēsia) and "fellowship" (koinōnia) mean in the New Testament</li><li>Belong to His Family, Gather Together, Care for One Another, Find a Healthy Church</li><li>One practical step towards belonging to a local church</li></ul>
+ </section>
+
+ <section class="player" aria-label="Lesson video">
+  <iframe src="player.html" title="Lesson 8 teaching with narration" allow="autoplay"></iframe>
+ </section>
+
+ <section class="card">
+  <details class="transcript">
+   <summary>Transcript and Scripture references</summary>
+   <div class="tx"><h4>1 · Can I follow Jesus on my own?</h4><p>Welcome to Lesson 8, the last lesson of Begin. In Lesson 5, we saw that everyone who trusts Christ becomes a child of God. Today we ask what that means for our life together. If God is our Father, who are our brothers and sisters?</p><p>Many people today are interested in Jesus but uncertain about church. Some have been disappointed by Christians. Some are shy, busy or far from a church. Others simply think of faith as a private matter between them and God. I can pray at home, read my Bible and watch sermons online, they say. Why do I need a church?</p><p>So here is our question: can I follow Jesus on my own? By the end of this lesson, you will see from Scripture why God brings his children together, and you will have one practical step to take.</p><h4>2 · "They devoted themselves"</h4><p>Our passage is Acts chapter 2, verses 41 to 47. It describes the first church in Jerusalem, in the days after the Holy Spirit came at Pentecost. Verse 41: "So those who received his word were baptized, and there were added that day about three thousand souls."</p><p>Then verse 42 tells us what these new believers did: "And they devoted themselves to the apostles' teaching and the fellowship, to the breaking of bread and the prayers."</p><p>Notice four things. They learned together, from the apostles' teaching. They shared life together, in the fellowship. They broke bread together. And they prayed together. And notice the word devoted. This was not something they did once. It was a way of life.</p><h4>3 · "Day by day"</h4><p>Listen to verses 43 to 47: "And awe came upon every soul, and many wonders and signs were being done through the apostles. And all who believed were together and had all things in common. And they were selling their possessions and belongings and distributing the proceeds to all, as any had need. And day by day, attending the temple together and breaking bread in their homes, they received their food with glad and generous hearts, praising God and having favor with all the people. And the Lord added to their number day by day those who were being saved."</p><p>Notice where they met: in the temple courts, as a large gathering, and in their homes, as smaller groups around a meal. Notice how they treated one another: they shared generously with anyone in need. And notice who added people to the church: the Lord himself.</p><h4>4 · Pentecost in Jerusalem</h4><p>Let us look at the background. Pentecost was a Jewish festival, and Jerusalem was full of Jewish pilgrims from many nations. On that day the Holy Spirit came upon Jesus' followers, and Peter stood up and preached. He told the crowd that God had raised Jesus, whom they had crucified, from the dead and made him both Lord and Christ. Many were cut to the heart, and Peter said, "Repent and be baptized every one of you in the name of Jesus Christ for the forgiveness of your sins."</p><p>So the people in our passage were brand-new believers, just like many who are taking this course. As soon as they believed and were baptised, they were added to a community of believers.</p><p>Remember what we learned in Lesson 6: some passages describe, and some command. Acts 2 describes one early church. It is not a strict template for every detail. For example, these believers sold possessions to help those in need. But a few chapters later, Peter tells a man that his property had remained his own to keep or to sell. Their generosity was voluntary, in response to real need. Still, the passage shows us what belonging to Christ looks like, and its priorities remain a guide for churches everywhere.</p><h4>5 · Church = ekklēsia</h4><p>Our first original word is the word translated "church." In Greek it is ekklēsia. The word was commonly used for an assembly or gathering of people. In Acts chapter 19, the same word is used for the town's official assembly in Ephesus: "it shall be settled in the regular assembly."</p><p>So when the New Testament speaks of the church, it is not first talking about a building. It is talking about people gathered together. Jesus said, "I will build my church." Paul writes "to the church of God that is in Corinth," meaning the believers who met in that city.</p><p>The New Testament can use the same word for a local church, as in Corinth, and for Christ's church more broadly, as in Matthew 16:18. When you belong to Christ, you belong to his church, and that belonging becomes visible when believers gather together.</p><h4>6 · Fellowship = koinōnia</h4><p>Our second word is the word translated "fellowship" in verse 42. In Greek it is koinōnia. It means sharing, partnership, participation: taking part together. It is much more than friendly conversation over tea.</p><p>Paul uses it when he thanks the Philippians "because of your partnership in the gospel." They shared in his work and supported it. And John uses it in a remarkable way: "so that you too may have fellowship with us; and indeed our fellowship is with the Father and with his Son Jesus Christ."</p><p>So Christian fellowship is not only enjoying people we like. It is sharing a life together because we share in Christ. Those are our two words for today: ekklēsia, the church, God's people gathered, and koinōnia, fellowship, sharing life in Christ.</p><h4>7 · The short answer</h4><p>So, can I follow Jesus on my own? Here is the short answer. Following Jesus is personal, but it was never meant to be private.</p><p>When God makes us his children, he brings us into his family. We gather with his people, care for one another, and look for a healthy church where we can belong and grow, knowing that no church is perfect.</p><p>The rest of this lesson unpacks that answer in four parts: belong to his family, gather together, care for one another, and find a healthy church.</p><h4>8 · Truth 1: Belong to His Family</h4><p>The first part: belong to his family. When we belong to Christ, we also belong to his people. Paul writes to believers from very different backgrounds: "So then you are no longer strangers and aliens, but you are fellow citizens with the saints and members of the household of God."</p><p>The church is not first a building or a Sunday event. It is God's family, and the body of Christ. Paul says, "Now you are the body of Christ and individually members of it." In a body, every part belongs, and every part needs the others. "The eye cannot say to the hand, 'I have no need of you.'"</p><p>So we were not made to follow Jesus in isolation. You may be very new, and you may feel you have little to offer. But if you belong to Christ, you belong to his people.</p><h4>9 · Truth 2: Gather Together</h4><p>The second part: gather together. From the very beginning, Christians have met together regularly to worship God, hear his word, pray, share the Lord's Supper and share life. Hebrews encourages believers: "And let us consider how to stir up one another to love and good works, not neglecting to meet together, as is the habit of some, but encouraging one another."</p><p>Notice the reason given: encouragement. We gather not only to receive something for ourselves, but to stir up one another. Following Jesus is often hard, and we keep going better together than alone.</p><p>Gathering can take many forms: a Sunday service, a small group in a home, a prayer meeting, a meal with other believers. Not everyone can attend in the same way. Illness, work, caring for others or distance can make it difficult. If that is your situation, you have not failed. Look for a realistic way to stay connected, and let others care for you.</p><h4>10 · Truth 3: Care for One Another</h4><p>The third part: care for one another. In God's family, we both receive care and give it. Paul writes, "Bear one another's burdens, and so fulfill the law of Christ." Everyone needs care sometimes: in illness, grief, money trouble, family difficulty or doubt. A healthy church is a place where people help carry one another's loads.</p><p>And everyone has something to give, even a new believer. Peter writes, "As each has received a gift, use it to serve one another." You might welcome a newcomer, pray for someone, help with a practical task, or simply listen.</p><p>Paul's list of ways to love in Romans 12 includes this: "Love one another with brotherly affection. Outdo one another in showing honor." And verse 13 says, "Contribute to the needs of the saints and seek to show hospitality." None of these require special training. They are what family members do for one another.</p><h4>11 · Truth 4: Find a Healthy Church</h4><p>The fourth part: find a healthy church. No church is perfect. Every church is made up of imperfect people who need God's grace, and you will be disappointed sometimes. That is not a reason to give up on church. But ordinary imperfection is not the same as manipulation or harm.</p><p>So what does a healthy church look like? Peter describes good leaders as shepherds who serve: "shepherd the flock of God that is among you, exercising oversight, not under compulsion, but willingly… not for shameful gain, but eagerly; not domineering over those in your charge, but being examples to the flock."</p><p>Here are some biblical priorities and wise signs to look for in a healthy church. It is centred on Jesus and proclaims the gospel clearly. It teaches the Bible faithfully. It prays. It loves people, including newcomers and those who are struggling. It handles money responsibly and openly. And its leaders serve, are accountable to others, and do not stand above Scripture. A healthy church will not be perfect, but it will be willing to listen, learn and put things right.</p><p>You do not need to join a church immediately. It is wise to visit several times, ask questions and see how people are treated. Churches differ in how they are led and in their style of worship, from quiet and liturgical to loud and spontaneous, and faithful churches can differ in these ways while sharing the same gospel. And online services can be a real help, especially for those who cannot attend, though many churches encourage meeting in person wherever possible, because the New Testament pictures believers who know and care for one another face to face.</p><h4>12 · Baptism and the Lord's Supper</h4><p>Before we finish, a short word about two practices Jesus gave his church. The first is baptism. In Acts 2, those who received the word were baptised, and baptism appears from the beginning as part of the new believers' life with Christ and his people. We first saw baptism in Lesson 4.</p><p>The second is the Lord's Supper, which some churches call Communion. On the night before he died, Jesus took bread and the cup and said, "Do this in remembrance of me." Paul adds, "For as often as you eat this bread and drink the cup, you proclaim the Lord's death until he comes." When the first believers devoted themselves to the breaking of bread, many Christians understand this to include the Lord's Supper as well as shared meals.</p><p>Christians understand and practise both of these in different ways, and Book 2 teaches them more fully. For now, notice this: both of them are practised together, in the church. They are part of belonging to God's family. If you have not yet been baptised, talk with a pastor about your next step.</p><h4>13 · Kenji's story</h4><p>Let me tell you about Kenji. His story is drawn from the experiences of many people. Kenji works long hours for a company in Osaka. He came to faith through watching online sermons late at night, and for a year that was his whole Christian life. He felt shy about walking into a church. "They will all know each other," he thought. "I won't know what to do."</p><p>His online mentor encouraged him to try a small local church near his train station. The first Sunday, Kenji sat at the back and left before the end.</p><p>The next Sunday, an older man named Mr Tanaka greeted him by name and invited him to lunch with a few others after the service. Over noodles, Kenji found himself answering questions about his work and asking questions about the Bible.</p><p>Kenji now attends most Sundays, and he has joined a small group that meets on Wednesday evenings, although some weeks his work makes it impossible. Groups still feel difficult for him sometimes, and that is fine. Many people find belonging hard at first, and one welcoming person often makes the difference. One day, that welcoming person could be you.</p><h4>14 · What belonging to the church is not</h4><p>Because this subject is often misunderstood, here are four common mistakes.</p><p>"Church is a building I visit on Sundays." The church is God's family, his people, wherever they meet.</p><p>"My Christian life is only between me and God." God's children belong together, and we need one another.</p><p>"Only my church's style is the true church." Faithful churches differ in structure and style while sharing the same gospel.</p><p>And "I must join, serve and give straight away." You may visit, ask questions and take your time.</p><h4>15 · This week</h4><p>Now, here is what I would like you to do this week. Your assignment is to take one practical step towards being part of a local church.</p><p>First, read Acts 2:41 to 47 again. Second, write down one local church or Christian group, one person you could contact, and the date of their next gathering. Third, if you can, attend one gathering this week. If you cannot attend in person, think of one realistic way to stay connected. And fourth, welcome one person you do not know yet, or pray for one person in your church.</p><p>If you already belong to a church, use this week to take one step deeper: join a small group, serve in one practical way, or get to know one new person. This assignment belongs to your First Step called my church. Below this lesson you will also find the seven-day reading plan.</p><h4>16 · Remember</h4><p>Let us bring it together. Following Jesus is personal, but it was never meant to be private. Belong to his family: every believer is joined to God's people, the body of Christ. Gather together: we meet to worship, learn, pray and encourage one another, and if you cannot attend in person, find a realistic way to stay connected. Care for one another: we receive care and give it, and everyone has something to offer. Find a healthy church: not a perfect church, but one centred on Jesus, faithful to Scripture, and led by accountable servants.</p><h4>17 · You have completed Begin</h4><p>And with that, you have completed Begin. Over these eight lessons, you have learned what the good news is, how we respond with repentance and faith, what God does in the new birth, what it means to follow Jesus as Lord, who you are in Christ, and how to begin with the Bible, with prayer, and with Christ's church.</p><p>Below this lesson, you will find a short, private page called My First Steps in Following Jesus. It brings together the five First Steps you have met throughout Begin: my faith, my Bible, my prayer, my church and my witness. Take a few minutes to write one simple, realistic step for each.</p><p>Completing Begin does not mean you have finished growing. Following Jesus is lifelong. But you have made a good beginning, and the next stage is Book 2, Establish.</p><h4>18 · Prayer</h4><p>Let us pray. Father, thank you that you have made me your child and brought me into your family. Thank you for your church, imperfect, but loved by you. Lead me to a healthy church where I can belong and grow. Help me to receive care, and to give it. Thank you for all you have begun in me through these lessons. Keep me following Jesus, one step at a time. In Jesus' name. Amen.</p><p>You may stop here for today. When you are ready, begin this week's assignment, the reading plan, and your My First Steps page.</p></div>
+  </details>
+ </section>
+
+ <section class="card" aria-labelledby="h-assign">
+  <p class="kicker">This week’s assignment</p>
+  <h2 id="h-assign">Take one practical step towards being part of a local church</h2>
+  <p class="sub">One church · one person · one date. Take one realistic step this week.</p>
+  <ol class="assign"><li><b>Read</b> Acts 2:41–47 again.</li><li><b>Write down</b> one local church or Christian group, one person you could contact, and the date of the next gathering.</li><li><b>Attend</b> one gathering if you can. If you cannot attend in person, think of one realistic way to stay connected.</li><li><b>Welcome</b> one person you do not know yet, or pray for one person in your church. Already in a church? Take one step deeper: a small group, one way to serve, or one new person.</li></ol>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-healthy"/></svg>A church or Christian group</span><textarea placeholder="Name or place…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-family"/></svg>A person I could contact</span><textarea placeholder="First name only…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-gather"/></svg>The next gathering</span><textarea placeholder="Day and time…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-care"/></svg>One person to welcome or pray for</span><textarea placeholder="General words only…"></textarea></label>
+  </div>
+  <p class="note"><i>You may visit, ask questions and take your time. Belonging grows step by step.</i> What you write is private; on the website, it is saved privately to your account.</p>
+  <div class="fsteps" aria-label="My First Steps"><span>My faith</span><span>My Bible</span><span>My prayer</span><span class="lit">My church</span><span>My witness</span></div>
+ </section>
+
+ <section class="card" aria-labelledby="h-plan">
+  <p class="kicker">Read or listen</p>
+  <h2 id="h-plan">Seven-day reading plan</h2>
+  <p class="sub">One passage a day, from Acts 2 to 1 Peter 4, using the four steps. If you miss a day, simply carry on with the next one.</p>
+  <div class="planbar" aria-hidden="true"><i id="pbar"></i></div>
+  <p class="note" id="pcount">0 of 7 days</p>
+  <ul class="plan"><li><input type="checkbox" id="d1" aria-label="Day 1 done"><label class="p" for="d1"><small>Day 1</small>Acts 2:36–47</label><span class="q">What did the first believers do together?</span></li><li><input type="checkbox" id="d2" aria-label="Day 2 done"><label class="p" for="d2"><small>Day 2</small>Acts 4:32–37</label><span class="q">How did belonging to Christ change the way they treated one another?</span></li><li><input type="checkbox" id="d3" aria-label="Day 3 done"><label class="p" for="d3"><small>Day 3</small>1 Corinthians 12:12–27</label><span class="q">Why does every part of the body matter?</span></li><li><input type="checkbox" id="d4" aria-label="Day 4 done"><label class="p" for="d4"><small>Day 4</small>Ephesians 2:11–22</label><span class="q">What has Christ done for people who were once strangers?</span></li><li><input type="checkbox" id="d5" aria-label="Day 5 done"><label class="p" for="d5"><small>Day 5</small>Hebrews 10:19–25</label><span class="q">Why should believers keep meeting together?</span></li><li><input type="checkbox" id="d6" aria-label="Day 6 done"><label class="p" for="d6"><small>Day 6</small>Romans 12:3–13</label><span class="q">Which way of loving others could I practise this week?</span></li><li><input type="checkbox" id="d7" aria-label="Day 7 done"><label class="p" for="d7"><small>Day 7</small>1 Peter 4:7–11, then look back over the week</label><span class="q">How can I use what God has given me to serve others?</span></li></ul>
+ </section>
+
+ <section class="card" aria-labelledby="h-talk">
+  <p class="kicker">For groups, or with a friend</p>
+  <h2 id="h-talk">Talk about it</h2>
+  <ol class="talk"><li>Why do some people try to follow Jesus without a church?</li><li>In Acts 2:42–47, what did the first believers do together?</li><li>What helps or hinders people in belonging to a church? Share your own experience only if you wish.</li></ol>
+ </section>
+
+ <section class="card" aria-labelledby="h-deeper">
+  <p class="kicker">Optional</p>
+  <h2 id="h-deeper">Go deeper</h2>
+  <p class="sub">Read the full chapter from the book, or print the worksheet.</p>
+  <div class="btns">
+   <a class="btn" href="#" onclick="return false">⬇ Chapter 8 (PDF)</a>
+   <a class="btn" href="#" onclick="return false">⬇ Lesson 8 worksheet</a>
+  </div>
+ </section>
+
+ <section class="card finish" id="finish" aria-labelledby="h-finish">
+  <h2 id="h-finish">Finished this lesson?</h2>
+  <p class="sub mark">Mark it complete when you have watched the teaching. You can do the assignment and reading plan during the week.</p>
+  <div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>
+  <div class="after" role="status">
+   <p>Well done. Lesson 8 is complete. You have completed Begin!</p>
+   <div class="btns"><button class="btn gold">Stop here for today</button><button class="btn">Continue to My First Steps ›</button></div>
+  </div>
+ </section>
+
+ <div class="preview-note">Preview: buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/7*100)+'%';cnt.textContent=`${n} of 7 days`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>

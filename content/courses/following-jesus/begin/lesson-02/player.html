@@ -1,0 +1,706 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#16213a;--navy:#1f2d45;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f2d45;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#121b30 0%,#1f2d45 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#16213a;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar.seek{cursor:pointer;height:8px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#d4a24c"/></marker>
+</defs></svg>
+<!-- ============ L2 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Begin · Lesson 2</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f3e7c9"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="80" r="1.6"/></g>
+   <g class="b up" data-at="Welcome to Lesson 2 In Lesson" data-until="First I need to stop drinking">
+     <text x="320" y="70" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#d4a24c">Lesson 2</text>
+     <text x="320" y="116" text-anchor="middle" font-weight="700" font-size="34" fill="#f3e7c9">Repentance, Faith and</text>
+     <text x="320" y="156" text-anchor="middle" font-weight="700" font-size="34" fill="#f3e7c9">Receiving Grace</text>
+   </g>
+   <g class="b up" data-at="In Lesson 1 we learned" data-until="First I need to stop drinking" style="color:#d4a24c">
+     <use href="#i-crown" x="190" y="186" width="44" height="44"/><use href="#i-horn" x="260" y="186" width="44" height="44"/><use href="#i-cross" x="330" y="186" width="44" height="44"/><use href="#i-gift" x="400" y="186" width="44" height="44"/>
+   </g>
+   <text class="b up" data-at="repent and believe in the gospel" data-until="First I need to stop drinking" x="320" y="272" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="26" fill="#e8c98a">“repent and believe” · Mark 1:15</text>
+   <g class="b pop" data-at="First I need to stop drinking" data-until="So here is our question">
+     <rect x="40" y="70" width="170" height="150" rx="16" fill="rgba(243,231,201,.07)" stroke="#9aa3b5" stroke-width="2"/>
+     <path d="M115 100h20v16l8 14v60h-36v-60l8-14z" fill="none" stroke="#f3e7c9" stroke-width="4" stroke-linejoin="round"/>
+     <text x="125" y="250" text-anchor="middle" font-size="17" fill="#cfd3db">“First I need to…”</text>
+   </g>
+   <g class="b pop" data-at="sort out my marriage" data-until="So here is our question">
+     <rect x="235" y="70" width="170" height="150" rx="16" fill="rgba(243,231,201,.07)" stroke="#9aa3b5" stroke-width="2"/>
+     <circle cx="305" cy="148" r="26" fill="none" stroke="#d4a24c" stroke-width="5"/><circle cx="337" cy="148" r="26" fill="none" stroke="#f3e7c9" stroke-width="5"/>
+     <text x="320" y="250" text-anchor="middle" font-size="17" fill="#cfd3db">“First I need to…”</text>
+   </g>
+   <g class="b pop" data-at="become a better person" data-until="So here is our question">
+     <rect x="430" y="70" width="170" height="150" rx="16" fill="rgba(243,231,201,.07)" stroke="#9aa3b5" stroke-width="2"/>
+     <path d="M490 200V90M550 200V90M490 180h60M490 150h60M490 120h60" stroke="#f3e7c9" stroke-width="4" stroke-linecap="round"/>
+     <text x="515" y="250" text-anchor="middle" font-size="17" fill="#cfd3db">“First I need to…”</text>
+   </g>
+   <g class="b pop" data-at="So here is our question">
+     <circle cx="320" cy="150" r="78" fill="none" stroke="#d4a24c" stroke-width="3" opacity=".6"/>
+     <text x="320" y="190" text-anchor="middle" font-family="Source Serif 4" font-size="120" fill="#e8c98a">?</text>
+   </g>
+  </svg>
+  <h1 class="b up" data-at="do I have to fix my life before God will accept me" style="font-size:clamp(26px,4.6vw,48px)">Do I have to fix my life before God will accept me?</h1>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture</p>
+  <p class="scripture" style="font-size:clamp(18px,2.6vw,27px)">
+   <span class="ph" data-at="Now the tax collectors and sinners">“Now the tax collectors and sinners</span>
+   <span class="ph" data-at="were all drawing near to hear him">were all drawing near to hear him.</span>
+   <span class="ph" data-at="And the Pharisees and the scribes grumbled">And the Pharisees and the scribes grumbled, saying,</span>
+   <span class="ph" data-at="This man receives sinners and eats with them">‘This man receives sinners and eats with them.’”</span>
+   <span class="ref b" data-at="Now the tax collectors and sinners">Luke 15:1–2 · ESV</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 200" aria-hidden="true">
+   <g class="b up" data-at="eating with someone was a sign of welcome">
+     <rect x="60" y="120" width="260" height="12" rx="4" fill="#b19475"/>
+     <g fill="#1f2d45"><circle cx="190" cy="70" r="12"/><path d="M176 120c0-24 6-38 14-38s14 14 14 38z"/></g>
+     <g fill="#7d7a5e"><circle cx="100" cy="80" r="10"/><path d="M88 120c0-20 5-30 12-30s12 10 12 30z"/><circle cx="140" cy="76" r="10"/><path d="M128 120c0-20 5-32 12-32s12 12 12 32z"/><circle cx="240" cy="78" r="10"/><path d="M228 120c0-20 5-30 12-30s12 10 12 30z"/><circle cx="282" cy="80" r="10"/><path d="M270 120c0-20 5-30 12-30s12 10 12 30z"/></g>
+     <text x="190" y="160" text-anchor="middle" font-size="16" fill="#5d6676">a sign of welcome</text>
+   </g>
+   <g class="b up" data-at="The religious leaders were shocked">
+     <g fill="#5d6676"><circle cx="400" cy="70" r="11"/><path d="M386 130c0-30 6-46 14-46s14 16 14 46z"/><circle cx="436" cy="72" r="11"/><path d="M422 130c0-30 6-44 14-44s14 14 14 44z"/></g>
+     <path d="M390 100h24M426 102h22" stroke="#fffaf0" stroke-width="3"/>
+     <text x="418" y="160" text-anchor="middle" font-size="16" fill="#5d6676">grumbling</text>
+   </g>
+   <g class="b pop" data-at="a lost sheep"><ellipse cx="530" cy="96" rx="22" ry="16" fill="#fffaf0" stroke="#1f2d45" stroke-width="3"/><circle cx="552" cy="88" r="8" fill="#1f2d45"/><text x="530" y="140" text-anchor="middle" font-size="15" fill="#1f2d45">sheep</text></g>
+   <g class="b pop" data-at="a lost coin"><circle cx="590" cy="96" r="16" fill="#e8c98a" stroke="#a8792b" stroke-width="3"/><text x="590" y="140" text-anchor="middle" font-size="15" fill="#1f2d45">coin</text></g>
+   <g class="b pop" data-at="and a lost son"><circle cx="645" cy="80" r="9" fill="#1f2d45"/><path d="M634 116c0-20 5-28 11-28s11 8 11 28z" fill="#1f2d45"/><text x="645" y="140" text-anchor="middle" font-size="15" fill="#1f2d45">son</text></g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Explore the Background · Luke 15:11–16</p>
+  <div class="stack">
+  <svg class="scene b" data-at="The story begins" data-until="leaves for a distant country" viewBox="0 0 640 300" aria-hidden="true">
+     <path d="M120 200v-70l70-50 70 50v70z" fill="rgba(243,231,201,.08)" stroke="#cfd3db" stroke-width="3" stroke-linejoin="round"/>
+     <g fill="#f3e7c9"><circle cx="330" cy="120" r="14"/><path d="M314 220c0-50 8-78 16-78s16 28 16 78z"/></g>
+     <path d="M322 128c4 10 12 10 16 0" stroke="#9aa3b5" stroke-width="3" fill="none"/>
+     <g fill="#d4a24c"><circle cx="450" cy="128" r="12"/><path d="M436 220c0-46 7-70 14-70s14 24 14 70z"/></g>
+     <g fill="#7d7a5e"><circle cx="520" cy="124" r="12"/><path d="M506 220c0-46 7-72 14-72s14 26 14 72z"/></g>
+     <g class="b pop" data-at="his share of the family property"><path d="M376 150c-10 0-14 20 0 26h22c14-6 10-26 0-26z" fill="#d4a24c"/><path d="M380 150l6-10h4l6 10" stroke="#d4a24c" stroke-width="3" fill="none"/></g>
+     <text class="b up" data-at="the request was deeply dishonouring" x="400" y="270" text-anchor="middle" font-size="22" font-weight="700" fill="#e8c98a">a dishonouring request</text>
+     <text class="b up" data-at="while rejecting life with his father" x="400" y="296" text-anchor="middle" font-size="16" fill="#cfd3db">the property, without the father</text>
+  </svg>
+  <svg class="scene b" data-at="leaves for a distant country" viewBox="0 0 640 300" aria-hidden="true">
+     <path d="M40 260 C160 245 280 225 400 205" stroke="#b19475" stroke-width="10" fill="none" stroke-linecap="round" opacity=".6"/>
+     <g class="run b" data-at="leaves for a distant country" data-until="Then a famine comes"><circle cx="300" cy="150" r="10" fill="#d4a24c"/><path d="M300 162v30M300 192l-10 22M300 192l10 20M300 170l-14 10M300 170l14-8" stroke="#d4a24c" stroke-width="5" stroke-linecap="round"/></g>
+     <g class="b" data-at="wastes everything in reckless living" data-until="Then a famine comes" fill="#e8c98a"><circle cx="360" cy="120" r="7"/><circle cx="390" cy="100" r="6"/><circle cx="420" cy="130" r="7"/><circle cx="450" cy="96" r="5"/></g>
+     <g class="b" data-at="Then a famine comes"><path d="M90 150l20-12 14 16 22-10 16 14 24-8" stroke="#9aa3b5" stroke-width="3" fill="none"/><text x="150" y="186" text-anchor="middle" font-size="16" fill="#cfd3db">famine</text></g>
+     <g class="b up" data-at="He ends up feeding pigs">
+       <rect x="440" y="150" width="160" height="70" rx="6" fill="none" stroke="#b19475" stroke-width="3"/>
+       <g fill="#d9a6a0"><ellipse cx="480" cy="196" rx="20" ry="13"/><ellipse cx="540" cy="198" rx="20" ry="13"/><circle cx="498" cy="190" r="7"/><circle cx="558" cy="192" r="7"/></g>
+       <g fill="#d4a24c"><circle cx="420" cy="150" r="10"/><path d="M408 222c0-40 6-60 12-60s12 20 12 60z"/></g>
+     </g>
+     <text class="b up" data-at="pigs were unclean animals" x="520" y="132" text-anchor="middle" font-size="16" fill="#cfd3db">unclean to Jewish listeners</text>
+     <g class="b pop" data-at="longs to eat the pigs' food"><path d="M496 250a24 12 0 0 0 48 0z" fill="none" stroke="#f3e7c9" stroke-width="3"/><text x="520" y="286" text-anchor="middle" font-size="14" fill="#cfd3db">empty bowl</text></g>
+     <text class="b up" data-at="someone completely lost" x="200" y="70" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#e8c98a">far from home, far from his father</text>
+  </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Read the Scripture</p>
+  <div class="stack">
+  <div class="b up" data-at="Then something changes" data-until="Notice what happens">
+   <p class="scripture" style="font-size:clamp(18px,2.6vw,27px)">
+    <span class="ph" data-at="But when he came to himself">“But when he came to himself, he said,</span>
+    <span class="ph" data-at="I will arise and go to my father">‘… I will arise and go to my father, and I will say to him,</span>
+    <span class="ph" data-at="Father I have sinned against heaven">“Father, I have sinned against heaven and before you.</span>
+    <span class="ph" data-at="I am no longer worthy">I am no longer worthy to be called your son.</span>
+    <span class="ph" data-at="Treat me as one of your hired servants">Treat me as one of your hired servants.”’”</span>
+    <span class="ref">Luke 15:17–19 · ESV</span>
+   </p>
+  </div>
+  <svg class="scene b" data-at="Notice what happens" viewBox="0 0 680 300" aria-hidden="true">
+    <path d="M60 230 C240 220 420 200 640 170" stroke="#d9c49a" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <g font-size="19" font-weight="700" fill="#1f2d45" text-anchor="middle">
+      <g class="b up" data-at="he sees his situation honestly"><rect x="30" y="40" width="140" height="44" rx="22" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="100" y="68">sees honestly</text></g>
+      <g class="b up" data-at="He makes a decision"><rect x="190" y="40" width="130" height="44" rx="22" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="255" y="68">decides</text></g>
+      <g class="b up" data-at="he plans to admit his sin"><rect x="340" y="40" width="130" height="44" rx="22" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="405" y="68">admits</text></g>
+      <g class="b up" data-at="And he arose and came to his father"><rect x="490" y="40" width="150" height="44" rx="22" fill="#d4a24c"/><text x="565" y="68" fill="#16213a">goes home</text></g>
+    </g>
+    <g class="b" data-at="He actually turns around"><circle cx="420" cy="150" r="11" fill="#1f2d45"/><path d="M420 162v34M420 196l-10 24M420 196l10 22M420 172l-14 10M420 172l14-8" stroke="#1f2d45" stroke-width="5" stroke-linecap="round"/><path d="M450 140 a30 30 0 1 0 0 40" fill="none" stroke="#d4a24c" stroke-width="4" marker-end="url(#arrow)"/></g>
+    <g class="b up" data-at="earn his way back as a servant"><rect x="220" y="250" width="240" height="40" rx="10" fill="#efe6d2"/><text x="340" y="276" text-anchor="middle" font-size="17" fill="#5d6676">his plan: “treat me as a servant”</text></g>
+  </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="dark" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Read the Scripture</p>
+  <div class="stack">
+  <div class="b up" data-at="Now comes the most surprising part" data-until="The picture is deliberately striking">
+   <p class="scripture" style="color:#f3e7c9">
+    <span class="ph" data-at="But while he was still a long way off">“But while he was still a long way off,</span>
+    <span class="ph" data-at="his father saw him and felt compassion">his father saw him and felt compassion,</span>
+    <span class="ph" data-at="and ran and embraced him and kissed him"><b style="color:#e8c98a;font-weight:600">and ran and embraced him and kissed him.</b>”</span>
+    <span class="ref" style="color:#cfd3db">Luke 15:20 · ESV</span>
+   </p>
+  </div>
+  <svg class="scene b" data-at="The picture is deliberately striking" viewBox="0 0 680 300" aria-hidden="true">
+    <path d="M20 284 C240 276 440 268 660 260" stroke="#b19475" stroke-width="10" fill="none" stroke-linecap="round" opacity=".6"/>
+    <g class="b" data-at="The picture is deliberately striking" data-until="runs to him embraces him"><g fill="#cfd3db"><circle cx="560" cy="150" r="13"/><path d="M544 240c0-50 8-74 16-74s16 24 16 74z"/></g><path d="M552 146h16" stroke="#9aa3b5" stroke-width="3"/><g fill="#d4a24c"><circle cx="140" cy="170" r="10"/><path d="M128 246c0-40 6-60 12-60s12 20 12 60z"/></g></g>
+    <g class="b pop" data-at="runs to him embraces him">
+      <circle cx="320" cy="200" r="70" fill="rgba(232,201,138,.18)"/>
+      <g fill="#cfd3db"><circle cx="330" cy="150" r="13"/><path d="M314 240c0-50 8-74 16-74s16 24 16 74z"/></g>
+      <g fill="#d4a24c"><circle cx="306" cy="160" r="11"/><path d="M294 240c0-44 6-64 12-64s12 20 12 64z"/></g>
+      <path d="M318 190c10-8 20-8 26 4" stroke="#cfd3db" stroke-width="7" stroke-linecap="round" fill="none"/>
+    </g>
+    <g class="b pop" data-at="the best robe"><path d="M440 90l20-14 20 14 10 50h-60z" fill="#a8792b"/><text x="460" y="162" text-anchor="middle" font-size="15" fill="#f3e7c9">robe</text></g>
+    <g class="b pop" data-at="a ring for his hand"><circle cx="530" cy="110" r="16" fill="none" stroke="#e8c98a" stroke-width="5"/><circle cx="530" cy="94" r="5" fill="#e8c98a"/><text x="530" y="162" text-anchor="middle" font-size="15" fill="#f3e7c9">ring</text></g>
+    <g class="b pop" data-at="shoes for his feet"><path d="M580 120h30c10 0 14 10 14 14h-44z" fill="#b19475"/><text x="600" y="162" text-anchor="middle" font-size="15" fill="#f3e7c9">shoes</text></g>
+    <g class="b pop" data-at="and a feast"><rect x="440" y="196" width="190" height="10" rx="3" fill="#b19475"/><circle cx="480" cy="188" r="9" fill="#e8c98a"/><circle cx="535" cy="186" r="11" fill="#d4a24c"/><circle cx="590" cy="188" r="9" fill="#e8c98a"/><text x="535" y="232" text-anchor="middle" font-size="15" fill="#f3e7c9">feast</text></g>
+    <text class="b up" data-at="back into the household as his son" x="200" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#e8c98a">welcomed back as a son</text>
+    <text class="b up" data-at="For this my son was dead" x="200" y="96" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#e8c98a">“…he was lost, and is found.” (15:24)</text>
+  </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="The Greek verb translated repent">Repent · Greek</p>
+  <p class="word b up" data-at="is metanoeō">metanoeō</p>
+  <p class="gloss b up" data-at="It is a real change of mind and direction" style="color:#a8792b;font-weight:600">a real change of mind and direction</p>
+  <svg class="scene" viewBox="0 0 680 190" aria-hidden="true">
+    <g class="b" data-at="a turning from sin towards God" data-until="Earlier in this same chapter">
+      <circle cx="120" cy="90" r="40" fill="#5d6676" opacity=".35"/><text x="120" y="96" text-anchor="middle" font-size="16" fill="#5d6676">sin</text>
+      <path class="draw b" data-at="a turning from sin towards God" style="--len:420" d="M180 90 H330 a40 40 0 0 1 0 80 H260" fill="none" stroke="#d4a24c" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="230" cy="170" r="16" fill="#e8c98a"/><text x="230" y="140" text-anchor="middle" font-size="15" fill="#a8792b">towards God</text>
+    </g>
+    <g class="b up" data-at="Joel says" data-until="Earlier in this same chapter">
+      <rect x="420" y="40" width="230" height="100" rx="10" fill="#fffaf0" stroke="#d4a24c" stroke-width="3"/>
+      <text x="535" y="84" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#1f2d45">“Return to the LORD</text>
+      <text x="535" y="110" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="21" fill="#1f2d45">your God.” Joel 2:13</text>
+    </g>
+    <g class="b up" data-at="Earlier in this same chapter">
+      <ellipse cx="170" cy="80" rx="26" ry="18" fill="#fffaf0" stroke="#1f2d45" stroke-width="3"/><circle cx="196" cy="72" r="9" fill="#1f2d45"/>
+      <circle cx="300" cy="80" r="20" fill="#e8c98a" stroke="#a8792b" stroke-width="3"/>
+      <g fill="#1f2d45"><circle cx="430" cy="60" r="11"/><path d="M416 116c0-30 7-44 14-44s14 14 14 44z"/></g>
+      <g fill="#d4a24c"><path d="M170 34l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M300 30l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/><path d="M430 22l3 8 8 3-8 3-3 8-3-8-8-3 8-3z"/></g>
+      <text x="300" y="160" text-anchor="middle" font-size="19" fill="#1f2d45">joy in heaven over one sinner who repents · Luke 15:7, 10</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="dark" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <svg class="scene" viewBox="0 0 680 300" aria-hidden="true">
+    <g class="b" data-at="The second word is faith" data-until="Saving faith is not merely">
+      <text x="160" y="80" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="40" fill="#f3e7c9">faith</text>
+      <text x="520" y="80" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="40" fill="#f3e7c9">believe</text>
+      <g class="b" data-at="from the same family">
+        <path d="M160 96 C160 150 340 140 340 180 M520 96 C520 150 340 140 340 180" stroke="#d4a24c" stroke-width="3" fill="none"/>
+        <text x="340" y="220" text-anchor="middle" font-size="16" letter-spacing="3" fill="#cfd3db">ONE GREEK WORD FAMILY</text>
+        <text x="240" y="262" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="30" fill="#e8c98a">pistis</text>
+        <text x="440" y="262" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="30" fill="#e8c98a">pisteuō</text>
+        <text x="240" y="288" text-anchor="middle" font-size="15" fill="#cfd3db">faith</text><text x="440" y="288" text-anchor="middle" font-size="15" fill="#cfd3db">to believe</text>
+      </g>
+    </g>
+    <g class="b" data-at="Saving faith is not merely" data-until="These are the two Greek words">
+      <text x="340" y="60" text-anchor="middle" font-size="26" font-weight="700" fill="#f3e7c9">Saving faith = relying on Jesus</text>
+      <g class="b up" data-at="putting your full weight on someone">
+        <rect x="380" y="100" width="40" height="160" rx="6" fill="#d4a24c"/>
+        <g fill="#f3e7c9"><circle cx="330" cy="140" r="13"/><path d="M330 154 L372 200 L366 206 L326 166z"/><path d="M340 170l-30 90M340 170l-6 92" stroke="#f3e7c9" stroke-width="7" stroke-linecap="round"/></g>
+        <text x="400" y="290" text-anchor="middle" font-size="16" fill="#cfd3db">your full weight on someone you trust</text>
+      </g>
+    </g>
+    <g class="b up" data-at="These are the two Greek words">
+      <rect x="120" y="100" width="200" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+      <text x="220" y="140" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="28" fill="#f3e7c9">metanoeō</text><text x="220" y="170" text-anchor="middle" font-size="18" fill="#e8c98a">repent</text>
+      <rect x="360" y="100" width="200" height="90" rx="14" fill="rgba(243,231,201,.08)" stroke="#d4a24c" stroke-width="2"/>
+      <text x="460" y="140" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="28" fill="#f3e7c9">pistis</text><text x="460" y="170" text-anchor="middle" font-size="18" fill="#e8c98a">faith</text>
+      <text x="340" y="230" text-anchor="middle" font-size="16" letter-spacing="3" fill="#cfd3db">TWO WORDS TO REMEMBER</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="label">Understand the Teaching</p>
+  <h1 class="b up" data-at="No You could not do it" style="font-size:clamp(34px,6vw,64px);margin-bottom:.1em">No.</h1>
+  <p class="gloss b up" data-at="No You could not do it">You do not have to fix your life first.</p>
+  <p class="scripture" style="font-size:clamp(19px,2.8vw,30px)">
+    <span class="ph" data-at="God comes to us in grace">God comes to us in grace.</span>
+    <span class="ph" data-at="We turn to him and trust Jesus">We turn to him and trust Jesus,</span>
+    <span class="ph" data-at="and we receive what God freely gives">and we receive what God freely gives.</span>
+    <span class="ph" data-at="Our changed lives are the fruit of his welcome"><b>Our changed lives are the fruit of his welcome, not the price of it.</b></span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 130" aria-hidden="true" style="color:#1f2d45">
+    <g class="b pop" data-at="four parts grace"><use href="#i-grace" x="50" y="0" width="70" height="70" style="color:#d4a24c"/><text x="85" y="100" text-anchor="middle" font-size="19" font-weight="700">Grace</text></g>
+    <g class="b pop" data-at="turn trust and receive"><use href="#i-turn" x="220" y="0" width="70" height="70"/><text x="255" y="100" text-anchor="middle" font-size="19" font-weight="700">Turn</text></g>
+    <g class="b pop" data-at="trust and receive"><use href="#i-trust" x="390" y="0" width="70" height="70"/><text x="425" y="100" text-anchor="middle" font-size="19" font-weight="700">Trust</text></g>
+    <g class="b pop" data-at="and receive"><use href="#i-receive" x="560" y="0" width="70" height="70"/><text x="595" y="100" text-anchor="middle" font-size="19" font-weight="700">Receive</text></g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="dark" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-grace"/></svg>1 · Grace</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The first part is grace" data-until="Then Paul states it plainly" viewBox="0 0 640 280" aria-hidden="true">
+     <text class="b up" data-at="Grace means God's undeserved kindness" x="320" y="50" text-anchor="middle" font-size="26" font-weight="700" fill="#f3e7c9">undeserved kindness</text>
+     <text class="b up" data-at="love that is given not earned" x="320" y="84" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#e8c98a">love that is given, not earned</text>
+     <g class="b pop" data-at="Through this father">
+       <circle cx="320" cy="200" r="70" fill="rgba(232,201,138,.18)"/>
+       <g fill="#cfd3db"><circle cx="330" cy="150" r="13"/><path d="M314 250c0-50 8-74 16-74s16 24 16 74z"/></g>
+       <g fill="#d4a24c"><circle cx="306" cy="160" r="11"/><path d="M294 250c0-44 6-64 12-64s12 20 12 64z"/></g>
+       <path d="M318 190c10-8 20-8 26 4" stroke="#cfd3db" stroke-width="7" stroke-linecap="round" fill="none"/>
+     </g>
+   </svg>
+   <div class="b up" data-at="Then Paul states it plainly" data-until="Saved means rescued">
+    <p class="scripture" style="color:#f3e7c9">
+     <span class="ph" data-at="For by grace you have been saved through faith">“For by grace you have been saved through faith.</span>
+     <span class="ph" data-at="And this is not your own doing">And this is not your own doing;</span>
+     <span class="ph" data-at="it is the gift of God">it is the gift of God,</span>
+     <span class="ph" data-at="not a result of works">not a result of works, so that no one may boast.”</span>
+     <span class="ref" style="color:#cfd3db">Ephesians 2:8–9 · ESV</span>
+    </p>
+   </div>
+   <svg class="scene b" data-at="Saved means rescued" viewBox="0 0 640 280" aria-hidden="true">
+     <text x="320" y="50" text-anchor="middle" font-size="22" fill="#f3e7c9">saved = rescued, forgiven, given new life</text>
+     <g font-size="20" text-anchor="middle">
+      <g class="b up" data-at="good deeds religious ceremonies or money"><rect x="40" y="90" width="160" height="56" rx="12" fill="rgba(243,231,201,.06)" stroke="#9aa3b5"/><text x="120" y="125" fill="#9aa3b5">good deeds</text><path d="M56 118h128" stroke="#d4a24c" stroke-width="3"/></g>
+      <g class="b up" data-at="religious ceremonies or money"><rect x="240" y="90" width="160" height="56" rx="12" fill="rgba(243,231,201,.06)" stroke="#9aa3b5"/><text x="320" y="125" fill="#9aa3b5">ceremonies</text><path d="M256 118h128" stroke="#d4a24c" stroke-width="3"/></g>
+      <g class="b up" data-at="or money"><rect x="440" y="90" width="160" height="56" rx="12" fill="rgba(243,231,201,.06)" stroke="#9aa3b5"/><text x="520" y="125" fill="#9aa3b5">money</text><path d="M456 118h128" stroke="#d4a24c" stroke-width="3"/></g>
+     </g>
+     <g class="b pop" data-at="Paul says this rescue is a gift" style="color:#d4a24c"><use href="#i-gift" x="280" y="170" width="80" height="80"/></g>
+     <text class="b up" data-at="people who know they have failed" x="320" y="275" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#e8c98a">good news for people who know they have failed</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge" style="color:#a8792b"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-turn"/></svg>2 · Turn</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The second part is turning" data-until="Paul describes two kinds of sorrow" viewBox="0 0 640 260" aria-hidden="true">
+     <use href="#i-turn" x="250" y="20" width="140" height="140" style="color:#d4a24c"/>
+     <text class="b up" data-at="turn away from sin" x="320" y="200" text-anchor="middle" font-size="22" fill="#1f2d45">away from sin and our own way</text>
+     <text class="b up" data-at="and to turn towards God" x="320" y="234" text-anchor="middle" font-size="24" font-weight="700" fill="#a8792b">towards God</text>
+   </svg>
+   <div class="b up" data-at="Paul describes two kinds of sorrow" data-until="Sorrow by itself is not repentance">
+    <p class="scripture">
+     <span class="ph" data-at="For godly grief produces a repentance">“For godly grief produces a repentance that leads to salvation without regret,</span>
+     <span class="ph" data-at="whereas worldly grief produces death">whereas worldly grief produces death.”</span>
+     <span class="ref">2 Corinthians 7:10 · ESV</span>
+    </p>
+   </div>
+   <svg class="scene b" data-at="Sorrow by itself is not repentance" data-until="And remember repentance is a real turn" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b up" data-at="worldly grief which leaves us trapped">
+       <path d="M80 60c0-20 30-26 40-10 10-16 44-10 40 10z" fill="#9aa3b5"/>
+       <g fill="#5d6676"><circle cx="120" cy="120" r="12"/><path d="M100 190c0-30 10-50 20-50s20 20 20 50z"/></g>
+       <text x="120" y="230" text-anchor="middle" font-size="17" fill="#5d6676">worldly grief: trapped</text>
+     </g>
+     <g class="b up" data-at="godly grief which produces repentance">
+       <circle cx="560" cy="80" r="40" fill="#e8c98a" opacity=".6"/>
+       <g fill="#1f2d45"><circle cx="440" cy="110" r="12"/><path d="M440 122v40M440 162l-12 28M440 162l12 26M440 132l-16 10M440 132l16-10" stroke="#1f2d45" stroke-width="5" stroke-linecap="round"/></g>
+       <path d="M470 150h50" stroke="#d4a24c" stroke-width="4" marker-end="url(#arrow)"/>
+       <text x="480" y="230" text-anchor="middle" font-size="17" fill="#1f2d45">godly grief: turns to God</text>
+     </g>
+     <g class="b up" data-at="In Acts 3 Peter's preaching"><rect x="160" y="216" width="320" height="40" rx="10" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="320" y="242" text-anchor="middle" font-size="16" fill="#1f2d45">“Repent therefore, and turn back…” Acts 3:19</text></g>
+     <text class="b up" data-at="The promise attached to turning is forgiveness" x="560" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#1f2d45">forgiveness</text>
+   </svg>
+   <svg class="scene b" data-at="And remember repentance is a real turn" viewBox="0 0 640 260" aria-hidden="true">
+     <text x="320" y="44" text-anchor="middle" font-size="26" font-weight="700" fill="#1f2d45">A real turn, not instant perfection</text>
+     <path d="M60 200 C240 190 420 180 600 160" stroke="#d9c49a" stroke-width="10" fill="none" stroke-linecap="round"/>
+     <g class="b up" data-at="The son came home with nothing fixed"><g fill="#7d7a5e"><circle cx="300" cy="120" r="12"/><path d="M286 190c0-36 7-56 14-56s14 20 14 56z"/></g><path d="M290 160l6 6 6-8 6 6" stroke="#5d6676" stroke-width="2" fill="none"/><text x="300" y="232" text-anchor="middle" font-size="16" fill="#5d6676">nothing fixed yet</text></g>
+     <text class="b up" data-at="when we fall we turn again" x="500" y="110" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#a8792b">we turn again</text>
+     <text class="b up" data-at="We also repent of our own sin" x="320" y="256" text-anchor="middle" font-size="15" fill="#5d6676">We repent of our own sin, not of what others have done to us.</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="dark" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="badge"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-trust"/></svg>3 · Trust</p>
+  <div class="stack">
+   <svg class="scene b" data-at="The third part is trust" data-until="Think of crossing a river" viewBox="0 0 640 280" aria-hidden="true">
+     <g class="b" data-at="terrified after an earthquake"><rect x="60" y="60" width="120" height="150" rx="6" fill="none" stroke="#cfd3db" stroke-width="3"/><path d="M90 60v150M120 60v150M150 60v150" stroke="#cfd3db" stroke-width="3"/><path d="M40 230l20-10 20 14 20-12 20 14 20-10 20 12 20-8" stroke="#d4a24c" stroke-width="3" fill="none"/></g>
+     <text class="b up" data-at="Sirs what must I do to be saved" x="420" y="100" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#f3e7c9">“Sirs, what must I do to be saved?”</text>
+     <text class="b up" data-at="Believe in the Lord Jesus" x="420" y="160" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#e8c98a">“Believe in the Lord Jesus,</text>
+     <text class="b up" data-at="Believe in the Lord Jesus" x="420" y="192" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="24" fill="#e8c98a">and you will be saved.”</text>
+     <text class="b up" data-at="Sirs what must I do to be saved" x="420" y="236" text-anchor="middle" font-size="14" letter-spacing="3" fill="#cfd3db">ACTS 16:30–31</text>
+   </svg>
+   <svg class="scene b" data-at="Think of crossing a river" viewBox="0 0 680 290" aria-hidden="true">
+     <path d="M0 200 C120 190 220 210 340 200 S560 190 680 200 V240 H0Z" fill="#3c6e8f" opacity=".7"/>
+     <g class="b" data-at="A nervous person on a strong bridge">
+       <path d="M30 190 Q170 120 310 190" stroke="#d4a24c" stroke-width="10" fill="none"/><path d="M60 176v24M110 160v40M170 154v46M230 160v40M280 176v24" stroke="#d4a24c" stroke-width="4"/>
+       <g fill="#f3e7c9"><circle cx="170" cy="120" r="9"/><path d="M162 150c0-16 4-22 8-22s8 6 8 22z"/></g>
+       <text x="170" y="270" text-anchor="middle" font-size="16" fill="#e8c98a">nervous · strong bridge · safe</text>
+     </g>
+     <g class="b" data-at="A confident person on a rotten bridge">
+       <path d="M370 190 Q440 150 500 168 M520 172 Q580 160 650 190" stroke="#7b6a55" stroke-width="10" fill="none"/>
+       <g fill="#9aa3b5"><circle cx="450" cy="134" r="9"/><path d="M442 164c0-16 4-22 8-22s8 6 8 22z"/></g>
+       <text x="510" y="270" text-anchor="middle" font-size="16" fill="#9aa3b5">confident · rotten bridge · not safe</text>
+     </g>
+     <text class="b up" data-at="Our confidence rests on Jesus" x="170" y="60" text-anchor="middle" font-size="22" font-weight="700" fill="#f3e7c9">Our confidence rests on Jesus</text>
+     <g class="b up" data-at="So faith means we stop relying" font-size="15" fill="#cfd3db" text-anchor="middle">
+       <text x="520" y="40">not my goodness</text><text x="520" y="62">not religious activity</text><text x="520" y="84">not my feelings</text><text x="520" y="106">not how strongly I believe</text>
+       <path d="M450 36h140M440 58h160M450 80h140M430 102h180" stroke="#d4a24c" stroke-width="2"/>
+     </g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="badge" style="color:#a8792b"><svg viewBox="0 0 60 60" style="color:#d4a24c"><use href="#i-receive"/></svg>4 · Receive</p>
+  <div class="stack">
+   <div class="b up" data-at="The fourth part is receiving" data-until="In the story the son had">
+    <svg viewBox="0 0 60 60" style="width:90px;height:90px;color:#d4a24c" aria-hidden="true"><use href="#i-receive"/></svg>
+    <p class="scripture">
+     <span class="ph" data-at="But to all who did receive him">“But to all who did <u class="k" data-at="John puts receive and believe">receive</u> him,</span>
+     <span class="ph" data-at="who believed in his name">who <u class="k" data-at="John puts receive and believe">believed</u> in his name,</span>
+     <span class="ph" data-at="he gave the right to become children of God">he gave the right to become children of God.”</span>
+     <span class="ref">John 1:12 · ESV</span>
+    </p>
+    <p class="gloss b up" data-at="It is what faith looks like open hands" style="font-style:italic">Not an extra task: what faith looks like.</p>
+   </div>
+   <svg class="scene b" data-at="In the story the son had" data-until="This does not mean that nothing changes" viewBox="0 0 640 260" aria-hidden="true">
+     <g class="b up" data-at="In the story the son had"><rect x="60" y="70" width="230" height="90" rx="8" fill="#fffaf0" stroke="#5d6676" stroke-width="2"/><text x="175" y="110" text-anchor="middle" font-size="17" fill="#5d6676">“Treat me as one of</text><text x="175" y="134" text-anchor="middle" font-size="17" fill="#5d6676">your hired servants…”</text></g>
+     <path class="b" data-at="the father would not let him finish" d="M60 175 L290 55" stroke="#d4a24c" stroke-width="5"/>
+     <g class="b pop" data-at="he received a robe a ring and a party">
+       <path d="M370 80l20-14 20 14 10 50h-60z" fill="#a8792b"/><circle cx="460" cy="100" r="16" fill="none" stroke="#d4a24c" stroke-width="5"/>
+       <rect x="500" y="110" width="100" height="8" rx="3" fill="#b19475"/><circle cx="525" cy="102" r="8" fill="#e8c98a"/><circle cx="560" cy="100" r="9" fill="#d4a24c"/>
+       <text x="485" y="170" text-anchor="middle" font-size="18" font-weight="700" fill="#1f2d45">robe · ring · party</text>
+     </g>
+   </svg>
+   <svg class="scene b" data-at="This does not mean that nothing changes" viewBox="0 0 640 260" aria-hidden="true">
+     <text class="b up" data-at="For we are his workmanship" x="320" y="34" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="19" fill="#1f2d45">“For we are his workmanship, created in Christ Jesus for good works…” Ephesians 2:10</text>
+     <g class="b up" data-at="Good works matter very much">
+       <path d="M320 240V130" stroke="#7a5a3a" stroke-width="12"/><circle cx="320" cy="110" r="60" fill="#7d9a6b"/>
+       <g fill="#d4a24c"><circle cx="290" cy="100" r="9"/><circle cx="345" cy="90" r="9"/><circle cx="330" cy="130" r="9"/><circle cx="300" cy="135" r="8"/></g>
+       <text x="420" y="110" font-size="18" font-weight="700" fill="#1f2d45">good works</text>
+       <text x="420" y="134" font-size="16" fill="#5d6676">the fruit of grace</text>
+     </g>
+     <g class="b pop" data-at="not its price"><path d="M120 120h70l20 20-20 20h-70z" fill="#efe6d2" stroke="#9aa3b5" stroke-width="2"/><text x="155" y="146" text-anchor="middle" font-size="18" fill="#5d6676">price</text><path d="M110 170l110-60" stroke="#d4a24c" stroke-width="4"/></g>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">A Story · Bangkok, Thailand</p>
+  <h1 class="b up" data-at="Let me tell you about Niran" style="font-size:clamp(26px,4.4vw,46px)">Niran’s story</h1>
+  <div class="stack">
+   <svg class="scene b" data-at="Niran works in an office" data-until="His colleague did not argue" viewBox="0 0 640 260" aria-hidden="true">
+     <g fill="#d9c9a3"><rect x="40" y="40" width="60" height="180"/><rect x="110" y="80" width="50" height="140"/><rect x="520" y="60" width="70" height="160"/></g>
+     <path d="M570 60l10-40 10 40z" fill="#d4a24c"/>
+     <rect x="220" y="170" width="200" height="10" rx="3" fill="#b19475"/><rect x="290" y="130" width="60" height="40" rx="4" fill="#1f2d45"/>
+     <g fill="#3a2a22"><circle cx="250" cy="110" r="16"/></g><path d="M230 210c0-44 10-66 20-66s20 22 20 66z" fill="#3b4a60"/>
+     <g fill="#5b3b2a"><circle cx="420" cy="104" r="15"/></g><path d="M402 210c0-44 8-66 18-66s18 22 18 66z" fill="#a8792b"/>
+     <g class="b up" data-at="When a colleague invited him to church"><rect x="410" y="20" width="160" height="44" rx="14" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><text x="490" y="48" text-anchor="middle" font-size="17" fill="#1f2d45">“Come to church?”</text></g>
+     <g class="b up" data-at="Maybe later"><rect x="120" y="10" width="240" height="60" rx="14" fill="#fffaf0" stroke="#d4a24c" stroke-width="2"/><text x="240" y="36" text-anchor="middle" font-size="16" fill="#1f2d45">“Maybe later. First I need</text><text x="240" y="58" text-anchor="middle" font-size="16" fill="#1f2d45">to sort out my life…”</text></g>
+   </svg>
+   <svg class="scene b" data-at="His colleague did not argue" data-until="He was quiet for a moment" viewBox="0 0 640 260" aria-hidden="true">
+     <rect x="200" y="170" width="240" height="12" rx="4" fill="#b19475"/>
+     <g fill="#3a2a22"><circle cx="230" cy="110" r="16"/></g><path d="M210 220c0-44 10-66 20-66s20 22 20 66z" fill="#3b4a60"/>
+     <g fill="#5b3b2a"><circle cx="410" cy="106" r="15"/></g><path d="M392 220c0-44 8-66 18-66s18 22 18 66z" fill="#a8792b"/>
+     <path d="M320 166c-12-6-34-6-46 0v-18c12-6 34-6 46 0 12-6 34-6 46 0v18c-12-6-34-6-46 0z" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/>
+     <text class="b up" data-at="They read Luke 15" x="320" y="120" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2d45">Luke 15</text>
+     <text class="b up" data-at="Niran stopped at verse 20" x="320" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="19" fill="#a8792b">“…his father saw him and felt compassion,</text>
+     <text class="b up" data-at="Niran stopped at verse 20" x="320" y="66" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="19" fill="#a8792b">and ran and embraced him…” (15:20)</text>
+   </svg>
+   <div class="b up" data-at="He was quiet for a moment" data-until="Niran did not make any decision">
+     <p class="scripture" style="font-style:italic">“The son did not repair himself first. He did not earn his father’s welcome. <b>He just turned and came home.</b>”</p>
+     <p class="gloss">Niran</p>
+   </div>
+   <svg class="scene b" data-at="Niran did not make any decision" data-until="Niran's way of thinking" viewBox="0 0 640 260" aria-hidden="true">
+     <rect x="200" y="50" width="240" height="170" rx="12" fill="#fffaf0" stroke="#1f2d45" stroke-width="2"/><rect x="200" y="50" width="240" height="40" rx="12" fill="#1f2d45"/>
+     <text x="320" y="77" text-anchor="middle" font-size="16" fill="#f3e7c9">every week</text>
+     <g font-size="15" fill="#1f2d45" text-anchor="middle"><text x="250" y="130">Luke</text><text x="320" y="130">Luke</text><text x="390" y="130">Luke</text><text x="250" y="180">Luke</text><text x="320" y="180">…</text></g>
+     <text class="b up" data-at="He still has many questions" x="320" y="250" text-anchor="middle" font-size="17" fill="#5d6676">still asking questions</text>
+   </svg>
+   <svg class="scene b" data-at="Niran's way of thinking" viewBox="0 0 640 260" aria-hidden="true">
+     <path d="M40 220 C240 206 420 196 600 180" stroke="#d9c49a" stroke-width="10" fill="none" stroke-linecap="round"/>
+     <circle cx="320" cy="170" r="70" fill="#e8c98a" opacity=".35"/>
+     <g fill="#5d6676"><circle cx="330" cy="120" r="13"/><path d="M314 210c0-50 8-74 16-74s16 24 16 74z"/></g>
+     <g fill="#a8792b"><circle cx="306" cy="130" r="11"/><path d="M294 210c0-44 6-64 12-64s12 20 12 64z"/></g>
+     <text class="b up" data-at="Jesus' story shows us the Father's generous welcome" x="320" y="50" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="22" fill="#a8792b">the Father’s generous welcome of the returning lost</text>
+   </svg>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="they are often misunderstood" style="font-size:clamp(24px,4vw,42px)">What repentance and faith are not</h1>
+  <div class="nots">
+   <div class="not b up" data-at="I have to become good enough first"><span class="wrong">Good enough first<i class="b" data-at="You do not make yourself good enough"></i></span><span class="truth b" data-at="You come as you are turning from sin">Come as you are; turn and trust</span></div>
+   <div class="not b up" data-at="Repenting means feeling very guilty"><span class="wrong">Feeling very guilty<i class="b" data-at="Sorrow may come"></i></span><span class="truth b" data-at="repentance is turning back to God not sinking">Turning back to God</span></div>
+   <div class="not b up" data-at="Faith means never having doubts"><span class="wrong">Never having doubts<i class="b" data-at="Faith is trusting Jesus not feeling certain"></i></span><span class="truth b" data-at="Even a small shaky faith">A strong Saviour</span></div>
+   <div class="not b up" data-at="Saying the right prayer is what saves me"><span class="wrong">The right prayer saves<i class="b" data-at="But the words are not magic"></i></span><span class="truth b" data-at="It is Jesus who saves">Jesus saves</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="Your assignment is to respond" style="font-size:clamp(24px,4vw,42px)">Respond to God’s grace in one real way</h1>
+  <ol class="steps">
+    <li class="b up" data-at="First read Luke"><b>Read</b> Luke 15:11–24 again, slowly</li>
+    <li class="b up" data-at="Second in private ask yourself"><b>Ask privately:</b> Where do I need to <b>turn</b>? Where do I need to <b>trust</b>?</li>
+    <li class="b up" data-at="Third choose one small concrete step"><b>Take one step</b> of turning and trusting this week</li>
+    <li class="b up" data-at="And finally receive"><b>Receive:</b> thank God that his welcome is a gift</li>
+  </ol>
+  <p class="gloss b up" data-at="You do not have to share what you write" style="font-style:italic">Private: this is between you and God.</p>
+  <div class="fs b up" data-at="This assignment belongs to two of your First Steps">
+    <span class="lit b" data-at="my faith and my prayer">My faith</span><span>My Bible</span><span class="lit b" data-at="my faith and my prayer">My prayer</span><span>My church</span><span>My witness</span>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="dark" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="You do not have to fix your life">You do not have to fix your life before God will accept you.</h2>
+  <div class="remember">
+    <div class="b up" data-at="Grace God moves towards us"><svg viewBox="0 0 60 60"><use href="#i-grace"/></svg><p><b>Grace</b>God moves towards us in undeserved kindness</p></div>
+    <div class="b up" data-at="Turn repentance means turning"><svg viewBox="0 0 60 60"><use href="#i-turn"/></svg><p><b>Turn</b>from sin towards God; a real turn, not instant perfection</p></div>
+    <div class="b up" data-at="Trust faith means relying on Jesus"><svg viewBox="0 0 60 60"><use href="#i-trust"/></svg><p><b>Trust</b>relying on Jesus, not on our goodness, rituals or feelings</p></div>
+    <div class="b up" data-at="Receive we stop trying to earn"><svg viewBox="0 0 60 60"><use href="#i-receive"/></svg><p><b>Receive</b>good works are the fruit of grace, not its price</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ L2 SLIDE 17 ============ -->
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e8c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer">
+   <p class="ph" data-at="Father thank you for your grace">Father, thank you for your grace.</p>
+   <p class="ph" data-at="Thank you that I do not have to make myself good enough">Thank you that I do not have to make myself good enough before coming to you.</p>
+   <p class="ph" data-at="Thank you that through Jesus you welcome sinners">Thank you that through Jesus you welcome sinners who turn to you and trust him.</p>
+   <p class="ph" data-at="I turn from my own way">I turn from my own way and from the things I know are wrong.</p>
+   <p class="ph" data-at="I trust Jesus not my goodness">I trust Jesus, not my goodness, my feelings or my efforts.</p>
+   <p class="ph" data-at="I receive your grace with open hands">I receive your grace with open hands. By your grace, change the way I live.</p>
+   <p class="ph" data-at="In Jesus' name Amen"><b>In Jesus’ name. Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:1em">You may stop here for today.</p>
+ </div>
+</section>
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 17</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="begin-lesson-02.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1":"Welcome to Lesson 2. In Lesson 1, we learned the gospel in four parts: who Jesus is, what Jesus announced, what Jesus did, and why it is good news and how we respond. And we heard Jesus' call in Mark 1:15: \"repent and believe in the gospel.\" Today we look closely at those two words. But first, a question many people quietly carry. Maybe you have heard someone say it, or said it yourself. \"First I need to stop drinking.\" \"First I need to sort out my marriage.\" \"First I need to become a better person. Then I will come to God.\" It sounds humble. It sounds sensible. So here is our question: do I have to fix my life before God will accept me? By the end of this lesson, you will be able to answer that question from the Bible, and explain what repentance and faith really mean.","2":"Our main passage is one of the best-known stories Jesus ever told: the story of the lost son in Luke chapter 15. But Luke first tells us why Jesus told it. Listen to Luke 15, verses 1 and 2: \"Now the tax collectors and sinners were all drawing near to hear him. And the Pharisees and the scribes grumbled, saying, 'This man receives sinners and eats with them.'\" In Jesus' world, eating with someone was a sign of welcome and acceptance. Tax collectors were seen as collaborators with the Roman system, and many were known for cheating. \"Sinners\" meant people whose lives were openly far from God's law. The religious leaders were shocked that Jesus welcomed such people to his table. So Jesus answered with three stories about something lost and found: a lost sheep, a lost coin and a lost son.","3":"The story begins with a younger son who asks his father for his share of the family property. In that culture, the request was deeply dishonouring. The son wanted the father's property while rejecting life with his father. The father gives it to him. The son leaves for a distant country and wastes everything in reckless living. Then a famine comes. He ends up feeding pigs. For a Jewish listener, pigs were unclean animals, so this was about as low as anyone could fall. He is so hungry that he longs to eat the pigs' food, and no one gives him anything. Jesus is painting a picture of someone completely lost: far from home, and far from his father.","4":"Then something changes. Luke 15, verses 17 to 19: \"But when he came to himself, he said, '… I will arise and go to my father, and I will say to him, \"Father, I have sinned against heaven and before you. I am no longer worthy to be called your son. Treat me as one of your hired servants.\"'\" Notice what happens. He comes to himself: he sees his situation honestly. He makes a decision: \"I will arise and go.\" And he plans to admit his sin. Then verse 20 says, \"And he arose and came to his father.\" He actually turns around and walks home. But notice also what he still believes. He thinks he must earn his way back as a servant.","5":"Now comes the most surprising part of the story. Verse 20: \"But while he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him.\" The picture is deliberately striking. The father does not stand at a distance and make his son work his way back. He sees him, feels compassion, runs to him, embraces him and kisses him. The son begins his speech, but he never finishes it. The father calls for the best robe, a ring for his hand, shoes for his feet and a feast. Together they publicly show that the father is receiving him back into the household as his son. Verse 24: \"For this my son was dead, and is alive again; he was lost, and is found.\"","6":"Now let us look at two words that help us understand this story. The first is the word Jesus used in Mark 1:15: repent. The Greek verb translated \"repent\" is metanoeō. In the New Testament, repentance is not simply feeling sorry or changing an opinion. It is a real change of mind and direction: a turning from sin towards God. This fits the great biblical call we hear in the prophets. Joel says, \"Return to the LORD your God.\" Repentance is that kind of return. Earlier in this same chapter, Jesus says there is joy in heaven over one sinner who repents. The son's return helps us see what that repentance looks like: he comes to himself, admits his sin and goes home.","7":"The second word is faith. In English, \"faith\" and \"believe\" look like two different words. But in Greek they come from the same family: pistis is faith, and pisteuō is to believe. Saving faith is not merely agreeing that certain facts are true. It means relying on Jesus: trusting who he is and what he has done. It is like putting your full weight on someone you trust. So Jesus' call to \"repent and believe\" means turning to God and trusting the good news about Jesus. These are the two Greek words for today: metanoeō, repent, and pistis, faith.","8":"So, do you have to fix your life before God will accept you? No. You could not do it even if you tried, and God does not ask you to fix yourself first. Here is the answer in a few sentences. God comes to us in grace. We turn to him and trust Jesus, and we receive what God freely gives. Our changed lives are the fruit of his welcome, not the price of it. The rest of this lesson unpacks that answer in four parts: grace, turn, trust and receive.","9":"The first part is grace. Grace means God's undeserved kindness: love that is given, not earned. Everything in our salvation begins here, with God moving towards us. Through this father, Jesus gives us a powerful picture of God's welcoming grace towards the lost. Then Paul states it plainly in Ephesians 2: \"For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.\" Saved means rescued: brought back to God, forgiven and given new life. Paul says this rescue is a gift. We cannot buy it with good deeds, religious ceremonies or money. No one can boast that they deserved it. That is why grace is such good news for people who know they have failed.","10":"The second part is turning, which is repentance. To repent means to turn away from sin and from insisting on our own way, and to turn towards God. Repentance is more than feeling bad. Paul describes two kinds of sorrow in 2 Corinthians 7, verse 10: \"For godly grief produces a repentance that leads to salvation without regret, whereas worldly grief produces death.\" Sorrow by itself is not repentance. Paul distinguishes godly grief, which produces repentance, from worldly grief, which leaves us trapped in sorrow without turning to God. In Acts 3, Peter's preaching makes the direction clear: \"Repent therefore, and turn back, that your sins may be blotted out.\" The promise attached to turning is forgiveness. And remember, repentance is a real turn, not instant perfection. The son came home with nothing fixed: no money, no clean clothes, no restored reputation. Christians still struggle with sin, and when we fall, we turn again. We also repent of our own sin, not of what others have done to us. If someone has wronged you, that was their sin, not yours, and God sees it.","11":"The third part is trust, which is faith. In the book of Acts, a prison guard in the city of Philippi, terrified after an earthquake, asked Paul and Silas, \"Sirs, what must I do to be saved?\" Their answer was simple: \"Believe in the Lord Jesus, and you will be saved.\" Faith is not the same as being certain about everything, or having strong religious feelings. Think of crossing a river on a bridge. A nervous person on a strong bridge is safe. A confident person on a rotten bridge is not. Faith is like stepping onto a strong bridge. What matters most is not the strength of your feelings, but the strength of the one you are trusting. Our confidence rests on Jesus. So faith means we stop relying on our own goodness, on religious activity, on our feelings, or even on how strongly we believe. Instead, we rely on Jesus.","12":"The fourth part is receiving. John writes about Jesus: \"But to all who did receive him, who believed in his name, he gave the right to become children of God.\" Notice that John puts receive and believe side by side. Receiving is not an extra task. It is what faith looks like: open hands. In the story, the son had his speech ready: \"Treat me as one of your hired servants.\" But the father would not let him finish. Instead of a servant's job, he received a robe, a ring and a party. This does not mean that nothing changes afterwards. Straight after saying we are saved by grace, Paul adds in Ephesians 2, verse 10: \"For we are his workmanship, created in Christ Jesus for good works, which God prepared beforehand, that we should walk in them.\" Good works matter very much. But they are the fruit of grace, not its price.","13":"Let me tell you about Niran. His story is drawn from the experiences of many people. Niran works in an office in Bangkok and grew up in a Buddhist family. When a colleague invited him to church, he answered politely, \"Maybe later. First I need to sort out my life and do more good things. Then I will come.\" His colleague did not argue. She asked if they could read one short story together during their lunch break. They read Luke 15. Niran stopped at verse 20 and read it again: \"While he was still a long way off, his father saw him and felt compassion, and ran and embraced him and kissed him.\" He was quiet for a moment. Then he said, \"The son did not repair himself first. He did not earn his father's welcome. He just turned and came home.\" Niran did not make any decision that day. But he asked whether they could read Luke's Gospel together each week. He still has many questions, and that is where his story stops for now. Niran's way of thinking is common in every culture, and even among people who have gone to church all their lives. Many of us believe God's acceptance must be earned. Jesus' story shows us the Father's generous welcome of the returning lost.","14":"Because these words are so important, they are often misunderstood. Here are four common mistakes. \"I have to become good enough first.\" You do not make yourself good enough before coming to God. You come as you are, turning from sin and trusting Christ. Then God begins his transforming work in you. \"Repenting means feeling very guilty.\" Sorrow may come, but repentance is turning back to God, not sinking into shame. \"Faith means never having doubts.\" Faith is trusting Jesus, not feeling certain about everything. Even a small, shaky faith rests on a strong Saviour. And \"Saying the right prayer is what saves me.\" Praying simply and honestly can be a good way to express repentance and faith. But the words are not magic. It is Jesus who saves, not the words.","15":"Now, because this is true, here is what I would like you to do this week. Your assignment is to respond to God's grace in one real, concrete way. First, read Luke 15:11 to 24 again, slowly. Second, in private, ask yourself two questions. Where do I need to turn? Is there something I know is wrong that I need to turn away from, or an area of my life where I have been insisting on my own way? And where do I need to trust? Is there something I have been relying on instead of Jesus: my own goodness, my feelings, or my religious activity? Third, choose one small, concrete step of turning and trusting, and take it this week. It might be saying sorry to someone, stopping something you know is wrong, or praying honestly each morning, \"Lord, I trust you with this.\" And finally, receive. Thank God that his welcome is a gift, not a reward. You do not have to share what you write. This is between you and God. This assignment belongs to two of your First Steps: my faith, and my prayer. Below this lesson you will also find the seven-day reading plan, and a short look back at the four parts of the gospel from Lesson 1.","16":"Let us bring it together. You do not have to fix your life before God will accept you. Grace: God moves towards us in undeserved kindness, as Jesus pictures in the father's welcome. Turn: repentance means turning from sin and self-rule towards God; it is a real turn, not instant perfection. Trust: faith means relying on Jesus, not on our goodness, our rituals, our feelings or the strength of our belief. Receive: we stop trying to earn, and receive what God gives. Good works are the fruit of grace, not its price.","17":"Let us pray. Father, thank you for your grace. Thank you that I do not have to make myself good enough before coming to you. Thank you that through Jesus you welcome sinners who turn to you and trust him. I turn from my own way and from the things I know are wrong. I trust Jesus, not my goodness, my feelings or my efforts. I receive your grace with open hands. By your grace, change the way I live. In Jesus' name. Amen. You may stop here for today. When you are ready, begin this week's assignment and the reading plan."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.13, 0.51, 0.61, 1.98, 2.09, 2.45, 2.52, 3.3, 3.88, 4.42, 4.54, 4.83, 5.92, 6.11, 6.6, 7.23, 7.52, 7.99, 8.88, 9.08, 9.57, 10.24, 10.41, 10.71, 10.88, 11.02, 11.24, 11.96, 12.15, 12.39, 12.59, 13.79, 13.99, 14.16, 14.57, 15.22, 15.69, 15.85, 16.26, 16.64, 17.11, 17.34, 19.34, 20.28, 21.39, 21.78, 21.98, 22.25, 23.09, 23.29, 23.66, 23.9, 25.15, 25.33, 26.29, 26.39, 26.93, 27.23, 27.68, 28.21, 29.26, 29.52, 29.71, 29.83, 30.1, 30.48, 30.82, 31.34, 31.48, 31.72, 31.85, 33.08, 33.55, 33.67, 33.96, 34.05, 34.47, 35.51, 36.0, 36.1, 36.35, 36.45, 36.8, 37.04, 37.18, 38.26, 38.79, 38.9, 39.18, 39.27, 39.63, 39.68, 39.95, 40.99, 41.46, 41.55, 41.72, 42.0, 42.1, 43.01, 43.12, 43.5, 44.36, 44.48, 44.88, 46.17, 46.79, 47.19, 47.32, 47.48, 48.76, 48.93, 49.12, 49.35, 49.46, 49.88, 50.09, 50.57, 51.06, 51.54, 51.7, 52.26, 53.14, 53.31, 53.47, 53.65, 53.75, 53.99, 54.83, 55.0, 55.15, 55.35, 55.6, 55.82, 56.27, 56.52, 57.08, 57.3, 57.38, 58.38, 58.54, 59.34, 59.67, 60.54, 60.75, 61.41, 61.89], "2": [62.88, 63.02, 63.32, 63.85, 63.97, 64.13, 64.24, 64.37, 64.72, 64.97, 65.55, 66.1, 66.34, 67.29, 67.37, 67.85, 67.94, 68.05, 68.47, 68.95, 69.09, 69.45, 71.08, 71.26, 71.56, 71.94, 72.26, 72.43, 72.9, 73.43, 73.8, 74.59, 74.89, 75.02, 76.53, 77.09, 78.47, 78.84, 78.94, 79.32, 79.89, 80.01, 80.54, 80.77, 81.11, 81.48, 81.81, 81.95, 82.26, 83.02, 83.17, 83.24, 84.0, 84.12, 84.18, 84.83, 85.54, 86.45, 86.78, 87.09, 87.59, 88.14, 88.42, 88.7, 88.9, 89.55, 89.78, 90.42, 90.98, 91.33, 91.51, 91.95, 92.19, 92.23, 92.74, 92.88, 93.49, 93.71, 95.2, 95.58, 96.2, 96.32, 96.73, 96.87, 98.0, 98.2, 98.29, 98.76, 99.83, 100.0, 100.34, 100.51, 100.95, 101.13, 102.29, 102.96, 103.33, 103.78, 104.06, 104.62, 104.91, 105.47, 106.03, 106.27, 106.78, 107.88, 107.97, 108.45, 108.89, 109.0, 109.88, 110.11, 110.58, 111.21, 111.47, 111.83, 111.98, 112.19, 113.17, 113.4, 113.88, 114.41, 114.59, 114.93, 115.56, 115.82, 116.31, 116.81, 116.96, 118.06, 118.11, 118.55, 119.46, 119.52, 119.96, 120.84, 120.98, 121.03, 121.53], "3": [122.68, 122.75, 123.17, 123.65, 123.8, 123.83, 124.27, 124.66, 124.89, 125.31, 125.52, 125.96, 126.18, 126.33, 126.84, 126.94, 127.03, 127.51, 128.78, 128.94, 129.18, 129.79, 129.95, 130.54, 130.82, 131.3, 132.31, 132.41, 132.81, 133.25, 133.33, 133.89, 134.65, 134.95, 135.7, 136.07, 136.2, 136.42, 137.52, 137.6, 138.03, 138.38, 138.52, 138.7, 139.37, 139.44, 139.81, 140.31, 140.51, 140.55, 141.08, 141.62, 141.99, 142.53, 143.2, 143.35, 143.9, 144.92, 145.6, 145.65, 146.22, 147.13, 147.34, 147.61, 147.78, 148.23, 149.51, 149.73, 149.76, 150.18, 151.04, 151.4, 151.59, 152.12, 153.05, 153.23, 153.51, 153.7, 153.96, 154.09, 154.48, 154.6, 155.0, 155.19, 156.24, 156.4, 156.5, 156.8, 157.41, 157.71, 157.83, 158.26, 158.39, 158.67, 158.76, 159.19, 160.0, 160.19, 160.37, 160.68, 160.97, 161.11, 162.25, 162.8, 162.93, 163.43, 163.49, 164.02, 164.11, 164.68, 165.52, 166.28, 166.7, 166.92, 167.74, 167.92, 168.33, 168.53, 168.77], "4": [169.62, 170.18, 170.72, 172.02, 172.4, 172.64, 173.28, 173.87, 174.09, 174.15, 174.52, 176.75, 177.67, 177.84, 178.85, 179.09, 179.4, 180.24, 180.47, 180.7, 180.81, 181.0, 181.98, 182.19, 182.36, 182.54, 182.94, 183.07, 183.93, 185.02, 185.17, 185.35, 186.0, 186.48, 187.25, 187.45, 187.93, 188.88, 189.09, 189.38, 189.61, 189.98, 190.56, 190.7, 190.85, 191.22, 191.4, 192.2, 192.54, 192.91, 193.12, 193.34, 193.44, 193.61, 194.05, 195.49, 195.88, 196.04, 197.03, 197.27, 197.69, 197.82, 198.98, 199.1, 199.57, 199.7, 200.52, 201.67, 201.78, 202.16, 202.22, 203.38, 203.5, 203.73, 204.36, 204.59, 205.49, 205.61, 205.74, 206.26, 206.42, 206.85, 207.04, 208.21, 208.5, 209.15, 209.95, 210.12, 210.3, 210.84, 210.96, 211.35, 211.51, 211.73, 212.63, 212.77, 213.26, 213.64, 214.11, 214.24, 214.62, 215.4, 215.55, 215.9, 216.42, 216.66, 216.77, 217.1, 218.25, 218.4, 218.73, 218.85, 219.16, 219.5, 219.72, 219.97, 220.4, 220.54, 220.59], "5": [221.9, 222.22, 222.68, 222.75, 223.07, 223.87, 224.22, 224.33, 224.43, 225.54, 225.78, 226.68, 227.17, 227.34, 227.5, 228.07, 228.1, 228.54, 228.82, 229.67, 229.88, 230.29, 230.63, 231.0, 231.23, 231.59, 232.81, 233.0, 233.54, 233.76, 234.34, 234.67, 234.89, 235.28, 235.89, 235.96, 236.54, 236.75, 237.53, 238.61, 238.68, 239.08, 239.31, 239.51, 240.0, 240.11, 240.18, 240.82, 240.99, 241.29, 241.42, 241.78, 242.15, 242.34, 242.57, 243.37, 243.52, 243.91, 244.51, 244.97, 246.18, 246.61, 246.79, 247.38, 248.12, 248.48, 248.73, 249.28, 250.1, 250.17, 250.57, 251.06, 251.19, 251.94, 252.1, 252.24, 252.61, 253.17, 253.78, 253.86, 254.31, 254.81, 254.92, 255.02, 255.4, 256.12, 256.18, 256.56, 256.74, 256.92, 257.6, 258.01, 258.16, 258.37, 258.71, 258.91, 258.94, 259.95, 260.42, 260.6, 261.17, 261.56, 261.75, 261.82, 262.33, 262.49, 263.06, 263.31, 263.67, 263.98, 264.07, 264.68, 264.96, 265.11, 266.16, 266.75, 267.89, 268.32, 268.53, 268.84, 269.09, 269.67, 269.86, 270.0, 270.42, 271.17, 271.31, 271.5, 272.24, 272.39, 272.59], "6": [273.71, 274.58, 274.77, 274.92, 275.16, 275.34, 275.63, 276.16, 276.29, 276.6, 276.75, 277.38, 277.51, 278.46, 278.54, 279.14, 279.33, 279.41, 279.76, 280.26, 280.65, 280.75, 281.94, 282.17, 284.06, 284.47, 284.88, 285.6, 286.26, 286.49, 288.02, 288.11, 288.19, 288.46, 289.56, 290.42, 290.64, 290.89, 291.31, 291.81, 292.39, 292.6, 293.17, 293.27, 294.17, 294.29, 294.44, 294.49, 294.94, 295.33, 295.43, 295.95, 296.19, 297.3, 297.42, 297.85, 298.05, 298.52, 299.13, 299.94, 300.27, 300.68, 300.79, 301.32, 301.83, 302.28, 302.46, 302.78, 302.89, 302.96, 304.26, 304.63, 305.65, 306.19, 306.3, 306.4, 306.79, 306.96, 307.92, 308.77, 309.0, 309.21, 309.57, 309.7, 310.91, 311.39, 311.52, 311.68, 312.1, 313.1, 313.67, 314.11, 314.35, 314.6, 314.97, 315.33, 315.96, 316.24, 316.73, 317.33, 317.54, 318.84, 318.92, 319.37, 320.38, 320.75, 320.89, 321.29, 321.61, 321.83, 322.59, 322.96, 323.86, 324.02, 324.41, 324.53, 325.51, 325.98, 326.14, 326.8, 327.03, 327.36], "7": [328.44, 328.51, 328.93, 329.27, 329.73, 330.81, 330.95, 331.86, 332.8, 333.05, 334.17, 334.4, 334.63, 334.89, 335.3, 336.22, 336.38, 336.54, 336.96, 337.1, 337.38, 337.58, 337.64, 338.05, 339.0, 340.1, 340.33, 341.23, 341.49, 342.69, 342.92, 343.06, 344.41, 344.95, 345.34, 345.58, 345.84, 346.21, 346.78, 347.0, 347.49, 347.97, 348.23, 349.05, 349.25, 349.81, 350.44, 350.7, 351.7, 352.25, 352.49, 352.87, 353.24, 353.42, 353.71, 353.82, 354.06, 354.9, 355.02, 355.18, 355.43, 355.78, 355.95, 356.35, 356.82, 357.03, 357.55, 357.7, 358.89, 359.1, 359.58, 359.96, 360.22, 360.8, 361.0, 361.76, 362.08, 362.54, 362.67, 363.09, 363.34, 363.93, 364.0, 364.28, 364.59, 364.88, 366.03, 366.42, 366.52, 366.63, 367.0, 367.41, 367.83, 367.97, 368.89, 369.87, 370.66, 370.9, 371.77], "8": [372.99, 373.89, 373.99, 374.17, 374.38, 374.48, 374.84, 375.02, 375.73, 376.12, 376.46, 376.65, 377.14, 377.73, 378.58, 378.75, 378.95, 379.29, 379.48, 379.69, 379.99, 380.11, 380.25, 381.13, 381.3, 381.66, 381.83, 382.1, 382.48, 382.62, 382.74, 383.13, 383.58, 384.81, 385.09, 385.23, 385.4, 385.82, 385.93, 385.96, 386.2, 387.47, 387.77, 388.24, 388.43, 388.64, 388.83, 389.77, 389.94, 390.29, 390.4, 391.03, 391.24, 391.75, 392.75, 392.92, 393.06, 393.78, 393.96, 394.42, 394.84, 395.8, 396.08, 396.72, 397.51, 397.61, 397.74, 398.36, 398.48, 398.71, 399.65, 399.98, 400.06, 400.47, 400.59, 401.5, 401.59, 401.96, 402.06, 402.29, 402.78, 403.56, 403.79, 404.23, 404.4, 404.73, 406.0, 407.08, 407.94, 408.68, 408.88], "9": [410.1, 410.18, 410.58, 411.22, 411.45, 412.64, 413.05, 413.52, 414.2, 414.99, 416.23, 416.62, 416.78, 416.95, 417.73, 418.13, 419.13, 419.65, 419.73, 419.87, 420.56, 421.14, 421.91, 422.07, 422.44, 422.86, 423.38, 424.35, 424.63, 424.9, 425.86, 426.41, 426.7, 426.91, 426.96, 427.74, 428.25, 428.36, 428.75, 429.59, 430.13, 430.67, 430.76, 431.99, 432.37, 432.7, 433.15, 433.3, 433.85, 433.95, 435.38, 435.7, 435.96, 436.5, 436.7, 436.88, 437.05, 437.58, 437.82, 438.84, 439.03, 439.25, 439.42, 439.71, 439.98, 440.28, 441.05, 441.17, 441.33, 441.41, 441.79, 441.93, 442.63, 443.08, 443.13, 443.63, 443.78, 444.49, 444.68, 444.88, 445.12, 445.42, 445.59, 446.8, 447.46, 447.8, 448.81, 449.15, 449.43, 449.53, 450.29, 451.01, 451.32, 451.72, 451.96, 453.07, 453.41, 453.86, 454.08, 454.68, 454.97, 455.01, 456.03, 456.26, 456.71, 456.99, 457.17, 457.36, 457.68, 458.48, 458.96, 459.93, 460.09, 461.21, 461.42, 461.78, 462.11, 462.76, 462.96, 463.12, 463.62, 464.33, 464.56, 464.73, 464.98, 465.46, 465.68, 466.16, 466.47, 466.97, 467.12, 467.53, 467.73, 468.09, 468.26, 468.44], "10": [469.54, 469.61, 470.08, 470.59, 470.84, 471.76, 471.95, 472.5, 473.78, 473.89, 474.64, 475.0, 475.11, 475.49, 475.83, 476.05, 476.94, 477.07, 477.27, 477.96, 478.17, 478.39, 478.6, 479.27, 479.42, 479.5, 479.9, 480.44, 481.54, 482.5, 482.67, 483.01, 483.22, 483.68, 484.6, 484.91, 485.67, 485.98, 486.47, 486.55, 487.4, 487.92, 489.84, 491.03, 491.21, 491.72, 492.19, 492.98, 493.03, 493.89, 494.34, 494.78, 494.89, 496.07, 496.49, 497.73, 498.12, 498.73, 499.36, 499.96, 500.77, 501.25, 501.48, 502.02, 502.22, 502.51, 503.54, 503.99, 504.88, 505.31, 506.05, 506.28, 506.87, 508.16, 508.48, 508.98, 509.83, 510.06, 510.44, 510.6, 511.07, 511.21, 512.13, 512.57, 512.97, 513.1, 514.17, 514.29, 514.74, 515.72, 516.24, 516.57, 516.66, 517.21, 518.12, 518.69, 519.49, 519.7, 520.09, 520.68, 520.89, 521.04, 521.6, 521.77, 521.91, 522.38, 523.09, 523.19, 523.67, 524.21, 524.32, 524.92, 525.15, 526.62, 526.76, 527.66, 528.54, 528.7, 528.74, 529.16, 530.1, 530.51, 531.14, 532.27, 532.36, 532.74, 533.04, 533.44, 533.62, 534.06, 534.92, 535.12, 535.87, 536.09, 536.41, 537.27, 537.46, 538.09, 539.6, 540.16, 540.54, 541.09, 541.29, 542.16, 542.38, 542.58, 542.75, 543.62, 543.75, 544.07, 545.15, 545.29, 545.7, 546.21, 546.31, 546.55, 546.78, 547.64, 547.96, 548.08, 548.28, 548.64, 548.81, 549.08, 549.3, 550.04, 550.15, 550.59, 550.81, 551.22, 551.82, 552.05, 552.27, 552.5, 553.1, 553.41, 554.01, 554.22, 554.55, 554.93], "11": [555.42, 555.54, 556.05, 556.49, 556.74, 557.62, 557.84, 558.01, 558.92, 559.04, 559.14, 559.37, 559.5, 560.16, 560.21, 560.67, 561.01, 561.14, 561.21, 561.57, 561.64, 562.66, 563.39, 563.75, 563.93, 564.95, 565.45, 565.83, 565.99, 567.01, 567.82, 568.25, 568.55, 568.67, 569.02, 569.15, 569.29, 570.51, 570.8, 571.24, 571.47, 572.62, 573.32, 573.59, 573.69, 574.17, 574.92, 575.19, 575.45, 575.75, 575.93, 577.2, 577.48, 577.64, 577.88, 577.95, 578.36, 578.48, 578.81, 579.32, 579.68, 580.72, 580.91, 581.29, 581.8, 582.3, 583.39, 583.62, 583.74, 584.19, 584.25, 584.62, 584.77, 584.81, 585.83, 585.91, 586.39, 586.86, 586.99, 587.02, 587.51, 588.03, 588.16, 589.33, 589.54, 590.24, 590.79, 591.0, 591.03, 591.59, 592.43, 592.65, 593.76, 594.42, 594.6, 594.86, 595.51, 596.0, 596.04, 596.68, 597.74, 597.95, 598.45, 599.08, 599.25, 599.71, 599.82, 600.37, 600.48, 600.63, 601.55, 601.81, 601.88, 602.59, 602.77, 602.88, 603.36, 603.55, 603.68, 604.72, 604.89, 605.93, 606.75, 607.03, 608.12, 608.37, 608.84, 609.77, 609.98, 610.32, 610.72, 610.85, 611.04, 611.16, 612.23, 612.39, 612.88, 614.02, 614.18, 614.34, 615.36, 615.64, 615.87, 616.01, 616.18, 616.69, 616.85, 617.92, 618.95, 619.09, 619.48, 619.66], "12": [620.94, 621.03, 621.39, 622.05, 622.47, 623.47, 623.85, 624.21, 624.52, 625.6, 625.78, 626.04, 626.47, 626.68, 626.97, 627.45, 627.99, 628.13, 628.71, 628.82, 629.08, 629.9, 630.06, 630.39, 630.49, 630.89, 631.02, 631.51, 632.02, 632.14, 633.19, 633.62, 633.82, 634.24, 634.63, 635.58, 635.84, 636.38, 636.87, 637.07, 638.29, 638.87, 639.03, 639.33, 639.44, 639.88, 640.83, 640.96, 641.09, 641.32, 641.74, 642.05, 642.7, 643.03, 643.96, 644.14, 644.22, 645.1, 645.23, 645.71, 645.98, 646.15, 646.71, 647.7, 648.15, 648.49, 648.71, 648.99, 649.09, 649.32, 649.89, 651.23, 651.44, 651.52, 651.94, 652.19, 652.5, 652.75, 652.93, 654.24, 654.68, 654.78, 654.83, 655.44, 656.15, 656.33, 656.82, 656.86, 657.73, 657.81, 658.42, 658.6, 658.64, 659.66, 660.0, 660.23, 660.56, 660.9, 661.12, 661.76, 662.43, 664.05, 664.45, 664.76, 665.28, 665.5, 665.64, 666.12, 666.33, 667.23, 667.65, 668.03, 668.13, 669.32, 670.56, 670.81, 671.1, 671.29, 671.53, 672.55, 673.13, 673.28, 673.73, 674.21, 674.38, 674.65, 675.34, 675.59, 675.89, 676.41, 677.81, 678.02, 678.33, 678.62, 679.03, 679.2, 680.39, 680.59, 681.37, 681.84, 682.19, 683.36, 683.56, 684.35, 684.49, 684.62, 685.49, 685.71, 686.86, 687.21, 687.4], "13": [688.64, 688.82, 688.95, 689.16, 689.37, 689.68, 690.74, 690.92, 691.46, 691.63, 692.11, 692.33, 692.48, 693.49, 693.62, 694.05, 695.13, 695.6, 696.01, 696.14, 696.24, 696.68, 696.84, 697.93, 698.11, 698.44, 698.72, 698.85, 698.9, 699.47, 700.68, 700.82, 700.9, 701.37, 701.95, 702.12, 702.24, 702.76, 703.14, 703.62, 705.13, 705.46, 706.51, 707.0, 707.11, 707.35, 707.45, 707.83, 708.02, 708.19, 708.88, 709.11, 709.36, 709.57, 709.81, 710.85, 711.05, 711.16, 711.34, 712.38, 712.57, 713.1, 713.27, 713.53, 714.67, 714.91, 715.23, 715.33, 715.46, 715.66, 715.97, 716.25, 716.63, 717.05, 717.54, 717.94, 718.09, 718.44, 719.51, 719.65, 720.41, 721.29, 722.72, 723.26, 723.39, 723.81, 724.05, 724.37, 724.7, 725.8, 726.02, 726.14, 726.29, 726.63, 726.67, 727.0, 727.19, 727.42, 727.66, 728.0, 728.36, 728.71, 729.11, 729.42, 730.55, 730.74, 731.3, 731.53, 732.04, 732.46, 732.64, 732.98, 733.87, 734.0, 734.23, 734.75, 734.98, 735.01, 735.94, 736.17, 736.32, 737.18, 737.33, 737.79, 737.99, 738.31, 738.71, 739.33, 740.1, 740.28, 740.46, 740.8, 741.09, 741.34, 741.77, 742.6, 742.75, 743.1, 743.54, 743.8, 744.12, 745.25, 745.76, 745.92, 746.2, 746.59, 746.87, 747.39, 747.62, 748.55, 748.69, 748.85, 749.26, 749.63, 749.78, 749.99, 750.4, 750.77, 751.27, 751.77, 752.05, 753.2, 753.35, 753.64, 753.85, 754.12, 755.18, 755.36, 755.68, 755.83, 756.0, 756.18, 756.62, 757.14, 757.28, 758.32, 758.83, 759.04, 759.11, 759.65, 759.84, 760.33, 760.68, 761.06, 761.99, 762.15, 762.51, 762.82, 763.23, 763.32, 763.46, 763.74, 763.86, 764.36, 764.61, 764.78, 766.03, 766.34, 766.44, 766.61, 767.02, 767.44, 768.13, 768.42, 768.62, 769.32, 769.8, 770.62, 771.06, 771.28, 771.39, 772.2, 772.78, 773.35, 773.47, 773.56, 774.17], "14": [775.41, 775.87, 776.12, 776.59, 776.67, 776.96, 777.98, 778.12, 778.27, 778.77, 780.33, 780.68, 780.87, 781.47, 781.96, 783.37, 783.5, 783.68, 783.79, 784.2, 784.41, 784.7, 785.65, 785.88, 786.03, 786.39, 786.64, 787.13, 787.32, 787.65, 788.01, 788.35, 788.44, 789.38, 789.59, 789.98, 790.28, 790.46, 791.17, 791.62, 791.83, 792.6, 792.85, 793.4, 794.56, 795.32, 795.64, 796.17, 796.37, 797.21, 797.63, 797.83, 798.76, 799.38, 799.8, 800.29, 800.77, 802.02, 802.55, 802.77, 803.81, 803.98, 804.72, 804.92, 805.39, 805.73, 805.87, 806.87, 807.21, 807.8, 808.03, 809.17, 809.86, 810.23, 810.83, 811.17, 812.27, 812.64, 812.84, 813.39, 814.35, 814.65, 815.06, 815.58, 815.96, 817.06, 817.33, 817.38, 817.98, 818.49, 819.16, 819.67, 819.93, 819.96, 820.51, 821.74, 821.94, 822.45, 822.54, 822.91, 823.46, 823.66, 823.86, 824.42, 825.42, 825.84, 826.51, 826.75, 827.32, 827.56, 827.73, 827.81, 828.04, 828.32, 828.52, 829.03, 829.72, 829.88, 831.06, 831.25, 831.32, 831.9, 832.01, 832.34, 833.31, 833.42, 833.63, 834.12, 834.27, 835.26, 835.56, 835.64], "15": [836.99, 837.54, 838.07, 838.31, 838.51, 839.33, 839.71, 839.88, 840.06, 840.15, 840.35, 840.66, 840.79, 840.93, 841.21, 841.48, 842.47, 842.73, 843.54, 843.75, 843.86, 844.58, 844.72, 845.18, 845.78, 845.95, 846.64, 847.16, 847.91, 848.63, 849.54, 849.96, 850.41, 850.53, 850.93, 851.13, 851.5, 851.57, 851.93, 852.03, 852.93, 854.31, 855.57, 855.9, 856.48, 856.85, 857.02, 857.38, 858.06, 858.99, 859.34, 860.27, 860.46, 861.23, 861.64, 861.8, 862.0, 862.08, 862.42, 863.39, 863.84, 864.11, 865.02, 865.21, 865.32, 865.76, 865.89, 866.08, 866.51, 866.73, 866.85, 867.05, 867.22, 867.93, 868.07, 868.27, 868.53, 869.59, 869.72, 870.06, 870.23, 870.32, 870.59, 870.69, 871.93, 872.14, 872.32, 872.84, 872.98, 873.18, 873.37, 873.88, 874.25, 874.68, 874.8, 875.73, 875.94, 876.17, 876.81, 876.99, 877.76, 877.88, 878.05, 878.59, 879.55, 880.57, 880.93, 881.4, 882.0, 882.63, 883.15, 883.29, 883.81, 884.03, 885.06, 885.28, 885.57, 885.96, 886.28, 887.3, 887.46, 887.76, 887.9, 888.3, 888.74, 888.86, 889.74, 890.31, 890.74, 890.9, 891.17, 891.34, 892.27, 892.42, 892.94, 893.66, 893.94, 894.93, 895.62, 895.79, 896.27, 896.4, 896.63, 897.39, 897.64, 898.54, 899.6, 899.93, 900.32, 900.48, 900.68, 901.16, 901.33, 901.37, 902.39, 902.69, 902.74, 904.07, 904.16, 904.3, 904.5, 904.71, 904.82, 905.23, 905.49, 905.63, 906.41, 906.66, 906.81, 907.22, 907.48, 907.63, 908.5, 908.77, 909.48, 910.0, 910.1, 910.59, 910.72, 910.89, 911.44, 912.44, 912.63, 913.4, 913.57, 913.73, 914.8, 915.13, 915.37, 915.81, 915.95, 916.12, 916.55, 916.96, 917.04, 917.47, 917.71, 918.21, 919.05, 919.21, 919.24, 919.73, 920.01, 920.37, 920.5, 920.56, 920.95, 921.43, 921.54, 921.63, 922.53, 922.79], "16": [923.26, 924.21, 924.54, 924.79, 924.92, 926.06, 926.19, 926.36, 926.57, 926.77, 926.89, 927.31, 927.48, 927.89, 928.29, 928.63, 928.81, 929.34, 930.02, 931.02, 931.34, 931.76, 932.26, 932.48, 932.7, 933.5, 934.56, 934.79, 935.25, 935.83, 936.01, 936.08, 936.63, 937.72, 938.52, 939.16, 939.54, 939.93, 940.18, 940.67, 940.84, 941.3, 941.62, 942.15, 942.96, 943.08, 943.21, 943.26, 943.69, 944.42, 944.82, 945.28, 946.43, 947.19, 947.69, 948.01, 948.55, 948.8, 949.64, 949.87, 950.0, 950.12, 951.01, 951.21, 952.11, 952.27, 952.98, 953.14, 953.22, 953.74, 953.85, 954.01, 954.89, 955.94, 956.09, 956.48, 956.85, 957.28, 957.76, 957.93, 958.53, 958.76, 959.09, 960.37, 960.62, 961.43, 961.56, 961.67, 962.14, 962.3, 963.24, 963.75, 963.99], "17": [965.39, 965.53, 965.65, 966.39, 967.34, 967.66, 967.76, 967.94, 968.12, 969.02, 969.33, 969.44, 969.6, 969.71, 969.92, 970.16, 970.4, 970.5, 970.74, 971.18, 971.37, 971.71, 972.11, 972.45, 972.58, 973.42, 973.75, 973.88, 974.09, 974.43, 975.23, 975.38, 975.82, 976.65, 976.83, 977.16, 977.29, 977.87, 978.09, 978.48, 979.35, 979.5, 979.89, 980.1, 980.31, 980.58, 981.24, 981.4, 981.61, 981.7, 982.12, 982.25, 982.55, 982.7, 983.76, 983.91, 984.39, 985.34, 985.59, 985.75, 986.71, 986.9, 987.69, 987.86, 988.05, 989.09, 989.22, 989.77, 989.96, 990.4, 990.67, 991.05, 992.1, 992.27, 992.48, 993.26, 993.79, 993.88, 994.14, 994.3, 995.44, 995.66, 996.25, 997.08, 997.93, 998.03, 998.17, 998.55, 998.84, 999.03, 1000.13, 1000.43, 1000.58, 1000.71, 1001.34, 1001.73, 1001.94, 1002.23, 1003.0, 1003.17, 1003.24, 1003.61]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>{sentences.push({t:at(idx)-0.15,s});idx+=toks(s).length;});
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line.replace(/mashiach/g,'māšîaḥ');
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>

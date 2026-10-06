@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 7 Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#16213a;--navy:#1f2d45;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f2d45;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#121b30 0%,#1f2d45 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f2d45,#16213a);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>Following Jesus · Begin</b><span class="steps8" aria-label="Lesson 7 of 8"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 7 of 8</p>
+   <h1>Beginning With Prayer</h1>
+   <p class="question">I do not know what to say when I pray. Other people pray long, beautiful prayers. Do my simple prayers count?</p>
+   <div class="meta"><span class="chip">About 21 minutes</span><span class="chip">Matthew 6:5–13</span><span class="chip">First Steps: My prayer</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#e9dcbc" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f7f1e3"/></svg>
+</header>
+
+<main class="container">
+
+ <section class="card learn" aria-labelledby="h-learn">
+  <p class="kicker">In this lesson</p>
+  <h2 id="h-learn">You will learn</h2>
+  <ul><li>What Jesus warns against in prayer, and what he invites</li><li>What it means to pray to God as "Father" (patēr) in Matthew 6</li><li>Come to the Father, Be Honest, Follow Jesus' Pattern, Keep Praying</li><li>A simple five-minute pattern: Praise · Surrender · Ask · Forgive · Protect</li></ul>
+ </section>
+
+ <section class="player" aria-label="Lesson video">
+  <iframe src="player.html" title="Lesson 7 teaching with narration" allow="autoplay"></iframe>
+ </section>
+
+ <section class="card">
+  <details class="transcript">
+   <summary>Transcript and Scripture references</summary>
+   <div class="tx"><h4>1 · Do my simple prayers count?</h4><p>Welcome to Lesson 7. In Lesson 5, we saw that believers are God's children, who can call him Abba, Father. In Lesson 6, we learned to finish our Bible reading by turning what we noticed into a short prayer. Today we take the next step: how do we begin to pray?</p><p>Many new believers feel nervous about prayer. In church, they hear people pray with confidence, using long sentences and special words. Then they try to pray at home, and their own words seem small and clumsy. Some stop praying because they feel they are doing it wrong. Others pray only in emergencies.</p><p>So here is our question: do my simple prayers count? By the end of this lesson, you will know how Jesus himself taught his followers to pray, and you will have a simple way to begin.</p><h4>2 · Two warnings</h4><p>Our passage is Matthew chapter 6, verses 5 to 13. Jesus begins with two warnings. The first is about praying to impress people. Verses 5 and 6: "And when you pray, you must not be like the hypocrites. For they love to stand and pray in the synagogues and at the street corners, that they may be seen by others. Truly, I say to you, they have received their reward. But when you pray, go into your room and shut the door and pray to your Father who is in secret. And your Father who sees in secret will reward you."</p><p>Jesus is not forbidding prayer with others. He is warning against using prayer to look spiritual.</p><p>The second warning is about thinking that many words make God more likely to hear us. Verses 7 and 8: "And when you pray, do not heap up empty phrases as the Gentiles do, for they think that they will be heard for their many words. Do not be like them, for your Father knows what you need before you ask him."</p><p>Notice the reason Jesus gives. Prayer can be simple, because your Father knows what you need. We are not informing a distant ruler or persuading an unwilling official. We are speaking to a Father who already knows and cares.</p><h4>3 · "Pray then like this"</h4><p>Then Jesus gives his disciples a prayer. Verses 9 to 13: "Pray then like this: Our Father in heaven, hallowed be your name. Your kingdom come, your will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from evil."</p><p>Christians have prayed these words for two thousand years, in every language and culture. Jesus gave them both as a prayer to pray and as a pattern to follow. You may know an ending that many churches add: "For yours is the kingdom and the power and the glory, forever. Amen." These words come from early Christian worship. The oldest manuscripts of Matthew do not include them, so the ESV puts them in a footnote. You are welcome to pray them. Later in this lesson, we will use Jesus' pattern together.</p><h4>4 · The Sermon on the Mount</h4><p>Let us look at the background. These words come from the Sermon on the Mount, in Matthew chapters 5 to 7, where Jesus teaches his followers what life in God's kingdom looks like.</p><p>Chapter 6 begins with a warning: "Beware of practicing your righteousness before other people in order to be seen by them." Then Jesus gives three examples: giving to the needy, praying and fasting. Each time he says the same thing. Do not do it to be seen by people. Do it before your Father, who sees in secret.</p><p>Luke's Gospel records a similar prayer in another setting. Jesus had been praying, and one of his disciples said, "Lord, teach us to pray." Even the disciples, who spent every day with Jesus, needed to learn how to pray. So do we.</p><p>And one word in the prayer may sound strange: debts. Luke's version says, "forgive us our sins." And straight after the prayer in Matthew, Jesus speaks of forgiving others their trespasses. So "debts" here is a picture of our sins: our wrongs against God that need his forgiveness.</p><h4>5 · Father = patēr</h4><p>Our original word for today is patēr, the ordinary Greek word for father. In Lesson 5, we met Abba, the Aramaic word Jesus used in the garden of Gethsemane. Here in Matthew 6, the word is patēr.</p><p>Listen to how often Jesus uses it in this one chapter. In the first eighteen verses alone, he speaks of God as Father ten times: "your Father who is in heaven," "your Father who sees in secret," "your Father knows what you need." Throughout this passage, Jesus repeatedly teaches his disciples to approach God as their Father. So when he says, "Pray then like this: Our Father," the whole chapter has prepared us for it.</p><p>Notice too the word "our." Even when we pray alone, we pray as members of God's family. And notice the words "in heaven." Jesus has described the Father as the one who sees in secret and knows what his children need. So Father speaks here of relationship and care. And in heaven reminds us that this loving Father is also the sovereign God above all. He knows us personally, yet he reigns above all. That is our one word for today: patēr, Father.</p><h4>6 · The short answer</h4><p>So, do my simple prayers count? Here is the short answer. Yes, your simple prayers count. God is not impressed by long words, and he is not put off by short ones. Long prayers are not wrong; Luke tells us that Jesus himself once continued all night in prayer. What matters is the heart, not the length.</p><p>Christian prayer is the honest response of God's children to their Father: praising him, trusting him and bringing everything to him. Jesus gave us a simple pattern to help us, and he invites us to keep praying, in good days and hard ones.</p><p>The rest of this lesson unpacks that answer in four parts: come to the Father, be honest, follow Jesus' pattern, and keep praying. And then we will pray through the pattern together.</p><h4>7 · Truth 1: Come to the Father</h4><p>The first part: come to the Father. Jesus taught his disciples to begin, "Our Father." Prayer is not mainly a religious duty or a technique. At its heart, it is God's children coming to their Father.</p><p>That changes everything. A child does not need impressive words to talk to a good father. A child does not need to earn the right to be heard. In the same way, we do not pray to earn God's attention. Through Jesus, believers already have access to God. Paul writes, "For through him we both have access in one Spirit to the Father." And Hebrews invites us: "Let us then with confidence draw near to the throne of grace, that we may receive mercy and find grace to help in time of need."</p><p>And when we do not know what to say, God helps us. Paul writes, "Likewise the Spirit helps us in our weakness. For we do not know what to pray for as we ought, but the Spirit himself intercedes for us with groanings too deep for words." Paul's point is not that we must produce a special kind of prayer. It is that when our weakness leaves us unsure what to pray, the Spirit himself helps and intercedes for us. Even the most experienced Christians sometimes do not know how to pray. That is not failure.</p><h4>8 · Truth 2: Be Honest</h4><p>The second part: be honest. God does not want polished prayers. He wants honest ones. The psalmist says, "Trust in him at all times, O people; pour out your heart before him; God is a refuge for us."</p><p>You can bring everything to God: thanks and joy, needs and worries, fear and confusion, even anger and doubt. Peter writes, "casting all your anxieties on him, because he cares for you."</p><p>Many psalms are honest complaints spoken to God. Psalm 13 begins, "How long, O LORD? Will you forget me forever?" These prayers are part of Scripture. God included them to show us that we can be honest with him, even when we are hurting.</p><p>And honesty includes telling God about our sins. We do not need to hide anything from him; he already knows. We will see this in the forgive part of Jesus' pattern.</p><h4>9 · Truth 3: Follow Jesus' Pattern</h4><p>The third part: follow Jesus' pattern. Many people find it helpful to have a simple shape for prayer. The Lord's Prayer gives us five simple steps.</p><p>Praise: "Our Father in heaven, hallowed be your name." Hallowed means honoured as holy. Here we ask that God's name be honoured everywhere, and we honour him ourselves by thanking him for one thing about who he is. Surrender: "Your kingdom come, your will be done." Offer God your day and the people you will meet. Ask: "Give us this day our daily bread." Ask honestly for what you and others need. Forgive: "forgive us our debts, as we also have forgiven our debtors." Confess your sins and ask for God's forgiveness. Then remember that Jesus also calls forgiven people to forgive others; straight after the prayer, he returns to this. Bring before God anyone you are struggling to forgive, and ask him to help you obey. Forgiving others can take time, and it does not mean pretending a wrong never happened. And Protect: "lead us not into temptation, but deliver us from evil." Ask God for help and protection.</p><p>Notice the order. Jesus' prayer begins with God, his name and his kingdom, before it moves to our own needs. This is not because our needs do not matter. It is because remembering who God is helps us bring our needs to him with trust.</p><p>And remember, the pattern is a help, not a formula. You do not have to use every line every time, and prayer does not work better because you said the right words in the right order.</p><h4>10 · Truth 4: Keep Praying</h4><p>The fourth part: keep praying. Paul writes, "pray without ceasing." He is not commanding us to spend every minute on our knees. He is calling Christians to a continuing life of prayer. Here is what that can look like: a short prayer on the bus, a word of thanks over a meal, a quick request for help before a difficult conversation. Prayer is a relationship, not an emergency service.</p><p>What about prayers that are not answered the way we hoped? There is no tidy formula. We can trust the Father who hears us, even when we do not understand what follows. His answer may not be what we expected, or come when we hoped, and sometimes we will not understand it. Even Jesus, praying in great distress the night before he died, said, using the Aramaic word Abba that Mark records, "Abba, Father, all things are possible for you. Remove this cup from me. Yet not what I will, but what you will." Jesus asked honestly for what he wanted, and he trusted his Father with the answer. That is the heart of Christian prayer.</p><p>Feelings are not a measure of whether prayer worked. Some days you will feel close to God when you pray; some days you will feel nothing. God hears you either way.</p><p>Christians pray in different ways. Some churches use written prayers, like the Lord's Prayer; others mostly pray in their own words. Both can be sincere. Christians also differ in how they understand speaking or praying in tongues. Many Pentecostal and charismatic Christians practise it as a gift of the Holy Spirit; other Christians understand the New Testament teaching about tongues differently. This lesson does not require one practice in order to pray. Every believer can begin with the simple prayer Jesus taught. Ask a trusted church leader how your church approaches these things.</p><h4>11 · Five minutes with the Father</h4><p>Now let us actually pray through the pattern together. It takes about five minutes. You can pray silently, aloud on your own, or in writing. Here is an example, but your own words are welcome.</p><p>Praise. "Father, thank you that you are holy and good, and that you know what I need before I ask."</p><p>Surrender. "Your kingdom come and your will be done. Help me to live under your rule today, at work, at home and in every conversation."</p><p>Ask. "Please give me what I need today. And please help my friend who is looking for work." Keep it simple. Ask for your own needs and for other people's.</p><h4>12 · Forgive and protect</h4><p>Forgive. "Father, I am sorry for my impatient words yesterday. Thank you for your mercy in Jesus. Help me to forgive the person who hurt me." You may need to take that last step more than once, and that is all right.</p><p>Protect. "Lead me away from temptation today, and keep me from evil. In Jesus' name. Amen."</p><p>That is all. Praise, surrender, ask, forgive, protect. About five minutes. And here is a simple daily rhythm: read or listen to the Bible with the four steps from Lesson 6, and then pray for five minutes with Jesus' pattern. God's word speaks to us, and we speak to our Father.</p><h4>13 · Lucas's story</h4><p>Let me tell you about Lucas. His story is drawn from the experiences of many people. Lucas is a university student in São Paulo. At his church, people pray loudly and for a long time, and his pastor's prayers sound beautiful. One evening a youth leader asked Lucas to pray aloud. He froze. Afterwards, he felt that his own short prayers at home did not really count.</p><p>A mentor from the church met him for coffee and showed him Matthew 6:7 and 8. "Jesus says your Father already knows what you need," she said. "You do not need impressive words." She wrote the five steps of the pattern on a napkin: praise, surrender, ask, forgive, protect.</p><p>Lucas began praying through them on the bus to university, silently, for about five minutes. He told God honestly about his exam anxiety, and about his father, who was ill.</p><p>His father is still unwell. Lucas still prays for him and visits him. Some mornings he feels close to God; some mornings he does not. Over time, Lucas also began to experience something of the peace Paul describes, "which surpasses all understanding." And he no longer thinks his simple prayers are second class.</p><h4>14 · What prayer is not</h4><p>Because new believers often worry about this, here are four common mistakes.</p><p>"Prayer only counts if it is long or eloquent." Jesus warned against many words. Simple, honest prayers count fully.</p><p>"I must pray aloud, or in a certain style." You may pray silently, aloud on your own, in writing, or with others. Prayer does not become more spiritual because it is louder, longer or more eloquent.</p><p>"Prayer is a formula: say the right words and you will get what you ask." Prayer is a relationship with a wise and loving Father, not a technique.</p><p>And "If I feel nothing, my prayer did not reach God." God hears his children, whatever they feel.</p><h4>15 · This week</h4><p>Now, here is what I would like you to do this week. Your assignment is to follow a simple daily prayer pattern based on Jesus' teaching.</p><p>First, each day, read or listen to the passage in the reading plan, using the four steps from Lesson 6. Second, pray for about five minutes using Jesus' pattern: praise, surrender, ask, forgive, protect. Third, choose up to three people or situations you want to pray for this week. If you write them down, use general words, like "a friend's job." And fourth, once this week, write one short line for each of the five steps, so that you have your own simple prayer in your own words.</p><p>If you miss a day, simply begin again the next day. Prayer is a relationship, not a test. This assignment belongs to your First Step called my prayer.</p><p>Below this lesson you will also find the seven-day reading plan, and a short look back. You will explain the gospel again in four parts, as you did in Lessons 1 and 4, and add what it means to come to God as Father.</p><h4>16 · Remember</h4><p>Let us bring it together. Your simple prayers count. Come to the Father: prayer is God's children coming to their Father, and the Spirit helps us when we do not know what to say. Be honest: pour out your heart, and bring God everything. Follow Jesus' pattern: praise, surrender, ask, forgive, protect, as a help, not a formula. Keep praying: prayer is a relationship, not an emergency service, and we can trust the Father who hears us.</p><h4>17 · Let us pray together</h4><p>Let us pray. Father, thank you that I can come to you as your child. Thank you that you know what I need before I ask. Teach me to pray simply and honestly, and to keep praying, on good days and hard ones.</p><p>Now let us pray together the prayer Jesus taught us. "Our Father in heaven, hallowed be your name. Your kingdom come, your will be done, on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from evil." Amen.</p><p>You may stop here for today. When you are ready, begin this week's assignment and the reading plan.</p></div>
+  </details>
+ </section>
+
+ <section class="card" aria-labelledby="h-assign">
+  <p class="kicker">This week’s assignment</p>
+  <h2 id="h-assign">Follow a simple daily prayer pattern based on Jesus' teaching</h2>
+  <p class="sub">Read with the four steps, then pray for about five minutes with Jesus’ pattern.</p>
+  <ol class="assign"><li><b>Read or listen</b> to the reading plan passage each day, using the four steps from Lesson 6.</li><li><b>Pray</b> for about five minutes using Jesus’ pattern: Praise · Surrender · Ask · Forgive · Protect.</li><li><b>Choose up to three</b> people or situations to pray for this week. Use general words, such as “a friend’s job”.</li><li><b>Once this week,</b> write one short line for each step below: your own simple prayer.</li></ol>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-praise"/></svg>Praise</span><textarea placeholder="Father, thank you that…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-surrender"/></svg>Surrender</span><textarea placeholder="Your kingdom come… today I give you…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-ask"/></svg>Ask</span><textarea placeholder="Please give… and help…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-forgive"/></svg>Forgive</span><textarea placeholder="I am sorry for… help me to forgive…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-protect"/></svg>Protect</span><textarea placeholder="Lead me… keep me from…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-keep"/></svg>Up to three people or situations</span><textarea placeholder="General words only, e.g. a friend’s job"></textarea></label>
+  </div>
+  <p class="note"><i>If you miss a day, simply begin again. Prayer is a relationship, not a test.</i> What you write is private; on the website, it is saved privately to your account.</p>
+  <div class="fsteps" aria-label="My First Steps"><span>My faith</span><span>My Bible</span><span class="lit">My prayer</span><span>My church</span><span>My witness</span></div>
+ </section>
+
+ <section class="card" aria-labelledby="h-look">
+  <p class="kicker">Look back at Lesson 1</p>
+  <h2 id="h-look">Explain the gospel again in four parts</h2>
+  <p class="sub">A learning exercise, not a test. Use the book if you wish. Then add what it means to come to God as Father.</p>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-crown"/></svg>Who Jesus Is</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-horn"/></svg>What Jesus Announced</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-cross"/></svg>What Jesus Did</span><textarea placeholder="In my own words…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-gift"/></svg>Why It Is Good News and How We Respond</span><textarea placeholder="In my own words…"></textarea></label>
+   <label style="grid-column:1/-1"><span><svg viewBox="0 0 60 60"><use href="#i-father"/></svg>What it means to come to God as Father</span><textarea placeholder="In my own words…"></textarea></label>
+  </div>
+ </section>
+
+ <section class="card" aria-labelledby="h-plan">
+  <p class="kicker">Read or listen</p>
+  <h2 id="h-plan">Seven-day reading plan</h2>
+  <p class="sub">One passage a day, from Matthew 6 to Hebrews 4. After reading, pray for five minutes with the pattern. If you miss a day, simply carry on with the next one.</p>
+  <div class="planbar" aria-hidden="true"><i id="pbar"></i></div>
+  <p class="note" id="pcount">0 of 7 days</p>
+  <ul class="plan"><li><input type="checkbox" id="d1" aria-label="Day 1 done"><label class="p" for="d1"><small>Day 1</small>Matthew 6:5–15</label><span class="q">What does Jesus teach about who we pray to?</span></li><li><input type="checkbox" id="d2" aria-label="Day 2 done"><label class="p" for="d2"><small>Day 2</small>Luke 11:1–13</label><span class="q">What does Jesus say about how the Father gives?</span></li><li><input type="checkbox" id="d3" aria-label="Day 3 done"><label class="p" for="d3"><small>Day 3</small>Psalm 62:1–8</label><span class="q">What does it mean to pour out my heart to God?</span></li><li><input type="checkbox" id="d4" aria-label="Day 4 done"><label class="p" for="d4"><small>Day 4</small>Philippians 4:4–9</label><span class="q">What does Paul say to do with anxiety?</span></li><li><input type="checkbox" id="d5" aria-label="Day 5 done"><label class="p" for="d5"><small>Day 5</small>Psalm 13</label><span class="q">How does this prayer move from complaint to trust?</span></li><li><input type="checkbox" id="d6" aria-label="Day 6 done"><label class="p" for="d6"><small>Day 6</small>Mark 14:32–42</label><span class="q">How did Jesus pray when he was in distress?</span></li><li><input type="checkbox" id="d7" aria-label="Day 7 done"><label class="p" for="d7"><small>Day 7</small>Hebrews 4:14–16, then look back over the week</label><span class="q">Why can I come to God with confidence?</span></li></ul>
+ </section>
+
+ <section class="card" aria-labelledby="h-talk">
+  <p class="kicker">For groups, or with a friend</p>
+  <h2 id="h-talk">Talk about it</h2>
+  <ol class="talk"><li>What makes people feel that prayer is difficult or intimidating?</li><li>In Matthew 6:5–8, what does Jesus warn against, and what does he invite?</li><li>Which part of the pattern do you think people find most helpful or most difficult? Why? Share your own experience only if you wish.</li></ol>
+ </section>
+
+ <section class="card" aria-labelledby="h-deeper">
+  <p class="kicker">Optional</p>
+  <h2 id="h-deeper">Go deeper</h2>
+  <p class="sub">Read the full chapter from the book, or print the worksheet.</p>
+  <div class="btns">
+   <a class="btn" href="#" onclick="return false">⬇ Chapter 7 (PDF)</a>
+   <a class="btn" href="#" onclick="return false">⬇ Lesson 7 worksheet</a>
+  </div>
+ </section>
+
+ <section class="card finish" id="finish" aria-labelledby="h-finish">
+  <h2 id="h-finish">Finished this lesson?</h2>
+  <p class="sub mark">Mark it complete when you have watched the teaching. You can do the assignment and reading plan during the week.</p>
+  <div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>
+  <div class="after" role="status">
+   <p>Well done. Lesson 7 is complete.</p>
+   <div class="btns"><button class="btn gold">Stop here for today</button><button class="btn">Continue to Lesson 8 ›</button></div>
+  </div>
+ </section>
+
+ <div class="preview-note">Preview: buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/7*100)+'%';cnt.textContent=`${n} of 7 days`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>

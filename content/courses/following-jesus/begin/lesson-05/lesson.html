@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Begin Lesson 5 Page</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#16213a;--navy:#1f2d45;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f2d45;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#121b30 0%,#1f2d45 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f2d45,#16213a);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>Following Jesus · Begin</b><span class="steps8" aria-label="Lesson 5 of 8"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 5 of 8</p>
+   <h1>Your New Identity and Assurance</h1>
+   <p class="question">Some days I feel close to God and some days I feel nothing. How can I know I really belong to him?</p>
+   <div class="meta"><span class="chip">About 20 minutes</span><span class="chip">Romans 8:12–17</span><span class="chip">First Steps: My Bible · My prayer</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#e9dcbc" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f7f1e3"/></svg>
+</header>
+
+<main class="container">
+
+ <section class="card learn" aria-labelledby="h-learn">
+  <p class="kicker">In this lesson</p>
+  <h2 id="h-learn">You will learn</h2>
+  <ul><li>Why your confidence does not rest on your feelings or your performance</li><li>What "adoption" (huiothesia) and "Abba" mean in Romans 8</li><li>In Christ, Child of God, Resting on Promises, Growing in Confidence</li><li>How to answer doubt and failure with God's promises</li></ul>
+ </section>
+
+ <section class="player" aria-label="Lesson video">
+  <iframe src="player.html" title="Lesson 5 teaching with narration" allow="autoplay"></iframe>
+ </section>
+
+ <section class="card">
+  <details class="transcript">
+   <summary>Transcript and Scripture references</summary>
+   <div class="tx"><h4>1 · Close one day, far the next</h4><p>Welcome to Lesson 5. In Lesson 4, we saw that following Jesus as Lord touches every part of life, and that we obey him because we are loved, not to earn his love. Today we ask a question that many believers carry quietly.</p><p>Feelings change. On a good day, after an encouraging church service or an answered prayer, God can seem very near. On another day, after a failure, a bad night's sleep or a hard week, he can seem far away. And many believers wonder: if I feel nothing, am I still his? If I failed again, has God given up on me?</p><p>So this lesson asks two connected questions. Who am I now? And how can I be confident that I belong to God?</p><h4>2 · Led by the Spirit</h4><p>Our passage is Romans chapter 8, verses 12 to 17. Paul begins with something that might surprise us in a passage about assurance. Listen to verses 12 to 14:</p><p>"So then, brothers, we are debtors, not to the flesh, to live according to the flesh. For if you live according to the flesh you will die, but if by the Spirit you put to death the deeds of the body, you will live. For all who are led by the Spirit of God are sons of God."</p><p>"The flesh" here means human nature turned away from God. Paul is saying that the way believers live matters. With the Holy Spirit's help, they learn to say no to sinful patterns. But notice the order. This struggle does not buy a place in God's family. It is what life looks like for people who already belong to him.</p><h4>3 · Not slaves, but children</h4><p>Then Paul describes two very different ways of relating to God. Verses 15 to 17:</p><p>"For you did not receive the spirit of slavery to fall back into fear, but you have received the Spirit of adoption as sons, by whom we cry, 'Abba! Father!' The Spirit himself bears witness with our spirit that we are children of God, and if children, then heirs, heirs of God and fellow heirs with Christ, provided we suffer with him in order that we may also be glorified with him."</p><p>Paul sets two pictures side by side: the fear of a slave, and the security of a child who belongs. And notice how the passage ends. God's children share in Christ's sufferings before they share in his glory. So hardship is not a sign that God has rejected his children. Christ himself suffered before he was glorified.</p><h4>4 · Slave or son?</h4><p>Paul wrote this letter to the believers in Rome, a church of Jewish and non-Jewish Christians, a few years before he visited them. In the Roman world, slavery was part of everyday life. Some of the believers in Rome were probably slaves or former slaves themselves. So everyone listening understood the difference between a slave and a son in a household.</p><p>Jesus once put that difference in one sentence: "The slave does not remain in the house forever; the son remains forever." A slave might work in the house for years and still have no secure place there. A slave and a son did not occupy the same place in the household. Paul's picture emphasises belonging: believers have not received a spirit of slavery leading back to fear; they have received the Spirit of adoption.</p><p>Paul uses the same picture in his letter to the Galatians: "So you are no longer a slave, but a son, and if a son, then an heir through God."</p><p>And this picture has deep roots in the Old Testament. When God was about to bring Israel out of slavery in Egypt, he told Pharaoh, "Israel is my firstborn son." In Romans 9, Paul says that to Israel belong "the adoption," using the same word he uses here in chapter 8. Paul honours Israel's place in God's story. And elsewhere Paul teaches that, through Christ, believing Jews and Gentiles alike receive adoption as God's children.</p><h4>5 · Adoption = huiothesia</h4><p>Our first original word is the word translated "adoption." In Greek it is huiothesia. It means adoption as sons. In the New Testament, only Paul uses this word. He uses it for God's gracious gift of sonship: belonging to him as his children and heirs.</p><p>In the Roman world, adoption was a recognised legal way of bringing someone into a family with the standing and inheritance of a son. Paul's readers in Rome would have understood the force of that picture. God does not only forgive us and leave us at the door. He brings us into his family and makes us his heirs. Here in Romans 8, believers have received the Spirit of adoption, and verse 23 looks forward to the full completion of that hope in the redemption of our bodies. We already belong, and there is still more to come.</p><p>Paul's language of sonship does not exclude women. In Christ, women and men alike are God's children and fellow heirs with Christ. Paul quotes God's promise elsewhere: "you shall be sons and daughters to me." Everyone who trusts Christ is welcomed as a full member of God's family.</p><h4>6 · Abba! Father!</h4><p>Our second word is Abba. Abba is not Greek. It is the Aramaic word for father, the language Jesus spoke at home. It appears only three times in the New Testament, and each time it is followed straight away by the ordinary word for father: "Abba! Father!"</p><p>The first time is on the lips of Jesus himself. In the garden of Gethsemane, the night before he died, Jesus prayed, "Abba, Father, all things are possible for you. Remove this cup from me. Yet not what I will, but what you will." Abba was the word Jesus used when he spoke to his Father at the hardest moment of his life.</p><p>The other two times are in Paul's letters, here in Romans 8 and in Galatians 4. Paul says that the Holy Spirit leads believers to call God by the same family word. Abba is close and trusting, and it is still reverent. We do not come to God as nervous servants hoping to be noticed. We come as children, through Jesus. Those are our two words for today: huiothesia, adoption, and Abba, Father.</p><h4>7 · The short answer</h4><p>So how can I know that I belong to God? Here is the short answer. Your confidence does not rest on your feelings or your performance. It rests on Jesus and on what God has promised.</p><p>If you have trusted Christ, you are in him, and you are God's child. Your security rests on what Jesus has done and what God has promised, not on how you feel or how well you did today. And as you walk with God, your confidence can grow.</p><p>The rest of this lesson unpacks that answer in four parts: in Christ, child of God, resting on promises, and growing in confidence.</p><h4>8 · Truth 1: In Christ</h4><p>The first part: in Christ. The New Testament describes believers again and again as being "in Christ." It means that everyone who trusts Jesus is joined to him, so closely that they share in all he has done for them. Paul writes, "Therefore, if anyone is in Christ, he is a new creation."</p><p>And he describes an exchange: "For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God." Jesus, who knew no sin, bore our sin. In him, we are made right with God because of what Jesus has done, not because of our own record.</p><p>That is why Romans 8 begins with one of the most freeing sentences in the Bible: "There is therefore now no condemnation for those who are in Christ Jesus." No condemnation does not mean that sin no longer matters. It means that God's judgement against the believer's sin has been dealt with in Christ. When you are in Christ, your failures do not overturn God's verdict: there is no condemnation for those who are in Christ Jesus.</p><h4>9 · Truth 2: Child of God</h4><p>The second part: child of God. God does not only forgive. He adopts. John's Gospel says, "But to all who did receive him, who believed in his name, he gave the right to become children of God." Becoming God's child is God's gift to everyone who receives Jesus.</p><p>And in his first letter, John writes, "See what kind of love the Father has given to us, that we should be called children of God; and so we are." Notice those last four words: and so we are. This is not merely a nice way of speaking, or something we achieve through our performance. It is what God declares of those who belong to Christ.</p><p>This identity is not self-esteem or positive thinking. It is not about telling ourselves that we are wonderful. It is about what God says is true of us because of Jesus. And being God's child is not a right to health, wealth or success. It is something far better: through Christ, we belong to the Father, and we share in the inheritance of his children.</p><h4>10 · Truth 3: Resting on Promises</h4><p>The third part: resting on promises. So how can we know that we belong? A central biblical answer is not to build your confidence on changing feelings, but to look to Christ and to what God has promised. John writes, "And this is the testimony, that God gave us eternal life, and this life is in his Son. Whoever has the Son has life." And he adds, "I write these things to you who believe in the name of the Son of God, that you may know that you have eternal life." John wrote so that believers could know.</p><p>Jesus himself said of those who follow him: "My sheep hear my voice, and I know them, and they follow me. I give them eternal life, and they will never perish, and no one will snatch them out of my hand." Christian assurance turns our attention away from the strength of our feelings and towards the faithfulness of the one we trust.</p><p>Feelings are real, and they matter, but they rise and fall. Our salvation does not depend on praying a prayer sincerely enough, or on remembering the exact day we first believed. It rests on Christ, the one we trust. And when our own hearts accuse us, John gives this comfort: "For whenever our heart condemns us, God is greater than our heart, and he knows everything."</p><p>Paul also says that "the Spirit himself bears witness with our spirit that we are children of God." Christians have described experiencing this assurance in different ways. We should not reduce the Spirit's witness to one particular feeling or experience. His work directs us to Christ, enables us to call God Father, and confirms that we belong to God's family.</p><h4>11 · Truth 4: Growing in Confidence</h4><p>The fourth part: growing in confidence. As believers walk with God, they often begin to notice signs of his work in them: a new love for other believers, new desires, a willingness to turn from sin, a growing wish to know God. Paul writes, "And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ."</p><p>These signs can be a real encouragement. But they are supporting evidence, never the foundation. They do not earn salvation, and they are not a scorecard to complete. The foundation is always Christ and God's promises.</p><p>Two more things are worth saying. First, the presence of doubt does not automatically mean the absence of faith. Many faithful believers go through seasons of doubt. Bring your doubts honestly to God, and talk with a pastor or a mature Christian friend. Second, assurance is not permission to live carelessly. Remember verse 13: God's children learn, by the Spirit, to say no to sin. That is why the Bible tells believers, in Hebrews 3, to "exhort one another every day." We help one another keep trusting Jesus.</p><p>Faithful Christians explain the Bible's warnings, such as those in Hebrews, in different ways. Some believe that everyone truly born again will be kept by God to the end. Others believe that a believer can turn away from Christ through persistent, deliberate unbelief. But both views reject the idea that every failure or season of doubt means that God has abandoned the believer. Both call Christians to keep trusting Christ.</p><h4>12 · Joseph's story</h4><p>Let me tell you about Joseph. His story is drawn from the experiences of many people. Joseph drives a taxi in Nairobi. Two years ago he put his trust in Jesus, and with the help of his church he stopped drinking.</p><p>One evening a passenger insulted him, and Joseph shouted back, saying things he was ashamed of. Afterwards he sat in his taxi and thought, "A real Christian would not act like that. Maybe God has given up on me."</p><p>The next morning he told his mentor. His mentor did not excuse the anger. He helped Joseph think about what he could do differently the next time he felt provoked, and whether there was a way to make things right. Then he opened 1 John 3:20 and read: "Whenever our heart condemns us, God is greater than our heart, and he knows everything." "Your standing with God rests on Jesus," his mentor said, "not on your best day or your worst day."</p><p>Joseph wrote Romans 8:1 on a small card and keeps it on the dashboard of his taxi. The card is not a charm; it simply helps him turn back to a promise of Scripture. Some days he still struggles with anger, and he keeps meeting his mentor. Joseph's experience is common in every culture. Believers often judge their standing with God by their latest failure, and they need to be reminded where their confidence truly rests.</p><h4>13 · What assurance is not</h4><p>Because this subject is often misunderstood, here are four common mistakes.</p><p>"If I feel nothing, I am probably not saved." Feelings rise and fall. Assurance rests on Christ and on God's promises.</p><p>"After my latest failure, God has given up on me." God is greater than our heart. Failure calls us to turn back to God, not to despair.</p><p>"Assurance means it does not matter how I live." Children who belong still learn to live as their Father's children.</p><p>And "Being God's child means I am entitled to health, wealth or success." God's children may suffer, as Christ did. But they are heirs with Christ, and they will share in his glory.</p><h4>14 · This week</h4><p>Now, here is what I would like you to do this week. Your assignment is to find three Bible promises about who you are, and reflect on them.</p><p>First, read Romans 8:12 to 17 again. Second, find three promises in the Bible about who you are in Christ. You can find them in this lesson, and in the passages of this week's reading plan. Third, for each promise, write one short line that begins: "Because of Jesus, I am…" For example, from Romans 8:1, you might write: "Because of Jesus, I am not condemned."</p><p>And finally, pray each promise back to God, calling him Father. You might say, "Father, thank you that because of Jesus, I am your child." Keep your three lines somewhere you will see them, and come back to them on the days when God feels far away.</p><p>This assignment belongs to two of your First Steps: my Bible, because God's promises are found in his word, and my prayer, because the Spirit teaches us to call God Father. Below this lesson you will also find the seven-day reading plan.</p><h4>15 · Remember</h4><p>Let us bring it together. Your confidence rests on Jesus and on what God has promised, not on your feelings or your performance. In Christ: joined to Jesus, believers are forgiven, made new and made right with God because of him; there is no condemnation. Child of God: God adopts believers into his family, and so we are. Resting on promises: assurance rests on God's word and Christ's finished work, and God is greater than our heart. Growing in confidence: signs of God's work encourage us, but they are never the foundation, and the presence of doubt does not automatically mean the absence of faith.</p><h4>16 · Prayer</h4><p>Let us pray. Abba, Father, thank you that in Christ there is no condemnation for me. Thank you that you have made me your child, and so I am. On the days I feel far from you, help me to rest on your promises. When my heart condemns me, remind me that you are greater than my heart. Holy Spirit, help me to live as a child of my Father. In Jesus' name. Amen.</p><p>You may stop here for today. When you are ready, begin this week's assignment and the reading plan.</p></div>
+  </details>
+ </section>
+
+ <section class="card" aria-labelledby="h-assign">
+  <p class="kicker">This week’s assignment</p>
+  <h2 id="h-assign">Find three Bible promises about who you are, and reflect on them</h2>
+  <p class="sub">Your identity rests on what God has promised. Find those promises and pray them back to him this week.</p>
+  <ol class="assign"><li><b>Read</b> Romans 8:12–17 again.</li><li><b>Find three</b> promises in the Bible about who you are in Christ. You can use this lesson and this week’s reading plan.</li><li><b>Write</b> one line for each: “Because of Jesus, I am…” For example, Romans 8:1: “Because of Jesus, I am not condemned.”</li><li><b>Pray</b> each promise back to God, calling him Father.</li></ol>
+  <div class="parts">
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-promise"/></svg>Promise 1</span><input class="ref" placeholder="Bible reference" aria-label="Promise 1 reference"><textarea placeholder="Because of Jesus, I am…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-promise"/></svg>Promise 2</span><input class="ref" placeholder="Bible reference" aria-label="Promise 2 reference"><textarea placeholder="Because of Jesus, I am…"></textarea></label>
+   <label><span><svg viewBox="0 0 60 60"><use href="#i-promise"/></svg>Promise 3</span><input class="ref" placeholder="Bible reference" aria-label="Promise 3 reference"><textarea placeholder="Because of Jesus, I am…"></textarea></label>
+  </div>
+  <p class="note"><i>Keep your three lines where you will see them, especially on the days when God feels far away.</i> What you write is private; on the website, it is saved privately to your account.</p>
+  <div class="fsteps" aria-label="My First Steps"><span>My faith</span><span class="lit">My Bible</span><span class="lit">My prayer</span><span>My church</span><span>My witness</span></div>
+ </section>
+
+ <section class="card" aria-labelledby="h-plan">
+  <p class="kicker">Read or listen</p>
+  <h2 id="h-plan">Seven-day reading plan</h2>
+  <p class="sub">One passage a day, from Romans 8 to Galatians 4. If you miss a day, simply carry on with the next one.</p>
+  <div class="planbar" aria-hidden="true"><i id="pbar"></i></div>
+  <p class="note" id="pcount">0 of 7 days</p>
+  <ul class="plan"><li><input type="checkbox" id="d1" aria-label="Day 1 done"><label class="p" for="d1"><small>Day 1</small>Romans 8:1–17</label><span class="q">What does the Holy Spirit do for God's children?</span></li><li><input type="checkbox" id="d2" aria-label="Day 2 done"><label class="p" for="d2"><small>Day 2</small>Romans 8:31–39</label><span class="q">What can never separate believers from God's love?</span></li><li><input type="checkbox" id="d3" aria-label="Day 3 done"><label class="p" for="d3"><small>Day 3</small>1 John 3:1–3, 19–24</label><span class="q">What comfort does this give when my heart condemns me?</span></li><li><input type="checkbox" id="d4" aria-label="Day 4 done"><label class="p" for="d4"><small>Day 4</small>1 John 5:9–13</label><span class="q">Why did John write, and what can believers know?</span></li><li><input type="checkbox" id="d5" aria-label="Day 5 done"><label class="p" for="d5"><small>Day 5</small>Ephesians 1:3–14</label><span class="q">What has God given believers "in Christ"?</span></li><li><input type="checkbox" id="d6" aria-label="Day 6 done"><label class="p" for="d6"><small>Day 6</small>John 10:22–30</label><span class="q">What does Jesus promise to his sheep?</span></li><li><input type="checkbox" id="d7" aria-label="Day 7 done"><label class="p" for="d7"><small>Day 7</small>Galatians 4:1–7, then look back over the week</label><span class="q">Which promise do I most want to remember when God feels far away?</span></li></ul>
+ </section>
+
+ <section class="card" aria-labelledby="h-talk">
+  <p class="kicker">For groups, or with a friend</p>
+  <h2 id="h-talk">Talk about it</h2>
+  <ol class="talk"><li>What do people commonly base their worth or security on?</li><li>In Romans 8, what does the Holy Spirit help believers know?</li><li>Which of the four parts do you think believers most need to remember when God feels far away? Why?</li></ol>
+ </section>
+
+ <section class="card" aria-labelledby="h-deeper">
+  <p class="kicker">Optional</p>
+  <h2 id="h-deeper">Go deeper</h2>
+  <p class="sub">Read the full chapter from the book, or print the worksheet.</p>
+  <div class="btns">
+   <a class="btn" href="#" onclick="return false">⬇ Chapter 5 (PDF)</a>
+   <a class="btn" href="#" onclick="return false">⬇ Lesson 5 worksheet</a>
+  </div>
+ </section>
+
+ <section class="card finish" id="finish" aria-labelledby="h-finish">
+  <h2 id="h-finish">Finished this lesson?</h2>
+  <p class="sub mark">Mark it complete when you have watched the teaching. You can do the assignment and reading plan during the week.</p>
+  <div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>
+  <div class="after" role="status">
+   <p>Well done. Lesson 5 is complete.</p>
+   <div class="btns"><button class="btn gold">Stop here for today</button><button class="btn">Continue to Lesson 6 ›</button></div>
+  </div>
+ </section>
+
+ <div class="preview-note">Preview: buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible, © 2001 by Crossway. Used by permission.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/7*100)+'%';cnt.textContent=`${n} of 7 days`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>
