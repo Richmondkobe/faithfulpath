@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { stripe } from "@/lib/stripe";
 import { recordPurchase } from "@/lib/purchases";
 import { syncMemberFromSubscription } from "@/lib/members";
+import { isCourseSession, recordCoursePurchase } from "@/lib/following-jesus-access";
 
 /**
  * The webhook endpoint is pinned to its own Stripe API version, which is not the
@@ -83,6 +84,14 @@ export async function POST(request: NextRequest) {
               ? session.subscription
               : session.subscription?.id;
           if (subscriptionId) await syncMemberFromSubscription(subscriptionId);
+          break;
+        }
+
+        // Following Jesus courses are one-time payments too, but they are not
+        // books: without this a course sale would reach recordPurchase, find
+        // no product_id and be dropped.
+        if (isCourseSession(session)) {
+          await recordCoursePurchase(session);
           break;
         }
 
