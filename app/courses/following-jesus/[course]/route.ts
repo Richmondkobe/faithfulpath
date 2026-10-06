@@ -32,5 +32,5 @@ export async function GET(
     title: tabTitle(course.fullTitle),
     indexable: SERIES_LISTED,
   });
-  return htmlResponse(welcomePage(html, course, learner, offers, progress), { cache: "public" });
+  return htmlResponse(welcomePage(html, course, learner, offers, progress));
 }

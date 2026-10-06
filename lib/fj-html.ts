@@ -67,6 +67,17 @@ const SELF_HOSTED_FONTS = `<style data-fj>
 
 const DEAD_HELP_LINK = '<a href="#" onclick="return false">Need help?</a>';
 
+// Every one of these pages depends on who is signed in and what they have
+// bought, completed or written, so a copy kept by the browser is wrong the
+// moment anything changes. Found in Richmond's first live test (6 October
+// 2026): Back from a lesson showed the Begin page as it was before he bought
+// it — "this email has not bought Begin". no-store (in htmlResponse) stops the
+// browser keeping a copy; this reloads a page the back/forward cache restores
+// anyway, which some browsers do even for no-store. On a lesson it also stops
+// an old copy of a text box being typed into and saved over a newer answer.
+const NEVER_STALE =
+  "<script data-fj>addEventListener('pageshow',function(e){if(e.persisted)location.reload();});</script>";
+
 /** The browser tab's title. The files' own were working names ("Begin Lesson 1 Page"). */
 function retitle(html: string, title: string): string {
   const titles = html.match(/<title>[^<]*<\/title>/g) ?? [];
@@ -93,6 +104,7 @@ export function websitePage(
   out = swap(out, notes[0], "");
 
   out = swap(out, DEAD_HELP_LINK, '<a href="/contact">Need help?</a>');
+  out = beforeHeadEnd(out, NEVER_STALE);
   if (!indexable) {
     out = beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
   }
@@ -107,13 +119,14 @@ export function websitePlayer(html: string, title: string): string {
 
 /* ------------------------------------------------------------- responses */
 
-export function htmlResponse(html: string, { cache }: { cache: "private" | "public" }): Response {
+export function htmlResponse(html: string): Response {
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      // Every page varies with who is signed in, so nothing is shared between
-      // visitors, and a lesson is never kept by a browser after sign-out.
-      "Cache-Control": cache === "private" ? "private, no-store" : "private, no-cache",
+      // Every page varies with who is signed in and what they have bought or
+      // done, so no copy is kept anywhere: not shared between visitors, and
+      // not reused by the browser on Back. See NEVER_STALE above.
+      "Cache-Control": "private, no-store",
       "X-Content-Type-Options": "nosniff",
       "Referrer-Policy": "same-origin",
       // Only this site may frame these pages: the lesson page frames its own player.

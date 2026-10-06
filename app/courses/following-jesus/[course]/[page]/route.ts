@@ -40,5 +40,5 @@ export async function GET(
     : await completionPage(course);
 
   // The learner's own answers go back into the page, and save as they type.
-  return htmlResponse(withAnswers(html, answersApiPath(course, pageSlug), answers), { cache: "private" });
+  return htmlResponse(withAnswers(html, answersApiPath(course, pageSlug), answers));
 }

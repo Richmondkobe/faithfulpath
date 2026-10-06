@@ -29,5 +29,5 @@ export async function GET(
     return new Response("This recording is not available just now. Please try again later.", { status: 503 });
   }
 
-  return htmlResponse(await playerPage(course, lesson, audio), { cache: "private" });
+  return htmlResponse(await playerPage(course, lesson, audio));
 }
