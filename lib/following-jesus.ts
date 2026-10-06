@@ -22,6 +22,8 @@ export type FjCourse = {
   /** Book number in the series, 1 to 4. */
   book: number;
   title: string;
+  /** The welcome page's heading, which is also its browser tab title. */
+  fullTitle: string;
   /** The course_slug in course_progress, course_completions and course_private_answers. */
   key: string;
   launched: boolean;
@@ -43,6 +45,7 @@ export const COURSES: FjCourse[] = [
     slug: "begin",
     book: 1,
     title: "Begin",
+    fullTitle: "Begin: New Life in Christ",
     key: "following-jesus-begin",
     launched: true,
     lessons: lessons([
@@ -57,9 +60,9 @@ export const COURSES: FjCourse[] = [
     ]),
     completionPage: { slug: "my-first-steps", title: "My First Steps" },
   },
-  { slug: "establish", book: 2, title: "Establish", key: "following-jesus-establish", launched: false, lessons: [], completionPage: null },
-  { slug: "grow", book: 3, title: "Grow", key: "following-jesus-grow", launched: false, lessons: [], completionPage: null },
-  { slug: "multiply", book: 4, title: "Multiply", key: "following-jesus-multiply", launched: false, lessons: [], completionPage: null },
+  { slug: "establish", book: 2, title: "Establish", fullTitle: "Establish", key: "following-jesus-establish", launched: false, lessons: [], completionPage: null },
+  { slug: "grow", book: 3, title: "Grow", fullTitle: "Grow", key: "following-jesus-grow", launched: false, lessons: [], completionPage: null },
+  { slug: "multiply", book: 4, title: "Multiply", fullTitle: "Multiply", key: "following-jesus-multiply", launched: false, lessons: [], completionPage: null },
 ];
 
 export function findCourse(slug: string): FjCourse | null {
@@ -69,6 +72,9 @@ export function findCourse(slug: string): FjCourse | null {
 export function coursePath(course: FjCourse): string {
   return `${SERIES_PATH}/${course.slug}`;
 }
+
+/** Browser tab titles, in the form Richmond chose on 6 October 2026. */
+export const tabTitle = (page: string) => `${page} | Following Jesus`;
 
 /* ----------------------------------------------------------------- offers */
 

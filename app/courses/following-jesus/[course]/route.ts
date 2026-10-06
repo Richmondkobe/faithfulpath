@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { SERIES_PATH, findCourse } from "@/lib/following-jesus";
+import { SERIES_PATH, findCourse, tabTitle } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { htmlResponse, readCoursePage, websitePage } from "@/lib/fj-html";
 import { welcomePage } from "@/lib/fj-welcome";
@@ -26,6 +26,9 @@ export async function GET(
   const learner = await getLearner();
   const offers = learner ? await getOwnedOffers() : new Set<never>();
 
-  const html = websitePage(await readCoursePage(course, "welcome.html"), { indexable: true });
+  const html = websitePage(await readCoursePage(course, "welcome.html"), {
+    title: tabTitle(course.fullTitle),
+    indexable: true,
+  });
   return htmlResponse(welcomePage(html, course, learner, offers), { cache: "public" });
 }

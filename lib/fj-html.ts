@@ -63,12 +63,22 @@ const SELF_HOSTED_FONTS = `<style>
 
 const DEAD_HELP_LINK = '<a href="#" onclick="return false">Need help?</a>';
 
+/** The browser tab's title. The files' own were working names ("Begin Lesson 1 Page"). */
+function retitle(html: string, title: string): string {
+  const titles = html.match(/<title>[^<]*<\/title>/g) ?? [];
+  if (titles.length !== 1) throw new Error(`Expected one <title> in a Following Jesus page, found ${titles.length}.`);
+  return swap(html, titles[0], `<title>${escapeHtml(title)}</title>`);
+}
+
 /**
- * The swaps every lesson, welcome and completion page gets: fonts from this
- * site, the preview note gone, "Need help?" to the contact page.
+ * The swaps every lesson, welcome and completion page gets: the tab title,
+ * fonts from this site, the preview note gone, "Need help?" to the contact page.
  */
-export function websitePage(html: string, { indexable }: { indexable: boolean }): string {
-  let out = swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS);
+export function websitePage(
+  html: string,
+  { title, indexable }: { title: string; indexable: boolean }
+): string {
+  let out = retitle(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), title);
 
   // "Preview: buttons will work on the website." — true in the preview, and
   // the one line of the files that is about the files rather than the course.
@@ -86,8 +96,9 @@ export function websitePage(html: string, { indexable }: { indexable: boolean })
 }
 
 /** The player is framed inside the lesson page; it gets the fonts and nothing else. */
-export function websitePlayer(html: string): string {
-  return beforeHeadEnd(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), '<meta name="robots" content="noindex, nofollow">');
+export function websitePlayer(html: string, title: string): string {
+  const out = retitle(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), title);
+  return beforeHeadEnd(out, '<meta name="robots" content="noindex, nofollow">');
 }
 
 /* ------------------------------------------------------------- responses */
