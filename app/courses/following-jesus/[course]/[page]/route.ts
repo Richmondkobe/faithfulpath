@@ -4,6 +4,7 @@ import { coursePath, findCourse, findLesson } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
 import { completionPage, lessonPage } from "@/lib/fj-lessons";
+import { getCourseProgress } from "@/lib/fj-progress";
 
 /**
  * A lesson (lesson-01 … lesson-08) or the completion page. For buyers only:
@@ -27,6 +28,8 @@ export async function GET(
     return NextResponse.redirect(new URL(`${coursePath(course)}#buy`, request.url), 307);
   }
 
-  const html = lesson ? await lessonPage(course, lesson) : await completionPage(course);
+  const html = lesson
+    ? await lessonPage(course, lesson, { completed: (await getCourseProgress(course)).completed.has(lesson.slug) })
+    : await completionPage(course);
   return htmlResponse(html, { cache: "private" });
 }

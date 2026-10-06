@@ -30,7 +30,19 @@ function nextPath(course: FjCourse, lesson: FjLesson): string {
   return coursePath(course);
 }
 
-export async function lessonPage(course: FjCourse, lesson: FjLesson): Promise<string> {
+export function completeApiPath(course: FjCourse, lesson: FjLesson): string {
+  return `/api/courses/following-jesus/${course.slug}/${lesson.slug}/complete`;
+}
+
+const FINISH = '<section class="card finish" id="finish" aria-labelledby="h-finish">';
+const DONE_BUTTON =
+  '<div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>';
+
+export async function lessonPage(
+  course: FjCourse,
+  lesson: FjLesson,
+  { completed }: { completed: boolean }
+): Promise<string> {
   const n = lesson.number;
   const two = lesson.slug.slice(-2);
   let html = websitePage(await readCoursePage(course, `${lesson.slug}/lesson.html`), {
@@ -62,6 +74,32 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson): Promise<st
     `<button class="btn gold">Stop here for today</button><button class="btn">${continueLabel}</button>`,
     `<a class="btn gold" href="${coursePath(course)}">Stop here for today</a>` +
       `<a class="btn" href="${nextPath(course, lesson)}">${continueLabel}</a>`
+  );
+
+  // "✓ I have completed this lesson" saves before it says "Well done". If the
+  // save fails, it says so and the button stays, rather than showing a
+  // completion that was never recorded. A lesson already completed opens with
+  // "Well done" and its two buttons showing.
+  if (completed) html = swap(html, FINISH, FINISH.replace('class="card finish"', 'class="card finish done"'));
+  html = swap(
+    html,
+    DONE_BUTTON,
+    `${DONE_BUTTON}\n  <p class="sub mark" id="fj-done-error" role="alert" hidden>That did not save. Please check your connection and try again.</p>`
+  );
+  html = beforeBodyEnd(
+    html,
+    `<script>
+(function(){
+  var btn=document.getElementById('done'),fin=document.getElementById('finish'),err=document.getElementById('fj-done-error');
+  btn.onclick=function(){
+    btn.disabled=true;err.hidden=true;
+    fetch(${JSON.stringify(completeApiPath(course, lesson))},{method:'POST',credentials:'same-origin'})
+      .then(function(r){if(!r.ok)throw new Error(r.status);fin.classList.add('done');})
+      .catch(function(){err.hidden=false;})
+      .then(function(){btn.disabled=false;});
+  };
+})();
+</script>`
   );
 
   return html;

@@ -10,6 +10,7 @@ import {
 import { formatPrice } from "@/lib/products";
 import { escapeHtml, swap } from "@/lib/fj-html";
 import type { Learner } from "@/lib/following-jesus-access";
+import { formatDay, type CourseProgress } from "@/lib/fj-progress";
 
 // What goes under a course's welcome page: the two ways to buy it and the
 // sign-in, or, for someone who already has it, their way in. Written with the
@@ -27,6 +28,13 @@ const STYLE = `<style>
 .fj-who{font-size:15px;color:var(--mute);margin:14px 0 0}
 .fj-who form{display:inline}
 .fj-who button{background:none;border:0;padding:0;font:inherit;color:var(--gold-d);text-decoration:underline;cursor:pointer}
+.fj-progress{list-style:none;margin:10px 0 16px;padding:0}
+.fj-progress li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line)}
+.fj-progress li:first-child{border-top:0}
+.fj-progress a{color:var(--ink);text-decoration:none}.fj-progress a:hover{text-decoration:underline}
+.fj-progress small{color:var(--gold-d);font-weight:700;margin-right:6px}
+.fj-progress .fj-done{color:var(--gold-d);font-size:15px;white-space:nowrap}
+.fj-finished{font-family:'Source Serif 4',serif;font-style:italic;color:var(--navy);margin:0 0 12px}
 </style>`;
 
 function offerCard(offer: FjOffer, items: string[], button: string): string {
@@ -51,8 +59,8 @@ function buySection(course: FjCourse, learner: Learner | null): string {
   const signIn = `${SERIES_PATH}/sign-in?next=${encodeURIComponent(here)}`;
 
   const who = learner
-    ? `<p class="fj-who">You are signed in as <b>${escapeHtml(learner.email)}</b>, and this email has not bought ${escapeHtml(course.title)}. If you paid with a different email, ${signOutForm(here)} and sign in with that one.</p>`
-    : `<p class="fj-who">Already bought ${escapeHtml(course.title)}? <a href="${signIn}">Sign in</a> with the email you paid with.</p>`;
+    ? `<div class="fj-who">You are signed in as <b>${escapeHtml(learner.email)}</b>, and this email has not bought ${escapeHtml(course.title)}. If you paid with a different email, ${signOutForm(here)} and sign in with that one.</div>`
+    : `<div class="fj-who">Already bought ${escapeHtml(course.title)}? <a href="${signIn}">Sign in</a> with the email you paid with.</div>`;
 
   return `
  <section class="card" id="buy" aria-labelledby="h-buy">
@@ -75,14 +83,38 @@ function buySection(course: FjCourse, learner: Learner | null): string {
  </section>`;
 }
 
-function ownerSection(course: FjCourse, learner: Learner): string {
-  const first = course.lessons[0];
+function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgress): string {
+  const base = coursePath(course);
+  const next = course.lessons.find((l) => !progress.completed.has(l.slug));
+
+  // Plain words only: which lessons are completed, nothing scored or counted.
+  const list = course.lessons
+    .map(
+      (l) => `<li><a href="${base}/${l.slug}"><small>Lesson ${l.number}</small>${escapeHtml(l.title)}</a>${
+        progress.completed.has(l.slug) ? '<span class="fj-done">✓ Completed</span>' : ""
+      }</li>`
+    )
+    .join("");
+
+  let lead: string;
+  if (progress.courseCompletedAt) {
+    const done = `<p class="fj-finished">You completed ${escapeHtml(course.title)} on ${formatDay(progress.courseCompletedAt)}.</p>`;
+    lead = course.completionPage
+      ? `${done}<div class="btns"><a class="btn gold" href="${base}/${course.completionPage.slug}">Go to ${escapeHtml(course.completionPage.title)} ›</a></div>`
+      : done;
+  } else if (next && next.number > 1) {
+    lead = `<div class="btns"><a class="btn gold" href="${base}/${next.slug}">Continue with Lesson ${next.number} ›</a></div>`;
+  } else {
+    lead = `<div class="btns"><a class="btn gold" href="${base}/${course.lessons[0].slug}">Start Lesson 1 ›</a></div>`;
+  }
+
   return `
  <section class="card" id="your-course" aria-labelledby="h-yours">
   <p class="kicker">Your course</p>
   <h2 id="h-yours">${escapeHtml(course.title)} is yours</h2>
-  <div class="btns"><a class="btn gold" href="${coursePath(course)}/${first.slug}">Start Lesson 1 ›</a></div>
-  <p class="fj-who">Signed in as <b>${escapeHtml(learner.email)}</b>. ${signOutForm(coursePath(course))}</p>
+  ${lead}
+  <ul class="fj-progress" aria-label="Your lessons">${list}</ul>
+  <div class="fj-who">Signed in as <b>${escapeHtml(learner.email)}</b>. ${signOutForm(base)}</div>
  </section>`;
 }
 
@@ -94,7 +126,8 @@ export function welcomePage(
   html: string,
   course: FjCourse,
   learner: Learner | null,
-  offers: Set<FjOfferId>
+  offers: Set<FjOfferId>,
+  progress: CourseProgress | null
 ): string {
   const owns = learner !== null && offersOpenCourse(offers, course);
 
@@ -108,6 +141,6 @@ export function welcomePage(
   );
 
   // Under the page, just before the main column closes.
-  out = swap(out, "</main>", `${owns ? ownerSection(course, learner) : buySection(course, learner)}\n</main>`);
+  out = swap(out, "</main>", `${owns && progress ? ownerSection(course, learner, progress) : buySection(course, learner)}\n</main>`);
   return swap(out, "</head>", `${STYLE}</head>`);
 }
