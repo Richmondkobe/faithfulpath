@@ -51,7 +51,7 @@ export const COURSES: FjCourse[] = [
     lessons: lessons([
       "Jesus Christ and the Good News",
       "Repentance, Faith and Receiving Grace",
-      "Born Again",
+      "Born Again: What God Has Done in You",
       "Following Jesus as Lord",
       "Your New Identity and Assurance",
       "Beginning With the Bible",
@@ -120,4 +120,31 @@ export function offersOpenCourse(offers: Iterable<FjOfferId>, course: FjCourse):
     if (OFFERS[id].unlocks.includes(course.slug)) return true;
   }
   return false;
+}
+
+/* ------------------------------------------------------------------ pages */
+
+export function findLesson(course: FjCourse, slug: string): FjLesson | null {
+  return course.lessons.find((l) => l.slug === slug) ?? null;
+}
+
+/** Where the files for a course's PDFs and audio live in storage. */
+export function storageFolder(course: FjCourse): string {
+  return course.key;
+}
+
+/**
+ * The PDFs a buyer can download for a course: a chapter and a worksheet per
+ * lesson, and the Leader's Guide. The names are the files in the
+ * course-downloads bucket, as scripts/fj-downloads.mjs uploads them.
+ */
+export function downloadFiles(course: FjCourse): string[] {
+  return [
+    ...course.lessons.flatMap((l) => [`chapter-${l.slug.slice(-2)}.pdf`, `worksheet-${l.slug.slice(-2)}.pdf`]),
+    "leaders-guide.pdf",
+  ];
+}
+
+export function downloadPath(course: FjCourse, file: string): string {
+  return `${coursePath(course)}/downloads/${file}`;
 }
