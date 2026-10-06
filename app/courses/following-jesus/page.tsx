@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { COURSES, OFFERS, coursePath, offersOpenCourse, SERIES_PATH } from "@/lib/following-jesus";
+import { COURSES, OFFERS, coursePath, offersOpenCourse, SERIES_LISTED, SERIES_PATH } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { formatPrice } from "@/lib/products";
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: SERIES_PATH },
+  ...(SERIES_LISTED ? {} : { robots: { index: false, follow: false } }),
 };
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;

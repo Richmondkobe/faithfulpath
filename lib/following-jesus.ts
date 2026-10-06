@@ -8,6 +8,15 @@
 
 export const SERIES_PATH = "/courses/following-jesus";
 
+/**
+ * Whether the site points anyone to the series. Off until Richmond has tested
+ * Begin on the live site (6 October 2026): the pages open by their address,
+ * but nothing links to them and search engines are asked not to list them.
+ * Turning it on shows the line on /membership and lets the series and welcome
+ * pages be indexed.
+ */
+export const SERIES_LISTED = false;
+
 export type FjCourseSlug = "begin" | "establish" | "grow" | "multiply";
 
 export type FjLesson = {

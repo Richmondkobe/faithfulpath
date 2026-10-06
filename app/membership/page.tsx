@@ -5,6 +5,7 @@ import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
 import { TrackedSubmit } from "@/components/analytics/Tracked";
 import WhichIsRight from "@/components/WhichIsRight";
+import { SERIES_LISTED } from "@/lib/following-jesus";
 import { abs, graph, orgRef } from "@/lib/schema";
 
 const TITLE =
@@ -189,7 +190,9 @@ export default function Membership() {
       <WhichIsRight here="/membership" />
 
       {/* Following Jesus is sold on its own. Said here, next to "every Faithful
-          Path course" below, so no one joins expecting it to be included. */}
+          Path course" below, so no one joins expecting it to be included.
+          Hidden until the series is listed (lib/following-jesus.ts). */}
+      {SERIES_LISTED && (
       <p className="mt-6 max-w-2xl leading-relaxed text-[#6B5F53]">
         New to faith, or helping someone who is?{" "}
         <Link
@@ -201,6 +204,7 @@ export default function Membership() {
         is a separate series of four video courses, bought on its own rather than
         included in the membership.
       </p>
+      )}
 
       <H2>What Your Membership Includes</H2>
       <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">
