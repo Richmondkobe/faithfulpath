@@ -18,5 +18,17 @@ are and makes only these changes as each page is sent out:
 prove the files were never changed. A new approved version of a page replaces
 the file and its checksum together.
 
-The MP3s and the Leader's Guide are not in the repo. They live in the private
-`course-media` bucket and reach only buyers, through signed URLs.
+The MP3s and PDFs are not in the repo. They reach only buyers, through
+signed URLs:
+
+- **Audio:** private `course-media` bucket, `audio/following-jesus-<course>/`.
+- **PDFs:** private `course-downloads` bucket (PDF only),
+  `following-jesus-<course>/`: `chapter-01.pdf` … (cut from the ebook),
+  `worksheet-01.pdf` …, and `leaders-guide.pdf`. Built and uploaded with
+
+      npm run fj:downloads -- "~/Desktop/Following Jesus Begin Course"
+
+  Each chapter file is the title and copyright pages, the chapter, and all six
+  Support Pages (the chapters send readers to them "at the back of this
+  book"); the last chapter also keeps the "What you have learned" summary.
+  Re-run it whenever the ebook, a worksheet or the guide changes.
