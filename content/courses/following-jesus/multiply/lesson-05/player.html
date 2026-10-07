@@ -1,0 +1,837 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multiply Lesson 5</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#0d1f22;--navy:#1f3a3d;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f3a3d;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,760px);margin:0 0 .6em}.method div{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffaf0;border:2px solid #d4a24c;border-radius:14px;padding:8px 6px;font-size:clamp(12px,1.7vw,16px);color:#1f3a3d;text-align:center}.method svg{width:34px;height:34px;color:#a8792b}
+.method.five{grid-template-columns:repeat(5,1fr)}.method.dark div{background:rgba(243,231,201,.06);color:#f3e7c9;border-color:#d4a24c}.method.dark svg{color:#e8c98a}.method small{font-size:.78em;opacity:.8}.method .dim,.method .step{opacity:.35;transition:opacity .6s}.method .step.on{opacity:1}
+.checks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;width:min(100%,760px);text-align:left}.checks li{position:relative;padding-left:1.6em;font-size:clamp(14px,1.9vw,18px);color:#1f3a3d}.checks li::before{content:'\2713';position:absolute;left:0;color:#a8792b;font-weight:700}@media(max-width:560px){.checks{grid-template-columns:1fr}}
+
+/* ===== Establish palette (cover: evening teal, stone, hillside green, gold) ===== */
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-soft:#e3c98a;--sun:#f1ead6;--ink:#1f3a3d;--mute:#5c6b66;--cream:#f8f4e8}
+body{background:#0d1f22}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 52%,#4c5a50 86%,#a98f5a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf8ef 0%,#f6f1e2 68%,#e8e6d0 100%);color:var(--ink)}
+#stage.dark .h1{fill:#3d5246}#stage.dark .h2{fill:#2e4136}#stage.dark .h3{fill:#22322b}
+#stage.light .h1{fill:#dfe3cc}#stage.light .h2{fill:#d1d8bd}#stage.light .h3{fill:#c3cdaf}
+.label{color:#c9a24a}.light .label{color:#8a6a24}
+.light h2{color:#8a6a24}
+.steps b{color:#8a6a24}
+.card{background:#fbf8ef;border-color:#d9d2b8}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(201,162,74,.35)}
+.wrong{background:#ece8d8}
+.fs span{border-color:#cfc8ab;background:#fbf8ef}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22}
+.remember>div{background:rgba(241,234,214,.07);border-color:rgba(201,162,74,.5)}
+.remember p{color:#e4e2d4}
+.method div{background:#fbf8ef;border-color:#c9a24a;color:#1f3a3d}.method svg{color:#8a6a24}
+.method.dark div{background:rgba(241,234,214,.06);color:#f1ead6;border-color:#c9a24a}.method.dark svg{color:#e3c98a}
+.checks li{color:#1f3a3d}.checks li::before{color:#8a6a24}
+.badge{color:#8a6a24}.dark .badge,#stage.dark .badge{color:#d9b25c}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(18px,2.7vw,28px);line-height:1.45;max-width:28em;margin:0}
+.quote .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.liftv{transition:transform 1.2s ease}.b.on .liftv{animation:lift 4s ease-in-out 1}
+@keyframes lift{0%{transform:none}35%{transform:translate(40px,-40px)}65%{transform:translate(40px,-40px)}100%{transform:none}}
+.sunmove{transition:transform 6s ease}.b.on .sunmove{transform:translate(190px,-36px)}
+#cap{background:rgba(11,26,29,.8);color:#f1ead6}
+footer{background:#0b1a1d}.bar{background:#22383b}
+.bar.seek{cursor:pointer;height:8px}
+.stack>*{width:100%;display:flex;flex-direction:column;align-items:center}
+.dove{transform-box:fill-box;transform-origin:center}.b.on .dove{animation:dove 3s ease-out 1}@keyframes dove{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+
+/* ===== Multiply palette (cover: evening slate sky, sunset amber, harvest wheat gold, valley sage green, lamplight orange) ===== */
+:root{--night:#121a20;--navy:#2b3742;--gold:#d4a24c;--gold-soft:#e9c98a;--sun:#f3e7c9;--ink:#2b3742;--mute:#5a6470;--cream:#fbf7ec}
+body{background:#121a20}
+#stage.dark{background:linear-gradient(180deg,#11181d 0%,#25313b 48%,#55534a 80%,#d39a50 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf7ec 0%,#f7efdb 64%,#efe0b6 100%);color:var(--ink)}
+#stage.dark .h1{fill:#4a5638}#stage.dark .h2{fill:#38432c}#stage.dark .h3{fill:#2a3322}
+#stage.light .h1{fill:#ead9a4}#stage.light .h2{fill:#e2cc8a}#stage.light .h3{fill:#d6bd72}
+.label{color:#d4a24c}.light .label,#stage.light .label{color:#9a6e22}
+.light h2{color:#9a6e22}
+.remember>div{background:rgba(243,231,201,.07);border-color:rgba(212,162,76,.5)}
+.remember p{color:#e6e2d6}
+.truth{border-color:#e07b2e}
+.fs span.lit{background:#7c8f5a;border-color:#7c8f5a;color:#fbf7ec}
+#cap{background:rgba(18,26,32,.84);color:#f3e7c9}
+footer{background:#121a20}
+.fs span.soon{opacity:.45;border:2px dashed #7c8f5a;color:#4a5638;font-weight:700}.fs span.soon.on{opacity:1}.bar{background:#2b3742}.bar i{background:#d4a24c}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-lord" viewBox="0 0 60 60"><path d="M14 54V30h32v24" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 54h40M14 38h32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 22l3-14 9 8 9-8 3 14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cost" viewBox="0 0 60 60"><path d="M12 54V22h16v32M20 22V10h4v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M8 54h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="34" y="26" width="18" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 33h10M38 40h7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-obey" viewBox="0 0 60 60"><ellipse cx="20" cy="42" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-banner" viewBox="0 0 60 60"><path d="M14 56V6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 8h34l-8 10 8 10H14" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M28 14v8M24 18h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-spoken" viewBox="0 0 60 60"><path d="M6 48c8-4 16-4 24 0 8-4 16-4 24 0V20c-8-4-16-4-24 0-8-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v28" stroke="currentColor" stroke-width="3"/><path d="M22 10c4-4 12-4 16 0M18 4c7-5 17-5 24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-points" viewBox="0 0 60 60"><path d="M6 54c10-4 14-12 22-16s14-8 18-18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M46 6v20M40 12h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-daily" viewBox="0 0 60 60"><rect x="6" y="12" width="34" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 22h34M14 8v8M32 8v8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 50c0-6 12-6 12 0l-2 4h-8z" fill="currentColor"/><path d="M50 44c-2-4 0-7 0-9 2 3 3 6 0 9z" fill="currentColor"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-notice" viewBox="0 0 60 60"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="4"/><path d="M36 36l16 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="sans-serif">?</text></symbol>
+
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-compare" viewBox="0 0 60 60"><path d="M4 44c7-3 13-3 18 0V16c-5-3-11-3-18 0zM38 44c7-3 13-3 18 0V16c-5-3-11-3-18 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 26h12M32 22l4 4-4 4M36 36H24M28 32l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-onegod" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><circle cx="30" cy="30" r="9" fill="currentColor"/></symbol>
+ <symbol id="i-three" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 4"/><circle cx="30" cy="14" r="6" fill="currentColor"/><circle cx="17" cy="38" r="6" fill="currentColor"/><circle cx="43" cy="38" r="6" fill="currentColor"/></symbol>
+ <symbol id="i-equal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 24h24M18 36h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-arms" viewBox="0 0 60 60"><circle cx="30" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 22v18M30 40l-8 14M30 40l8 14M30 28C22 22 14 20 6 22M30 28c8-6 16-8 24-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-good" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 50a20 20 0 0 1 40 0" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 14v8M12 22l5 5M48 22l-5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-image" viewBox="0 0 60 60"><circle cx="30" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M16 56c0-14 6-20 14-20s14 6 14 20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M20 12l3-7 7 5 7-5 3 7z" fill="currentColor"/></symbol>
+ <symbol id="i-broken" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 8l-6 14 8 6-6 12 4 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-hope" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 52V30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 36c0-10 8-16 18-14-1 9-8 14-18 14zM30 30c0-8-7-12-14-10 1 7 7 10 14 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-staff" viewBox="0 0 60 60"><path d="M20 56V20a10 10 0 0 1 20 0v4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><ellipse cx="44" cy="44" rx="10" ry="7" fill="currentColor"/><circle cx="52" cy="38" r="4" fill="currentColor"/><path d="M38 50v6M48 50v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-build" viewBox="0 0 60 60"><rect x="6" y="40" width="22" height="14" rx="2" fill="currentColor"/><rect x="32" y="40" width="22" height="14" rx="2" fill="currentColor"/><rect x="18" y="24" width="24" height="14" rx="2" fill="currentColor" opacity=".8"/><rect x="24" y="8" width="12" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+<symbol id="i-fast" viewBox="0 0 60 60"><circle cx="22" cy="34" r="16" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="22" cy="34" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/><path d="M44 18v34M40 18v10a4 4 0 0 0 8 0V18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 8l8 4M30 6l-2 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></symbol>
+<symbol id="i-water" viewBox="0 0 60 60"><path d="M4 40c6-5 12-5 18 0s12 5 18 0 12-5 16-2" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M4 50c6-5 12-5 18 0s12 5 18 0 12-5 16-2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><circle cx="30" cy="12" r="6" fill="currentColor"/><path d="M30 20v14M22 26l8-8 8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-cup" viewBox="0 0 60 60"><path d="M30 8h16l-2 16a6 6 0 0 1-12 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 30v12M32 44h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M4 44c0-10 6-16 14-16s14 6 14 16z" fill="currentColor"/><path d="M10 38l4-4M16 40l4-4" stroke="#fff" stroke-width="2" opacity=".5"/><path d="M2 52h56" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-witness" viewBox="0 0 60 60"><circle cx="20" cy="16" r="7" fill="currentColor"/><path d="M8 54c0-18 5-28 12-28s12 10 12 28z" fill="currentColor"/><path d="M36 14c6 3 6 13 0 16M42 9c10 6 10 20 0 26M48 4c14 9 14 28 0 37" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-fruit" viewBox="0 0 60 60"><path d="M30 18c-12-6-24 2-22 16 2 14 12 22 22 18 10 4 20-4 22-18 2-14-10-22-22-16z" fill="currentColor"/><path d="M30 18c0-6 2-10 6-13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M34 10c6-6 14-4 16 0-6 4-12 4-16 0z" fill="currentColor"/></symbol>
+<symbol id="i-verdict" viewBox="0 0 60 60"><rect x="16" y="10" width="26" height="12" rx="3" transform="rotate(-35 29 16)" fill="currentColor"/><path d="M27 24L14 42" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M28 54h26M32 48h18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-glory" viewBox="0 0 60 60"><path d="M12 44l-4-22 12 10 10-18 10 18 12-10-4 22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52h36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 4v4M14 8l2 4M46 8l-2 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+<symbol id="i-came" viewBox="0 0 60 60"><path d="M10 54V32L30 16l20 16v22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 4l2 5 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1z" fill="currentColor"/><path d="M22 54V42h16v12" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-lived" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 18v18l-8 18M30 36l8 18M30 24l-10 8M30 24l12 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-rose" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 52V34a16 16 0 0 1 32 0v18" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="48" cy="22" r="7" fill="currentColor"/><path d="M48 6v6M60 22h-5M58 12l-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-alone" viewBox="0 0 60 60"><path d="M6 46c8-4 16-4 24 2 8-6 16-6 24-2V22c-8-4-16-4-24 2-8-6-16-6-24-2z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M30 24v24" stroke="currentColor" stroke-width="2.6"/><path d="M30 4c-3 4-4 6-4 8a4 4 0 0 0 8 0c0-2-1-4-4-8z" fill="currentColor"/><path d="M26 18h8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-table" viewBox="0 0 60 60"><path d="M6 36h48M12 36v18M48 36v18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 32c0-8 6-12 12-12s12 4 12 12z" fill="currentColor"/><path d="M14 26h4M22 24v6" stroke="#fff" stroke-width="1.6" opacity=".5"/><path d="M38 12h12l-2 10a4 4 0 0 1-8 0zM44 26v6M40 32h8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-restmoon" viewBox="0 0 60 60"><path d="M28 6a14 14 0 1 0 18 18 11 11 0 0 1-18-18z" fill="currentColor"/><path d="M4 54V36M4 46h52v8M10 40h12a4 4 0 0 1 4 4v2" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="40" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-trellis" viewBox="0 0 60 60"><path d="M14 58V8M46 58V8M14 18h32M14 32h32M14 46h32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".7"/><path d="M30 58c0-10-6-14-2-22s8-10 4-20" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><g fill="currentColor"><ellipse cx="22" cy="44" rx="6" ry="3" transform="rotate(-30 22 44)"/><ellipse cx="38" cy="30" rx="6" ry="3" transform="rotate(30 38 30)"/><ellipse cx="24" cy="20" rx="6" ry="3" transform="rotate(-30 24 20)"/><ellipse cx="36" cy="10" rx="5" ry="2.6" transform="rotate(30 36 10)"/></g></symbol>
+ <symbol id="i-lament" viewBox="0 0 60 60"><path d="M14 56c-4-10-6-20-4-30l4-14M14 12c2-4 6-4 6 0v16M46 56c4-10 6-20 4-30l-4-14M46 12c-2-4-6-4-6 0v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20c-4 6-5 10-5 13a5 5 0 0 0 10 0c0-3-1-7-5-13z" fill="currentColor"/></symbol>
+ <symbol id="i-question" viewBox="0 0 60 60"><path d="M20 16a10 10 0 0 1 20 0c0 7-10 8-10 16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="30" cy="40" r="2.6" fill="currentColor"/><path d="M6 52l10-6c4-2 7-2 10 0l4 2h10c3 0 3 4 0 4H28M6 58l10-2 12 3c3 1 6 0 9-1l17-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-beyond" viewBox="0 0 60 60"><path d="M4 44c10-10 18-14 26-14s16 4 26 14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M20 30a10 10 0 0 1 20 0" fill="currentColor"/><path d="M30 6v8M16 12l4 5M44 12l-4 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 44v12M24 50l6 6 6-6" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 30 50)"/></symbol>
+ <symbol id="i-together" viewBox="0 0 60 60"><circle cx="16" cy="12" r="6" fill="currentColor"/><circle cx="44" cy="12" r="6" fill="currentColor"/><path d="M10 56l4-18-4-6c0-6 2-10 6-10s6 4 6 8M50 56l-4-18 4-6c0-6-2-10-6-10s-6 4-6 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 32c4 4 16 4 20 0" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M4 58h52" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".6"/></symbol>
+ <symbol id="i-guide" viewBox="0 0 60 60"><path d="M6 30c6-6 14-8 22-6l10 4c4 2 4 6 0 7l-8-1" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M54 44c-4 4-10 6-16 4l-10-4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M26 36c2 6 8 8 12 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M40 6l2 6M48 10l-4 4M32 10l4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-wordlamp" viewBox="0 0 60 60"><path d="M4 44c8-4 16-4 24 0V54c-8-4-16-4-24 0zM56 44c-8-4-16-4-24 0V54c8-4 16-4 24 0z" fill="currentColor"/><path d="M22 30c4 4 12 4 16 0l3-6H19z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M30 22c-3-5 1-9 0-14 4 4 5 9 2 14" fill="currentColor"/><path d="M14 18l-4-2M46 18l4-2M30 36v4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-counsel" viewBox="0 0 60 60"><path d="M6 44h48" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M12 44v10M48 44v10" stroke="currentColor" stroke-width="3"/><circle cx="14" cy="20" r="6" fill="currentColor"/><circle cx="30" cy="14" r="6" fill="currentColor"/><circle cx="46" cy="20" r="6" fill="currentColor"/><path d="M6 42c0-10 4-14 8-14s8 4 8 14M22 42c0-14 4-20 8-20s8 6 8 20M38 42c0-10 4-14 8-14s8 4 8 14" fill="currentColor"/></symbol>
+ <symbol id="i-teststep" viewBox="0 0 60 60"><path d="M22 6v30M8 12h28" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M8 12L3 24h10zM36 12l-5 12h10z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M3 24a5 3 0 0 0 10 0M31 24a5 3 0 0 0 10 0" fill="currentColor"/><path d="M14 40h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="currentColor"/><circle cx="44" cy="31" r="2" fill="currentColor"/><circle cx="48" cy="30" r="2" fill="currentColor"/><circle cx="52" cy="32" r="2" fill="currentColor"/></symbol>
+ <symbol id="i-ear" viewBox="0 0 60 60"><path d="M20 24a14 14 0 0 1 28 0c0 8-6 11-9 15-3 4-2 9-7 11-5 2-9-1-10-5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M28 24a6 6 0 0 1 12 0c0 4-4 5-5 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M6 20c-2 6-2 12 0 18M12 24c-1 3-1 7 0 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></symbol>
+ <symbol id="i-truthlove" viewBox="0 0 60 60"><path d="M8 10h44a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H26l-12 10v-10H8a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 36c-6-4-10-7-10-11a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-4 7-10 11z" fill="currentColor"/></symbol>
+ <symbol id="i-flame" viewBox="0 0 60 60"><path d="M30 6c4 10 14 14 14 26a14 14 0 0 1-28 0c0-6 4-10 6-14 2 6 6 8 8 8-2-8-2-14 0-20z" fill="currentColor"/><path d="M4 50l10-6c4-2 7-2 10 0l4 2h10c3 0 3 4 0 4H26M4 56l10-2 12 3c3 1 6 0 9-1l17-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-dove" viewBox="0 0 60 60"><path d="M8 34c10 2 18-2 22-10 4-8 10-12 18-12l6 3-6 3c0 14-10 24-26 24H6l8-6z" fill="currentColor"/><path d="M28 26c-6-10-14-14-22-14 4 8 10 14 20 16" fill="currentColor" opacity=".7"/><path d="M50 18c3 2 4 5 2 8" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="46" cy="15" r="1.6" fill="#fbf8ef"/></symbol>
+ <symbol id="i-tools" viewBox="0 0 60 60"><path d="M10 44l22-22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M30 14a10 10 0 0 0 14 12l-6-6 2-6z" fill="currentColor"/><path d="M50 44L30 24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="44" y="40" width="10" height="14" rx="2" fill="currentColor" transform="rotate(-45 49 47)"/><path d="M14 4v6M6 8l4 3M22 8l-4 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-balance" viewBox="0 0 60 60"><path d="M30 6v44M16 54h28M8 14h44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M8 14L2 30h12zM52 14l-6 16h12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M2 30a6 4 0 0 0 12 0M46 30a6 4 0 0 0 12 0" fill="currentColor"/><path d="M24 30l4 4 8-9" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-enough" viewBox="0 0 60 60"><path d="M6 40c8-6 14-8 20-6l8 2h10c4 0 4 6 0 6H32M6 50l10-4 14 4c4 1 8 1 12-1l14-10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M28 18l3 3 6-6" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+ <symbol id="i-share" viewBox="0 0 60 60"><path d="M4 44l12-10c4-3 8-3 12 0l6 4h12c4 0 4 6 0 6H32M4 54l10-4 14 5c4 1 8 1 12-1l16-10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 22c0-8 6-12 14-12s14 4 14 12v4H26z" fill="currentColor"/><path d="M32 16l2 4M40 14v5M48 16l-2 4" stroke="#fbf8ef" stroke-width="1.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-price" viewBox="0 0 60 60"><path d="M22 6v48M8 20h28" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M36 30l14 0 6 8-6 8H36z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="41" cy="38" r="2.5" fill="currentColor"/><path d="M22 30h14" stroke="currentColor" stroke-width="2" stroke-dasharray="2 3"/></symbol>
+ <symbol id="i-wholly" viewBox="0 0 60 60"><circle cx="30" cy="28" r="26" fill="currentColor" opacity=".18"/><circle cx="14" cy="18" r="5" fill="currentColor"/><path d="M7 48c0-14 3-22 7-22s7 8 7 22" fill="currentColor"/><circle cx="36" cy="18" r="5" fill="currentColor"/><circle cx="48" cy="18" r="5" fill="currentColor"/><path d="M29 48c0-14 3-22 7-22s7 8 7 22M41 48c0-14 3-22 7-22s7 8 7 22" fill="currentColor"/></symbol>
+ <symbol id="i-pathup" viewBox="0 0 60 60"><path d="M10 56C18 44 34 42 30 30S38 12 50 6" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="6" r="4" fill="currentColor"/><path d="M14 30l4-6 4 6M38 44l4-6 4 6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+ <symbol id="i-refuge" viewBox="0 0 60 60"><path d="M30 4l18 7v12c0 11-8 18-18 22-10-4-18-11-18-22V11z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 34c-5-3-8-6-8-9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 3-3 6-8 9z" fill="currentColor"/><path d="M4 52l10-6c4-2 7-2 10 0l4 2h10c3 0 3 4 0 4H26M4 58l10-2 12 3c3 1 6 0 9-1l17-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-love" viewBox="0 0 60 60"><path d="M30 54C16 44 6 36 6 23a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 13-10 21-24 31z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v22M22 28h16" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-home" viewBox="0 0 60 60"><path d="M6 30L30 8l24 22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 26v28h36V26" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 48c-6-4-10-7-10-11a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 4-4 7-10 11z" fill="currentColor"/></symbol>
+ <symbol id="i-friends" viewBox="0 0 60 60"><circle cx="20" cy="14" r="7" fill="currentColor"/><circle cx="40" cy="14" r="7" fill="currentColor"/><path d="M8 54c0-18 4-28 12-28s10 6 10 10M52 54c0-18-4-28-12-28s-10 6-10 10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M24 38h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-mercy" viewBox="0 0 60 60"><path d="M30 6v28M16 12h28" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M16 12l-6 12h12zM44 12l-6 12h12z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M10 24a6 3 0 0 0 12 0M38 24a6 3 0 0 0 12 0" fill="currentColor"/><path d="M4 50l10-8c4-3 8-3 12 0l4 3h12c3 0 3 5 0 5H30M4 56l10-3 12 4c4 1 7 1 10-1l16-10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-hand" viewBox="0 0 60 60"><path d="M8 34c6 0 12 4 16 8h14c4 0 4 6 0 6H26M24 42l-2 0M8 34v18h40l8-12c2-4-2-7-5-4l-7 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 8v12M26 12l4 6M42 12l-4 6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="26" r="3" fill="currentColor"/></symbol>
+ <symbol id="i-spade" viewBox="0 0 60 60"><path d="M40 6v26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M34 6h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M32 32h16v10a8 8 0 0 1-16 0z" fill="currentColor"/><path d="M4 54h52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M12 54v-10M12 46c4-4 8-4 10 0-4 4-8 4-10 0z" stroke="currentColor" stroke-width="2.5" fill="currentColor"/></symbol>
+ <symbol id="i-wind" viewBox="0 0 60 60"><path d="M4 20h30a7 7 0 1 0-7-7M4 32h42a7 7 0 1 1-7 7M4 44h20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M48 50c0-8 4-12 8-12-1 6-4 10-8 12z" fill="currentColor"/></symbol>
+ <symbol id="i-dawn" viewBox="0 0 60 60"><path d="M4 46h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 46a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 10v8M12 18l5 5M48 18l-5 5M4 32h6M50 32h6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M10 54h40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".6"/></symbol>
+ <symbol id="i-confess" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z M54 46c-8-4-15-4-22 0V14c7-4 14-4 22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 4c-2 6 0 10 4 12" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-openhand" viewBox="0 0 60 60"><path d="M18 54c-6-6-10-14-10-22v-8a3 3 0 0 1 6 0v8M14 24V12a3 3 0 0 1 6 0v16M20 28V8a3 3 0 0 1 6 0v20M26 28V10a3 3 0 0 1 6 0v20M32 30V16a3 3 0 0 1 6 0v18c0 10-4 16-10 20z" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M46 8l6-4M48 18h8M46 28l6 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-bridge" viewBox="0 0 60 60"><path d="M4 40h52" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 40C14 22 46 22 54 40" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M16 30v10M24 27v13M36 27v13M44 30v10" stroke="currentColor" stroke-width="2.5"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></symbol>
+ <symbol id="i-gate" viewBox="0 0 60 60"><path d="M8 54V14M52 54V14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M8 20h44M8 46h44" stroke="currentColor" stroke-width="3"/><path d="M18 20v26M26 20v26M34 20v26M42 20v26" stroke="currentColor" stroke-width="2.5"/><circle cx="8" cy="10" r="3" fill="currentColor"/><circle cx="52" cy="10" r="3" fill="currentColor"/></symbol>
+ <symbol id="i-key" viewBox="0 0 60 60"><circle cx="18" cy="30" r="10" fill="none" stroke="currentColor" stroke-width="4"/><path d="M28 30h26M46 30v8M54 30v10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-heart" viewBox="0 0 60 60"><path d="M30 52C16 42 6 34 6 22a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 12-10 20-24 30z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></symbol>
+ <symbol id="i-jar" viewBox="0 0 60 60"><path d="M14 16h20v6c8 4 10 12 8 20l-6 6H14l-4-8c-2-8 0-14 4-18z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round" transform="rotate(-30 24 32)"/><path d="M40 30c6 6 8 14 8 24" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 5"/></symbol>
+ <symbol id="i-bread" viewBox="0 0 60 60"><path d="M6 36c0-10 10-16 22-16s22 6 22 16v6H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M16 28l4 6M26 26l2 8M36 26l0 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M48 14h8v34h-8z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48 30h8" stroke="currentColor" stroke-width="2"/></symbol>
+ <symbol id="i-helphand" viewBox="0 0 60 60"><path d="M4 40l14-12c4-3 8-3 12 0l6 4h12c4 0 4 6 0 6H32" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 50l10-4 14 6c4 2 8 2 12 0l16-10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 8v12M32 14h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-basin" viewBox="0 0 60 60"><path d="M8 34h44c0 10-10 18-22 18S8 44 8 34z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 38c10 4 22 4 32 0" stroke="currentColor" stroke-width="2.5" opacity=".6"/><path d="M38 8c6 0 10 4 10 10v10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M42 14h8v14h-8z" fill="currentColor" opacity=".5"/></symbol>
+ <symbol id="i-steps" viewBox="0 0 60 60"><path d="M6 52h14V40h14V28h14V16h8" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="44" cy="8" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 60 60"><path d="M30 4l22 8v16c0 14-10 24-22 28C18 52 8 42 8 28V12z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 16v26M20 26h20" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-offer" viewBox="0 0 60 60"><path d="M10 50c4-12 10-18 20-18s16 6 20 18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 30l-6-14M46 30l6-14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="30" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 4v4M20 8l2 3M40 8l-2 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-mould" viewBox="0 0 60 60"><rect x="12" y="6" width="36" height="12" rx="2" fill="currentColor"/><path d="M16 18v8M44 18v8" stroke="currentColor" stroke-width="3.5"/><path d="M30 26v8M24 30l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 30 32)"/><ellipse cx="30" cy="48" rx="18" ry="7" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-scale" viewBox="0 0 60 60"><path d="M30 8v42M18 54h24M10 18h40" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 18L4 34h12zM50 18l-6 16h12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M4 34a6 4 0 0 0 12 0M44 34a6 4 0 0 0 12 0" fill="currentColor"/></symbol>
+ <symbol id="i-lamp" viewBox="0 0 60 60"><path d="M8 40c8 6 30 8 40 0l6-8H34c-4-6-12-6-16 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M54 32c4-2 4-8 0-8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M26 30c-4-8 2-14 0-22 6 6 8 14 4 22" fill="currentColor"/><path d="M14 50h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-sent" viewBox="0 0 60 60"><path d="M14 56V8h26v48" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 8l12 6v38l-12 4z" fill="currentColor" opacity=".35"/><path d="M14 56L4 60M40 56l16 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 30h14M28 22l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-spflame" viewBox="0 0 60 60"><path d="M30 4c5 11 16 16 16 30a16 16 0 0 1-32 0c0-7 4-11 7-16 2 7 6 9 9 9-3-9-3-15 0-23z" fill="currentColor"/><path d="M30 38c2 4 6 6 6 10a6 6 0 0 1-12 0c0-4 4-6 6-10z" fill="#fbf7ec" opacity=".6"/></symbol>
+ <symbol id="i-where" viewBox="0 0 60 60"><path d="M4 30L18 18l14 12" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 28v24h20V28" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><rect x="15" y="40" width="6" height="12" fill="currentColor"/><rect x="34" y="14" width="22" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M39 22h4M47 22h4M39 30h4M47 30h4M39 38h4M47 38h4" stroke="currentColor" stroke-width="2.6"/><path d="M2 54h56" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-offerbread" viewBox="0 0 60 60"><path d="M4 42l12-10c4-3 8-3 12 0l6 4h12c4 0 4 6 0 6H32M4 52l10-4 14 5c4 1 8 1 12-1l16-10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c0-8 7-13 16-13s16 5 16 13v2H22z" fill="currentColor"/><path d="M30 17l2 4M38 15v5M46 17l-2 4" stroke="#fbf7ec" stroke-width="1.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-lampstand" viewBox="0 0 60 60"><path d="M30 56V30M18 56h24" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 30c4 5 20 5 24 0l-2-6H20z" fill="currentColor"/><path d="M30 22c-4-7 2-11 0-18 5 5 7 12 3 18" fill="currentColor"/><path d="M10 14l-5-3M50 14l5-3M8 26H2M52 26h6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-workonline" viewBox="0 0 60 60"><rect x="4" y="12" width="36" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M0 42h44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><rect x="42" y="20" width="16" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M22 32c-5-3-8-5-8-8a3.5 3.5 0 0 1 8-1 3.5 3.5 0 0 1 8 1c0 3-3 5-8 8z" fill="currentColor"/></symbol>
+ <symbol id="i-teatable" viewBox="0 0 60 60"><path d="M4 40h52M10 40v16M50 40v16" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24h18v6a9 9 0 0 1-18 0z" fill="currentColor"/><path d="M36 26c6 0 6 8 0 8M27 24v-4M22 20h10" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M42 30h8v4a4 4 0 0 1-8 0zM8 30h8v4a4 4 0 0 1-8 0z" fill="currentColor"/></symbol>
+ <symbol id="i-reason" viewBox="0 0 60 60"><path d="M10 8h40a6 6 0 0 1 6 6v22a6 6 0 0 1-6 6H26l-12 10V42h-4a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6z" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M30 14c3 6 9 8 9 15a9 9 0 0 1-18 0c0-4 3-6 4-9 1 3 3 5 5 5-2-4-2-8 0-11z" fill="currentColor"/></symbol>
+ <symbol id="i-hasdone" viewBox="0 0 60 60"><path d="M30 36C20 29 13 24 13 16a8 8 0 0 1 17-3 8 8 0 0 1 17 3c0 8-7 13-17 20z" fill="currentColor"/><path d="M4 46l12-8c4-3 8-3 12 0l6 3h12c4 0 4 6 0 6H32M4 56l10-4 14 4c4 1 8 1 12-1l16-10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-bms" viewBox="0 0 60 60"><circle cx="10" cy="40" r="7" fill="none" stroke="currentColor" stroke-width="3.2"/><circle cx="30" cy="24" r="8" fill="currentColor"/><circle cx="50" cy="40" r="7" fill="none" stroke="currentColor" stroke-width="3.2"/><path d="M16 35l7-6M37 29l7 6" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M30 6v6M22 9l3 5M38 9l-3 5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M4 54h52" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+ <symbol id="i-level" viewBox="0 0 60 60"><path d="M30 8v42M18 54h24M8 18h44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M8 18L2 32h12zM52 18l-6 14h12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M2 32a6 4 0 0 0 12 0M46 32a6 4 0 0 0 12 0" fill="currentColor"/><circle cx="30" cy="8" r="3.5" fill="currentColor"/></symbol>
+ <symbol id="i-pointjesus" viewBox="0 0 60 60"><path d="M38 4v26M28 14h20" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 54C10 40 18 34 30 32" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M24 26l8 6-8 6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="48" r="5" fill="currentColor"/></symbol>
+ <symbol id="i-earq" viewBox="0 0 60 60"><path d="M14 26a14 14 0 0 1 28 0c0 8-6 11-9 15-3 4-2 9-7 11-5 2-9-1-10-5" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/><path d="M22 26a6 6 0 0 1 12 0c0 4-4 5-5 8" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M44 10a6 6 0 0 1 12 0c0 4-6 5-6 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="50" cy="26" r="2" fill="currentColor"/></symbol>
+ <symbol id="i-newsscroll" viewBox="0 0 60 60"><path d="M12 8h32v44H12z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M8 6a4 4 0 0 1 8 0v48a4 4 0 0 1-8 0zM40 6a4 4 0 0 1 8 0v48a4 4 0 0 1-8 0z" fill="currentColor"/><path d="M28 16v22M21 23h14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><path d="M20 44h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+ <symbol id="i-handout" viewBox="0 0 60 60"><path d="M4 40l12-10c4-3 8-3 12 0l6 4h14c4 0 4 6 0 6H32M4 50l10-4 14 5c4 1 8 1 12-1l18-10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 6v14M33 13h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="13" r="10" fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/></symbol>
+ <symbol id="i-freedoor" viewBox="0 0 60 60"><path d="M10 56V6h28v50" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linejoin="round"/><path d="M38 6l14 6v40l-14 4z" fill="currentColor" opacity=".45"/><path d="M4 56h52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 40l6-6M18 30l10-10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".7"/></symbol>
+ <symbol id="i-listenq" viewBox="0 0 60 60"><path d="M8 30a13 13 0 0 1 26 0c0 7-5 10-8 14-3 4-2 8-6 10-5 2-8-1-9-4" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><path d="M15 30a6 6 0 0 1 12 0c0 4-4 5-4 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M38 4h16a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-8l-6 6v-6h-2a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z" fill="currentColor" opacity=".35"/><path d="M42 11a4 4 0 0 1 8 0c0 3-4 3-4 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="46" cy="21" r="1.6" fill="currentColor"/></symbol>
+ <symbol id="i-saltword" viewBox="0 0 60 60"><path d="M8 6h44a5 5 0 0 1 5 5v20a5 5 0 0 1-5 5H26l-10 9v-9H8a5 5 0 0 1-5-5V11a5 5 0 0 1 5-5z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/><path d="M14 16h32M14 25h22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M34 50c0-5 6-8 12-8s12 3 12 8z" fill="currentColor"/><g fill="currentColor"><circle cx="42" cy="38" r="1.6"/><circle cx="47" cy="36" r="1.6"/><circle cx="50" cy="40" r="1.6"/></g></symbol>
+ <symbol id="i-limithand" viewBox="0 0 60 60"><path d="M4 40l12-8c4-3 8-3 12 0l6 4h14c4 0 4 6 0 6H32M4 52l10-4 14 5c4 1 8 1 12-1l18-11" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 10a7 7 0 0 1 14 0c0 5-7 6-7 11" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/><circle cx="41" cy="27" r="2.2" fill="currentColor"/></symbol>
+ <symbol id="i-signcross" viewBox="0 0 60 60"><path d="M18 58V14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><path d="M6 18h28l6 6-6 6H6z" fill="currentColor" opacity=".4"/><path d="M6 18h28l6 6-6 6H6z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M50 6v24M43 13h14" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/><path d="M8 58h22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c9a24a"/></marker>
+</defs></svg>
+<!-- ============ M5 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Multiply · Lesson 5</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f3e7c9"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="70" r="1.6"/></g>
+   <g class="b" data-at="Welcome to Lesson" data-until="When people learn that we follow Jesus">
+     <g class="b up" data-at="In Lesson 2 you learned to be ready with reasons"><g style="color:#e9c98a"><use href="#i-reason" x="90" y="40" width="60" height="60"/></g><text x="120" y="124" text-anchor="middle" font-size="13" fill="#f3e7c9">Lesson 2: Ready With Reasons</text></g>
+     <g class="b up" data-at="and in Lesson 4 to start where people are"><g style="color:#e9c98a"><use href="#i-earq" x="290" y="40" width="60" height="60"/></g><text x="320" y="124" text-anchor="middle" font-size="13" fill="#f3e7c9">Lesson 4: Start Where They Are</text></g>
+     <g class="b up" data-at="In Grow you learned to be quick to listen" opacity=".75"><g style="color:#cdd3d6"><use href="#i-listenq" x="480" y="40" width="50" height="50"/></g><text x="505" y="112" text-anchor="middle" font-size="12" fill="#cdd3d6">Grow: Quick to Listen</text><text class="b up" data-at="and to doubt honestly" x="505" y="132" text-anchor="middle" font-size="12" fill="#cdd3d6">· Doubt Honestly</text></g>
+     <text class="b up" data-at="Now we are going one step further" x="320" y="220" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#e9c98a">bringing those together</text>
+   </g>
+   <g class="b" data-at="When people learn that we follow Jesus">
+     <g text-anchor="middle" font-size="12" fill="#2b3742">
+      <g class="b up" data-at="Some are curious"><rect x="30" y="30" width="130" height="40" rx="14" fill="#f3e7c9"/><text x="95" y="55">curious</text></g>
+      <g class="b up" data-at="Some are testing us"><rect x="180" y="16" width="130" height="40" rx="14" fill="#f3e7c9"/><text x="245" y="41">testing</text></g>
+      <g class="b up" data-at="Some are carrying deep pain"><rect x="330" y="16" width="130" height="40" rx="14" fill="#e9c98a"/><text x="395" y="41">in pain</text></g>
+      <g class="b up" data-at="about suffering other religions the Bible"><rect x="480" y="30" width="140" height="40" rx="14" fill="#f3e7c9"/><text x="550" y="50">suffering · religions</text><text x="550" y="64" font-size="11">the Bible · the church</text></g>
+     </g>
+     <g class="b up" data-at="It is easy to freeze"><g fill="#f3e7c9"><circle cx="220" cy="130" r="12"/><path d="M204 214c0-44 7-62 16-62s16 18 16 62z"/></g><text x="220" y="244" text-anchor="middle" font-size="13" fill="#cdd3d6">freeze</text></g>
+     <g class="b up" data-at="to get defensive"><g fill="#f3e7c9"><circle cx="420" cy="130" r="12"/><path d="M404 214c0-44 7-62 16-62s16 18 16 62z"/></g><path d="M398 172h44" stroke="#e07b2e" stroke-width="7" stroke-linecap="round"/><text x="420" y="244" text-anchor="middle" font-size="13" fill="#cdd3d6">get defensive</text></g>
+     <text class="b up" data-at="or to try to win an argument" x="320" y="280" text-anchor="middle" font-size="13" fill="#e9c98a">or try to win an argument</text>
+   </g>
+  </svg>
+  <h1 class="b up" data-at="So here is our question" style="font-size:clamp(17px,2.5vw,26px)">People ask me hard questions: Why does God allow suffering? Aren't all religions the same? How can you trust the Bible?</h1>
+  <h2 class="b up" data-at="I freeze or get defensive How should I respond">I freeze or get defensive. How should I respond?</h2>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Colossians 4:5–6</p>
+  <p class="scripture" style="font-size:clamp(16px,2.3vw,24px)">
+   <span class="ph" data-at="Walk in wisdom toward outsiders">“Walk in wisdom toward outsiders, making the best use of the time.</span>
+   <span class="ph" data-at="Let your speech always be gracious">Let your speech always be <u class="k" data-at="Gracious speech seasoned with salt">gracious, seasoned with salt</u>, so that you may know how you ought to answer <u class="k" data-at="And notice the words each person">each person</u>.”</span>
+   <span class="ref">Colossians 4:5–6 · ESV</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 120" aria-hidden="true">
+    <g class="b up" data-at="Walk in wisdom toward outsiders"><path d="M20 100 C120 90 180 96 240 88" stroke="#d6c48a" stroke-width="12" fill="none" stroke-linecap="round"/><g style="color:#b07a2c"><use href="#i-lampstand" x="110" y="20" width="56" height="56"/></g></g>
+    <g class="b up" data-at="Gracious speech seasoned with salt"><g style="color:#2b3742"><use href="#i-saltword" x="300" y="20" width="70" height="70"/></g><text x="335" y="110" text-anchor="middle" font-size="12" fill="#5a6470">wise, fitting, helpful</text></g>
+    <g class="b up" data-at="An answer should respond to the individual">
+      <g fill="#2b3742"><circle cx="460" cy="60" r="9"/><path d="M448 112c0-30 5-40 12-40s12 10 12 40z"/></g>
+      <g fill="#b07a2c"><circle cx="540" cy="60" r="9"/><path d="M528 112c0-30 5-40 12-40s12 10 12 40z"/></g>
+      <g fill="#7c8f5a"><circle cx="620" cy="60" r="9"/><path d="M608 112c0-30 5-40 12-40s12 10 12 40z"/></g>
+      <rect x="440" y="18" width="40" height="22" rx="10" fill="#e9e1cc"/><rect x="516" y="14" width="48" height="26" rx="4" fill="#e9e1cc"/><circle cx="620" cy="28" r="14" fill="#e9e1cc"/>
+    </g>
+    <text class="b up" data-at="rather than repeat a script" x="540" y="8" text-anchor="middle" font-size="11" font-weight="700" fill="#9a6e22">not a script</text>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="light" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Acts 17:16–34</p>
+  <svg class="scene" viewBox="0 0 680 160" aria-hidden="true">
+    <g class="b" data-at="Our second passage is Acts chapter" data-until="When he spoke at the Areopagus">
+      <g fill="#cdc4ad" stroke="#8a7a5a"><rect x="40" y="70" width="90" height="60"/><path d="M32 70h106l-53-24z"/><path d="M52 76v50M70 76v50M88 76v50M106 76v50M122 76v50" stroke="#8a7a5a"/></g>
+      <g fill="#cdc4ad" stroke="#8a7a5a"><rect x="540" y="80" width="90" height="50"/><path d="M532 80h106l-53-22z"/></g>
+      <g class="b up" data-at="the city was full of idols" fill="#b7a98a"><rect x="170" y="90" width="14" height="40"/><circle cx="177" cy="82" r="8"/><rect x="480" y="90" width="14" height="40"/><circle cx="487" cy="82" r="8"/><rect x="210" y="100" width="12" height="30"/><circle cx="216" cy="94" r="6"/><rect x="450" y="100" width="12" height="30"/><circle cx="456" cy="94" r="6"/></g>
+      <text class="b up" data-at="the city was full of idols" x="340" y="30" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#8a6a24">“…the city was full of idols.” (17:16)</text>
+      <g class="b up" data-at="and in the marketplace every day"><g fill="#2b3742"><circle cx="300" cy="80" r="9"/><path d="M288 134c0-32 5-42 12-42s12 10 12 42z"/></g><g fill="#b07a2c"><circle cx="350" cy="84" r="8"/><path d="M340 134c0-28 4-38 10-38s10 10 10 38z"/></g><g fill="#7c8f5a"><circle cx="385" cy="84" r="8"/><path d="M375 134c0-28 4-38 10-38s10 10 10 38z"/></g><text x="340" y="152" text-anchor="middle" font-size="12" fill="#5a6470">the marketplace, every day</text></g>
+      <text class="b up" data-at="Yet he did not shout or mock" x="340" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="#9a6e22">he did not shout or mock</text>
+    </g>
+    <g class="b" data-at="When he spoke at the Areopagus" data-until="The responses varied">
+      <path d="M60 150 C200 110 480 110 620 150z" fill="#d6c48a"/>
+      <g fill="#5a6470"><circle cx="160" cy="112" r="7"/><circle cx="200" cy="106" r="7"/><circle cx="480" cy="106" r="7"/><circle cx="520" cy="112" r="7"/><circle cx="240" cy="102" r="7"/><circle cx="440" cy="102" r="7"/></g>
+      <g fill="#2b3742"><circle cx="340" cy="78" r="10"/><path d="M326 132c0-36 6-46 14-46s14 10 14 46z"/></g>
+      <g class="b up" data-at="To the unknown god"><rect x="60" y="30" width="110" height="40" fill="#cdc4ad" stroke="#8a7a5a"/><text x="115" y="54" text-anchor="middle" font-size="10" fill="#5a4a32">TO THE UNKNOWN GOD</text></g>
+      <text class="b up" data-at="For we are indeed his offspring" x="520" y="46" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">“…his offspring” (17:28)</text>
+      <text class="b up" data-at="Then he spoke clearly about God the Creator" x="340" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3742">Creator · repentance · judgement · resurrection</text>
+    </g>
+    <g class="b" data-at="The responses varied" text-anchor="middle" font-size="13">
+      <g class="b up" data-at="Some mocked"><g fill="#8b929a"><circle cx="130" cy="70" r="9"/><circle cx="160" cy="74" r="9"/><path d="M118 130c0-34 5-44 12-44s12 10 12 44zM148 130c0-30 5-40 12-40s12 10 12 40z"/></g><text x="145" y="152" fill="#5a6470">some mocked</text></g>
+      <g class="b up" data-at="We will hear you again about this"><g fill="#b07a2c"><circle cx="320" cy="70" r="9"/><circle cx="350" cy="74" r="9"/><path d="M308 130c0-34 5-44 12-44s12 10 12 44zM338 130c0-30 5-40 12-40s12 10 12 40z"/></g><text x="335" y="152" fill="#5a6470">“we will hear you again”</text></g>
+      <g class="b up" data-at="And some believed"><g fill="#7c8f5a"><circle cx="520" cy="70" r="9"/><path d="M508 130c0-34 5-44 12-44s12 10 12 44z"/></g><g fill="#2b3742"><circle cx="555" cy="70" r="9"/><path d="M543 130c0-34 5-44 12-44s12 10 12 44z"/></g><text x="537" y="152" fill="#5a6470">some believed</text></g>
+      <text class="b up" data-at="Respect did not require agreement" x="340" y="30" font-weight="700" fill="#9a6e22">respect without agreement · the response left to them</text>
+    </g>
+  </svg>
+  <div class="stack" style="min-height:2.6em">
+   <p class="scripture b" data-at="Our second passage is Acts chapter" data-until="When he spoke at the Areopagus" style="font-size:clamp(14px,1.9vw,19px)">“…his spirit was provoked within him as he saw that the city was full of idols.”<span class="ref">Acts 17:16 · ESV</span></p>
+   <p class="scripture b" data-at="as even some of your own poets have said" data-until="The responses varied" style="font-size:clamp(14px,1.9vw,19px)">“…as even some of your own poets have said, ‘For we are indeed his offspring.’”<span class="ref">Acts 17:28 · ESV</span></p>
+   <p class="scripture b" data-at="Some mocked But others said" style="font-size:clamp(14px,1.9vw,19px)">“…some mocked. But others said, ‘We will hear you again about this.’”<span class="ref">Acts 17:32 · ESV</span></p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="dark" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="Our Greek word today" style="color:#cdd3d6">Reasoned · Greek</p>
+  <p class="word b up" data-at="dialegomai It can mean" style="color:#f3e7c9">dialegomai</p>
+  <p class="gloss b up" data-at="It can mean to reason or discuss" style="color:#e9c98a;font-weight:600">to reason or discuss</p>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b" data-at="Luke uses it for what Paul did in the synagogue" data-until="The same word can also describe">
+      <rect x="240" y="96" width="200" height="10" rx="5" fill="#8a7a5a"/>
+      <rect x="300" y="60" width="80" height="30" rx="4" fill="#fbf7ec" stroke="#8a6a24"/><rect x="292" y="56" width="10" height="38" rx="4" fill="#b07a2c"/><rect x="378" y="56" width="10" height="38" rx="4" fill="#b07a2c"/>
+      <g fill="#e9c98a"><circle cx="260" cy="60" r="9"/><path d="M248 120c0-30 5-40 12-40s12 10 12 40z"/></g>
+      <g fill="#cdd3d6"><circle cx="420" cy="60" r="9"/><circle cx="450" cy="66" r="8"/><path d="M408 120c0-30 5-40 12-40s12 10 12 40zM440 120c0-26 4-36 10-36s10 10 10 36z"/></g>
+      <text x="340" y="140" text-anchor="middle" font-size="12" fill="#cdd3d6">Thessalonica: “from the Scriptures”</text>
+    </g>
+    <g class="b" data-at="The same word can also describe someone speaking at length" data-until="So Paul did not avoid">
+      <g fill="#cdd3d6"><circle cx="120" cy="56" r="9"/><path d="M108 120c0-30 5-40 12-40s12 10 12 40z"/></g>
+      <path d="M140 50h80" stroke="#cdd3d6" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+      <text x="150" y="140" text-anchor="middle" font-size="12" fill="#cdd3d6">can mean speaking at length (20:9)</text>
+      <g class="b up" data-at="In Athens Paul reasoned in the marketplace">
+        <rect x="380" y="100" width="260" height="8" fill="#5a5444"/>
+        <g fill="#e9c98a"><circle cx="440" cy="56" r="9"/><path d="M428 100c0-30 5-36 12-36s12 6 12 36z"/></g>
+        <g fill="#cdd3d6"><circle cx="500" cy="60" r="8"/><path d="M490 100c0-26 4-32 10-32s10 6 10 32z"/></g>
+        <path d="M452 40c10-8 26-8 36 0" stroke="#e9c98a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+        <path d="M488 30c-10-8-26-8-36 0" stroke="#cdd3d6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      </g>
+      <g class="b up" data-at="conversed with him"><g fill="#a9b3ba"><circle cx="570" cy="56" r="8"/><circle cx="604" cy="58" r="8"/><path d="M560 100c0-26 4-32 10-32s10 6 10 32zM594 100c0-26 4-32 10-32s10 6 10 32z"/></g><rect x="610" y="72" width="16" height="12" fill="#fbf7ec"/></g>
+      <text class="b up" data-at="That was a real conversation" x="510" y="140" text-anchor="middle" font-size="12" font-weight="700" fill="#e9c98a">the give-and-take comes from the setting</text>
+    </g>
+    <g class="b" data-at="So Paul did not avoid">
+      <g fill="#e9c98a"><circle cx="300" cy="60" r="10"/><path d="M286 130c0-36 6-46 14-46s14 10 14 46z"/></g>
+      <g fill="#cdd3d6"><circle cx="380" cy="60" r="10"/><path d="M366 130c0-36 6-46 14-46s14 10 14 46z"/></g>
+      <path d="M314 40c14-10 38-10 52 0" stroke="#e9c98a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <path d="M366 28c-14-10-38-10-52 0" stroke="#cdd3d6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+    </g>
+  </svg>
+  <div class="stack" style="min-height:2.4em">
+   <p class="gloss b up" data-at="Our Greek word today" data-until="Luke uses it for what Paul did" style="color:#f3e7c9;font-size:clamp(14px,1.9vw,19px)">“So he reasoned in the synagogue… and in the marketplace every day with those who happened to be there.” (Acts 17:17)</p>
+   <p class="gloss b up" data-at="Luke uses it for what Paul did" data-until="So Paul did not avoid" style="color:#f3e7c9;font-size:clamp(14px,1.9vw,19px)">“…he reasoned with them from the Scriptures…” (Acts 17:2)</p>
+   <p class="gloss b up" data-at="So Paul did not avoid" style="color:#e9c98a;font-weight:700;font-size:clamp(16px,2.3vw,23px)">He did not avoid questions, or simply preach at people. He reasoned with them.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <h2 class="b up" data-at="Now the background">Colossians: written in chains</h2>
+  <svg class="scene" viewBox="0 0 680 230" aria-hidden="true">
+    <g class="b" data-at="Now the background" data-until="Now our second question">
+      <rect x="120" y="30" width="440" height="160" fill="#d9cfb8" stroke="#8a7a5a"/>
+      <path d="M160 30v160M200 30v160" stroke="#b7a98a" stroke-width="2" opacity=".6"/>
+      <rect x="250" y="120" width="120" height="10" fill="#8a7a5a"/>
+      <g fill="#2b3742"><circle cx="300" cy="90" r="10"/><path d="M286 160c0-36 6-46 14-46s14 10 14 46z"/></g>
+      <g class="b up" data-at="Paul wrote Colossians while he was in prison"><path d="M282 140c-6 4-6 10 0 12M318 140c6 4 6 10 0 12" stroke="#5a6470" stroke-width="3" fill="none"/><path d="M286 152h28" stroke="#5a6470" stroke-width="2" stroke-dasharray="3 3"/><rect x="320" y="106" width="34" height="14" fill="#fbf7ec" stroke="#8a6a24"/></g>
+      <g class="b up" data-at="that God may open to us a door for the word"><rect x="470" y="70" width="60" height="120" fill="#5a4a32"/><path d="M530 70l20 8v104l-20 8z" fill="#f0c36a" opacity=".8"/><text x="500" y="56" text-anchor="middle" font-size="12" fill="#8a6a24">“a door for the word”</text></g>
+      <text class="b up" data-at="Remember my chains" x="340" y="216" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#8a6a24">“Remember my chains.” (4:18)</text>
+    </g>
+    <g class="b" data-at="Now our second question" data-until="And seasoned with salt recalls">
+      <g fill="#c9b48a" stroke="#8a7a5a"><rect x="280" y="90" width="120" height="70"/><path d="M270 90h140l-70-30z"/></g><path d="M340 50v-14M334 42h12" stroke="#8a6a24" stroke-width="2"/>
+      <text x="340" y="180" text-anchor="middle" font-size="12" fill="#5a6470">the church in Colossae</text>
+      <g class="b up" data-at="were the neighbours colleagues and officials" fill="#5a6470"><circle cx="140" cy="120" r="9"/><path d="M128 176c0-32 5-42 12-42s12 10 12 42z"/><circle cx="190" cy="126" r="9"/><path d="M178 176c0-28 5-38 12-38s12 10 12 38z"/><circle cx="490" cy="120" r="9"/><path d="M478 176c0-32 5-42 12-42s12 10 12 42z"/><circle cx="540" cy="126" r="9"/><path d="M528 176c0-28 5-38 12-38s12 10 12 38z"/></g>
+      <text class="b up" data-at="were the neighbours colleagues and officials" x="340" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3742">“outsiders”: neighbours, colleagues, officials</text>
+      <text class="b up" data-at="Paul cared about how believers spoke to them" x="340" y="30" text-anchor="middle" font-size="13" fill="#9a6e22">Paul cared how believers spoke to them</text>
+    </g>
+    <g class="b" data-at="And seasoned with salt recalls">
+      <g style="color:#2b3742"><use href="#i-saltword" x="290" y="40" width="100" height="100"/></g>
+      <text x="340" y="170" text-anchor="middle" font-size="13" fill="#5a6470">salt, from Lesson 2</text>
+      <text class="b up" data-at="should be distinct wholesome and good to receive" x="340" y="206" text-anchor="middle" font-size="15" font-weight="700" fill="#9a6e22">distinct · wholesome · good to receive</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <h2 class="b up" data-at="Our second passage takes place in Athens">Athens: the city of philosophers</h2>
+  <svg class="scene" viewBox="0 0 680 230" aria-hidden="true">
+    <g class="b" data-at="Our second passage takes place in Athens" data-until="There he met philosophers">
+      <rect x="40" y="20" width="600" height="170" rx="12" fill="#e6eef3"/>
+      <path d="M200 60 C240 50 300 70 330 100 C360 130 400 140 420 170 L380 180 C340 160 300 130 260 120 C230 110 200 90 200 60z" fill="#efe3c4" stroke="#b7a98a"/>
+      <circle cx="350" cy="124" r="8" fill="#e07b2e"/><text x="350" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3742">Athens</text>
+      <g class="b up" data-at="full of temples and statues to many gods" fill="#cdc4ad" stroke="#8a7a5a"><rect x="460" y="70" width="60" height="40"/><path d="M454 70h72l-36-16z"/><rect x="540" y="80" width="12" height="30"/><circle cx="546" cy="74" r="6"/><rect x="566" y="80" width="12" height="30"/><circle cx="572" cy="74" r="6"/></g>
+      <g class="b up" data-at="the busy public square where people met traded and debated"><rect x="80" y="150" width="180" height="26" rx="4" fill="#d6c48a"/><text x="170" y="168" text-anchor="middle" font-size="12" fill="#2b3742">marketplace: met, traded, debated</text></g>
+    </g>
+    <g class="b" data-at="There he met philosophers" data-until="Paul took his hearers seriously">
+      <g class="b up" data-at="the Epicureans and the Stoics" text-anchor="middle"><g fill="#5a6470"><circle cx="180" cy="70" r="10"/><path d="M166 140c0-38 6-50 14-50s14 12 14 50z"/></g><rect x="196" y="90" width="24" height="18" fill="#fbf7ec" stroke="#8a6a24"/><text x="180" y="164" font-size="13" fill="#2b3742">Epicurean</text><g fill="#5a6470"><circle cx="500" cy="70" r="10"/><path d="M486 140c0-38 6-50 14-50s14 12 14 50z"/></g><rect x="460" y="90" width="24" height="18" fill="#fbf7ec" stroke="#8a6a24"/><text x="500" y="164" font-size="13" fill="#2b3742">Stoic</text></g>
+      <g class="b up" data-at="What does this babbler wish to say"><path d="M250 30h180a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8H300l-12 10V64h-38a8 8 0 0 1-8-8V38a8 8 0 0 1 8-8z" fill="#fbf3df" stroke="#d4a24c"/><text x="340" y="52" text-anchor="middle" font-size="12" fill="#2b3742">“What does this babbler wish to say?”</text></g>
+      <text class="b up" data-at="introducing foreign gods" x="340" y="110" text-anchor="middle" font-size="12" fill="#5a6470">“foreign gods”: Jesus and the resurrection</text>
+      <g class="b up" data-at="So they brought him to the Areopagus"><path d="M200 210 C280 180 400 180 480 210z" fill="#d6c48a"/><text x="340" y="226" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3742">the Areopagus, the city's council</text></g>
+    </g>
+    <g class="b" data-at="Paul took his hearers seriously">
+      <g fill="#2b3742"><circle cx="340" cy="80" r="11"/><path d="M326 170c0-50 6-66 14-66s14 16 14 66z"/></g>
+      <g class="b up" data-at="He used sources they recognised"><rect x="120" y="70" width="110" height="40" fill="#cdc4ad" stroke="#8a7a5a"/><text x="175" y="94" text-anchor="middle" font-size="10" fill="#5a4a32">THEIR ALTAR · POETS</text><path d="M234 90h80" stroke="#b07a2c" stroke-width="3" marker-end="url(#arrow)"/></g>
+      <g class="b up" data-at="and then he clearly challenged"><g style="color:#9a6e22"><use href="#i-cross" x="470" y="60" width="60" height="60"/></g><text x="500" y="140" text-anchor="middle" font-size="12" fill="#2b3742">who God really is</text></g>
+      <text class="b up" data-at="and then he clearly challenged" x="340" y="210" text-anchor="middle" font-size="15" font-weight="700" fill="#9a6e22">sources they recognised · a clear challenge</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="dark" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">The Short Answer</p>
+  <p class="quote b up" data-at="Listen to the question before you answer Answer" style="color:#f3e7c9;font-size:clamp(16px,2.2vw,22px)">Listen to the question before you answer. Answer truthfully and graciously. Be honest about the limits of what you know. And point people back to Jesus, inviting them to look at him for themselves.</p>
+  <svg class="scene" viewBox="0 0 680 210" aria-hidden="true">
+    <g transform="translate(270 70)"><path d="M110 0v20" stroke="#8a7a5a" stroke-width="4"/><circle class="b pop" data-at="and Point Back to Jesus" cx="110" cy="0" r="10" fill="#f0c36a"/><rect x="20" y="90" width="100" height="8" rx="4" fill="#8a7a5a"/><path d="M30 98v32M110 98v32" stroke="#8a7a5a" stroke-width="4"/><g fill="#cdd3d6"><circle cx="45" cy="60" r="8"/><path d="M35 90c0-18 4-22 10-22s10 4 10 22z"/><circle cx="95" cy="60" r="8"/><path d="M85 90c0-18 4-22 10-22s10 4 10 22z"/></g></g>
+    <g text-anchor="middle" font-size="14" font-weight="700" fill="#f3e7c9">
+      <g class="b up" data-at="Listen to the Question Answer"><g style="color:#e9c98a"><use href="#i-listenq" x="70" y="30" width="54" height="54"/></g><text x="97" y="104">Listen to the Question</text></g>
+      <g class="b up" data-at="Answer With Grace Honest"><g style="color:#e9c98a"><use href="#i-saltword" x="130" y="120" width="54" height="54"/></g><text x="157" y="196">Answer With Grace</text></g>
+      <g class="b up" data-at="Honest About Limits and"><g style="color:#e9c98a"><use href="#i-limithand" x="496" y="120" width="54" height="54"/></g><text x="523" y="196">Honest About Limits</text></g>
+      <g class="b up" data-at="and Point Back to Jesus"><g style="color:#e9c98a"><use href="#i-signcross" x="556" y="30" width="54" height="54"/></g><text x="583" y="104">Point Back to Jesus</text></g>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="badge b up" data-at="The first part Listen to the Question"><svg viewBox="0 0 60 60"><use href="#i-listenq"/></svg>Part 1</p>
+  <h1 class="b up" data-at="The first part Listen to the Question" style="font-size:clamp(26px,4.4vw,46px)">Listen to the Question</h1>
+  <div class="stack" style="min-height:3.2em">
+    <p class="quote b" style="font-size:clamp(14px,1.9vw,19px)" data-at="If one gives an answer before he hears" data-until="Before answering try to understand">“If one gives an answer before he hears, it is his folly and shame.”<span class="ref">Proverbs 18:13</span></p>
+    <p class="gloss b" data-at="Before answering try to understand" data-until="A helpful first response" style="color:#a8792b;font-weight:700">What is the person really asking, and why?</p>
+    <p class="gloss b" data-at="A helpful first response" style="color:#9a6e22;font-family:'Source Serif 4',serif;font-style:italic">“What makes you ask?” · “What have you heard about that?” · “Can you tell me more about what you believe?”</p>
+  </div>
+  <svg class="scene" viewBox="0 0 680 160" aria-hidden="true">
+    <g class="b" data-at="James tells believers to be quick to hear" data-until="Before answering try to understand">
+      <g style="color:#b07a2c"><use href="#i-listenq" x="300" y="20" width="80" height="80"/></g>
+      <text x="340" y="130" text-anchor="middle" font-size="14" font-weight="700" fill="#2b3742">“quick to hear, slow to speak” (James 1:19)</text>
+    </g>
+    <g class="b" data-at="Before answering try to understand" data-until="A helpful first response">
+      <g class="b up" data-at="Some questions are intellectual"><g fill="#2b3742"><circle cx="160" cy="70" r="10"/><path d="M146 140c0-38 6-50 14-50s14 12 14 50z"/></g><rect x="176" y="92" width="26" height="20" fill="#fbf7ec" stroke="#8a6a24"/><text x="160" y="158" text-anchor="middle" font-size="12" fill="#5a6470">a question of the mind</text></g>
+      <g class="b up" data-at="Others come from grief injustice or harm by Christians"><g fill="#b07a2c"><circle cx="520" cy="70" r="10"/><path d="M506 140c0-38 6-50 14-50s14 12 14 50z"/></g><rect x="478" y="92" width="22" height="26" fill="#e9e1cc" stroke="#5a6470"/><circle cx="489" cy="102" r="5" fill="#8b929a"/><text x="520" y="158" text-anchor="middle" font-size="12" fill="#5a6470">a question from grief</text></g>
+      <text class="b up" data-at="Why did God let my brother die" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="14" fill="#8a6a24">“Why did God let my brother die?”</text>
+      <text class="b up" data-at="The same words can carry very different questions" x="340" y="100" text-anchor="middle" font-size="14" font-weight="700" fill="#9a6e22">same words, different questions</text>
+    </g>
+    <g class="b" data-at="A helpful first response">
+      <rect x="250" y="110" width="180" height="10" rx="5" fill="#8a7a5a"/>
+      <g fill="#2b3742"><circle cx="230" cy="64" r="11"/><path d="M216 146c0-44 6-60 14-60s14 16 14 60z" transform="rotate(6 230 110)"/></g>
+      <g class="b" data-at="Listening shows respect" fill="#7c8f5a"><circle cx="450" cy="66" r="11"/><path d="M436 146c0-42 6-58 14-58s14 16 14 58z"/></g>
+      <text class="b up" data-at="Listening shows respect" x="340" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#9a6e22">listening shows respect</text>
+      <text class="b up" data-at="the question the person is actually asking" x="340" y="86" text-anchor="middle" font-size="12" fill="#5a6470">answer the question they are actually asking</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge b up" data-at="The second part Answer With Grace"><svg viewBox="0 0 60 60"><use href="#i-saltword"/></svg>Part 2</p>
+  <h1 class="b up" data-at="The second part Answer With Grace" style="font-size:clamp(26px,4.4vw,46px)">Answer With Grace</h1>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b" data-at="Believers can give real reasons for their hope" data-until="Answers should be truthful humble and kind" text-anchor="middle" font-size="13" font-weight="700" fill="#2b3742">
+      <g class="b up" data-at="the testimony of eyewitnesses to real events"><rect x="40" y="10" width="180" height="110" rx="12" fill="#e9e1cc"/><g fill="#5a6470"><circle cx="100" cy="44" r="7"/><circle cx="130" cy="40" r="7"/><circle cx="160" cy="44" r="7"/><path d="M92 70c0-14 3-18 8-18s8 4 8 18zM122 66c0-14 3-18 8-18s8 4 8 18zM152 70c0-14 3-18 8-18s8 4 8 18z"/></g><text x="130" y="96">eyewitnesses</text><text x="130" y="112" font-size="11" font-weight="400" fill="#5a6470">Luke 1:1–4 · 1 Cor 15:3–8</text></g>
+      <g class="b up" data-at="the trustworthiness of Scripture"><rect x="250" y="10" width="180" height="110" rx="12" fill="#e9e1cc"/><path d="M310 64c10-6 20-6 30 0 10-6 20-6 30 0V36c-10-6-20-6-30 0-10-6-20-6-30 0z" fill="#fbf7ec" stroke="#8a6a24"/><text x="340" y="96">Scripture</text><text x="340" y="112" font-size="11" font-weight="400" fill="#5a6470">trustworthy (Establish)</text></g>
+      <g class="b up" data-at="through lament and the hope of resurrection"><rect x="460" y="10" width="180" height="110" rx="12" fill="#f0c36a"/><path d="M530 66a20 20 0 0 1 40 0v4h-40z" fill="#7a7464"/><circle cx="582" cy="58" r="10" fill="#fbf7ec"/><text x="550" y="96">lament and hope</text><text x="550" y="112" font-size="11" font-weight="400" fill="#5a4a32">suffering and resurrection</text></g>
+    </g>
+    <g class="b" data-at="Answers should be truthful humble and kind" data-until="Christians differ over how much" text-anchor="middle">
+      <g class="b up" data-at="Winning an argument is not the goal"><path d="M120 30h40v20a20 20 0 0 1-40 0z" fill="#d4a24c"/><path d="M140 70v14M128 88h24" stroke="#d4a24c" stroke-width="5"/><path d="M100 20l80 80M180 20l-80 80" stroke="#e07b2e" stroke-width="4"/><text x="140" y="124" font-size="12" fill="#5a6470">not winning</text></g>
+      <g class="b up" data-at="describe them in a way their own followers would recognise as fair"><path d="M300 30h80M340 20v76M310 30l-14 30h28zM370 30l-14 30h28z" stroke="#2b3742" stroke-width="3" fill="none"/><text x="340" y="124" font-size="12" font-weight="700" fill="#2b3742">fair, as they would recognise</text></g>
+      <g class="b up" data-at="Ask what they believe"><g fill="#7c8f5a"><circle cx="540" cy="50" r="10"/><path d="M526 110c0-36 6-46 14-46s14 10 14 46z"/></g><text x="540" y="34" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">“What do you believe?”</text><text x="540" y="124" font-size="12" fill="#5a6470">let them correct you</text></g>
+    </g>
+    <g class="b" data-at="Christians differ over how much" text-anchor="middle">
+      <g class="b up" data-at="some emphasise the differences"><rect x="70" y="30" width="230" height="56" rx="10" fill="#e9e1cc"/><text x="185" y="54" font-size="13" font-weight="700" fill="#2b3742">evidence and argument</text><text x="185" y="74" font-size="12" fill="#5a6470">differences · points of contact</text></g>
+      <g class="b up" data-at="Across historic Christian traditions"><rect x="330" y="20" width="290" height="76" rx="10" fill="#fbf3df" stroke="#d4a24c"/><text x="475" y="46" font-size="12" font-weight="700" fill="#9a6e22">salvation is found in Christ</text><text x="475" y="66" font-size="12" font-weight="700" fill="#9a6e22">the Holy Spirit convicts</text><text x="475" y="86" font-size="12" font-weight="700" fill="#9a6e22">truthful about Christ, respectful of people</text></g>
+    </g>
+  </svg>
+  <div class="stack" style="min-height:3.2em">
+    <p class="quote b" style="font-size:clamp(14px,1.85vw,18px)" data-at="Paul says Let your speech always be gracious" data-until="Believers can give real reasons">“…kind to everyone… correcting his opponents with gentleness.”<span class="ref">2 Timothy 2:24–25</span></p>
+    <p class="gloss b" data-at="Believers can give real reasons" data-until="Answers should be truthful humble and kind" style="color:#9a6e22;font-family:'Source Serif 4',serif;font-style:italic">“…eyewitnesses…” (Luke 1:2) · “…most of whom are still alive…” (1 Corinthians 15:6)</p>
+    <p class="gloss b" data-at="Answers should be truthful humble and kind" data-until="Christians differ over how much" style="color:#a8792b;font-weight:700">The goal is not to win, but to help the person see Jesus</p>
+    <p class="gloss b" data-at="Christians differ over how much" style="color:#5a6470">Christians differ here · more in Go deeper</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge b up" data-at="The third part Honest About Limits"><svg viewBox="0 0 60 60"><use href="#i-limithand"/></svg>Part 3</p>
+  <h1 class="b up" data-at="The third part Honest About Limits" style="font-size:clamp(26px,4.4vw,46px)">Honest About Limits</h1>
+  <div class="cards" style="flex-direction:column;align-items:center;gap:8px">
+    <div class="card b up" data-at="I don't know but I'd like to find out" style="min-width:min(26em,90vw)">“I don't know, but I'd like to find out.”</div>
+    <div class="card b up" data-at="Christians think about that in different ways" style="min-width:min(26em,90vw)">“Christians think about that in different ways.”</div>
+    <p class="gloss b up" data-at="Only promise to find out if you mean" style="color:#a8792b;font-weight:700;margin:0">Only promise to find out if you mean to come back</p>
+  </div>
+  <svg class="scene" viewBox="0 0 680 120" aria-hidden="true">
+    <g class="b" data-at="Some questions such as why God allowed" data-until="If a question touches your own">
+      <g class="b up" data-at="Admitting limits is honest and respectful"><g style="color:#2b3742"><use href="#i-limithand" x="120" y="20" width="80" height="80"/></g><text x="160" y="114" text-anchor="middle" font-size="12" fill="#5a6470">honest and respectful</text></g>
+      <g class="b up" data-at="listening compassion and practical care matter more"><rect x="380" y="76" width="160" height="10" rx="5" fill="#8a7a5a"/><g fill="#5a6470"><circle cx="410" cy="40" r="10"/><path d="M398 76c0-22 5-28 12-28s12 6 12 28z"/></g><g fill="#7c8f5a"><circle cx="510" cy="40" r="10"/><path d="M498 76c0-22 5-28 12-28s12 6 12 28z"/></g><path d="M452 70h16v-6a8 8 0 0 0-16 0z" fill="#b07a2c"/><text x="460" y="110" text-anchor="middle" font-size="12" font-weight="700" fill="#9a6e22">pain needs care before answers</text></g>
+    </g>
+    <g class="b" data-at="If a question touches your own" data-until="Questions are not the enemy of faith">
+      <g fill="#2b3742"><circle cx="200" cy="40" r="10"/><path d="M188 100c0-36 5-46 12-46s12 10 12 46z"/></g>
+      <rect x="230" y="40" width="10" height="34" rx="2" fill="#b07a2c"/><rect x="246" y="40" width="10" height="34" rx="2" fill="#b07a2c"/>
+      <text x="240" y="114" text-anchor="middle" font-size="12" fill="#5a6470">you may pause</text>
+      <g class="b up" data-at="invite a wiser believer into the conversation"><g fill="#7c8f5a"><circle cx="440" cy="40" r="10"/><path d="M428 100c0-36 5-46 12-46s12 10 12 46z"/></g><g fill="#b07a2c"><circle cx="480" cy="40" r="10"/><path d="M468 100c0-36 5-46 12-46s12 10 12 46z"/></g><text x="460" y="114" text-anchor="middle" font-size="12" fill="#5a6470">a resource, or a wiser believer</text></g>
+    </g>
+    <g class="b" data-at="Questions are not the enemy of faith">
+      <text x="340" y="50" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#8a6a24">“…have mercy on those who doubt.” (Jude 22)</text>
+      <text class="b up" data-at="And no one has to answer every question" x="340" y="92" text-anchor="middle" font-size="14" font-weight="700" fill="#9a6e22">no one has to answer every question before trusting Jesus</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="dark" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="badge b up" data-at="The fourth part Point Back to Jesus"><svg viewBox="0 0 60 60"><use href="#i-signcross"/></svg>Part 4</p>
+  <h1 class="b up" data-at="The fourth part Point Back to Jesus" style="font-size:clamp(26px,4.4vw,46px);color:#f3e7c9">Point Back to Jesus</h1>
+  <svg class="scene" viewBox="0 0 680 170" aria-hidden="true">
+    <g class="b" data-at="When Nathanael doubted" data-until="When Thomas doubted">
+      <path d="M140 150V90" stroke="#5a5444" stroke-width="8"/><ellipse cx="140" cy="76" rx="56" ry="30" fill="#4a5638"/>
+      <g fill="#cdd3d6"><circle cx="190" cy="100" r="9"/><path d="M178 156c0-32 5-42 12-42s12 10 12 42z"/></g>
+      <text x="190" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#cdd3d6">“Can anything good come out of Nazareth?”</text>
+      <g class="b up" data-at="Philip simply said Come and see"><g fill="#e9c98a"><circle cx="420" cy="100" r="9"/><path d="M408 156c0-32 5-42 12-42s12 10 12 42z"/><path d="M408 120l-20-10" stroke="#e9c98a" stroke-width="4" stroke-linecap="round"/></g><text x="460" y="80" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#e9c98a">“Come and see.”</text></g>
+    </g>
+    <g class="b" data-at="When Thomas doubted" data-until="Christians believe that Jesus is">
+      <g fill="#cdd3d6"><circle cx="240" cy="80" r="10"/><path d="M226 156c0-46 6-60 14-60s14 14 14 60z"/><path d="M252 110l40-6" stroke="#cdd3d6" stroke-width="4" stroke-linecap="round"/></g>
+      <g fill="#f3e7c9"><circle cx="360" cy="70" r="11"/><path d="M344 156c0-52 7-70 16-70s16 18 16 70z"/></g><circle cx="360" cy="70" r="26" fill="#f0c36a" opacity=".2"/>
+      <path d="M318 104l-14-2" stroke="#f3e7c9" stroke-width="4" stroke-linecap="round"/>
+      <text class="b up" data-at="Put your finger here and see my hands" x="360" y="24" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#cdd3d6">“Put your finger here, and see my hands…”</text>
+      <text class="b up" data-at="And Thomas answered My Lord and my God" x="520" y="100" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#e9c98a">“My Lord and my God!”</text>
+    </g>
+    <g class="b" data-at="Christians believe that Jesus is" data-until="A conversation may end with an invitation">
+      <g style="color:#e9c98a"><use href="#i-signcross" x="300" y="20" width="80" height="80"/></g>
+      <text x="340" y="126" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#f3e7c9">“I am the way, and the truth, and the life.” (John 14:6)</text>
+      <text class="b up" data-at="We can say this with humility" x="340" y="158" text-anchor="middle" font-size="13" fill="#e9c98a">said with humility and respect</text>
+    </g>
+    <g class="b" data-at="A conversation may end with an invitation">
+      <rect x="230" y="120" width="220" height="12" rx="6" fill="#8a7a5a"/>
+      <g fill="#cdd3d6"><circle cx="270" cy="86" r="10"/><path d="M256 120c0-22 6-30 14-30s14 8 14 30z"/></g>
+      <g fill="#e9c98a"><circle cx="410" cy="86" r="10"/><path d="M396 120c0-22 6-30 14-30s14 8 14 30z"/></g>
+      <path d="M318 116c8-4 14-4 22 0 8-4 14-4 22 0v-14c-8-4-14-4-22 0-8-4-14-4-22 0z" fill="#fbf7ec" stroke="#8a6a24"/>
+      <text x="340" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#e9c98a">an invitation to look at Jesus · a Gospel read together</text>
+      <text class="b up" data-at="as you saw in Lesson" x="340" y="160" text-anchor="middle" font-size="12" fill="#cdd3d6">as in Lesson 4</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h2 class="b up" data-at="Let me tell you about Baraka">Baraka's story · Dar es Salaam, Tanzania</h2>
+  <svg class="scene" viewBox="0 0 680 240" aria-hidden="true">
+    <g class="b" data-at="Baraka is a pharmacy student" data-until="Then he explained gently">
+      <path d="M0 200h680" stroke="#d6c48a" stroke-width="10"/>
+      <g fill="#c9b48a" stroke="#8a7a5a"><rect x="40" y="90" width="140" height="100"/><path d="M60 110h20v20H60zM100 110h20v20h-20zM140 110h20v20h-20z" fill="#e6eef3"/></g>
+      <g fill="#2b3742"><circle cx="300" cy="104" r="11"/><path d="M286 194c0-50 6-68 14-68s14 18 14 68z"/></g>
+      <g fill="#7c8f5a"><circle cx="380" cy="104" r="11"/><path d="M366 194c0-50 6-68 14-68s14 18 14 68z"/></g>
+      <text x="300" y="224" text-anchor="middle" font-size="13" fill="#2b3742">Baraka</text><text x="380" y="224" text-anchor="middle" font-size="13" fill="#2b3742">Hamisi</text>
+      <text class="b up" data-at="One evening Hamisi asked" x="520" y="60" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">“How can Christians say</text>
+      <text class="b up" data-at="One evening Hamisi asked" x="520" y="80" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">that God has a Son?”</text>
+      <g class="b up" data-at="Baraka felt nervous and started to argue"><path d="M276 70l10 10M292 66v12M306 70l-8 10" stroke="#e07b2e" stroke-width="3" stroke-linecap="round"/></g>
+      <text class="b up" data-at="He remembered Proverbs" x="300" y="40" text-anchor="middle" font-size="12" fill="#5a6470">Proverbs 18:13</text>
+      <text class="b up" data-at="Can you tell me more about what you believe about Jesus" x="520" y="130" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">“Can you tell me more</text>
+      <text class="b up" data-at="Can you tell me more about what you believe about Jesus" x="520" y="150" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="13" fill="#8a6a24">about what you believe?”</text>
+      <g class="b up" data-at="Baraka listened carefully and thanked him" style="color:#b07a2c"><use href="#i-listenq" x="250" y="120" width="30" height="30"/></g>
+    </g>
+    <g class="b" data-at="Then he explained gently" data-until="When Hamisi asked how God can be">
+      <g fill="#2b3742"><circle cx="200" cy="120" r="11"/><path d="M186 210c0-50 6-68 14-68s14 18 14 68z"/></g>
+      <g fill="#7c8f5a"><circle cx="480" cy="120" r="11"/><path d="M466 210c0-50 6-68 14-68s14 18 14 68z"/></g>
+      <text class="b up" data-at="not mean that God produced a child physically" x="340" y="40" text-anchor="middle" font-size="13" fill="#5a6470">“Son”: not a physical child</text>
+      <text class="b up" data-at="Jesus is the eternal Word" x="340" y="80" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="15" fill="#8a6a24">the eternal Word · became truly human (John 1:1, 14)</text>
+      <g class="b up" data-at="Jesus willingly gave himself for our sins"><g style="color:#2b3742"><use href="#i-cross" x="320" y="110" width="40" height="40"/></g></g>
+      <text class="b up" data-at="but his saving love and his victory" x="340" y="180" text-anchor="middle" font-size="13" font-weight="700" fill="#9a6e22">saving love · victory over sin and death</text>
+    </g>
+    <g class="b" data-at="When Hamisi asked how God can be" data-until="Hamisi still disagrees">
+      <text x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="14" fill="#8a6a24">“I'm not sure how best to explain that.</text>
+      <text x="340" y="62" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="14" fill="#8a6a24">Can I think about it, talk with my pastor, and come back to you?”</text>
+      <g class="b up" data-at="Hamisi smiled and agreed" fill="#7c8f5a"><circle cx="160" cy="130" r="11"/><path d="M146 220c0-50 6-68 14-68s14 18 14 68z"/></g>
+      <g class="b up" data-at="Baraka asked his pastor"><g fill="#2b3742"><circle cx="420" cy="130" r="11"/><path d="M406 220c0-50 6-68 14-68s14 18 14 68z"/></g><g fill="#b07a2c"><circle cx="500" cy="126" r="11"/><path d="M486 220c0-54 6-72 14-72s14 18 14 72z"/></g></g>
+      <g class="b up" data-at="read Establish Lesson"><path d="M440 186c10-6 20-6 30 0 10-6 20-6 30 0v-22c-10-6-20-6-30 0-10-6-20-6-30 0z" fill="#fbf7ec" stroke="#8a6a24"/><text x="470" y="236" text-anchor="middle" font-size="12" fill="#5a6470">Establish, Lesson 2</text></g>
+    </g>
+    <g class="b" data-at="Hamisi still disagrees">
+      <rect x="230" y="130" width="220" height="12" rx="6" fill="#8a7a5a"/>
+      <g fill="#2b3742"><circle cx="270" cy="96" r="10"/><path d="M256 130c0-22 6-30 14-30s14 8 14 30z"/></g>
+      <g fill="#7c8f5a"><circle cx="410" cy="96" r="10"/><path d="M396 130c0-22 6-30 14-30s14 8 14 30z"/></g>
+      <path d="M318 126c8-4 14-4 22 0 8-4 14-4 22 0v-14c-8-4-14-4-22 0-8-4-14-4-22 0z" fill="#fbf7ec" stroke="#8a6a24"/>
+      <text x="340" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#2b3742">still disagrees · still friends · reading the Gospels</text>
+      <text class="b up" data-at="Baraka has learned to describe Hamisi's faith" x="340" y="176" text-anchor="middle" font-size="13" fill="#5a6470">describes Hamisi's faith fairly</text>
+      <text class="b up" data-at="Baraka has learned that he can speak clearly" x="340" y="214" text-anchor="middle" font-size="14" fill="#8a6a24">speaks clearly · listens honestly · treats Hamisi with respect</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="Here are six common mistakes" style="font-size:clamp(22px,3.8vw,40px)">What answering well is not</h1>
+  <div class="nots" style="gap:9px">
+   <div class="not b up" data-at="The goal is to win the argument"><span class="wrong">Win the argument<i class="b" data-at="The goal is to help the person see Jesus"></i></span><span class="truth b" data-at="The goal is to help the person see Jesus">Help them see Jesus</span></div>
+   <div class="not b up" data-at="I must have an answer to every question"><span class="wrong">Every answer<i class="b" data-at="I don't know is honest and respectful"></i></span><span class="truth b" data-at="I don't know is honest and respectful">“I don't know” is honest</span></div>
+   <div class="not b up" data-at="People in pain need my explanation"><span class="wrong">Pain needs explanations<i class="b" data-at="They first need listening compassion and care"></i></span><span class="truth b" data-at="They first need listening compassion and care">Listening and care first</span></div>
+   <div class="not b up" data-at="Respect means never saying anything difficult"><span class="wrong">Never say anything hard<i class="b" data-at="Paul was respectful and he still spoke clearly"></i></span><span class="truth b" data-at="Paul was respectful and he still spoke clearly">Respectful and clear</span></div>
+   <div class="not b up" data-at="I can describe other religions however I like"><span class="wrong">Describe others as I like<i class="b" data-at="Describe them as their own followers would recognise"></i></span><span class="truth b" data-at="Describe them as their own followers would recognise">Describe them fairly</span></div>
+   <div class="not b up" data-at="Questions and doubts are shameful"><span class="wrong">Doubts are shameful<i class="b" data-at="Questions are welcome"></i></span><span class="truth b" data-at="Questions are welcome">Questions are welcome</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="This week your assignment is to get ready" style="font-size:clamp(22px,3.6vw,38px)">Get ready to listen well and answer humbly</h1>
+  <ol class="steps" style="font-size:clamp(14px,1.9vw,19px)">
+    <li class="b up" data-at="First read Acts"><b>Read</b> Acts 17:16–34 and Colossians 4:2–6</li>
+    <li class="b up" data-at="Second write one short line"><b>Write</b> one short line for each of the four parts</li>
+    <li class="b up" data-at="Third if you wish choose one question"><b>If you wish,</b> prepare for one question people often ask you</li>
+    <li class="b up" data-at="Fourth pray each day for wisdom"><b>Pray</b> each day for wisdom and gentleness <span class="b" data-at="Do not start debates" style="color:#e07b2e;font-weight:700">· no debates</span></li>
+    <li class="b up" data-at="And fifth follow the seven-day reading plan"><b>Follow</b> the seven-day reading plan</li>
+  </ol>
+  <div class="method" style="margin:.1em 0 .4em;width:min(100%,560px)">
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-listenq"/></svg><small>Listen to the Question</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-saltword"/></svg><small>Answer With Grace</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-limithand"/></svg><small>Honest About Limits</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-signcross"/></svg><small>Point Back to Jesus</small></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="dark" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="Let us bring it together" style="font-size:clamp(16px,2.4vw,25px)">We listen to the question, answer with grace, are honest about our limits, and point back to Jesus.</h2>
+  <div class="remember">
+    <div class="b up" data-at="Listen to the question understand"><svg viewBox="0 0 60 60"><use href="#i-listenq"/></svg><p><b>Listen to the Question</b>understand what is really being asked, and why</p></div>
+    <div class="b up" data-at="Answer with grace truthful"><svg viewBox="0 0 60 60"><use href="#i-saltword"/></svg><p><b>Answer With Grace</b>truthful, humble and kind; describe others' beliefs fairly; help people see Jesus</p></div>
+    <div class="b up" data-at="Honest about limits I don't know"><svg viewBox="0 0 60 60"><use href="#i-limithand"/></svg><p><b>Honest About Limits</b>“I don't know” is honest; pain needs care before answers</p></div>
+    <div class="b up" data-at="And point back to Jesus Come and see"><svg viewBox="0 0 60 60"><use href="#i-signcross"/></svg><p><b>Point Back to Jesus</b>“Come and see”: invite people to look at Jesus for themselves</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ M5 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="dark" aria-label="Slide 16">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e0a24a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer" style="font-size:clamp(15px,2.1vw,22px);line-height:1.4">
+   <p class="ph" data-at="Lord Jesus you are the way the truth and the life">Lord Jesus, you are the way, the truth and the life.</p>
+   <p class="ph" data-at="Make me quick to listen and slow to speak">Make me quick to listen and slow to speak.</p>
+   <p class="ph" data-at="Give me gracious words">Give me gracious words, and the humility to say, “I don't know.”</p>
+   <p class="ph" data-at="Help me to care for people in pain">Help me to care for people in pain.</p>
+   <p class="ph" data-at="And may the people who ask me questions">May the people who ask come and see you for themselves.</p>
+   <p class="ph" data-at="name Amen"><b>In Jesus’ name. Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:.6em">You may stop here for today.</p>
+ </div>
+</section>
+
+
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 16</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="multiply-lesson-05.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1": "Welcome to Lesson 5. In Lesson 2, you learned to be ready with reasons, and in Lesson 4, to start where people are. In Grow, you learned to be quick to listen, and to doubt honestly. Now we are going one step further, and bringing those together. When people learn that we follow Jesus, they often ask questions. Some are curious. Some are testing us. Some are carrying deep pain. And some questions are hard: about suffering, other religions, the Bible, or the church's failures. It is easy to freeze, to get defensive, or to try to win an argument. So here is our question: People ask me hard questions. Why does God allow suffering? Aren't all religions the same? How can you trust the Bible? I freeze or get defensive. How should I respond?", "2": "Our first passage is Colossians chapter 4, verses 5 and 6: \"Walk in wisdom toward outsiders, making the best use of the time. Let your speech always be gracious, seasoned with salt, so that you may know how you ought to answer each person.\" Let us use the first question: what does it say? Gracious speech, seasoned with salt, is wise, fitting and helpful: truthful without being needlessly harsh. And notice the words \"each person\". An answer should respond to the individual in front of us, rather than repeat a script.", "3": "Our second passage is Acts chapter 17, when Paul was in Athens. Luke says Paul's \"spirit was provoked within him as he saw that the city was full of idols.\" Yet he did not shout or mock. He reasoned in the synagogue, and in the marketplace every day with whoever was there. When he spoke at the Areopagus, the city's council, he took his hearers seriously. He began with an altar they already knew, \"To the unknown god\", and he quoted their own poets: \"as even some of your own poets have said, 'For we are indeed his offspring.'\" Then he spoke clearly about God the Creator, repentance, judgement and Jesus' resurrection. The responses varied. \"Some mocked. But others said, 'We will hear you again about this.'\" And some believed. Respect did not require agreement, or avoiding difficult truth. And Paul left the response to them.", "4": "Our Greek word today is the one translated \"reasoned\" in Acts 17:17: dialegomai. It can mean to reason or discuss. Luke uses it for what Paul did in the synagogue in Thessalonica too: \"he reasoned with them from the Scriptures.\" The same word can also describe someone speaking at length. So we learn the give-and-take from the setting. In Athens, Paul reasoned \"in the marketplace every day with those who happened to be there\", and some of the philosophers \"conversed with him\". That was a real conversation, with questions heard and answered. So Paul did not avoid people's questions, and he did not simply preach at them. He reasoned with them.", "5": "Now the background. Paul wrote Colossians while he was in prison. Just before our verses, he asks the church to pray \"that God may open to us a door for the word\", and he ends the letter, \"Remember my chains.\" Now our second question: what did it mean to the people who first heard it? The \"outsiders\" were the neighbours, colleagues and officials around the young church who did not yet follow Christ. Paul cared about how believers spoke to them. And \"seasoned with salt\" recalls the salt you met in Lesson 2. Our words, like our lives, should be distinct, wholesome and good to receive.", "6": "Our second passage takes place in Athens, a famous centre of learning, full of temples and statues to many gods. Paul talked with people in the synagogue, and every day in the marketplace, the busy public square where people met, traded and debated. There he met philosophers from two well-known schools, the Epicureans and the Stoics. Some dismissed him: \"What does this babbler wish to say?\" Others thought he was introducing foreign gods, because he was preaching Jesus and the resurrection. So they brought him to the Areopagus, the city's council, to explain. Paul took his hearers seriously. He used sources they recognised, and then he clearly challenged their understanding of God.", "7": "So, how should we respond to hard questions? Here is the short answer. Listen to the question before you answer. Answer truthfully and graciously. Be honest about the limits of what you know. And point people back to Jesus, inviting them to look at him for themselves. That gives us four parts: Listen to the Question, Answer With Grace, Honest About Limits, and Point Back to Jesus.", "8": "The first part: Listen to the Question. James tells believers to be \"quick to hear, slow to speak\", and that humble listening should shape how we respond to people's questions. Proverbs says it directly: \"If one gives an answer before he hears, it is his folly and shame.\" Before answering, try to understand what the person is really asking, and why. Some questions are intellectual: \"How do we know the Bible is reliable?\" Others come from grief, injustice or harm by Christians: \"Why did God let my brother die?\" or \"Why should I trust a church after what happened to me?\" The same words can carry very different questions. A helpful first response is often another question: \"What makes you ask?\" \"What have you heard about that?\" or \"Can you tell me more about what you believe?\" Listening shows respect. And it helps you answer the question the person is actually asking, rather than the one you expected.", "9": "The second part: Answer With Grace. Paul says, \"Let your speech always be gracious.\" And the Lord's servant must be \"kind to everyone… correcting his opponents with gentleness.\" Believers can give real reasons for their hope. For example, the testimony of eyewitnesses to real events: Luke says he carefully investigated what was handed down by those who were \"eyewitnesses\", and Paul lists appearances of the risen Jesus to many witnesses, \"most of whom are still alive\" when he wrote. Paul even says that if Christ has not been raised, Christian faith is empty. You can also speak of the trustworthiness of Scripture, which you learned about in Establish, and of the honest way the Bible speaks about suffering, through lament and the hope of resurrection. Answers should be truthful, humble and kind. Winning an argument is not the goal; helping the person see Jesus more clearly is. \"A soft answer turns away wrath.\" When you speak about other religions or beliefs, describe them in a way their own followers would recognise as fair. Do not ask one person to defend everything their whole tradition believes. Ask what they believe, and let them correct your understanding. Christians differ over how much to rely on evidence and argument, and over how to describe other religions: some emphasise the differences, and others also emphasise points of contact. Across historic Christian traditions, Christians hold that salvation is found in Christ, that the Holy Spirit is the one who convicts, and that believers should speak truthfully about Christ and respectfully about people of other faiths.", "10": "The third part: Honest About Limits. No one has every answer. It is honest and wise to say: \"I don't know, but I'd like to find out.\" \"Christians think about that in different ways.\" Or, \"I don't know, and I may not be able to give a complete answer.\" Only promise to find out if you mean to come back to the conversation. Some questions, such as why God allowed a particular tragedy, have no complete answer this side of eternity. Admitting limits is honest and respectful. And when a question comes from deep pain, listening, compassion and practical care matter more than arguments. If a question touches your own unresolved doubts or pain, you may pause the conversation. You do not need to defend an answer you do not yet understand, or pretend to be certain. With the person's agreement, you might recommend a good resource, or invite a wiser believer into the conversation. Questions are not the enemy of faith. Scripture says, \"have mercy on those who doubt.\" And no one has to answer every question before they can trust Jesus.", "11": "The fourth part: Point Back to Jesus. Many questions eventually lead back to the central one: who is Jesus? When Nathanael doubted, asking, \"Can anything good come out of Nazareth?\", Philip simply said, \"Come and see.\" When Thomas doubted the resurrection, Jesus met him with evidence and grace: \"Put your finger here, and see my hands… Do not disbelieve, but believe.\" And Thomas answered, \"My Lord and my God!\" Christians believe that Jesus is \"the way, and the truth, and the life\", and that \"there is salvation in no one else.\" We can say this with humility and respect for others. A conversation may end with an invitation to look at Jesus directly, for example by reading one of the Gospels together, as you saw in Lesson 4.", "12": "Let me tell you about Baraka. His story is a composite, drawn from the experiences of many people. Baraka is a pharmacy student in Dar es Salaam, Tanzania. His closest friend at university, Hamisi, is a devout Muslim. One evening Hamisi asked, \"How can Christians say that God has a Son? We honour Jesus as the Messiah and a prophet, but we do not believe God has a Son or that Jesus was crucified. Why do Christians believe those things?\" Baraka felt nervous and started to argue, then stopped himself. He remembered Proverbs 18:13, and said, \"That's an important question. Can you tell me more about what you believe about Jesus?\" Hamisi explained, in his own words. Baraka listened carefully and thanked him. Then he explained gently that Christians do not mean that God produced a child physically. \"Son\" describes the eternal relationship of the Son with the Father; Jesus is the eternal Word who shares God's nature and became truly human. Baraka also explained that Christians believe Jesus willingly gave himself for our sins, and that God raised him from the dead. So the cross is not God failing to protect Jesus, but his saving love and his victory over sin and death. When Hamisi asked how God can be Father, Son and Holy Spirit, Baraka could not answer well. He said honestly, \"I'm not sure how best to explain that. Can I think about it, talk with my pastor, and come back to you?\" Hamisi smiled and agreed. Baraka asked his pastor, read Establish, Lesson 2 again, and came back with a clearer explanation. Hamisi still disagrees, but the two friends respect each other, and they sometimes read passages from the Gospels together. Baraka has learned to describe Hamisi's faith in ways Hamisi would recognise as fair. Baraka has learned that he can speak clearly about Jesus while listening honestly and treating Hamisi with respect.", "13": "Here are six common mistakes about answering questions. \"The goal is to win the argument.\" No. The goal is to help the person see Jesus more clearly. \"I must have an answer to every question.\" No. \"I don't know\" is honest and respectful. \"People in pain need my explanation.\" No. They first need listening, compassion and care. \"Respect means never saying anything difficult.\" No. Paul was respectful, and he still spoke clearly. \"I can describe other religions however I like.\" No. Describe them as their own followers would recognise. And \"Questions and doubts are shameful.\" No. Questions are welcome, and doubt is not necessarily unbelief.", "14": "This week, your assignment is to get ready to listen well and answer humbly. First, read Acts 17:16 to 34 and Colossians 4:2 to 6. Second, write one short line for each of the four parts, in your own words. You can use the book to help. Third, if you wish, choose one question people often ask you about faith. Write a question you could ask to understand them better; a short, honest answer; what you do not know; and how you might point back to Jesus. Fourth, pray each day for wisdom and gentleness in your conversations. If someone asks you a question about faith this week, listen first, answer honestly and gently, and admit what you do not know. Do not start debates. And fifth, follow the seven-day reading plan below this lesson. If you miss a day, simply begin again the next day.", "15": "Let us bring it together. We listen to the question, answer with grace, are honest about our limits, and point back to Jesus. Listen to the question: understand what is really being asked, and why. Answer with grace: truthful, humble and kind, describing others' beliefs fairly, with the goal of helping people see Jesus. Honest about limits: \"I don't know\" is honest, and pain needs care before answers. And point back to Jesus: \"Come and see\". Invite people to look at Jesus for themselves.", "16": "Let us pray. Lord Jesus, you are the way, the truth and the life. Make me quick to listen and slow to speak. Give me gracious words, seasoned with salt, and the humility to say, \"I don't know.\" Help me to care for people in pain before I try to explain. And may the people who ask me questions come and see you for themselves. In Jesus' name. Amen. You may stop here for today. When you are ready, begin this week's assignment and the reading plan."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.08, 0.54, 0.65, 1.99, 2.11, 2.57, 3.24, 3.66, 3.76, 3.93, 4.23, 4.44, 5.39, 5.58, 5.69, 6.82, 6.93, 7.4, 7.54, 7.98, 8.69, 8.8, 9.58, 9.72, 10.11, 10.2, 10.39, 10.7, 10.82, 11.62, 11.83, 11.93, 12.41, 13.74, 13.98, 14.2, 14.28, 14.71, 15.07, 15.5, 16.66, 16.9, 17.36, 17.71, 18.64, 18.83, 19.17, 19.66, 19.86, 19.98, 20.39, 21.21, 21.45, 21.85, 22.21, 23.32, 23.76, 23.98, 25.0, 25.47, 25.69, 26.19, 26.78, 27.22, 27.47, 28.17, 28.56, 29.7, 29.84, 30.13, 30.68, 30.74, 31.66, 31.94, 32.88, 33.1, 33.98, 34.06, 34.87, 34.99, 35.1, 35.65, 36.79, 36.9, 37.13, 37.53, 37.64, 38.48, 38.58, 38.79, 39.85, 39.98, 40.12, 40.37, 40.5, 40.75, 40.85, 42.09, 42.35, 42.8, 43.13, 43.47, 44.48, 44.98, 45.38, 45.57, 46.12, 47.25, 47.74, 48.02, 48.47, 48.97, 50.05, 50.48, 50.78, 51.54, 51.64, 52.49, 52.8, 53.04, 53.25, 53.79, 53.87, 54.75, 54.9, 55.7, 55.9, 56.22, 57.28, 57.65, 57.94, 58.09], "2": [59.6, 59.74, 60.1, 60.63, 60.86, 61.66, 62.74, 63.24, 64.8, 65.13, 65.24, 65.77, 66.29, 67.39, 67.75, 67.83, 68.28, 68.57, 68.67, 68.77, 69.82, 70.03, 70.18, 70.76, 71.32, 71.47, 72.32, 72.8, 72.96, 73.72, 73.88, 74.07, 74.18, 74.3, 74.64, 74.85, 75.07, 75.33, 75.5, 76.01, 76.34, 77.44, 77.61, 77.77, 78.01, 78.09, 78.5, 79.48, 79.74, 79.96, 80.08, 81.07, 81.49, 82.2, 82.7, 82.87, 83.53, 83.72, 84.58, 85.16, 85.37, 86.36, 87.2, 87.62, 87.99, 88.6, 89.78, 89.97, 90.39, 90.48, 91.13, 91.49, 92.99, 93.12, 93.55, 93.86, 94.46, 94.57, 94.73, 95.55, 95.69, 96.05, 96.15, 96.97, 97.38, 97.61, 98.21, 98.27], "3": [99.48, 99.63, 100.02, 100.48, 100.64, 101.16, 101.69, 102.8, 103.18, 103.37, 103.47, 104.66, 104.93, 105.3, 105.73, 106.32, 106.5, 107.06, 107.39, 108.01, 108.16, 108.28, 108.66, 108.86, 108.93, 109.35, 109.62, 110.0, 110.17, 111.28, 111.49, 111.64, 111.84, 112.07, 112.59, 112.8, 113.93, 114.09, 114.59, 114.73, 114.79, 115.83, 116.01, 116.15, 116.21, 117.24, 117.59, 117.94, 118.25, 118.81, 119.12, 119.87, 119.99, 120.09, 120.51, 120.66, 120.79, 121.66, 121.75, 122.19, 123.19, 123.35, 123.62, 123.78, 124.24, 125.64, 125.75, 126.22, 126.37, 126.47, 127.01, 127.21, 127.85, 128.71, 128.85, 129.1, 129.75, 130.57, 130.73, 130.87, 131.4, 131.59, 131.91, 133.23, 133.51, 133.89, 134.17, 134.29, 134.51, 134.86, 135.32, 135.47, 136.61, 136.81, 137.1, 137.4, 138.15, 138.42, 139.67, 140.08, 140.24, 140.63, 141.22, 141.62, 142.14, 142.24, 143.15, 144.13, 144.93, 145.13, 145.69, 147.07, 147.15, 147.94, 148.81, 149.2, 149.84, 150.12, 150.43, 151.13, 151.25, 151.41, 151.64, 151.86, 152.15, 152.48, 153.27, 153.47, 153.86, 155.13, 155.67, 155.83, 156.16, 156.73, 157.56, 157.76, 158.34, 158.87, 159.77, 160.25, 161.23, 161.77, 161.93, 162.6, 162.78], "4": [163.67, 163.96, 164.42, 164.74, 165.34, 165.58, 165.66, 166.09, 167.12, 167.88, 168.08, 169.02, 169.89, 170.04, 170.19, 170.36, 172.91, 173.37, 173.49, 173.88, 174.43, 176.32, 177.11, 177.26, 177.51, 178.01, 178.38, 178.51, 178.58, 179.39, 179.54, 180.34, 181.3, 181.53, 182.14, 182.34, 182.72, 183.02, 183.1, 184.28, 184.4, 184.72, 184.99, 185.16, 185.43, 185.93, 186.31, 186.78, 186.91, 187.79, 187.99, 188.14, 188.47, 188.58, 188.9, 189.08, 189.41, 189.6, 189.66, 190.72, 190.84, 191.63, 191.92, 192.74, 192.9, 192.98, 193.85, 194.24, 194.54, 194.82, 195.15, 195.3, 195.74, 195.82, 196.11, 196.78, 196.94, 197.24, 197.36, 197.44, 198.29, 199.01, 199.2, 199.82, 200.03, 200.2, 200.25, 200.59, 201.9, 202.04, 202.72, 203.37, 203.56, 204.89, 205.16, 205.58, 205.77, 206.08, 206.53, 206.96, 208.02, 208.22, 208.4, 208.61, 208.96, 209.46, 209.92, 210.11, 210.65, 210.85, 211.5, 211.73], "5": [212.42, 212.58, 212.7, 213.64, 213.99, 214.32, 215.0, 215.26, 215.4, 215.59, 215.75, 216.84, 217.12, 217.53, 217.68, 218.68, 218.9, 219.38, 219.49, 219.92, 220.04, 220.75, 220.91, 221.34, 221.55, 221.91, 222.11, 222.28, 222.33, 222.75, 222.9, 223.0, 223.92, 224.08, 224.27, 224.62, 224.73, 225.66, 226.2, 226.42, 227.93, 228.13, 228.25, 228.64, 229.7, 229.92, 230.08, 230.24, 230.55, 230.67, 230.8, 231.26, 231.41, 231.9, 232.23, 232.97, 233.2, 234.26, 234.51, 234.61, 235.54, 236.3, 236.48, 237.55, 238.01, 238.12, 238.43, 238.9, 239.32, 239.5, 239.91, 240.22, 240.6, 241.89, 242.35, 242.93, 243.23, 243.46, 244.06, 244.55, 244.72, 245.41, 245.64, 246.24, 246.43, 247.41, 247.95, 248.05, 248.64, 248.82, 249.17, 249.4, 250.87, 251.11, 252.09, 252.34, 252.5, 253.34, 253.62, 253.78, 254.85, 255.77, 256.02, 256.38, 256.52], "6": [257.81, 258.04, 258.56, 259.25, 259.63, 260.05, 260.38, 261.57, 261.65, 262.29, 262.8, 262.94, 263.82, 264.12, 264.27, 264.9, 265.05, 265.87, 265.98, 266.43, 267.67, 267.96, 268.39, 268.55, 268.94, 269.08, 269.14, 270.3, 270.62, 271.02, 271.4, 271.54, 271.6, 272.95, 273.04, 273.78, 274.19, 274.98, 275.31, 275.74, 276.45, 277.25, 277.47, 278.76, 279.14, 279.31, 279.62, 280.47, 280.67, 281.0, 281.37, 281.7, 282.84, 282.98, 284.22, 284.41, 284.49, 285.7, 286.1, 286.66, 287.43, 287.62, 287.86, 288.07, 288.6, 288.94, 289.05, 290.22, 290.73, 291.01, 291.15, 291.35, 292.16, 292.67, 293.62, 293.95, 294.05, 294.24, 294.82, 295.55, 295.8, 295.88, 297.01, 297.24, 297.4, 297.77, 298.08, 298.21, 298.42, 299.57, 299.66, 300.14, 300.7, 300.85, 301.73, 302.04, 302.25, 302.4, 302.8, 304.05, 304.18, 304.56, 305.22, 305.36, 306.68, 306.82, 306.95, 307.14, 307.61, 308.19, 308.41, 309.11, 309.22], "7": [310.23, 310.98, 311.19, 311.44, 311.58, 312.12, 312.21, 312.53, 313.58, 313.79, 313.92, 314.0, 314.34, 315.47, 315.83, 315.93, 316.06, 316.58, 316.98, 317.28, 318.19, 318.73, 319.57, 319.71, 320.96, 321.17, 321.78, 322.09, 322.17, 322.74, 322.96, 323.27, 323.38, 324.27, 324.48, 324.78, 325.14, 325.44, 325.6, 326.67, 327.29, 327.54, 327.69, 327.97, 328.08, 328.41, 328.63, 330.13, 330.28, 330.59, 330.78, 331.08, 332.05, 332.47, 332.58, 332.68, 333.61, 334.01, 334.22, 335.04, 335.43, 335.71, 336.5, 336.71, 337.03, 337.28, 337.37], "8": [338.38, 338.47, 338.8, 340.13, 340.9, 341.03, 341.12, 342.46, 342.94, 343.29, 343.9, 344.0, 344.63, 345.01, 345.11, 345.86, 346.39, 346.53, 347.5, 347.66, 347.81, 348.33, 349.13, 349.39, 349.84, 350.08, 350.29, 350.95, 351.04, 351.55, 352.99, 353.65, 353.98, 354.09, 355.25, 355.44, 355.91, 356.25, 356.36, 356.81, 357.25, 357.38, 358.18, 358.35, 358.51, 358.79, 359.6, 359.82, 360.96, 361.42, 362.41, 362.66, 362.79, 363.38, 363.57, 363.63, 364.13, 364.28, 364.81, 365.66, 365.86, 367.25, 367.54, 368.21, 368.43, 369.73, 370.0, 370.11, 370.26, 370.54, 370.65, 371.19, 371.43, 372.72, 373.19, 373.49, 373.72, 374.58, 375.42, 375.65, 376.18, 376.34, 377.72, 378.0, 378.22, 378.58, 378.8, 378.96, 379.27, 380.21, 380.79, 381.1, 381.34, 381.46, 381.94, 381.99, 382.56, 383.0, 383.2, 383.64, 383.77, 384.38, 384.46, 384.93, 385.39, 385.58, 386.02, 386.35, 386.77, 388.26, 388.34, 388.92, 389.36, 389.91, 390.06, 390.38, 390.72, 391.77, 391.93, 392.17, 392.33, 393.2, 393.36, 393.46, 393.59, 393.79, 394.05, 394.69, 395.24, 395.46, 395.62, 395.87, 396.04, 396.44, 396.77, 397.01, 397.11, 398.17, 398.69, 399.16, 400.52, 400.65, 400.76, 401.12, 401.33, 401.79, 401.91, 402.49, 402.57, 403.01, 403.18, 403.66, 404.56, 404.9, 405.11, 405.19, 405.47, 405.64], "9": [406.65, 406.72, 407.13, 408.16, 408.97, 409.17, 410.48, 410.76, 411.62, 411.87, 412.02, 412.78, 413.33, 413.46, 414.55, 414.7, 414.78, 415.18, 415.79, 416.06, 416.21, 416.77, 417.02, 417.92, 418.45, 418.62, 419.42, 419.59, 420.95, 421.66, 421.9, 422.15, 422.49, 423.13, 423.28, 423.46, 424.21, 424.36, 425.27, 425.36, 426.12, 426.23, 427.2, 427.4, 427.72, 428.69, 428.98, 429.41, 429.55, 430.13, 431.04, 431.25, 431.42, 431.87, 432.26, 432.44, 432.91, 433.05, 433.49, 435.26, 435.46, 435.87, 436.28, 437.09, 437.2, 437.31, 437.75, 438.26, 438.46, 438.75, 439.8, 440.25, 440.37, 440.78, 441.03, 441.59, 442.15, 442.36, 442.51, 443.61, 443.93, 444.17, 444.9, 445.05, 445.17, 445.68, 445.86, 446.13, 446.34, 447.13, 447.64, 448.06, 448.46, 449.66, 449.75, 449.88, 450.24, 450.65, 450.76, 450.88, 451.86, 451.95, 452.74, 452.93, 453.08, 453.45, 453.83, 453.94, 455.05, 455.19, 455.29, 455.46, 455.93, 456.33, 456.43, 456.89, 457.35, 457.64, 458.66, 458.89, 459.66, 459.83, 459.92, 460.49, 460.65, 462.09, 462.84, 463.13, 463.29, 464.25, 464.93, 465.15, 466.26, 466.65, 466.75, 467.57, 467.77, 468.16, 468.24, 469.13, 469.57, 469.64, 470.14, 470.51, 471.06, 471.27, 471.96, 473.02, 473.08, 473.64, 474.48, 475.09, 475.52, 476.59, 476.77, 476.88, 477.28, 477.67, 477.95, 478.62, 478.73, 479.81, 480.41, 480.68, 480.89, 480.93, 481.34, 481.58, 481.92, 482.65, 482.85, 483.71, 483.99, 485.09, 485.25, 485.63, 486.17, 486.68, 487.34, 487.5, 488.22, 488.87, 489.07, 489.53, 490.14, 491.34, 491.85, 492.08, 492.27, 493.18, 493.33, 493.64, 493.84, 494.38, 494.68, 496.16, 496.79, 497.1, 497.54, 497.77, 498.14, 498.25, 498.69, 498.83, 499.32, 499.45, 500.37, 500.54, 500.77, 501.03, 501.16, 501.93, 502.15, 503.24, 503.6, 504.28, 504.37, 505.51, 505.69, 506.15, 506.63, 507.33, 507.75, 507.86, 509.24, 509.79, 510.48, 510.95, 511.85, 512.37, 512.76, 513.19, 514.07, 514.24, 514.65, 514.8, 515.63, 515.83, 515.92, 516.32, 516.81, 517.01, 517.1, 517.39, 517.55, 518.55, 518.7, 518.88, 519.57, 519.81, 520.22, 520.93, 521.27, 522.19, 522.35, 523.4, 523.75, 524.27, 524.41, 524.71], "10": [525.73, 525.81, 526.2, 527.03, 527.64, 528.06, 529.15, 529.38, 529.62, 530.17, 530.69, 531.9, 532.0, 532.23, 532.77, 532.96, 533.46, 533.58, 534.6, 534.78, 535.22, 535.93, 536.13, 536.33, 536.65, 536.77, 537.22, 538.19, 538.89, 539.15, 539.51, 539.82, 540.02, 540.49, 541.53, 542.38, 542.52, 542.88, 543.99, 544.13, 544.24, 544.51, 544.81, 544.95, 545.21, 545.34, 545.81, 545.89, 546.64, 547.62, 548.01, 548.49, 548.6, 549.07, 549.4, 549.54, 549.7, 550.02, 550.12, 550.44, 550.73, 550.84, 550.94, 552.51, 552.85, 553.85, 554.14, 554.27, 554.66, 555.0, 555.4, 555.44, 556.02, 556.98, 557.17, 557.49, 557.98, 558.64, 558.82, 559.17, 559.26, 560.42, 560.89, 561.39, 561.61, 562.21, 562.41, 563.75, 563.88, 564.11, 564.21, 564.73, 565.14, 565.43, 565.74, 566.53, 567.11, 568.03, 568.3, 568.88, 569.65, 570.0, 570.37, 570.56, 572.05, 572.18, 572.22, 572.84, 573.32, 573.48, 574.07, 574.99, 575.55, 575.78, 576.64, 576.74, 576.92, 577.41, 577.49, 579.0, 579.1, 579.25, 579.49, 579.85, 579.96, 580.55, 580.69, 581.41, 581.51, 581.65, 581.9, 582.21, 583.3, 583.59, 584.15, 584.24, 584.38, 585.61, 585.73, 585.81, 586.31, 587.2, 587.35, 587.64, 588.23, 588.26, 588.53, 589.64, 589.83, 590.25, 590.3, 590.81, 591.49, 591.71, 591.8, 593.04, 593.66, 593.87, 594.26, 594.42, 594.83, 594.9, 595.78, 596.35, 597.18, 597.43, 598.07, 598.33, 598.68, 598.85, 599.77, 600.0, 600.2, 600.45, 600.73, 600.82, 601.48, 601.94, 602.75, 603.14, 603.29, 603.5, 603.92], "11": [604.89, 604.98, 605.48, 606.71, 607.17, 607.58, 607.7, 609.16, 609.5, 610.09, 610.63, 610.92, 611.25, 611.35, 611.46, 611.93, 612.83, 613.04, 613.24, 614.32, 614.47, 615.02, 616.05, 617.09, 617.37, 617.94, 618.29, 618.51, 618.67, 618.77, 619.99, 620.33, 620.77, 621.38, 621.65, 621.8, 622.9, 623.09, 623.54, 624.01, 624.1, 625.25, 625.79, 626.08, 626.25, 626.45, 627.13, 627.46, 628.62, 628.87, 629.02, 629.45, 630.16, 630.33, 630.64, 630.86, 632.07, 632.25, 632.56, 634.05, 634.26, 635.41, 635.62, 636.02, 637.1, 637.33, 638.01, 638.19, 638.39, 639.47, 640.02, 640.6, 640.83, 641.39, 641.82, 642.0, 643.01, 643.28, 643.36, 644.37, 644.7, 644.78, 645.75, 645.93, 646.29, 646.54, 646.65, 647.97, 648.17, 648.38, 648.64, 649.84, 649.97, 650.18, 650.53, 650.82, 651.01, 652.14, 652.29, 652.89, 653.11, 654.28, 654.38, 655.25, 655.57, 655.95, 656.16, 656.27, 657.11, 657.23, 657.51, 657.65, 658.17, 659.24, 659.43, 659.96, 660.14, 660.57, 660.78, 660.88, 660.97, 661.59, 662.46, 662.62, 662.74, 663.11, 663.29], "12": [664.83, 665.0, 665.15, 665.4, 665.62, 666.01, 667.12, 667.24, 667.88, 667.99, 668.04, 669.11, 669.65, 669.86, 669.98, 671.11, 671.27, 671.62, 672.77, 673.27, 673.51, 673.56, 674.13, 674.7, 674.94, 675.42, 675.75, 676.62, 677.79, 677.99, 678.54, 678.97, 679.22, 680.32, 681.28, 681.42, 681.48, 682.07, 683.36, 683.56, 684.06, 684.73, 685.7, 685.94, 686.14, 686.72, 687.36, 687.55, 687.98, 688.26, 688.31, 689.45, 689.64, 689.93, 690.54, 690.79, 690.87, 691.58, 691.76, 691.8, 692.76, 692.94, 693.12, 693.38, 693.65, 694.11, 694.56, 694.8, 694.86, 695.62, 695.77, 696.03, 696.48, 696.71, 698.06, 698.39, 698.61, 699.16, 699.62, 699.94, 700.8, 701.29, 701.6, 702.23, 702.38, 702.82, 702.91, 703.75, 703.95, 704.37, 705.65, 705.79, 706.27, 706.85, 707.43, 708.29, 708.64, 709.53, 710.09, 711.15, 711.34, 711.45, 711.66, 711.8, 712.11, 712.42, 712.7, 712.82, 713.23, 713.59, 714.64, 715.07, 716.01, 716.12, 716.36, 716.6, 717.51, 718.02, 718.56, 719.58, 719.77, 720.2, 721.12, 721.45, 721.64, 722.31, 722.9, 723.15, 723.8, 723.94, 724.21, 724.49, 724.69, 725.03, 725.48, 725.52, 726.03, 727.35, 728.53, 729.23, 729.39, 729.94, 730.88, 730.98, 731.09, 731.57, 731.78, 731.86, 733.05, 733.8, 733.97, 734.11, 734.65, 735.45, 735.56, 736.09, 736.51, 737.32, 737.45, 737.94, 738.4, 739.57, 740.12, 740.73, 741.66, 741.88, 742.5, 742.92, 743.43, 744.12, 744.45, 744.98, 745.17, 745.33, 746.21, 746.34, 746.46, 746.99, 747.46, 747.71, 747.97, 748.05, 749.16, 749.4, 749.49, 750.01, 750.27, 750.51, 750.9, 751.5, 751.65, 752.28, 753.29, 753.52, 753.71, 754.27, 754.8, 754.98, 755.22, 755.88, 756.16, 756.69, 756.98, 757.63, 757.79, 758.37, 758.77, 758.99, 759.38, 759.57, 759.69, 760.46, 761.08, 761.3, 761.64, 762.63, 763.14, 763.38, 763.7, 764.15, 765.18, 765.3, 765.53, 766.64, 766.8, 767.0, 767.33, 767.51, 767.96, 768.09, 768.64, 769.25, 769.41, 769.53, 769.81, 770.11, 770.46, 770.73, 770.88, 771.05, 771.66, 771.9, 772.12, 772.38, 772.47, 773.36, 773.81, 774.64, 774.8, 775.96, 776.57, 776.98, 777.2, 778.43, 778.77, 780.16, 780.89, 781.92, 782.08, 782.43, 782.82, 782.95, 783.0, 783.55, 785.18, 785.75, 786.16, 787.39, 787.57, 787.66, 787.98, 788.57, 789.18, 789.41, 790.05, 790.24, 790.39, 791.09, 791.44, 792.16, 792.36, 792.44, 793.13, 794.18, 794.7, 794.98, 795.44, 795.52, 796.18, 796.87, 797.6, 797.75, 798.2, 798.78, 799.02, 800.04, 800.3, 801.38, 801.89, 802.12, 802.5, 802.64, 802.8, 802.96, 803.51, 804.05, 804.39, 804.98, 805.39, 806.02, 807.04, 807.25, 807.65, 808.31, 808.59], "13": [809.62, 809.88, 810.01, 810.48, 810.95, 811.6, 811.94, 812.47, 813.99, 814.1, 814.48, 814.61, 814.72, 815.0, 815.13, 816.51, 817.97, 818.04, 818.43, 818.56, 818.64, 818.9, 818.99, 819.44, 819.73, 820.29, 820.5, 821.41, 821.52, 821.83, 822.02, 822.11, 822.5, 822.7, 823.0, 824.16, 825.19, 825.34, 825.69, 825.99, 826.21, 827.04, 827.22, 828.5, 828.85, 829.03, 829.45, 829.75, 829.96, 831.22, 832.12, 832.28, 832.79, 833.03, 833.82, 834.78, 834.93, 835.73, 836.35, 836.68, 836.99, 837.45, 838.0, 839.16, 839.94, 840.37, 840.71, 842.03, 842.2, 842.33, 842.74, 843.23, 844.44, 844.7, 845.0, 845.79, 846.08, 846.77, 847.28, 847.39, 848.49, 849.7, 850.33, 850.58, 850.79, 850.98, 851.28, 851.99, 852.24, 853.81, 854.09, 855.02, 855.39, 856.11, 856.44, 857.78, 858.7, 859.44, 859.7, 860.82, 861.1, 861.74, 861.96, 862.55, 863.61], "14": [864.79, 865.04, 865.65, 865.85, 866.53, 866.67, 866.75, 866.96, 867.27, 867.39, 867.86, 868.54, 868.82, 869.25, 870.53, 871.32, 871.6, 872.29, 872.46, 872.62, 872.95, 873.11, 873.95, 874.15, 874.3, 875.2, 875.46, 875.68, 875.78, 875.84, 875.9, 876.8, 877.07, 878.16, 878.27, 879.14, 879.53, 879.77, 880.63, 880.85, 880.93, 881.11, 881.2, 881.66, 882.45, 882.6, 882.77, 883.4, 884.87, 885.08, 885.29, 886.26, 887.15, 887.29, 887.59, 888.22, 888.32, 888.49, 888.59, 888.83, 888.91, 889.09, 889.24, 890.18, 890.87, 890.96, 891.35, 892.14, 892.47, 893.27, 893.77, 894.26, 895.82, 895.94, 896.4, 896.52, 897.25, 898.02, 898.31, 900.16, 900.53, 901.07, 901.17, 902.13, 903.04, 903.36, 903.89, 904.27, 904.49, 905.2, 905.42, 906.19, 906.36, 906.56, 908.11, 908.23, 908.66, 909.17, 909.33, 909.36, 909.86, 910.17, 910.48, 910.74, 911.42, 911.81, 912.74, 913.18, 913.81, 914.04, 914.84, 915.01, 915.6, 915.84, 915.97, 916.14, 916.46, 917.09, 917.27, 917.54, 918.01, 919.38, 919.65, 920.55, 921.09, 921.21, 921.78, 922.11, 922.56, 923.08, 923.63, 923.93, 924.96, 925.11, 925.28, 925.57, 925.63, 926.37, 926.87, 927.28, 927.76, 927.86, 928.27], "15": [929.3, 929.46, 929.6, 929.84, 929.98, 930.88, 931.0, 931.34, 931.43, 931.53, 932.44, 932.86, 933.05, 933.89, 934.14, 934.6, 934.92, 935.02, 935.82, 936.03, 936.43, 936.72, 936.84, 937.92, 938.28, 938.42, 938.51, 939.78, 940.67, 941.34, 941.52, 941.98, 942.37, 943.45, 943.68, 944.91, 945.64, 945.85, 947.06, 948.0, 948.58, 948.89, 949.81, 950.57, 951.06, 951.65, 952.53, 952.74, 952.84, 953.38, 953.51, 954.09, 954.54, 954.99, 956.42, 956.81, 957.08, 958.09, 958.26, 958.5, 958.78, 958.92, 959.69, 959.94, 960.41, 960.71, 961.14, 961.58, 962.46, 962.68, 963.04, 963.31, 963.43, 964.37, 964.58, 964.71, 965.71, 966.23, 966.59, 966.7, 966.94, 967.04, 967.5, 967.64], "16": [969.19, 969.32, 969.45, 970.37, 970.63, 971.44, 971.64, 971.77, 971.87, 972.61, 972.73, 973.29, 973.56, 973.62, 974.55, 974.77, 974.95, 975.21, 975.34, 976.0, 976.2, 976.57, 976.69, 977.87, 978.07, 978.3, 978.87, 979.73, 980.31, 980.51, 981.34, 981.48, 981.55, 982.25, 982.37, 983.22, 983.37, 983.69, 984.56, 984.76, 984.93, 985.04, 985.35, 985.55, 985.96, 986.18, 986.9, 987.29, 987.39, 987.67, 987.86, 989.18, 989.37, 989.56, 989.64, 990.1, 990.32, 990.73, 990.91, 991.59, 992.03, 992.24, 992.52, 992.8, 993.02, 994.43, 994.61, 995.15, 996.1, 996.99, 997.21, 997.37, 997.74, 998.02, 998.23, 999.12, 999.45, 999.62, 999.76, 1000.54, 1001.04, 1001.28, 1001.64, 1002.62, 1002.84, 1002.93, 1003.4]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z\u00C0-\u024F\u1E00-\u1EFF']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>
