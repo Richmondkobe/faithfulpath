@@ -127,8 +127,8 @@ export const COURSES: FjCourse[] = [
     fullTitle: "Grow: Becoming Like Jesus",
     key: "following-jesus-grow",
     launched: true,
-    // Unlisted until Richmond has tested it (8 October 2026).
-    listed: false,
+    // Unlisted while Richmond tested it; switched on 8 October 2026.
+    listed: true,
     firstChapter: 19,
     // From the welcome page's own line: "Twelve lessons on how Jesus reshapes
     // our character, relationships, decisions and ordinary life."
