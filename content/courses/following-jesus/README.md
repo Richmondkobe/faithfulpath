@@ -28,6 +28,9 @@ signed URLs:
 
       npm run fj:downloads -- "~/Desktop/Following Jesus Begin Course"
 
+  For Establish: `npm run fj:downloads -- "~/Desktop/Following Jesus Establish Course" --course establish`.
+  Chapters are named by the book's own numbers (Begin 1–8, Establish 9–18).
+
   Each chapter file is the title and copyright pages, the chapter, and all six
   Support Pages (the chapters send readers to them "at the back of this
   book"); the last chapter also keeps the "What you have learned" summary.

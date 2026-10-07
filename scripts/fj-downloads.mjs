@@ -35,8 +35,20 @@ const COURSES = {
     ebook: "01 Book and Reviews/Following Jesus - Begin - Ebook.pdf",
     worksheet: (n) => `06 Worksheets/Begin-Lesson-${pad(n)}-Worksheet.pdf`,
     leadersGuide: "04 Leader's Guide/Begin-Leaders-Guide-Final.pdf",
+    title: "Begin",
     chapters: 8,
+    firstChapter: 1,
     // Page numbers are 1-based, as a PDF reader shows them.
+    frontPages: [2, 3],
+  },
+  establish: {
+    ebook: "01 Book and Reviews/Following Jesus - Establish - Ebook.pdf",
+    worksheet: (n) => `06 Worksheets/Establish-Lesson-${pad(n)}-Worksheet.pdf`,
+    leadersGuide: "04 Leader's Guide/Establish-Leaders-Guide-Final.pdf",
+    title: "Establish",
+    chapters: 10,
+    // The book numbers its chapters on from Begin's: Chapters 9 to 18.
+    firstChapter: 9,
     frontPages: [2, 3],
   },
 };
@@ -88,13 +100,14 @@ async function chapterRanges(bytes) {
 
   chapterMarks.forEach((m, i) => {
     const n = Number(m.title.match(/^Chapter\s*(\d+)/i)[1]);
-    if (n !== i + 1) die(`Chapter bookmarks out of order: "${m.title}" is in place ${i + 1}.`);
+    if (n !== course.firstChapter + i) die(`Chapter bookmarks out of order: "${m.title}" is in place ${i + 1}.`);
   });
 
   return {
     numPages: doc.numPages,
     chapters: chapterMarks.map((m, i) => ({
-      number: i + 1,
+      // The book's own number (Establish starts at 9); files are named by it.
+      number: course.firstChapter + i,
       title: m.title.replace(/^Chapter\s*\d+\s*/i, ""),
       first: m.page,
       // A chapter runs to the page before the next one. The last runs up to
@@ -114,7 +127,7 @@ async function buildChapter(source, chapter, support) {
   const out = await PDFDocument.create();
   const copied = await out.copyPages(source, pages.map((p) => p - 1));
   copied.forEach((p) => out.addPage(p));
-  out.setTitle(`Following Jesus: Begin — Chapter ${chapter.number}: ${chapter.title}`);
+  out.setTitle(`Following Jesus: ${course.title} — Chapter ${chapter.number}: ${chapter.title}`);
   out.setAuthor("Richmond Kobe");
   return { bytes: await out.save(), pages };
 }

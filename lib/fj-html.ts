@@ -106,11 +106,12 @@ export function websitePage(
 
   // "Preview: buttons will work on the website." — true in the preview, and
   // the one line of the files that is about the files rather than the course.
+  // Begin's pages each have one; Establish's lessons have none.
   const notes = out.match(/ *<div class="preview-note">Preview: [^<]*<\/div>\n?/g) ?? [];
-  if (notes.length !== 1) {
-    throw new Error(`Expected one preview note in a Following Jesus page, found ${notes.length}.`);
+  if (notes.length > 1) {
+    throw new Error(`Expected at most one preview note in a Following Jesus page, found ${notes.length}.`);
   }
-  out = swap(out, notes[0], "");
+  if (notes[0]) out = swap(out, notes[0], "");
 
   out = swap(out, DEAD_HELP_LINK, '<a href="/contact">Need help?</a>');
   out = beforeHeadEnd(out, NEVER_STALE);

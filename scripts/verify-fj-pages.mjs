@@ -79,6 +79,9 @@ const ALLOWED_TEXT_CHANGES = [
   // Lesson 8: "You have completed Begin!" moves into its own part, shown only
   // once every lesson is complete (Richmond, 7 October 2026).
   { original: "Well done. Lesson 8 is complete. You have completed Begin!", served: "Well done. Lesson 8 is complete." },
+  // Establish's Lesson 10: the file's "Continue to Lesson 11 ›" (there is no
+  // Lesson 11) shows as the completion page's name (Richmond, 7 October 2026).
+  { original: "Continue to Lesson 11 ›", served: "Continue to My Foundations ›" },
 ];
 
 const progress = (slugs, done = false) => ({ completed: new Set(slugs), courseCompletedAt: done ? "2026-10-07T00:00:00Z" : null });
@@ -92,7 +95,7 @@ async function pagesFor(course) {
   pages.push({
     name: "welcome (owner)",
     original: await raw("welcome.html"),
-    served: welcomePage(welcome, course, owner, new Set(["following-jesus-begin"]), {
+    served: welcomePage(welcome, course, owner, new Set([`following-jesus-${course.slug}`]), {
       completed: new Set([course.lessons[0].slug]),
       courseCompletedAt: null,
     }),
@@ -117,7 +120,7 @@ async function pagesFor(course) {
     pages.push({
       name: slug,
       original: await raw(`${slug}.html`),
-      served: withAnswers(await completionPage(course, progress(others(course.lessons[7]))), answersApiPath(course, slug), {}),
+      served: withAnswers(await completionPage(course, progress(others(course.lessons[course.lessons.length - 1]))), answersApiPath(course, slug), {}),
     });
   }
   return pages;
@@ -251,10 +254,23 @@ for (const course of COURSES.filter((c) => c.launched)) {
 }
 await browser.close();
 
-/* --------------------------------- 4. Lesson 8's "You have completed Begin!" */
+/* ------------- 4. "You have completed Begin!", and the buttons between books */
 
 for (const course of COURSES.filter((c) => c.launched)) {
   const last = course.lessons[course.lessons.length - 1];
+
+  // "Continue to Book N: …" goes to the next book only once it is listed.
+  if (course.completionPage) {
+    const next = COURSES.find((c) => c.book === course.book + 1);
+    const page = await completionPage(course, progress([]));
+    const href = page.match(/<a class="btn gold" href="([^"]+)">Continue to Book/)?.[1];
+    const want = next && next.launched && next.listed ? `/courses/following-jesus/${next.slug}` : "/courses/following-jesus";
+    if (href !== want) fail(`${course.completionPage.title}: "Continue to Book ${course.book + 1}" goes to ${href}, expected ${want}`);
+    else console.log(`\n${course.completionPage.title}: "Continue to Book ${course.book + 1}: ${next?.title}" goes to ${want}`);
+  }
+
+  // Only a course whose last lesson says the course is complete.
+  if (!(await readCoursePage(course, `${last.slug}/lesson.html`)).includes(`You have completed ${course.title}!</p>`)) continue;
   const allButTwo = course.lessons.filter((l) => l.number !== 6 && l.number !== 7).map((l) => l.slug);
   const notYet = await lessonPage(course, last, progress(allButTwo));
   const whole = await lessonPage(course, last, progress(course.lessons.map((l) => l.slug), true));

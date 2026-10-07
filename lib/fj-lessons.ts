@@ -1,6 +1,9 @@
 import type { CourseProgress } from "@/lib/fj-progress";
 import {
+  COURSES,
   SERIES_PATH,
+  chapterFile,
+  chapterNumber,
   coursePath,
   downloadPath,
   tabTitle,
@@ -167,11 +170,13 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
   // The player, from this site, behind the same purchase check as the lesson.
   html = swap(html, '<iframe src="player.html"', `<iframe src="${lessonPath(course, lesson)}/player"`);
 
-  // "Go deeper": the chapter cut from the book, and the worksheet.
+  // "Go deeper": the chapter cut from the book, and the worksheet. The button
+  // names the book's own chapter: Establish's Lesson 1 is Chapter 9.
+  const chapter = chapterNumber(course, lesson);
   html = swap(
     html,
-    `${DEAD_LINK}⬇ Chapter ${n} (PDF)</a>`,
-    `<a class="btn" href="${downloadPath(course, `chapter-${two}.pdf`)}">⬇ Chapter ${n} (PDF)</a>`
+    `${DEAD_LINK}⬇ Chapter ${chapter} (PDF)</a>`,
+    `<a class="btn" href="${downloadPath(course, chapterFile(course, lesson))}">⬇ Chapter ${chapter} (PDF)</a>`
   );
   html = swap(
     html,
@@ -183,11 +188,16 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
   const continueLabel = course.lessons[n]
     ? `Continue to Lesson ${n + 1} ›`
     : `Continue to ${course.completionPage?.title ?? "the course"} ›`;
+  // Establish's Lesson 10 file says "Continue to Lesson 11 ›", and there is no
+  // Lesson 11. Richmond approved showing the completion page's name instead
+  // (7 October 2026); data-fj-changed lets the page check hold it to its list.
+  const slip = `Continue to Lesson ${n + 1} ›`;
+  const fileLabel = !course.lessons[n] && html.includes(`<button class="btn">${slip}</button>`) ? slip : continueLabel;
   html = swap(
     html,
-    `<button class="btn gold">Stop here for today</button><button class="btn">${continueLabel}</button>`,
+    `<button class="btn gold">Stop here for today</button><button class="btn">${fileLabel}</button>`,
     `<a class="btn gold" href="${coursePath(course)}">Stop here for today</a>` +
-      `<a class="btn" href="${nextPath(course, lesson)}">${continueLabel}</a>`
+      `<a class="btn"${fileLabel === continueLabel ? "" : " data-fj-changed"} href="${nextPath(course, lesson)}">${continueLabel}</a>`
   );
 
   // "✓ I have completed this lesson" saves before it says "Well done". If the
@@ -242,7 +252,8 @@ export async function playerPage(course: FjCourse, lesson: FjLesson, audioUrl: s
     await readCoursePage(course, `${lesson.slug}/player.html`),
     tabTitle(`Lesson ${lesson.number} teaching`)
   );
-  html = swap(html, `src="begin-${lesson.slug}.mp3"`, `src="${escapeHtml(audioUrl)}"`);
+  // The file name in the reviewed player: begin-lesson-01.mp3, establish-lesson-01.mp3.
+  html = swap(html, `src="${course.slug}-${lesson.slug}.mp3"`, `src="${escapeHtml(audioUrl)}"`);
 
   return beforeBodyEnd(
     html,
@@ -283,12 +294,15 @@ export async function completionPage(course: FjCourse, progress: CourseProgress)
   });
   html = progressDashes(html, course, progress);
 
-  // Book 2 is not out yet, so the series page, where it shows as coming soon.
-  html = swap(
-    html,
-    '<button class="btn gold">Continue to Book 2: Establish ›</button>',
-    `<a class="btn gold" href="${SERIES_PATH}">Continue to Book 2: Establish ›</a>`
-  );
+  // "Continue to Book 2: Establish ›": to the next course once it is
+  // launched and listed, and until then the series page, where it shows as
+  // coming soon (Richmond, 7 October 2026).
+  const nextCourse = COURSES.find((c) => c.book === course.book + 1);
+  const nextButton = nextCourse && `<button class="btn gold">Continue to Book ${nextCourse.book}: ${nextCourse.title} ›</button>`;
+  if (nextCourse && nextButton) {
+    const href = nextCourse.launched && nextCourse.listed ? coursePath(nextCourse) : SERIES_PATH;
+    html = swap(html, nextButton, `<a class="btn gold" href="${href}">Continue to Book ${nextCourse.book}: ${nextCourse.title} ›</a>`);
+  }
   html = swap(
     html,
     '<button class="textlink" style="color:#d5dae4">Back to the course</button>',
