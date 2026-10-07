@@ -104,10 +104,12 @@ export function websitePage(
 ): string {
   let out = retitle(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), title);
 
-  // "Preview: buttons will work on the website." — true in the preview, and
-  // the one line of the files that is about the files rather than the course.
-  // Begin's pages each have one; Establish's lessons have none.
-  const notes = out.match(/ *<div class="preview-note">Preview: [^<]*<\/div>\n?/g) ?? [];
+  // The dashed note about the files rather than the course: "Preview: buttons
+  // will work on the website." on Begin's pages and Establish's welcome and
+  // My Foundations, "Keep this page, player.html and establish-lesson-01.mp3
+  // together in this folder…" on Establish's lessons. Whatever it says, it is
+  // the preview's note and never belongs on the website.
+  const notes = out.match(/ *<div class="preview-note">[^<]*<\/div>\n?/g) ?? [];
   if (notes.length > 1) {
     throw new Error(`Expected at most one preview note in a Following Jesus page, found ${notes.length}.`);
   }

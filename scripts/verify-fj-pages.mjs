@@ -149,6 +149,7 @@ function snapshot() {
       .filter((el) => !(el.tagName === "LINK" && /fonts\.googleapis\.com/.test(el.getAttribute("href") ?? "")))
       .map(describe),
     body: [...document.body.querySelectorAll("*")].filter((el) => !inSkipped(el)).map(describe),
+    previewNotes: document.querySelectorAll(".preview-note").length,
     added: [...document.body.querySelectorAll("[data-fj]")]
       .filter((el) => !["SCRIPT", "STYLE"].includes(el.tagName))
       .map((el) => el.id || el.tagName.toLowerCase()),
@@ -222,6 +223,11 @@ for (const course of COURSES.filter((c) => c.launched)) {
       const want = course.lessons.map((l) => (l.number < 3 || l.number === n ? "●" : "○")).join("");
       if (dashes !== want) fail(`${p.name}: dashes ${dashes}, expected ${want}`);
     }
+
+    // No preview note reaches the website, whatever it says. (Establish's
+    // lessons had one beginning "Keep this page…" that was missed until 8
+    // October 2026, because this check only set notes aside.)
+    if (s.previewNotes) fail(`${p.name}: a preview note is still on the page`);
 
     // The site's own styles may change one of the page's settings, the gold of
     // its small text, and only to the agreed shade.
