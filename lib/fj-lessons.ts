@@ -10,7 +10,16 @@ import {
   type FjCourse,
   type FjLesson,
 } from "@/lib/following-jesus";
-import { beforeBodyEnd, beforeHeadEnd, escapeHtml, readCoursePage, swap, websitePage, websitePlayer } from "@/lib/fj-html";
+import {
+  beforeBodyEnd,
+  beforeHeadEnd,
+  escapeHtml,
+  linkSupportPages,
+  readCoursePage,
+  swap,
+  websitePage,
+  websitePlayer,
+} from "@/lib/fj-html";
 
 // The lesson, player and completion pages as the website serves them. Each
 // change is one of those listed in content/courses/following-jesus/README.md;
@@ -184,15 +193,21 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
     `<a class="btn" href="${downloadPath(course, `worksheet-${two}.pdf`)}">⬇ Lesson ${n} worksheet</a>`
   );
 
-  // The two buttons after "I have completed this lesson".
+  // The two buttons after "I have completed this lesson". The last lesson
+  // keeps its own words ("Continue to My First Steps ›", "Continue to the end
+  // of Grow ›") except Establish's Lesson 10, whose file says "Continue to
+  // Lesson 11 ›" though there is no Lesson 11: Richmond approved showing the
+  // completion page's name there (7 October 2026), and data-fj-changed lets
+  // the page check hold it to its list.
+  const stopThen = '<div class="btns"><button class="btn gold">Stop here for today</button><button class="btn">';
+  const fileLabel = html.match(new RegExp(`${stopThen.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^<]*)</button></div>`))?.[1];
+  if (!fileLabel) throw new Error(`${course.title} ${lesson.slug} has no "Stop here for today" buttons.`);
+  const slip = `Continue to Lesson ${n + 1} ›`;
   const continueLabel = course.lessons[n]
     ? `Continue to Lesson ${n + 1} ›`
-    : `Continue to ${course.completionPage?.title ?? "the course"} ›`;
-  // Establish's Lesson 10 file says "Continue to Lesson 11 ›", and there is no
-  // Lesson 11. Richmond approved showing the completion page's name instead
-  // (7 October 2026); data-fj-changed lets the page check hold it to its list.
-  const slip = `Continue to Lesson ${n + 1} ›`;
-  const fileLabel = !course.lessons[n] && html.includes(`<button class="btn">${slip}</button>`) ? slip : continueLabel;
+    : fileLabel === slip
+      ? `Continue to ${course.completionPage?.title ?? "the course"} ›`
+      : fileLabel;
   html = swap(
     html,
     `<button class="btn gold">Stop here for today</button><button class="btn">${fileLabel}</button>`,
@@ -238,7 +253,7 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
 </script>`
   );
 
-  return withPrintRules(html, true);
+  return withPrintRules(linkSupportPages(html, course), true);
 }
 
 /**
@@ -308,5 +323,5 @@ export async function completionPage(course: FjCourse, progress: CourseProgress)
     '<button class="textlink" style="color:#d5dae4">Back to the course</button>',
     `<a class="textlink" style="color:#d5dae4" href="${coursePath(course)}">Back to the course</a>`
   );
-  return withPrintRules(html, false);
+  return withPrintRules(linkSupportPages(html, course), false);
 }

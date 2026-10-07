@@ -51,7 +51,28 @@ const COURSES = {
     firstChapter: 9,
     frontPages: [2, 3],
   },
+  grow: {
+    ebook: "01 Book and Reviews/Following Jesus - Grow - Ebook.pdf",
+    worksheet: (n) => `06 Worksheets/Grow-Lesson-${pad(n)}-Worksheet.pdf`,
+    leadersGuide: "04 Leader's Guide/Grow-Leaders-Guide-Final.pdf",
+    title: "Grow",
+    chapters: 12,
+    firstChapter: 19,
+    frontPages: [2, 3],
+  },
 };
+
+// The six Support Pages, by their bookmark titles in each ebook, and the file
+// each becomes. Must match SUPPORT_PAGES in lib/following-jesus.ts, which the
+// lesson links use; the run stops if a bookmark is missing.
+const SUPPORT = [
+  ["Safety and Support: Start Here", "start-here"],
+  ["I am in danger or being abused", "danger-or-abuse"],
+  ["I am being controlled through prophecy, spiritual language, money or church authority", "controlled"],
+  ["I am not sure I am a Christian", "not-sure-christian"],
+  ["How to Find a Trustworthy Local Church", "trustworthy-church"],
+  ["I may harm myself or someone else, or I cannot stay safe", "harm-or-unsafe"],
+];
 
 function pad(n) {
   return String(n).padStart(2, "0");
@@ -65,7 +86,7 @@ function die(message) {
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
-if (only && !["worksheets", "chapters", "leaders-guide"].includes(only)) die(`--only takes worksheets, chapters or leaders-guide, not "${only}".`);
+if (only && !["worksheets", "chapters", "leaders-guide", "support"].includes(only)) die(`--only takes worksheets, chapters, leaders-guide or support, not "${only}".`);
 const root = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--only" && args[i - 1] !== "--course");
 const courseSlug = args.includes("--course") ? args[args.indexOf("--course") + 1] : "begin";
 const course = COURSES[courseSlug];
@@ -103,8 +124,18 @@ async function chapterRanges(bytes) {
     if (n !== course.firstChapter + i) die(`Chapter bookmarks out of order: "${m.title}" is in place ${i + 1}.`);
   });
 
+  // Each Support Page runs from its bookmark to the page before the next one,
+  // the last to the end of the book.
+  const after = marks.filter((m) => m.page >= support.page && !/^Support Pages$/i.test(m.title));
+  const supportPages = SUPPORT.map(([title, slug]) => {
+    const i = after.findIndex((m) => m.title === title);
+    if (i < 0) die(`No "${title}" bookmark among the Support Pages.`);
+    return { slug, title, first: after[i].page, last: (after[i + 1]?.page ?? doc.numPages + 1) - 1 };
+  });
+
   return {
     numPages: doc.numPages,
+    supportPages,
     chapters: chapterMarks.map((m, i) => ({
       // The book's own number (Establish starts at 9); files are named by it.
       number: course.firstChapter + i,
@@ -154,6 +185,21 @@ for (const chapter of ranges.chapters) {
   );
 }
 
+// Each Support Page on its own, opened by anyone from the lesson links: the
+// page first, then the book's copyright page, so help comes before the notice.
+for (const sp of ranges.supportPages) {
+  const out = await PDFDocument.create();
+  const pages = [...range(sp.first, sp.last), 3];
+  (await out.copyPages(ebook, pages.map((p) => p - 1))).forEach((p) => out.addPage(p));
+  out.setTitle(`Following Jesus: ${course.title} — Support Page: ${sp.title}`);
+  out.setAuthor("Richmond Kobe");
+  const name = `support-${sp.slug}.pdf`;
+  const bytes = await out.save();
+  await writeFile(join(outDir, name), bytes);
+  files.push({ name, bytes });
+  console.log(`  ${name.padEnd(32)} pages ${sp.first}–${sp.last}, then 3 (copyright)`);
+}
+
 for (let n = 1; n <= course.chapters; n++) {
   const bytes = await readFile(join(root, course.worksheet(n)));
   files.push({ name: `worksheet-${pad(n)}.pdf`, bytes });
@@ -165,7 +211,7 @@ for (const f of files) {
 }
 
 if (only) {
-  const prefix = { worksheets: "worksheet-", chapters: "chapter-", "leaders-guide": "leaders-guide" }[only];
+  const prefix = { worksheets: "worksheet-", chapters: "chapter-", "leaders-guide": "leaders-guide", support: "support-" }[only];
   files.splice(0, files.length, ...files.filter((f) => f.name.startsWith(prefix)));
   console.log(`\n  --only ${only}: ${files.length} file(s)`);
 }

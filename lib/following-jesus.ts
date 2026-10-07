@@ -355,3 +355,30 @@ export function formatDay(iso: string): string {
     timeZone: "UTC",
   });
 }
+
+/* ---------------------------------------------------------- support pages */
+
+/**
+ * The six Support Pages at the back of each book. The lessons name them in
+ * plain text ("Support Page: I am in danger or being abused"); the website
+ * makes each name a link to that page, cut from the course's own ebook as its
+ * own PDF. They are open to everyone, bought or not: safety help is never
+ * behind a payment (Richmond, 8 October 2026).
+ */
+export const SUPPORT_PAGES = [
+  { slug: "start-here", title: "Safety and Support: Start Here" },
+  { slug: "danger-or-abuse", title: "I am in danger or being abused" },
+  { slug: "controlled", title: "I am being controlled through prophecy, spiritual language, money or church authority" },
+  { slug: "not-sure-christian", title: "I am not sure I am a Christian" },
+  { slug: "trustworthy-church", title: "How to Find a Trustworthy Local Church" },
+  { slug: "harm-or-unsafe", title: "I may harm myself or someone else, or I cannot stay safe" },
+] as const;
+
+export function supportPath(course: FjCourse, slug: string): string {
+  return `${coursePath(course)}/support/${slug}`;
+}
+
+/** support-danger-or-abuse.pdf, in the course's folder of course-downloads. */
+export function supportFile(slug: string): string {
+  return `support-${slug}.pdf`;
+}

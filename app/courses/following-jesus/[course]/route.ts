@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { FINISH_FIRST, SERIES_LISTED, SERIES_PATH, findCourse, offersOpenCourse, tabTitle } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { getCourseProgress } from "@/lib/fj-progress";
-import { htmlResponse, readCoursePage, websitePage } from "@/lib/fj-html";
+import { htmlResponse, linkSupportPages, readCoursePage, websitePage } from "@/lib/fj-html";
 import { welcomePage } from "@/lib/fj-welcome";
 
 /**
@@ -28,12 +28,13 @@ export async function GET(
   const offers = learner ? await getOwnedOffers() : new Set<never>();
   const progress = learner && offersOpenCourse(offers, course) ? await getCourseProgress(course) : null;
 
-  const html = websitePage(await readCoursePage(course, "welcome.html"), {
+  const page = websitePage(await readCoursePage(course, "welcome.html"), {
     title: tabTitle(course.fullTitle),
     // Search engines may list a course page only once both the series and
     // the course are switched on.
     indexable: SERIES_LISTED && course.listed,
   });
+  const html = linkSupportPages(page, course);
   return htmlResponse(welcomePage(html, course, learner, offers, progress, {
       finishFirst: request.nextUrl.searchParams.has(FINISH_FIRST),
     }));

@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { SERIES_PATH, type FjCourse } from "@/lib/following-jesus";
+import { SERIES_PATH, SUPPORT_PAGES, supportPath, type FjCourse } from "@/lib/following-jesus";
 
 // The Following Jesus pages are Richmond's reviewed, final HTML, served as
 // whole documents rather than rebuilt in React: their wording, slides, colours
@@ -128,6 +128,51 @@ export function websitePage(
 export function websitePlayer(html: string, title: string): string {
   const out = retitle(swap(html, GOOGLE_FONTS, SELF_HOSTED_FONTS), title);
   return beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
+}
+
+/* ---------------------------------------------------------- support pages */
+
+/**
+ * Each Support Page named in the page's text becomes a link to that page,
+ * opening in a new tab. Only the name is wrapped; the words are the file's.
+ * Text inside tags, scripts, styles and existing links is left alone, except
+ * a dead preview link whose whole text is a Support Page's name (Establish's
+ * Lesson 1 has one), which is pointed at that page. data-fj-link tells
+ * scripts/verify-fj-pages.mjs to read the link as plain text.
+ */
+export function linkSupportPages(html: string, course: FjCourse): string {
+  const link = (slug: string, text: string) =>
+    `<a data-fj-link href="${supportPath(course, slug)}" target="_blank" rel="noopener">${text}</a>`;
+
+  // The one dead link that is already a Support Page: “I am being controlled …”.
+  let out = html;
+  for (const page of SUPPORT_PAGES) {
+    for (const q of [[`“`, `”`], ["", ""]]) {
+      const dead = `<a href="#" onclick="return false">${q[0]}${page.title}${q[1]}</a>`;
+      // Kept as the file's own link (no data-fj-link): only where it goes changes.
+      const live = `<a href="${supportPath(course, page.slug)}" target="_blank" rel="noopener">${q[0]}${page.title}${q[1]}</a>`;
+      if (out.includes(dead)) out = out.split(dead).join(live);
+    }
+  }
+
+  // Everything else: names in plain text.
+  const parts = out.split(/(<[^>]+>)/);
+  let skip = 0; // inside <script>, <style> or a link
+  for (let i = 0; i < parts.length; i++) {
+    const part = parts[i];
+    if (part.startsWith("<")) {
+      if (/^<(script|style|a)\b/i.test(part)) skip++;
+      else if (/^<\/(script|style|a)>/i.test(part)) skip = Math.max(0, skip - 1);
+      continue;
+    }
+    if (skip || !part) continue;
+    let text = part;
+    for (const page of SUPPORT_PAGES) {
+      if (text.includes(page.title)) text = text.split(page.title).join(link(page.slug, page.title));
+    }
+    parts[i] = text;
+  }
+  return parts.join("");
 }
 
 /* ------------------------------------------------------------- responses */

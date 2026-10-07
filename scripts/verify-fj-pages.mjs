@@ -25,7 +25,11 @@
 //        in ALLOWED_TEXT_CHANGES below;
 //      * role="img" on the lessons' labelled progress dashes, for screen readers;
 //      * one colour: the site's added styles may redefine --gold-d as #8f6420,
-//        the deeper gold, and no other colour or setting of the page.
+//        the deeper gold, and no other colour or setting of the page;
+//      * Support Page names made into links (data-fj-link): each must wrap
+//        exactly a Support Page's title and lead to that page, and is then
+//        read as plain text, so the words are compared as before. A dead
+//        preview link to a Support Page may gain a real href, target and rel.
 // 3. No page asks Google, Vercel Analytics or anything else outside the site
 //    for anything (the recording's storage URL aside).
 //
@@ -39,8 +43,8 @@ import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { chromium } from "playwright";
 
-import { COURSES, tabTitle } from "../lib/following-jesus.ts";
-import { readCoursePage, websitePage } from "../lib/fj-html.ts";
+import { COURSES, SUPPORT_PAGES, tabTitle } from "../lib/following-jesus.ts";
+import { linkSupportPages, readCoursePage, websitePage } from "../lib/fj-html.ts";
 import { completionPage, lessonPage, playerPage } from "../lib/fj-lessons.ts";
 import { welcomePage } from "../lib/fj-welcome.ts";
 import { answersApiPath, withAnswers } from "../lib/fj-answers-page.ts";
@@ -90,7 +94,7 @@ async function pagesFor(course) {
   const pages = [];
   const raw = (file) => readCoursePage(course, file);
 
-  const welcome = websitePage(await raw("welcome.html"), { title: tabTitle(course.fullTitle), indexable: true });
+  const welcome = linkSupportPages(websitePage(await raw("welcome.html"), { title: tabTitle(course.fullTitle), indexable: true }), course);
   pages.push({ name: "welcome (visitor)", original: await raw("welcome.html"), served: welcomePage(welcome, course, null, new Set(), null) });
   pages.push({
     name: "welcome (owner)",
@@ -128,7 +132,16 @@ async function pagesFor(course) {
 
 /* ---------------------------------------------------- 3. compare in a browser */
 
-function snapshot() {
+function snapshot(titles) {
+  // Support Page links the site added: note them, then read them as text.
+  const supportLinks = [...document.querySelectorAll("a[data-fj-link]")].map((a) => ({
+    href: a.getAttribute("href"),
+    text: a.textContent,
+    target: a.getAttribute("target"),
+  }));
+  for (const a of document.querySelectorAll("a[data-fj-link]")) a.replaceWith(document.createTextNode(a.textContent));
+  document.body.normalize();
+  const badLinks = supportLinks.filter((l) => !titles.some((t) => t.title === l.text && l.href.endsWith(`/support/${t.slug}`)));
   const inSkipped = (el) => el.closest("[data-fj]") || el.closest(".preview-note");
   const describe = (el) => {
     const inDashes = !!el.parentElement?.classList.contains("steps8");
@@ -150,6 +163,8 @@ function snapshot() {
       .map(describe),
     body: [...document.body.querySelectorAll("*")].filter((el) => !inSkipped(el)).map(describe),
     previewNotes: document.querySelectorAll(".preview-note").length,
+    supportLinks: supportLinks.length,
+    badLinks,
     added: [...document.body.querySelectorAll("[data-fj]")]
       .filter((el) => !["SCRIPT", "STYLE"].includes(el.tagName))
       .map((el) => el.id || el.tagName.toLowerCase()),
@@ -178,6 +193,8 @@ function compareElements(name, a, b) {
     for (const key of new Set([...Object.keys(o.attrs), ...Object.keys(s.attrs)])) {
       if (o.attrs[key] === s.attrs[key] || ALLOWED_ATTR.has(key)) continue;
       if (key === "data-fj-changed" && changedOnPurpose) continue;
+      // A dead link to a Support Page made to work, opening in a new tab.
+      if ((key === "target" || key === "rel") && o.attrs[key] === undefined && /\/support\/[a-z-]+$/.test(s.attrs.href ?? "")) continue;
       if (key === "role" && s.attrs.role === "img" && o.attrs.role === undefined && s.attrs.class === "steps8" && o.attrs["aria-label"]) continue;
       if (key === "class" && o.inDashes && s.inDashes && [o.attrs[key], s.attrs[key]].every((v) => v === undefined || v === "on")) continue;
       if (key === "onclick" && o.attrs[key] === "return false" && s.attrs[key] === undefined) continue;
@@ -194,7 +211,7 @@ await page.route("**/*", (route) => route.abort());
 
 async function look(html) {
   await page.setContent(html, { waitUntil: "domcontentloaded" });
-  return page.evaluate(snapshot);
+  return page.evaluate(snapshot, SUPPORT_PAGES);
 }
 
 for (const course of COURSES.filter((c) => c.launched)) {
@@ -228,6 +245,7 @@ for (const course of COURSES.filter((c) => c.launched)) {
     // lessons had one beginning "Keep this page…" that was missed until 8
     // October 2026, because this check only set notes aside.)
     if (s.previewNotes) fail(`${p.name}: a preview note is still on the page`);
+    for (const l of s.badLinks) fail(`${p.name}: a Support Page link is wrong: "${l.text}" -> ${l.href}`);
 
     // The site's own styles may change one of the page's settings, the gold of
     // its small text, and only to the agreed shade.
@@ -254,7 +272,8 @@ for (const course of COURSES.filter((c) => c.launched)) {
 
     console.log(
       `  ${failures === before ? "✓" : "✗"} ${p.name.padEnd(20)} "${s.title}"` +
-        (s.added.length ? `  + ${s.added.join(", ")}` : "")
+        (s.added.length ? `  + ${s.added.join(", ")}` : "") +
+        (s.supportLinks ? `  + ${s.supportLinks} Support Page link${s.supportLinks > 1 ? "s" : ""}` : "")
     );
   }
 }
