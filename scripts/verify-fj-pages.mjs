@@ -267,6 +267,19 @@ for (const course of COURSES.filter((c) => c.launched)) {
     const want = next && next.launched && next.listed ? `/courses/following-jesus/${next.slug}` : "/courses/following-jesus";
     if (href !== want) fail(`${course.completionPage.title}: "Continue to Book ${course.book + 1}" goes to ${href}, expected ${want}`);
     else console.log(`\n${course.completionPage.title}: "Continue to Book ${course.book + 1}: ${next?.title}" goes to ${want}`);
+
+    // And it follows the next book's switch: tried both ways, then put back.
+    if (next?.launched) {
+      const was = next.listed;
+      for (const listed of [false, true]) {
+        next.listed = listed;
+        const h = (await completionPage(course, progress([]))).match(/<a class="btn gold" href="([^"]+)">Continue to Book/)?.[1];
+        const w = listed ? `/courses/following-jesus/${next.slug}` : "/courses/following-jesus";
+        if (h !== w) fail(`${course.completionPage.title}: with ${next.title} ${listed ? "listed" : "unlisted"}, "Continue to Book ${next.book}" goes to ${h}, expected ${w}`);
+      }
+      next.listed = was;
+      console.log(`  and to ${next.title}'s page once ${next.title} is switched on`);
+    }
   }
 
   // Only a course whose last lesson says the course is complete.

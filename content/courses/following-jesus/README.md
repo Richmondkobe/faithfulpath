@@ -1,7 +1,9 @@
 # Following Jesus
 
 Four video courses, sold separately from the membership: Begin, Establish,
-Grow, Multiply. One folder per course.
+Grow, Multiply. One folder per course. Begin and Establish are in; each
+course has two switches in lib/following-jesus.ts: `launched` (it can be
+bought and opened) and `listed` (the site points people to it).
 
 The HTML files here are the reviewed, final pages, copied byte for byte from
 Richmond's course folder. **Do not edit them.** The site serves them as they
