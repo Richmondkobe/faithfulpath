@@ -2,6 +2,7 @@ import {
   OFFERS,
   SERIES_PATH,
   formatDay,
+  lessonList,
   coursePath,
   downloadPath,
   offersOpenCourse,
@@ -40,6 +41,7 @@ const STYLE = `<style data-fj>
 .fj-progress a{color:var(--ink);text-decoration:none}.fj-progress a:hover{text-decoration:underline}
 .fj-progress small{color:var(--gold-d);font-weight:700;margin-right:6px}
 .fj-progress .fj-done{color:var(--gold-d);font-size:15px;white-space:nowrap}
+.fj-notice{background:#fff;border:1px solid var(--gold-soft);border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px;margin:6px 0 14px;color:var(--ink)}
 .fj-finished{font-family:'Source Serif 4',serif;font-style:italic;color:var(--navy);margin:0 0 12px}
 </style>`;
 
@@ -89,9 +91,17 @@ function buySection(course: FjCourse, learner: Learner | null): string {
  </section>`;
 }
 
-function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgress): string {
+function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgress, finishFirst: boolean): string {
   const base = coursePath(course);
   const next = course.lessons.find((l) => !progress.completed.has(l.slug));
+  const left = course.lessons.filter((l) => !progress.completed.has(l.slug));
+
+  // Sent back from the completion page, which opens only once every lesson
+  // is complete: one line naming what is left.
+  const notice =
+    finishFirst && course.completionPage && !progress.courseCompletedAt && left.length
+      ? `<p class="fj-notice" role="status">Finish ${lessonList(left)} to open ${escapeHtml(course.completionPage.title)}.</p>`
+      : "";
 
   // Plain words only: which lessons are completed, nothing scored or counted.
   const list = course.lessons
@@ -118,6 +128,7 @@ function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgre
  <section data-fj class="card" id="your-course" aria-labelledby="h-yours">
   <p class="kicker">Your course</p>
   <h2 id="h-yours">${escapeHtml(course.title)} is yours</h2>
+  ${notice}
   ${lead}
   <ul class="fj-progress" aria-label="Your lessons">${list}</ul>
   <div class="btns"><a class="btn" href="${downloadPath(course, "leaders-guide.pdf")}">⬇ Download the Leader's Guide (PDF)</a></div>
@@ -134,7 +145,8 @@ export function welcomePage(
   course: FjCourse,
   learner: Learner | null,
   offers: Set<FjOfferId>,
-  progress: CourseProgress | null
+  progress: CourseProgress | null,
+  { finishFirst = false }: { finishFirst?: boolean } = {}
 ): string {
   const owns = learner !== null && offersOpenCourse(offers, course);
 
@@ -148,6 +160,6 @@ export function welcomePage(
   );
 
   // Under the page, just before the main column closes.
-  out = swap(out, "</main>", `${owns && progress ? ownerSection(course, learner, progress) : buySection(course, learner)}\n</main>`);
+  out = swap(out, "</main>", `${owns && progress ? ownerSection(course, learner, progress, finishFirst) : buySection(course, learner)}\n</main>`);
   return swap(out, "</head>", `${STYLE}</head>`);
 }

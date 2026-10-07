@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { SERIES_LISTED, SERIES_PATH, findCourse, offersOpenCourse, tabTitle } from "@/lib/following-jesus";
+import { FINISH_FIRST, SERIES_LISTED, SERIES_PATH, findCourse, offersOpenCourse, tabTitle } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { getCourseProgress } from "@/lib/fj-progress";
 import { htmlResponse, readCoursePage, websitePage } from "@/lib/fj-html";
@@ -32,5 +32,7 @@ export async function GET(
     title: tabTitle(course.fullTitle),
     indexable: SERIES_LISTED,
   });
-  return htmlResponse(welcomePage(html, course, learner, offers, progress));
+  return htmlResponse(welcomePage(html, course, learner, offers, progress, {
+      finishFirst: request.nextUrl.searchParams.has(FINISH_FIRST),
+    }));
 }

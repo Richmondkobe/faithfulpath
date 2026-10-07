@@ -4,6 +4,7 @@ import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { readCoursePage } from "@/lib/fj-html";
 import { saveAnswers } from "@/lib/fj-answers";
 import { pageFields } from "@/lib/fj-answers-page";
+import { getCourseProgress } from "@/lib/fj-progress";
 import { fromThisSite } from "@/lib/fj-request";
 
 /**
@@ -27,6 +28,11 @@ export async function POST(
 
   const learner = await learnerWithAccess(course);
   if (!learner) return NextResponse.json({ error: "Not signed in to this course." }, { status: 403 });
+
+  // Closed with the page itself until the course is complete.
+  if (isCompletion && !(await getCourseProgress(course)).courseCompletedAt) {
+    return NextResponse.json({ error: "Not open yet." }, { status: 403 });
+  }
 
   let changes: unknown;
   try {

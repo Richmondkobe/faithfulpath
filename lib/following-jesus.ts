@@ -136,6 +136,16 @@ export function offersOpenCourse(offers: Iterable<FjOfferId>, course: FjCourse):
 
 /* ------------------------------------------------------------------ pages */
 
+/** The query that brings someone back to the course page from a closed completion page. */
+export const FINISH_FIRST = "finish-first";
+
+/** "Lesson 6", "Lessons 6 and 7", "Lessons 2, 6 and 7". */
+export function lessonList(lessons: FjLesson[]): string {
+  const n = lessons.map((l) => String(l.number));
+  if (n.length === 1) return `Lesson ${n[0]}`;
+  return `Lessons ${n.slice(0, -1).join(", ")} and ${n[n.length - 1]}`;
+}
+
 export function findLesson(course: FjCourse, slug: string): FjLesson | null {
   return course.lessons.find((l) => l.slug === slug) ?? null;
 }
