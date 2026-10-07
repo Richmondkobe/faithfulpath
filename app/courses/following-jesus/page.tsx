@@ -49,7 +49,10 @@ export default async function FollowingJesusSeries() {
       <p className="mt-4 leading-relaxed">
         The courses are sold on their own, separately from the membership: {singles} {singlesVerb}{" "}
         {formatPrice(begin.priceCents)}{each}, or all four are {formatPrice(all.priceCents)}, each a
-        one-time payment. All four opens each later course for you when it launches.
+        one-time payment.
+        {/* Only while a course is still to come: once all four are listed
+            there is no later course (Richmond, 8 October 2026). */}
+        {COURSES.some((c) => !(c.launched && c.listed)) && " All four opens each later course for you when it launches."}
       </p>
 
       <ol className="mt-12 space-y-4">
