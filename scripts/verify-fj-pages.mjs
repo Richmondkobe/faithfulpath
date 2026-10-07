@@ -18,7 +18,11 @@
 //      * href and src (links, the player, the recording);
 //      * onclick="return false" on the dead preview links, gone;
 //      * a <button> that became a link, keeping its class, style and words;
-//      * on a completed lesson, "done" on the finish section.
+//      * on a completed lesson, "done" on the finish section;
+//      * which of the eight progress dashes are gold (the website lights only
+//        lessons the learner has completed);
+//      * a line marked data-fj-changed, only if the exact before and after are
+//        in ALLOWED_TEXT_CHANGES below.
 // 3. No page asks Google, Vercel Analytics or anything else outside the site
 //    for anything (the recording's storage URL aside).
 //
@@ -67,6 +71,15 @@ for (const course of COURSES.filter((c) => c.launched)) {
 
 const owner = { userId: "00000000-0000-0000-0000-000000000000", email: "owner@example.com" };
 
+// Lines of the reviewed files the website changes on purpose, word for word.
+const ALLOWED_TEXT_CHANGES = [
+  // Lesson 8: "You have completed Begin!" moves into its own part, shown only
+  // once every lesson is complete (Richmond, 7 October 2026).
+  { original: "Well done. Lesson 8 is complete. You have completed Begin!", served: "Well done. Lesson 8 is complete." },
+];
+
+const progress = (slugs, done = false) => ({ completed: new Set(slugs), courseCompletedAt: done ? "2026-10-07T00:00:00Z" : null });
+
 async function pagesFor(course) {
   const pages = [];
   const raw = (file) => readCoursePage(course, file);
@@ -82,11 +95,17 @@ async function pagesFor(course) {
     }),
   });
 
+  // Some lessons done, not this one; then the same with this one done too.
+  const others = (lesson) => course.lessons.filter((l) => l.number < 3 && l.slug !== lesson.slug).map((l) => l.slug);
   for (const lesson of course.lessons) {
     const file = `${lesson.slug}/lesson.html`;
-    const open = withAnswers(await lessonPage(course, lesson, { completed: false }), answersApiPath(course, lesson.slug), {});
-    const done = withAnswers(await lessonPage(course, lesson, { completed: true }), answersApiPath(course, lesson.slug), {});
-    pages.push({ name: `${lesson.slug}`, original: await raw(file), served: open, completedVariant: done });
+    const open = withAnswers(await lessonPage(course, lesson, progress(others(lesson))), answersApiPath(course, lesson.slug), {});
+    const done = withAnswers(
+      await lessonPage(course, lesson, progress([...others(lesson), lesson.slug])),
+      answersApiPath(course, lesson.slug),
+      {}
+    );
+    pages.push({ name: `${lesson.slug}`, original: await raw(file), served: open, completedVariant: done, lesson });
     pages.push({ name: `${lesson.slug} player`, original: await raw(`${lesson.slug}/player.html`), served: await playerPage(course, lesson, AUDIO) });
   }
 
@@ -95,7 +114,7 @@ async function pagesFor(course) {
     pages.push({
       name: slug,
       original: await raw(`${slug}.html`),
-      served: withAnswers(await completionPage(course), answersApiPath(course, slug), {}),
+      served: withAnswers(await completionPage(course, progress(others(course.lessons[7]))), answersApiPath(course, slug), {}),
     });
   }
   return pages;
@@ -106,6 +125,7 @@ async function pagesFor(course) {
 function snapshot() {
   const inSkipped = (el) => el.closest("[data-fj]") || el.closest(".preview-note");
   const describe = (el) => {
+    const inDashes = !!el.parentElement?.classList.contains("steps8");
     const attrs = {};
     for (const a of el.attributes) attrs[a.name] = a.value;
     const text = [...el.childNodes]
@@ -114,7 +134,7 @@ function snapshot() {
       .join("")
       .replace(/\s+/g, " ")
       .trim();
-    return { tag: el.tagName.toLowerCase(), attrs, text };
+    return { tag: el.tagName.toLowerCase(), attrs, text, inDashes };
   };
   return {
     title: document.title,
@@ -140,11 +160,18 @@ function compareElements(name, a, b) {
     const o = a[i];
     const s = b[i];
     const where = `${name}: <${o.tag}> "${o.text.slice(0, 40)}"`;
-    if (o.text !== s.text) fail(`${where} — words changed to "${s.text.slice(0, 60)}"`);
+    const changedOnPurpose = "data-fj-changed" in s.attrs;
+    if (changedOnPurpose) {
+      if (!ALLOWED_TEXT_CHANGES.some((c) => c.original === o.text && c.served === s.text)) {
+        fail(`${where} — marked as changed, but "${s.text}" is not on the list of allowed changes`);
+      }
+    } else if (o.text !== s.text) fail(`${where} — words changed to "${s.text.slice(0, 60)}"`);
     const buttonToLink = o.tag === "button" && s.tag === "a";
     if (o.tag !== s.tag && !buttonToLink) fail(`${where} — became <${s.tag}>`);
     for (const key of new Set([...Object.keys(o.attrs), ...Object.keys(s.attrs)])) {
       if (o.attrs[key] === s.attrs[key] || ALLOWED_ATTR.has(key)) continue;
+      if (key === "data-fj-changed" && changedOnPurpose) continue;
+      if (key === "class" && o.inDashes && s.inDashes && [o.attrs[key], s.attrs[key]].every((v) => v === undefined || v === "on")) continue;
       if (key === "onclick" && o.attrs[key] === "return false" && s.attrs[key] === undefined) continue;
       fail(`${where} — ${key} changed from ${JSON.stringify(o.attrs[key])} to ${JSON.stringify(s.attrs[key])}`);
     }
@@ -172,11 +199,21 @@ for (const course of COURSES.filter((c) => c.launched)) {
     compareElements(p.name, o.body, s.body);
 
     if (p.completedVariant) {
-      const expected = p.served.replace(
+      // Marking the lesson complete changes exactly two things: "done" on the
+      // finish section, and this lesson's dash.
+      const n = p.lesson.number;
+      const lightDash = (html) =>
+        html.replace(/(<span class="steps8"[^>]*>)((?:<i(?: class="on")?><\/i>)+)/, (_, open, dashes) =>
+          open + dashes.match(/<i(?: class="on")?><\/i>/g).map((d, i) => (i === n - 1 ? '<i class="on"></i>' : d)).join("")
+        );
+      const expected = lightDash(p.served).replace(
         '<section class="card finish" id="finish"',
         '<section class="card finish done" id="finish"'
       );
-      if (p.completedVariant !== expected) fail(`${p.name}: the completed version differs by more than "done"`);
+      if (p.completedVariant !== expected) fail(`${p.name}: the completed version differs by more than "done" and its dash`);
+      const dashes = (await look(p.completedVariant)).body.filter((e) => e.inDashes).map((e) => (e.attrs.class === "on" ? "●" : "○")).join("");
+      const want = course.lessons.map((l) => (l.number < 3 || l.number === n ? "●" : "○")).join("");
+      if (dashes !== want) fail(`${p.name}: dashes ${dashes}, expected ${want}`);
     }
 
     // Outside addresses: only the recording's storage URL, and nothing that
@@ -202,7 +239,20 @@ for (const course of COURSES.filter((c) => c.launched)) {
 }
 await browser.close();
 
-/* ------------------------------------------ 4. no analytics on /courses */
+/* --------------------------------- 4. Lesson 8's "You have completed Begin!" */
+
+for (const course of COURSES.filter((c) => c.launched)) {
+  const last = course.lessons[course.lessons.length - 1];
+  const allButTwo = course.lessons.filter((l) => l.number !== 6 && l.number !== 7).map((l) => l.slug);
+  const notYet = await lessonPage(course, last, progress(allButTwo));
+  const whole = await lessonPage(course, last, progress(course.lessons.map((l) => l.slug), true));
+  const sentence = (html) => html.match(/<span data-fj id="fj-course-done"( hidden)?>/);
+  if (!sentence(notYet) || sentence(notYet)[1] !== " hidden") fail(`${last.slug}: "You have completed ${course.title}!" shows before every lesson is complete`);
+  else if (!sentence(whole) || sentence(whole)[1]) fail(`${last.slug}: "You have completed ${course.title}!" does not show when the course is complete`);
+  else console.log(`\n${last.slug}: "You have completed ${course.title}!" shows only when every lesson is complete`);
+}
+
+/* ------------------------------------------ 5. no analytics on /courses */
 
 const analytics = readFileSync(join(process.cwd(), "components", "analytics", "VercelAnalytics.tsx"), "utf8");
 if ((analytics.match(/startsWith\("\/courses"\)/g) ?? []).length !== 2) {

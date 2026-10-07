@@ -31,13 +31,8 @@ export async function GET(
   }
 
   const pageSlug = lesson ? lesson.slug : page;
-  const [progress, answers] = await Promise.all([
-    lesson ? getCourseProgress(course) : null,
-    getAnswers(course, pageSlug),
-  ]);
-  const html = lesson
-    ? await lessonPage(course, lesson, { completed: progress?.completed.has(lesson.slug) ?? false })
-    : await completionPage(course);
+  const [progress, answers] = await Promise.all([getCourseProgress(course), getAnswers(course, pageSlug)]);
+  const html = lesson ? await lessonPage(course, lesson, progress) : await completionPage(course, progress);
 
   // The learner's own answers go back into the page, and save as they type.
   return htmlResponse(withAnswers(html, answersApiPath(course, pageSlug), answers));

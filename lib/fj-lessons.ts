@@ -1,3 +1,4 @@
+import type { CourseProgress } from "@/lib/fj-progress";
 import {
   SERIES_PATH,
   coursePath,
@@ -114,14 +115,48 @@ export function completeApiPath(course: FjCourse, lesson: FjLesson): string {
 }
 
 const FINISH = '<section class="card finish" id="finish" aria-labelledby="h-finish">';
+
+/*
+ * The eight dashes at the top of a lesson and of the completion page. In the
+ * files they mark where the page sits (Lesson 7 shows seven gold, My First
+ * Steps all eight), which in Richmond's test read as progress: with Lessons 6
+ * and 7 not done, Lesson 8 and My First Steps still showed eight gold. On the
+ * website a dash is gold only for a lesson the learner has completed, and the
+ * lesson's own dash lights when they mark it.
+ */
+function progressDashes(html: string, course: FjCourse, progress: CourseProgress): string {
+  const found = html.match(/(<span class="steps8"[^>]*>)((?:<i(?: class="on")?><\/i>)+)(<\/span>)/);
+  if (!found) throw new Error("A Following Jesus page has no progress dashes.");
+  if ((found[2].match(/<i/g) ?? []).length !== course.lessons.length) {
+    throw new Error("A Following Jesus page has the wrong number of progress dashes.");
+  }
+  const dashes = course.lessons.map((l) => (progress.completed.has(l.slug) ? '<i class="on"></i>' : "<i></i>")).join("");
+  return swap(html, found[0], `${found[1]}${dashes}${found[3]}`);
+}
+
+/*
+ * "Well done. Lesson 8 is complete. You have completed Begin!" is one line in
+ * the Lesson 8 file, shown whenever Lesson 8 is marked. The second sentence is
+ * true only once every lesson is complete, so it is shown only then (including
+ * straight after the tap that completes the course). data-fj-changed tells
+ * scripts/verify-fj-pages.mjs this line was changed on purpose; it checks the
+ * change against its own list.
+ */
+function courseDoneSentence(html: string, course: FjCourse, lesson: FjLesson, progress: CourseProgress): string {
+  const line = `<p>Well done. Lesson ${lesson.number} is complete. You have completed ${course.title}!</p>`;
+  if (!html.includes(line)) return html;
+  const hidden = progress.courseCompletedAt ? "" : " hidden";
+  return swap(
+    html,
+    line,
+    `<p data-fj-changed>Well done. Lesson ${lesson.number} is complete.<span data-fj id="fj-course-done"${hidden}> You have completed ${course.title}!</span></p>`
+  );
+}
 const DONE_BUTTON =
   '<div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div>';
 
-export async function lessonPage(
-  course: FjCourse,
-  lesson: FjLesson,
-  { completed }: { completed: boolean }
-): Promise<string> {
+export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: CourseProgress): Promise<string> {
+  const completed = progress.completed.has(lesson.slug);
   const n = lesson.number;
   const two = lesson.slug.slice(-2);
   let html = websitePage(await readCoursePage(course, `${lesson.slug}/lesson.html`), {
@@ -160,6 +195,8 @@ export async function lessonPage(
   // completion that was never recorded. A lesson already completed opens with
   // "Well done" and its two buttons showing.
   if (completed) html = swap(html, FINISH, FINISH.replace('class="card finish"', 'class="card finish done"'));
+  html = progressDashes(html, course, progress);
+  html = courseDoneSentence(html, course, lesson, progress);
   html = swap(
     html,
     DONE_BUTTON,
@@ -173,7 +210,12 @@ export async function lessonPage(
   btn.onclick=function(){
     btn.disabled=true;err.hidden=true;
     fetch(${JSON.stringify(completeApiPath(course, lesson))},{method:'POST',credentials:'same-origin'})
-      .then(function(r){if(!r.ok)throw new Error(r.status);fin.classList.add('done');})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(res){
+        var dash=document.querySelectorAll('.steps8 i')[${lesson.number - 1}];if(dash)dash.classList.add('on');
+        var whole=document.getElementById('fj-course-done');if(whole)whole.hidden=!res.courseCompleted;
+        fin.classList.add('done');
+      })
       .catch(function(){err.hidden=false;})
       .then(function(){btn.disabled=false;});
   };
@@ -226,7 +268,7 @@ export async function playerPage(course: FjCourse, lesson: FjLesson, audioUrl: s
   );
 }
 
-export async function completionPage(course: FjCourse): Promise<string> {
+export async function completionPage(course: FjCourse, progress: CourseProgress): Promise<string> {
   const page = course.completionPage;
   if (!page) throw new Error(`${course.title} has no completion page.`);
 
@@ -234,6 +276,7 @@ export async function completionPage(course: FjCourse): Promise<string> {
     title: tabTitle(page.title),
     indexable: false,
   });
+  html = progressDashes(html, course, progress);
 
   // Book 2 is not out yet, so the series page, where it shows as coming soon.
   html = swap(
