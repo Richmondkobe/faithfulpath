@@ -157,8 +157,8 @@ export const COURSES: FjCourse[] = [
     fullTitle: "Multiply: Helping Others Follow Jesus",
     key: "following-jesus-multiply",
     launched: true,
-    // Unlisted until Richmond has tested it (8 October 2026).
-    listed: false,
+    // Unlisted while Richmond tested it; switched on 8 October 2026.
+    listed: true,
     firstChapter: 31,
     // From the welcome page's own line: "Ten lessons on joining Christ's
     // mission and helping others follow Jesus, without pressure or control."
