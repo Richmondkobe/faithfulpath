@@ -1,0 +1,700 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Establish Lesson 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#0d1f22;--navy:#1f3a3d;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f3a3d;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,760px);margin:0 0 .6em}.method div{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffaf0;border:2px solid #d4a24c;border-radius:14px;padding:8px 6px;font-size:clamp(12px,1.7vw,16px);color:#1f3a3d;text-align:center}.method svg{width:34px;height:34px;color:#a8792b}
+.method.five{grid-template-columns:repeat(5,1fr)}.method.dark div{background:rgba(243,231,201,.06);color:#f3e7c9;border-color:#d4a24c}.method.dark svg{color:#e8c98a}.method small{font-size:.78em;opacity:.8}.method .dim,.method .step{opacity:.35;transition:opacity .6s}.method .step.on{opacity:1}
+.checks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;width:min(100%,760px);text-align:left}.checks li{position:relative;padding-left:1.6em;font-size:clamp(14px,1.9vw,18px);color:#1f3a3d}.checks li::before{content:'\2713';position:absolute;left:0;color:#a8792b;font-weight:700}@media(max-width:560px){.checks{grid-template-columns:1fr}}
+
+/* ===== Establish palette (cover: evening teal, stone, hillside green, gold) ===== */
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-soft:#e3c98a;--sun:#f1ead6;--ink:#1f3a3d;--mute:#5c6b66;--cream:#f8f4e8}
+body{background:#0d1f22}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 52%,#4c5a50 86%,#a98f5a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf8ef 0%,#f6f1e2 68%,#e8e6d0 100%);color:var(--ink)}
+#stage.dark .h1{fill:#3d5246}#stage.dark .h2{fill:#2e4136}#stage.dark .h3{fill:#22322b}
+#stage.light .h1{fill:#dfe3cc}#stage.light .h2{fill:#d1d8bd}#stage.light .h3{fill:#c3cdaf}
+.label{color:#c9a24a}.light .label{color:#8a6a24}
+.light h2{color:#8a6a24}
+.steps b{color:#8a6a24}
+.card{background:#fbf8ef;border-color:#d9d2b8}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(201,162,74,.35)}
+.wrong{background:#ece8d8}
+.fs span{border-color:#cfc8ab;background:#fbf8ef}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22}
+.remember>div{background:rgba(241,234,214,.07);border-color:rgba(201,162,74,.5)}
+.remember p{color:#e4e2d4}
+.method div{background:#fbf8ef;border-color:#c9a24a;color:#1f3a3d}.method svg{color:#8a6a24}
+.method.dark div{background:rgba(241,234,214,.06);color:#f1ead6;border-color:#c9a24a}.method.dark svg{color:#e3c98a}
+.checks li{color:#1f3a3d}.checks li::before{color:#8a6a24}
+.badge{color:#8a6a24}.dark .badge,#stage.dark .badge{color:#d9b25c}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(18px,2.7vw,28px);line-height:1.45;max-width:28em;margin:0}
+.quote .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.liftv{transition:transform 1.2s ease}.b.on .liftv{animation:lift 4s ease-in-out 1}
+@keyframes lift{0%{transform:none}35%{transform:translate(40px,-40px)}65%{transform:translate(40px,-40px)}100%{transform:none}}
+.sunmove{transition:transform 6s ease}.b.on .sunmove{transform:translate(190px,-36px)}
+#cap{background:rgba(11,26,29,.8);color:#f1ead6}
+footer{background:#0b1a1d}.bar{background:#22383b}
+.bar.seek{cursor:pointer;height:8px}
+.stack>*{width:100%;display:flex;flex-direction:column;align-items:center}
+.dove{transform-box:fill-box;transform-origin:center}.b.on .dove{animation:dove 3s ease-out 1}@keyframes dove{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-lord" viewBox="0 0 60 60"><path d="M14 54V30h32v24" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 54h40M14 38h32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 22l3-14 9 8 9-8 3 14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cost" viewBox="0 0 60 60"><path d="M12 54V22h16v32M20 22V10h4v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M8 54h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="34" y="26" width="18" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 33h10M38 40h7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-obey" viewBox="0 0 60 60"><ellipse cx="20" cy="42" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-banner" viewBox="0 0 60 60"><path d="M14 56V6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 8h34l-8 10 8 10H14" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M28 14v8M24 18h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-spoken" viewBox="0 0 60 60"><path d="M6 48c8-4 16-4 24 0 8-4 16-4 24 0V20c-8-4-16-4-24 0-8-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v28" stroke="currentColor" stroke-width="3"/><path d="M22 10c4-4 12-4 16 0M18 4c7-5 17-5 24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-points" viewBox="0 0 60 60"><path d="M6 54c10-4 14-12 22-16s14-8 18-18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M46 6v20M40 12h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-daily" viewBox="0 0 60 60"><rect x="6" y="12" width="34" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 22h34M14 8v8M32 8v8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 50c0-6 12-6 12 0l-2 4h-8z" fill="currentColor"/><path d="M50 44c-2-4 0-7 0-9 2 3 3 6 0 9z" fill="currentColor"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-notice" viewBox="0 0 60 60"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="4"/><path d="M36 36l16 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="sans-serif">?</text></symbol>
+
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-compare" viewBox="0 0 60 60"><path d="M4 44c7-3 13-3 18 0V16c-5-3-11-3-18 0zM38 44c7-3 13-3 18 0V16c-5-3-11-3-18 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 26h12M32 22l4 4-4 4M36 36H24M28 32l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-onegod" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><circle cx="30" cy="30" r="9" fill="currentColor"/></symbol>
+ <symbol id="i-three" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 4"/><circle cx="30" cy="14" r="6" fill="currentColor"/><circle cx="17" cy="38" r="6" fill="currentColor"/><circle cx="43" cy="38" r="6" fill="currentColor"/></symbol>
+ <symbol id="i-equal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 24h24M18 36h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-arms" viewBox="0 0 60 60"><circle cx="30" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 22v18M30 40l-8 14M30 40l8 14M30 28C22 22 14 20 6 22M30 28c8-6 16-8 24-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c9a24a"/></marker>
+</defs></svg>
+<!-- ============ E2 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Establish · Lesson 2</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f1ead6"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="80" r="1.6"/><circle class="twinkle" cx="120" cy="90" r="1.5"/></g>
+   <g class="b up" data-at="Welcome to Lesson" data-until="It is a fair question">
+     <text x="320" y="64" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#d9b25c">Lesson 2</text>
+     <text x="320" y="110" text-anchor="middle" font-weight="700" font-size="36" fill="#f1ead6">The One God</text>
+     <text x="320" y="150" text-anchor="middle" font-size="14" fill="#a8b5a3" letter-spacing="2" class="b up" data-at="In Begin you learned to pray">IN BEGIN</text>
+     <g class="b up" data-at="In Begin you learned to pray">
+       <g style="color:#d9b25c"><use href="#i-pray" x="190" y="164" width="52" height="52"/></g>
+       <text x="216" y="240" text-anchor="middle" font-size="15" fill="#f1ead6">“Our Father”</text>
+     </g>
+     <g class="b up" data-at="and you saw that the new birth">
+       <g style="color:#d9b25c"><use href="#i-new" x="398" y="164" width="52" height="52"/></g>
+       <text x="424" y="240" text-anchor="middle" font-size="15" fill="#f1ead6">born of the Spirit</text>
+     </g>
+     <text class="b up" data-at="Now we are going one step further" x="320" y="280" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#d9b25c">one step further: who is God himself?</text>
+   </g>
+   <g class="b" data-at="It is a fair question" data-until="So here is our question">
+     <g font-size="17" fill="#f1ead6" text-anchor="middle">
+       <g class="b up" data-at="Christians pray Our Father They worship"><rect x="40" y="110" width="170" height="44" rx="22" fill="rgba(241,234,214,.08)" stroke="#a8b5a3"/><text x="125" y="138">“Our Father”</text></g>
+       <g class="b up" data-at="They worship Jesus"><rect x="235" y="110" width="170" height="44" rx="22" fill="rgba(241,234,214,.08)" stroke="#a8b5a3"/><text x="320" y="138">worship Jesus</text></g>
+       <g class="b up" data-at="They speak of being filled with the Holy Spirit"><rect x="430" y="110" width="170" height="44" rx="22" fill="rgba(241,234,214,.08)" stroke="#a8b5a3"/><text x="515" y="138">filled with the Spirit</text></g>
+     </g>
+     <g class="b pop" data-at="Yet they insist that there is only one God"><circle cx="320" cy="220" r="26" fill="none" stroke="#d9b25c" stroke-width="3"/><text x="320" y="228" text-anchor="middle" font-size="22" font-weight="700" fill="#d9b25c">1</text><text x="320" y="272" text-anchor="middle" font-size="15" fill="#c8d0cc">only one God</text></g>
+     <g class="b pop" data-at="How does that fit together"><rect x="440" y="196" width="150" height="44" rx="14" fill="#f1ead6"/><path d="M470 240l-10 16 24-16z" fill="#f1ead6"/><text x="515" y="224" text-anchor="middle" font-size="16" font-weight="700" fill="#1f3a3d">Three gods?</text></g>
+   </g>
+  </svg>
+  <h1 class="b up" data-at="So here is our question" style="font-size:clamp(20px,3.3vw,36px)">Christians say there is one God, but they also speak of the Father, the Son and the Holy Spirit. Do Christians worship three gods?</h1>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Matthew 3:13–15</p>
+  <svg class="scene" viewBox="0 0 680 170" aria-hidden="true">
+    <g class="b up" data-at="Then Jesus came from Galilee">
+      <path d="M20 60 C80 30 140 40 190 70" fill="none" stroke="#9aa89a" stroke-width="2"/>
+      <text x="80" y="30" font-size="12" fill="#5c6b66">hills of Galilee</text>
+      <path d="M150 64 C220 90 260 110 300 120" fill="none" stroke="#b9a27a" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round"/>
+      <path d="M260 150 C360 128 460 160 660 136 V170 H260z" fill="#c9d8d4"/><path d="M280 152 C380 136 470 162 660 142" stroke="#8fb0aa" stroke-width="2" fill="none"/>
+      <text x="600" y="164" font-size="12" fill="#3f5f5a">Jordan</text>
+    </g>
+    <g class="b up" data-at="to the Jordan to John">
+      <g fill="#6c7f74"><circle cx="560" cy="112" r="7"/><circle cx="584" cy="116" r="7"/><circle cx="608" cy="112" r="7"/><circle cx="632" cy="116" r="7"/></g>
+      <g fill="#1f3a3d"><circle cx="470" cy="104" r="10"/><path d="M456 146c0-24 6-34 14-34s14 10 14 34z"/></g>
+      <text x="470" y="88" text-anchor="middle" font-size="12" fill="#5c6b66">John</text>
+    </g>
+    <g class="b up" data-at="to be baptized by him">
+      <g fill="#8a6a24"><circle cx="360" cy="104" r="10"/><path d="M346 146c0-24 6-34 14-34s14 10 14 34z"/></g>
+      <text x="360" y="88" text-anchor="middle" font-size="12" fill="#8a6a24" font-weight="700">Jesus</text>
+    </g>
+    <g class="b pop" data-at="John would have prevented him"><path d="M488 112l18-14" stroke="#1f3a3d" stroke-width="3" stroke-linecap="round"/><rect x="420" y="20" width="200" height="34" rx="10" fill="#fbf8ef" stroke="#c9bf9f"/><text x="520" y="42" text-anchor="middle" font-size="13" fill="#1f3a3d">“I need to be baptized by you”</text></g>
+    <text class="b up" data-at="Then he consented" x="200" y="140" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#8a6a24">John agrees</text>
+  </svg>
+  <p class="scripture" style="font-size:clamp(14px,2vw,21px)">
+   <span class="ph" data-at="Then Jesus came from Galilee">“Then Jesus came from Galilee to the Jordan to John, to be baptized by him.</span>
+   <span class="ph" data-at="John would have prevented him">John would have prevented him, saying, ‘I need to be baptized by you, and do you come to me?’</span>
+   <span class="ph" data-at="But Jesus answered him">But Jesus answered him, ‘Let it be so now, for thus it is fitting for us to fulfill all righteousness.’ Then he consented.”</span>
+   <span class="ref">Matthew 3:13–15 · ESV</span>
+  </p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><path class="b" data-at="the heavens were opened" d="M300 0 L340 70 L380 0z" fill="#e3c98a" fill-opacity=".12"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Read the Scripture · Matthew 3:16–17</p>
+  <svg class="scene" viewBox="0 0 680 200" aria-hidden="true">
+    <path d="M60 170 C200 150 340 182 620 160 V200 H60z" fill="#2e4a4c"/>
+    <g class="b up" data-at="immediately he went up from the water"><g fill="#e3c98a"><circle cx="340" cy="120" r="12"/><path d="M324 176c0-30 7-42 16-42s16 12 16 42z"/></g></g>
+    <g class="b up" data-at="he saw the Spirit of God descending" transform="translate(0 20)">
+      <path class="dove" d="M340 40 c-10-8-26-6-34 2 c10 0 18 4 22 10 l12 4 l12-4 c4-6 12-10 22-10 c-8-8-24-10-34-2z" fill="#f1ead6"/>
+      <path d="M340 64 V96" stroke="#f1ead6" stroke-width="1.5" stroke-dasharray="2 5" opacity=".7"/>
+    </g>
+    <g class="b up" data-at="a voice from heaven said">
+      <text x="340" y="20" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#e3c98a">“This is my beloved Son”</text>
+    </g>
+    <g font-size="14" text-anchor="middle" font-weight="700">
+      <g class="b up" data-at="The Son stands in the water"><path d="M362 140h80" stroke="#d9b25c" stroke-width="2"/><text x="500" y="145" fill="#f1ead6">the Son</text></g>
+      <g class="b up" data-at="The Spirit comes down on him"><path d="M376 70h66" stroke="#d9b25c" stroke-width="2"/><text x="500" y="75" fill="#f1ead6">the Spirit</text></g>
+      <g class="b up" data-at="The Father speaks from heaven"><path d="M196 16h-30" stroke="#d9b25c" stroke-width="2"/><text x="120" y="21" fill="#f1ead6">the Father</text></g>
+    </g>
+  </svg>
+  <p class="scripture" style="font-size:clamp(14px,2vw,21px);color:#f1ead6">
+   <span class="ph" data-at="And when Jesus was baptized immediately">“And when Jesus was baptized, immediately he went up from the water, and behold, the heavens were opened to him, and he saw the Spirit of God descending like a dove and coming to rest on him; and behold, a voice from heaven said, ‘This is my <u class="k" data-at="the Father's words express his love">beloved Son</u>, with whom I am well pleased.’”</span>
+   <span class="ref" style="color:#a8b5a3">Matthew 3:16–17 · ESV</span>
+  </p>
+  <p class="gloss b up" data-at="Let us use the first question from Lesson" style="color:#e3c98a;font-weight:600"><svg viewBox="0 0 60 60" style="width:1.3em;height:1.3em;vertical-align:-.3em;color:#e3c98a"><use href="#i-says"/></svg> What does it say? Who is present?</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="dark" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="Our one Hebrew word today" style="color:#c8d0cc">One · Hebrew</p>
+  <p class="scripture b up" data-at="Hear O Israel The LORD our God" style="color:#f1ead6;font-size:clamp(18px,2.7vw,28px)">“Hear, O Israel: The LORD our God, the LORD is <u class="k" data-at="The word for one is">one</u>.”<span class="ref" style="color:#a8b5a3">Deuteronomy 6:4 · ESV</span></p>
+  <p class="word b up" data-at="The word for one is" style="color:#f1ead6">ʾeḥād</p>
+  <svg class="scene" viewBox="0 0 680 130" aria-hidden="true">
+    <g class="b up" data-at="as they were about to enter a land full of other gods" data-until="The point of the verse">
+      <g fill="none" stroke="#7d8a82" stroke-width="2">
+        <path d="M80 110v-40l14-14 14 14v40z"/><path d="M170 110v-50l10-10 10 10v50z"/><path d="M480 110v-46l12-12 12 12v46z"/><path d="M570 110v-36l14-12 14 12v36z"/>
+      </g>
+      <text x="340" y="80" text-anchor="middle" font-size="14" fill="#c8d0cc">a land full of other gods</text>
+    </g>
+    <g class="b up" data-at="The point of the verse is that the LORD alone is God">
+      <circle cx="340" cy="64" r="34" fill="#e3c98a" opacity=".22"/><circle cx="340" cy="64" r="16" fill="#e3c98a"/>
+      <text x="340" y="124" text-anchor="middle" font-size="16" font-weight="700" fill="#e3c98a">the LORD alone is God</text>
+    </g>
+  </svg>
+  <p class="gloss b up" data-at="We should not try to make this word prove" style="color:#c8d0cc">A plain meaning: one God, and only one</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <h2 class="b up" data-at="Now the background">The Shema: “Hear”</h2>
+  <svg class="scene" viewBox="0 0 680 140" aria-hidden="true">
+    <g class="b up" data-at="traditionally recited morning and evening">
+      <circle cx="90" cy="40" r="16" fill="#e3c98a"/><text x="90" y="76" text-anchor="middle" font-size="12" fill="#5c6b66">morning</text>
+      <path d="M210 40a16 16 0 1 0 12 26a13 13 0 0 1-12-26z" fill="#6c7f74"/><text x="210" y="76" text-anchor="middle" font-size="12" fill="#5c6b66">evening</text>
+      <g fill="#1f3a3d"><circle cx="150" cy="100" r="8"/><path d="M138 136c0-18 5-26 12-26s12 8 12 26z"/></g>
+    </g>
+    <g class="b up" data-at="Jesus himself quoted it">
+      <g fill="#8a6a24"><circle cx="400" cy="70" r="11"/><path d="M384 136c0-36 6-50 16-50s16 14 16 50z"/></g>
+      <rect x="430" y="40" width="210" height="44" rx="12" fill="#fbf8ef" stroke="#c9a24a"/><text x="535" y="60" text-anchor="middle" font-size="13" fill="#1f3a3d">“Hear, O Israel…”</text><text x="535" y="76" text-anchor="middle" font-size="11" fill="#5c6b66">Mark 12:29</text>
+    </g>
+  </svg>
+  <p class="scripture b up" data-at="And through the prophet Isaiah" style="font-size:clamp(15px,2.2vw,22px)">“I am the LORD, and there is no other, besides me there is no God.”<span class="ref">Isaiah 45:5 · ESV</span></p>
+  <p class="gloss b up" data-at="The first Christians were Jewish believers" style="color:#8a6a24;font-weight:600">The first Christians held firmly to the one God</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <h2 class="b up" data-at="John was calling the people of Israel">A voice the Scriptures had prepared</h2>
+  <svg class="scene" viewBox="0 0 680 210" aria-hidden="true">
+    <g class="b up" data-at="In Psalm" font-size="13">
+      <rect x="30" y="20" width="200" height="64" rx="8" fill="#f6efd9" stroke="#8a6a24" stroke-width="2"/>
+      <text x="130" y="44" text-anchor="middle" fill="#5c6b66">Psalm 2:7</text><text x="130" y="68" text-anchor="middle" fill="#1f3a3d" font-weight="700">“You are my Son”</text>
+    </g>
+    <g class="b up" data-at="And in Isaiah" font-size="13">
+      <rect x="450" y="20" width="200" height="64" rx="8" fill="#f6efd9" stroke="#8a6a24" stroke-width="2"/>
+      <text x="550" y="44" text-anchor="middle" fill="#5c6b66">Isaiah 42:1</text><text x="550" y="62" text-anchor="middle" fill="#1f3a3d" font-weight="700">“my soul delights…</text><text x="550" y="78" text-anchor="middle" fill="#1f3a3d" font-weight="700">I have put my Spirit upon him”</text>
+    </g>
+    <g class="b up" data-at="these two promises meet in Jesus">
+      <path class="draw" style="--len:220" d="M130 86 C150 140 260 160 320 166" stroke="#c9a24a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <path class="draw" style="--len:220" d="M550 86 C530 140 420 160 360 166" stroke="#c9a24a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+      <rect x="250" y="150" width="180" height="44" rx="12" fill="#1f3a3d"/><text x="340" y="170" text-anchor="middle" font-size="13" fill="#f1ead6" font-weight="700">at the Jordan:</text><text x="340" y="186" text-anchor="middle" font-size="13" fill="#e3c98a">“my beloved Son” · the Spirit</text>
+    </g>
+  </svg>
+  <p class="badge b up" data-at="This is the third question from Lesson"><svg viewBox="0 0 60 60"><use href="#i-pointsto"/></svg>Where It Points</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="dark" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">The Short Answer</p>
+  <h1 class="b up" data-at="Here is the short answer No" style="font-size:clamp(24px,4vw,42px);color:#f1ead6">No. Christians do not worship three gods.</h1>
+  <p class="scripture b up" data-at="This one God is eternally" style="color:#f1ead6;font-size:clamp(17px,2.5vw,26px)">There is one God, eternally Father, Son and Holy Spirit: distinct, equal and perfectly united.</p>
+  <p class="gloss b up" data-at="Christians call this the Trinity" style="color:#c8d0cc">“Trinity”: tri-unity · a summary word, not a Bible word</p>
+  <div class="method dark">
+    <div class="b up" data-at="We will look at it in four parts one God"><svg viewBox="0 0 60 60"><use href="#i-onegod"/></svg>One God</div>
+    <div class="b up" data-at="Father Son and Spirit equal and united"><svg viewBox="0 0 60 60"><use href="#i-three"/></svg>Father, Son and Spirit</div>
+    <div class="b up" data-at="equal and united and drawing us in"><svg viewBox="0 0 60 60"><use href="#i-equal"/></svg>Equal and United</div>
+    <div class="b up" data-at="and drawing us in"><svg viewBox="0 0 60 60"><use href="#i-arms"/></svg>Drawing Us In</div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="badge b up" data-at="The first part one God"><svg viewBox="0 0 60 60"><use href="#i-onegod"/></svg>Part 1</p>
+  <h1 class="b up" data-at="The first part one God" style="font-size:clamp(26px,4.4vw,46px)">One God</h1>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b up" data-at="there is only one true God">
+      <circle cx="340" cy="70" r="50" fill="#e3c98a" opacity=".25"/><circle cx="340" cy="70" r="22" fill="#c9a24a"/>
+    </g>
+    <g class="b up" data-at="stands on this foundation">
+      <rect x="230" y="122" width="220" height="16" rx="3" fill="#d9ceb0" stroke="#8a7a5a"/><text x="340" y="148" text-anchor="middle" font-size="12" fill="#5c6b66">the foundation</text>
+    </g>
+    <g class="b up" data-at="Christians are not polytheists">
+      <text x="560" y="74" text-anchor="middle" font-size="17" fill="#5c6b66">many gods</text>
+      <path d="M500 68h120" stroke="#c9a24a" stroke-width="3"/>
+    </g>
+  </svg>
+  <p class="scripture b up" data-at="The Bible could not be clearer" style="font-size:clamp(16px,2.4vw,24px)">“Hear, O Israel: The LORD our God, the LORD is one.”<span class="ref">Deuteronomy 6:4 · ESV</span></p>
+  <p class="gloss b up" data-at="We worship the one living God" style="color:#8a6a24;font-weight:600">the God of Abraham, Isaac and Jacob</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="dark" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge b up" data-at="The second part Father Son and Spirit"><svg viewBox="0 0 60 60"><use href="#i-three"/></svg>Part 2</p>
+  <h1 class="b up" data-at="The second part Father Son and Spirit" style="font-size:clamp(26px,4.4vw,46px);color:#f1ead6">Father, Son and Spirit</h1>
+  <svg class="scene" viewBox="0 0 680 210" aria-hidden="true">
+    <circle cx="340" cy="105" r="96" fill="none" stroke="#a8b5a3" stroke-width="1.5" stroke-dasharray="3 6" class="b" data-at="the Bible shows us the Father the Son"/>
+    <g font-size="14" text-anchor="middle" font-weight="700">
+      <g class="b up" data-at="the Bible shows us the Father the Son"><circle cx="340" cy="40" r="14" fill="#e3c98a"/><text x="340" y="22" fill="#f1ead6">Father</text><circle cx="270" cy="150" r="14" fill="#e3c98a"/><text x="230" y="178" fill="#f1ead6">Son</text><circle cx="410" cy="150" r="14" fill="#e3c98a"/><text x="450" y="178" fill="#f1ead6">Spirit</text></g>
+    </g>
+    <g font-size="12" fill="#c8d0cc" text-anchor="middle">
+      <g class="b up" data-at="The Father speaks to the Son"><path d="M330 54 L280 134" stroke="#d9b25c" stroke-width="2.5" marker-end="url(#arrow)"/><text x="268" y="92">speaks</text></g>
+      <g class="b up" data-at="The Son prays to the Father"><path d="M292 140 L344 60" stroke="#d9b25c" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrow)"/><text x="350" y="104">prays</text></g>
+      <g class="b up" data-at="he will give you another Helper"><path d="M352 54 L402 134" stroke="#d9b25c" stroke-width="2.5" marker-end="url(#arrow)"/><text x="420" y="92">“another Helper”</text></g>
+      <g class="b up" data-at="And before creation the Father loved the Son"><text x="340" y="204" fill="#e3c98a" font-size="13">loved before creation (John 17:24)</text></g>
+    </g>
+  </svg>
+  <p class="scripture b up" data-at="he told them to baptise" style="color:#f1ead6;font-size:clamp(15px,2.2vw,22px)">“…in <u class="k" data-at="Notice one name">the name</u> of the Father and of the Son and of the Holy Spirit.”<span class="ref" style="color:#a8b5a3">Matthew 28:19 · ESV</span></p>
+  <p class="gloss b up" data-at="Christians often use the word person" style="color:#c8d0cc">“Person”: a real distinction, not a separate being or one third of God</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge b up" data-at="The third part equal and united"><svg viewBox="0 0 60 60"><use href="#i-equal"/></svg>Part 3</p>
+  <h1 class="b up" data-at="The third part equal and united" style="font-size:clamp(26px,4.4vw,46px)">Equal and United</h1>
+  <div class="stack" style="min-height:8.5em">
+   <div class="b" data-at="The Father is God" data-until="So the Father the Son and the Spirit are not three parts">
+    <div class="cards">
+      <div class="card b up" style="min-width:11em" data-at="The Father is God"><b>The Father</b>“…the only true God”<br><small>John 17:3</small></div>
+      <div class="card b up" style="min-width:11em" data-at="The Son is God"><b>The Son</b>“…the Word was God”<br><small>John 1:1</small><span class="b" data-at="My Lord and my God"><br>“My Lord and my God!” <small>John 20:28</small></span></div>
+      <div class="card b up" style="min-width:11em" data-at="The Holy Spirit is God"><b>The Spirit</b><span class="b" data-at="to lie to the Holy Spirit">“…lie to the Holy Spirit” <small>Acts 5:3</small></span><span class="b" data-at="You have not lied to man"><br>“…lied… to God” <small>Acts 5:4</small></span></div>
+    </div>
+   </div>
+   <div class="b" data-at="So the Father the Son and the Spirit are not three parts">
+    <svg class="scene" viewBox="0 0 680 150" style="width:100%;max-width:760px" aria-hidden="true">
+      <g font-size="13" text-anchor="middle">
+        <g class="b up" data-at="not three parts of God"><circle cx="110" cy="60" r="40" fill="none" stroke="#9aa39c" stroke-width="2"/><path d="M110 60V20M110 60l35 20M110 60l-35 20" stroke="#9aa39c" stroke-width="2"/><path d="M60 110l100-100" stroke="#c9a24a" stroke-width="3"/><text x="110" y="128" fill="#5c6b66">not three parts</text></g>
+        <g class="b up" data-at="Nor are they one person wearing three different masks"><g fill="#9aa39c"><circle cx="300" cy="50" r="18"/></g><rect x="268" y="74" width="20" height="14" rx="3" fill="#d9ceb0"/><rect x="292" y="74" width="20" height="14" rx="3" fill="#d9ceb0"/><rect x="316" y="74" width="20" height="14" rx="3" fill="#d9ceb0"/><path d="M250 110l100-100" stroke="#c9a24a" stroke-width="3"/><text x="300" y="128" fill="#5c6b66">not one person, three masks</text></g>
+        <g class="b up" data-at="In the work of salvation the Father sends"><text x="520" y="40" fill="#1f3a3d" font-weight="700">the Father sends</text><text x="520" y="66" fill="#1f3a3d" font-weight="700" class="b" data-at="the Son comes">the Son comes</text><text x="520" y="92" fill="#1f3a3d" font-weight="700" class="b" data-at="and the Spirit is given">the Spirit is given</text></g>
+        <text class="b up" data-at="But different roles do not mean" x="520" y="128" fill="#8a6a24" font-weight="700">different roles, equally God</text>
+      </g>
+    </svg>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="dark" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="label">Understand the Teaching</p>
+  <h1 class="b up" data-at="But a mystery is not a contradiction" style="font-size:clamp(24px,4vw,42px);color:#f1ead6">A mystery, not a contradiction</h1>
+  <svg class="scene" viewBox="0 0 680 120" aria-hidden="true">
+    <g class="b up" data-at="Our minds are small God is great">
+      <g fill="#f1ead6"><circle cx="120" cy="20" r="2"/><circle cx="200" cy="40" r="1.6"/><circle cx="300" cy="14" r="2.2"/><circle cx="420" cy="34" r="1.8"/><circle cx="520" cy="18" r="2"/><circle cx="600" cy="44" r="1.6"/></g>
+      <g fill="#a8b5a3"><circle cx="340" cy="86" r="6"/><path d="M332 116c0-14 3-20 8-20s8 6 8 20z"/></g>
+      <text x="340" y="70" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#e3c98a">our minds are small; God is great</text>
+    </g>
+  </svg>
+  <div class="nots">
+   <div class="not b up" data-at="An egg with its shell white and yolk"><span class="wrong" style="background:rgba(241,234,214,.1);color:#c8d0cc">An egg<i class="b" data-at="suggests that God has three parts"></i></span><span class="truth b" data-at="suggests that God has three parts" style="background:transparent;color:#f1ead6">suggests three parts</span></div>
+   <div class="not b up" data-at="Water as ice liquid and steam"><span class="wrong" style="background:rgba(241,234,214,.1);color:#c8d0cc">Water, ice and steam<i class="b" data-at="suggests that one person keeps changing form"></i></span><span class="truth b" data-at="suggests that one person keeps changing form" style="background:transparent;color:#f1ead6">suggests changing form</span></div>
+   <div class="not b up" data-at="A man who is a father a son and a husband"><span class="wrong" style="background:rgba(241,234,214,.1);color:#c8d0cc">One man, three roles<i class="b" data-at="suggests one person with three roles"></i></span><span class="truth b" data-at="suggests one person with three roles" style="background:transparent;color:#f1ead6">suggests one person</span></div>
+  </div>
+  <p class="gloss b up" data-at="It is better to let Scripture speak" style="color:#e3c98a;font-weight:600;margin-top:.6em">Let Scripture speak. No picture fully works.</p>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="badge b up" data-at="The fourth part drawing us in"><svg viewBox="0 0 60 60"><use href="#i-arms"/></svg>Part 4</p>
+  <h1 class="b up" data-at="The fourth part drawing us in" style="font-size:clamp(26px,4.4vw,46px)">Drawing Us In</h1>
+  <div class="stack" style="min-height:9em">
+   <div class="b" data-at="It shapes how we pray" data-until="It shapes how we are saved">
+    <p class="scripture" style="font-size:clamp(15px,2.2vw,22px)">“For through him we both have access in one Spirit to the Father.”<span class="ref">Ephesians 2:18 · ESV</span></p>
+    <svg class="scene" viewBox="0 0 680 90" aria-hidden="true">
+      <g font-size="13" text-anchor="middle" font-weight="700" fill="#1f3a3d">
+        <g class="b up" data-at="Christian prayer is ordinarily offered"><use href="#i-pray" x="40" y="20" width="40" height="40" style="color:#8a6a24"/><text x="60" y="80">we pray</text>
+        <path d="M100 40h90" stroke="#c9a24a" stroke-width="2.5" marker-end="url(#arrow)"/><text x="250" y="45">by the Spirit</text><path d="M310 40h60" stroke="#c9a24a" stroke-width="2.5" marker-end="url(#arrow)"/><text x="430" y="45">through the Son</text><path d="M500 40h60" stroke="#c9a24a" stroke-width="2.5" marker-end="url(#arrow)"/><text x="615" y="45">to the Father</text></g>
+      </g>
+    </svg>
+    <p class="gloss b up" data-at="Stephen prayed Lord Jesus" style="color:#8a6a24;font-weight:600">“Lord Jesus, receive my spirit.” (Acts 7:59) · all three are worthy of worship</p>
+   </div>
+   <div class="b" data-at="It shapes how we are saved" data-until="And it shows us that God is love">
+    <p class="scripture" style="font-size:clamp(15px,2.2vw,22px)">“God sent forth his Son… God has sent the Spirit of his Son into our hearts…”<span class="ref">Galatians 4:4, 6 · ESV</span></p>
+    <div class="cards">
+      <div class="card b up" style="min-width:9em" data-at="The Father sends the Son"><b>The Father</b>sends the Son</div>
+      <div class="card b up" style="min-width:9em" data-at="the Son gives himself for us"><b>The Son</b>gives himself for us</div>
+      <div class="card b up" style="min-width:9em" data-at="and the Spirit brings us into God's family"><b>The Spirit</b>brings us into God’s family</div>
+    </div>
+   </div>
+   <div class="b" data-at="And it shows us that God is love">
+    <p class="word" style="font-size:clamp(30px,5.6vw,60px);font-style:italic;color:#1f3a3d">God is love.</p>
+    <p class="ref" style="letter-spacing:.2em;font-size:12px;color:#5c6b66;margin:0">1 JOHN 4:8</p>
+    <svg class="scene" viewBox="0 0 680 90" aria-hidden="true">
+      <g class="b up" data-at="Before anything was made the Father loved the Son"><circle cx="340" cy="44" r="30" fill="none" stroke="#c9a24a" stroke-width="2.5"/><g fill="#c9a24a"><circle cx="340" cy="26" r="5"/><circle cx="324" cy="54" r="5"/><circle cx="356" cy="54" r="5"/></g></g>
+      <g class="b up" data-at="this God invites us into his love"><circle cx="340" cy="44" r="42" fill="none" stroke="#e3c98a" stroke-width="2" stroke-dasharray="3 5"/><g fill="#1f3a3d"><circle cx="400" cy="70" r="6"/></g><path d="M394 66l-14-8" stroke="#8a6a24" stroke-width="2" marker-end="url(#arrow)"/></g>
+    </svg>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">Christians Differ</p>
+  <h1 class="b up" data-at="Christians differ on some questions" style="font-size:clamp(22px,3.8vw,40px)">A note on Oneness teaching</h1>
+  <div class="cards" style="margin-top:.4em">
+    <div class="card b up" style="min-width:13em;max-width:20em" data-at="Most churches throughout history"><b>Most churches through history</b>one God, eternally Father, Son and Holy Spirit</div>
+    <div class="card b up" style="min-width:13em;max-width:20em" data-at="Some churches often called Oneness churches"><b>Oneness teaching</b>one God; Father, Son and Spirit understood differently from historic Trinitarian teaching</div>
+  </div>
+  <p class="gloss b up" data-at="Oneness believers strongly affirm" style="color:#1f3a3d;font-weight:600;margin-top:.7em">Shared ground: God is one · Jesus is fully divine</p>
+  <p class="gloss b up" data-at="this course treats the Bible's teaching" style="color:#8a6a24;font-weight:600">Who God is: a central question, not a minor difference</p>
+  <svg class="scene" viewBox="0 0 680 90" aria-hidden="true">
+    <g class="b up" data-at="Welcome them warmly">
+      <rect x="220" y="56" width="240" height="12" rx="6" fill="#d9ceb0" stroke="#8a7a5a"/>
+      <g fill="#6c7f74"><circle cx="250" cy="38" r="9"/><circle cx="290" cy="34" r="9"/></g><g fill="#1f3a3d"><circle cx="390" cy="34" r="9"/><circle cx="430" cy="38" r="9"/></g>
+      <path d="M320 54c8-4 14-4 20 0 6-4 12-4 20 0v-16c-8-4-14-4-20 0-6-4-12-4-20 0z" fill="#fbf8ef" stroke="#8a6a24" stroke-width="2"/>
+      <text x="340" y="86" text-anchor="middle" font-size="13" fill="#5c6b66">welcome warmly · listen fairly · read the Scriptures together</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h2 class="b up" data-at="Let me tell you about Daniel">Daniel’s story · Jakarta, Indonesia</h2>
+  <svg class="scene" viewBox="0 0 680 230" aria-hidden="true">
+    <g class="b" data-at="Daniel is a university student" data-until="He asked his pastor for help">
+      <rect x="220" y="150" width="240" height="12" rx="4" fill="#8a7a5a"/>
+      <g fill="#1f3a3d"><circle cx="280" cy="100" r="13"/><path d="M262 150c0-30 6-42 18-42s18 12 18 42z"/></g><text x="280" y="184" text-anchor="middle" font-size="13" fill="#5c6b66">Daniel</text>
+      <g fill="#6c7f74"><circle cx="400" cy="100" r="13"/><path d="M382 150c0-30 6-42 18-42s18 12 18 42z"/></g><text x="400" y="184" text-anchor="middle" font-size="13" fill="#5c6b66">Arif</text>
+      <g class="b pop" data-at="Why do Christians worship three gods"><rect x="420" y="20" width="230" height="44" rx="12" fill="#fbf8ef" stroke="#c9bf9f"/><path d="M430 64l-10 18 26-18z" fill="#fbf8ef"/><text x="535" y="47" text-anchor="middle" font-size="14" fill="#1f3a3d">“Why three gods?”</text></g>
+      <g class="b pop" data-at="Daniel tried to explain using an egg"><ellipse cx="180" cy="60" rx="26" ry="34" fill="#fbf8ef" stroke="#8a6a24" stroke-width="2"/><circle cx="180" cy="66" r="12" fill="#e3c98a"/></g>
+      <g class="b pop" data-at="So God has three parts"><rect x="420" y="20" width="230" height="44" rx="12" fill="#fbf8ef" stroke="#c9a24a" stroke-width="2"/><text x="535" y="47" text-anchor="middle" font-size="14" fill="#8a6a24" font-weight="700">“So God has three parts?”</text></g>
+    </g>
+    <g class="b" data-at="He asked his pastor for help" data-until="The next week Daniel told Arif">
+      <rect x="230" y="120" width="220" height="12" rx="6" fill="#d9ceb0" stroke="#8a7a5a"/>
+      <g fill="#1f3a3d"><circle cx="270" cy="92" r="12"/></g><g fill="#8a6a24"><circle cx="410" cy="92" r="12"/></g>
+      <path d="M318 118c8-4 14-4 22 0 8-4 14-4 22 0v-18c-8-4-14-4-22 0-8-4-14-4-22 0z" fill="#fbf8ef" stroke="#8a6a24" stroke-width="2"/>
+      <g font-size="13" fill="#1f3a3d" font-weight="700" text-anchor="middle"><text class="b up" data-at="They read Deuteronomy" x="160" y="40">Deuteronomy 6:4</text><text class="b up" data-at="Matthew" x="340" y="40">Matthew 3:16–17</text><text class="b up" data-at="and John" x="520" y="40">John 1:1</text></g>
+    </g>
+    <g class="b" data-at="The next week Daniel told Arif">
+      <rect x="220" y="150" width="240" height="12" rx="4" fill="#8a7a5a"/>
+      <g fill="#1f3a3d"><circle cx="280" cy="100" r="13"/><path d="M262 150c0-30 6-42 18-42s18 12 18 42z"/></g>
+      <g fill="#6c7f74"><circle cx="400" cy="100" r="13"/><path d="M382 150c0-30 6-42 18-42s18 12 18 42z"/></g>
+      <g class="b pop" data-at="I can show you where it comes from"><rect x="30" y="20" width="250" height="44" rx="12" fill="#fbf8ef" stroke="#c9a24a"/><text x="155" y="47" text-anchor="middle" font-size="13" fill="#1f3a3d">“I can show you where it comes from”</text></g>
+      <g class="b pop" data-at="At least now I understand"><rect x="400" y="20" width="250" height="44" rx="12" fill="#fbf8ef" stroke="#c9bf9f"/><text x="525" y="47" text-anchor="middle" font-size="13" fill="#1f3a3d">“Now I understand what you believe”</text></g>
+      <text class="b up" data-at="Daniel and Arif remain good friends" x="340" y="196" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#8a6a24">still good friends</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="Here are four common mistakes" style="font-size:clamp(22px,3.8vw,40px)">What the Trinity is not</h1>
+  <div class="nots">
+   <div class="not b up" data-at="Christians worship three gods There is"><span class="wrong">Three gods<i class="b" data-at="There is one God Christians hold"></i></span><span class="truth b" data-at="There is one God Christians hold">One God</span></div>
+   <div class="not b up" data-at="God has three parts The Father"><span class="wrong">Three parts<i class="b" data-at="are each fully God not one third"></i></span><span class="truth b" data-at="are each fully God not one third">Each fully God</span></div>
+   <div class="not b up" data-at="God is one person who changes masks"><span class="wrong">One person, three masks<i class="b" data-at="truly relate to and love one another"></i></span><span class="truth b" data-at="truly relate to and love one another">They truly relate in love</span></div>
+   <div class="not b up" data-at="I must fully understand the Trinity"><span class="wrong">Understand fully first<i class="b" data-at="No one fully understands God"></i></span><span class="truth b" data-at="No one fully understands God">Trust him as he has shown himself</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="This week your assignment is" style="font-size:clamp(22px,3.6vw,38px)">Know and pray to the one God: Father, Son and Holy Spirit</h1>
+  <ol class="steps">
+    <li class="b up" data-at="First read Matthew"><b>Read</b> Matthew 3:13–17: what do the Father, the Son and the Spirit each do?</li>
+    <li class="b up" data-at="Second write one short line for each of the four parts"><b>Write</b> one short line for each of the four parts</li>
+    <li class="b up" data-at="Third each day this week pray"><b>Pray</b> each day to the Father, through the Son, by the Spirit</li>
+    <li class="b up" data-at="And fourth follow the seven-day reading plan"><b>Follow</b> the seven-day reading plan</li>
+  </ol>
+  <div class="fs b up" data-at="This assignment belongs to the My Foundations area">
+    <span class="lit b" data-at="called my beliefs">My beliefs</span><span>My life with God</span><span>My life in the Spirit</span><span>My church</span><span>My hope</span>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 17 ============ -->
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="Christians do not worship three gods The Bible shows">The Bible shows one God: Father, Son and Holy Spirit.</h2>
+  <div class="remember">
+    <div class="b up" data-at="One God the LORD our God"><svg viewBox="0 0 60 60"><use href="#i-onegod"/></svg><p><b>One God</b>“The LORD our God, the LORD is one.”</p></div>
+    <div class="b up" data-at="Father Son and Spirit distinct"><svg viewBox="0 0 60 60"><use href="#i-three"/></svg><p><b>Father, Son and Spirit</b>distinct, and truly relating to one another</p></div>
+    <div class="b up" data-at="Equal and united each fully God"><svg viewBox="0 0 60 60"><use href="#i-equal"/></svg><p><b>Equal and United</b>each fully God; a mystery, not a contradiction</p></div>
+    <div class="b up" data-at="And drawing us in we pray"><svg viewBox="0 0 60 60"><use href="#i-arms"/></svg><p><b>Drawing Us In</b>to the Father, through the Son, by the Spirit, into God’s love</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E2 SLIDE 18 ============ -->
+<section class="slide" data-n="18" data-theme="dark" aria-label="Slide 18">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e3c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer" style="font-size:clamp(15px,2.1vw,22px);line-height:1.4">
+   <p class="ph" data-at="Father thank you that you are the one true God">Father, thank you that you are the one true God, and that you have made yourself known to us.</p>
+   <p class="ph" data-at="Thank you Lord Jesus beloved Son">Thank you, Lord Jesus, beloved Son, for coming to us and giving yourself for us.</p>
+   <p class="ph" data-at="Thank you Holy Spirit">Thank you, Holy Spirit, for bringing us into God’s family.</p>
+   <p class="ph" data-at="Help me to worship you humbly">Help me to worship you humbly, and to speak of you with respect.</p>
+   <p class="ph" data-at="the grace of the Lord Jesus Christ"><b>“The grace of the Lord Jesus Christ and the love of God and the fellowship of the Holy Spirit be with you all.” Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:.6em">You may stop here for today.</p>
+ </div>
+</section>
+
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 18</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="establish-lesson-02.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1": "Welcome to Lesson 2 of Establish. In Begin, you learned to pray \"Our Father,\" and you saw that the new birth is the work of the Holy Spirit. Now we are going one step further. We step back and ask what the Bible teaches about God himself. It is a fair question, and many people ask it: Muslim and Jewish friends, people of other religions, people with no religion, and many Christians too. Christians pray \"Our Father.\" They worship Jesus. They speak of being filled with the Holy Spirit. Yet they insist that there is only one God. How does that fit together? So here is our question: do Christians worship three gods? By the end of this lesson, you will be able to answer from Scripture, simply and humbly.", "2": "Our passage is Matthew chapter 3, verses 13 to 17, the account of Jesus' baptism. Verse 13: \"Then Jesus came from Galilee to the Jordan to John, to be baptized by him.\" John was surprised. Verse 14: \"John would have prevented him, saying, 'I need to be baptized by you, and do you come to me?'\" Verse 15: \"But Jesus answered him, 'Let it be so now, for thus it is fitting for us to fulfill all righteousness.' Then he consented.\"", "3": "Now listen to verses 16 and 17: \"And when Jesus was baptized, immediately he went up from the water, and behold, the heavens were opened to him, and he saw the Spirit of God descending like a dove and coming to rest on him; and behold, a voice from heaven said, 'This is my beloved Son, with whom I am well pleased.'\" Let us use the first question from Lesson 1: what does it say? Notice who is present. The Son stands in the water. The Spirit comes down on him. The Father speaks from heaven. Father, Son and Spirit are present and active at the same moment, and the Father's words express his love and pleasure in the Son. This passage does not explain everything about God. But read alongside the rest of Scripture, it helps us see why Christians speak of the Father, the Son and the Holy Spirit as truly distinct.", "4": "Our one Hebrew word today comes from the most famous sentence in the Old Testament, Deuteronomy 6:4: \"Hear, O Israel: The LORD our God, the LORD is one.\" The word for one is ʾeḥād. In its setting, Moses was speaking to Israel as they were about to enter a land full of other gods. The point of the verse is that the LORD alone is God. Israel was not to share its worship with any other god. We should not try to make this word prove the Trinity, and it does not. Its meaning is plain: there is one God, and only one. Christians hold to that as firmly as anyone.", "5": "Now the background. This sentence is called the Shema, from its first word, \"Hear.\" The Shema became a central confession of Jewish faith, traditionally recited morning and evening. Jesus himself quoted it when asked which commandment was most important. His answer began with these very words: \"Hear, O Israel: The Lord our God, the Lord is one.\" And through the prophet Isaiah, God declared, \"I am the LORD, and there is no other, besides me there is no God.\" The first Christians were Jewish believers who held firmly to this truth. So when they worshipped Jesus and spoke of the Holy Spirit, they were not adding new gods. They were describing what the one God had shown them.", "6": "John was calling the people of Israel to turn back to God and be baptised in the Jordan River. When Jesus came, the words from heaven would have sounded familiar to anyone who knew the Scriptures. In Psalm 2, God says to his chosen King, \"You are my Son.\" And in Isaiah 42, God speaks of his servant: \"my chosen, in whom my soul delights; I have put my Spirit upon him.\" At the Jordan, these two promises meet in Jesus. The Father calls him Son, and the Spirit rests upon him. This is the third question from Lesson 1, where it points: the Old Testament prepared God's people to recognise who Jesus is.", "7": "So, do Christians worship three gods? Here is the short answer. No. Christians do not worship three gods. The Bible teaches that there is one God, and it also shows us the Father, the Son and the Holy Spirit, each truly God. This one God is eternally Father, Son and Holy Spirit: truly distinct, fully divine and perfectly united. And this God draws us into his own life of love. Christians call this the Trinity, a word meaning tri-unity, or three-in-oneness. The word itself is not in the Bible, but it is a short way of summing up what the Bible shows. We will look at it in four parts: one God; Father, Son and Spirit; equal and united; and drawing us in.", "8": "The first part: one God. The Bible could not be clearer: there is only one true God. Everything else we say about the Father, the Son and the Spirit stands on this foundation. Christians are not polytheists. We do not worship three gods. We worship the one living God, the God of Abraham, Isaac and Jacob, the God Jesus himself worshipped and obeyed.", "9": "The second part: Father, Son and Spirit. At the same time, the Bible shows us the Father, the Son and the Holy Spirit as distinct from one another. They are not simply three names for the same person. The Father speaks to the Son and about the Son, as we heard at the Jordan. The Son prays to the Father, as in John 17. Jesus says, \"I will ask the Father, and he will give you another Helper,\" the Holy Spirit. And before creation, the Father loved the Son. When Jesus sent out his disciples, he told them to baptise \"in the name of the Father and of the Son and of the Holy Spirit.\" Notice: one name, and three named together. Christians often use the word person for the Father, the Son and the Spirit. Here, person does not mean a separate being, or one third of God. It is a way of speaking about the real distinction Scripture shows, while affirming that they are the one God.", "10": "The third part: equal and united. The Bible speaks of each of the three as fully God. The Father is God: Jesus calls him \"the only true God.\" The Son is God: \"In the beginning was the Word, and the Word was with God, and the Word was God.\" When Thomas met the risen Jesus, he said, \"My Lord and my God!\" and Jesus accepted his worship. The Holy Spirit is God: Peter asked Ananias, \"Why has Satan filled your heart to lie to the Holy Spirit?\" and then said, \"You have not lied to man but to God.\" Peter's words speak of lying to the Holy Spirit as lying to God. So the Father, the Son and the Spirit are not three parts of God, each one third divine. Nor are they one person wearing three different masks. None is less divine than the others. In the work of salvation, the Father sends, the Son comes, and the Spirit is given. But different roles do not mean that one is less God than another.", "11": "Is this hard to understand? Yes. The Bible does not explain everything about God, and we should not pretend that it does. But a mystery is not a contradiction. Christians do not say one God and three gods. They say there is one God: Father, Son and Holy Spirit. Our minds are small; God is great. Humility is the right response. This is also why it is best to avoid most illustrations. An egg, with its shell, white and yolk, suggests that God has three parts. Water as ice, liquid and steam suggests that one person keeps changing form. A man who is a father, a son and a husband suggests one person with three roles. None of these fits what the Bible shows. It is better to let Scripture speak, and to admit that no picture fully works.", "12": "The fourth part: drawing us in. The Trinity is not only something to explain. It shapes the whole Christian life. It shapes how we pray. Paul writes, \"For through him we both have access in one Spirit to the Father.\" Christian prayer is ordinarily offered to the Father, through the Son, by the Spirit. That is the pattern you began in Begin, when you learned to pray \"Our Father.\" The New Testament also shows believers praying to Jesus. As he was dying, Stephen prayed, \"Lord Jesus, receive my spirit.\" Because the Father, the Son and the Spirit are the one God, all three are worthy of worship. It shapes how we are saved. \"God sent forth his Son,\" and \"God has sent the Spirit of his Son into our hearts.\" The Father sends the Son, the Son gives himself for us, and the Spirit brings us into God's family. And it shows us that God is love. God did not begin to love when he made the world. Before anything was made, the Father loved the Son. Love belongs to who God has always been, and this God invites us into his love.", "13": "Christians differ on some questions, and this lesson needs to name one difference briefly and fairly. Most churches throughout history have confessed that there is one God who is eternally Father, Son and Holy Spirit. Some churches, often called Oneness churches, teach that God is one, and that Father, Son and Holy Spirit are different ways in which the one God is revealed and acts. Oneness believers strongly affirm that there is one God and that Jesus is fully divine, but they understand the relationship between the Father, the Son and the Spirit differently. Because this question concerns who God is, this course treats the Bible's teaching on the Father, the Son and the Spirit as a central truth, not a minor difference. But this never gives anyone permission to mock, mistreat or pressure people from Oneness churches. Welcome them warmly, listen to them fairly, and look at the Scriptures carefully together. Lesson 7 returns to the related question of baptism in Jesus' name.", "14": "Let me tell you about Daniel. His story is drawn from the experiences of many people. Daniel is a university student in Jakarta. His closest friend at university, Arif, is a Muslim. One afternoon Arif asked him, kindly but directly, \"Why do Christians worship three gods? We believe God is one.\" Daniel tried to explain using an egg: shell, white and yolk. Arif smiled. \"So God has three parts?\" Daniel realised he did not know how to answer. He asked his pastor for help. They read Deuteronomy 6:4, Matthew 3:16 and 17, and John 1:1 together. The next week, Daniel told Arif, \"You are right that God is one. Christians believe that too. We also believe the Bible shows the one God as Father, Son and Holy Spirit. I can't explain it fully, but I can show you where it comes from.\" Arif still disagreed. But he said, \"At least now I understand what you actually believe.\" Daniel and Arif remain good friends, and they still talk about God sometimes.", "15": "Here are four common mistakes. \"Christians worship three gods.\" There is one God. Christians hold to Deuteronomy 6:4 as firmly as anyone. \"God has three parts.\" The Father, the Son and the Spirit are each fully God, not one third of God. \"God is one person who changes masks or roles.\" The Father, the Son and the Spirit truly relate to and love one another. And \"I must fully understand the Trinity before I can trust Christ.\" No one fully understands God. We trust him as he has shown himself in Scripture.", "16": "This week, your assignment is to know and pray to the one God: Father, Son and Holy Spirit. First, read Matthew 3:13 to 17, and notice what the Father, the Son and the Spirit each do. Second, write one short line for each of the four parts, in your own words. You can use the book to help. Third, each day this week, pray a short prayer to the Father, through the Son, by the Spirit. And fourth, follow the seven-day reading plan below this lesson. Each day's question helps you practise one of the four questions from Lesson 1. This assignment belongs to the My Foundations area called my beliefs.", "17": "Let us bring it together. Christians do not worship three gods. The Bible shows one God: Father, Son and Holy Spirit. One God: the LORD our God, the LORD is one. Father, Son and Spirit: distinct, and truly relating to one another. Equal and united: each fully God, acting in perfect unity; a mystery, not a contradiction. And drawing us in: we pray to the Father, through the Son, by the Spirit, and we are welcomed into God's love.", "18": "Let us pray. Father, thank you that you are the one true God, and that you have made yourself known to us. Thank you, Lord Jesus, beloved Son, for coming to us and giving yourself for us. Thank you, Holy Spirit, for bringing us into God's family. Help me to worship you humbly, and to speak of you with respect. And may \"the grace of the Lord Jesus Christ and the love of God and the fellowship of the Holy Spirit be with you all.\" Amen. You may stop here for today. When you are ready, begin this week's assignment and the reading plan."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.14, 0.63, 0.74, 1.76, 1.88, 3.28, 3.45, 4.05, 4.27, 4.64, 4.73, 5.38, 5.66, 6.69, 6.84, 6.95, 7.37, 7.59, 7.66, 8.01, 8.43, 8.67, 8.75, 9.3, 9.42, 9.52, 9.93, 11.2, 11.61, 11.82, 11.93, 12.37, 12.74, 13.17, 14.43, 14.52, 14.87, 15.6, 15.78, 16.25, 16.44, 16.5, 16.97, 17.47, 17.77, 18.1, 19.23, 19.35, 19.51, 19.56, 19.99, 20.82, 21.04, 21.33, 21.71, 22.06, 22.82, 23.68, 23.9, 24.32, 25.33, 25.71, 25.81, 26.18, 27.31, 27.66, 27.86, 28.14, 29.08, 29.28, 29.59, 30.26, 31.13, 31.73, 32.56, 33.12, 33.91, 34.08, 34.61, 35.56, 35.71, 36.13, 36.27, 36.58, 37.18, 37.34, 37.45, 37.78, 38.8, 39.01, 39.16, 39.74, 39.91, 40.12, 40.31, 40.71, 41.27, 42.42, 42.59, 42.79, 42.99, 43.28, 44.43, 45.15, 45.55, 45.96, 46.29, 47.57, 47.81, 48.64, 49.26, 49.73, 51.03, 51.19, 51.44, 51.88, 52.08, 52.36, 53.18, 53.37, 53.57, 53.79, 54.14, 54.38, 54.88, 55.15, 56.14, 57.17, 57.39], "2": [58.7, 58.98, 59.63, 59.96, 60.57, 61.9, 62.37, 62.43, 62.55, 63.31, 63.49, 64.54, 65.56, 65.7, 65.99, 67.54, 69.5, 69.69, 70.3, 70.45, 70.56, 71.09, 71.24, 72.06, 72.18, 72.34, 73.06, 73.27, 74.22, 74.51, 74.74, 75.93, 76.42, 77.56, 78.05, 78.3, 78.87, 79.14, 80.3, 80.5, 80.86, 81.01, 81.17, 81.93, 82.17, 83.03, 83.34, 83.62, 83.88, 84.24, 84.41, 85.48, 85.89, 86.22, 87.17, 87.43, 88.07, 88.66, 89.78, 89.98, 90.34, 91.16, 91.33, 91.84, 91.92, 92.27, 92.72, 92.98, 93.25, 93.38, 94.12, 94.44, 95.79, 96.31, 96.62], "3": [98.04, 98.2, 98.6, 98.73, 99.71, 100.25, 101.61, 102.01, 102.56, 102.77, 103.9, 104.69, 104.88, 105.25, 105.42, 105.67, 105.74, 106.65, 106.83, 107.79, 107.9, 108.47, 108.71, 109.19, 109.36, 110.27, 110.43, 110.57, 111.02, 111.15, 111.79, 111.99, 112.36, 113.06, 113.32, 113.38, 114.26, 114.45, 114.91, 115.09, 115.49, 115.63, 116.4, 116.56, 117.52, 117.6, 118.07, 118.28, 118.69, 119.54, 120.08, 120.25, 120.47, 121.01, 121.81, 121.99, 122.45, 122.62, 122.83, 123.13, 124.37, 124.56, 124.75, 125.07, 125.17, 125.68, 126.28, 126.52, 126.9, 128.06, 128.27, 128.39, 129.33, 129.88, 130.23, 130.35, 131.44, 131.53, 132.02, 132.58, 132.69, 132.75, 133.69, 133.79, 134.38, 134.72, 135.02, 135.15, 135.93, 136.01, 136.58, 137.15, 137.33, 138.46, 139.16, 139.83, 140.03, 140.9, 141.06, 141.68, 141.99, 142.54, 142.7, 142.78, 143.1, 143.95, 144.09, 144.16, 144.75, 145.28, 145.92, 146.17, 146.76, 147.03, 147.84, 147.96, 148.04, 149.16, 149.37, 149.98, 150.2, 150.5, 151.08, 152.17, 152.57, 153.71, 153.91, 154.19, 154.92, 155.0, 155.35, 155.42, 156.68, 156.82, 157.2, 157.41, 157.69, 157.97, 158.61, 159.04, 159.16, 159.26, 160.03, 160.13, 160.78, 160.95, 161.03, 161.4, 162.01, 162.28, 162.79], "4": [164.21, 164.49, 164.95, 165.52, 165.96, 166.42, 166.91, 167.13, 167.2, 167.58, 168.08, 168.72, 168.91, 169.07, 169.34, 170.63, 172.89, 173.55, 173.8, 174.75, 174.84, 175.43, 175.71, 176.4, 176.53, 177.07, 177.27, 178.37, 178.44, 178.88, 179.06, 179.47, 180.12, 181.45, 181.58, 181.79, 182.61, 183.2, 183.35, 183.89, 183.99, 184.69, 184.97, 185.08, 185.27, 185.66, 185.78, 186.19, 186.24, 186.72, 187.06, 187.16, 187.37, 188.55, 188.62, 189.06, 189.17, 189.25, 189.81, 189.96, 190.16, 190.24, 190.68, 191.09, 191.24, 192.17, 192.69, 192.88, 193.22, 193.3, 193.7, 193.87, 194.5, 194.65, 195.02, 195.21, 196.29, 196.39, 196.57, 196.8, 197.03, 197.15, 197.39, 197.54, 197.83, 198.24, 198.35, 199.24, 199.38, 199.48, 199.69, 200.66, 200.88, 201.46, 201.66, 202.72, 202.9, 203.04, 203.41, 204.13, 204.42, 204.86, 205.99, 206.63, 207.06, 207.18, 207.53, 207.75, 208.41, 208.7], "5": [209.93, 210.29, 210.4, 211.76, 212.05, 212.51, 212.66, 213.25, 213.48, 214.56, 214.75, 214.92, 215.32, 215.87, 216.99, 217.08, 217.61, 218.02, 218.06, 218.53, 219.17, 219.29, 219.7, 220.61, 221.35, 221.97, 222.61, 222.81, 224.01, 224.37, 224.79, 225.21, 225.62, 225.79, 226.24, 226.56, 227.23, 227.41, 227.71, 229.07, 229.27, 229.65, 230.18, 230.34, 230.63, 230.97, 231.94, 232.71, 233.02, 233.97, 234.06, 234.6, 234.89, 235.55, 235.65, 236.17, 236.37, 237.39, 237.59, 237.83, 237.93, 238.39, 239.27, 239.56, 240.51, 240.87, 241.17, 241.26, 241.95, 242.15, 242.35, 242.52, 242.89, 243.87, 244.62, 245.17, 245.57, 246.16, 246.85, 247.93, 248.01, 248.37, 248.83, 248.96, 249.34, 249.94, 250.1, 250.32, 251.0, 251.13, 251.36, 252.52, 252.7, 252.9, 253.01, 253.45, 254.04, 254.19, 254.54, 254.64, 254.74, 255.03, 255.96, 256.06, 256.21, 256.55, 256.94, 257.21, 258.15, 258.26, 258.4, 259.14, 259.37, 259.43, 259.88, 260.26, 260.44, 260.85], "6": [261.46, 261.9, 262.15, 262.57, 262.65, 263.04, 263.16, 263.69, 263.85, 264.31, 264.64, 264.74, 265.45, 265.62, 265.77, 266.66, 266.77, 266.85, 267.3, 268.48, 268.71, 269.18, 269.95, 270.07, 270.61, 270.81, 271.24, 271.42, 271.52, 272.02, 272.63, 272.86, 273.44, 273.61, 273.92, 274.03, 275.45, 275.61, 276.02, 276.17, 276.29, 277.21, 277.52, 278.28, 279.28, 279.48, 279.61, 279.8, 280.72, 280.88, 281.0, 282.45, 282.73, 283.17, 283.24, 283.37, 284.31, 284.49, 285.36, 285.5, 285.73, 285.9, 286.29, 287.19, 287.32, 287.5, 287.73, 287.9, 288.38, 288.71, 289.59, 289.82, 289.91, 290.46, 290.91, 291.14, 291.82, 292.24, 292.43, 293.66, 293.74, 294.2, 294.61, 294.78, 295.62, 295.81, 295.87, 296.41, 296.84, 297.22, 298.14, 298.32, 298.48, 298.58, 298.98, 299.83, 300.08, 300.44, 301.47, 301.76, 302.78, 303.01, 303.41, 304.23, 304.87, 305.25, 306.16, 306.37, 307.35, 307.59, 308.26], "7": [309.06, 309.92, 310.08, 310.75, 311.28, 311.59, 312.82, 313.13, 313.3, 313.38, 313.85, 315.08, 316.1, 316.71, 316.85, 317.16, 317.64, 317.95, 319.25, 319.33, 319.78, 320.35, 320.57, 320.78, 321.03, 321.52, 322.17, 322.48, 322.62, 323.05, 323.5, 323.79, 323.89, 324.65, 324.74, 325.41, 325.56, 325.64, 325.98, 326.89, 327.35, 327.9, 329.05, 329.27, 329.55, 329.84, 329.98, 330.63, 331.48, 332.13, 332.32, 332.67, 333.69, 334.18, 335.11, 335.55, 336.41, 336.66, 337.25, 338.37, 338.57, 338.8, 339.19, 339.6, 339.78, 340.03, 340.33, 340.66, 341.06, 341.2, 342.24, 342.89, 343.24, 343.53, 343.67, 344.8, 344.85, 345.34, 345.83, 346.33, 347.45, 347.71, 348.35, 348.53, 349.81, 349.89, 350.27, 350.82, 351.01, 351.28, 351.41, 351.48, 352.29, 352.49, 352.62, 352.78, 352.81, 353.32, 353.64, 353.74, 354.26, 354.51, 354.76, 354.84, 355.34, 356.6, 356.74, 356.93, 357.11, 357.27, 357.45, 357.62, 358.04, 359.11, 359.43, 360.25, 361.0, 361.69, 361.91, 362.91, 363.47, 363.67, 364.67, 364.85, 365.27, 365.46], "8": [366.37, 366.44, 366.85, 367.68, 368.0, 368.73, 368.84, 369.24, 369.43, 369.61, 369.78, 370.76, 370.96, 371.19, 371.63, 372.18, 372.54, 373.49, 373.98, 374.3, 374.46, 374.71, 375.0, 375.07, 375.95, 376.04, 376.72, 376.99, 377.06, 377.89, 378.44, 378.61, 378.81, 380.16, 380.82, 380.97, 381.52, 383.14, 383.29, 383.45, 383.75, 384.3, 384.72, 385.76, 385.97, 386.53, 386.61, 387.01, 387.46, 388.25, 388.35, 388.71, 388.89, 389.98, 390.57, 390.85, 391.74, 391.84, 392.22, 392.88, 393.71, 394.41, 394.64], "9": [395.83, 395.91, 396.32, 397.12, 397.86, 398.55, 398.82, 399.82, 399.94, 400.01, 400.33, 400.68, 400.76, 401.17, 401.6, 401.81, 401.91, 402.67, 402.76, 403.39, 403.66, 403.74, 404.1, 404.61, 404.86, 405.52, 405.78, 405.94, 406.85, 406.96, 407.04, 407.31, 407.74, 408.04, 408.49, 408.6, 408.71, 409.05, 410.17, 410.24, 410.67, 411.15, 411.27, 411.38, 412.01, 412.16, 412.54, 412.61, 413.35, 413.5, 413.65, 413.89, 414.0, 414.08, 415.25, 415.32, 415.68, 416.09, 416.2, 416.31, 417.08, 417.33, 417.53, 417.88, 419.37, 420.58, 420.69, 420.87, 421.19, 421.28, 422.03, 422.25, 422.42, 422.62, 422.81, 423.0, 423.34, 424.23, 424.33, 424.74, 425.76, 425.93, 426.35, 427.26, 427.35, 427.83, 428.25, 428.35, 429.47, 429.73, 430.39, 430.74, 431.02, 431.22, 432.36, 432.58, 432.99, 433.18, 433.34, 434.55, 434.71, 434.79, 435.17, 435.28, 435.36, 436.26, 436.54, 436.66, 436.74, 437.53, 437.83, 437.93, 438.02, 438.35, 439.35, 440.5, 440.87, 441.63, 441.83, 442.23, 442.67, 443.89, 444.53, 444.96, 445.29, 445.38, 445.77, 446.32, 446.47, 446.58, 447.31, 447.4, 448.06, 448.23, 448.29, 449.41, 450.21, 450.7, 450.89, 451.19, 451.45, 451.49, 452.06, 452.66, 452.97, 453.29, 453.66, 453.75, 454.93, 455.06, 455.22, 455.26, 455.71, 455.88, 456.54, 456.9, 457.0, 457.51, 458.42, 458.96, 459.55, 459.85, 460.53, 460.77, 460.96, 461.12, 461.24, 461.65], "10": [462.46, 462.55, 462.95, 463.66, 464.32, 464.53, 465.63, 465.7, 466.09, 466.52, 466.65, 467.03, 467.13, 467.23, 467.66, 467.89, 468.27, 469.39, 469.45, 469.88, 470.03, 471.2, 471.6, 471.95, 472.43, 472.65, 473.08, 473.49, 474.64, 474.73, 475.45, 475.64, 476.77, 476.93, 477.01, 477.52, 477.72, 477.8, 478.78, 478.89, 478.96, 479.34, 479.55, 479.75, 480.81, 480.93, 480.99, 481.51, 481.71, 482.96, 483.11, 483.62, 483.84, 483.93, 484.31, 484.96, 485.27, 486.06, 486.28, 486.77, 487.05, 487.26, 488.27, 488.48, 489.2, 489.94, 490.2, 491.42, 491.51, 491.77, 492.2, 492.33, 493.3, 493.62, 493.89, 495.04, 495.28, 495.5, 496.05, 496.44, 496.6, 496.99, 497.09, 497.47, 497.61, 497.71, 498.0, 499.13, 499.32, 499.55, 500.39, 500.59, 500.81, 501.17, 501.64, 501.79, 502.47, 502.8, 502.94, 503.75, 504.23, 504.73, 505.18, 505.31, 505.83, 505.96, 506.08, 506.46, 507.35, 507.59, 508.08, 508.26, 509.32, 509.54, 509.63, 510.34, 510.45, 511.04, 511.22, 511.29, 512.18, 512.35, 512.67, 513.02, 513.43, 513.58, 514.29, 514.54, 514.88, 515.34, 516.59, 516.92, 517.07, 517.21, 517.59, 518.12, 518.49, 518.93, 519.44, 520.64, 521.08, 521.36, 521.74, 522.24, 522.46, 522.61, 523.81, 523.95, 524.02, 524.32, 524.41, 525.38, 525.62, 526.14, 527.19, 527.27, 527.75, 528.65, 528.82, 528.89, 529.46, 529.61, 530.55, 530.78, 531.19, 531.66, 531.79, 532.07, 532.36, 532.54, 532.93, 533.19, 533.51, 533.97, 534.14], "11": [535.29, 535.48, 535.74, 536.18, 536.36, 537.98, 539.2, 539.28, 539.74, 539.96, 540.18, 540.73, 541.37, 541.65, 542.69, 542.84, 542.96, 543.2, 543.47, 544.1, 544.26, 544.45, 545.73, 545.87, 545.93, 546.65, 546.82, 547.24, 547.31, 548.99, 549.59, 549.72, 549.99, 550.29, 550.71, 551.12, 551.31, 551.62, 552.96, 553.11, 553.69, 553.87, 554.01, 554.28, 554.89, 555.56, 556.07, 556.24, 556.5, 557.49, 557.61, 558.06, 558.13, 558.88, 559.16, 559.33, 560.17, 561.02, 561.16, 561.27, 561.66, 562.72, 562.99, 563.15, 563.58, 563.84, 563.97, 564.13, 564.51, 564.68, 565.09, 565.45, 566.84, 567.11, 567.68, 567.85, 568.04, 568.84, 569.49, 569.69, 570.43, 571.25, 571.41, 571.82, 572.14, 572.47, 573.83, 574.37, 574.73, 575.39, 575.91, 576.19, 576.91, 577.54, 577.77, 578.15, 578.66, 579.1, 579.68, 580.74, 580.81, 581.17, 581.34, 581.46, 581.52, 582.4, 582.47, 583.01, 583.2, 583.26, 584.09, 584.74, 585.14, 585.6, 585.88, 586.19, 587.19, 587.48, 587.6, 587.92, 588.25, 588.49, 588.56, 588.99, 590.34, 590.47, 590.64, 590.99, 591.14, 591.37, 591.98, 592.98, 593.27, 593.42, 593.86, 594.04, 594.39, 594.82, 595.26], "12": [596.25, 596.34, 596.72, 597.43, 597.92, 598.2, 599.16, 599.27, 599.89, 600.06, 600.36, 600.64, 601.13, 601.28, 602.36, 602.5, 603.01, 603.13, 603.65, 604.28, 605.43, 605.58, 605.99, 606.21, 606.39, 607.22, 607.51, 608.22, 608.4, 608.78, 609.12, 609.27, 609.64, 609.89, 610.62, 610.77, 611.13, 611.65, 611.75, 611.85, 612.75, 613.21, 613.63, 613.84, 614.49, 614.87, 614.96, 615.06, 615.91, 616.13, 616.23, 616.97, 617.14, 617.23, 618.1, 618.33, 618.47, 618.55, 618.99, 619.12, 619.6, 619.88, 620.83, 621.1, 621.24, 621.57, 621.66, 622.25, 622.58, 623.94, 624.03, 624.27, 624.95, 625.42, 625.86, 626.47, 626.98, 627.12, 628.47, 628.67, 628.78, 628.99, 629.58, 630.1, 631.1, 631.46, 632.07, 632.71, 632.93, 633.93, 634.28, 634.37, 635.21, 635.29, 635.97, 636.16, 636.22, 636.91, 637.02, 637.12, 637.5, 638.37, 638.64, 639.18, 639.39, 639.89, 640.0, 640.93, 641.08, 641.61, 641.88, 642.16, 642.32, 643.55, 643.84, 644.17, 644.52, 644.67, 645.79, 645.99, 646.31, 646.49, 646.84, 646.92, 647.5, 647.64, 647.8, 648.35, 648.73, 648.87, 650.0, 650.08, 650.51, 650.91, 651.01, 651.85, 651.92, 652.34, 652.63, 653.08, 653.28, 653.99, 654.13, 654.2, 654.75, 655.07, 655.29, 655.67, 656.07, 657.23, 657.39, 657.54, 657.96, 658.21, 658.4, 658.87, 659.07, 660.0, 660.36, 660.56, 660.88, 661.26, 661.37, 661.75, 661.93, 662.06, 662.42, 662.49, 663.43, 663.9, 664.39, 664.59, 665.26, 665.39, 665.81, 666.17, 666.27, 667.09, 667.49, 668.18, 668.32, 668.6, 669.05, 669.36, 669.9, 670.75, 670.95, 671.21, 671.76, 672.32, 672.61, 673.03, 673.27], "13": [674.39, 674.99, 675.43, 675.59, 675.87, 677.05, 677.23, 677.46, 677.99, 678.32, 678.43, 678.81, 679.28, 679.85, 680.73, 680.89, 682.06, 682.4, 682.99, 683.41, 684.19, 684.35, 685.3, 685.52, 685.72, 685.87, 686.31, 686.97, 687.11, 687.25, 688.26, 689.06, 689.82, 689.99, 690.34, 691.6, 691.94, 692.68, 693.05, 693.65, 694.26, 695.08, 695.46, 695.62, 696.05, 696.22, 696.98, 697.12, 697.28, 697.93, 698.43, 698.62, 698.97, 699.47, 699.62, 700.13, 700.55, 700.63, 700.9, 700.98, 701.37, 701.64, 701.79, 702.34, 702.57, 703.86, 704.31, 704.87, 705.51, 706.04, 706.21, 706.4, 706.56, 706.96, 707.86, 707.99, 708.17, 708.79, 708.99, 709.39, 710.39, 710.56, 710.73, 711.41, 711.48, 712.3, 712.63, 712.71, 713.62, 713.73, 714.57, 714.71, 714.78, 715.71, 717.0, 717.46, 717.66, 718.25, 718.89, 719.16, 719.48, 720.2, 720.44, 720.91, 721.33, 721.45, 722.05, 722.55, 722.73, 722.79, 723.44, 723.54, 723.99, 724.25, 724.31, 725.14, 725.31, 725.35, 725.85, 726.65, 727.06, 727.11, 727.57, 728.92, 729.14, 729.38, 729.86, 730.36, 730.87, 731.46, 731.61, 732.39, 733.32, 733.57, 734.07, 734.54, 734.8, 735.29, 736.45, 737.06, 737.3, 738.32, 738.79, 738.9, 739.13, 740.18, 740.41, 740.74, 740.87, 740.95, 741.7, 742.31, 743.57, 744.79, 745.33, 745.45, 745.56, 746.08, 746.93, 747.09, 747.93, 748.08, 748.59], "14": [749.59, 749.77, 749.95, 750.13, 750.32, 750.65, 751.7, 751.85, 752.33, 752.51, 752.88, 753.04, 753.16, 754.02, 754.14, 754.47, 755.44, 755.9, 756.11, 756.16, 756.91, 757.46, 757.65, 759.04, 759.21, 759.79, 760.11, 760.27, 761.35, 762.21, 762.36, 762.41, 763.65, 763.82, 764.5, 764.93, 765.33, 765.76, 766.33, 766.52, 767.61, 767.94, 768.15, 768.8, 769.3, 769.68, 770.87, 771.04, 771.52, 771.86, 772.02, 773.09, 773.54, 773.9, 774.03, 774.7, 775.12, 775.22, 775.9, 776.73, 777.3, 777.48, 778.24, 778.56, 779.45, 779.72, 780.1, 780.4, 780.68, 781.56, 781.98, 782.61, 782.73, 782.91, 783.19, 783.4, 783.58, 783.8, 784.9, 785.07, 785.47, 785.64, 786.35, 786.55, 787.63, 787.86, 788.63, 790.72, 791.24, 792.11, 792.4, 792.79, 795.38, 796.67, 797.05, 797.7, 798.26, 798.67, 799.75, 799.92, 800.08, 800.7, 800.86, 801.23, 801.39, 802.38, 802.98, 803.39, 803.68, 804.55, 804.72, 805.15, 805.5, 805.58, 806.03, 806.46, 806.55, 806.94, 807.68, 807.93, 808.68, 809.42, 809.58, 809.9, 811.04, 811.17, 811.64, 812.15, 812.3, 813.16, 813.3, 813.43, 813.63, 814.02, 814.22, 814.5, 814.65, 815.04, 815.97, 816.32, 816.78, 818.03, 818.17, 818.27, 819.18, 819.36, 819.74, 820.16, 820.32, 821.0, 821.25, 821.39, 821.94, 822.91, 823.43, 823.66, 824.17, 824.71, 824.96, 825.83, 826.01, 826.14, 826.56, 826.95, 827.29, 827.67], "15": [828.89, 829.19, 829.3, 829.85, 830.21, 831.74, 832.63, 833.28, 833.67, 834.82, 835.06, 835.47, 835.87, 836.82, 837.51, 837.97, 838.1, 839.63, 839.74, 840.62, 841.01, 841.53, 841.69, 841.81, 842.07, 842.32, 842.98, 843.61, 843.71, 843.85, 843.96, 844.49, 845.09, 845.75, 845.81, 846.26, 847.61, 847.96, 848.22, 848.31, 848.37, 848.83, 849.11, 849.17, 849.34, 852.28, 852.82, 853.45, 854.14, 854.38, 855.57, 855.66, 856.44, 856.57, 857.17, 857.39, 857.45, 858.27, 858.78, 859.29, 859.83, 860.07, 860.54, 860.96, 861.77, 862.4, 862.59, 863.0, 863.52, 864.27, 864.34, 865.0, 865.45, 865.57, 865.79, 866.24, 867.68, 867.95, 868.25, 868.81, 869.59, 870.75, 870.92, 871.37, 872.0, 872.23, 872.36, 872.53, 872.92, 873.5, 873.76], "16": [875.04, 875.29, 875.99, 876.24, 876.86, 877.0, 877.11, 877.62, 877.86, 878.17, 878.31, 878.42, 878.84, 879.62, 880.46, 881.23, 881.38, 881.73, 882.92, 883.83, 884.16, 884.63, 884.81, 885.02, 885.75, 885.89, 887.6, 888.37, 888.46, 889.06, 889.21, 889.27, 889.97, 890.29, 890.96, 891.91, 892.21, 892.55, 892.95, 893.36, 893.55, 893.98, 894.12, 894.21, 894.5, 895.48, 895.62, 895.87, 896.1, 897.45, 897.6, 897.79, 898.07, 898.17, 898.5, 898.6, 899.67, 900.72, 901.04, 901.27, 901.52, 902.14, 902.53, 902.6, 903.06, 903.4, 903.53, 903.64, 904.75, 905.05, 905.15, 906.15, 906.36, 906.46, 907.71, 907.91, 908.91, 909.32, 909.43, 909.89, 910.11, 910.53, 910.96, 911.37, 911.65, 912.55, 912.93, 913.32, 913.88, 914.27, 914.46, 915.38, 915.56, 915.67, 915.75, 916.14, 916.86, 917.11, 918.19, 918.39, 919.0, 919.51, 919.63, 919.74, 920.08, 921.0, 921.74, 922.39, 922.7], "17": [924.05, 924.21, 924.36, 924.65, 924.79, 925.87, 926.55, 926.7, 927.02, 927.49, 927.86, 928.8, 928.89, 929.37, 929.81, 930.17, 931.11, 931.87, 932.68, 932.86, 933.24, 934.21, 934.54, 935.35, 935.43, 935.79, 936.01, 936.72, 936.81, 937.18, 937.33, 938.11, 938.81, 939.51, 939.68, 940.49, 941.36, 941.55, 941.99, 942.55, 942.66, 942.9, 943.99, 944.61, 944.84, 946.0, 946.66, 947.11, 947.93, 948.48, 948.68, 949.25, 950.19, 950.28, 951.33, 951.77, 951.85, 953.4, 953.62, 953.99, 954.18, 955.05, 955.19, 955.56, 955.69, 955.78, 956.65, 956.97, 957.06, 957.8, 958.02, 958.12, 959.16, 959.34, 959.51, 959.63, 960.36, 960.57, 961.06], "18": [962.17, 962.32, 962.45, 963.38, 964.19, 964.55, 964.7, 964.9, 965.14, 965.25, 965.36, 965.7, 965.95, 966.68, 966.8, 966.95, 967.11, 967.25, 967.63, 968.17, 968.57, 968.77, 969.66, 969.92, 970.04, 970.31, 970.89, 971.43, 972.19, 972.3, 972.67, 972.87, 973.34, 973.49, 973.79, 974.25, 974.49, 975.46, 975.73, 976.04, 976.45, 977.31, 977.43, 977.86, 978.04, 978.4, 978.88, 980.05, 980.32, 980.5, 980.64, 981.19, 981.37, 982.5, 982.64, 982.73, 983.19, 983.32, 983.74, 983.94, 985.08, 985.28, 985.68, 986.11, 986.55, 986.67, 986.75, 987.16, 987.61, 988.5, 988.63, 988.69, 988.98, 989.16, 989.56, 989.81, 989.88, 990.66, 990.78, 990.88, 991.26, 991.99, 992.15, 992.39, 992.62, 993.34, 994.19, 994.36, 994.52, 994.93, 995.22, 995.48, 996.63, 996.84, 997.0, 997.14, 997.83, 998.29, 998.54, 998.9, 999.84, 1000.06, 1000.13, 1000.58]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z\u00C0-\u024F\u1E00-\u1EFF']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>{sentences.push({t:at(idx)-0.15,s});idx+=toks(s).length;});
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>

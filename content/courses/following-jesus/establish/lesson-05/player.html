@@ -1,0 +1,681 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Establish Lesson 5</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#0d1f22;--navy:#1f3a3d;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f3a3d;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,760px);margin:0 0 .6em}.method div{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffaf0;border:2px solid #d4a24c;border-radius:14px;padding:8px 6px;font-size:clamp(12px,1.7vw,16px);color:#1f3a3d;text-align:center}.method svg{width:34px;height:34px;color:#a8792b}
+.method.five{grid-template-columns:repeat(5,1fr)}.method.dark div{background:rgba(243,231,201,.06);color:#f3e7c9;border-color:#d4a24c}.method.dark svg{color:#e8c98a}.method small{font-size:.78em;opacity:.8}.method .dim,.method .step{opacity:.35;transition:opacity .6s}.method .step.on{opacity:1}
+.checks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;width:min(100%,760px);text-align:left}.checks li{position:relative;padding-left:1.6em;font-size:clamp(14px,1.9vw,18px);color:#1f3a3d}.checks li::before{content:'\2713';position:absolute;left:0;color:#a8792b;font-weight:700}@media(max-width:560px){.checks{grid-template-columns:1fr}}
+
+/* ===== Establish palette (cover: evening teal, stone, hillside green, gold) ===== */
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-soft:#e3c98a;--sun:#f1ead6;--ink:#1f3a3d;--mute:#5c6b66;--cream:#f8f4e8}
+body{background:#0d1f22}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 52%,#4c5a50 86%,#a98f5a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf8ef 0%,#f6f1e2 68%,#e8e6d0 100%);color:var(--ink)}
+#stage.dark .h1{fill:#3d5246}#stage.dark .h2{fill:#2e4136}#stage.dark .h3{fill:#22322b}
+#stage.light .h1{fill:#dfe3cc}#stage.light .h2{fill:#d1d8bd}#stage.light .h3{fill:#c3cdaf}
+.label{color:#c9a24a}.light .label{color:#8a6a24}
+.light h2{color:#8a6a24}
+.steps b{color:#8a6a24}
+.card{background:#fbf8ef;border-color:#d9d2b8}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(201,162,74,.35)}
+.wrong{background:#ece8d8}
+.fs span{border-color:#cfc8ab;background:#fbf8ef}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22}
+.remember>div{background:rgba(241,234,214,.07);border-color:rgba(201,162,74,.5)}
+.remember p{color:#e4e2d4}
+.method div{background:#fbf8ef;border-color:#c9a24a;color:#1f3a3d}.method svg{color:#8a6a24}
+.method.dark div{background:rgba(241,234,214,.06);color:#f1ead6;border-color:#c9a24a}.method.dark svg{color:#e3c98a}
+.checks li{color:#1f3a3d}.checks li::before{color:#8a6a24}
+.badge{color:#8a6a24}.dark .badge,#stage.dark .badge{color:#d9b25c}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(18px,2.7vw,28px);line-height:1.45;max-width:28em;margin:0}
+.quote .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.liftv{transition:transform 1.2s ease}.b.on .liftv{animation:lift 4s ease-in-out 1}
+@keyframes lift{0%{transform:none}35%{transform:translate(40px,-40px)}65%{transform:translate(40px,-40px)}100%{transform:none}}
+.sunmove{transition:transform 6s ease}.b.on .sunmove{transform:translate(190px,-36px)}
+#cap{background:rgba(11,26,29,.8);color:#f1ead6}
+footer{background:#0b1a1d}.bar{background:#22383b}
+.bar.seek{cursor:pointer;height:8px}
+.stack>*{width:100%;display:flex;flex-direction:column;align-items:center}
+.dove{transform-box:fill-box;transform-origin:center}.b.on .dove{animation:dove 3s ease-out 1}@keyframes dove{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  <path d="M560 200 C590 175 620 160 600 140" stroke="#b19475" stroke-width="6" fill="none" opacity=".55"/>
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-lord" viewBox="0 0 60 60"><path d="M14 54V30h32v24" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 54h40M14 38h32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 22l3-14 9 8 9-8 3 14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cost" viewBox="0 0 60 60"><path d="M12 54V22h16v32M20 22V10h4v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M8 54h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="34" y="26" width="18" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 33h10M38 40h7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-obey" viewBox="0 0 60 60"><ellipse cx="20" cy="42" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-banner" viewBox="0 0 60 60"><path d="M14 56V6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 8h34l-8 10 8 10H14" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M28 14v8M24 18h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-spoken" viewBox="0 0 60 60"><path d="M6 48c8-4 16-4 24 0 8-4 16-4 24 0V20c-8-4-16-4-24 0-8-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v28" stroke="currentColor" stroke-width="3"/><path d="M22 10c4-4 12-4 16 0M18 4c7-5 17-5 24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-points" viewBox="0 0 60 60"><path d="M6 54c10-4 14-12 22-16s14-8 18-18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M46 6v20M40 12h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-daily" viewBox="0 0 60 60"><rect x="6" y="12" width="34" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 22h34M14 8v8M32 8v8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 50c0-6 12-6 12 0l-2 4h-8z" fill="currentColor"/><path d="M50 44c-2-4 0-7 0-9 2 3 3 6 0 9z" fill="currentColor"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-notice" viewBox="0 0 60 60"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="4"/><path d="M36 36l16 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="sans-serif">?</text></symbol>
+
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-compare" viewBox="0 0 60 60"><path d="M4 44c7-3 13-3 18 0V16c-5-3-11-3-18 0zM38 44c7-3 13-3 18 0V16c-5-3-11-3-18 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 26h12M32 22l4 4-4 4M36 36H24M28 32l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-onegod" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><circle cx="30" cy="30" r="9" fill="currentColor"/></symbol>
+ <symbol id="i-three" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 4"/><circle cx="30" cy="14" r="6" fill="currentColor"/><circle cx="17" cy="38" r="6" fill="currentColor"/><circle cx="43" cy="38" r="6" fill="currentColor"/></symbol>
+ <symbol id="i-equal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 24h24M18 36h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-arms" viewBox="0 0 60 60"><circle cx="30" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 22v18M30 40l-8 14M30 40l8 14M30 28C22 22 14 20 6 22M30 28c8-6 16-8 24-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-good" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 50a20 20 0 0 1 40 0" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 14v8M12 22l5 5M48 22l-5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-image" viewBox="0 0 60 60"><circle cx="30" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M16 56c0-14 6-20 14-20s14 6 14 20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M20 12l3-7 7 5 7-5 3 7z" fill="currentColor"/></symbol>
+ <symbol id="i-broken" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 8l-6 14 8 6-6 12 4 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-hope" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 52V30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 36c0-10 8-16 18-14-1 9-8 14-18 14zM30 30c0-8-7-12-14-10 1 7 7 10 14 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-verdict" viewBox="0 0 60 60"><rect x="16" y="10" width="26" height="12" rx="3" transform="rotate(-35 29 16)" fill="currentColor"/><path d="M27 24L14 42" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M28 54h26M32 48h18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-glory" viewBox="0 0 60 60"><path d="M12 44l-4-22 12 10 10-18 10 18 12-10-4 22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52h36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 4v4M14 8l2 4M46 8l-2 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+<symbol id="i-came" viewBox="0 0 60 60"><path d="M10 54V32L30 16l20 16v22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 4l2 5 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1z" fill="currentColor"/><path d="M22 54V42h16v12" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-lived" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 18v18l-8 18M30 36l8 18M30 24l-10 8M30 24l12 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-rose" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 52V34a16 16 0 0 1 32 0v18" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="48" cy="22" r="7" fill="currentColor"/><path d="M48 6v6M60 22h-5M58 12l-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c9a24a"/></marker>
+</defs></svg>
+<!-- ============ E5 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">Establish · Lesson 5</p>
+  <svg class="scene" viewBox="0 0 640 300" aria-hidden="true">
+   <g fill="#f1ead6"><circle class="twinkle" cx="60" cy="30" r="2"/><circle class="twinkle" cx="580" cy="22" r="2.2"/><circle class="twinkle" cx="520" cy="80" r="1.6"/></g>
+   <g class="b up" data-at="Welcome to Lesson" data-until="Christians often talk about being saved">
+     <text x="320" y="62" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#d9b25c">Lesson 5</text>
+     <text x="320" y="106" text-anchor="middle" font-weight="700" font-size="34" fill="#f1ead6">Salvation</text>
+     <g class="b up" data-at="In Begin you learned that everyone who trusts Christ"><g style="color:#d9b25c"><use href="#i-child" x="85" y="140" width="50" height="50"/></g><text x="110" y="214" text-anchor="middle" font-size="14" fill="#f1ead6">a child of God</text></g>
+     <g class="b up" data-at="we saw what Jesus did">
+       <g style="color:#d9b25c"><use href="#i-came" x="250" y="145" width="40" height="40"/><use href="#i-lived" x="310" y="145" width="40" height="40"/><use href="#i-cross" x="370" y="145" width="40" height="40"/><use href="#i-rose" x="430" y="145" width="40" height="40"/></g>
+       <text x="360" y="214" text-anchor="middle" font-size="14" fill="#f1ead6">came · lived · died · rose and reigns</text>
+     </g>
+     <text class="b up" data-at="what his work accomplishes" x="320" y="270" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#d9b25c">what his work accomplishes for those who trust him</text>
+   </g>
+   <g class="b" data-at="Christians often talk about being saved" data-until="So here is our question">
+     <g class="b pop" data-at="Christians often talk about being saved"><rect x="270" y="20" width="100" height="40" rx="10" fill="rgba(241,234,214,.1)" stroke="#a8b5a3"/><text x="320" y="47" text-anchor="middle" font-size="17" fill="#f1ead6">“saved” ?</text></g>
+     <g class="b up" data-at="The Bible's picture of salvation is much bigger">
+       <rect x="40" y="90" width="560" height="170" rx="24" fill="rgba(227,201,138,.07)" stroke="#c9a24a" stroke-width="2"/>
+       <g font-size="15" fill="#e3c98a" text-anchor="middle" font-weight="700"><text x="130" y="240">past</text><text x="320" y="240">present</text><text x="510" y="240">future</text></g>
+       <g class="b up" data-at="It reaches back to what God has already done"><text x="130" y="215" text-anchor="middle" font-size="13" fill="#c8d0cc">what God has done</text></g>
+       <g class="b up" data-at="it shapes our lives now"><text x="320" y="215" text-anchor="middle" font-size="13" fill="#c8d0cc">shapes our lives now</text></g>
+       <g class="b up" data-at="it looks forward to a future"><text x="510" y="215" text-anchor="middle" font-size="13" fill="#c8d0cc">a future God completes</text></g>
+     </g>
+     <g class="b up" data-at="It means I'll go to heaven when I die"><g transform="translate(-170 10)"><path d="M455 120a18 18 0 0 1 30-14 22 22 0 0 1 40 6 16 16 0 0 1 4 32h-70a14 14 0 0 1-4-24z" fill="#f1ead6" opacity=".9"/><text x="490" y="176" text-anchor="middle" font-size="13" fill="#f1ead6">heaven when I die</text></g></g>
+   </g>
+  </svg>
+  <h1 class="b up" data-at="So here is our question" style="font-size:clamp(20px,3.3vw,36px)">Saved from what, and saved for what? Is it only about going to heaven when I die?</h1>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Romans 5:1–2, 5</p>
+  <p class="scripture" style="font-size:clamp(15px,2.1vw,21px)">
+   <span class="ph" data-at="Therefore since we have been justified by faith">“Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.</span>
+   <span class="ph" data-at="Through him we have also obtained access">Through him we have also obtained access by faith into this grace in which we stand, and we rejoice in hope of the glory of God.”</span>
+   <span class="ph" data-at="God's love has been poured into our hearts">“…God’s love has been poured into our hearts through the Holy Spirit who has been given to us.”</span>
+   <span class="ref">Romans 5:1–2, 5 · ESV</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 130" aria-hidden="true">
+    <g font-size="14" fill="#1f3a3d" font-weight="700" text-anchor="middle">
+      <g class="b up" data-at="Notice how many gifts are in these verses"><g transform="translate(85 50)"><path d="M-26 4q10-18 28-8l16-12-4 16q10 8-6 14q-22 4-34-10z" fill="#c9a24a"/></g><text x="85" y="112">peace</text></g>
+      <g class="b up" data-at="access to his grace"><rect x="232" y="18" width="46" height="66" rx="3" fill="#f3e7c9" stroke="#1f3a3d" stroke-width="2.5"/><path d="M240 84V26h30" fill="#e3c98a" opacity=".7"/><text x="255" y="112">access</text></g>
+      <g class="b up" data-at="a place to stand"><path d="M385 84h80" stroke="#8a6a24" stroke-width="5" stroke-linecap="round"/><g fill="#1f3a3d"><circle cx="425" cy="34" r="9"/><path d="M413 82c0-28 6-38 12-38s12 10 12 38z"/></g><text x="425" y="112">a place to stand</text></g>
+      <g class="b up" data-at="and hope Paul goes on"><path d="M565 84a30 30 0 0 1 60 0z" fill="#e3c98a"/><path d="M548 84h94" stroke="#8a6a24" stroke-width="3"/><path d="M595 40v-10M567 52l-7-7M623 52l7-7" stroke="#c9a24a" stroke-width="3" stroke-linecap="round"/><text x="595" y="112">hope</text></g>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Read the Scripture · Romans 5:6–10</p>
+  <p class="scripture" style="font-size:clamp(14px,1.95vw,20px);color:#f1ead6">
+   <span class="ph" data-at="For while we were still weak at the right time">“…while we were still weak, at the right time Christ died for the ungodly.”</span>
+   <span class="ph" data-at="But God shows his love for us">“…but God shows his love for us in that while we were still sinners, Christ died for us.”</span>
+   <span class="ph" data-at="For if while we were enemies">“For if while we were enemies we were reconciled to God by the death of his Son…”</span>
+   <span class="ref" style="color:#a8b5a3">Romans 5:6, 8, 10 · ESV</span>
+  </p>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b up" data-at="Paul says the same thing three times">
+      <path d="M60 30h120v35h120v35h120v35" fill="none" stroke="#7d8a82" stroke-width="3"/>
+      <g font-size="14" fill="#c8d0cc" text-anchor="middle"><text x="120" y="22">weak</text><text x="240" y="57">sinners</text><text x="360" y="92">enemies</text></g>
+      <g fill="#a8b5a3"><circle cx="470" cy="112" r="8"/><path d="M460 136c0-16 4-20 10-20s10 4 10 20z"/></g>
+    </g>
+    <g class="b up" data-at="God acted first">
+      <rect x="600" y="20" width="44" height="64" rx="3" fill="#e3c98a" opacity=".85"/>
+      <path class="b draw" data-at="God acted first" style="--len:200" d="M600 70 C560 90 520 100 485 118" fill="none" stroke="#e3c98a" stroke-width="5" stroke-linecap="round"/>
+      <text x="560" y="140" text-anchor="middle" font-size="15" fill="#e3c98a" font-weight="700">God acted first</text>
+    </g>
+  </svg>
+  <p class="badge b up" data-at="Let us use the first question from Lesson"><svg viewBox="0 0 60 60"><use href="#i-says"/></svg>What It Says</p>
+  <p class="gloss b up" data-at="That is grace" style="color:#e3c98a;font-weight:700;font-size:clamp(18px,2.6vw,26px)">That is grace.</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="dark" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Understand the Original Meaning</p>
+  <p class="gloss b up" data-at="Our Greek word today" style="color:#c8d0cc">Justify · Greek</p>
+  <p class="word b up" data-at="dikaioō It is an important Bible word" style="color:#f1ead6">dikaioō</p>
+  <p class="gloss b up" data-at="God declares a person right with him" style="color:#e3c98a;font-weight:600">here in Romans: God declares a person right with him</p>
+  <svg class="scene" viewBox="0 0 680 140" aria-hidden="true">
+    <g class="b up" data-at="It is the language of a verdict">
+      <rect x="110" y="70" width="140" height="50" rx="4" fill="#3c5a5c" stroke="#a8b5a3" stroke-width="2"/>
+      <g style="color:#e3c98a"><use href="#i-verdict" x="150" y="8" width="60" height="60"/></g>
+      <text x="180" y="100" text-anchor="middle" font-size="15" fill="#e3c98a" font-weight="700">a verdict</text>
+    </g>
+    <g class="b up" data-at="This does not mean that a believer suddenly"><text x="180" y="138" text-anchor="middle" font-size="13" fill="#c8d0cc">not: suddenly perfect</text></g>
+    <g class="b up" data-at="we have been reconciled">
+      <g fill="#a8b5a3"><circle cx="440" cy="50" r="12"/><path d="M424 120c0-40 7-56 16-56s16 16 16 56z"/></g>
+      <g fill="#e3c98a"><circle cx="540" cy="50" r="12"/><path d="M524 120c0-40 7-56 16-56s16 16 16 56z"/></g>
+      <path d="M460 86h60" stroke="#e3c98a" stroke-width="3" stroke-linecap="round"/>
+      <text x="490" y="138" text-anchor="middle" font-size="15" fill="#e3c98a" font-weight="700">reconciled</text>
+    </g>
+  </svg>
+  <p class="gloss b up" data-at="translated justified in verse" style="color:#f1ead6;font-size:clamp(14px,1.9vw,19px)">“…since we have been justified by faith…” (Romans 5:1)</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <h2 class="b up" data-at="Now the background">How Paul gets here</h2>
+  <svg class="scene" viewBox="0 0 680 230" aria-hidden="true">
+    <g class="b up" data-at="Paul wrote this letter to a church in Rome">
+      <path d="M270 60l70-40 70 40z" fill="#d9ceb0" stroke="#8a7a5a" stroke-width="2"/><rect x="285" y="60" width="110" height="50" fill="#efe6cf" stroke="#8a7a5a" stroke-width="2"/>
+      <g fill="#1f3a3d"><circle cx="310" cy="80" r="7"/><circle cx="335" cy="80" r="7"/></g><g fill="#8a6a24"><circle cx="350" cy="80" r="7"/><circle cx="372" cy="80" r="7"/></g>
+      <rect x="300" y="92" width="80" height="8" rx="3" fill="#8a7a5a"/>
+      <text x="460" y="80" font-size="13" fill="#5c6b66">Rome: Jewish and</text><text x="460" y="97" font-size="13" fill="#5c6b66">Gentile believers</text>
+    </g>
+    <path d="M40 160h600" stroke="#b9a27a" stroke-width="3"/>
+    <g class="b up" data-at="he shows that everyone has sinned"><rect x="40" y="140" width="250" height="40" rx="8" fill="#e8ecdf" stroke="#7d8a82"/><text x="165" y="165" text-anchor="middle" font-size="14" fill="#1f3a3d" font-weight="700">Romans 1–3</text><text x="165" y="205" text-anchor="middle" font-size="13" fill="#5c6b66">everyone has sinned</text></g>
+    <g class="b up" data-at="God declares people right by faith as he did"><rect x="305" y="140" width="160" height="40" rx="8" fill="#f3e7c9" stroke="#c9a24a"/><text x="385" y="165" text-anchor="middle" font-size="14" fill="#1f3a3d" font-weight="700">Romans 4</text><text x="385" y="205" text-anchor="middle" font-size="13" fill="#5c6b66">right by faith: Abraham</text></g>
+    <g class="b up" data-at="begins with Therefore"><rect x="480" y="140" width="160" height="40" rx="8" fill="#e3c98a" stroke="#8a6a24"/><text x="560" y="165" text-anchor="middle" font-size="14" fill="#1f3a3d" font-weight="700">Romans 5</text><text class="b up" data-at="Paul is now describing the results" x="560" y="205" text-anchor="middle" font-size="13" fill="#8a6a24" font-weight="700">the results</text></g>
+  </svg>
+  <p class="gloss b up" data-at="No one can be declared right by their own record" style="color:#8a6a24;font-weight:600">No one is declared right by their own record.</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="dark" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Explore the Background</p>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b up" data-at="Paul's key verse about Abraham">
+      <g fill="#f1ead6"><circle class="twinkle" cx="80" cy="20" r="2"/><circle cx="140" cy="44" r="1.6"/><circle class="twinkle" cx="210" cy="16" r="2.2"/><circle cx="290" cy="38" r="1.5"/><circle class="twinkle" cx="370" cy="14" r="2"/><circle cx="450" cy="40" r="1.7"/><circle class="twinkle" cx="530" cy="20" r="2.2"/><circle cx="600" cy="46" r="1.5"/><circle cx="250" cy="66" r="1.4"/><circle cx="410" cy="70" r="1.6"/></g>
+      <path d="M90 140l40-46 40 46z" fill="#3c5a5c" stroke="#a8b5a3" stroke-width="2"/>
+      <g fill="#e3c98a"><circle cx="210" cy="96" r="10"/><path d="M196 144c0-30 6-40 14-40s14 10 14 40z"/></g>
+    </g>
+    <g class="b up" data-at="for everyone Jew and Gentile">
+      <g fill="#a8b5a3"><circle cx="380" cy="110" r="8"/><circle cx="420" cy="104" r="8"/><circle cx="460" cy="112" r="8"/><circle cx="500" cy="106" r="8"/><circle cx="540" cy="112" r="8"/><circle cx="580" cy="106" r="8"/></g>
+      <g fill="#a8b5a3"><path d="M370 144c0-16 4-24 10-24s10 8 10 24zM410 144c0-20 4-28 10-28s10 8 10 28zM450 144c0-16 4-22 10-22s10 6 10 22zM490 144c0-20 4-26 10-26s10 6 10 26zM530 144c0-16 4-22 10-22s10 6 10 22zM570 144c0-20 4-26 10-26s10 6 10 26z"/></g>
+    </g>
+  </svg>
+  <p class="scripture b up" data-at="And he believed the LORD" style="color:#f1ead6;font-size:clamp(17px,2.5vw,25px)">“And he believed the LORD, and he counted it to him as righteousness.”<span class="ref" style="color:#a8b5a3">Genesis 15:6 · ESV · quoted in Romans 4:3</span></p>
+  <p class="badge b up" data-at="Now use our third question from Lesson"><svg viewBox="0 0 60 60"><use href="#i-pointsto"/></svg>Where It Points</p>
+  <p class="gloss b up" data-at="for everyone Jew and Gentile" style="color:#e3c98a;font-weight:600">The same way for Jew and Gentile: by faith</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="dark" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="label">The Short Answer</p>
+  <p class="scripture b up" data-at="Here is the short answer" style="color:#f1ead6;font-size:clamp(16px,2.3vw,24px)">Salvation means that God rescues us from sin and its results, for a new life with him, now and forever.</p>
+  <div class="cards" style="margin:.2em 0 .6em">
+    <div class="card b up" style="min-width:11em;max-width:17em;font-size:clamp(13px,1.6vw,16px)" data-at="Saved from what From the guilt"><b>Saved from</b>the guilt and power of sin · separation from God · final judgement and death</div>
+    <div class="card glow b up" style="min-width:11em;max-width:17em;font-size:clamp(13px,1.6vw,16px)" data-at="Saved for what For peace with God"><b>Saved for</b>peace with God · his family · growing freedom from sin · good works · a renewed creation</div>
+  </div>
+  <p class="gloss b up" data-at="Salvation has a past a present and a future" style="color:#e3c98a;font-weight:600">past · present · future: all of it rests on his grace</p>
+  <div class="method dark">
+    <div class="b up" data-at="in four parts declared right"><svg viewBox="0 0 60 60"><use href="#i-verdict"/></svg>Declared Right</div>
+    <div class="b up" data-at="declared right welcomed as children"><svg viewBox="0 0 60 60"><use href="#i-child"/></svg>Welcomed as Children</div>
+    <div class="b up" data-at="welcomed as children being made holy"><svg viewBox="0 0 60 60"><use href="#i-grow"/></svg>Being Made Holy</div>
+    <div class="b up" data-at="being made holy and kept for glory"><svg viewBox="0 0 60 60"><use href="#i-glory"/></svg>Kept for Glory</div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="badge b up" data-at="The first part declared right"><svg viewBox="0 0 60 60"><use href="#i-verdict"/></svg>Part 1 · past</p>
+  <h1 class="b up" data-at="The first part declared right" style="font-size:clamp(26px,4.4vw,46px)">Declared Right</h1>
+  <div class="stack" style="min-height:3.6em">
+    <p class="quote b" style="font-size:clamp(15px,2.1vw,21px)" data-at="justified by his grace as a gift through" data-until="For our sake he made him">“…justified by his grace as a gift, through the redemption that is in Christ Jesus.”<span class="ref">Romans 3:24</span></p>
+    <p class="quote b" style="font-size:clamp(15px,2.1vw,21px)" data-at="For our sake he made him">“For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.”<span class="ref">2 Corinthians 5:21</span></p>
+  </div>
+  <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
+    <g class="b up" data-at="Imagine standing before a judge">
+      <rect x="440" y="60" width="190" height="70" rx="4" fill="#d9ceb0" stroke="#8a7a5a" stroke-width="2"/><rect x="430" y="50" width="210" height="14" fill="#8a7a5a"/>
+      <g fill="#1f3a3d"><circle cx="160" cy="62" r="12"/><path d="M144 136c0-40 7-56 16-56s16 16 16 56z"/></g>
+      <g class="b" data-at="Imagine standing before a judge" data-until="Yet because of what Christ has done"><rect x="200" y="40" width="70" height="90" rx="3" fill="#fbf8ef" stroke="#8a7a5a" stroke-width="2"/><path d="M212 58h46M212 72h46M212 86h46M212 100h46M212 114h30" stroke="#9aa39c" stroke-width="3"/></g>
+      <text class="b up" data-at="You have no record you can present" x="160" y="22" text-anchor="middle" font-size="13" fill="#5c6b66">no record to present</text>
+    </g>
+    <g class="b up" data-at="Yet because of what Christ has done"><g style="color:#8a6a24"><use href="#i-cross" x="300" y="40" width="70" height="70"/></g></g>
+    <g class="b pop" data-at="God forgives your sins and declares you right"><g style="color:#8a6a24"><use href="#i-verdict" x="505" y="0" width="54" height="54"/></g><text x="535" y="102" text-anchor="middle" font-size="16" fill="#1f3a3d" font-weight="700">declared right</text></g>
+  </svg>
+  <p class="gloss b up" data-at="You do not earn this verdict" style="color:#8a6a24;font-weight:700">Not earned · received by faith, as a gift</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="dark" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge b up" data-at="The second part welcomed as children"><svg viewBox="0 0 60 60"><use href="#i-child"/></svg>Part 2 · past and present</p>
+  <h1 class="b up" data-at="The second part welcomed as children" style="font-size:clamp(26px,4.4vw,46px);color:#f1ead6">Welcomed as Children</h1>
+  <svg class="scene" viewBox="0 0 680 140" aria-hidden="true">
+    <g class="b up" data-at="He brings us home">
+      <path d="M380 50l90-44 90 44z" fill="#3c5a5c" stroke="#a8b5a3" stroke-width="2"/><rect x="398" y="50" width="144" height="84" fill="#26474a" stroke="#a8b5a3" stroke-width="2"/>
+      <rect x="452" y="78" width="36" height="56" fill="#e3c98a" opacity=".85"/>
+      <text x="470" y="30" text-anchor="middle" font-size="13" fill="#e3c98a">home</text>
+    </g>
+    <g class="b up" data-at="A judge can set a prisoner free"><g fill="#a8b5a3"><circle cx="140" cy="62" r="11"/><path d="M125 134c0-38 6-52 15-52s15 14 15 52z"/></g><text x="140" y="38" text-anchor="middle" font-size="13" fill="#c8d0cc">set free</text></g>
+    <g class="b up" data-at="God does Paul writes"><path class="b draw" data-at="God does Paul writes" style="--len:300" d="M165 110 C260 120 360 120 448 112" fill="none" stroke="#e3c98a" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/><text x="300" y="100" text-anchor="middle" font-size="14" fill="#e3c98a" font-weight="700">brought into the family</text></g>
+  </svg>
+  <div class="stack" style="min-height:3.6em">
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(15px,2.1vw,21px)" data-at="so that we might receive adoption as sons" data-until="heirs of God and fellow heirs">“…so that we might receive adoption as sons… So you are no longer a slave, but a son, and if a son, then an heir through God.”<span class="ref" style="color:#a8b5a3">Galatians 4:5, 7</span></p>
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(15px,2.1vw,21px)" data-at="heirs of God and fellow heirs">“…heirs of God and fellow heirs with Christ…”<span class="ref" style="color:#a8b5a3">Romans 8:17</span></p>
+  </div>
+  <p class="gloss b up" data-at="women and men alike" style="color:#e3c98a;font-weight:600">Every believer, women and men alike</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="badge b up" data-at="The third part being made holy"><svg viewBox="0 0 60 60"><use href="#i-grow"/></svg>Part 3 · present</p>
+  <h1 class="b up" data-at="The third part being made holy" style="font-size:clamp(26px,4.4vw,46px)">Being Made Holy</h1>
+  <div class="stack" style="min-height:3.6em">
+    <p class="quote b" style="font-size:clamp(15px,2.1vw,21px)" data-at="are being transformed into the same image" data-until="Paul puts both sides together">“…<u class="k" data-at="Notice the words are being transformed">are being transformed</u> into the same image from one degree of glory to another.”<span class="ref">2 Corinthians 3:18</span></p>
+    <p class="quote b" style="font-size:clamp(15px,2.1vw,21px)" data-at="Paul puts both sides together">“…work out your own salvation with fear and trembling, for it is God who works in you…”<span class="ref">Philippians 2:12–13</span></p>
+  </div>
+  <svg class="scene" viewBox="0 0 680 130" aria-hidden="true">
+    <path d="M60 110h560" stroke="#8a6a24" stroke-width="3"/>
+    <g class="b up" data-at="This is a process and it takes a lifetime">
+      <path d="M140 110v-20" stroke="#5c7a5a" stroke-width="3"/><path d="M140 96q-12-6-14-16q12 2 14 16q2-14 14-16q-2 10-14 16" fill="#7d9a6a"/>
+      <path d="M300 110v-46" stroke="#5c7a5a" stroke-width="4"/><g fill="#7d9a6a"><ellipse cx="288" cy="74" rx="14" ry="8"/><ellipse cx="312" cy="66" rx="14" ry="8"/><ellipse cx="300" cy="56" rx="12" ry="9"/></g>
+      <path d="M470 110v-60" stroke="#6c5a3a" stroke-width="7"/><circle cx="470" cy="40" r="34" fill="#7d9a6a"/><g fill="#c9a24a"><circle cx="455" cy="36" r="5"/><circle cx="482" cy="28" r="5"/><circle cx="488" cy="50" r="5"/><circle cx="462" cy="56" r="5"/></g>
+    </g>
+    <text class="b up" data-at="or sanctification" x="590" y="40" text-anchor="middle" font-size="14" fill="#8a6a24" font-weight="700">sanctification</text>
+    <text class="b up" data-at="We take part in this growth" x="590" y="70" text-anchor="middle" font-size="13" fill="#1f3a3d">we take part ·</text>
+    <text class="b up" data-at="but it is God's work" x="590" y="88" text-anchor="middle" font-size="13" fill="#1f3a3d" font-weight="700">God is at work</text>
+  </svg>
+  <p class="gloss b up" data-at="the Holy Spirit gradually making us more like Jesus" style="color:#8a6a24;font-weight:700">A lifetime of growth, by the Spirit</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="dark" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="label">Understand the Teaching</p>
+  <h1 class="b up" data-at="So where do good works fit" style="font-size:clamp(24px,4vw,42px);color:#f1ead6">Fruit, not price</h1>
+  <svg class="scene" viewBox="0 0 680 120" aria-hidden="true">
+    <g class="b up" data-at="Good works are the fruit of salvation">
+      <g transform="translate(110 20)"><path d="M0 20l20-20h50v50h-50z" fill="#f1ead6" opacity=".85"/><circle cx="16" cy="25" r="5" fill="#0d1f22"/><text x="46" y="32" text-anchor="middle" font-size="16" fill="#1f3a3d" font-weight="700">$</text></g>
+      <path class="b" data-at="not its price They do not buy" d="M100 90L200 10" stroke="#c9a24a" stroke-width="5" stroke-linecap="round"/>
+      <text x="155" y="110" text-anchor="middle" font-size="13" fill="#c8d0cc">not the price</text>
+      <path d="M340 110v-50" stroke="#6c5a3a" stroke-width="7"/><circle cx="340" cy="44" r="36" fill="#4c7a5a"/><g fill="#e3c98a"><circle cx="322" cy="38" r="6"/><circle cx="350" cy="28" r="6"/><circle cx="358" cy="54" r="6"/><circle cx="330" cy="60" r="6"/></g>
+      <text x="410" y="70" font-size="14" fill="#e3c98a" font-weight="700">the fruit</text>
+    </g>
+    <g class="b up" data-at="holiness cannot be reduced to a church's extra rules"><g opacity=".5"><rect x="510" y="14" width="110" height="80" rx="4" fill="none" stroke="#7d8a82" stroke-width="2"/><path d="M522 34h86M522 50h86M522 66h86M522 82h60" stroke="#7d8a82" stroke-width="3"/></g><text x="565" y="112" text-anchor="middle" font-size="13" fill="#c8d0cc">extra rules?</text></g>
+  </svg>
+  <div class="stack" style="min-height:3.8em">
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(14px,2vw,20px)" data-at="For by grace you have been saved through faith" data-until="faith by itself if it does not have works">“For by grace you have been saved through faith… not a result of works… created in Christ Jesus for good works…”<span class="ref" style="color:#a8b5a3">Ephesians 2:8–10</span></p>
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(14px,2vw,20px)" data-at="faith by itself if it does not have works">“…faith by itself, if it does not have works, is dead.”<span class="ref" style="color:#a8b5a3">James 2:17</span></p>
+  </div>
+  <p class="gloss b up" data-at="Becoming holy means becoming more like Jesus" style="color:#e3c98a;font-weight:600">Holiness is becoming like Jesus, not keeping extra human rules as though they make us right with God</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="dark" aria-label="Slide 12">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="One day our bodies will be raised" cx="320" cy="330" r="120" fill="#e3c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="badge b up" data-at="The fourth part kept for glory"><svg viewBox="0 0 60 60"><use href="#i-glory"/></svg>Part 4 · future</p>
+  <h1 class="b up" data-at="The fourth part kept for glory" style="font-size:clamp(26px,4.4vw,46px);color:#f1ead6">Kept for Glory</h1>
+  <div class="stack" style="min-height:4.4em">
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(14px,2vw,20px)" data-at="much more shall we be saved by him" data-until="Peter describes believers">“…much more shall we be saved by him from the wrath of God… much more, now that we are reconciled, shall we be saved by his life.”<span class="ref" style="color:#a8b5a3">Romans 5:9–10</span></p>
+    <p class="quote b" style="color:#f1ead6;font-size:clamp(14px,2vw,20px)" data-at="Peter describes believers" data-until="So salvation is much bigger">“…who by God’s power are being guarded through faith for a salvation ready to be revealed in the last time.”<span class="ref" style="color:#a8b5a3">1 Peter 1:5</span></p>
+    <div class="b" data-at="So salvation is much bigger"><div class="cards" style="margin:0">
+      <div class="card" style="min-width:6em;font-size:clamp(12px,1.6vw,16px)"><b>Now</b>peace with God</div>
+      <div class="card" style="min-width:6em;font-size:clamp(12px,1.6vw,16px)"><b>Now</b>his family</div>
+      <div class="card" style="min-width:6em;font-size:clamp(12px,1.6vw,16px)"><b>Now</b>being changed</div>
+      <div class="card glow" style="min-width:6em;font-size:clamp(12px,1.6vw,16px)"><b>Future</b>a sure hope</div>
+    </div></div>
+  </div>
+  <p class="gloss b up" data-at="our hope for the future rests on God's grace" style="color:#e3c98a;font-weight:600">Our hope rests on God’s grace and keeping power, not on a flawless record</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">Christians Differ</p>
+  <div class="cards">
+    <div class="card b up" style="min-width:13em;max-width:19em" data-at="First how justification faith and good works relate"><b>Question</b>How justification, faith and good works relate</div>
+    <div class="card b up" style="min-width:13em;max-width:19em" data-at="Second how holiness grows"><b>Question</b>How holiness grows<span class="b up" data-at="alongside continuing growth God may bring" style="display:block;font-size:.8em;color:#5c6b66;margin-top:.3em">a decisive experience, alongside continuing growth</span><span class="b up" data-at="Others emphasise sanctification as gradual growth" style="display:block;font-size:.8em;color:#5c6b66">or gradual growth through life</span></div>
+  </div>
+  <ul class="checks" style="margin-top:.8em">
+    <li class="b up" data-at="Across historic Christian traditions">Salvation is God’s grace in Christ</li>
+    <li class="b up" data-at="This course teaches that good works are the fruit">Good works are the fruit, not the price</li>
+    <li class="b up" data-at="Both call God's people to holiness">God calls his people to holiness and makes them holy</li>
+  </ul>
+  <p class="gloss b up" data-at="There is a short note in Go deeper" style="color:#5c6b66;margin-top:.6em">More in “Go deeper”, below this lesson</p>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h2 class="b up" data-at="Let me tell you about Lupita">Lupita’s story · Guadalajara, Mexico</h2>
+  <svg class="scene" viewBox="0 0 680 230" aria-hidden="true">
+    <g class="b" data-at="Lupita teaches at a primary school" data-until="At a Bible study in a new church">
+      <rect x="210" y="70" width="200" height="90" rx="4" fill="#3c5a5c" stroke="#8a7a5a" stroke-width="3"/><path d="M230 100h80M230 120h120" stroke="#f1ead6" stroke-width="3" opacity=".7"/>
+      <g fill="#1f3a3d"><circle cx="450" cy="100" r="12"/><path d="M434 180c0-40 7-56 16-56s16 16 16 56z"/></g>
+      <g class="b up" data-at="many rules about clothing music and behaviour" font-size="13" fill="#5c6b66"><rect x="480" y="10" width="170" height="70" rx="6" fill="#fbf8ef" stroke="#9aa39c"/><text x="494" y="32">clothing</text><text x="494" y="52">music</text><text x="494" y="72">behaviour</text></g>
+      <text class="b up" data-at="she wondered whether God had finished with her" x="300" y="210" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#8a6a24">“Has God finished with me?”</text>
+    </g>
+    <g class="b" data-at="At a Bible study in a new church" data-until="Lupita still wants to grow">
+      <rect x="180" y="130" width="320" height="12" rx="6" fill="#d9ceb0" stroke="#8a7a5a"/>
+      <g fill="#6c7f74"><circle cx="210" cy="106" r="10"/><circle cx="470" cy="106" r="10"/><circle cx="270" cy="100" r="10"/></g><g fill="#1f3a3d"><circle cx="410" cy="100" r="10"/></g>
+      <path d="M320 128c8-4 14-4 20 0 6-4 12-4 20 0v-16c-8-4-14-4-20 0-6-4-12-4-20 0z" fill="#fbf8ef" stroke="#8a6a24" stroke-width="2"/>
+      <text class="b up" data-at="Peace Even when I fail" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="18" fill="#8a6a24">“Peace? Even when I fail?”</text>
+      <g class="b up" data-at="The leader explained the difference" font-size="13" text-anchor="middle"><rect x="40" y="160" width="270" height="34" rx="17" fill="#f3e7c9" stroke="#c9a24a"/><text x="175" y="182" fill="#1f3a3d" font-weight="700">declared right through Christ</text><rect x="370" y="160" width="270" height="34" rx="17" fill="#e8ecdf" stroke="#7d8a82"/><text x="505" y="182" fill="#1f3a3d" font-weight="700">made holy: God’s continuing work</text></g>
+      <text class="b up" data-at="Your belonging rests on Christ" x="340" y="222" text-anchor="middle" font-size="14" fill="#1f3a3d">“…not on a flawless record.”</text>
+    </g>
+    <g class="b" data-at="Lupita still wants to grow">
+      <rect x="210" y="70" width="200" height="90" rx="4" fill="#3c5a5c" stroke="#8a7a5a" stroke-width="3"/>
+      <g fill="#1f3a3d"><circle cx="450" cy="100" r="12"/><path d="M434 180c0-40 7-56 16-56s16 16 16 56z"/></g>
+      <circle cx="450" cy="70" r="40" fill="#e3c98a" opacity=".25"/>
+      <text class="b up" data-at="she is learning to bring her failures to God" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="16" fill="#8a6a24">bringing failures to God without fear</text>
+      <text class="b up" data-at="The gospel separates the two" x="340" y="210" text-anchor="middle" font-size="14" fill="#1f3a3d" font-weight="700">Declared right ≠ already perfect</text>
+    </g>
+  </svg>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">Practise What You Have Learned</p>
+  <h1 class="b up" data-at="Here are four common mistakes" style="font-size:clamp(22px,3.8vw,40px)">What salvation is not</h1>
+  <div class="nots">
+   <div class="not b up" data-at="Salvation is only about going to heaven"><span class="wrong">Only heaven when I die<i class="b" data-at="It has a past a present and a future"></i></span><span class="truth b" data-at="It has a past a present and a future">Past, present and future</span></div>
+   <div class="not b up" data-at="I must earn salvation by good works"><span class="wrong">Earned by good works<i class="b" data-at="We are justified by grace as a gift"></i></span><span class="truth b" data-at="We are justified by grace as a gift">A gift, received by faith</span></div>
+   <div class="not b up" data-at="Since I am saved by grace how I live"><span class="wrong">How I live doesn’t matter<i class="b" data-at="Real faith shows itself in a changed life"></i></span><span class="truth b" data-at="Real faith shows itself in a changed life">Good works: the fruit of grace</span></div>
+   <div class="not b up" data-at="One failure means God has thrown me away"><span class="wrong">One failure: thrown away<i class="b" data-at="Since we have been justified by faith we have peace"></i></span><span class="truth b" data-at="Since we have been justified by faith we have peace">“We have peace with God”</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">This Week</p>
+  <h1 class="b up" data-at="This week your assignment is" style="font-size:clamp(22px,3.6vw,38px)">Receive God’s salvation, and respond to grace</h1>
+  <ol class="steps">
+    <li class="b up" data-at="First read Romans"><b>Read</b> Romans 5:1–11 twice</li>
+    <li class="b up" data-at="Second write one short line for each of the four parts"><b>Write</b> one short line for each of the four parts</li>
+    <li class="b up" data-at="Third Titus says"><b>Respond</b> with one quiet act of kindness, not to earn anything</li>
+    <li class="b up" data-at="And fourth follow the seven-day reading plan"><b>Follow</b> the seven-day reading plan</li>
+  </ol>
+  <div class="method" style="margin:.4em 0 .2em;width:min(100%,560px)">
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-verdict"/></svg><small>Declared Right</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-child"/></svg><small>Welcomed as Children</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-grow"/></svg><small>Being Made Holy</small></div>
+    <div class="b up" data-at="Second write one short line"><svg viewBox="0 0 60 60"><use href="#i-glory"/></svg><small>Kept for Glory</small></div>
+  </div>
+  <div class="fs b up" data-at="This assignment belongs to the My Foundations area">
+    <span class="lit b" data-at="called my beliefs">My beliefs</span><span>My life with God</span><span>My life in the Spirit</span><span>My church</span><span>My hope</span>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 17 ============ -->
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <h2 class="b up" data-at="Salvation means God rescues us from sin" style="font-size:clamp(17px,2.6vw,27px)">Salvation means God rescues us from sin and its results, for a new life with him, now and forever. All of it rests on grace.</h2>
+  <div class="remember">
+    <div class="b up" data-at="Declared right God declares believers right"><svg viewBox="0 0 60 60"><use href="#i-verdict"/></svg><p><b>Declared Right</b>peace with God because of Christ</p></div>
+    <div class="b up" data-at="Welcomed as children God adopts"><svg viewBox="0 0 60 60"><use href="#i-child"/></svg><p><b>Welcomed as Children</b>adopted into his family as heirs</p></div>
+    <div class="b up" data-at="Being made holy the Spirit is transforming"><svg viewBox="0 0 60 60"><use href="#i-grow"/></svg><p><b>Being Made Holy</b>the Spirit is transforming us; good works are the fruit, not the price</p></div>
+    <div class="b up" data-at="And kept for glory God will complete"><svg viewBox="0 0 60 60"><use href="#i-glory"/></svg><p><b>Kept for Glory</b>God will complete what he began</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ E5 SLIDE 18 ============ -->
+<section class="slide" data-n="18" data-theme="dark" aria-label="Slide 18">
+ <svg class="sunbg" viewBox="0 0 640 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="b sunrise" data-at="Let us pray" cx="320" cy="330" r="120" fill="#e3c98a"/></svg>
+ <div class="wrap" style="position:relative">
+  <p class="label">Prayer</p>
+  <div class="prayer" style="font-size:clamp(15px,2.1vw,22px);line-height:1.4">
+   <p class="ph" data-at="Father thank you that while we were still sinners">Father, thank you that while we were still sinners, Christ died for us.</p>
+   <p class="ph" data-at="Thank you that in him you have declared me right">Thank you that in him you have declared me right and welcomed me as your child.</p>
+   <p class="ph" data-at="Holy Spirit keep changing me">Holy Spirit, keep changing me to be more like Jesus.</p>
+   <p class="ph" data-at="Keep me trusting you until">Keep me trusting you until you complete what you have begun.</p>
+   <p class="ph" data-at="name Amen"><b>In Jesus’ name. Amen.</b></p>
+  </div>
+  <p class="gloss b up" data-at="You may stop here for today" style="margin-top:.6em">You may stop here for today.</p>
+ </div>
+</section>
+
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 18</span>
+   <div class="dots" id="dots"></div>
+   <label class="small"><input type="checkbox" id="capT" checked> Captions</label>
+ </div>
+ <audio id="aud" src="establish-lesson-05.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1": "Welcome to Lesson 5 of Establish. In Begin, you learned that everyone who trusts Christ becomes a child of God, and in Lesson 4 we saw what Jesus did: he came, lived, died, rose and reigns. Now we go one step further and ask what his work accomplishes for those who trust him. Christians often talk about being saved. But if you ask what it means, you may get a short answer: \"It means I'll go to heaven when I die.\" That is part of the truth, but only a small part. The Bible's picture of salvation is much bigger. It reaches back to what God has already done, it shapes our lives now, and it looks forward to a future God will complete. So here is our question: saved from what, and saved for what? Is it only about going to heaven when I die?", "2": "Our passage is Romans chapter 5, verses 1 to 11. Listen to verses 1 and 2: \"Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ. Through him we have also obtained access by faith into this grace in which we stand, and we rejoice in hope of the glory of God.\" Notice how many gifts are in these verses: peace with God, access to his grace, a place to stand, and hope. Paul goes on to speak of endurance in suffering, and in verse 5 he says that \"God's love has been poured into our hearts through the Holy Spirit who has been given to us.\"", "3": "Now listen to verses 6 to 10. \"For while we were still weak, at the right time Christ died for the ungodly.\" Verse 8: \"But God shows his love for us in that while we were still sinners, Christ died for us.\" And verse 10: \"For if while we were enemies we were reconciled to God by the death of his Son, much more, now that we are reconciled, shall we be saved by his life.\" Let us use the first question from Lesson 1: what does it say? Which words are repeated? Paul says the same thing three times: while we were still weak, while we were still sinners, while we were enemies. God acted first. He did not wait for us to improve. That is grace.", "4": "Our Greek word today is the one translated \"justified\" in verse 1: dikaioō. It is an important Bible word, and it is simpler than it sounds. Here in Romans, Paul uses the language of justification: God declares a person right with him. It is the language of a verdict. This does not mean that a believer suddenly becomes a perfect person. God also changes us, but we will see that as another part of salvation. And in verses 10 and 11, Paul adds another picture: we have been reconciled. People who were enemies of God are now at peace with him.", "5": "Now the background. Paul wrote this letter to a church in Rome made up of Jewish and Gentile believers. Before chapter 5, he has made a long argument. In chapters 1 to 3 he shows that everyone has sinned, Jew and Gentile alike. No one can be declared right by their own record. Then in chapter 4 he shows that God declares people right by faith, as he did with Abraham, long before the law was given. That is why chapter 5 begins with \"Therefore.\" Paul is now describing the results: what it means to be declared right with God by faith in Christ.", "6": "Paul's key verse about Abraham comes from Genesis 15. God promised Abraham descendants as many as the stars, and the Bible says, \"And he believed the LORD, and he counted it to him as righteousness.\" Now use our third question from Lesson 1: where does this connect in the Bible's larger story? Paul himself takes us back to Abraham. Long before Jesus came, Abraham believed God's promise, and it was counted to him as righteousness. In Romans 4, Paul uses Abraham to show that being counted righteous comes by faith, not by achievement, for everyone, Jew and Gentile, who trusts in Christ.", "7": "So, saved from what, and saved for what? Here is the short answer. Salvation means that God rescues us from sin and its results, for a new life with him, now and forever. Saved from what? From the guilt and power of sin, from separation from God, and from final judgement and death. Saved for what? For peace with God, life in his family, growing freedom from sin, good works, and a place in his renewed creation. Salvation has a past, a present and a future. God has declared us right with him and welcomed us as his children. He is making us holy. And he will keep us for the glory to come. All of it rests on his grace. We will look at it in four parts: declared right, welcomed as children, being made holy, and kept for glory.", "8": "The first part: declared right. To be justified means that God, the righteous judge, declares a person right with him. Not because our record makes us right, but because of what Christ has done. Paul writes that we are \"justified by his grace as a gift, through the redemption that is in Christ Jesus.\" And: \"For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.\" Imagine standing before a judge with a charge you cannot answer. You have no record you can present to make yourself right. Yet because of what Christ has done, God forgives your sins and declares you right with him. You do not earn this verdict; you receive it by faith, as a gift. And the believer has peace with God.", "9": "The second part: welcomed as children. God does not only declare us not guilty and send us away. He brings us home. A judge can set a prisoner free, but a judge does not usually take that prisoner into his own family. God does. Paul writes that God sent his Son \"so that we might receive adoption as sons… So you are no longer a slave, but a son, and if a son, then an heir through God.\" In Begin, Lesson 5, we saw that \"sons\" here is inheritance language that includes every believer, women and men alike. Believers are not servants trying to earn a place in the house. They are children who already belong, \"heirs of God and fellow heirs with Christ.\"", "10": "The third part: being made holy. Salvation is not only something God has done for us. It is also something he is doing in us. Paul writes that we \"are being transformed into the same image from one degree of glory to another.\" Notice the words \"are being transformed.\" This is a process, and it takes a lifetime. The Bible calls it being made holy, or sanctification: the Holy Spirit gradually making us more like Jesus in our character, desires and actions. We take part in this growth, but it is God's work. Paul puts both sides together: \"work out your own salvation with fear and trembling, for it is God who works in you, both to will and to work for his good pleasure.\"", "11": "So where do good works fit? Paul writes, \"For by grace you have been saved through faith,\" \"not a result of works,\" and then, \"created in Christ Jesus for good works.\" Good works are the fruit of salvation, not its price. They do not buy our salvation or put God in our debt. But they matter. James writes, \"faith by itself, if it does not have works, is dead.\" Real faith shows itself in a changed life, because the Spirit is at work. And holiness cannot be reduced to a church's extra rules about clothing, food or entertainment, as though keeping those rules makes someone right with God. Becoming holy means becoming more like Jesus: in our character, desires, choices, love for God and love for others.", "12": "The fourth part: kept for glory. Salvation also has a future. Paul looks ahead: \"much more shall we be saved by him from the wrath of God… much more, now that we are reconciled, shall we be saved by his life.\" Peter describes believers as people \"who by God's power are being guarded through faith for a salvation ready to be revealed in the last time.\" God will finish what he began. One day our bodies will be raised and all creation will be made new. God is faithful and powerful to keep his people, and believers are called to keep trusting Christ. The point here is simple: our hope for the future rests on God's grace and keeping power, not on our ability to build a flawless record. So salvation is much bigger than going to heaven when I die. It means peace with God now, belonging to his family now, being changed now, and a sure hope for the future.", "13": "Christians differ on two questions here, and we will name them briefly. First, how justification, faith and good works relate. Across historic Christian traditions, salvation is understood as God's grace in Christ rather than something human beings achieve apart from him. Christians differ, however, in how they explain the relationship between justification, faith and works. Romans says a person is justified by faith, while James says faith without works is dead. This course teaches that good works are the fruit of God's saving grace, not the price we pay to receive it. Second, how holiness grows. Some churches teach that, alongside continuing growth, God may bring believers into a decisive experience of deeper cleansing and wholehearted devotion. Others emphasise sanctification as gradual growth throughout the Christian life, completed only in glory. Both call God's people to holiness, and both look to God himself to make them holy. There is a short note in Go deeper, below this lesson.", "14": "Let me tell you about Lupita. Her story is drawn from the experiences of many people. Lupita teaches at a primary school in Guadalajara. She grew up in a church with many rules about clothing, music and behaviour, and she believed she had to keep them perfectly to stay saved. Every time she lost her temper with her class, she wondered whether God had finished with her. At a Bible study in a new church, the group read Romans 5:1: \"Since we have been justified by faith, we have peace with God.\" Lupita asked, \"Peace? Even when I fail?\" The leader explained the difference between being declared right with God through Christ, and being made holy as God continues his work in us. \"Your belonging rests on Christ and his grace, not on a flawless record,\" she said. \"Your growth matters, because grace is changing you. But one failure doesn't mean God has thrown you away.\" Lupita still wants to grow in patience with her pupils, and she is learning to bring her failures to God without fear. Many believers confuse being declared right with God with becoming perfect. The gospel separates the two without making either unimportant.", "15": "Here are four common mistakes. \"Salvation is only about going to heaven when I die.\" It has a past, a present and a future, and it begins now. \"I must earn salvation by good works.\" We are justified by grace, as a gift, received by faith. \"Since I am saved by grace, how I live doesn't matter.\" Real faith shows itself in a changed life; good works are the fruit of grace. And \"One failure means God has thrown me away.\" \"Since we have been justified by faith, we have peace with God.\"", "16": "This week, your assignment is to receive God's salvation, past, present and future, and to respond to his grace. First, read Romans 5:1 to 11 twice. Second, write one short line for each of the four parts, in your own words. You can use the book to help. Third, Titus says that Christ redeemed his people to be \"zealous for good works.\" If it is appropriate and safe, do one quiet, practical act of kindness this week, as a response to grace, not to earn anything. Ask what would help, rather than assuming. And fourth, follow the seven-day reading plan below this lesson. Each day, notice whether the passage speaks about salvation past, present or future. This assignment belongs to the My Foundations area called my beliefs.", "17": "Let us bring it together. Salvation means God rescues us from sin and its results, for a new life with him, now and forever. All of it rests on grace. Declared right: God declares believers right with him because of Christ, and we have peace with God. Welcomed as children: God adopts believers into his family as heirs. Being made holy: the Spirit is transforming us over a lifetime, and good works are the fruit, not the price. And kept for glory: God will complete what he began, by his grace.", "18": "Let us pray. Father, thank you that while we were still sinners, Christ died for us. Thank you that in him you have declared me right and welcomed me as your child. Holy Spirit, keep changing me to be more like Jesus, and help me to bring my failures to you without fear. Keep me trusting you until you complete what you have begun. In Jesus' name. Amen. You may stop here for today. When you are ready, begin this week's assignment and the reading plan."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.12, 0.49, 0.58, 1.93, 2.05, 3.32, 3.46, 4.32, 4.45, 4.94, 5.22, 5.73, 5.93, 6.42, 7.26, 7.69, 7.75, 8.36, 8.51, 9.44, 9.6, 9.7, 10.07, 10.13, 10.37, 10.93, 11.6, 12.15, 13.06, 14.08, 14.87, 15.66, 16.6, 16.85, 18.19, 18.7, 18.89, 19.08, 19.5, 19.9, 20.69, 20.9, 21.44, 21.61, 21.8, 22.17, 23.38, 23.53, 23.97, 24.12, 24.53, 25.37, 25.95, 26.38, 26.74, 27.47, 28.04, 29.22, 29.35, 29.48, 29.66, 29.98, 30.13, 30.28, 31.18, 31.33, 31.5, 31.67, 31.71, 32.2, 33.22, 33.37, 34.03, 34.26, 34.49, 34.62, 35.02, 35.21, 35.37, 36.28, 36.47, 36.6, 36.93, 37.03, 37.12, 37.88, 38.03, 38.37, 38.4, 38.85, 39.95, 40.02, 40.49, 40.89, 40.97, 41.92, 42.11, 42.57, 43.48, 43.6, 44.14, 44.47, 44.59, 44.79, 45.14, 45.42, 46.04, 46.75, 46.88, 47.34, 47.48, 47.96, 48.67, 48.81, 48.93, 49.2, 49.65, 49.82, 49.85, 50.34, 50.67, 50.88, 52.17, 52.48, 52.85, 53.0, 53.15, 54.11, 54.69, 54.99, 55.75, 55.95, 56.45, 56.73, 57.64, 57.82, 58.07, 58.52, 58.91, 59.23, 59.33, 59.73, 59.96, 60.13], "2": [61.25, 61.41, 61.99, 62.16, 62.74, 63.08, 63.92, 63.99, 64.78, 64.9, 65.09, 66.13, 66.54, 66.78, 67.12, 67.21, 67.41, 67.83, 68.43, 68.76, 69.45, 69.54, 69.69, 70.01, 70.45, 70.98, 72.12, 72.51, 72.98, 73.68, 74.39, 74.59, 74.75, 75.13, 76.4, 78.4, 79.09, 79.34, 80.17, 80.43, 80.67, 81.48, 81.64, 81.85, 82.01, 83.03, 83.25, 83.41, 84.06, 84.2, 84.91, 85.02, 85.12, 85.64, 85.75, 86.92, 87.32, 87.52, 87.74, 88.17, 88.33, 88.48, 88.72, 89.71, 90.07, 90.27, 91.1, 91.61, 91.75, 91.94, 92.77, 92.88, 93.22, 93.32, 94.22, 94.42, 95.3, 95.64, 95.98, 96.29, 96.43, 96.86, 96.99, 97.74, 97.87, 99.04, 99.23, 99.42, 100.33, 100.48, 100.88, 101.61, 102.07, 102.46, 102.7, 102.92, 103.39, 103.82, 104.02, 104.81, 105.08, 105.2, 105.61, 106.4, 106.59, 106.79, 107.01, 107.38, 107.61], "3": [108.69, 108.94, 109.36, 109.46, 110.32, 111.43, 111.64, 112.05, 112.2, 112.33, 112.7, 113.42, 113.55, 113.63, 114.0, 114.68, 115.17, 115.55, 115.7, 115.88, 117.05, 117.31, 118.27, 118.68, 119.13, 119.31, 119.67, 119.88, 120.22, 120.41, 120.59, 120.96, 121.12, 121.26, 121.57, 122.71, 123.6, 124.38, 124.66, 125.76, 126.0, 127.54, 127.79, 128.06, 128.36, 128.53, 128.82, 129.42, 129.59, 129.76, 130.59, 130.71, 131.08, 131.27, 131.4, 131.75, 131.84, 132.02, 133.21, 133.59, 134.52, 134.81, 135.01, 135.17, 135.3, 136.55, 136.82, 136.98, 137.14, 137.82, 137.99, 138.23, 139.37, 139.58, 139.73, 140.0, 140.07, 140.48, 140.97, 141.21, 141.57, 142.58, 142.79, 142.91, 143.64, 143.88, 144.34, 144.46, 145.73, 146.03, 146.36, 146.45, 146.85, 147.2, 147.48, 148.6, 148.93, 149.07, 149.23, 149.63, 150.39, 150.63, 150.76, 150.9, 151.28, 152.1, 152.42, 152.56, 152.79, 153.84, 154.22, 154.74, 155.57, 155.78, 155.95, 156.23, 156.53, 156.74, 156.93, 157.08, 157.96, 158.2, 158.41], "4": [159.63, 159.9, 160.36, 160.7, 161.2, 161.39, 161.47, 161.84, 162.6, 163.48, 163.61, 164.88, 166.37, 166.49, 166.68, 166.78, 167.39, 167.78, 168.54, 168.75, 168.89, 169.02, 169.8, 169.98, 170.12, 171.55, 171.96, 172.27, 173.13, 173.49, 174.09, 174.18, 174.83, 175.04, 176.68, 177.14, 177.92, 178.06, 178.57, 179.0, 179.21, 180.1, 180.22, 180.41, 180.51, 181.2, 181.45, 181.54, 182.86, 183.08, 183.27, 183.48, 183.82, 183.94, 183.99, 184.59, 185.06, 185.52, 185.57, 186.03, 186.93, 187.19, 187.73, 188.33, 188.93, 189.12, 189.29, 189.46, 189.76, 190.0, 190.2, 190.59, 190.94, 191.03, 192.4, 192.68, 192.87, 193.51, 194.02, 194.11, 194.23, 196.7, 197.84, 198.12, 198.49, 198.9, 200.52, 200.99, 201.18, 201.45, 202.03, 202.21, 202.9, 203.06, 203.57, 203.83, 204.23, 204.47], "5": [205.58, 206.26, 206.37, 207.77, 208.34, 208.69, 208.96, 209.33, 209.54, 209.58, 210.07, 210.26, 210.97, 211.27, 211.49, 211.68, 212.25, 212.59, 213.22, 214.46, 214.89, 216.13, 216.29, 216.51, 216.77, 216.8, 217.36, 218.84, 219.0, 219.82, 220.15, 220.57, 221.0, 221.28, 221.79, 221.96, 222.72, 223.17, 223.39, 223.96, 224.85, 225.12, 225.39, 225.58, 225.69, 226.23, 226.65, 226.81, 227.05, 227.37, 228.51, 228.9, 229.04, 229.77, 229.9, 230.33, 230.45, 230.8, 231.25, 231.61, 231.9, 232.1, 233.1, 233.32, 233.46, 233.66, 233.89, 234.83, 235.18, 235.52, 235.61, 235.9, 236.13, 237.19, 237.35, 237.51, 237.74, 238.66, 239.19, 239.51, 240.91, 241.33, 241.54, 241.79, 242.57, 242.67, 243.7, 244.01, 244.14, 244.52, 244.61, 244.75, 245.29, 245.7, 245.9, 246.44, 246.62, 247.1, 247.27], "6": [248.22, 248.69, 249.1, 249.62, 250.08, 251.08, 251.5, 251.73, 253.28, 253.56, 254.23, 254.83, 255.66, 255.9, 256.42, 256.66, 256.74, 257.82, 257.94, 258.01, 258.4, 259.23, 259.42, 259.6, 260.22, 260.31, 261.13, 261.31, 261.46, 261.95, 262.13, 262.24, 262.7, 262.92, 264.51, 264.72, 265.0, 265.15, 265.46, 265.99, 266.18, 266.5, 267.65, 267.89, 268.09, 268.61, 268.77, 268.83, 269.35, 269.79, 270.92, 271.25, 272.13, 272.52, 272.7, 273.1, 273.25, 274.45, 274.79, 275.14, 275.59, 276.45, 277.03, 277.67, 278.04, 278.97, 279.12, 279.24, 279.44, 279.98, 280.08, 280.48, 280.82, 282.43, 282.59, 283.16, 284.31, 284.96, 285.7, 285.82, 286.3, 286.55, 286.86, 287.43, 288.04, 288.57, 288.75, 289.62, 290.0, 290.24, 291.36, 291.64, 292.6, 293.16, 293.45, 294.45, 294.61, 295.21, 295.43], "7": [296.68, 297.54, 297.94, 298.2, 298.88, 299.08, 299.55, 299.87, 300.64, 300.97, 301.13, 301.24, 301.64, 302.49, 303.24, 303.62, 303.77, 304.13, 304.76, 304.99, 305.22, 305.8, 306.03, 306.22, 307.11, 307.32, 307.35, 307.67, 308.08, 308.26, 308.89, 309.41, 309.69, 310.57, 310.99, 311.3, 312.16, 312.37, 312.45, 312.95, 313.1, 313.56, 313.66, 314.74, 314.9, 315.67, 315.87, 316.79, 316.99, 317.2, 317.73, 318.48, 318.72, 319.55, 320.13, 320.33, 321.44, 321.54, 321.89, 322.05, 322.83, 323.19, 323.29, 323.54, 324.46, 324.82, 325.3, 325.51, 326.46, 326.67, 327.62, 327.81, 327.85, 328.75, 328.86, 329.11, 329.57, 330.91, 331.61, 331.84, 331.95, 332.71, 332.79, 333.59, 333.85, 333.89, 335.18, 335.51, 335.72, 336.28, 336.48, 336.94, 337.09, 337.45, 337.87, 338.43, 338.66, 338.97, 339.18, 340.18, 340.35, 340.48, 340.9, 341.08, 341.9, 342.2, 342.33, 342.52, 342.85, 343.1, 343.24, 343.34, 343.8, 343.92, 344.84, 345.1, 345.2, 345.51, 346.17, 346.41, 346.73, 348.02, 348.15, 348.33, 348.54, 348.66, 348.8, 348.97, 349.3, 350.49, 351.05, 351.87, 352.59, 352.86, 354.07, 354.36, 354.63, 355.6, 355.82, 356.25, 356.4], "8": [357.56, 357.63, 358.07, 359.29, 359.83, 361.09, 361.22, 361.35, 362.61, 362.91, 363.14, 364.11, 364.22, 364.77, 365.78, 366.3, 366.41, 366.89, 367.31, 367.51, 368.63, 368.85, 369.22, 369.37, 369.85, 370.17, 370.32, 371.31, 371.49, 371.85, 371.96, 372.14, 372.69, 372.91, 373.86, 374.08, 375.13, 375.28, 375.47, 375.57, 376.42, 376.59, 376.79, 377.23, 377.54, 377.59, 378.7, 378.98, 379.09, 379.93, 380.1, 380.28, 380.46, 381.18, 382.4, 383.24, 383.57, 383.85, 384.57, 384.78, 385.07, 385.42, 385.56, 385.72, 386.63, 386.78, 387.11, 387.32, 388.44, 388.67, 388.89, 389.05, 389.87, 389.99, 390.35, 391.01, 391.09, 391.98, 392.17, 393.3, 393.91, 394.5, 394.88, 394.92, 395.38, 395.56, 395.62, 396.17, 396.35, 396.81, 397.98, 398.09, 398.25, 398.49, 398.94, 399.09, 399.31, 400.0, 400.1, 400.36, 400.83, 401.72, 401.91, 402.36, 402.47, 402.69, 403.16, 403.37, 404.13, 404.42, 405.05, 405.25, 406.1, 406.27, 406.84, 407.07, 407.68, 407.87, 408.88, 408.98, 409.09, 409.36, 409.65, 409.87, 410.67, 410.84, 411.23, 411.39, 411.57, 412.53, 412.74, 412.78, 413.7, 413.86, 413.94, 414.49, 414.76, 415.17, 415.37], "9": [416.15, 416.25, 416.67, 417.46, 418.56, 418.85, 420.02, 420.33, 420.54, 420.82, 421.18, 421.69, 421.87, 422.15, 422.63, 422.74, 423.08, 423.25, 424.12, 424.27, 424.73, 424.9, 425.89, 426.02, 426.4, 426.58, 426.82, 426.89, 427.36, 428.34, 428.48, 428.56, 428.98, 429.17, 429.38, 429.89, 430.18, 430.41, 430.87, 431.17, 431.38, 431.61, 432.61, 432.94, 434.01, 434.28, 434.61, 434.74, 435.14, 435.47, 435.6, 436.59, 436.74, 436.9, 437.05, 437.3, 437.76, 438.62, 438.74, 439.86, 440.01, 440.21, 440.3, 440.57, 440.94, 440.97, 442.02, 442.15, 442.2, 443.16, 443.3, 443.42, 443.46, 444.07, 444.46, 444.66, 445.39, 445.67, 446.53, 446.69, 447.59, 447.86, 447.92, 448.18, 449.19, 450.32, 450.84, 451.0, 451.81, 452.39, 452.54, 453.23, 453.64, 454.62, 455.09, 455.39, 455.88, 457.11, 457.66, 457.75, 457.99, 458.61, 458.95, 459.2, 459.42, 459.46, 459.85, 459.96, 460.02, 461.22, 461.39, 461.51, 462.1, 462.32, 462.87, 463.94, 464.29, 464.4, 465.18, 465.38, 465.99, 466.34, 466.52], "10": [467.49, 467.59, 467.92, 468.65, 468.92, 469.29, 470.19, 470.88, 471.08, 471.37, 471.7, 472.19, 472.5, 472.74, 473.0, 473.22, 473.88, 473.99, 474.18, 474.59, 475.07, 475.27, 475.46, 475.87, 476.06, 477.02, 477.25, 477.72, 477.92, 478.41, 478.55, 478.93, 479.89, 480.16, 480.26, 480.69, 481.15, 481.41, 481.66, 482.03, 482.1, 482.57, 482.79, 483.61, 484.09, 484.19, 485.02, 485.2, 485.67, 487.58, 487.86, 488.05, 488.1, 489.13, 489.28, 489.41, 489.72, 489.78, 491.13, 491.21, 491.68, 492.06, 492.2, 492.53, 493.1, 494.14, 494.65, 496.26, 496.37, 496.78, 497.71, 498.33, 498.78, 498.97, 499.23, 499.52, 500.52, 500.65, 500.84, 501.86, 503.0, 503.17, 504.39, 504.63, 504.92, 505.26, 505.41, 505.6, 506.36, 506.51, 506.62, 506.8, 507.28, 508.33, 508.58, 508.89, 509.26, 509.73, 510.76, 511.09, 511.51, 511.7, 512.07, 512.92, 513.14, 513.61, 513.85, 514.68, 514.91, 515.02, 515.21, 515.63, 515.79, 516.27, 516.48, 517.03, 517.3, 517.46, 517.96, 518.21, 518.34, 518.76, 518.95, 519.16, 519.48], "11": [520.62, 521.59, 521.92, 522.17, 522.46, 522.88, 523.84, 524.14, 525.26, 525.48, 525.68, 526.21, 526.34, 526.51, 526.68, 527.4, 527.65, 528.71, 528.94, 529.0, 529.46, 529.59, 530.18, 530.5, 531.48, 532.18, 532.35, 532.89, 533.42, 533.62, 533.9, 535.06, 535.26, 535.74, 535.96, 536.09, 536.5, 536.61, 537.73, 538.02, 538.28, 539.45, 539.61, 539.76, 539.99, 540.4, 540.66, 541.72, 541.89, 542.09, 542.49, 542.66, 542.9, 543.98, 544.19, 544.35, 545.42, 545.77, 546.61, 547.0, 547.28, 548.17, 548.33, 548.48, 548.75, 549.04, 549.34, 550.09, 550.34, 551.36, 551.76, 552.23, 552.67, 553.2, 553.4, 553.45, 554.08, 554.72, 555.24, 555.36, 556.23, 556.43, 556.64, 557.64, 557.83, 558.78, 559.26, 559.4, 560.1, 560.27, 560.32, 561.02, 561.42, 561.96, 562.22, 563.12, 563.7, 563.91, 565.22, 565.44, 565.65, 566.17, 566.46, 567.25, 567.57, 568.05, 568.44, 568.59, 569.71, 570.25, 571.33, 571.62, 572.19, 572.48, 572.85, 574.03, 574.14, 574.38, 575.57, 576.8, 577.95, 578.3, 578.55, 579.33, 579.56, 579.82, 580.11], "12": [581.01, 581.11, 581.47, 582.19, 582.77, 582.97, 584.03, 584.8, 585.27, 585.51, 585.55, 586.65, 587.06, 587.41, 588.26, 588.65, 588.95, 589.25, 589.42, 589.55, 590.06, 590.28, 590.82, 591.09, 591.18, 591.54, 591.65, 592.59, 592.96, 593.59, 593.88, 594.07, 594.23, 594.38, 595.88, 596.11, 596.29, 596.41, 596.99, 597.14, 597.4, 598.34, 598.65, 599.29, 600.07, 600.27, 601.27, 601.43, 601.61, 602.1, 602.97, 603.07, 603.37, 603.95, 604.2, 605.03, 605.2, 605.24, 606.26, 606.58, 606.7, 606.87, 607.76, 607.9, 607.98, 608.38, 609.24, 609.57, 609.74, 610.29, 610.55, 611.47, 612.05, 612.28, 613.37, 614.43, 615.5, 615.65, 615.81, 616.14, 616.23, 616.32, 617.64, 618.06, 618.17, 618.49, 620.15, 620.6, 620.84, 621.55, 621.83, 622.53, 622.66, 623.02, 623.25, 624.17, 624.35, 625.15, 625.3, 625.86, 625.97, 626.33, 626.94, 628.2, 628.28, 628.65, 629.05, 629.2, 630.42, 630.55, 631.13, 631.25, 631.35, 632.18, 632.71, 632.9, 633.36, 633.92, 634.18, 634.61, 635.64, 636.06, 636.26, 636.46, 636.98, 637.09, 637.55, 637.61, 638.21, 639.23, 640.0, 641.01, 641.2, 641.58, 642.27, 642.46, 642.79, 642.9, 643.34, 643.5, 643.62, 644.67, 644.84, 645.18, 645.52, 645.7, 646.04, 646.68, 647.16, 647.28, 647.51, 647.93, 648.53, 648.84, 649.53, 650.18, 650.35, 650.39, 650.82, 651.27, 651.41, 651.51], "13": [652.64, 653.39, 653.8, 654.04, 654.4, 655.05, 655.94, 656.08, 656.23, 656.39, 656.67, 656.85, 657.89, 658.89, 659.14, 660.72, 661.71, 661.88, 662.15, 662.54, 663.82, 664.28, 665.03, 665.57, 666.68, 667.54, 667.78, 668.48, 668.81, 669.35, 669.84, 670.09, 671.02, 671.35, 671.56, 672.03, 672.42, 672.92, 673.58, 674.13, 674.39, 675.37, 675.89, 676.25, 677.03, 677.15, 677.47, 677.68, 678.23, 678.3, 679.1, 679.56, 680.97, 681.73, 681.93, 683.07, 683.63, 684.02, 684.16, 684.63, 684.84, 685.71, 685.91, 686.83, 687.07, 687.61, 687.97, 688.39, 688.83, 689.27, 689.56, 690.58, 690.83, 691.3, 691.83, 691.97, 692.3, 692.79, 692.95, 693.06, 693.63, 693.84, 694.22, 694.79, 695.75, 696.1, 696.18, 696.6, 696.77, 697.11, 697.26, 697.7, 698.6, 699.52, 699.78, 700.49, 701.59, 702.02, 702.63, 703.02, 703.55, 704.31, 705.04, 705.75, 706.11, 706.32, 706.66, 707.27, 707.61, 707.66, 708.36, 709.37, 709.57, 709.97, 710.9, 711.1, 712.01, 713.36, 713.77, 714.41, 715.52, 715.79, 716.38, 716.79, 717.33, 717.39, 717.85, 718.61, 719.35, 719.85, 720.02, 721.13, 721.61, 722.02, 722.39, 722.82, 722.96, 724.05, 724.29, 724.63, 724.88, 725.0, 725.31, 726.27, 726.38, 726.67, 726.82, 727.95, 728.13, 728.28, 728.32, 728.75, 729.45, 729.95, 730.21, 730.95, 731.36, 731.6], "14": [732.44, 732.57, 732.72, 732.91, 733.08, 733.37, 734.31, 734.44, 734.89, 735.03, 735.32, 735.51, 735.63, 736.53, 736.64, 737.0, 737.91, 738.33, 738.83, 738.92, 738.97, 739.5, 739.93, 740.09, 741.64, 741.89, 742.16, 742.35, 742.46, 742.51, 742.99, 743.2, 743.53, 744.04, 744.3, 745.15, 745.71, 745.94, 746.99, 747.12, 747.33, 747.81, 747.96, 748.25, 748.32, 748.69, 748.89, 749.82, 749.93, 750.34, 751.23, 751.61, 752.0, 752.2, 752.49, 752.62, 753.03, 753.22, 753.35, 754.28, 754.49, 755.05, 755.29, 755.67, 755.86, 756.34, 756.52, 757.46, 757.59, 757.66, 758.09, 758.62, 758.77, 758.82, 759.15, 759.89, 760.0, 760.34, 760.68, 762.77, 763.12, 763.3, 763.48, 763.69, 764.41, 764.59, 765.39, 765.6, 765.81, 766.25, 766.45, 767.23, 767.65, 768.48, 769.27, 769.58, 769.73, 769.86, 771.01, 771.09, 771.53, 772.19, 772.27, 772.9, 773.43, 773.79, 774.39, 774.85, 775.09, 775.5, 775.82, 776.94, 777.21, 777.55, 777.86, 778.82, 779.09, 779.46, 780.3, 780.51, 780.99, 781.16, 781.97, 782.26, 783.26, 783.78, 784.02, 784.63, 784.83, 785.04, 785.78, 786.07, 786.24, 786.28, 786.81, 787.9, 788.08, 789.13, 789.3, 789.85, 790.62, 790.95, 791.52, 791.76, 792.3, 793.09, 793.29, 793.64, 794.16, 794.67, 794.98, 795.37, 795.65, 796.02, 796.21, 797.38, 797.86, 798.26, 798.59, 798.71, 799.07, 799.29, 799.84, 800.04, 800.16, 801.25, 801.39, 801.61, 801.75, 802.24, 802.37, 802.69, 802.86, 803.51, 803.62, 804.13, 804.61, 805.8, 806.11, 806.72, 807.42, 807.78, 808.35, 808.76, 808.98, 809.42, 809.66, 810.22, 811.51, 811.61, 812.16, 812.91, 813.01, 813.76, 814.2, 814.68, 815.23], "15": [816.44, 816.78, 816.93, 817.46, 817.95, 819.1, 820.07, 820.4, 820.93, 821.31, 821.73, 821.86, 822.35, 822.65, 822.78, 823.71, 823.82, 824.04, 824.09, 824.98, 825.05, 825.72, 825.91, 825.95, 826.86, 827.03, 827.16, 827.79, 828.9, 829.06, 829.53, 829.88, 830.83, 831.0, 831.31, 832.43, 832.61, 832.74, 833.66, 833.83, 834.57, 834.79, 834.83, 835.51, 836.17, 836.35, 837.58, 837.99, 838.14, 838.29, 838.77, 838.94, 839.63, 839.86, 839.97, 840.58, 840.99, 841.82, 842.13, 842.58, 843.03, 843.58, 843.76, 843.81, 844.37, 845.14, 845.4, 846.16, 846.28, 846.39, 846.86, 847.0, 848.26, 849.29, 849.69, 850.57, 850.92, 851.35, 851.62, 851.97, 852.19, 853.17, 853.53, 853.68, 853.93, 854.15, 854.93, 855.12, 855.94, 856.08, 856.33, 856.74, 856.94], "16": [857.74, 858.03, 858.64, 858.85, 859.64, 859.85, 860.01, 860.57, 860.99, 862.12, 862.89, 863.42, 863.6, 864.66, 864.82, 864.94, 865.69, 865.88, 866.08, 867.28, 867.97, 868.25, 868.74, 868.8, 869.07, 869.29, 869.66, 870.1, 871.91, 872.12, 872.37, 872.63, 872.82, 873.28, 873.46, 873.78, 874.06, 874.29, 874.5, 875.26, 875.95, 876.14, 876.79, 877.49, 877.88, 878.0, 878.95, 879.78, 880.24, 880.57, 880.71, 881.31, 881.85, 882.09, 882.5, 882.65, 882.82, 883.39, 883.54, 883.82, 884.84, 884.98, 885.09, 885.24, 885.94, 886.14, 886.99, 887.19, 887.58, 888.4, 889.09, 889.42, 889.54, 890.15, 890.38, 891.05, 891.23, 891.26, 891.92, 892.05, 893.29, 893.6, 893.84, 894.08, 895.15, 895.5, 895.76, 895.91, 896.58, 896.97, 897.17, 898.09, 898.24, 899.09, 899.54, 899.66, 900.13, 900.36, 900.74, 901.21, 901.7, 901.99, 902.91, 903.24, 903.89, 904.38, 904.65, 904.76, 905.3, 905.75, 906.03, 906.77, 907.5, 908.02, 908.27, 909.46, 909.67, 910.27, 910.71, 910.8, 911.23, 911.6, 912.49, 912.99, 913.32, 913.64], "17": [914.92, 915.14, 915.31, 915.58, 915.72, 917.04, 917.8, 918.12, 918.54, 919.05, 919.24, 919.43, 919.9, 920.05, 920.21, 921.05, 921.24, 921.28, 921.6, 921.99, 922.12, 922.82, 923.24, 923.45, 924.72, 924.97, 925.07, 925.23, 925.76, 925.99, 927.0, 927.57, 928.5, 928.82, 929.36, 929.88, 930.21, 930.42, 930.65, 931.03, 931.13, 932.05, 932.19, 932.33, 932.6, 932.95, 933.14, 934.14, 934.76, 935.02, 936.06, 936.4, 936.87, 937.53, 937.81, 938.03, 938.63, 938.95, 940.17, 940.47, 940.77, 941.72, 941.8, 942.36, 942.57, 943.3, 943.51, 943.84, 943.89, 944.61, 945.04, 945.34, 945.74, 945.91, 946.03, 946.78, 947.16, 947.23, 948.25, 948.49, 948.81, 949.01, 949.84, 950.14, 950.32, 950.86, 951.04, 951.19, 952.01, 952.22, 952.47], "18": [953.71, 953.89, 954.04, 955.03, 955.78, 956.04, 956.18, 956.37, 956.7, 956.82, 956.95, 957.25, 958.11, 958.54, 958.84, 959.06, 959.99, 960.26, 960.39, 960.66, 960.79, 961.5, 961.64, 961.79, 962.32, 962.48, 963.19, 963.37, 963.97, 964.16, 964.28, 964.45, 965.59, 965.91, 966.74, 967.05, 967.56, 967.76, 967.87, 968.04, 968.38, 968.59, 969.67, 969.83, 970.11, 970.3, 970.44, 970.71, 970.89, 971.52, 971.63, 971.94, 972.4, 973.51, 973.78, 973.95, 974.55, 974.84, 975.24, 975.44, 976.04, 976.26, 976.39, 976.62, 977.52, 977.74, 978.28, 979.06, 980.2, 980.34, 980.52, 980.88, 981.11, 981.31, 982.06, 982.34, 982.51, 982.64, 983.36, 983.85, 984.1, 984.45, 985.25, 985.42, 985.51, 985.92]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z\u00C0-\u024F\u1E00-\u1EFF']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>{sentences.push({t:at(idx)-0.15,s});idx+=toks(s).length;});
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>

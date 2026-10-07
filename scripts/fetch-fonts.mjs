@@ -49,6 +49,9 @@ const CHARS = [
   ..."‘’‚“”„†‡•…‰′″‹›⁄€₤™←↑→↓−∕×÷",
 ].join("");
 
+// Characters the Following Jesus pages use beyond CHARS.
+const FJ_EXTRA = "ḥṣʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0x3a3, 0x3a9).join("") + range(0x3b1, 0x3c9).join("");
+
 /** family: the css2 `family=` value. Each face becomes one file. */
 const FACES = [
   { file: "newsreader-normal.woff2", family: "Newsreader:opsz,wght@6..72,300..600" },
@@ -62,10 +65,14 @@ const FACES = [
   // The Following Jesus pages, served as their reviewed HTML. They asked Google
   // for serif 400 and 600, serif italic 400 and sans 400 to 700, so these cover
   // exactly that; the faces above stay as the other courses use them. "ḥ" is in
-  // the Begin transcripts, and the dashes are throughout.
-  { file: "fj-source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400..600", extra: "ḥ–—" },
-  { file: "fj-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400", extra: "ḥ–—" },
-  { file: "fj-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: "ḥ–—" },
+  // the Begin transcripts and the dashes are throughout; Establish adds "ṣ",
+  // "ʾ" and Greek words (the basic Greek alphabet, and "Ἅ", which only Source
+  // Sans has; in the serif it falls back to the device's font, exactly as it
+  // did in the preview from Google). Its one Hebrew and one Arabic word fall
+  // back the same way: neither family has Hebrew or Arabic.
+  { file: "fj-source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400..600", extra: FJ_EXTRA },
+  { file: "fj-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400", extra: FJ_EXTRA },
+  { file: "fj-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: FJ_EXTRA },
 ];
 
 // --only <prefix>: fetch just the faces whose file starts with it, leaving the
