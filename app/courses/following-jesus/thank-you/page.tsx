@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stripe } from "@/lib/stripe";
-import { COURSES, OFFERS, SERIES_PATH, coursePath, isOfferId } from "@/lib/following-jesus";
+import { COURSES, OFFERS, SERIES_PATH, coursePath, findCourse, isOfferId } from "@/lib/following-jesus";
 import { getLearner, isCourseSession, recordCoursePurchase } from "@/lib/following-jesus-access";
 
 export const metadata: Metadata = {
@@ -34,7 +34,9 @@ export default async function FollowingJesusThankYou({
   searchParams: Promise<{ session_id?: string }>;
 }) {
   const { session_id: sessionId } = await searchParams;
-  const begin = coursePath(COURSES[0]);
+  // Where "Start Lesson 1" and the sign-in lead: the course bought, or for
+  // the bundle and the upgrade, the course page they bought it from.
+  let home = coursePath(COURSES[0]);
 
   // The webhook records the sale, but can arrive after this redirect. Reading
   // the session and recording it here too is safe: the write is idempotent.
@@ -47,6 +49,10 @@ export default async function FollowingJesusThankYou({
         await recordCoursePurchase(session);
         const email = (session.customer_details?.email ?? session.customer_email ?? "").toLowerCase();
         paid = { email, title: OFFERS[offer].title };
+        const bought = OFFERS[offer].unlocks.length === 1 ? findCourse(OFFERS[offer].unlocks[0]) : null;
+        const from = findCourse(session.metadata?.from_course ?? "");
+        const course = bought ?? (from?.launched ? from : null);
+        if (course) home = coursePath(course);
       }
     } catch (err) {
       console.error("Could not confirm course checkout session:", err);
@@ -59,7 +65,7 @@ export default async function FollowingJesusThankYou({
         <p className="mt-6 leading-relaxed">
           This page appears after buying a course. If you have just paid and see
           this, your receipt is on its way by email; you can{" "}
-          <Link href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(begin)}`} className="text-[#8B5E34] underline underline-offset-4">
+          <Link href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(home)}`} className="text-[#8B5E34] underline underline-offset-4">
             sign in
           </Link>{" "}
           with the email you paid with, or{" "}
@@ -87,7 +93,7 @@ export default async function FollowingJesusThankYou({
 
       {signedInAsBuyer ? (
         <div className="mt-10">
-          <Link href={`${begin}/lesson-01`} className={button}>
+          <Link href={`${home}/lesson-01`} className={button}>
             Start Lesson 1
           </Link>
         </div>
@@ -100,7 +106,7 @@ export default async function FollowingJesusThankYou({
           </p>
           <div className="mt-10">
             <Link
-              href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(begin)}&email=${encodeURIComponent(paid.email)}`}
+              href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(home)}&email=${encodeURIComponent(paid.email)}`}
               className={button}
             >
               Sign in and start
