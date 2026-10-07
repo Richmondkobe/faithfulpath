@@ -86,6 +86,17 @@ function JoinButton({ label, id }: { label: string; id?: string }) {
         Cancel any time · Full refund within 7 days of your first payment ·{" "}
         <FinePrintLink href="/terms">Terms</FinePrintLink>
       </FinePrint>
+
+      {/* A way in for someone who already pays (Richmond, 8 October 2026). */}
+      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+        Already a member?{" "}
+        <Link
+          href="/members/login"
+          className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+        >
+          Sign in
+        </Link>
+      </p>
     </form>
   );
 }

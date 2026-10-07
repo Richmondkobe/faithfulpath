@@ -52,6 +52,9 @@ const NAV = [
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  // Members' sign-in (email, then a six-digit code). Someone already signed
+  // in is taken straight to /members.
+  { href: "/members/login", label: "Sign in" },
 ];
 
 // The footer's Legal row. Separate from NAV because these belong at the foot of
@@ -95,7 +98,8 @@ export default function RootLayout({
 
             {/* One nav at both widths — it wraps rather than becoming a menu —
                 so the weight here is the weight on a phone too. */}
-            <nav className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium">
+            {/* Each menu named, so a screen reader can tell them apart. */}
+            <nav aria-label="Main" className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium">
               {NAV.map((item) => (
                 <Link
                   key={item.href}
@@ -130,7 +134,7 @@ export default function RootLayout({
               Pastoral and spiritual guidance online. Not a substitute for
               therapy, medical care, or emergency services.
             </p>
-            <nav className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+            <nav aria-label="Footer" className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
               {NAV.map((item) => (
                 <Link
                   key={item.href}

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
+import { getOwnedOffers } from "@/lib/following-jesus-access";
+import { SERIES_PATH } from "@/lib/following-jesus";
 import { memberLogout } from "@/app/members/actions";
 import {
   getCountableLessons,
@@ -224,6 +226,24 @@ function ManageBilling() {
   );
 }
 
+/** For a member who has also bought Following Jesus, which lives outside the membership. */
+function FollowingJesusLink() {
+  return (
+    <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      <p className="text-[#2B2118]">You also have Following Jesus courses</p>
+      <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+        Bought separately from the membership, and kept in their own place.
+      </p>
+      <Link
+        href={SERIES_PATH}
+        className="mt-4 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+      >
+        Go to your Following Jesus courses
+      </Link>
+    </div>
+  );
+}
+
 export default async function Members() {
   const email = await getSessionEmail();
 
@@ -231,6 +251,13 @@ export default async function Members() {
   if (!email) redirect("/membership");
 
   const member = await getMemberByEmail(email);
+
+  // Following Jesus is bought separately, and its buyers sign in through the
+  // same form. Someone with no membership at all but a Following Jesus course
+  // goes to their courses; anyone with both gets a link to them below
+  // (Richmond, 8 October 2026). Read through their own session, as always.
+  const ownsFollowingJesus = (await getOwnedOffers()).size > 0;
+  if (!member && ownsFollowingJesus) redirect(SERIES_PATH);
 
   // Signed in, but this address has no live membership. Say so plainly: a
   // silent bounce to /membership would look like the payment never worked.
@@ -254,6 +281,8 @@ export default async function Members() {
             ? "Update your card and the membership will pick up where it left off."
             : "There is no active membership attached to this address. If you paid with a different one, sign out and sign back in with that address."}
         </p>
+
+        {ownsFollowingJesus && <FollowingJesusLink />}
 
         {/* What they wrote outlives the subscription. Only offered to someone
             who actually has a members row — a signed-in stranger has no
@@ -324,6 +353,8 @@ export default async function Members() {
           </p>
         ))}
       </div>
+
+      {ownsFollowingJesus && <FollowingJesusLink />}
 
       {/* Two courses, presented alike. Neither is the main one: a member may
           have come for either, and the membership includes both. */}
