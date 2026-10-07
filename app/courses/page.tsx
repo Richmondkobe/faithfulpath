@@ -41,7 +41,8 @@ function Course({
 }) {
   return (
     <li className="rounded-sm border border-[#D9CDBA] bg-white px-6 py-7 sm:px-8">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">{kicker}</p>
+      {/* Bold and a deeper gold (8:1), so the label reads easily at both sizes. */}
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">{kicker}</p>
       <h2 className="mt-3 text-3xl tracking-[-0.01em] text-[#2B2118]" style={heading}>
         {title}
       </h2>

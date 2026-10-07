@@ -94,7 +94,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">
           Online course
         </p>
         <h2
@@ -138,7 +138,7 @@ export default async function Home() {
       {/* Following Jesus, in the Spiritual Reset section's layout and button
           styles: the primary to the series, the secondary straight to Begin. */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">
           Video courses
         </p>
         <h2
