@@ -114,6 +114,13 @@ export default function MemberLoginForm({
   return (
     <form action={sendAction} className="mt-10 max-w-md space-y-4">
       {nextField}
+      {/* For robots only: off-screen, out of the tab order, and hidden from
+          screen readers. A person never fills it; the action ignores any
+          submission that does. */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor="website">Website</label>
+        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+      </div>
       <div>
         <label htmlFor="email" className={labelClass}>
           Email you paid with

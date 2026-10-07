@@ -13,6 +13,7 @@ import {
   QUESTION_MAX,
 } from "@/lib/questions";
 import { siteUrl } from "@/lib/stripe";
+import { maySendSignInCode } from "@/lib/sign-in-gate";
 
 export type MemberLoginState = { error: string | null; sent: string | null };
 
@@ -47,6 +48,28 @@ export async function sendMemberLink(
 
   if (!email || !email.includes("@")) {
     return { error: "Enter the email address you paid with.", sent: null };
+  }
+
+  // A robot filled this form with other people's addresses from 18 September
+  // 2026. Both checks below answer exactly as a real send does, so neither
+  // tells a robot, or anyone, whether an address has paid.
+  //
+  // 1. The hidden "website" field. People never see it; form robots fill it.
+  if (String(formData.get("website") ?? "") !== "") {
+    return { error: null, sent: email };
+  }
+
+  // 2. Only someone who has paid gets a code (lib/sign-in-gate.ts). If the
+  //    check itself fails, the code is sent anyway: a member locked out by a
+  //    Stripe hiccup is worse than one robot getting through.
+  let allowed = true;
+  try {
+    allowed = await maySendSignInCode(email);
+  } catch (err) {
+    console.error("Sign-in gate check failed; sending the code:", err instanceof Error ? err.message : err);
+  }
+  if (!allowed) {
+    return { error: null, sent: email };
   }
 
   const supabase = await createSupabaseServerClient();
