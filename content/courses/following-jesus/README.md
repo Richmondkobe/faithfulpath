@@ -33,7 +33,7 @@ signed URLs:
   For Establish: `npm run fj:downloads -- "~/Desktop/Following Jesus Establish Course" --course establish`.
   Chapters are named by the book's own numbers (Begin 1–8, Establish 9–18).
 
-  For Grow: `--course grow` (chapters 19–30).
+  For Grow: `--course grow` (chapters 19–30). For Multiply: `--course multiply` (31–40).
 
   Each course folder also holds the six Support Pages as their own files
   (`support-start-here.pdf` …), the page first and the copyright page last.

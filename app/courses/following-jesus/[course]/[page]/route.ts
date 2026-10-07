@@ -4,7 +4,7 @@ import { FINISH_FIRST, coursePath, findCourse, findLesson } from "@/lib/followin
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
 import { completionPage, lessonPage } from "@/lib/fj-lessons";
-import { getCourseProgress } from "@/lib/fj-progress";
+import { getCourseProgress, hasCompletedPathway } from "@/lib/fj-progress";
 import { getAnswers } from "@/lib/fj-answers";
 import { answersApiPath, withAnswers } from "@/lib/fj-answers-page";
 
@@ -40,7 +40,9 @@ export async function GET(
   }
 
   const answers = await getAnswers(course, pageSlug);
-  const html = lesson ? await lessonPage(course, lesson, progress) : await completionPage(course, progress);
+  const html = lesson
+    ? await lessonPage(course, lesson, progress)
+    : await completionPage(course, progress, { pathwayComplete: await hasCompletedPathway() });
 
   // The learner's own answers go back into the page, and save as they type.
   return htmlResponse(withAnswers(html, answersApiPath(course, pageSlug), answers));

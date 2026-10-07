@@ -299,7 +299,28 @@ export async function playerPage(course: FjCourse, lesson: FjLesson, audioUrl: s
   );
 }
 
-export async function completionPage(course: FjCourse, progress: CourseProgress): Promise<string> {
+/*
+ * Multiply's completion page has, under its heading, a dashed box with a
+ * preview label ("Shown only when all four courses are complete") and the
+ * line "You have completed the Following Jesus pathway: Begin · Establish ·
+ * Grow · Multiply." The label is the preview's and never shows. The line shows
+ * only to someone with a completion record for all four courses; for anyone
+ * else the whole box is left out (Richmond, 8 October 2026).
+ */
+const PATHWAY_LABEL = "<small>Shown only when all four courses are complete</small>";
+
+function pathwayLine(html: string, pathwayComplete: boolean): string {
+  const box = html.match(/<div class="pathline">[\s\S]*?<\/div>/)?.[0];
+  if (!box) return html;
+  if (!box.includes(PATHWAY_LABEL)) throw new Error("The pathway line's preview label has changed; check the page.");
+  return swap(html, box, pathwayComplete ? box.replace(PATHWAY_LABEL, "").replace('<div class="pathline">', '<div class="pathline" data-fj-pathway>') : "");
+}
+
+export async function completionPage(
+  course: FjCourse,
+  progress: CourseProgress,
+  { pathwayComplete = false }: { pathwayComplete?: boolean } = {}
+): Promise<string> {
   const page = course.completionPage;
   if (!page) throw new Error(`${course.title} has no completion page.`);
 
@@ -308,6 +329,11 @@ export async function completionPage(course: FjCourse, progress: CourseProgress)
     indexable: false,
   });
   html = progressDashes(html, course, progress);
+  html = pathwayLine(html, pathwayComplete);
+
+  // The last book's own way on: "Return to the Following Jesus home page ›".
+  const home = '<button class="btn gold">Return to the Following Jesus home page ›</button>';
+  if (html.includes(home)) html = swap(html, home, `<a class="btn gold" href="${SERIES_PATH}">Return to the Following Jesus home page ›</a>`);
 
   // "Continue to Book 2: Establish ›": to the next course once it is
   // launched and listed, and until then the series page, where it shows as

@@ -142,7 +142,8 @@ function snapshot(titles) {
   for (const a of document.querySelectorAll("a[data-fj-link]")) a.replaceWith(document.createTextNode(a.textContent));
   document.body.normalize();
   const badLinks = supportLinks.filter((l) => !titles.some((t) => t.title === l.text && l.href.endsWith(`/support/${t.slug}`)));
-  const inSkipped = (el) => el.closest("[data-fj]") || el.closest(".preview-note");
+  // The pathway box on Multiply's completion page is checked on its own (section 4b).
+  const inSkipped = (el) => el.closest("[data-fj]") || el.closest(".preview-note") || el.closest(".pathline");
   const describe = (el) => {
     const inDashes = !!el.parentElement?.classList.contains("steps8");
     const attrs = {};
@@ -285,8 +286,9 @@ for (const course of COURSES.filter((c) => c.launched)) {
   const last = course.lessons[course.lessons.length - 1];
 
   // "Continue to Book N: …" goes to the next book only once it is listed.
-  if (course.completionPage) {
-    const next = COURSES.find((c) => c.book === course.book + 1);
+  // The last book has no next book (its page returns to the series instead).
+  const next = COURSES.find((c) => c.book === course.book + 1);
+  if (course.completionPage && next) {
     const page = await completionPage(course, progress([]));
     const href = page.match(/<a class="btn gold" href="([^"]+)">Continue to Book/)?.[1];
     const want = next && next.launched && next.listed ? `/courses/following-jesus/${next.slug}` : "/courses/following-jesus";
@@ -316,6 +318,21 @@ for (const course of COURSES.filter((c) => c.launched)) {
   if (!sentence(notYet) || sentence(notYet)[1] !== " hidden") fail(`${last.slug}: "You have completed ${course.title}!" shows before every lesson is complete`);
   else if (!sentence(whole) || sentence(whole)[1]) fail(`${last.slug}: "You have completed ${course.title}!" does not show when the course is complete`);
   else console.log(`\n${last.slug}: "You have completed ${course.title}!" shows only when every lesson is complete`);
+}
+
+/* -------------------------------- 4b. the pathway line on the last book */
+
+const PATHWAY = "You have completed the Following Jesus pathway: Begin · Establish · Grow · Multiply.";
+for (const course of COURSES.filter((c) => c.launched && c.completionPage)) {
+  const original = await readCoursePage(course, `${course.completionPage.slug}.html`);
+  if (!original.includes('class="pathline"')) continue;
+  const without = await completionPage(course, progress([]), { pathwayComplete: false });
+  const withIt = await completionPage(course, progress([]), { pathwayComplete: true });
+  const box = withIt.match(/<div class="pathline"[^>]*>([\s\S]*?)<\/div>/);
+  if (without.includes('class="pathline"')) fail(`${course.completionPage.title}: the pathway line shows to someone who has not completed all four`);
+  else if (!box || !box[1].includes(`<b>${PATHWAY}</b>`)) fail(`${course.completionPage.title}: the pathway line is missing or changed for someone who has completed all four`);
+  else if (/Shown only when/.test(withIt)) fail(`${course.completionPage.title}: the preview label "Shown only when…" is showing`);
+  else console.log(`\n${course.completionPage.title}: the pathway line shows only to someone who has completed all four, without its preview label`);
 }
 
 /* ------------------------------------------ 5. no analytics on /courses */

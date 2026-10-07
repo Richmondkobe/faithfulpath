@@ -1,6 +1,6 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import type { FjCourse, FjLesson } from "@/lib/following-jesus";
+import { COURSES, type FjCourse, type FjLesson } from "@/lib/following-jesus";
 import type { Learner } from "@/lib/following-jesus-access";
 
 // Lesson progress for the Following Jesus courses. A lesson's completion goes
@@ -14,6 +14,19 @@ export type CourseProgress = {
   /** When the whole course was completed, or null. */
   courseCompletedAt: string | null;
 };
+
+/**
+ * Whether the signed-in person has a completion record for every course in
+ * the series: what the Multiply completion page's pathway line waits for.
+ * Read through their own session, like the rest of their progress.
+ */
+export async function hasCompletedPathway(): Promise<boolean> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.from("course_completions").select("course_slug");
+  if (error) throw new Error(`Could not load course completions: ${error.message}`);
+  const done = new Set((data ?? []).map((r) => r.course_slug));
+  return COURSES.every((c) => done.has(c.key));
+}
 
 export async function getCourseProgress(course: FjCourse): Promise<CourseProgress> {
   const supabase = await createSupabaseServerClient();

@@ -60,6 +60,15 @@ const COURSES = {
     firstChapter: 19,
     frontPages: [2, 3],
   },
+  multiply: {
+    ebook: "01 Book and Reviews/Following Jesus - Multiply - Ebook.pdf",
+    worksheet: (n) => `06 Worksheets/Multiply-Lesson-${pad(n)}-Worksheet.pdf`,
+    leadersGuide: "04 Leader's Guide/Multiply-Leaders-Guide-Final.pdf",
+    title: "Multiply",
+    chapters: 10,
+    firstChapter: 31,
+    frontPages: [2, 3],
+  },
 };
 
 // The six Support Pages, by their bookmark titles in each ebook, and the file
