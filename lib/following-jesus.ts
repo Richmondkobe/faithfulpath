@@ -119,8 +119,37 @@ export const COURSES: FjCourse[] = [
     ]),
     completionPage: { slug: "my-foundations", title: "My Foundations" },
   },
-  // firstChapter for Grow and Multiply is set when each is added.
-  { slug: "grow", book: 3, title: "Grow", subtitle: "Becoming Like Jesus", fullTitle: "Grow: Becoming Like Jesus", key: "following-jesus-grow", launched: false, listed: false, firstChapter: 0, seriesLine: "", lessons: [], completionPage: null },
+  {
+    slug: "grow",
+    book: 3,
+    title: "Grow",
+    subtitle: "Becoming Like Jesus",
+    fullTitle: "Grow: Becoming Like Jesus",
+    key: "following-jesus-grow",
+    launched: true,
+    // Unlisted until Richmond has tested it (8 October 2026).
+    listed: false,
+    firstChapter: 19,
+    // From the welcome page's own line: "Twelve lessons on how Jesus reshapes
+    // our character, relationships, decisions and ordinary life."
+    seriesLine: "12 lessons on how Jesus reshapes our character, relationships, decisions and ordinary life.",
+    lessons: lessons([
+      "Grace-Fuelled Growth",
+      "Renewing Your Mind With Truth",
+      "Developing the Character and Fruit of Christ",
+      "Emotions, Wounds and Knowing When to Seek Help",
+      "Confession, Forgiveness, Reconciliation and Boundaries",
+      "Loving Others in Family, Friendship and Church",
+      "Honouring God With Your Body and Relationships",
+      "Work, Money, Generosity and Everyday Faithfulness",
+      "Words, Anger, Conflict and Peacemaking",
+      "Guidance, Decisions and Testing “God Told Me”",
+      "Suffering, Doubt, Lament and Perseverance",
+      "A Sustainable Rhythm of Life With God",
+    ]),
+    completionPage: { slug: "my-growth", title: "My Growth" },
+  },
+  // firstChapter for Multiply is set when it is added.
   { slug: "multiply", book: 4, title: "Multiply", subtitle: "Helping Others Follow Jesus", fullTitle: "Multiply: Helping Others Follow Jesus", key: "following-jesus-multiply", launched: false, listed: false, firstChapter: 0, seriesLine: "", lessons: [], completionPage: null },
 ];
 
@@ -140,6 +169,7 @@ export const tabTitle = (page: string) => `${page} | Following Jesus`;
 export type FjOfferId =
   | "following-jesus-begin"
   | "following-jesus-establish"
+  | "following-jesus-grow"
   | "following-jesus-all-four"
   | "following-jesus-upgrade-all-four";
 
@@ -168,6 +198,12 @@ export const OFFERS: Record<FjOfferId, FjOffer> = {
     priceCents: 2900,
     unlocks: ["establish"],
   },
+  "following-jesus-grow": {
+    id: "following-jesus-grow",
+    title: "Following Jesus: Grow",
+    priceCents: 2900,
+    unlocks: ["grow"],
+  },
   "following-jesus-all-four": {
     id: "following-jesus-all-four",
     title: "Following Jesus: All Four Courses",
@@ -189,6 +225,7 @@ export const OFFERS: Record<FjOfferId, FjOffer> = {
 const SINGLE_OFFERS: Partial<Record<FjCourseSlug, FjOfferId>> = {
   begin: "following-jesus-begin",
   establish: "following-jesus-establish",
+  grow: "following-jesus-grow",
 };
 const ALL_FOUR_OFFERS: FjOfferId[] = ["following-jesus-all-four", "following-jesus-upgrade-all-four"];
 
@@ -204,8 +241,8 @@ export function ownsAllFour(owned: Set<FjOfferId>): boolean {
 
 /**
  * What the upgrade to all four costs this person: US$89 less US$29 for each
- * course they already own on its own (Richmond, 7 October 2026). Owns Begin
- * only, or Establish only: US$60. Owns both: US$31. Null when there is no
+ * course they already own on its own (Richmond, 7 October 2026). Owns one
+ * course: US$60; two: US$31; three: US$2. Null when there is no
  * upgrade to offer: they own none on its own, already own all four, or own so
  * many singly that nothing would be left to pay.
  */
