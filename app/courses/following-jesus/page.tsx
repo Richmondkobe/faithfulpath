@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { COURSES, OFFERS, coursePath, offersOpenCourse, SERIES_LISTED, SERIES_PATH } from "@/lib/following-jesus";
+import { COURSES, OFFERS, coursePath, offersOpenCourse, singleOfferFor, SERIES_LISTED, SERIES_PATH } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { formatPrice } from "@/lib/products";
 
@@ -23,6 +23,13 @@ export default async function FollowingJesusSeries() {
   const owned = learner ? await getOwnedOffers() : new Set<never>();
   const begin = OFFERS["following-jesus-begin"];
   const all = OFFERS["following-jesus-all-four"];
+  // "Begin is US$29", or once Establish is listed, "Begin and Establish are
+  // US$29 each". Every single course is the same price.
+  const listedTitles = COURSES.filter((c) => c.launched && c.listed && singleOfferFor(c)).map((c) => c.title);
+  const singles =
+    listedTitles.length <= 1 ? listedTitles[0] : `${listedTitles.slice(0, -1).join(", ")} and ${listedTitles[listedTitles.length - 1]}`;
+  const singlesVerb = listedTitles.length <= 1 ? "is" : "are";
+  const each = listedTitles.length <= 1 ? "" : " each";
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
@@ -40,19 +47,22 @@ export default async function FollowingJesusSeries() {
         with a group.
       </p>
       <p className="mt-4 leading-relaxed">
-        The courses are sold on their own, separately from the membership: Begin is{" "}
-        {formatPrice(begin.priceCents)}, or all four are {formatPrice(all.priceCents)}, each a
+        The courses are sold on their own, separately from the membership: {singles} {singlesVerb}{" "}
+        {formatPrice(begin.priceCents)}{each}, or all four are {formatPrice(all.priceCents)}, each a
         one-time payment. All four opens each later course for you when it launches.
       </p>
 
       <ol className="mt-12 space-y-4">
         {COURSES.map((course) => {
-          const open = offersOpenCourse(owned, course);
+          // On sale and pointed to; an unlisted course stays "Coming soon"
+          // here even for someone who can already open it.
+          const open = course.launched && course.listed;
+          const yours = offersOpenCourse(owned, course);
           return (
             <li
               key={course.slug}
               className={`rounded-sm border px-6 py-5 ${
-                course.launched ? "border-[#D9CDBA] bg-white" : "border-[#E5D9C7] bg-[#F7F1E6]"
+                open ? "border-[#D9CDBA] bg-white" : "border-[#E5D9C7] bg-[#F7F1E6]"
               }`}
             >
               <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
@@ -63,20 +73,20 @@ export default async function FollowingJesusSeries() {
                   {course.title}
                   <span className="block text-lg text-[#6B5F53]">{course.subtitle}</span>
                 </h2>
-                {course.launched ? (
+                {open ? (
                   <Link
                     href={coursePath(course)}
                     className="text-[15px] font-medium text-[#8B5E34] underline underline-offset-4"
                   >
-                    {open ? "Go to your course" : "See the course"} ›
+                    {yours ? "Go to your course" : "See the course"} ›
                   </Link>
                 ) : (
                   <span className="text-[15px] text-[#6B5F53]">Coming soon</span>
                 )}
               </div>
-              {course.launched && (
+              {open && (
                 <p className="mt-2 leading-relaxed text-[#6B5F53]">
-                  {course.lessons.length} lessons for the first steps of following Jesus.
+                  {course.seriesLine}
                 </p>
               )}
             </li>

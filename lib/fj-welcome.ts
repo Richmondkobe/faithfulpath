@@ -1,7 +1,9 @@
 import {
+  COURSES,
   OFFERS,
   SERIES_PATH,
-  canUpgrade,
+  singleOfferFor,
+  upgradePriceCents,
   formatDay,
   lessonList,
   coursePath,
@@ -45,16 +47,51 @@ const STYLE = `<style data-fj>
 .fj-finished{font-family:'Source Serif 4',serif;font-style:italic;color:var(--navy);margin:0 0 12px}
 </style>`;
 
-function offerCard(offer: FjOffer, items: string[], button: string): string {
+/** "Begin", "Begin and Establish", "Establish, Grow and Multiply". */
+function andList(items: string[]): string {
+  return items.length <= 1 ? (items[0] ?? "") : `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
+}
+
+/**
+ * What all four, or the upgrade, would add for this person, as card lines:
+ * courses that open straight away (launched, and listed or the page they are
+ * on), then the rest, opening as each launches. While Establish is unlisted
+ * the Begin page reads exactly as it did before Establish existed.
+ */
+function seriesLines(course: FjCourse, skip: (c: FjCourse) => boolean): { now: string[]; later: string[] } {
+  const rest = COURSES.filter((c) => !skip(c));
+  const shown = (c: FjCourse) => c.launched && (c.listed || c.slug === course.slug);
+  return { now: rest.filter(shown).map((c) => c.title), later: rest.filter((c) => !shown(c)).map((c) => c.title) };
+}
+
+function seriesItems(lines: { now: string[]; later: string[] }): string[] {
+  const items: string[] = [];
+  if (lines.now.length) items.push(`${andList(lines.now)}, open straight away`);
+  if (lines.later.length) {
+    items.push(lines.later.length === 1 ? `${lines.later[0]}, opening for you when it launches` : `${andList(lines.later)}, each opening for you when it launches`);
+  }
+  return items;
+}
+
+function checkoutForm(offer: FjOfferId, course: FjCourse, button: string): string {
+  return `<form method="post" action="/api/courses/following-jesus/checkout">
+    <input type="hidden" name="offer" value="${offer}">
+    <input type="hidden" name="from" value="${course.slug}">
+    <button type="submit" class="btn gold">${button}</button>
+   </form>`;
+}
+
+function offerCard(
+  offer: FjOffer,
+  course: FjCourse,
+  { price, once, items, button }: { price: number; once: string; items: string[]; button: string }
+): string {
   return `<div class="fj-offer">
    <h3>${escapeHtml(offer.title)}</h3>
-   <p class="fj-price">${formatPrice(offer.priceCents)}</p>
-   <p class="fj-once">One-time payment</p>
-   <ul>${items.map((i) => `<li>${i}</li>`).join("")}</ul>
-   <form method="post" action="/api/courses/following-jesus/checkout">
-    <input type="hidden" name="offer" value="${offer.id}">
-    <button type="submit" class="btn gold">${button}</button>
-   </form>
+   <p class="fj-price">${formatPrice(price)}</p>
+   <p class="fj-once">${once}</p>
+   <ul>${items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
+   ${checkoutForm(offer.id, course, button)}
   </div>`;
 }
 
@@ -62,13 +99,63 @@ function signOutForm(next: string): string {
   return `<form method="post" action="/api/courses/following-jesus/sign-out"><input type="hidden" name="next" value="${escapeHtml(next)}"><button type="submit">Sign out</button></form>`;
 }
 
-function buySection(course: FjCourse, learner: Learner | null): string {
+/** Titles of the courses someone owns on their own, for "You already own …". */
+function ownedSingly(offers: Set<FjOfferId>): string[] {
+  return COURSES.filter((c) => {
+    const single = singleOfferFor(c);
+    return single !== null && offers.has(single.id);
+  }).map((c) => c.title);
+}
+
+function buySection(course: FjCourse, learner: Learner | null, offers: Set<FjOfferId>): string {
   const here = coursePath(course);
   const signIn = `${SERIES_PATH}/sign-in?next=${encodeURIComponent(here)}`;
+  const single = singleOfferFor(course);
+  const upgradePrice = learner ? upgradePriceCents(offers) : null;
 
   const who = learner
     ? `<div class="fj-who">You are signed in as <b>${escapeHtml(learner.email)}</b>, and this email has not bought ${escapeHtml(course.title)}. If you paid with a different email, ${signOutForm(here)} and sign in with that one.</div>`
     : `<div class="fj-who">Already bought ${escapeHtml(course.title)}? <a href="${signIn}">Sign in</a> with the email you paid with.</div>`;
+
+  const cards: string[] = [];
+  if (single) {
+    cards.push(
+      offerCard(single, course, {
+        price: single.priceCents,
+        once: "One-time payment",
+        items: [
+          `All ${course.lessons.length} ${course.title} lessons, with narration and captions`,
+          "The chapter from the book and a worksheet for each lesson",
+          "The Leader's Guide, to download",
+        ],
+        button: `Buy ${escapeHtml(course.title)} · ${formatPrice(single.priceCents)}`,
+      })
+    );
+  }
+
+  // Someone who already owns a course on its own is offered the rest at the
+  // difference; everyone else, the bundle.
+  if (upgradePrice !== null) {
+    const upgrade = OFFERS["following-jesus-upgrade-all-four"];
+    cards.push(
+      offerCard({ ...upgrade, title: OFFERS["following-jesus-all-four"].title }, course, {
+        price: upgradePrice,
+        once: `One-time payment. You already own ${escapeHtml(andList(ownedSingly(offers)))}.`,
+        items: [...seriesItems(seriesLines(course, (c) => offersOpenCourse(offers, c))), "Each course's Leader's Guide"],
+        button: `Upgrade to all four · ${formatPrice(upgradePrice)}`,
+      })
+    );
+  } else {
+    const all = OFFERS["following-jesus-all-four"];
+    cards.push(
+      offerCard(all, course, {
+        price: all.priceCents,
+        once: "One-time payment",
+        items: [...seriesItems(seriesLines(course, () => false)), "Each course's Leader's Guide"],
+        button: `Buy all four · ${formatPrice(all.priceCents)}`,
+      })
+    );
+  }
 
   return `
  <section data-fj class="card" id="buy" aria-labelledby="h-buy">
@@ -76,30 +163,18 @@ function buySection(course: FjCourse, learner: Learner | null): string {
   <h2 id="h-buy">Two ways to start</h2>
   <p class="sub">The Following Jesus courses are sold on their own, separately from the Faithful Path membership.</p>
   <div class="fj-offers">
-   ${offerCard(
-     OFFERS["following-jesus-begin"],
-     ["All 8 Begin lessons, with narration and captions", "The chapter from the book and a worksheet for each lesson", "The Leader's Guide, to download"],
-     `Buy Begin · ${formatPrice(OFFERS["following-jesus-begin"].priceCents)}`
-   )}
-   ${offerCard(
-     OFFERS["following-jesus-all-four"],
-     ["Begin, open straight away", "Establish, Grow and Multiply, each opening for you when it launches", "Each course's Leader's Guide"],
-     `Buy all four · ${formatPrice(OFFERS["following-jesus-all-four"].priceCents)}`
-   )}
+   ${cards.join("\n   ")}
   </div>
   ${who}
  </section>`;
 }
 
-/** For a Begin owner: the rest of the series at the difference. */
-function upgradeOffer(): string {
-  const offer = OFFERS["following-jesus-upgrade-all-four"];
+/** For an owner of this course who does not have all four: the rest at the difference. */
+function upgradeOffer(course: FjCourse, offers: Set<FjOfferId>, price: number): string {
+  const lines = seriesItems(seriesLines(course, (c) => offersOpenCourse(offers, c)));
   return `<div class="fj-upgrade">
-   <p class="fj-upgrade-text">Establish, Grow and Multiply, each opening for you when it launches, with each course's Leader's Guide.</p>
-   <form method="post" action="/api/courses/following-jesus/checkout">
-    <input type="hidden" name="offer" value="${offer.id}">
-    <button type="submit" class="btn gold">Upgrade to all four · ${formatPrice(offer.priceCents)}</button>
-   </form>
+   <p class="fj-upgrade-text">${escapeHtml(lines.join(", and "))}, with each course's Leader's Guide.</p>
+   ${checkoutForm("following-jesus-upgrade-all-four", course, `Upgrade to all four · ${formatPrice(price)}`)}
   </div>`;
 }
 
@@ -108,8 +183,9 @@ function ownerSection(
   learner: Learner,
   progress: CourseProgress,
   finishFirst: boolean,
-  upgrade: boolean
+  offers: Set<FjOfferId>
 ): string {
+  const upgradePrice = upgradePriceCents(offers);
   const base = coursePath(course);
   const next = course.lessons.find((l) => !progress.completed.has(l.slug));
   const left = course.lessons.filter((l) => !progress.completed.has(l.slug));
@@ -152,7 +228,7 @@ function ownerSection(
   ${lead}
   <ul class="fj-progress" aria-label="Your lessons">${list}</ul>
   <div class="btns"><a class="btn" href="${downloadPath(course, "leaders-guide.pdf")}">⬇ Download the Leader's Guide (PDF)</a></div>
-  ${upgrade ? upgradeOffer() : ""}
+  ${upgradePrice !== null ? upgradeOffer(course, offers, upgradePrice) : ""}
   <div class="fj-who">Signed in as <b>${escapeHtml(learner.email)}</b>. ${signOutForm(base)}</div>
  </section>`;
 }
@@ -182,7 +258,7 @@ export function welcomePage(
 
   // Under the page, just before the main column closes.
   out = swap(out, "</main>", `${
-    owns && progress ? ownerSection(course, learner, progress, finishFirst, canUpgrade(offers)) : buySection(course, learner)
+    owns && progress ? ownerSection(course, learner, progress, finishFirst, offers) : buySection(course, learner, offers)
   }\n</main>`);
   return swap(out, "</head>", `${STYLE}</head>`);
 }

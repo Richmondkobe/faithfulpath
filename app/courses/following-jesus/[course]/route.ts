@@ -30,7 +30,9 @@ export async function GET(
 
   const html = websitePage(await readCoursePage(course, "welcome.html"), {
     title: tabTitle(course.fullTitle),
-    indexable: SERIES_LISTED,
+    // Search engines may list a course page only once both the series and
+    // the course are switched on.
+    indexable: SERIES_LISTED && course.listed,
   });
   return htmlResponse(welcomePage(html, course, learner, offers, progress, {
       finishFirst: request.nextUrl.searchParams.has(FINISH_FIRST),

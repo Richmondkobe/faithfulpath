@@ -52,6 +52,8 @@ export type FjCourse = {
   listed: boolean;
   /** The book's own number for the first lesson's chapter: Begin 1, Establish 9. */
   firstChapter: number;
+  /** The line under the course on the series page, once it is listed. */
+  seriesLine: string;
   lessons: FjLesson[];
   /** The page after the last lesson, if the course has one. */
   completionPage: { slug: string; title: string } | null;
@@ -76,6 +78,7 @@ export const COURSES: FjCourse[] = [
     launched: true,
     listed: true,
     firstChapter: 1,
+    seriesLine: "8 lessons for the first steps of following Jesus.",
     lessons: lessons([
       "Jesus Christ and the Good News",
       "Repentance, Faith and Receiving Grace",
@@ -99,6 +102,9 @@ export const COURSES: FjCourse[] = [
     // Unlisted until Richmond has tested it (7 October 2026).
     listed: false,
     firstChapter: 9,
+    // From the welcome page's own line: "Ten lessons on what Christians
+    // believe, and how that truth shapes life."
+    seriesLine: "10 lessons on what Christians believe, and how that truth shapes life.",
     lessons: lessons([
       "The Bible: Understanding and Applying God's Word",
       "The One God: Father, Son and Holy Spirit",
@@ -114,8 +120,8 @@ export const COURSES: FjCourse[] = [
     completionPage: { slug: "my-foundations", title: "My Foundations" },
   },
   // firstChapter for Grow and Multiply is set when each is added.
-  { slug: "grow", book: 3, title: "Grow", subtitle: "Becoming Like Jesus", fullTitle: "Grow: Becoming Like Jesus", key: "following-jesus-grow", launched: false, listed: false, firstChapter: 0, lessons: [], completionPage: null },
-  { slug: "multiply", book: 4, title: "Multiply", subtitle: "Helping Others Follow Jesus", fullTitle: "Multiply: Helping Others Follow Jesus", key: "following-jesus-multiply", launched: false, listed: false, firstChapter: 0, lessons: [], completionPage: null },
+  { slug: "grow", book: 3, title: "Grow", subtitle: "Becoming Like Jesus", fullTitle: "Grow: Becoming Like Jesus", key: "following-jesus-grow", launched: false, listed: false, firstChapter: 0, seriesLine: "", lessons: [], completionPage: null },
+  { slug: "multiply", book: 4, title: "Multiply", subtitle: "Helping Others Follow Jesus", fullTitle: "Multiply: Helping Others Follow Jesus", key: "following-jesus-multiply", launched: false, listed: false, firstChapter: 0, seriesLine: "", lessons: [], completionPage: null },
 ];
 
 export function findCourse(slug: string): FjCourse | null {
