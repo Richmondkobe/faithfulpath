@@ -149,8 +149,34 @@ export const COURSES: FjCourse[] = [
     ]),
     completionPage: { slug: "my-growth", title: "My Growth" },
   },
-  // firstChapter for Multiply is set when it is added.
-  { slug: "multiply", book: 4, title: "Multiply", subtitle: "Helping Others Follow Jesus", fullTitle: "Multiply: Helping Others Follow Jesus", key: "following-jesus-multiply", launched: false, listed: false, firstChapter: 0, seriesLine: "", lessons: [], completionPage: null },
+  {
+    slug: "multiply",
+    book: 4,
+    title: "Multiply",
+    subtitle: "Helping Others Follow Jesus",
+    fullTitle: "Multiply: Helping Others Follow Jesus",
+    key: "following-jesus-multiply",
+    launched: true,
+    // Unlisted until Richmond has tested it (8 October 2026).
+    listed: false,
+    firstChapter: 31,
+    // From the welcome page's own line: "Ten lessons on joining Christ's
+    // mission and helping others follow Jesus, without pressure or control."
+    seriesLine: "10 lessons on joining Christ’s mission and helping others follow Jesus, without pressure or control.",
+    lessons: lessons([
+      "Every Disciple Is Sent",
+      "Living as a Witness in Everyday Life",
+      "Telling Your Story Honestly",
+      "Explaining the Gospel Clearly",
+      "Responding to Questions With Truth and Humility",
+      "Using Your Gifts to Serve Others",
+      "Walking With a New Believer",
+      "Reading Scripture and Praying With Someone",
+      "Listening, Safeguarding and Knowing Your Limits",
+      "Leading and Multiplying a Healthy Discipleship Group",
+    ]),
+    completionPage: { slug: "my-disciple-making-plan", title: "My Disciple-Making Plan" },
+  },
 ];
 
 export function findCourse(slug: string): FjCourse | null {
@@ -170,6 +196,7 @@ export type FjOfferId =
   | "following-jesus-begin"
   | "following-jesus-establish"
   | "following-jesus-grow"
+  | "following-jesus-multiply"
   | "following-jesus-all-four"
   | "following-jesus-upgrade-all-four";
 
@@ -204,6 +231,12 @@ export const OFFERS: Record<FjOfferId, FjOffer> = {
     priceCents: 2900,
     unlocks: ["grow"],
   },
+  "following-jesus-multiply": {
+    id: "following-jesus-multiply",
+    title: "Following Jesus: Multiply",
+    priceCents: 2900,
+    unlocks: ["multiply"],
+  },
   "following-jesus-all-four": {
     id: "following-jesus-all-four",
     title: "Following Jesus: All Four Courses",
@@ -226,6 +259,7 @@ const SINGLE_OFFERS: Partial<Record<FjCourseSlug, FjOfferId>> = {
   begin: "following-jesus-begin",
   establish: "following-jesus-establish",
   grow: "following-jesus-grow",
+  multiply: "following-jesus-multiply",
 };
 const ALL_FOUR_OFFERS: FjOfferId[] = ["following-jesus-all-four", "following-jesus-upgrade-all-four"];
 
@@ -242,7 +276,8 @@ export function ownsAllFour(owned: Set<FjOfferId>): boolean {
 /**
  * What the upgrade to all four costs this person: US$89 less US$29 for each
  * course they already own on its own (Richmond, 7 October 2026). Owns one
- * course: US$60; two: US$31; three: US$2. Null when there is no
+ * course: US$60; two: US$31; three: US$2; all four singly: no upgrade, as
+ * nothing is left to pay. Null when there is no
  * upgrade to offer: they own none on its own, already own all four, or own so
  * many singly that nothing would be left to pay.
  */
