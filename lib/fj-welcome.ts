@@ -21,10 +21,6 @@ import type { CourseProgress } from "@/lib/fj-progress";
 // plus the few rules below for what the page has no class for.
 
 const STYLE = `<style data-fj>
-/* The page's small gold text (--gold-d, #a8792b) is 3.7:1 on its cream, under
-   the 4.5:1 that WCAG AA asks of text this size. In what the site adds, the
-   same gold a shade deeper: 5.0:1. The reviewed page itself is left as it is. */
-[data-fj]{--gold-d:#8f6420}
 .fj-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:12px 0 6px}
 .fj-offer{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;display:flex;flex-direction:column}
 .fj-offer h3{margin:0;font-size:19px;line-height:1.3}

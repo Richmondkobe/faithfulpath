@@ -67,6 +67,15 @@ const SELF_HOSTED_FONTS = `<style data-fj>
 
 const DEAD_HELP_LINK = '<a href="#" onclick="return false">Need help?</a>';
 
+// The pages' small gold text (headings like "IN THIS LESSON", lesson labels,
+// "from Lessons 1 · 2 · 3 · 4", links) is all the one colour, --gold-d,
+// #a8792b: 3.4 to 3.9 to 1 on the cream, under the 4.5 to 1 WCAG AA asks of
+// text this size. Richmond asked for the slightly deeper gold the website's
+// own sections use (7 October 2026): #8f6420, 4.65 to 1 or better on every
+// background the pages use. Only this one colour changes.
+// scripts/verify-fj-pages.mjs allows this definition and no other.
+export const DEEPER_GOLD = "<style data-fj>:root{--gold-d:#8f6420}</style>";
+
 // Every one of these pages depends on who is signed in and what they have
 // bought, completed or written, so a copy kept by the browser is wrong the
 // moment anything changes. Found in Richmond's first live test (6 October
@@ -105,6 +114,7 @@ export function websitePage(
 
   out = swap(out, DEAD_HELP_LINK, '<a href="/contact">Need help?</a>');
   out = beforeHeadEnd(out, NEVER_STALE);
+  out = beforeHeadEnd(out, DEEPER_GOLD);
   if (!indexable) {
     out = beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
   }

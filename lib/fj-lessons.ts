@@ -197,6 +197,11 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
   if (completed) html = swap(html, FINISH, FINISH.replace('class="card finish"', 'class="card finish done"'));
   html = progressDashes(html, course, progress);
   html = courseDoneSentence(html, course, lesson, progress);
+
+  // The dashes carry a spoken label ("Lesson 1 of 8") on a plain <span>, which
+  // screen readers are not meant to read a label from, so some skipped it.
+  // role="img" makes it a labelled picture; nothing changes on screen.
+  html = swap(html, '<span class="steps8" aria-label=', '<span class="steps8" role="img" aria-label=');
   html = swap(
     html,
     DONE_BUTTON,

@@ -22,7 +22,10 @@
 //      * which of the eight progress dashes are gold (the website lights only
 //        lessons the learner has completed);
 //      * a line marked data-fj-changed, only if the exact before and after are
-//        in ALLOWED_TEXT_CHANGES below.
+//        in ALLOWED_TEXT_CHANGES below;
+//      * role="img" on the lessons' labelled progress dashes, for screen readers;
+//      * one colour: the site's added styles may redefine --gold-d as #8f6420,
+//        the deeper gold, and no other colour or setting of the page.
 // 3. No page asks Google, Vercel Analytics or anything else outside the site
 //    for anything (the recording's storage URL aside).
 //
@@ -171,6 +174,7 @@ function compareElements(name, a, b) {
     for (const key of new Set([...Object.keys(o.attrs), ...Object.keys(s.attrs)])) {
       if (o.attrs[key] === s.attrs[key] || ALLOWED_ATTR.has(key)) continue;
       if (key === "data-fj-changed" && changedOnPurpose) continue;
+      if (key === "role" && s.attrs.role === "img" && o.attrs.role === undefined && s.attrs.class === "steps8" && o.attrs["aria-label"]) continue;
       if (key === "class" && o.inDashes && s.inDashes && [o.attrs[key], s.attrs[key]].every((v) => v === undefined || v === "on")) continue;
       if (key === "onclick" && o.attrs[key] === "return false" && s.attrs[key] === undefined) continue;
       fail(`${where} — ${key} changed from ${JSON.stringify(o.attrs[key])} to ${JSON.stringify(s.attrs[key])}`);
@@ -214,6 +218,14 @@ for (const course of COURSES.filter((c) => c.launched)) {
       const dashes = (await look(p.completedVariant)).body.filter((e) => e.inDashes).map((e) => (e.attrs.class === "on" ? "●" : "○")).join("");
       const want = course.lessons.map((l) => (l.number < 3 || l.number === n ? "●" : "○")).join("");
       if (dashes !== want) fail(`${p.name}: dashes ${dashes}, expected ${want}`);
+    }
+
+    // The site's own styles may change one of the page's settings, the gold of
+    // its small text, and only to the agreed shade.
+    for (const [, css] of p.served.matchAll(/<style data-fj[^>]*>([\s\S]*?)<\/style>/g)) {
+      for (const [def] of css.matchAll(/--[a-z0-9-]+\s*:[^;}]*/gi)) {
+        if (def.replace(/\s/g, "") !== "--gold-d:#8f6420") fail(`${p.name}: the site's styles change a page setting: ${def}`);
+      }
     }
 
     // Outside addresses: only the recording's storage URL, and nothing that
