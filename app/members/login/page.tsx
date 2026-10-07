@@ -17,11 +17,13 @@ const MESSAGES: Record<string, string> = {
 export default async function MemberLogin({
   searchParams,
 }: {
-  searchParams: Promise<{ email?: string; error?: string }>;
+  searchParams: Promise<{ email?: string; error?: string; sent?: string }>;
 }) {
   if (await getSessionEmail()) redirect("/members");
 
-  const { email, error } = await searchParams;
+  const { email, error, sent } = await searchParams;
+  // From the membership thank-you page, which has just sent the code.
+  const codeSentTo = sent === "1" && email && email.includes("@") ? email.trim().toLowerCase() : undefined;
   const notice = error ? MESSAGES[error] : null;
 
   return (
@@ -49,7 +51,7 @@ export default async function MemberLogin({
         </p>
       )}
 
-      <MemberLoginForm defaultEmail={email ?? ""} />
+      <MemberLoginForm defaultEmail={email ?? ""} codeSentTo={codeSentTo} />
     </main>
   );
 }

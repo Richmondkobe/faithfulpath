@@ -22,6 +22,14 @@ export const metadata: Metadata = {
  *
  * Nothing on this page edits. A member who is still active gets a link through
  * to the lesson, where the writing actually happens.
+ *
+ * Two of the five courses are here, and only two (Richmond, 8 October 2026).
+ * Talk Before You Marry and Lead Before You're Ready store nothing a member
+ * writes, by design. Before You Say Yes stores answers but is deliberately left
+ * out: lib/bysy-export-policy.ts keeps every answer inside the course until a
+ * page is approved for export, needs EXPORT_WARNING and a member's own choice,
+ * and the course never shows earlier answers unaided. Do not add it here, or to
+ * the PDF, without that decision.
  */
 export default async function JournalPage() {
   const email = await requireMemberRow();

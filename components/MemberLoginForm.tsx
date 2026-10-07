@@ -24,19 +24,23 @@ export default function MemberLoginForm({
   defaultEmail = "",
   next,
   restartHref = "/members/login",
+  codeSentTo,
 }: {
   defaultEmail?: string;
   /** Where to land once signed in. The actions accept only an allowed path. */
   next?: string;
   /** This page, for "send another code" and "use a different email". */
   restartHref?: string;
+  /** A code has already been sent to this address (the membership thank-you
+      page sends one): open on the code box rather than asking for another. */
+  codeSentTo?: string;
 }) {
   const nextField = next ? <input type="hidden" name="next" value={next} /> : null;
   const withEmail = (email: string) =>
     `${restartHref}${restartHref.includes("?") ? "&" : "?"}email=${encodeURIComponent(email)}`;
   const [sendState, sendAction, sending] = useActionState(
     sendMemberLink,
-    initialSend
+    codeSentTo ? { error: null, sent: codeSentTo } : initialSend
   );
   const [codeState, codeAction, verifying] = useActionState(
     verifyMemberCode,

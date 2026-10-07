@@ -31,13 +31,16 @@ function Course({
   body,
   href,
   button,
+  items,
 }: {
   kicker: string;
   title: string;
-  line: string;
+  line?: string;
   body: string;
   href: string;
   button: string;
+  /** Courses listed in the card, as [name, one line]. */
+  items?: [string, string][];
 }) {
   return (
     <li className="rounded-sm border border-[#D9CDBA] bg-white px-6 py-7 sm:px-8">
@@ -46,10 +49,21 @@ function Course({
       <h2 className="mt-3 text-3xl tracking-[-0.01em] text-[#2B2118]" style={heading}>
         {title}
       </h2>
-      <p className="mt-4 max-w-xl text-lg leading-relaxed" style={lede}>
-        {line}
-      </p>
-      <p className="mt-3 max-w-xl leading-relaxed">{body}</p>
+      {line && (
+        <p className="mt-4 max-w-xl text-lg leading-relaxed" style={lede}>
+          {line}
+        </p>
+      )}
+      <p className={`${line ? "mt-3" : "mt-4"} max-w-xl leading-relaxed`}>{body}</p>
+      {items && (
+        <ul className="mt-5 max-w-xl list-disc space-y-2 pl-6 leading-relaxed marker:text-[#8B5E34]">
+          {items.map(([name, text]) => (
+            <li key={name}>
+              <strong className="font-medium text-[#2B2118]">{name}</strong>: {text}
+            </li>
+          ))}
+        </ul>
+      )}
       <Link href={href} className={`mt-7 ${primary}`}>
         {button}
       </Link>
@@ -77,11 +91,21 @@ export default function Courses() {
       <ul className="mt-12 space-y-6">
         <Course
           kicker="With the membership · US$19 a month"
-          title="The Christian Spiritual Reset"
-          line="Some seasons do not call for another book. They call for somewhere to stop."
-          body="A guided retreat you take at home, at whatever pace your life allows: video teaching, guided prayers, timers to hold the silence for you, and printable workbooks, all read online. It opens with membership at US$19 a month, and you can stop whenever you need to."
+          // The approved membership page's heading and opening paragraph
+          // (Richmond, 8 October 2026).
+          title="Five Christian courses, one membership"
+          body="Practical, Scripture-centred guidance for seasons when you need help taking the next faithful step: through tiredness, worry, dating, marriage and your first years of church leadership. Learn at home, at your own pace, for US$19 a month. Cancel whenever you need to."
           href="/membership"
           button="See the membership"
+          // The five courses, in the approved membership page's own words
+          // (Membership-Page-Final.md, reviewer-approved 8 October 2026).
+          items={[
+            ["The Christian Spiritual Reset", "a guided retreat at home for burnout and spiritual dryness."],
+            ["When Your Mind Won’t Rest", "overthinking, worry and fear."],
+            ["Before You Say Yes", "discernment in dating and the decision to marry."],
+            ["Talk Before You Marry", "fourteen lessons for couples before marriage."],
+            ["Lead Before You’re Ready", "for your first years of leading in a church."],
+          ]}
         />
         <Course
           kicker={`Sold separately · ${single} a course`}

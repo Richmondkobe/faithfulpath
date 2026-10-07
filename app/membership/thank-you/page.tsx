@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stripe } from "@/lib/stripe";
+import { sendSignInCode } from "@/lib/sign-in-code";
 
 export const metadata: Metadata = {
   title: "Welcome | Faithful Path Community",
@@ -18,6 +19,7 @@ export default async function MembershipThankYou({
   // so show it and carry it into the sign-in form rather than letting them
   // guess at a different one.
   let paidEmail: string | null = null;
+  let codeSent = false;
   if (sessionId) {
     try {
       const session = await stripe.checkout.sessions.retrieve(sessionId);
@@ -26,13 +28,20 @@ export default async function MembershipThankYou({
         (typeof session.customer_email === "string"
           ? session.customer_email.trim().toLowerCase()
           : null);
+      // The page tells them a code has been sent, so send it: only for a
+      // membership Stripe has confirmed, paid in the last day, to the address
+      // it was paid with.
+      const recent = Date.now() / 1000 - session.created < 24 * 60 * 60;
+      if (paidEmail && session.mode === "subscription" && session.status === "complete" && recent) {
+        codeSent = await sendSignInCode(paidEmail);
+      }
     } catch (err) {
       console.error("Could not read the membership checkout session:", err);
     }
   }
 
   const signInHref = paidEmail
-    ? `/members/login?email=${encodeURIComponent(paidEmail)}`
+    ? `/members/login?email=${encodeURIComponent(paidEmail)}${codeSent ? "&sent=1" : ""}`
     : "/members/login";
 
   return (
@@ -48,7 +57,10 @@ export default async function MembershipThankYou({
         className="mt-6 text-lg leading-relaxed"
         style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
       >
-        Placeholder confirmation copy. Your membership is active.
+        Welcome to Faithful Path. Your membership is active. We have sent a
+        six-digit code to the email you paid with. Enter it to open your
+        courses. If it hasn&rsquo;t arrived in a few minutes, check your spam
+        folder or email info@faithfulpathcommunity.com.
       </p>
 
       {paidEmail ? (
