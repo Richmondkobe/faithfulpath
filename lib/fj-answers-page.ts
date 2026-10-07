@@ -7,7 +7,13 @@ import { beforeBodyEnd } from "@/lib/fj-html";
 // itself is lib/fj-answers.ts.
 
 /** The names a page's boxes are saved under, in page order. */
-export type PageFields = { texts: number; refs: number; checks: string[] };
+export type PageFields = {
+  texts: number;
+  refs: number;
+  checks: string[];
+  /** Choose-one questions: the group's name and how many options it has. */
+  radios: { name: string; options: number }[];
+};
 
 /**
  * Read the boxes off the page itself, so the server only accepts names the
@@ -18,6 +24,14 @@ export function pageFields(html: string): PageFields {
     texts: (html.match(/<textarea\b/g) ?? []).length,
     refs: (html.match(/<input class="ref"/g) ?? []).length,
     checks: [...html.matchAll(/<input type="checkbox" id="([a-z0-9-]+)"/g)].map((m) => m[1]),
+    // My Foundations' "Look outward" (Establish): one choice of four, saved as
+    // the chosen option's position, 1 to 4.
+    radios: Object.entries(
+      [...html.matchAll(/<input type="radio" name="([a-z0-9-]+)"/g)].reduce<Record<string, number>>((groups, m) => {
+        groups[m[1]] = (groups[m[1]] ?? 0) + 1;
+        return groups;
+      }, {})
+    ).map(([name, options]) => ({ name, options })),
   };
 }
 
@@ -49,6 +63,13 @@ export function withAnswers(html: string, apiPath: string, saved: Record<string,
   document.querySelectorAll('main textarea').forEach(function(el){fields.push(['text-'+(++t),el]);});
   document.querySelectorAll('main input.ref').forEach(function(el){fields.push(['ref-'+(++r),el]);});
   document.querySelectorAll('main input[type=checkbox][id]').forEach(function(el){fields.push([el.id,el]);});
+  // A choose-one question is one answer: the chosen option's position.
+  var radios={};
+  document.querySelectorAll('main input[type=radio][name]').forEach(function(el){(radios[el.name]=radios[el.name]||[]).push(el);});
+  Object.keys(radios).forEach(function(name){
+    var group=radios[name],k='radio-'+name;
+    if(Object.prototype.hasOwnProperty.call(saved,k)){var i=parseInt(saved[k],10);if(group[i-1])group[i-1].checked=true;}
+  });
 
   // Put back what was saved. A restored tick fires the page's own change
   // handler, so the reading-plan bar and the struck-through days match.
@@ -83,6 +104,9 @@ export function withAnswers(html: string, apiPath: string, saved: Record<string,
     var k=f[0],el=f[1];
     if(el.type==='checkbox')el.addEventListener('change',function(){queue(k,el.checked?'1':'');});
     else el.addEventListener('input',function(){queue(k,el.value);});
+  });
+  Object.keys(radios).forEach(function(name){
+    radios[name].forEach(function(el,i){el.addEventListener('change',function(){if(el.checked)queue('radio-'+name,String(i+1));});});
   });
   // Leaving the page, or switching away on a phone, saves what is waiting.
   addEventListener('pagehide',function(){flush(true);});

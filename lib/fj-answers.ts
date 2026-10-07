@@ -16,11 +16,13 @@ import type { PageFields } from "@/lib/fj-answers-page";
 //     learner's own row;
 //   * no admin page reads this table.
 
-function allowedKeys(fields: PageFields): Map<string, "text" | "check"> {
-  const keys = new Map<string, "text" | "check">();
+function allowedKeys(fields: PageFields): Map<string, "text" | "check" | number> {
+  // A number is a choose-one question: the answer is a position, 1 to that number.
+  const keys = new Map<string, "text" | "check" | number>();
   for (let i = 1; i <= fields.texts; i++) keys.set(`text-${i}`, "text");
   for (let i = 1; i <= fields.refs; i++) keys.set(`ref-${i}`, "text");
   for (const id of fields.checks) keys.set(id, "check");
+  for (const { name, options } of fields.radios) keys.set(`radio-${name}`, options);
   return keys;
 }
 
@@ -60,6 +62,7 @@ export async function saveAnswers(
     const kind = keys.get(key);
     if (!kind || typeof value !== "string" || value.length > MAX_VALUE) return "invalid";
     if (kind === "check" && value !== "1" && value !== "") return "invalid";
+    if (typeof kind === "number" && value !== "" && !(/^[1-9]\d*$/.test(value) && Number(value) <= kind)) return "invalid";
     if (value.trim() === "") clear.push(key);
     else keep.push({ key, value });
   }

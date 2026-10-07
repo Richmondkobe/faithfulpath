@@ -32,7 +32,7 @@ const DEAD_LINK = '<a class="btn" href="#" onclick="return false">';
  *  3. No resize handles on the boxes.
  *  4. The dark closing card prints in dark ink on white: the browser drops the
  *     dark background when printing, which left its pale text near invisible.
- *  5. Ticks print with their colour in every browser, not only Chrome.
+ *  5. Ticks, and chosen options, print with their colour in every browser.
  *  6. A long answer prints in full. A text box keeps its screen height on
  *     paper and cuts off whatever does not fit, so each box has a plain copy
  *     of its text beside it, hidden on screen and printed in its place, in
@@ -47,7 +47,7 @@ textarea::placeholder,input::placeholder{color:transparent!important;opacity:0!i
 textarea{resize:none!important}
 .finish{background:#fff!important;border:1px solid var(--line)!important}
 .finish h2,.finish .sub,.finish p{color:#000!important}
-input[type=checkbox]{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+input[type=checkbox],input[type=radio]{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 textarea{display:none!important}
 .fj-print-text{display:block!important}`;
 
