@@ -1,6 +1,7 @@
 import {
   OFFERS,
   SERIES_PATH,
+  canUpgrade,
   formatDay,
   lessonList,
   coursePath,
@@ -37,6 +38,9 @@ const STYLE = `<style data-fj>
 .fj-progress a{color:var(--ink);text-decoration:none}.fj-progress a:hover{text-decoration:underline}
 .fj-progress small{color:var(--gold-d);font-weight:700;margin-right:6px}
 .fj-progress .fj-done{color:var(--gold-d);font-size:15px;white-space:nowrap}
+.fj-upgrade{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}
+.fj-upgrade-text{margin:0 0 10px;color:var(--mute);font-size:16px}
+.fj-upgrade form{margin:0}
 .fj-notice{background:#fff;border:1px solid var(--gold-soft);border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px;margin:6px 0 14px;color:var(--ink)}
 .fj-finished{font-family:'Source Serif 4',serif;font-style:italic;color:var(--navy);margin:0 0 12px}
 </style>`;
@@ -87,7 +91,25 @@ function buySection(course: FjCourse, learner: Learner | null): string {
  </section>`;
 }
 
-function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgress, finishFirst: boolean): string {
+/** For a Begin owner: the rest of the series at the difference. */
+function upgradeOffer(): string {
+  const offer = OFFERS["following-jesus-upgrade-all-four"];
+  return `<div class="fj-upgrade">
+   <p class="fj-upgrade-text">Establish, Grow and Multiply, each opening for you when it launches, with each course's Leader's Guide.</p>
+   <form method="post" action="/api/courses/following-jesus/checkout">
+    <input type="hidden" name="offer" value="${offer.id}">
+    <button type="submit" class="btn gold">Upgrade to all four · ${formatPrice(offer.priceCents)}</button>
+   </form>
+  </div>`;
+}
+
+function ownerSection(
+  course: FjCourse,
+  learner: Learner,
+  progress: CourseProgress,
+  finishFirst: boolean,
+  upgrade: boolean
+): string {
   const base = coursePath(course);
   const next = course.lessons.find((l) => !progress.completed.has(l.slug));
   const left = course.lessons.filter((l) => !progress.completed.has(l.slug));
@@ -130,6 +152,7 @@ function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgre
   ${lead}
   <ul class="fj-progress" aria-label="Your lessons">${list}</ul>
   <div class="btns"><a class="btn" href="${downloadPath(course, "leaders-guide.pdf")}">⬇ Download the Leader's Guide (PDF)</a></div>
+  ${upgrade ? upgradeOffer() : ""}
   <div class="fj-who">Signed in as <b>${escapeHtml(learner.email)}</b>. ${signOutForm(base)}</div>
  </section>`;
 }
@@ -158,6 +181,8 @@ export function welcomePage(
   );
 
   // Under the page, just before the main column closes.
-  out = swap(out, "</main>", `${owns && progress ? ownerSection(course, learner, progress, finishFirst) : buySection(course, learner)}\n</main>`);
+  out = swap(out, "</main>", `${
+    owns && progress ? ownerSection(course, learner, progress, finishFirst, canUpgrade(offers)) : buySection(course, learner)
+  }\n</main>`);
   return swap(out, "</head>", `${STYLE}</head>`);
 }

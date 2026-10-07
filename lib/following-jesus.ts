@@ -96,7 +96,7 @@ export const tabTitle = (page: string) => `${page} | Following Jesus`;
 
 /* ----------------------------------------------------------------- offers */
 
-export type FjOfferId = "following-jesus-begin" | "following-jesus-all-four";
+export type FjOfferId = "following-jesus-begin" | "following-jesus-all-four" | "following-jesus-upgrade-all-four";
 
 export type FjOffer = {
   id: FjOfferId;
@@ -122,7 +122,42 @@ export const OFFERS: Record<FjOfferId, FjOffer> = {
     priceCents: 8900,
     unlocks: ["begin", "establish", "grow", "multiply"],
   },
+  // For someone who already owns Begin: the rest of the bundle at the
+  // difference, US$29 + US$60 = US$89 (Richmond, 7 October 2026). Sold only to
+  // a signed-in Begin owner; see canBuy().
+  "following-jesus-upgrade-all-four": {
+    id: "following-jesus-upgrade-all-four",
+    title: "Following Jesus: Upgrade to All Four Courses",
+    priceCents: 6000,
+    unlocks: ["begin", "establish", "grow", "multiply"],
+  },
 };
+
+const BEGIN_OFFERS: FjOfferId[] = ["following-jesus-begin"];
+const ALL_FOUR_OFFERS: FjOfferId[] = ["following-jesus-all-four", "following-jesus-upgrade-all-four"];
+
+/** Owns the whole series, by the bundle or by the upgrade. */
+export function ownsAllFour(owned: Set<FjOfferId>): boolean {
+  return ALL_FOUR_OFFERS.some((id) => owned.has(id));
+}
+
+/** Owns Begin on its own, so is offered the upgrade instead of the bundle. */
+export function canUpgrade(owned: Set<FjOfferId>): boolean {
+  return BEGIN_OFFERS.some((id) => owned.has(id)) && !ownsAllFour(owned);
+}
+
+/**
+ * Whether someone with these purchases may buy this offer. Nobody pays twice
+ * for what they have: Begin owners are offered the upgrade, not the bundle,
+ * and the upgrade is only for Begin owners. `signedIn` is false for a visitor,
+ * who can buy Begin or the bundle and sign in afterwards.
+ */
+export function canBuy(offer: FjOfferId, owned: Set<FjOfferId>, signedIn: boolean): boolean {
+  if (ownsAllFour(owned)) return false;
+  if (offer === "following-jesus-upgrade-all-four") return signedIn && canUpgrade(owned);
+  if (canUpgrade(owned)) return false;
+  return true;
+}
 
 export function isOfferId(value: unknown): value is FjOfferId {
   return typeof value === "string" && Object.hasOwn(OFFERS, value);

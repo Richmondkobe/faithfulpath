@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import type Stripe from "stripe";
 import { stripe, siteUrl } from "@/lib/stripe";
-import { COURSES, OFFERS, SERIES_PATH, coursePath, isOfferId } from "@/lib/following-jesus";
+import { COURSES, OFFERS, SERIES_PATH, canBuy, coursePath, isOfferId } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 
 /**
@@ -25,14 +25,13 @@ export async function POST(request: NextRequest) {
     // back to their course rather than charged twice. (A Begin owner buying
     // all four still can: it opens three more courses. Full price for now; an
     // upgrade price comes before Establish launches.)
-    // The bundle covers everything, so owning it, or owning this offer, means
-    // there is nothing left for this purchase to open.
+    // Nobody pays twice for what they have (see canBuy): a Begin owner gets
+    // the upgrade rather than the bundle, the upgrade needs a signed-in Begin
+    // owner, and someone with all four is sent back to their course.
     const learner = await getLearner();
-    if (learner) {
-      const owned = await getOwnedOffers();
-      if (owned.has(offer.id) || owned.has("following-jesus-all-four")) {
-        return NextResponse.redirect(`${origin}${begin}#your-course`, 303);
-      }
+    const owned = learner ? await getOwnedOffers() : new Set<never>();
+    if (!canBuy(offer.id, owned, learner !== null)) {
+      return NextResponse.redirect(`${origin}${begin}${learner ? "#your-course" : "#buy"}`, 303);
     }
 
     const params: Stripe.Checkout.SessionCreateParams = {
