@@ -50,7 +50,7 @@ const CHARS = [
 ].join("");
 
 // Characters the Following Jesus pages use beyond CHARS.
-const FJ_EXTRA = "ḥṣʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0x3a3, 0x3a9).join("") + range(0x3b1, 0x3c9).join("");
+const FJ_EXTRA = "ḥṣḏʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0x3a3, 0x3a9).join("") + range(0x3b1, 0x3c9).join("");
 
 /** family: the css2 `family=` value. Each face becomes one file. */
 const FACES = [
@@ -65,7 +65,7 @@ const FACES = [
   // The Following Jesus pages, served as their reviewed HTML. They asked Google
   // for serif 400 and 600, serif italic 400 and sans 400 to 700, so these cover
   // exactly that; the faces above stay as the other courses use them. "ḥ" is in
-  // the Begin transcripts and the dashes are throughout; Establish adds "ṣ",
+  // the Begin transcripts and the dashes are throughout; Grow adds "ḏ"; Establish adds "ṣ",
   // "ʾ" and Greek words (the basic Greek alphabet, and "Ἅ", which only Source
   // Sans has; in the serif it falls back to the device's font, exactly as it
   // did in the preview from Google). Its one Hebrew and one Arabic word fall
