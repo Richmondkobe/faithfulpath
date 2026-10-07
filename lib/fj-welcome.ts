@@ -100,7 +100,9 @@ function ownerSection(course: FjCourse, learner: Learner, progress: CourseProgre
   // is complete: one line naming what is left.
   const notice =
     finishFirst && course.completionPage && !progress.courseCompletedAt && left.length
-      ? `<p class="fj-notice" role="status">Finish ${lessonList(left)} to open ${escapeHtml(course.completionPage.title)}.</p>`
+      ? `<p class="fj-notice" role="status">Finish ${
+          left.length === course.lessons.length ? `all ${course.lessons.length} lessons` : lessonList(left)
+        } to open ${escapeHtml(course.completionPage.title)}.</p>`
       : "";
 
   // Plain words only: which lessons are completed, nothing scored or counted.
