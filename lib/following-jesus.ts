@@ -9,13 +9,19 @@
 export const SERIES_PATH = "/courses/following-jesus";
 
 /**
- * Whether the site points anyone to the series. Off until Richmond has tested
- * Begin on the live site (6 October 2026): the pages open by their address,
- * but nothing links to them and search engines are asked not to list them.
- * Turning it on shows the line on /membership and lets the series and welcome
- * pages be indexed.
+ * Whether the site points anyone to the series. Off while Richmond tested Begin
+ * on the live site (from 6 October 2026), when the pages opened by their
+ * address only; on since he finished testing (7 October 2026). On, it shows the
+ * line on /membership, lets the series page and the public welcome pages be
+ * indexed, and lists them in the sitemap. Lessons, downloads and the
+ * completion page are noindex and behind the purchase either way.
  */
-export const SERIES_LISTED = false;
+export const SERIES_LISTED = true;
+
+/** The series' public pages, for the sitemap: the series home and each launched course's welcome page. */
+export function publicSeriesPaths(): string[] {
+  return SERIES_LISTED ? [SERIES_PATH, ...COURSES.filter((c) => c.launched).map(coursePath)] : [];
+}
 
 export type FjCourseSlug = "begin" | "establish" | "grow" | "multiply";
 

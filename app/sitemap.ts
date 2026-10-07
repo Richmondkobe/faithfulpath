@@ -9,6 +9,7 @@ import {
 } from "@/lib/articles-db";
 import { CATEGORIES, categoryHref } from "@/lib/categories";
 import { listPublishedProducts } from "@/lib/products-db";
+import { publicSeriesPaths } from "@/lib/following-jesus";
 
 // The sitemap is a cached Route Handler, so without this it would only ever
 // reflect the articles and guides that existed at build time. An hour is short
@@ -30,6 +31,9 @@ const STATIC_PATHS = [
   "/articles",
   "/guides",
   "/membership",
+  // Following Jesus: the series home and the Begin welcome page, the public
+  // sales pages for the separately sold courses. Their lessons are not here.
+  ...publicSeriesPaths(),
   "/talk-to-a-pastor",
   "/contact",
   "/before-you-say-yes/resources",
