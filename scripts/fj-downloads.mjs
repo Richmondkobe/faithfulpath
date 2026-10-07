@@ -5,6 +5,7 @@
 //
 //   npm run fj:downloads -- "<course folder>"               # build, check, upload
 //   npm run fj:downloads -- "<course folder>" --dry-run     # build and check only
+//   npm run fj:downloads -- "<course folder>" --only worksheets   # just these (or chapters, leaders-guide)
 //
 // The course folder is Richmond's, for example
 // "~/Desktop/Following Jesus Begin Course". Everything goes to the private
@@ -51,7 +52,9 @@ function die(message) {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run");
-const root = args.find((a) => !a.startsWith("--"));
+const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
+if (only && !["worksheets", "chapters", "leaders-guide"].includes(only)) die(`--only takes worksheets, chapters or leaders-guide, not "${only}".`);
+const root = args.find((a, i) => !a.startsWith("--") && args[i - 1] !== "--only" && args[i - 1] !== "--course");
 const courseSlug = args.includes("--course") ? args[args.indexOf("--course") + 1] : "begin";
 const course = COURSES[courseSlug];
 if (!root) die('Usage: npm run fj:downloads -- "<course folder>" [--course begin] [--dry-run]');
@@ -148,6 +151,12 @@ for (const f of files) {
   if (!Buffer.from(f.bytes.subarray(0, 5)).toString("latin1").startsWith("%PDF-")) die(`${f.name} is not a PDF.`);
 }
 
+if (only) {
+  const prefix = { worksheets: "worksheet-", chapters: "chapter-", "leaders-guide": "leaders-guide" }[only];
+  files.splice(0, files.length, ...files.filter((f) => f.name.startsWith(prefix)));
+  console.log(`\n  --only ${only}: ${files.length} file(s)`);
+}
+
 console.log(`\n  ${files.length} files built in ${outDir}`);
 if (dryRun) {
   console.log("  Dry run: nothing uploaded.\n");
@@ -186,5 +195,17 @@ for (const f of files) {
 const { data: listed } = await supabase.storage.from(BUCKET).list(folder, { limit: 100 });
 const names = new Set((listed ?? []).map((o) => o.name));
 const missing = files.filter((f) => !names.has(f.name));
+// The bucket's copy, byte for byte, against what was meant to go up. Storage
+// can hand back the old file for a few seconds after a replacement, so a
+// mismatch is retried for up to 15 seconds before it counts.
+for (const f of files) {
+  let same = false;
+  for (let attempt = 0; attempt < 6 && !same; attempt++) {
+    if (attempt) await new Promise((r) => setTimeout(r, 3000));
+    const { data } = await supabase.storage.from(BUCKET).download(`${folder}/${f.name}`);
+    same = Buffer.from(await data.arrayBuffer()).equals(Buffer.from(f.bytes));
+  }
+  if (!same) die(`${f.name} in the bucket is still not the file that was uploaded.`);
+}
 if (missing.length) die(`Not in the bucket after upload: ${missing.map((f) => f.name).join(", ")}`);
 console.log(`  Uploaded ${files.length} files to ${BUCKET}/${folder}/\n`);
