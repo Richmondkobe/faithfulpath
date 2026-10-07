@@ -99,8 +99,8 @@ export const COURSES: FjCourse[] = [
     fullTitle: "Establish: Strong Foundations",
     key: "following-jesus-establish",
     launched: true,
-    // Unlisted until Richmond has tested it (7 October 2026).
-    listed: false,
+    // Unlisted while Richmond tested it; switched on 8 October 2026.
+    listed: true,
     firstChapter: 9,
     // From the welcome page's own line: "Ten lessons on what Christians
     // believe, and how that truth shapes life."
