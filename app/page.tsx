@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { SITE, COUNTRIES } from "@/lib/site";
 import { listPublishedArticles } from "@/lib/articles-db";
+import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
+import { formatPrice } from "@/lib/products";
 
 // The title and description are the root layout's, which were written for this
 // page. Only the canonical is set here: without it the home page is reachable
@@ -39,6 +41,8 @@ const STAGES = [
 
 export default async function Home() {
   const recent = (await listPublishedArticles()).slice(0, 3);
+  const fjSingle = formatPrice(OFFERS["following-jesus-begin"].priceCents);
+  const fjAll = formatPrice(OFFERS["following-jesus-all-four"].priceCents);
 
   return (
     <main>
@@ -127,6 +131,47 @@ export default async function Home() {
             className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
           >
             See what is included
+          </Link>
+        </div>
+      </section>
+
+      {/* Following Jesus, in the Spiritual Reset section's layout and button
+          styles: the primary to the series, the secondary straight to Begin. */}
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          Video courses
+        </p>
+        <h2
+          className="mt-4 text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+        >
+          Following Jesus
+        </h2>
+        <p
+          className="mt-5 max-w-xl text-lg leading-relaxed"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        >
+          Four video courses, one step at a time, from new life in Christ to
+          helping others follow Jesus.
+        </p>
+        <p className="mt-4 max-w-xl leading-relaxed">
+          Begin, Establish, Grow and Multiply: short narrated lessons with
+          captions, a reading plan for each week, and a Leader&rsquo;s Guide for
+          taking each course with a group. {fjSingle} a course, or {fjAll} for
+          all four, sold separately from the membership.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Link
+            href={SERIES_PATH}
+            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          >
+            See the four courses
+          </Link>
+          <Link
+            href={`${SERIES_PATH}/begin`}
+            className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          >
+            Start with Begin — {fjSingle}
           </Link>
         </div>
       </section>

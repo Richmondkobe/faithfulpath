@@ -46,7 +46,9 @@ const NAV = [
   // The URL stays /guides: the pages, their links and anything already shared
   // are unaffected by what the menu calls them.
   { href: "/guides", label: "Books" },
-  { href: "/membership", label: "Courses" },
+  // /courses lists the membership's Spiritual Reset and the Following Jesus
+  // series side by side; the membership's own page is one click on.
+  { href: "/courses", label: "Courses" },
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

@@ -31,6 +31,8 @@ const STATIC_PATHS = [
   "/articles",
   "/guides",
   "/membership",
+  // The page behind the menu's "Courses".
+  "/courses",
   // Following Jesus: the series home and the Begin welcome page, the public
   // sales pages for the separately sold courses. Their lessons are not here.
   ...publicSeriesPaths(),
