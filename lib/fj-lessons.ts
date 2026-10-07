@@ -6,13 +6,92 @@ import {
   type FjCourse,
   type FjLesson,
 } from "@/lib/following-jesus";
-import { beforeBodyEnd, escapeHtml, readCoursePage, swap, websitePage, websitePlayer } from "@/lib/fj-html";
+import { beforeBodyEnd, beforeHeadEnd, escapeHtml, readCoursePage, swap, websitePage, websitePlayer } from "@/lib/fj-html";
 
 // The lesson, player and completion pages as the website serves them. Each
 // change is one of those listed in content/courses/following-jesus/README.md;
 // anything that touches what the learner reads belongs in the files, not here.
 
 const DEAD_LINK = '<a class="btn" href="#" onclick="return false">';
+
+/*
+ * Print rules, asked for by Richmond on 7 October 2026 after printing My First
+ * Steps ("layout only, no wording changes"). They apply only on paper; nothing
+ * changes on screen, and the reviewed files are untouched.
+ *
+ * Both pages:
+ *  1. A card may run across pages, so a long one (Look back, the transcript
+ *     cards) starts under the header instead of leaving page 1 blank. Small
+ *     pieces inside it (a lesson row, a First Step, a checkbox) stay whole.
+ *  2. An empty box prints empty, not with its grey hint text, which on paper
+ *     reads as an answer.
+ *  3. No resize handles on the boxes.
+ *  4. The dark closing card prints in dark ink on white: the browser drops the
+ *     dark background when printing, which left its pale text near invisible.
+ *  5. Ticks print with their colour in every browser, not only Chrome.
+ *  6. A long answer prints in full. A text box keeps its screen height on
+ *     paper and cuts off whatever does not fit, so each box has a plain copy
+ *     of its text beside it, hidden on screen and printed in its place, in
+ *     the same bordered box, growing to fit. An empty one keeps the box's
+ *     height, so there is still room to write by hand.
+ */
+const PRINT_BOTH = `
+.card{break-inside:auto!important}
+.card h2{break-after:avoid}
+.lessons li,.stepcard,.checks2 li,.plan li,.parts label,.how li,.assign li,.talk li,.two>div{break-inside:avoid}
+textarea::placeholder,input::placeholder{color:transparent!important;opacity:0!important}
+textarea{resize:none!important}
+.finish{background:#fff!important;border:1px solid var(--line)!important}
+.finish h2,.finish .sub,.finish p{color:#000!important}
+input[type=checkbox]{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+textarea{display:none!important}
+.fj-print-text{display:block!important}`;
+
+/** Screen styles for the print copies of the text boxes: never shown on screen. */
+const PRINT_COPY_STYLE = `.fj-print-text{display:none;white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;font-weight:400;line-height:1.5;color:#000;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;break-inside:avoid}`;
+
+// Keeps a copy of each text box's words beside it, for printing. Synced as
+// the learner types, once everything has loaded (after their saved answers
+// are put back), and just before printing.
+const PRINT_COPY_SCRIPT = `<script data-fj>
+(function(){
+  function sync(){
+    document.querySelectorAll('main textarea').forEach(function(t){
+      var c=t.nextElementSibling;
+      if(!c||!c.classList.contains('fj-print-text')){
+        c=document.createElement('div');c.className='fj-print-text';c.setAttribute('data-fj','');c.setAttribute('aria-hidden','true');
+        t.parentNode.insertBefore(c,t.nextSibling);
+        t.addEventListener('input',function(){c.textContent=t.value;});
+      }
+      c.textContent=t.value;
+    });
+  }
+  addEventListener('load',sync);
+  addEventListener('beforeprint',sync);
+})();
+</script>`;
+
+/*
+ * The lessons had no print rules at all, so they printed the dark header in
+ * pale ink and the player as an empty grey band. These are My First Steps' own
+ * print rules, with one difference: the footer's ESV notice stays on the page
+ * (the lessons quote Scripture throughout), and only "Need help?" is hidden.
+ */
+const PRINT_LESSON = `
+.top .bar,.player,.btns,.noprint{display:none!important}
+body{background:#fff}
+.card{box-shadow:none}
+.top{background:#fff;color:#000}
+.top *{color:#000!important}
+footer a{display:none}`;
+
+function withPrintRules(html: string, lesson: boolean): string {
+  const withStyle = beforeHeadEnd(
+    html,
+    `<style data-fj>${PRINT_COPY_STYLE}\n@media print{${lesson ? PRINT_LESSON : ""}${PRINT_BOTH}\n}</style>`
+  );
+  return beforeBodyEnd(withStyle, PRINT_COPY_SCRIPT);
+}
 
 export function lessonPath(course: FjCourse, lesson: FjLesson): string {
   return `${coursePath(course)}/${lesson.slug}`;
@@ -102,7 +181,7 @@ export async function lessonPage(
 </script>`
   );
 
-  return html;
+  return withPrintRules(html, true);
 }
 
 /**
@@ -167,5 +246,5 @@ export async function completionPage(course: FjCourse): Promise<string> {
     '<button class="textlink" style="color:#d5dae4">Back to the course</button>',
     `<a class="textlink" style="color:#d5dae4" href="${coursePath(course)}">Back to the course</a>`
   );
-  return html;
+  return withPrintRules(html, false);
 }
