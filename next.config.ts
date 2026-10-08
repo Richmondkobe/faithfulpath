@@ -19,6 +19,8 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/courses/following-jesus/**/*": ["./content/courses/following-jesus/**/*.html"],
     "/courses/following-jesus/fonts/*": ["./fonts/fj-*.woff2"],
+    // The new Reset edition (hidden test course): its pages and PDFs.
+    "/members/courses/christian-spiritual-reset-new/**/*": ["./content/courses/christian-spiritual-reset-new/**/*"],
   },
   images: {
     remotePatterns: supabaseHost
