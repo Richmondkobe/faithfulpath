@@ -170,7 +170,7 @@ button.primary{background:#c99a4a;border-color:#c99a4a;color:#121d33}
 .card{background:#fffaf0;border-color:#e0d4b6}.card b{color:#8a6a24}
 .chips{gap:10px}.chips span{font-size:clamp(14px,2.2vw,19px);background:#fffaf0;color:#1f2d4f;padding:.45em 1em}
 .slide .wrap{position:relative}
-@media(max-width:600px){.fz11,.fz12{font-size:19px}.fz13{font-size:20px}.fz14{font-size:21px}.fz15{font-size:22px}.fz16,.fz17{font-size:23px}.fz18,.fz19,.fz20{font-size:24px}.map .fz13,.map .fz11{font-size:15px}.slide{padding-left:4vw;padding-right:4vw}.chips{top:40%!important}}
+.lbl3,.lbl2{display:none}@media(max-width:600px){.onlywide{display:none}.lbl2{display:flex;justify-content:space-between;width:100%;margin:2px 0 6px;font-size:13px;color:#1f2d4f}.lbl3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:100%;margin:-4px 0 8px;font-size:13px;line-height:1.3;color:#5a6577;text-align:center}}@media(max-width:600px){.fz11,.fz12{font-size:19px}.fz13{font-size:20px}.fz14{font-size:21px}.fz15{font-size:22px}.fz16,.fz17{font-size:23px}.fz18,.fz19,.fz20{font-size:24px}.map .fz13,.map .fz11{font-size:15px}.slide{padding-left:4vw;padding-right:4vw}.chips{top:40%!important}}
 .note-i{font-family:'Source Serif 4',serif;font-style:italic;color:#8a6a24;font-size:clamp(15px,2.2vw,21px);margin:.2em 0}
 .dark .note-i,#stage.dark .note-i{color:#e3c98a}
 .note-s{font-size:clamp(14px,2vw,18px);margin:.2em 0;max-width:40em}
@@ -349,11 +349,12 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
    <div class="b" data-at="Perhaps this describes you" data-until="But somewhere underneath the routine">
     <h1 style="font-size:clamp(22px,3.8vw,40px)">You are still showing up.</h1>
     <svg class="scene" viewBox="0 0 680 200" aria-hidden="true">
-     <g class="b pop" data-at="You still go to work"><rect x="40" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><rect x="72" y="92" width="86" height="54" rx="4" fill="#1f2d4f"/><rect x="78" y="98" width="74" height="42" fill="#5b6f93"/><path d="M62 150h106" stroke="#1f2d4f" stroke-width="5" stroke-linecap="round"/><text class="nobump" x="115" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still go to work</text></g>
-     <g class="b pop" data-at="still answer messages"><rect x="265" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><rect x="318" y="82" width="44" height="76" rx="8" fill="#1f2d4f"/><g fill="#c99a4a"><rect x="324" y="94" width="26" height="8" rx="4"/><rect x="330" y="108" width="26" height="8" rx="4"/><rect x="324" y="122" width="22" height="8" rx="4"/><rect x="330" y="136" width="26" height="8" rx="4"/></g><text class="nobump" x="340" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still answer messages</text></g>
-     <g class="b pop" data-at="still sit in church on Sunday"><rect x="490" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><path d="M515 140h100M520 140v18M610 140v18M515 118h100v22" fill="none" stroke="#8a6a3a" stroke-width="5" stroke-linejoin="round"/><circle cx="565" cy="98" r="10" fill="#1f2d4f"/><path d="M552 118c2-8 6-10 13-10s11 2 13 10z" fill="#1f2d4f"/><text class="nobump" x="565" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still sit in church on Sunday</text></g>
+     <g class="b pop" data-at="You still go to work"><rect x="40" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><rect x="72" y="92" width="86" height="54" rx="4" fill="#1f2d4f"/><rect x="78" y="98" width="74" height="42" fill="#5b6f93"/><path d="M62 150h106" stroke="#1f2d4f" stroke-width="5" stroke-linecap="round"/><text class="nobump onlywide" x="115" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still go to work</text></g>
+     <g class="b pop" data-at="still answer messages"><rect x="265" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><rect x="318" y="82" width="44" height="76" rx="8" fill="#1f2d4f"/><g fill="#c99a4a"><rect x="324" y="94" width="26" height="8" rx="4"/><rect x="330" y="108" width="26" height="8" rx="4"/><rect x="324" y="122" width="22" height="8" rx="4"/><rect x="330" y="136" width="26" height="8" rx="4"/></g><text class="nobump onlywide" x="340" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still answer messages</text></g>
+     <g class="b pop" data-at="still sit in church on Sunday"><rect x="490" y="70" width="150" height="100" rx="14" fill="#fffaf0" stroke="#d9cdb0"/><path d="M515 140h100M520 140v18M610 140v18M515 118h100v22" fill="none" stroke="#8a6a3a" stroke-width="5" stroke-linejoin="round"/><circle cx="565" cy="98" r="10" fill="#1f2d4f"/><path d="M552 118c2-8 6-10 13-10s11 2 13 10z" fill="#1f2d4f"/><text class="nobump onlywide" x="565" y="192" text-anchor="middle" font-size="13" fill="#5a6577">still sit in church on Sunday</text></g>
      <g class="b pop" data-at="you would say fine"><path d="M300 10h80a10 10 0 0 1 10 10v24a10 10 0 0 1-10 10h-30l-12 12v-12h-38a10 10 0 0 1-10-10V20a10 10 0 0 1 10-10z" fill="#1f2d4f"/><text class="fz20" x="340" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="20" fill="#f3ecd8">“fine”</text></g>
     </svg>
+    <div class="lbl3" aria-hidden="true"><span class="b pop" data-at="You still go to work">still go to work</span><span class="b pop" data-at="still answer messages">still answer messages</span><span class="b pop" data-at="still sit in church on Sunday">still sit in church on Sunday</span></div>
     <p class="b up" data-at="Nothing has collapsed" style="font-size:clamp(17px,2.4vw,24px);margin:0">Nothing has collapsed.</p>
    </div>
    <div class="b" data-at="But somewhere underneath the routine">
@@ -410,8 +411,9 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
     <path d="M0 106 C200 98 420 110 680 102 V120 H0z" fill="#a9bba5"/>
     <path d="M120 120 C220 100 330 96 420 88 S520 80 560 74" stroke="#e8d9b8" stroke-width="10" fill="none" stroke-linecap="round"/>
    </g>
-   <g class="b up nobump" data-at="A tired prophet and an inviting Saviour" text-anchor="middle" font-size="14" fill="#1f2d4f"><use href="#r-broom" x="40" y="40" width="70" height="50"/><text x="75" y="106">a tired prophet</text><use href="#r-path" x="586" y="40" width="60" height="50"/><text x="616" y="106">an inviting Saviour</text></g>
+   <g class="b up nobump" data-at="A tired prophet and an inviting Saviour" text-anchor="middle" font-size="14" fill="#1f2d4f"><use href="#r-broom" x="40" y="40" width="70" height="50"/><text class="onlywide" x="75" y="106">a tired prophet</text><use href="#r-path" x="586" y="40" width="60" height="50"/><text class="onlywide" x="616" y="106">an inviting Saviour</text></g>
   </svg>
+  <div class="lbl2" aria-hidden="true"><span class="b up" data-at="A tired prophet and an inviting Saviour">a tired prophet</span><span class="b up" data-at="A tired prophet and an inviting Saviour">an inviting Saviour</span></div>
  </div>
 </section>
 
@@ -592,7 +594,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
     <g class="b pop" data-at="forty days and forty nights"><circle cx="340" cy="40" r="22" fill="#fffaf0" stroke="#c99a4a" stroke-width="2"/><path d="M326 46c8-10 18-10 28-4" stroke="#8a6a24" stroke-width="3" fill="none"/><circle cx="340" cy="34" r="4" fill="#8a6a24"/><text x="340" y="80">journey</text></g>
     <g class="b pop" data-at="There God would speak with him"><circle cx="500" cy="40" r="22" fill="#fffaf0" stroke="#c99a4a" stroke-width="2"/><path d="M490 34h20M490 42h14" stroke="#8a6a24" stroke-width="3" stroke-linecap="round"/><text x="500" y="80">word</text></g>
    </g>
-   <g class="b pop" data-at="we will return to that mountain"><rect x="530" y="154" width="110" height="30" rx="15" fill="#1f2d4f"/><text class="fz13" x="585" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#f3ecd8">Session 7</text></g>
+   <g class="b pop" data-at="we will return to that mountain"><rect x="530" y="154" width="110" height="30" rx="15" fill="#1f2d4f"/><text class="nobump" x="585" y="174" text-anchor="middle" font-size="13" font-weight="700" fill="#f3ecd8">Session 7</text></g>
   </svg>
   <p class="b up note-b" data-at="This is a pattern we see">A pattern in Elijah’s story, not a rule God must always follow</p>
   <p class="b up note-s" data-at="caring for our bodies">Rest can be part of preparing to hear and obey God</p>
@@ -779,13 +781,64 @@ function render(){
   document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
 }
 function loop(){
+
+/* Phones: picture labels at least 12px on screen, grown only as far as they fit
+   (never into another label, never past the picture's edge). Text outside pictures
+   that is set very small (Scripture references) gets a floor of 12px too. */
+function readable(){
+ if(!matchMedia('(max-width:600px)').matches)return;
+ const MIN=13;
+ document.querySelectorAll('.slide svg').forEach(svg=>{
+  if(!svg.viewBox||!svg.viewBox.baseVal||!svg.viewBox.baseVal.width)return;
+  const vb=svg.viewBox.baseVal;
+  const texts=[...svg.querySelectorAll('text')].filter(t=>!t.closest('symbol,defs,mask,clipPath'));
+  // positions in the picture's own units (getCTM is already relative to this svg)
+  const box=t=>{try{const b=t.getBBox();const k=t.getCTM();if(!k)return b;
+    return {x:b.x*k.a+k.e,y:b.y*k.d+k.f,width:b.width*k.a,height:b.height*k.d};}catch(e){return null}};
+  const svgScale=(()=>{const m=svg.getScreenCTM();return m?Math.hypot(m.a,m.b):0})();
+  const hit=(a,b)=>a&&b&&a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.y+a.height;
+  texts.forEach(t=>{
+   // the picture's scale, not the label's: a label mid-animation is briefly smaller
+   const scale=svgScale; if(!scale)return;
+   const fs0=parseFloat(getComputedStyle(t).fontSize); if(!fs0)return;
+   if(fs0*scale>=MIN)return;
+   const zoom=(t.closest('.wrap')&&parseFloat(t.closest('.wrap').style.zoom))||1;
+   const target=MIN/scale*zoom;
+   // a label sitting on its own shape (a pill or badge) must stay inside that shape
+   const b0=box(t);const pill=b0&&[...t.parentNode.children].find(r=>r!==t&&/^(rect|ellipse)$/.test(r.tagName)&&(()=>{const q=box(r);return q&&q.x<=b0.x&&q.y<=b0.y&&q.x+q.width>=b0.x+b0.width&&q.y+q.height>=b0.y+b0.height&&q.width*q.height<6*b0.width*b0.height})());
+   const area=pill?box(pill):{x:vb.x,y:vb.y,width:vb.width,height:vb.height};
+   for(let f=target;f>fs0;f*=0.94){
+    t.style.fontSize=f+'px';
+    let b=box(t); if(!b){break}
+    // a label near the picture's side may move inward to fit (single x only)
+    const x0=t.dataset.x0??(t.dataset.x0=t.getAttribute('x')||'');
+    if(!pill&&x0&&!/[ ,]/.test(x0)){let dx=0;if(b.x<vb.x)dx=vb.x-b.x+2;else if(b.x+b.width>vb.x+vb.width)dx=vb.x+vb.width-(b.x+b.width)-2;
+      t.setAttribute('x',parseFloat(x0)+dx);b=box(t);}
+    // a badge grows with its words, keeping its centre and padding
+    if(pill&&pill.tagName==='rect'){const o=pill.dataset.o||(pill.dataset.o=['x','y','width','height'].map(a=>pill.getAttribute(a)).join(','));
+      const [ox,oy,ow,oh]=o.split(',').map(Number),cx=ox+ow/2,cy=oy+oh/2,pw=Math.max(ow,b.width+(ow-b0.width)),ph=Math.max(oh,b.height+(oh-b0.height)*0.6);
+      pill.setAttribute('x',cx-pw/2);pill.setAttribute('width',pw);pill.setAttribute('y',cy-ph/2);pill.setAttribute('height',ph);}
+    const g=pill&&pill.tagName!=='rect'?-6:2;
+    const chk=pill&&pill.tagName==='rect'?box(pill):b, ar=pill&&pill.tagName==='rect'?{x:vb.x,y:vb.y,width:vb.width,height:vb.height}:area;
+    const inside=chk.x>=ar.x-g&&chk.x+chk.width<=ar.x+ar.width+g&&chk.y>=ar.y-g&&chk.y+chk.height<=ar.y+ar.height+g;
+    // labels in the same spot take turns on screen, so they never meet
+    const same=o=>o.getAttribute('x')===(t.dataset.x0||t.getAttribute('x'))&&o.getAttribute('y')===t.getAttribute('y');
+    const clash=texts.some(o=>o!==t&&!same(o)&&hit(b,box(o)));
+    if(inside&&!clash)return;
+   }
+   t.style.fontSize='';if(t.dataset.x0)t.setAttribute('x',t.dataset.x0);
+   if(pill&&pill.dataset.o){const [x,y,w,h]=pill.dataset.o.split(',');pill.setAttribute('x',x);pill.setAttribute('y',y);pill.setAttribute('width',w);pill.setAttribute('height',h);}
+  });
+ });
+ document.querySelectorAll('.slide .ref').forEach(e=>{if(parseFloat(getComputedStyle(e).fontSize)<MIN)e.style.fontSize=MIN+'px';});
+}
 /* Fit each slide to the screen it is on (small phones): shrink only when needed, never enlarge */
 function fitSlides(){const sh=stage.clientHeight;const fs=parseFloat(getComputedStyle(cap).fontSize)||14;
  const reserve=Math.max(sh*0.17,fs*1.4*2+fs+sh*0.022+10);
  S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;s.el.style.paddingBottom=reserve+'px';
   const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-reserve;const h=w.scrollHeight;
   const z=h>avail?Math.max(.6,avail/h):1;w.style.zoom=z;});}
-fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+readable();fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{readable();fitSlides();});
 render();requestAnimationFrame(loop);}
 function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
 const btn=document.getElementById('play');
