@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "session-01";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "session-01";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -114,6 +114,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 5 (PDF)", file: "chapter-05.pdf" },
       { label: "⬇ Lesson 5 worksheet", file: "worksheet-lesson-05.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-06",
+    kind: "lesson",
+    label: "Lesson 6",
+    title: "Choosing Your Retreat Length and Location",
+    narration: "reset-lesson-06.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: "Continue to Lesson 7 ›" },
+    downloads: [
+      { label: "⬇ Chapter 6 (PDF)", file: "chapter-06.pdf" },
+      { label: "⬇ Lesson 6 worksheet", file: "worksheet-lesson-06.pdf" },
     ],
   },
   {
