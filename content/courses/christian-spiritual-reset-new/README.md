@@ -4,7 +4,8 @@ Built alongside the live course, never instead of it. Members only, not linked
 from anywhere, `noindex`. Address: `/members/courses/christian-spiritual-reset-new`.
 
 What it holds now: the two approved pilots, Lesson 1 and Session 1
-(reviewer: "integration-ready", 8 October 2026).
+(reviewer: "integration-ready", 8 October 2026), and Lesson 2 (script approved
+in Review 8, recorded by Richmond).
 
 ## Keeping members' data safe
 
@@ -17,26 +18,26 @@ What it holds now: the two approved pilots, Lesson 1 and Session 1
 
 ## Files
 
-- `lesson-01/page.html`, `lesson-01/player.html`, `session-01/page.html`,
-  `session-01/player.html`: Richmond's reviewed pilot pages, unchanged.
+- `lesson-01/`, `lesson-02/`, `session-01/` (each `page.html` and
+  `player.html`): Richmond's reviewed pages, unchanged.
   `CHECKSUMS.sha256` records them. A new approved version replaces the file
   and its checksum together.
-- `downloads/`: Chapter 1 and Session One cut from the book (with the title
-  and copyright pages), the Lesson 1 worksheet, the Session 1 workbook pages,
-  and "If you are not sure you belong to Christ".
+- `downloads/`: Chapters 1 and 2 and Session One cut from the book (with the
+  title and copyright pages), the Lesson 1 and Lesson 2 worksheets, the
+  Session 1 workbook pages, and "If you are not sure you belong to Christ".
 
 What the website changes as each page is sent out (`lib/reset-new.ts`):
 fonts from this site; the tab title; the preview note removed and a small
 "Test edition" banner added; the player and recordings from this site; the
 placeholder links pointed at the downloads, the contact page and Finding Help
 Where You Live; the finish buttons save progress and link to the course page
-("Continue to Lesson 2 ›" reads "Back to the course page ›" until Lesson 2 is
-built).
+or to the next unit ("Continue to Lesson 3 ›" reads "Back to the course
+page ›" until Lesson 3 is built).
 
 ## Recordings (not in git)
 
 Private bucket `course-media`, folder `audio/christian-spiritual-reset-new/`:
-`reset-lesson-01.mp3`, `reset-session-01.mp3`, `guided-prayer-01.mp3`,
+`reset-lesson-01.mp3`, `reset-lesson-02.mp3`, `reset-session-01.mp3`, `guided-prayer-01.mp3`,
 `timer-opening-10.mp3`, `timer-opening-15.mp3`, `timer-closing.mp3`,
 `guided-silence-5.mp3`, `guided-silence-10.mp3`, `guided-silence-15.mp3`.
 Upload each with:

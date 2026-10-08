@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "session-01";
+  slug: "lesson-01" | "lesson-02" | "session-01";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -62,6 +62,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Chapter 1 (PDF)", file: "chapter-01.pdf" },
       { label: "⬇ Lesson 1 worksheet", file: "worksheet-lesson-01.pdf" },
       { label: "If you are not sure you belong to Christ", file: "belong-to-christ.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-02",
+    kind: "lesson",
+    label: "Lesson 2",
+    title: "Retreat Is Not Running Away",
+    narration: "reset-lesson-02.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: "Continue to Lesson 3 ›" },
+    downloads: [
+      { label: "⬇ Chapter 2 (PDF)", file: "chapter-02.pdf" },
+      { label: "⬇ Lesson 2 worksheet", file: "worksheet-lesson-02.pdf" },
     ],
   },
   {
@@ -322,7 +335,7 @@ footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>
 ${TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
-<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">New edition: the two pilot units, for testing.</p></div></header>
+<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">New edition: the units built so far, for testing.</p></div></header>
 <main class="w"><div class="note">Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes.</div>
 <ul>${rows}</ul></main>
 <footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
