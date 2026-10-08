@@ -228,7 +228,8 @@ body{background:#f8f0e1}
   function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
   function show(){
     var t=v('pg-time'),w=v('pg-who'),n=v('pg-night'),s=v('pg-sup'),out=document.getElementById('pg-result');
-    if(!t||!w||!n||!s){out.innerHTML='<p class="pg-wait">Answer the four questions to see a possible plan.</p>';return;}
+    var miss=[];if(!t)miss.push('1');if(!w)miss.push('2');if(!n)miss.push('3');if(!s)miss.push('4');
+    if(miss.length){var m=miss.length===4?'the four questions':(miss.length===1?'question '+miss[0]:'questions '+miss.slice(0,-1).join(', ')+' and '+miss[miss.length-1]);out.innerHTML='<p class="pg-wait">Answer '+m+' to see a possible plan.</p>';return;}
     var h='';
     if(s==='discuss'){h+='<p><b>Before choosing, talk it through</b> with a trusted person or a professional who knows your situation. Lesson 5 can help you think about the support you need. <a href="lesson-05">Read Lesson 5 again ›</a></p>';}
     h+='<p class="pg-k">Your possible plan</p><h3>'+esc(F[t][0])+'</h3><p>'+esc(F[t][1])+'</p>';
