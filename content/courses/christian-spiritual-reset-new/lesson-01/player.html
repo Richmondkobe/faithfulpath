@@ -782,6 +782,10 @@ function render(){
 }
 function loop(){
 
+/* Back, Next and the dots land just after the slide's first words begin, so a
+   paused player shows that slide's caption and opening picture, never a blank. */
+go=function(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05);render();};
+
 /* Phones: picture labels at least 12px on screen, grown only as far as they fit
    (never into another label, never past the picture's edge). Text outside pictures
    that is set very small (Scripture references) gets a floor of 12px too. */
