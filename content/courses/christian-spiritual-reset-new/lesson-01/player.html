@@ -316,7 +316,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R1 SLIDE 1 ============ -->
 <section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
  <div class="wrap">
-  <p class="label">The Christian Spiritual Reset · Lesson 1</p>
+  <p class="label">The Christian Spiritual Reset · <span style="white-space:nowrap">Lesson 1</span></p>
   <svg class="scene" viewBox="0 0 680 270" aria-hidden="true">
    <g fill="#f3ecd8"><circle class="twinkle" cx="70" cy="24" r="1.8"/><circle class="twinkle" cx="610" cy="30" r="2"/><circle class="twinkle" cx="540" cy="70" r="1.5"/><circle class="twinkle" cx="140" cy="80" r="1.4"/></g>
    <g class="drift" mask="url(#soft)">
@@ -376,7 +376,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R1 SLIDE 3 ============ -->
 <section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
  <div class="wrap">
-  <p class="label">Read the Scripture · 1 Kings 19:3–8</p>
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">1 Kings 19:3–8</span></p>
   <div class="stack scripture-stack">
    <p class="scripture sm b" data-at="Our first passage tells the story" data-until="Then he was afraid"><span style="color:#e3c98a">1 Kings 19:3–8</span><span class="ref">English Standard Version</span></p>
    <p class="scripture sm b" data-at="Then he was afraid" data-until="And he asked that he might die">“Then he was afraid, and he arose and ran for his life and came to Beersheba, which belongs to Judah, and left his servant there. But he himself went a day’s journey into the wilderness and came and sat down under a broom tree.”<span class="ref">1 Kings 19:3–4 · ESV</span></p>
@@ -403,7 +403,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R1 SLIDE 4 ============ -->
 <section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
  <div class="wrap">
-  <p class="label">Read the Scripture · Matthew 11:28–30</p>
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">Matthew 11:28–30</span></p>
   <p class="scripture sm"><span class="ph" data-at="Come to me all who labor">“Come to me, all who labor and are heavy laden, and I will give you rest. Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, and you will find <u class="k" data-at="you will find rest for your souls">rest for your souls</u>. For my yoke is easy, and my burden is light.”</span><span class="ref">Matthew 11:28–30 · ESV</span></p>
   <svg class="scene small-scene" viewBox="0 0 680 120" aria-hidden="true">
    <g class="drift-slow" mask="url(#soft)">
@@ -451,7 +451,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R1 SLIDE 6 ============ -->
 <section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
  <div class="wrap">
-  <p class="label">Explore the background · 1 Kings 18–19</p>
+  <p class="label">Explore the background · <span style="white-space:nowrap">1 Kings 18–19</span></p>
   <div class="mapwrap">
   <svg class="scene map" viewBox="0 0 300 300" aria-hidden="true">
    <rect x="0" y="0" width="300" height="300" rx="16" fill="#eef2ec" stroke="#d9cdb0"/>
@@ -483,7 +483,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R1 SLIDE 7 ============ -->
 <section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
  <div class="wrap">
-  <p class="label">Explore the background · Mark 6</p>
+  <p class="label">Explore the background · <span style="white-space:nowrap">Mark 6</span></p>
   <svg class="scene" viewBox="0 0 680 230" aria-hidden="true" style="color:#1f2d4f">
    <g mask="url(#soft)"><path d="M0 150 C160 136 300 146 440 140 S600 134 680 138 V230 H0z" fill="#dfe6da"/>
    <path d="M420 230 C470 190 560 170 680 168 V230z" fill="#9fc0d4" opacity=".75"/></g>
@@ -777,7 +777,7 @@ function render(){
   if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
     document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
   const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
-  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
   const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
   document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
 }

@@ -342,7 +342,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 1 ============ -->
 <section class="slide" data-n="1" data-theme="dark" aria-label="Slide 1">
  <div class="wrap">
-  <p class="label">The Christian Spiritual Reset · Lesson 2</p>
+  <p class="label">The Christian Spiritual Reset · <span style="white-space:nowrap">Lesson 2</span></p>
   <svg class="scene" viewBox="0 0 680 270" aria-hidden="true">
    <g fill="#f3ecd8"><circle class="twinkle" cx="70" cy="24" r="1.6"/><circle class="twinkle" cx="610" cy="30" r="1.8"/></g>
    <g class="drift" mask="url(#soft)">
@@ -392,7 +392,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 3 ============ -->
 <section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
  <div class="wrap">
-  <p class="label">Read the Scripture · Exodus 20:8–11</p>
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">Exodus 20:8–11</span></p>
   <div class="stack scripture-stack">
    <p class="scripture sm b" data-at="Our first passage is the fourth commandment" data-until="Remember the Sabbath day to keep it holy"><span style="color:#e3c98a">Exodus 20:8–11</span><span class="ref">English Standard Version</span></p>
    <p class="scripture sm b" data-at="Remember the Sabbath day to keep it holy" data-until="For in six days the LORD made">“Remember the Sabbath day, to keep it holy. Six days you shall labor, and do all your work, but the seventh day is a Sabbath to the <span class="sc">Lord</span> your God. On it you shall not do any work, you, or your son, or your daughter, your male servant, or your female servant, or your livestock, or the sojourner who is within your gates.”<span class="ref">Exodus 20:8–10 · ESV</span></p>
@@ -418,7 +418,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 4 ============ -->
 <section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
  <div class="wrap">
-  <p class="label">Read the Scripture · Deuteronomy 5:15</p>
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">Deuteronomy 5:15</span></p>
   <div class="stack" style="min-height:6em">
    <p class="b up note-s" data-at="When Moses repeats the commandments" data-until="You shall remember that you were a slave">Forty years later, in Deuteronomy 5, the Sabbath is given a second reason.</p>
    <p class="scripture sm b" data-at="You shall remember that you were a slave">“You shall remember that you were a slave in the land of Egypt, and the <span class="sc">Lord</span> your God brought you out from there with a mighty hand and an outstretched arm. Therefore the <span class="sc">Lord</span> your God commanded you to <u class="k" data-at="commanded you to keep the Sabbath day">keep the Sabbath day</u>.”<span class="ref">Deuteronomy 5:15 · ESV</span></p>
@@ -443,7 +443,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 5 ============ -->
 <section class="slide" data-n="5" data-theme="dark" aria-label="Slide 5">
  <div class="wrap">
-  <p class="label">Read the Scripture · Luke 5:15–16</p>
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">Luke 5:15–16</span></p>
   <div class="stack" style="min-height:5.5em">
    <p class="scripture sm b" data-at="And our third passage is one we met briefly" data-until="But now even more the report"><span style="color:#e3c98a">Luke 5:15–16</span><span class="ref">English Standard Version</span></p>
    <p class="scripture sm b" data-at="But now even more the report" data-until="A commandment to stop">“But now even more the report about him went abroad, and great crowds gathered to hear him and to be healed of their infirmities. But <u class="k" data-at="But he would withdraw to desolate places">he would withdraw to desolate places and pray</u>.”<span class="ref">Luke 5:15–16 · ESV</span></p>
@@ -492,7 +492,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 7 ============ -->
 <section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
  <div class="wrap">
-  <p class="label">Explore the background · Exodus 16</p>
+  <p class="label">Explore the background · <span style="white-space:nowrap">Exodus 16</span></p>
   <h1 class="b up" data-at="Now the background" style="font-size:clamp(20px,3.4vw,34px)">Bread for two days</h1>
   <svg class="scene" viewBox="0 0 680 200" aria-hidden="true">
    <g mask="url(#soft)">
@@ -518,7 +518,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ R2 SLIDE 8 ============ -->
 <section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
  <div class="wrap">
-  <p class="label">Explore the background · Deuteronomy 5:15</p>
+  <p class="label">Explore the background · <span style="white-space:nowrap">Deuteronomy 5:15</span></p>
   <div class="mapwrap">
    <svg class="map" viewBox="0 0 320 300" aria-hidden="true">
     <rect width="320" height="300" rx="16" fill="#f3ecdc"/>
@@ -846,7 +846,7 @@ function render(){
   if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
     document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
   const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
-  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
   const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
   document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
 }

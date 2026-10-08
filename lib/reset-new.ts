@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "session-01";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "session-01";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -75,6 +75,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 2 (PDF)", file: "chapter-02.pdf" },
       { label: "⬇ Lesson 2 worksheet", file: "worksheet-lesson-02.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-03",
+    kind: "lesson",
+    label: "Lesson 3",
+    title: "Jesus and the Practice of Withdrawing",
+    narration: "reset-lesson-03.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: "Continue to Lesson 4 ›" },
+    downloads: [
+      { label: "⬇ Chapter 3 (PDF)", file: "chapter-03.pdf" },
+      { label: "⬇ Lesson 3 worksheet", file: "worksheet-lesson-03.pdf" },
     ],
   },
   {

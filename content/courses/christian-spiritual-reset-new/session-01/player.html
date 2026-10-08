@@ -320,7 +320,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ S1 SLIDE 1 ============ -->
 <section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
  <div class="wrap">
-  <p class="label">Session 1 · Day 1, morning</p>
+  <p class="label">Session 1 · <span style="white-space:nowrap">Day 1, morning</span></p>
   <svg class="scene" viewBox="0 0 680 220" aria-hidden="true">
    <g class="drift-slow" mask="url(#soft)">
     <circle cx="420" cy="118" r="40" fill="#e9c27a" opacity=".55"/><circle cx="420" cy="118" r="70" fill="#e9c27a" opacity=".15"/>
@@ -385,7 +385,7 @@ body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;t
 <!-- ============ S1 SLIDE 4 ============ -->
 <section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
  <div class="wrap">
-  <p class="label">Why Jesus told the story · Luke 15:1–2</p>
+  <p class="label">Why Jesus told the story · <span style="white-space:nowrap">Luke 15:1–2</span></p>
   <p class="scripture sm b" data-at="Now the tax collectors">“Now the tax collectors and sinners were all drawing near to hear him. And the Pharisees and the scribes grumbled, saying, ‘This man receives sinners and eats with them.’”<span class="ref">Luke 15:1–2 · ESV</span></p>
   <svg class="scene" viewBox="0 0 680 150" aria-hidden="true">
    <g class="fz15 b up" data-at="So Jesus told three stories" text-anchor="middle" font-size="15" font-weight="700" fill="#1f2d4f">
@@ -519,7 +519,7 @@ function render(){
   if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
     document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
   const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
-  let line='';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
   const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
   document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
 }
