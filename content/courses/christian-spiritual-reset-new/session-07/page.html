@@ -1,0 +1,302 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 7 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.practice h3{font-size:18px;color:var(--navy);margin:22px 0 6px;display:flex;gap:10px;align-items:baseline}
+.practice h3 span{font-family:'Source Serif 4',serif;color:var(--gold-d);font-weight:400}
+.practice ol,.practice ul{margin:6px 0;padding-left:1.3em}.practice li{margin:.4em 0;line-height:1.5}
+.prayer-text p{margin:.15em 0;font-family:'Source Serif 4',serif;font-size:17px}
+.declare p{margin:.1em 0;font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy)}
+.audio-box{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
+.audio-box .play{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--sun);display:grid;place-items:center;flex:none;font-size:15px}
+.timer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;margin:8px 0}
+.timer .clock{font-family:'Source Serif 4',serif;font-size:34px;color:var(--navy);font-variant-numeric:tabular-nums;min-width:3.2em}
+.timer select,.timer button{font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:#fff;color:var(--navy)}
+.timer button.go{background:var(--navy);color:var(--sun);border-color:var(--navy)}
+.anchor{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-d);font-size:18px}
+.envtab{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}.envtab th,.envtab td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}.envtab th{background:#f1e8d4}
+.envtab td b{color:var(--navy)}
+.tablewrap{overflow-x:auto}
+.durnote{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:600;color:var(--navy)}
+details.more summary{cursor:pointer;font-weight:600;color:var(--gold-d)}
+.box2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+@media(max-width:600px){.bar{flex-wrap:wrap;gap:8px}.bar b{letter-spacing:.14em;font-size:11.5px}.steps8 i{width:14px}}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.btn.ghost{background:transparent;border-color:rgba(243,236,216,.6);color:#f3ecd8}
+
+.plans .pq{font-weight:700;color:var(--navy);margin:.2em 0 .5em}
+.plans .opts{display:flex;flex-wrap:wrap;gap:8px}
+.plans .opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15.5px;cursor:pointer}
+.plans .opts input{width:18px;height:18px;accent-color:var(--gold-d);margin:0}
+.plans .route{margin:.7em 0 0;border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:9px 13px;color:var(--navy)}
+.plans .route:empty{display:none}
+.bounds{border:3px solid #7a2e1f;background:#fffaf0}.bounds h2{color:#7a2e1f}.bounds li{margin:.45em 0;line-height:1.5}
+.bounds .urgent{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.bounds .btn.skip{background:transparent;border:2px solid #8a6a24;color:#8a6a24;font-weight:700}
+.walk-safe{border:2px solid #7a2e1f;background:#fbefe9;border-radius:10px;padding:10px 14px;margin:10px 0}
+.lam li{margin:.5em 0!important}.lam b{color:var(--gold-d)}
+.must{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:700;color:var(--navy)}
+#breakline{color:#e3c98a;font-family:'Source Serif 4',serif;font-style:italic;margin:.6em 0 0}
+[data-plan-only]{display:none}
+.moves p{margin:.3em 0;line-height:1.45}.moves b{color:var(--gold-d);display:block}
+.urgentp{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 3: The Retreat</b><span class="steps8" aria-label="Session 7 of 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Session 7 · Day 3, morning</p>
+   <h1>Listening for God’s Direction</h1>
+   <p class="question">How do I listen for God without mistaking my own voice for his?</p>
+   <div class="meta"><span class="chip">Teaching about 12 minutes</span><span class="chip">Practice 60 to 90 minutes</span><span class="chip">1 Kings 19:9–18</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card plans" aria-labelledby="h-plans"><p class="kicker">Your plan</p><h2 id="h-plans" class="pq">Which plan are you following?</h2><div class="opts" role="radiogroup" aria-labelledby="h-plans"><label><input type="radio" name="plan" value="three" data-route="Day 3. Route A (Session 5 done on Day 2): late morning, after a gentler start. Route B (Session 5 this morning): midday, after a long break; that already makes a substantial morning." data-stop="Take a break" data-break="A meal and a walk if you can. Sessions 8 and 9 are optional; do not go into Session 10 tired."> Three-day retreat</label><label><input type="radio" name="plan" value="one" data-route="The shortened one-day version, mid-afternoon after the long break: allow about an hour, ten minutes of silence, journal questions 1 and 3, and only the “What I sense” card. If Session 3 left you needing more rest, drop Session 7 and go on to Session 10." data-stop="Take a short break" data-break="Twenty minutes. Eat something. Session 10 is next."> One-day retreat</label><label><input type="radio" name="plan" value="hours" data-route="Session 7 is not part of your plan. It remains available in the 30-day plan." data-stop="Back to the course page" data-break="Session 7 is not part of your plan."> Three-hour reset</label><label><input type="radio" name="plan" value="home" data-route="Core version: Day 7 (Day 8 if you moved Session 5). Extended version: Day 9. Choose the quietest hour the house offers." data-stop="Stop for today" data-break="Session 10 is your next retreat day (Session 8 on the extended plan)."> At-home retreat</label><label><input type="radio" name="plan" value="couple" data-route="Day 3. Route A (Session 5 done on Day 2): late morning, after a gentler start. Route B (Session 5 this morning): midday, after a long break; that already makes a substantial morning. Each of you in your own space; the “What I sense” card is private." data-stop="Take a break" data-break="A meal and a walk if you can. Sessions 8 and 9 are optional; do not go into Session 10 tired."> Retreat for couples</label><label><input type="radio" name="plan" value="pastor" data-route="Day 3. Route A (Session 5 done on Day 2): late morning, after a gentler start. Route B (Session 5 this morning): midday, after a long break; that already makes a substantial morning. Bring your own question, not the church’s." data-stop="Take a break" data-break="A meal and a walk if you can. Sessions 8 and 9 are optional; do not go into Session 10 tired."> Pastors and leaders</label></div><p class="route" id="route" role="status" aria-live="polite"></p><p class="sub" style="margin:.6em 0 0">Your choice is not saved. If you have not chosen yet, the page shows the whole session.</p></section>
+ <section class="card bounds" aria-labelledby="h-bounds"><p class="kicker">Please read before you begin</p><h2 id="h-bounds">Listen, write down, and test</h2><ul>
+  <li>Whatever you sense today will be written down and tested. <b>Unless immediate safety requires action, make no major, irreversible, or high-risk decision during the retreat.</b></li>
+  <li>Before you start, reread Lesson 5’s “A word about hearing from God”. Everything in this session depends on it.</li>
+  <li>If you listen and sense nothing at all, you have not failed.</li></ul>
+  <p class="urgent"><b>If you hear a voice that others cannot hear,</b> particularly one that issues commands, threatens you, or makes it hard to tell your inner experience from what is real, do not assume it is God. End the retreat and seek prompt professional assessment. If a voice commands you to harm yourself or someone else, tells you that you have a unique world-saving mission, or makes you feel unable to remain safe, seek urgent professional or emergency help and do not remain alone. <a href="#" onclick="return false">Finding Help Where You Live</a></p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this session you will</p><h2 id="h-learn">Listen, and test</h2><ul><li>Hear God ask Elijah, twice, “What are you doing here?”, and answer it for yourself</li><li>See that the Lord was not in the wind, the earthquake or the fire, and that spectacle is not direction</li><li>Notice that God’s answer brought correction, companionship and a task, not a full explanation</li><li>Begin with what Scripture already says, and learn to write down and test what you sense</li></ul></section>
+ <section class="card" aria-labelledby="h-before"><p class="kicker">Before you begin</p><h2 id="h-before">The last day</h2><p>Good morning. This is the last day, and its shape is different from the first two. Day 1 was about arriving. Day 2 was about releasing and telling the truth. Day 3 turns outward again: listening, remembering who you are, and preparing to return. The heavier work is behind you, and if some of it is unfinished, that is expected and permitted.</p><p>Have your Bible, your journal, your timer, and one index card, and keep your one-line question nearby.</p></section>
+ <section class="player" aria-label="Session teaching"><iframe src="player.html" title="Session 7 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · Day 3, morning</h4><p>Good morning. This is the last day, and its shape is different from the first two. Day 1 was about arriving. Day 2 was about releasing and telling the truth. Day 3 turns outward again: listening, remembering who you are, and preparing to return. The heavier work is behind you, and if some of it is unfinished, that is expected and permitted.</p><p>This session is about listening. Everything in it depends on what Lesson 5 said about hearing from God. Whatever you sense today will be written down and tested. Unless immediate safety requires action, no major, irreversible, or high-risk decision is made during a retreat.</p><p>Our question is this: how do I listen for God without mistaking my own voice for his?</p><h4>2 · &quot;What are you doing here, Elijah?&quot;</h4><p>Our central passage is 1 Kings 19, verses 9 to 18. In the book you are asked to read it twice, and the second time to notice that God’s response includes both correction and provision.</p><p>&quot;There he came to a cave and lodged in it. And behold, the word of the LORD came to him, and he said to him, “What are you doing here, Elijah?” He said, “I have been very jealous for the LORD, the God of hosts. For the people of Israel have forsaken your covenant, thrown down your altars, and killed your prophets with the sword, and I, even I only, am left, and they seek my life, to take it away.” And he said, “Go out and stand on the mount before the LORD.” And behold, the LORD passed by, and a great and strong wind tore the mountains and broke in pieces the rocks before the LORD, but the LORD was not in the wind. And after the wind an earthquake, but the LORD was not in the earthquake. And after the earthquake a fire, but the LORD was not in the fire. And after the fire the sound of a low whisper. And when Elijah heard it, he wrapped his face in his cloak and went out and stood at the entrance of the cave. And behold, there came a voice to him and said, “What are you doing here, Elijah?”&quot;</p><h4>3 · &quot;Go, return on your way&quot;</h4><p>&quot;He said, “I have been very jealous for the LORD, the God of hosts. For the people of Israel have forsaken your covenant, thrown down your altars, and killed your prophets with the sword, and I, even I only, am left, and they seek my life, to take it away.” And the LORD said to him, “Go, return on your way to the wilderness of Damascus. And when you arrive, you shall anoint Hazael to be king over Syria. And Jehu the son of Nimshi you shall anoint to be king over Israel, and Elisha the son of Shaphat of Abel-meholah you shall anoint to be prophet in your place. And the one who escapes from the sword of Hazael shall Jehu put to death, and the one who escapes from the sword of Jehu shall Elisha put to death. Yet I will leave seven thousand in Israel, all the knees that have not bowed to Baal, and every mouth that has not kissed him.”&quot;</p><h4>4 · Horeb</h4><p>We have been following Elijah since Lesson 1, and this is where his story arrives. Strengthened by the food God provided under the broom tree, Elijah travelled forty days and nights until he reached Horeb, the mountain closely associated with Moses and Israel’s covenant history, and he entered a cave.</p><h4>5 · A sound hard to name</h4><p>After the fire comes something the Hebrew describes with a phrase that is difficult to reproduce exactly: qôl dĕmāmâ daqqâ. The ESV renders it &quot;the sound of a low whisper&quot;, and its footnote offers &quot;a sound, a thin silence&quot;. Other translations range from &quot;a still small voice&quot; to &quot;a sound of sheer silence&quot;.</p><p>The middle word, dĕmāmâ, comes from dāmam, the verb for becoming still or silent that you met in Lessons 8 and 11. We should let the phrase stay as hard to pin down as it is. The point of the passage is not that God always whispers. It is that the LORD was not in the wind, the earthquake, or the fire.</p><h4>6 · &quot;What Are You Doing Here?&quot;</h4><p>God’s first words to Elijah are a question: &quot;What are you doing here, Elijah?&quot; Elijah’s answer reflects both genuine danger and a perception narrowed by isolation: he believes he is the only faithful one left, and that they seek his life.</p><p>Elijah hears the sound, covers his face, and goes to the mouth of the cave. And God asks the same question again. Elijah gives the same answer, word for word.</p><h4>7 · Not in the Wind</h4><p>In this particular encounter, the dramatic signs are explicitly distinguished from the form in which the voice comes. The passage does not teach that God always speaks quietly; elsewhere Scripture portrays him speaking through thunder, fire, dreams, prophets, and public events. It teaches us not to equate spectacle with divine direction.</p><p>Quiet may help us notice what noise obscures, but God is not limited to retreat conditions. Direction may become clearer through Scripture, counsel, ordinary responsibilities, circumstances, or time after the retreat.</p><h4>8 · Correction and Provision</h4><p>And then God speaks, and this is the part to notice. He does not give Elijah a full explanation or remove every threat. He gives direction involving two future kings and Elisha, Elijah’s prophetic successor. He corrects the complaint: there are seven thousand in Israel who have not bowed to Baal; Elijah is not alone. And he sends him back the way he came. Elijah receives work to do, a successor who would continue the prophetic work, and the knowledge that God’s purposes were greater than his own responsibility.</p><p>We expect explanation, and God gave assignment. We expect to be told we were right, and God showed Elijah that his picture was incomplete. God’s correction calls us to truth, repentance, and faithful action. Condemnation may leave us believing that we are beyond hope. Do not judge an impression simply by how comforting or uncomfortable it feels. Test it against Scripture, and the character of God revealed in Christ.</p><h4>9 · Scripture first</h4><p>How does God speak? Christians commonly seek his guidance through Scripture, prayer, conscience, wise counsel, and careful attention to circumstances. Only Scripture functions as the church’s authoritative written standard.</p><p>&quot;All Scripture is breathed out by God and profitable for teaching, for reproof, for correction, and for training in righteousness, that the man of God may be complete, equipped for every good work.&quot;</p><p>Most of what God has to say to you about how to live is already written. So before you listen for anything new, ask what Scripture already says about the matter in front of you. Every personal interpretation, impression, circumstance, and piece of counsel remains fallible, and must be tested.</p><h4>10 · Speak, Lord, and Test</h4><p>Even a genuine call may need another person to recognise it. Samuel heard God’s voice three times, and each time ran to Eli, assuming the old priest was calling. Eli was an imperfect man. Yet in that moment he gave Samuel a wise response, and told the boy what to say:</p><p>&quot;Speak, LORD, for your servant hears.&quot;</p><p>Even in a time when the word of the LORD was rare, Samuel needed another person to help him interpret what was happening. Samuel’s experience was a particular prophetic calling. We are not being told to expect the same experience. But his story reminds us that humility and wise counsel matter when we seek to understand what is happening. You are not meant to do this alone. Seeking wise counsel and testing what you believe you have heard is not a lack of faith. Just as Eli helped Samuel understand his experience, trusted people can help us examine our impressions with humility.</p><h4>11 · The tests</h4><p>Here are the tests, which Lesson 5 introduced and Lesson 12 will apply in detail. Does it agree with Scripture, read in context? Does it reflect the character and fruit of Christ? Is it truthful about facts, not merely feelings? Does it withstand time and careful questioning? What do mature and appropriately qualified advisers say? Does it respect safety, consent, justice, and accountability? Does it require secrecy, superiority, recklessness, or immunity from challenge? Is the proposed action proportionate and reversible? And are you rested, informed, and supported enough to decide?</p><p>Urgency is a reason to slow down, unless immediate safety requires action. And peace may accompany discernment, but it is not proof.</p><h4>12 · Two careful words</h4><p>Two careful words before the practice. If you hear a voice that others cannot hear, particularly one that issues commands, threatens you, or makes it hard to tell your inner experience from what is real, do not assume it is God. End the retreat and seek prompt professional assessment. If a voice commands you to harm yourself or someone else, seek urgent help, and do not remain alone.</p><p>And if you listen and sense nothing at all, you have not failed. Faithful listening that hears nothing is still faithful, and God’s direction may come later, through ordinary means, when you are back in ordinary life.</p><h4>13 · One question</h4><p>So here is the question to carry into the practice, the one God asked Elijah: &quot;What are you doing here?&quot; Answer it for yourself, honestly, in a few sentences. Not why you came, but what you are actually doing here, now, on the third morning.</p><h4>14 · Put the screen aside</h4><p>This is where the teaching stops. Pause the player now, and put the screen aside if you can.</p><p>On the page you will find the session’s practice: a check-in, a guided prayer, and twenty minutes of silence, the longest of the retreat, which you may shorten. Then a few questions for your journal, and a slow reading of Scripture that ends with one card: what I sense, and what I will test it against.</p><p>Attention is the practice; the outcome is not yours to produce. &quot;Speak, LORD, for your servant hears.&quot;</p></div></details></section>
+
+ <section class="card practice" id="practice" aria-labelledby="h-prac">
+  <p class="kicker">The practice</p><h2 id="h-prac">Now put the screen aside</h2>
+  <p class="durnote">Allow approximately an hour to an hour and a half. This is not a timed exercise. Take breaks, move at your own pace, and stop whenever you need to.</p>
+  <p class="sub">You may answer the questions privately, in prayer, without writing everything down. Keep a brief written note only of anything significant you intend to test later. Nothing you write is collected.</p>
+
+  <h3><span>1</span>Check-in</h3><p class="sub">In your journal, or in prayer.</p><ol><li>God asked Elijah, “What are you doing here?” Answer it for yourself, honestly, in a few sentences. Not why you came, but what you are actually doing here, now, on the third morning.</li><li>In the past, what have you understood as God’s guidance? Looking back, what fruit, correction, confirmation, or later evidence helped you evaluate it?</li><li>Is there a decision, a direction, or a question you have been hoping this retreat would settle? Write it in one line.</li><li>What does Scripture already say about that matter, as far as you know? If you are not sure, write that down; it is the first thing to find out.</li></ol>
+
+  <h3><span>2</span>Guided prayer</h3>
+  <p class="sub">Use only the lines that fit. An empty space can also be a prayer.</p>
+  <div class="audio-box prayer-audio"><div style="width:100%"><b>Guided prayer: Listening for God’s Direction</b> <span class="sub">· about 2½ minutes, with open spaces</span><audio controls preload="metadata" src="guided-prayer-07.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio></div></div>
+  <details class="more"><summary>Words of the recording</summary><div class="prayer-text"><p>Place the one-line question you wrote in your journal somewhere nearby.</p><p>Speak, Lord, for your servant hears.</p><p>You asked Elijah, “What are you doing here?”</p><p>And you allowed him to answer twice.</p><p>Here is what I am doing here.</p><p>I am not asking only for comfort.</p><p>I am not asking only for permission.</p><p>I am asking for direction, even where it corrects me.</p><p>Show me what your Word already says.</p><p>Give me wise and appropriately qualified people who can help me test what I believe I hear.</p><p>Whatever I sense today, I will write down without immediately calling it your instruction.</p><p>I will test it.</p><p>I will not act rashly.</p><p>If I sense nothing today, I will trust you anyway.</p><p>You met Elijah after the wind, the earthquake, and the fire had passed.</p><p>He heard a low whisper.</p><p>I can wait without forcing a whisper of my own.</p><p>Amen.</p><p>Remain where you are and move into the silence.</p><p>Bring your question before God, then release your demand for an immediate answer.</p><p>Your anchor phrase is: “Speak, Lord, for your servant hears.” Or, more simply: “Here I am.”</p></div></details>
+  <details class="more" style="margin-top:8px"><summary>If you prefer to read: the prayer from the book</summary><p class="sub">Use only the lines that fit. Change or omit the others.</p><div class="prayer-text"><p>Speak, Lord, for your servant hears.</p><p>Here is what I am doing here: ______.</p><p>I am not asking only for comfort, or for permission.</p><p>I am asking for your direction, even where it corrects</p><p>me.</p><p>Show me what your Word already says.</p><p>Give me the people I need to recognise your voice.</p><p>Whatever I sense today, I will write down and test, and</p><p>I will not act rashly.</p><p>If I hear nothing, I will trust you anyway.</p><p>Amen.</p></div></details>
+
+  <h3><span>3</span>Silence</h3>
+  <p>Suggested length: twenty minutes. This is the longest silence in the retreat. Adjust it to what you can manage; ten is a complete practice, and so is five.</p>
+  <p class="anchor">“Speak, Lord, for your servant hears.” · or, shorter: “Here I am.”</p>
+  <p>This is a period of prayerful attention, not a message-detection exercise. Bring your one-line question before God, release the demand for an answer, and remain with the phrase. Do not chase an answer. A thought’s vividness, repetition, emotional force, or sudden appearance does not make it divine; unwanted thoughts and images should not be treated as instructions or revelations. If something seems significant, write one or two neutral words on a card and return to the anchor. Recording it does not endorse it. If nothing comes, stay with the phrase. <b>Attention is the practice; the outcome is not yours to produce.</b></p>
+  <div class="timer"><span class="clock" id="clock">20:00</span><label class="sub" for="mins">Length</label><select id="mins"><option value="5">5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="20" selected>20 minutes</option></select><button class="go" id="tgo">Start</button><button id="treset">Reset</button><p class="sub" id="tstat" role="status" aria-live="polite" style="flex-basis:100%;margin:0">A short spoken opening, then silence, then a short spoken closing.</p></div>
+  <audio id="aOpen10" src="timer-opening-10.mp3" preload="auto"></audio><audio id="aOpen15" src="timer-opening-15.mp3" preload="auto"></audio><audio id="aOpen20" src="timer-opening-20.mp3" preload="auto"></audio><audio id="aClose" src="timer-closing.mp3" preload="auto"></audio>
+  <p class="sub">When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop. This timer needs the screen to stay on.</p>
+  <div class="audio-box"><div style="width:100%"><b>Want to put your phone away?</b> <span class="sub">Play the silence as one recording instead. It keeps playing when the screen locks: the opening words, <span id="gsLen">20</span> minutes of silence, then the closing words.</span><audio id="gs" controls preload="none" src="guided-silence-20.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio><a class="sub" id="gsDl" href="guided-silence-20.mp3" download style="display:inline-block;margin-top:4px">⬇ Download this recording</a></div></div>
+
+  <h3><span>4</span>Journal</h3><ol><li>Write down, without editing, anything you sensed during the silence: a verse, a thought, a phrase, a picture, a direction, or nothing. Do not decide yet whether it was God.</li><li>Did anything seem corrective, encouraging, clarifying, or unresolved? Do not force one of these categories if nothing significant emerged.</li><li>For anything significant, go through the tests and mark each one “supports”, “raises concern”, “not yet examined”, or “requires qualified advice”. Nothing is confirmed until those checks are complete, and several of them cannot be completed on a retreat.</li><li>Who is a mature, trustworthy Christian who knows Scripture, understands your situation, respects appropriate boundaries, and has no interest in controlling your decision? For medical, legal, financial, or abuse-related matters, who has the relevant competence? If you do not have such people, who could you begin to ask?</li></ol>
+  <div class="walk-safe" style="border-color:#c9b892;background:#fffaf0"><b>The tests</b><ol style="margin:.3em 0 0"><li>Does it agree with Scripture, read in context?</li><li>Does it reflect the character and fruit of Christ?</li><li>Is it truthful about facts, not merely feelings?</li><li>Does it withstand time and careful questioning?</li><li>What do mature and appropriately qualified advisers say?</li><li>Does it respect safety, consent, justice, and accountability?</li><li>Does it require secrecy, superiority, recklessness, or immunity from challenge?</li><li>Is the proposed action proportionate and reversible?</li><li>Are you sufficiently rested, regulated, informed, and supported to decide?</li></ol>
+   <p style="margin:.5em 0 0">Two things the tests are not. Urgency is a reason to slow down, unless immediate safety or a genuine external deadline requires action. And peace may accompany discernment, but it is not proof; people can feel peaceful about harmful decisions, and faithful action can feel frightening.</p>
+   <p style="margin:.5em 0 0">On responsibilities: does what you sense deal faithfully with legitimate responsibilities rather than using spiritual language to escape them? And does it also recognise that some roles, expectations, or relationships may need to change for reasons of truth, safety, justice, or health? Both questions are real, and Lesson 12 will help you hold them together.</p></div>
+
+  <h3><span>5</span>Listening with Scripture</h3>
+  <p class="sub">Twenty to thirty minutes. A longstanding Christian practice: slow, prayerful attention to Scripture.</p>
+  <p>Choose a passage. If Scripture addresses your matter directly, study a substantial passage in context rather than searching for an isolated confirming verse; for complex decisions, note the broader biblical principles involved and seek informed guidance after the retreat. If your question is not one Scripture speaks to directly, choose one of these: <b>Psalm 25:4–10</b>, <b>Proverbs 3:5–8</b>, or <b>James 1:5–8</b>. Each is about seeking God’s way.</p>
+  <p>Read the passage slowly, three times, with a pause between each reading.</p>
+  <ol><li>After the first reading, notice which word or phrase stands out to you. Do not analyse why. Write it down.</li><li>After the second reading, ask what that word or phrase is saying in its own context, to its original hearers. Read the verses around it. If you do not know the historical or literary context, write “I need to study this” rather than guessing, and use a reliable study Bible or commentary after the retreat. Write a sentence.</li><li>After the third reading, ask what it might be saying to you, in your situation, in light of your question. Write that down too, and mark it clearly as what I sense, not what God said.</li></ol>
+  <p>Then take an index card and write two things on it: <b>What I sense:</b> followed by your sentence, and <b>What I will test it against:</b> followed by the tests, and the names of the people you will consult. Keep this card with the Act, Share, and Seek-counsel cards from Session 3. It goes home with you. Lesson 12 is built around it.</p>
+  <p class="must">Do not make a major, irreversible, high-risk, or life-altering decision solely on the basis of today’s impression.</p>
+  <p>Low-risk actions already supported by Scripture and wisdom, such as arranging counsel, making a medical appointment, or gathering information, may be appropriate. Waiting is not unbelief. It acknowledges that our interpretation is fallible even when God is faithful. If an impression conflicts with Scripture, promotes harm, or cannot withstand truthful examination, do not treat it as divine direction. If it remains unclear, leave it unclear rather than forcing certainty.</p>
+
+  <h3><span>6</span>Closing declaration</h3><p class="sub">Read only what you can say honestly. Adjust the words if you need to.</p>
+  <div class="declare"><p>God has spoken authoritatively in Scripture, and I will begin there.</p><p>I have brought my question honestly without demanding an immediate answer.</p><p>Any impression I recorded remains an impression until it has been tested.</p><p>I will seek wise and appropriately qualified counsel.</p><p>I will not use God’s name to justify harm, haste, secrecy, or escape.</p><p>If faithful responsibility calls me back, I will respond with wisdom, safety, and support.</p></div>
+ </section>
+
+ <section class="card" id="shorter"><p class="kicker">On your plan</p>
+  <p data-plans="three"><b>Three-day retreat.</b> Day 3. If Session 5 was completed on Day 2 (Route A): late morning, after a gentler start. If Session 5 was done this morning (Route B): at midday, after a long break of an hour at least; Session 5 followed by Session 7 already makes a substantial morning. Treat that as sufficient.</p>
+  <p data-plans="one"><b>One-day retreat: the shortened one-day version, not the full practice.</b> Mid-afternoon, after the long break. The book allows about 45 minutes; with the twelve-minute teaching, allow about an hour, and take it from the next break if you need to. Ten minutes of silence. Journal questions 1 and 3 only, answered privately if you prefer. In the exercise, read the passage slowly once or twice rather than three times, and write only the “What I sense” card. If Session 3 left you needing more rest, drop Session 7 and go from the long break to Session 10. A one-day retreat of four sessions is still a retreat. Session 7 will be waiting.</p>
+  <p data-plans="hours"><b>Three-hour reset.</b> Session 7 is not part of your plan. It remains available in the 30-day plan.</p>
+  <p data-plans="home"><b>At-home retreat.</b> Core version: Day 7 (Day 8 if you moved Session 5). Extended version: Day 9. The longest silence; choose the quietest hour the house offers.</p>
+  <p data-plans="couple"><b>Retreat for couples.</b> Day 3, as the three-day plan, each of you in your own space. The “What I sense” card is private. If either of you wants to share more, wait until you are home and rested; anything that will affect the marriage belongs to the shared moment after Session 10.</p>
+  <p data-plans="pastor"><b>Pastors and leaders.</b> Ministers are practised at hearing God for other people and often out of practice at listening for themselves. Bring your own question, not the church’s. Apply the responsibilities test honestly: some ministry roles need to change or end for reasons of health, truth, or safety, and “God has called me here” is sometimes a way of not asking whether he is calling you on. A personal impression received on retreat does not bypass elders, boards, denominational oversight, or the ordinary processes by which church decisions are tested.</p>
+ </section>
+ <section class="card" id="aftercard"><p class="kicker">After this session</p>
+  <p data-plans="three couple pastor">Take a break, a meal, and a walk if you can. What follows depends on your capacity. Sessions 8 and 9, on identity and purpose, are flex sessions: do one this afternoon only if you have the energy for it, and do not feel that Day 3 is incomplete without them. (Route B: no flex sessions today.) Many people will move straight from this break to Session 10 in the late afternoon, and finish the retreat well. Sessions 8 and 9 will be waiting in the 30-day plan. Whatever you choose, do not go into Session 10 tired; it deserves a settled hour.</p>
+  <p data-plans="one" data-plan-only>A twenty-minute break. Eat something. Session 10 is next.</p>
+  <p data-plans="home" data-plan-only>This is the end of today’s retreat time. Session 10 is your next retreat day (Session 8 on the extended version).</p>
+  <p data-plans="hours" data-plan-only>Session 7 is not part of your plan.</p>
+ </section>
+ <section class="card deep"><p class="kicker">Optional</p><h2>Go deeper</h2><p>The full text of Session Seven from the book, and the Session 7 pages of the Workbook, with a “What I sense” card to cut out.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Session Seven (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Session 7 workbook pages</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished the practice?</h2><p class="sub mark">Mark it when you have done as much of the practice as you can. Nothing you wrote is asked for.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have finished my Session 7 practice</button><button class="btn ghost" onclick="return false">Stop here and come back later</button></div><div class="after" role="status"><p>Session 7 is complete.</p><div class="btns"><button class="btn gold">Take a break</button></div><p id="breakline">A meal and a walk if you can. Sessions 8 and 9 are optional; do not go into Session 10 tired.</p></div></section>
+ <div class="preview-note">Keep all the files in this folder together. Buttons and downloads will work on the website.</div>
+</main>
+
+<script>
+(function(){
+  var route=document.getElementById('route'),line=document.getElementById('breakline');
+  function apply(r){
+    var v=r.value;
+    document.querySelectorAll('#shorter [data-plans], #aftercard [data-plans]').forEach(function(p){
+      p.style.display=p.getAttribute('data-plans').split(' ').indexOf(v)>=0?'block':'none';
+    });
+    var s=document.querySelector('#finish .after .btn.gold'); if(s) s.textContent=r.getAttribute('data-stop');
+    line.textContent=r.getAttribute('data-break');
+  }
+  document.querySelectorAll('input[name="plan"]').forEach(function(r){
+    r.addEventListener('change',function(){ if(r.checked){ route.textContent=r.getAttribute('data-route'); apply(r); } });
+  });
+})();
+</script>
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+(function(){const $=id=>document.getElementById(id);const c=$('clock'),m=$('mins'),go=$('tgo'),rs=$('treset'),st=$('tstat'),close=$('aClose');
+const opening=()=>({10:$('aOpen10'),15:$('aOpen15'),20:$('aOpen20')})[m.value]||null;
+let phase='idle',left=1200,end=0,tick=null,cur=null;
+const show=()=>{const x=Math.max(0,Math.ceil(left));c.textContent=Math.floor(x/60)+':'+String(x%60).padStart(2,'0');};
+const say=t=>{st.textContent=t;};
+function play(a,next){cur=a;a.currentTime=0;a.onended=()=>{cur=null;next();};const p=a.play();if(p)p.catch(()=>{cur=null;next();});}
+function silence(){phase='silence';end=Date.now()+left*1000;say('Silence. Return to your phrase when your attention drifts.');
+  tick=setInterval(()=>{left=(end-Date.now())/1000;show();if(left<=0){clearInterval(tick);tick=null;left=0;show();phase='closing';say('The silence is ending.');play(close,finish);}},250);}
+function finish(){phase='done';c.textContent='Done';go.textContent='Start';say('When you are ready, open your journal.');}
+function unlock(a){if(!a)return;a.muted=true;const p=a.play();if(p)p.then(()=>{a.pause();a.currentTime=0;a.muted=false;}).catch(()=>{a.muted=false;});else{a.pause();a.muted=false;}}
+m.onchange=()=>{if(phase==='idle'||phase==='done'){phase='idle';left=+m.value*60;show();}const g=$('gs');if(g.paused){const u=g.getAttribute('src').replace(/guided-silence-[0-9]+\.mp3/,'guided-silence-'+m.value+'.mp3');g.setAttribute('src',u);$('gsDl').setAttribute('href',u);$('gsLen').textContent=m.value;}};
+$('gs').addEventListener('play',()=>{if(phase==='opening'||phase==='silence'||phase==='closing')rs.click();});go.addEventListener('click',()=>{const g=$('gs');if(!g.paused)g.pause();},true);
+go.onclick=()=>{
+  if(phase==='idle'||phase==='done'){left=+m.value*60;show();unlock(close);go.textContent='Pause';const o=opening();
+    if(o){phase='opening';say('Listen to the opening words.');play(o,silence);}else silence();return;}
+  if(phase==='paused'){go.textContent='Pause';const r=resumeTo;phase=r;if(r==='silence')silence();else if(cur){cur.play();say(r==='opening'?'Listen to the opening words.':'The silence is ending.');}return;}
+  resumeTo=phase;phase='paused';go.textContent='Resume';if(tick){clearInterval(tick);tick=null;}if(cur)cur.pause();say('Paused.');};
+let resumeTo='silence';
+rs.onclick=()=>{if(tick){clearInterval(tick);tick=null;}[$('aOpen10'),$('aOpen15'),close].forEach(a=>{a.pause();a.currentTime=0;a.onended=null;});cur=null;phase='idle';go.textContent='Start';left=+m.value*60;show();say('A short spoken opening, then silence, then a short spoken closing.');};
+window.__timer={get phase(){return phase},get left(){return left},set left(v){left=v;if(phase==='silence')end=Date.now()+v*1000;}};})();
+</script>
+</body></html>

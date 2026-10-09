@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -320,6 +320,29 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session 6 workbook pages", file: "workbook-session-06.pdf" },
     ],
   },
+  {
+    slug: "session-07",
+    kind: "session",
+    label: "Session 7",
+    title: "Listening for God's Direction",
+    narration: "reset-session-07.mp3",
+    pageAudio: [
+      "guided-prayer-07.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-opening-20.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+      "guided-silence-20.mp3",
+    ],
+    finish: { stop: "Take a break", next: null },
+    downloads: [
+      { label: "⬇ Session Seven (PDF)", file: "session-07.pdf" },
+      { label: "⬇ Session 7 workbook pages", file: "workbook-session-07.pdf" },
+    ],
+  },
 ];
 
 export function findUnit(slug: string): ResetNewUnit | null {
@@ -472,12 +495,12 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
     const n = html.split(`"${file}"`).length - 1;
     if (n > 0) html = swap(html, `"${file}"`, `"${unitPath(unit)}/audio/${file}"`, n);
     // The one-file silences not shown first are reached by changing the length.
-    else if (!/^guided-silence-(5|10|15)\.mp3$/.test(file)) throw new Error(`${unit.slug} does not use ${file}.`);
+    else if (!/^guided-silence-(5|10|15|20)\.mp3$/.test(file)) throw new Error(`${unit.slug} does not use ${file}.`);
   }
   // "Download this recording" (the one-file guided silence) asks for a saved
   // copy: the file is on another domain, where the download attribute is ignored.
   if (unit.kind === "session") {
-    const first = html.match(/<a class="sub" id="gsDl" href="([^"?]*\/guided-silence-(?:5|10|15)\.mp3)"/);
+    const first = html.match(/<a class="sub" id="gsDl" href="([^"?]*\/guided-silence-(?:5|10|15|20)\.mp3)"/);
     if (!first) throw new Error(`${unit.slug}: no download link for the one-file silence.`);
     html = swap(html, first[0], `<a class="sub" id="gsDl" href="${first[1]}?download=1"`);
     html = swap(html, "$('gsDl').setAttribute('href',u);", "$('gsDl').setAttribute('href',u+'?download=1');");
