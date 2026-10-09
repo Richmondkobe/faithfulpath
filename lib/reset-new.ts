@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -45,7 +45,8 @@ export type ResetNewUnit = {
   /** Other recordings the page plays (guided prayer, silence timer). */
   pageAudio: string[];
   /** The page's own words on its finish buttons, and where "Continue" leads. */
-  finish: { stop: string; next: string };
+  /** `next: null`: one button only, back to the course page (a session whose plans each prescribe a break first). */
+  finish: { stop: string; next: string | null };
   downloads: { label: string; file: string }[];
 };
 
@@ -236,6 +237,27 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session 2 workbook pages", file: "workbook-session-02.pdf" },
     ],
   },
+  {
+    slug: "session-03",
+    kind: "session",
+    label: "Session 3",
+    title: "Release What You Are Carrying",
+    narration: "reset-session-03.mp3",
+    pageAudio: [
+      "guided-prayer-03.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+    ],
+    finish: { stop: "Rest before Session 4", next: null },
+    downloads: [
+      { label: "⬇ Session Three (PDF)", file: "session-03.pdf" },
+      { label: "⬇ Session 3 workbook pages and cards", file: "workbook-session-03.pdf" },
+    ],
+  },
 ];
 
 export function findUnit(slug: string): ResetNewUnit | null {
@@ -411,15 +433,20 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   }
   const idx = RESET_NEW_UNITS.indexOf(unit);
   const nextUnit = RESET_NEW_UNITS[idx + 1];
-  const builtNext = nextUnit && nextUnit.label === unit.finish.next.replace(/^Continue to | ›$/g, "");
-  html = swap(
-    html,
-    `<button class="btn gold">${unit.finish.stop}</button><button class="btn">${unit.finish.next}</button>`,
-    `<a class="btn gold" href="${home}">${unit.finish.stop}</a>` +
-      (builtNext
-        ? `<a class="btn" href="${unitPath(nextUnit)}">${unit.finish.next}</a>`
-        : `<a class="btn" data-reset-changed href="${home}">Back to the course page ›</a>`)
-  );
+  const next = unit.finish.next;
+  if (next === null) {
+    html = swap(html, `<button class="btn gold">${unit.finish.stop}</button>`, `<a class="btn gold" href="${home}">${unit.finish.stop}</a>`);
+  } else {
+    const builtNext = nextUnit && nextUnit.label === next.replace(/^Continue to | ›$/g, "");
+    html = swap(
+      html,
+      `<button class="btn gold">${unit.finish.stop}</button><button class="btn">${next}</button>`,
+      `<a class="btn gold" href="${home}">${unit.finish.stop}</a>` +
+        (builtNext
+          ? `<a class="btn" href="${unitPath(nextUnit)}">${next}</a>`
+          : `<a class="btn" data-reset-changed href="${home}">Back to the course page ›</a>`)
+    );
+  }
 
   if (completed.has(unit.slug)) {
     html = swap(html, '<section class="card finish" id="finish"', '<section class="card finish done" id="finish"');
