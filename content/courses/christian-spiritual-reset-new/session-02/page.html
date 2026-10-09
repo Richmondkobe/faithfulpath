@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 2 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.practice h3{font-size:18px;color:var(--navy);margin:22px 0 6px;display:flex;gap:10px;align-items:baseline}
+.practice h3 span{font-family:'Source Serif 4',serif;color:var(--gold-d);font-weight:400}
+.practice ol,.practice ul{margin:6px 0;padding-left:1.3em}.practice li{margin:.4em 0;line-height:1.5}
+.prayer-text p{margin:.15em 0;font-family:'Source Serif 4',serif;font-size:17px}
+.declare p{margin:.1em 0;font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy)}
+.audio-box{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
+.audio-box .play{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--sun);display:grid;place-items:center;flex:none;font-size:15px}
+.timer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;margin:8px 0}
+.timer .clock{font-family:'Source Serif 4',serif;font-size:34px;color:var(--navy);font-variant-numeric:tabular-nums;min-width:3.2em}
+.timer select,.timer button{font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:#fff;color:var(--navy)}
+.timer button.go{background:var(--navy);color:var(--sun);border-color:var(--navy)}
+.anchor{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-d);font-size:18px}
+.envtab{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}.envtab th,.envtab td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}.envtab th{background:#f1e8d4}
+.envtab td b{color:var(--navy)}
+.tablewrap{overflow-x:auto}
+.durnote{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:600;color:var(--navy)}
+details.more summary{cursor:pointer;font-weight:600;color:var(--gold-d)}
+.box2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+@media(max-width:600px){.bar{flex-wrap:wrap;gap:8px}.bar b{letter-spacing:.14em;font-size:11.5px}.steps8 i{width:14px}}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.btn.ghost{background:transparent;border-color:rgba(243,236,216,.6);color:#f3ecd8}
+
+.plans .pq{font-weight:700;color:var(--navy);margin:.2em 0 .5em}
+.plans .opts{display:flex;flex-wrap:wrap;gap:8px}
+.plans .opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15.5px;cursor:pointer}
+.plans .opts input{width:18px;height:18px;accent-color:var(--gold-d);margin:0}
+.plans .route{margin:.7em 0 0;border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:9px 13px;color:var(--navy)}
+.plans .route:empty{display:none}
+.walk-safe{border:2px solid #7a2e1f;background:#fbefe9;border-radius:10px;padding:10px 14px;margin:10px 0}
+.senses{list-style:none;padding:0!important}.senses li{padding-left:0}.senses b{color:var(--gold-d)}
+[data-plan-only]{display:none}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 3: The Retreat</b><span class="steps8" aria-label="Session 2 of 10"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Session 2 · Day 1, afternoon</p>
+   <h1>Be Still and Become Present</h1>
+   <p class="question">How do I become present to God when my mind is everywhere?</p>
+   <div class="meta"><span class="chip">Teaching about 10 minutes</span><span class="chip">Practice 60 to 90 minutes</span><span class="chip">Psalm 46 · Mark 4:35–41</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card plans" aria-labelledby="h-plans"><p class="kicker">Your plan</p><h2 id="h-plans" class="pq">Which plan are you following?</h2><div class="opts" role="radiogroup" aria-labelledby="h-plans"><label><input type="radio" name="plan" value="three" data-route="Follow the whole session: the teaching, then the full practice below. About an hour to an hour and a half, including the walk."> Three-day retreat</label><label><input type="radio" name="plan" value="one" data-route="Watch the teaching; do the check-in and guided prayer; silence of ten minutes or less; journal questions 1 and 3 only. Keep the full walk of noticing: it is the heart of the session. About an hour."> One-day retreat</label><label><input type="radio" name="plan" value="hours" data-route="You do not need to watch the teaching. Read Psalm 46, then go straight to the silence (ten minutes, with “Be still, and know that I am God”) and the walk of noticing (twenty minutes, outdoors if possible and safe, or at a window). Skip the journal. About 40 minutes."> Three-hour reset</label><label><input type="radio" name="plan" value="home" data-route="This is your Day 2. Follow the whole session. The walk of noticing can be a walk to school, the shop, or the garden, done differently."> At-home retreat</label><label><input type="radio" name="plan" value="couple" data-route="Follow the whole session on your own. Afterwards, the first shared moment (below, under “After this session”)."> Retreat for couples</label></div><p class="route" id="route" role="status" aria-live="polite"></p><p class="sub" style="margin:.6em 0 0">Your choice is not saved. If you have not chosen yet, the page shows the whole session.</p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this session you will</p><h2 id="h-learn">Become present</h2><ul><li>Hear Psalm 46, a psalm full of noise, and what “be still” meant there</li><li>See that God’s help is present before the trouble ends</li><li>Watch Jesus asleep in the storm, and the disciples’ very real fear (Mark 4:35–41)</li><li>Practise coming back: in silence, and on a walk of noticing</li></ul></section>
+ <section class="card" aria-labelledby="h-before"><p class="kicker">Before you begin</p><h2 id="h-before">After your break</h2><p>You have had a break, a meal, perhaps a walk or a sleep. Before you sit down, notice whether your mind has drifted back to the envelope. That is normal on the first afternoon. Notice it without judgement. Unless you realise that you placed an urgent safety, health, or caregiving matter inside, leave it sealed until you open it in Session 10.</p><p>Have your Bible, your journal, and your timer. This session is slower than the first, and it contains the longest silence so far. If ten minutes was your limit this morning, stay there. Nothing in this session requires more.</p></section>
+ <section class="player" aria-label="Session teaching"><iframe src="player.html" title="Session 2 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · Day 1, afternoon</h4><p>Welcome back. This is Day 1, afternoon.</p><p>You have had a break, a meal, perhaps a walk or a sleep. Before you settle, notice whether your mind has drifted back to the envelope. That is normal on the first afternoon. Notice it without judgement, and unless you realise that you placed an urgent safety, health or caregiving matter inside, leave it sealed.</p><p>Have your Bible, your journal and your timer beside you. This session is slower than the first, and it contains the longest silence so far. If ten minutes was your limit this morning, stay there. Nothing in this session requires more.</p><p>Our question is this: how do I become present to God when my mind is everywhere?</p><h4>2 · A psalm full of noise</h4><p>Our central passage is Psalm 46. In the book you are asked to read the whole psalm twice, and to notice the second time how much noise there is in it before verse 10. Listen for the noise now.</p><p>&quot;God is our refuge and strength, a very present help in trouble. Therefore we will not fear though the earth give way, though the mountains be moved into the heart of the sea, though its waters roar and foam, though the mountains tremble at its swelling. There is a river whose streams make glad the city of God, the holy habitation of the Most High. God is in the midst of her; she shall not be moved; God will help her when morning dawns. The nations rage, the kingdoms totter; he utters his voice, the earth melts. The Lord of hosts is with us; the God of Jacob is our fortress.&quot;</p><h4>3 · &quot;Be still&quot;</h4><p>&quot;Come, behold the works of the Lord, how he has brought desolations on the earth. He makes wars cease to the end of the earth; he breaks the bow and shatters the spear; he burns the chariots with fire. ’Be still, and know that I am God. I will be exalted among the nations, I will be exalted in the earth!’ The Lord of hosts is with us; the God of Jacob is our fortress.&quot;</p><p>The earth gives way. Mountains fall into the sea. Waters roar and foam. Nations rage and kingdoms totter. Verse 10 arrives in the middle of a world coming apart.</p><h4>4 · Be still = rāp̄â</h4><p>Our Hebrew word is the one translated &quot;be still&quot;: rāp̄â. In verse 10 it is a command. It means to let go, to cease, to stop striving.</p><p>The same verb appears when Samuel says to Saul, &quot;Stop!&quot; And in Psalm 37: &quot;Refrain from anger.&quot;</p><p>So &quot;be still&quot; is not first an invitation to create a peaceful mood. In the psalm, the command comes in the context of raging nations: cease, and recognise the God who will be exalted among them. God’s people, who sing this psalm, hear it too. It is a call to stop striving against God’s sovereignty. Its force is larger than private quiet, but it can still shape how a believer stands in the middle of turmoil. That is how we will use it this afternoon.</p><h4>5 · The storm and the sleeper</h4><p>There is a second picture of stillness in the Gospels that belongs beside the psalm. Mark chapter 4, verses 35 to 41:</p><p>&quot;On that day, when evening had come, he said to them, ’Let us go across to the other side.’ And leaving the crowd, they took him with them in the boat, just as he was. And other boats were with him. And a great windstorm arose, and the waves were breaking into the boat, so that the boat was already filling. But he was in the stern, asleep on the cushion. And they woke him and said to him, ’Teacher, do you not care that we are perishing?’ And he awoke and rebuked the wind and said to the sea, ’Peace! Be still!’ And the wind ceased, and there was a great calm. He said to them, ’Why are you so afraid? Have you still no faith?’ And they were filled with great fear and said to one another, ’Who then is this, that even the wind and the sea obey him?’&quot;</p><h4>6 · A Psalm Full of Noise</h4><p>&quot;Be still, and know that I am God&quot; is one of the most quoted lines in the Bible, and it is almost always quoted out of its setting. Read the psalm from the beginning, and the setting is anything but still.</p><p>Psalm 46 does not begin in a quiet world. It describes mountains shaking, waters roaring and nations raging. Into that turmoil comes God’s command to cease, and recognise that he is God. For us, that truth becomes an invitation to stop acting as though everything depends on our control, and to trust the God who remains sovereign.</p><p>That matters for this session, because the stillness we practise this afternoon is not the stillness of a calm world. It is the stillness of a person who knows something true in the middle of a world that is not calm.</p><h4>7 · Present Help</h4><p>&quot;God is our refuge and strength, a very present help in trouble.&quot; Present. Not distant, not delayed, not waiting for the trouble to end. &quot;Present&quot; does not mean you will necessarily feel calm, or experience God vividly. It means that trouble does not place you beyond his knowledge, his sovereignty, or his care.</p><p>Much of the time, our attention is divided. We anticipate what is coming, replay what has happened, and mentally return to responsibilities elsewhere. The body is in the room, and the attention is in tomorrow’s meeting, last month’s conversation, the people at home, the thing we should have said. This is so normal that we rarely notice it, and it is tiring, because we are in two places and fully in neither.</p><p>Jesus addressed it in the Sermon on the Mount: &quot;Therefore do not be anxious about tomorrow, for tomorrow will be anxious for itself. Sufficient for the day is its own trouble.&quot; He is not shaming people who experience anxiety, or forbidding wise preparation for tomorrow. He is challenging the attempt to carry tomorrow’s burden before tomorrow arrives. For someone living with an anxiety disorder, returning attention to the present may require professional care as well as spiritual practice, and there is no shame in that.</p><h4>8 · The Storm and the Sleeper</h4><p>Jesus was able to sleep while the storm raged. The text may suggest exhaustion, trust, or both, but it does not describe his inner state in detail. When he woke, he spoke with authority, and the calm came from who he was and what he commanded, not from a technique.</p><p>The disciples’ fear was understandable, because the danger was real. Several of the disciples were experienced fishermen. They would have understood how dangerous a boat filling with water could be. Jesus’ question about faith does not mean that noticing danger is sinful. It exposes how difficult it was for them, in their terror, to interpret the storm in the light of the person who was with them.</p><h4>9 · Coming Back Is the Practice</h4><p>So this afternoon’s work is to become present. Not to make the storms stop, and not to pretend they are not there, but to bring your attention back into the room, into this hour, into this body, and to remember that God is here too.</p><p>You will wander. Each time you realise you have travelled somewhere else, to the past, the future, or the envelope, do not scold yourself. Notice where you went, and come back. The coming back is the practice. When you return without scolding yourself, you are learning that distraction does not have to become failure.</p><p>Greater presence can help you engage lament, confession, release and listening more honestly in the sessions ahead. But divided attention does not disqualify your prayer. God receives you even while you are learning to return.</p><h4>10 · One question</h4><p>So here is one question to carry into the practice. Where is your attention right now? In this room, or somewhere else? If it is somewhere else, where: the past, the future, another place, another person?</p><p>You do not need to answer it now. You will find it on the page.</p><h4>11 · Put the screen aside</h4><p>This is where the teaching stops. Pause the player now, and put the screen aside if you can.</p><p>On the page you will find the session’s practice: a short check-in, a guided prayer, fifteen minutes of silence, or the length you managed this morning, a few questions for your journal, and a walk of noticing. Take your time.</p><p>You are not trying to make the world quiet. You are learning to be here, with the God who is here. &quot;Be still, and know that I am God.&quot;</p></div></details></section>
+
+ <section class="card practice" id="practice" aria-labelledby="h-prac">
+  <p class="kicker">The practice</p><h2 id="h-prac">Now put the screen aside</h2>
+  <p class="durnote">Allow approximately an hour to an hour and a half, including the walk. This is not a timed exercise. Take breaks and move at your own pace.</p>
+  <p class="sub">Write in your journal or on the Session 2 workbook pages. Nothing you write is collected.</p>
+
+  <h3><span>1</span>Check-in</h3><p class="sub">Briefly, in your journal. This is a check-in, not a test.</p><ol><li>Right now, where is your attention? In this room, or somewhere else? If somewhere else, where: the past, the future, another place, another person?</li><li>When you try to bring your attention back to now, what pulls it away again? Name the strongest pull.</li><li>On a scale from “mostly attentive to this room” to “strongly pulled elsewhere,” where would you place yourself? No right answer.</li><li>What situation currently feels unstable, loud, or beyond your control? Name it in one line without analysing or solving it.</li></ol>
+  <p>If you feel unreal, disconnected from your body, unable to recognise where you are, or as though you are reliving another time, pause the session and use the grounding and support guidance in the box below the practice.</p>
+
+  <h3><span>2</span>Guided prayer</h3>
+  <p class="sub">If noticing your body is uncomfortable, rest your eyes on something still instead, or simply listen to the words.</p>
+  <div class="audio-box prayer-audio"><div style="width:100%"><b>Guided prayer: Be Still and Become Present</b> <span class="sub">· about 3 minutes</span><audio controls preload="metadata" src="guided-prayer-02.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio></div></div>
+  <details class="more"><summary>Words of the recording</summary><div class="prayer-text"><p>Settle into your seat. Feel the chair supporting you. Let your shoulders rest.</p><p>You may close your eyes or rest them on a fixed point.</p><p>God, you are a very present help.</p><p>I have been living somewhere else. Ahead of myself, planning. Behind myself, replaying. Beside myself, watching.</p><p>I bring my attention back now. To this room. To this hour. To this body, which you made and know completely.</p><p>The storm is real. I will not pretend it is not. The noise in my life is real. The noise within me is real. But Christ is with me here.</p><p>Teach me to be still. Not because the world has become quiet. It has not. Teach me to be still because you are here.</p><p>Help me cease striving for the rest of this day.</p><p>“Be still, and know that I am God.”</p><p>Amen.</p><p>Stay where you are and move gently into the silence. Your anchor phrase is: “Be still, and know that I am God.” Or, more simply: “God is here.”</p></div></details>
+  <details class="more" style="margin-top:8px"><summary>If you prefer to read: the prayer from the book</summary><p class="sub">Read this slowly, aloud if you have privacy, or silently. Change any words that are not yours.</p><div class="prayer-text"><p>God, you are a very present help.</p><p>I have been living somewhere else: ahead of myself,</p><p>behind myself, beside myself.</p><p>I bring my attention back to this room, this hour, this body.</p><p>The storm is real.</p><p>I am not going to pretend it is not.</p><p>But Christ is with me in it.</p><p>Teach me to be still, not because the world has gone</p><p>quiet, but because you are here.</p><p>Help me to cease striving for the rest of this day.</p><p>Amen.</p></div></details>
+
+  <h3><span>3</span>Silence</h3>
+  <p>Suggested length: fifteen minutes. If that is beyond you, return to the length you managed this morning. If it is well within you, stay with fifteen; there is no need to extend it.</p>
+  <p class="anchor">“Be still, and know that I am God.” · or: “God is here.”</p>
+  <p>Before you begin, spend the first minute simply noticing where you are: the chair or the ground beneath you, the light, the sounds inside and outside the room. Notice only what feels neutral and manageable. If bodily attention increases distress, focus on visible objects, colours, or the words of the psalm instead. Then move to the phrase.</p>
+  <p>Each time you realise you have travelled somewhere else, the past, the future, the envelope, do not scold yourself. Notice where you went, and come back. The coming back is the practice. Each return is simply part of it. When you return without scolding yourself, you are learning that distraction does not have to become failure.</p>
+  <div class="timer"><span class="clock" id="clock">15:00</span><label class="sub" for="mins">Length</label><select id="mins"><option value="5">5 minutes</option><option value="10">10 minutes</option><option value="15" selected>15 minutes</option></select><button class="go" id="tgo">Start</button><button id="treset">Reset</button><p class="sub" id="tstat" role="status" aria-live="polite" style="flex-basis:100%;margin:0">A short spoken opening, then silence, then a short spoken closing.</p></div>
+  <audio id="aOpen10" src="timer-opening-10.mp3" preload="auto"></audio><audio id="aOpen15" src="timer-opening-15.mp3" preload="auto"></audio><audio id="aClose" src="timer-closing.mp3" preload="auto"></audio>
+  <p class="sub">When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop. This timer needs the screen to stay on.</p>
+  <div class="audio-box"><div style="width:100%"><b>Want to put your phone away?</b> <span class="sub">Play the silence as one recording instead. It keeps playing when the screen locks: the opening words, <span id="gsLen">15</span> minutes of silence, then the closing words.</span><audio id="gs" controls preload="none" src="guided-silence-15.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio><a class="sub" id="gsDl" href="guided-silence-15.mp3" download style="display:inline-block;margin-top:4px">⬇ Download this recording</a></div></div>
+
+  <h3><span>4</span>Journal</h3><ol><li>Where did your attention go during the silence? List the places. Which one did it return to most often?</li><li>When have you recognised, or felt, God’s help in your life? If you cannot identify such a time, say so honestly. Your inability to recall an experience does not make the psalm’s declaration untrue, and Session 7 will return to this.</li><li>The disciples were afraid because the boat was filling. What reasonable fear makes it difficult for you to remember or trust that Christ remains with you?</li><li>Finish this sentence: “If I gave this present moment my attention without trying to solve the past or anticipate the future, I would notice…”</li></ol>
+
+  <h3><span>5</span>A walk of noticing</h3>
+  <p>This exercise takes twenty to thirty minutes and is best done outdoors, though a window, a garden, a corridor, or a different room will do. If walking is not possible for you, sit somewhere new, ideally with a view, and do the same exercise without moving. Use mobility aids or remain seated as needed.</p>
+  <p>Leave ordinary digital input behind. If safety permits, leave the phone in your room. If you need it for emergencies, carry it out of sight with your retreat setting active and only the designated contact permitted to ring through. Do not use it for photographs, messages, music, or checking information during the walk.</p>
+  <p>Walk at a comfortable, unhurried pace that is safe for your body and surroundings, and give your attention to one sense at a time.</p>
+  <ul class="senses"><li><b>See.</b> For the first few minutes, notice only what you can see. Colours, light, movement, small things you would normally walk past. You may simply observe, or quietly name what you see if that helps you stay oriented. The purpose is not to analyse or evaluate it.</li><li><b>Hear.</b> Then, for a few minutes, notice only what you can hear. The near sounds and the far ones. The sounds you would normally filter out.</li><li><b>Feel.</b> Then what you can feel: the ground under your feet, the air on your skin, the temperature, your own breathing if that is comfortable for you.</li><li><b>Smell.</b> Then, if you are outdoors, what you can smell.</li><li><b>All at once.</b> Finally, walk the last few minutes with all of it at once, simply present in the place where you are, repeating your anchor phrase if it helps.</li></ul>
+  <p>If focusing closely on one sense becomes uncomfortable, use whichever sense feels most neutral, or take in the environment more generally. You do not have to complete every stage.</p>
+  <p>This is not a technique for producing a spiritual experience, and you may feel nothing in particular. The purpose is practice in being where you are. Present-moment attention can often be strengthened through practice, though each person’s capacity is affected by health, exhaustion, trauma, and how their mind works. The goal is not perfect concentration but repeated, compassionate return. The retreat will ask you to be present many times in the next two days. This is the first rehearsal.</p>
+  <div class="walk-safe"><b>If you feel unsafe, faint, confused, severely distressed, or disoriented,</b> stop moving and go to the nearest safe, familiar place. Contact your designated person or appropriate help. Do not continue walking, and do not drive, while disoriented. Do not walk somewhere unfamiliar or unsafe in the name of noticing.</div>
+
+  <h3><span>6</span>Closing declaration</h3><p class="sub">Read only what you can say honestly. Adjust the words if you need to.</p>
+  <div class="declare"><p>God is a very present help.</p><p>The storm is real, and Christ is with me in it.</p><p>I am learning to be here, in this hour, in this place.</p><p>Every time I wander, I will come back.</p></div>
+ </section>
+
+ <section class="card" id="shorter"><p class="kicker">On a shorter plan</p>
+  <p data-plans="one"><b>One-day retreat.</b> Watch the teaching; do the check-in and guided prayer; silence of ten minutes or less; journal questions 1 and 3 only. Keep the full walk of noticing: it is the heart of the session. About an hour.</p>
+  <p data-plans="hours"><b>Three-hour reset.</b> Read Psalm 46, then ten minutes of silence with “Be still, and know that I am God”, then the walk of noticing for twenty minutes, outdoors if possible and safe, or at a window. Skip the teaching and the journal. About 40 minutes.</p>
+  <p data-plans="hours" class="anchor" style="font-size:16px">God is a very present help in trouble. Be still, not because the world is quiet, but because God is God, and he is here.</p>
+  <p data-plans="home"><b>At-home retreat.</b> This is your Day 2. The walk of noticing can be a walk to school, the shop, or the garden, done differently.</p>
+  <p data-plans="couple"><b>Retreat for couples.</b> After this session comes the first shared moment: see “After this session”.</p>
+  <p data-plans="three" data-plan-only>You are following the whole session, as above. Nothing is shortened.</p>
+ </section>
+ <section class="card safe" aria-labelledby="h-safe"><p class="kicker">A short note</p><h2 id="h-safe">Grounding, and when to stop</h2><p>If silence or the walk brings panic, flashbacks, a feeling of unreality, or severe distress: stop, open your eyes, move to a safe and familiar place, and ground yourself, as in Lesson 5. Name where you are, the date, and several things you can see, hear and touch. Contact your designated person if you need to.</p><p><b>Immediate danger, chest pain, fainting or severe breathlessness:</b> call your local emergency number. <b>Thoughts of harming yourself, or not being able to stay safe:</b> call your local emergency number or a crisis line now. <a href="#" onclick="return false">Finding Help Where You Live</a></p><p><i>If a session brings up more than you can hold, stop the session. The sessions are offered, not assigned.</i></p></section>
+ <section class="card" id="aftercard"><p class="kicker">After this session</p><p data-plans="three couple"><b>Ending Day 1.</b> Session 2 closes the first day. The evening is unstructured: a simple meal, rest, perhaps some time outside or with a psalm. Do not add another session.</p><p data-plans="three couple">Today you practised two movements: from performance to welcome, and from divided attention to presence. You do not need to master either before sleeping. You have begun.</p><p data-plans="three couple">Sleep when you are tired. Day 2 begins in the morning with Session 3. It moves toward deeper material, but it will continue at the same gentle, adjustable pace. You do not have to resolve everything that surfaces.</p><p data-plans="couple" data-plan-only><b>The first shared moment.</b> Sit together for twenty minutes. Each of you says one thing, and only one, that you noticed today: not what you wrote, not what you concluded. The other listens without responding, then says their own. Then pray together briefly, each praying one sentence for the other. That is all.</p><p data-plans="one" data-plan-only><b>One-day retreat.</b> Take your lunch and rest, about an hour and a quarter. Eat slowly. Lie down if you want to. Then continue with Session 3.</p><p data-plans="hours" data-plan-only><b>Three-hour reset.</b> Take the short break: eat something small. Then continue with the Session 3 elements.</p><p data-plans="home" data-plan-only><b>At-home retreat.</b> This is the end of today’s retreat time. Return to ordinary life gently. Session 3 is your next retreat day.</p></section>
+ <section class="card deep"><p class="kicker">Optional</p><h2>Go deeper</h2><p>The full text of Session Two from the book, and the Session 2 pages of the Workbook.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Session Two (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Session 2 workbook pages</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished the practice?</h2><p class="sub mark">Mark it when you have done as much of the practice as you can. Nothing you wrote is asked for.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have finished my Session 2 practice</button><button class="btn ghost" onclick="return false">Stop here and come back later</button></div><div class="after" role="status"><p>Session 2 is complete.</p><div class="btns"><button class="btn gold">Stop here for now</button><button class="btn">Continue to Session 3 ›</button></div></div></section>
+ <div class="preview-note">Keep all the files in this folder together. Buttons and downloads will work on the website.</div>
+</main>
+
+<script>
+(function(){
+  var route=document.getElementById('route');
+  var stop=function(){return document.querySelector('#finish .after .btn.gold');};
+  function apply(v){
+    document.querySelectorAll('#shorter [data-plans], #aftercard [data-plans]').forEach(function(p){
+      var on=p.getAttribute('data-plans').split(' ').indexOf(v)>=0;
+      p.style.display=on?'block':'none';
+    });
+    var s=stop(); if(s) s.textContent=(v==='three'||v==='couple')?'Rest until tomorrow':'Stop here for now';
+    var m=document.getElementById('mins'),t=window.__timer;
+    if(m&&(v==='one'||v==='hours')&&(!t||t.phase==='idle'||t.phase==='done')&&m.value==='15'){m.value='10';m.dispatchEvent(new Event('change'));}
+  }
+  document.querySelectorAll('input[name="plan"]').forEach(function(r){
+    r.addEventListener('change',function(){ if(r.checked){ route.textContent=r.getAttribute('data-route'); apply(r.value); } });
+  });
+})();
+</script>
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+(function(){const $=id=>document.getElementById(id);const c=$('clock'),m=$('mins'),go=$('tgo'),rs=$('treset'),st=$('tstat'),close=$('aClose');
+const opening=()=>({10:$('aOpen10'),15:$('aOpen15')})[m.value]||null;
+let phase='idle',left=900,end=0,tick=null,cur=null;
+const show=()=>{const x=Math.max(0,Math.ceil(left));c.textContent=Math.floor(x/60)+':'+String(x%60).padStart(2,'0');};
+const say=t=>{st.textContent=t;};
+function play(a,next){cur=a;a.currentTime=0;a.onended=()=>{cur=null;next();};const p=a.play();if(p)p.catch(()=>{cur=null;next();});}
+function silence(){phase='silence';end=Date.now()+left*1000;say('Silence. Return to your phrase when your attention drifts.');
+  tick=setInterval(()=>{left=(end-Date.now())/1000;show();if(left<=0){clearInterval(tick);tick=null;left=0;show();phase='closing';say('The silence is ending.');play(close,finish);}},250);}
+function finish(){phase='done';c.textContent='Done';go.textContent='Start';say('When you are ready, open your journal.');}
+function unlock(a){if(!a)return;a.muted=true;const p=a.play();if(p)p.then(()=>{a.pause();a.currentTime=0;a.muted=false;}).catch(()=>{a.muted=false;});else{a.pause();a.muted=false;}}
+m.onchange=()=>{if(phase==='idle'||phase==='done'){phase='idle';left=+m.value*60;show();}const g=$('gs');if(g.paused){const u=g.getAttribute('src').replace(/guided-silence-[0-9]+\.mp3/,'guided-silence-'+m.value+'.mp3');g.setAttribute('src',u);$('gsDl').setAttribute('href',u);$('gsLen').textContent=m.value;}};
+$('gs').addEventListener('play',()=>{if(phase==='opening'||phase==='silence'||phase==='closing')rs.click();});go.addEventListener('click',()=>{const g=$('gs');if(!g.paused)g.pause();},true);
+go.onclick=()=>{
+  if(phase==='idle'||phase==='done'){left=+m.value*60;show();unlock(close);go.textContent='Pause';const o=opening();
+    if(o){phase='opening';say('Listen to the opening words.');play(o,silence);}else silence();return;}
+  if(phase==='paused'){go.textContent='Pause';const r=resumeTo;phase=r;if(r==='silence')silence();else if(cur){cur.play();say(r==='opening'?'Listen to the opening words.':'The silence is ending.');}return;}
+  resumeTo=phase;phase='paused';go.textContent='Resume';if(tick){clearInterval(tick);tick=null;}if(cur)cur.pause();say('Paused.');};
+let resumeTo='silence';
+rs.onclick=()=>{if(tick){clearInterval(tick);tick=null;}[$('aOpen10'),$('aOpen15'),close].forEach(a=>{a.pause();a.currentTime=0;a.onended=null;});cur=null;phase='idle';go.textContent='Start';left=+m.value*60;show();say('A short spoken opening, then silence, then a short spoken closing.');};
+window.__timer={get phase(){return phase},get left(){return left},set left(v){left=v;if(phase==='silence')end=Date.now()+v*1000;}};})();
+</script>
+</body></html>
