@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -258,6 +258,26 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session 3 workbook pages and cards", file: "workbook-session-03.pdf" },
     ],
   },
+  {
+    slug: "session-04",
+    kind: "session",
+    label: "Session 4",
+    title: "Lament, Grief, and Honest Prayer",
+    narration: "reset-session-04.mp3",
+    pageAudio: [
+      "guided-prayer-04.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+    ],
+    finish: { stop: "Rest now", next: null },
+    downloads: [
+      { label: "⬇ Session Four (PDF)", file: "session-04.pdf" },
+      { label: "⬇ Session 4 workbook pages", file: "workbook-session-04.pdf" },
+    ],
+  },
 ];
 
 export function findUnit(slug: string): ResetNewUnit | null {
@@ -424,6 +444,9 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   // Finish: the buttons become links. "Continue" goes to the next unit of this
   // edition; until that unit is built it goes back to the course page and says so.
   const home = RESET_NEW_PATH;
+  // "Skip this session and rest" (Session 4): back to the course page, nothing recorded.
+  const skip = `<a class="btn skip" ${DEAD}>Skip this session and rest</a>`;
+  if (html.includes(skip)) html = swap(html, skip, `<a class="btn skip" href="${home}">Skip this session and rest</a>`);
   if (unit.kind === "session") {
     html = swap(
       html,

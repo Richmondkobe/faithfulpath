@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 4 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.practice h3{font-size:18px;color:var(--navy);margin:22px 0 6px;display:flex;gap:10px;align-items:baseline}
+.practice h3 span{font-family:'Source Serif 4',serif;color:var(--gold-d);font-weight:400}
+.practice ol,.practice ul{margin:6px 0;padding-left:1.3em}.practice li{margin:.4em 0;line-height:1.5}
+.prayer-text p{margin:.15em 0;font-family:'Source Serif 4',serif;font-size:17px}
+.declare p{margin:.1em 0;font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy)}
+.audio-box{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
+.audio-box .play{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--sun);display:grid;place-items:center;flex:none;font-size:15px}
+.timer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;margin:8px 0}
+.timer .clock{font-family:'Source Serif 4',serif;font-size:34px;color:var(--navy);font-variant-numeric:tabular-nums;min-width:3.2em}
+.timer select,.timer button{font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:#fff;color:var(--navy)}
+.timer button.go{background:var(--navy);color:var(--sun);border-color:var(--navy)}
+.anchor{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-d);font-size:18px}
+.envtab{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}.envtab th,.envtab td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}.envtab th{background:#f1e8d4}
+.envtab td b{color:var(--navy)}
+.tablewrap{overflow-x:auto}
+.durnote{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:600;color:var(--navy)}
+details.more summary{cursor:pointer;font-weight:600;color:var(--gold-d)}
+.box2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+@media(max-width:600px){.bar{flex-wrap:wrap;gap:8px}.bar b{letter-spacing:.14em;font-size:11.5px}.steps8 i{width:14px}}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.btn.ghost{background:transparent;border-color:rgba(243,236,216,.6);color:#f3ecd8}
+
+.plans .pq{font-weight:700;color:var(--navy);margin:.2em 0 .5em}
+.plans .opts{display:flex;flex-wrap:wrap;gap:8px}
+.plans .opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15.5px;cursor:pointer}
+.plans .opts input{width:18px;height:18px;accent-color:var(--gold-d);margin:0}
+.plans .route{margin:.7em 0 0;border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:9px 13px;color:var(--navy)}
+.plans .route:empty{display:none}
+.bounds{border:3px solid #7a2e1f;background:#fffaf0}.bounds h2{color:#7a2e1f}.bounds li{margin:.45em 0;line-height:1.5}
+.bounds .urgent{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.bounds .btn.skip{background:transparent;border:2px solid #8a6a24;color:#8a6a24;font-weight:700}
+.walk-safe{border:2px solid #7a2e1f;background:#fbefe9;border-radius:10px;padding:10px 14px;margin:10px 0}
+.lam li{margin:.5em 0!important}.lam b{color:var(--gold-d)}
+.must{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:700;color:var(--navy)}
+#breakline{color:#e3c98a;font-family:'Source Serif 4',serif;font-style:italic;margin:.6em 0 0}
+[data-plan-only]{display:none}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 3: The Retreat</b><span class="steps8" aria-label="Session 4 of 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Session 4 · Day 2, afternoon</p>
+   <h1>Lament, Grief, and Honest Prayer</h1>
+   <p class="question">Am I allowed to pray like this?</p>
+   <div class="meta"><span class="chip">Teaching about 9 minutes</span><span class="chip">Practice 60 to 90 minutes</span><span class="chip">Psalm 13</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card plans" aria-labelledby="h-plans"><p class="kicker">Your plan</p><h2 id="h-plans" class="pq">Which plan are you following?</h2><div class="opts" role="radiogroup" aria-labelledby="h-plans"><label><input type="radio" name="plan" value="three" data-route="The whole session, after the long break that follows Session 3. 60 to 90 minutes. Shorter silence. Tissues nearby. You may skip it for a very recent or overwhelming loss: use the afternoon for rest and Scripture instead." data-stop="Rest now" data-break="Take a long break, two hours or more. Leave Session 5 until tomorrow morning unless you feel genuinely settled."> Three-day retreat</label><label><input type="radio" name="plan" value="one" data-route="Session 4 is not part of your plan. Lament needs more time than your plan allows; if you need it, plan a three-day or at-home retreat later." data-stop="Back to the course page" data-break="Session 4 is not part of your plan."> One-day retreat</label><label><input type="radio" name="plan" value="hours" data-route="Session 4 is not part of your plan. Lament needs more time than your plan allows; if you need it, plan a three-day or at-home retreat later." data-stop="Back to the course page" data-break="Session 4 is not part of your plan."> Three-hour reset</label><label><input type="radio" name="plan" value="home" data-route="This is your Day 4. Choose a time when you will not need to be composed for others immediately afterwards. Evening may be better than daytime." data-stop="Stop for today" data-break="Session 5 is on your next retreat day."> At-home retreat</label><label><input type="radio" name="plan" value="couple" data-route="Each of you does the session on your own. Afterwards there is an optional shared moment (see “After this session”)." data-stop="Rest now" data-break="Take a long break, two hours or more. Leave Session 5 until tomorrow morning unless you feel genuinely settled."> Retreat for couples</label><label><input type="radio" name="plan" value="pastor" data-route="The whole session. Give the grief of ministry a place in your lament; use the general lament if the specific one is too close." data-stop="Rest now" data-break="Take a long break, two hours or more. Leave Session 5 until tomorrow morning unless you feel genuinely settled."> Pastors and leaders</label></div><p class="route" id="route" role="status" aria-live="polite"></p><p class="sub" style="margin:.6em 0 0">Your choice is not saved. If you have not chosen yet, the page shows the whole session.</p></section>
+ <section class="card bounds" aria-labelledby="h-bounds"><p class="kicker">Please read before you begin</p><h2 id="h-bounds">You are in charge of how far you go</h2><ul>
+  <li>You may stop at any point, and you may leave anything untouched.</li>
+  <li>If you have a trauma history and exercises involving memory, grief, or silence tend to trigger panic, flashbacks, dissociation, or severe distress, use the supported format or plan this session with a qualified trauma-informed professional. A designated friend can be a steadying presence but is not necessarily equipped to manage a trauma reaction.</li>
+  <li>If your loss is very recent, traumatic, or currently overwhelming your ability to function, you may skip this session entirely and choose simple companionship, rest, or supported prayer instead. You do not need to process a major loss according to the retreat’s timetable.</li></ul>
+  <p class="urgent"><b>If you have thoughts of not wanting to be alive, or cannot keep yourself safe,</b> do not continue: contact local emergency services or a crisis line now, and do not remain alone. <a href="#" onclick="return false">Finding Help Where You Live</a></p>
+  <div class="btns"><a class="btn skip" href="#" onclick="return false">Skip this session and rest</a></div><p class="sub" style="margin:.3em 0 0">This takes you back to the course page. Nothing is marked complete, and you are not sent on to Session 5.</p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this session you will</p><h2 id="h-learn">Pray honestly</h2><ul><li>Hear Psalm 13, a lament in six verses, and notice where it turns</li><li>See that God kept the laments, including Psalm 88, which ends in the dark</li><li>Make room for grief that has had no funeral</li><li>Write your own lament: brief, general, or full</li></ul></section>
+ <section class="card" aria-labelledby="h-before"><p class="kicker">Before you begin</p><h2 id="h-before">After your break</h2><p>You have had a real break since Session 3. If you have not, take one now. This session should not be entered tired, hungry, or directly on the heels of the handing-over exercise.</p><p>This session may bring grief or anger closer to the surface, but that is not something you must force. Its purpose is to give honest, prayerful expression to what you can safely acknowledge today. Have tissues nearby. It is not a sign of anything; it is practical.</p></section>
+ <section class="player" aria-label="Session teaching"><iframe src="player.html" title="Session 4 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · Day 2, afternoon</h4><p>Welcome back. This is Day 2, afternoon.</p><p>You should have had a real break since Session 3: rest, a meal, time away from the page. If you have not, pause the player and take one now. This session should not be entered tired, hungry, or straight after the handing-over exercise.</p><p>This session may bring grief or anger closer to the surface, but that is not something you must force. You are in charge of how far you go. You may stop at any point, and you may leave anything untouched. If you have a trauma history, and memory, grief or silence tend to trigger panic, flashbacks or dissociation, use the supported format, or plan this session with a qualified, trauma-informed professional. And if your loss is very recent, traumatic, or overwhelming your ability to function, you may skip this session entirely, and choose rest, companionship, or supported prayer instead. You do not need to process a major loss according to the retreat’s timetable.</p><p>Have tissues nearby. It is not a sign of anything; it is practical. Our question is this: am I allowed to pray like this?</p><h4>2 · &quot;How long, O LORD?&quot;</h4><p>Our central passage is Psalm 13. It is only six verses. In the book, you are asked to read it three times: once quickly, once slowly, and once noticing where the psalm turns. Listen for the turns now.</p><p>&quot;How long, O Lord? Will you forget me forever? How long will you hide your face from me? How long must I take counsel in my soul and have sorrow in my heart all the day? How long shall my enemy be exalted over me?&quot;</p><p>&quot;Consider and answer me, O Lord my God; light up my eyes, lest I sleep the sleep of death, lest my enemy say, ’I have prevailed over him,’ lest my foes rejoice because I am shaken.&quot;</p><p>&quot;But I have trusted in your steadfast love; my heart shall rejoice in your salvation. I will sing to the Lord, because he has dealt bountifully with me.&quot;</p><h4>3 · God kept all of it</h4><p>Depending on how they are classified, laments make up roughly a third of the Psalms, and are often described as the Psalter’s largest category. That is worth pausing over. The book that has shaped Jewish and Christian prayer for centuries contains far more complaint, grief, protest and unanswered questioning than many Christians expect, and God kept all of it. Whatever you have been taught about keeping your prayers positive, the psalmists were not taught it.</p><p>Four times in two verses the psalmist asks, &quot;How long?&quot; And the questions are not polite. Will you forget me forever? Will you hide your face? Must I carry sorrow all day? Must my enemy win?</p><h4>4 · The Shape of Lament</h4><p>Psalm 13 is a lament in miniature, and it shows a common movement: address, complaint, petition, and renewed trust. Not every biblical lament contains every movement, or places them in the same order, but this one shows the shape clearly. It begins by speaking to God directly. Then it complains. Then it asks: consider me, answer me, light up my eyes. And then, in the final two verses, it turns to trust.</p><p>Notice what the psalm does not do. It does not skip the first four verses to get to the last two. It does not apologise for the questions. In the poem, trust comes after complaint and petition. That does not necessarily mean the pain has ended. It shows that trust can be spoken while the situation remains unresolved, and that it is a decision as much as a feeling: &quot;I have trusted.&quot; Address, complaint, petition, trust. That is a pattern, and it is a permission.</p><h4>5 · Psalm 88 Is Also in the Book</h4><p>But not every lament reaches the trust. Psalm 88 ends like this:</p><p>&quot;You have caused my beloved and my friend to shun me; my companions have become darkness.&quot;</p><p>No turn towards visible resolution, and no closing declaration of renewed joy. Yet it is still a psalm, kept for the worship of God’s people. Lesson 4 mentioned it, and it belongs here as well. Scripture makes room for prayer that ends in the dark. If your lament today does not reach the final verses of Psalm 13, you have not prayed wrongly. Your prayer may end without visible resolution, and that kind of prayer is also in the book.</p><h4>6 · Grief With No Funeral</h4><p>Grief in particular needs this permission, because much of what people carry into a retreat is grief they have never had time or permission to feel. Some of it is the obvious kind: a death, a diagnosis, a divorce, a miscarriage.</p><p>But much of it is less visible. The ministry that did not become what you hoped. The marriage that is not what you prayed for. The friendship that faded without a reason. The version of yourself you expected to be by now. The child who has walked away from faith. The church that hurt you. The body that no longer does what it did. These losses often have no funeral and no casserole, and so they are carried privately, sometimes for years, as a heaviness with no name.</p><h4>7 · Jesus Wept</h4><p>Jesus wept at the tomb of Lazarus. John does not fully explain everything contained in his tears; grief, compassion, and indignation at death may all be present. But the scene shows that the coming resurrection did not make tears inappropriate in the presence of death and human sorrow.</p><p>And on the cross, Jesus prayed the opening words of Psalm 22: &quot;My God, my God, why have you forsaken me?&quot; He entered the language of lament at the height of his suffering. The psalm itself eventually moves towards vindication, but Jesus did not skip its cry of abandonment. If lament was appropriate for him, it is appropriate for you.</p><h4>8 · Honest protest</h4><p>One more thing, because some people need to hear it. Scripture permits us to bring anger, protest, confusion, and even accusation directly to God, rather than disguising them with religious language. At the end of Job, God rebuked Job’s friends, and said that Job had spoken rightly about him in a way they had not. Yet this does not mean every conclusion Job reached in his suffering was correct. Job himself acknowledged that he had spoken about things beyond his understanding. Scripture gives us room to bring our honest questions before God, while remaining willing to have our understanding corrected. Jeremiah told God that he felt deceived. A psalmist asked whether God was asleep.</p><p>Honest prayer does not mean that every conclusion we draw about God is correct. It means we bring the real conclusion to him, where it can be heard, challenged, and transformed. Anger that cannot be acknowledged may deepen isolation; bringing it to God can be a beginning. But if you cannot yet do that, your silence does not place you beyond grace. You may need the presence of another person before words become possible.</p><h4>9 · One question</h4><p>So here is one question to carry into the practice. When you hear Psalm 13’s questions, which one is closest to your own: forgetting, hiding, sorrow, an enemy prevailing, or another phrase from the psalm?</p><p>You do not need to answer it now. You will find it on the page.</p><h4>10 · Put the screen aside</h4><p>This is where the teaching stops. Pause the player now, and put the screen aside if you can.</p><p>On the page you will find the session’s practice: a gentle check-in, a guided prayer with open spaces, ten minutes of silence or less, a few questions for your journal, and the writing of your own lament: brief, general, or full. All three are complete. Stop whenever you need to.</p><p>You do not have to reach the last verses today. You may simply begin where the psalm begins: &quot;How long, O Lord?&quot; Or: &quot;Consider and answer me.&quot;</p></div></details></section>
+
+ <section class="card practice" id="practice" aria-labelledby="h-prac">
+  <p class="kicker">The practice</p><h2 id="h-prac">Now put the screen aside</h2>
+  <p class="durnote">Allow approximately an hour to an hour and a half. This is not a timed exercise. Take breaks, move at your own pace, and stop whenever you need to.</p>
+  <p class="sub">Write in your journal or on the Session 4 workbook pages. Nothing you write is collected.</p>
+
+  <h3><span>1</span>Check-in</h3><p class="sub">In your journal, gently.</p><ol><li>Is there a loss in your life that has received little space, support, or acknowledgment? Name it in a word or a phrase, or in a general word if a specific one is too much.</li><li>Is there something about which you feel angry, disappointed, confused, or abandoned in relation to God? Write it down without softening it.</li><li>When you read Psalm 13’s questions, which one is closest to your own: forgetting, hiding, sorrow, an enemy prevailing, or another phrase from the psalm?</li><li>What have you been told, or told yourself, about whether it is acceptable to pray like this?</li></ol>
+  <p>If any answer brings up more than you can hold, stop here, and use the pause guidance from Lesson 5. You can return to the rest of the session later, or not at all.</p>
+
+  <h3><span>2</span>Guided prayer</h3>
+  <p class="sub">Use only the lines that fit your experience. An empty space can also be a prayer.</p>
+  <div class="audio-box prayer-audio"><div style="width:100%"><b>Guided prayer: Lament, Grief, and Honest Prayer</b> <span class="sub">· a few minutes, with open spaces</span><audio controls preload="metadata" src="guided-prayer-04.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio></div></div>
+  <details class="more"><summary>Words of the recording</summary><div class="prayer-text"><p>This prayer contains open spaces. When you reach one, fill it with your own words, silently or aloud. If the words do not come, leave the space empty. An empty space can also be a prayer.</p><p>You may keep your eyes open. Many people find that easier during lament.</p><p>God, I have been carrying grief I did not have time to feel. And anger I did not believe I was allowed to express.</p><p>You preserved the laments. You preserved Psalm 13. You preserved Psalm 88, which ends in darkness. You gave these prayers a place in Scripture.</p><p>So I will risk bringing you one honest question. How long?</p><p>I do not understand why… I am tired of… I have lost… And I have not been able to say it until now.</p><p>Consider me. Answer me. Light up my eyes.</p><p>I do not have the final verses yet. I cannot say, “I will sing,” today. I will not pretend. Meet me in the part of the prayer I can honestly pray.</p><p>Amen.</p><p>Before entering the silence, notice how you are. If this prayer has brought up more than you can safely hold, do not continue into silence. Open your eyes. Stand and move. Orient yourself to the room. Contact your support person if you need them, and follow the guidance from Lesson 5.</p><p>If you feel able to continue safely, remain where you are and move gently into the silence. Your anchor phrase is: “How long, O LORD?” Or, if that feels too raw today: “Consider and answer me.”</p></div></details>
+  <details class="more" style="margin-top:8px"><summary>If you prefer to read: the prayer from the book</summary><p class="sub">Use only the lines that fit your experience. Change or omit the others.</p><div class="prayer-text"><p>God, I have been carrying grief I did not have time to</p><p>feel, and anger I did not think I was allowed to say.</p><p>You kept the laments.</p><p>You kept Psalm 88.</p><p>Help me risk bringing you one honest question.</p><p>How long?</p><p>I do not understand why ______.</p><p>I am tired of ______.</p><p>I have lost ______, and I have not been able to say so</p><p>until now.</p><p>Consider me.</p><p>Answer me.</p><p>Light up my eyes.</p><p>I do not have the last verses yet.</p><p>Meet me in the first four.</p><p>Amen.</p></div><p class="sub">Fill in the blanks aloud or silently, or leave them empty if the words will not come.</p></details>
+
+  <h3><span>3</span>Silence</h3>
+  <p>Suggested length: ten minutes. This is deliberately shorter than the previous session. If you are already at capacity, five minutes is enough, or none.</p>
+  <p class="anchor">“How long, O <span style="font-variant:small-caps">Lord</span>?” · or: “Consider and answer me.”</p>
+  <p>Do not try to feel anything in this silence, and do not try to stop feeling anything. If tears come, let them. If nothing comes, that is also permitted. God’s presence is not suspended until your grief becomes orderly or your prayer reaches a hopeful conclusion.</p>
+  <div class="walk-safe"><b>If the silence becomes more than sorrow,</b> if it moves into panic, disconnection, or a sense of reliving rather than remembering, stop, open your eyes, and use the orientation exercise from Lesson 5. Contact your support person if you need to. If the reaction is severe, persistent, or includes danger to yourself, contact a qualified professional, crisis service, or emergency service rather than relying only on your designated person.</div>
+  <div class="timer"><span class="clock" id="clock">10:00</span><label class="sub" for="mins">Length</label><select id="mins"><option value="5">5 minutes</option><option value="10" selected>10 minutes</option></select><button class="go" id="tgo">Start</button><button id="treset">Reset</button><p class="sub" id="tstat" role="status" aria-live="polite" style="flex-basis:100%;margin:0">A short spoken opening, then silence, then a short spoken closing.</p></div>
+  <audio id="aOpen10" src="timer-opening-10.mp3" preload="auto"></audio><audio id="aOpen15" src="timer-opening-15.mp3" preload="auto"></audio><audio id="aClose" src="timer-closing.mp3" preload="auto"></audio>
+  <p class="sub">When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop. This timer needs the screen to stay on.</p>
+  <div class="audio-box"><div style="width:100%"><b>Want to put your phone away?</b> <span class="sub">Play the silence as one recording instead. It keeps playing when the screen locks: the opening words, <span id="gsLen">10</span> minutes of silence, then the closing words.</span><audio id="gs" controls preload="none" src="guided-silence-10.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio><a class="sub" id="gsDl" href="guided-silence-10.mp3" download style="display:inline-block;margin-top:4px">⬇ Download this recording</a></div></div>
+
+  <h3><span>4</span>Journal</h3><ol><li>What did you find yourself grieving, or angry about, during the silence? Write it in whatever detail feels safe.</li><li>Psalm 13 moves through address, complaint, petition, and trust. Which of those four have you been skipping in your own prayers? Which have you been stuck in?</li><li>What loss have you felt unable or unwilling to grieve openly, because you believed you should be past it, or because hope seemed to forbid sorrow? Tears are one expression of grief, not the measure of whether grief is real.</li><li>Write one sentence that begins “God, I do not understand why…” and finish it truthfully.</li></ol>
+
+  <h3><span>5</span>Writing your own lament</h3>
+  <p>Choose your level before you begin. All three are complete exercises.</p>
+  <ul class="lam"><li><b>Brief lament:</b> one honest complaint and one request to God.</li><li><b>General lament:</b> use the four movements without writing names or personal details.</li><li><b>Full lament:</b> use the four movements with as much detail as you freely choose. Psalm 13 is your template. It does not need to be long, and it does not need to be poetic.</li></ul>
+  <p class="must">You do not have to complete all four movements. A lament without a statement of trust is still a complete prayer.</p>
+  <ol class="lam"><li><b>Address.</b> Speak to God directly, by whatever name is yours for him.</li><li><b>Complaint.</b> Say what is wrong. Be specific if you can be safely, general if you cannot. Ask “how long?” if that is your question. Do not soften it, and do not add “but I know you have a plan” unless you actually mean it in this moment.</li><li><b>Petition.</b> Ask for what you want, not for what you think you should want. The psalmist asked for his eyes to be lit up so that he would not die. You may tell God even the desire you know is confused, impossible, or wrong. Naming a desire is not endorsing it, and writing it does not give permission to act upon harm. If you feel at risk of harming yourself or someone else, stop and seek immediate help.</li><li><b>Trust.</b> If you can write a confident statement of trust, write it. If you cannot, leave the space blank, write “not yet,” or name the smallest truth you can still hold: “I am still speaking,” “I want to believe,” “I do not know how to leave.” Addressing God honestly may itself be the only trust available today, and Psalm 88 gives you that permission. A blank fourth part is an honest lament, not a failed one.</li></ol>
+  <p>When it is written, read it to God, aloud if you have privacy. Then keep it. Do not tear it up. This is a prayer, and you may want it again. Some people find that returning to their lament weeks later shows them how far they have moved, or shows them that the fourth part has quietly written itself.</p>
+  <p>If the writing opens something you did not expect, stop when you need to. You do not have to finish the lament today. An unfinished lament is still prayer.</p>
+
+  <h3><span>6</span>Closing declaration</h3><p class="sub">Read only what you can say honestly. Adjust the words if you need to.</p>
+  <div class="declare"><p>I have spoken as honestly as I can today.</p><p>My grief does not disqualify me from God’s presence.</p><p>I do not have to be finished with sorrow in order to pray.</p><p>Where trust is difficult, I am willing to remain with one honest word, or to receive support until words return.</p></div>
+ </section>
+
+ <section class="card" id="shorter"><p class="kicker">On your plan</p>
+  <p data-plans="one hours"><b>One-day retreat and three-hour reset.</b> Session 4 is not part of your plan. Lament needs more time than your plan allows; if you need it, plan a three-day or at-home retreat later.</p>
+  <p data-plans="home"><b>At-home retreat.</b> This is your Day 4. Choose a time when you will not need to be composed for others immediately afterwards. Evening may be better than daytime.</p>
+  <p data-plans="pastor"><b>Pastors and leaders.</b> Ministers carry a specific grief that rarely gets named: the ministry that did not become what you hoped, the people who left, the vision that failed, the church that hurt you while you were serving it. Give it a place in your lament. Use the general lament if the specific one is too close.</p>
+  <p data-plans="three couple" data-plan-only>You are following the whole session, as above. You may still skip it for a very recent or overwhelming loss.</p>
+ </section>
+ <section class="card" id="aftercard"><p class="kicker">After this session</p>
+  <p data-plans="three couple pastor"><b>Rest.</b> This has been the hardest hour of the retreat for many people, and the next session, on confession and grace, should not follow it immediately. Take a long break: movement, sleep, food, time outside; two hours or more. The default is to leave Session 5 until tomorrow morning. If, after a long break, a meal, a walk, and time outside, you feel settled enough to continue this evening, you may, but do not assume you should. If this session brought up more than you could hold, stop for the day, and do not attempt Session 5. Session 6, on forgiveness, may also be deferred. The order of the sessions matters more than the clock, and your capacity matters more than completing all ten in three days.</p>
+  <p data-plans="couple" data-plan-only><b>An optional shared moment.</b> After the long break, and before any Session 5, up to twenty minutes together. If both partners freely wish to share, each may offer one brief sentence about what the day was like (“Heavy.” “Better than I expected.”). Either person may choose not to speak; “I cannot talk tonight” is a complete answer. Do not ask to read the other’s lament, request explanations, or interpret what was shared. If you both wish, pray one sentence each.</p>
+  <p data-plans="home" data-plan-only><b>At-home retreat.</b> This is the end of today’s retreat time. Session 5 is your next retreat day.</p>
+  <p data-plans="three one hours home couple pastor"><b>A word for those whose grief is heavy or very recent.</b> You do not need to wait until grief has lasted a particular length of time or become unbearable before seeking support. Consider professional or group support if you are struggling to function, becoming increasingly depressed or anxious, relying on harmful coping strategies, experiencing persistent panic or traumatic reactions, or simply feel that you should not carry this alone. If today has left you with thoughts of not wanting to be alive, follow the guidance from Lesson 5 now. If you may act on those thoughts, have formed a plan, or cannot keep yourself safe, contact local emergency services or go to the nearest emergency department. Ask a trusted person to stay with you while help is arranged. Do not remain alone, and do not continue the retreat.</p>
+ </section>
+ <section class="card deep"><p class="kicker">Optional</p><h2>Go deeper</h2><p>The full text of Session Four from the book, and the Session 4 pages of the Workbook, with a lament page in four parts.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Session Four (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Session 4 workbook pages</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished the practice?</h2><p class="sub mark">Mark it when you have done as much of the practice as you can. Nothing you wrote is asked for.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have finished my Session 4 practice</button><button class="btn ghost" onclick="return false">Stop here and come back later</button></div><div class="after" role="status"><p>Session 4 is complete.</p><div class="btns"><button class="btn gold">Rest now</button></div><p id="breakline">Take a long break, two hours or more. Leave Session 5 until tomorrow morning unless you feel genuinely settled.</p></div></section>
+ <div class="preview-note">Keep all the files in this folder together. Buttons and downloads will work on the website.</div>
+</main>
+
+<script>
+(function(){
+  var route=document.getElementById('route'),line=document.getElementById('breakline');
+  function apply(r){
+    var v=r.value;
+    document.querySelectorAll('#shorter [data-plans], #aftercard [data-plans]').forEach(function(p){
+      p.style.display=p.getAttribute('data-plans').split(' ').indexOf(v)>=0?'block':'none';
+    });
+    var s=document.querySelector('#finish .after .btn.gold'); if(s) s.textContent=r.getAttribute('data-stop');
+    line.textContent=r.getAttribute('data-break');
+  }
+  document.querySelectorAll('input[name="plan"]').forEach(function(r){
+    r.addEventListener('change',function(){ if(r.checked){ route.textContent=r.getAttribute('data-route'); apply(r); } });
+  });
+})();
+</script>
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+(function(){const $=id=>document.getElementById(id);const c=$('clock'),m=$('mins'),go=$('tgo'),rs=$('treset'),st=$('tstat'),close=$('aClose');
+const opening=()=>({10:$('aOpen10'),15:$('aOpen15')})[m.value]||null;
+let phase='idle',left=600,end=0,tick=null,cur=null;
+const show=()=>{const x=Math.max(0,Math.ceil(left));c.textContent=Math.floor(x/60)+':'+String(x%60).padStart(2,'0');};
+const say=t=>{st.textContent=t;};
+function play(a,next){cur=a;a.currentTime=0;a.onended=()=>{cur=null;next();};const p=a.play();if(p)p.catch(()=>{cur=null;next();});}
+function silence(){phase='silence';end=Date.now()+left*1000;say('Silence. Return to your phrase when your attention drifts.');
+  tick=setInterval(()=>{left=(end-Date.now())/1000;show();if(left<=0){clearInterval(tick);tick=null;left=0;show();phase='closing';say('The silence is ending.');play(close,finish);}},250);}
+function finish(){phase='done';c.textContent='Done';go.textContent='Start';say('When you are ready, open your journal.');}
+function unlock(a){if(!a)return;a.muted=true;const p=a.play();if(p)p.then(()=>{a.pause();a.currentTime=0;a.muted=false;}).catch(()=>{a.muted=false;});else{a.pause();a.muted=false;}}
+m.onchange=()=>{if(phase==='idle'||phase==='done'){phase='idle';left=+m.value*60;show();}const g=$('gs');if(g.paused){const u=g.getAttribute('src').replace(/guided-silence-[0-9]+\.mp3/,'guided-silence-'+m.value+'.mp3');g.setAttribute('src',u);$('gsDl').setAttribute('href',u);$('gsLen').textContent=m.value;}};
+$('gs').addEventListener('play',()=>{if(phase==='opening'||phase==='silence'||phase==='closing')rs.click();});go.addEventListener('click',()=>{const g=$('gs');if(!g.paused)g.pause();},true);
+go.onclick=()=>{
+  if(phase==='idle'||phase==='done'){left=+m.value*60;show();unlock(close);go.textContent='Pause';const o=opening();
+    if(o){phase='opening';say('Listen to the opening words.');play(o,silence);}else silence();return;}
+  if(phase==='paused'){go.textContent='Pause';const r=resumeTo;phase=r;if(r==='silence')silence();else if(cur){cur.play();say(r==='opening'?'Listen to the opening words.':'The silence is ending.');}return;}
+  resumeTo=phase;phase='paused';go.textContent='Resume';if(tick){clearInterval(tick);tick=null;}if(cur)cur.pause();say('Paused.');};
+let resumeTo='silence';
+rs.onclick=()=>{if(tick){clearInterval(tick);tick=null;}[$('aOpen10'),$('aOpen15'),close].forEach(a=>{a.pause();a.currentTime=0;a.onended=null;});cur=null;phase='idle';go.textContent='Start';left=+m.value*60;show();say('A short spoken opening, then silence, then a short spoken closing.');};
+window.__timer={get phase(){return phase},get left(){return left},set left(v){left=v;if(phase==='silence')end=Date.now()+v*1000;}};})();
+</script>
+</body></html>
