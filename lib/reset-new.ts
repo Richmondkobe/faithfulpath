@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "session-01";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "session-01";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -153,6 +153,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 8 (PDF)", file: "chapter-08.pdf" },
       { label: "⬇ Lesson 8 worksheet", file: "worksheet-lesson-08.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-09",
+    kind: "lesson",
+    label: "Lesson 9",
+    title: "Creating a Digital Boundary, and What to Bring",
+    narration: "reset-lesson-09.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: "Continue to Lesson 10 ›" },
+    downloads: [
+      { label: "⬇ Chapters 9 and 10 (PDF)", file: "chapter-09.pdf" },
+      { label: "⬇ Lesson 9 worksheet", file: "worksheet-lesson-09.pdf" },
     ],
   },
   {
