@@ -138,6 +138,9 @@ footer{background:#0b1a1d}.bar{background:#22383b}
 
 
 /* Lesson 9 additions */
+/* In a stack, the outgoing item fades out first, then the next fades in, so two never overlap. */
+.stack>.b:not(.on){transition:opacity .25s ease,transform .25s ease}
+.stack>.b.on{transition:opacity .6s ease .25s,transform .6s ease .25s}
 .opt2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(100%,680px);margin:.3em 0 .5em}
 .opt2>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:8px 12px;text-align:left;color:#1f2d4f}
 .opt2 b{display:block;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:#8a6a24}.opt2 .ot{display:block;font-weight:700;font-size:clamp(17px,2.4vw,22px)}
