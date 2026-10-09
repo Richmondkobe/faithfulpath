@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -299,6 +299,27 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session 5 workbook pages", file: "workbook-session-05.pdf" },
     ],
   },
+  {
+    slug: "session-06",
+    kind: "session",
+    label: "Session 6",
+    title: "Forgiving Others and Yourself",
+    narration: "reset-session-06.mp3",
+    pageAudio: [
+      "guided-prayer-06.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+    ],
+    finish: { stop: "Stop for today", next: null },
+    downloads: [
+      { label: "⬇ Session Six (PDF)", file: "session-06.pdf" },
+      { label: "⬇ Session 6 workbook pages", file: "workbook-session-06.pdf" },
+    ],
+  },
 ];
 
 export function findUnit(slug: string): ResetNewUnit | null {
@@ -465,9 +486,12 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   // Finish: the buttons become links. "Continue" goes to the next unit of this
   // edition; until that unit is built it goes back to the course page and says so.
   const home = RESET_NEW_PATH;
-  // "Skip this session and rest" (Session 4): back to the course page, nothing recorded.
-  const skip = `<a class="btn skip" ${DEAD}>Skip this session and rest</a>`;
-  if (html.includes(skip)) html = swap(html, skip, `<a class="btn skip" href="${home}">Skip this session and rest</a>`);
+  // "Skip this session and rest" (Sessions 4 and 5) or "Set this session aside for now" (Session 6):
+  // back to the course page, nothing recorded.
+  for (const label of ["Skip this session and rest", "Set this session aside for now"]) {
+    const skip = `<a class="btn skip" ${DEAD}>${label}</a>`;
+    if (html.includes(skip)) html = swap(html, skip, `<a class="btn skip" href="${home}">${label}</a>`);
+  }
   if (unit.kind === "session") {
     html = swap(
       html,
