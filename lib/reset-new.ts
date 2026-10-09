@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -276,6 +276,27 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Session Four (PDF)", file: "session-04.pdf" },
       { label: "⬇ Session 4 workbook pages", file: "workbook-session-04.pdf" },
+    ],
+  },
+  {
+    slug: "session-05",
+    kind: "session",
+    label: "Session 5",
+    title: "Confession and Grace",
+    narration: "reset-session-05.mp3",
+    pageAudio: [
+      "guided-prayer-05.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+    ],
+    finish: { stop: "Rest before Session 6", next: null },
+    downloads: [
+      { label: "⬇ Session Five (PDF)", file: "session-05.pdf" },
+      { label: "⬇ Session 5 workbook pages", file: "workbook-session-05.pdf" },
     ],
   },
 ];
