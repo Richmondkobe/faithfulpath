@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "session-01";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -179,6 +179,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 11 (PDF)", file: "chapter-11.pdf" },
       { label: "⬇ Lesson 10 worksheet", file: "worksheet-lesson-10.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-11",
+    kind: "lesson",
+    label: "Lesson 11",
+    title: "What to Do When You Are Afraid of Silence",
+    narration: "reset-lesson-11.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: "Continue to Session 1 ›" },
+    downloads: [
+      { label: "⬇ Chapter 12 (PDF)", file: "chapter-12.pdf" },
+      { label: "⬇ Lesson 11 worksheet", file: "worksheet-lesson-11.pdf" },
     ],
   },
   {
