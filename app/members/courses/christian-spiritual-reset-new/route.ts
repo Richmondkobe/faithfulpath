@@ -18,5 +18,5 @@ export async function GET() {
     }
   }
   const [reviewSavedAt, plan, acks] = await Promise.all([getReviewSavedAt(), getPlan(), getAcks()]);
-  return resetHtmlResponse(homeHtml(completed, reviewSavedAt, { planLabel: plan ? PLANS[plan] : null, acks }));
+  return resetHtmlResponse(homeHtml(completed, reviewSavedAt, { planKey: plan, planLabel: plan ? PLANS[plan] : null, acks }));
 }

@@ -106,3 +106,14 @@ and the "Your record" card in `homeHtml`.
   its date ("You completed ... on 12 October 2026."), Come Home Well (n of 5,
   recommended, not required), and the Day 30 Review. No certificate, no score.
 
+## My Retreat Plan view (course page)
+
+Design section 10. `ITINERARY` in `lib/reset-new.ts`: for each of the eight plans,
+its sessions in order with the member's own days or times (from the book's Part
+Four and the session pages). On the course page, a "My Retreat Plan" card sits
+just before Session 1, and each session's line says "In your plan · Your Day 2,
+morning", "Optional for your plan" or "Additional to your plan". All ten sessions
+stay in the list; none is hidden or shown as missing. Without a confirmed plan,
+the card asks the member to confirm it in Session 1. Nothing new is saved: it
+reads the plan already saved on Session 1.
+

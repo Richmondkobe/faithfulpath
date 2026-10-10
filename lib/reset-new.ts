@@ -770,9 +770,101 @@ const LOCAL_DATES = `<script data-reset>document.querySelectorAll('time.ld').for
 
 /** The test edition's own small contents page. */
 /** The member's record for the course page: their confirmed plan and the dated acknowledgements. */
-export type ResetRecord = { planLabel: string | null; acks: { title: string; date: string }[] };
+export type ResetRecord = { planKey?: string | null; planLabel: string | null; acks: { title: string; date: string }[] };
+
+/*
+ * My Retreat Plan (design, section 10): for each plan, its sessions in itinerary
+ * order with the member's own days and times, from the book's Part Four and the
+ * approved session pages. Sessions not listed stay in the library, labelled
+ * "Optional for your plan" (OPTIONAL) or "Additional to your plan"; never hidden,
+ * never shown as missing.
+ */
+type Stop = { slug: string; when: string; note?: string };
+const THREE_DAY: Stop[] = [
+  { slug: "session-01", when: "Day 1, morning" },
+  { slug: "session-02", when: "Day 1, afternoon" },
+  { slug: "session-03", when: "Day 2, morning" },
+  { slug: "session-04", when: "Day 2, afternoon", note: "may be left for later after a very recent or overwhelming loss" },
+  { slug: "session-05", when: "Day 2, evening, only if settled; otherwise Day 3, morning" },
+  { slug: "session-07", when: "Day 3, late morning" },
+  { slug: "session-10", when: "Day 3, late afternoon" },
+];
+export const ITINERARY: Record<string, { intro: string; stops: Stop[]; optional: string[] }> = {
+  three: { intro: "Three days.", stops: THREE_DAY, optional: ["session-08", "session-09", "session-06"] },
+  couple: { intro: "Three days, each of you separately, with three shared moments.", stops: THREE_DAY, optional: ["session-08", "session-09", "session-06"] },
+  pastor: { intro: "Three days. Session 9 is recommended as your one flex session, on Day 3 if you are rested.", stops: THREE_DAY, optional: ["session-09", "session-08", "session-06"] },
+  one: {
+    intro: "One day. Each session in its shortened form (\u201cOn a shorter plan\u201d on the session page).",
+    stops: [
+      { slug: "session-01", when: "9:15" },
+      { slug: "session-02", when: "10:20" },
+      { slug: "session-03", when: "12:35" },
+      { slug: "session-07", when: "15:00", note: "may be dropped if Session 3 leaves you needing more rest" },
+      { slug: "session-10", when: "16:05" },
+    ],
+    optional: [],
+  },
+  hours: {
+    intro: "Three hours: brief elements of four sessions (\u201cOn a shorter plan\u201d on each session page). An immediate pause, not the full retreat.",
+    stops: [
+      { slug: "session-01", when: "0:15" },
+      { slug: "session-02", when: "0:50" },
+      { slug: "session-03", when: "1:45" },
+      { slug: "session-10", when: "2:35" },
+    ],
+    optional: [],
+  },
+  home8: {
+    intro: "Eight days at home, one session a day, with a rest day on Day 5.",
+    stops: [
+      { slug: "session-01", when: "Day 1" }, { slug: "session-02", when: "Day 2" }, { slug: "session-03", when: "Day 3" },
+      { slug: "session-04", when: "Day 4" }, { slug: "session-05", when: "Day 6, only if settled" },
+      { slug: "session-07", when: "Day 7" }, { slug: "session-10", when: "Day 8" },
+    ],
+    optional: ["session-08", "session-09", "session-06"],
+  },
+  home12: {
+    intro: "Twelve days at home, with rest days on Days 5 and 7.",
+    stops: [
+      { slug: "session-01", when: "Day 1" }, { slug: "session-02", when: "Day 2" }, { slug: "session-03", when: "Day 3" },
+      { slug: "session-04", when: "Day 4" }, { slug: "session-05", when: "Day 6, only if settled" },
+      { slug: "session-06", when: "Day 8", note: "only if the conditions at the top of the session are met; setting it aside is a legitimate decision" },
+      { slug: "session-07", when: "Day 9" }, { slug: "session-08", when: "Day 10" }, { slug: "session-09", when: "Day 11" },
+      { slug: "session-10", when: "Day 12" },
+    ],
+    optional: [],
+  },
+  group: {
+    intro: "With your group. Your leader sets the days; this is the usual order.",
+    stops: [
+      { slug: "session-01", when: "First" }, { slug: "session-02", when: "Second" }, { slug: "session-03", when: "Third" },
+      { slug: "session-04", when: "Fourth" }, { slug: "session-05", when: "Fifth" }, { slug: "session-07", when: "Sixth" },
+      { slug: "session-10", when: "Last" },
+    ],
+    optional: ["session-08", "session-09", "session-06"],
+  },
+};
 
 export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = null, record: ResetRecord = { planLabel: null, acks: [] }): string {
+  const plan = record.planKey ? ITINERARY[record.planKey] : undefined;
+  const s1 = RESET_NEW_UNITS.find((u) => u.slug === "session-01");
+  const changeLink = `${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan`;
+  const sessionNote = (slug: string): string => {
+    if (!plan) return "Retreat session";
+    const stop = plan.stops.find((x) => x.slug === slug);
+    if (stop) return `In your plan · ${/^\d/.test(stop.when) ? stop.when : `Your ${stop.when}`}`;
+    return plan.optional.includes(slug) ? "Optional for your plan" : "Additional to your plan";
+  };
+  const titleOf = (slug: string) => RESET_NEW_UNITS.find((u) => u.slug === slug)?.title ?? "";
+  const planCard = plan
+    ? `<li class="myplan"><div><p class="k2">My Retreat Plan · ${escapeHtml(record.planLabel ?? "")}</p><p class="m">${escapeHtml(plan.intro)}</p><ol>${plan.stops
+        .map((x) => {
+          const n = Number(x.slug.slice(-2));
+          const when = /^\d/.test(x.when) ? x.when : `Your ${x.when}`;
+          return `<li><a href="${RESET_NEW_PATH}/${x.slug}"><b>${escapeHtml(when)}:</b> Session ${n} · ${escapeHtml(titleOf(x.slug))}</a>${completed.has(x.slug) ? ' <span class="ok">✓</span>' : ""}${x.note ? `<br><span class="m">${escapeHtml(x.note)}</span>` : ""}</li>`;
+        })
+        .join("")}</ol>${plan.optional.length ? `<p class="m">Optional for your plan: ${[...plan.optional].sort().map((x) => `Session ${Number(x.slice(-2))}`).join(", ")}, now or in the 30-day plan.</p>` : ""}<p class="m">The sessions are offered, not assigned. A session left for later is optional material, not a missing requirement. Every session stays in the list below. <a href="${changeLink}">Change your plan in Session 1</a></p></div></li>`
+    : `<li class="myplan"><div><p class="k2">My Retreat Plan</p><p class="m">Confirm your retreat plan at the start of Session 1, and your sessions will appear here in your own order, with your days. Until then, every session is shown. <a href="${changeLink}">Confirm my plan</a></p></div></li>`;
   const rows = RESET_NEW_UNITS.map((u) => {
     const done = completed.has(u.slug);
     const guides = RESET_NEW_GUIDES.filter((g) => g.before === u.slug)
@@ -783,11 +875,11 @@ export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = 
       u.slug === "lesson-16" && reviewSavedAt
         ? `<span class="st rv">Day 30 Review saved, ${localDate(reviewSavedAt)} (private)</span>`
         : "";
-    return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span>${review}</a></li>`;
+    const before = u.slug === "session-01" ? planCard : "";
+    return `${guides}${before}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? sessionNote(u.slug) : "Teaching lesson"}</span>${review}</a></li>`;
   }).join("");
   // Three separate things, never interchangeable (design, section 13; Lesson 16 review):
   // the retreat route completed, the thirty-day follow-up, and the private Day 30 Review.
-  const s1 = RESET_NEW_UNITS.find((u) => u.slug === "session-01");
   const homeWell = ["lesson-12", "lesson-13", "lesson-14", "lesson-15", "lesson-16"].filter((x) => completed.has(x)).length;
   const recordCard = `<section class="rec" aria-labelledby="h-rec"><h2 id="h-rec">Your record</h2>
 <p><b>Retreat plan:</b> ${record.planLabel ? `${escapeHtml(record.planLabel)}. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Change it in Session 1</a>` : `not confirmed yet. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Confirm it at the start of Session 1</a>`}</p>
@@ -814,7 +906,7 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}.st.rv{grid-column:2;color:#1f2d4f}
 .rec{background:#fffaf0;border:2px solid #c99a4a;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .rec h2{font:600 20px/1.3 'Source Serif 4',serif;margin:0 0 6px}.rec p{margin:.35em 0}.rec .m{color:#5a6577;font-size:15px}
-.rec a{color:#8a6a24}.lg{background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;padding:10px 14px;font-size:15px;margin:0 0 18px}.lg a{color:#8a6a24;font-weight:700;white-space:nowrap}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
+.rec a{color:#8a6a24}li.myplan>div{background:#f4f7f1;border:2px solid #8fa58e;border-radius:14px;padding:14px 16px}li.myplan .k2{font:600 13px/1.3 'Source Sans 3',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4d6b4a;margin:0 0 4px}li.myplan ol{margin:.4em 0;padding-left:1.3em}li.myplan ol li{margin:.35em 0;line-height:1.4}li.myplan ol a{display:inline;background:none;border:0;padding:0;color:#1f2d4f;text-decoration:none}li.myplan ol a:hover{text-decoration:underline}li.myplan .m{font-size:15px;color:#5a6577;margin:.3em 0}li.myplan .m a{display:inline;background:none;border:0;padding:0;border-radius:0;color:#8a6a24;text-decoration:underline}li.myplan .ok{color:#2f6b3a;font-weight:700}.lg{background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;padding:10px 14px;font-size:15px;margin:0 0 18px}.lg a{color:#8a6a24;font-weight:700;white-space:nowrap}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>
