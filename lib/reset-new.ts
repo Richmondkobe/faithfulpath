@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -407,7 +407,40 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session 10 workbook pages", file: "workbook-session-10.pdf" },
     ],
   },
+  {
+    slug: "lesson-12",
+    kind: "lesson",
+    label: "Lesson 12",
+    title: "Testing What You Believe You Heard",
+    narration: "reset-lesson-12.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: null },
+    downloads: [
+      { label: "⬇ Chapter 13 (PDF)", file: "chapter-13.pdf" },
+      { label: "⬇ Lesson 12 worksheet", file: "worksheet-lesson-12.pdf" },
+    ],
+  },
 ];
+
+/**
+ * Short pages of the course with no recording and nothing to complete,
+ * listed on the course page just before the unit they introduce.
+ * Each is content/courses/christian-spiritual-reset-new/guides/<slug>.html.
+ */
+export type ResetNewGuide = { slug: "first-30-days"; label: string; title: string; before: ResetNewUnit["slug"] };
+export const RESET_NEW_GUIDES: ResetNewGuide[] = [
+  { slug: "first-30-days", label: "Part 4", title: "Your First 30 Days Home", before: "lesson-12" },
+];
+
+export function findGuide(slug: string): ResetNewGuide | null {
+  return RESET_NEW_GUIDES.find((g) => g.slug === slug) ?? null;
+}
+
+export const guidePath = (g: ResetNewGuide) => `${RESET_NEW_PATH}/${g.slug}`;
+
+export async function readGuideFile(g: ResetNewGuide): Promise<string> {
+  return readFile(join(CONTENT_ROOT, "guides", `${g.slug}.html`), "utf8");
+}
 
 export function findUnit(slug: string): ResetNewUnit | null {
   return RESET_NEW_UNITS.find((u) => u.slug === slug) ?? null;
@@ -550,6 +583,11 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
     `<a ${DEAD}>Finding Help Where You Live</a>`,
     '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
   );
+  // "See Your First 30 Days Home" and any other link to a guide page.
+  for (const g of RESET_NEW_GUIDES) {
+    const link = `<a ${DEAD}>See ${g.title}</a>`;
+    if (html.includes(link)) html = swap(html, link, `<a href="${guidePath(g)}">See ${g.title}</a>`);
+  }
   for (const d of unit.downloads) {
     html = swap(html, `<a class="btn" ${DEAD}>${d.label}</a>`, `<a class="btn" href="${downloadHref(d.file)}">${d.label}</a>`);
   }
@@ -627,11 +665,33 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   return html;
 }
 
+/** A guide page as the website serves it: no player, nothing to complete. */
+export function guideHtml(g: ResetNewGuide, raw: string): string {
+  let html = retitle(swap(raw, GOOGLE_FONTS, SELF_HOSTED_FONTS), `${g.title} · The Christian Spiritual Reset`);
+  html = beforeHeadEnd(html, NOINDEX);
+  html = beforeHeadEnd(html, NEVER_STALE);
+  const notes = html.match(/ *<div class="preview-note">[^<]*<\/div>\n?/g) ?? [];
+  if (notes.length !== 1) throw new Error(`Expected one preview note, found ${notes.length}.`);
+  html = swap(html, notes[0], "");
+  html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  html = swap(html, `<a ${DEAD}>Need help?</a>`, '<a href="/contact">Need help?</a>');
+  html = swap(
+    html,
+    `<a ${DEAD}>Finding Help Where You Live</a>`,
+    '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
+  );
+  html = swap(html, `<a class="btn gold" ${DEAD}>Back to the course page</a>`, `<a class="btn gold" href="${RESET_NEW_PATH}">Back to the course page</a>`);
+  return html;
+}
+
 /** The test edition's own small contents page. */
 export function homeHtml(completed: Set<string>): string {
   const rows = RESET_NEW_UNITS.map((u) => {
     const done = completed.has(u.slug);
-    return `<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span></a></li>`;
+    const guides = RESET_NEW_GUIDES.filter((g) => g.before === u.slug)
+      .map((g) => `<li><a href="${guidePath(g)}"><span class="lab">${escapeHtml(g.label)}</span><span class="t">${escapeHtml(g.title)}</span><span class="st">The month at a glance</span></a></li>`)
+      .join("");
+    return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span></a></li>`;
   }).join("");
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Christian Spiritual Reset · Test edition</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
