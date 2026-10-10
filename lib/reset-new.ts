@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -363,6 +363,27 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Session Eight (PDF)", file: "session-08.pdf" },
       { label: "⬇ Session 8 workbook pages", file: "workbook-session-08.pdf" },
       { label: "If you are not sure you belong to Christ", file: "belong-to-christ.pdf" },
+    ],
+  },
+  {
+    slug: "session-09",
+    kind: "session",
+    label: "Session 9",
+    title: "Renewing Your Purpose",
+    narration: "reset-session-09.mp3",
+    pageAudio: [
+      "guided-prayer-09.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+    ],
+    finish: { stop: "Rest before Session 10", next: null },
+    downloads: [
+      { label: "⬇ Session Nine (PDF)", file: "session-09.pdf" },
+      { label: "⬇ Session 9 workbook pages", file: "workbook-session-09.pdf" },
     ],
   },
 ];
