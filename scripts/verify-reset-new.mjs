@@ -42,5 +42,20 @@ check(reads.length && reads.every((r) => r === "RESET_NEW_KEY"), "reads only its
 check(/RESET_NEW_KEY = "christian-spiritual-reset-new"/.test(all), "course key is christian-spiritual-reset-new", "course key changed");
 check(!(/journal|course_reflections/.test(all)), "never touches the journal or reflections", "mentions the journal or reflections");
 
+
+// My Day 30 Review (Lesson 16): the one other thing this edition saves, in its own file.
+const rv = readFileSync(join(root, "lib/reset-new-review.ts"), "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+const rvTables = [...rv.matchAll(/\.from\("([^"]+)"\)/g)].map((m) => m[1]);
+check(rvTables.length && rvTables.every((t) => t === "course_private_answers"), "review touches only: course_private_answers", `review touches: ${rvTables.join(", ")}`);
+check(!(/\.update\(|\.rpc\(|supabaseAdmin|service_role/.test(rv)), "review never updates in bulk, calls a database function or uses the admin key", "review uses update, rpc or the admin key");
+check(/REVIEW_PAGE = "day-30-review"/.test(rv), "review page key is day-30-review", "review page key changed");
+const rvWrites = [...rv.matchAll(/course_slug:\s*([\w"'-]+)/g)].map((m) => m[1]);
+check(rvWrites.length && rvWrites.every((w) => w === "RESET_NEW_KEY") && [...rv.matchAll(/page_slug:\s*([\w"'-]+)/g)].every((m) => m[1] === "REVIEW_PAGE"), "review writes only this edition's day-30-review rows", "review writes other rows");
+const rvReads = [...rv.matchAll(/\.eq\("(course_slug|page_slug)",\s*([\w"'-]+)\)/g)].map((m) => m[2]);
+check(rvReads.length && rvReads.every((r) => r === "RESET_NEW_KEY" || r === "REVIEW_PAGE"), "review reads only this edition's day-30-review rows", `review reads ${rvReads.join(", ")}`);
+const deletes = rv.split(".delete()").slice(1).map((d) => d.slice(0, d.indexOf(";")));
+check(deletes.length && deletes.every((d) => d.includes('.eq("user_id", learner.userId)') && d.includes('.eq("course_slug", RESET_NEW_KEY)') && d.includes('.eq("page_slug", REVIEW_PAGE)')), "review deletes only the member's own day-30-review rows", "a review delete is not limited to the member's own review");
+check(!(/journal|course_reflections|course_progress|certificate/.test(rv)), "review never touches progress, the journal, reflections or certificates", "review mentions progress, the journal, reflections or certificates");
+
 console.log(failed ? `\n${failed} problem(s).` : "\nAll checks passed.");
 process.exit(failed ? 1 : 0);

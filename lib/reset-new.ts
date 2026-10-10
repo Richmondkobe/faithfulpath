@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13" | "lesson-14" | "lesson-15";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13" | "lesson-14" | "lesson-15" | "lesson-16";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -459,6 +459,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Lesson 15 worksheet", file: "worksheet-lesson-15.pdf" },
     ],
   },
+  {
+    slug: "lesson-16",
+    kind: "lesson",
+    label: "Lesson 16",
+    title: "Your 30-Day Spiritual Renewal Plan",
+    narration: "reset-lesson-16.mp3",
+    pageAudio: [],
+    finish: { stop: "Back to the course page", next: null },
+    downloads: [
+      { label: "⬇ Chapter 17 (PDF)", file: "chapter-17.pdf" },
+      { label: "⬇ Day 30 Review worksheet", file: "worksheet-day-30-review.pdf" },
+    ],
+  },
 ];
 
 /**
@@ -634,6 +647,15 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   for (const d of unit.downloads) {
     html = swap(html, `<a class="btn" ${DEAD}>${d.label}</a>`, `<a class="btn" href="${downloadHref(d.file)}">${d.label}</a>`);
   }
+  // Lesson 16: the link to Lesson 15, the worksheet link inside My Day 30 Review,
+  // and where the review saves (lib/reset-new-review.ts; the preview saves nothing).
+  if (unit.slug === "lesson-16") {
+    const l15 = RESET_NEW_UNITS.find((u) => u.slug === "lesson-15");
+    if (!l15) throw new Error("Lesson 16 links to Lesson 15, which is missing.");
+    html = swap(html, `<a ${DEAD}>Go to Lesson 15</a>`, `<a href="${unitPath(l15)}">Go to Lesson 15</a>`);
+    html = swap(html, `<a ${DEAD}>Day 30 Review worksheet</a>`, `<a href="${downloadHref("worksheet-day-30-review.pdf")}">Day 30 Review worksheet</a>`);
+    html = beforeHeadEnd(html, `<script data-reset>window.RESET_REVIEW_URL=${JSON.stringify(`${unitPath(unit)}/review`)};</script>`);
+  }
 
   // The session's own recordings: guided prayer and the silence timer.
   for (const file of unit.pageAudio) {
@@ -727,14 +749,23 @@ export function guideHtml(g: ResetNewGuide, raw: string): string {
   return html;
 }
 
+function longDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
+
 /** The test edition's own small contents page. */
-export function homeHtml(completed: Set<string>): string {
+export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = null): string {
   const rows = RESET_NEW_UNITS.map((u) => {
     const done = completed.has(u.slug);
     const guides = RESET_NEW_GUIDES.filter((g) => g.before === u.slug)
       .map((g) => `<li><a href="${guidePath(g)}"><span class="lab">${escapeHtml(g.label)}</span><span class="t">${escapeHtml(g.title)}</span><span class="st">The month at a glance</span></a></li>`)
       .join("");
-    return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span></a></li>`;
+    // Lesson 16's Day 30 Review is shown on its own line: completing the lesson and saving a review are separate.
+    const review =
+      u.slug === "lesson-16" && reviewSavedAt
+        ? `<span class="st rv">Day 30 Review saved, ${escapeHtml(longDate(reviewSavedAt))} (private)</span>`
+        : "";
+    return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span>${review}</a></li>`;
   }).join("");
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Christian Spiritual Reset · Test edition</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
@@ -752,7 +783,7 @@ li a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;background:#fffaf0
 li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0 3px rgba(138,106,36,.25)}
 .lab{grid-row:span 2;font:600 13px/1.2 'Source Sans 3',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24;padding-top:4px}
 .t{font:600 19px/1.3 'Source Serif 4',serif}
-.st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}
+.st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}.st.rv{grid-column:2;color:#1f2d4f}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>

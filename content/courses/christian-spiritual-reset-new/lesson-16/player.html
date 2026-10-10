@@ -1,0 +1,1030 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Christian Spiritual Reset · Lesson 16</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{
+  --night:#0d1f22;--navy:#1f3a3d;--slate:#4d5a6c;--gold:#d4a24c;--gold-soft:#e8c98a;
+  --sun:#f3e7c9;--sand:#dcc59c;--olive:#7d7a5e;--path:#b19475;--cream:#f7f1e3;--ink:#1f3a3d;--mute:#5d6676;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+
+/* ---------- slide stage ---------- */
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease,color 1.2s ease}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 55%,#4a4a52 88%,#b8925a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7f1e3 70%,#efe2c4 100%);color:var(--ink)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:16vh;min-height:70px;pointer-events:none}
+.hills path{transition:fill 1.2s ease}
+#stage.dark .h1{fill:#3c4150}#stage.dark .h2{fill:#2c3140}#stage.dark .h3{fill:#232838}
+#stage.light .h1{fill:#e9dcbc}#stage.light .h2{fill:#e2d2ad}#stage.light .h3{fill:#d8c59c}
+.slide{position:absolute;inset:0;padding:5vh 6vw 17vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .6s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,880px);display:flex;flex-direction:column;align-items:center}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.32em;text-transform:uppercase;font-size:clamp(11px,1.6vw,14px);color:var(--gold);margin:0 0 1.1em}
+.label::after{content:"";display:block;width:3.2em;height:1px;background:currentColor;margin:.7em auto 0;opacity:.7}
+h1{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:clamp(28px,5.4vw,58px);line-height:1.12;margin:0 0 .35em;letter-spacing:-.01em}
+h2{font-family:'Source Serif 4',serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.8vw,28px);margin:0 0 .6em;color:var(--gold)}
+.light h2{color:#a8792b}
+.scene{width:min(100%,760px);height:auto;display:block;overflow:visible;margin:.2em auto .4em}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.9vw,30px);line-height:1.5;max-width:30em;margin:.2em auto .4em}
+.scripture .ref{display:block;margin-top:.8em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.ph{opacity:.12;transition:opacity .8s ease}.ph.on{opacity:1}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}
+u.k.on{background-size:100% 3px}
+.word{font-family:'Source Serif 4',serif;font-size:clamp(34px,7vw,78px);font-style:italic;margin:.05em 0}
+.gloss{font-size:clamp(16px,2.4vw,24px);color:var(--mute);margin:0 0 .4em}
+.dark .gloss{color:#cfd3db}
+.cards{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.card{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.8em 1.1em;min-width:12em;text-align:left;font-size:clamp(15px,2vw,20px);color:var(--ink);transition:transform .8s ease,box-shadow .8s ease,opacity .8s}
+.card b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:.2em}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(212,162,76,.35);transform:translateY(-4px)}
+
+/* ---------- beats ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .8s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.7);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.2s ease,opacity .4s}
+.draw.on{stroke-dashoffset:0}
+.out{transition:opacity 1s ease}.out.gone{opacity:.0}
+.run.on{animation:run 3.2s ease-out forwards}
+@keyframes run{from{transform:translateX(-120px)}to{transform:none}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}.twinkle:nth-child(3n){animation-delay:2.1s}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:.9}}
+.rays{transform-origin:320px 330px;animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.04)}}
+.note{animation:float 3s ease-in-out infinite}.note.n2{animation-delay:1s}.note.n3{animation-delay:2s}
+@keyframes float{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(-34px);opacity:0}}
+
+
+.stack{display:grid;width:100%;justify-items:center;align-items:center}.stack>*{grid-area:1/1}
+.badge{display:inline-flex;align-items:center;gap:.5em;font-weight:700;letter-spacing:.06em;font-size:clamp(14px,2vw,18px);color:var(--gold);border:1px solid currentColor;border-radius:2em;padding:.35em 1em .35em .6em;margin:0 0 1em}
+.badge svg{width:1.6em;height:1.6em}
+.nots{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);margin-top:.4em}
+.not{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;font-size:clamp(16px,2.3vw,22px)}
+.wrong{position:relative;color:var(--mute);padding:.35em .8em;border-radius:10px;background:#efe6d2}
+.wrong i{position:absolute;left:6%;right:6%;top:50%;height:3px;background:var(--gold);transform-origin:left;transform:scaleX(0);transition:transform .7s ease,opacity .3s}
+.wrong i.on{transform:scaleX(1)}
+.truth{font-weight:700;color:var(--ink);padding:.35em .8em;border-radius:10px;background:#fffaf0;border:2px solid var(--gold)}
+.steps{text-align:left;font-size:clamp(16px,2.3vw,22px);line-height:1.45;margin:.2em auto .6em;padding-left:1.4em;max-width:34em}
+.steps li{margin:.35em 0}.steps b{color:#a8792b}
+.fs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;position:relative}
+.fs span{border:1px solid #d9c9a3;border-radius:2em;padding:.3em .9em;font-size:clamp(13px,1.8vw,16px);color:var(--mute);background:#fbf6ea}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700}
+.fs span.lit:not(.on){opacity:.35}
+.remember{display:flex;flex-direction:column;gap:12px;width:min(100%,760px);text-align:left}
+.remember>div{display:flex;gap:14px;align-items:center;background:rgba(243,231,201,.07);border:1px solid rgba(212,162,76,.45);border-radius:14px;padding:.6em .9em}
+.remember svg{width:44px;height:44px;flex:none;color:var(--gold)}
+.remember p{margin:0;font-size:clamp(15px,2.1vw,20px);color:#e8e2d0}.remember b{display:block;color:var(--sun);font-size:1.05em}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.8vw,28px);line-height:1.5;max-width:30em;color:var(--sun)}
+.prayer p{margin:.25em 0}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sunrise{opacity:0;transform:translateY(80px);transition:transform 40s linear,opacity 3s ease}.sunrise.on{opacity:.55;transform:translateY(-10px)}
+.sunup{transform:translateY(60px);transition:transform 6s ease,opacity 2s}.sunup.on{transform:none}
+
+/* ---------- preview captions + controls ---------- */
+#cap{position:absolute;left:50%;bottom:2.2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(18,27,48,.78);color:#f3e7c9;border-radius:10px;padding:.5em .9em;font-size:clamp(13px,1.8vw,16px);line-height:1.4;text-align:center;backdrop-filter:blur(4px)}
+#cap.hide{display:none}
+footer{background:#0f1729;color:#e8e2d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#e8e2d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:var(--gold);border-color:var(--gold);color:#0d1f22;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid var(--gold-soft);outline-offset:2px}
+.bar{height:4px;background:#2a3550;border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+.bar i{display:block;height:100%;width:0;background:var(--gold)}
+.dots{display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:var(--gold)}
+.small{color:#9aa3b5;font-size:13px}
+@media (prefers-reduced-motion:reduce){.b,.draw,.ph,u.k,.card,.slide{transition:none!important}.twinkle,.rays,.note,.run.on{animation:none!important}}
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,760px);margin:0 0 .6em}.method div{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fffaf0;border:2px solid #d4a24c;border-radius:14px;padding:8px 6px;font-size:clamp(12px,1.7vw,16px);color:#1f3a3d;text-align:center}.method svg{width:34px;height:34px;color:#a8792b}
+.method.five{grid-template-columns:repeat(5,1fr)}.method.dark div{background:rgba(243,231,201,.06);color:#f3e7c9;border-color:#d4a24c}.method.dark svg{color:#e8c98a}.method small{font-size:.78em;opacity:.8}.method .dim,.method .step{opacity:.35;transition:opacity .6s}.method .step.on{opacity:1}
+.checks{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;width:min(100%,760px);text-align:left}.checks li{position:relative;padding-left:1.6em;font-size:clamp(14px,1.9vw,18px);color:#1f3a3d}.checks li::before{content:'\2713';position:absolute;left:0;color:#a8792b;font-weight:700}@media(max-width:560px){.checks{grid-template-columns:1fr}}
+
+/* ===== Establish palette (cover: evening teal, stone, hillside green, gold) ===== */
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-soft:#e3c98a;--sun:#f1ead6;--ink:#1f3a3d;--mute:#5c6b66;--cream:#f8f4e8}
+body{background:#0d1f22}
+#stage.dark{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 52%,#4c5a50 86%,#a98f5a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf8ef 0%,#f6f1e2 68%,#e8e6d0 100%);color:var(--ink)}
+#stage.dark .h1{fill:#3d5246}#stage.dark .h2{fill:#2e4136}#stage.dark .h3{fill:#22322b}
+#stage.light .h1{fill:#dfe3cc}#stage.light .h2{fill:#d1d8bd}#stage.light .h3{fill:#c3cdaf}
+.label{color:#c9a24a}.light .label{color:#8a6a24}
+.light h2{color:#8a6a24}
+.steps b{color:#8a6a24}
+.card{background:#fbf8ef;border-color:#d9d2b8}
+.card.glow.on{box-shadow:0 0 0 3px var(--gold),0 10px 30px rgba(201,162,74,.35)}
+.wrong{background:#ece8d8}
+.fs span{border-color:#cfc8ab;background:#fbf8ef}
+.fs span.lit{background:var(--gold);border-color:var(--gold);color:#0d1f22}
+.remember>div{background:rgba(241,234,214,.07);border-color:rgba(201,162,74,.5)}
+.remember p{color:#e4e2d4}
+.method div{background:#fbf8ef;border-color:#c9a24a;color:#1f3a3d}.method svg{color:#8a6a24}
+.method.dark div{background:rgba(241,234,214,.06);color:#f1ead6;border-color:#c9a24a}.method.dark svg{color:#e3c98a}
+.checks li{color:#1f3a3d}.checks li::before{color:#8a6a24}
+.badge{color:#8a6a24}.dark .badge,#stage.dark .badge{color:#d9b25c}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(18px,2.7vw,28px);line-height:1.45;max-width:28em;margin:0}
+.quote .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.55em;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.liftv{transition:transform 1.2s ease}.b.on .liftv{animation:lift 4s ease-in-out 1}
+@keyframes lift{0%{transform:none}35%{transform:translate(40px,-40px)}65%{transform:translate(40px,-40px)}100%{transform:none}}
+.sunmove{transition:transform 6s ease}.b.on .sunmove{transform:translate(190px,-36px)}
+#cap{background:rgba(11,26,29,.8);color:#f1ead6}
+footer{background:#0b1a1d}.bar{background:#22383b}
+.bar.seek{cursor:pointer;height:8px}
+.stack>*{width:100%;display:flex;flex-direction:column;align-items:center}
+.dove{transform-box:fill-box;transform-origin:center}.b.on .dove{animation:dove 3s ease-out 1}@keyframes dove{from{transform:translateY(-40px);opacity:0}to{transform:none;opacity:1}}
+
+/* Lesson 15 additions */
+.cards4 b{font-variant-numeric:lining-nums}
+.cards4.urg{grid-template-columns:1fr;gap:5px;width:min(100%,660px)}
+.cards4.urg>div{display:flex;gap:12px;align-items:baseline;text-align:left;padding:6px 12px}
+.cards4.urg b{flex:0 0 11.5em;font-size:clamp(16px,2.1vw,19px)}
+.cards4.urg span{margin-top:0;font-size:clamp(13px,1.7vw,15px)}
+.cards4.urg>div.red{border:2px solid #7a2e1f;box-shadow:0 3px 0 #dcb6aa}.cards4.urg>div.red b{color:#7a2e1f}
+@media(max-width:600px){.cards4.urg>div{flex-wrap:wrap;gap:0}.cards4.urg b{flex-basis:100%}}
+.stopcard.safety p{font-size:clamp(15px,2vw,18px)}
+
+
+
+
+/* Lesson 12 additions */
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(100%,640px);margin:.3em auto .4em}
+.cards4>div{background:#fffaf0;border:1px solid #e0d4b6;border-radius:8px;box-shadow:0 3px 0 #e0d4b6;padding:8px 6px;color:#1f2d4f;font-weight:700;font-size:clamp(14px,1.9vw,17px);line-height:1.2}
+.cards4 b{display:block;font-family:"Source Serif 4",Georgia,serif;font-size:clamp(24px,3.6vw,34px);color:#8a6a24;line-height:1.1}
+.cards4 span{display:block;font-weight:400;font-size:clamp(12px,1.6vw,14px);color:#5a6577;margin-top:2px}
+.cards4.three3{grid-template-columns:repeat(3,1fr)}
+.cards4.three3 b{font-size:clamp(18px,2.6vw,24px)}
+@media(max-width:600px){.cards4.three3{grid-template-columns:1fr;gap:5px}.cards4.three3>div{display:flex;gap:8px;align-items:baseline;text-align:left;flex-wrap:wrap}.cards4.three3 span{flex-basis:100%}}
+.cards4.two2{grid-template-columns:repeat(2,1fr);width:min(100%,560px)}.cards4.two2 b{font-size:clamp(17px,2.4vw,22px)}.cards4.two2 span{font-size:clamp(13px,1.8vw,16px)}
+@media(max-width:600px){.cards4.two2{grid-template-columns:1fr;gap:5px}.cards4.two2>div{text-align:left;padding:6px 10px}}
+.tn{display:inline-grid;place-items:center;width:1.6em;height:1.6em;border-radius:50%;background:#1f2d4f;color:#f3ecd8;font-size:.8em;margin-right:.4em;vertical-align:.1em}
+/* Lesson 11 additions */
+.breath{display:flex;align-items:stretch;justify-content:center;gap:8px;width:min(100%,640px);margin:.5em auto;flex-wrap:nowrap}
+.breath>span{border-radius:12px;padding:8px 12px;font-size:clamp(14px,2vw,18px);display:flex;align-items:center;justify-content:center;text-align:center}
+.breath .q{background:#1f2d4f;color:#f3ecd8;font-family:"Source Serif 4",Georgia,serif;font-style:italic;flex:0 0 auto}
+.breath .w{background:#fffaf0;border:2px solid #c9b892;color:#1f2d4f;flex:1 1 auto}
+.steps5{display:flex;align-items:flex-end;justify-content:center;gap:8px;width:min(100%,520px);margin:.5em auto}
+.steps5>div{flex:1;background:#fffaf0;border:2px solid #c99a4a;border-radius:10px 10px 4px 4px;color:#1f2d4f;font-weight:700;font-size:clamp(13px,1.9vw,17px);padding:6px;display:flex;align-items:flex-end;justify-content:center;text-align:center}
+.steps5 .s1{height:48px}.steps5 .s2{height:72px}.steps5 .s3{height:96px}
+.softcard{background:#fffaf0;border:3px solid #c99a4a;border-radius:14px;padding:12px 18px;width:min(100%,600px);margin:.3em auto;text-align:left;color:#1f2d4f}
+.softcard p{margin:.25em 0;font-size:clamp(15px,2.1vw,19px);line-height:1.4}
+.ek2{letter-spacing:.14em;text-transform:uppercase;font-size:12px!important;font-weight:700;color:#8a6a24}
+.pair2.plain>div{padding:12px 10px;display:flex;align-items:center;justify-content:center;text-align:center}
+.skipq{font:inherit;font-weight:700;font-size:clamp(15px,2vw,18px);background:transparent;color:#f3ecd8;border:2px solid #e3c98a;border-radius:999px;padding:.45em 1.2em;cursor:pointer;min-height:44px}
+.skipq:hover,.skipq:focus-visible{background:rgba(227,201,138,.18);outline:none}
+[lang="he"]{font-family:"Noto Serif Hebrew","SBL Hebrew","Times New Roman",serif;direction:rtl;unicode-bidi:isolate}
+@media(max-width:600px){.breath{flex-direction:column;gap:5px}.breath>span{padding:5px 10px}}
+/* Lesson 10 additions */
+.edcard,.stopcard{border-radius:14px;padding:12px 18px;width:min(100%,600px);margin:.3em auto;text-align:left}
+.edcard{background:#f6e3dc;border:3px solid #7a2e1f;color:#1f2d4f}.stopcard{background:#fffaf0;border:3px solid #7a2e1f;color:#1f2d4f}
+.edcard p,.stopcard p{margin:.25em 0;font-size:clamp(15px,2.1vw,19px);line-height:1.4}.edcard p:nth-child(2){font-weight:700}
+.ek{letter-spacing:.14em;text-transform:uppercase;font-size:12px!important;font-weight:700;color:#7a2e1f}
+.es{font-size:clamp(14px,1.9vw,17px)!important;color:#3a4458}
+/* Lesson 9 additions */
+/* In a stack, the outgoing item fades out first, then the next fades in, so two never overlap. */
+.stack>.b:not(.on){transition:opacity .25s ease,transform .25s ease}
+.stack>.b.on{transition:opacity .6s ease .25s,transform .6s ease .25s}
+.opt2{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(100%,680px);margin:.3em 0 .5em}
+.opt2>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:8px 12px;text-align:left;color:#1f2d4f}
+.opt2 b{display:block;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:#8a6a24}.opt2 .ot{display:block;font-weight:700;font-size:clamp(17px,2.4vw,22px)}
+@media(max-width:600px){.opt2{grid-template-columns:1fr;gap:6px}.opt2>div{padding:6px 10px}}
+/* Lesson 8 additions */
+@media(max-width:360px){.dots{gap:4px}}
+.week{display:grid;grid-template-columns:repeat(7,1fr) 1.8fr;gap:5px;width:min(100%,620px);margin:.4em 0 .7em}
+.week>div{border-radius:8px;padding:10px 2px;font-weight:700;font-size:clamp(13px,1.8vw,16px);text-align:center;background:#eef2ea;color:#5a6577;border:1px solid #d6dccf}
+.week .lit{background:#f6dfa4;color:#1f2d4f;border-color:#c99a4a}.week .gold{background:#e3c98a;color:#1f2d4f;border-color:#c99a4a}
+.psw{display:grid!important;grid-template-columns:repeat(2,1fr);gap:8px;width:min(100%,620px);margin:.3em auto;text-align:left}
+.psw>div{background:#fffaf0;border:1px solid #e0d4b6;border-radius:10px;padding:8px 12px;color:#5a6577;font-size:clamp(14px,1.9vw,17px)}
+.psw b{display:block;color:#1f2d4f;font-size:1.05em}.psw .glow7{border:2px solid #c99a4a;background:#fdf3dc}
+.note-card{background:#fffaf0;border:1px solid #e0d4b6;border-radius:6px;box-shadow:0 3px 0 #e0d4b6;padding:12px 18px;width:min(100%,520px);margin:.3em auto .6em;text-align:left}
+.note-card p{margin:.3em 0;padding-left:1.2em;position:relative;color:#1f2d4f;font-size:clamp(15px,2vw,18px)}
+.note-card p::before{content:"";position:absolute;left:0;top:.55em;width:.5em;height:.5em;border-radius:50%;background:#c99a4a}
+.note-card .nc-h{padding:0;font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:#8a6a24}.note-card .nc-h::before{display:none}
+.mainstep{background:#fffaf0;border:3px solid #c99a4a;border-radius:14px;padding:12px 18px;font-weight:700;color:#1f2d4f;font-size:clamp(19px,2.8vw,26px);width:min(100%,560px);margin:.2em auto .5em}
+.mainstep span{display:block;font-weight:400;font-size:.65em;color:#8a6a24;margin-top:2px}
+.sheet4.small4 b{font-size:clamp(15px,2vw,18px);font-weight:600}
+.num{display:inline-block;width:1.4em;height:1.4em;line-height:1.4em;border-radius:50%;background:#e3c98a;color:#1f2d4f;text-align:center;font-size:.85em;margin-right:.3em}
+@media(max-width:600px){.week{grid-template-columns:repeat(7,1fr);}.week .gold{grid-column:1/-1}.psw{grid-template-columns:1fr;gap:4px}.psw>div{padding:5px 10px}}
+/* Lesson 7 additions */
+.three.two{grid-template-columns:repeat(2,1fr);width:min(100%,560px)}
+.pair2{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,620px);margin:.3em 0 .5em}
+.pair2>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:6px 8px;color:#1f2d4f;font-size:clamp(15px,2vw,18px)}
+.pair2 svg{width:100%;height:70px;display:block}.pair2 b{display:block}
+.xi{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;width:min(100%,760px);margin:0 auto .45em;text-align:left;align-items:stretch}
+.xi p{margin:0;border-radius:10px;padding:6px 10px;font-size:clamp(14px,1.9vw,18px);line-height:1.35}
+.xi .ex{background:#efeadc;color:#5a6577;border:1px solid #ddd3bb}.xi .in{background:#fffaf0;color:#1f2d4f;border:2px solid #c9b892;font-weight:600}
+.xi-h{margin-bottom:.3em}.xi-h b{letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:#8a6a24;padding-left:10px}
+.polished{font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:#7a8394;font-size:clamp(16px,2.3vw,22px);margin:.2em 0;border-bottom:1px dashed #c9b892;display:inline-block;padding:0 .3em .2em}
+.hand{font-family:"Source Serif 4",Georgia,serif;color:#1f2d4f;font-size:clamp(17px,2.5vw,24px);font-weight:600;line-height:1.35;margin:.3em auto;max-width:28em}
+.ask{background:#fffaf0;border-left:4px solid #c99a4a;border-radius:6px;padding:8px 12px;color:#1f2d4f;font-weight:600;font-size:clamp(15px,2.2vw,20px);max-width:30em;margin:.4em auto;text-align:left}
+.fs.longlist{flex-wrap:wrap;justify-content:center}
+.q7.q4 li{font-size:clamp(15px,2.1vw,20px);margin:.25em 0}
+.swap{display:flex;align-items:center;justify-content:center;gap:10px;font-size:clamp(15px,2.1vw,20px);margin:.3em 0;color:#8a6a24;flex-wrap:wrap}
+.swap span{background:#efeadc;border-radius:999px;padding:3px 12px;color:#5a6577}.swap b{color:#1f2d4f}
+.sheet4{list-style:none;counter-reset:s4;padding:12px 16px;margin:0 auto .4em;width:min(100%,640px);background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;box-shadow:0 2px 0 #e0d4b6;text-align:left}
+.sheet4 li{counter-increment:s4;padding:6px 0 6px 2.1em;position:relative;border-bottom:1px solid #eee4cc}
+.sheet4 li:last-child{border-bottom:0}
+.sheet4 li::before{content:counter(s4);position:absolute;left:0;top:6px;width:1.5em;height:1.5em;border-radius:50%;background:#e3c98a;color:#1f2d4f;font-weight:700;text-align:center;line-height:1.5em;font-size:14px}
+.sheet4 b{display:block;color:#1f2d4f;font-size:clamp(16px,2.2vw,20px)}
+.sheet4 .hand{display:block;font-size:clamp(14px,1.9vw,17px);font-weight:400;color:#8a6a24;margin:.1em 0 0;max-width:none}
+@media(max-width:600px){.xi-h{display:none!important}.xi .ex::before{content:'Expectation';display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24;font-weight:700}.xi .in::before{content:'Intention';display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24;font-weight:700}.xi{grid-template-columns:1fr;gap:4px;margin-bottom:.5em}.pair2 svg{height:54px}}
+/* Lesson 6 additions */
+.days3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,680px);margin:.4em 0 .6em}
+.days3>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:10px 8px;color:#1f2d4f;font-size:clamp(14px,2vw,18px);line-height:1.3}
+.days3 b{display:block;color:#8a6a24;font-size:1.1em;margin-bottom:2px}
+.sub3{display:block;font-size:13px;color:#5a6577;line-height:1.3;margin-top:3px;font-weight:400}
+.placegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:min(100%,720px);margin:.4em 0;text-align:left}
+.placegrid>div{background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;padding:8px 12px;font-size:clamp(14px,1.9vw,17px);color:#5a6577;line-height:1.35}
+.placegrid b{display:block;color:#1f2d4f;font-size:1.08em}
+@media(max-width:600px){.placegrid{grid-template-columns:1fr;gap:6px}.days3{gap:6px}}
+.q7{text-align:left;margin:0 auto;padding-left:1.6em;max-width:34em;display:block!important}.q7 li{text-align:left}.q7 li{margin:.35em 0;font-size:clamp(16px,2.3vw,22px);line-height:1.35;color:#1f2d4f;font-weight:600}
+.sm2{font-weight:400;color:#8a6a24;font-size:.85em}
+.calstrip{display:grid;grid-template-columns:1fr 1.2fr 1.2fr 1.2fr 1fr;gap:6px;width:min(100%,640px);margin:.4em 0 .6em}
+.calstrip>div{border-radius:10px;padding:14px 4px;font-size:clamp(13px,1.8vw,16px);font-weight:700;text-align:center}
+.calstrip .gold{background:#e3c98a;color:#1f2d4f}.calstrip .soft{background:#eef2ea;border:2px dashed #a9bba5;color:#5a6577}
+.sm-k{letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:#8a6a24;margin:.4em 0 .2em;font-weight:700}
+.fmt{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(100%,680px)}.fmt.guides{grid-template-columns:repeat(3,1fr);width:min(100%,520px)}
+.fmt>div{background:#fffaf0;border:2px solid #c9b892;border-radius:12px;padding:6px 4px;font-size:clamp(14px,1.9vw,17px);font-weight:700;color:#1f2d4f;text-align:center;line-height:1.2}
+.fmt.guides>div{border-style:dashed}
+.fmt svg{width:34px;height:34px;color:#8a6a24;display:block;margin:0 auto 2px}.fmt span{display:block;font-size:12px;color:#8a6a24;font-weight:600}
+.three .sub3{margin-top:4px}
+/* Lesson 5 additions */
+.cannot{list-style:none;padding:0;margin:.4em 0;display:grid;gap:8px;width:min(100%,560px);text-align:left}
+.cannot li{display:flex;align-items:center;gap:12px;background:#efeadc;border:1px solid #ddd3bb;border-radius:12px;padding:6px 12px;font-size:clamp(15px,2.1vw,20px);color:#1f2d4f}
+.cannot svg{width:36px;height:36px;flex:none}
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,800px);margin:.5em 0}
+.paths>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:8px 6px;text-align:center;color:#1f2d4f}
+.paths svg{width:100%;height:auto;display:block}.paths b{display:block;font-size:clamp(14px,1.9vw,17px);line-height:1.2;margin-top:4px}.paths span{display:block;font-size:13px;color:#5a6577;margin-top:2px;line-height:1.3}
+@media(max-width:600px){.paths{grid-template-columns:repeat(2,1fr);gap:6px}.paths svg{max-height:60px}}
+.walkin{transition:transform 3s ease}.b:not(.on) .walkin{transform:translateX(-60px)}
+body.still .walkin{transform:none!important}
+/* Lesson 4 additions */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,640px);margin:.4em 0 .6em}
+.three>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:10px 8px;text-align:center;color:#1f2d4f}
+.three svg{width:56px;height:56px;color:#8a6a24;display:block;margin:0 auto 4px}.three b{font-size:clamp(14px,2vw,18px)}
+.help-pill{display:inline-block;background:#fffaf0;border:2px solid #c99a4a;border-radius:999px;padding:.35em 1em;font-weight:700;color:#8a6a24;font-size:clamp(14px,2vw,18px);margin:.4em 0}
+.whole{display:flex;gap:20px;align-items:center;width:min(100%,780px)}.whole>svg{width:min(40%,240px);flex:none}
+@media(max-width:600px){.whole{flex-direction:column;gap:6px}.whole>svg{width:56%}.three{gap:6px}.three svg{width:40px;height:40px}}
+.pour{transform-box:fill-box;transform-origin:20% 80%;animation:pour 4s ease-in-out infinite}@keyframes pour{0%,100%{transform:rotate(0)}50%{transform:rotate(22deg)}}
+.sunmove{transition:transform 30s linear}.b.on .sunmove{transform:translateX(420px)}
+body.still .pour{animation:none!important}body.still .sunmove{transform:none!important}
+/* Lesson 3 additions */
+.stones{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:min(100%,780px);margin:.5em 0}
+.stones>div{background:#fffaf0;border:2px solid #c9b892;border-radius:14px;padding:8px 6px;text-align:center;color:#1f2d4f}
+.stones>div.deep{background:#ece4d2;border-color:#8a7a5a;border-style:dashed}
+.stones svg{width:100%;height:auto;display:block;margin-bottom:4px;border-radius:6px}
+.stones b{display:block;font-size:clamp(14px,1.9vw,17px);line-height:1.2}.stones span{display:block;font-size:13px;color:#5a6577;margin-top:2px}
+@media(max-width:600px){.stones{grid-template-columns:repeat(3,1fr);gap:6px}.stones>div{padding:5px 4px}}
+.places{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,600px);margin:.2em auto}
+.places>div{font-size:clamp(14px,1.9vw,17px);color:#1f2d4f;text-align:center}.places svg{width:100%;height:auto;display:block;background:#fffaf0;border:1px solid #e0d4b6;border-radius:10px;margin-bottom:3px}
+@media(max-width:600px){.places{gap:6px}}
+.sail3{transition:opacity .8s,transform 9s linear}.sail3.on{transform:translateX(110px)}
+.blink{animation:blink 1.6s ease-in-out infinite}@keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+body.still .blink{animation:none!important}body.still .sail3.on{transform:none!important}
+/* Lesson 2 additions */
+.thoughts{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;width:min(100%,720px);margin:.2em 0 .4em}
+.thoughts span{display:block;background:#fffaf0;border:2px solid #c9b892;border-radius:16px;padding:.5em .8em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.6vw,26px);line-height:1.3;color:#1f2d4f}
+@media(max-width:600px){.thoughts{grid-template-columns:1fr;gap:6px}.thoughts span{font-size:16px;padding:.35em .7em}}
+.hebrew{font-family:'Times New Roman','Noto Serif Hebrew','Arial Hebrew','David',serif;font-size:clamp(30px,5vw,52px);color:#1f2d4f;margin:0;line-height:1.2}
+.sail2{transition:opacity .8s,transform 10s linear}.sail2.on{transform:translateX(130px)}
+.walk2{transition:opacity .8s,transform 8s ease}.walk2.on{transform:translateX(90px)}
+.wobble2{transform-box:fill-box;transform-origin:50% 100%;animation:wob 3s ease-in-out infinite}
+.flip{transform-box:fill-box;transform-origin:50% 0;animation:flip 2.4s ease-in-out infinite}
+@keyframes flip{0%,70%,100%{transform:none}80%{transform:scaleY(.2)}}
+body.still .wobble2,body.still .flip{animation:none!important}
+body.still .sail2.on,body.still .walk2.on{transform:none!important}
+
+/* ===== Reset palette (cover: cream sky, deep navy, slate-blue hills, sage tree, sunrise gold) ===== */
+:root{--night:#152238;--navy:#1f2d4f;--gold:#c99a4a;--gold-soft:#e3c98a;--sun:#f3ecd8;--ink:#1f2d4f;--mute:#5a6577;--cream:#f8f0e1}
+body{background:#152238}
+#stage.dark{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 48%,#4b5f84 82%,#c99a5a 100%);color:var(--sun)}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f8f0e1 66%,#ece6d2 100%);color:var(--ink)}
+#stage.dark .h1{fill:#4b5f84}#stage.dark .h2{fill:#3a4c6e}#stage.dark .h3{fill:#2c3b58}
+#stage.light .h1{fill:#dfe6da}#stage.light .h2{fill:#cdd8c8}#stage.light .h3{fill:#b9c8b4}
+.label{color:#c99a4a}.light .label,#stage.light .label{color:#8a6a24}
+.light h2{color:#8a6a24}
+.remember>div{background:rgba(243,236,216,.07);border-color:rgba(201,154,74,.5)}
+.remember p{color:#e6e3d8}
+.fs span{border-color:#d9cdb0;background:#fbf6ea}
+.dark .fs span{background:rgba(243,236,216,.08);color:#f3ecd8;border-color:rgba(201,154,74,.6)}
+.method.four{grid-template-columns:repeat(4,1fr)}
+.method.dark div{background:rgba(243,236,216,.06);color:#f3ecd8;border-color:#c99a4a;padding:12px 8px}
+.method.dark svg{color:#e3c98a;width:40px;height:40px}
+@media(max-width:600px){.method.four{grid-template-columns:repeat(2,1fr)}}
+.badge{color:#8a6a24}#stage.dark .badge{color:#e3c98a}
+#cap{background:rgba(18,29,51,.84);color:#f3ecd8}
+footer{background:#121d33}.bar{background:#24324f}.bar i{background:#c99a4a}
+button.primary{background:#c99a4a;border-color:#c99a4a;color:#121d33}
+.scripture.sm{font-size:clamp(15px,2.25vw,23px);line-height:1.5;max-width:32em}
+.scripture .sc{font-variant:small-caps;display:inline!important;margin:0!important}
+.stack>p{display:block!important;text-align:center}.stack>p .ref{display:block}
+.scripture-stack{min-height:9.5em}
+.small-scene{width:min(100%,640px)}
+.twocol{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;width:min(100%,780px);text-align:left;margin-top:.4em}
+.twocol>div{border-radius:14px;padding:.8em 1em}
+.twocol b{display:block;font-size:.8em;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4em}
+.twocol p{margin:.35em 0;font-size:clamp(15px,2.1vw,20px)}
+.twocol .is{background:#fffaf0;border:2px solid #c99a4a;color:#1f2d4f}.twocol .is b{color:#8a6a24}
+.twocol .isnot{background:#efeadc;border:1px solid #ddd3bb;color:#7a8190}.twocol .isnot b{color:#8a8f99}
+@media(max-width:600px){.twocol{grid-template-columns:1fr}}
+.journal{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c99a4a;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:36em;text-align:left;box-shadow:0 8px 24px rgba(31,45,79,.08)}
+.journal ol{margin:0;padding-left:1.3em}.journal li{margin:.5em 0;font-size:clamp(15px,2.1vw,20px);line-height:1.45}
+.card{background:#fffaf0;border-color:#e0d4b6}.card b{color:#8a6a24}
+.chips{gap:10px}.chips span{font-size:clamp(14px,2.2vw,19px);background:#fffaf0;color:#1f2d4f;padding:.45em 1em}
+.slide .wrap{position:relative}
+.lbl3,.lbl2{display:none}@media(max-width:600px){.onlywide{display:none}.lbl2{display:flex;justify-content:space-between;width:100%;margin:2px 0 6px;font-size:13px;color:#1f2d4f}.lbl3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:100%;margin:-4px 0 8px;font-size:13px;line-height:1.3;color:#5a6577;text-align:center}}@media(max-width:600px){.fz11,.fz12{font-size:19px}.fz13{font-size:20px}.fz14{font-size:21px}.fz15{font-size:22px}.fz16,.fz17{font-size:23px}.fz18,.fz19,.fz20{font-size:24px}.map .fz13,.map .fz11{font-size:15px}.slide{padding-left:4vw;padding-right:4vw}.chips{top:40%!important}}
+.note-i{font-family:'Source Serif 4',serif;font-style:italic;color:#8a6a24;font-size:clamp(15px,2.2vw,21px);margin:.2em 0}
+.dark .note-i,#stage.dark .note-i{color:#e3c98a}
+.note-s{font-size:clamp(14px,2vw,18px);margin:.2em 0;max-width:40em}
+.note-b{font-weight:700;font-size:clamp(15px,2.2vw,21px);margin:.2em 0}
+.mapwrap{display:flex;gap:22px;align-items:center;width:min(100%,800px)}
+.mapwrap .map{width:min(46%,320px);flex:none;margin:0}
+.facts{display:flex;flex-direction:column;gap:12px;text-align:left}
+.facts>div{font-size:clamp(14px,1.9vw,18px);color:#5a6577;line-height:1.35}.facts b{display:block;color:#1f2d4f;font-size:1.08em}
+@media(max-width:600px){.mapwrap{flex-direction:column;gap:10px}.mapwrap .map{width:72%}.facts{gap:6px}}
+/* gentle camera movement */
+.drift{transform-box:view-box;transform-origin:50% 70%;animation:drift 28s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1)}to{transform:scale(1.06) translateY(-4px)}}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}
+@keyframes drifts{from{transform:translateX(0)}to{transform:translateX(-10px)}}
+.bob{transform-box:fill-box;animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.sail{transition:opacity .8s,transform 14s linear}.sail{transform:translateX(0)}.sail.on{transform:translateX(330px)}
+.walk{transition:opacity .8s,transform 9s linear}.walk.on{transform:translate(170px,-36px)}
+.wobble{transform-box:view-box;transform-origin:340px 212px}
+.b.on .wobble,.wobble.on{animation:wob 5s ease-in-out 1}
+@keyframes wob{0%,100%{transform:none}40%{transform:rotate(-2deg)}60%{transform:rotate(1.5deg)}}
+.lightshift rect{animation:dawn 8s ease forwards}
+@keyframes dawn{to{opacity:.12}}
+.run.on{animation:run 6s ease-out forwards}
+@keyframes run{from{transform:translateX(-160px)}to{transform:none}}
+/* Reduce motion: same pictures, no camera movement (switch in the player, or the device setting) */
+body.still .drift,body.still .drift-slow,body.still .bob,body.still .twinkle,body.still .wobble,body.still .lightshift rect,body.still .run.on{animation:none!important}
+body.still .sail.on,body.still .walk.on,body.still .up,body.still .up.on,body.still .pop,body.still .pop.on{transform:none!important}
+body.still .sail,body.still .walk,body.still .sunup{transition:opacity .8s!important}
+body.still .sunup{transform:none!important}
+body.still .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important;transition:opacity .8s!important}
+</style></head><body>
+
+<div id="stage" class="dark">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+  <path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/>
+  <path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/>
+  <path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/>
+  
+</svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-lord" viewBox="0 0 60 60"><path d="M14 54V30h32v24" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 54h40M14 38h32" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M18 22l3-14 9 8 9-8 3 14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-cost" viewBox="0 0 60 60"><path d="M12 54V22h16v32M20 22V10h4v12" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M8 54h44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><rect x="34" y="26" width="18" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M38 33h10M38 40h7" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-obey" viewBox="0 0 60 60"><ellipse cx="20" cy="42" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-banner" viewBox="0 0 60 60"><path d="M14 56V6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 8h34l-8 10 8 10H14" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M28 14v8M24 18h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-inchrist" viewBox="0 0 60 60"><circle cx="23" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="37" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="4"/></symbol>
+ <symbol id="i-child" viewBox="0 0 60 60"><path d="M8 54V26L30 8l22 18v28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M24 54V38h12v16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 30c-3-4-9-2-7 3 1 3 7 6 7 6s6-3 7-6c2-5-4-7-7-3z" fill="currentColor"/></symbol>
+ <symbol id="i-promise" viewBox="0 0 60 60"><path d="M6 46c8-4 17-4 24 0 7-4 16-4 24 0V14c-8-4-17-4-24 0-7-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 14v32" stroke="currentColor" stroke-width="3"/><circle cx="44" cy="44" r="8" fill="currentColor"/><path d="M40 44l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-roots" viewBox="0 0 60 60"><path d="M30 38V12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 22c0-8 8-12 16-10-1 8-8 12-16 10zM30 30c0-8-8-12-16-10 1 8 8 12 16 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M8 38h44" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M30 38v8M30 42l-8 8M30 42l8 8M30 46v8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-spoken" viewBox="0 0 60 60"><path d="M6 48c8-4 16-4 24 0 8-4 16-4 24 0V20c-8-4-16-4-24 0-8-4-16-4-24 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 20v28" stroke="currentColor" stroke-width="3"/><path d="M22 10c4-4 12-4 16 0M18 4c7-5 17-5 24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-points" viewBox="0 0 60 60"><path d="M6 54c10-4 14-12 22-16s14-8 18-18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M46 6v20M40 12h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-daily" viewBox="0 0 60 60"><rect x="6" y="12" width="34" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M6 22h34M14 8v8M32 8v8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 50c0-6 12-6 12 0l-2 4h-8z" fill="currentColor"/><path d="M50 44c-2-4 0-7 0-9 2 3 3 6 0 9z" fill="currentColor"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-notice" viewBox="0 0 60 60"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="4"/><path d="M36 36l16 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><text x="24" y="31" text-anchor="middle" font-size="20" font-weight="700" fill="currentColor" font-family="sans-serif">?</text></symbol>
+
+ <symbol id="i-father" viewBox="0 0 60 60"><circle cx="40" cy="12" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20v20l-6 14M40 40l6 14M40 26l-14 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="30" r="4.5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 36v10l-4 8M16 46l4 8M16 40l8-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-honest" viewBox="0 0 60 60"><path d="M30 52C16 42 8 34 8 24a11 11 0 0 1 22-4 11 11 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 20v12M24 26l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-pattern" viewBox="0 0 60 60"><path d="M4 50h10v-8h10v-8h10v-8h10v-8h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="52" cy="10" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-keep" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-12s16-4 20-16 4-14 6-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 7"/><circle cx="14" cy="14" r="6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 44a6 6 0 0 1 8-6 8 8 0 0 1 12 4 5 5 0 0 1 0 10h-18a5 5 0 0 1-2-8z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-praise" viewBox="0 0 60 60"><path d="M10 44a20 20 0 0 1 40 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 10v8M12 20l6 5M48 20l-6 5M4 52h52" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-surrender" viewBox="0 0 60 60"><path d="M8 36c6 0 10 2 14 6h12a4 4 0 0 1 0 8H24M8 50h8l14 4 22-10a4 4 0 0 0-4-7l-14 5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-ask" viewBox="0 0 60 60"><path d="M10 28c0-10 9-16 20-16s20 6 20 16c0 4-2 6-4 7v13H14V35c-2-1-4-3-4-7z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 24c2-3 5-4 8-4M30 30v12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-forgive" viewBox="0 0 60 60"><rect x="6" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="34" y="22" width="20" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 29h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 8v8M24 12l6-4 6 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-protect" viewBox="0 0 60 60"><path d="M30 6l20 8v14c0 12-8 22-20 26C18 50 10 40 10 28V14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30l6 6 11-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-compare" viewBox="0 0 60 60"><path d="M4 44c7-3 13-3 18 0V16c-5-3-11-3-18 0zM38 44c7-3 13-3 18 0V16c-5-3-11-3-18 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 26h12M32 22l4 4-4 4M36 36H24M28 32l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-onegod" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/><circle cx="30" cy="30" r="9" fill="currentColor"/></symbol>
+ <symbol id="i-three" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="3 4"/><circle cx="30" cy="14" r="6" fill="currentColor"/><circle cx="17" cy="38" r="6" fill="currentColor"/><circle cx="43" cy="38" r="6" fill="currentColor"/></symbol>
+ <symbol id="i-equal" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 24h24M18 36h24" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-arms" viewBox="0 0 60 60"><circle cx="30" cy="14" r="7" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 22v18M30 40l-8 14M30 40l8 14M30 28C22 22 14 20 6 22M30 28c8-6 16-8 24-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+
+ <symbol id="i-good" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 50a20 20 0 0 1 40 0" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 14v8M12 22l5 5M48 22l-5 5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-image" viewBox="0 0 60 60"><circle cx="30" cy="26" r="8" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M16 56c0-14 6-20 14-20s14 6 14 20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M20 12l3-7 7 5 7-5 3 7z" fill="currentColor"/></symbol>
+ <symbol id="i-broken" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 8l-6 14 8 6-6 12 4 12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-hope" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 52V30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 36c0-10 8-16 18-14-1 9-8 14-18 14zM30 30c0-8-7-12-14-10 1 7 7 10 14 10z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-staff" viewBox="0 0 60 60"><path d="M20 56V20a10 10 0 0 1 20 0v4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><ellipse cx="44" cy="44" rx="10" ry="7" fill="currentColor"/><circle cx="52" cy="38" r="4" fill="currentColor"/><path d="M38 50v6M48 50v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-build" viewBox="0 0 60 60"><rect x="6" y="40" width="22" height="14" rx="2" fill="currentColor"/><rect x="32" y="40" width="22" height="14" rx="2" fill="currentColor"/><rect x="18" y="24" width="24" height="14" rx="2" fill="currentColor" opacity=".8"/><rect x="24" y="8" width="12" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+<symbol id="i-fast" viewBox="0 0 60 60"><circle cx="22" cy="34" r="16" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="22" cy="34" r="8" fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/><path d="M44 18v34M40 18v10a4 4 0 0 0 8 0V18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 8l8 4M30 6l-2 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></symbol>
+<symbol id="i-water" viewBox="0 0 60 60"><path d="M4 40c6-5 12-5 18 0s12 5 18 0 12-5 16-2" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M4 50c6-5 12-5 18 0s12 5 18 0 12-5 16-2" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/><circle cx="30" cy="12" r="6" fill="currentColor"/><path d="M30 20v14M22 26l8-8 8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-cup" viewBox="0 0 60 60"><path d="M30 8h16l-2 16a6 6 0 0 1-12 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 30v12M32 44h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M4 44c0-10 6-16 14-16s14 6 14 16z" fill="currentColor"/><path d="M10 38l4-4M16 40l4-4" stroke="#fff" stroke-width="2" opacity=".5"/><path d="M2 52h56" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-witness" viewBox="0 0 60 60"><circle cx="20" cy="16" r="7" fill="currentColor"/><path d="M8 54c0-18 5-28 12-28s12 10 12 28z" fill="currentColor"/><path d="M36 14c6 3 6 13 0 16M42 9c10 6 10 20 0 26M48 4c14 9 14 28 0 37" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-fruit" viewBox="0 0 60 60"><path d="M30 18c-12-6-24 2-22 16 2 14 12 22 22 18 10 4 20-4 22-18 2-14-10-22-22-16z" fill="currentColor"/><path d="M30 18c0-6 2-10 6-13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M34 10c6-6 14-4 16 0-6 4-12 4-16 0z" fill="currentColor"/></symbol>
+<symbol id="i-verdict" viewBox="0 0 60 60"><rect x="16" y="10" width="26" height="12" rx="3" transform="rotate(-35 29 16)" fill="currentColor"/><path d="M27 24L14 42" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M28 54h26M32 48h18" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-glory" viewBox="0 0 60 60"><path d="M12 44l-4-22 12 10 10-18 10 18 12-10-4 22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52h36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 4v4M14 8l2 4M46 8l-2 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+<symbol id="i-came" viewBox="0 0 60 60"><path d="M10 54V32L30 16l20 16v22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 4l2 5 5 1-4 3 1 5-4-3-4 3 1-5-4-3 5-1z" fill="currentColor"/><path d="M22 54V42h16v12" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-lived" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 18v18l-8 18M30 36l8 18M30 24l-10 8M30 24l12 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-rose" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 52V34a16 16 0 0 1 32 0v18" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="48" cy="22" r="7" fill="currentColor"/><path d="M48 6v6M60 22h-5M58 12l-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#c9a24a"/></marker>
+
+<symbol id="i-seedling" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 32c0-10-8-16-18-16 0 10 8 16 18 16zM30 26c0-9 7-14 16-14 0 9-7 14-16 14z" fill="currentColor"/><path d="M16 54h28" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-path4" viewBox="0 0 60 60"><path d="M8 54c10-8 14-14 22-20s18-10 22-22" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><g fill="currentColor"><circle cx="12" cy="50" r="4"/><circle cx="24" cy="39" r="4"/><circle cx="37" cy="29" r="4"/><circle cx="49" cy="17" r="4"/></g></symbol>
+<symbol id="i-lantern" viewBox="0 0 60 60"><path d="M24 10h12M30 10V6" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/><path d="M20 16h20l-2 30H22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 24c3 4 4 7 0 12-4-5-3-8 0-12z" fill="currentColor"/><path d="M16 52h28" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-signpost" viewBox="0 0 60 60"><path d="M30 56V8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 12h18l6 6-6 6H30zM30 30H12l-6 6 6 6h18z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trellis" viewBox="0 0 60 60"><path d="M14 56V8M30 56V8M46 56V8M8 18h44M8 32h44M8 46h44" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 56c-6-8 6-12 0-20s6-12 0-22" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/></symbol>
+ <symbol id="i-cycle" viewBox="0 0 60 60"><path d="M48 30a18 18 0 1 1-6-13.4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 8v10H34" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+
+ <symbol id="i-mirror" viewBox="0 0 60 60"><ellipse cx="30" cy="24" rx="16" ry="20" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 44v10M20 56h20" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M22 16c3-4 7-6 11-6" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".6"/></symbol>
+
+ <symbol id="i-scales" viewBox="0 0 60 60"><path d="M30 8v42M18 52h24M8 16h44" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M8 16L2 32h12zM52 16l-6 16h12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M2 32a6 4 0 0 0 12 0M46 32a6 4 0 0 0 12 0" fill="currentColor"/><circle cx="30" cy="8" r="3.5" fill="currentColor"/></symbol>
+ <symbol id="i-cards" viewBox="0 0 60 60"><rect x="6" y="20" width="30" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="3" transform="rotate(-10 21 37)"/><rect x="16" y="14" width="30" height="34" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><rect x="26" y="8" width="30" height="34" rx="3" fill="currentColor" transform="rotate(8 41 25)"/></symbol>
+ <symbol id="i-chairs" viewBox="0 0 60 60"><path d="M6 14v40M6 34h16v20M6 34h16" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M54 14v40M54 34H38v20" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M26 26h8v4h-8z" fill="currentColor"/><path d="M30 30v10" stroke="currentColor" stroke-width="3"/></symbol>
+
+ <symbol id="i-ripple" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="currentColor"/><circle cx="30" cy="30" r="14" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/></symbol>
+ <symbol id="i-eye" viewBox="0 0 60 60"><path d="M4 30C12 18 20 13 30 13s18 5 26 17C48 42 40 47 30 47S12 42 4 30z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="30" cy="30" r="8" fill="currentColor"/></symbol>
+ <symbol id="i-anchor" viewBox="0 0 60 60"><circle cx="30" cy="10" r="5" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 15v38M20 24h20M10 36c2 10 10 17 20 17s18-7 20-17M10 36l-4 4M10 36l5 3M50 36l4 4M50 36l-5 3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="r-chair" viewBox="0 0 44 48"><g fill="none" stroke="#2b3550" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4 L13 27"/><path d="M8 5 C12 3 15 3 18 4"/><path d="M12 12 L15 11 M12.6 18 L15.6 17"/><path d="M11 27 H36"/><path d="M13 27 L11 46 M34 27 L37 46 M30 27 L31 40"/><path d="M12 37 H35" stroke-width="2"/></g></symbol>
+ <symbol id="i-plate" viewBox="0 0 60 60"><circle cx="30" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="30" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M4 12v14M4 20h4M56 12v28" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-moon" viewBox="0 0 60 60"><path d="M38 8a22 22 0 1 0 14 34A18 18 0 0 1 38 8z" fill="currentColor"/><path d="M12 12l2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 4-1z" fill="currentColor" opacity=".6"/></symbol>
+ <symbol id="i-walk" viewBox="0 0 60 60"><circle cx="32" cy="10" r="5" fill="currentColor"/><path d="M30 18l-6 14 6 6-4 16M30 18l6 12 8 2M24 32l-8 6M30 38l8 16" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-wash" viewBox="0 0 60 60"><path d="M10 36h40l-4 14H14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 8c4 6 6 10 6 13a6 6 0 0 1-12 0c0-3 2-7 6-13z" fill="currentColor"/></symbol>
+ <symbol id="i-heart2" viewBox="0 0 60 60"><path d="M30 50C14 38 8 30 8 22a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 8-6 16-22 28z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M22 30h16M30 22v16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-phone" viewBox="0 0 60 60"><rect x="18" y="6" width="24" height="46" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M26 46h8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 56h44" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/></symbol>
+ <symbol id="i-switch" viewBox="0 0 60 60"><rect x="6" y="12" width="26" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="25" cy="19" r="4.5" fill="currentColor"/><rect x="28" y="34" width="26" height="14" rx="7" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="35" cy="41" r="4.5" fill="currentColor"/></symbol>
+ <symbol id="i-bag" viewBox="0 0 60 60"><rect x="8" y="20" width="44" height="32" rx="5" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M22 20v-6a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6" stroke="currentColor" stroke-width="3.5" fill="none"/><path d="M8 32h44" stroke="currentColor" stroke-width="2.5"/></symbol>
+ <symbol id="i-laptop" viewBox="0 0 60 60"><path d="M12 14h36v26H12z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M4 46h52l-4 6H8z" fill="currentColor"/><path d="M20 22l20 12M40 22L20 34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".7"/></symbol>
+ <symbol id="r-mother" viewBox="0 0 96 82"><circle cx="40" cy="14" r="9" fill="#1f2d4f"/><path d="M24 80c0-26 4-50 16-54s18 14 18 30l-4 24z" fill="#1f2d4f"/><path d="M14 80h60" stroke="#8a7a5a" stroke-width="4" stroke-linecap="round"/><circle cx="60" cy="40" r="6" fill="#5b6f93"/><path d="M52 78c0-14 2-28 8-30s8 8 8 18v12z" fill="#5b6f93"/><path d="M50 50c4 2 8 2 10 0" stroke="#d9cdb0" stroke-width="2" fill="none"/></symbol>
+ <symbol id="i-reach" viewBox="0 0 60 60"><path d="M4 40c8-2 14-2 18 2l6 4" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M56 40c-8-2-14-2-18 2l-6 4" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M4 48h14M42 48h14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><circle cx="30" cy="22" r="5" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="3 3"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M30 10c-3 6-8 16-8 26v10l8 6 8-6V36c0-10-5-20-8-26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 12v38" stroke="currentColor" stroke-width="2.5"/><path d="M44 46l8-8 4 4-8 8zM46 44l-4 4" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/></symbol>
+ <symbol id="r-figc" viewBox="0 0 28 56"><circle cx="14" cy="8" r="7" fill="currentColor"/><path d="M5 52c0-20 2-34 9-36s9 16 9 36z" fill="currentColor"/></symbol>
+ <symbol id="r-sheet" viewBox="0 0 68 40"><path d="M6 4h52l4 32H2z" fill="#fffaf0" stroke="#c9b892" stroke-width="1.5"/><path d="M12 12h40M11 18h42M10 24h30" stroke="#d9cdb0" stroke-width="1.6"/><path d="M50 30l12-18 3 2-12 18-4 1z" fill="#8a6a24"/></symbol>
+ <symbol id="r-seat" viewBox="0 0 30 34"><path d="M4 34V12a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v22" fill="#e3c98a" stroke="#c99a4a" stroke-width="2"/><path d="M2 22h26v5H2z" fill="#c99a4a"/><path d="M15 2l2 4 4 .5-3 3 1 4-4-2-4 2 1-4-3-3 4-.5z" fill="#c99a4a"/></symbol>
+ <symbol id="i-q" viewBox="0 0 60 60"><path d="M10 12h40a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H26l-10 10v-10h-6a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 23a6 6 0 1 1 9 5c-2 1-3 2-3 4" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="38" r="2.4" fill="currentColor"/></symbol>
+ <symbol id="i-paper" viewBox="0 0 60 60"><path d="M14 6h24l10 10v38H14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 6v10h10" stroke="currentColor" stroke-width="3" fill="none"/><path d="M20 28h20M20 36h22M20 44h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-split" viewBox="0 0 60 60"><path d="M30 54V30M30 30L14 10M30 30L46 10" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="14" cy="10" r="5" fill="currentColor"/><circle cx="46" cy="10" r="5" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="r-cal" viewBox="0 0 44 44"><rect x="3" y="7" width="38" height="34" rx="4" fill="#fffaf0" stroke="#c9b892" stroke-width="2"/><rect x="3" y="7" width="38" height="10" rx="4" fill="#c99a4a"/><g fill="#d9cdb0"><rect x="9" y="22" width="6" height="5"/><rect x="19" y="22" width="6" height="5"/><rect x="29" y="22" width="6" height="5" fill="#e3c98a"/><rect x="9" y="31" width="6" height="5"/><rect x="19" y="31" width="6" height="5"/></g></symbol>
+ <symbol id="r-pin" viewBox="0 0 32 44"><path d="M16 42C6 28 3 22 3 15a13 13 0 0 1 26 0c0 7-3 13-13 27z" fill="#c99a4a"/><circle cx="16" cy="15" r="5" fill="#fffaf0"/></symbol>
+ <symbol id="i-cal" viewBox="0 0 60 60"><rect x="8" y="12" width="44" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M8 24h44M20 6v10M40 6v10" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><rect x="16" y="32" width="8" height="7" fill="currentColor"/><rect x="28" y="32" width="8" height="7" fill="currentColor"/><rect x="40" y="32" width="6" height="7" fill="currentColor"/></symbol>
+ <symbol id="i-house" viewBox="0 0 60 60"><path d="M8 28L30 10l22 18" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 26v26h32V26" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linejoin="round"/><rect x="25" y="36" width="10" height="16" fill="currentColor"/></symbol>
+ <symbol id="i-check" viewBox="0 0 60 60"><rect x="10" y="6" width="40" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M17 20l4 4 7-8M17 34l4 4 7-8" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 22h12M32 36h12M17 48h27" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-feather" viewBox="0 0 60 60"><path d="M46 8C26 10 14 26 14 46l6-6c10 0 22-8 26-32z" fill="currentColor"/><path d="M10 52l18-20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M4 56h30" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".6"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 60 60"><circle cx="30" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 18v14l10 6" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M24 6h12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-sun" viewBox="0 0 60 60"><circle cx="30" cy="34" r="12" fill="currentColor"/><path d="M30 10v8M10 34h8M42 34h8M16 20l6 6M44 20l-6 6M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-two" viewBox="0 0 60 60"><g fill="currentColor"><circle cx="20" cy="18" r="7"/><path d="M8 54c0-16 5-24 12-24s12 8 12 24z"/><circle cx="40" cy="18" r="7"/><path d="M28 54c0-16 5-24 12-24s12 8 12 24z"/></g></symbol>
+ <symbol id="i-group" viewBox="0 0 60 60"><g fill="currentColor"><circle cx="30" cy="14" r="6"/><circle cx="12" cy="24" r="5"/><circle cx="48" cy="24" r="5"/><path d="M20 54c0-14 4-22 10-22s10 8 10 22z"/><path d="M4 54c0-12 3-18 8-18s8 6 8 18zM40 54c0-12 3-18 8-18s8 6 8 18z"/></g></symbol>
+ <symbol id="i-staff" viewBox="0 0 60 60"><g fill="currentColor"><circle cx="24" cy="14" r="7"/><path d="M12 54c0-16 5-26 12-26s12 10 12 26z"/></g><path d="M44 56V18c0-8 10-8 10 0" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/></symbol>
+
+ <symbol id="r-gate" viewBox="0 0 70 44"><path d="M4 44V10M66 44V10" stroke="#d9cdb0" stroke-width="4"/><path d="M8 14h20v28H8zM42 14h20v28H42z" fill="none" stroke="#d9cdb0" stroke-width="2.5"/><path d="M8 28h20M42 28h20" stroke="#d9cdb0" stroke-width="2"/><g transform="rotate(-50 42 28)"><path d="M42 14h20v28H42z" fill="none" stroke="#efdcae" stroke-width="2.5" opacity="0"/></g></symbol>
+ <symbol id="r-hand" viewBox="0 0 80 34"><path d="M4 26c10 0 18 2 24 6h28c6 0 6-8 0-8H38M4 26V34h52l18-14c3-3 0-8-4-6l-14 8" fill="#d9cdb0" stroke="#8a6f4a" stroke-width="2" stroke-linejoin="round"/></symbol>
+ <symbol id="r-bag" viewBox="0 0 50 38"><rect x="2" y="10" width="46" height="26" rx="5" fill="#5a3a22"/><path d="M16 10V5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v5" stroke="#5a3a22" stroke-width="3" fill="none"/><path d="M25 16v14M18 23h14" stroke="#f3ecd8" stroke-width="3.5"/></symbol>
+ <symbol id="i-gate" viewBox="0 0 60 60"><path d="M8 54V14M52 54V14" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M8 18l14 6v26l-14-4z" fill="currentColor"/><path d="M52 18l-14 6v26l14-4z" fill="currentColor"/><path d="M30 54V30" stroke="currentColor" stroke-width="2" stroke-dasharray="3 4"/><circle cx="30" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-box" viewBox="0 0 60 60"><rect x="12" y="20" width="36" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M12 30h36M30 20v30" stroke="currentColor" stroke-width="2.5"/><path d="M8 10l44 44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".55"/></symbol>
+ <symbol id="i-hands" viewBox="0 0 60 60"><path d="M6 38c6-2 12-2 18 2l8 4c3 2 1 6-2 5l-8-3M54 38c-6-2-12-2-18 2l-8 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 26c-5-3-8-6-8-9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 3-3 6-8 9z" fill="currentColor"/></symbol>
+ <symbol id="i-paths" viewBox="0 0 60 60"><path d="M30 56V36M30 36L10 12M30 36L22 8M30 36L38 8M30 36L50 12" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><circle cx="10" cy="10" r="3.5" fill="currentColor"/><circle cx="22" cy="6" r="3.5" fill="currentColor"/><circle cx="38" cy="6" r="3.5" fill="currentColor"/><circle cx="50" cy="10" r="3.5" fill="currentColor"/></symbol>
+
+ <symbol id="i-candle" viewBox="0 0 60 60"><path d="M30 10c4 6 6 10 0 16-6-6-4-10 0-16z" fill="currentColor"/><rect x="22" y="30" width="16" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M12 54h36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-stream" viewBox="0 0 60 60"><path d="M6 44C20 36 34 50 54 40" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="4 5"/><circle cx="16" cy="44" r="2.5" fill="currentColor"/><circle cx="34" cy="45" r="2.5" fill="currentColor"/><path d="M10 30c6-10 14-14 22-14s14 4 18 10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-basket" viewBox="0 0 60 60"><path d="M8 28h44l-6 24H14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><rect x="14" y="16" width="12" height="12" fill="currentColor"/><rect x="28" y="12" width="14" height="16" fill="currentColor"/><rect x="22" y="6" width="10" height="10" fill="currentColor"/></symbol>
+ <symbol id="i-whole" viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="none" stroke="currentColor" stroke-width="3.5"/><circle cx="30" cy="22" r="5" fill="currentColor"/><path d="M22 44c0-10 3-14 8-14s8 4 8 14z" fill="currentColor"/></symbol>
+ <symbol id="r-jug" viewBox="0 0 50 50"><path d="M12 10h22l-2 6c6 4 8 12 6 20-2 8-6 12-15 12S10 44 9 36c-2-8 0-16 6-20z" fill="#b5764a"/><path d="M34 18c8 0 10 10 2 14" stroke="#8a5a36" stroke-width="3" fill="none"/><path d="M12 10l-6-4" stroke="#8a5a36" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="r-deer" viewBox="0 0 56 50"><g fill="#d9cdb0"><ellipse cx="28" cy="26" rx="16" ry="8"/><path d="M14 30v18M18 30v18M36 30v18M40 30v18" stroke="#d9cdb0" stroke-width="3"/><path d="M42 22l6 14c1 3-2 4-4 2l-6-10z"/><circle cx="46" cy="38" r="3.5"/></g><path d="M44 20l-2-10M44 20l4-8M42 14l-4-4" stroke="#d9cdb0" stroke-width="2" fill="none" stroke-linecap="round"/></symbol>
+
+ <symbol id="r-olive" viewBox="0 0 70 64"><path d="M34 64V38c-2-6-8-8-10-14M34 44c4-6 10-8 12-14" stroke="#3a3328" stroke-width="4" fill="none" stroke-linecap="round"/><g fill="#7d8f7a"><ellipse cx="22" cy="22" rx="18" ry="11"/><ellipse cx="46" cy="18" rx="20" ry="12"/><ellipse cx="34" cy="10" rx="14" ry="8"/></g><g fill="#9fb09a"><ellipse cx="40" cy="12" rx="7" ry="4"/><ellipse cx="18" cy="20" rx="6" ry="3"/></g></symbol>
+ <symbol id="r-prostrate" viewBox="0 0 40 14"><circle cx="6" cy="9" r="4" fill="#1f2d4f"/><path d="M10 6c8-2 18-2 26 2 3 2 2 6-1 6H10z" fill="#1f2d4f"/></symbol>
+ <symbol id="r-boat1" viewBox="0 0 70 38"><path d="M4 22h62l-9 12H13z" fill="#8a5a36"/><path d="M8 22h54" stroke="#5a3a22" stroke-width="2"/><circle cx="34" cy="12" r="4" fill="#1f2d4f"/><path d="M29 22c0-5 2-7 5-7s5 2 5 7z" fill="#1f2d4f"/></symbol>
+ <symbol id="r-phone" viewBox="0 0 26 10"><rect x="0" y="0" width="26" height="10" rx="3" fill="#1f2d4f"/></symbol>
+ <symbol id="i-stones" viewBox="0 0 60 60"><ellipse cx="9" cy="46" rx="7" ry="4" fill="currentColor"/><ellipse cx="22" cy="38" rx="7" ry="4" fill="currentColor"/><ellipse cx="34" cy="30" rx="7" ry="4" fill="currentColor"/><ellipse cx="45" cy="22" rx="6" ry="3.5" fill="none" stroke="currentColor" stroke-width="2.5"/><ellipse cx="54" cy="14" rx="5" ry="3" fill="none" stroke="currentColor" stroke-width="2.5"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M8 52C10 36 18 28 30 26s20-8 22-20" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M30 26c-6 4-8 10-4 14s12 0 10-6" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="52" cy="6" r="4" fill="currentColor"/></symbol>
+ <symbol id="i-three" viewBox="0 0 60 60"><g fill="currentColor"><circle cx="9" cy="34" r="4.5"/><path d="M2 54c0-9 3-14 7-14s7 5 7 14z"/><circle cx="22" cy="34" r="4.5"/><path d="M15 54c0-9 3-14 7-14s7 5 7 14z"/><circle cx="35" cy="34" r="4.5"/><path d="M28 54c0-9 3-14 7-14s7 5 7 14z"/><circle cx="51" cy="18" r="5"/><path d="M43 42c0-10 3-16 8-16s8 6 8 16z"/></g></symbol>
+
+ <symbol id="r-tablets" viewBox="0 0 50 34"><path d="M3 34V10a8 8 0 0 1 16 0v24z" fill="#d9cdb0" stroke="#8a7a5a" stroke-width="1.5"/><path d="M27 34V10a8 8 0 0 1 16 0v24z" fill="#d9cdb0" stroke="#8a7a5a" stroke-width="1.5" transform="translate(4 0)"/></symbol>
+ <symbol id="r-person" viewBox="0 0 14 22"><circle cx="7" cy="4" r="3.4"/><path d="M2 22c0-9 2-14 5-14s5 5 5 14z"/></symbol>
+ <symbol id="r-ox" viewBox="0 0 40 22"><path d="M6 8c4-4 18-4 24-2l6-2 2 4-4 3v9h-3v-6H12v6H9v-7C5 12 4 10 6 8z" fill="#8a6f4a"/></symbol>
+ <symbol id="r-bearer" viewBox="0 0 22 40"><rect x="2" y="0" width="18" height="9" fill="#c9a77a"/><circle cx="11" cy="14" r="4"/><path d="M5 40c0-12 2-20 6-20s6 8 6 20z"/><path d="M6 20l-3-10M16 20l3-10" stroke="#8a6f4a" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="r-sitter" viewBox="0 0 22 26"><circle cx="9" cy="5" r="4"/><path d="M3 24c0-8 2-14 6-14s6 4 6 8h6v6z"/></symbol>
+ <symbol id="r-basket" viewBox="0 0 40 32"><ellipse cx="20" cy="9" rx="16" ry="6" fill="#fffaf0"/><path d="M4 10h32l-4 20H8z" fill="#b8925a"/><path d="M8 16h24M9 22h22" stroke="#8a6a3a" stroke-width="1.5"/></symbol>
+ <symbol id="r-ship" viewBox="0 0 80 54"><path d="M4 36h72l-10 14H14z" fill="#8a5a36"/><path d="M40 36V4" stroke="#5a3a22" stroke-width="3"/><path d="M42 6l24 26H42z" fill="#f3ecd8" stroke="#c9b892"/><path d="M38 8L16 30h22z" fill="#efe6d2" stroke="#c9b892"/></symbol>
+ <symbol id="r-stand" viewBox="0 0 28 56"><circle cx="14" cy="8" r="7" fill="#1f2d4f"/><path d="M5 52c0-20 2-34 9-36s9 16 9 36z" fill="#1f2d4f"/></symbol>
+ <symbol id="i-tablets" viewBox="0 0 60 60"><path d="M8 52V22a10 10 0 0 1 20 0v30zM32 52V22a10 10 0 0 1 20 0v30z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M13 30h10M13 38h10M37 30h10M37 38h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-outback" viewBox="0 0 60 60"><path d="M10 50C14 30 26 18 44 12" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M44 12C40 28 30 42 14 52" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="5 5"/><circle cx="46" cy="11" r="5" fill="currentColor"/><path d="M8 46l2 6 6-2" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-shiptree" viewBox="0 0 60 60"><path d="M4 30h22l-4 7H8z" fill="currentColor"/><path d="M15 30V12M16 13l9 14h-9z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/><path d="M45 52V34M45 40l-8-7M45 37l8-8M45 34l-3-10" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M2 48c8-3 14 3 24 0" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M34 54h22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-door" viewBox="0 0 60 60"><path d="M14 54V8h32v46" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linejoin="round"/><path d="M14 8l18 6v44l-18-4z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+
+ <linearGradient id="softg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000"/><stop offset=".12" stop-color="#fff"/><stop offset=".88" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <linearGradient id="softv" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".85" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+ <mask id="soft" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#softg)"/></mask>
+ <radialGradient id="glow"><stop offset="0" stop-color="#f6dfa4" stop-opacity=".75"/><stop offset=".55" stop-color="#e9c27a" stop-opacity=".25"/><stop offset="1" stop-color="#e9c27a" stop-opacity="0"/></radialGradient>
+ <symbol id="r-figure" viewBox="0 0 40 54"><circle cx="17" cy="9" r="7" fill="#1f2d4f"/><path d="M8 50c0-14 2-30 10-32s12 8 12 18l8 4c2 2 0 6-2 6H20" fill="#1f2d4f"/><path d="M6 50h28" stroke="#1f2d4f" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="r-figure-dark" viewBox="0 0 40 54"><circle cx="17" cy="9" r="7" fill="#1f2d4f"/><path d="M8 50c0-14 2-30 10-32s12 8 12 18l8 4c2 2 0 6-2 6H20" fill="#1f2d4f"/><path d="M6 50h28" stroke="#1f2d4f" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="r-tree" viewBox="0 0 70 84"><path d="M35 84V44M35 56l-12-10M35 50l12-12" stroke="#1f2d4f" stroke-width="4" stroke-linecap="round"/><g fill="#8fa58e"><ellipse cx="24" cy="34" rx="18" ry="12"/><ellipse cx="46" cy="26" rx="20" ry="13"/><ellipse cx="35" cy="16" rx="16" ry="11"/><ellipse cx="54" cy="40" rx="12" ry="8"/></g><g fill="#a9bba5"><ellipse cx="40" cy="18" rx="8" ry="5"/><ellipse cx="22" cy="30" rx="7" ry="4"/></g></symbol>
+ <symbol id="r-broom" viewBox="0 0 110 80"><path d="M55 80V46M55 60L36 38M55 54l20-22M55 48l-6-26M36 38l-10-8M75 32l10-6" stroke="#5a4a36" stroke-width="3" stroke-linecap="round" fill="none"/><g stroke="#8fa58e" stroke-width="2" stroke-linecap="round"><path d="M26 30l-8-10M26 30l-12-2M36 38l-6-14M49 22l-4-14M49 22l6-14M85 26l8-10M85 26l12-2M75 32l4-14M55 48l-14-6"/></g><g fill="#a9bba5"><circle cx="18" cy="20" r="3"/><circle cx="45" cy="8" r="3"/><circle cx="93" cy="16" r="3"/><circle cx="79" cy="18" r="2.5"/><circle cx="30" cy="24" r="2.5"/></g><path d="M20 80h70" stroke="#5a4a36" stroke-width="2" opacity=".5"/></symbol>
+ <symbol id="r-sleeper" viewBox="0 0 76 22"><circle cx="10" cy="12" r="6" fill="#1f2d4f"/><path d="M16 8c14-4 36-4 52 2 4 2 4 8 0 9H16z" fill="#1f2d4f"/><path d="M14 20h60" stroke="#c9b892" stroke-width="2"/></symbol>
+ <symbol id="r-cake" viewBox="0 0 24 16"><ellipse cx="12" cy="13" rx="11" ry="3" fill="#7a6a58"/><ellipse cx="12" cy="9" rx="9" ry="4" fill="#d9b06a"/><path d="M6 8l3 1M12 7l2 2M16 8l2 1" stroke="#a87a3a" stroke-width="1"/></symbol>
+ <symbol id="r-jar" viewBox="0 0 18 24"><path d="M5 2h8v3c4 3 5 8 4 13-1 4-4 6-8 6s-7-2-8-6c-1-5 0-10 4-13z" fill="#b5764a"/><path d="M5 2h8" stroke="#8a5a36" stroke-width="2"/><path d="M4 12h10" stroke="#e3c98a" stroke-width="1.2" opacity=".7"/></symbol>
+ <symbol id="r-path" viewBox="0 0 60 50"><circle cx="44" cy="14" r="10" fill="#e9c27a" opacity=".8"/><path d="M0 40c14-6 30-8 60-6v16H0z" fill="#a9bba5"/><path d="M10 50c10-8 22-14 36-20" stroke="#efdcae" stroke-width="6" stroke-linecap="round" fill="none"/></symbol>
+ <symbol id="r-boat" viewBox="0 0 110 54"><path d="M8 36h94l-12 14H22z" fill="#8a5a36"/><path d="M14 36h82" stroke="#5a3a22" stroke-width="2"/><path d="M54 36V4" stroke="#5a3a22" stroke-width="3"/><path d="M56 6l30 26H56z" fill="#f3ecd8" stroke="#c9b892"/><g fill="#1f2d4f"><circle cx="30" cy="28" r="4"/><path d="M26 36c0-4 2-6 4-6s4 2 4 6z"/><circle cx="74" cy="28" r="4"/><path d="M70 36c0-4 2-6 4-6s4 2 4 6z"/></g></symbol>
+ <symbol id="r-kneel" viewBox="0 0 34 40"><circle cx="14" cy="6" r="5" fill="#1f2d4f"/><path d="M8 38c0-10 0-20 6-24s8 2 8 8v6h8c3 0 3 6 0 6H18v4z" fill="#1f2d4f"/><path d="M14 16l8 4" stroke="#1f2d4f" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="r-walker" viewBox="0 0 22 44"><circle cx="11" cy="5" r="4.5" fill="currentColor"/><path d="M6 24c0-8 2-13 5-13s5 5 5 13" fill="currentColor"/><path d="M8 24l-4 18M14 24l4 18M6 14l-4 10M16 14l4 10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pillow" viewBox="0 0 60 60"><path d="M6 30c0-10 10-14 24-14s24 4 24 14-10 14-24 14S6 40 6 30z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M30 38c-5-3-8-6-8-9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 3-3 6-8 9z" fill="currentColor"/><path d="M40 6h8l-8 8h8" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/></symbol>
+ <symbol id="i-jarcake" viewBox="0 0 60 60"><path d="M14 10h12v5c7 4 9 12 7 22-2 6-6 9-13 9s-11-3-13-9c-2-10 0-18 7-22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><ellipse cx="44" cy="44" rx="13" ry="5" fill="currentColor"/><path d="M4 54h52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-boat" viewBox="0 0 60 60"><path d="M6 38h48l-8 12H14z" fill="currentColor"/><path d="M30 38V8" stroke="currentColor" stroke-width="3"/><path d="M32 10l16 22H32z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M4 56c8-3 14 3 26 0s18-3 26 0" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+ <symbol id="i-openpalm" viewBox="0 0 60 60"><path d="M6 40c8 0 14 2 18 6h14c4 0 4 6 0 6H24M6 40v16h40l10-14c2-4-2-7-5-4l-8 8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 6v10M20 10l4 6M40 10l-4 6M30 28a6 6 0 1 0 0-.1" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+</defs></svg>
+<!-- ============ R16 SLIDE 1 ============ -->
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+ <div class="wrap">
+  <p class="label">The Christian Spiritual Reset · <span style="white-space:nowrap">Lesson 16</span></p>
+  <svg class="scene" viewBox="0 0 680 250" aria-hidden="true">
+   <g class="drift" mask="url(#soft)">
+    <rect x="0" y="0" width="680" height="250" fill="#dfe9ef"/>
+    <g><circle cx="610" cy="122" r="24" fill="#f2c36b" opacity=".9"/><circle cx="610" cy="122" r="44" fill="#f2c36b" opacity=".16"/></g>
+    <path d="M0 170 C120 146 230 158 340 164 S540 150 680 160 V250 H0z" fill="#b9cddb"/>
+    <path d="M0 200 C160 182 300 192 420 198 S600 190 680 196 V250 H0z" fill="#b8caa6"/>
+    <path d="M60 250 C180 222 300 214 420 214 S600 206 680 200" stroke="#e8dcc0" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <use href="#r-figure" x="120" y="190" width="30" height="40"/>
+    <use href="#r-tree" x="40" y="150" width="58" height="70"/>
+    <g fill="#8a6a24">
+     <g class="b" data-at="testing action rhythm and help"><rect x="236" y="208" width="5" height="16" rx="2"/><circle cx="238.5" cy="206" r="5" fill="#f2c36b"/></g>
+     <g class="b" data-at="action rhythm and help"><rect x="336" y="200" width="5" height="16" rx="2"/><circle cx="338.5" cy="198" r="5" fill="#f2c36b"/></g>
+     <g class="b" data-at="rhythm and help"><rect x="436" y="198" width="5" height="16" rx="2"/><circle cx="438.5" cy="196" r="5" fill="#f2c36b"/></g>
+     <g class="b" data-at="and help This lesson"><rect x="536" y="194" width="5" height="16" rx="2"/><circle cx="538.5" cy="192" r="5" fill="#f2c36b"/></g>
+    </g>
+   </g>
+   <g class="b up" data-at="Welcome back" data-until="So it asks what does the first month">
+    <text class="fz17" x="300" y="40" text-anchor="middle" font-family="Source Serif 4" font-style="italic" font-size="17" fill="#8a6a24">Lesson 16 · Book chapter 17 · Part 4: Come Home Well</text>
+    <text x="300" y="84" text-anchor="middle" font-weight="700" font-size="27" fill="#1f2d4f">Your 30-Day Spiritual Renewal Plan</text>
+   </g>
+  </svg>
+  <div class="stack" style="min-height:3.6em">
+   <p class="b up note-b" data-at="This is the last lesson" data-until="You do not need to watch it early">The last lesson · for Day 30, or whenever you reach it</p>
+   <p class="b up note-s" data-at="You do not need to watch it early" data-until="The four lessons before this one">The plan has been on Your First 30 Days Home since your first morning back.</p>
+   <p class="b up note-s" data-at="The four lessons before this one" data-until="So it asks what does the first month">This lesson brings it together, and guides your Day 30 review.</p>
+   <h1 class="b up" data-at="So it asks what does the first month" style="font-size:clamp(22px,3.8vw,40px)">What does the first month home look like?</h1>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 2 ============ -->
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+ <div class="wrap">
+  <p class="label">Before the calendar</p>
+  <div class="stopcard" style="width:min(100%,600px);border-color:#8a6a24">
+   <p class="ek" style="color:#8a6a24">One thing that does not wait</p>
+   <p>If any warning sign from Lesson 4 or Lesson 5 applies, <b>act on Lesson 15 today</b>, whatever week of the plan you are in.</p>
+   <p><b>In immediate danger? Contact emergency services now.</b></p>
+   <p class="es">Safety and professional help come before every week of this plan.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 3 ============ -->
+<section class="slide" data-n="3" data-theme="dark" aria-label="Slide 3">
+ <div class="wrap">
+  <p class="label">Read the Scripture · <span style="white-space:nowrap">Philippians 1:6</span></p>
+  <div class="stack" style="min-height:7em">
+   <p class="scripture sm b" data-at="Our passage is short" data-until="And I am sure of this"><span style="color:#e3c98a">Philippians 1:6 · 1 Kings 19:15, 21</span><span class="ref">English Standard Version</span></p>
+   <p class="scripture b" data-at="And I am sure of this" data-until="And two lines you heard" style="font-size:clamp(21px,3.4vw,34px);max-width:20em">“And I am sure of this, that <u class="k" data-at="he who began a good work in you">he who began a good work in you</u> will bring it to completion at the day of Jesus Christ.”<span class="ref">Philippians 1:6 · ESV</span></p>
+   <div class="b" data-at="And two lines you heard">
+    <p class="note-s" style="color:#e3c98a">Recalled from Session 10 · the end of Elijah’s story</p>
+    <p class="scripture b up" data-at="Go return on your way" style="font-size:clamp(20px,3vw,30px)">“Go, return on your way.”<span class="ref">1 Kings 19:15 · ESV</span></p>
+    <p class="scripture b up" data-at="Then he arose and went after Elijah" style="font-size:clamp(20px,3vw,30px)">“Then he arose and went after Elijah and <u class="k" data-at="and assisted him">assisted him</u>.”<span class="ref">1 Kings 19:21 · ESV</span></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 4 ============ -->
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+ <div class="wrap">
+  <p class="label">Understand the background</p>
+  <div class="stack" style="min-height:7em">
+   <div class="b" data-at="Now the background" data-until="And notice when">
+    <p class="note-b">Paul writes from imprisonment to a church he loves</p>
+    <p class="b up note-s" data-at="He thanks God for their partnership">He thanks God for their partnership in the gospel (Philippians 1:3–7).</p>
+    <p class="b up note-i" data-at="Notice who does the work">God began the work; God will complete it.</p>
+   </div>
+   <div class="b" data-at="And notice when">
+    <p class="note-b">“The day of Jesus Christ”: the day of Christ’s return</p>
+    <p class="b up note-s" data-at="did not set a thirty day limit">No thirty-day limit on it</p>
+    <h1 class="b up" data-at="The day of completion is not Day" style="font-size:clamp(22px,3.6vw,38px)">Day 30 is a review.</h1>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 5 ============ -->
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+ <div class="wrap">
+  <p class="label">The biblical portrait · Elijah</p>
+  <div class="note-card b up" data-at="The book closes by tracing" style="width:min(100%,560px)">
+   <p class="nc-h">What God did for Elijah</p>
+   <p class="b up" data-at="God fed him before he sent him">Fed him before he sent him</p>
+   <p class="b up" data-at="He let him sleep">Let him sleep</p>
+   <p class="b up" data-at="He asked him what he was doing there">Asked what he was doing there, and listened, twice</p>
+   <p class="b up" data-at="He reoriented him">Redirected him, and gave him work that was his</p>
+   <p class="b up" data-at="and gave him a companion and a successor">Gave him a companion and a successor</p>
+  </div>
+  <p class="b up note-i" data-at="And he did not tell him to try harder" style="font-size:clamp(18px,2.6vw,24px)">He did not tell him to try harder.</p>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 6 ============ -->
+<section class="slide" data-n="6" data-theme="dark" aria-label="Slide 6">
+ <div class="wrap">
+  <p class="label">Understand the teaching</p>
+  <h1 class="b up" data-at="Here is the short answer" style="font-size:clamp(24px,4vw,42px)">The short answer</h1>
+  <p class="b up note-i" data-at="A month of imperfect repetition" style="color:#e3c98a">A month of imperfect repetition: a small daily minimum, four light weeks, and a review that is not a deadline.</p>
+  <div class="method four dark" style="margin-top:.6em">
+   <div class="b up" data-at="what the month is for the daily"><svg><use href="#i-seedling"/></svg>What the Month Is For</div>
+   <div class="b up" data-at="the daily minimum landing"><svg><use href="#i-candle"/></svg>The Daily Minimum</div>
+   <div class="b up" data-at="landing doing shaping settling and"><svg><use href="#i-path4"/></svg>Landing, Doing, Shaping, Settling</div>
+   <div class="b up" data-at="and Day is a review not a deadline"><svg><use href="#i-cal"/></svg>Day 30 Is a Review, Not a Deadline</div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 7 ============ -->
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+ <div class="wrap">
+  <p class="badge"><svg><use href="#i-seedling"/></svg>Point 1</p>
+  <h1 style="font-size:clamp(22px,3.8vw,40px)">What the Month Is For</h1>
+  <div class="cards4 three3">
+   <div class="b up" data-at="First to let the rhythm"><b>The rhythm</b><span>more familiar, through imperfect repetition</span></div>
+   <div class="b up" data-at="Second to work through your cards"><b>The cards</b><span>at a pace that does not recreate the burnout</span></div>
+   <div class="b up" data-at="Third to give the optional sessions"><b>The sessions and the testing</b><span>given the time they need</span></div>
+  </div>
+  <div class="stack" style="min-height:2.6em">
+   <p class="b up note-s" data-at="Thirty days will not necessarily" data-until="Second to work through your cards">Thirty days will show whether it is small and realistic enough to continue.</p>
+   <p class="b up note-i" data-at="It is not for becoming a different person">Not for becoming a different person in thirty days</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 8 ============ -->
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+ <div class="wrap">
+  <p class="badge"><svg><use href="#i-candle"/></svg>Point 2</p>
+  <h1 style="font-size:clamp(22px,3.8vw,40px)">The Daily Minimum</h1>
+  <div class="stack" style="min-height:6em">
+   <div class="b" data-at="Every day of the month the rhythm" data-until="And a psalm for each week">
+    <p class="note-b">Every day: the rhythm from your Session 10 card. That is all.</p>
+    <p class="b up note-s" data-at="If your rhythm is weekly">A weekly rhythm? On the days you can: a psalm and a few minutes of quiet (Lesson 8).</p>
+    <p class="b up note-i" data-at="When you miss resume the next day">Missed a day? Resume the next day, without compensation or guilt.</p>
+   </div>
+   <div class="b" data-at="And a psalm for each week">
+    <p class="note-b">A psalm for each week</p>
+    <div class="cards4">
+     <div class="b up" data-at="in the first week Psalm"><b>23</b>Week 1</div>
+     <div class="b up" data-at="in the second Psalm"><b>62</b>Week 2</div>
+     <div class="b up" data-at="in the third and Psalm"><b>27</b>Week 3</div>
+     <div class="b up" data-at="in the fourth They are the psalms"><b>131</b>Week 4</div>
+    </div>
+    <p class="b up note-s" data-at="Reading them again at home">Read again at home, they show you the distance travelled.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 9 ============ -->
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+ <div class="wrap">
+  <p class="badge"><svg><use href="#i-path4"/></svg>Point 3</p>
+  <h1 style="font-size:clamp(22px,3.8vw,40px)">Landing, Doing, Shaping, Settling</h1>
+  <p class="b up note-s" data-at="These are the four weeks you have been following" data-until="is landing the soft week">The four weeks you have been following on Your First 30 Days Home, to look back over</p>
+  <div class="cards4 two2">
+   <div class="b up" data-at="is landing the soft week"><b>Week 1 · Landing</b><span>Expect the dip; do little. Tell your support person you are home. Lesson 13 if capacity allows. No verdict on the retreat.</span></div>
+   <div class="b up" data-at="is doing the week the cards"><b>Week 2 · Doing</b><span>One Share conversation. The Eli conversation, if you are testing anything. Session 8, if you left it.</span></div>
+  </div>
+  <p class="b up note-i" data-at="And at the two week point">Two-week check: is the rhythm livable? If not, shrink it. Do not abandon it.</p>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 10 ============ -->
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+ <div class="wrap">
+  <p class="label">Landing, Doing, Shaping, Settling</p>
+  <div class="cards4 two2">
+   <div class="b up" data-at="is shaping the week the rule"><b>Week 3 · Shaping</b><span>Write your rule of life (Lesson 14). One structural request, if capacity allows. Session 9, if you left it. Look at Lesson 15 again.</span></div>
+   <div class="b up" data-at="is settling Session"><b>Week 4 · Settling</b><span>Session 6 only if its conditions are met. In doubt? The short prayer, and leave the rest.</span></div>
+  </div>
+  <div class="stack" style="min-height:2.6em">
+   <p class="b up note-s" data-at="Sometimes a need becomes clearer" data-until="is settling Session">Sometimes a need becomes clearer after several weeks at home.</p>
+   <p class="b up note-i" data-at="And if you are testing a major direction">Testing a major direction? A small, responsible, reversible step, or keep testing beyond Day 30.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 11 ============ -->
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+ <div class="wrap">
+  <p class="badge"><svg><use href="#i-cal"/></svg>Point 4</p>
+  <h1 style="font-size:clamp(22px,3.8vw,40px)">Day 30 Is a Review, Not a Deadline</h1>
+  <div class="stack" style="min-height:6em">
+   <div class="b" data-at="No decision has to be made" data-until="And begin with grace">
+    <p class="note-b">No decision is due. Nothing becomes overdue.</p>
+    <div class="fs b up" data-at="Sit down for an hour"><span>an hour</span><span>your journal</span><span>your cards</span><span>your intention (Lesson 7)</span><span>your answers (Lesson 1)</span></div>
+    <p class="b up note-i" data-at="Not to grade the month but to see it">Not to grade the month, but to see it</p>
+   </div>
+   <div class="b" data-at="And begin with grace">
+    <p class="note-b">Begin with grace received</p>
+    <p class="b up note-s" data-at="Where did you notice help">Help, kindness, provision, truth, rest, God’s presence</p>
+    <p class="b up note-i" data-at="What happened that you did not produce">What happened that you did not produce through effort?</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 12 ============ -->
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+ <div class="wrap">
+  <p class="label">Looking back</p>
+  <div class="note-card" style="width:min(100%,620px)">
+   <p class="nc-h">The review</p>
+   <p class="b up" data-at="Then read your intention again"><b>Your intention:</b> what has become clearer, and what still needs attention?</p>
+   <p class="b up" data-at="Read your answers from Lesson"><b>Your Lesson 1 answers:</b> beside where you are now. Do not force a conclusion. Notice.</p>
+   <p class="b up" data-at="Look at your rhythm"><b>Your rhythm:</b> keep, shrink, move, or replace it.</p>
+   <p class="b up" data-at="And look at your cards"><b>Your cards:</b> which became actions, conversations, help or release? Which remain?</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 13 ============ -->
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+ <div class="wrap">
+  <p class="label">What remains, and what comes next</p>
+  <div class="note-card" style="width:min(100%,620px)">
+   <p class="b up" data-at="Then the unresolved"><b>The unresolved:</b> name it, and leave it named.</p>
+   <p class="b up" data-at="applied to you did you act"><b>The help:</b> if Lesson 15 applied, did you act?</p>
+   <p class="b up" data-at="And book your next pause"><b>The next pause:</b> book it.</p>
+   <p class="b up" data-at="At the end write one paragraph"><b>One dated paragraph:</b> what the month has been. Then close the journal.</p>
+  </div>
+  <div class="stack" style="min-height:2.8em">
+   <p class="b up note-s" data-at="Below this lesson My Day" data-until="Answer what you can">Online: a shorter review, in six areas · All eight questions: the printable worksheet</p>
+   <p class="b up note-i" data-at="Answer what you can">A partial review is still a review.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 14 ============ -->
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+ <div class="wrap">
+  <p class="label">If you missed most of it</p>
+  <div class="stack" style="min-height:7em">
+   <div class="b" data-at="Some of you will reach Day" data-until="Second ask whether the part">
+    <p class="note-b">The plan does not expire. Do not restart from the beginning.</p>
+    <p class="b up note-s" data-at="Look at the four weeks and find">Find the next unfinished step that still matters. Begin there.</p>
+    <div class="fs b up" data-at="The cards keep"><span>The cards keep.</span><span>The sessions keep.</span><span>The intention keeps.</span></div>
+   </div>
+   <div class="b" data-at="Second ask whether the part">
+    <p class="note-b">The part you did may be the important part.</p>
+    <p class="b up note-s" data-at="They are the plan in the form">The plan, in the form your month allowed</p>
+    <h1 class="b up" data-at="Resume" style="font-size:clamp(24px,4vw,42px)">Resume.</h1>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 15 ============ -->
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+ <div class="wrap">
+  <p class="label">Practise</p>
+  <h1 class="b up" data-at="Here is your step" style="font-size:clamp(22px,3.6vw,38px)">Your step: one next pause</h1>
+  <p class="b up note-s" data-at="Choose one realistic next pause">Choose one realistic pause, and put it in your calendar now. For example:</p>
+  <div class="cards4 three3">
+   <div class="b up" data-at="a three hour reset next month"><b>A three-hour reset</b><span>next month</span></div>
+   <div class="b up" data-at="a day in three months"><b>A day</b><span>in three months</span></div>
+   <div class="b up" data-at="or a retreat within the year"><b>A retreat</b><span>within the year</span></div>
+  </div>
+  <div class="stack" style="min-height:2.8em">
+   <p class="b up note-i" data-at="These are suggestions not obligations" data-until="Then if you wish complete">One pause you will keep is better than three you will not.</p>
+   <p class="b up ask" data-at="Then if you wish complete">Then, if you wish: My Day 30 Review, below this lesson. Private, not scored, never overdue.</p>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 16 ============ -->
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+ <div class="wrap">
+  <p class="label">A closing word</p>
+  <svg class="scene" viewBox="0 0 680 220" aria-hidden="true">
+   <g mask="url(#soft)">
+    <rect x="0" y="0" width="680" height="220" fill="#f3dcc0"/>
+    <circle cx="560" cy="120" r="34" fill="#f2c36b" opacity=".8"/>
+    <path d="M0 150 C140 126 260 138 360 144 S560 130 680 140 V220 H0z" fill="#d9b99a"/>
+    <path d="M0 180 C160 162 300 172 420 178 S600 170 680 176 V220 H0z" fill="#b8caa6"/>
+    <path d="M60 220 C200 196 320 188 440 186 S600 180 680 176" stroke="#efe2c8" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <use href="#r-figure" x="300" y="150" width="28" height="38"/>
+    <use href="#r-figure" x="336" y="148" width="28" height="38"/>
+   </g>
+  </svg>
+  <div class="stack" style="min-height:4.4em">
+   <p class="b up note-s" data-at="You began this course tired" data-until="So as Elijah was sent">You began tired in a place that sleep does not reach.</p>
+   <div class="b" data-at="So as Elijah was sent">
+    <p class="hand" style="margin:.1em auto">Go on your way, and go with others.</p>
+    <p class="b up hand" data-at="Work when it is yours to work" style="margin:.1em auto">Work when it is yours to work.</p>
+    <p class="b up hand" data-at="Stop when it is time to stop" style="margin:.1em auto">Stop when it is time to stop.</p>
+    <p class="b up note-i" data-at="The world is held by God" style="font-size:clamp(18px,2.6vw,24px)">The world is held by God, not by you.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 17 ============ -->
+<section class="slide" data-n="17" data-theme="dark" aria-label="Slide 17">
+ <div class="wrap">
+  <p class="label">Remember</p>
+  <div class="remember">
+   <div class="b" data-at="The month is for imperfect repetition"><svg><use href="#i-seedling"/></svg><p><b>What the Month Is For</b>Imperfect repetition, not a new person in thirty days</p></div>
+   <div class="b" data-at="The daily minimum is your rhythm"><svg><use href="#i-candle"/></svg><p><b>The Daily Minimum</b>Your rhythm, and resume without guilt</p></div>
+   <div class="b" data-at="The four weeks are light"><svg><use href="#i-path4"/></svg><p><b>Landing, Doing, Shaping, Settling</b>Four light weeks</p></div>
+   <div class="b" data-at="is a review not a deadline see the month"><svg><use href="#i-cal"/></svg><p><b>Day 30 Is a Review, Not a Deadline</b>See the month, and book the next pause</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- ============ R16 SLIDE 18 ============ -->
+<section class="slide" data-n="18" data-theme="dark" aria-label="Slide 18">
+ <svg class="sunbg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="600" cy="640" r="170" fill="#c98a5a" opacity=".3"/><circle cx="600" cy="640" r="280" fill="#c98a5a" opacity=".08"/></svg>
+ <div class="wrap">
+  <p class="label">Prayer</p>
+  <div class="prayer">
+   <p class="b" data-at="Faithful God you began">Faithful God, you began this good work in me,</p>
+   <p class="b" data-at="and you will bring it to completion Thank">and you will bring it to completion.</p>
+   <p class="b" data-at="Thank you for the grace">Thank you for the grace I did not earn this month.</p>
+   <p class="b" data-at="Teach me to work when it is mine">Teach me to work when it is mine to work,</p>
+   <p class="b" data-at="to stop when it is time to stop and">to stop when it is time to stop,</p>
+   <p class="b" data-at="and to go on my way with others">and to go on my way with others.</p>
+   <p class="b" data-at="Amen">Amen.</p>
+  </div>
+  <p class="b scripture" data-at="The Lord bless you and keep you" style="margin-top:1em;font-size:clamp(20px,3vw,30px);color:#e3c98a">“The <span class="sc">Lord</span> bless you and keep you”<span class="ref">Numbers 6:24 · ESV</span></p>
+ </div>
+</section>
+
+
+
+
+<div id="cap"></div>
+</div>
+
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar seek" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 18</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="reset-lesson-16.mp3" preload="auto"></audio>
+</footer>
+
+<script>
+const NARR = {"1": "Welcome back. This is the last lesson of the course. It is for Day 30, or for whenever you reach the end of your first month home. You do not need to watch it early to know what to do. The plan for the month has been on the page Your First 30 Days Home since your first morning back, and you have been following it week by week, as far as the weeks allowed. The four lessons before this one each covered a piece of the return: testing, action, rhythm, and help. This lesson brings them together on one calendar, so that you can see the shape of the month you have just lived, and then it guides your Day 30 review. So it asks: what does the first month home look like?", "2": "Before the calendar, one thing that does not wait for it. If any warning sign from Lesson 4 or Lesson 5 applies to you, if you are in danger, being harmed, unable to function, in severe distress, or dependent on a substance, go to Lesson 15 now, on whatever day it is, and act on its guidance. If you are in immediate danger, contact emergency services now. Safety and professional help come before every week of this plan.", "3": "Our passage is short. The Scripture readings in this course are from the English Standard Version. Philippians chapter 1, verse 6: \"And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ.\" And two lines you heard in Session 10, from the end of Elijah's story. God said to him: \"Go, return on your way.\" And of Elisha, the young man he called: \"Then he arose and went after Elijah and assisted him.\"", "4": "Now the background. Paul wrote this letter while imprisoned, to the church in Philippi, a church he loved. He thanks God for their partnership in the gospel, and he is sure of one thing: the one who began a good work in them will complete it. Notice who does the work. God began it, and God will bring it to completion. And notice when. \"The day of Jesus Christ\" is the day of Christ's return. Paul, who had more reason than most to expect rapid transformation, did not set a thirty-day limit on it. The day of completion is not Day 30. Day 30 is a review.", "5": "Our portrait is Elijah, the prophet you met under the broom tree at the very start of this course. The book closes by tracing what God did for him. God fed him before he sent him. He let him sleep. He asked him what he was doing there, and listened to the answer, twice. He reoriented him, gave him work that was his to do, and gave him a companion and a successor. And he did not tell him to try harder. That has been the pattern of this whole course, and it is still the pattern for the month you have just lived.", "6": "So, what does the first month home look like? Here is the short answer. A month of imperfect repetition: a small daily minimum, four light weeks, and a review on Day 30 that is not a deadline. That gives us four points: what the month is for; the daily minimum; landing, doing, shaping, settling; and Day 30 is a review, not a deadline.", "7": "The first point: what the month is for. Three things. First, to let the rhythm from Session 10 become more familiar through a month of imperfect repetition. Thirty days will not necessarily make it automatic. They will show whether it is small and realistic enough to continue. Second, to work through your cards at a pace that does not recreate the burnout. Third, to give the optional sessions and the testing the time they need, so that what was begun on retreat is finished in ordinary life rather than abandoned there. It is not for becoming a different person in thirty days.", "8": "The second point: the daily minimum. Every day of the month, the rhythm from your Session 10 card. That is all that is required daily. If your rhythm is weekly rather than daily, a protected period of ceasing or a weekly hour, then the daily minimum is smaller still: a psalm and a few minutes of quiet, the practice from Lesson 8, on the days you can. When you miss, resume the next day, without compensation or guilt. And a psalm for each week, if you want one to return to: Psalm 23 in the first week, Psalm 62 in the second, Psalm 27 in the third, and Psalm 131 in the fourth. They are the psalms from Lesson 8. Reading them again at home will show you something about the distance travelled.", "9": "The third point: landing, doing, shaping, settling. These are the four weeks you have been following on Your First 30 Days Home. Here they are again, so that you can look back over them. Week 1 is landing: the soft week. Expect the dip, and do little. Keep the rhythm, imperfectly. Tell your support person you are home: one conversation, not a report. If capacity allows, watch Lesson 13 on Day 2 or 3, and complete one Act card or one Seek-counsel step. Do not pronounce a final verdict on the retreat, and do not redesign your life this week. Week 2 is doing: the week the cards leave the pile. Hold one Share conversation. Have the Eli conversation, if you are testing anything, and bring the worksheet. If you left Session 8 for this month, this is its week. And at the two-week point, ask whether the rhythm is livable. If not, shrink it. Do not abandon it.", "10": "Week 3 is shaping: the week the rule is written. Write your rule of life from Lesson 14, and share it, or the parts you want accountability for, with your Eli. If capacity allows, take one structural request to whoever can change something. If you left Session 9, this is its week. And look at Lesson 15 again, whether or not you first thought it applied. Sometimes a need becomes clearer after several weeks at home. Week 4 is settling. Session 6, on forgiveness, only if the conditions at the top of it are met: you are rested and settled, the harm is not active, and you want to explore what release might mean without forcing an outcome. If you are in doubt, use the short prayer and leave the rest. And if you are testing a major direction, return to the worksheet from Lesson 12. If the testing supports a small, responsible, reversible step, consider taking it. If it still needs more time, advice, or information, keep testing beyond Day 30.", "11": "The fourth point: Day 30 is a review, not a deadline. No decision has to be made by Day 30, and nothing becomes overdue if you reach it late. Sit down for an hour, with your journal, your cards, your intention from Lesson 7, and your answers from Lesson 1. Not to grade the month, but to see it. And begin with grace, before anything is evaluated. Where did you notice help, kindness, provision, truth, rest, or God's presence during the month? What happened that you did not produce through effort?", "12": "Then read your intention again, all four parts. Session 10 asked what had shifted after three days. Ask again after thirty: what has become clearer, and what still needs attention? Read your answers from Lesson 1 beside where you are now: when you last felt close to God, what you kept doing while feeling nothing, your own \"It is enough\". Do not force a conclusion. Notice. Look at your rhythm. How often did you keep it? What helped it happen, and what repeatedly prevented it? Use the answers to keep, shrink, move, or replace it. And look at your cards. Which became actions, conversations, help, or release? Of those remaining, which belong in the testing pile, which need a different kind of help, and which can simply be let go?", "13": "Then the unresolved. What remains open without needing to be forced? Name it, and leave it named. If Lesson 15 applied to you, did you act? If not, what is the one step this week? And book your next pause, which is your step in a moment. At the end, write one paragraph, dated: what the month has been. Then close the journal. The month is finished. Below this lesson, My Day 30 Review is a shorter version, in six areas. All eight questions, and the dated paragraph, are on the printable Day 30 Review worksheet. Answer what you can. A partial review is still a review.", "14": "Some of you will reach Day 30 having done a fraction of this. Illness, a family crisis, a work emergency, or simply the dip lasting longer than expected will have taken the month. If that is you, two things. First, the plan does not expire, and it does not need restarting from the beginning. Look at the four weeks and find the next unfinished step that still matters. Begin there. If you need the gentleness of the landing week again, take it. The cards keep. The sessions keep. The intention keeps. Second, ask whether the part you did was the important part. Many who think they missed the plan kept the rhythm on some days, made one appointment, had one conversation. Those are not a fraction of the plan. They are the plan, in the form your month allowed. Doing the word is a habit built by resuming, not by never failing. Resume.", "15": "Here is your step. Choose one realistic next pause, and put it in your calendar now. The book suggests a three-hour reset next month, a day in three months, or a retreat within the year. These are suggestions, not obligations; one pause you will keep is better than three you will not. A rhythm needs a next time, and the calendar is where rhythms survive. If you wrote a purpose sentence in Session 9, read it too. Does it still fit? Rewrite it if the season has changed. Then, if you wish, complete My Day 30 Review, below this lesson, on Day 30 or whenever you are ready. You can save part of it and come back. It is private, it is not scored, it does not measure your spiritual health, and it never becomes overdue.", "16": "You began this course tired in a place that sleep does not reach. You took days you probably felt you could not afford, and you spent them being honest with God about what you were carrying, and letting him carry some of it. You came home, perhaps to many of the same demands, and you have begun learning to carry what is yours differently. So, as Elijah was sent: go on your way, and go with others. Work when it is yours to work. Stop when it is time to stop. The world is held by God, not by you.", "17": "Let us bring it together. The month is for imperfect repetition, not for becoming a different person in thirty days. The daily minimum is your rhythm, and when you miss it, you resume without guilt. The four weeks are light: landing, doing, shaping, settling. And Day 30 is a review, not a deadline: see the month, and book the next pause. He who began a good work in you will bring it to completion.", "18": "Let us pray. Faithful God, you began this good work in me, and you will bring it to completion. Thank you for the grace I did not earn this month. Teach me to work when it is mine to work, to stop when it is time to stop, and to go on my way with others. Amen. The Lord bless you and keep you."};     // narration for each slide (approved script)
+const TIMES = {"1": [0.14, 0.64, 1.62, 1.97, 2.2, 2.3, 2.82, 3.3, 3.52, 3.63, 4.89, 5.05, 5.21, 5.38, 6.58, 6.94, 7.16, 7.56, 7.88, 8.17, 8.37, 8.68, 8.8, 8.98, 9.43, 9.7, 10.9, 11.03, 11.18, 11.46, 11.72, 11.83, 12.16, 12.35, 12.73, 12.89, 13.14, 13.4, 13.57, 14.42, 14.61, 15.0, 15.17, 15.26, 15.67, 15.88, 16.08, 16.22, 16.29, 16.72, 16.93, 17.74, 18.43, 18.87, 19.17, 19.33, 19.78, 20.22, 21.07, 21.21, 21.33, 21.46, 21.64, 22.2, 22.35, 22.81, 23.03, 23.92, 24.13, 24.5, 24.66, 24.74, 25.11, 26.36, 26.43, 26.76, 27.25, 27.7, 27.97, 28.26, 28.77, 29.16, 29.21, 29.63, 29.74, 29.83, 31.06, 32.1, 33.06, 33.88, 34.07, 35.04, 35.31, 35.83, 36.2, 36.37, 36.97, 37.18, 37.57, 38.54, 38.71, 38.86, 39.04, 39.22, 39.55, 39.65, 40.01, 40.14, 40.22, 40.61, 40.78, 40.95, 41.32, 42.23, 42.41, 42.6, 42.69, 43.25, 43.41, 44.08, 45.16, 45.39, 45.49, 46.38, 46.66, 46.9, 46.97, 47.45, 47.72, 48.18, 48.44], "2": [49.33, 49.74, 49.84, 50.89, 51.15, 51.53, 51.75, 51.99, 52.34, 52.71, 52.96, 53.88, 54.05, 54.25, 54.72, 55.2, 55.42, 55.94, 56.49, 56.91, 57.78, 58.0, 58.67, 58.83, 59.05, 59.19, 59.36, 60.26, 60.58, 61.49, 61.91, 62.05, 63.01, 63.15, 63.69, 64.72, 64.88, 65.57, 65.7, 65.73, 66.76, 66.97, 67.1, 68.47, 69.55, 69.69, 70.17, 70.47, 70.61, 71.32, 71.5, 71.91, 72.05, 72.24, 73.43, 73.59, 73.81, 73.96, 74.09, 74.71, 75.59, 76.26, 77.02, 77.72, 78.41, 79.14, 79.39, 80.08, 80.49, 80.85, 81.33, 81.74, 82.08, 82.21, 82.41], "3": [83.65, 83.88, 84.44, 84.57, 85.53, 85.6, 86.12, 86.63, 86.78, 86.99, 87.76, 87.93, 88.2, 88.37, 88.81, 89.37, 90.34, 91.09, 92.16, 92.8, 94.13, 94.28, 94.46, 94.93, 95.07, 95.86, 96.0, 96.47, 96.68, 97.17, 97.25, 97.57, 97.93, 98.06, 98.26, 98.53, 98.83, 98.97, 99.08, 99.89, 100.03, 100.11, 100.48, 100.6, 101.1, 102.12, 102.36, 102.65, 103.17, 103.36, 103.71, 103.88, 105.41, 105.63, 105.77, 106.0, 106.09, 106.68, 107.95, 108.29, 108.66, 108.77, 109.38, 110.12, 110.67, 110.84, 111.02, 111.75, 111.96, 112.09, 112.81, 112.97, 113.28, 113.57, 113.75, 114.49, 114.67, 114.89, 115.8, 115.99, 116.26, 116.71, 117.56, 117.74, 118.25], "4": [119.2, 119.84, 119.96, 121.21, 121.6, 121.95, 122.17, 122.52, 122.87, 123.85, 123.98, 124.09, 124.59, 124.83, 125.98, 126.04, 126.58, 126.89, 128.08, 128.24, 128.65, 129.29, 129.4, 129.56, 130.32, 130.59, 130.66, 131.7, 131.88, 132.06, 132.14, 132.62, 132.76, 133.05, 133.94, 134.02, 134.48, 134.66, 135.1, 135.16, 135.46, 135.84, 136.0, 136.54, 136.72, 137.32, 137.96, 138.44, 138.64, 138.97, 139.06, 139.88, 140.17, 140.55, 141.35, 141.57, 142.2, 142.38, 142.67, 143.19, 143.32, 144.73, 144.85, 145.45, 146.74, 146.81, 147.36, 147.58, 148.1, 148.84, 149.1, 149.24, 149.69, 149.89, 150.55, 151.72, 152.68, 152.85, 153.05, 153.5, 153.98, 154.16, 154.77, 154.96, 155.53, 156.12, 157.59, 157.78, 158.11, 158.72, 158.8, 159.34, 159.58, 160.04, 160.28, 161.18, 161.34, 161.71, 161.9, 162.65, 162.87, 163.5, 164.84, 165.08, 165.15, 165.38], "5": [167.02, 167.25, 167.84, 168.03, 168.91, 169.06, 169.6, 169.81, 170.25, 170.52, 170.62, 171.01, 171.42, 171.6, 171.68, 172.0, 172.47, 172.56, 172.77, 174.14, 174.22, 174.57, 175.13, 175.32, 175.92, 176.13, 176.56, 176.76, 177.0, 177.94, 178.27, 178.59, 178.88, 179.27, 179.41, 179.76, 180.55, 180.7, 180.9, 181.06, 182.19, 182.36, 182.8, 183.14, 183.45, 183.57, 183.77, 184.15, 184.86, 185.01, 185.51, 185.72, 185.88, 186.66, 187.63, 187.79, 188.61, 189.27, 189.51, 189.71, 190.23, 190.48, 190.65, 190.97, 191.1, 191.86, 192.07, 192.32, 192.53, 192.59, 193.68, 193.87, 193.91, 195.22, 195.39, 195.58, 195.79, 196.12, 196.39, 196.66, 196.8, 197.16, 198.47, 198.74, 198.98, 199.18, 199.26, 199.76, 200.0, 200.22, 200.62, 201.62, 201.79, 201.91, 202.01, 202.49, 202.58, 203.12, 203.28, 203.39, 203.89, 204.11, 204.31, 204.7], "6": [205.92, 206.67, 206.92, 207.14, 207.23, 207.71, 208.01, 208.49, 208.72, 209.46, 210.0, 210.23, 210.3, 210.68, 211.63, 211.7, 212.16, 212.4, 213.21, 214.4, 214.46, 215.14, 215.57, 216.47, 216.94, 217.32, 218.24, 218.46, 218.5, 219.06, 219.33, 219.62, 220.62, 220.84, 221.15, 221.2, 222.51, 222.75, 223.09, 223.31, 223.75, 224.94, 225.21, 225.28, 225.64, 225.83, 226.69, 226.79, 227.22, 228.08, 228.74, 229.48, 230.33, 231.44, 231.64, 231.93, 232.03, 232.86, 233.95, 234.59, 234.68], "7": [236.06, 236.16, 236.54, 237.31, 237.7, 237.77, 238.25, 238.59, 239.42, 239.72, 240.69, 241.57, 241.7, 241.99, 242.08, 242.51, 242.73, 243.24, 243.98, 244.41, 245.31, 245.6, 245.64, 246.05, 246.32, 247.02, 248.39, 248.83, 249.23, 249.43, 249.81, 250.55, 250.85, 250.99, 252.17, 252.29, 252.47, 252.96, 253.3, 253.46, 253.55, 254.25, 254.47, 255.09, 255.44, 255.57, 256.5, 257.46, 257.58, 257.99, 258.28, 258.53, 259.07, 259.16, 259.25, 259.72, 259.9, 260.12, 260.49, 261.22, 261.3, 262.59, 263.53, 263.66, 263.93, 264.11, 264.68, 265.43, 265.61, 265.68, 266.31, 266.4, 266.89, 267.07, 267.79, 268.02, 268.2, 268.47, 268.69, 269.13, 269.31, 269.81, 270.03, 270.49, 270.72, 271.43, 272.15, 272.49, 272.74, 273.4, 274.06, 274.17, 274.38, 274.82, 275.0, 275.54, 275.58, 276.07, 276.57, 276.7, 277.15], "8": [278.4, 278.47, 278.94, 279.7, 279.8, 280.3, 281.2, 281.56, 281.83, 281.95, 282.04, 282.74, 282.83, 283.4, 283.62, 283.79, 284.61, 285.5, 285.69, 285.98, 286.38, 286.55, 286.69, 287.41, 288.22, 288.38, 288.59, 289.06, 289.34, 289.95, 290.36, 290.61, 291.57, 291.68, 292.39, 292.87, 292.97, 293.75, 293.93, 293.96, 294.51, 295.33, 295.5, 295.61, 296.05, 296.73, 296.84, 297.35, 298.25, 298.3, 299.21, 299.36, 299.41, 299.71, 300.12, 300.22, 301.21, 301.3, 301.91, 302.16, 302.56, 302.62, 303.84, 304.28, 304.41, 305.26, 305.42, 305.57, 306.29, 306.83, 306.93, 307.32, 307.98, 308.33, 309.41, 309.56, 310.62, 310.91, 310.95, 311.56, 311.79, 312.13, 312.83, 312.99, 313.14, 313.48, 313.75, 313.89, 314.41, 315.19, 315.89, 315.99, 316.19, 316.32, 318.04, 318.49, 318.56, 318.62, 319.18, 319.57, 319.72, 319.8, 320.02, 320.66, 321.41, 321.52, 321.7, 321.97, 322.69, 322.95, 323.54, 324.15, 324.34, 324.65, 324.99, 325.32, 325.6, 325.96, 327.39, 327.83, 328.22, 328.37, 328.73, 329.0, 330.67, 331.06], "9": [331.74, 332.08, 332.36, 332.62, 332.96, 333.14, 333.42, 334.81, 335.01, 335.28, 335.34, 335.47, 336.14, 336.2, 336.46, 337.17, 338.36, 340.19, 340.57, 341.3, 341.64, 342.33, 342.94, 343.06, 343.15, 343.52, 343.85, 344.61, 344.83, 345.17, 345.32, 346.21, 346.34, 346.46, 346.68, 346.75, 347.46, 348.85, 349.0, 349.11, 349.52, 351.87, 352.0, 352.41, 353.36, 354.4, 354.71, 354.82, 355.55, 357.01, 357.25, 357.42, 357.97, 358.39, 358.59, 358.73, 359.6, 359.91, 361.17, 361.46, 361.5, 362.78, 362.96, 363.79, 364.85, 365.28, 365.63, 365.7, 365.86, 365.9, 366.02, 366.6, 367.05, 367.27, 367.39, 367.85, 367.94, 369.9, 370.99, 373.14, 373.32, 373.63, 374.13, 374.19, 374.74, 375.26, 375.46, 375.54, 376.38, 376.64, 376.76, 377.14, 377.8, 377.98, 378.39, 378.63, 379.7, 380.1, 380.21, 380.48, 380.7, 381.93, 382.29, 382.87, 383.17, 383.25, 384.15, 384.48, 385.12, 385.54, 387.19, 387.45, 387.65, 388.06, 389.29, 389.44, 389.6, 389.7, 390.3, 391.17, 391.39, 391.81, 391.88, 393.35, 393.51, 393.7, 394.04, 394.86, 394.99, 395.27, 395.96, 396.27, 396.49, 396.65, 397.71, 397.89, 398.05, 398.13, 398.42, 398.73, 399.49, 399.89, 400.14, 400.28, 400.66, 400.94, 402.01, 402.19, 402.8, 403.26, 404.02, 404.2, 404.59, 405.11], "10": [405.99, 406.98, 407.11, 408.35, 408.42, 408.75, 408.84, 409.17, 409.32, 410.49, 410.82, 411.01, 411.3, 411.42, 411.76, 412.03, 413.65, 413.79, 414.16, 414.91, 415.11, 415.19, 415.73, 415.88, 416.16, 416.97, 417.82, 417.98, 418.22, 419.4, 419.55, 420.25, 421.11, 421.43, 421.97, 422.81, 423.78, 423.97, 424.55, 424.9, 425.45, 426.61, 426.73, 426.91, 427.28, 428.35, 428.84, 429.02, 429.21, 430.24, 430.41, 430.65, 430.77, 431.37, 432.67, 432.99, 433.1, 433.44, 433.57, 434.01, 434.33, 434.45, 435.73, 436.56, 436.64, 437.09, 437.58, 438.47, 438.77, 439.2, 439.49, 439.58, 440.35, 441.27, 441.39, 442.63, 443.96, 444.2, 445.41, 446.0, 446.15, 446.26, 447.0, 447.12, 447.21, 447.52, 447.64, 447.8, 447.89, 448.92, 449.09, 449.23, 449.74, 449.9, 450.86, 450.95, 451.37, 451.54, 451.8, 452.65, 452.8, 452.93, 453.18, 453.35, 453.94, 454.26, 454.71, 455.0, 455.59, 455.98, 456.54, 456.64, 457.78, 457.93, 458.12, 458.28, 458.43, 459.26, 459.59, 459.67, 460.12, 460.74, 460.94, 461.22, 461.33, 462.54, 462.71, 462.84, 463.0, 463.08, 463.65, 463.7, 464.14, 465.11, 465.7, 465.81, 465.9, 466.48, 466.71, 468.35, 468.53, 468.64, 469.15, 469.75, 469.81, 470.81, 472.0, 472.76, 473.5, 474.09, 474.57, 475.33, 475.45, 475.58, 475.97, 476.31, 476.54, 477.4, 478.31, 478.5, 479.63, 479.93, 480.54, 481.01], "11": [481.31, 482.56, 482.96, 483.75, 484.08, 484.2, 484.32, 484.75, 484.86, 485.02, 485.92, 486.55, 486.97, 487.79, 488.99, 489.18, 489.58, 489.8, 490.85, 491.16, 491.55, 492.09, 492.88, 493.07, 493.29, 493.6, 493.73, 494.87, 495.22, 495.54, 495.8, 495.91, 496.55, 496.7, 496.88, 497.74, 497.91, 498.9, 499.09, 499.8, 500.06, 501.33, 501.53, 501.75, 502.42, 502.68, 503.12, 504.51, 504.66, 505.01, 505.08, 505.9, 506.1, 506.2, 506.62, 507.52, 507.72, 508.05, 508.24, 509.08, 509.47, 509.94, 510.07, 511.38, 511.82, 511.99, 512.13, 512.58, 513.65, 514.94, 516.13, 517.25, 518.39, 518.53, 518.88, 519.49, 519.78, 519.85, 520.68, 520.85, 521.61, 521.85, 521.93, 522.11, 522.39, 522.9, 523.18], "12": [524.36, 524.79, 525.19, 525.41, 526.0, 526.86, 527.21, 527.6, 528.89, 529.31, 529.46, 530.58, 530.73, 531.25, 531.7, 532.07, 533.23, 533.58, 534.12, 534.47, 535.56, 535.79, 536.0, 536.37, 537.51, 537.66, 537.94, 538.38, 538.77, 540.05, 540.34, 540.52, 541.0, 541.21, 542.02, 542.52, 542.66, 542.88, 543.04, 544.06, 544.21, 544.36, 544.8, 545.07, 545.41, 545.5, 546.31, 546.5, 546.62, 547.02, 547.4, 547.61, 548.0, 548.86, 549.11, 549.83, 550.0, 550.15, 551.17, 551.32, 551.57, 551.98, 552.05, 553.12, 554.25, 554.56, 554.85, 555.03, 556.05, 556.34, 556.85, 557.03, 557.18, 557.47, 558.16, 558.4, 558.77, 558.86, 559.72, 559.88, 560.22, 560.89, 561.51, 562.66, 563.0, 563.18, 563.75, 563.85, 564.79, 565.81, 566.7, 566.85, 567.34, 568.39, 568.58, 568.8, 568.93, 569.06, 570.4, 570.63, 571.09, 572.03, 573.26, 573.99, 574.16, 575.36, 575.47, 575.74, 576.64, 576.85, 577.26, 577.36, 577.44, 577.92, 578.56, 578.86, 579.09, 579.14, 579.52, 579.82, 579.89, 580.64, 580.83, 581.04, 581.19, 581.59, 581.78, 582.01], "13": [583.07, 583.33, 583.48, 584.68, 584.94, 585.49, 585.91, 586.35, 586.71, 586.8, 586.94, 587.86, 588.19, 588.68, 588.89, 589.16, 589.32, 590.42, 590.62, 591.02, 591.27, 591.46, 591.57, 591.75, 591.83, 592.16, 592.35, 592.8, 593.92, 594.1, 594.92, 595.63, 595.98, 596.21, 596.91, 597.23, 597.5, 597.69, 598.19, 599.15, 599.4, 599.6, 599.8, 600.45, 600.61, 600.64, 601.96, 602.12, 602.28, 602.96, 603.34, 603.65, 604.78, 605.69, 605.97, 606.04, 606.35, 606.6, 607.49, 607.77, 608.22, 608.33, 609.29, 609.39, 610.06, 610.29, 611.32, 611.69, 611.91, 612.7, 612.89, 613.45, 614.1, 614.25, 614.29, 614.79, 615.62, 615.77, 616.29, 617.69, 618.27, 618.56, 619.89, 620.17, 620.27, 620.72, 621.83, 622.06, 622.25, 622.33, 623.06, 623.98, 624.43, 626.33, 626.83, 627.19, 627.31, 628.19, 628.33, 628.88, 629.55, 629.69, 630.23, 630.33], "14": [631.45, 631.71, 631.82, 632.08, 632.44, 632.91, 633.1, 634.03, 634.3, 634.33, 634.92, 635.04, 636.04, 637.04, 637.11, 637.56, 638.59, 638.65, 639.02, 640.12, 640.28, 640.78, 640.89, 641.2, 641.74, 642.11, 642.3, 642.96, 643.13, 643.31, 643.69, 643.75, 644.85, 645.01, 645.24, 645.4, 646.01, 646.27, 647.23, 648.06, 648.15, 648.57, 648.75, 648.95, 650.01, 650.17, 650.3, 650.51, 650.8, 651.14, 651.86, 652.07, 652.14, 653.12, 653.33, 653.46, 653.53, 653.86, 654.59, 654.78, 655.15, 655.22, 655.71, 656.46, 656.88, 657.3, 657.66, 658.73, 659.5, 660.56, 660.7, 660.89, 661.21, 661.31, 661.96, 662.08, 662.16, 662.63, 662.83, 663.56, 663.84, 664.47, 664.55, 665.18, 665.86, 665.99, 666.69, 667.41, 667.54, 668.26, 669.54, 670.65, 671.07, 671.37, 671.5, 671.94, 672.16, 672.6, 672.86, 672.98, 673.66, 674.73, 675.14, 675.31, 675.68, 675.85, 676.27, 676.35, 677.21, 677.49, 677.61, 677.96, 678.16, 678.54, 679.36, 679.67, 679.96, 680.87, 681.13, 681.58, 683.08, 683.56, 683.72, 684.13, 684.21, 684.92, 685.04, 685.12, 686.28, 686.49, 686.67, 686.76, 687.5, 687.64, 687.71, 688.35, 688.51, 688.85, 690.04, 690.36, 690.43, 691.01, 691.17, 691.2, 691.9, 692.25, 692.43, 693.56, 693.89, 694.03, 694.4, 695.54], "15": [696.81, 697.09, 697.25, 697.41, 698.28, 698.68, 699.06, 699.87, 700.3, 701.27, 701.49, 701.67, 701.81, 701.93, 702.12, 702.66, 703.72, 703.81, 704.07, 704.87, 704.99, 705.52, 705.86, 706.41, 706.79, 707.77, 707.85, 708.38, 708.53, 708.88, 709.79, 710.03, 710.06, 710.68, 711.01, 711.1, 712.16, 712.6, 712.82, 714.15, 714.61, 716.24, 716.6, 717.02, 717.15, 717.34, 717.98, 718.16, 718.43, 718.66, 719.5, 719.63, 719.86, 720.84, 720.92, 721.4, 721.77, 721.81, 722.2, 722.92, 723.08, 723.14, 723.86, 724.04, 724.29, 724.96, 726.45, 726.61, 726.86, 727.16, 727.21, 727.72, 728.31, 728.44, 729.62, 729.85, 730.02, 731.07, 731.29, 731.42, 731.82, 732.86, 733.48, 733.81, 733.95, 734.06, 734.57, 734.81, 736.15, 736.64, 736.76, 736.89, 737.42, 738.02, 738.36, 738.77, 739.31, 739.86, 739.98, 741.25, 741.52, 742.51, 742.69, 743.09, 743.34, 743.45, 744.45, 744.57, 744.75, 745.15, 745.49, 745.58, 745.99, 746.15, 746.45, 747.39, 747.52, 747.66, 748.59, 748.73, 748.89, 749.15, 750.08, 750.21, 750.44, 750.69, 751.02, 751.21, 751.85, 752.63, 752.8, 752.95, 753.31, 753.96], "16": [754.96, 755.15, 755.6, 755.86, 756.32, 757.18, 757.3, 757.41, 757.87, 758.11, 758.71, 758.95, 759.29, 760.43, 760.59, 760.89, 761.41, 761.54, 762.02, 762.39, 762.51, 762.68, 762.89, 763.84, 764.0, 764.09, 764.53, 764.71, 765.08, 765.5, 765.69, 766.06, 766.37, 766.62, 766.73, 766.85, 767.77, 767.95, 768.39, 768.55, 768.94, 769.21, 769.3, 770.23, 770.39, 770.69, 771.51, 771.98, 772.19, 772.51, 772.59, 772.69, 773.07, 774.27, 774.43, 774.58, 774.77, 775.25, 775.74, 775.93, 776.4, 776.65, 776.84, 777.34, 778.64, 779.34, 779.53, 780.05, 780.22, 781.2, 781.41, 781.59, 781.7, 782.52, 782.72, 782.93, 783.12, 784.2, 784.86, 785.03, 785.16, 785.32, 785.75, 785.87, 786.77, 787.51, 787.68, 787.81, 787.96, 788.36, 788.47, 789.36, 789.5, 789.95, 790.08, 790.48, 790.68, 791.59, 791.97, 792.13], "17": [793.22, 793.38, 793.54, 793.81, 793.92, 795.02, 795.09, 795.79, 795.99, 796.2, 796.96, 798.1, 798.46, 798.65, 799.18, 799.33, 799.84, 800.34, 800.5, 800.95, 802.08, 802.21, 802.7, 803.24, 803.4, 803.6, 804.09, 804.45, 804.64, 804.78, 805.07, 805.52, 805.75, 806.36, 806.82, 807.94, 808.01, 808.25, 808.83, 809.03, 809.86, 810.64, 811.29, 812.13, 813.1, 813.28, 813.47, 813.62, 813.71, 814.85, 815.23, 815.3, 816.22, 816.5, 816.58, 817.23, 817.43, 817.69, 817.78, 818.06, 818.99, 819.32, 819.52, 820.29, 820.39, 820.81, 821.32, 821.52, 822.34, 822.56, 822.82, 822.96, 823.12], "18": [824.51, 824.7, 824.84, 825.89, 826.45, 827.35, 827.46, 827.92, 828.13, 828.35, 828.7, 828.84, 829.59, 829.76, 829.92, 830.13, 830.37, 830.5, 830.61, 831.83, 832.2, 832.35, 832.5, 832.6, 833.16, 833.36, 833.53, 833.83, 834.11, 834.34, 835.43, 835.8, 835.97, 836.08, 836.69, 836.89, 836.98, 837.13, 837.5, 837.62, 838.08, 838.26, 838.82, 839.06, 839.15, 839.33, 839.72, 839.83, 840.29, 840.67, 840.76, 840.98, 841.19, 841.37, 841.73, 841.98, 842.76, 848.67, 848.76, 849.12, 849.55, 850.12, 850.92, 851.24]};   // start time of every spoken word in the recording, per slide
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-z\u00C0-\u024F\u1E00-\u1EFF']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);console.warn('phrase not found',n,phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=aud.duration||0;document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){
+
+/* Back, Next and the dots land just after the slide's first words begin, so a
+   paused player shows that slide's caption and opening picture, never a blank. */
+go=function(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05);render();};
+
+/* Phones: picture labels at least 12px on screen, grown only as far as they fit
+   (never into another label, never past the picture's edge). Text outside pictures
+   that is set very small (Scripture references) gets a floor of 12px too. */
+function readable(){
+ if(!matchMedia('(max-width:600px)').matches)return;
+ const MIN=13;
+ document.querySelectorAll('.slide svg').forEach(svg=>{
+  if(!svg.viewBox||!svg.viewBox.baseVal||!svg.viewBox.baseVal.width)return;
+  const vb=svg.viewBox.baseVal;
+  const texts=[...svg.querySelectorAll('text')].filter(t=>!t.closest('symbol,defs,mask,clipPath'));
+  // positions in the picture's own units (getCTM is already relative to this svg)
+  const box=t=>{try{const b=t.getBBox();const k=t.getCTM();if(!k)return b;
+    return {x:b.x*k.a+k.e,y:b.y*k.d+k.f,width:b.width*k.a,height:b.height*k.d};}catch(e){return null}};
+  const svgScale=(()=>{const m=svg.getScreenCTM();return m?Math.hypot(m.a,m.b):0})();
+  const hit=(a,b)=>a&&b&&a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.y+a.height;
+  texts.forEach(t=>{
+   // the picture's scale, not the label's: a label mid-animation is briefly smaller
+   const scale=svgScale; if(!scale)return;
+   const fs0=parseFloat(getComputedStyle(t).fontSize); if(!fs0)return;
+   if(fs0*scale>=MIN)return;
+   const zoom=(t.closest('.wrap')&&parseFloat(t.closest('.wrap').style.zoom))||1;
+   const target=MIN/scale*zoom;
+   // a label sitting on its own shape (a pill or badge) must stay inside that shape
+   const b0=box(t);const pill=b0&&[...t.parentNode.children].find(r=>r!==t&&/^(rect|ellipse)$/.test(r.tagName)&&(()=>{const q=box(r);return q&&q.x<=b0.x&&q.y<=b0.y&&q.x+q.width>=b0.x+b0.width&&q.y+q.height>=b0.y+b0.height&&q.width*q.height<6*b0.width*b0.height})());
+   const area=pill?box(pill):{x:vb.x,y:vb.y,width:vb.width,height:vb.height};
+   for(let f=target;f>fs0;f*=0.94){
+    t.style.fontSize=f+'px';
+    let b=box(t); if(!b){break}
+    // a label near the picture's side may move inward to fit (single x only)
+    const x0=t.dataset.x0??(t.dataset.x0=t.getAttribute('x')||'');
+    if(!pill&&x0&&!/[ ,]/.test(x0)){let dx=0;if(b.x<vb.x)dx=vb.x-b.x+2;else if(b.x+b.width>vb.x+vb.width)dx=vb.x+vb.width-(b.x+b.width)-2;
+      t.setAttribute('x',parseFloat(x0)+dx);b=box(t);}
+    // a badge grows with its words, keeping its centre and padding
+    if(pill&&pill.tagName==='rect'){const o=pill.dataset.o||(pill.dataset.o=['x','y','width','height'].map(a=>pill.getAttribute(a)).join(','));
+      const [ox,oy,ow,oh]=o.split(',').map(Number),cx=ox+ow/2,cy=oy+oh/2,pw=Math.max(ow,b.width+(ow-b0.width)),ph=Math.max(oh,b.height+(oh-b0.height)*0.6);
+      pill.setAttribute('x',cx-pw/2);pill.setAttribute('width',pw);pill.setAttribute('y',cy-ph/2);pill.setAttribute('height',ph);}
+    const g=pill&&pill.tagName!=='rect'?-6:2;
+    const chk=pill&&pill.tagName==='rect'?box(pill):b, ar=pill&&pill.tagName==='rect'?{x:vb.x,y:vb.y,width:vb.width,height:vb.height}:area;
+    const inside=chk.x>=ar.x-g&&chk.x+chk.width<=ar.x+ar.width+g&&chk.y>=ar.y-g&&chk.y+chk.height<=ar.y+ar.height+g;
+    // labels in the same spot take turns on screen, so they never meet
+    const same=o=>o.getAttribute('x')===(t.dataset.x0||t.getAttribute('x'))&&o.getAttribute('y')===t.getAttribute('y');
+    const clash=texts.some(o=>o!==t&&!same(o)&&hit(b,box(o)));
+    if(inside&&!clash)return;
+   }
+   t.style.fontSize='';if(t.dataset.x0)t.setAttribute('x',t.dataset.x0);
+   if(pill&&pill.dataset.o){const [x,y,w,h]=pill.dataset.o.split(',');pill.setAttribute('x',x);pill.setAttribute('y',y);pill.setAttribute('width',w);pill.setAttribute('height',h);}
+  });
+ });
+ document.querySelectorAll('.slide .ref').forEach(e=>{if(parseFloat(getComputedStyle(e).fontSize)<MIN)e.style.fontSize=MIN+'px';});
+}
+/* Fit each slide to the screen it is on (small phones): shrink only when needed, never enlarge */
+function fitSlides(){const sh=stage.clientHeight;const fs=parseFloat(getComputedStyle(cap).fontSize)||14;
+ const reserve=Math.max(sh*0.17,fs*1.4*2+fs+sh*0.022+10);
+ S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;s.el.style.paddingBottom=reserve+'px';
+  const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-reserve;const h=w.scrollHeight;
+  const z=h>avail?Math.max(.6,avail/h):1;w.style.zoom=z;});}
+readable();fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{readable();fitSlides();});
+render();requestAnimationFrame(loop);}
+function go(i){if(i<0||i>=S.length)return;aud.currentTime=i===0?0:S[i].start+0.01;render();}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();if(aud.duration)aud.currentTime=(e.clientX-r.left)/r.width*aud.duration;});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('reset-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('reset-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+</script>
+</body></html>
