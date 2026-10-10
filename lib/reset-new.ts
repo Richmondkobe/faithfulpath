@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -418,6 +418,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 13 (PDF)", file: "chapter-13.pdf" },
       { label: "⬇ Lesson 12 worksheet", file: "worksheet-lesson-12.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-13",
+    kind: "lesson",
+    label: "Lesson 13",
+    title: "Turning Insight Into Action",
+    narration: "reset-lesson-13.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: null },
+    downloads: [
+      { label: "⬇ Chapter 14 (PDF)", file: "chapter-14.pdf" },
+      { label: "⬇ Lesson 13 worksheet", file: "worksheet-lesson-13.pdf" },
     ],
   },
 ];
