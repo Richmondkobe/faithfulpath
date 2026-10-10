@@ -117,3 +117,15 @@ stay in the list; none is hidden or shown as missing. Without a confirmed plan,
 the card asks the member to confirm it in Session 1. Nothing new is saved: it
 reads the plan already saved on Session 1.
 
+## The switch (design, section 14)
+
+`lib/reset-new-live.ts`, `RESET_NEW_LIVE`. When true: a "New edition" card on
+/members above the previous edition's card (which gains a "Previous edition"
+label and is otherwise unchanged); one line on the previous edition's course
+overview, "A new edition of this course is available."; the new edition's pages
+lose the "Test edition" banner (a plain bar back to the course page instead) and
+its course page loses the testing wording. Setting it to false restores the
+state before the switch. Neither setting reads, moves, copies or changes any
+member, progress, journal, Day 30 record or certificate; no progress is
+transferred, and the previous edition stays fully open.
+

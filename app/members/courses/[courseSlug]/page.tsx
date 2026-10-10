@@ -21,6 +21,8 @@ import CertificateButton from "@/components/course/CertificateButton";
 import ResetSimpleOverview from "@/components/reset/ResetSimpleOverview";
 import { RESET_SIMPLE_PUBLISHED, RESET_SLUG } from "@/lib/reset-simple-links";
 import JournalButton from "@/components/course/JournalButton";
+import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
 
 export const metadata: Metadata = {
   title: "Course | Faithful Path Community",
@@ -43,8 +45,15 @@ export default async function CourseOverview({
   // retreat the learner chose. Guarded on the course and on the flag, so while
   // the flag is off this page behaves exactly as it always has, and the other
   // two courses never reach it at all.
+  // Once the new edition is switched on, this course's overview carries one line pointing to it.
+  const notice = courseSlug === RESET_SLUG && RESET_NEW_LIVE ? <NewEditionNotice /> : null;
   if (courseSlug === RESET_SLUG && RESET_SIMPLE_PUBLISHED) {
-    return <ResetSimpleOverview />;
+    return (
+      <>
+        {notice}
+        <ResetSimpleOverview />
+      </>
+    );
   }
 
   const lessons = getLessons(courseSlug);
@@ -63,6 +72,8 @@ export default async function CourseOverview({
   const nextLesson = nextLessonFor(courseSlug, lessons, countable, progress, route);
 
   return (
+    <>
+    {notice}
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href="/members"
@@ -190,5 +201,6 @@ export default async function CourseOverview({
 
       <CourseFooter courseSlug={courseSlug} />
     </main>
+    </>
   );
 }

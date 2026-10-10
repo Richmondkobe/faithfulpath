@@ -6,6 +6,7 @@ import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
+import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
 
 /*
  * The Christian Spiritual Reset, new edition: a hidden test course.
@@ -613,7 +614,10 @@ export function playerHtml(unit: ResetNewUnit, raw: string): string {
   return beforeHeadEnd(html, NOINDEX);
 }
 
-const TEST_BANNER = `<div data-reset style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a></div>`;
+// Before the switch, a "Test edition" banner; after it, a quiet bar back to the course page.
+const TEST_BANNER = RESET_NEW_LIVE
+  ? `<div data-reset style="background:#121d33;color:#f3ecd8;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">The Christian Spiritual Reset · <a href="${RESET_NEW_PATH}" style="color:#e3c98a">Course page</a></div>`
+  : `<div data-reset style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a></div>`;
 
 /** The unit page as the website serves it. */
 export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>): string {
@@ -888,7 +892,7 @@ ${record.acks.length ? `<ul class="acks">${record.acks.map((a) => `<li>✓ You c
 <p><b>Day 30 Review:</b> ${reviewSavedAt ? `saved, ${localDate(reviewSavedAt)} <span class="m">(private)</span>` : `<span class="m">optional, on Lesson 16</span>`}</p>
 </section>`;
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Christian Spiritual Reset · Test edition</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
+<title>The Christian Spiritual Reset${RESET_NEW_LIVE ? "" : " · Test edition"}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
 <style data-reset>
 body{margin:0;background:#f8f0e1;color:#1f2d4f;font:17px/1.55 'Source Sans 3',system-ui,sans-serif}
 header{background:linear-gradient(180deg,#121d33,#1f2d4f 60%,#4b5f84);color:#f3ecd8;padding:34px 16px 40px}
@@ -910,9 +914,13 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>
-${TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
-<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">New edition: the units built so far, for testing.</p></div></header>
-<main class="w"><div class="note">Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes.</div>
+${RESET_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
+<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">${RESET_NEW_LIVE ? "New edition" : "New edition: the units built so far, for testing."}</p></div></header>
+<main class="w"><div class="note">${
+    RESET_NEW_LIVE
+      ? "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes. The previous edition, with everything you wrote there, stays open from your members page."
+      : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
+  }</div>
 ${recordCard}
 <p class="lg"><b>Leading a group?</b> The Leader’s Guide is for small groups, church retreats, couples, and pastors and leaders. <a href="${downloadHref(LEADERS_GUIDE)}">⬇ Leader’s Guide (PDF)</a></p>
 <ul>${rows}</ul></main>

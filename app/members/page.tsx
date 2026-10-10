@@ -34,6 +34,8 @@ import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
+import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import NewEditionCard from "@/components/reset-new/NewEditionCard";
 
 const COURSE_SLUG = "christian-spiritual-reset";
 
@@ -114,6 +116,9 @@ async function CourseCard() {
 
   return (
     <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      {RESET_NEW_LIVE && (
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Previous edition</p>
+      )}
       <h2
         className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
@@ -363,6 +368,9 @@ export default async function Members() {
           Your courses
         </h2>
         <div className="mt-4 space-y-6">
+          {/* The Reset new edition, once switched on, sits above the previous
+              edition's card; the previous edition's card is otherwise unchanged. */}
+          {RESET_NEW_LIVE && <NewEditionCard />}
           <CourseCard />
           <MindCourseCard />
           {/* Built, and deliberately not reachable: the course stays unlinked
