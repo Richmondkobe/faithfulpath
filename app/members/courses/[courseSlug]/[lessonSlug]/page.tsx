@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleBody from "@/components/ArticleBody";
@@ -316,6 +318,8 @@ export default async function Lesson({
   );
 
   return (
+    <>
+    {RESET_NEW_LIVE && courseSlug === "christian-spiritual-reset" && <NewEditionNotice narrow />}
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <Link
@@ -504,5 +508,6 @@ export default async function Lesson({
 
       <CourseFooter courseSlug={courseSlug} />
     </main>
+    </>
   );
 }

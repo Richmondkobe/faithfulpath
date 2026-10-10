@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
 import { notFound } from "next/navigation";
 
 import MindMarkdown from "@/components/mind/MindMarkdown";
@@ -354,6 +356,8 @@ export default async function ResetSimplePage({ params }: Props) {
   };
 
   return (
+    <>
+    {RESET_NEW_LIVE && <NewEditionNotice narrow />}
     <main className="mx-auto max-w-2xl px-5 pb-24 pt-10 text-[#2B2118] sm:px-8">
       <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
         {page.part} · {place.n} of {place.of}
@@ -885,5 +889,6 @@ export default async function ResetSimplePage({ params }: Props) {
       </nav>
       )}
     </main>
+    </>
   );
 }
