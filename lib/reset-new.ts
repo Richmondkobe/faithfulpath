@@ -756,6 +756,16 @@ function longDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
+/**
+ * A date on the course page, shown in the member's own time zone: the server
+ * writes the UTC date (correct without script), and the browser re-writes it
+ * locally, so a completion just after midnight in Bangkok shows that day.
+ */
+function localDate(iso: string): string {
+  return `<time class="ld" datetime="${escapeHtml(iso)}">${escapeHtml(longDate(iso))}</time>`;
+}
+const LOCAL_DATES = `<script data-reset>document.querySelectorAll('time.ld').forEach(function(t){var d=new Date(t.getAttribute('datetime'));if(!isNaN(d))t.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});});</script>`;
+
 /** The test edition's own small contents page. */
 /** The member's record for the course page: their confirmed plan and the dated acknowledgements. */
 export type ResetRecord = { planLabel: string | null; acks: { title: string; date: string }[] };
@@ -769,7 +779,7 @@ export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = 
     // Lesson 16's Day 30 Review is shown on its own line: completing the lesson and saving a review are separate.
     const review =
       u.slug === "lesson-16" && reviewSavedAt
-        ? `<span class="st rv">Day 30 Review saved, ${escapeHtml(longDate(reviewSavedAt))} (private)</span>`
+        ? `<span class="st rv">Day 30 Review saved, ${localDate(reviewSavedAt)} (private)</span>`
         : "";
     return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span>${review}</a></li>`;
   }).join("");
@@ -779,9 +789,9 @@ export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = 
   const homeWell = ["lesson-12", "lesson-13", "lesson-14", "lesson-15", "lesson-16"].filter((x) => completed.has(x)).length;
   const recordCard = `<section class="rec" aria-labelledby="h-rec"><h2 id="h-rec">Your record</h2>
 <p><b>Retreat plan:</b> ${record.planLabel ? `${escapeHtml(record.planLabel)}. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Change it in Session 1</a>` : `not confirmed yet. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Confirm it at the start of Session 1</a>`}</p>
-${record.acks.length ? `<ul class="acks">${record.acks.map((a) => `<li>✓ You completed ${escapeHtml(a.title)} on ${escapeHtml(longDate(a.date))}.</li>`).join("")}</ul>` : `<p class="m">When you complete your plan’s sessions, the date is recorded here.</p>`}
+${record.acks.length ? `<ul class="acks">${record.acks.map((a) => `<li>✓ You completed ${escapeHtml(a.title)} on ${localDate(a.date)}.</li>`).join("")}</ul>` : `<p class="m">When you complete your plan’s sessions, the date is recorded here.</p>`}
 <p><b>Come Home Well:</b> ${homeWell} of 5 lessons <span class="m">(recommended, not required)</span></p>
-<p><b>Day 30 Review:</b> ${reviewSavedAt ? `saved, ${escapeHtml(longDate(reviewSavedAt))} <span class="m">(private)</span>` : `<span class="m">optional, on Lesson 16</span>`}</p>
+<p><b>Day 30 Review:</b> ${reviewSavedAt ? `saved, ${localDate(reviewSavedAt)} <span class="m">(private)</span>` : `<span class="m">optional, on Lesson 16</span>`}</p>
 </section>`;
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Christian Spiritual Reset · Test edition</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
@@ -811,6 +821,7 @@ ${TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course
 <main class="w"><div class="note">Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes.</div>
 ${recordCard}
 <ul>${rows}</ul></main>
+${LOCAL_DATES}
 <footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
 </body></html>`;
 }
