@@ -30,7 +30,7 @@ script for them.
   `CHECKSUMS.sha256` records them. A new approved version replaces the file
   and its checksum together.
 - `downloads/`: Chapters 1 to 8, Chapters 9 and 10 together (`chapter-09.pdf`), Chapters 11 to 17, and Sessions One to Ten cut from the book (with the
-  title and copyright pages), the Lesson 1 to 15 worksheets, the Day 30 Review worksheet (Lesson 16), the
+  title and copyright pages), the Lesson 1 to 15 worksheets, the Day 30 Review worksheet (Lesson 16), and `leaders-guide.pdf` (the Leader’s Guide, Final, linked from the course page), the
   Session 1 to 10 workbook pages (Session 3 with cards to cut out, Session 4 with a lament page), and "If you are not sure you belong to Christ".
 
 What the website changes as each page is sent out (`lib/reset-new.ts`):

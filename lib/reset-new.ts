@@ -500,7 +500,9 @@ export function findUnit(slug: string): ResetNewUnit | null {
 
 export const unitPath = (u: ResetNewUnit) => `${RESET_NEW_PATH}/${u.slug}`;
 export const downloadHref = (file: string) => `${RESET_NEW_PATH}/downloads/${file}`;
-export const DOWNLOAD_FILES = new Set(RESET_NEW_UNITS.flatMap((u) => u.downloads.map((d) => d.file)));
+/** The Leader's Guide (for groups, couples and pastors): linked from the course page, not from a unit. */
+export const LEADERS_GUIDE = "leaders-guide.pdf";
+export const DOWNLOAD_FILES = new Set([...RESET_NEW_UNITS.flatMap((u) => u.downloads.map((d) => d.file)), LEADERS_GUIDE]);
 
 /* ----------------------------------------------------------------- access */
 
@@ -812,7 +814,7 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}.st.rv{grid-column:2;color:#1f2d4f}
 .rec{background:#fffaf0;border:2px solid #c99a4a;border-radius:14px;padding:14px 16px;margin-bottom:18px}
 .rec h2{font:600 20px/1.3 'Source Serif 4',serif;margin:0 0 6px}.rec p{margin:.35em 0}.rec .m{color:#5a6577;font-size:15px}
-.rec a{color:#8a6a24}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
+.rec a{color:#8a6a24}.lg{background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;padding:10px 14px;font-size:15px;margin:0 0 18px}.lg a{color:#8a6a24;font-weight:700;white-space:nowrap}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>
@@ -820,6 +822,7 @@ ${TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">New edition: the units built so far, for testing.</p></div></header>
 <main class="w"><div class="note">Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes.</div>
 ${recordCard}
+<p class="lg"><b>Leading a group?</b> The Leader’s Guide is for small groups, church retreats, couples, and pastors and leaders. <a href="${downloadHref(LEADERS_GUIDE)}">⬇ Leader’s Guide (PDF)</a></p>
 <ul>${rows}</ul></main>
 ${LOCAL_DATES}
 <footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
