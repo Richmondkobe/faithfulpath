@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
+import { RESET_NEW_PATH } from "@/lib/reset-new";
 import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import MindMarkdown from "@/components/mind/MindMarkdown";
 import ResetAudio from "@/components/reset/ResetAudio";
@@ -115,6 +116,8 @@ const BUILT = new Set([
 
 export default async function ResetSimplePage({ params }: Props) {
   await requireActiveMember();
+  // The previous edition, once retired, sends its visitors to the new edition.
+  if (RESET_NEW_LIVE && RESET_OLD_RETIRED) redirect(RESET_NEW_PATH);
 
   const { slug } = await params;
   const page = findResetSimplePage(slug);

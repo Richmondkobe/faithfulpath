@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RESET_NEW_PATH } from "@/lib/reset-new";
+import { RESET_OLD_RETIRED } from "@/lib/reset-new-live";
 
 /**
  * The Reset new edition on /members, shown only when RESET_NEW_LIVE is on.
@@ -20,10 +21,12 @@ export default function NewEditionCard() {
         A guided retreat for tired Christians, rebuilt as narrated lessons and retreat sessions: understand,
         prepare, take the retreat in the plan that fits your life, and come home well.
       </p>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
-        It starts fresh. Anything you did in the previous edition, including your journal and any certificate,
-        stays where it is.
-      </p>
+      {!RESET_OLD_RETIRED && (
+        <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+          It starts fresh. Anything you did in the previous edition, including your journal and any certificate,
+          stays where it is.
+        </p>
+      )}
       <div className="mt-5">
         <Link
           href={RESET_NEW_PATH}

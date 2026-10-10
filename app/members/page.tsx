@@ -34,7 +34,7 @@ import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
-import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
 import NewEditionCard from "@/components/reset-new/NewEditionCard";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -371,7 +371,8 @@ export default async function Members() {
           {/* The Reset new edition, once switched on, sits above the previous
               edition's card; the previous edition's card is otherwise unchanged. */}
           {RESET_NEW_LIVE && <NewEditionCard />}
-          <CourseCard />
+          {/* Retired: the card goes; nothing it reads is changed or deleted. */}
+          {!(RESET_NEW_LIVE && RESET_OLD_RETIRED) && <CourseCard />}
           <MindCourseCard />
           {/* Built, and deliberately not reachable: the course stays unlinked
               until the pre-publish checklist has been run in full. */}

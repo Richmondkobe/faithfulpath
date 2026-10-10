@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
+import { RESET_NEW_PATH } from "@/lib/reset-new";
 import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import ArticleBody from "@/components/ArticleBody";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
@@ -70,6 +71,8 @@ export default async function Lesson({
   await requireActiveMember();
 
   const { courseSlug, lessonSlug } = await params;
+  // The previous edition, once retired, sends its visitors to the new edition.
+  if (courseSlug === "christian-spiritual-reset" && RESET_NEW_LIVE && RESET_OLD_RETIRED) redirect(RESET_NEW_PATH);
   const course = getCourse(courseSlug);
   const found = findLesson(courseSlug, lessonSlug);
   if (!course || !found) notFound();

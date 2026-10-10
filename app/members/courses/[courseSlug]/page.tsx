@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { requireActiveMember } from "@/lib/member-gate";
 import {
   getCountableLessons,
@@ -21,7 +21,8 @@ import CertificateButton from "@/components/course/CertificateButton";
 import ResetSimpleOverview from "@/components/reset/ResetSimpleOverview";
 import { RESET_SIMPLE_PUBLISHED, RESET_SLUG } from "@/lib/reset-simple-links";
 import JournalButton from "@/components/course/JournalButton";
-import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
+import { RESET_NEW_PATH } from "@/lib/reset-new";
 import NewEditionNotice from "@/components/reset-new/NewEditionNotice";
 
 export const metadata: Metadata = {
@@ -37,6 +38,8 @@ export default async function CourseOverview({
   await requireActiveMember();
 
   const { courseSlug } = await params;
+  // The previous edition, once retired, sends its visitors to the new edition.
+  if (courseSlug === RESET_SLUG && RESET_NEW_LIVE && RESET_OLD_RETIRED) redirect(RESET_NEW_PATH);
   const course = getCourse(courseSlug);
   if (!course) notFound();
 
