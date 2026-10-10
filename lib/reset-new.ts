@@ -649,6 +649,9 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   }
   // Lesson 16: the link to Lesson 15, the worksheet link inside My Day 30 Review,
   // and where the review saves (lib/reset-new-review.ts; the preview saves nothing).
+  if (unit.slug === "session-01") {
+    html = beforeHeadEnd(html, `<script data-reset>window.RESET_PLAN_URL=${JSON.stringify(`${unitPath(unit)}/plan`)};</script>`);
+  }
   if (unit.slug === "lesson-16") {
     const l15 = RESET_NEW_UNITS.find((u) => u.slug === "lesson-15");
     if (!l15) throw new Error("Lesson 16 links to Lesson 15, which is missing.");
@@ -754,7 +757,10 @@ function longDate(iso: string): string {
 }
 
 /** The test edition's own small contents page. */
-export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = null): string {
+/** The member's record for the course page: their confirmed plan and the dated acknowledgements. */
+export type ResetRecord = { planLabel: string | null; acks: { title: string; date: string }[] };
+
+export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = null, record: ResetRecord = { planLabel: null, acks: [] }): string {
   const rows = RESET_NEW_UNITS.map((u) => {
     const done = completed.has(u.slug);
     const guides = RESET_NEW_GUIDES.filter((g) => g.before === u.slug)
@@ -767,6 +773,16 @@ export function homeHtml(completed: Set<string>, reviewSavedAt: string | null = 
         : "";
     return `${guides}<li><a href="${unitPath(u)}"><span class="lab">${escapeHtml(u.label)}</span><span class="t">${escapeHtml(u.title)}</span><span class="st${done ? " done" : ""}">${done ? "✓ Completed" : u.kind === "session" ? "Retreat session" : "Teaching lesson"}</span>${review}</a></li>`;
   }).join("");
+  // Three separate things, never interchangeable (design, section 13; Lesson 16 review):
+  // the retreat route completed, the thirty-day follow-up, and the private Day 30 Review.
+  const s1 = RESET_NEW_UNITS.find((u) => u.slug === "session-01");
+  const homeWell = ["lesson-12", "lesson-13", "lesson-14", "lesson-15", "lesson-16"].filter((x) => completed.has(x)).length;
+  const recordCard = `<section class="rec" aria-labelledby="h-rec"><h2 id="h-rec">Your record</h2>
+<p><b>Retreat plan:</b> ${record.planLabel ? `${escapeHtml(record.planLabel)}. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Change it in Session 1</a>` : `not confirmed yet. <a href="${s1 ? unitPath(s1) : RESET_NEW_PATH}#myplan">Confirm it at the start of Session 1</a>`}</p>
+${record.acks.length ? `<ul class="acks">${record.acks.map((a) => `<li>✓ You completed ${escapeHtml(a.title)} on ${escapeHtml(longDate(a.date))}.</li>`).join("")}</ul>` : `<p class="m">When you complete your plan’s sessions, the date is recorded here.</p>`}
+<p><b>Come Home Well:</b> ${homeWell} of 5 lessons <span class="m">(recommended, not required)</span></p>
+<p><b>Day 30 Review:</b> ${reviewSavedAt ? `saved, ${escapeHtml(longDate(reviewSavedAt))} <span class="m">(private)</span>` : `<span class="m">optional, on Lesson 16</span>`}</p>
+</section>`;
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Christian Spiritual Reset · Test edition</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
 <style data-reset>
@@ -784,12 +800,16 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .lab{grid-row:span 2;font:600 13px/1.2 'Source Sans 3',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24;padding-top:4px}
 .t{font:600 19px/1.3 'Source Serif 4',serif}
 .st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}.st.rv{grid-column:2;color:#1f2d4f}
+.rec{background:#fffaf0;border:2px solid #c99a4a;border-radius:14px;padding:14px 16px;margin-bottom:18px}
+.rec h2{font:600 20px/1.3 'Source Serif 4',serif;margin:0 0 6px}.rec p{margin:.35em 0}.rec .m{color:#5a6577;font-size:15px}
+.rec a{color:#8a6a24}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
 footer a{color:#8a6a24}
 </style></head><body>
 ${TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">New edition: the units built so far, for testing.</p></div></header>
 <main class="w"><div class="note">Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes.</div>
+${recordCard}
 <ul>${rows}</ul></main>
 <footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
 </body></html>`;

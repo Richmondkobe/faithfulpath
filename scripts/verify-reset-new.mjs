@@ -57,5 +57,17 @@ const deletes = rv.split(".delete()").slice(1).map((d) => d.slice(0, d.indexOf("
 check(deletes.length && deletes.every((d) => d.includes('.eq("user_id", learner.userId)') && d.includes('.eq("course_slug", RESET_NEW_KEY)') && d.includes('.eq("page_slug", REVIEW_PAGE)')), "review deletes only the member's own day-30-review rows", "a review delete is not limited to the member's own review");
 check(!(/journal|course_reflections|course_progress|certificate/.test(rv)), "review never touches progress, the journal, reflections or certificates", "review mentions progress, the journal, reflections or certificates");
 
+
+// The retreat plan and the dated record (course page): their own file, insert-and-upsert only.
+const pl = readFileSync(join(root, "lib/reset-new-plan.ts"), "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+const plTables = [...pl.matchAll(/\.from\("([^"]+)"\)/g)].map((m) => m[1]);
+check(plTables.length && plTables.every((t) => t === "course_private_answers"), "plan touches only: course_private_answers", `plan touches: ${plTables.join(", ")}`);
+check(!(/\.delete\(|\.update\(|\.rpc\(|supabaseAdmin|service_role/.test(pl)), "plan never deletes, updates in bulk, calls a database function or uses the admin key", "plan deletes, updates, calls rpc or uses the admin key");
+check(/PLAN_PAGE = "retreat-plan"/.test(pl) && /ACK_PAGE = "acknowledgements"/.test(pl), "plan page keys are retreat-plan and acknowledgements", "plan page keys changed");
+check([...pl.matchAll(/course_slug:\s*([\w"'-]+)/g)].every((m) => m[1] === "RESET_NEW_KEY") && [...pl.matchAll(/page_slug:\s*([\w"'-]+)/g)].every((m) => m[1] === "PLAN_PAGE" || m[1] === "ACK_PAGE"), "plan writes only this edition's plan and record rows", "plan writes other rows");
+check([...pl.matchAll(/\.eq\("(course_slug|page_slug)",\s*([\w"'-]+)\)/g)].every((m) => ["RESET_NEW_KEY", "PLAN_PAGE", "ACK_PAGE"].includes(m[2])), "plan reads only this edition's plan and record rows", "plan reads other rows");
+check(/ignoreDuplicates: true/.test(pl), "acknowledgements are only ever added, never changed", "acknowledgements could be overwritten");
+check(!(/journal|course_reflections|course_progress|certificate/.test(pl)), "plan never touches progress, the journal, reflections or certificates", "plan mentions progress, the journal, reflections or certificates");
+
 console.log(failed ? `\n${failed} problem(s).` : "\nAll checks passed.");
 process.exit(failed ? 1 : 0);

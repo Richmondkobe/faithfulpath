@@ -80,6 +80,29 @@ and `app/members/courses/christian-spiritual-reset-new/[unit]/review/route.ts`.
   only while a review exists.
 - `scripts/verify-reset-new.mjs` checks that this code touches only those rows
   and deletes only the member's own review.
-- Still to do: the plan-based acknowledgements on the course page (they need
-  the member's chosen plan to be recorded first).
+
+## My retreat plan and the course-page record
+
+Code: `lib/reset-new-plan.ts`, `app/members/courses/christian-spiritual-reset-new/[unit]/plan/route.ts`,
+and the "Your record" card in `homeHtml`.
+
+- Session 1 has one added card, "Confirm my retreat plan" (eight plans), before
+  the player. Saving it marks nothing complete and can be changed at any time.
+  Lesson 11's Before My Retreat still saves nothing; confirming the plan on
+  Session 1 stands in for "Before My Retreat saved" in the design's table.
+- Stored in `course_private_answers` under this edition's course_slug only:
+  page_slug `retreat-plan` (the plan) and `acknowledgements` (one row per
+  acknowledgement, valued with the date first recorded).
+- Acknowledgements (design, section 13), checked when a unit is completed and
+  when the course page opens: Three-Hour Reset (Sessions 1, 2, 3, 10); One-Day
+  Retreat (Lessons 1-11, Sessions 1, 2, 3, 10); The Christian Spiritual Reset
+  (three-day, eight-day at-home, couples, pastors, group: Lessons 1-11,
+  Sessions 1, 2, 3, 7, 10); Extended At-Home Retreat (twelve-day plan: also
+  Sessions 4, 5, 8, 9). Session 6 is never required, because setting it aside is
+  not recorded and is a legitimate decision. Lessons 12-16 are never required.
+- Acknowledgements are only ever added (insert, ignore duplicates), never
+  changed or removed: a fuller plan later adds its own; nothing earlier goes.
+- The course page shows, as separate lines: the plan, each acknowledgement with
+  its date ("You completed ... on 12 October 2026."), Come Home Well (n of 5,
+  recommended, not required), and the Day 30 Review. No certificate, no score.
 
