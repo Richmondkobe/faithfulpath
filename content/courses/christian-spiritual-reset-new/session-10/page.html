@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Session 10 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.practice h3{font-size:18px;color:var(--navy);margin:22px 0 6px;display:flex;gap:10px;align-items:baseline}
+.practice h3 span{font-family:'Source Serif 4',serif;color:var(--gold-d);font-weight:400}
+.practice ol,.practice ul{margin:6px 0;padding-left:1.3em}.practice li{margin:.4em 0;line-height:1.5}
+.prayer-text p{margin:.15em 0;font-family:'Source Serif 4',serif;font-size:17px}
+.declare p{margin:.1em 0;font-family:'Source Serif 4',serif;font-size:18px;color:var(--navy)}
+.audio-box{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0}
+.audio-box .play{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--sun);display:grid;place-items:center;flex:none;font-size:15px}
+.timer{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;margin:8px 0}
+.timer .clock{font-family:'Source Serif 4',serif;font-size:34px;color:var(--navy);font-variant-numeric:tabular-nums;min-width:3.2em}
+.timer select,.timer button{font:inherit;border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:#fff;color:var(--navy)}
+.timer button.go{background:var(--navy);color:var(--sun);border-color:var(--navy)}
+.anchor{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-d);font-size:18px}
+.envtab{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}.envtab th,.envtab td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}.envtab th{background:#f1e8d4}
+.envtab td b{color:var(--navy)}
+.tablewrap{overflow-x:auto}
+.durnote{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:600;color:var(--navy)}
+details.more summary{cursor:pointer;font-weight:600;color:var(--gold-d)}
+.box2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+@media(max-width:600px){.bar{flex-wrap:wrap;gap:8px}.bar b{letter-spacing:.14em;font-size:11.5px}.steps8 i{width:14px}}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.btn.ghost{background:transparent;border-color:rgba(243,236,216,.6);color:#f3ecd8}
+
+.plans .pq{font-weight:700;color:var(--navy);margin:.2em 0 .5em}
+.plans .opts{display:flex;flex-wrap:wrap;gap:8px}
+.plans .opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 14px;font-size:15.5px;cursor:pointer}
+.plans .opts input{width:18px;height:18px;accent-color:var(--gold-d);margin:0}
+.plans .route{margin:.7em 0 0;border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:9px 13px;color:var(--navy)}
+.plans .route:empty{display:none}
+.bounds{border:3px solid #7a2e1f;background:#fffaf0}.bounds h2{color:#7a2e1f}.bounds li{margin:.45em 0;line-height:1.5}
+.bounds .urgent{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.bounds .btn.skip{background:transparent;border:2px solid #8a6a24;color:#8a6a24;font-weight:700}
+.walk-safe{border:2px solid #7a2e1f;background:#fbefe9;border-radius:10px;padding:10px 14px;margin:10px 0}
+.lam li{margin:.5em 0!important}.lam b{color:var(--gold-d)}
+.must{background:#f1e8d4;border-radius:10px;padding:10px 14px;font-weight:700;color:var(--navy)}
+#breakline{color:#e3c98a;font-family:'Source Serif 4',serif;font-style:italic;margin:.6em 0 0}
+[data-plan-only]{display:none}
+.tablewrap{overflow-x:auto;margin:8px 0}.cols3{border-collapse:collapse;width:100%;min-width:300px;font-size:15px}.cols3 th,.cols3 td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}.cols3 th{background:var(--navy);color:#f3ecd8;font-weight:600}.cols3 td{background:var(--paper)}
+.moves p{margin:.3em 0;line-height:1.45}.moves b{color:var(--gold-d);display:block}
+.urgentp{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.blessing{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.2vw,27px);line-height:1.5;color:var(--navy);text-align:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin:10px 0}
+.blessing span{display:block}.blessing .ref{font-size:14px;color:var(--gold-d);margin-top:8px;font-style:italic}
+.ruleline{background:#fbf1d8;border-left:5px solid var(--gold);border-radius:8px;padding:10px 14px;font-weight:600;color:var(--navy);margin:10px 0}
+.practice h3 span.short{font-family:'Inter',system-ui,sans-serif;font-weight:700;color:#2f5a7a;font-size:11px;align-self:center;white-space:nowrap;margin-left:auto}
+.sc{font-variant:small-caps}
+.hournote{background:#e7eef3;border-left:5px solid var(--navy);border-radius:8px;padding:10px 14px;color:var(--navy)}
+.short{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#2f5a7a;background:#e7eef3;border-radius:6px;padding:2px 7px;margin-left:8px;vertical-align:middle}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 3: The Retreat</b><span class="steps8" aria-label="Session 10 of 10"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Session 10 · Day 3, late afternoon</p>
+   <h1>Returning With a New Rhythm</h1>
+   <p class="question">How do I go home without losing what happened here?</p>
+   <div class="meta"><span class="chip">Teaching about 9 minutes</span><span class="chip">Practice at least an hour</span><span class="chip">1 Kings 19:19–21 · Luke 10:17–20</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card plans" aria-labelledby="h-plans"><p class="kicker">Your plan</p><h2 id="h-plans" class="pq">Which plan are you following?</h2><div class="opts" role="radiogroup" aria-labelledby="h-plans"><label><input type="radio" name="plan" value="three" data-route="Day 3, late afternoon or early evening, after a long break and something to eat. Allow at least an unhurried hour, working back from checkout and safe travel." data-stop="Finish my retreat" data-break="Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home."> Three-day retreat</label><label><input type="radio" name="plan" value="one" data-route="About 16:05, after a twenty-minute break, shortened to about an hour." data-stop="Finish my retreat" data-break="Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home."> One-day retreat</label><label><input type="radio" name="plan" value="hours" data-route="The last twenty-five minutes: use the short practice below." data-stop="Finish my three-hour reset" data-break="Give yourself the half-hour before anything demanding, and put the four cards where you will see them."> Three-hour reset</label><label><input type="radio" name="plan" value="home" data-route="Core version: Day 8 (Day 9 if you moved Session 5). Extended version: Day 12." data-stop="Finish my retreat" data-break="Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home."> At-home retreat</label><label><input type="radio" name="plan" value="couple" data-route="Day 3, late afternoon or early evening, after a long break and something to eat. Allow at least an unhurried hour, working back from checkout and safe travel. Each of you on your own; then the third shared moment." data-stop="Finish my retreat" data-break="Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home."> Retreat for couples</label><label><input type="radio" name="plan" value="pastor" data-route="Day 3, late afternoon or early evening, after a long break and something to eat. Allow at least an unhurried hour, working back from checkout and safe travel. Read the notes on rhythm, support and re-entry below." data-stop="Finish my retreat" data-break="Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home."> Pastors and leaders</label></div><p class="route" id="route" role="status" aria-live="polite"></p><p class="sub" style="margin:.6em 0 0">Your choice is not saved. If you have not chosen yet, the page shows the whole session.</p></section>
+ <section class="card bounds" aria-labelledby="h-bounds"><p class="kicker">Please read before you begin</p><h2 id="h-bounds">Settled, not rushed</h2><ul>
+  <li>Do this session settled, not rushed: at least an unhurried hour. Choose its start by working back from checkout and safe travel; if possible, complete it before the final night and depart after sleep.</li>
+  <li>Keep the confession, release, and any trauma-related envelopes sealed and secure; this session does not reopen them. Do not display or transport sensitive writing where another person could discover it.</li>
+  <li>Do not drive or travel alone if you are too tired, distressed, or disoriented to do so safely.</li></ul>
+  <p class="urgent"><b>If a card concerns immediate safety,</b> medical care, suicidal thoughts, abuse, safeguarding, or a genuine crisis, do not place it in the 30-day plan: seek the appropriate help promptly. <a href="#" onclick="return false">Finding Help Where You Live</a></p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this session you will</p><h2 id="h-learn">Going back, unfinished</h2><ul><li>See Elijah return from isolation to shared work, and hear Jesus redirect the disciples’ joy</li><li>Open the envelope from Session 1 and sort what you set down</li><li>Prepare for re-entry: expect a dip, and share selectively and safely</li><li>Take home four things: one to entrust, one action, one person, one rhythm</li></ul></section>
+ <section class="card" aria-labelledby="h-before"><p class="kicker">Before you begin</p><h2 id="h-before">The last session</h2><p>This is the last session, and it should be done settled, not rushed. If you have come to it straight from Session 7, or from 8 or 9, make sure you have eaten and rested first. Set aside at least an unhurried hour, with flexibility for more time or a short break. If fatigue rises, divide the session rather than rushing to finish, and leave the evening free afterwards.</p><p>Gather the practical and discernment materials from the retreat: your journal; the intention from Lesson 7; your Lesson 1 and Lesson 4 answers; the Act, Share, Entrust, and Seek-counsel cards from Session 3; the “What I sense” card from Session 7; the identity card from Session 8 and the purpose card from Session 9, if you did those; and the sealed envelope from Session 1, the one marked <b>Not until Day 3</b>. Do not open it yet.</p><p>If you deferred sessions, this session is still for you. It does not assume you did all ten. It assumes you came, and stayed, and are now going home.</p></section>
+ <section class="player" aria-label="Session teaching"><iframe src="player.html" title="Session 10 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · The last session</h4><p>This is the last session, and it should be done settled, not rushed. If you have come to it straight from another session, make sure you have eaten and rested first. Set aside at least an unhurried hour. If fatigue rises, divide the session rather than rushing to finish, and leave the evening free afterwards.</p><p>Have your cards from the retreat nearby, and the sealed envelope from Session 1, the one marked &quot;Not until Day 3&quot;. Do not open it yet. Keep any confession, release, or trauma-related envelopes sealed and secure; this session does not reopen them.</p><p>If you deferred sessions, this session is still for you. It does not assume you did all ten. It assumes you came, and stayed, and are now going home. Our question is this: how do I go home without losing what happened here?</p><h4>2 · The cloak</h4><p>Our passages are 1 Kings 19, verses 19 to 21, followed by Luke 10, verses 17 to 20. In the first, notice what Elijah’s return from isolation looks like. In the second, notice what Jesus tells the returning disciples to rejoice in.</p><p>&quot;So he departed from there and found Elisha the son of Shaphat, who was plowing with twelve yoke of oxen in front of him, and he was with the twelfth. Elijah passed by him and cast his cloak upon him. And he left the oxen and ran after Elijah and said, “Let me kiss my father and my mother, and then I will follow you.” And he said to him, “Go back again, for what have I done to you?” And he returned from following him and took the yoke of oxen and sacrificed them and boiled their flesh with the yokes of the oxen and gave it to the people, and they ate. Then he arose and went after Elijah and assisted him.&quot;</p><h4>3 · &quot;Rejoice that your names are written&quot;</h4><p>&quot;The seventy-two returned with joy, saying, “Lord, even the demons are subject to us in your name!” And he said to them, “I saw Satan fall like lightning from heaven. Behold, I have given you authority to tread on serpents and scorpions, and over all the power of the enemy, and nothing shall hurt you. Nevertheless, do not rejoice in this, that the spirits are subject to you, but rejoice that your names are written in heaven.”&quot;</p><h4>4 · Return = šûḇ</h4><p>Our Hebrew word is the one translated &quot;return&quot;: šûḇ. It means to turn back, to return. At Horeb, God told Elijah, &quot;Go, return on your way.&quot; Elsewhere in the Old Testament the same verb can carry the full meaning of repentance, of turning back to God. Here it means something simpler: to go back the way he came. It is the anchor phrase for this session.</p><h4>5 · Go, Return on Your Way</h4><p>Lesson 2 said that the difference between running away and retreating is that a retreat intends to return. This is the returning. It matters as much as the leaving. Re-entry is where the insights of a retreat meet the pressures of ordinary life, and without support or structural change, old patterns can quickly reassert themselves.</p><p>So this session is not about resolutions. It is about rhythm. Across the Gospels, Jesus’ ministry includes both engagement and withdrawal. When the disciples returned from their mission, he said:</p><p>&quot;Come away by yourselves to a desolate place and rest a while.&quot;</p><p>Then the crowds found them, the work resumed, and later he withdrew again. This is a pattern of life, not a timetable everyone must reproduce. What you take home is not a peak experience to remember. It is a small, repeatable pattern that lets some of what happened here happen again, in ordinary weeks.</p><h4>6 · Not Alone</h4><p>God’s response to Elijah’s isolation had included food, rest, honest encounter, and the knowledge that seven thousand remained. Now it includes Elisha, called to follow him: a successor who first assisted Elijah in the work. Not every difficulty disappeared. But Elijah returns to active life knowing he is not the only faithful person left, and isolation begins to give way to shared vocation.</p><p>Your return may likewise require appropriate companionship: a friend, a spouse, a pastor, a counsellor, a colleague, a recovery community, or professional support. The retreat’s insistence on a support person was never only about the three days.</p><h4>7 · Expect a Dip</h4><p>Two things about re-entry. First, expect a dip. Some people notice a dip after returning home. They may feel flat, irritable, or discouraged. This does not necessarily mean the retreat was unhelpful. Ordinary demands have returned, and it may take time to adjust. Do not judge the whole value of the retreat by your mood in the first week. But take severe distress, worsening depression, inability to function, or safety concerns seriously, and seek appropriate help.</p><h4>8 · Share selectively and safely</h4><p>Second, share selectively and safely. There is a temptation, on the way home, to tell everyone what changed. Some of it will not survive contact with ordinary life, and some of it, as Session 7 said, still needs testing. Tell your support person what would help them support you. If you have a safe spouse or partner, explain any practical rhythm that may affect shared life, and listen to their concerns. Keep private material private, but bring significant impressions or decisions to appropriately qualified counsel, rather than treating secrecy as spirituality. Elijah’s next step was not public announcement, but embodied obedience and shared work.</p><h4>9 · Rejoice That Your Names Are Written</h4><p>Then there is Luke 10. The disciples return rejoicing: even the demons submit to them. Jesus does not dismiss it, but he redirects it: rejoice that your names are written in heaven. For those who belong to Christ, the deepest reason for rejoicing is not the quality of a retreat experience, but God’s saving grace and the belonging Christ gives. That belonging is not earned by a successful retreat or a productive ministry. Service grows from grace; it does not purchase it.</p><p>If the three days were dry, that belonging is not diminished. If they were rich, that is not what to build on.</p><h4>10 · A careful word</h4><p>A careful word before the practice. When you open the envelope and sort the cards, if any card concerns immediate safety, medical care, suicidal thoughts, abuse, safeguarding, or a genuine crisis, do not place it into the ordinary thirty-day plan. Seek the appropriate help promptly. And keep anything sensitive, identifying, or spiritually intimate sealed or securely stored. If your belongings may be searched or monitored, do not carry written material that could place you at risk.</p><h4>11 · One question</h4><p>So here is one question to carry into the practice. What are you afraid will happen when you get home? Name it honestly. And then, of everything that happened here, what one thing do you most want to be true in a month’s time?</p><h4>12 · Put the screen aside</h4><p>This is where the teaching stops. Pause the player now, and put the screen aside if you can.</p><p>On the page you will find the last practice of the retreat: opening the envelope, a check-in, a guided prayer, ten minutes of silence, a few questions for your journal, and four things to take home: one thing to entrust, one action, one person, and one rhythm. It ends with the blessing.</p><p>You are going back, unfinished, and still held by grace. &quot;Go, return on your way.&quot;</p></div></details></section>
+
+ <section class="card practice" id="practice" aria-labelledby="h-prac">
+  <p class="kicker">The practice</p><h2 id="h-prac">Now put the screen aside</h2>
+  <p class="hournote" data-plans="hours" data-plan-only>For your three-hour reset, use the short practice below. You do not need to complete the full teaching and hour-long exercise today. The short practice is the steps marked <b>Three-hour reset</b>: open the envelope and sort the cards, the four cards, and the blessing.</p>
+  <p class="durnote" data-plans="three one home couple pastor">Allow at least an unhurried hour. This is not a timed exercise. If fatigue rises, divide the session rather than rushing to finish.</p>
+  <p class="durnote" data-plans="hours" data-plan-only>Allow about twenty-five minutes for the short practice. Do not rush the blessing.</p>
+  <p class="sub">You may answer the questions privately, in prayer, without writing everything down. Nothing you write is collected.</p>
+
+  <h3><span>1</span>Opening the envelope <span class="short">Three-hour reset</span></h3>
+  <p>Now open the envelope from Session 1. Read the cards. These are the ordinary demands you set down on the first morning. Some will feel exactly as heavy as they did; some, you may notice, feel lighter, or have resolved themselves, or turned out to be smaller than they seemed. Some may have become clearer.</p>
+  <p>Sort them, using the Session 3 marks:</p>
+  <ul><li><b>A</b> for something within your responsibility that needs a next faithful action</li><li><b>S</b> for something to share</li><li><b>E</b> for something to entrust</li><li><b>?</b> for something needing counsel</li></ul>
+  <p>Do not assume every card must return to you as an action. Some may need delegation, counsel, changed expectations, or no action at all. Anything that no longer needs to be done, set aside.</p>
+  <div class="walk-safe">If a card concerns immediate safety, medical care, suicidal thoughts, abuse, safeguarding, or a genuine crisis, do not place it into the ordinary thirty-day plan. Seek the appropriate help promptly.</div>
+  <p>You are picking these up again. But you are picking them up after three days of practising how to carry things, and you may find that you hold them differently.</p>
+
+  <h3><span>2</span>Self-assessment</h3><p class="sub">In your journal.</p><ol><li>Reread the three questions you answered in Lesson 1, and your answers. Then reread your intention from Lesson 7, all four parts. Without forcing it: what has shifted, what has become clearer, and what may still need attention, support, prayer, or discernment after you return? Write honestly, including “nothing yet” if that is true. This is not a test of whether the retreat worked.</li><li>Lay out the practical and discernment cards together. What do you notice? Is there a theme, a person who appears more than once, a concern that keeps returning? A repeated theme is worth noticing, but repetition alone does not prove that it is God’s central message. It may indicate anxiety, an intrusive concern, an unmet need, or a genuine priority requiring further discernment.</li><li>Was there a moment, exercise, rest period, conversation, or passage that seems especially important? If nothing stands out yet, write that.</li><li>What are you afraid will happen when you get home?</li></ol>
+
+  <h3><span>3</span>Guided prayer</h3>
+  <p class="sub">Use only the lines that fit. An empty space can also be a prayer.</p>
+  <div class="audio-box prayer-audio"><div style="width:100%"><b>Guided prayer: Returning With a New Rhythm</b> <span class="sub">· about 4½ minutes, with open spaces</span><audio controls preload="metadata" src="guided-prayer-10.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio></div></div>
+  <details class="more"><summary>Words of the recording</summary><div class="prayer-text"><p>You have opened the envelope and looked again at what you were carrying. Keep those cards nearby.</p><p>Do not choose your final four cards yet. That comes after the silence and journalling.</p><p>Lord, you told Elijah to return.</p><p>You also showed him that he was not alone.</p><p>There were seven thousand.</p><p>There was Elisha.</p><p>I am preparing to return.</p><p>Unfinished.</p><p>And still held by your grace.</p><p>Thank you for what these days contained.</p><p>If there is something particular for which you want to give thanks, name it now.</p><p>If nothing comes to mind, let the silence remain.</p><p>What is still unclear, help me carry patiently and test wisely.</p><p>What needs action, help me approach responsibly.</p><p>What needs counsel, lead me toward the right people.</p><p>What is not mine to control, teach me to entrust to you.</p><p>Give me appropriate companionship and help me receive it.</p><p>Go with me into ordinary life.</p><p>Teach me to recognise your presence there.</p><p>In the kitchen.</p><p>In the inbox.</p><p>In the car.</p><p>In conversations and responsibilities.</p><p>Give me a sustainable rhythm rather than a dramatic resolution.</p><p>Teach me to resume when I miss it, without punishment or guilt.</p><p>Amen.</p><p>Remain where you are and move into the final silence of the retreat.</p><p>Do not choose the cards yet.</p><p>For these few minutes, do not look back or plan ahead.</p><p>Simply remain here with the God who has been present throughout these days.</p><p>Your anchor phrase is: “Go, return on your way.” Or: “I am not alone.”</p></div></details>
+  <details class="more" style="margin-top:8px"><summary>If you prefer to read: the prayer from the book</summary><p class="sub">Use only the lines that fit. Change or omit the others.</p><div class="prayer-text"><p>Lord, you told Elijah to return, and you showed him</p><p>that he was not alone.</p><p>I am going back, unfinished and still held by your grace.</p><p>Thank you for what these days contained: ______.</p><p>What remains unclear, help me carry patiently and test</p><p>wisely.</p><p>Give me appropriate companionship, and help me</p><p>receive it.</p><p>Go with me into ordinary life, and teach me to</p><p>recognise your presence there.</p><p>Give me a rhythm rather than a dramatic resolution.</p><p>Amen.</p></div></details>
+
+  <h3><span>4</span>Silence</h3>
+  <p>Suggested length: ten minutes, or the length you can manage.</p>
+  <p class="anchor">“Go, return on your way.” · or: “I am not alone.”</p>
+  <p>This is the last silence of the retreat. Spend it not looking back and not planning ahead. Simply be here, one more time, with the God who was here the whole time. The retreat setting will remain behind, but the practice of returning attention to God can travel with you. It may look smaller and less quiet at home, and it can still be real.</p>
+  <div class="timer"><span class="clock" id="clock">10:00</span><label class="sub" for="mins">Length</label><select id="mins"><option value="5">5 minutes</option><option value="10" selected>10 minutes</option><option value="15">15 minutes</option></select><button class="go" id="tgo">Start</button><button id="treset">Reset</button><p class="sub" id="tstat" role="status" aria-live="polite" style="flex-basis:100%;margin:0">A short spoken opening, then silence, then a short spoken closing.</p></div>
+  <audio id="aOpen10" src="timer-opening-10.mp3" preload="auto"></audio><audio id="aOpen15" src="timer-opening-15.mp3" preload="auto"></audio><audio id="aClose" src="timer-closing.mp3" preload="auto"></audio>
+  <p class="sub">When the timer ends, take one unhurried breath before moving. If you want to remain longer, you may; if you are ready to stop, stop. This timer needs the screen to stay on.</p>
+  <div class="audio-box"><div style="width:100%"><b>Want to put your phone away?</b> <span class="sub">Play the silence as one recording instead. It keeps playing when the screen locks: the opening words, <span id="gsLen">10</span> minutes of silence, then the closing words.</span><audio id="gs" controls preload="none" src="guided-silence-10.mp3" style="width:100%;margin-top:8px">Your browser cannot play this recording.</audio><a class="sub" id="gsDl" href="guided-silence-10.mp3" download style="display:inline-block;margin-top:4px">⬇ Download this recording</a></div></div>
+
+  <h3><span>5</span>Journal</h3><ol><li>What did you notice in the last silence?</li><li>Of everything that happened, what one thing do you most want to be true in a month’s time? Write it as a sentence beginning “In a month, I hope…”</li><li>Who will you tell about the retreat, and what will you tell them? Who will you not tell yet, and why?</li><li>What is the next deliberate pause or form of support you need? It might be a three-hour reset, a day retreat, a counselling appointment, a Sabbath practice, or a protected hour. Write it down. A rhythm needs a next time.</li></ol>
+
+  <h3><span>6</span>Four things to take home <span class="short">Three-hour reset</span></h3>
+  <p>Older Christian traditions sometimes use the phrase “rule of life” for a realistic pattern of prayer, rest, work, worship, and relationship. “Rule” here means a supportive framework, not a system for earning God’s approval. Lessons 12 to 16 will help you build one. Today you take home four things, each on one card.</p>
+  <div class="moves"><p><b>One thing to entrust.</b>From the Entrust cards, or the envelope, choose the single matter you most need to stop trying to control. Write it on a card with the words “placed in God’s care.”</p><p><b>One action to take.</b>From the Act cards, the purpose card, or the envelope, choose one next faithful step, doable in the first two weeks home. Small, specific, within your control.</p><p><b>One person or source of support.</b>Name the person, or the service, you will contact in the first week. Your support person, your Eli, a counsellor, a doctor, a recovery community. Write when you will contact them.</p><p><b>One sustainable rhythm.</b>Choose one piece of a rule of life and commit to it for thirty days. Choose something small enough for a difficult ordinary week; in a crisis, illness, or emergency, the rhythm may need to pause without guilt. Choose a rhythm compatible with your health, household, work, caregiving responsibilities, and safety.</p></div>
+  <p>Options for the rhythm, all adaptable:</p>
+  <ul><li><b>A daily quiet.</b> Up to ten minutes, at a roughly fixed time, with a psalm and a short silence. The Lesson 8 practice, continued.</li><li><b>A weekly hour.</b> One protected hour each week, phone away, alone with God; shorter blocks count if an hour is impossible.</li><li><b>A digital boundary.</b> One element of Lesson 9 kept permanently, with emergency access preserved.</li><li><b>A protected period of ceasing.</b> A day, or half a day, each week without your ordinary work, adapted for caregivers, shift workers, and medical needs. Lesson 14 gives Sabbath the fuller treatment it deserves; for these thirty days, simply protect the time.</li><li><b>A conversation.</b> A regular meeting with a trustworthy and competent person in which you say honestly how you are.</li><li><b>A rest that is yours.</b> A named thing that restores you, protected weekly without guilt; recreation, not compulsive escape.</li></ul>
+  <p class="ruleline">A rhythm is a practice to return to, not a perfect attendance record: “When I miss it, I will start again the next day without guilt.”</p>
+  <p>Write the rhythm on a card, with the day, the time, and the place, as concretely as you can. Write underneath what you will do when you miss it, because you will: “When I miss it, I will start again the next day without guilt.” Read the four cards to God.</p>
+  <p>Then sort every card from the retreat into two groups.</p>
+  <div class="moves"><p><b>Action cards</b>The four you have just written, plus any Act, Share, and Seek-counsel cards that are safe, practical reminders. Carry these in an accessible place; the 30-day plan begins with them on Day 1.</p><p><b>Private cards</b>Anything sensitive, identifying, traumatic, or spiritually intimate, including the sealed envelopes. Seal or securely store these. If your belongings may be searched or monitored, do not carry written material that could place you at risk.</p></div>
+  <p>If you deferred sessions, write on a card <b>Optional sessions to revisit</b> and include only those you genuinely want to reconsider. Deferral may be the final wise decision, not incomplete work. The 30-day plan has a place for them if you want it.</p>
+
+  <h3><span>7</span>Closing declaration</h3><p class="sub">Read only what you can say honestly. Adjust the words if you need to.</p>
+  <div class="declare"><p>I came as honestly as I could, and grace met me here.</p><p>I am returning with some clarity and some unfinished questions.</p><p>I will not carry ordinary life alone.</p><p>I take one small rhythm and one next faithful step.</p><p>My retreat experience is not the measure of God’s faithfulness.</p><p>(Optional:) My name is written in heaven, and that is what I will rejoice in.</p></div>
+
+  <h3><span>8</span>A blessing <span class="short">Three-hour reset</span></h3>
+  <p>These words were given to Israel’s priests as a blessing over the people, and they have been spoken over God’s people for millennia. Receive them now as Scripture’s ancient words of blessing, aloud if you can.</p>
+  <div class="blessing"><span>The <span class="sc" style="display:inline">Lord</span> bless you and keep you;</span><span>the <span class="sc" style="display:inline">Lord</span> make his face to shine upon you and be gracious to you;</span><span>the <span class="sc" style="display:inline">Lord</span> lift up his countenance upon you and give you peace.</span><span class="ref">Numbers 6:24–26 · ESV</span></div>
+ </section>
+
+ <section class="card" id="shorter"><p class="kicker">On your plan</p>
+  <p data-plans="three"><b>Three-day retreat.</b> Day 3, late afternoon or early evening, after a long break and something to eat. At least an unhurried hour. Choose its start by working back from checkout and safe travel; if there is not enough time to complete it without rushing, begin earlier or stay until the following morning. If possible, complete it before the final night and depart after sleep.</p>
+  <p data-plans="one"><b>One-day retreat.</b> About 16:05, after a twenty-minute break, shortened to about an hour: open the envelope, self-assessment question 1 and journal question 2, choose the four cards, and read the blessing.</p>
+  <p data-plans="hours"><b>Three-hour reset.</b> The last twenty-five minutes: open the envelope, sort the cards, choose one thing to entrust, one action, one person, and one rhythm; read the blessing. Do not rush the blessing.</p>
+  <p data-plans="home"><b>At-home retreat.</b> Core version: Day 8 (Day 9 if you moved Session 5). Extended version: Day 12. The return deserves its own morning.</p>
+  <p data-plans="couple"><b>Retreat for couples.</b> Each of you does the session on your own. Then the third shared moment: sit together for up to an hour. Each person shares the rhythm they hope to establish and any practical action that will affect the marriage, because a rhythm your spouse does not know about will not survive. The other cards may be shared, but sharing them is optional. Discuss the practical implications of each other’s rhythm, and agree how you will protect each other’s. Then, together, read the blessing.</p>
+  <p data-plans="pastor"><b>Pastors and leaders.</b> When you choose your one rhythm, consider a weekly protected period of ceasing that the congregation knows about and a leadership team protects. Ministers who rest in secret do not rest. When you choose your one person, consider a supervisor or a peer group outside your church, not a member of it. Re-entry: as a strong rule, do not preach or publicly announce what you believe you heard for at least a month. Tell the person in leadership who knew you were going. Keep the rest until it has become real.</p>
+ </section>
+ <section class="card" id="aftercard"><p class="kicker">After this session</p>
+  <p data-plans="three one home couple pastor">The retreat is over. Do not add anything to it. Have a simple meal and pack slowly. Do not rush your departure. Follow the location’s checkout requirements, but delay travel or ask for assistance if you are tired, emotionally overwhelmed, unwell, or unable to drive safely. Tell your support person your travel plan and confirm when you arrive. You do not need to explain the whole retreat immediately; tell them what they need to know to support your return, and save deeper reflection for when you are rested. Lesson 12 begins on your first morning home. Watch it that day if you can, and not before. You have done enough for now.</p>
+  <p data-plans="hours" data-plan-only>Do not go straight into a demanding task. Give yourself the half-hour, tell your support person you took the reset, and put the four cards where you will see them.</p>
+ </section>
+ <section class="card deep"><p class="kicker">Optional</p><h2>Go deeper</h2><p>The full text of Session Ten from the book, and the Session 10 pages of the Workbook, with the four cards and the rhythm card to cut out.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Session Ten (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Session 10 workbook pages</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished the practice?</h2><p class="sub mark">Mark it when you have done as much of the practice as you can. Nothing you wrote is asked for.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have finished my Session 10 practice</button><button class="btn ghost" onclick="return false">Stop here and come back later</button></div><div class="after" role="status"><p>Session 10 is complete.</p><div class="btns"><button class="btn gold">Finish my retreat</button></div><p id="breakline">Your retreat sessions are complete. Rest now. Lesson 12 begins on your first morning home.</p></div></section>
+ <div class="preview-note">Keep all the files in this folder together. Buttons and downloads will work on the website.</div>
+</main>
+
+<script>
+(function(){
+  var route=document.getElementById('route'),line=document.getElementById('breakline');
+  function apply(r){
+    var v=r.value;
+    document.querySelectorAll('[data-plans]').forEach(function(p){
+      p.style.display=p.getAttribute('data-plans').split(' ').indexOf(v)>=0?'block':'none';
+    });
+    var s=document.querySelector('#finish .after .btn.gold'); if(s) s.textContent=r.getAttribute('data-stop');
+    line.textContent=r.getAttribute('data-break');
+  }
+  document.querySelectorAll('input[name="plan"]').forEach(function(r){
+    r.addEventListener('change',function(){ if(r.checked){ route.textContent=r.getAttribute('data-route'); apply(r); } });
+  });
+})();
+</script>
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+(function(){const $=id=>document.getElementById(id);const c=$('clock'),m=$('mins'),go=$('tgo'),rs=$('treset'),st=$('tstat'),close=$('aClose');
+const opening=()=>({10:$('aOpen10'),15:$('aOpen15'),20:$('aOpen20')})[m.value]||null;
+let phase='idle',left=600,end=0,tick=null,cur=null;
+const show=()=>{const x=Math.max(0,Math.ceil(left));c.textContent=Math.floor(x/60)+':'+String(x%60).padStart(2,'0');};
+const say=t=>{st.textContent=t;};
+function play(a,next){cur=a;a.currentTime=0;a.onended=()=>{cur=null;next();};const p=a.play();if(p)p.catch(()=>{cur=null;next();});}
+function silence(){phase='silence';end=Date.now()+left*1000;say('Silence. Return to your phrase when your attention drifts.');
+  tick=setInterval(()=>{left=(end-Date.now())/1000;show();if(left<=0){clearInterval(tick);tick=null;left=0;show();phase='closing';say('The silence is ending.');play(close,finish);}},250);}
+function finish(){phase='done';c.textContent='Done';go.textContent='Start';say('When you are ready, open your journal.');}
+function unlock(a){if(!a)return;a.muted=true;const p=a.play();if(p)p.then(()=>{a.pause();a.currentTime=0;a.muted=false;}).catch(()=>{a.muted=false;});else{a.pause();a.muted=false;}}
+m.onchange=()=>{if(phase==='idle'||phase==='done'){phase='idle';left=+m.value*60;show();}const g=$('gs');if(g.paused){const u=g.getAttribute('src').replace(/guided-silence-[0-9]+\.mp3/,'guided-silence-'+m.value+'.mp3');g.setAttribute('src',u);$('gsDl').setAttribute('href',u);$('gsLen').textContent=m.value;}};
+$('gs').addEventListener('play',()=>{if(phase==='opening'||phase==='silence'||phase==='closing')rs.click();});go.addEventListener('click',()=>{const g=$('gs');if(!g.paused)g.pause();},true);
+go.onclick=()=>{
+  if(phase==='idle'||phase==='done'){left=+m.value*60;show();unlock(close);go.textContent='Pause';const o=opening();
+    if(o){phase='opening';say('Listen to the opening words.');play(o,silence);}else silence();return;}
+  if(phase==='paused'){go.textContent='Pause';const r=resumeTo;phase=r;if(r==='silence')silence();else if(cur){cur.play();say(r==='opening'?'Listen to the opening words.':'The silence is ending.');}return;}
+  resumeTo=phase;phase='paused';go.textContent='Resume';if(tick){clearInterval(tick);tick=null;}if(cur)cur.pause();say('Paused.');};
+let resumeTo='silence';
+rs.onclick=()=>{if(tick){clearInterval(tick);tick=null;}[$('aOpen10'),$('aOpen15'),close].forEach(a=>{a.pause();a.currentTime=0;a.onended=null;});cur=null;phase='idle';go.textContent='Start';left=+m.value*60;show();say('A short spoken opening, then silence, then a short spoken closing.');};
+window.__timer={get phase(){return phase},get left(){return left},set left(v){left=v;if(phase==='silence')end=Date.now()+v*1000;}};})();
+</script>
+</body></html>

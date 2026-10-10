@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -384,6 +384,27 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Session Nine (PDF)", file: "session-09.pdf" },
       { label: "⬇ Session 9 workbook pages", file: "workbook-session-09.pdf" },
+    ],
+  },
+  {
+    slug: "session-10",
+    kind: "session",
+    label: "Session 10",
+    title: "Returning With a New Rhythm",
+    narration: "reset-session-10.mp3",
+    pageAudio: [
+      "guided-prayer-10.mp3",
+      "timer-opening-10.mp3",
+      "timer-opening-15.mp3",
+      "timer-closing.mp3",
+      "guided-silence-5.mp3",
+      "guided-silence-10.mp3",
+      "guided-silence-15.mp3",
+    ],
+    finish: { stop: "Finish my retreat", next: null },
+    downloads: [
+      { label: "⬇ Session Ten (PDF)", file: "session-10.pdf" },
+      { label: "⬇ Session 10 workbook pages", file: "workbook-session-10.pdf" },
     ],
   },
 ];
