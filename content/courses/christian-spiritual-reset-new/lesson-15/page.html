@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 15 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.planbar i{background:#8fa58e}
+.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+.points div{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:600;color:var(--navy)}
+.points svg{width:34px;height:34px;color:var(--gold-d);flex:none}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.qs li{margin:.5em 0;line-height:1.5}
+.helpcard{border:3px solid #8a6a24;background:#fffaf0}.helpcard h2{color:#7a2e1f}.helpcard .urgent{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.helpcard a{font-weight:700;font-size:1.05em}
+.sit{padding-left:1.2em}.sit li{margin:.55em 0;line-height:1.5}
+.planguide fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.planguide legend{font-weight:700;color:var(--navy);padding:0 6px}
+.planguide label{display:flex;gap:10px;align-items:center;margin:.45em 0;font-size:16px;line-height:1.35}
+.planguide input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.pg-result{border:3px solid var(--gold-d);border-radius:14px;padding:14px 16px;background:#fffaf0;margin:14px 0}
+.pg-result h3{margin:.1em 0 .3em;color:var(--navy)}.pg-result .pg-k{letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--gold-d);margin:0}
+.pg-result p{margin:.35em 0}.pg-wait{color:var(--mute);font-style:italic}
+
+.intent label{display:block;font-weight:700;color:var(--navy);margin:14px 0 4px}
+.intent label small{display:block;font-weight:400;color:var(--mute);font-size:14px;margin-top:2px}
+.intent textarea{width:100%;box-sizing:border-box;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;background:var(--paper);color:var(--ink);resize:vertical}
+.example{font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:var(--navy);background:var(--paper);border-left:4px solid var(--gold);padding:8px 12px;border-radius:6px}
+.agree{background:#fffaf0;border:1px dashed #c9b892;border-radius:12px;padding:12px 16px;font-family:"Source Serif 4",Georgia,serif;line-height:1.6}
+.agree p{margin:.35em 0}
+.ticks{list-style:none;padding:0;columns:2;column-gap:24px}.ticks li{break-inside:avoid;margin:.3em 0}
+.ticks label{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;line-height:1.4}.ticks input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold-d)}
+.ticks h4{margin:.8em 0 .2em;color:var(--gold-d);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:700px){.ticks{columns:1}}
+.signs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.signs fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0;background:var(--paper)}
+.signs legend{font-weight:700;color:var(--navy);padding:0 6px}
+.signs label{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;margin:.45em 0;line-height:1.4;font-size:16px}
+.signs input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold-d)}
+@media (max-width:820px){.signs{grid-template-columns:1fr}}
+
+.bmr fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.bmr legend{font-weight:700;color:var(--navy);padding:0 6px}
+.bmr .r{display:flex;gap:10px;align-items:center;margin:.45em 0;font-size:16px;line-height:1.35}
+.bmr .r input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.bmr .calm{border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:8px 12px;margin:.5em 0 0;color:var(--navy)}
+.bmr .calm:empty{display:none}
+.bmr .who{display:block;font-weight:700;color:var(--navy);margin:12px 0 4px}
+.bmr .who small{display:block;font-weight:400;color:var(--mute);font-size:14px}
+.bmr input[type=text]{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.ws fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.ws legend{font-weight:700;color:var(--navy);padding:0 6px}
+.ws .r{display:flex;gap:10px;align-items:center;margin:.4em 0;font-size:16px;line-height:1.35}.ws .r input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.ws input[type=text],.ws input[type=date],.ws select{box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:16px;background:#fff;color:var(--ink);max-width:100%}
+.ws input[type=text]{width:100%}
+.tests{list-style:none;padding:0;margin:0;counter-reset:t}.tests li{display:grid;grid-template-columns:1fr minmax(170px,auto);gap:6px 12px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.tests li:first-child{border-top:0}
+.tests li span::before{counter-increment:t;content:counter(t) ". ";font-weight:700;color:var(--gold-d)}
+@media (max-width:600px){.tests li{grid-template-columns:1fr}}
+.dates{display:flex;flex-wrap:wrap;gap:10px 18px}.dates label{display:flex;flex-direction:column;gap:4px;font-weight:600;color:var(--navy)}
+.safe-yes{border-left:4px solid #7a2e1f;background:#f6e3dc;border-radius:6px;padding:8px 12px;margin:.5em 0 0;color:var(--navy)}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}.cats div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cats b{display:block;color:var(--navy)}
+@media (max-width:700px){.cats{grid-template-columns:1fr}}
+@media (max-width:600px){.top .bar{flex-wrap:wrap;gap:8px}.top .bar b{flex-basis:100%}}
+.month+.learn{margin-top:22px}
+.month{margin-top:-40px;position:relative;z-index:2;background:#eef3f6;border:1px solid #c9d6df;border-radius:12px;padding:12px 16px}
+.ws textarea{width:100%;box-sizing:border-box;min-height:56px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:16px;background:#fff;color:var(--ink);resize:vertical}
+.ws label.q{display:block;font-weight:600;color:var(--navy);margin:12px 0 4px}
+.three{counter-reset:s;list-style:none;padding:0}.three li{background:var(--paper);border-left:4px solid var(--gold);border-radius:6px;padding:8px 12px;margin:6px 0;font-family:"Source Serif 4",Georgia,serif;font-size:18px;color:var(--navy)}
+.rule-ex{background:var(--paper);border:1px dashed #c9b892;border-radius:12px;padding:12px 16px;font-family:"Source Serif 4",Georgia,serif;line-height:1.55}
+.rule-ex p{margin:.3em 0}
+.carecard{border:2px solid #8fa58e;background:#f4f7f1}
+.helpcard.first{margin-top:-40px;position:relative;z-index:2}
+.first+.month{margin-top:16px}
+.helpcard ul{margin:.4em 0;padding-left:1.2em}.helpcard li{margin:.3em 0;line-height:1.45}
+.who details{border:1px solid var(--line);border-radius:12px;background:var(--paper);margin:8px 0;padding:0 14px}
+.who details[open]{padding-bottom:10px}
+.who summary{cursor:pointer;font-weight:700;color:var(--navy);padding:12px 0;line-height:1.35;list-style-position:outside}
+.who details.urg{border:2px solid #7a2e1f;background:#fbf0ec}.who details.urg summary{color:#7a2e1f}
+.who p{margin:.35em 0;line-height:1.5}.who .k{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-top:.6em}
+.checklist{columns:2;column-gap:24px;padding-left:1.2em}.checklist li{break-inside:avoid;margin:.3em 0}
+@media (max-width:700px){.checklist{columns:1}}
+.urgent-line{border-left:4px solid #7a2e1f;background:#f6e3dc;border-radius:6px;padding:8px 12px;color:var(--navy)}
+.private{background:#f3ecd8;border-radius:10px;padding:10px 14px;color:var(--navy);margin:.4em 0 .2em}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-lantern" viewBox="0 0 60 60"><path d="M24 10h12M30 10V6" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/><path d="M20 16h20l-2 30H22z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 24c3 4 4 7 0 12-4-5-3-8 0-12z" fill="currentColor"/><path d="M16 52h28" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-signpost" viewBox="0 0 60 60"><path d="M30 56V8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M30 12h18l6 6-6 6H30zM30 30H12l-6 6 6 6h18z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-hands" viewBox="0 0 60 60"><path d="M6 38c6-2 12-2 18 2l8 4c3 2 1 6-2 5l-8-3M54 38c-6-2-12-2-18 2l-8 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 26c-5-3-8-6-8-9a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 3-3 6-8 9z" fill="currentColor"/></symbol>
+<symbol id="i-staff" viewBox="0 0 60 60"><path d="M20 56V20a10 10 0 0 1 20 0v4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><ellipse cx="44" cy="44" rx="10" ry="7" fill="currentColor"/><circle cx="52" cy="38" r="4" fill="currentColor"/><path d="M38 50v6M48 50v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 4: Come Home Well</b><span class="steps8" aria-label="Lesson 15 of 16"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 15 · Book chapter 16 · For any week, whenever it applies</p>
+   <h1>When You Need a Pastor, Counsellor, or Mental-Health Professional</h1>
+   <p class="question">When is it more than tiredness, and who can help?</p>
+   <div class="meta"><span class="chip">About 15 minutes</span><span class="chip">Proverbs 15:22 · Galatians 6:2 · Colossians 4:14</span><span class="chip">Part 4 · Come Home Well</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card helpcard first" aria-labelledby="h-help"><p class="kicker">Before anything else</p><h2 id="h-help">If you are in danger now</h2>
+  <p class="urgent">If you may act on thoughts of suicide, have a plan or the means, cannot keep yourself safe, or are in immediate danger from another person: <b>contact emergency services, or go to the nearest emergency department, now.</b></p>
+  <p>Suicidal thoughts without a plan or intention still need prompt professional help: a doctor, crisis line or urgent mental-health service, <b>today</b>.</p>
+  <ul><li>Use a crisis or abuse service from a safe device.</li><li>Move to a safer or more public place if you can.</li><li>Tell a trusted person, and do not remain alone.</li><li>If it is safe, put distance between yourself and anything you could use to harm yourself.</li><li>If you do not know the number, ask a hospital, a doctor or a trusted person to help you make contact.</li></ul>
+  <p>For finding ongoing support (not a substitute for emergency services):</p>
+  <p><a href="#" onclick="return false">Finding Help Where You Live</a></p>
+ </section>
+ <section class="card month" aria-label="Your first 30 days"><p style="margin:0"><b>For any week, whenever it applies.</b> For the shape of the whole month, <a href="#" onclick="return false">See Your First 30 Days Home</a>.</p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this lesson</p><h2 id="h-learn">You will learn</h2><ul><li>Signs that what the retreat surfaced needs more than rest, and that you need not wait</li><li>Who does what: pastor, counsellor, doctor, and the urgent and specialised needs</li><li>Why faith and professional help belong together (Proverbs 15:22; Galatians 6:2; Colossians 4:14)</li><li>Help for leaders, and for those in a crisis of faith</li></ul><div class="points"><div><svg viewBox="0 0 60 60"><use href="#i-lantern"/></svg>Signs the Retreat Surfaced More</div><div><svg viewBox="0 0 60 60"><use href="#i-signpost"/></svg>Who Does What</div><div><svg viewBox="0 0 60 60"><use href="#i-hands"/></svg>Faith and Help Together</div><div><svg viewBox="0 0 60 60"><use href="#i-staff"/></svg>For Leaders and for Those in Doubt</div></div></section>
+ <section class="player" aria-label="Lesson teaching"><iframe src="player.html" title="Lesson 15 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · When is it more than tiredness?</h4><p>Welcome back. This lesson is for any week, whenever it applies. Lesson 5 said, before the retreat, that a retreat cannot replace medical or psychological care. Then the question was whether you were safe to go. Now the question is what the retreat showed you.</p><p>Three days of quiet can make visible what months of noise had covered. If you came home knowing that what you carry needs more than rest, this lesson is not a verdict. It is a map. So it asks: when is it more than tiredness, and who can help?</p><h4>2 · If you are in danger now</h4><p>Before anything else. Everything in this lesson assumes you have time to choose. If you do not, the map comes down to one instruction: get help immediately.</p><p>If you may act on thoughts of suicide, have a plan or access to the means, cannot keep yourself safe, or are in immediate danger from another person, contact emergency services or go to the nearest emergency department now. Use a crisis or abuse service from a safe device. Move to a safer or more public place if you can, tell a trusted person, and do not remain alone. If it is safe, put distance between yourself and anything you could use to harm yourself. If you do not know the number, ask a hospital, a doctor, or a trusted person to help you make contact.</p><p>And if you have thoughts of suicide without a plan or intention, they still need prompt professional help: contact a doctor, a crisis line, or an urgent mental-health service today. The rest of this lesson can wait.</p><h4>3 · With many advisers</h4><p>Our passages are short. The Scripture readings in this course are from the English Standard Version. Proverbs chapter 15, verse 22:</p><p>&quot;Without counsel plans fail, but with many advisers they succeed.&quot;</p><p>And Galatians chapter 6, verse 2, which you met in Lesson 5:</p><p>&quot;Bear one another’s burdens, and so fulfill the law of Christ.&quot;</p><h4>4 · Luke, the beloved physician</h4><p>Now the background. Our portrait for this lesson is Luke, whom you met in Lesson 5. Paul calls him &quot;the beloved physician&quot;. He travelled with Paul, and is traditionally understood to have written a Gospel and Acts. And Paul, writing to Timothy, gave practical advice about his stomach and his frequent illnesses.</p><p>Neither of these is a theory of mental health. But together they show that early Christians did not set faith against ordinary means of care. And Proverbs teaches the wisdom of counsel in making decisions. It is not a map of modern health services, but its principle holds: we are not meant to carry hard things on our own judgement alone.</p><h4>5 · The short answer</h4><p>So, when is it more than tiredness, and who can help? Here is the short answer. Notice the signs. Go to the right first person. Let faith lead you towards help, not away from it. And if you lead others, or are unsure what you believe, you are not alone.</p><p>That gives us four points: signs the retreat surfaced more; who does what; faith and help together; and for leaders, and for those in doubt.</p><h4>6 · Point 1: Signs the Retreat Surfaced More</h4><p>The first point: signs the retreat surfaced more. Lesson 4 described where pastoral description stops being enough. Read it again in the light of what happened, and add these signs.</p><p>The dip has not lifted. Session 10 said to expect a flat week. If the flatness has lasted most days for two weeks or more, or is deepening rather than easing, it may be more than readjustment. If it is severe, rapidly worsening, preventing ordinary life, or includes thoughts of suicide or self-harm, seek help now. And you do not have to wait two weeks, or reach a particular threshold, before asking for professional help.</p><p>The grief remains overwhelming. Session 4 may have brought grief or anger closer to the surface, and grief does not close neatly. But if it keeps overwhelming you, or significantly disrupts sleep, eating, or your ability to cope, more support may help. A counsellor can help well before grief reaches any clinical threshold. You do not need to prove it is serious enough.</p><h4>7 · More signs</h4><p>Something surfaced that frightens you: a memory, a pattern of thought, a fear. If it affects your safety or daily life, or keeps intruding, take it to a qualified person. You do not have to tell everything at once. You may begin by saying that something difficult surfaced, and asking how confidentiality works.</p><p>Or you recognised yourself in Lesson 5: the sections on suicidal thoughts, abuse, dependence, addiction, or trauma. If you read them before the retreat and thought &quot;not me&quot;, and now think &quot;perhaps me&quot;, that shift is the point of this lesson. Or the rule of life keeps being knocked over by something underneath it: anxiety, low mood, compulsions, panic. Or simply this: you are not getting better, and you have been faithful. Faithfulness without improvement, over weeks, is a reason to seek help, not a reason to try harder.</p><h4>8 · Point 2: Who Does What</h4><p>The second point: who does what. Christians often go first to a pastor, because it is the person they know. Pastors are essential, but not the right first call for everything. Here is a rough guide; how care is accessed varies by country.</p><p>For spiritual dryness, questions of faith, guidance, or church-related hurt: a pastor or spiritual director, for prayer, Scripture, spiritual counsel and discernment, not diagnosis or treatment. For grief, relationship difficulty, life transitions, or moderate anxiety or low mood: a qualified counsellor or therapist. Many are Christian or respectful of faith; ask. For persistent low mood, hopelessness, changes in sleep and appetite, panic, intrusive thoughts, trauma symptoms, or anything affecting daily life: a doctor or qualified mental-health professional, for assessment and treatment.</p><h4>9 · When it is urgent or specialised</h4><p>Some needs are urgent or specialised. For thoughts of death, suicide, or not wanting to be alive: prompt professional help, from a crisis line or urgent mental-health service, even without a plan. And emergency services if you may act, have a plan or the means, or cannot stay safe. For abuse or coercive control, past or present: a specialist domestic-abuse or sexual-violence service, contacted from a safe device. Joint counselling may be unsafe where abuse exists. For substance dependence: a doctor and an addiction service. If you may be physically dependent on alcohol, sedatives, or another substance, do not stop abruptly on your own; get medical advice about safe withdrawal.</p><p>For scrupulosity, compulsive confession or checking: a clinician experienced in OCD. Repeated reassurance and confession can become part of the compulsion, so a pastor helping alongside should avoid feeding that cycle. And for serious misconduct or safeguarding concerns: the appropriate safeguarding, legal, or professional authority.</p><h4>10 · Two things the table implies</h4><p>Two things the table implies. First, most serious difficulties need more than one kind of help, and a pastor is often one part of it. Second, the pastor’s role is real. Someone receiving treatment for depression can also benefit from prayer, Scripture, and a caring Christian community, according to what they are able to receive. The mistake is not going to a pastor. It is going only to a pastor, for something a pastor is not trained to treat.</p><h4>11 · Point 3: Faith and Help Together</h4><p>The third point: faith and help together. Lesson 5 answered the common objections; here they are again, shorter. &quot;Seeking therapy means my faith is not enough.&quot; Faith does not require you to refuse appropriate care. Prayer, pastoral support, medicine, and therapy can work together.</p><p>&quot;Medication would be a spiritual defeat.&quot; Medication is a medical treatment, not a verdict on your faith. Discuss benefits, risks, and alternatives with a qualified prescriber, and do not start, stop, or change prescribed medication solely because of something you experienced on retreat. &quot;A Christian should be able to pray this away.&quot; Keep praying, and let prayer lead you towards truthful help rather than away from it. Receiving appropriate help may be one of the ways God provides care.</p><h4>12 · Two more objections, and choosing well</h4><p>&quot;My pastor should be enough.&quot; Responsible pastors recognise when other expertise is needed. &quot;People will find out.&quot; Professional care is generally confidential, within the law of your country. Ask about confidentiality and its limits before you begin. You may start by asking questions without telling your whole story.</p><p>When you choose a counsellor, check their registration and training, and ask how they relate to faith. You do not need a Christian counsellor for good therapy, but you need one who respects that your faith is central to you. After two or three sessions, ask: do I feel respected, listened to, and able to raise concerns? If not, it is acceptable to change. If cost is a barrier, the page lists options. Do not let an expensive appointment become no action.</p><h4>13 · Point 4: For Leaders</h4><p>The fourth point: for leaders, and for those in doubt. If you lead a church or a ministry, find help outside your own church. A minister receiving counselling from a member of their own congregation, or pastoral care from someone they lead, is rarely free to be honest, and the dual relationship is unfair to both. Use your denomination’s provision, a supervisor, a counsellor experienced with clergy, or a pastor in another town.</p><p>Consider who, if anyone, in your leadership needs to know you are receiving support. Follow the requirements that apply, but keep clinical details private, and seek confidential advice first if disclosure could put you at risk. And if your tradition does not allow ministers to be unwell, you may be the person who begins to change that, but you do not have to do it by exposing yourself to harm.</p><h4>14 · For those in a crisis of faith</h4><p>And some of you came home with something you did not expect: the discovery that you are not sure what you believe, or whether you believe. This is not a mental-health condition, and it is not necessarily a sign that anything is wrong with you. It often happens when a faith carried by activity stops moving and has to stand on its own.</p><p>Do not carry it alone, and do not carry it to someone who will panic. A pastor outside your own church, a spiritual director, a mature believer who has walked through doubt themselves: these are the people to talk to. Keep a gentle connection with God if you can, but do not turn prayer or Scripture into a test of whether you still believe. And be patient. Faith that is allowed to ask honest questions can become more mature, though the process may be slow, and its outcome should not be forced.</p><h4>15 · Your step</h4><p>Here is your step. Did any of the signs describe you? Which? Using the table below this lesson, who is the right first call for what you are carrying? Write the kind of help, not yet the name. Which objection, if any, has been holding you back? Write the answer in your own words. And then the one step this week: a call to your doctor, an enquiry to a counsellor, a conversation with a pastor outside your church, or a crisis call today. Write it, and do it. If your need is urgent, take that step today. Do not wait until later in the week.</p><p>If none of the signs applies to you, note who you would call if one did, and keep it somewhere you can find it.</p><h4>16 · Remember</h4><p>Let us bring it together. Faithful but not getting better is a reason to seek help, not to try harder. Go to the right first person. Let prayer lead you towards truthful help, not away from it. And if you lead others, find help outside your own church; if you are in doubt, talk to someone who will not panic.</p><h4>17 · Prayer</h4><p>Let us pray. Lord, you gave us one another, and you gave us those who heal. Give me the courage to ask for the help I need, and the humility to receive it. Carry me, and carry those who help me. Amen.</p><p>If one of the signs described you, write your one step now, and take it this week. If you need help today, do not wait.</p></div></details></section>
+ <section class="card who" aria-labelledby="h-who"><p class="kicker">Who does what</p><h2 id="h-who">The right first call</h2>
+  <p class="sub">A rough guide. Open any need to see who can help. Titles, qualifications and how care is accessed vary by country. Most serious difficulties need more than one kind of help.</p>
+  <details open class="urg"><summary>Thoughts of death, suicide, or not wanting to be alive</summary><p class="k">Who can help</p><p>Prompt professional help from a doctor, crisis line or urgent mental-health service, even without a plan or intention. Emergency services or the nearest emergency department if you may act, have a plan, have access to the means, or cannot stay safe.</p><p class="k">What they do</p><p>Assess immediate risk, help you remain safe, and connect you with continuing care.</p></details><details class=""><summary>Spiritual dryness, questions of faith, guidance about a decision, church-related hurt, ongoing pastoral support</summary><p class="k">Who can help</p><p>A pastor or spiritual director</p><p class="k">What they do</p><p>Prayer, Scripture, spiritual counsel, discernment, community. Not diagnosis or treatment.</p></details><details class=""><summary>Grief, relationship difficulty, life transitions, moderate anxiety or low mood, patterns you want to understand</summary><p class="k">Who can help</p><p>A qualified counsellor or therapist</p><p class="k">What they do</p><p>Talking therapy. Many are Christian or respectful of faith; ask.</p></details><details class=""><summary>Persistent low mood, loss of interest, hopelessness, sleep and appetite changes, panic, intrusive thoughts, trauma symptoms, anything affecting daily functioning</summary><p class="k">Who can help</p><p>A doctor or qualified mental-health professional, according to how care is accessed in your country; a doctor especially where physical illness, medication, withdrawal or major sleep changes may be involved</p><p class="k">What they do</p><p>Assessment, diagnosis where appropriate, and treatment, which may include therapy, medication, or both.</p></details><details class=""><summary>Abuse or coercive control, past or present</summary><p class="k">Who can help</p><p>A specialist domestic-abuse or sexual-violence service, contacted from a safe device; emergency services if there is immediate danger and it is safe to call</p><p class="k">What they do</p><p>Help you assess danger, make a safety plan, and consider housing, legal, medical or police options without pressuring you. Joint counselling or a couples’ retreat may be unsafe where abuse exists.</p></details><details class=""><summary>Substance dependence</summary><p class="k">Who can help</p><p>A doctor and an addiction service; a recovery community</p><p class="k">What they do</p><p>Safe withdrawal, treatment, ongoing recovery support. If you may be physically dependent, do not stop abruptly on your own; seek medical advice.</p></details><details class=""><summary>Behavioural addiction</summary><p class="k">Who can help</p><p>A counsellor with relevant experience; an accountable community</p><p class="k">What they do</p><p>Therapy and accountability.</p></details><details class=""><summary>Scrupulosity, compulsive confession or checking, religious anxiety</summary><p class="k">Who can help</p><p>A clinician experienced in OCD and scrupulosity, particularly cognitive behavioural therapy including exposure and response prevention where appropriate</p><p class="k">What they do</p><p>Evidence-based treatment. Repeated reassurance, confession and requests for certainty can become part of the compulsion; a pastor working alongside should avoid reinforcing it.</p></details><details class=""><summary>Serious misconduct, safeguarding concerns, legal exposure</summary><p class="k">Who can help</p><p>The appropriate safeguarding, legal or professional authority</p><p class="k">What they do</p><p>Accountability, reporting, protection of others.</p></details>
+ </section>
+ <section class="card ws" aria-labelledby="h-step">
+  <p class="kicker">Your step</p><h2 id="h-step">One step this week</h2>
+  <p class="private"><b>This page is private and is not saved.</b> No box is compulsory. Copy your answers somewhere safe, or print the Lesson 15 worksheet.</p>
+  <fieldset><legend>My step</legend><label class="q" for="s-sign">Did any of the signs describe you? Which?</label><textarea id="s-sign"></textarea><label class="q" for="s-who">Using the table, who is the right first call for what you are carrying? Write the kind of help, not yet the name.</label><textarea id="s-who"></textarea><label class="q" for="s-obj">Which of the objections has been holding you back, if any? Write the answer in your own words.</label><textarea id="s-obj"></textarea><label class="q" for="s-step">What is the one step this week: a call to your doctor, an enquiry to a counsellor, a conversation with a pastor outside your church, a crisis call today? Write it, and do it.</label><textarea id="s-step"></textarea></fieldset>
+  <p class="urgent-line"><b>If your need is urgent, take that step today.</b> Do not wait until later in the week.</p>
+  <p>If none of the signs applies: note who you would call if one did, and keep it somewhere you can find it.</p>
+ </section>
+ <section class="card" aria-labelledby="h-choose"><p class="kicker">Choosing a counsellor</p><h2 id="h-choose">What to ask</h2>
+  <ul class="checklist"><li>Registration or recognised credentials</li><li>Training relevant to what you are bringing</li><li>Their approach, and why</li><li>Experience with grief, trauma, burnout, anxiety, OCD, abuse, addiction or clergy care, as relevant</li><li>How they relate to faith</li><li>Confidentiality and its limits</li><li>Costs and cancellation</li><li>Review points, and how concerns are handled</li></ul>
+  <p>You do not need a Christian counsellor for good therapy, but you need one who respects that your faith is central to you. You may start by asking questions without telling your whole story.</p>
+  <p>After two or three sessions, ask: <b>do I feel respected, listened to, and able to raise concerns?</b> If not, it is acceptable to change.</p>
+  <p class="note"><b>If cost is a barrier:</b> sliding scales, charitable services, church schemes, employee assistance programmes, university training clinics, and public provision. Do not let an expensive appointment become no action.</p>
+ </section>
+ <section class="card" aria-labelledby="h-look"><p class="kicker">Look back · Lesson 5</p><h2 id="h-look">“Not me”, or “perhaps me”?</h2><p>In Lesson 5 you read about what a retreat can and cannot do. Is there a section you read then as “not me” that now reads as “perhaps me”? You do not need to write the details; a word is enough.</p></section>
+ <section class="card" aria-labelledby="h-plan"><p class="kicker">Read or listen</p><h2 id="h-plan">Scripture to Sit With — Optional</h2><p class="sub">For each passage: read it slowly, notice one word or phrase that stays with you, and pray one sentence.</p><div class="planbar" aria-hidden="true"><i id="pbar"></i></div><p class="note" id="pcount">0 of 6 read</p><ul class="plan"><li><input type="checkbox" id="d1" aria-label="Psalm 131 read"><label class="p" for="d1"><small>Passage 1</small>Psalm 131</label><span class="q">The psalm for your fourth week home</span></li><li><input type="checkbox" id="d2" aria-label="Psalm 88 read"><label class="p" for="d2"><small>Passage 2</small>Psalm 88</label><span class="q">A lament that ends in darkness, and is still in the Bible</span></li><li><input type="checkbox" id="d3" aria-label="Galatians 6:1–5 read"><label class="p" for="d3"><small>Passage 3</small>Galatians 6:1–5</label><span class="q">Bearing burdens, and carrying your own load</span></li><li><input type="checkbox" id="d4" aria-label="Proverbs 11:14; 15:22 read"><label class="p" for="d4"><small>Passage 4</small>Proverbs 11:14; 15:22</label><span class="q">Many counsellors</span></li><li><input type="checkbox" id="d5" aria-label="Colossians 4:12–14 read"><label class="p" for="d5"><small>Passage 5</small>Colossians 4:12–14</label><span class="q">Luke among Paul’s companions</span></li><li><input type="checkbox" id="d6" aria-label="Mark 9:24 read"><label class="p" for="d6"><small>Passage 6</small>Mark 9:24</label><span class="q">“I believe; help my unbelief!”</span></li></ul></section>
+ <section class="card" aria-labelledby="h-talk"><p class="kicker">For groups, or with a friend</p><h2 id="h-talk">Talk about it</h2><ol class="talk"><li>Why do you think Christians often go only to a pastor first?</li><li>What helps a church be a place where people can say they are not well?</li><li>What would you want from a friend who told you they were unsure what they believe? Share your own experience only if you wish.</li></ol><p class="note">In a group, no one is asked about their own mental health, diagnosis, or treatment, and the leader does not give medical advice.</p></section>
+ <section class="card deep" aria-labelledby="h-deeper"><p class="kicker">Optional</p><h2 id="h-deeper">Go deeper</h2><p><b>The full chapter.</b> Chapter 16 of The Christian Spiritual Reset, and the Lesson 15 worksheet: the signs, the who-does-what table, the objections, and your one step.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Chapter 16 (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Lesson 15 worksheet</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished this lesson?</h2><p class="sub mark">Mark it complete when you have watched the teaching.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div><div class="after" role="status"><p>Lesson 15 is complete. If one of the signs described you, take your one step this week, or today if it is urgent. Lesson 16 is for Day 30.</p><div class="btns"><button class="btn gold">Stop here for today</button></div></div></section>
+ <div class="preview-note">Keep this page, player.html and reset-lesson-15.mp3 together in this folder. Buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/6*100)+'%';cnt.textContent=`${n} of 6 read`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>

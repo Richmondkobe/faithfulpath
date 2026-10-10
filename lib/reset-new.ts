@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13" | "lesson-14";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13" | "lesson-14" | "lesson-15";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -444,6 +444,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
     downloads: [
       { label: "⬇ Chapter 15 (PDF)", file: "chapter-15.pdf" },
       { label: "⬇ Lesson 14 worksheet", file: "worksheet-lesson-14.pdf" },
+    ],
+  },
+  {
+    slug: "lesson-15",
+    kind: "lesson",
+    label: "Lesson 15",
+    title: "When You Need a Pastor, Counsellor, or Mental-Health Professional",
+    narration: "reset-lesson-15.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: null },
+    downloads: [
+      { label: "⬇ Chapter 16 (PDF)", file: "chapter-16.pdf" },
+      { label: "⬇ Lesson 15 worksheet", file: "worksheet-lesson-15.pdf" },
     ],
   },
 ];
