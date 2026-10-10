@@ -36,7 +36,7 @@ export const RESET_NEW_PATH = `/members/courses/${RESET_NEW_KEY}`;
 const CONTENT_ROOT = join(process.cwd(), "content", "courses", RESET_NEW_KEY);
 
 export type ResetNewUnit = {
-  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13";
+  slug: "lesson-01" | "lesson-02" | "lesson-03" | "lesson-04" | "lesson-05" | "lesson-06" | "lesson-07" | "lesson-08" | "lesson-09" | "lesson-10" | "lesson-11" | "session-01" | "session-02" | "session-03" | "session-04" | "session-05" | "session-06" | "session-07" | "session-08" | "session-09" | "session-10" | "lesson-12" | "lesson-13" | "lesson-14";
   kind: "lesson" | "session";
   label: string;
   title: string;
@@ -433,6 +433,19 @@ export const RESET_NEW_UNITS: ResetNewUnit[] = [
       { label: "⬇ Lesson 13 worksheet", file: "worksheet-lesson-13.pdf" },
     ],
   },
+  {
+    slug: "lesson-14",
+    kind: "lesson",
+    label: "Lesson 14",
+    title: "Building a Sustainable Rule of Life",
+    narration: "reset-lesson-14.mp3",
+    pageAudio: [],
+    finish: { stop: "Stop here for today", next: null },
+    downloads: [
+      { label: "⬇ Chapter 15 (PDF)", file: "chapter-15.pdf" },
+      { label: "⬇ Lesson 14 worksheet", file: "worksheet-lesson-14.pdf" },
+    ],
+  },
 ];
 
 /**
@@ -591,11 +604,15 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
 
   // Links that were placeholders in the preview.
   html = swap(html, `<a ${DEAD}>Need help?</a>`, '<a href="/contact">Need help?</a>');
-  html = swap(
-    html,
-    `<a ${DEAD}>Finding Help Where You Live</a>`,
-    '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
-  );
+  // At most one "Finding Help Where You Live" link; a lesson without a safety card (Lesson 14) has none.
+  const findingHelp = `<a ${DEAD}>Finding Help Where You Live</a>`;
+  if (html.includes(findingHelp)) {
+    html = swap(
+      html,
+      findingHelp,
+      '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
+    );
+  }
   // "See Your First 30 Days Home" and any other link to a guide page.
   for (const g of RESET_NEW_GUIDES) {
     const link = `<a ${DEAD}>See ${g.title}</a>`;

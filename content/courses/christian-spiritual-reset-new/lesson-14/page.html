@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson 14 · The Christian Spiritual Reset</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#d4a24c;--gold-d:#a8792b;--gold-soft:#e8c98a;--sun:#f3e7c9;--cream:#f7f1e3;--paper:#fffaf0;--line:#e3d6b8;--ink:#1f3a3d;--mute:#5d6676}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--gold-d)}
+.container{width:min(100% - 32px,900px);margin:0 auto}
+
+/* header */
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#3a3f4c 100%);color:var(--sun);position:relative;overflow:hidden}
+.top .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 0;font-size:14px;color:#cfd3db}
+.top .bar b{color:var(--sun);letter-spacing:.24em;font-family:'Source Serif 4',serif;font-weight:400;text-transform:uppercase;font-size:13px}
+.steps8{display:flex;gap:6px;align-items:center}
+.steps8 i{width:22px;height:5px;border-radius:3px;background:#3b4760}.steps8 i.on{background:var(--gold)}
+.hero{padding:30px 0 70px;position:relative;z-index:1}
+.eyebrow{color:var(--gold);letter-spacing:.3em;text-transform:uppercase;font-family:'Source Serif 4',serif;font-size:13px;margin:0 0 10px}
+h1{font-weight:700;font-size:clamp(30px,5.4vw,50px);line-height:1.1;margin:0 0 12px}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-soft);margin:0 0 22px}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(232,201,138,.5);border-radius:2em;padding:4px 12px;font-size:14px;color:#e8e2d0}
+.top svg.hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:60px}
+
+/* sections */
+main{padding-bottom:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:22px 0;box-shadow:0 1px 0 rgba(31,45,69,.04)}
+.card h2{font-size:clamp(21px,2.8vw,26px);margin:0 0 4px;line-height:1.25}
+.card .kicker{color:var(--gold-d);letter-spacing:.18em;text-transform:uppercase;font-size:12.5px;font-weight:700;margin:0 0 6px}
+.card .sub{color:var(--mute);margin:0 0 14px;font-size:16.5px}
+.learn{margin-top:-40px;position:relative;z-index:2}
+.learn ul{margin:6px 0 0;padding-left:1.2em}.learn li{margin:.3em 0}
+.learn li::marker{color:var(--gold)}
+
+.player{margin:22px 0;border-radius:18px;overflow:hidden;background:var(--night);box-shadow:0 14px 40px rgba(22,33,58,.25)}
+.player iframe{display:block;width:100%;height:min(78vh,700px);min-height:560px;border:0}
+
+details.transcript summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.transcript summary::after{content:"Show";font-weight:600;font-size:14px;color:var(--gold-d);border:1px solid var(--line);border-radius:2em;padding:2px 12px}
+details.transcript[open] summary::after{content:"Hide"}
+.tx{max-height:60vh;overflow:auto;margin-top:12px;padding-right:6px;font-family:'Source Serif 4',serif;font-size:17px}
+.tx h4{font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:18px 0 4px}
+
+ol.assign{padding-left:1.3em;margin:6px 0 14px}.assign li{margin:.45em 0}.assign b{color:var(--gold-d)}
+.parts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:10px 0}
+.parts label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15.5px}
+.parts label span{display:flex;align-items:center;gap:8px}
+.parts svg{width:26px;height:26px;color:var(--gold)}
+textarea{font:inherit;font-size:16px;font-weight:400;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:84px;resize:vertical;background:#fff;color:var(--ink)}
+input.ref{font:inherit;font-size:15px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+textarea:focus{outline:2px solid var(--gold-soft);border-color:var(--gold)}
+.note{font-size:14.5px;color:var(--mute);margin:6px 0 0}
+.fsteps{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.fsteps span{border:1px solid var(--line);border-radius:2em;padding:3px 11px;font-size:14px;color:var(--mute)}
+.fsteps span.lit{background:var(--gold);border-color:var(--gold);color:var(--night);font-weight:700}
+
+.plan{list-style:none;margin:8px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.plan li:first-child{border-top:0}
+.plan input{width:22px;height:22px;margin-top:3px;accent-color:var(--gold-d);grid-row:span 2}
+.plan .p{font-weight:700}.plan .p small{font-weight:600;color:var(--mute);margin-right:6px}
+.plan .q{color:var(--mute);font-style:italic;font-family:'Source Serif 4',serif}
+.plan li.done .p{text-decoration:line-through;text-decoration-color:var(--gold)}
+.planbar{height:6px;background:#efe6d2;border-radius:4px;overflow:hidden;margin:8px 0 2px}.planbar i{display:block;height:100%;width:0;background:var(--gold);transition:width .4s}
+
+ol.talk{padding-left:1.3em;margin:6px 0 0}.talk li{margin:.4em 0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:700;font-size:16px;border-radius:12px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--navy);background:transparent;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--navy);color:var(--sun)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--night)}
+.btn:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px}
+
+.finish{background:linear-gradient(180deg,#1f3a3d,#0d1f22);color:var(--sun);border:0;text-align:center;padding:30px 24px}
+.finish h2{color:var(--sun)}
+.finish .sub{color:#cfd3db}
+.finish .btn{border-color:var(--sun);color:var(--sun)}
+.finish .btn.gold{color:var(--night);border-color:var(--gold)}
+.after{display:none;margin-top:16px}
+.finish.done .after{display:block}.finish.done .mark{display:none}
+.after p{font-family:'Source Serif 4',serif;font-style:italic;color:var(--gold-soft);margin:0 0 14px}
+.after .btns{justify-content:center}
+
+footer{border-top:1px solid var(--line);padding:18px 0 40px;color:var(--mute);font-size:14px}
+footer .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.preview-note{background:#fdf3dc;border:1px dashed var(--gold);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--gold-d);margin-top:14px}
+@media (max-width:600px){body{font-size:17px}.card{padding:18px 16px}.player iframe{height:82vh;min-height:600px}.hero{padding-bottom:60px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+:root{--night:#0d1f22;--navy:#1f3a3d;--gold:#c9a24a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f1ead6;--cream:#f6f2e6;--paper:#fbf8ef;--line:#ddd6bd;--ink:#1f3a3d;--mute:#5c6b66}
+.top{background:linear-gradient(180deg,#0b1a1d 0%,#1f3a3d 70%,#46564c 100%)}
+.steps8 i{background:#2f4a4b}
+.planbar{background:#e8e4d2}
+.safe{border-left:4px solid var(--gold);background:#f8f4e6}
+.safe p{margin:.3em 0;font-size:16.5px}
+.deep p{font-size:16.5px;margin:.6em 0}
+
+/* Reset palette (book cover) */
+:root{--night:#121d33;--navy:#1f2d4f;--gold:#c99a4a;--gold-d:#8a6a24;--gold-soft:#e3c98a;--sun:#f3ecd8;--cream:#f8f0e1;--paper:#fffaf0;--line:#e0d4b6;--ink:#1f2d4f;--mute:#5a6577}
+body{background:#f8f0e1}
+.top{background:linear-gradient(180deg,#121d33 0%,#1f2d4f 58%,#4b5f84 100%)}
+.finish{background:linear-gradient(180deg,#1f2d4f,#121d33)}
+.steps8 i{background:#34466b}
+.planbar i{background:#8fa58e}
+.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+.points div{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-weight:600;color:var(--navy)}
+.points svg{width:34px;height:34px;color:var(--gold-d);flex:none}
+@media (max-width:600px){.player iframe{min-height:min(600px,calc(100vh - 8px));min-height:min(600px,calc(100svh - 8px))}}
+.qs li{margin:.5em 0;line-height:1.5}
+.helpcard{border:3px solid #8a6a24;background:#fffaf0}.helpcard h2{color:#7a2e1f}.helpcard .urgent{background:#f6e3dc;border-left:5px solid #7a2e1f;padding:10px 12px;border-radius:8px}
+.helpcard a{font-weight:700;font-size:1.05em}
+.sit{padding-left:1.2em}.sit li{margin:.55em 0;line-height:1.5}
+.planguide fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.planguide legend{font-weight:700;color:var(--navy);padding:0 6px}
+.planguide label{display:flex;gap:10px;align-items:center;margin:.45em 0;font-size:16px;line-height:1.35}
+.planguide input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.pg-result{border:3px solid var(--gold-d);border-radius:14px;padding:14px 16px;background:#fffaf0;margin:14px 0}
+.pg-result h3{margin:.1em 0 .3em;color:var(--navy)}.pg-result .pg-k{letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:700;color:var(--gold-d);margin:0}
+.pg-result p{margin:.35em 0}.pg-wait{color:var(--mute);font-style:italic}
+
+.intent label{display:block;font-weight:700;color:var(--navy);margin:14px 0 4px}
+.intent label small{display:block;font-weight:400;color:var(--mute);font-size:14px;margin-top:2px}
+.intent textarea{width:100%;box-sizing:border-box;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;background:var(--paper);color:var(--ink);resize:vertical}
+.example{font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:var(--navy);background:var(--paper);border-left:4px solid var(--gold);padding:8px 12px;border-radius:6px}
+.agree{background:#fffaf0;border:1px dashed #c9b892;border-radius:12px;padding:12px 16px;font-family:"Source Serif 4",Georgia,serif;line-height:1.6}
+.agree p{margin:.35em 0}
+.ticks{list-style:none;padding:0;columns:2;column-gap:24px}.ticks li{break-inside:avoid;margin:.3em 0}
+.ticks label{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;line-height:1.4}.ticks input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold-d)}
+.ticks h4{margin:.8em 0 .2em;color:var(--gold-d);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:700px){.ticks{columns:1}}
+.signs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.signs fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:0;background:var(--paper)}
+.signs legend{font-weight:700;color:var(--navy);padding:0 6px}
+.signs label{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;margin:.45em 0;line-height:1.4;font-size:16px}
+.signs input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold-d)}
+@media (max-width:820px){.signs{grid-template-columns:1fr}}
+
+.bmr fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.bmr legend{font-weight:700;color:var(--navy);padding:0 6px}
+.bmr .r{display:flex;gap:10px;align-items:center;margin:.45em 0;font-size:16px;line-height:1.35}
+.bmr .r input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.bmr .calm{border-left:4px solid var(--gold);background:#fffaf0;border-radius:6px;padding:8px 12px;margin:.5em 0 0;color:var(--navy)}
+.bmr .calm:empty{display:none}
+.bmr .who{display:block;font-weight:700;color:var(--navy);margin:12px 0 4px}
+.bmr .who small{display:block;font-weight:400;color:var(--mute);font-size:14px}
+.bmr input[type=text]{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.ws fieldset{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:12px 0;background:var(--paper)}
+.ws legend{font-weight:700;color:var(--navy);padding:0 6px}
+.ws .r{display:flex;gap:10px;align-items:center;margin:.4em 0;font-size:16px;line-height:1.35}.ws .r input{width:20px;height:20px;accent-color:var(--gold-d);flex:none}
+.ws input[type=text],.ws input[type=date],.ws select{box-sizing:border-box;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:16px;background:#fff;color:var(--ink);max-width:100%}
+.ws input[type=text]{width:100%}
+.tests{list-style:none;padding:0;margin:0;counter-reset:t}.tests li{display:grid;grid-template-columns:1fr minmax(170px,auto);gap:6px 12px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}.tests li:first-child{border-top:0}
+.tests li span::before{counter-increment:t;content:counter(t) ". ";font-weight:700;color:var(--gold-d)}
+@media (max-width:600px){.tests li{grid-template-columns:1fr}}
+.dates{display:flex;flex-wrap:wrap;gap:10px 18px}.dates label{display:flex;flex-direction:column;gap:4px;font-weight:600;color:var(--navy)}
+.safe-yes{border-left:4px solid #7a2e1f;background:#f6e3dc;border-radius:6px;padding:8px 12px;margin:.5em 0 0;color:var(--navy)}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0}.cats div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.cats b{display:block;color:var(--navy)}
+@media (max-width:700px){.cats{grid-template-columns:1fr}}
+@media (max-width:600px){.top .bar{flex-wrap:wrap;gap:8px}.top .bar b{flex-basis:100%}}
+.month+.learn{margin-top:22px}
+.month{margin-top:-40px;position:relative;z-index:2;background:#eef3f6;border:1px solid #c9d6df;border-radius:12px;padding:12px 16px}
+.ws textarea{width:100%;box-sizing:border-box;min-height:56px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font:inherit;font-size:16px;background:#fff;color:var(--ink);resize:vertical}
+.ws label.q{display:block;font-weight:600;color:var(--navy);margin:12px 0 4px}
+.three{counter-reset:s;list-style:none;padding:0}.three li{background:var(--paper);border-left:4px solid var(--gold);border-radius:6px;padding:8px 12px;margin:6px 0;font-family:"Source Serif 4",Georgia,serif;font-size:18px;color:var(--navy)}
+.rule-ex{background:var(--paper);border:1px dashed #c9b892;border-radius:12px;padding:12px 16px;font-family:"Source Serif 4",Georgia,serif;line-height:1.55}
+.rule-ex p{margin:.3em 0}
+.carecard{border:2px solid #8fa58e;background:#f4f7f1}
+.private{background:#f3ecd8;border-radius:10px;padding:10px 14px;color:var(--navy);margin:.4em 0 .2em}
+</style></head><body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-crown" viewBox="0 0 60 60"><path d="M8 46 L12 18 L23 32 L30 12 L37 32 L48 18 L52 46 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M10 52h40" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-horn" viewBox="0 0 60 60"><path d="M8 24h10l24-12v36L18 36H8z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 22c4 4 4 12 0 16M53 17c7 7 7 19 0 26" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 36l4 14" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-cross" viewBox="0 0 60 60"><path d="M30 6v40M19 18h22" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M6 54c10-8 38-8 48 0" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 60 60"><rect x="8" y="24" width="44" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="4"/><rect x="5" y="16" width="50" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="4"/><path d="M30 16v36" stroke="currentColor" stroke-width="4"/><path d="M30 16c-6-10-18-8-14 0M30 16c6-10 18-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-grace" viewBox="0 0 60 60"><path d="M30 50C18 41 10 34 10 25a9 9 0 0 1 20-4 9 9 0 0 1 20 4c0 9-8 16-20 25z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M30 4v6M10 10l4 4M50 10l-4 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-turn" viewBox="0 0 60 60"><path d="M18 54V26a12 12 0 0 1 24 0v18" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M33 40l9 12 9-12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-trust" viewBox="0 0 60 60"><path d="M4 40Q30 14 56 40" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 40h52M14 31v9M24 26v14M36 26v14M46 31v9" stroke="currentColor" stroke-width="3"/><path d="M4 50c8-4 16 4 26 0s18-4 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-receive" viewBox="0 0 60 60"><path d="M6 30c0 10 8 18 24 18s24-8 24-18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M6 30l8-4M54 30l-8-4" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 8v14M24 16l6 6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-above" viewBox="0 0 60 60"><circle cx="30" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 20v26M22 38l8 9 8-9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 14l-6-3M44 14l6-3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-spirit" viewBox="0 0 60 60"><path d="M6 20h30a8 8 0 1 0-8-8M6 32h40a8 8 0 1 1-8 8M6 44h22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+ <symbol id="i-new" viewBox="0 0 60 60"><path d="M28 52C14 42 6 34 6 24a10 10 0 0 1 22-4 10 10 0 0 1 22 4c0 10-8 18-22 28z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M48 4l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="currentColor"/></symbol>
+ <symbol id="i-grow" viewBox="0 0 60 60"><path d="M30 54V26" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34c0-12 10-18 20-16-1 10-10 16-20 16zM30 28c0-10-8-15-16-13 1 8 8 13 16 13z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M14 54h32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-hear" viewBox="0 0 60 60"><path d="M10 24a14 14 0 0 1 28 0c0 8-8 10-8 18a6 6 0 0 1-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M18 24a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="3"/><ellipse cx="48" cy="44" rx="6" ry="9" fill="none" stroke="currentColor" stroke-width="3.5"/></symbol>
+ <symbol id="i-pray" viewBox="0 0 60 60"><path d="M29 8C22 14 18 26 18 38v6l11-3zM31 8c7 6 11 18 11 30v6l-11-3z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M12 52l16-8M48 52l-16-8" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="i-family" viewBox="0 0 60 60"><path d="M6 28L30 8l24 20v26H6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="38" cy="32" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="30" cy="40" r="3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 48c0-6 3-9 6-9M44 48c0-6-3-9-6-9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-gather" viewBox="0 0 60 60"><circle cx="30" cy="30" r="5" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 24l9 4M44 24l-9 4M18 42l8-8M42 42l-8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-care" viewBox="0 0 60 60"><path d="M6 34l10-8c4-3 8-3 12 0l4 3M54 34l-10-8c-4-3-8-3-12 0" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 40l12 10c3 2 6 2 9 0l19-16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 18c-2-4-8-3-7 2 1 3 7 6 7 6s6-3 7-6c1-5-5-6-7-2z" fill="currentColor"/></symbol>
+ <symbol id="i-healthy" viewBox="0 0 60 60"><path d="M10 54V28L30 14l20 14v26z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 4v10M25 8h10" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 38l6 6 12-12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-says" viewBox="0 0 60 60"><path d="M6 46c8-4 15-4 22 0V14c-7-4-14-4-22 0z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="40" cy="28" r="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M48 36l8 8" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-meant" viewBox="0 0 60 60"><path d="M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M10 52V32h12v20M24 52V22l8-8 8 8v30M42 52V36h10v16" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M30 30h4M30 38h4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="i-pointsto" viewBox="0 0 60 60"><path d="M6 52c10-2 14-10 22-14s12-10 16-20" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="2 6"/><path d="M48 4v20M42 10h12" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><circle cx="48" cy="40" r="8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="i-respond" viewBox="0 0 60 60"><ellipse cx="20" cy="40" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><ellipse cx="40" cy="20" rx="7" ry="11" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M14 56h12M34 34h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-return" viewBox="0 0 60 60"><path d="M4 50h52" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M14 50a16 16 0 0 1 32 0" fill="currentColor"/><path d="M30 6v18M22 16l8 8 8-8" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 30l5 3M52 30l-5 3" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-renew" viewBox="0 0 60 60"><path d="M30 54V30" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M30 34C18 34 10 26 10 12c12 0 20 8 20 22zM30 30c0-12 8-20 20-20 0 12-8 20-20 20z" fill="currentColor"/><path d="M6 54h48" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-trellis" viewBox="0 0 60 60"><path d="M14 56V8M30 56V8M46 56V8M8 18h44M8 32h44M8 46h44" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 56c-6-8 6-12 0-20s6-12 0-22" stroke="currentColor" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".9"/></symbol>
+<symbol id="i-sun" viewBox="0 0 60 60"><circle cx="30" cy="34" r="12" fill="currentColor"/><path d="M30 10v8M10 34h8M42 34h8M16 20l6 6M44 20l-6 6M6 52h48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+<symbol id="i-paper" viewBox="0 0 60 60"><path d="M14 6h24l10 10v38H14z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M38 6v10h10" stroke="currentColor" stroke-width="3" fill="none"/><path d="M20 28h20M20 36h22M20 44h14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="i-cycle" viewBox="0 0 60 60"><path d="M48 30a18 18 0 1 1-6-13.4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M44 8v10H34" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<header class="top">
+ <div class="container">
+  <div class="bar"><b>The Christian Spiritual Reset · Part 4: Come Home Well</b><span class="steps8" aria-label="Lesson 14 of 16"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+  <div class="hero">
+   <p class="eyebrow">Lesson 14 · Book chapter 15 · For the second and third weeks home</p>
+   <h1>Building a Sustainable Rule of Life</h1>
+   <p class="question">What small pattern will carry me?</p>
+   <div class="meta"><span class="chip">About 18 minutes</span><span class="chip">Mark 2:27–28 · Acts 2:42 · Daniel 6:10</span><span class="chip">Part 4 · Come Home Well</span></div>
+  </div>
+ </div>
+ <svg class="hills" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C200 5 380 45 600 22 S960 5 1200 28 V60 H0z" fill="#8fa58e" opacity=".35"/><path d="M0 44 C260 26 480 58 720 40 S1020 30 1200 44 V60 H0z" fill="#f8f0e1"/></svg>
+</header>
+
+<main class="container">
+ <section class="card month" aria-label="Your first 30 days"><p style="margin:0"><b>Weeks two and three.</b> For the shape of the whole month, <a href="#" onclick="return false">See Your First 30 Days Home</a>.</p></section>
+ <section class="card learn" aria-labelledby="h-learn"><p class="kicker">In this lesson</p><h2 id="h-learn">You will learn</h2><ul><li>What a rule of life is: a trellis, not a cage (Galatians 5:1)</li><li>Why the Sabbath is at the centre, and why it was made for us (Mark 2:27; Deuteronomy 5:15)</li><li>How Daniel and the first church kept a simple, faithful pattern (Daniel 6:10; Acts 2:42)</li><li>How to write a one-page rule, and review and resume without guilt</li></ul><div class="points"><div><svg viewBox="0 0 60 60"><use href="#i-trellis"/></svg>A Trellis, Not a Cage</div><div><svg viewBox="0 0 60 60"><use href="#i-sun"/></svg>Sabbath at the Centre</div><div><svg viewBox="0 0 60 60"><use href="#i-paper"/></svg>Three Core Commitments</div><div><svg viewBox="0 0 60 60"><use href="#i-cycle"/></svg>Review and Resume</div></div></section>
+ <section class="player" aria-label="Lesson teaching"><iframe src="player.html" title="Lesson 14 teaching with narration" allow="autoplay"></iframe></section>
+ <section class="card"><details class="transcript"><summary>Transcript and Scripture references</summary><div class="tx"><h4>1 · What small pattern will carry me?</h4><p>Welcome back. By now you may have kept a rhythm for a week or two, imperfectly, and done some of the cards. Or you may still be finding your feet. Either way, this lesson is about turning a rhythm into a small pattern that can carry you: what older Christian traditions call a rule of life.</p><p>You can begin shaping it over the next two or three weeks, then continue adjusting it as ordinary life unfolds. It should be built in ordinary life, not on retreat, because ordinary life is where it has to work. So this lesson asks: what small pattern will carry me?</p><h4>2 · Made for man</h4><p>Our first passage is from Mark’s Gospel. The Scripture readings in this course are from the English Standard Version. One Sabbath, Jesus’ disciples plucked heads of grain as they walked through a field, and the Pharisees objected. Jesus answered them with the story of David, and then, in Mark chapter 2, verses 27 and 28:</p><p>&quot;And he said to them, “The Sabbath was made for man, not man for the Sabbath. So the Son of Man is lord even of the Sabbath.”&quot;</p><h4>3 · Remember that you were a slave</h4><p>Our second passage is the Sabbath command as Moses repeated it in Deuteronomy. It tells Israel to observe the Sabbath, to work six days, and to give the seventh to rest for everyone, children, servants, animals and strangers alike. Then it gives the reason. Deuteronomy chapter 5, verse 15:</p><p>&quot;You shall remember that you were a slave in the land of Egypt, and the LORD your God brought you out from there with a mighty hand and an outstretched arm. Therefore the LORD your God commanded you to keep the Sabbath day.&quot;</p><h4>4 · Devoted, and as he had done previously</h4><p>And two short passages about patterns of life. The first describes the church in Jerusalem after Pentecost. Acts chapter 2, verse 42:</p><p>&quot;And they devoted themselves to the apostles’ teaching and the fellowship, to the breaking of bread and the prayers.&quot;</p><p>The second is about Daniel, an exile serving under a foreign ruler, after a law was signed forbidding prayer to anyone but the king. Daniel chapter 6, verse 10:</p><p>&quot;When Daniel knew that the document had been signed, he went to his house where he had windows in his upper chamber open toward Jerusalem. He got down on his knees three times a day and prayed and gave thanks before his God, as he had done previously.&quot;</p><h4>5 · Recall: šāḇaṯ</h4><p>There is no new word in this lesson. Instead, recall the one from Lesson 2. In Genesis 2, God rested on the seventh day, and the word translated &quot;rested&quot; is šāḇaṯ. At its heart it means to cease, to stop working. It is the root of the word &quot;Sabbath&quot;. Keep that meaning in mind. The Sabbath is first of all a stopping.</p><h4>6 · What Jesus did with the Sabbath</h4><p>Now the background. By Jesus’ time, some interpretations of the Sabbath had added burdens to it, and much of his conflict with the religious leaders was over those interpretations. He healed on the Sabbath repeatedly and defended it: &quot;Is it lawful on the Sabbath to do good or to do harm, to save life or to kill?&quot; Jesus rejected interpretations of the Sabbath that undermined mercy and human flourishing.</p><p>And notice the two reasons Scripture gives for the Sabbath. In Exodus 20, which you met in Lesson 2, the reason is creation: rest because God rested. In Deuteronomy 5, the reason is liberation: rest because you were slaves, and are no longer. Both reasons still hold. Sabbath declares that the world was made and is held by God. And it declares that you are not a slave to your work, your phone, or anyone’s expectations.</p><h4>7 · Daniel at his window</h4><p>Daniel is our portrait for this lesson. He prayed three times a day at his window, &quot;as he had done previously&quot;. His pattern was so reliable that his enemies used it against him. They knew exactly where he would be. That is what a rule of life looks like from the outside: not intensity, but faithfulness that others could set a clock by.</p><p>And Acts 2:42 is a rule of life in one sentence: teaching, fellowship, the table, and prayer. Christians have made such patterns ever since. Benedict’s sixth-century Rule sought an ordered community life of prayer, work, reading, and rest, while expressing the intention to establish nothing harsh or burdensome. But the idea is much simpler than a monastery.</p><h4>8 · The short answer</h4><p>So, what small pattern will carry me? Here is the short answer. A few chosen commitments that support your life rather than judge it, with a regular day of ceasing at the centre, written on one page, and revised as you go.</p><p>That gives us four points: a trellis, not a cage; Sabbath at the centre; three core commitments; and review and resume.</p><h4>9 · Point 1: A Trellis, Not a Cage</h4><p>The first point: a trellis, not a cage. The word &quot;rule&quot; puts some people off, and it should be explained. It comes from the Latin regula, a straightedge, a guide by which something is given shape. A helpful picture is a trellis: a structure along which a living thing can grow without being crushed. A rule of life, in that sense, is not a set of laws. It is a small, chosen pattern of prayer, rest, work, and relationship that gives your life a shape it will not find by drifting.</p><p>A rule is not legalism. Paul wrote:</p><p>&quot;For freedom Christ has set us free; stand firm therefore, and do not submit again to a yoke of slavery.&quot;</p><p>Paul was writing about freedom in Christ, against returning to the law as a way of being made right with God, not about devotional timetables. But the principle applies.</p><p>A rule that becomes a way of earning God’s approval, or a measuring stick you beat yourself with, has stopped being a trellis and become a cage, and it should be torn up. Lesson 2 said that rest declares that God, not you, holds the world together. A rule of life is the same declaration, made every week.</p><h4>10 · The danger of drift</h4><p>For many burned-out people, though, the more immediate danger is not legalism but drift. Without a chosen pattern, the loudest demand wins every day, and prayer, rest, and the people you love are what get squeezed. A rule is how you decide in advance what will not be squeezed. It is not a burden added to a full life. It is a fence around the parts of life that were being trampled.</p><h4>11 · Point 2: Sabbath at the Centre</h4><p>The second point: Sabbath at the centre. Session 10 promised that this part of the course would give Sabbath the fuller treatment it deserves. This course strongly recommends a regular period of worship, ceasing, rest, and delight as the centre of any sustainable Christian rhythm.</p><p>Remember the two reasons. Creation: the world is made and held by God, and he built a rhythm of ceasing into it. And liberation: you are no longer a slave. And remember what Jesus said: the Sabbath was made for man, not man for the Sabbath. It is a gift for your good, not a test you must pass.</p><h4>12 · Christians differ</h4><p>Christians differ about the Sabbath, and we should acknowledge those differences respectfully. Some observe the seventh day, Saturday, as the Sabbath. Many worship on Sunday, the Lord’s Day, although they differ over whether Sunday should be observed as a Christian Sabbath. Others understand the Sabbath command as fulfilled in Christ, and do not believe Christians are required to observe a particular day. These differences involve how Christians understand the relationship between the Old Testament command and Christ’s fulfilment of the law.</p><p>This course does not require you to adopt one position. Follow Scripture conscientiously, consider your church’s teaching, and respect believers who differ. Whatever your conviction about a particular day, make room for worship, rest, mercy, and a sustainable rhythm of life.</p><h4>13 · How to practise it</h4><p>How do you practise it? Choose a period, ideally a full day, and if that is impossible, a half-day, or evening to evening, in which you stop your ordinary work. Not only paid work: the work of managing, fixing, improving, and producing. Then fill the time with what Sabbath is for. Worship, if the day allows it. Rest, including sleep. Delight: the things that restore you and that you never have time for. And people, unhurried. Keep the phone boundary from Lesson 9. Do not use the day to catch up.</p><p>And Sabbath is not neglect. Necessary care, acts of mercy, emergencies, and responsibilities that genuinely cannot be postponed may remain. Jesus’ Sabbath healings settle that. The aim is to cease avoidable production and management, not to become unavailable to human need.</p><h4>14 · Three practical problems</h4><p>Three practical problems. If Sunday is your work day, as it is for pastors, church staff, and many shift workers, protect another regular period for rest, just as deliberately as you protect your responsibilities to others. Christians differ about whether this should be called Sabbath observance, but the need for rest remains. If you are a caregiver and cannot stop caring for a day, then if safe respite is available, receiving it is not selfish. If it is not available, look for Sabbath fragments: a protected hour, help with one task, prayer while another person sits with the one you care for. Receive those limits without guilt. And if a full day is impossible now, start with a protected half-day, and let it grow. A half-day kept for a year is worth more than a full day intended and never taken.</p><p>Sabbath will cost you something at first: the things that do not get done, the sense of falling behind. That cost is the point. Each time you stop, you practise the truth that your responsibility has limits, and that God remains God while you rest. The manna in Exodus 16 did not fall on the seventh day, and the people who trusted that had enough.</p><h4>15 · Point 3: Three Core Commitments</h4><p>The third point: three core commitments. Around the Sabbath, a rule of life covers a few other areas. What follows is a suggested framework for this course, not a biblical formula. The rule should fit on one page, and three to five commitments in total is enough. Begin with the three core areas.</p><p>First, regular ceasing and rest: the Sabbath practice, and sleep. Protect a realistic sleep window where possible, follow any medical care you need, and do not sacrifice sleep merely to complete devotional practices. Second, prayer and Scripture: a fixed time, however short, most days. The Lesson 8 practice, a psalm and a few minutes of silence, is a complete daily pattern for a tired person. The fixed time matters more than the length. Daniel’s window was about the fixedness. Third, one limit that protects your health or calling, usually a work limit: a number of hours, an evening that is off. The Jethro conversation in Lesson 13 may have produced it. Write it into the rule, so that it is a decision made once rather than fifty times a week.</p><p>Then, only if they help, add at most two optional lines. A relationship you will tend: church first, a community you belong to and are known in, not only one you serve. If you are recovering from church harm, name one safe form of Christian connection you can sustain while you seek a healthy community. Or the body, from Lesson 10. Or screens, from Lesson 9, named exactly, so that it is a rule and not a wish. A screen boundary can also sit inside one of the core lines, as it does in the example that follows, rather than needing a line of its own.</p><h4>16 · Writing it</h4><p>Here is an example, deliberately unimpressive, because unimpressive rules are the ones that get kept. Regular ceasing and rest: Saturday noon to evening; no paid work or email; eat with family and walk. The phone stays outside the bedroom. Prayer and Scripture: a psalm and five minutes of prayer at seven in the morning, Monday to Friday. One limit: laptop closed by seven in the evening. And at the bottom, one line: &quot;When I miss something, I will resume at the next appropriate opportunity without punishment, compensation, or guilt.&quot;</p><p>&quot;Without compensation&quot; matters. Some of you will try to repay a missed Sabbath with a double one, or a missed morning with an hour of penitential prayer. Do not. Resume.</p><h4>17 · Two cautions</h4><p>Two cautions. Do not write the rule you wish you had the capacity for. Write the one you can keep in a difficult ordinary week, and let it grow at the reviews. And do not write it alone if you share a life. A Sabbath that your spouse or household does not know about will collide with theirs.</p><p>Then read the page to God, and share it, or the commitments you want accountability for, with your Eli or support person. Ask them to ask you about it at the review dates. You decide what personal details they need to see. A rule that nobody else knows about is easy to abandon quietly.</p><h4>18 · Point 4: Review and Resume</h4><p>The fourth point: review and resume. At two weeks, a light check: is this livable? If the rule already feels like a cage, remove something immediately. You do not need to wait for the review date to subtract.</p><p>At three months, sit down with the page and your Eli and ask four questions. What have I kept? What have I dropped, and why? What has changed in my life that the rule needs to reflect? What one thing would I add or remove? Then rewrite the page with the new date. A rule of life is not written once. It is revised for the rest of your life, and every revision is a small act of the same trust that Sabbath is: that God holds the world, and that you can afford to stop and look at how you are living in it.</p><h4>19 · Your step</h4><p>Here is your step, which is also below this lesson and on the worksheet. Write your one-page rule of life this week. Your regular ceasing, and the first thing you will have to stop doing to protect it. Your prayer and Scripture, at a fixed time. One limit that protects your health or calling. At most two optional lines, or none. Then the resume line, a date for the two-week check, a date for the three-month review, and the person you will share it with.</p><p>Finally, read it through once more and ask: is there anything here that is already a cage rather than a trellis? Cross it out.</p><h4>20 · Remember</h4><p>Let us bring it together. A rule of life is a trellis, not a cage: a shape to grow along, not a way to earn approval. Sabbath is at the centre: a regular ceasing, made for you. Three core commitments on one page, small enough for a difficult ordinary week. And review and resume, without punishment, compensation, or guilt.</p><h4>21 · Prayer</h4><p>Let us pray. Lord of the Sabbath, you rested, and you set your people free. Give me a small pattern I can keep, and the humility to stop each week. When I miss it, let me resume without fear. Amen.</p><p>When you are ready, take one page and write the first line: your regular ceasing. The rest can follow.</p></div></details></section>
+ <section class="card ws" aria-labelledby="h-step">
+  <p class="kicker">Your step</p><h2 id="h-step">My rule for this season</h2>
+  <p class="private"><b>This page is private and is not saved.</b> No box is compulsory. Copy your rule onto one page, or print the Lesson 14 worksheet.</p>
+  <p>Three core lines, and at most two optional ones. Leave the optional lines blank unless one of them is where the retreat pointed. Write the rule you can keep in a difficult ordinary week.</p>
+  <fieldset><legend>My rule</legend><label class="q" for="r-date">Date</label><input type="date" id="r-date"><label class="q" for="r-cease">Regular ceasing and rest (and the first thing I will stop doing to protect it)</label><textarea id="r-cease"></textarea><label class="q" for="r-pray">Prayer and Scripture: a fixed time</label><textarea id="r-pray"></textarea><label class="q" for="r-limit">One limit that protects my health or calling</label><textarea id="r-limit"></textarea><label class="q" for="r-opt1">One relationship I will tend (optional)</label><textarea id="r-opt1"></textarea><label class="q" for="r-opt2">Additional commitment (optional)</label><textarea id="r-opt2"></textarea>
+   <p class="note" style="margin-top:12px"><b>When I miss something:</b> I will resume at the next appropriate opportunity without punishment, compensation, or guilt.</p></fieldset>
+  <fieldset><legend>Reviews</legend><div class="dates"><label>Two-week check<input type="date" id="r-two"></label><label>Three-month review<input type="date" id="r-three"></label></div>
+   <label class="q" for="r-who">Person I will share this with (optional; you decide what they see)</label><input type="text" id="r-who" autocomplete="off"></fieldset>
+  <p>Then read it through once more: is anything already a cage rather than a trellis? Cross it out.</p>
+ </section>
+ <section class="card" aria-labelledby="h-ex"><p class="kicker">An example</p><h2 id="h-ex">Deliberately unimpressive</h2>
+  <div class="rule-ex"><p><b>Regular ceasing and rest:</b> Saturday noon to evening; no paid work or email; eat with family and walk. Phone stays outside the bedroom.</p><p><b>Prayer and Scripture:</b> a psalm and five minutes of prayer at 7:00 a.m., Monday to Friday.</p><p><b>One limit:</b> laptop closed by 7:00 p.m.</p><p><b>When I miss something:</b> I will resume at the next appropriate opportunity without punishment, compensation, or guilt.</p><p><b>Two-week check</b> and <b>three-month review</b> dates · <b>Sharing with:</b> a named person.</p></div>
+  <p class="note">Unimpressive rules are the ones that get kept. “Without compensation”: no double Sabbath to make up for a missed one. Resume.</p>
+ </section>
+ <section class="card" aria-labelledby="h-rev"><p class="kicker">In three months, with your Eli</p><h2 id="h-rev">Four review questions</h2><ol class="talk"><li>What have I kept?</li><li>What have I dropped, and why?</li><li>What has changed in my life that the rule needs to reflect?</li><li>What one thing would I add or remove?</li></ol><p class="note">Then rewrite the page with the new date. At two weeks, a lighter check: is this livable? If it already feels like a cage, remove something now.</p></section>
+ <section class="card carecard" aria-labelledby="h-care"><p class="kicker">A note</p><h2 id="h-care">Sabbath is not neglect</h2><p>Necessary care, acts of mercy, emergencies and responsibilities that genuinely cannot be postponed may remain. If you care for someone, receiving safe respite is not selfish; if none is available, Sabbath fragments count, received without guilt.</p></section>
+ <section class="card" aria-labelledby="h-look"><p class="kicker">Look back · Lesson 2</p><h2 id="h-look">When did you last stop?</h2><p>In Lesson 2 you met šāḇaṯ, “to cease”, and the idea that rest declares that God holds the world together. Since you came home, when did you last stop? What happened when you did?</p></section>
+ <section class="card" aria-labelledby="h-plan"><p class="kicker">Read or listen</p><h2 id="h-plan">Scripture to Sit With — Optional</h2><p class="sub">For each passage: read it slowly, notice one word or phrase that stays with you, and pray one sentence.</p><div class="planbar" aria-hidden="true"><i id="pbar"></i></div><p class="note" id="pcount">0 of 6 read</p><ul class="plan"><li><input type="checkbox" id="d1" aria-label="Psalm 27 read"><label class="p" for="d1"><small>Passage 1</small>Psalm 27</label><span class="q">The psalm for your third week home</span></li><li><input type="checkbox" id="d2" aria-label="Mark 2:23–3:6 read"><label class="p" for="d2"><small>Passage 2</small>Mark 2:23–3:6</label><span class="q">The Sabbath for doing good</span></li><li><input type="checkbox" id="d3" aria-label="Exodus 16:13–30 read"><label class="p" for="d3"><small>Passage 3</small>Exodus 16:13–30</label><span class="q">Enough manna, and a seventh day</span></li><li><input type="checkbox" id="d4" aria-label="Daniel 6:1–10 read"><label class="p" for="d4"><small>Passage 4</small>Daniel 6:1–10</label><span class="q">A pattern kept under pressure</span></li><li><input type="checkbox" id="d5" aria-label="Acts 2:42–47 read"><label class="p" for="d5"><small>Passage 5</small>Acts 2:42–47</label><span class="q">Teaching, fellowship, table, prayer</span></li><li><input type="checkbox" id="d6" aria-label="Hebrews 4:9–11 read"><label class="p" for="d6"><small>Passage 6</small>Hebrews 4:9–11</label><span class="q">A Sabbath rest remains</span></li></ul></section>
+ <section class="card" aria-labelledby="h-talk"><p class="kicker">For groups, or with a friend</p><h2 id="h-talk">Talk about it</h2><ol class="talk"><li>What is the difference between a trellis and a cage in your own experience of spiritual disciplines?</li><li>Why do you think Daniel’s ordinary pattern mattered so much when the pressure came?</li><li>What would Sabbath look like in your week, honestly? Share your own experience only if you wish.</li></ol><p class="note">In a group, Christians who keep different days, or none, are treated with the same respect (Romans 14:5–6). No one is asked to share their rule.</p></section>
+ <section class="card deep" aria-labelledby="h-deeper"><p class="kicker">Optional</p><h2 id="h-deeper">Go deeper</h2><p><b>The full chapter.</b> Chapter 15 of The Christian Spiritual Reset, and the Lesson 14 worksheet: the one-page rule, the example, and the review questions.</p><div class="btns"><a class="btn" href="#" onclick="return false">⬇ Chapter 15 (PDF)</a><a class="btn" href="#" onclick="return false">⬇ Lesson 14 worksheet</a></div></section>
+ <section class="card finish" id="finish" aria-labelledby="h-finish"><h2 id="h-finish">Finished this lesson?</h2><p class="sub mark">Mark it complete when you have watched the teaching. The rule can be written this week.</p><div class="btns mark" style="justify-content:center"><button class="btn gold" id="done">✓ I have completed this lesson</button></div><div class="after" role="status"><p>Lesson 14 is complete. Write the first line of your rule: your regular ceasing. Lesson 16 is for Day 30; Lesson 15 is for whenever it applies.</p><div class="btns"><button class="btn gold">Stop here for today</button></div></div></section>
+ <div class="preview-note">Keep this page, player.html and reset-lesson-14.mp3 together in this folder. Buttons and downloads will work on the website.</div>
+</main>
+
+<footer>
+ <div class="container row">
+  <span>Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. ESV Text Edition: 2025. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. Used by permission. All rights reserved.</span>
+  <a href="#" onclick="return false">Need help?</a>
+ </div>
+</footer>
+
+<script>
+const boxes=[...document.querySelectorAll('.plan input')],bar=document.getElementById('pbar'),cnt=document.getElementById('pcount');
+function upd(){const n=boxes.filter(b=>b.checked).length;bar.style.width=(n/6*100)+'%';cnt.textContent=`${n} of 6 read`;boxes.forEach(b=>b.closest('li').classList.toggle('done',b.checked));}
+boxes.forEach(b=>b.addEventListener('change',upd));
+document.getElementById('done').onclick=()=>document.getElementById('finish').classList.add('done');
+</script>
+</body></html>
