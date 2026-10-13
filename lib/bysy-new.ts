@@ -252,8 +252,8 @@ export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>)
   html = swap(html, finishButton, `<button class="btn" id="bysy-done">${done ? "✓ Completed" : "I have completed this lesson"}</button>`);
   const links =
     `<span data-bysy class="bysy-next" style="display:${done ? "flex" : "none"};gap:10px;flex-wrap:wrap;margin-top:10px;width:100%">` +
-    `<a class="btn alt" href="${BYSY_NEW_PATH}">${next ? "Stop here for today" : "Back to the course page"}</a>` +
-    (next ? `<a class="btn" href="${unitPath(next)}">Continue to ${escapeHtml(next.label)} ›</a>` : "") +
+    `<a class="btn alt" style="text-decoration:none" href="${BYSY_NEW_PATH}">${next ? "Stop here for today" : "Back to the course page"}</a>` +
+    (next ? `<a class="btn" style="text-decoration:none" href="${unitPath(next)}">Continue to ${escapeHtml(next.label)} ›</a>` : "") +
     `</span>`;
   const doneSpans = html.match(/<span class="done">[\s\S]*?<\/span><\/div><\/section>/g) ?? [];
   if (doneSpans.length !== 1) throw new Error(`${unit.slug}: expected one finish line, found ${doneSpans.length}.`);
