@@ -31,6 +31,8 @@ import { getResetPlan } from "@/app/members/courses/christian-spiritual-reset/ac
 import { resetRouteProgress, routeFinished } from "@/lib/reset-simple";
 import { RESET_SIMPLE_PUBLISHED, resetSimpleHref } from "@/lib/reset-simple-links";
 import { BYSY_PUBLISHED } from "@/lib/bysy-links";
+import { BYSY_NEW_LIVE } from "@/lib/bysy-new-live";
+import BysyNewEditionCard from "@/components/bysy/BysyNewEditionCard";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
@@ -376,6 +378,8 @@ export default async function Members() {
           <MindCourseCard />
           {/* Built, and deliberately not reachable: the course stays unlinked
               until the pre-publish checklist has been run in full. */}
+          {/* The Before You Say Yes new edition sits above the previous edition's card. */}
+          {BYSY_NEW_LIVE && <BysyNewEditionCard />}
           {BYSY_PUBLISHED && <BysyCourseCard />}
           {/* One lesson of fourteen is written. Same reasoning as the card
               above it: built, and deliberately not reachable until the course

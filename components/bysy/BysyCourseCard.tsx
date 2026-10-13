@@ -3,6 +3,7 @@ import { getPages, readCourseHome } from "@/lib/bysy-course";
 import { SIMPLE_PAGES } from "@/lib/bysy-simple";
 import { getStoredRoute } from "@/lib/bysy-progress";
 import { BYSY_BASE } from "@/lib/bysy-links";
+import { BYSY_NEW_LIVE } from "@/lib/bysy-new-live";
 import { BYSY_SIMPLE_PUBLISHED, simpleHref } from "@/lib/bysy-simple-links";
 
 /**
@@ -41,6 +42,9 @@ export default async function BysyCourseCard() {
 
   return (
     <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      {BYSY_NEW_LIVE && (
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Previous edition</p>
+      )}
       <h2
         className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
