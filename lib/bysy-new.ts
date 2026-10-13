@@ -6,7 +6,7 @@ import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { BYSY_NEW_LIVE } from "@/lib/bysy-new-live";
+import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 
 /*
  * Before You Say Yes, new edition: a hidden test course, built the same way as
@@ -335,7 +335,9 @@ ${BYSY_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${BYSY_NEW_PATH}" style
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>${COURSE}</h1><p class="s">A Christian course on dating with wisdom: 21 illustrated teaching lessons, each about 20 minutes, from the book <i>Before You Say Yes</i>.</p></div></header>
 <main class="w"><div class="note">${
     BYSY_NEW_LIVE
-      ? "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
+      ? BYSY_OLD_RETIRED
+        ? "Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."
+        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
       : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
   }</div>
 <div class="safe"><b>If you are afraid of the person you are dating</b>, or have been threatened, hurt, pressured or watched, go to <a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BYSY_NEW_PATH } from "@/lib/bysy-new";
+import { BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 
 /**
  * The Before You Say Yes new edition on /members, shown only when BYSY_NEW_LIVE is on.
@@ -20,9 +21,11 @@ export default function BysyNewEditionCard() {
         A Christian course on dating with wisdom, rebuilt as 21 illustrated, narrated lessons in five parts: from why
         you want a relationship to the threshold of engagement.
       </p>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
-        It starts fresh. Anything you did in the previous edition stays where it is.
-      </p>
+      {!BYSY_OLD_RETIRED && (
+        <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+          It starts fresh. Anything you did in the previous edition stays where it is.
+        </p>
+      )}
       <div className="mt-5">
         <Link
           href={BYSY_NEW_PATH}

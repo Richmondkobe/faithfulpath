@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { bysySupportHref } from "@/lib/bysy-links";
+import { redirect } from "next/navigation";
 import ExitControl from "@/components/bysy/ExitControl";
+import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 
 /**
  * What every page of this course carries, to build notes §3.
@@ -14,6 +16,8 @@ import ExitControl from "@/components/bysy/ExitControl";
  * quietly lacks them.
  */
 export default function BysyLayout({ children }: { children: React.ReactNode }) {
+  // Retired previous edition: every page of it goes to the new edition.
+  if (BYSY_NEW_LIVE && BYSY_OLD_RETIRED) redirect("/members/courses/before-you-say-yes-new");
   return (
     <>
       {/* Above the content, not below it: someone who needs this should meet it
