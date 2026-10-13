@@ -1,0 +1,1071 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Before You Say Yes · Lesson 16</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+
+.feel{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scrref{font-size:13px;fill:#69707a;letter-spacing:.12em}.scrsm{font-family:'Source Serif 4',serif;font-size:15px;fill:#5b4a26}
+.scrsm2{font-family:'Source Serif 4',serif;font-size:17px;fill:#f3ecd8}.scrgold{font-family:'Source Serif 4',serif;font-size:19px;font-weight:700;fill:#a8792b}
+.bubble{font-family:'Source Serif 4',serif;font-size:19px;fill:#2b3445}.bubblesm{font-size:12.5px;fill:#69707a}.strike{text-decoration:line-through}
+.side{font-family:'Source Serif 4',serif;font-style:italic;font-size:17px;fill:#8a6a24}.stn{font-size:18px;font-weight:700;fill:#5b4a26}
+.disgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:min(100%,980px);margin:.4em 0}
+.disg{position:relative;height:clamp(110px,18vh,160px);background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;display:flex;align-items:center;justify-content:center;padding:.5em;overflow:hidden}
+.disg .mask,.disg .plain{position:absolute;inset:.5em;display:flex;align-items:center;justify-content:center;text-align:center;transition:transform 1.4s ease 1.6s,opacity 1.2s ease 1.6s}
+.disg .mask{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2vw,24px);color:#8a6a24;background:#fdf3dc;border-radius:10px}
+.disg .plain{font-weight:700;font-size:clamp(20px,2.4vw,30px);color:#b04a4a;opacity:0}
+.disg.on .mask{transform:translateY(-120%) rotate(-4deg);opacity:0}.disg.on .plain{opacity:1}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:min(100%,980px)}
+.tcard{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:8px}.tcard svg{width:100%;display:block}.tcard small{display:block;font-size:15px;color:var(--mute);margin-top:4px}
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:min(100%,980px)}
+.lane{border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center}
+.lane svg{width:100%;border-radius:10px}.lane b{color:#2b3445;font-family:'Source Serif 4',serif;font-size:clamp(20px,2.4vw,28px)}.lane span{font-size:clamp(15px,1.9vw,20px);color:var(--ink)}
+.l1{background:#e3ecdf}.l2{background:#f7e8c4}.l3{background:#f3dcdc}
+.lanes.small .lane{padding:12px}
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,900px)}
+.half{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.half svg{width:min(70%,220px)}.half b{font-family:'Source Serif 4',serif;font-size:clamp(22px,2.8vw,32px)}.half span{font-size:clamp(16px,2.1vw,22px)}.strong2{font-weight:700;color:#8a6a24}
+.flagrow{display:flex;gap:10px;justify-content:center;margin:.2em 0 .4em}
+.fl{display:flex;flex-direction:column;align-items:center;transform:translateY(-30px)}.fl.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.fl svg{width:clamp(22px,3.4vw,40px);height:auto}.fl span{font-size:14px;font-weight:700;color:#8a6a24}
+.scene.mid{max-height:34vh}
+.pcard{background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08)}
+.ph{display:flex;align-items:center;gap:8px}.mini-flag{width:22px;height:36px}.pn{font-family:'Source Serif 4',serif;font-weight:700;color:#c9963f;font-size:22px}
+.ph b{flex:1;text-align:left;font-family:'Source Serif 4',serif;font-size:clamp(19px,2.3vw,26px);line-height:1.15}
+.pcard svg{width:100%;border-radius:10px}.pcard .mini-flag{width:22px;height:36px;flex:none;border-radius:0}
+@media(max-width:640px){.pcard svg:not(.mini-flag){max-height:30vh}.pcard{padding:10px;gap:6px}.pline{font-size:19px}.ph b{font-size:21px}.cardrow .pcard.on:has(~ .pcard.on){display:none}.cardrow .pcard:not(.on){display:none}.cardrow .pcard.on{animation:pcin .8s ease}@keyframes pcin{from{opacity:0;transform:translateY(14px)}}.steps{font-size:21px}.prayer{font-size:21px!important}}.pline{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.1vw,23px);line-height:1.35;margin:0}
+.shrinkaway{transform-box:fill-box;transform-origin:center}.b.on .shrinkaway{animation:shrinkaway 5s ease forwards}@keyframes shrinkaway{to{transform:scale(.45) translateX(60px);opacity:.5}}
+.fadeout.on{animation:fadeout 6s ease forwards}@keyframes fadeout{0%{transform:none;opacity:1}100%{transform:translateX(80px);opacity:0}}
+.shrinkfriends.on use{animation:shrinkf 9s ease forwards}.shrinkfriends.on use:nth-child(2n){animation-delay:1.5s}.shrinkfriends.on use:nth-child(3n){animation-delay:3s}@keyframes shrinkf{0%,30%{opacity:1}100%{opacity:.08}}
+.race{animation:race .5s steps(2) infinite}@keyframes race{50%{transform:translateY(-4px);opacity:.6}}
+.curtain{transition:opacity 1.6s ease}
+.gateswing.on{animation:gates 3s ease-in-out 2;transform-box:fill-box;transform-origin:left}@keyframes gates{0%,100%{transform:none}50%{transform:scaleX(.2)}}
+.chairfade{animation:none}.emptying.on~*{}.b.on .chairfade{animation:none}
+.flagline{display:flex;gap:10px;justify-content:center;margin-top:.6em}.flagline svg{width:30px;height:50px}
+.tstack{width:min(100%,760px)}.tpair{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:16px 20px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.tpair b{font-family:'Source Serif 4',serif;font-size:clamp(22px,2.8vw,32px);color:#8a6a24}.dist{font-style:italic;color:#69707a;font-size:clamp(17px,2.2vw,24px)}.tru{font-weight:700;font-size:clamp(19px,2.4vw,27px)}.tpair i{color:#69707a;font-size:14px;letter-spacing:.1em}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.chips span{border:1px solid #d9c9a3;border-radius:2em;padding:.2em .8em;background:#fbf6ea;font-size:16px}
+.cloud{animation:floaty 6s ease-in-out infinite;animation-delay:var(--d)}
+.truths{gap:1em}.truths .big{margin:.2em 0}.truths .gold{color:#8a6a24}
+.maskline{display:flex;gap:.6em;align-items:center;font-family:'Source Serif 4',serif;font-size:1.15em}.m1{font-style:italic;color:#8a6a24;text-decoration:line-through}.m2{color:#b04a4a;font-weight:700}
+.dim{color:#9aa0a8!important}
+
+.greek{font-family:'Source Serif 4','Times New Roman',serif;font-size:clamp(36px,6.5vw,68px);margin:0;color:var(--ink);line-height:1.2}
+.greek .type{display:inline-block;clip-path:inset(0 100% 0 0);transition:clip-path 2.6s ease}.greek.on .type{clip-path:inset(0 0 0 0)}
+body.still .greek .type{clip-path:none;transition:none}
+.chips5{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:.3em 0}.chips5 span{border:1px solid #d9c9a3;border-radius:2em;padding:.25em .9em;background:#fbf6ea;font-size:clamp(17px,2.2vw,22px);font-family:'Source Sans 3',sans-serif;color:#8a6a24}
+.infer{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;width:min(100%,820px)}
+.icard{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:6px}.icard b{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.5vw,26px)}.icard svg{width:min(100%,180px)}
+.iarrow{display:flex;flex-direction:column;align-items:center;font-style:italic;color:#8a6a24;font-size:clamp(16px,2vw,20px)}.iarrow svg{width:90px}
+.tiles4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:min(100%,900px);margin:.3em 0}
+.tile4{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:8px;display:flex;flex-direction:column;align-items:center}.tile4 svg{width:100%;max-height:16vh}.tile4 small{font-size:clamp(15px,1.8vw,19px);color:var(--ink);margin-top:4px}
+.pairs{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:.4em}
+.pair{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:10px 18px;display:flex;align-items:center;gap:10px;font-size:clamp(19px,2.4vw,26px)}.pair b{font-family:'Source Serif 4',serif;color:#8a6a24}.pair .dim{text-decoration:line-through}
+.fruits{display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:center;max-width:900px;margin:.3em auto}.fruits span{display:flex;align-items:center;gap:6px;font-family:'Source Serif 4',serif;font-size:clamp(20px,2.7vw,30px)}.fruits svg{width:22px;height:24px}
+.ref2{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:.2em 0}
+.qrow{display:flex;gap:10px;justify-content:center;margin:0 0 .5em}
+.qc{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px 10px;opacity:.55}.qc svg{width:clamp(30px,4.5vw,46px);height:clamp(30px,4.5vw,46px)}.qc span{font-size:clamp(13px,1.6vw,16px);font-weight:700;color:#8a6a24}
+.qc.act{opacity:1;border:2px solid #c9963f;box-shadow:0 6px 18px rgba(201,150,63,.25);transform:scale(1.08)}
+.qc.b{opacity:0}.qc.b.on{opacity:1}
+.found{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:min(100%,960px)}
+.fst{background:linear-gradient(#d8d2c2,#c4bfb0);border-radius:8px;padding:14px 8px;font-family:'Source Serif 4',serif;font-size:clamp(16px,2vw,22px);color:#2b3445;display:flex;align-items:center;justify-content:center;text-align:center;min-height:5.5em;box-shadow:inset 0 -4px 0 rgba(0,0,0,.08)}
+.baskets{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:min(100%,920px)}
+.bask{border-radius:16px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px}.bask b{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.4vw,26px)}
+.bask.green{background:#e3ecdf}.bask.gold{background:#f7e8c4}.bask .chips span{font-size:clamp(16px,2vw,20px)}
+.stones4{display:flex;gap:12px;justify-content:center;margin:0 0 .4em}.stones4 span{width:44px;height:30px;border-radius:50%;background:#c9c4b6;display:flex;align-items:center;justify-content:center;font-weight:700;color:#5b4a26}
+.half.wide svg{width:min(100%,320px)}.stack{width:100%}
+@media(max-height:620px) and (max-width:640px){footer .dots{display:none!important}#cap{bottom:1vh;padding:.35em .7em}footer{gap:4px;padding-top:6px}.slide{padding-bottom:15vh}.slide[data-old="19"] .label{display:none}}
+
+.amap{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;width:min(100%,980px);margin:.2em 0 .5em}
+.ar{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px 4px;opacity:.5}.ar svg{width:clamp(26px,4vw,42px);height:clamp(26px,4vw,42px)}.ar span{font-size:clamp(11px,1.4vw,15px);font-weight:700;color:#8a6a24}
+.ar.done{opacity:.8;background:#f6efdf}.ar.act{opacity:1;border:2px solid #c9963f;box-shadow:0 6px 18px rgba(201,150,63,.25);transform:scale(1.08)}.ar.b{opacity:0}.ar.b.on{opacity:1}
+.boxes4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,940px);margin:.3em 0 .5em}
+.bx{border-radius:14px;padding:10px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;opacity:.6}.bx svg{width:clamp(34px,5vw,54px);height:clamp(34px,5vw,54px)}.bx b{font-family:'Source Serif 4',serif;font-size:clamp(15px,1.9vw,21px);line-height:1.2}
+.bx.f1{background:#e6e2d6}.bx.f2{background:#e3ecdf}.bx.f3{background:#f6e3e6}.bx.f4{background:#e3e9f1}.bx.act{opacity:1;box-shadow:0 0 0 3px #c9963f}.boxes4:not(:has(.act)) .bx{opacity:1}.bx.b{opacity:0}.bx.b.on{opacity:1}
+.mk4{display:flex;gap:10px;justify-content:center;margin:0 0 .3em}.mk4 span{width:34px;height:34px;border-radius:50%;background:#e2d3b4;color:#5b4a26;font-weight:700;display:flex;align-items:center;justify-content:center}.mk4 span.on2{background:#c9963f;color:#fff}
+.pnn{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:.4em 0}.pnn>span{display:flex;flex-direction:column;align-items:center;gap:4px;background:#e3ecdf;border-radius:12px;padding:8px 12px;font-size:clamp(15px,1.9vw,20px)}.pnn svg{height:clamp(36px,6vh,56px);width:auto}
+.j3 p{font-size:clamp(20px,2.7vw,27px)}.strong3{color:#8a3f30!important;font-weight:700}
+.kinds4{display:flex;flex-wrap:wrap;gap:6px}.kinds4 span{background:#f3ead4;border-radius:2em;padding:.15em .7em;font-size:.85em}
+.tcard.warm{background:#fdf3dc}.tagf{animation:tagf 4s ease-in-out infinite;animation-delay:var(--d)}@keyframes tagf{50%{transform:translateY(-6px)}}
+.flowline{stroke-dasharray:6 8;animation:flow 2.5s linear infinite}@keyframes flow{to{stroke-dashoffset:-28}}
+@media(max-width:640px){.amap{grid-template-columns:repeat(9,1fr);gap:2px}.ar{padding:3px 1px;border-radius:8px}.ar span{display:none}.ar svg{width:22px;height:22px}.boxes4{grid-template-columns:1fr 1fr;gap:6px}.bx{padding:6px}.bx b{font-size:16px}.pnn{gap:6px}.pnn svg{height:30px}.mk4 span{width:26px;height:26px}}
+
+@media(max-width:640px){.bx{flex-direction:row;gap:6px;padding:5px 8px;text-align:left;justify-content:flex-start}.bx svg{width:24px!important;height:24px!important;flex:none}.bx b{font-size:15px!important}.pnn>span{flex-direction:row;padding:4px 8px;font-size:15px}.pnn svg{height:22px!important}.boxes4{margin:.1em 0 .3em}.slide[data-old="15"] .label,.slide[data-old="16"] .tag{display:none}}
+.bx .sh{display:none}@media(max-width:640px){.bx .lg{display:none}.bx .sh{display:inline}.bx b{font-size:17px!important}.bx svg{width:20px!important;height:20px!important}.bx{padding:4px 8px}}
+@media(max-width:340px){.slide[data-old="15"] .bx b,.slide[data-old="16"] .bx b,.slide[data-old="17"] .bx b{display:none}.slide[data-old="15"] .bx,.slide[data-old="16"] .bx,.slide[data-old="17"] .bx{justify-content:center}.slide[data-old="15"] .boxes4,.slide[data-old="16"] .boxes4,.slide[data-old="17"] .boxes4{grid-template-columns:repeat(4,1fr)}.slide[data-old="18"] .boxes4{gap:4px}.slide[data-old="20"] .boxes4{display:none}}
+.vig{width:min(100%,640px);max-height:17vh;display:block;margin:.3em auto;border-radius:12px}
+@media(max-width:640px){.vig{max-height:11vh}}
+
+.kinds{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:min(100%,860px);margin:.3em 0}
+.kd{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:10px;display:flex;flex-direction:column;align-items:center;gap:4px}.kd svg{width:clamp(40px,6vw,64px);height:clamp(40px,6vw,64px)}.kd b{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.2vw,24px)}
+.tells{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:min(100%,920px)}
+.tl{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:8px;display:flex;flex-direction:column;align-items:center;gap:6px}.tl svg{width:100%;max-height:22vh}.tl b{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.2vw,24px)}
+.qs span{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.5vw,26px)!important;padding:.3em 1em!important}
+.xcards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:min(100%,980px);margin:.4em 0}
+.xc{min-height:clamp(120px,20vh,180px)!important}.xc .face{justify-content:center;align-items:center;text-align:center}.xc .face p{font-size:clamp(18px,2.3vw,25px)}
+.glasses{width:clamp(90px,14vw,150px);height:auto;margin:.2em auto}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:0;width:min(100%,760px);background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;overflow:hidden;margin:.4em 0}
+.cols2>div{padding:14px 18px;text-align:left;min-height:22vh}.cols2 b{display:block;font-family:'Source Serif 4',serif;font-size:clamp(20px,2.6vw,28px);margin-bottom:.3em}.colf{background:#fbe9e6}.colk{border-left:2px solid #e3d6b8}
+.cols2 p{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(18px,2.3vw,24px);margin:.25em 0;color:#5b4a26}.cols2 small{color:#69707a;font-style:normal;font-size:.75em}
+.runlap.on{animation:lap 6s linear infinite;transform-box:view-box}@keyframes lap{0%{transform:translate(0,0)}25%{transform:translate(120px,-30px)}50%{transform:translate(240px,0)}75%{transform:translate(120px,40px)}100%{transform:translate(0,0)}}
+.droop.on use{transform-box:fill-box;transform-origin:bottom;animation:droop 3s ease forwards}@keyframes droop{to{transform:rotate(4deg)}}
+.grow4{transform-box:fill-box;transform-origin:bottom;animation:grow4 9s ease-in-out infinite}@keyframes grow4{0%{transform:scale(.2)}70%,100%{transform:scale(1)}}
+.spark{stroke-dasharray:240;animation:spark 1.6s ease-in-out infinite}@keyframes spark{0%{stroke-dashoffset:240}40%{stroke-dashoffset:0}100%{stroke-dashoffset:-240}}
+.petaldrop.on{animation:pdrop 6s ease forwards}@keyframes pdrop{to{opacity:.35;transform:translateY(10px)}}
+.needleup{transform-box:fill-box;transform-origin:left bottom;animation:needle2 3s ease-in-out infinite alternate}@keyframes needle2{from{transform:rotate(-30deg)}to{transform:rotate(8deg)}}
+.flicker{animation:flick 2.2s steps(2) infinite}@keyframes flick{50%{opacity:.15}}
+.walkto.on{animation:walkto 8s ease forwards}.walkto.on:not(.dummy){}@keyframes walkto{0%,40%{transform:none}100%{transform:translateX(160px)}}
+@media(max-width:640px){.kinds,.tells{grid-template-columns:1fr 1fr;gap:6px}.tl svg{max-height:12vh}.xcards{grid-template-columns:1fr 1fr;gap:6px}.xc{min-height:90px!important}.cols2>div{min-height:0;padding:10px}.qs span{font-size:17px!important;padding:.2em .6em!important}}
+
+@media(max-width:640px){.slide[data-old="8"] .half svg{max-height:7vh}.slide[data-old="8"] .half{padding:6px}.slide[data-old="8"] .split2{grid-template-columns:1fr 1fr;gap:6px}.slide[data-old="8"] .half b{font-size:17px}.slide[data-old="11"] .glasses{width:70px}.slide[data-old="11"] .q2{font-size:17px}}
+@media(max-width:340px){.slide[data-old="11"] .glasses,.slide[data-old="11"] .q2,.slide[data-old="11"] .label{display:none}}
+.slide.tall{justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#cap{max-width:calc(100% - 16px);box-sizing:border-box;overflow-wrap:anywhere}
+@media(max-width:400px){.greek{font-size:clamp(26px,9vw,36px)!important;overflow-wrap:anywhere}}
+
+.wv .shl,.wv .shr,.wn .shl,.wn .shr{transform-box:fill-box;transition:transform 1.8s ease .3s}
+.wv .shl,.wn .shl{transform-origin:left}.wv .shr,.wn .shr{transform-origin:right}
+.on .wv .shl,.on .wv .shr,.wn.on .shl,.wn.on .shr,.wv.on .shl,.wv.on .shr{transform:scaleX(.1)}
+.peek.on .shl,.peek.on .shr{animation:peek 6s ease forwards}@keyframes peek{0%{transform:none}35%,65%{transform:scaleX(.55)}100%{transform:none}}
+.house5{width:min(100%,760px)}.hs{width:clamp(110px,15vw,170px);height:auto;flex:none}
+.whead{display:flex;align-items:center;gap:14px;justify-content:center;margin:0 0 .3em}
+.whead .label{margin:0}
+.wnum{display:inline-flex;align-items:center;justify-content:center;width:1.6em;height:1.6em;border-radius:50%;background:#7e9b78;color:#fff;font-weight:700;font-size:clamp(16px,2vw,20px);flex:none}
+.pcard .pline.b{opacity:0}.pcard .pline.b.on{opacity:1}
+.pcard .pline small{color:var(--mute)}
+.wsolo{width:min(100%,640px)}
+.contrast2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,920px)}
+.cside{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:10px 12px;text-align:left}
+.cside b{display:block;font-family:'Source Serif 4',serif;font-size:clamp(19px,2.4vw,26px);margin-bottom:.2em}
+.cside .chips5{justify-content:flex-start}
+.cside.good{border-left:6px solid #7e9b78}.cside.warn{border-left:6px solid #c9963f}
+.heb{font-family:'Source Serif 4','Times New Roman',serif;font-size:clamp(34px,5.5vw,58px);margin:0;line-height:1.2;direction:rtl}
+.wcard2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,760px)}
+.safe5{background:#fbeee8;border:1px solid #e3c2b6;border-left:6px solid #b0583f;border-radius:12px;padding:.6em 1em;max-width:36em;text-align:left;font-size:clamp(18px,2.4vw,24px);line-height:1.4}
+.ev{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,820px);margin:.3em 0}
+.ev>div{border-radius:12px;padding:10px 14px;font-family:'Source Serif 4',serif;font-size:clamp(18px,2.3vw,24px);text-align:left}
+.ev .imp{background:#f3efe6;color:#8f8a80;font-style:italic}.ev .evd{background:#fffaf0;border:1px solid #c9b48c}
+.ev small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.68em;color:var(--mute);margin-top:4px}
+.wlist{display:flex;flex-direction:column;gap:.35em;width:min(100%,860px);text-align:left}
+.wlist>div{display:flex;gap:.6em;align-items:flex-start;font-size:clamp(19px,2.5vw,25px);line-height:1.35}
+.wlist>div b{font-family:'Source Serif 4',serif}
+.shadowreach.on{animation:sreach 6s ease forwards}@keyframes sreach{from{opacity:0;transform:translateX(-20px)}to{opacity:.5;transform:none}}
+.drifth.on use{animation:drifth 5s ease-in-out forwards}@keyframes drifth{to{transform:translate(70px,-20px);opacity:.6}}
+.dimmer.on{animation:dimm 6s ease forwards}@keyframes dimm{to{opacity:.55}}
+.fallfruit.on{animation:ffall 4s ease forwards}@keyframes ffall{60%{transform:translateY(60px)}100%{transform:translateY(60px);opacity:.3}}
+.knock.on{transform-box:fill-box;transform-origin:bottom right;animation:knock 1.6s ease forwards}@keyframes knock{to{transform:rotate(80deg)}}
+.raiselower.on{animation:rl 5s ease forwards}@keyframes rl{0%{transform:translateY(30px)}40%,60%{transform:none}100%{transform:translateY(30px);opacity:.3}}
+.spotmove.on{animation:spm 6s ease forwards}@keyframes spm{to{transform:translateX(260px)}}
+body.still .wv .shl,body.still .wv .shr,body.still .wn .shl,body.still .wn .shr{transition:none!important}
+@media(max-width:640px){.contrast2,.ev,.wcard2{grid-template-columns:1fr;gap:6px}.cside{padding:6px 10px}.ev>div{padding:6px 10px}.hs{display:none}.wlist>div{font-size:18px}.safe5{font-size:17px;padding:.4em .7em}.heb{font-size:34px}
+ .slide[data-old="10"] .pcard svg,.slide[data-old="11"] .pcard svg,.slide[data-old="12"] .pcard svg,.slide[data-old="13"] .pcard svg,.slide[data-old="14"] .pcard svg{max-height:17vh}}
+@media(max-width:640px){.slide[data-old="15"] .short2,.slide[data-old="16"] .short3,.slide[data-old="17"] .short3,.slide[data-old="18"] .short2,.slide[data-old="21"] .short2,.slide[data-old="18"] .half svg{display:none}.slide[data-old="18"] .half{padding:6px}}
+@media(max-width:640px){.slide[data-old="17"] .split2{grid-template-columns:1fr 1fr;gap:6px}.slide[data-old="17"] .half svg{max-height:8vh}.slide[data-old="17"] .half{padding:6px}.slide[data-old="17"] .note,.slide[data-old="20"] .short2{display:none}.slide[data-old="16"] .chips5 span{font-size:15px;padding:.1em .55em}.slide[data-old="16"] .chips5{gap:4px;margin:.1em 0}.slide[data-old="16"] .big2{font-size:20px}.slide[data-old="21"] .journal2 p{font-size:17px;margin:.3em 0}.slide[data-old="21"] .journal2{padding:.6em .9em}.slide[data-old="5"] .heb{font-size:28px}.slide[data-old="5"] .label{margin-bottom:.2em}}
+@media(max-width:640px) and (max-height:700px){.slide[data-old="13"] .scene,.slide[data-old="19"] .scene,.slide[data-old="16"] .label{display:none}}
+@media(max-width:400px){.ref{font-size:13px!important;letter-spacing:.1em}.wrap .note,.pcard small,.ev small,.tcard small,.small2,.wlist small,.label{font-size:14px!important}.ev .imp,.ev .evd{font-size:16px}.slide[data-old="15"] .wlist>div{font-size:16px}.half span{font-size:16px}.slide[data-old="6"] .half svg{display:none}.slide[data-old="9"] .note{font-size:16px!important}.slide[data-old="16"] .chips5 span{font-size:16px!important}.slide[data-old="21"] .small2{font-size:16px!important}}
+@media(max-width:340px){.pcard svg{max-height:12vh!important}.slide[data-old="13"] .scripture{font-size:17px}}
+
+.lead2{display:flex;flex-direction:column;gap:.3em;align-items:center;margin:0 0 .3em}.lead2 span{display:flex;align-items:center;gap:.5em;font-family:'Source Serif 4',serif;font-size:clamp(19px,2.5vw,26px)}.lead2 svg{width:20px;height:34px;flex:none}
+.steps4{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:.2em 0 .4em}.steps4 span{width:clamp(96px,13vw,130px);height:clamp(96px,13vw,130px);border-radius:50%;background:#e3ecdf;border:2px solid #7e9b78;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(18px,2.3vw,24px);color:#3f5a3b}
+.steps4 span.b{opacity:.28}.steps4 span.b.on{opacity:1}
+.mini{width:20px;height:34px;display:block;margin:4px auto 0}.row3.four{grid-template-columns:repeat(4,1fr)}.hl{transition:background 1s,color 1s;border-radius:4px}.hl.on{background:#f7e8c4;color:#6b521f}
+.rise{transform:translateY(26px)}.rise.on{transform:none;transition:opacity .8s,transform 1.8s ease-out}
+.frow{width:min(100%,820px);height:auto;display:block;margin:0 auto .2em;max-height:9vh}
+.pcard .wnum.g{background:#6f9a6a}
+.signs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,940px);margin:.3em 0}
+.sg{min-height:clamp(150px,24vh,210px)!important}.sg .face{justify-content:center;align-items:center;text-align:center;gap:6px}.sg .face p{font-size:clamp(17px,2.2vw,23px);margin:0}.sg .face svg{width:70%;max-height:12vh}
+.ck{list-style:none;padding:0;margin:.2em 0;width:min(100%,820px);text-align:left;display:flex;flex-direction:column;gap:.25em}
+.ck li{display:flex;gap:.6em;align-items:center;font-size:clamp(18px,2.35vw,24px);line-height:1.3;background:#fffaf0;border:1px solid #e3d6b8;border-radius:10px;padding:.25em .7em}
+.ck li .tk{flex:none;width:1.4em;height:1.4em;border-radius:50%;background:#6f9a6a;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em}
+.fw{transform-box:fill-box;transform-origin:center;animation:fw 2.4s ease-out infinite}@keyframes fw{0%{transform:scale(.2);opacity:0}30%{opacity:1}100%{transform:scale(1.2);opacity:0}}
+.fadeout.on{animation:fo 4s ease forwards}@keyframes fo{to{opacity:.12}}
+.seesaw{transform-box:fill-box;transform-origin:center;animation:ss 4s ease-in-out infinite}@keyframes ss{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.droopf.on{transform-box:fill-box;transform-origin:left bottom;animation:droopf 5s ease forwards}@keyframes droopf{0%{transform:none}30%,60%{transform:rotate(12deg)}100%{transform:none}}
+body.still .rise{transform:none!important}
+@media(max-width:640px){.slide[data-old="18"] .short3{max-height:13vh}.slide[data-old="15"] h2{font-size:21px}.steps4{gap:6px}.steps4 span{width:72px;height:72px;font-size:16px}.slide[data-old="15"] .short3{max-height:12vh}.slide[data-old="18"] .big2{font-size:19px}.lead2 span{font-size:18px}.row3.four{grid-template-columns:1fr 1fr}.row3.four svg{max-height:8vh}.frow{max-height:5vh;margin-bottom:.1em}.signs{grid-template-columns:1fr 1fr;gap:6px}.sg{min-height:110px!important}.sg .face svg{max-height:8vh}.sg .face p{font-size:16px}
+ .ck li:not(.on){display:none}.ck li.on:has(~ li.on){display:none}.ck li{font-size:20px;padding:.5em .8em}
+ .slide[data-old="8"] .pcard svg,.slide[data-old="9"] .pcard svg,.slide[data-old="10"] .pcard svg,.slide[data-old="11"] .pcard svg,.slide[data-old="12"] .pcard svg,.slide[data-old="13"] .pcard svg{max-height:15vh}
+ .slide[data-old="19"] .row3 svg,.slide[data-old="21"] .short2{display:none}.slide[data-old="14"] .short3,.slide[data-old="16"] .short3,.slide[data-old="20"] .short2{max-height:13vh}}
+@media(max-width:640px){.signs{grid-template-columns:1fr;gap:5px}.sg{min-height:58px!important}.sg .face svg{display:none}.sg .face p{font-size:17px}.sg .face{padding:6px 10px}
+ .slide[data-old="5"] .half svg{display:none}.slide[data-old="5"] .scene{max-height:24vh}.slide[data-old="5"] .split2{grid-template-columns:1fr 1fr;gap:6px}.slide[data-old="5"] .half{padding:6px}
+ .slide[data-old="8"] .pcard svg{max-height:11vh}.slide[data-old="10"] .split2{grid-template-columns:1fr 1fr;gap:6px}.slide[data-old="10"] .half svg{max-height:8vh}.slide[data-old="10"] .half b{font-size:16px}.slide[data-old="10"] h2{font-size:21px}
+ .slide[data-old="18"] .chips5 span{font-size:15px;padding:.1em .55em}.slide[data-old="18"] .safe5{font-size:16px}.slide[data-old="18"] .q2{font-size:18px}
+ .slide[data-old="21"] .journal2 p{font-size:17px;margin:.3em 0}.slide[data-old="21"] .journal2{padding:.6em .9em}.slide[data-old="6"] .chips5 span{font-size:15px}}
+@media(max-width:400px){.slide[data-old="15"] .short3{max-height:8vh}.slide[data-old="16"] .short3,.slide[data-old="20"] .short2,.slide[data-old="14"] .short3{max-height:8vh}.slide[data-old="16"] .q2{font-size:17px}.steps4 span{width:62px;height:62px;font-size:14px}.slide[data-old="15"] .big2{font-size:19px}.slide[data-old="18"] .label,.slide[data-old="18"] .q2{display:none}.slide[data-old="18"] .big2{font-size:17px}.slide[data-old="18"] .safe5{font-size:15px}.slide[data-old="18"] .note{font-size:14px!important}}
+@media(max-width:400px){.slide[data-old="6"] .label,.slide[data-old="8"] .label{display:none}.slide[data-old="6"] .q2{font-size:17px}.slide[data-old="6"] .big2{font-size:20px}.slide[data-old="8"] .pcard svg{max-height:8vh}.slide[data-old="8"] .chips5 span{font-size:15px;padding:.1em .5em}}
+@media(max-width:400px){.ref{font-size:13px!important}.wrap .note,.pcard small,.tcard small,.small2,.label{font-size:14px!important}.half span{font-size:16px}}
+
+.gleaf{transform-box:fill-box;transform-origin:left center;transition:transform 2s ease}
+.gt.on .gleaf,.gt.open .gleaf{transform:scaleX(.16)}
+.gtpulse.on .gleaf{animation:gtp 5s ease-in-out forwards}@keyframes gtp{0%{transform:scaleX(.16)}40%,60%{transform:none}100%{transform:scaleX(.16)}}
+.lead8{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.cards4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(100%,1000px)}
+.cards4 .flip{min-height:clamp(150px,26vh,230px)!important}.cards4 .face{justify-content:center;align-items:center;text-align:center;gap:6px;padding:10px}
+.cards4 .face b{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.4vw,25px)}.cards4 .face p{font-size:clamp(16px,1.9vw,20px);margin:0}
+.cards4 .ctrl .face{border-color:#b98563!important;background:#f7e6df!important}
+.plots{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;width:min(100%,860px);margin:.1em 0 .3em}
+.plots span{display:flex;flex-direction:column;align-items:center;font-size:13px;color:#69707a;padding:4px;border-radius:10px;background:#f6efdf;opacity:.45;transition:opacity .8s,background .8s}
+.plots span.on{opacity:1;background:#e3ecdf;color:#3f5a3b;font-weight:700}
+.plots svg{width:30px;height:30px}
+.wv8 svg{max-height:15vh}
+.st5{list-style:none;padding:0;margin:.2em 0;width:min(100%,820px);text-align:left;display:flex;flex-direction:column;gap:.3em}
+.st5 li{display:flex;gap:.6em;align-items:center;font-size:clamp(18px,2.35vw,24px);line-height:1.3;background:#fffaf0;border:1px solid #e3d6b8;border-radius:10px;padding:.3em .7em}
+.st5 li .tk{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:#7e9b78;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.85em}
+.st5 li small{display:block;color:#69707a;font-size:.72em}
+body.still .gleaf{transition:none!important}
+@media(max-width:640px){.cards4{grid-template-columns:1fr 1fr;gap:6px}.cards4 .flip{min-height:120px!important}.cards4 .face b{font-size:17px}.cards4 .face p{font-size:15px}
+ .plots{grid-template-columns:repeat(6,1fr);gap:3px}.plots span{font-size:11px;padding:2px}.plots svg{width:22px;height:22px}
+ .st5 li:not(.on){display:none}.st5 li.on:has(~ li.on){display:none}.st5 li{font-size:20px;padding:.5em .8em}
+ .scene{max-height:30vh}.scene.mid{max-height:22vh}.scene.short3{max-height:18vh}.scene.short2{max-height:13vh}.lead8{font-size:21px}
+ .wv8 svg{max-height:13vh}}
+@media(max-width:640px){.slide[data-old="11"] .scene{max-height:12vh}.slide[data-old="11"] .half svg{max-height:9vh}.slide[data-old="21"] .journal2 p{font-size:17px;margin:.3em 0}.slide[data-old="21"] .journal2{padding:.6em .9em}.slide[data-old="21"] .scene{max-height:9vh}}
+@media(max-width:400px){.slide[data-old="10"] .scene{max-height:16vh}.slide[data-old="11"] .half svg{display:none}.slide[data-old="19"] .tcard svg{display:none}.slide[data-old="20"] .scene{max-height:8vh}.slide[data-old="21"] .scene{display:none}}
+@media(max-width:400px){.scene{max-height:24vh}.scene.mid{max-height:17vh}.scene.short3{max-height:14vh}.scene.short2{max-height:10vh}.lead8{font-size:19px}.ref{font-size:13px!important}.wrap .note,.pcard small,.small2,.label{font-size:14px!important}.cards4 .face p{font-size:14px}}
+
+.greek .type{padding-right:.18em}.lead9{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.eve{transition:opacity 3s ease}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,960px)}
+.cards3 .flip{min-height:clamp(150px,25vh,220px)!important}.cards3 .face{justify-content:center;align-items:center;text-align:center;gap:6px;padding:10px}
+.cards3 .face b{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.4vw,25px)}.cards3 .face p{font-size:clamp(16px,1.9vw,20px);margin:0}
+.cards3 .front small{color:#8a3f30;font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.chips5{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:.2em 0 .4em}
+.chips5 span{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.4vw,25px);padding:.2em .7em;border-radius:999px;background:#e3ecdf;border:2px solid #7e9b78;color:#2f4a2c}
+.chips5 span::before{content:"✓ ";font-weight:700}
+.parts4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:min(100%,760px);margin:.1em 0 .3em}
+.parts4 span{display:flex;flex-direction:column;align-items:center;font-size:13px;color:#69707a;padding:4px;border-radius:10px;background:#f6efdf;opacity:.45;transition:opacity .8s,background .8s}
+.parts4 span.on{opacity:1;background:#e3ecdf;color:#3f5a3b;font-weight:700}
+.parts4 svg{width:30px;height:30px}
+.cardrow.four{flex-wrap:nowrap}.cardrow.four .pcard{flex:1 1 0;min-width:0}.cardrow.four .pline{font-size:clamp(15px,1.6vw,19px)}
+.st5 li small{display:block;color:#69707a;font-size:.72em}
+@media(max-width:640px){.cards3{grid-template-columns:1fr;gap:6px}.cards3 .flip{min-height:92px!important}.cards3 .face b{font-size:18px}.cards3 .face p{font-size:16px}
+ .chips5 span{font-size:17px;padding:.15em .55em}.chips5{gap:5px}
+ .parts4 span{font-size:11px;padding:2px}.parts4 svg{width:22px;height:22px}
+ .lead9{font-size:21px}.cardrow.four .pline{font-size:18px}}
+@media(max-width:400px){.lead9{font-size:19px}.chips5 span{font-size:15px}}
+@media(max-width:400px){.slide[data-old="20"] .scene,.slide[data-old="21"] .scene{display:none}.slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="21"] .journal2{padding:.6em .9em}.slide[data-old="20"] .steps{font-size:18px}.slide[data-old="4"] .scene,.slide[data-old="15"] .scene.short3{max-height:11vh}.slide[data-old="16"] .scene{max-height:16vh}}
+
+.lead10{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.heb10{font-family:'SBL Hebrew','Ezra SIL','Noto Serif Hebrew','Times New Roman',serif;font-size:clamp(40px,6vw,64px);margin:0;line-height:1.2;direction:rtl}
+.wpair{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,860px)}
+.wpair>div{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:8px 12px;text-align:center}
+.wpair .gloss{margin:.1em 0}
+.icons6{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;width:min(100%,900px);margin:.2em 0}
+.icons6 span{display:flex;flex-direction:column;align-items:center;font-size:13px;color:#4f5763;padding:4px;border-radius:10px;background:#f6efdf;text-align:center;line-height:1.15}
+.icons6 svg{width:34px;height:34px}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:min(100%,1040px)}
+.five .pcard{padding:8px}.five .pline{font-size:clamp(14px,1.45vw,17px)}
+@media(max-width:640px){.wpair{grid-template-columns:1fr;gap:6px}.heb10{font-size:40px}
+ .icons6{grid-template-columns:repeat(4,1fr);gap:4px}.icons6 span{font-size:11px;padding:2px}.icons6 svg{width:24px;height:24px}
+ .five{display:flex;flex-direction:column}.five .pcard:not(.on){display:none}.five .pcard.on:has(~ .pcard.on){display:none}.five .pline{font-size:18px}
+ .lead10{font-size:21px}}
+@media(max-width:400px){.lead10{font-size:19px}.heb10{font-size:34px}}
+@media(max-width:380px){.slide[data-old="21"] .scene,.slide[data-old="20"] .scene,.slide[data-old="10"] .scene,.slide[data-old="14"] > .wrap > .scene{display:none}
+ .slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="21"] .journal2{padding:.6em .9em}.slide[data-old="20"] .steps{font-size:18px}
+ .slide[data-old="5"] .scene,.slide[data-old="2"] .scene,.slide[data-old="9"] .scene{max-height:12vh}.slide[data-old="5"] .half svg,.slide[data-old="9"] .half svg,.slide[data-old="10"] .half svg,.slide[data-old="2"] .half svg{max-height:8vh}}
+
+.lead11{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.warn8{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:min(100%,960px);margin:.2em 0}
+.warn8 span{display:flex;gap:6px;align-items:center;font-size:clamp(14px,1.55vw,17px);color:#3c4450;padding:6px 8px;border-radius:10px;background:#fffaf0;border:1px solid #e3d6b8;text-align:left;line-height:1.2}
+.warn8 svg{width:30px;height:30px;flex:none}
+.stairs4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:min(100%,960px);align-items:end}
+.stairs4 div{background:#fffaf0;border:1px solid #e3d6b8;border-radius:10px;padding:8px;font-size:clamp(14px,1.6vw,18px);text-align:left;line-height:1.25}
+.stairs4 div b{display:block;font-family:'Source Serif 4',serif;font-size:1.1em;color:#2b3445}
+.stairs4 .s1{min-height:90px}.stairs4 .s2{min-height:115px}.stairs4 .s3{min-height:140px}.stairs4 .s4{min-height:165px}
+@media(max-width:640px){.warn8{display:flex;flex-direction:column}.warn8 span:not(.on){display:none}.warn8 span.on:has(~ span.on){display:none}.warn8 span{font-size:19px;padding:.5em .8em}.warn8 svg{width:40px;height:40px}
+ .stairs4{display:flex;flex-direction:column}.stairs4 div:not(.on){display:none}.stairs4 div.on:has(~ div.on){display:none}.stairs4 div{min-height:0!important;font-size:18px}
+ .lead11{font-size:21px}}
+@media(max-width:400px){.lead11{font-size:19px}}
+@media(max-width:380px){.slide[data-old="20"] .scene,.slide[data-old="21"] .scene{display:none}.slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="20"] .steps{font-size:18px}}
+
+.lead12{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.q4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:min(100%,960px)}
+.q4 .flip{min-height:clamp(140px,24vh,210px)!important}.q4 .face{justify-content:center;align-items:center;text-align:center;gap:6px;padding:10px}
+.q4 .face b{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.3vw,24px)}.q4 .face p{font-size:clamp(14px,1.6vw,18px);margin:0}
+.q4 .face svg{width:56px;height:40px}
+.resp{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.3vw,25px);line-height:1.45;max-width:34em;text-align:left;background:#fffaf0;border:1px solid #e3d6b8;border-left:8px solid #7e9b78;border-radius:10px 16px 16px 10px;padding:.6em 1em;margin:.2em 0}
+.resp span{display:block}
+@media(max-width:640px){.q4{grid-template-columns:1fr 1fr;gap:6px}.q4 .flip{min-height:110px!important}.q4 .face b{font-size:18px}.q4 .face p{font-size:14px}.q4 .face svg{width:40px;height:28px}
+ .resp{font-size:19px}.lead12{font-size:21px}}
+@media(max-width:400px){.lead12{font-size:19px}.resp{font-size:17px}}
+@media(max-width:380px){.slide[data-old="6"] .scene,.slide[data-old="5"] .scene{display:none}.slide[data-old="18"] .scene{max-height:10vh}}
+@media(max-width:380px){.slide[data-old="20"] .scene,.slide[data-old="21"] .scene{display:none}.slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="20"] .steps{font-size:18px}}
+
+.lead13{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.1vw,32px);margin:.1em 0 .3em;color:#2b3445;max-width:30em;line-height:1.25}
+.p5{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:min(100%,1040px)}
+.p5 .flip{min-height:clamp(130px,22vh,190px)!important}.p5 .face{justify-content:center;align-items:center;text-align:center;gap:4px;padding:8px}
+.p5 .face b{font-family:'Source Serif 4',serif;font-size:clamp(16px,1.8vw,20px)}.p5 .face p{font-size:clamp(13px,1.4vw,16px);margin:0}
+.humble{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.5vw,26px);background:#fffaf0;border:2px solid #c9963f;border-radius:12px;padding:.5em .9em;max-width:32em;margin:.2em 0}
+@media(max-width:640px){.p5{display:flex;flex-direction:column}.p5 .mcard:not(:has(.flip.on)){display:none}.p5 .mcard:has(.flip.on):has(~ .mcard .flip.on){display:none}.p5 .flip{min-height:120px!important}.p5 .face b{font-size:20px}.p5 .face p{font-size:17px}
+ .lead13{font-size:21px}.humble{font-size:19px}}
+@media(max-width:400px){.lead13{font-size:19px}}
+@media(max-width:640px){.slide[data-n] .scene.short3{max-height:22vh}.slide[data-n] .scene.mid{max-height:24vh}}
+@media(max-width:400px){.slide[data-old="20"] .scene,.slide[data-old="21"] .scene,.slide[data-old="19"] .note,.slide[data-old="19"] .lead13{display:none}}
+@media(max-width:340px){.slide[data-old="5"] .scene,.slide[data-old="12"] .scene,.slide[data-old="18"] .scene,.slide[data-old="6"] .scene,.slide[data-old="17"] .note{display:none}
+ .slide[data-old="19"] .note,.slide[data-old="19"] .lead13,.slide[data-old="21"] .journal2 p:nth-child(2),.slide[data-old="15"] .half svg,.slide[data-old="1"] .scene{display:none}
+ .slide[data-old="19"] .humble{font-size:17px;padding:.3em .6em}.slide[data-old="19"] .big2{font-size:18px}
+.slide[data-old="20"] .scene,.slide[data-old="21"] .scene{display:none}.slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="20"] .steps{font-size:18px}}
+
+.circ14{width:min(100%,520px);max-height:30vh;display:block;margin:.1em auto}
+.who14 li small{display:block}
+.qual6{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;width:min(100%,980px)}
+.qual6>span{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px 4px;font-size:clamp(14px,1.7vw,18px);font-weight:700;color:#8a6a24}
+.qual6 svg{width:clamp(30px,4vw,46px);height:clamp(30px,4vw,46px)}
+.heb14{font-family:'Source Serif 4',serif;font-size:clamp(48px,7vw,80px);direction:rtl;margin:0;color:#2b3445;line-height:1.1}
+@media(max-width:640px){.qual6{grid-template-columns:repeat(3,1fr);gap:5px}.qual6>span{font-size:14px;padding:4px}.circ14{max-height:22vh}
+ .slide[data-old="2"] .half svg,.slide[data-old="17"] .half svg,.slide[data-old="11"] .half svg{max-height:10vh}}
+@media(max-width:640px){.slide[data-n] .scene.short3{max-height:22vh}.slide[data-n] .scene.mid{max-height:24vh}}
+@media(max-width:400px){.slide[data-old="20"] .scene,.slide[data-old="21"] .scene,.slide[data-old="11"] .half svg,.slide[data-old="5"] .big2{display:none}.slide[data-old="5"] .heb14{font-size:42px}}
+@media(max-width:340px){.slide[data-old="5"] .scene,.slide[data-old="6"] .scene,.slide[data-old="7"] .scene,.slide[data-old="14"] .scene,.slide[data-old="13"] .lead13,.slide[data-old="20"] .scene,.slide[data-old="21"] .scene,.slide[data-old="2"] .half svg,.slide[data-old="17"] .half svg,.slide[data-old="11"] .half svg,.slide[data-old="16"] .tcard svg{display:none}
+ .slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.slide[data-old="12"] .qual6>span{font-size:13px}
+ .slide[data-old="1"] .scene,.slide[data-old="5"] .big2,.slide[data-old="12"] .qual6 svg,.slide[data-old="12"] .note,.slide[data-old="16"] .note,.slide[data-old="16"] .tcard small,.slide[data-old="13"] .q2{display:none}
+ .slide[data-old="5"] .heb14{font-size:40px}.slide[data-old="20"] .steps{font-size:17px}.slide[data-old="20"] .steps li{margin:.2em 0}.slide[data-old="12"] .humble{font-size:17px}}
+
+.bays15{width:min(100%,640px);max-height:30vh;display:block;margin:.1em auto}
+.plots15{width:min(100%,560px);max-height:26vh;display:block;margin:.1em auto}
+.q40{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.5vw,27px);background:#fffaf0;border:2px solid #c9963f;border-radius:12px;padding:.45em .9em;max-width:32em;margin:.2em 0}
+.flags15{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,680px)}
+.flags15>span{display:flex;flex-direction:column;align-items:center;gap:2px;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;font-size:clamp(15px,1.8vw,19px);font-weight:700;color:#5d7a52}
+.flags15 svg{width:clamp(34px,4vw,48px);height:clamp(40px,5vw,56px)}
+@media(max-width:640px){.scene.short3{max-height:22vh}.scene.mid{max-height:24vh}.bays15{max-height:22vh}.plots15{max-height:18vh}.q40{font-size:19px}.flags15>span{font-size:15px}
+ .slide[data-old="17"] .half svg,.slide[data-old="2"] .scene{max-height:12vh}}
+@media(max-width:400px){.slide[data-old="21"] .scene{display:none}.slide[data-old="4"] .heb14{font-size:42px}.slide[data-old="4"] .scene{max-height:12vh}}
+@media(max-width:340px){.slide[data-old="1"] .scene,.slide[data-old="3"] .scene,.slide[data-old="4"] .scene,.slide[data-old="5"] .scene,.slide[data-old="6"] .scene,.slide[data-old="7"] .scene,.slide[data-old="14"] .scene,.slide[data-old="16"] .scene,.slide[data-old="18"] .scene,.slide[data-old="20"] .scene,.slide[data-old="21"] .scene,.slide[data-old="17"] .half svg,.slide[data-old="19"] .tcard svg,.slide[data-old="13"] .note,.slide[data-old="5"] .note{display:none}
+ .slide[data-old="21"] .journal2 p{font-size:16px;margin:.3em 0}.q40{font-size:17px}
+ .slide[data-old="2"] .scene,.slide[data-old="7"] .note,.slide[data-old="21"] .journal2 p:nth-child(2),.slide[data-old="12"] .note{display:none}
+ .slide[data-old="4"] .heb14{font-size:40px}.slide[data-old="4"] .humble{font-size:17px}.slide[data-old="7"] .humble{font-size:17px}.slide[data-old="20"] .steps{font-size:17px}.slide[data-old="20"] .steps li{margin:.2em 0}}
+
+.road16{width:min(100%,560px);display:block;margin:.1em auto}
+.sign7{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;width:min(100%,900px)}
+.sign7>span{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fffaf0;border:1px solid #e3d6b8;border-radius:10px;padding:6px 4px;font-size:clamp(12px,1.4vw,15px);font-weight:700;color:#8a6a24;min-height:3.6em;text-align:center}
+@media(max-width:640px){.sign7{grid-template-columns:repeat(4,1fr)}.sign7>span{font-size:12px;min-height:3em}
+ .slide[data-n] .scene.short3{max-height:24vh}.slide[data-n] .scene.mid{max-height:26vh}.road16{max-height:24vh}}
+@media(max-width:400px){.slide[data-n="21"] .scene{display:none}.slide[data-n="5"] .heb14{font-size:40px}.slide[data-n="20"] .road16{max-height:14vh!important}.slide[data-n="21"] .journal2 p{margin:.25em 0}.slide[data-n="17"] .note{display:none}}
+@media(max-width:340px){.slide[data-n="1"] .scene,.slide[data-n="3"] .scene,.slide[data-n="4"] .scene,.slide[data-n="6"] .scene,.slide[data-n="8"] .scene,.slide[data-n="14"] .scene,.slide[data-n="17"] .scene,.slide[data-n="19"] .scene,.slide[data-n="20"] .scene,.slide[data-n="13"] .scene,.slide[data-n="5"] .scene,.slide[data-n="18"] .scene,.slide[data-n="21"] .journal2 p:nth-child(2){display:none}.slide[data-n="21"] .journal2 p{font-size:16px;margin:.3em 0}}
+.plainw{font-family:'Source Sans 3',sans-serif;font-weight:700;font-size:26px;fill:#fff}
+.bubblesm2{font-family:'Source Serif 4',serif;font-size:15px;fill:#2b3445}
+.tcard b{display:block;font-family:'Source Serif 4',serif;font-size:clamp(18px,2.2vw,24px);margin-top:4px}
+.tilt{transform-box:fill-box;transform-origin:center;animation:tilt 3s ease-in-out infinite}@keyframes tilt{50%{transform:rotate(-3deg)}}
+.walkacross2{transform:translateX(0)}.walkacross2.on{animation:wa2 14s linear forwards}@keyframes wa2{from{transform:translateX(-40px)}to{transform:translateX(640px)}}
+.walkacross2 use[href="#per"],.walkacross2 use[href="#lamp"]{animation:none}
+.walklong2.on{animation:wl2 16s ease-in-out forwards}@keyframes wl2{to{transform:translateX(420px) translateY(-24px)}}
+.yokeside.on{animation:ys 6s ease-in-out infinite}@keyframes ys{0%,100%{filter:drop-shadow(-8px 0 6px #f0c77a)}50%{filter:drop-shadow(8px 0 6px #f0c77a)}}
+.magturn{transform-box:fill-box;transform-origin:center;transition:transform 2.5s ease;transform:scaleX(1)}.b.on .magturn{animation:mt 7s ease-in-out forwards}@keyframes mt{0%,40%{transform:none}100%{transform:scaleX(-1) translateX(80px)}}
+.drift2.on{animation:dr2 6s ease forwards}@keyframes dr2{to{transform:translateX(0)}}
+.needle{transform-box:fill-box;transform-origin:center;animation:needle 5s ease-out}@keyframes needle{0%{transform:rotate(-80deg)}60%{transform:rotate(20deg)}100%{transform:none}}
+@media(max-width:640px){.hidephone{display:none!important}.found{grid-template-columns:1fr;gap:5px}.fst{min-height:0;padding:7px 10px;font-size:19px}.row3{gap:6px}.tcard{padding:6px 10px}.tcard b{font-size:19px;margin:0}.tcard small{font-size:16px}.slide[data-old="12"] h2,.slide[data-old="19"] .label{margin-bottom:.2em}.tcard svg{display:none!important}.half svg{max-height:11vh}.tile4 svg{max-height:8vh}.split2{gap:8px}.half{padding:8px}.qrow .qc svg{width:26px;height:26px}.tiles4{grid-template-columns:1fr 1fr}.found{grid-template-columns:1fr 1fr}.baskets,.infer{grid-template-columns:1fr}.qrow{gap:4px}.qc{padding:4px 6px}.fst{min-height:3em}.iarrow svg{transform:rotate(90deg);width:40px}}
+
+@media(max-width:640px){.disgrid{grid-template-columns:1fr 1fr}.row3,.lanes,.split2{grid-template-columns:1fr}.lane svg{display:none}.tcard svg{max-height:80px}}
+body.still .disg .mask,body.still .disg .plain{transition:opacity .8s!important;transform:none!important}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+</style></head><body>
+<div id="stage" class="light">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path class="h1" d="M0 90 C200 40 360 110 560 70 S900 30 1200 80 V200 H0z"/><path class="h2" d="M0 130 C240 90 420 150 640 115 S960 90 1200 125 V200 H0z"/><path class="h3" d="M0 165 C260 140 480 185 700 160 S1000 140 1200 170 V200 H0z"/></svg>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the traveller from the cover, seen from behind -->
+ <symbol id="trav" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="14" ry="3" fill="#000" opacity=".12"/>
+  <path d="M14 66 L13 94 L18 94 L19 68 Z M21 68 L22 94 L27 94 L26 66 Z" fill="#2b3445"/>
+  <path d="M12 94h7v3h-8zM21 94h7l1 3h-8z" fill="#7a4e33"/>
+  <path d="M10 30 Q20 22 30 30 L33 72 Q20 76 7 72 Z" fill="#6f817b"/>
+  <path d="M20 26 L20 72" stroke="#5c6d68" stroke-width="1.2"/>
+  <path d="M10 32 L6 60 L10 61 L13 38 Z M30 32 L34 60 L30 61 L27 38 Z" fill="#65776f"/>
+  <circle cx="20" cy="17" r="8.5" fill="#3a3330"/>
+  <path d="M13 21 Q20 27 27 21 L27 26 Q20 29 13 26 Z" fill="#c69d84"/>
+ </symbol>
+ <!-- a simple standing person, front, colour from currentColor -->
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <!-- seated person -->
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="deer" viewBox="0 0 70 60">
+  <path d="M14 30 Q30 20 48 26 L52 14 L56 15 L54 28 Q56 36 50 38 L50 56 L46 56 L45 40 L24 40 L22 56 L18 56 L18 38 Q10 36 14 30Z" fill="#a9845f"/>
+  <path d="M53 14 L50 4 M53 10 L58 4 M55 14 L60 8" stroke="#7a5d42" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="55" cy="18" r="1.4" fill="#2b3445"/>
+ </symbol>
+ <symbol id="sheep" viewBox="0 0 60 44">
+  <path d="M14 34 L14 42 M22 34 L22 42 M38 34 L38 42 M46 34 L46 42" stroke="#3a3330" stroke-width="3"/>
+  <ellipse cx="30" cy="24" rx="20" ry="13" fill="#f4efe4"/>
+  <circle cx="16" cy="20" r="7" fill="#f4efe4"/><circle cx="26" cy="13" r="7" fill="#f4efe4"/><circle cx="38" cy="14" r="7" fill="#f4efe4"/>
+  <ellipse cx="51" cy="22" rx="6" ry="7.5" fill="#3a3330"/>
+ </symbol>
+ <symbol id="rabbit" viewBox="0 0 40 36">
+  <ellipse cx="18" cy="26" rx="13" ry="9" fill="#b9a58c"/><circle cx="30" cy="18" r="6" fill="#b9a58c"/>
+  <ellipse cx="29" cy="7" rx="2.5" ry="7" fill="#b9a58c"/><ellipse cx="33" cy="8" rx="2.5" ry="7" fill="#a8947b"/>
+  <circle cx="32" cy="17" r="1" fill="#2b3445"/>
+ </symbol>
+ <symbol id="bird" viewBox="0 0 30 16"><path d="M2 8 Q8 2 15 8 Q22 2 28 8 Q22 5 15 11 Q8 5 2 8Z" fill="#4c5a62"/></symbol>
+ <symbol id="lion" viewBox="0 0 70 50">
+  <path d="M12 30 Q30 22 50 28 L52 46 L47 46 L46 36 L22 36 L20 46 L15 46 Z" fill="#c9a061"/>
+  <circle cx="54" cy="22" r="12" fill="#a8743f"/><circle cx="55" cy="23" r="7" fill="#d7b273"/>
+  <path d="M12 30 Q4 26 6 18" stroke="#c9a061" stroke-width="3" fill="none"/>
+ </symbol>
+ <symbol id="heart" viewBox="0 0 60 56"><path d="M30 52 C14 40 4 30 4 18 A12 12 0 0 1 30 12 A12 12 0 0 1 56 18 C56 30 46 40 30 52Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="phone" viewBox="0 0 30 54"><rect x="1" y="1" width="28" height="52" rx="5" fill="#2b3445"/><rect x="4" y="7" width="22" height="38" rx="2" fill="#e9eef0"/></symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="scroll" viewBox="0 0 200 120">
+  <rect x="16" y="10" width="168" height="100" fill="#f5ead1" stroke="#d8c39a" stroke-width="2"/>
+  <rect x="6" y="4" width="16" height="112" rx="8" fill="#b88c5a"/><rect x="178" y="4" width="16" height="112" rx="8" fill="#b88c5a"/>
+ </symbol>
+ <symbol id="paul" viewBox="0 0 90 90">
+  <path d="M10 88 L80 88 L76 62 L14 62Z" fill="#8a6a4f"/>
+  <path d="M22 62 Q22 34 40 30 Q58 34 58 62Z" fill="#8e7a64"/>
+  <circle cx="40" cy="20" r="10" fill="#c69d84"/>
+  <path d="M30 22 Q32 34 40 34 Q48 34 50 22 Q48 30 40 30 Q32 30 30 22Z" fill="#7d7268"/>
+  <path d="M30 16 Q34 8 40 9 Q46 8 50 16" fill="none" stroke="#7d7268" stroke-width="2"/>
+  <rect x="44" y="56" width="30" height="6" fill="#f5ead1"/>
+  <path d="M56 46 L66 58" stroke="#3a3330" stroke-width="2"/>
+ </symbol>
+ <symbol id="flower" viewBox="0 0 20 30"><path d="M10 30 V14" stroke="#7e9b78" stroke-width="1.6"/><circle cx="10" cy="10" r="5" fill="#d9818c"/><circle cx="10" cy="10" r="2" fill="#f0c77a"/></symbol>
+ <symbol id="bud" viewBox="0 0 20 30"><path d="M10 30 V16" stroke="#7e9b78" stroke-width="1.6"/><ellipse cx="10" cy="13" rx="3" ry="5" fill="#e9a3aa"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="gate" viewBox="0 0 60 50"><path d="M6 48 V18 Q30 0 54 18 V48" fill="none" stroke="#8a6a4f" stroke-width="4"/><path d="M14 48 V22 M24 48 V16 M36 48 V16 M46 48 V22" stroke="#a58262" stroke-width="2.5"/></symbol>
+</defs></svg>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="yoke" viewBox="0 0 200 70">
+  <path d="M8 22 Q100 2 192 22 L192 34 Q100 16 8 34Z" fill="#a5784f"/>
+  <path d="M8 22 Q100 2 192 22" fill="none" stroke="#c49a6c" stroke-width="2"/>
+  <path d="M40 30 Q40 66 62 66 Q84 66 84 30" fill="none" stroke="#8a6440" stroke-width="5"/>
+  <path d="M116 30 Q116 66 138 66 Q160 66 160 30" fill="none" stroke="#8a6440" stroke-width="5"/>
+  <circle cx="100" cy="14" r="4" fill="#7a5a3c"/>
+ </symbol>
+ <symbol id="ox" viewBox="0 0 130 90">
+  <ellipse cx="65" cy="86" rx="48" ry="4" fill="#000" opacity=".1"/>
+  <path d="M18 34 Q40 20 86 24 Q104 26 108 40 L108 58 Q100 64 92 62 L90 84 L82 84 L80 62 L42 62 L40 84 L32 84 L30 60 Q16 56 18 34Z" fill="#9c6f4a"/>
+  <path d="M100 26 Q118 20 124 30 Q124 44 112 46 Q104 44 100 36Z" fill="#8a5f3e"/>
+  <path d="M104 24 Q100 12 92 14 M116 22 Q122 10 128 14" stroke="#e8dcc4" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <circle cx="115" cy="32" r="2" fill="#2b3445"/>
+ </symbol>
+ <symbol id="donkey" viewBox="0 0 100 80">
+  <ellipse cx="50" cy="77" rx="34" ry="3" fill="#000" opacity=".1"/>
+  <path d="M14 36 Q30 28 62 30 Q72 31 74 40 L74 54 L70 76 L64 76 L64 56 L30 56 L28 76 L22 76 L20 54 Q10 50 14 36Z" fill="#9aa0a3"/>
+  <path d="M70 32 Q80 22 92 30 Q96 40 88 44 Q78 46 72 40Z" fill="#8b9194"/>
+  <path d="M76 26 L72 6 L80 22 M82 24 L84 4 L88 24" fill="#8b9194" stroke="#7d8386" stroke-width="2"/>
+  <circle cx="86" cy="34" r="1.8" fill="#2b3445"/>
+ </symbol>
+ <symbol id="temple" viewBox="0 0 80 64">
+  <path d="M4 18 L40 2 L76 18Z" fill="#e9dcc0" stroke="#c9b48c" stroke-width="1.5"/>
+  <rect x="6" y="18" width="68" height="5" fill="#e1d2b1"/>
+  <path d="M12 23 V56 M26 23 V56 M40 23 V56 M54 23 V56 M68 23 V56" stroke="#efe4cc" stroke-width="6"/>
+  <rect x="2" y="56" width="76" height="6" fill="#d8c7a2"/>
+ </symbol>
+ <symbol id="stall" viewBox="0 0 70 60">
+  <path d="M4 14 L35 4 L66 14 Z" fill="#c97c5d"/><path d="M4 14 H66 V20 H4Z" fill="#e3a77d"/>
+  <path d="M10 20 V58 M60 20 V58" stroke="#8a6a4f" stroke-width="3"/><rect x="8" y="38" width="54" height="8" fill="#b88c5a"/>
+  <circle cx="20" cy="35" r="4" fill="#d9818c"/><circle cx="30" cy="35" r="4" fill="#f0c77a"/><circle cx="40" cy="35" r="4" fill="#7e9b78"/><circle cx="50" cy="35" r="4" fill="#f0c77a"/>
+ </symbol>
+ <symbol id="idcard" viewBox="0 0 120 76"><rect x="2" y="2" width="116" height="72" rx="8" fill="#fffaf0" stroke="#a5b4bf" stroke-width="3"/><rect x="12" y="14" width="30" height="38" rx="3" fill="#dfe6ea"/><circle cx="27" cy="28" r="7" fill="#b9c6cf"/><path d="M50 18 H106 M50 30 H96" stroke="#c9d3da" stroke-width="5"/><rect x="50" y="42" width="58" height="16" rx="3" fill="#fdf3dc" stroke="#c9963f"/><text x="79" y="54" text-anchor="middle" style="font-size:9px;font-weight:700;fill:#8a6a24">CHRISTIAN</text></symbol>
+ <symbol id="frame" viewBox="0 0 100 80"><rect x="2" y="2" width="96" height="76" fill="#b88c5a"/><rect x="10" y="10" width="80" height="60" fill="#f4ead6"/><g fill="#8e7a64"><circle cx="34" cy="34" r="7"/><path d="M24 64 Q24 46 34 44 Q44 46 44 64Z"/><circle cx="62" cy="32" r="8" fill="#a07d78"/><path d="M50 64 Q50 44 62 42 Q74 44 74 64Z" fill="#a07d78"/><circle cx="48" cy="48" r="5" fill="#7f8fa3"/><path d="M42 64 Q42 54 48 53 Q54 54 54 64Z" fill="#7f8fa3"/></g></symbol>
+ <symbol id="school" viewBox="0 0 100 70"><path d="M10 26 L50 6 L90 26Z" fill="#b5735e"/><rect x="14" y="26" width="72" height="42" fill="#efe2c6"/><rect x="44" y="44" width="12" height="24" fill="#8a6a4f"/><rect x="22" y="34" width="12" height="10" fill="#cfe0de"/><rect x="66" y="34" width="12" height="10" fill="#cfe0de"/><path d="M50 6 V-4" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="churchdoor" viewBox="0 0 90 80"><path d="M10 78 V34 Q45 0 80 34 V78Z" fill="#e9dcc0" stroke="#c9b48c" stroke-width="2"/><path d="M30 78 V46 Q45 30 60 46 V78Z" fill="#8a6a4f"/><path d="M45 4 V-10 M38 -4 H52" stroke="#c9963f" stroke-width="3"/><path d="M62 64 q10 -10 20 0 q-10 8 -20 0" fill="#fbf6ea" stroke="#d9c9a3"/></symbol>
+ <symbol id="lockheart" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#fdf3dc" stroke="#e3d6b8" stroke-width="3"/><path d="M50 78 C30 64 20 54 20 40 A14 14 0 0 1 50 32 A14 14 0 0 1 80 40 C80 54 70 64 50 78Z" fill="#e9a3aa"/><rect x="40" y="50" width="20" height="16" rx="3" fill="#8a6a4f"/><path d="M44 50 V44 A6 6 0 0 1 56 44 V50" fill="none" stroke="#8a6a4f" stroke-width="3"/></symbol>
+ <symbol id="seed" viewBox="0 0 40 60"><path d="M20 58 V30" stroke="#7e9b78" stroke-width="3"/><path d="M20 36 Q8 30 6 18 Q18 20 20 34Z M20 30 Q30 20 36 12 Q36 26 20 32Z" fill="#8fae86"/></symbol>
+ <symbol id="roots" viewBox="0 0 40 40"><path d="M20 0 V18 M20 10 Q10 18 6 34 M20 12 Q30 22 34 36 M20 18 Q18 28 22 38" stroke="#8a6a4f" stroke-width="2" fill="none"/></symbol>
+ <symbol id="rings" viewBox="0 0 80 50"><circle cx="30" cy="26" r="16" fill="none" stroke="#c9963f" stroke-width="5"/><circle cx="50" cy="26" r="16" fill="none" stroke="#e0b867" stroke-width="5"/></symbol>
+ <symbol id="cradle" viewBox="0 0 80 60"><path d="M8 20 Q8 48 40 48 Q72 48 72 20Z" fill="#e3c9a0" stroke="#b88c5a" stroke-width="2"/><path d="M6 58 Q40 46 74 58" fill="none" stroke="#a5826a" stroke-width="4"/><circle cx="30" cy="22" r="6" fill="#f2d9c4"/></symbol>
+ <symbol id="calcoin" viewBox="0 0 80 70"><rect x="4" y="8" width="54" height="56" rx="4" fill="#fffaf0" stroke="#c9b48c" stroke-width="2"/><rect x="4" y="8" width="54" height="12" rx="4" fill="#c95f5f"/><path d="M12 30 H50 M12 40 H50 M12 50 H40" stroke="#e3d6b8" stroke-width="3"/><circle cx="60" cy="52" r="14" fill="#f0c77a" stroke="#c9963f" stroke-width="2"/><text x="60" y="57" text-anchor="middle" style="font-size:14px;font-weight:700;fill:#8a6a24">£</text></symbol>
+ <symbol id="compass" viewBox="0 0 80 80"><circle cx="40" cy="40" r="36" fill="#fffaf0" stroke="#b88c5a" stroke-width="4"/><path d="M40 10 V18 M40 62 V70 M10 40 H18 M62 40 H70" stroke="#b88c5a" stroke-width="2"/><g class="needle"><path d="M40 16 L46 40 L40 44 L34 40Z" fill="#c95f5f"/><path d="M40 64 L46 40 L40 36 L34 40Z" fill="#8a9aa6"/></g></symbol>
+ <symbol id="magnify" viewBox="0 0 80 80"><circle cx="32" cy="32" r="22" fill="#cfe0de" opacity=".6" stroke="#8a6a4f" stroke-width="6"/><path d="M48 48 L74 74" stroke="#8a6a4f" stroke-width="9" stroke-linecap="round"/></symbol>
+ <symbol id="fruit" viewBox="0 0 20 22"><circle cx="10" cy="13" r="8" fill="currentColor"/><path d="M10 5 Q12 1 15 1" stroke="#6b5847" stroke-width="1.5" fill="none"/></symbol>
+ <symbol id="qconv" viewBox="0 0 60 60"><path d="M30 50 C16 40 8 32 8 22 A10 10 0 0 1 30 16 A10 10 0 0 1 52 22 C52 32 44 40 30 50Z" fill="#e9a3aa"/><path d="M14 44 Q30 30 46 44" fill="none" stroke="#8a6a4f" stroke-width="3"/></symbol>
+ <symbol id="qfruit" viewBox="0 0 60 60"><circle cx="24" cy="36" r="13" fill="#d9818c"/><circle cx="38" cy="34" r="12" fill="#e0b867"/><path d="M30 22 Q32 10 40 8" stroke="#6b5847" stroke-width="3" fill="none"/><path d="M32 16 Q42 10 46 18 Q38 20 32 16Z" fill="#7e9b78"/></symbol>
+ <symbol id="qdoct" viewBox="0 0 60 60"><rect x="6" y="34" width="22" height="16" fill="#c9c4b6"/><rect x="30" y="34" width="24" height="16" fill="#b9b3a3"/><rect x="16" y="18" width="28" height="16" fill="#d8d2c2"/><path d="M30 20 V32 M25 25 H35" stroke="#c9963f" stroke-width="2.5"/></symbol>
+ <symbol id="qchurch" viewBox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#e3d6b8" stroke-width="2"/><g fill="#7f8fa3"><circle cx="30" cy="10" r="5"/><circle cx="49" cy="26" r="5" fill="#a07d78"/><circle cx="42" cy="48" r="5" fill="#8e7a64"/><circle cx="18" cy="48" r="5" fill="#7e9b78"/><circle cx="11" cy="26" r="5" fill="#c08a86"/></g><path d="M30 24 V36 M24 29 H36" stroke="#c9963f" stroke-width="2.5"/></symbol>
+ <symbol id="cloak" viewBox="0 0 120 90"><path d="M30 6 Q60 -2 90 6 L114 86 Q60 92 6 86Z" fill="#8a7aa0" opacity=".88"/><path d="M60 4 V88" stroke="#6f6288" stroke-width="2"/></symbol>
+ <symbol id="hall" viewBox="0 0 160 100"><rect x="0" y="0" width="160" height="100" fill="#efe6d4"/><rect x="12" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="36" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="60" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="84" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="108" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="132" y="20" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="12" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="36" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="60" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="84" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="108" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="132" y="36" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="12" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="36" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="60" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="84" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="108" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="132" y="52" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="12" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="36" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="60" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="84" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="108" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/><rect x="132" y="68" width="18" height="8" rx="2" fill="#d8c7a2"/></symbol>
+
+ <symbol id="spring" viewBox="0 0 200 120"><path d="M20 100 Q60 70 100 78 Q140 70 180 100Z" fill="#a9a59a"/><ellipse cx="100" cy="82" rx="34" ry="10" fill="#b7d3d6"/><path class="flowline" d="M100 86 C110 96 130 104 170 112" stroke="#b7d3d6" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="70" cy="84" r="8" fill="#c9c4b6"/><circle cx="132" cy="86" r="9" fill="#bdb7a8"/></symbol>
+ <symbol id="balance" viewBox="0 0 120 80"><path d="M60 6 V70 M20 20 H100 M40 74 H80" stroke="#c9963f" stroke-width="3"/><path d="M20 20 l-14 24 h28z M100 20 l-14 24 h28z" fill="#fdf3dc" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="puzzle" viewBox="0 0 60 60"><path d="M6 14 H22 Q22 4 30 4 Q38 4 38 14 H54 V30 Q44 30 44 38 Q44 46 54 46 V56 H6Z" fill="#8fae86"/></symbol>
+ <symbol id="anchor" viewBox="0 0 60 60"><circle cx="30" cy="10" r="5" fill="none" stroke="#5b4a26" stroke-width="3"/><path d="M30 15 V52 M18 24 H42 M10 38 Q14 54 30 54 Q46 54 50 38" stroke="#5b4a26" stroke-width="4" fill="none" stroke-linecap="round"/></symbol>
+ <symbol id="flowr" viewBox="0 0 60 60"><path d="M30 58 V30" stroke="#7e9b78" stroke-width="3"/><ellipse cx="30" cy="16" rx="7" ry="13" fill="#d9818c" transform="rotate(0 30 26)"/><ellipse cx="30" cy="16" rx="7" ry="13" fill="#d9818c" transform="rotate(72 30 26)"/><ellipse cx="30" cy="16" rx="7" ry="13" fill="#d9818c" transform="rotate(144 30 26)"/><ellipse cx="30" cy="16" rx="7" ry="13" fill="#d9818c" transform="rotate(216 30 26)"/><ellipse cx="30" cy="16" rx="7" ry="13" fill="#d9818c" transform="rotate(288 30 26)"/><circle cx="30" cy="26" r="6" fill="#f0c77a"/></symbol>
+ <symbol id="shieldq" viewBox="0 0 60 60"><path d="M30 4 L52 12 V30 Q52 48 30 56 Q8 48 8 30 V12Z" fill="#c8d3df" stroke="#7f8fa3" stroke-width="3"/><text x="30" y="40" text-anchor="middle" style="font-size:26px;font-weight:700;fill:#5b6b80">?</text></symbol>
+ <symbol id="stone1" viewBox="0 0 60 40"><rect x="4" y="8" width="52" height="28" rx="4" fill="#c9c4b6"/><path d="M30 12 V30 M22 19 H38" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="jar" viewBox="0 0 60 70"><rect x="16" y="4" width="28" height="8" rx="2" fill="#b88c5a"/><path d="M12 14 H48 V60 Q48 66 42 66 H18 Q12 66 12 60Z" fill="#e9eef0" stroke="#a5b4bf" stroke-width="2"/><circle cx="24" cy="54" r="6" fill="#f0c77a"/><circle cx="36" cy="56" r="6" fill="#e0b867"/><circle cx="30" cy="46" r="6" fill="#f0c77a"/></symbol>
+ <symbol id="gift" viewBox="0 0 50 50"><rect x="6" y="20" width="38" height="26" fill="#d9818c"/><rect x="4" y="14" width="42" height="8" fill="#e9a3aa"/><path d="M25 14 V46" stroke="#f0c77a" stroke-width="4"/><path d="M25 14 Q14 2 12 12 Q18 14 25 14 Q32 14 38 12 Q36 2 25 14" fill="none" stroke="#f0c77a" stroke-width="3"/></symbol>
+ <symbol id="clockic" viewBox="0 0 50 50"><circle cx="25" cy="25" r="21" fill="#fffaf0" stroke="#8a6a4f" stroke-width="3"/><path d="M25 25 V12 M25 25 L34 30" stroke="#2b3445" stroke-width="3" stroke-linecap="round"/></symbol>
+ <symbol id="bible" viewBox="0 0 60 40"><path d="M30 8 Q16 2 4 6 V36 Q16 32 30 38 Q44 32 56 36 V6 Q44 2 30 8Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M30 8 V38" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="lips" viewBox="0 0 60 30"><path d="M4 15 Q16 2 30 10 Q44 2 56 15 Q44 28 30 26 Q16 28 4 15Z" fill="#c97c78"/><path d="M8 15 Q30 20 52 15" stroke="#9c5a56" stroke-width="2" fill="none"/></symbol>
+ <symbol id="eye" viewBox="0 0 60 30"><path d="M4 15 Q30 -6 56 15 Q30 36 4 15Z" fill="#fff" stroke="#2b3445" stroke-width="2"/><circle cx="30" cy="15" r="7" fill="#7f8fa3"/><circle cx="30" cy="15" r="3" fill="#2b3445"/></symbol>
+ <symbol id="sandals" viewBox="0 0 60 40"><ellipse cx="18" cy="22" rx="10" ry="16" fill="#b88c5a"/><ellipse cx="42" cy="22" rx="10" ry="16" fill="#b88c5a"/><path d="M10 16 H26 M34 16 H50" stroke="#7a5a3c" stroke-width="3"/></symbol>
+
+ <symbol id="glowpair" viewBox="0 0 200 120"><circle cx="100" cy="60" r="46" fill="#f2b6a0" opacity=".45"/><circle cx="100" cy="60" r="26" fill="#f6cdb6" opacity=".7"/></symbol>
+ <symbol id="lamp2" viewBox="0 0 60 90"><rect x="27" y="40" width="6" height="48" fill="#8a6a4f"/><path d="M14 16 H46 L42 42 H18Z" fill="#fff4d6" stroke="#8a6a4f" stroke-width="3"/><path d="M30 18 Q24 28 30 36 Q36 28 30 18Z" fill="#f0c77a"/><circle cx="30" cy="28" r="26" fill="#f7d98f" opacity=".25"/></symbol>
+ <symbol id="door" viewBox="0 0 80 120"><rect x="4" y="4" width="72" height="112" fill="#8a6a4f"/><rect x="12" y="12" width="56" height="104" fill="#f7d98f"/></symbol>
+ <symbol id="glasses" viewBox="0 0 120 40"><circle cx="30" cy="20" r="16" fill="#f2a6b0" opacity=".55" stroke="#8a4a50" stroke-width="3"/><circle cx="90" cy="20" r="16" fill="#f2a6b0" opacity=".55" stroke="#8a4a50" stroke-width="3"/><path d="M46 20 Q60 12 74 20" stroke="#8a4a50" stroke-width="3" fill="none"/></symbol>
+ <symbol id="gauge" viewBox="0 0 120 80"><path d="M10 70 A50 50 0 0 1 110 70" fill="none" stroke="#e3d6b8" stroke-width="12"/><path d="M10 70 A50 50 0 0 1 110 70" fill="none" stroke="#e9a3aa" stroke-width="12" stroke-dasharray="40 200"/></symbol>
+ <symbol id="horn" viewBox="0 0 40 40"><path d="M6 30 Q10 8 34 6 Q22 14 18 34Z" fill="#e3d6b8" stroke="#a58262" stroke-width="2"/></symbol>
+ <symbol id="track" viewBox="0 0 300 120"><ellipse cx="150" cy="60" rx="140" ry="50" fill="none" stroke="#d9a07a" stroke-width="18"/><ellipse cx="150" cy="60" rx="140" ry="50" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="6 8"/></symbol>
+
+ <symbol id="flag" viewBox="0 0 30 50"><rect x="3" y="2" width="2.5" height="48" fill="#8a6a4f"/><path class="ripple-flag" d="M5.5 3 Q14 0 18 4 Q23 8 28 5 L28 19 Q23 22 18 18 Q14 14 5.5 17Z" fill="#c95f5f"/></symbol>
+ <symbol id="spot" viewBox="0 0 200 200"><path d="M70 0 H130 L200 200 H0Z" fill="#fff4cf" opacity=".55"/><ellipse cx="100" cy="192" rx="96" ry="10" fill="#f7d98f" opacity=".6"/></symbol>
+ <symbol id="crown" viewBox="0 0 60 40"><path d="M4 36 L8 8 L20 22 L30 4 L40 22 L52 8 L56 36Z" fill="#e0b24f" stroke="#a87f2a" stroke-width="2"/></symbol>
+ <symbol id="cup" viewBox="0 0 60 50"><path d="M8 8 H44 V30 Q44 44 26 44 Q8 44 8 30Z" fill="#fffaf0" stroke="#a58262" stroke-width="3"/><path d="M44 14 Q56 14 56 24 Q56 32 44 32" fill="none" stroke="#a58262" stroke-width="3"/></symbol>
+ <symbol id="crucible" viewBox="0 0 80 70"><path d="M10 20 H70 L60 62 H20Z" fill="#8a6a4f"/><ellipse cx="40" cy="20" rx="30" ry="7" fill="#f0c77a"/><path d="M30 10 Q34 0 40 8 Q46 0 50 10" fill="#f2a65a" opacity=".8"/></symbol>
+ <symbol id="redflag" viewBox="0 0 40 60"><rect x="4" y="2" width="4" height="56" fill="#8a6a4f"/><path d="M8 4 H36 L28 14 L36 24 H8Z" fill="#c95f5f"/></symbol>
+ <symbol id="bubble" viewBox="0 0 80 50"><path d="M6 4 H74 Q78 4 78 8 V34 Q78 38 74 38 H30 L18 48 L20 38 H6 Q2 38 2 34 V8 Q2 4 6 4Z" fill="#fffaf0" stroke="#a58262" stroke-width="2"/></symbol>
+ <symbol id="book" viewBox="0 0 60 40"><path d="M4 6 Q18 0 30 6 Q42 0 56 6 V36 Q42 30 30 36 Q18 30 4 36Z" fill="#c9963f" stroke="#8a6a24" stroke-width="2"/><path d="M30 6 V36" stroke="#8a6a24" stroke-width="2"/></symbol>
+
+ <symbol id="gflag" viewBox="0 0 30 50"><rect x="3" y="2" width="2.5" height="48" fill="#8a6a4f"/><path class="ripple-flag" d="M5.5 3 Q14 0 18 4 Q23 8 28 5 L28 19 Q23 22 18 18 Q14 14 5.5 17Z" fill="#6f9a6a"/></symbol>
+ <symbol id="post" viewBox="0 0 30 50"><rect x="3" y="14" width="2.5" height="36" fill="#a58262"/></symbol>
+ <symbol id="camera" viewBox="0 0 80 50"><rect x="4" y="12" width="52" height="32" rx="4" fill="#5b4a26"/><circle cx="22" cy="10" r="9" fill="#5b4a26"/><circle cx="42" cy="10" r="9" fill="#5b4a26"/><path d="M56 22 L76 12 V44 L56 34Z" fill="#5b4a26"/></symbol>
+ <symbol id="coin" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#e0b24f" stroke="#a87f2a" stroke-width="3"/><circle cx="20" cy="20" r="9" fill="none" stroke="#a87f2a" stroke-width="2"/></symbol>
+ <symbol id="scales" viewBox="0 0 120 90"><rect x="57" y="10" width="6" height="70" fill="#8a6a4f"/><rect x="36" y="80" width="48" height="6" fill="#8a6a4f"/><path d="M14 22 H106" stroke="#8a6a4f" stroke-width="4"/><path d="M14 22 L4 48 H24Z M106 22 L96 48 H116Z" fill="none" stroke="#8a6a4f" stroke-width="2"/><path d="M2 48 Q14 58 26 48Z M94 48 Q106 58 118 48Z" fill="#c9a27a"/></symbol>
+ <symbol id="fire" viewBox="0 0 60 60"><g stroke="#e9b25e" stroke-width="3" stroke-linecap="round"><path d="M30 30 L30 6"/><path d="M30 30 L52 18"/><path d="M30 30 L54 40"/><path d="M30 30 L30 54"/><path d="M30 30 L8 42"/><path d="M30 30 L6 18"/></g><circle cx="30" cy="30" r="5" fill="#f2a65a"/></symbol>
+
+ <symbol id="stone" viewBox="0 0 80 60"><path d="M6 50 Q2 26 20 14 Q40 2 60 12 Q78 24 74 48 Q60 58 36 58 Q12 58 6 50Z" fill="#9aa0a3" stroke="#6f7478" stroke-width="2"/></symbol>
+ <symbol id="pack" viewBox="0 0 40 50"><rect x="6" y="10" width="28" height="36" rx="6" fill="#a5784f"/><path d="M12 10 Q20 0 28 10" fill="none" stroke="#7a5f45" stroke-width="3"/><rect x="12" y="24" width="16" height="10" rx="2" fill="#8a6a4f"/></symbol>
+ <symbol id="hat" viewBox="0 0 40 24"><path d="M4 20 H36 L30 8 H10Z" fill="#7f8fa3"/><rect x="2" y="18" width="36" height="4" fill="#5b6b80"/></symbol>
+ <symbol id="jar2" viewBox="0 0 40 50"><rect x="8" y="10" width="24" height="36" rx="5" fill="#e3ecdf" stroke="#7e9b78" stroke-width="2"/><rect x="10" y="4" width="20" height="7" fill="#a58262"/><circle cx="20" cy="34" r="6" fill="#e0b24f"/></symbol>
+
+ <symbol id="map9" viewBox="0 0 160 100"><path d="M6 10 L54 4 L106 12 L154 6 V90 L106 96 L54 88 L6 94Z" fill="#f6e6c2" stroke="#b99a6a" stroke-width="2"/><path d="M54 4 V88 M106 12 V96" stroke="#d8c39a" stroke-width="1.5"/><circle cx="130" cy="30" r="9" fill="#cfdcc6"/><path d="M20 70 q10 -8 20 0" stroke="#a9c0ad" stroke-width="3" fill="none"/></symbol>
+ <symbol id="bench" viewBox="0 0 120 50"><rect x="4" y="16" width="112" height="8" rx="2" fill="#a5784f"/><rect x="4" y="2" width="112" height="7" rx="2" fill="#8a6a4f"/><path d="M14 24 V48 M106 24 V48" stroke="#7a5f45" stroke-width="5"/></symbol>
+ <symbol id="ldoor" viewBox="0 0 70 110"><ellipse cx="35" cy="60" rx="34" ry="52" fill="#f7d98f" opacity=".45"/><path d="M12 108 V40 Q35 14 58 40 V108Z" fill="#f2c97a" stroke="#c9963f" stroke-width="2"/><circle cx="50" cy="74" r="3" fill="#a87f2a"/></symbol>
+ <symbol id="box9" viewBox="0 0 50 40"><rect x="4" y="12" width="42" height="26" rx="3" fill="#c9a27a" stroke="#8a6a4f" stroke-width="2"/><rect x="2" y="6" width="46" height="9" rx="2" fill="#a5784f"/></symbol>
+ <symbol id="sign9" viewBox="0 0 90 90"><rect x="40" y="40" width="8" height="50" fill="#8a6a4f"/><rect x="4" y="8" width="82" height="40" rx="4" fill="#efe2c4" stroke="#8a6a4f" stroke-width="2"/><text x="45" y="34" text-anchor="middle" font-size="15" font-family="Inter,sans-serif" fill="#5b4a26">Just don't</text></symbol>
+ <symbol id="col9" viewBox="0 0 30 120"><rect x="6" y="10" width="18" height="104" fill="#e8d6b0"/><rect x="0" y="2" width="30" height="10" fill="#d8c39a"/><rect x="0" y="112" width="30" height="8" fill="#d8c39a"/></symbol>
+ <symbol id="ship9" viewBox="0 0 80 60"><path d="M6 40 H74 L64 56 H16Z" fill="#8a6a4f"/><path d="M40 4 V40" stroke="#5b4a26" stroke-width="3"/><path d="M42 6 L66 34 H42Z" fill="#f6efdf" stroke="#c9b48c"/></symbol>
+ <symbol id="cal9" viewBox="0 0 140 60"><rect x="2" y="2" width="136" height="56" rx="5" fill="#fffaf0" stroke="#c9b48c" stroke-width="2"/><rect x="2" y="2" width="136" height="12" rx="4" fill="#c95f5f"/><g fill="#efe2c4" stroke="#d8c39a">
+  <rect x="8" y="20" width="16" height="32"/><rect x="27" y="20" width="16" height="32"/><rect x="46" y="20" width="16" height="32"/><rect x="65" y="20" width="16" height="32"/><rect x="84" y="20" width="16" height="32"/><rect x="103" y="20" width="16" height="32"/><rect x="122" y="20" width="12" height="32"/></g></symbol>
+
+ <symbol id="frame10" viewBox="0 0 120 100"><path d="M10 96 V44 L60 8 L110 44 V96" fill="none" stroke="#a5784f" stroke-width="5" stroke-linejoin="round"/><path d="M10 60 H110 M10 78 H110 M35 44 V96 M85 44 V96 M60 8 V96" stroke="#c9a27a" stroke-width="3"/></symbol>
+ <symbol id="tent10" viewBox="0 0 120 80"><path d="M6 76 L60 8 L114 76Z" fill="#c9a27a" stroke="#8a6a4f" stroke-width="2"/><path d="M60 8 L48 76 H72Z" fill="#7a5f45"/></symbol>
+ <symbol id="camel10" viewBox="0 0 100 70"><path d="M14 40 Q20 14 36 30 Q46 8 58 30 Q66 34 74 24 L84 14 Q92 12 92 20 L86 26 Q82 44 70 44 H24 Q14 44 14 40Z" fill="#c49a6c"/><path d="M28 44 V68 M38 44 V68 M62 44 V68 M72 44 V68" stroke="#a87f56" stroke-width="5"/></symbol>
+ <symbol id="well10" viewBox="0 0 80 60"><ellipse cx="40" cy="22" rx="34" ry="10" fill="#7a8a96"/><path d="M6 22 V52 Q40 64 74 52 V22" fill="#b7a58a" stroke="#8a7a62" stroke-width="2"/></symbol>
+ <symbol id="bundle10" viewBox="0 0 60 44"><path d="M6 40 Q4 18 30 14 Q56 18 54 40Z" fill="#c9a27a" stroke="#8a6a4f" stroke-width="2"/><path d="M22 14 Q30 2 38 14" fill="none" stroke="#8a6a4f" stroke-width="3"/></symbol>
+ <symbol id="chair10" viewBox="0 0 40 60"><rect x="6" y="4" width="28" height="30" rx="3" fill="#a5784f"/><rect x="4" y="32" width="32" height="8" fill="#8a6a4f"/><path d="M8 40 V58 M32 40 V58" stroke="#7a5f45" stroke-width="4"/></symbol>
+ <symbol id="case10" viewBox="0 0 60 50"><rect x="4" y="12" width="52" height="34" rx="5" fill="#7f8fa3"/><path d="M22 12 V6 H38 V12" fill="none" stroke="#5b6b80" stroke-width="3"/></symbol>
+ <symbol id="pass10" viewBox="0 0 36 48"><rect x="2" y="2" width="32" height="44" rx="3" fill="#2f4a6a"/><circle cx="18" cy="20" r="7" fill="none" stroke="#e0b24f" stroke-width="2"/><rect x="9" y="34" width="18" height="3" fill="#e0b24f"/></symbol>
+
+ <symbol id="coin11" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#c98a4a" stroke="#8a5a2a" stroke-width="2"/><circle cx="20" cy="20" r="9" fill="none" stroke="#e2b07a" stroke-width="2"/></symbol>
+ <symbol id="slip11" viewBox="0 0 60 70"><rect x="4" y="4" width="52" height="62" rx="4" fill="#fffaf0" stroke="#c9b48c" stroke-width="2"/><path d="M12 18 H48 M12 28 H40 M12 38 H44" stroke="#d8c39a" stroke-width="3"/><rect x="12" y="48" width="36" height="10" rx="2" fill="#e3ecdf"/></symbol>
+ <symbol id="jar11" viewBox="0 0 40 50"><rect x="8" y="10" width="24" height="36" rx="5" fill="#e3ecdf" stroke="#7e9b78" stroke-width="2"/><rect x="10" y="4" width="20" height="7" fill="#a58262"/></symbol>
+ <symbol id="key11" viewBox="0 0 60 30"><circle cx="12" cy="15" r="9" fill="none" stroke="#c9963f" stroke-width="4"/><path d="M21 15 H56 M46 15 V24 M52 15 V22" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="chest11" viewBox="0 0 80 60"><rect x="4" y="22" width="72" height="34" rx="4" fill="#a5784f" stroke="#7a5f45" stroke-width="2"/><path d="M4 26 Q40 0 76 26" fill="#8a6a4f"/><rect x="34" y="30" width="12" height="12" fill="#e0b24f"/></symbol>
+ <symbol id="ledger11" viewBox="0 0 80 60"><rect x="4" y="4" width="72" height="52" rx="3" fill="#f6e6c2" stroke="#b99a6a" stroke-width="2"/><path d="M40 4 V56 M10 16 H34 M10 26 H34 M10 36 H34 M46 16 H70 M46 26 H70 M46 36 H70" stroke="#c9a27a" stroke-width="2"/></symbol>
+ <symbol id="dice11" viewBox="0 0 50 40"><rect x="4" y="10" width="24" height="24" rx="4" fill="#fffaf0" stroke="#5b4a26" stroke-width="2"/><rect x="22" y="4" width="24" height="24" rx="4" fill="#fffaf0" stroke="#5b4a26" stroke-width="2"/><circle cx="12" cy="18" r="2"/><circle cx="20" cy="26" r="2"/><circle cx="34" cy="16" r="2"/></symbol>
+ <symbol id="card11" viewBox="0 0 60 40"><rect x="2" y="2" width="56" height="36" rx="5" fill="#2f4a6a"/><rect x="2" y="10" width="56" height="7" fill="#1d2738"/><rect x="8" y="24" width="18" height="6" rx="1" fill="#e0b24f"/></symbol>
+ <symbol id="chart11" viewBox="0 0 80 60"><rect x="2" y="2" width="76" height="56" rx="4" fill="#1d2738"/><path d="M8 48 L22 40 L34 44 L48 26 L60 30 L72 8" stroke="#7fd18a" stroke-width="3" fill="none"/></symbol>
+ <symbol id="purse11" viewBox="0 0 60 44"><path d="M6 16 H54 L50 40 H10Z" fill="#a07d78" stroke="#7a5a56" stroke-width="2"/><path d="M18 16 Q30 0 42 16" fill="none" stroke="#7a5a56" stroke-width="3"/></symbol>
+
+ <symbol id="foot12" viewBox="0 0 12 18"><ellipse cx="6" cy="10" rx="4.2" ry="6.5" fill="#8a7a62"/><circle cx="4" cy="2.5" r="1.5" fill="#8a7a62"/><circle cx="7.5" cy="2.2" r="1.4" fill="#8a7a62"/></symbol>
+ <symbol id="hands12" viewBox="0 0 80 40"><path d="M4 30 Q20 10 40 26 Q60 10 76 30 Q60 40 40 34 Q20 40 4 30Z" fill="#e2b48c" stroke="#b98563" stroke-width="2"/></symbol>
+ <symbol id="shoot12" viewBox="0 0 40 60"><path d="M20 58 V24" stroke="#7e9b78" stroke-width="3"/><path d="M20 34 Q6 26 8 14 Q20 18 20 34Z" fill="#9cc08f"/><path d="M20 28 Q34 20 32 8 Q20 12 20 28Z" fill="#9cc08f"/></symbol>
+ <symbol id="letter12" viewBox="0 0 50 36"><rect x="2" y="2" width="46" height="32" rx="3" fill="#fffaf0" stroke="#c9b48c" stroke-width="2"/><path d="M2 4 L25 20 L48 4" fill="none" stroke="#c9b48c" stroke-width="2"/></symbol>
+ <symbol id="shield12" viewBox="0 0 40 46"><path d="M20 2 L38 9 V22 Q38 38 20 44 Q2 38 2 22 V9Z" fill="#7e9b78" stroke="#5a7a55" stroke-width="2"/><path d="M12 22 L18 28 L29 15" stroke="#fffaf0" stroke-width="3" fill="none"/></symbol>
+
+ <symbol id="sign13" viewBox="0 0 60 90"><rect x="27" y="20" width="6" height="70" fill="#8a6a4f"/><path d="M6 14 H48 L56 24 L48 34 H6Z" fill="#efe2c4" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="signl13" viewBox="0 0 60 90"><rect x="27" y="20" width="6" height="70" fill="#8a6a4f"/><path d="M54 14 H12 L4 24 L12 34 H54Z" fill="#efe2c4" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="book13" viewBox="0 0 50 34"><path d="M25 6 Q14 0 2 4 V30 Q14 26 25 32 Q36 26 48 30 V4 Q36 0 25 6Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M25 6 V32" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="fleece13" viewBox="0 0 80 40"><path d="M6 30 Q4 14 18 12 Q22 2 36 6 Q48 0 58 8 Q74 8 74 22 Q78 34 62 36 H16 Q6 36 6 30Z" fill="#f4efe4" stroke="#c9b48c" stroke-width="2"/></symbol>
+ <symbol id="crucible13" viewBox="0 0 60 60"><path d="M10 16 H50 L44 46 Q30 54 16 46Z" fill="#7a8696" stroke="#5b6b80" stroke-width="2"/><ellipse cx="30" cy="18" rx="18" ry="5" fill="#e9b25e"/><path d="M18 56 Q22 46 26 56 Q30 44 34 56 Q38 46 42 56" fill="#e9824e"/></symbol>
+
+ <symbol id="seat14" viewBox="0 0 40 30"><ellipse cx="20" cy="22" rx="18" ry="7" fill="#e8dcc0" stroke="#c9b48c" stroke-width="1.5"/></symbol>
+ <symbol id="gate14" viewBox="0 0 160 120"><rect x="0" y="20" width="40" height="100" fill="#cdb894"/><rect x="120" y="20" width="40" height="100" fill="#cdb894"/><path d="M40 120 V60 Q80 20 120 60 V120" fill="none" stroke="#b39a72" stroke-width="10"/><rect x="0" y="12" width="160" height="14" fill="#b39a72"/></symbol>
+ <symbol id="mirror14" viewBox="0 0 40 60"><ellipse cx="20" cy="24" rx="16" ry="22" fill="#e6eef2" stroke="#a5784f" stroke-width="3"/><rect x="17" y="46" width="6" height="14" fill="#a5784f"/></symbol>
+ <symbol id="phone14" viewBox="0 0 24 40"><rect x="1" y="1" width="22" height="38" rx="4" fill="#2b3445"/><rect x="4" y="6" width="16" height="26" fill="#9fc0d0"/></symbol>
+ <symbol id="ballot14" viewBox="0 0 50 50"><rect x="4" y="16" width="42" height="32" fill="#c9a27a" stroke="#8a6a4f" stroke-width="2"/><rect x="14" y="2" width="22" height="20" fill="#fffaf0" stroke="#8a6a4f"/><rect x="12" y="14" width="26" height="4" fill="#5b4a26"/></symbol>
+ <symbol id="ash14" viewBox="0 0 120 30"><path d="M0 30 Q60 0 120 30Z" fill="#9a9187"/></symbol>
+
+ <symbol id="stone15" viewBox="0 0 40 28"><path d="M3 20 L6 6 L20 2 L35 6 L38 18 L28 26 L10 26Z" fill="currentColor" stroke="#8a7a62" stroke-width="1.5"/></symbol>
+ <symbol id="tower15" viewBox="0 0 60 120"><path d="M14 120 V30 H46 V120Z" fill="#cdb894" stroke="#8a7a62" stroke-width="2"/><path d="M10 30 H50 V20 H44 V26 H38 V20 H32 V26 H26 V20 H20 V26 H16 V20 H10Z" fill="#b39a72"/><rect x="26" y="50" width="8" height="14" fill="#5b4a26"/></symbol>
+ <symbol id="ruin15" viewBox="0 0 80 50"><rect x="0" y="40" width="80" height="10" fill="#b8a888"/><path d="M4 40 V22 H18 V30 H30 V16 H40 V40Z" fill="#cdb894" stroke="#8a7a62"/><path d="M50 40 Q56 30 60 40 M64 40 Q68 32 72 40" stroke="#7e9b78" stroke-width="2" fill="none"/></symbol>
+ <symbol id="arch15" viewBox="0 0 80 60"><path d="M4 60 V30 Q4 4 38 4 V20 Q20 20 20 40 V60Z" fill="#e2b48c" stroke="#b98563" stroke-width="2"/><path d="M76 60 V30 Q76 4 42 4 V20 Q60 20 60 40 V60Z" fill="#9fc0d0" stroke="#5b6b80" stroke-width="2"/></symbol>
+ <symbol id="gflag15" viewBox="0 0 30 50"><rect x="3" y="4" width="3" height="46" fill="#8a6a4f"/><path d="M6 4 H28 L22 12 L28 20 H6Z" fill="#8fae9f"/></symbol>
+
+ <symbol id="boat16" viewBox="0 0 80 50"><path d="M4 30 H76 L64 46 H16Z" fill="#a5784f"/><rect x="38" y="4" width="3" height="26" fill="#8a6a4f"/><path d="M41 6 L66 26 H41Z" fill="#efe2c4"/></symbol>
+ <symbol id="ring16" viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="#e9b25e" stroke-width="5"/></symbol>
+ <symbol id="fig16" viewBox="0 0 80 70"><path d="M40 70 V40" stroke="#8a6a4f" stroke-width="6"/><ellipse cx="40" cy="28" rx="36" ry="24" fill="#7e9b78"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="blur"><feGaussianBlur stdDeviation="6"/></filter></svg>
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome back">Lesson 16 · Book chapter 16 · Part 4</p>
+ <h1 class="b up" data-at="Welcome back">When Good Christians Are Wrong for Each Other</h1>
+ <div class="scene" style="max-height:none;overflow:visible"><svg class="road16" viewBox="0 0 460 220" aria-hidden="true"><rect width="460" height="220" fill="#f6efdf" rx="14"/><path d="M230 220 V130" stroke="#e8dcc0" stroke-width="30" fill="none" stroke-linecap="round"/><g class="b" data-at="until the path divides"><path d="M230 132 C200 90 120 70 40 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M230 132 C260 90 340 70 420 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/></g><g class="b" data-at="Both roads are good"><ellipse cx="90" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/><ellipse cx="370" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/></g><g class="b walkin" data-at="I will picture this lesson"><use href="#trav" x="186" y="120" width="34" height="100" /><use href="#lamp2" x="214" y="136" width="20" height="30" /><use href="#per" x="236" y="122" width="32" height="98" style="color:#c08a86" /><use href="#lamp2" x="262" y="138" width="18" height="28" /></g></svg></div>
+ <div class="b up" data-at="one question with us"><h2>What if we are both good people, but this is not right?</h2></div>
+</div></section><section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+<div class="wrap">
+ <p class="lead13 b up" data-at="Some relationships have no villain">Some relationships have no villain.</p>
+ <svg class="scene mid" viewBox="0 0 460 170" aria-hidden="true"><rect width="460" height="170" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="Two sincere believers"><use href="#churchdoor" x="170" y="10" width="120" height="100" /><use href="#per" x="150" y="60" width="30" height="96" style="color:#7f8fa3" /><use href="#per" x="280" y="60" width="30" height="96" style="color:#c08a86" /></g>
+  <g class="b up" data-at="No red flags"><path d="M20 30 H140" stroke="#8a6a4f" stroke-width="2"/><path d="M30 30 l8 14 l8 -14" fill="#efe2c4" stroke="#c9b48c"/><path d="M60 30 l8 14 l8 -14" fill="#efe2c4" stroke="#c9b48c"/><path d="M90 30 l8 14 l8 -14" fill="#efe2c4" stroke="#c9b48c"/><path d="M120 30 l8 14 l8 -14" fill="#efe2c4" stroke="#c9b48c"/></g>
+  <g class="b up" data-at="a church that is already planning the wedding"><use href="#per" x="350" y="70" width="22" height="74" style="color:#9aa0a3" /><use href="#per" x="380" y="72" width="22" height="72" style="color:#a07d78" /><use href="#cal9" x="400" y="30" width="56" height="24" /></g>
+  <g class="b" data-at="So people stay"><ellipse cx="230" cy="150" rx="120" ry="14" fill="#c9b48c" opacity=".4"/></g></svg>
+ <p class="big2 b up" data-at="goodness alone does not create compatibility">Goodness alone does not create compatibility.</p>
+ <p class="safe5 b up" data-at="this lesson is for relationships without abuse or control">This lesson is for relationships without abuse or control. <b>If fear, coercion or control is present, Lesson 6 comes first.</b></p>
+</div></section><section class="slide" data-n="3" data-theme="dawn" aria-label="Slide 3">
+<div class="wrap">
+ <p class="label b" data-at="Our passage is from Acts">Acts 15 · Antioch</p>
+ <svg class="scene mid" viewBox="0 0 460 190" aria-hidden="true"><g class="cam">
+  <rect width="460" height="190" fill="#f3dcb3"/><rect y="160" width="460" height="30" fill="#d8c39a"/>
+  <use href="#fig16" x="300" y="40" width="140" height="120" /><rect x="40" y="120" width="160" height="40" fill="#cdb894"/>
+  <g class="b up" data-at="Our passage is from Acts"><use href="#sit" x="150" y="96" width="44" height="66" style="color:#8e7a64" /><use href="#sit" x="220" y="96" width="44" height="66" style="color:#6f6a8a" /></g>
+  <g class="b up" data-at="John called Mark"><use href="#per" x="60" y="70" width="30" height="96" style="color:#7e9b78" /></g>
+  <g class="b" data-at="had not gone with them to the work"><path d="M175 100 L210 100" stroke="#c95f5f" stroke-width="4"/></g>
+ </g></svg>
+ <div class="scripture stack">
+  <p class="b" data-at="Let us return" data-until="Now Barnabas wanted">“Let us return and visit the brothers in every city where we proclaimed the word of the Lord, and see how they are.”<span class="ref">Acts 15:36 (ESV)</span></p>
+  <p class="b" data-at="Now Barnabas wanted">“Now Barnabas wanted to take with them John called Mark. But Paul thought best not to take with them one who had withdrawn from them in Pamphylia and had not gone with them to the work.”<span class="ref">Acts 15:37–38 (ESV)</span></p>
+ </div>
+</div></section><section class="slide" data-n="4" data-theme="dawn" aria-label="Slide 4">
+<div class="wrap">
+ <svg class="scene mid" viewBox="0 0 460 200" aria-hidden="true"><rect width="460" height="200" fill="#cfe2ea" rx="12"/><path d="M0 0 H460 V70 C380 90 300 60 230 80 C160 100 80 70 0 90Z" fill="#e8dcc0"/><ellipse cx="250" cy="150" rx="70" ry="22" fill="#e8dcc0"/><text x="250" y="156" text-anchor="middle" class="tiny">Cyprus</text><text x="380" y="40" text-anchor="middle" class="tiny">Syria</text><text x="230" y="40" text-anchor="middle" class="tiny">Cilicia</text><circle cx="410" cy="88" r="7" fill="#8a6a4f"/><text x="410" y="112" text-anchor="middle" class="tiny">Antioch</text><g class="b up" data-at="sailed away to Cyprus"><path d="M400 96 C360 130 320 140 300 146" stroke="#5b6b80" stroke-width="3" stroke-dasharray="5 5" fill="none"/><use href="#boat16" x="286" y="118" width="50" height="32" /></g><g class="b up" data-at="Paul chose Silas"><path d="M410 86 C380 50 320 40 230 50" stroke="#a5784f" stroke-width="4" fill="none"/><use href="#per" x="300" y="22" width="14" height="40" style="color:#6f6a8a" /><use href="#per" x="316" y="22" width="14" height="40" style="color:#7e9b78" /></g><g class="b" data-at="strengthening the churches"><circle cx="360" cy="46" r="7" fill="#f0c77a"/><circle cx="300" cy="40" r="7" fill="#f0c77a"/><circle cx="240" cy="48" r="7" fill="#f0c77a"/></g></svg>
+ <p class="scripture b up" data-at="And there arose a sharp disagreement">“And there arose a sharp disagreement, so that they separated from each other. <span class="b" data-at="Barnabas took Mark">Barnabas took Mark with him and sailed away to Cyprus, but Paul chose Silas and departed, having been commended by the brothers to the grace of the Lord.</span>”<span class="ref">Acts 15:39–40 (ESV)</span></p>
+ <p class="q2 b up" data-at="Two good men">Two good men. Two journeys. <span class="b" data-at="without explicitly declaring which man was right">Luke does not declare which man was right about taking Mark.</span></p>
+</div></section><section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">Understand the original meaning</p>
+ <p class="heb14 b up" data-at="The word Luke uses" style="direction:ltr">παροξυσμός</p>
+ <p class="gloss b up" data-at="paroxysmos"><i>paroxysmos</i> ✱ · “sharp disagreement”: a sharp, stirring contention</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="something sharp"><use href="#fire" x="170" y="20" width="60" height="60" /><path d="M90 90 Q140 60 170 70 M310 90 Q260 60 230 70" stroke="#b98563" stroke-width="10" fill="none" stroke-linecap="round"/></g>
+  <g class="b" data-at="stir up one another to love"><use href="#lamp2" x="180" y="10" width="40" height="60" /><ellipse cx="200" cy="50" rx="70" ry="40" fill="#f7d98f" opacity=".4"/></g></svg>
+ <p class="scripture b up" data-at="stir up one another to love">“…let us consider how to stir up one another to love and good works…”<span class="ref">Hebrews 10:24 (ESV)</span></p>
+ <p class="q2 b up" data-at="Hebrews uses it positively">Hebrews uses it positively; <b>Acts describes a painful disagreement that ended in separation.</b></p>
+</div></section><section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">Explore the background</p>
+ <p class="humble b up" data-at="Before we go further">A disagreement about <b>ministry</b>, not a romantic relationship, <span class="b" data-at="not a model for dating decisions">and not a model for dating decisions.</span></p>
+ <svg class="scene short3" viewBox="0 0 440 140" aria-hidden="true"><rect width="440" height="140" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="Before we go further"><use href="#per" x="60" y="30" width="30" height="100" style="color:#8e7a64" /><use href="#per" x="96" y="40" width="26" height="90" style="color:#7e9b78" /></g>
+  <g class="b up" data-at="Years later"><use href="#scroll" x="180" y="40" width="70" height="44" /></g>
+  <g class="b up" data-at="Get Mark and bring him"><use href="#per" x="320" y="30" width="30" height="100" style="color:#6f6a8a" /><use href="#per" x="360" y="40" width="26" height="90" style="color:#7e9b78" /></g></svg>
+ <p class="scripture b up" data-at="welcome him">“…welcome him” <span class="ref">Colossians 4:10</span> · <span class="b" data-at="Get Mark and bring him">“…he is very useful to me for ministry.” <span class="ref">2 Timothy 4:11 (ESV)</span></span></p>
+ <p class="note b up" data-at="does not record a reconciliation">Scripture does not record a reconciliation between Paul and Barnabas. <span class="b" data-at="Faithful people sometimes part ways"><b>Faithful people sometimes part ways.</b></span></p>
+</div></section><section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">Point 1 · Good is not the same as right</p>
+ <p class="lead13 b up" data-at="Our first point">Good is not the same as right.</p>
+ <svg class="scene short3" viewBox="0 0 440 140" aria-hidden="true"><rect width="440" height="140" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="Our first point"><ellipse cx="110" cy="80" rx="60" ry="56" fill="#f7d98f" opacity=".45"/><use href="#per" x="92" y="26" width="36" height="110" style="color:#c08a86" /></g>
+  <g class="b up" data-at="many good people"><use href="#per" x="220" y="50" width="18" height="64" style="color:#8e7a64" /><use href="#per" x="246" y="50" width="18" height="64" style="color:#7e9b78" /><use href="#per" x="272" y="50" width="18" height="64" style="color:#6f6a8a" /><use href="#per" x="298" y="50" width="18" height="64" style="color:#a07d78" /><use href="#per" x="324" y="50" width="18" height="64" style="color:#9aa0a3" /><use href="#per" x="350" y="50" width="18" height="64" style="color:#b98563" /><use href="#per" x="376" y="50" width="18" height="64" style="color:#7f8fa3" /></g>
+  <g class="b up" data-at="one ideal match"><use href="#door" x="392" y="30" width="36" height="60" /><path d="M384 30 L436 100" stroke="#c95f5f" stroke-width="3"/></g></svg>
+ <p class="q2 b up" data-at="Goodness is a reason to respect them">Goodness is a reason to respect them. <b>It is not, on its own, a reason to marry them.</b></p>
+ <p class="note b up" data-at="freely and faithfully">“Wrong for each other”: this relationship cannot support a marriage both can enter freely and faithfully.</p>
+</div></section><section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="lead13 b up" data-at="The fact that this good person">Kindness does not create an obligation.</p>
+ <svg class="scene short3" viewBox="0 0 440 130" aria-hidden="true"><rect width="440" height="130" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="The fact that this good person"><use href="#gift" x="40" y="40" width="50" height="50" /><use href="#coin" x="120" y="50" width="36" height="36" /><use href="#heart" x="190" y="40" width="50" height="44" style="color:#d9818c" /><path d="M30 30 L260 110" stroke="#c95f5f" stroke-width="3"/></g>
+  <g class="b up" data-at="It sets boundaries"><rect x="290" y="20" width="130" height="90" rx="10" fill="#e3ecdf" stroke="#7e9b78" stroke-width="3" stroke-dasharray="6 4"/><text x="355" y="40" text-anchor="middle" class="tiny">in the Lord</text></g>
+  <g class="b up" data-at="leaves you free"><use href="#trav" x="340" y="46" width="24" height="76" /></g></svg>
+ <p class="q2 b up" data-at="as an act of gratitude">Not as gratitude, not as charity, not to avoid hurting a good person.</p>
+ <p class="scripture b up" data-at="free to be married to whom she wishes">“…she is free to be married to whom she wishes, only in the Lord.”<span class="ref">1 Corinthians 7:39 (ESV)</span> <span class="b" data-at="His words illustrate">About a widow: within Christian faithfulness, marriage is not forced on anyone.</span></p>
+</div></section><section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label">Point 2 · What “wrong for each other” looks like</p>
+ <p class="lead13 b up" data-at="Our second point">Several signs together: none a fault, none a verdict on its own.</p>
+ <div class="sign7"><span class="b up" data-at="you want different lives">1 Different lives</span><span class="b up" data-at="the same person is always the one adapting">2 Always one adapting</span><span class="b up" data-at="depletes rather than restores">3 Depletes, over time</span></div>
+ <ol class="st5">
+  <li class="b up" data-at="you want different lives"><span class="tk">•</span><span>1 Different lives<small>A central conviction, or an unexplored preference? Test a claimed calling with humility.</small></span></li>
+  <li class="b up" data-at="the same person is always the one adapting"><span class="tk">•</span><span>2 The same person always adapting<small>Surrendering convictions, relationships or identity, while the other stays unchanged.</small></span></li>
+  <li class="b up" data-at="depletes rather than restores"><span class="tk">•</span><span>3 Depletes rather than restores, over time<small>Name the source: is outside strain affecting you both?</small></span></li>
+ </ol>
+</div></section><section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <div class="sign7"><span style="opacity:.55">1 Different lives</span><span style="opacity:.55">2 Always one adapting</span><span style="opacity:.55">3 Depletes, over time</span><span class="b up" data-at="not about incidents">4 Not about incidents</span><span class="b up" data-at="you are less yourself">5 Less yourself</span><span class="b up" data-at="independent counsel converges">6 Counsel converges</span><span class="b up" data-at="a persistent reluctance">7 Lasting reluctance</span></div>
+ <ol class="st5" start="4">
+  <li class="b up" data-at="not about incidents"><span class="tk">•</span><span>4 Disagreements not about incidents<small>Lasting differences in conviction, direction or needs.</small></span></li>
+  <li class="b up" data-at="you are less yourself"><span class="tk">•</span><span>5 Less yourself<small>Which part has become quieter? Did they ask for that?</small></span></li>
+  <li class="b up" data-at="independent counsel converges"><span class="tk">•</span><span>6 Independent counsel converges<small>On something concrete, without comparing notes.</small></span></li>
+  <li class="b up" data-at="a persistent reluctance"><span class="tk">•</span><span>7 A reluctance honest time has not resolved<small>Not automatically God’s warning, and not to be pushed down. Understand it.</small></span></li>
+ </ol>
+</div></section><section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="lead13 b up" data-at="Be honest in the other direction">Be honest in the other direction too.</p>
+ <svg class="scene short3" viewBox="0 0 440 130" aria-hidden="true"><rect width="440" height="130" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="It is not ordinary doubt"><use href="#per" x="40" y="30" width="28" height="90" style="color:#7f8fa3" /><use href="#pack" x="70" y="60" width="30" height="40" /></g>
+  <g class="b up" data-at="fear of commitment dressed up as discernment"><use href="#post" x="200" y="40" width="24" height="60" /><path d="M190 110 l-8 0" stroke="#8a7a62" stroke-width="5"/><path d="M176 104 l-8 0" stroke="#8a7a62" stroke-width="5"/><path d="M162 98 l-8 0" stroke="#8a7a62" stroke-width="5"/></g>
+  <g class="b up" data-at="And it is not perfectionism"><use href="#stone15" x="300" y="80" width="34" height="24" style="color:#cdb894" /><use href="#stone15" x="340" y="80" width="34" height="24" style="color:#cdb894" /><use href="#stone15" x="380" y="80" width="34" height="24" style="color:#cdb894" /><rect x="300" y="60" width="110" height="6" fill="#c95f5f"/></g></svg>
+ <ol class="st5">
+  <li class="b up" data-at="It is not ordinary doubt"><span class="tk">•</span><span>Not ordinary doubt<small>“What if I’m wrong?” is the weight of the decision, not a verdict.</small></span></li>
+  <li class="b up" data-at="fear of commitment dressed up as discernment"><span class="tk">•</span><span>Not fear of commitment, dressed up<small>Leaving every good relationship at the same point? Examine the pattern.</small></span></li>
+  <li class="b up" data-at="And it is not perfectionism"><span class="tk">•</span><span>Not perfectionism<small>Waiting for the absence of all friction means waiting forever.</small></span></li>
+ </ol>
+</div></section><section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+<div class="wrap">
+ <ol class="st5">
+  <li class="b up" data-at="outside stress"><span class="tk">•</span><span>Perhaps outside stress<small>Grief, illness or job pressure, reducing both people’s capacity.</small></span></li>
+  <li class="b up" data-at="an unresolved personal struggle"><span class="tk">•</span><span>Perhaps a personal struggle<small>Individual support may be needed before you interpret the pattern.</small></span></li>
+  <li class="b up" data-at="And it is not"><span class="tk">•</span><span>Not “needs work”<small>A named difficulty, mutual willingness, and evidence that effort produces change: Lesson 17.</small></span></li>
+ </ol>
+ <p class="q2 b up" data-at="A fundamental incompatibility">A fundamental incompatibility stays unchanged despite honest effort. <span class="b" data-at="Even then, effort alone">Even then, effort alone does not obligate continuation.</span></p>
+ <p class="big2 b up" data-at="rarely possible alone">Telling the difference is rarely possible alone.</p>
+</div></section><section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label">Point 3 · The theology of a good ending</p>
+ <p class="lead13 b up" data-at="Our third point">Said plainly:</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="Our third point"><use href="#ring16" x="120" y="30" width="56" height="56" /><use href="#ring16" x="220" y="30" width="56" height="56" /></g>
+  <g class="b up" data-at="engagement is a serious intention"><rect x="160" y="88" width="80" height="24" rx="4" fill="#fffaf0" stroke="#c9963f"/></g>
+  <g class="b" data-at="discernment is allowed to conclude"><ellipse cx="200" cy="60" rx="160" ry="54" fill="#f7d98f" opacity=".3"/></g></svg>
+ <p class="big2 b up" data-at="Dating is not marriage">Dating is not marriage. <span class="b" data-at="engagement is a serious intention">Engagement is a serious promise, but not yet the marriage covenant.</span></p>
+ <p class="humble b up" data-at="Before the vows">Before the vows, you are two people discerning, <b>and discernment is allowed to conclude “no”.</b></p>
+</div></section><section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="lead13 b up" data-at="God does not require you">God does not require you to marry someone to reward their goodness.</p>
+ <svg class="scene short3" viewBox="0 0 440 130" aria-hidden="true"><rect width="440" height="130" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="God does not require you"><ellipse cx="110" cy="66" rx="90" ry="54" fill="#f7d98f" opacity=".45"/><use href="#per" x="80" y="20" width="26" height="90" style="color:#7f8fa3" /><use href="#per" x="116" y="20" width="26" height="90" style="color:#c08a86" /></g>
+  <g class="b up" data-at="pain is not the same as cruelty"><path d="M250 20 L250 110" stroke="#5b6b80" stroke-width="3"/><path d="M330 20 L340 50 L326 70 L342 96 L330 110" stroke="#5b4a26" stroke-width="2.5" fill="none"/></g>
+  <g class="b up" data-at="A clear, honest, gentle no"><use href="#per" x="380" y="30" width="22" height="80" style="color:#7f8fa3" /></g></svg>
+ <p class="q2 b up" data-at="God can work through a relationship">God can work through a relationship without obligating two people to continue it.</p>
+ <p class="humble b up" data-at="A clear, honest, gentle no">A clear, honest, gentle no, given as soon as you know it, <b>is one of the most respectful things you can offer.</b></p>
+</div></section><section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label">Point 4 · When only one of you sees it</p>
+ <p class="lead13 b up" data-at="If they believe it is right and you do not">If they believe it is right, and you do not:</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="If they believe it is right and you do not"><use href="#per" x="90" y="16" width="28" height="96" style="color:#c08a86" /><use href="#lamp2" x="120" y="34" width="18" height="28" /><use href="#trav" x="260" y="16" width="28" height="96" /><use href="#lamp2" x="290" y="34" width="18" height="28" /></g>
+  <g class="b up" data-at="You will want to soften it"><use href="#door" x="180" y="20" width="40" height="80" /><rect x="184" y="24" width="18" height="72" fill="#cfe2ea"/></g>
+  <g class="b" data-at="A good person deserves a clear answer"><rect x="184" y="24" width="32" height="72" fill="#8a6a4f"/></g></svg>
+ <p class="big2 b up" data-at="you are not obliged">You are not obliged. <span class="b" data-at="Your no does not require a competing certainty">Your no does not require a competing certainty.</span></p>
+ <p class="humble b up" data-at="not now">Do not say “not now” when you mean “not this”. <b class="b" data-at="ambiguity is a slow cruelty">Ambiguity is a slow cruelty.</b></p>
+</div></section><section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="lead13 b up" data-at="If you believe it is right and they do not">If you believe it is right, and they do not:</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="If you believe it is right and they do not"><use href="#trav" x="100" y="16" width="28" height="96" /><use href="#per" x="260" y="16" width="28" height="96" style="color:#c08a86" /></g>
+  <g class="b up" data-at="Do not continue contact"><use href="#phone14" x="150" y="70" width="22" height="36" /></g>
+  <g class="b" data-at="Grieve it"><ellipse cx="114" cy="70" rx="60" ry="46" fill="#f7d98f" opacity=".45"/></g></svg>
+ <p class="q2 b up" data-at="They are not rejecting God">They are not rejecting God. They are using the freedom this lesson describes.</p>
+ <p class="note b up" data-at="Receive the decision as final">Receive the decision as final. <span class="b" data-at="Do not continue contact">No contact to change their mind.</span></p>
+ <p class="humble b up" data-at="Grieve it">Grieve it. Do not turn it into a spiritual contest. <span class="b" data-at="not smaller because of it"><b>God’s purposes for you are not smaller because of it.</b></span></p>
+</div></section><section class="slide" data-n="17" data-theme="light" aria-label="Slide 17">
+<div class="wrap">
+ <p class="lead13 b up" data-at="If you are engaged">If you are engaged, and real uncertainty persists:</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6efdf" rx="12"/>
+  <g class="b up" data-at="If you are engaged"><rect x="60" y="24" width="90" height="70" rx="6" fill="#fffaf0" stroke="#c9963f"/><use href="#ring16" x="86" y="36" width="36" height="36" /></g>
+  <g class="b up" data-at="Consider pausing further arrangements"><rect x="180" y="30" width="16" height="60" fill="#5b6b80"/><rect x="206" y="30" width="16" height="60" fill="#5b6b80"/></g>
+  <g class="b up" data-at="independent, qualified premarital counsel"><use href="#ldoor" x="300" y="10" width="56" height="100" /></g></svg>
+ <p class="q2 b up" data-at="do not silence it">Do not silence it because plans have advanced. <span class="b" data-at="Consider pausing">Pause arrangements, speak honestly (unless safety makes that unwise), and seek independent premarital counsel.</span></p>
+ <p class="note b up" data-at="A pause is not automatically a cancellation">A pause is not a cancellation, but a wedding timetable should not decide what you have not resolved.</p>
+ <p class="safe5 b up" data-at="Where family coercion, threats or safety concerns">Coercion, threats or safety concerns: <b>no joint counselling or family mediation. Lessons 6 and 10.</b></p>
+</div></section><section class="slide" data-n="18" data-theme="dawn" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">A word about safety</p>
+ <svg class="scene short3" viewBox="0 0 400 120" aria-hidden="true"><rect width="400" height="120" fill="#f6ead2" rx="12"/>
+  <g class="b up" data-at="A word about safety"><rect x="40" y="40" width="110" height="40" rx="8" fill="#efe2c4" stroke="#c9b48c"/><text x="95" y="64" text-anchor="middle" class="tiny">“incompatible”</text><use href="#redflag" x="160" y="26" width="30" height="50" /></g>
+  <g class="b up" data-at="make it sound smaller"><use href="#ldoor" x="220" y="10" width="50" height="96" /></g>
+  <g class="b up" data-at="but you fear their reaction"><use href="#per" x="300" y="24" width="24" height="84" style="color:#7f8fa3" /><use href="#per" x="330" y="28" width="24" height="80" style="color:#7e9b78" /></g></svg>
+ <p class="q2 b up" data-at="This lesson is for relationships where no abuse">For relationships with no abuse or serious safety concern.</p>
+ <p class="safe5 b up" data-at="If fear, coercion or control is present">Fear, coercion or control? <b>Do not call it incompatibility. Return to Lesson 6.</b></p>
+ <p class="safe5 b up" data-at="but you fear their reaction">Afraid of their reaction? <b>Do not announce an ending alone.</b> Lesson 19’s safety guidance applies.</p>
+</div></section><section class="slide" data-n="19" data-theme="light" aria-label="Slide 19">
+<div class="wrap">
+ <p class="lead13 b up" data-at="And where you are right now">Where you are right now</p>
+ <div class="scene" style="max-height:none;overflow:visible"><svg class="road16" style="max-height:26vh" viewBox="0 0 460 220" aria-hidden="true"><rect width="460" height="220" fill="#f6efdf" rx="14"/><path d="M230 220 V130" stroke="#e8dcc0" stroke-width="30" fill="none" stroke-linecap="round"/><path d="M230 132 C200 90 120 70 40 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M230 132 C260 90 340 70 420 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/><g class="b" data-at="taking an important concern seriously"><ellipse cx="90" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/><ellipse cx="370" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/></g><use href="#trav" x="186" y="120" width="34" height="100" /><use href="#lamp2" x="214" y="136" width="20" height="30" /><use href="#per" x="236" y="122" width="32" height="98" style="color:#c08a86" /><use href="#lamp2" x="262" y="138" width="18" height="28" /><g class="b" data-at="be glad"><path d="M230 132 C200 90 120 70 40 50" stroke="#e9b25e" stroke-width="6" fill="none" stroke-dasharray="2 10"/></g></svg></div>
+ <p class="q2 b up" data-at="the grief with no one to blame">The grief with no one to blame? <b class="b" data-at="taking an important concern seriously">You are taking an important concern seriously.</b> <span class="b" data-at="Use the reflection below">Test it before deciding: Lessons 17, 18 and 19 will help.</span></p>
+ <p class="note b up" data-at="be glad">Found nothing of yourself here? Be glad. <b>Lesson 17 is for you.</b></p>
+</div></section><section class="slide" data-n="20" data-theme="light" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">Bringing it together</p>
+ <ol class="steps sum">
+  <li class="b up" data-at="Let us bring it together">Good is not the same as right</li>
+  <li class="b up" data-at="Look for patterns">Look for patterns, not a single sign, and be honest about what it is not</li>
+  <li class="b up" data-at="Dating is not marriage">Dating is not marriage; discernment is allowed to conclude no</li>
+  <li class="b up" data-at="whoever sees it first">A clear, gentle answer, given and received without a contest</li>
+ </ol>
+ <div class="scene" style="max-height:none;overflow:visible"><svg class="road16" style="max-height:22vh" viewBox="0 0 460 220" aria-hidden="true"><rect width="460" height="220" fill="#f6efdf" rx="14"/><path d="M230 220 V130" stroke="#e8dcc0" stroke-width="30" fill="none" stroke-linecap="round"/><path d="M230 132 C200 90 120 70 40 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/><path d="M230 132 C260 90 340 70 420 50" stroke="#e8dcc0" stroke-width="22" fill="none" stroke-linecap="round"/><g class="b" data-at="without turning it into a contest"><ellipse cx="90" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/><ellipse cx="370" cy="60" rx="80" ry="34" fill="#f7d98f" opacity=".5"/></g><use href="#trav" x="186" y="120" width="34" height="100" /><use href="#lamp2" x="214" y="136" width="20" height="30" /><use href="#per" x="236" y="122" width="32" height="98" style="color:#c08a86" /><use href="#lamp2" x="262" y="138" width="18" height="28" /></svg></div>
+</div></section><section class="slide" data-n="21" data-theme="light" aria-label="Slide 21">
+<div class="wrap">
+ <p class="label">One step now</p>
+ <svg class="scene short2" viewBox="0 0 400 110" aria-hidden="true"><rect width="400" height="110" fill="#f6efdf"/><ellipse class="breathe" cx="200" cy="60" rx="120" ry="46" fill="#f7d98f" opacity=".35"/><use href="#lamp" x="150" y="14" width="36" height="58" /><use href="#book13" x="196" y="50" width="70" height="48" /></svg>
+ <div class="journal2 breathe">
+  <p class="b" data-at="Here is one step for today"><b>Write one thing you know to be true about this relationship, whatever you feel.</b></p>
+  <p class="b" data-at="For example">“They are kind, and we want different countries.” Or: “We have never tried to solve the thing that worries me.”</p>
+  <p class="b" data-at="If it is safe, write it privately">If it is safe, write it privately, or simply think it through before God.</p>
+  <p class="b small2" data-at="When you have more time">The full Good Person, Wrong Relationship Reflection is below this lesson (optional). Nothing is saved. If someone else may access your device or papers, simply think through the questions instead.</p>
+ </div>
+</div></section><section class="slide" data-n="22" data-theme="dawn" aria-label="Slide 22">
+<svg class="sunbg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="breathe" cx="600" cy="640" r="160" fill="#f0c77a" opacity=".45"/><circle cx="600" cy="640" r="280" fill="#f0c77a" opacity=".14"/></svg>
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <div class="prayer stack">
+  <div class="b" data-at="Let us pray" data-until="If I have reached a decision"><p>Lord, I keep looking for someone to blame, and there is no one. They are good, and I am not sure this can be built. Take away the idea that loving you means ignoring what I can plainly see.</p></div>
+  <div class="b" data-at="If I have reached a decision" data-until="Search me, O God"><p>If I have reached a decision, give me courage to say it honestly and safely. Hold them, whatever I decide. And if I am wrong about all of this, show me that instead. In Jesus’ name, amen.</p></div>
+ </div>
+ <p class="close b" data-at="Search me, O God">“Search me, O God, and know my heart!” <span class="ref">Psalm 139:23 (ESV)</span></p>
+ <p class="note b up" data-at="Stop here for today">Stop here for today, or continue to Lesson 17, and Part Five.</p>
+</div></section>
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 22</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" preload="auto"><source src="bysy-lesson-16.mp3" type="audio/mpeg"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome back. This is Lesson 16, the last lesson of Part Four: Discernment. I will picture this lesson as two good people walking together, each carrying a lamp, until the path divides. Both roads are good. Neither is in shadow. And the question is whether these two are meant to walk the same one. And we carry one question with us: what if we are both good people, but this is not right?", "2": "Some relationships have no villain. Two sincere believers. Sound character on both sides. No red flags, no safety concerns, families who approve, a church that is already planning the wedding. And still, the relationship may not be a workable or mutually desired fit, not because either person is bad, but because goodness alone does not create compatibility. When there is a villain, ending a relationship is painful but clear. When there is none, ending it can feel like a betrayal of a good person, and an admission that you are the problem. So people stay. This lesson is about the freedom Christians have, and often do not know they have, to recognise someone's goodness and still say no to the relationship. And one thing first: this lesson is for relationships without abuse or control. If fear, coercion or control is present, do not call it incompatibility. Lesson 6 comes first, and there is guidance on the page beneath this lesson.", "3": "Our passage is from Acts, after Paul and Barnabas had travelled together for years. \"And after some days Paul said to Barnabas, 'Let us return and visit the brothers in every city where we proclaimed the word of the Lord, and see how they are.'\" \"Now Barnabas wanted to take with them John called Mark. But Paul thought best not to take with them one who had withdrawn from them in Pamphylia and had not gone with them to the work.\"", "4": "\"And there arose a sharp disagreement, so that they separated from each other. Barnabas took Mark with him and sailed away to Cyprus, but Paul chose Silas and departed, having been commended by the brothers to the grace of the Lord. And he went through Syria and Cilicia, strengthening the churches.\" Two good men. Two journeys. Luke records the disagreement and their separation without explicitly declaring which man was right about taking Mark. Barnabas went with Mark to Cyprus, while Paul continued with Silas, strengthening the churches.", "5": "The word Luke uses for \"sharp disagreement\" is the Greek paroxysmos. It describes something sharp and stirring: a strong contention, not a polite difference of opinion. Interestingly, the same word appears in Hebrews in a good sense: \"let us consider how to stir up one another to love and good works.\" A word that can describe provoking each other to love is used here of two faithful men who could not agree. The word can describe a strong provocation in different contexts. Hebrews uses it positively, but Acts describes a painful disagreement that resulted in separation. Scripture records it honestly. It does not pretend that good people never part.", "6": "Before we go further, be clear what this passage is. It was a disagreement about ministry, about whom to take on a missionary journey. It was not a romantic relationship, and it is not a model for dating decisions. Barnabas was Mark's cousin, and he risked something on Mark. Years later, Paul writes of Mark warmly. He tells one church, if Mark comes to you, \"welcome him\". And near the end of his life he writes to Timothy: \"Get Mark and bring him with you, for he is very useful to me for ministry.\" Scripture does not record a reconciliation between Paul and Barnabas, and we should not invent one. What the passage shows is simpler: separation does not necessarily mean one person lacks Christian character. Faithful people sometimes part ways.", "7": "Our first point is that good is not the same as right. And it is the hardest thing to hear, because it sounds ungrateful: a person's goodness is not, on its own, a reason to marry them. Goodness is a reason to respect them, to be glad you know them, to hope well for them. Sound character is essential to a healthy marriage. Lessons 5, 6 and 7 spent a long time on it. But it is not enough to show that these two particular people should marry. There are many good people in the world, and you will not marry most of them. And one clarification. \"Wrong for each other\" does not mean that God created one ideal match and this person is not it. Lesson 13 set that idea aside. It means that the relationship, as it actually exists, cannot support a marriage both people can enter freely and faithfully.", "8": "The fact that this good person is the one in front of you, and wants you, and has been kind, does not create an obligation. You cannot marry as an act of gratitude, or charity, or because refusing would hurt someone who does not deserve to be hurt. A marriage entered for those reasons will not honour the goodness that prompted it. It will slowly wear it down. Scripture does not command you to marry a particular person because they are good, available or interested. It sets boundaries: in the Lord, with wisdom, without coercion. And within them, it leaves you free. Paul is speaking specifically about a widow who is free to remarry: she is \"free to be married to whom she wishes, only in the Lord.\" His words illustrate that, within Christian faithfulness, marriage is not meant to be forced upon someone against their will. The wish is not a spiritual defect. It is part of what you are allowed to weigh.", "9": "Our second point is what \"wrong for each other\" looks like. There is no single sign, but there are several that, together, describe this situation. None of them is a fault in either person, and none of them is a verdict on its own. First, you want different lives: a calling, a country, children, a shape of family that one of you needs and the other cannot honestly give. Ask whether it is a central conviction, or a preference neither of you has seriously explored. And a claimed calling should be tested with the same humility Lesson 13 asked for. \"God called me\" must not become a way of making the other person surrender every competing hope. Second, the same person is always the one adapting. Every relationship needs mutual adapting, and it will not be equal in every season. The concern is when the normal shape of the relationship keeps requiring one person to surrender important convictions, relationships or parts of who they are, while the other stays largely unchanged. Third, the relationship depletes rather than restores, over time. Not on a bad day. Does the relationship itself keep leaving you drained and guarded, or is work, health, grief or family pressure affecting you both? Name the source before treating exhaustion as a verdict.", "10": "Fourth, the recurring disagreements are not about incidents. They come not from a failure to apologise, but from lasting differences in conviction, direction or needs. The question is not whether either person can be fixed, but whether those differences can be carried without chronic resentment. Fifth, you are less yourself. Be specific. Which part of you has become quieter? Did the other person ask for that? Is it healthy growth, ordinary adjustment, fear, or erasing yourself? Sixth, independent counsel converges on something concrete: advisers who have not compared notes name the same specific thing. And seventh, a persistent reluctance that honest time has not resolved. You have prayed for the doubt to lift and given real time in ordinary settings. A reluctance like that is not automatically God's warning; Lesson 13 said no feeling is. But neither should it be pushed down because the other person is good. Ask what the feeling is attached to, and whether it changes when specific concerns are addressed. Premarital doubt should not simply be argued away. It should be understood.", "11": "Be honest in the other direction too, because this lesson can be misused. It is not ordinary doubt. Every serious relationship produces moments of \"what if I'm wrong?\" That is the weight of the decision, not a verdict on it. It is not fear of commitment dressed up as discernment. Some people leave every good relationship at the point where it would ask something of them, and call it \"not feeling peace\". If you have done this more than once, the pattern is worth examining before you act on it again. And it is not perfectionism. No one will match you in every area. Lesson 15 said that liveable differences are the texture of every marriage. A person who is waiting for the absence of all friction will wait forever.", "12": "It may not be incompatibility at all if outside stress, like grief, illness or job pressure, is temporarily reducing both people's capacity. And it may not be the relationship itself if an unresolved personal struggle, with anxiety, low mood or past trauma, makes closeness hard in every serious relationship. That is not a reason to stay, but it may call for individual support before you interpret the pattern. And it is not \"needs work\". A workable relationship has a specific difficulty both people can name, mutual willingness to address it, and some evidence that honest effort produces change. Lesson 17 is about relationships like that, and they are worth the work. A fundamental incompatibility stays substantially unchanged despite honest effort, because solving it would require one person to surrender something central. Even then, effort alone does not obligate continuation. Telling the difference is the whole task, and it is rarely possible alone. Use the earlier tools. Use counsel. Use time, honest time, with something specific tried.", "13": "Our third point is the theology of a good ending, and it needs to be said plainly, because so many Christians do not know it. Dating is not marriage. In most settings, engagement is a serious intention and a public promise to marry, but it is not yet the marriage covenant made through mutual vows. Ending an engagement can carry substantial moral, emotional, financial and community consequences. But proceeding without free conviction is not the solution to those consequences. Before the vows, you are two people discerning, and discernment is allowed to conclude \"no\". That is what it was for.", "14": "God does not require you to marry someone to reward their goodness, or to avoid disappointing them, or because he \"brought you together\". A meeting can be meaningful, even providential, without marriage being its required outcome. God can work through a relationship without obligating the two people to continue it. And a clear, respectful no may be painful, but pain is not the same as cruelty. Marrying someone you should not marry, and letting them discover it after the vows, is the deeper harm. Continuing from pity, fear or obligation usually deepens the eventual harm. A clear, honest, gentle no, given as soon as you know it, is one of the most respectful things you can offer a person you care about.", "15": "Our fourth point is what to do when only one of you sees it. If they believe it is right and you do not, you are not obliged. Lesson 13 said this about \"God told me\", and it applies to sincere conviction of every kind. Their certainty is theirs. Your no does not require a competing certainty. It requires only that you have looked honestly and cannot say yes. You will want to soften it, to leave the door open, to say \"not now\" when you mean \"not this\". Do not. Lesson 19 will help with how to end a relationship well, and its first principle is clarity, because ambiguity is a slow cruelty. A good person deserves a clear answer, even a painful one.", "16": "If you believe it is right and they do not, this is the harder side, and many people are on it. They are not rejecting God. They are not failing to see what God has shown you. They are using exactly the freedom this lesson has described, and if you argue that their no is disobedience, you have moved into the pattern Lesson 6 named. Receive the decision as final unless they independently and clearly reopen the conversation. Do not continue contact for the hidden purpose of changing their mind. Grieve it, because it is a real loss. Do not turn it into a spiritual contest. Two good people, and one of them says no. That is painful, and it is allowed, and God's purposes for you are not smaller because of it.", "17": "If you are engaged and substantial uncertainty persists, do not silence it merely because plans have advanced. Consider pausing further arrangements while you identify the specific concern. Speak honestly with your partner, unless safety makes that unwise, and seek independent, qualified premarital counsel. A pause is not automatically a cancellation. But a wedding timetable should not be allowed to decide what the two of you have not resolved. Where family coercion, threats or safety concerns are present, do not use ordinary joint counselling or family mediation. Lessons 6 and 10 apply.", "18": "A word about safety. This lesson is for relationships where no abuse or serious safety concern has been identified, and both people appear to have genuine character. If fear, coercion or control is present, do not use the language of incompatibility to make it sound smaller. Return to Lesson 6. And if you have decided to end a relationship, but you fear their reaction, do not announce the ending alone. Lesson 19's safety guidance applies, and guidance is on the page beneath this lesson.", "19": "And where you are right now. If you have recognised your relationship in this lesson, and feel the particular grief of it, the grief with no one to blame, you are taking an important concern seriously. That is not ungrateful, disloyal or faithless. Use the reflection below to test what you are seeing before deciding your next step. Then Lessons 17, 18 and 19 will help you decide what to do. And if you have found nothing of yourself here, if the relationship is good, the fit is good, and what remains is ordinary work, be glad. Lesson 17 is for you.", "20": "Let us bring it together. Good is not the same as right. Look for patterns, not a single sign, and be just as honest about what this is not. Dating is not marriage, and discernment is allowed to conclude no. And whoever sees it first, give a clear and gentle answer, and receive one without turning it into a contest.", "21": "Here is one step for today. Write one thing you know to be true about this relationship, whatever you feel. For example: \"They are kind, and we want different countries.\" Or: \"We have never tried to solve the thing that worries me.\" If it is safe, write it privately, or simply think it through before God. When you have more time, the full Good Person, Wrong Relationship Reflection is below this lesson. It helps you look at what you are seeing, look for other explanations, and choose a next step. It is private and optional, and nothing you write there is saved. If someone else may access your device or papers, simply think through the questions instead.", "22": "Let us pray. Lord, I keep looking for someone to blame, and there is no one. They are good, and I am not sure this can be built. Take away the idea that loving you means ignoring what I can plainly see. If I have reached a decision, give me courage to say it honestly and safely. Hold them, whatever I decide. And if I am wrong about all of this, show me that instead. In Jesus' name, amen. \"Search me, O God, and know my heart!\" Stop here for today, or continue to Lesson 17, and Part Five."};
+const TIMES = {"1": [0.15, 0.57, 1.21, 1.49, 2.23, 3.59, 3.68, 4.08, 4.45, 4.56, 4.87, 5.48, 6.94, 7.03, 7.26, 7.6, 7.85, 8.26, 8.55, 8.94, 9.27, 9.66, 10.08, 10.95, 11.28, 11.79, 11.84, 12.61, 13.0, 13.08, 13.61, 14.99, 15.31, 15.82, 15.96, 16.77, 17.27, 17.44, 17.56, 18.43, 18.57, 18.64, 19.17, 19.47, 19.8, 20.18, 20.61, 20.75, 21.09, 21.23, 21.72, 21.81, 22.35, 23.36, 23.54, 23.77, 24.17, 24.59, 25.17, 25.36, 26.45, 26.74, 26.92, 27.06, 27.17, 27.52, 27.85, 28.79, 29.01, 29.23, 29.41, 29.68], "2": [30.85, 31.14, 32.24, 32.44, 32.7, 33.65, 33.9, 34.59, 35.65, 36.14, 37.01, 37.26, 37.55, 38.61, 38.84, 39.08, 40.02, 40.21, 40.67, 41.65, 42.31, 42.48, 43.43, 43.51, 44.01, 44.16, 44.32, 44.87, 45.39, 45.47, 46.53, 46.68, 47.33, 47.44, 48.2, 48.38, 48.69, 48.85, 48.89, 49.73, 49.8, 50.49, 51.1, 51.77, 52.09, 52.49, 52.82, 53.29, 53.46, 54.17, 54.35, 54.71, 55.19, 55.65, 55.86, 56.11, 56.67, 58.36, 58.62, 58.78, 58.92, 58.97, 59.77, 60.16, 60.21, 60.98, 61.12, 61.94, 62.12, 62.99, 63.33, 63.51, 63.65, 64.51, 64.9, 64.99, 65.22, 65.62, 65.82, 65.89, 66.54, 66.63, 66.69, 66.98, 67.85, 68.06, 68.18, 68.84, 69.17, 69.55, 69.64, 69.73, 70.69, 71.0, 71.5, 72.61, 72.94, 73.43, 73.57, 73.86, 73.93, 74.52, 75.15, 76.02, 76.3, 76.71, 76.85, 77.1, 77.39, 77.57, 78.51, 78.7, 79.38, 80.04, 80.62, 80.91, 81.38, 81.71, 82.1, 82.27, 82.39, 83.86, 84.01, 84.34, 84.69, 85.79, 86.13, 86.76, 86.94, 87.13, 88.03, 88.47, 89.03, 89.25, 90.45, 90.57, 91.14, 91.95, 92.16, 92.8, 93.01, 94.04, 94.18, 94.45, 94.76, 94.99, 96.82, 97.74, 98.12, 99.1, 99.27, 99.44, 99.57, 100.2, 100.4, 100.49, 101.07, 101.51, 101.76], "3": [102.53, 102.72, 103.29, 103.52, 103.78, 104.71, 104.96, 105.38, 105.53, 106.02, 106.22, 106.64, 107.02, 107.21, 108.51, 109.03, 109.53, 109.94, 110.57, 110.95, 111.29, 111.38, 112.61, 112.94, 113.1, 113.81, 114.03, 114.47, 114.55, 115.17, 115.35, 115.86, 116.4, 116.82, 117.01, 117.9, 117.97, 118.33, 118.41, 118.55, 119.01, 119.55, 120.0, 120.32, 120.53, 121.63, 121.86, 122.52, 122.92, 123.04, 123.33, 123.6, 124.14, 124.59, 125.06, 126.04, 126.25, 126.59, 126.99, 127.51, 127.89, 128.0, 128.31, 128.57, 129.04, 129.37, 129.59, 129.78, 130.43, 130.69, 131.08, 131.25, 132.13, 132.47, 132.65, 133.02, 133.27, 133.55, 133.82, 133.96, 134.06], "4": [135.25, 136.07, 136.9, 137.8, 137.9, 138.69, 139.87, 140.05, 140.3, 140.48, 141.56, 141.79, 141.98, 142.91, 143.49, 143.74, 144.11, 144.29, 144.57, 144.86, 145.31, 145.59, 145.72, 146.69, 146.87, 147.28, 147.71, 148.39, 148.54, 149.47, 149.77, 149.94, 150.56, 150.73, 150.85, 151.39, 151.49, 151.59, 152.05, 152.17, 152.25, 153.0, 153.19, 153.33, 153.6, 153.83, 154.68, 154.88, 155.84, 156.57, 156.67, 158.0, 158.27, 158.5, 159.24, 159.49, 160.65, 160.97, 161.54, 161.64, 162.55, 162.8, 162.96, 164.08, 164.58, 165.44, 166.1, 166.49, 166.77, 166.98, 167.48, 167.85, 168.21, 169.2, 169.83, 170.17, 170.34, 170.79, 170.93, 171.93, 172.15, 172.68, 173.35, 173.54, 174.41, 175.15, 175.24], "5": [176.68, 176.76, 177.14, 177.49, 178.05, 178.23, 178.73, 179.77, 179.93, 180.01, 180.62, 182.21, 182.32, 182.88, 183.28, 183.77, 183.93, 184.92, 184.96, 185.52, 186.56, 186.87, 186.92, 187.39, 187.84, 187.92, 188.81, 189.94, 190.05, 190.54, 190.87, 191.4, 191.51, 192.16, 192.3, 192.34, 192.57, 193.8, 193.99, 194.12, 194.62, 194.86, 194.99, 195.49, 195.68, 195.84, 196.22, 196.4, 196.95, 197.2, 197.42, 198.52, 198.59, 199.0, 199.11, 199.3, 199.88, 200.54, 200.74, 200.96, 201.11, 201.64, 201.83, 202.26, 202.68, 202.82, 203.21, 203.79, 204.14, 204.39, 204.6, 204.82, 205.89, 205.97, 206.32, 206.5, 207.21, 207.26, 207.78, 208.56, 208.82, 209.24, 210.52, 211.07, 211.49, 211.66, 212.71, 212.96, 213.43, 214.19, 214.32, 214.86, 215.92, 216.13, 216.77, 216.92, 218.36, 218.93, 219.51, 219.77, 221.07, 221.21, 221.44, 221.72, 222.86, 223.02, 223.39, 224.33, 224.67], "6": [225.51, 225.88, 226.0, 226.2, 227.14, 227.35, 228.05, 228.35, 228.54, 229.06, 230.26, 230.37, 230.56, 230.63, 231.67, 232.03, 233.21, 233.48, 233.83, 233.97, 234.26, 234.46, 234.5, 235.06, 236.22, 236.38, 236.59, 236.91, 236.96, 237.73, 238.95, 239.08, 239.21, 239.39, 239.7, 239.75, 240.21, 240.36, 240.87, 242.07, 242.67, 242.88, 243.3, 244.22, 244.39, 244.58, 245.12, 245.61, 245.83, 246.8, 247.22, 247.92, 248.25, 248.68, 248.81, 249.21, 250.24, 250.4, 250.74, 251.03, 251.92, 252.1, 252.46, 252.82, 252.94, 253.57, 254.09, 255.0, 255.22, 255.51, 255.73, 255.94, 256.05, 256.28, 256.71, 256.9, 257.34, 257.47, 258.79, 259.11, 259.61, 259.93, 260.22, 260.48, 260.73, 261.45, 261.63, 261.84, 262.05, 262.42, 262.93, 263.08, 263.28, 263.46, 264.85, 265.53, 265.82, 266.12, 266.76, 266.87, 267.99, 268.44, 268.91, 269.13, 270.29, 270.42, 270.56, 270.8, 271.12, 271.61, 272.71, 272.92, 273.01, 273.51, 274.07, 274.23, 275.48, 276.42, 276.69, 277.06, 277.84, 278.59, 278.94, 279.54, 279.97, 280.53, 281.71, 282.3, 282.7, 283.35, 283.75], "7": [284.66, 284.86, 285.31, 285.96, 286.11, 286.29, 286.8, 286.98, 287.3, 287.39, 287.78, 287.99, 288.99, 289.18, 289.32, 289.49, 289.64, 290.2, 290.43, 290.55, 291.32, 291.66, 291.78, 292.29, 293.6, 293.73, 294.24, 294.84, 295.07, 295.68, 295.89, 296.17, 296.94, 297.0, 297.57, 297.7, 298.15, 298.99, 299.5, 299.73, 299.78, 300.26, 300.4, 300.96, 301.65, 301.74, 301.9, 302.3, 302.5, 302.73, 303.37, 303.47, 303.83, 304.2, 304.47, 305.07, 305.48, 306.02, 306.31, 307.01, 307.22, 307.27, 307.68, 308.89, 310.52, 311.52, 311.86, 311.93, 312.38, 312.73, 312.88, 313.55, 313.79, 313.91, 314.08, 314.38, 314.78, 314.95, 315.33, 315.55, 315.96, 316.2, 316.79, 317.39, 317.68, 318.77, 318.97, 319.03, 319.39, 319.64, 319.98, 320.12, 320.18, 321.19, 321.34, 321.45, 321.6, 321.98, 322.31, 322.68, 322.81, 323.74, 323.95, 324.36, 325.99, 326.44, 326.65, 326.85, 327.52, 327.77, 328.14, 328.61, 328.74, 329.15, 329.74, 330.18, 330.76, 331.57, 331.77, 331.97, 332.61, 332.79, 333.18, 334.19, 335.53, 335.95, 336.2, 336.74, 338.03, 338.19, 338.63, 338.86, 338.96, 340.33, 340.56, 340.76, 341.4, 342.48, 342.93, 343.56, 343.6, 344.21, 344.66, 345.1, 345.36, 345.77, 346.45, 346.75], "8": [348.17, 348.25, 348.77, 349.01, 349.25, 349.52, 350.02, 350.29, 350.38, 350.74, 350.96, 351.31, 351.41, 352.09, 352.27, 352.71, 353.36, 353.49, 353.71, 353.92, 355.02, 355.22, 355.55, 356.28, 356.39, 357.86, 358.03, 358.49, 359.08, 359.28, 359.37, 359.64, 359.77, 361.02, 361.17, 362.11, 362.41, 362.77, 363.42, 363.57, 363.91, 364.45, 364.66, 364.9, 365.23, 365.71, 365.84, 366.0, 367.15, 367.21, 367.74, 368.2, 368.39, 368.78, 369.46, 369.8, 370.21, 370.56, 370.75, 371.27, 371.51, 371.96, 372.87, 373.01, 373.26, 373.91, 374.27, 374.4, 375.3, 375.88, 376.11, 376.37, 376.84, 377.13, 377.33, 377.84, 377.9, 378.51, 379.36, 379.73, 379.88, 380.0, 380.69, 381.59, 381.77, 382.93, 383.07, 383.45, 384.69, 384.87, 384.96, 385.68, 385.85, 386.7, 387.14, 388.42, 388.59, 388.99, 389.71, 389.9, 390.34, 390.51, 391.7, 392.04, 392.14, 392.71, 394.1, 394.39, 394.43, 394.98, 395.24, 395.41, 395.84, 396.03, 397.26, 397.54, 397.74, 398.13, 398.26, 398.41, 398.97, 399.11, 399.42, 399.65, 400.69, 401.32, 401.51, 401.61, 402.8, 403.0, 403.47, 404.11, 404.62, 405.09, 405.6, 407.07, 407.57, 407.8, 408.24, 408.66, 408.76, 408.93, 409.4, 409.77, 410.32, 410.85, 411.01, 412.18, 412.25, 412.64, 412.88, 413.31, 413.37, 414.22, 415.36, 415.52, 415.66, 416.09, 416.21, 416.46, 416.6, 416.74, 417.2, 417.32], "9": [418.5, 418.79, 419.33, 420.1, 420.34, 420.63, 421.1, 421.33, 421.55, 422.06, 422.38, 423.29, 423.47, 423.63, 423.88, 424.31, 425.16, 425.33, 425.56, 425.72, 426.34, 426.91, 427.84, 428.53, 428.72, 430.11, 430.39, 430.5, 430.76, 430.96, 431.02, 431.53, 431.67, 432.02, 432.99, 433.18, 433.39, 433.52, 433.94, 434.08, 434.15, 434.79, 434.99, 435.22, 435.92, 436.72, 436.9, 437.16, 437.57, 438.62, 438.68, 439.68, 439.78, 440.73, 441.77, 441.82, 442.21, 442.3, 442.92, 443.1, 443.35, 443.45, 443.63, 444.43, 444.6, 444.81, 445.11, 445.55, 446.1, 447.21, 447.74, 448.18, 448.37, 448.52, 448.58, 449.18, 450.49, 450.7, 450.73, 451.54, 452.09, 452.2, 452.43, 452.66, 453.38, 454.78, 454.95, 455.05, 455.52, 456.14, 456.39, 456.53, 457.12, 457.32, 457.42, 457.86, 459.34, 460.51, 461.09, 462.01, 462.38, 462.82, 463.7, 464.05, 464.35, 464.73, 464.77, 465.18, 465.37, 465.85, 466.01, 466.29, 466.78, 467.52, 467.96, 468.56, 469.5, 470.7, 470.78, 471.28, 471.81, 472.12, 472.7, 472.78, 473.08, 474.18, 474.58, 475.49, 475.85, 476.5, 477.59, 477.73, 477.86, 478.04, 478.45, 478.72, 479.17, 479.37, 479.86, 481.05, 481.13, 481.71, 481.85, 482.04, 482.12, 482.6, 482.96, 483.08, 483.18, 483.92, 484.3, 485.0, 485.38, 485.88, 486.0, 486.64, 487.24, 488.38, 489.58, 489.71, 490.22, 490.33, 490.54, 490.75, 491.5, 491.7, 491.85, 492.08, 492.46, 493.0, 494.37, 495.2, 495.31, 496.12, 496.96, 497.34, 497.6, 498.74, 499.02, 499.93, 500.3, 500.51, 500.61, 500.95, 501.94, 502.19, 502.29, 503.04, 503.54, 503.85, 504.22, 504.38, 504.9, 505.04, 506.0, 506.19, 506.36, 507.1, 507.81, 508.54, 508.69, 509.21, 509.97, 510.5, 510.67, 511.6, 511.99, 512.09, 512.86, 513.25, 513.73, 514.52, 514.75, 514.81], "10": [515.95, 516.98, 517.07, 517.66, 518.43, 518.67, 519.13, 519.54, 520.75, 520.93, 521.3, 521.69, 521.88, 521.92, 522.5, 522.71, 523.95, 524.14, 524.4, 525.06, 525.79, 525.97, 527.02, 527.94, 528.09, 529.35, 529.42, 529.91, 530.08, 530.45, 530.81, 531.15, 531.62, 531.82, 531.94, 532.89, 533.17, 533.49, 533.87, 534.6, 534.83, 535.0, 535.53, 536.04, 536.5, 538.96, 539.45, 539.6, 539.63, 539.75, 540.76, 540.96, 542.02, 542.38, 542.68, 542.78, 542.96, 543.13, 543.56, 544.65, 544.78, 544.92, 545.11, 545.61, 546.01, 546.16, 546.97, 547.13, 547.23, 547.64, 548.56, 549.17, 550.03, 550.86, 551.05, 551.55, 552.84, 553.83, 554.54, 555.08, 555.88, 556.03, 556.5, 557.65, 558.38, 558.55, 558.7, 559.03, 559.53, 559.98, 560.49, 560.57, 561.03, 561.71, 562.68, 562.9, 563.99, 564.16, 564.98, 565.75, 566.01, 566.51, 566.93, 567.21, 567.64, 568.98, 569.2, 569.43, 569.94, 570.11, 570.23, 570.65, 570.77, 571.59, 571.8, 572.23, 572.54, 573.04, 573.42, 574.04, 575.46, 575.52, 576.36, 576.62, 577.08, 577.28, 577.69, 578.63, 579.08, 580.42, 581.35, 581.7, 582.18, 582.97, 584.08, 584.29, 584.76, 585.02, 585.14, 585.28, 585.67, 586.06, 586.46, 586.67, 586.93, 587.58, 587.79, 588.95, 589.48, 589.79, 589.85, 590.42, 590.6, 591.16, 591.85, 592.03, 592.47, 592.64, 593.34, 593.69, 594.4, 595.18, 595.41, 596.66, 597.47, 597.99, 598.22, 598.44, 598.87, 599.03, 599.49, 600.5, 600.65, 600.87, 601.04], "11": [602.45, 602.9, 603.5, 603.69, 603.93, 604.2, 604.88, 605.75, 606.16, 606.47, 607.04, 607.29, 607.5, 609.04, 609.2, 609.4, 609.85, 610.51, 611.42, 611.91, 612.49, 613.37, 614.01, 614.52, 615.01, 615.24, 615.41, 615.59, 616.44, 616.78, 616.94, 617.02, 617.46, 617.58, 617.69, 618.6, 618.95, 619.04, 619.55, 619.72, 620.27, 620.38, 620.53, 620.85, 621.23, 621.33, 622.04, 622.4, 622.58, 622.81, 624.08, 624.43, 624.78, 625.18, 625.65, 625.93, 626.69, 626.81, 626.88, 627.34, 627.53, 627.63, 627.78, 628.21, 628.65, 628.76, 629.1, 629.49, 629.81, 630.27, 630.65, 631.12, 632.38, 632.51, 632.67, 632.87, 633.16, 633.39, 633.7, 633.9, 634.67, 634.75, 635.3, 635.44, 635.82, 636.56, 636.94, 637.16, 637.49, 637.63, 637.75, 638.48, 638.71, 638.89, 639.07, 639.69, 641.1, 641.4, 641.69, 641.96, 642.35, 642.55, 642.74, 643.26, 644.2, 645.12, 645.45, 645.63, 646.14, 646.87, 647.04, 647.15, 647.85, 648.03, 648.38, 649.53, 649.6, 650.12, 650.31, 650.43, 650.82, 650.96, 651.16, 651.74, 651.84, 652.21, 653.21, 653.42, 653.76], "12": [654.7, 654.87, 655.06, 655.36, 655.72, 656.89, 657.04, 657.84, 658.08, 658.7, 659.53, 659.84, 660.55, 661.09, 661.31, 661.71, 662.57, 662.83, 663.65, 664.44, 664.9, 665.33, 666.76, 666.88, 666.96, 667.12, 667.3, 667.43, 667.52, 668.23, 668.79, 669.03, 669.14, 669.9, 670.39, 671.2, 671.33, 672.42, 672.61, 673.1, 673.21, 673.65, 674.41, 674.69, 675.26, 675.79, 675.91, 676.4, 676.95, 678.34, 678.54, 678.71, 679.02, 679.06, 679.46, 679.56, 680.54, 680.69, 680.8, 681.0, 681.41, 681.78, 682.46, 683.08, 683.46, 683.66, 684.15, 684.24, 685.39, 685.54, 685.67, 685.85, 686.26, 686.86, 687.85, 687.91, 688.5, 689.3, 689.56, 689.59, 690.34, 691.02, 691.47, 691.82, 692.09, 692.8, 693.37, 693.97, 694.13, 694.54, 695.03, 695.22, 695.75, 696.38, 696.66, 697.18, 697.57, 698.19, 699.51, 700.53, 700.68, 700.96, 701.74, 701.97, 702.67, 702.87, 703.05, 703.16, 703.56, 703.64, 704.61, 704.67, 705.73, 707.05, 707.53, 708.59, 709.77, 710.52, 710.97, 711.89, 712.26, 712.83, 712.99, 713.18, 713.77, 714.24, 714.77, 714.89, 715.43, 715.92, 717.08, 717.49, 718.14, 718.53, 719.05, 719.29, 719.68, 720.29, 721.86, 722.32, 722.41, 723.34, 723.57, 723.7, 724.15, 725.22, 725.39, 725.56, 725.7, 726.27, 727.01, 728.16, 728.59, 728.82, 729.19, 730.05, 730.37, 731.27, 731.63, 732.4, 732.81, 733.46, 733.68, 734.19, 734.99], "13": [736.13, 736.34, 736.71, 737.2, 737.39, 737.5, 738.28, 738.43, 738.49, 738.79, 739.63, 739.75, 739.91, 740.29, 740.37, 740.5, 740.87, 741.71, 742.01, 742.36, 742.64, 743.29, 743.42, 743.71, 743.92, 744.79, 745.34, 745.56, 746.01, 747.25, 747.39, 747.82, 748.65, 749.38, 749.58, 749.64, 750.33, 751.04, 751.45, 751.58, 752.09, 752.52, 752.63, 753.52, 753.68, 753.82, 754.01, 754.4, 754.72, 754.79, 755.29, 755.87, 756.25, 756.59, 757.23, 758.55, 759.07, 759.22, 760.02, 760.32, 760.8, 761.75, 762.45, 763.17, 764.1, 764.35, 764.95, 766.35, 766.55, 767.25, 767.65, 767.99, 768.83, 769.06, 769.4, 769.49, 770.12, 770.26, 770.56, 772.16, 772.6, 772.71, 773.49, 773.73, 773.87, 774.24, 774.7, 775.75, 775.92, 776.63, 776.82, 777.32, 777.43, 778.17, 778.94, 779.3, 779.44, 779.67, 779.8, 780.01], "14": [781.05, 781.67, 781.93, 782.22, 782.8, 783.19, 783.34, 783.78, 784.35, 784.55, 785.12, 785.29, 786.1, 786.58, 786.81, 787.26, 787.99, 788.55, 788.86, 789.43, 790.0, 790.48, 790.65, 791.88, 791.95, 792.46, 792.68, 792.79, 793.93, 794.27, 795.44, 795.85, 796.45, 796.75, 796.94, 797.55, 798.97, 799.34, 799.52, 799.98, 800.27, 800.32, 801.52, 801.93, 802.81, 802.89, 803.21, 803.67, 803.84, 804.43, 805.36, 805.53, 805.65, 806.45, 807.24, 807.96, 808.14, 808.29, 809.31, 809.53, 809.93, 810.29, 810.69, 810.78, 811.31, 811.55, 812.58, 813.13, 813.66, 813.84, 814.1, 814.44, 815.23, 815.44, 815.85, 816.08, 816.72, 816.9, 817.26, 817.39, 818.3, 818.49, 818.61, 819.08, 820.14, 820.83, 821.07, 821.93, 822.42, 822.63, 823.59, 824.14, 824.73, 824.9, 825.46, 826.35, 826.56, 827.25, 828.13, 828.7, 829.73, 830.1, 830.2, 830.53, 830.66, 830.77, 831.03, 831.59, 831.77, 832.02, 832.13, 832.21, 832.58, 833.34, 833.81, 833.92, 834.1, 834.64, 834.72, 835.23, 835.4, 835.71], "15": [836.8, 837.32, 837.84, 838.63, 838.82, 839.13, 839.28, 839.56, 839.87, 840.32, 840.61, 840.7, 840.87, 841.32, 842.26, 842.45, 842.65, 843.04, 843.2, 843.34, 844.06, 844.25, 844.47, 844.64, 845.48, 845.67, 845.8, 846.38, 847.69, 848.93, 849.28, 849.52, 850.51, 850.81, 851.21, 851.94, 852.08, 852.21, 852.79, 852.9, 853.54, 854.61, 854.86, 855.18, 856.13, 856.3, 857.31, 857.52, 858.81, 859.04, 859.39, 859.62, 859.87, 860.54, 860.64, 861.24, 861.77, 862.43, 863.16, 863.59, 863.81, 863.94, 864.09, 864.45, 865.11, 865.36, 865.78, 866.06, 867.03, 867.17, 867.36, 867.67, 867.8, 868.3, 868.84, 869.04, 869.42, 869.53, 869.93, 870.67, 870.8, 871.54, 871.92, 872.7, 872.86, 873.0, 873.55, 874.1, 874.9, 875.11, 876.21, 877.19, 877.38, 877.71, 877.84, 878.12, 878.36, 878.53, 878.56, 879.35, 880.22, 880.37, 880.56, 880.94, 881.8, 882.0, 883.17, 883.64, 884.66, 884.8, 884.86, 885.36, 885.93, 886.59, 886.94, 887.43, 887.9, 887.96, 888.36, 889.2, 889.55, 889.59, 890.14], "16": [891.07, 891.26, 891.48, 891.96, 892.24, 892.4, 892.95, 893.2, 893.41, 893.59, 894.24, 894.76, 894.96, 895.06, 895.59, 896.4, 896.57, 896.9, 897.44, 897.69, 897.92, 898.68, 898.94, 899.13, 899.75, 900.54, 901.33, 901.59, 901.72, 902.24, 902.89, 903.03, 903.68, 904.09, 904.49, 904.77, 905.17, 906.07, 906.24, 906.33, 906.74, 907.35, 907.45, 907.92, 908.13, 908.47, 908.68, 909.71, 909.84, 909.95, 910.11, 910.57, 910.77, 910.91, 911.28, 911.45, 912.76, 912.88, 913.02, 913.41, 913.62, 913.71, 914.24, 915.46, 916.73, 917.22, 917.31, 917.91, 918.25, 918.83, 919.45, 919.72, 920.77, 920.97, 921.54, 922.37, 922.45, 923.85, 924.1, 924.33, 924.88, 925.48, 925.58, 925.71, 926.09, 926.57, 926.76, 927.29, 927.44, 929.46, 929.65, 929.85, 930.04, 930.24, 930.43, 930.62, 930.82, 931.52, 931.67, 932.08, 932.3, 932.42, 932.68, 932.72, 933.49, 934.7, 934.95, 935.17, 935.97, 936.11, 936.33, 936.43, 936.67, 937.56, 938.3, 938.52, 938.66, 939.59, 939.82, 939.94, 940.08, 940.96, 941.11, 941.48, 942.16, 942.3, 942.67, 942.83, 943.11, 943.69, 944.11, 944.19], "17": [945.13, 945.27, 945.47, 945.63, 946.63, 946.84, 947.69, 948.44, 949.62, 949.76, 949.99, 950.65, 950.91, 951.41, 951.81, 952.38, 952.54, 953.95, 954.42, 955.04, 955.52, 956.6, 956.79, 956.99, 957.76, 957.88, 958.51, 959.8, 960.38, 961.03, 961.24, 961.43, 962.48, 962.9, 963.39, 963.75, 964.1, 965.25, 965.45, 965.96, 967.1, 967.83, 968.58, 969.9, 969.98, 970.71, 970.92, 971.34, 972.36, 972.42, 974.19, 974.31, 974.35, 974.77, 975.86, 976.11, 976.39, 976.54, 976.96, 977.07, 977.62, 977.85, 977.92, 978.22, 978.32, 978.63, 978.86, 979.14, 980.44, 980.6, 981.08, 982.27, 982.91, 983.05, 983.53, 984.08, 984.22, 984.97, 985.12, 985.39, 985.66, 986.25, 986.59, 987.18, 987.43, 987.89, 989.18, 990.05, 990.75], "18": [991.95, 991.98, 992.3, 992.58, 993.8, 994.07, 994.64, 994.86, 995.04, 995.93, 996.13, 996.46, 996.96, 997.18, 997.83, 998.24, 998.83, 999.07, 999.24, 1000.56, 1000.78, 1001.16, 1001.72, 1002.15, 1002.26, 1002.55, 1003.13, 1004.42, 1004.59, 1005.87, 1006.61, 1006.84, 1007.48, 1007.64, 1008.55, 1008.68, 1009.01, 1009.38, 1009.46, 1010.03, 1010.15, 1011.78, 1011.88, 1012.14, 1012.25, 1012.66, 1013.84, 1014.45, 1014.56, 1016.2, 1016.68, 1016.89, 1017.04, 1017.18, 1017.75, 1017.95, 1018.26, 1018.3, 1019.59, 1019.75, 1019.93, 1020.34, 1020.57, 1021.71, 1021.87, 1022.21, 1022.74, 1022.95, 1023.42, 1024.62, 1025.66, 1025.91, 1026.47, 1027.04, 1028.07, 1028.24, 1028.89, 1029.03, 1029.2, 1029.33, 1029.93, 1030.44, 1030.72], "19": [1031.87, 1032.06, 1032.35, 1032.61, 1032.89, 1033.21, 1034.37, 1034.55, 1034.79, 1034.96, 1035.72, 1035.92, 1036.76, 1036.9, 1037.1, 1038.07, 1038.26, 1038.78, 1038.86, 1039.59, 1040.01, 1040.15, 1040.87, 1040.97, 1041.46, 1041.66, 1041.93, 1042.22, 1042.32, 1043.28, 1043.48, 1043.59, 1044.23, 1044.43, 1045.12, 1045.82, 1047.32, 1047.54, 1047.73, 1048.17, 1049.31, 1050.3, 1050.51, 1052.24, 1052.61, 1052.72, 1053.38, 1053.83, 1053.99, 1054.45, 1054.66, 1054.79, 1054.89, 1055.69, 1056.08, 1056.72, 1056.87, 1057.28, 1058.36, 1058.64, 1059.49, 1060.05, 1060.34, 1060.62, 1060.9, 1061.18, 1061.47, 1061.75, 1061.88, 1063.85, 1064.0, 1064.96, 1065.46, 1065.83, 1066.2, 1066.32, 1066.77, 1067.5, 1067.65, 1067.77, 1068.52, 1068.66, 1069.26, 1069.36, 1069.69, 1069.85, 1070.42, 1070.57, 1070.77, 1071.3, 1071.44, 1072.07, 1072.76, 1072.96, 1073.84, 1074.88, 1075.05, 1075.25], "20": [1076.17, 1076.35, 1076.58, 1076.96, 1077.18, 1078.48, 1078.85, 1079.04, 1079.34, 1079.42, 1079.97, 1080.58, 1081.81, 1082.04, 1082.2, 1083.47, 1083.66, 1083.69, 1084.18, 1085.37, 1085.52, 1085.66, 1085.99, 1086.13, 1086.48, 1086.77, 1087.02, 1087.23, 1087.41, 1088.47, 1089.07, 1089.31, 1089.54, 1090.35, 1090.53, 1091.24, 1091.42, 1091.77, 1091.87, 1092.41, 1093.34, 1093.51, 1093.89, 1094.24, 1094.34, 1095.03, 1095.19, 1095.27, 1095.86, 1096.08, 1096.6, 1097.42, 1097.6, 1098.07, 1098.51, 1098.91, 1099.26, 1099.41, 1099.78, 1099.81], "21": [1101.19, 1101.47, 1101.63, 1101.96, 1102.45, 1102.63, 1103.65, 1103.96, 1104.38, 1104.79, 1104.94, 1105.31, 1105.46, 1105.63, 1106.09, 1106.42, 1106.61, 1107.48, 1108.08, 1108.27, 1109.34, 1109.48, 1110.64, 1110.84, 1111.03, 1112.0, 1112.24, 1112.39, 1112.84, 1113.23, 1114.59, 1115.19, 1115.34, 1115.57, 1115.99, 1116.39, 1116.5, 1117.01, 1117.12, 1117.61, 1118.02, 1118.56, 1119.2, 1119.35, 1119.48, 1119.59, 1120.49, 1120.82, 1120.94, 1121.91, 1122.05, 1122.45, 1122.73, 1122.86, 1123.17, 1123.71, 1124.78, 1124.96, 1125.11, 1125.32, 1125.56, 1126.46, 1126.56, 1127.02, 1127.31, 1128.12, 1128.44, 1129.26, 1130.3, 1130.48, 1130.96, 1131.24, 1132.08, 1132.2, 1132.59, 1132.71, 1133.02, 1133.14, 1133.41, 1133.54, 1133.63, 1134.52, 1134.8, 1135.03, 1135.31, 1136.57, 1136.8, 1137.25, 1137.32, 1137.73, 1138.69, 1138.83, 1139.06, 1139.95, 1140.28, 1141.23, 1141.42, 1141.86, 1142.03, 1142.33, 1142.84, 1142.98, 1144.47, 1144.6, 1145.07, 1145.36, 1145.53, 1146.11, 1146.28, 1146.81, 1146.96, 1147.77, 1148.29, 1148.61, 1148.88, 1148.97, 1149.64], "22": [1150.68, 1150.87, 1151.0, 1152.05, 1152.37, 1152.5, 1152.9, 1153.27, 1153.41, 1153.81, 1153.91, 1154.37, 1154.51, 1154.71, 1154.9, 1155.1, 1155.83, 1156.02, 1156.19, 1156.91, 1157.15, 1157.29, 1157.47, 1157.7, 1158.14, 1158.38, 1158.59, 1158.74, 1159.72, 1159.99, 1160.34, 1160.51, 1160.98, 1161.24, 1161.75, 1162.41, 1162.72, 1163.31, 1163.53, 1163.64, 1163.87, 1164.4, 1165.56, 1165.73, 1165.87, 1166.06, 1166.44, 1166.52, 1167.5, 1167.66, 1167.84, 1168.4, 1168.5, 1168.76, 1168.93, 1169.53, 1169.66, 1170.72, 1171.05, 1171.65, 1172.11, 1172.22, 1173.21, 1173.38, 1173.52, 1173.65, 1173.86, 1174.2, 1174.51, 1174.74, 1174.85, 1175.51, 1175.79, 1175.95, 1176.23, 1177.1, 1177.3, 1177.75, 1178.38, 1184.14, 1184.66, 1184.99, 1185.17, 1186.05, 1186.25, 1186.48, 1186.7, 1188.07, 1188.45, 1188.71, 1188.89, 1189.75, 1189.87, 1190.4, 1190.52, 1192.01, 1192.21, 1192.5]};
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=1163.5;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('bysy-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('bysy-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);let h=w.scrollHeight;const pc=[...w.querySelectorAll('.cardrow > .pcard, .ck > li, .st5 > li')];if(innerWidth<=640&&pc.length>1){h=0;pc.forEach(keep=>{pc.forEach(c=>c.style.display=c===keep?'flex':'none');h=Math.max(h,w.scrollHeight);});pc.forEach(c=>c.style.display='');}const z=h>avail?Math.max(.55,avail/h):1;w.style.zoom=z;s.el.classList.toggle('tall',h*z>avail+2);});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>

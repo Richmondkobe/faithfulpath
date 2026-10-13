@@ -21,6 +21,8 @@ const nextConfig: NextConfig = {
     "/courses/following-jesus/fonts/*": ["./fonts/fj-*.woff2"],
     // The new Reset edition (hidden test course): its pages and PDFs.
     "/members/courses/christian-spiritual-reset-new/**/*": ["./content/courses/christian-spiritual-reset-new/**/*"],
+    // The new Before You Say Yes edition (hidden test course): its pages.
+    "/members/courses/before-you-say-yes-new/**/*": ["./content/courses/before-you-say-yes-new/**/*"],
   },
   images: {
     remotePatterns: supabaseHost
