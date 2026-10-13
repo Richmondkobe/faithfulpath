@@ -231,6 +231,8 @@ export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>)
   const helpCount = html.split(help).length - 1;
   if (helpCount < 1 || helpCount > 2) throw new Error(`${unit.slug}: expected one or two Finding Help links, found ${helpCount}.`);
   html = swap(html, help, '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>', helpCount);
+  // In-worksheet mentions that were plain bold text in the reviewed pages become links too.
+  html = html.split("<b>Finding Help Where You Live</b>").join('<a href="/before-you-say-yes/resources" target="_blank" rel="noopener"><b>Finding Help Where You Live</b></a>');
   const leave = `<a ${PLACEHOLDER}>Leave this page</a>`;
   if (html.includes(leave)) {
     html = swap(
