@@ -172,6 +172,14 @@ export async function signedUnitAudio(unit: BysyNewUnit, file: string): Promise<
 
 /* ------------------------------------------------------------------ pages */
 
+/** The Leader's Guide, the only download. Members only, served by downloads/[file]. */
+export const LEADERS_GUIDE = "leaders-guide.pdf";
+export const leadersGuideHref = `${BYSY_NEW_PATH}/downloads/${LEADERS_GUIDE}`;
+export async function readDownload(file: string): Promise<Buffer | null> {
+  if (file !== LEADERS_GUIDE) return null;
+  return readFile(join(CONTENT_ROOT, "downloads", file));
+}
+
 export async function readUnitFile(unit: BysyNewUnit, name: "page.html" | "player.html"): Promise<string> {
   return readFile(join(CONTENT_ROOT, unit.slug, name), "utf8");
 }
@@ -321,6 +329,8 @@ main{padding:22px 16px 40px}
 .safe{background:#fbeee8;border:1px solid #e3c2b6;border-left:6px solid #b0583f;border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:12px}
 .safe a,.note a{color:#8a6a24;font-weight:700}
 .prog{font-size:15px;color:#5a6577;margin:0 0 6px}
+.lg{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:12px 14px;font-size:15px;margin:0 0 12px}
+.lg a{color:#8a6a24;font-weight:700}
 .fin{background:#e3ecdf;border:1px solid #b6c99a;border-radius:12px;padding:12px 14px;font-weight:600;color:#2f6b3a}
 ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 li a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:16px;color:inherit;text-decoration:none}
@@ -343,6 +353,7 @@ ${BYSY_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${BYSY_NEW_PATH}" style
 <div class="safe"><b>If you are afraid of the person you are dating</b>, or have been threatened, hurt, pressured or watched, go to <a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>
 <p class="prog">${count} of ${BYSY_NEW_UNITS.length} lessons completed. The reflections on each lesson page are private: nothing you type there is saved.</p>
 ${finished}
+<p class="lg"><b>Leading a group, or walking with a young adult?</b> The Leader's Guide is for small-group leaders, pastors, mentors and parents. <a href="${leadersGuideHref}">⬇ Leader's Guide (PDF)</a></p>
 ${sections}</main>
 <footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
 </body></html>`;
