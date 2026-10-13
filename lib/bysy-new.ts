@@ -211,6 +211,10 @@ export function playerHtml(unit: BysyNewUnit, raw: string): string {
   return beforeHeadEnd(html, NOINDEX);
 }
 
+/** Talk Before You Marry is live for members, so the closing "(coming soon)" becomes a link. */
+const TBYM_LINK = `<a href="/members/courses/talk-before-you-marry" style="color:inherit"><i>Talk Before You Marry</i></a>`;
+const COMING_SOON = "<i>Talk Before You Marry</i> (coming soon).";
+
 const TEST_BANNER = BYSY_NEW_LIVE
   ? `<div data-bysy style="background:#121d33;color:#f3ecd8;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">${COURSE} · <a href="${BYSY_NEW_PATH}" style="color:#e3c98a">Course page</a></div>`
   : `<div data-bysy style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${BYSY_NEW_PATH}" style="color:#fff">Course page</a></div>`;
@@ -221,6 +225,7 @@ export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>)
   html = beforeHeadEnd(html, NOINDEX);
   html = beforeHeadEnd(html, NEVER_STALE);
   html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  if (html.includes(COMING_SOON)) html = swap(html, COMING_SOON, `${TBYM_LINK}.`);
 
   // The player, from this site.
   html = swap(html, '<iframe src="player.html"', `<iframe src="${unitPath(unit)}/player"`);
@@ -299,7 +304,7 @@ export function homeHtml(completed: Set<string>): string {
     return `<h2>${escapeHtml(p.title)}</h2><ul>${rows}</ul>`;
   }).join("");
   const finished = count === BYSY_NEW_UNITS.length
-    ? `<p class="fin">✓ Completed ${COURSE}. Next, when you are ready: <i>Talk Before You Marry</i> (coming soon).</p>`
+    ? `<p class="fin">✓ Completed ${COURSE}. Next, when you are ready: ${TBYM_LINK}.</p>`
     : "";
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${COURSE}${BYSY_NEW_LIVE ? "" : " · Test edition"}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
