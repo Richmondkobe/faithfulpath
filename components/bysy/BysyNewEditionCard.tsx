@@ -10,9 +10,11 @@ import { BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 export default function BysyNewEditionCard() {
   return (
     <section className="rounded-sm border border-[#C9A35A] bg-[#FBF5E8] px-5 py-5">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">New edition</p>
+      {!BYSY_OLD_RETIRED && (
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">New edition</p>
+      )}
       <h2
-        className="mt-1 text-2xl text-[#2B2118]"
+        className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Before You Say Yes
