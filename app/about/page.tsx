@@ -6,7 +6,7 @@ import Image from "next/image";
 // A fixed import: a hashed, long-cached file with its own size and a blurred
 // placeholder, rather than a plain path re-checked on every visit (website
 // audit P6).
-import richmond from "@/public/richmond-1200.jpg";
+import richmond from "@/public/richmond-kobe-portrait.webp";
 import Link from "next/link";
 
 import ArticleBody from "@/components/ArticleBody";
@@ -87,7 +87,7 @@ export default function About() {
             <Image
               src={richmond}
               placeholder="blur"
-              alt="Richmond Kobe, pastor at Faithful Path Community"
+              alt="Pastor Richmond Kobe"
               fill
               preload
               sizes="13rem"

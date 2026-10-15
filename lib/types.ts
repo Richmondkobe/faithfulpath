@@ -18,5 +18,5 @@ export type Article = {
 export const AUTHOR = {
   name: "Richmond Kobe",
   credential: "Pastor for over twenty years across ten countries",
-  image: "/richmond-1200.jpg",
+  image: "/richmond-kobe-portrait.webp",
 };

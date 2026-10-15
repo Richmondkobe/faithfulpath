@@ -140,7 +140,7 @@ export default async function ArticlePage({
 
       <div className="mt-8 flex items-center gap-4 border-y border-line py-5">
         <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
-          <Image src={AUTHOR.image} alt={AUTHOR.name} fill sizes="3rem" className="object-cover" />
+          <Image src={AUTHOR.image} alt="Pastor Richmond Kobe" fill sizes="3rem" className="object-cover" />
         </div>
         <div>
           <p className="font-medium text-navy">{AUTHOR.name}</p>
