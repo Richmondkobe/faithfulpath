@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
 import { tbymMono as mono } from "@/lib/fonts";
+import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
 
 import "./tbym.css";
 
@@ -20,6 +22,8 @@ import "./tbym.css";
  * because a layout is not a guard.
  */
 export default function TbymLayout({ children }: { children: React.ReactNode }) {
+  // Retired previous edition: every page of it goes to the new edition.
+  if (TBYM_NEW_LIVE && TBYM_OLD_RETIRED) redirect("/members/courses/talk-before-you-marry-new");
   return (
     <div className={`tbym ${mono.variable} min-h-screen`}>
       {children}

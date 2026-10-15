@@ -6,7 +6,7 @@ import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { TBYM_NEW_LIVE } from "@/lib/tbym-new-live";
+import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
 
 /*
  * Talk Before You Marry, new edition: a hidden test course, built the same way
@@ -347,7 +347,9 @@ ${TBYM_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${TBYM_NEW_PATH}" style
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>${COURSE}</h1><p class="s">A Christian course for couples preparing for marriage: 15 illustrated teaching lessons, each about 15 to 20 minutes, from the book <i>Talk Before You Marry</i>.</p></div></header>
 <main class="w"><div class="note">${
     TBYM_NEW_LIVE
-      ? "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
+      ? TBYM_OLD_RETIRED
+        ? "Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."
+        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
       : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
   }</div>
 <div class="safe"><b>If you are afraid of your partner</b>, or have been threatened, hurt, pressured or watched, go to <a href="${HELP_HREF}" ${NEW_TAB}>Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>

@@ -34,7 +34,7 @@ import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 import BysyNewEditionCard from "@/components/bysy/BysyNewEditionCard";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
-import { TBYM_NEW_LIVE } from "@/lib/tbym-new-live";
+import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
 import TbymNewEditionCard from "@/components/tbym/TbymNewEditionCard";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
@@ -389,7 +389,8 @@ export default async function Members() {
               is finished. */}
           {/* The Talk Before You Marry new edition sits above the previous edition's card. */}
           {TBYM_NEW_LIVE && <TbymNewEditionCard />}
-          {TBYM_PUBLISHED && <TbymCourseCard />}
+          {/* Retired: the card goes; nothing it reads is changed or deleted. */}
+          {TBYM_PUBLISHED && !(TBYM_NEW_LIVE && TBYM_OLD_RETIRED) && <TbymCourseCard />}
           {LBYR_PUBLISHED && <LbyrCourseCard />}
         </div>
       </section>

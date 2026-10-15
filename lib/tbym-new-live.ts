@@ -10,3 +10,12 @@
  * Neither setting reads, moves, copies or changes any member or progress.
  */
 export const TBYM_NEW_LIVE = true;
+
+/**
+ * The previous edition, retired by Richmond on 15 October 2026 after he
+ * approved the new one. true: its card leaves /members and every page under
+ * /members/courses/talk-before-you-marry redirects to the new edition.
+ * Nothing is deleted or changed: its pages, progress and any saved answers
+ * stay where they are, and setting this back to false restores it.
+ */
+export const TBYM_OLD_RETIRED = true;

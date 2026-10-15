@@ -220,7 +220,7 @@ export function playerHtml(unit: BysyNewUnit, raw: string): string {
 }
 
 /** Talk Before You Marry is live for members, so the closing "(coming soon)" becomes a link. */
-const TBYM_LINK = `<a href="/members/courses/talk-before-you-marry" style="color:inherit"><i>Talk Before You Marry</i></a>`;
+const TBYM_LINK = `<a href="/members/courses/talk-before-you-marry-new" style="color:inherit"><i>Talk Before You Marry</i></a>`;
 const COMING_SOON = "<i>Talk Before You Marry</i> (coming soon).";
 
 const TEST_BANNER = BYSY_NEW_LIVE
