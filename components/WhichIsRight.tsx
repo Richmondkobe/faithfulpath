@@ -32,9 +32,9 @@ const OPTIONS = [
 
 export default function WhichIsRight({ here }: { here?: string }) {
   return (
-    <section className="mt-12 max-w-2xl rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-6 py-7">
+    <section className="mt-12 max-w-2xl rounded-xl border border-line bg-sand px-6 py-7">
       <h2
-        className="text-xl leading-snug text-[#2B2118]"
+        className="text-xl leading-snug text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Which is right for you?
@@ -46,17 +46,17 @@ export default function WhichIsRight({ here }: { here?: string }) {
             key={o.href}
             className="grid gap-x-6 gap-y-1 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
           >
-            <dt className="leading-relaxed text-[#6B5F53]">{o.need}</dt>
+            <dt className="leading-relaxed text-muted">{o.need}</dt>
             <dd className="leading-relaxed">
               {o.href === here ? (
-                <span className="text-[#2B2118]">
+                <span className="text-navy">
                   {o.action}{" "}
-                  <span className="text-[#8B5E34]">— you are here</span>
+                  <span className="text-gold-text">— you are here</span>
                 </span>
               ) : (
                 <Link
                   href={o.href}
-                  className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   {o.action}
                 </Link>

@@ -32,11 +32,11 @@ export default async function Claim({
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         A gift
       </p>
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {guide.title}
@@ -45,7 +45,7 @@ export default async function Claim({
       {guide.subtitle && (
         <p
           className="mt-4 max-w-xl text-lg leading-relaxed"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           {guide.subtitle}
         </p>
@@ -53,7 +53,7 @@ export default async function Claim({
 
       <div className="mt-10 flex flex-col gap-10 sm:flex-row sm:items-start sm:gap-12">
         {cover && (
-          <div className="relative aspect-[2/3] w-40 shrink-0 overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+          <div className="relative aspect-[2/3] w-40 shrink-0 overflow-hidden rounded-xl border border-line bg-sand">
             <Image
               src={cover}
               alt={guide.title}

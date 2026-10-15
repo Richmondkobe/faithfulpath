@@ -68,20 +68,20 @@ export default async function MindResource({ params }: Props) {
       <div className="no-print">
         <Link
           href={MIND_BASE}
-          className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
         >
           ← When Your Mind Won&rsquo;t Rest
         </Link>
       </div>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Worksheet {resource.toolkit_number}
       </p>
 
       {/* On screen and on paper both: someone printing this to take to a group
           has to be able to see that this one is not for the group. */}
       {resource.not_for_group_sharing && (
-        <p className="mt-3 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-4 py-3 text-sm leading-relaxed text-[#8B3A2E]">
+        <p className="mt-3 rounded-xl border border-danger-line bg-danger-bg px-4 py-3 text-sm leading-relaxed text-danger">
           <strong className="font-medium">Private — not for group sharing.</strong>{" "}
           {resource.group_sharing_note ??
             "This worksheet is yours alone. Do not read it aloud or hand it round in a group."}
@@ -93,9 +93,9 @@ export default async function MindResource({ params }: Props) {
           <MindMarkdown source={file.body} />
         </article>
       ) : (
-        <div className="mt-8 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-5 py-5">
-          <p className="text-[#8B3A2E]">This worksheet is not available.</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#8B3A2E]">
+        <div className="mt-8 rounded-xl border border-danger-line bg-danger-bg px-5 py-5">
+          <p className="text-danger">This worksheet is not available.</p>
+          <p className="mt-2 text-sm leading-relaxed text-danger">
             It is meant to be read alongside a safety note that is missing from
             this page, and the exercise should not be attempted without it.
             Please tell us at info@faithfulpathcommunity.com.
@@ -103,14 +103,14 @@ export default async function MindResource({ params }: Props) {
         </div>
       )}
 
-      <p className="no-print mt-10 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="no-print mt-10 text-sm leading-relaxed text-muted">
         Optional, and yours alone. Print this page from your browser (File →
         Print) to fill it in by hand. Nothing here counts towards finishing the
         course, and you will never be asked to do it again.
       </p>
 
       {/* Required on every downloadable and printable page, not just on screen. */}
-      <p className="print-only mt-10 text-[10px] leading-relaxed text-[#6B5F53]">
+      <p className="print-only mt-10 text-[10px] leading-relaxed text-muted">
         {notice}
       </p>
     </main>

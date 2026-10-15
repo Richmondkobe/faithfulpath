@@ -25,13 +25,13 @@ export default function ArticlePagination({
   // min-h-11 is 44px: the Newer/Older links were 20px tall, which is a hard
   // thing to hit with a thumb at the bottom of a long index.
   const link =
-    "inline-flex min-h-11 items-center text-sm text-[#2C5651] underline underline-offset-4 transition-colors hover:text-[#17222B]";
-  const disabled = "inline-flex min-h-11 items-center text-sm text-[#7A7066]";
+    "inline-flex min-h-11 items-center text-sm text-navy underline underline-offset-4 transition-colors hover:text-navy";
+  const disabled = "inline-flex min-h-11 items-center text-sm text-muted";
 
   return (
     <nav
       aria-label="Article pages"
-      className="mt-14 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-[#D6DBD8] pt-8"
+      className="mt-14 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-line pt-8"
     >
       {page > 1 ? (
         <Link href={href(page - 1)} className={link}>
@@ -47,14 +47,14 @@ export default function ArticlePagination({
             {n === page ? (
               <span
                 aria-current="page"
-                className="inline-flex h-11 min-w-11 items-center justify-center rounded-sm border border-[#2C5651] px-3 text-[#17222B]"
+                className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-navy px-3 text-navy"
               >
                 {n}
               </span>
             ) : (
               <Link
                 href={href(n)}
-                className="inline-flex h-11 min-w-11 items-center justify-center rounded-sm border border-[#D6DBD8] px-3 text-[#5A6A73] transition-colors hover:border-[#2C5651] hover:text-[#17222B]"
+                className="inline-flex h-11 min-w-11 items-center justify-center rounded-xl border border-line px-3 text-muted transition-colors hover:border-navy hover:text-navy"
               >
                 <span className="sr-only">Page </span>
                 {n}

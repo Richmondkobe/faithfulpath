@@ -26,8 +26,8 @@ export default function ResourcesBox({
   if (resources.length === 0 && files.length === 0) return null;
 
   return (
-    <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-6 py-5">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-10 rounded-xl border border-line bg-sand px-6 py-5">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Resources
       </h2>
       <ul className="mt-3 space-y-3">
@@ -35,13 +35,13 @@ export default function ResourcesBox({
           <li key={resource.slug} className="flex flex-wrap items-baseline gap-x-4">
             <Link
               href={resourceHref(courseSlug, resource.slug)}
-              className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+              className="text-navy underline underline-offset-4 transition-colors hover:text-gold-text"
             >
               {resource.title}
             </Link>
             <Link
               href={`${resourceHref(courseSlug, resource.slug)}?print=1`}
-              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               Print
             </Link>
@@ -49,10 +49,10 @@ export default function ResourcesBox({
         ))}
         {files.map((file) => (
           <li key={file.id} className="flex flex-wrap items-baseline gap-x-4">
-            <span className="text-[#2B2118]">{file.title}</span>
+            <span className="text-navy">{file.title}</span>
             <a
               href={downloadHref(courseSlug, file.id)}
-              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               Download
             </a>

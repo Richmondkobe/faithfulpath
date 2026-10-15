@@ -72,10 +72,10 @@ export default function PatternFinder({
           return (
             <li key={pattern.id}>
               <label
-                className={`flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-3 text-sm leading-relaxed transition-colors ${
+                className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-relaxed transition-colors ${
                   checked
-                    ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                    : "border-[#D9CDBA] text-[#4A4038] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand text-navy"
+                    : "border-field text-ink hover:border-gold-text"
                 }`}
               >
                 <input
@@ -83,7 +83,7 @@ export default function PatternFinder({
                   checked={checked}
                   disabled={pending}
                   onChange={() => toggle(pattern.id)}
-                  className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+                  className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
                 />
                 <span>{pattern.text}</span>
               </label>
@@ -93,14 +93,14 @@ export default function PatternFinder({
       </ul>
 
       {suggested.length > 0 && (
-        <div className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-          <p className="text-[#2B2118]">{resultText}</p>
+        <div className="mt-8 rounded-xl border border-line bg-sand px-5 py-5">
+          <p className="text-navy">{resultText}</p>
           <ul className="mt-4 space-y-2">
             {suggested.map((pattern) => (
               <li key={pattern.id}>
                 <Link
                   href={mindLessonHref(lessonSlugByNumber[pattern.lesson!])}
-                  className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   Lesson {pattern.lesson}
                   {lessonTitleByNumber[pattern.lesson!]
@@ -113,14 +113,14 @@ export default function PatternFinder({
         </div>
       )}
 
-      <p className="mt-6 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-6 text-sm leading-relaxed text-muted">
         Nothing here is scored, and none of it describes you. Tick as many or as
         few as you like, or none at all. The module keeps its own order either
         way, and every lesson stays open to you.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

@@ -5,8 +5,8 @@
  */
 export default function VideoPlaceholder() {
   return (
-    <div className="mt-10 flex aspect-video w-full items-center justify-center rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <div className="mt-10 flex aspect-video w-full items-center justify-center rounded-xl border border-line bg-sand">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Video coming soon
       </p>
     </div>

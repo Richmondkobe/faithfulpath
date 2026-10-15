@@ -47,19 +47,19 @@ export default async function MindCourseStart() {
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← {course.title}
       </Link>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Before you begin
       </h1>
 
-      <div className="mt-6 space-y-4 text-lg leading-relaxed text-[#4A4038]">
+      <div className="mt-6 space-y-4 text-lg leading-relaxed text-ink">
         <p>
           This course teaches one skill at a time: how to notice when your
           thinking has started circling, what is usually underneath it, and what
@@ -77,14 +77,14 @@ export default async function MindCourseStart() {
       <p className="mt-8">
         <Link
           href={mindLessonHref(slugFromFile(nextLesson.file))}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {started ? `Continue: ${nextLesson.title}` : "Start Lesson 1"}
         </Link>
       </p>
 
       {started && (
-        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           {doneCount} of {lessons.length} lessons finished
         </p>
       )}

@@ -42,18 +42,18 @@ export default function PauseAnswer({
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text"
         >
           {label}
         </button>
-        <span className="ml-3 text-sm text-[#6B5F53]">optional</span>
+        <span className="ml-3 text-sm text-muted">optional</span>
       </div>
     );
   }
 
   return (
-    <div className="mt-4 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4">
-      {hint && <p className="mb-2 text-sm text-[#5C5147]">{hint}</p>}
+    <div className="mt-4 rounded-xl border border-line bg-sand px-4 py-4">
+      {hint && <p className="mb-2 text-sm text-muted">{hint}</p>}
       <label htmlFor="pause-answer" className="sr-only">
         {label}
       </label>
@@ -66,7 +66,7 @@ export default function PauseAnswer({
           setText(e.target.value);
           setSavedAt(null);
         }}
-        className="w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+        className="w-full rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
       />
       <div className="mt-3 flex flex-wrap items-center gap-4">
         <button
@@ -83,24 +83,24 @@ export default function PauseAnswer({
               }
             })
           }
-          className="rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+          className="rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save"}
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy"
         >
           Close
         </button>
-        {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
+        {savedAt && !pending && <span className="text-sm text-muted">Saved.</span>}
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-3 text-sm leading-relaxed text-muted">
         This saves to your account and is shown nowhere else.
       </p>
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

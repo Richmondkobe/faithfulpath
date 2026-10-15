@@ -15,13 +15,13 @@ export default function BookPromo({ book }: { book: BookSlug }) {
   const copy = BOOK_COPY[book];
 
   return (
-    <aside className="mt-14 border-t border-[#E5D9C7] pt-8">
+    <aside className="mt-14 border-t border-line pt-8">
       <p className="text-lg leading-relaxed">
-        <strong className="font-medium text-[#2B2118]">{copy.hook}</strong>{" "}
+        <strong className="font-medium text-navy">{copy.hook}</strong>{" "}
         <em>{copy.title}</em> is {copy.body}{" "}
         <Link
           href={`/guides/${book}`}
-          className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           Read more about the guide →
         </Link>

@@ -30,14 +30,14 @@ export default async function ThankYou({
     return (
       <Shell>
         <h1
-          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
           style={heading}
         >
           Nothing to show
         </h1>
         <p className="mt-5 leading-relaxed">
           This page appears after a purchase.{" "}
-          <Link href="/guides" className="text-[#8B5E34] underline underline-offset-4">
+          <Link href="/guides" className="text-gold-text underline underline-offset-4">
             Browse the guides
           </Link>
           .
@@ -64,7 +64,7 @@ export default async function ThankYou({
     return (
       <Shell>
         <h1
-          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
           style={heading}
         >
           Almost there
@@ -76,7 +76,7 @@ export default async function ThankYou({
         </p>
         <Link
           href="/contact"
-          className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Contact us
         </Link>
@@ -89,35 +89,35 @@ export default async function ThankYou({
   return (
     <Shell>
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={heading}
       >
         Thank you
       </h1>
       <p
         className="mt-5 max-w-xl text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {product ? `${product.title} is ready to download.` : "Your guide is ready to download."}
       </p>
 
-      <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-7 py-8">
+      <div className="mt-10 rounded-xl border border-line bg-sand px-7 py-8">
         <a
           href={`/api/download/${purchase.download_token}`}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Download the PDF
         </a>
-        <p className="mt-5 max-w-lg text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted">
           Keep this link — it stays valid, so you can come back to it.
           {purchase.email ? ` A receipt has gone to ${purchase.email}.` : ""}
         </p>
       </div>
 
-      <div className="mt-16 border-t border-[#E5D9C7] pt-10">
+      <div className="mt-16 border-t border-line pt-10">
         <Link
           href="/guides"
-          className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
         >
           ← All guides
         </Link>

@@ -26,20 +26,20 @@ export default function MindCourseLayout({
       {children}
 
       <footer className="mx-auto max-w-3xl px-6 pb-20">
-        <div className="border-t border-[#E5D9C7] pt-8">
+        <div className="border-t border-line pt-8">
           <nav aria-label="Support" className="flex flex-wrap gap-x-6 gap-y-2">
             {course.footer_links.map((link) => (
               <Link
                 key={link.opens}
                 href={mindLessonHref(slugFromFile(link.opens))}
-                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <p className="mt-6 text-[11px] leading-relaxed text-[#8A7F73]">
+          <p className="mt-6 text-[11px] leading-relaxed text-muted">
             {course.scripture.notice}
           </p>
         </div>

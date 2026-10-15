@@ -12,13 +12,13 @@ const initialSend: MemberLoginState = { error: null, sent: null };
 const initialCode: MemberCodeState = { error: null };
 
 const errorClass =
-  "rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-4 py-3 text-sm leading-relaxed text-[#8B3A2E]";
+  "rounded-xl border border-danger-line bg-danger-bg px-4 py-3 text-sm leading-relaxed text-danger";
 const inputClass =
-  "mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]";
+  "mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-sm text-navy outline-none placeholder:text-placeholder focus:border-gold-text";
 const labelClass =
-  "block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]";
+  "block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium";
 const buttonClass =
-  "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60";
+  "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60";
 
 export default function MemberLoginForm({
   defaultEmail = "",
@@ -52,11 +52,11 @@ export default function MemberLoginForm({
   if (sendState.sent) {
     return (
       <div className="mt-10 max-w-md">
-        <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4">
-          <p className="text-lg text-[#2B2118]">Check your email</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+        <div className="rounded-2xl border border-line bg-paper px-5 py-4">
+          <p className="text-lg text-navy">Check your email</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
             A 6-digit code is on its way to{" "}
-            <span className="break-words text-[#2B2118]">{sendState.sent}</span>
+            <span className="break-words text-navy">{sendState.sent}</span>
             . Type it below. The same email also has a link, which signs you in
             if you open it in this browser. If nothing arrives in a few minutes,
             check your spam folder.
@@ -95,17 +95,17 @@ export default function MemberLoginForm({
           </button>
         </form>
 
-        <p className="mt-6 text-sm text-[#6B5F53]">
+        <p className="mt-6 text-sm text-muted">
           <a
             href={withEmail(sendState.sent)}
-            className="underline underline-offset-4 hover:text-[#8B5E34]"
+            className="underline underline-offset-4 hover:text-gold-text"
           >
             Send another code
           </a>{" "}
           or{" "}
           <a
             href={restartHref}
-            className="underline underline-offset-4 hover:text-[#8B5E34]"
+            className="underline underline-offset-4 hover:text-gold-text"
           >
             use a different email
           </a>

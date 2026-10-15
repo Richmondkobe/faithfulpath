@@ -55,18 +55,18 @@ export default function CheckinIntegration({
   }
 
   return (
-    <section className="mt-16 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-16 border-t border-line pt-10">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {checkin.title}
       </h2>
       {checkin.intro && (
-        <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">{checkin.intro}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{checkin.intro}</p>
       )}
       {checkin.blank_note && (
-        <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">{checkin.blank_note}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{checkin.blank_note}</p>
       )}
 
       <div className="mt-8 space-y-7">
@@ -74,12 +74,12 @@ export default function CheckinIntegration({
           <div key={item.id}>
             <label
               htmlFor={`item-${item.id}`}
-              className="block text-lg leading-snug text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+              className="block text-lg leading-snug text-navy"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {item.label}
               {item.optional && (
-                <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                   optional
                 </span>
               )}
@@ -92,7 +92,7 @@ export default function CheckinIntegration({
               onChange={(e) =>
                 setValues((p) => ({ ...p, [item.id]: e.target.value }))
               }
-              className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm leading-relaxed text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]"
+              className="mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-sm leading-relaxed text-navy outline-none placeholder:text-placeholder focus:border-gold-text"
             />
           </div>
         ))}
@@ -101,8 +101,8 @@ export default function CheckinIntegration({
           <div>
             <label
               htmlFor="integration-reflection"
-              className="block text-lg leading-snug text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+              className="block text-lg leading-snug text-navy"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {checkin.reflection_prompt}
             </label>
@@ -111,7 +111,7 @@ export default function CheckinIntegration({
               rows={6}
               value={values.reflection ?? ""}
               onChange={(e) => setValues((p) => ({ ...p, reflection: e.target.value }))}
-              className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+              className="mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
             />
           </div>
         )}
@@ -122,17 +122,17 @@ export default function CheckinIntegration({
           type="button"
           onClick={() => save(confirmed)}
           disabled={pending}
-          className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-6 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34] disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-6 py-3 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save my answers"}
         </button>
-        {savedNote && !pending && <span className="text-sm text-[#5C5147]">Saved.</span>}
+        {savedNote && !pending && <span className="text-sm text-muted">Saved.</span>}
       </div>
 
       {checkin.confirm && (
         <label
-          className={`mt-6 flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-4 text-sm leading-relaxed ${
-            confirmed ? "border-[#8B5E34] bg-[#F3EADC]" : "border-[#D9CDBA]"
+          className={`mt-6 flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-4 text-sm leading-relaxed ${
+            confirmed ? "border-gold-text bg-sand" : "border-field"
           }`}
         >
           <input
@@ -144,23 +144,23 @@ export default function CheckinIntegration({
               setConfirmed(next);
               save(next);
             }}
-            className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+            className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
           />
-          <span className="text-[#2B2118]">{checkin.confirm}</span>
+          <span className="text-navy">{checkin.confirm}</span>
         </label>
       )}
 
       {confirmed && checkin.closing && (
         <p
-          className="mt-8 border-l-2 border-[#8B5E34] pl-6 text-lg leading-relaxed text-[#2B2118]"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          className="mt-8 border-l-2 border-gold-text pl-6 text-lg leading-relaxed text-navy"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           {checkin.closing}
         </p>
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

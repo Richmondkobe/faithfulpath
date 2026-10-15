@@ -45,25 +45,25 @@ export default async function ResetSimpleOverview() {
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href="/members"
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← Members
       </Link>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         The Christian Spiritual Reset
       </h1>
-      <p className="mt-4 text-lg leading-relaxed text-[#4A4038]">
+      <p className="mt-4 text-lg leading-relaxed text-ink">
         A guided retreat you listen to: prepare, take your retreat, and bring it
         home. Every lesson is a short recording with the words underneath, and
         the full teaching stays in the Go Deeper Library.
       </p>
 
       {finish.finished && (
-        <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Course complete
         </p>
       )}
@@ -76,13 +76,13 @@ export default async function ResetSimpleOverview() {
       <div className="mt-6 flex flex-wrap items-center gap-5">
         <Link
           href={resetSimpleHref(started && finish.next ? finish.next : "welcome")}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {started ? "Continue the course" : "Start the course"}
         </Link>
         <Link
           href={resetSimpleHref("safety-and-support")}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           Safety and support
         </Link>
@@ -92,7 +92,7 @@ export default async function ResetSimpleOverview() {
         const pages = pagesInPart(part);
         return (
           <section key={part} className="mt-10">
-            <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               {part}
             </h2>
             <ul className="mt-3 space-y-1">
@@ -108,25 +108,25 @@ export default async function ResetSimpleOverview() {
                   <li key={p.slug} className="flex items-baseline gap-3">
                     <span
                       aria-hidden
-                      className={`text-sm ${finished ? "text-[#8B5E34]" : "text-[#D9CDBA]"}`}
+                      className={`text-sm ${finished ? "text-gold-text" : "text-field"}`}
                     >
                       {finished ? "✓" : "·"}
                     </span>
                     <Link
                       href={resetSimpleHref(p.slug)}
                       className={`text-[15px] leading-relaxed underline-offset-4 transition-colors hover:underline ${
-                        included ? "text-[#2B2118]" : "text-[#8B8177]"
+                        included ? "text-navy" : "text-muted"
                       }`}
                     >
                       {p.title}
                     </Link>
                     {!included && (
-                      <span className="text-xs text-[#8B8177]">
+                      <span className="text-xs text-muted">
                         in a longer retreat
                       </span>
                     )}
                     {p.part === PART.followup && (
-                      <span className="text-xs text-[#8B8177]">
+                      <span className="text-xs text-muted">
                         best after 30 days
                       </span>
                     )}

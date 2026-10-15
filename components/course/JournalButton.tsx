@@ -13,11 +13,11 @@ export default function JournalButton({
   className?: string;
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-sm px-7 py-4 text-[15px] font-medium transition-colors";
+    "inline-flex items-center justify-center rounded-xl px-7 py-4 text-[15px] font-medium transition-colors";
   const look =
     variant === "primary"
-      ? "bg-[#2B2118] text-[#FDFAF4] hover:bg-[#8B5E34]"
-      : "border border-[#D9CDBA] text-[#2B2118] hover:border-[#8B5E34] hover:text-[#8B5E34]";
+      ? "bg-gold text-night hover:bg-gold-soft"
+      : "border-[1.5px] border-navy text-navy hover:border-gold-text hover:text-gold-text";
 
   return (
     <Link href="/members/journal/download" prefetch={false} className={`${base} ${look} ${className}`}>

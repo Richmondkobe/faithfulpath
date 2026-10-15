@@ -60,7 +60,7 @@ export default function SignupForm() {
 
   if (status === "done") {
     return (
-      <p className="text-sm leading-relaxed text-[#6B5F53]">
+      <p className="text-sm leading-relaxed text-muted">
         Thank you &mdash; you&apos;re on the list. Look out for the first one
         soon.
       </p>
@@ -68,17 +68,17 @@ export default function SignupForm() {
   }
 
   const inputClass =
-    "w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#7A7066] focus:border-[#8B5E34]";
+    "w-full rounded-xl border border-field bg-white px-4 py-3 text-sm text-navy outline-none placeholder:text-muted focus:border-gold-text";
 
   return (
     <div>
       <p
-        className="text-lg text-[#2B2118]"
+        className="text-lg text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         A short letter, now and then
       </p>
-      <p className="mt-2 max-w-md text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
         Scripture, and something honest about walking with God. No noise.
       </p>
 
@@ -126,7 +126,7 @@ export default function SignupForm() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             {status === "loading" ? "Adding\u2026" : "Subscribe"}
           </button>
@@ -142,7 +142,7 @@ export default function SignupForm() {
       </form>
 
       {status === "error" && (
-        <p role="alert" className="mt-2 text-sm text-[#8B3A2E]">{message}</p>
+        <p role="alert" className="mt-2 text-sm text-danger">{message}</p>
       )}
     </div>
   );

@@ -117,14 +117,14 @@ export default async function ArticlePage({
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <JsonLd data={schema} />
 
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {date}
         {category && (
           <>
             <span aria-hidden="true"> · </span>
             <Link
               href={categoryHref(category.slug)}
-              className="underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="underline underline-offset-4 transition-colors hover:text-navy"
             >
               {category.label}
             </Link>
@@ -132,19 +132,19 @@ export default async function ArticlePage({
         )}
       </p>
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {a.title}
       </h1>
 
-      <div className="mt-8 flex items-center gap-4 border-y border-[#E5D9C7] py-5">
+      <div className="mt-8 flex items-center gap-4 border-y border-line py-5">
         <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full">
           <Image src={AUTHOR.image} alt={AUTHOR.name} fill sizes="3rem" className="object-cover" />
         </div>
         <div>
-          <p className="font-medium text-[#2B2118]">{AUTHOR.name}</p>
-          <p className="text-sm text-[#6B5F53]">{AUTHOR.credential}</p>
+          <p className="font-medium text-navy">{AUTHOR.name}</p>
+          <p className="text-sm text-muted">{AUTHOR.credential}</p>
         </div>
       </div>
 
@@ -160,16 +160,16 @@ export default async function ArticlePage({
           every one of those hand-written promos ends with. */}
       {promoBook && <BookPromo book={promoBook} />}
 
-      <div className="mt-16 border-t border-[#E5D9C7] pt-10">
+      <div className="mt-16 border-t border-line pt-10">
         <p
-          className="text-xl leading-snug text-[#2B2118]"
+          className="text-xl leading-snug text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           If this is where you are right now, we can talk about it properly.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Talk to a pastor — {SITE.price}
         </Link>

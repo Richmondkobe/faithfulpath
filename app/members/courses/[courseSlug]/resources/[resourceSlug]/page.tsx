@@ -42,26 +42,26 @@ export default async function ResourcePage({
       <div className="no-print">
         <Link
           href={`/members/courses/${courseSlug}`}
-          className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
         >
           ← {course.title}
         </Link>
       </div>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {resource.title}
       </h1>
 
-      <p className="no-print mt-4 text-sm text-[#6B5F53]">
+      <p className="no-print mt-4 text-sm text-muted">
         Print this page from your browser (File → Print) to fill it in by hand.
       </p>
 
       <ArticleBody source={resource.body} title={resource.title} />
 
-      <p className="mt-16 border-t border-[#E5D9C7] pt-6 text-xs leading-relaxed text-[#6B5F53]">
+      <p className="mt-16 border-t border-line pt-6 text-xs leading-relaxed text-muted">
         {ESV_NOTICE}
       </p>
     </main>

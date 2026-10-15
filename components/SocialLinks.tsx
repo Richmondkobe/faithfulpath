@@ -36,7 +36,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={s.label}
-          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-[#8B7D6E] transition-colors hover:text-[#8B5E34]"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center text-muted transition-colors hover:text-gold-text"
         >
           <svg
             viewBox="0 0 24 24"

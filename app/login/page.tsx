@@ -16,14 +16,14 @@ export default async function Login() {
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Sign in
       </h1>
       <p
         className="mt-5 max-w-xl text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         For managing guides. Nothing here for readers.
       </p>

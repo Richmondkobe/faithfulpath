@@ -57,22 +57,22 @@ export default function Acknowledgement({
     .at(-1);
 
   return (
-    <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Three boundaries
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-[#4A4038]">{intro}</p>
+      <p className="mt-3 text-sm leading-relaxed text-ink">{intro}</p>
 
       <ul className="mt-5 space-y-3">
         {statements.map((statement) => (
           <li key={statement.id}>
-            <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#2B2118]">
+            <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-navy">
               <input
                 type="checkbox"
                 checked={checked[statement.id] ?? false}
                 disabled={pending}
                 onChange={() => toggle(statement.id)}
-                className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+                className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
               />
               <span>{statement.text}</span>
             </label>
@@ -84,12 +84,12 @@ export default function Acknowledgement({
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           Close this
         </button>
         {acknowledgedOn && (
-          <span className="text-sm text-[#6B5F53]">
+          <span className="text-sm text-muted">
             Acknowledged{" "}
             {new Date(acknowledgedOn).toLocaleDateString("en-GB", {
               day: "numeric",
@@ -101,14 +101,14 @@ export default function Acknowledgement({
         )}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Nothing here is required, and none of it locks any part of the course.
         You can close this and carry on; it will be here when you come back to
         this page.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

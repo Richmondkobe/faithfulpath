@@ -63,10 +63,10 @@ export default function NextFaithfulStep({
               aria-pressed={selected}
               disabled={pending}
               onClick={() => choose(option)}
-              className={`rounded-sm border px-5 py-3 text-sm leading-snug transition-colors disabled:opacity-60 ${
+              className={`rounded-xl border px-5 py-3 text-sm leading-snug transition-colors disabled:opacity-60 ${
                 selected
-                  ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                  : "border-[#D9CDBA] text-[#5C5147] hover:border-[#8B5E34]"
+                  ? "border-gold-text bg-sand text-navy"
+                  : "border-field text-muted hover:border-gold-text"
               }`}
             >
               {NEXT_STEP_LABELS[option]}
@@ -75,13 +75,13 @@ export default function NextFaithfulStep({
         })}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         This answer is yours alone, it is optional, and you can change it at any
         time. It does not affect finishing the lesson.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}
@@ -91,10 +91,10 @@ export default function NextFaithfulStep({
   if (secondary) {
     return (
       <section>
-        <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           If it helps, tell someone
         </h3>
-        <p className="mt-3 text-[15px] leading-relaxed text-[#4A4038]">
+        <p className="mt-3 text-[15px] leading-relaxed text-ink">
           {action}
         </p>
         {body}
@@ -103,16 +103,16 @@ export default function NextFaithfulStep({
   }
 
   return (
-    <section className="mt-14 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-14 border-t border-line pt-10">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Your next faithful step
       </h2>
       <p
         className="mt-4 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {action}
       </p>

@@ -54,15 +54,15 @@ export default async function LbyrConcerns() {
     <LbyrShell notice={notice}>
       <Panel>
         <h1
-          className="text-[clamp(2rem,6vw,2.6rem)] leading-[1.15] text-[#2B2118]"
+          className="text-[clamp(2rem,6vw,2.6rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           Concerns, Care and Reporting
         </h1>
-        <p className="mt-2 text-[19px] leading-snug text-[#6B5F53]">
+        <p className="mt-2 text-[19px] leading-snug text-muted">
           Use with Chapters 3, 7, 8 and 9.
         </p>
-        <p className="mt-4 text-[17px] leading-relaxed text-[#2B2118]">
+        <p className="mt-4 text-[17px] leading-relaxed text-navy">
           This is a general guide, not a substitute for local safeguarding
           procedures or professional advice.
         </p>
@@ -72,8 +72,8 @@ export default async function LbyrConcerns() {
         <SectionHeading>Choose the appropriate route</SectionHeading>
         <dl className="mt-5 space-y-4">
           {ROUTES.map((r) => (
-            <div key={r.title} className="rounded-sm border border-[#E5D9C7] px-5 py-4">
-              <dt className="text-[18px] font-medium text-[#2B2118]">{r.title}</dt>
+            <div key={r.title} className="rounded-xl border border-line px-5 py-4">
+              <dt className="text-[18px] font-medium text-navy">{r.title}</dt>
               <dd className="mt-1 text-[17px] leading-relaxed">{r.body}</dd>
             </div>
           ))}
@@ -87,7 +87,7 @@ export default async function LbyrConcerns() {
             <li key={r}>{r}</li>
           ))}
         </ul>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 text-[15px] leading-relaxed text-muted">
           These UK sources inform the general guidance. Reporting arrangements
           and emergency numbers vary by country; use those for your location.
         </p>

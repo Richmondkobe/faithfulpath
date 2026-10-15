@@ -33,7 +33,7 @@ export default function LbyrHabitChoice({ items }: { items: Inline[][] }) {
                 name={name}
                 checked={chosen === i}
                 onChange={() => setChosen(i)}
-                className="mt-1.5 h-5 w-5 shrink-0 accent-[#8B5E34]"
+                className="mt-1.5 h-5 w-5 shrink-0 accent-gold-text"
               />
               <span>
                 <Inlines nodes={item} />

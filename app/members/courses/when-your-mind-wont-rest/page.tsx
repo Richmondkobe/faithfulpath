@@ -57,20 +57,20 @@ export default async function MindCourseHome() {
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-14 sm:pt-24">
       <Link
         href="/members"
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← Members
       </Link>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {course.title}
       </h1>
       <p
         className="mt-5 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {course.subtitle}
       </p>
@@ -78,7 +78,7 @@ export default async function MindCourseHome() {
 
       {/* Said plainly and early, because the promise above could otherwise be
           read as more than it is. */}
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         This course is pastoral formation. It is not a {course.promise_excludes.join(", a ")}.
       </p>
 
@@ -93,12 +93,12 @@ export default async function MindCourseHome() {
       <div className="mt-12">
         <Link
           href={`${MIND_BASE}/start`}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {done > 0 ? "Continue the course" : "Start the Course"}
         </Link>
         {done > 0 && (
-          <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             {done} of {lessons.length} lessons finished
           </p>
         )}
@@ -114,7 +114,7 @@ export default async function MindCourseHome() {
                     ? mindJourneyHref()
                     : mindLessonHref(slugFromFile(entry.opens))
                 }
-                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {entry.label}
               </Link>
@@ -130,8 +130,8 @@ export default async function MindCourseHome() {
       />
 
       {/* The toolkit, linked from the course home as the manifest requires. */}
-      <section className="mt-12 border-t border-[#E5D9C7] pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <section className="mt-12 border-t border-line pt-8">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Your toolkit
         </h2>
         {course.downloads.map((download) => (
@@ -139,7 +139,7 @@ export default async function MindCourseHome() {
             <Link
               href={`${MIND_BASE}/downloads/${slugFromFile(download.file).replace(/\.pdf$/, "")}`}
               prefetch={false}
-              className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-[15px] text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               {download.title ?? "Download the toolkit"} (PDF)
             </Link>
@@ -150,8 +150,8 @@ export default async function MindCourseHome() {
       {/* The pauses and the Pattern Finder. Listed apart from the entry points
           because none of them is a way into the course — they are optional
           stops along it, and nothing depends on doing any of them. */}
-      <section className="mt-12 border-t border-[#E5D9C7] pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <section className="mt-12 border-t border-line pt-8">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Optional pauses along the way
         </h2>
         <ul className="mt-4 space-y-2">
@@ -159,14 +159,14 @@ export default async function MindCourseHome() {
             <li key={checkin.file}>
               <Link
                 href={mindCheckinHref(checkinSlug(checkin))}
-                className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-[15px] text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {checkin.title}
               </Link>
             </li>
           ))}
         </ul>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted">
           None of these is scored or required, and none of them affects finishing
           the course or your certificate.
         </p>
@@ -174,16 +174,16 @@ export default async function MindCourseHome() {
 
       {/* Outside the learner pathway, and the manifest says so — it sits apart
           from the three entry points rather than among them. */}
-      <div className="mt-12 border-t border-[#E5D9C7] pt-8">
+      <div className="mt-12 border-t border-line pt-8">
         {course.course_home_links.map((link) => (
           <div key={link.id}>
             <Link
               href={mindLeadersHref()}
-              className="text-[15px] font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-[15px] font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               {link.label}
             </Link>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-[#6B5F53]">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted">
               {link.blurb}
             </p>
           </div>

@@ -59,11 +59,11 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
         <button
           type="button"
           onClick={() => setState("asked")}
-          className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text"
         >
           View my earlier answers
         </button>
-        <p className="mt-2 text-sm text-[#6B5F53]">
+        <p className="mt-2 text-sm text-muted">
           Nothing from earlier lessons is shown on this page unless you ask for
           it.
         </p>
@@ -73,12 +73,12 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
 
   if (state === "asked") {
     return (
-      <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-        <p className="text-sm leading-relaxed text-[#4A4038]">
-          <strong className="font-medium text-[#2B2118]">Privacy and safety.</strong>{" "}
+      <div className="mt-6 rounded-xl border border-line bg-sand px-5 py-5">
+        <p className="text-sm leading-relaxed text-ink">
+          <strong className="font-medium text-navy">Privacy and safety.</strong>{" "}
           {MONITORING_NOTE}
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-[#4A4038]">
+        <p className="mt-3 text-sm leading-relaxed text-ink">
           Opening these puts what you wrote earlier onto this screen. If someone
           may be able to see this device, leave them closed.
         </p>
@@ -87,26 +87,26 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
             type="button"
             disabled={pending}
             onClick={reveal}
-            className="rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             {pending ? "Opening…" : "Show them"}
           </button>
           <button
             type="button"
             onClick={() => setState("closed")}
-            className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy"
           >
             Not now
           </button>
           <Link
             href={bysySupportHref()}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Finding Help Where You Live
           </Link>
         </div>
         {error && (
-          <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+          <p role="alert" className="mt-3 text-sm text-danger">
             {error}
           </p>
         )}
@@ -115,9 +115,9 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
   }
 
   return (
-    <div className="mt-6 rounded-sm border border-[#E5D9C7] px-5 py-5">
+    <div className="mt-6 rounded-xl border border-line px-5 py-5">
       <div className="flex flex-wrap items-baseline justify-between gap-4">
-        <h4 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <h4 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Your earlier answers
         </h4>
         <button
@@ -126,7 +126,7 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
             setAnswers([]);
             setState("closed");
           }}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           Close and clear from this page
         </button>
@@ -135,13 +135,13 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
       <div className="mt-4 space-y-6">
         {answers.map(({ pageSlug, part, rows }) => (
           <section key={`${pageSlug}-${part}`}>
-            <p className="font-medium text-[#2B2118]">{labelFor(pageSlug, part)}</p>
+            <p className="font-medium text-navy">{labelFor(pageSlug, part)}</p>
             {rows.length === 0 ? (
-              <p className="mt-1 text-sm leading-relaxed text-[#6B5F53]">
+              <p className="mt-1 text-sm leading-relaxed text-muted">
                 You have not written anything here yet.{" "}
                 <Link
                   href={bysyPageHref(pageSlug)}
-                  className="text-[#8B5E34] underline underline-offset-4"
+                  className="text-gold-text underline underline-offset-4"
                 >
                   Open that lesson
                 </Link>
@@ -150,7 +150,7 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
             ) : (
               <ul className="mt-2 space-y-2">
                 {rows.map((row, i) => (
-                  <li key={i} className="text-sm leading-relaxed text-[#4A4038]">
+                  <li key={i} className="text-sm leading-relaxed text-ink">
                     {row.filter((cell) => cell && cell !== "-").join(" · ")}
                   </li>
                 ))}
@@ -160,7 +160,7 @@ export default function EarlierAnswers({ refs }: { refs: Recall[] }) {
         ))}
       </div>
 
-      <p className="mt-5 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-5 text-sm leading-relaxed text-muted">
         These are shown here only. Nothing you have written is sent anywhere, and
         none of it appears in an email or a notification.
       </p>

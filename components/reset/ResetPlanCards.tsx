@@ -70,21 +70,21 @@ export default function ResetPlanCards({
         aria-pressed={picked === c.id}
         disabled={pending}
         onClick={() => choose(c.id)}
-        className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+        className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
           picked === c.id
-            ? "border-[#8B5E34] bg-[#F3EADC]"
-            : "border-[#D9CDBA] hover:border-[#8B5E34]"
+            ? "border-gold-text bg-sand"
+            : "border-field hover:border-gold-text"
         }`}
       >
-        <span className="block font-medium text-[#2B2118]">
+        <span className="block font-medium text-navy">
           {c.label}
           {c.note && (
-            <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               {c.note}
             </span>
           )}
         </span>
-        <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">{c.body}</span>
+        <span className="mt-1 block text-sm leading-relaxed text-ink">{c.body}</span>
       </button>
     </li>
   );
@@ -99,13 +99,13 @@ export default function ResetPlanCards({
       {others.length > 0 && (
         <div className="mt-5 mb-1">
           {othersHeading && (
-            <p className="text-[15px] font-medium text-[#2B2118]">{othersHeading}</p>
+            <p className="text-[15px] font-medium text-navy">{othersHeading}</p>
           )}
           <button
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="mt-1 text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="mt-1 text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             {othersLabel}
           </button>
@@ -114,7 +114,7 @@ export default function ResetPlanCards({
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

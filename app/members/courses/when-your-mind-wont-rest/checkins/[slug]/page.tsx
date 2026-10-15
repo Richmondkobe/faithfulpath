@@ -80,12 +80,12 @@ export default async function MindCheckin({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {isPatternFinder ? "Pattern Finder" : "Module pause"} · optional
       </p>
 
@@ -117,7 +117,7 @@ export default async function MindCheckin({ params }: Props) {
       {answers.size > 0 && <EraseEntries pageSlug={slug} />}
 
       {after && (
-        <div className="mt-10 border-t border-[#E5D9C7] pt-8">
+        <div className="mt-10 border-t border-line pt-8">
           <MindMarkdown source={after} />
         </div>
       )}

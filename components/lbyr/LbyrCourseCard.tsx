@@ -29,14 +29,14 @@ export default async function LbyrCourseCard() {
   }
 
   return (
-    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Lead Before You’re Ready
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+      <p className="mt-2 text-sm leading-relaxed text-ink">
         Practical pastoral training for your first year or two of leading in a
         church.
       </p>
@@ -52,7 +52,7 @@ export default async function LbyrCourseCard() {
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
           href={LBYR_BASE}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {doneCount > 0 ? "Go to the course" : "Start the course"}
         </Link>

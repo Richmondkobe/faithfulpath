@@ -91,20 +91,20 @@ export default function DatedEntries({
   return (
     <section className="mt-6">
       {guidance && (
-        <p className="text-sm leading-relaxed text-[#6B5F53]">{guidance}</p>
+        <p className="text-sm leading-relaxed text-muted">{guidance}</p>
       )}
 
       <ul className="mt-4 space-y-4">
         {order.map(({ row, i }) => (
           <li
             key={i}
-            className="rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4"
+            className="rounded-xl border border-line bg-sand px-4 py-4"
           >
             <div className="flex flex-wrap items-end gap-4">
               <div>
                 <label
                   htmlFor={`${part}-date-${i}`}
-                  className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+                  className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
                 >
                   Date
                 </label>
@@ -113,7 +113,7 @@ export default function DatedEntries({
                   type="date"
                   value={row[0] ?? ""}
                   onChange={(e) => setCell(i, 0, e.target.value)}
-                  className="mt-1 rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                  className="mt-1 rounded-xl border border-field bg-white px-3 py-2 text-sm text-navy outline-none focus:border-gold-text"
                 />
               </div>
 
@@ -121,7 +121,7 @@ export default function DatedEntries({
                 <div className="min-w-0 flex-1">
                   <label
                     htmlFor={`${part}-cat-${i}`}
-                    className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+                    className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
                   >
                     {categoryLabel}
                   </label>
@@ -129,7 +129,7 @@ export default function DatedEntries({
                     id={`${part}-cat-${i}`}
                     value={row[1] ?? ""}
                     onChange={(e) => setCell(i, 1, e.target.value)}
-                    className="mt-1 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                    className="mt-1 w-full rounded-xl border border-field bg-white px-3 py-2 text-sm text-navy outline-none focus:border-gold-text"
                   >
                     <option value="">—</option>
                     {categories.map((c) => (
@@ -145,7 +145,7 @@ export default function DatedEntries({
                 <div>
                   <label
                     htmlFor={`${part}-status-${i}`}
-                    className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+                    className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
                   >
                     What I would say
                   </label>
@@ -153,7 +153,7 @@ export default function DatedEntries({
                     id={`${part}-status-${i}`}
                     value={row[2] ?? ""}
                     onChange={(e) => setCell(i, 2, e.target.value)}
-                    className="mt-1 rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                    className="mt-1 rounded-xl border border-field bg-white px-3 py-2 text-sm text-navy outline-none focus:border-gold-text"
                   >
                     <option value="">—</option>
                     {statuses.map((s) => (
@@ -168,13 +168,13 @@ export default function DatedEntries({
               <button
                 type="button"
                 onClick={() => setRows((cur) => cur.filter((_, j) => j !== i))}
-                className="ml-auto text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#8B3A2E]"
+                className="ml-auto text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-danger"
               >
                 Remove
               </button>
             </div>
 
-            <label htmlFor={`${part}-note-${i}`} className="mt-3 block text-sm text-[#4A4038]">
+            <label htmlFor={`${part}-note-${i}`} className="mt-3 block text-sm text-ink">
               {evidenceLabel}
             </label>
             <textarea
@@ -183,7 +183,7 @@ export default function DatedEntries({
               maxLength={FIELD_LIMIT}
               value={row[3] ?? ""}
               onChange={(e) => setCell(i, 3, e.target.value)}
-              className="mt-1 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+              className="mt-1 w-full rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
             />
           </li>
         ))}
@@ -193,7 +193,7 @@ export default function DatedEntries({
         <button
           type="button"
           onClick={() => setRows((cur) => [...cur, blank()])}
-          className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text"
         >
           Add an entry
         </button>
@@ -201,21 +201,21 @@ export default function DatedEntries({
           type="button"
           disabled={pending}
           onClick={save}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-3 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save"}
         </button>
-        {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
+        {savedAt && !pending && <span className="text-sm text-muted">Saved.</span>}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Add entries when something happens, and leave this for weeks if nothing
         does. Nothing here is counted or scored, and we will never remind you to
         come back — noticing is yours to do, not a task we set you.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

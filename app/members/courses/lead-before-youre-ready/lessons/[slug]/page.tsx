@@ -65,7 +65,7 @@ export default async function LbyrLessonPage({ params }: Props) {
     <LbyrShell
       notice={lesson.notice}
       eyebrow={
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-[#8B5E34]">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
           <Link href={LBYR_BASE} className="underline underline-offset-4">
             Lead Before You’re Ready
           </Link>
@@ -77,16 +77,16 @@ export default async function LbyrLessonPage({ params }: Props) {
     >
       {/* 1. Heading, with the progress bar counting completed lessons. */}
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Lesson {order} · {lesson.module}
         </p>
         <h1
-          className="mt-2 text-[clamp(2rem,6vw,2.6rem)] leading-[1.15] text-[#2B2118]"
+          className="mt-2 text-[clamp(2rem,6vw,2.6rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {lesson.title}
         </h1>
-        <p className="mt-2 text-[19px] leading-snug text-[#6B5F53]">
+        <p className="mt-2 text-[19px] leading-snug text-muted">
           {lesson.question}
         </p>
         <LbyrProgress completed={completed} />
@@ -94,16 +94,16 @@ export default async function LbyrLessonPage({ params }: Props) {
 
       {/* 2. Key Scripture */}
       <Plain>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Key Scripture
         </p>
         <p
-          className="mt-2 text-[19px] leading-relaxed text-[#2B2118]"
+          className="mt-2 text-[19px] leading-relaxed text-navy"
           style={{ fontFamily: "var(--font-display)" }}
         >
           <Inlines nodes={lesson.scripture.text} />
         </p>
-        <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           {lesson.scripture.ref}
         </p>
       </Plain>
@@ -129,11 +129,11 @@ export default async function LbyrLessonPage({ params }: Props) {
                   artFor(order, s.art)
                 )}
               />
-              <p className="mt-3 text-[15px] leading-relaxed text-[#6B5F53]">
+              <p className="mt-3 text-[15px] leading-relaxed text-muted">
                 {lesson.duration}
               </p>
-              <details className="mt-4 border-t border-[#E5D9C7]">
-                <summary className="flex cursor-pointer justify-between py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
+              <details className="mt-4 border-t border-line">
+                <summary className="flex cursor-pointer justify-between py-4 text-[13px] uppercase tracking-[0.14em] text-gold-text font-medium">
                   Read the transcript
                 </summary>
                 <div className="max-w-[65ch] pb-3">
@@ -150,7 +150,7 @@ export default async function LbyrLessonPage({ params }: Props) {
       {/* 5. Think — nothing is typed and nothing is saved. */}
       <Plain>
         <SectionHeading>
-          Think — <span className="text-[0.75em] text-[#6B5F53]">Let it settle</span>
+          Think — <span className="text-[0.75em] text-muted">Let it settle</span>
         </SectionHeading>
         <ul className="mt-4 space-y-2 pl-6 text-[18px] leading-relaxed list-disc">
           {lesson.think.prompts.map((p, i) => (
@@ -159,7 +159,7 @@ export default async function LbyrLessonPage({ params }: Props) {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[15px] leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 text-[15px] leading-relaxed text-muted">
           {lesson.think.note}
         </p>
       </Plain>
@@ -175,7 +175,7 @@ export default async function LbyrLessonPage({ params }: Props) {
       {/* 7. Go deeper — optional. */}
       <Plain>
         <SectionHeading>
-          Go deeper <span className="text-[0.75em] text-[#6B5F53]">optional</span>
+          Go deeper <span className="text-[0.75em] text-muted">optional</span>
         </SectionHeading>
         <Blocks blocks={lesson.goDeeper.intro} />
         {/* Two equal buttons, as the preview pages have them. Both are inside
@@ -186,19 +186,19 @@ export default async function LbyrLessonPage({ params }: Props) {
         <div className="mt-5 grid gap-3 sm:grid-cols-2">
           <Link
             href={`${lbyrLessonHref(order)}/worksheet`}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-5 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-5 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Open the worksheet
           </Link>
           <Link
             href={`${lbyrLessonHref(order)}/chapter`}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-5 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-5 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Read Chapter {lesson.goDeeper.chapter}
           </Link>
         </div>
-        <details className="mt-5 border-t border-[#E5D9C7]">
-          <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
+        <details className="mt-5 border-t border-line">
+          <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-gold-text font-medium">
             {lesson.goDeeper.worksheetSummary}
           </summary>
           <div className="max-w-[65ch] pb-3">

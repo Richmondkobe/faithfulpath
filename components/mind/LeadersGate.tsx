@@ -42,19 +42,19 @@ export default function LeadersGate({
   }
 
   return (
-    <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-[#2B2118]">
+    <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+      <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-navy">
         <input
           type="checkbox"
           checked={checked}
           disabled={pending}
           onChange={toggle}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
         />
         <span>{statement}</span>
       </label>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         This unlocks the group downloads only. It generates no certificate and
         records no approval by Faithful Path. We record that you ticked it and
         the date, and nothing else.
@@ -73,13 +73,13 @@ export default function LeadersGate({
       </p>
 
       {checked && (
-        <ul className="mt-5 space-y-2 border-t border-[#E5D9C7] pt-5">
+        <ul className="mt-5 space-y-2 border-t border-line pt-5">
           {downloads.map((download) => (
             <li key={download.slug}>
               <Link
                 href={download.href}
                 prefetch={false}
-                className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-[15px] text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {download.label}
               </Link>
@@ -89,7 +89,7 @@ export default function LeadersGate({
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

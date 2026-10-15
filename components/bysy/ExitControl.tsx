@@ -76,21 +76,21 @@ export default function ExitControl() {
           id="exit-note"
           className={
             showNote
-              ? "mb-2 rounded-sm border border-[#E5D9C7] bg-[#FDFAF4] px-3 py-2 text-right text-[12px] leading-snug text-[#5C5147] shadow-[0_2px_10px_rgba(43,33,24,0.12)]"
+              ? "mb-2 rounded-xl border border-line bg-cream px-3 py-2 text-right text-[12px] leading-snug text-muted shadow-[0_2px_10px_rgba(43,33,24,0.12)]"
               : "sr-only"
           }
         >
           {NOTE}
         </p>
 
-        <div className="flex items-stretch overflow-hidden rounded-full border border-[#D9CDBA] bg-[#FDFAF4] shadow-[0_1px_6px_rgba(43,33,24,0.10)]">
+        <div className="flex items-stretch overflow-hidden rounded-full border border-field bg-cream shadow-[0_1px_6px_rgba(43,33,24,0.10)]">
           <button
             type="button"
             onClick={leave}
             onFocus={() => setShowNote(true)}
             onBlur={() => setShowNote(false)}
             aria-describedby="exit-note"
-            className="px-4 py-2 text-[13px] font-medium text-[#2B2118] transition-colors hover:bg-[#F3EADC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
+            className="px-4 py-2 text-[13px] font-medium text-navy transition-colors hover:bg-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-text"
           >
             Leave this page
           </button>
@@ -101,7 +101,7 @@ export default function ExitControl() {
             aria-expanded={showNote}
             aria-controls="exit-note"
             aria-label="What leaving does and does not do"
-            className="border-l border-[#E5D9C7] px-2.5 text-[12px] text-[#6B5F53] transition-colors hover:bg-[#F3EADC] hover:text-[#2B2118] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#8B5E34]"
+            className="border-l border-line px-2.5 text-[12px] text-muted transition-colors hover:bg-sand hover:text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-text"
           >
             <span aria-hidden="true">ⓘ</span>
           </button>

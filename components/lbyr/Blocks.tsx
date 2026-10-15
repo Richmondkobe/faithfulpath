@@ -23,13 +23,13 @@ function inline(nodes: Inline[], key = 0): ReactNode {
     if (n.t === "em") return <em key={k}>{inline(n.c, i)}</em>;
     if (n.t === "strong")
       return (
-        <strong key={k} className="font-medium text-[#2B2118]">
+        <strong key={k} className="font-medium text-navy">
           {inline(n.c, i)}
         </strong>
       );
     if (n.t === "small")
       return (
-        <small key={k} className="text-[0.75em] font-normal text-[#6B5F53]">
+        <small key={k} className="text-[0.75em] font-normal text-muted">
           {inline(n.c, i)}
         </small>
       );
@@ -40,7 +40,7 @@ function inline(nodes: Inline[], key = 0): ReactNode {
         <Link
           key={k}
           href={lbyrConcernsHref}
-          className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           {inline(n.c, i)}
         </Link>
@@ -51,7 +51,7 @@ function inline(nodes: Inline[], key = 0): ReactNode {
         <a
           key={k}
           href={n.href}
-          className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           {inline(n.c, i)}
         </a>
@@ -67,13 +67,13 @@ export function Inlines({ nodes }: { nodes: Inline[] }) {
 
 const P_CLASS: Record<string, string> = {
   scripture:
-    "text-[19px] leading-relaxed text-[#2B2118] [font-family:var(--font-display)]",
-  note: "text-[15px] leading-relaxed text-[#6B5F53]",
-  opt: "mt-5 rounded-sm border border-[#E5D9C7] bg-[#FDFAF4] px-4 py-3 text-[16px] leading-relaxed text-[#4A4038]",
+    "text-[19px] leading-relaxed text-navy [font-family:var(--font-display)]",
+  note: "text-[15px] leading-relaxed text-muted",
+  opt: "mt-5 rounded-xl border border-line bg-cream px-4 py-3 text-[16px] leading-relaxed text-ink",
   safety:
-    "mt-5 rounded-sm border-l-[3px] border-[#8B5E34] bg-[#F3EADC] px-4 py-3 text-[16px] leading-relaxed text-[#2B2118]",
-  sub: "text-[19px] leading-snug text-[#6B5F53]",
-  done: "text-[19px] leading-snug text-[#2B2118] [font-family:var(--font-display)]",
+    "mt-5 rounded-xl border-l-[3px] border-gold-text bg-sand px-4 py-3 text-[16px] leading-relaxed text-navy",
+  sub: "text-[19px] leading-snug text-muted",
+  done: "text-[19px] leading-snug text-navy [font-family:var(--font-display)]",
 };
 
 export default function Blocks({ blocks }: { blocks: Block[] }) {
@@ -97,7 +97,7 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
               return (
                 <h3
                   key={i}
-                  className="mt-7 text-[19px] leading-snug text-[#2B2118]"
+                  className="mt-7 text-[19px] leading-snug text-navy"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   <Inlines nodes={b.c} />
@@ -106,7 +106,7 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
             return (
               <h2
                 key={i}
-                className="mt-8 text-[1.6rem] leading-tight text-[#2B2118]"
+                className="mt-8 text-[1.6rem] leading-tight text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
               >
                 <Inlines nodes={b.c} />
@@ -132,10 +132,10 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
           case "term":
             return (
               <div key={i} className="mt-5">
-                <p className="text-[18px] font-medium leading-snug text-[#2B2118]">
+                <p className="text-[18px] font-medium leading-snug text-navy">
                   <Inlines nodes={b.term} />
                 </p>
-                <div className="mt-1 text-[17px] leading-relaxed text-[#4A4038]">
+                <div className="mt-1 text-[17px] leading-relaxed text-ink">
                   <Blocks blocks={b.body} />
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
             return (
               <dl key={i} className="mt-5 space-y-4">
                 {b.items.map((item, j) => (
-                  <div key={j} className="rounded-sm border border-[#E5D9C7] px-4 py-3">
-                    <dt className="text-[17px] font-medium text-[#2B2118]">
+                  <div key={j} className="rounded-xl border border-line px-4 py-3">
+                    <dt className="text-[17px] font-medium text-navy">
                       <Inlines nodes={item.term} />
                     </dt>
                     <dd className="mt-1 text-[17px] leading-relaxed">
@@ -167,7 +167,7 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
                         {b.head.map((cell, j) => (
                           <th
                             key={j}
-                            className="border-b border-[#D9CDBA] px-3 py-2 text-left font-medium text-[#2B2118]"
+                            className="border-b border-field px-3 py-2 text-left font-medium text-navy"
                           >
                             <Inlines nodes={cell} />
                           </th>
@@ -181,7 +181,7 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
                         {row.map((cell, k) => (
                           <td
                             key={k}
-                            className="border-b border-[#E5D9C7] px-3 py-2 align-top leading-relaxed"
+                            className="border-b border-line px-3 py-2 align-top leading-relaxed"
                           >
                             <Inlines nodes={cell} />
                           </td>
@@ -194,8 +194,8 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
             );
           case "details":
             return (
-              <details key={i} className="mt-5 border-t border-[#E5D9C7]">
-                <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-[#8B5E34]">
+              <details key={i} className="mt-5 border-t border-line">
+                <summary className="cursor-pointer py-4 text-[13px] uppercase tracking-[0.14em] text-gold-text font-medium">
                   <Inlines nodes={b.summary} />
                 </summary>
                 <div className="max-w-[65ch] pb-4">
@@ -205,13 +205,13 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
             );
           case "label":
             return (
-              <p key={i} className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <p key={i} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 <Inlines nodes={b.c} />
               </p>
             );
           case "ref":
             return (
-              <p key={i} className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <p key={i} className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 <Inlines nodes={b.c} />
               </p>
             );

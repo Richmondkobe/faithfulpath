@@ -153,16 +153,16 @@ export default function Workbook({
   }
 
   return (
-    <section className="mt-8 rounded-sm border border-[#D9CDBA]">
-      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[#E5D9C7] bg-[#F7F1E6] px-5 py-3">
-        <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-8 rounded-xl border border-field">
+      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-line bg-sand px-5 py-3">
+        <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           {screen.group ?? "Go deeper"} · Screen {screen.n} of{" "}
           {screens[screens.length - 1].n}
         </h3>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy"
         >
           Close the workbook
         </button>
@@ -170,14 +170,14 @@ export default function Workbook({
 
       <div className="px-5 py-5">
         <h4
-          className="text-xl text-[#2B2118]"
+          className="text-xl text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {screen.title}
         </h4>
 
         {at === 0 && openingNote && (
-          <div className="mb-4 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+          <div className="mb-4 rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-ink">
             {openingNote}
           </div>
         )}
@@ -187,17 +187,17 @@ export default function Workbook({
         {rendered[screen.n]}
 
         {isGuide && (
-          <div className="mt-4 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-4">
-            <h5 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <div className="mt-4 rounded-xl border border-gold bg-paper px-4 py-4">
+            <h5 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               Before you use this together
             </h5>
-            <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+            <p className="mt-2 text-sm leading-relaxed text-ink">
               Use this only if you can both speak freely and safely — if either
               of you could not disagree, say <em>not yet</em>, or ask someone
               else for advice without fearing what would follow, this is not the
               right tool. Seek individual guidance first.
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+            <p className="mt-2 text-sm leading-relaxed text-ink">
               This is a guide for talking, not a form. Nothing here is saved,
               there is nowhere for the other person to write, and they have no
               access to your account.
@@ -206,7 +206,7 @@ export default function Workbook({
         )}
 
         {isNonSaved && !isGuide && (
-          <p className="mt-4 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+          <p className="mt-4 rounded-xl border border-gold bg-paper px-4 py-3 text-sm leading-relaxed text-ink">
             Nothing on this screen is saved.
             {/* The second sentence is about writing, so it belongs only on a
                 screen that has somewhere to write. A read-only screen has no
@@ -225,12 +225,12 @@ export default function Workbook({
           <ul className="mt-5 space-y-2">
             {screen.ticks.map((item, i) => (
               <li key={item}>
-                <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]">
+                <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-line px-4 py-3 text-sm leading-relaxed text-navy">
                   <input
                     type="checkbox"
                     checked={(rows[screen.n]?.[i]?.[0] ?? "") === item}
                     onChange={(e) => setCell(i, 0, e.target.checked ? item : "")}
-                    className="mt-1 h-4 w-4 accent-[#8B5E34]"
+                    className="mt-1 h-4 w-4 accent-gold-text"
                   />
                   <span>{item}</span>
                 </label>
@@ -269,7 +269,7 @@ export default function Workbook({
             {screen.prompts.map((prompt, i) => (
               <li
                 key={i}
-                className="rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]"
+                className="rounded-xl border border-line px-4 py-3 text-sm leading-relaxed text-navy"
               >
                 {prompt}
               </li>
@@ -280,10 +280,10 @@ export default function Workbook({
         {!isSafety && !isGuide && !isReadOnly && screen.kind === "sort" && (
           <div className="mt-5 space-y-4">
             {screen.categories.map((category, i) => (
-              <div key={category} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
+              <div key={category} className="rounded-xl border border-line px-4 py-4">
                 <label
                   htmlFor={`${screen.n}-sort-${i}`}
-                  className="block text-sm font-medium text-[#2B2118]"
+                  className="block text-sm font-medium text-navy"
                 >
                   {category}
                 </label>
@@ -293,7 +293,7 @@ export default function Workbook({
                   maxLength={FIELD_LIMIT}
                   value={rows[screen.n]?.[i]?.[1] ?? ""}
                   onChange={(e) => setCell(i, 1, e.target.value)}
-                  className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                  className="mt-2 w-full rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
                 />
               </div>
             ))}
@@ -305,14 +305,14 @@ export default function Workbook({
             {screen.categories.map((option) => (
               <label
                 key={option}
-                className="flex cursor-pointer items-start gap-3 rounded-sm border border-[#E5D9C7] px-4 py-3 text-sm leading-relaxed text-[#2B2118]"
+                className="flex cursor-pointer items-start gap-3 rounded-xl border border-line px-4 py-3 text-sm leading-relaxed text-navy"
               >
                 <input
                   type="radio"
                   name={`screen-${screen.n}`}
                   checked={(rows[screen.n]?.[0]?.[0] ?? "") === option}
                   onChange={() => setCell(0, 0, option)}
-                  className="mt-1 h-4 w-4 accent-[#8B5E34]"
+                  className="mt-1 h-4 w-4 accent-gold-text"
                 />
                 <span>{option}</span>
               </label>
@@ -324,7 +324,7 @@ export default function Workbook({
                 aria-label="A note, if you want one"
                 value={rows[screen.n]?.[0]?.[1] ?? ""}
                 onChange={(e) => setCell(0, 1, e.target.value)}
-                className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                className="mt-2 w-full rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
               />
             )}
           </div>
@@ -342,16 +342,16 @@ export default function Workbook({
               prompts.map((prompt, j) => {
                 const i = e * prompts.length + j;
                 return (
-              <div key={i} className="rounded-sm border border-[#E5D9C7] px-4 py-4">
+              <div key={i} className="rounded-xl border border-line px-4 py-4">
                 {screen.repeats && j === 0 && (
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                     Entry {e + 1}
                   </p>
                 )}
                 {prompt && (
                   <label
                     htmlFor={screen.example ? `${screen.n}-${i}` : undefined}
-                    className="block text-sm leading-relaxed text-[#2B2118]"
+                    className="block text-sm leading-relaxed text-navy"
                   >
                     {prompt}
                   </label>
@@ -363,7 +363,7 @@ export default function Workbook({
                       aria-label={`Your answer to: ${prompt || screen.title}`}
                       value={rows[screen.n]?.[i]?.[0] ?? ""}
                       onChange={(e) => setCell(i, 0, e.target.value)}
-                      className="rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                      className="rounded-xl border border-field bg-white px-3 py-2 text-sm text-navy outline-none focus:border-gold-text"
                     >
                       <option value="">—</option>
                       {screen.options.map((o) => (
@@ -381,7 +381,7 @@ export default function Workbook({
                       placeholder={screen.options.length > 0 ? "One short example" : ""}
                       value={rows[screen.n]?.[i]?.[1] ?? ""}
                       onChange={(e) => setCell(i, 1, e.target.value)}
-                      className="min-w-0 flex-1 rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                      className="min-w-0 flex-1 rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
                     />
                   )}
                 </div>
@@ -402,7 +402,7 @@ export default function Workbook({
                     ],
                   }))
                 }
-                className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+                className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text"
               >
                 Add another
               </button>
@@ -424,7 +424,7 @@ export default function Workbook({
                 return Math.max(0, next);
               });
             }}
-            className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
+            className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text disabled:opacity-40"
           >
             Back
           </button>
@@ -434,7 +434,7 @@ export default function Workbook({
               type="button"
               disabled={pending}
               onClick={save}
-              className="rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+              className="rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
             >
               {pending ? "Saving…" : "Save"}
             </button>
@@ -445,22 +445,22 @@ export default function Workbook({
               type="button"
               disabled={at === screens.length - 1}
               onClick={() => setAt((i) => Math.min(screens.length - 1, i + 1))}
-              className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-40"
+              className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text disabled:opacity-40"
             >
               Next screen
             </button>
           )}
 
-          {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
+          {savedAt && !pending && <span className="text-sm text-muted">Saved.</span>}
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 text-sm leading-relaxed text-muted">
           Nothing here is counted or scored. Leave it whenever you like — we will
           not remind you to come back.
         </p>
 
         {error && (
-          <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+          <p role="alert" className="mt-3 text-sm text-danger">
             {error}
           </p>
         )}

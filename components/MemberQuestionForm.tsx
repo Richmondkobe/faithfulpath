@@ -17,7 +17,7 @@ export default function MemberQuestionForm() {
 
   if (state.sent) {
     return (
-      <p className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 leading-relaxed text-[#2B2118]">
+      <p className="mt-6 rounded-xl border border-line bg-sand px-5 py-4 leading-relaxed text-navy">
         Your question was sent. Pastor Richmond replies personally within three
         working days.
       </p>
@@ -36,13 +36,13 @@ export default function MemberQuestionForm() {
         required
         maxLength={4000}
         placeholder="Write your question here. Take as long as you need."
-        className="w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm leading-relaxed text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]"
+        className="w-full rounded-xl border border-field bg-white px-4 py-3 text-sm leading-relaxed text-navy outline-none placeholder:text-placeholder focus:border-gold-text"
       />
 
       {state.error && (
         <p
           role="alert"
-          className="mt-3 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-4 py-3 text-sm leading-relaxed text-[#8B3A2E]"
+          className="mt-3 rounded-xl border border-danger-line bg-danger-bg px-4 py-3 text-sm leading-relaxed text-danger"
         >
           {state.error}
         </p>
@@ -51,7 +51,7 @@ export default function MemberQuestionForm() {
       <button
         type="submit"
         disabled={pending}
-        className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+        className="mt-5 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
       >
         {pending ? "Sending…" : "Send my question"}
       </button>

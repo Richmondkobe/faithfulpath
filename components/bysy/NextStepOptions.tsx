@@ -67,9 +67,9 @@ export default function NextStepOptions() {
 
   if (chosen?.safety) {
     return (
-      <section className="mt-6 rounded-sm border border-[#8B3A2E] bg-[#FBF1EF] px-5 py-5">
+      <section className="mt-6 rounded-xl border border-danger bg-danger-bg px-5 py-5">
         <h3
-          className="text-xl text-[#2B2118]"
+          className="text-xl text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {chosen.id === "d"
@@ -77,17 +77,17 @@ export default function NextStepOptions() {
             : "Seek individual advice before you act"}
         </h3>
 
-        <p className="mt-3 leading-relaxed text-[#4A4038]">{chosen.body}</p>
+        <p className="mt-3 leading-relaxed text-ink">{chosen.body}</p>
 
         {chosen.id === "d" && (
-          <p className="mt-3 leading-relaxed text-[#4A4038]">
+          <p className="mt-3 leading-relaxed text-ink">
             If you are in immediate danger, contact the emergency service where
             you are, or go to the safest place available to you. Do not wait to
             finish this lesson.
           </p>
         )}
 
-        <p className="mt-3 leading-relaxed text-[#4A4038]">
+        <p className="mt-3 leading-relaxed text-ink">
           Do not raise this with the person using a worksheet from this course.
           Speak to a specialist service first — they can help you think about
           timing and safety in a way a checklist cannot.
@@ -96,13 +96,13 @@ export default function NextStepOptions() {
         <div className="mt-5 flex flex-wrap items-center gap-5">
           <Link
             href={bysySupportHref()}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Finding Help Where You Live
           </Link>
           <Link
             href={bysyPageHref("lesson-19-when-to-walk-away")}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Lesson 19 — ending safely
           </Link>
@@ -111,12 +111,12 @@ export default function NextStepOptions() {
         <button
           type="button"
           onClick={() => setChosen(null)}
-          className="mt-5 text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="mt-5 text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy"
         >
           Go back to the four options
         </button>
 
-        <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 text-sm leading-relaxed text-muted">
           Nothing you selected here has been saved, and nothing about this
           choice is recorded anywhere in your account.
         </p>
@@ -140,16 +140,16 @@ export default function NextStepOptions() {
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setChosen(selected ? null : option)}
-                className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+                className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
                   selected
-                    ? "border-[#8B5E34] bg-[#F3EADC]"
-                    : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand"
+                    : "border-field hover:border-gold-text"
                 }`}
               >
-                <span className="block font-medium text-[#2B2118]">
+                <span className="block font-medium text-navy">
                   {option.title}
                 </span>
-                <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+                <span className="mt-1 block text-sm leading-relaxed text-ink">
                   {option.body}
                 </span>
               </button>
@@ -158,7 +158,7 @@ export default function NextStepOptions() {
         })}
       </ul>
 
-      <p className="mt-5 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-5 text-sm leading-relaxed text-muted">
         {NOTHING_SCORES} Your selection is not saved — it is yours to act on,
         not a record for us to keep.
       </p>

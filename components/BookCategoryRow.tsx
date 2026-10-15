@@ -26,9 +26,9 @@ export default function BookCategoryRow({
   if (shown.length === 0) return null;
 
   const selected =
-    "inline-flex items-center rounded-sm border border-[#2C5651] bg-[#2C5651] px-3 py-1.5 text-sm text-[#FCFCFB]";
+    "inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm text-paper";
   const link =
-    "inline-flex items-center rounded-sm border border-[#D6DBD8] px-3 py-1.5 text-sm text-[#5A6A73] transition-colors hover:border-[#2C5651] hover:text-[#17222B]";
+    "inline-flex items-center rounded-xl border border-line px-3 py-1.5 text-sm text-muted transition-colors hover:border-navy hover:text-navy";
 
   return (
     <nav aria-label="Book categories" className="mt-10">

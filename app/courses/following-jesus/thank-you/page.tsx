@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
 const button =
-  "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]";
+  "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft";
 
 function Shell({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Following Jesus</p>
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Following Jesus</p>
       <h1
-        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={heading}
       >
         {title}
@@ -65,11 +65,11 @@ export default async function FollowingJesusThankYou({
         <p className="mt-6 leading-relaxed">
           This page appears after buying a course. If you have just paid and see
           this, your receipt is on its way by email; you can{" "}
-          <Link href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(home)}`} className="text-[#8B5E34] underline underline-offset-4">
+          <Link href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(home)}`} className="text-gold-text underline underline-offset-4">
             sign in
           </Link>{" "}
           with the email you paid with, or{" "}
-          <Link href="/contact" className="text-[#8B5E34] underline underline-offset-4">
+          <Link href="/contact" className="text-gold-text underline underline-offset-4">
             contact us
           </Link>{" "}
           and we will sort it out.
@@ -85,10 +85,10 @@ export default async function FollowingJesusThankYou({
     <Shell title="Thank you">
       <p
         className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {paid.title} is yours. A receipt is on its way to{" "}
-        <span className="break-words text-[#2B2118]">{paid.email}</span>.
+        <span className="break-words text-navy">{paid.email}</span>.
       </p>
 
       {signedInAsBuyer ? (
@@ -100,7 +100,7 @@ export default async function FollowingJesusThankYou({
       ) : (
         <>
           <p className="mt-6 leading-relaxed">
-            To open the course, sign in with <strong className="font-medium text-[#2B2118]">{paid.email}</strong>,
+            To open the course, sign in with <strong className="font-medium text-navy">{paid.email}</strong>,
             the email you paid with. We will email you a 6-digit code — there is
             no password to remember.
           </p>

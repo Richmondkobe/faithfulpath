@@ -7,6 +7,7 @@ import JsonLd from "@/components/JsonLd";
 import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
+import AccountLink from "@/components/AccountLink";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,8 +42,12 @@ export const metadata: Metadata = {
   },
 };
 
-const NAV = [
-  { href: "/", label: "Home" },
+// The main menu. `wide` items show only from tablet width up: on a phone the
+// site name already goes home, and About and Contact are in the footer, so the
+// menu fits on one row under the name (website audit V1, N17). "Sign in" is
+// not here: AccountLink shows it, or "My courses" to someone signed in.
+const NAV: { href: string; label: string; wide?: boolean }[] = [
+  { href: "/", label: "Home", wide: true },
   { href: "/articles", label: "Articles" },
   // The URL stays /guides: the pages, their links and anything already shared
   // are unaffected by what the menu calls them.
@@ -51,12 +56,19 @@ const NAV = [
   // series side by side; the membership's own page is one click on.
   { href: "/courses", label: "Courses" },
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-  // Members' sign-in (email, then a six-digit code). Someone already signed
-  // in is taken straight to /members.
-  { href: "/members/login", label: "Sign in" },
+  { href: "/about", label: "About", wide: true },
+  { href: "/contact", label: "Contact", wide: true },
 ];
+
+// The footer lists everything, and the membership too (website audit N11).
+const FOOTER_NAV = [
+  ...NAV.slice(0, 4),
+  { href: "/membership", label: "Membership" },
+  ...NAV.slice(4),
+];
+
+const HEADER_LINK =
+  "min-h-[44px] min-w-[44px] items-center justify-center whitespace-nowrap px-1 text-sun transition-colors hover:text-gold";
 
 // The footer's Legal row. Separate from NAV because these belong at the foot of
 // the page only — putting them in the header menu would give them a prominence
@@ -73,43 +85,48 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body
-        className="min-h-screen bg-[#FDFAF4] text-[#4A4038] antialiased"
+        className="min-h-screen bg-cream text-ink antialiased"
         style={{ fontFamily: "var(--font-sans)" }}
       >
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-[#2B2118] focus:px-5 focus:py-3 focus:text-[15px] focus:font-medium focus:text-[#FDFAF4]"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-navy focus:px-5 focus:py-3 focus:text-[15px] focus:font-medium focus:text-sun"
         >
           Skip to main content
         </a>
 
-        <header className="border-b border-[#E5D9C7] bg-[#FDFAF4]">
-          <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <Link href="/" className="flex min-h-[44px] flex-col justify-center">
-              <span
-                className="block text-xl leading-none text-[#2B2118]"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-              >
-                {SITE.name}
-              </span>
-              <span className="mt-1 block text-[10px] uppercase tracking-[0.2em] text-[#8B5E34]">
-                {SITE.tagline}
-              </span>
-            </Link>
+        {/* Navy, as on the Following Jesus pages. On a phone: the name and
+            the account link on one row, the menu on the next, and the tagline
+            left for wider screens. */}
+        <header className="bg-navy">
+          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-5">
+            <div className="flex items-center justify-between gap-4">
+              <Link href="/" className="flex min-h-[44px] flex-col justify-center">
+                <span
+                  className="block text-xl leading-none text-sun"
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+                >
+                  {SITE.name}
+                </span>
+                <span className="mt-1.5 hidden text-xs uppercase tracking-[0.16em] text-gold-soft sm:block font-medium">
+                  {SITE.tagline}
+                </span>
+              </Link>
+              <AccountLink className={`flex shrink-0 text-[15px] font-semibold sm:hidden ${HEADER_LINK}`} />
+            </div>
 
-            {/* One nav at both widths — it wraps rather than becoming a menu —
-                so the weight here is the weight on a phone too. */}
             {/* Each menu named, so a screen reader can tell them apart. */}
-            <nav aria-label="Main" className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium">
+            <nav aria-label="Main" className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-0 text-[15px] font-semibold">
               {NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                  className={`${item.wide ? "hidden sm:flex" : "flex"} ${HEADER_LINK}`}
                 >
                   {item.label}
                 </Link>
               ))}
+              <AccountLink className={`hidden sm:flex ${HEADER_LINK}`} />
             </nav>
           </div>
         </header>
@@ -122,29 +139,30 @@ export default function RootLayout({
           {children}
         </div>
 
-        <footer className="border-t border-[#E5D9C7] bg-[#F3EADC]">
+        <footer className="border-t border-line bg-sand">
           <div className="mx-auto max-w-5xl px-6 py-12">
             <FooterSignup />
             <p
-              className="text-lg text-[#2B2118]"
+              className="text-lg text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {SITE.name}
             </p>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-[#6B5F53]">
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
               Pastoral and spiritual guidance online. Not a substitute for
               therapy, medical care, or emergency services.
             </p>
             <nav aria-label="Footer" className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-              {NAV.map((item) => (
+              {FOOTER_NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text"
                 >
                   {item.label}
                 </Link>
               ))}
+              <AccountLink className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text" />
             </nav>
             {/* Legal, on its own row under the site navigation rather than
                 mixed into it: these are pages a reader goes looking for
@@ -157,13 +175,13 @@ export default function RootLayout({
               {LEGAL_LINKS.map((item, i) => (
                 <span key={item.href} className="flex items-center gap-x-3">
                   {i > 0 && (
-                    <span aria-hidden="true" className="text-[#A2968A]">
+                    <span aria-hidden="true" className="text-muted">
                       ·
                     </span>
                   )}
                   <Link
                     href={item.href}
-                    className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+                    className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text"
                   >
                     {item.label}
                   </Link>
@@ -173,11 +191,11 @@ export default function RootLayout({
 
             {/* Who the reader is actually buying from. Required on a page that
                 takes payment, and the address is the one the legal pages name. */}
-            <p className="mt-6 text-sm leading-relaxed text-[#6B5F53]">
+            <p className="mt-6 text-sm leading-relaxed text-muted">
               Richmond Kobe, trading as Faithful Path Community, Thailand ·{" "}
               <a
                 href="mailto:info@faithfulpathcommunity.com"
-                className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 info@faithfulpathcommunity.com
               </a>

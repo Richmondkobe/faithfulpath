@@ -53,17 +53,17 @@ export default function LessonQuestions({
 
   return (
     <section className="mt-12">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Let it settle
       </h2>
-      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">{intro}</p>
+      <p className="mt-3 text-sm leading-relaxed text-muted">{intro}</p>
 
       <div className="mt-6 space-y-6">
         {questions.map((q) => (
           <div key={q.id}>
             <label
               htmlFor={`q-${q.id}`}
-              className="block text-[15px] leading-relaxed text-[#2B2118]"
+              className="block text-[15px] leading-relaxed text-navy"
             >
               {q.prompt}
             </label>
@@ -75,7 +75,7 @@ export default function LessonQuestions({
                 setState("idle");
               }}
               rows={3}
-              className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-[15px] leading-relaxed text-[#2B2118] focus:border-[#8B5E34] focus:outline-none"
+              className="mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-[15px] leading-relaxed text-navy focus:border-gold-text focus:outline-none"
             />
           </div>
         ))}
@@ -86,18 +86,18 @@ export default function LessonQuestions({
           type="button"
           onClick={save}
           disabled={pending}
-          className="rounded-sm border border-[#D9CDBA] bg-white px-4 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy bg-white px-4 py-2 text-sm text-navy transition-colors hover:border-gold-text"
         >
           {pending ? "Saving…" : "Save my private reflection"}
         </button>
         {state === "saved" && (
-          <span className="text-sm text-[#6B5F53]">
+          <span className="text-sm text-muted">
             Saved. It is not shown to anyone in the course and is not used to
             measure anything.
           </span>
         )}
         {state === "error" && (
-          <span role="alert" className="text-sm text-[#8B3A2E]">
+          <span role="alert" className="text-sm text-danger">
             That did not save. Your words are still here on the page.
           </span>
         )}

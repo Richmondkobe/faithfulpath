@@ -42,19 +42,19 @@ export default async function MindCourseCard() {
   const started = done > 0 || journey.size > 0;
 
   return (
-    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {course.title}
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+      <p className="mt-2 text-sm leading-relaxed text-ink">
         {course.subtitle}
       </p>
 
       {started && (
-        <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           {done > 0 && `${done} of ${lessons.length} lessons finished`}
           {done > 0 && journey.size > 0 && " · "}
           {journey.size > 0 && visitedWording(journey)}
@@ -64,7 +64,7 @@ export default async function MindCourseCard() {
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
           href={MIND_BASE}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {started ? "Go to the course" : "Start the course"}
         </Link>
@@ -72,7 +72,7 @@ export default async function MindCourseCard() {
             offered here so it is one tap from the members page too. */}
         <Link
           href={`${MIND_BASE}/lessons/07-my-mind-is-restless-right-now`}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           My mind is restless right now
         </Link>

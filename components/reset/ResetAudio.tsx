@@ -44,7 +44,7 @@ export default function ResetAudio({
   return (
     <section className="mt-6">
       {src ? (
-        <div className="rounded-sm border border-[#D9CDBA] bg-[#F7F1E6] px-4 py-4">
+        <div className="rounded-xl border border-field bg-sand px-4 py-4">
           <audio ref={audio} controls preload="none" className="w-full">
             <source src={src} type="audio/mpeg" />
             Your browser cannot play this recording.
@@ -57,21 +57,21 @@ export default function ResetAudio({
                   audio.current.currentTime = Math.max(0, audio.current.currentTime - 15);
                 }
               }}
-              className="rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+              className="rounded-xl border-[1.5px] border-navy bg-white px-3 py-2 text-sm text-navy transition-colors hover:border-gold-text"
             >
               ↺ Back 15 seconds
             </button>
-            <span className="text-sm text-[#6B5F53]">Speed</span>
+            <span className="text-sm text-muted">Speed</span>
             {[0.75, 1, 1.25, 1.5].map((r) => (
               <button
                 key={r}
                 type="button"
                 aria-pressed={rate === r}
                 onClick={() => setSpeed(r)}
-                className={`rounded-sm border px-3 py-2 text-sm transition-colors ${
+                className={`rounded-xl border px-3 py-2 text-sm transition-colors ${
                   rate === r
-                    ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                    : "border-[#D9CDBA] bg-white text-[#5C5147] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand text-navy"
+                    : "border-field bg-white text-muted hover:border-gold-text"
                 }`}
               >
                 {r}×
@@ -80,25 +80,25 @@ export default function ResetAudio({
             {/* No separator. The row is a flex with its own gap, so the
                 middot that used to join this to the speed buttons sat as a
                 stray mark rather than between two things. */}
-            {length && <span className="text-sm text-[#6B5F53]">{length}</span>}
+            {length && <span className="text-sm text-muted">{length}</span>}
           </div>
         </div>
       ) : (
-        <p className="rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+        <p className="rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-ink">
           The recording for this page is not up yet
           {length ? ` — it will be ${length}` : ""}. You can read it instead,
           below.
         </p>
       )}
 
-      <details className="group mt-4 rounded-sm border border-[#E5D9C7]">
-        <summary className="cursor-pointer list-none px-4 py-3 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
+      <details className="group mt-4 rounded-xl border border-line">
+        <summary className="cursor-pointer list-none px-4 py-3 text-sm text-navy transition-colors hover:bg-sand">
           <span className="font-medium">Read the full transcript</span>
-          <span className="ml-2 text-[#6B5F53]">
+          <span className="ml-2 text-muted">
             — every word of the recording, in writing
           </span>
         </summary>
-        <div className="border-t border-[#E5D9C7] px-4 pb-4">{transcript}</div>
+        <div className="border-t border-line px-4 pb-4">{transcript}</div>
       </details>
     </section>
   );

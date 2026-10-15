@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
 import { TrackedSubmit } from "@/components/analytics/Tracked";
 import { abs, graph, orgRef } from "@/lib/schema";
+import { listPublishedProducts } from "@/lib/products-db";
+import { coverPublicUrl } from "@/lib/supabase/admin";
 
 // From the approved page's own heading and opening line.
 const TITLE = "Five Christian courses, one membership | Faithful Path Community";
@@ -44,18 +47,51 @@ export const metadata: Metadata = {
 };
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 500 } as const;
-const lede = { fontFamily: "var(--font-display)", fontWeight: 300 } as const;
+const lede = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mt-12 text-2xl text-[#2B2118]" style={heading}>
+    <h2 className="mt-12 text-2xl text-navy" style={heading}>
       {children}
     </h2>
   );
 }
 
+// The five courses, each with the book it is built on. Titles and lines are
+// the approved wording.
+const COURSES: { title: string; line: string; book: string }[] = [
+  {
+    title: "The Christian Spiritual Reset",
+    line: "a guided retreat at home for burnout and spiritual dryness.",
+    book: "the-christian-spiritual-reset",
+  },
+  { title: "When Your Mind Won’t Rest", line: "overthinking, worry and fear.", book: "when-your-mind-wont-rest" },
+  {
+    title: "Before You Say Yes",
+    line: "discernment in dating and the decision to marry.",
+    book: "before-you-say-yes",
+  },
+  { title: "Talk Before You Marry", line: "fifteen lessons for couples before marriage.", book: "talk-before-you-marry" },
+  {
+    title: "Lead Before You’re Ready",
+    line: "for your first years of leading in a church.",
+    book: "lead-before-youre-ready",
+  },
+];
+
+/** Each course's book cover, from the published books. Read only; a missing one shows a plain tile. */
+async function courseCovers(): Promise<Map<string, string>> {
+  const books = await listPublishedProducts();
+  const covers = new Map<string, string>();
+  for (const b of books) {
+    const url = coverPublicUrl(b.cover_path);
+    if (url) covers.set(b.slug, url);
+  }
+  return covers;
+}
+
 function Bold({ children }: { children: React.ReactNode }) {
-  return <strong className="font-medium text-[#2B2118]">{children}</strong>;
+  return <strong className="font-medium text-navy">{children}</strong>;
 }
 
 /**
@@ -76,7 +112,7 @@ function JoinButton({ label, id }: { label: string; id?: string }) {
       {/* Both Join buttons render through here, so both report the click. */}
       <TrackedSubmit
         event="join_click"
-        className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
       >
         {label}
       </TrackedSubmit>
@@ -88,11 +124,11 @@ function JoinButton({ label, id }: { label: string; id?: string }) {
       </FinePrint>
 
       {/* A way in for someone who already pays (Richmond, 8 October 2026). */}
-      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-3 text-sm leading-relaxed text-muted">
         Already a member?{" "}
         <Link
           href="/members/login"
-          className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           Sign in
         </Link>
@@ -152,25 +188,29 @@ const COURSE_SCHEMA = graph({
   },
 });
 
-export default function Membership() {
+// Refreshed like the book pages, so a new cover shows without a deploy.
+export const revalidate = 300;
+
+export default async function Membership() {
+  const covers = await courseCovers();
   // The approved visitor wording (Membership-Page-Final.md, reviewer-approved
   // 8 October 2026), used exactly. Words in [ ] there are the buttons here.
   const link =
-    "font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]";
+    "font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy";
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <JsonLd data={COURSE_SCHEMA} />
 
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
         Membership · US$19 a month
       </p>
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Five Christian courses, one membership
       </h1>
-      <p className="mt-3 text-lg text-[#6B5F53]" style={lede}>
+      <p className="mt-3 text-lg text-muted" style={lede}>
         With Pastor Richmond Kobe
       </p>
 
@@ -184,26 +224,28 @@ export default function Membership() {
       <JoinButton label="Join for US$19 a month" id="join" />
 
       <H2>Five complete courses</H2>
-      <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">
-        <li>
-          <Bold>The Christian Spiritual Reset</Bold>: a guided retreat at home for
-          burnout and spiritual dryness.
-        </li>
-        <li>
-          <Bold>When Your Mind Won&rsquo;t Rest</Bold>: overthinking, worry and fear.
-        </li>
-        <li>
-          <Bold>Before You Say Yes</Bold>: discernment in dating and the decision to
-          marry.
-        </li>
-        <li>
-          <Bold>Talk Before You Marry</Bold>: fifteen lessons for couples before
-          marriage.
-        </li>
-        <li>
-          <Bold>Lead Before You&rsquo;re Ready</Bold>: for your first years of
-          leading in a church.
-        </li>
+      {/* Each course with its book's cover, so the page shows what you join
+          rather than only describing it (website audit V19). The words are the
+          approved wording, unchanged. */}
+      <ul className="mt-5 space-y-3">
+        {COURSES.map((course) => {
+          const cover = covers.get(course.book) ?? null;
+          return (
+            <li
+              key={course.book}
+              className="flex items-center gap-4 rounded-2xl border border-line bg-paper p-3 pr-5"
+            >
+              <div className="relative aspect-[2/3] w-16 shrink-0 overflow-hidden rounded-md bg-sand">
+                {cover && (
+                  <Image src={cover} alt="" fill sizes="4rem" className="object-cover" />
+                )}
+              </div>
+              <p className="leading-relaxed">
+                <Bold>{course.title}</Bold>: {course.line}
+              </p>
+            </li>
+          );
+        })}
       </ul>
 
       <H2>Also included</H2>
@@ -274,7 +316,7 @@ export default function Membership() {
           </Faq>
           <Link
             href="/courses/following-jesus"
-            className="mt-4 inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="mt-4 inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             See the series
           </Link>

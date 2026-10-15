@@ -36,7 +36,7 @@ export default async function TbymTerms() {
         style={{ fontFamily: "var(--font-sans)" }}
       >
         <div
-          className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+          className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
           style={{ fontFamily: "var(--font-tbym-mono)" }}
         >
           <Link href={TBYM_BASE} className="underline underline-offset-4">

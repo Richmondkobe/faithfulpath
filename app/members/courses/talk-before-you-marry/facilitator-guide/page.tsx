@@ -45,7 +45,7 @@ export default async function TbymFacilitatorGuide() {
         style={{ fontFamily: "var(--font-sans)" }}
       >
         <div
-          className="flex flex-col gap-1 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] sm:flex-row sm:items-center sm:justify-between sm:gap-3"
+          className="flex flex-col gap-1 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] sm:flex-row sm:items-center sm:justify-between sm:gap-3 font-medium"
           style={{ fontFamily: "var(--font-tbym-mono)" }}
         >
           <Link href={TBYM_BASE} className="underline underline-offset-4">

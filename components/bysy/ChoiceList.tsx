@@ -49,15 +49,15 @@ export default function ChoiceList({
 
   if (chosen?.replaces) {
     return (
-      <section className="mt-6 rounded-sm border border-[#8B3A2E] bg-[#FBF1EF] px-5 py-5">
+      <section className="mt-6 rounded-xl border border-danger bg-danger-bg px-5 py-5">
         <h3
-          className="text-xl text-[#2B2118]"
+          className="text-xl text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {chosen.title}
         </h3>
-        <p className="mt-3 leading-relaxed text-[#4A4038]">{chosen.body}</p>
-        <p className="mt-3 leading-relaxed text-[#4A4038]">
+        <p className="mt-3 leading-relaxed text-ink">{chosen.body}</p>
+        <p className="mt-3 leading-relaxed text-ink">
           Do not raise this with the person using a worksheet from this course,
           and do not announce a decision to someone whose reaction you fear.
           Speak to a specialist service first — they can help you think about
@@ -66,7 +66,7 @@ export default function ChoiceList({
         <div className="mt-5">
           <Link
             href={bysySupportHref()}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Finding Help Where You Live
           </Link>
@@ -74,11 +74,11 @@ export default function ChoiceList({
         <button
           type="button"
           onClick={() => setChosen(null)}
-          className="mt-5 text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="mt-5 text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy"
         >
           Go back to the options
         </button>
-        <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-4 text-sm leading-relaxed text-muted">
           Nothing you selected here has been saved, and nothing about this
           choice is recorded anywhere in your account.
         </p>
@@ -99,32 +99,32 @@ export default function ChoiceList({
                 type="button"
                 aria-pressed={selected}
                 onClick={() => setChosen(selected ? null : choice)}
-                className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+                className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
                   selected
-                    ? "border-[#8B5E34] bg-[#F3EADC]"
-                    : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand"
+                    : "border-field hover:border-gold-text"
                 }`}
               >
-                <span className="block font-medium text-[#2B2118]">{choice.title}</span>
+                <span className="block font-medium text-navy">{choice.title}</span>
                 {!selected && choice.body && (
-                  <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+                  <span className="mt-1 block text-sm leading-relaxed text-ink">
                     {choice.body}
                   </span>
                 )}
               </button>
 
               {selected && choice.caveat && (
-                <div className="mt-2 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-5 py-4">
-                  <h4 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                <div className="mt-2 rounded-xl border border-gold bg-paper px-5 py-4">
+                  <h4 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                     Before anything else
                   </h4>
-                  <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+                  <p className="mt-2 text-sm leading-relaxed text-ink">
                     {choice.caveat}
                   </p>
                   <p className="mt-3">
                     <Link
                       href={bysySupportHref()}
-                      className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                      className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                     >
                       Finding Help Where You Live
                     </Link>
@@ -133,7 +133,7 @@ export default function ChoiceList({
               )}
 
               {selected && (
-                <p className="mt-2 px-5 text-sm leading-relaxed text-[#4A4038]">
+                <p className="mt-2 px-5 text-sm leading-relaxed text-ink">
                   {choice.body}
                 </p>
               )}
@@ -143,19 +143,19 @@ export default function ChoiceList({
       </ul>
 
       {chosen && !chosen.replaces && (
-        <p className="mt-5 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
-          You chose: <strong className="font-medium text-[#2B2118]">{chosen.title}</strong>.{" "}
+        <p className="mt-5 rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-ink">
+          You chose: <strong className="font-medium text-navy">{chosen.title}</strong>.{" "}
           <button
             type="button"
             onClick={() => setChosen(null)}
-            className="underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="underline underline-offset-4 transition-colors hover:text-navy"
           >
             Change this
           </button>
         </p>
       )}
 
-      <p className="mt-5 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-5 text-sm leading-relaxed text-muted">
         {NOTHING_SCORES} Your selection is not saved — it is yours to act on,
         not a record for us to keep.
       </p>

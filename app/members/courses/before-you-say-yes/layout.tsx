@@ -22,14 +22,14 @@ export default function BysyLayout({ children }: { children: React.ReactNode }) 
     <>
       {/* Above the content, not below it: someone who needs this should meet it
           before the lesson rather than after scrolling past the whole page. */}
-      <div className="border-b border-[#E5D9C7] bg-[#F7F1E6]">
+      <div className="border-b border-line bg-sand">
         <div className="mx-auto flex max-w-3xl flex-wrap items-baseline gap-x-3 gap-y-1 px-6 py-3">
-          <p className="text-sm leading-relaxed text-[#4A4038]">
+          <p className="text-sm leading-relaxed text-ink">
             Are you afraid, under pressure or unsure whether you are safe?
           </p>
           <Link
             href={bysySupportHref()}
-            className="text-sm font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Get support
           </Link>

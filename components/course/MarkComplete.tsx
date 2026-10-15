@@ -18,8 +18,8 @@ export default function MarkComplete({
 
   if (done) {
     return (
-      <p className="inline-flex items-center gap-2 text-sm text-[#5C5147]">
-        <span aria-hidden="true" className="text-[#8B5E34]">
+      <p className="inline-flex items-center gap-2 text-sm text-muted">
+        <span aria-hidden="true" className="text-gold-text">
           ✓
         </span>
         Lesson complete
@@ -43,12 +43,12 @@ export default function MarkComplete({
             }
           })
         }
-        className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
       >
         {pending ? "Saving…" : "Mark lesson complete"}
       </button>
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

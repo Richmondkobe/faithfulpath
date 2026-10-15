@@ -15,25 +15,25 @@ export default async function Admin() {
     <main className="mx-auto max-w-5xl px-6 pt-12 pb-20">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <h1
-          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118]"
+          className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Guides
         </h1>
         <Link
           href="/admin/products/new"
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           New guide
         </Link>
       </div>
 
       {products.length === 0 ? (
-        <p className="mt-12 leading-relaxed text-[#6B5F53]">
+        <p className="mt-12 leading-relaxed text-muted">
           Nothing here yet. Start with the first guide.
         </p>
       ) : (
-        <ul className="mt-12 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
+        <ul className="mt-12 divide-y divide-line border-y border-line">
           {products.map((p) => {
             const cover = coverPublicUrl(p.cover_path);
             return (
@@ -42,7 +42,7 @@ export default async function Admin() {
               className="flex flex-wrap items-center justify-between gap-4 py-5"
             >
               <div className="flex min-w-0 items-center gap-5">
-                <div className="relative aspect-[3/4] w-20 shrink-0 overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+                <div className="relative aspect-[3/4] w-20 shrink-0 overflow-hidden rounded-xl border border-line bg-sand">
                   {cover ? (
                     <Image
                       src={cover}
@@ -52,7 +52,7 @@ export default async function Admin() {
                       className="object-cover"
                     />
                   ) : (
-                    <span className="flex h-full w-full items-center justify-center text-center text-[9px] uppercase leading-tight tracking-[0.14em] text-[#A2968A]">
+                    <span className="flex h-full w-full items-center justify-center text-center text-[9px] uppercase leading-tight tracking-[0.14em] text-muted font-medium">
                       No
                       <br />
                       cover
@@ -61,7 +61,7 @@ export default async function Admin() {
                 </div>
                 <div className="min-w-0">
                   <p
-                    className="text-lg text-[#2B2118]"
+                    className="text-lg text-navy"
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 500,
@@ -69,29 +69,29 @@ export default async function Admin() {
                   >
                     {p.title}
                   </p>
-                  <p className="mt-1 text-sm text-[#6B5F53]">
+                  <p className="mt-1 text-sm text-muted">
                     /guides/{p.slug}
                   </p>
                 </div>
               </div>
 
               <div className="flex items-center gap-6">
-                <span className="text-sm text-[#4A4038]">
+                <span className="text-sm text-ink">
                   {formatPrice(p.price_cents)}
                 </span>
                 <span
                   className={
-                    "rounded-sm px-2 py-1 text-[11px] uppercase tracking-[0.18em] " +
+                    "rounded-xl px-2 py-1 text-[11px] uppercase tracking-[0.18em] font-medium " +
                     (p.published
-                      ? "bg-[#E5D9C7] text-[#8B5E34]"
-                      : "bg-[#F3EADC] text-[#6B5F53]")
+                      ? "bg-line text-gold-text"
+                      : "bg-sand text-muted")
                   }
                 >
                   {p.published ? "Published" : "Draft"}
                 </span>
                 <Link
                   href={`/admin/products/${p.id}`}
-                  className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                  className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-gold-text"
                 >
                   Edit
                 </Link>

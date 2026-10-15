@@ -17,7 +17,7 @@ export default function EraseEntries({ pageSlug }: { pageSlug: string }) {
 
   if (done) {
     return (
-      <p className="mt-6 text-sm text-[#6B5F53]">
+      <p className="mt-6 text-sm text-muted">
         Deleted. Reload the page to see it empty.
       </p>
     );
@@ -26,8 +26,8 @@ export default function EraseEntries({ pageSlug }: { pageSlug: string }) {
   return (
     <div className="mt-6">
       {confirming ? (
-        <div className="rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-4 py-4">
-          <p className="text-sm leading-relaxed text-[#8B3A2E]">
+        <div className="rounded-xl border border-danger-line bg-danger-bg px-4 py-4">
+          <p className="text-sm leading-relaxed text-danger">
             Delete everything you have written on this page? This cannot be
             undone. Whether you finished the lesson is kept; only your writing
             goes.
@@ -46,14 +46,14 @@ export default function EraseEntries({ pageSlug }: { pageSlug: string }) {
                   }
                 })
               }
-              className="rounded-sm border border-[#8B3A2E] px-5 py-2 text-sm text-[#8B3A2E] transition-colors hover:bg-[#8B3A2E] hover:text-white disabled:opacity-60"
+              className="rounded-xl border border-danger px-5 py-2 text-sm text-danger transition-colors hover:bg-danger hover:text-white disabled:opacity-60"
             >
               {pending ? "Deleting…" : "Yes, delete it"}
             </button>
             <button
               type="button"
               onClick={() => setConfirming(false)}
-              className="text-sm text-[#5C5147] underline underline-offset-4 hover:text-[#2B2118]"
+              className="text-sm text-muted underline underline-offset-4 hover:text-navy"
             >
               Keep it
             </button>
@@ -63,14 +63,14 @@ export default function EraseEntries({ pageSlug }: { pageSlug: string }) {
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#8B3A2E]"
+          className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-danger"
         >
           Delete what I have written here
         </button>
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

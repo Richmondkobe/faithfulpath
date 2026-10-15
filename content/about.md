@@ -4,7 +4,7 @@ I am a pastor. I have been one for more than twenty years, in ten countries, and
 
 ## Who I am
 
-My name is Richmond Kobe. I am Canadian, and I have lived in Thailand for twenty years with my wife, who serves alongside me. I hold a Master of Theology from Trinity Western University in Canada, and I am an ordained minister. I grew up Pentecostal and trained at a Baptist seminary, which means I am at home in more than one kind of church and have learned not to mistake a tradition for the faith itself.
+My name is Pastor Richmond Kobe. I currently live in Thailand with my family. I hold a Master of Theology from Trinity Western University in Canada, and I am an ordained minister. I grew up Pentecostal and trained at a Baptist seminary, which means I am at home in more than one kind of church and have learned not to mistake a tradition for the faith itself.
 
 ## Where I have pastored
 

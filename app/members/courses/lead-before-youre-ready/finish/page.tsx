@@ -43,17 +43,17 @@ export default async function LbyrFinish() {
   return (
     <LbyrShell notice={notice}>
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Finish
         </p>
         <h1
-          className="mt-2 text-[clamp(2rem,6vw,2.75rem)] leading-[1.15] text-[#2B2118]"
+          className="mt-2 text-[clamp(2rem,6vw,2.75rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {page.title}
         </h1>
         {page.sub && (
-          <p className="mt-2 text-[19px] leading-snug text-[#6B5F53]">{page.sub}</p>
+          <p className="mt-2 text-[19px] leading-snug text-muted">{page.sub}</p>
         )}
         <LbyrProgress completed={completed} />
       </Panel>
@@ -82,7 +82,7 @@ export default async function LbyrFinish() {
               <div className="mt-6">
                 <Link
                   href={lbyrOverviewHref}
-                  className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+                  className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
                 >
                   Back to the course overview
                 </Link>

@@ -1,6 +1,41 @@
 @import "tailwindcss";
 
 /*
+ * The brand colours: one set for the whole site, the same navy and gold as the
+ * Following Jesus pages (website audit Stage 2). Pages use these names
+ * (text-navy, bg-cream, border-line, …), never a colour code, so the shades
+ * cannot drift apart again.
+ *
+ * Every text colour reaches 7:1 on cream, paper and sand (Richmond, 15
+ * October 2026: nothing pale): navy 11.1+, ink 10.1+, muted 7.0+,
+ * gold-text 7.3+, danger 7.1+. Placeholder hints reach 5.8:1 on white boxes.
+ * Reading text is never lighter than weight 400, and small capital labels
+ * never lighter than 500.
+ * Bright gold is for buttons and accents only, never for text on a light
+ * ground (2.5:1); on navy it reads at 6.0:1, and night text on a gold button at
+ * 7.4:1 (night is the Following Jesus header's darkest navy). Form borders (field) reach 3.3:1, above the 3:1 a control needs.
+ */
+@theme {
+  --color-night: #121b30;
+  --color-navy: #1f2d45;
+  --color-ink: #2b3445;
+  --color-muted: #434b5c;
+  --color-gold: #d4a24c;
+  --color-gold-soft: #e8c98a;
+  --color-gold-text: #5e4412;
+  --color-sun: #f3e7c9;
+  --color-cream: #f7f1e3;
+  --color-paper: #fffaf0;
+  --color-sand: #efe6d2;
+  --color-line: #e3d6b8;
+  --color-field: #7d8696;
+  --color-placeholder: #5d6576;
+  --color-danger: #7d3228;
+  --color-danger-bg: #fbf1ef;
+  --color-danger-line: #e3c9c3;
+}
+
+/*
  * The site is light-only: cream ground, warm brown text. The body's colours
  * come from its classes in app/layout.tsx; nothing here may override them.
  * color-scheme tells the browser not to darken form controls or scrollbars on
@@ -22,7 +57,7 @@
  * ground and the darker buttons.
  */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid #8b5e34;
+  outline: 2px solid var(--color-gold-text);
   outline-offset: 2px;
   border-radius: 2px;
 }

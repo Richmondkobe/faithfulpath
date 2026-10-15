@@ -133,7 +133,7 @@ export default async function SimpleLessonPage({ params }: Props) {
           ) : (
             <a
               href={href}
-              className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               {children}
             </a>
@@ -193,16 +193,16 @@ export default async function SimpleLessonPage({ params }: Props) {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-10 sm:pt-14">
-      <Link href={BYSY_BASE} className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <Link href={BYSY_BASE} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         ← Before You Say Yes
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {page.module} · Page {page.n} of {SIMPLE_PAGES.length}
       </p>
 
       <h1
-        className="mt-2 text-3xl text-[#2B2118] sm:text-4xl"
+        className="mt-2 text-3xl text-navy sm:text-4xl"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {page.title}
@@ -229,7 +229,7 @@ export default async function SimpleLessonPage({ params }: Props) {
                   in its own right, and the twenty lesson files all write it
                   the same way — but it is rendered from the file rather than
                   written here, so an edit to any of them carries through. */}
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
 
@@ -242,21 +242,21 @@ export default async function SimpleLessonPage({ params }: Props) {
                 {next && (
                   <Link
                     href={simpleHref(next.slug)}
-                    className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                    className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
                   >
                     Next: {next.title}
                   </Link>
                 )}
                 <Link
                   href={BYSY_BASE}
-                  className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:text-[#5C5147] sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+                  className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-navy transition-colors hover:border-gold-text sm:border-0 sm:px-0 sm:py-0 sm:text-muted sm:underline sm:underline-offset-4 sm:hover:text-navy"
                 >
                   Stop here for today
                 </Link>
                 {screens.length > 0 && (
                   <a
                     href="#go-deeper"
-                    className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+                    className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-gold-text transition-colors hover:border-gold-text sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-navy"
                   >
                     Open the workbook
                   </a>
@@ -267,7 +267,7 @@ export default async function SimpleLessonPage({ params }: Props) {
                 <div className="mt-6 flex flex-col items-stretch sm:mt-5 sm:block">
                   <Link
                     href={`${bysyPageHref(page.chapter.replace(/\.md$/, ""))}?from=${page.slug}`}
-                    className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+                    className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-gold-text transition-colors hover:border-gold-text sm:border-0 sm:px-0 sm:py-0 sm:underline sm:underline-offset-4 sm:hover:text-navy"
                   >
                     Read the book chapter
                   </Link>
@@ -304,9 +304,9 @@ export default async function SimpleLessonPage({ params }: Props) {
           return (
             <section
               key={i}
-              className="mt-10 rounded-sm border-l-2 border-[#8B5E34] bg-[#F7F1E6] px-5 py-4"
+              className="mt-10 rounded-xl border-l-2 border-gold-text bg-sand px-5 py-4"
             >
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
               {md(withoutBuilderText(withoutMarkers(section)))}
@@ -335,12 +335,12 @@ export default async function SimpleLessonPage({ params }: Props) {
             className={key === "need support?" ? "mt-16" : quiet ? "mt-8" : "mt-10"}
           >
             {quiet ? (
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
             ) : (
               <h2
-                className="text-2xl text-[#2B2118]"
+                className="text-2xl text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {heading}
@@ -396,8 +396,8 @@ export default async function SimpleLessonPage({ params }: Props) {
                     href={control.href}
                     className={
                       control.strong
-                        ? "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
-                        : "text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                        ? "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
+                        : "text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                     }
                   >
                     {control.label}

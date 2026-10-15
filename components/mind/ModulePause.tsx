@@ -45,8 +45,8 @@ export default function ModulePause({
           <div key={i}>
             <label
               htmlFor={`q${i}`}
-              className="block text-lg leading-snug text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+              className="block text-lg leading-snug text-navy"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {question}
             </label>
@@ -58,7 +58,7 @@ export default function ModulePause({
                 setValues((v) => ({ ...v, [`q${i}`]: e.target.value }))
               }
               placeholder="Answer if you want to. You can leave this blank."
-              className="mt-3 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm leading-relaxed text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]"
+              className="mt-3 w-full rounded-xl border border-field bg-white px-4 py-3 text-sm leading-relaxed text-navy outline-none placeholder:text-placeholder focus:border-gold-text"
             />
           </div>
         ))}
@@ -69,20 +69,20 @@ export default function ModulePause({
           type="button"
           disabled={pending}
           onClick={save}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save what I have written"}
         </button>
-        {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
+        {savedAt && !pending && <span className="text-sm text-muted">Saved.</span>}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Private, optional and unscored. Nothing here is marked, and you can carry
         on to the next module whether you write anything or not.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

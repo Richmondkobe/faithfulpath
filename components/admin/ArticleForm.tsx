@@ -10,10 +10,10 @@ import { CATEGORIES } from "@/lib/categories";
 const initial: ArticleFormState = { error: null };
 
 const inputClass =
-  "w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]";
+  "w-full rounded-xl border border-field bg-white px-4 py-3 text-sm text-navy outline-none placeholder:text-placeholder focus:border-gold-text";
 
 const labelClass =
-  "block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]";
+  "block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium";
 
 function Field({
   label,
@@ -31,7 +31,7 @@ function Field({
       <label htmlFor={htmlFor} className={labelClass}>
         {label}
       </label>
-      {hint && <p className="mt-1 text-sm text-[#6B5F53]">{hint}</p>}
+      {hint && <p className="mt-1 text-sm text-muted">{hint}</p>}
       <div className="mt-2">{children}</div>
     </div>
   );
@@ -163,26 +163,26 @@ export default function ArticleForm({ article }: { article?: Article }) {
           name="published"
           type="checkbox"
           defaultChecked={article?.published ?? false}
-          className="h-4 w-4 accent-[#8B5E34]"
+          className="h-4 w-4 accent-gold-text"
         />
-        <label htmlFor="published" className="text-sm text-[#4A4038]">
+        <label htmlFor="published" className="text-sm text-ink">
           Published — visible on /articles
         </label>
       </div>
 
-      {state.error && <p className="text-sm text-[#8B3A2E]">{state.error}</p>}
+      {state.error && <p className="text-sm text-danger">{state.error}</p>}
 
       <div className="flex items-center gap-6 pt-2">
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
         >
           {pending ? "Saving…" : article ? "Save changes" : "Create article"}
         </button>
         <Link
           href="/admin/articles"
-          className="text-sm text-[#5C5147] transition-colors hover:text-[#8B5E34]"
+          className="text-sm text-muted transition-colors hover:text-gold-text"
         >
           Cancel
         </Link>

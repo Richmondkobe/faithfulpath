@@ -19,7 +19,7 @@ export default function FinePrint({
 }) {
   return (
     <p
-      className={`max-w-md text-[13px] leading-relaxed text-[#6B5F53] ${
+      className={`max-w-md text-[13px] leading-relaxed text-muted ${
         className ?? "mt-3"
       }`}
     >
@@ -39,7 +39,7 @@ export function FinePrintLink({
   return (
     <Link
       href={href}
-      className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+      className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
     >
       {children}
     </Link>

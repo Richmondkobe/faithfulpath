@@ -20,14 +20,14 @@ import type { ChoiceOption } from "@/lib/bysy-types";
 const OPTION_BODY: Components = {
   p: ({ children }) => <span className="mt-2 block first:mt-0">{children}</span>,
   strong: ({ children }) => (
-    <strong className="font-medium text-[#2B2118]">{children}</strong>
+    <strong className="font-medium text-navy">{children}</strong>
   ),
   em: ({ children }) => <em>{children}</em>,
 };
 
 function OptionBody({ source }: { source: string }) {
   return (
-    <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+    <span className="mt-1 block text-sm leading-relaxed text-ink">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={OPTION_BODY}>
         {source}
       </ReactMarkdown>
@@ -93,13 +93,13 @@ export default function PageChoice({
                 aria-pressed={selected}
                 disabled={pending}
                 onClick={() => choose(option.title)}
-                className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+                className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
                   selected
-                    ? "border-[#8B5E34] bg-[#F3EADC]"
-                    : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand"
+                    : "border-field hover:border-gold-text"
                 }`}
               >
-                <span className="block font-medium text-[#2B2118]">{option.title}</span>
+                <span className="block font-medium text-navy">{option.title}</span>
                 {option.body && <OptionBody source={option.body} />}
               </button>
             </li>
@@ -108,33 +108,33 @@ export default function PageChoice({
       </ul>
 
       {chosen && (
-        <p className="mt-5 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+        <p className="mt-5 rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-ink">
           Your current choice:{" "}
-          <strong className="font-medium text-[#2B2118]">{chosen}</strong>. You
+          <strong className="font-medium text-navy">{chosen}</strong>. You
           can change it at any time, and it decides nothing on its own.
         </p>
       )}
 
       {safetyOption && (
-        <div className="mt-6 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-5 py-5">
-          <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <div className="mt-6 rounded-xl border border-gold bg-paper px-5 py-5">
+          <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             A separate route
           </h3>
           <button
             type="button"
             onClick={() => setSafetyChosen((on) => !on)}
             aria-pressed={safetyChosen}
-            className={`mt-3 w-full rounded-sm border px-5 py-4 text-left transition-colors ${
-              safetyChosen ? "border-[#8B3A2E] bg-[#FBF1EF]" : "border-[#D9CDBA] hover:border-[#8B5E34]"
+            className={`mt-3 w-full rounded-xl border px-5 py-4 text-left transition-colors ${
+              safetyChosen ? "border-danger bg-danger-bg" : "border-field hover:border-gold-text"
             }`}
           >
-            <span className="block font-medium text-[#2B2118]">{safetyOption.title}</span>
+            <span className="block font-medium text-navy">{safetyOption.title}</span>
             {safetyOption.body && <OptionBody source={safetyOption.body} />}
           </button>
 
           {safetyChosen && (
             <div className="mt-4">
-              <p className="text-sm leading-relaxed text-[#4A4038]">
+              <p className="text-sm leading-relaxed text-ink">
                 Do not wait until you have finished the course, and do not
                 announce a decision to someone whose reaction you fear. A
                 specialist service can help you think about timing and safety in
@@ -143,7 +143,7 @@ export default function PageChoice({
               <p className="mt-4">
                 <Link
                   href={bysySupportHref()}
-                  className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                  className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
                 >
                   Finding Help Where You Live
                 </Link>
@@ -151,7 +151,7 @@ export default function PageChoice({
             </div>
           )}
 
-          <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-4 text-sm leading-relaxed text-muted">
             This one is never saved. It is not recorded, not counted, and not
             shown back to you anywhere — choosing it only opens the support
             route on this screen.
@@ -160,7 +160,7 @@ export default function PageChoice({
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

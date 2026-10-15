@@ -35,7 +35,7 @@ export default function LbyrCheckList({ items }: { items: Inline[][] }) {
                 onChange={() =>
                   setTicked((was) => was.map((v, j) => (j === i ? !v : v)))
                 }
-                className="mt-1.5 h-5 w-5 shrink-0 accent-[#8B5E34]"
+                className="mt-1.5 h-5 w-5 shrink-0 accent-gold-text"
               />
               <span>
                 <Inlines nodes={item} />

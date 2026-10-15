@@ -286,15 +286,15 @@ export default async function ResetSimplePage({ params }: Props) {
           <p className="mt-4">
             <a
               href={videoSrc}
-              className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
             >
               Watch the Day {day} introduction (optional)
             </a>
           </p>
         )}
         {prayerSrc && (
-          <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <div className="mt-6 rounded-xl border border-line bg-sand px-4 py-4">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               Guided prayer
             </p>
             <audio controls preload="none" className="mt-3 w-full">
@@ -345,7 +345,7 @@ export default async function ResetSimplePage({ params }: Props) {
               <p key={b} className="mt-5">
                 <a
                   href={inPage ? "#close" : resetSimpleHref("retreat-plan")}
-                  className="inline-flex w-full items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:w-auto"
+                  className="inline-flex w-full items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-navy transition-colors hover:border-gold-text sm:w-auto"
                 >
                   {block.label}
                 </a>
@@ -361,19 +361,19 @@ export default async function ResetSimplePage({ params }: Props) {
   return (
     <>
     {RESET_NEW_LIVE && <NewEditionNotice narrow />}
-    <main className="mx-auto max-w-2xl px-5 pb-24 pt-10 text-[#2B2118] sm:px-8">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <main className="mx-auto max-w-2xl px-5 pb-24 pt-10 text-navy sm:px-8">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {page.part} · {place.n} of {place.of}
       </p>
       <h1
-        className="mt-2 text-3xl text-[#2B2118] sm:text-4xl"
+        className="mt-2 text-3xl text-navy sm:text-4xl"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {page.title}
       </h1>
 
       {!BUILT.has(page.slug) && (
-        <p className="mt-6 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
+        <p className="mt-6 rounded-xl border border-gold bg-paper px-4 py-3 text-sm leading-relaxed text-ink">
           This page&rsquo;s template is not built yet. Its words are in the
           repository and its recording is made; what is missing is the shape
           this kind of page takes.
@@ -394,8 +394,8 @@ export default async function ResetSimplePage({ params }: Props) {
           chose. They are told so, and where to go, rather than being shown a
           session their plan does not contain or a page that refuses to load. */}
       {!inPlan && (
-        <section className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-          <p className="text-[15px] leading-relaxed text-[#4A4038]">
+        <section className="mt-8 rounded-xl border border-line bg-sand px-5 py-5">
+          <p className="text-[15px] leading-relaxed text-ink">
             This session belongs to the three-day retreat
             {SESSION_PLANS[page.slug]?.includes("p1d") ? " and the one-day retreat" : ""}, and
             the retreat you chose does not include it. Nothing is locked — you
@@ -405,7 +405,7 @@ export default async function ResetSimplePage({ params }: Props) {
           <p className="mt-4">
             <Link
               href={resetSimpleHref("retreat-plan")}
-              className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft sm:w-auto"
             >
               Back to my retreat plan
             </Link>
@@ -419,7 +419,7 @@ export default async function ResetSimplePage({ params }: Props) {
       {inPlan && oneVersion && opening && sessionBody("", opening, "one-version")}
 
       {inPlan && !oneVersion && opening && (
-        <div className="mt-6 text-[#4A4038]">
+        <div className="mt-6 text-ink">
           <MindMarkdown source={linkLandmarks(withoutSubtitle(withoutMarkers(opening)), to)} tight />
         </div>
       )}
@@ -443,7 +443,7 @@ export default async function ResetSimplePage({ params }: Props) {
                 <p className="mt-4">
                   <a
                     href={welcomeHomeVideo}
-                    className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                    className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                   >
                     Watch the Welcome Home video (optional)
                   </a>
@@ -458,9 +458,9 @@ export default async function ResetSimplePage({ params }: Props) {
           return (
             <section
               key={i}
-              className="mt-10 rounded-sm border-l-2 border-[#8B5E34] bg-[#F7F1E6] px-5 py-4"
+              className="mt-10 rounded-xl border-l-2 border-gold-text bg-sand px-5 py-4"
             >
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
               <MindMarkdown source={body} tight />
@@ -476,7 +476,7 @@ export default async function ResetSimplePage({ params }: Props) {
             return (
               <section key={i} className="mt-10">
                 <h2
-                  className="text-2xl text-[#2B2118]"
+                  className="text-2xl text-navy"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {heading}
@@ -533,7 +533,7 @@ export default async function ResetSimplePage({ params }: Props) {
           return (
             <section key={i} className="mt-10">
               <h2
-                className="text-2xl text-[#2B2118]"
+                className="text-2xl text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {heading.replace(/^(PLAN VIEW:|QUICK START VIEW)\s*/i, "").replace(/\s*\*\([^)]*\)\*\s*$/, "") || "Your plan"}
@@ -585,9 +585,9 @@ export default async function ResetSimplePage({ params }: Props) {
             return (
               <section
                 key={i}
-                className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5"
+                className="mt-10 rounded-xl border border-line bg-sand px-5 py-5"
               >
-                <p className="text-[15px] leading-relaxed text-[#4A4038]">
+                <p className="text-[15px] leading-relaxed text-ink">
                   You have not finished every step yet. That is all right.
                   {nextPage ? " Your next step is:" : ""}
                 </p>
@@ -595,7 +595,7 @@ export default async function ResetSimplePage({ params }: Props) {
                   <p className="mt-4">
                     <Link
                       href={resetSimpleHref(nextPage.slug)}
-                      className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+                      className="inline-flex w-full items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft sm:w-auto"
                     >
                       {nextPage.title}
                     </Link>
@@ -650,7 +650,7 @@ export default async function ResetSimplePage({ params }: Props) {
           return (
             <section key={i} className="mt-10">
               <h2
-                className="text-2xl text-[#2B2118]"
+                className="text-2xl text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {heading}
@@ -663,8 +663,8 @@ export default async function ResetSimplePage({ params }: Props) {
                 tight
               />
               {weekVideos.some((w) => w.src) && (
-                <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-4">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                <div className="mt-6 rounded-xl border border-line bg-sand px-4 py-4">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                     Weekly encouragement (optional)
                   </p>
                   <ul className="mt-2 space-y-1">
@@ -673,7 +673,7 @@ export default async function ResetSimplePage({ params }: Props) {
                         <li key={w.id}>
                           <a
                             href={w.src}
-                            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                           >
                             Week {w.n} — {w.name}
                           </a>
@@ -694,9 +694,9 @@ export default async function ResetSimplePage({ params }: Props) {
           return (
             <section
               key={i}
-              className="mt-8 rounded-sm border border-[#C9A227] bg-[#FBF6E9] px-5 py-5"
+              className="mt-8 rounded-xl border border-gold bg-paper px-5 py-5"
             >
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
               <MindMarkdown
@@ -719,7 +719,7 @@ export default async function ResetSimplePage({ params }: Props) {
           return (
             <section key={i} className="mt-10">
               <h2
-                className="text-2xl text-[#2B2118]"
+                className="text-2xl text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {heading}
@@ -750,12 +750,12 @@ export default async function ResetSimplePage({ params }: Props) {
         return (
           <section key={i} className={quiet ? "mt-8" : "mt-10"}>
             {quiet ? (
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {heading}
               </h2>
             ) : (
               <h2
-                className="text-2xl text-[#2B2118]"
+                className="text-2xl text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {heading}
@@ -844,14 +844,14 @@ export default async function ResetSimplePage({ params }: Props) {
       )}
 
       {view && view.kind === "none" && (
-        <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-          <p className="text-[15px] leading-relaxed text-[#4A4038]">
+        <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+          <p className="text-[15px] leading-relaxed text-ink">
             You have not chosen a retreat yet, so there is no plan to show.
           </p>
           <p className="mt-4">
             <Link
               href={resetSimpleHref("lesson-05")}
-              className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+              className="inline-flex w-full items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft sm:w-auto"
             >
               Choose your retreat first
             </Link>
@@ -870,21 +870,21 @@ export default async function ResetSimplePage({ params }: Props) {
         />
       ) : (
       <nav className="mt-10">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           What would you like to do next?
         </h2>
         <div className="mt-4 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
           {next && (
             <Link
               href={resetSimpleHref(next.slug)}
-              className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+              className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
             >
               Next: {next.title}
             </Link>
           )}
           <Link
             href={RESET_BASE}
-            className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:border-0 sm:px-0 sm:py-0 sm:text-[#5C5147] sm:underline sm:underline-offset-4 sm:hover:text-[#2B2118]"
+            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-navy transition-colors hover:border-gold-text sm:border-0 sm:px-0 sm:py-0 sm:text-muted sm:underline sm:underline-offset-4 sm:hover:text-navy"
           >
             Stop here for today
           </Link>

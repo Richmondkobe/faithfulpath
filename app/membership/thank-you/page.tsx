@@ -47,7 +47,7 @@ export default async function MembershipThankYou({
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         You&rsquo;re in
@@ -55,7 +55,7 @@ export default async function MembershipThankYou({
 
       <p
         className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Welcome to Faithful Path. Your membership is active. We have sent a
         six-digit code to the email you paid with. Enter it to open your
@@ -64,18 +64,18 @@ export default async function MembershipThankYou({
       </p>
 
       {paidEmail ? (
-        <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <div className="mt-10 rounded-xl border border-line bg-sand px-5 py-4">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             You paid as
           </p>
-          <p className="mt-1 break-words text-lg text-[#2B2118]">{paidEmail}</p>
-          <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-1 break-words text-lg text-navy">{paidEmail}</p>
+          <p className="mt-3 text-sm leading-relaxed text-muted">
             Sign in with this address — it is the one your membership is attached
             to. Another address will not find it.
           </p>
         </div>
       ) : (
-        <p className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-10 rounded-xl border border-line bg-sand px-5 py-4 text-sm leading-relaxed text-muted">
           Sign in with the email address you paid with — it is the one your
           membership is attached to.
         </p>
@@ -83,7 +83,7 @@ export default async function MembershipThankYou({
 
       <Link
         href={signInHref}
-        className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
       >
         {paidEmail ? `Log in as ${paidEmail}` : "Log in"}
       </Link>

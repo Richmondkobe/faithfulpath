@@ -43,13 +43,13 @@ export default function Resources() {
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 break-words sm:pt-24">
       <Link
         href="/guides/before-you-say-yes"
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← Before You Say Yes
       </Link>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {TITLE}

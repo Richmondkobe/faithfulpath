@@ -48,23 +48,23 @@ export default async function LbyrOverview() {
       eyebrow={
         <Link
           href="/members"
-          className="text-[12px] uppercase tracking-[0.16em] text-[#8B5E34] underline underline-offset-4"
+          className="text-[12px] uppercase tracking-[0.16em] text-gold-text underline underline-offset-4 font-medium"
         >
           ← Your courses
         </Link>
       }
     >
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           A ten-lesson course
         </p>
         <h1
-          className="mt-2 text-[clamp(2rem,6vw,2.75rem)] leading-[1.15] text-[#2B2118]"
+          className="mt-2 text-[clamp(2rem,6vw,2.75rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           Lead Before You’re Ready
         </h1>
-        <p className="mt-2 text-[19px] leading-snug text-[#6B5F53]">
+        <p className="mt-2 text-[19px] leading-snug text-muted">
           Practical pastoral training for your first year or two of leading in a
           church.
         </p>
@@ -74,7 +74,7 @@ export default async function LbyrOverview() {
       <Plain>
         <Link
           href={lbyrStartHereHref}
-          className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
         >
           Start Here: Before You Begin
         </Link>
@@ -90,14 +90,14 @@ export default async function LbyrOverview() {
                 <li key={order}>
                   <Link
                     href={lbyrLessonHref(order)}
-                    className="flex flex-wrap items-baseline gap-x-3 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+                    className="flex flex-wrap items-baseline gap-x-3 rounded-xl border-[1.5px] border-navy bg-sand px-5 py-4 text-navy transition-colors hover:border-gold-text"
                   >
-                    <span className="text-[12px] uppercase tracking-[0.16em] text-[#8B5E34]">
+                    <span className="text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
                       Lesson {order}
                     </span>
                     <span className="text-[1.05rem]">{lesson.title}</span>
                     {done(order) && (
-                      <span className="ml-auto text-[12px] uppercase tracking-[0.16em] text-[#8B5E34]">
+                      <span className="ml-auto text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
                         Complete
                       </span>
                     )}
@@ -115,7 +115,7 @@ export default async function LbyrOverview() {
         <Plain>
           <Link
             href={lbyrFinishHref}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Finish: Lead Before You Feel Ready
           </Link>
@@ -126,7 +126,7 @@ export default async function LbyrOverview() {
         <p className="text-[15px]">
           <Link
             href={lbyrConcernsHref}
-            className="text-[#8B5E34] underline underline-offset-4"
+            className="text-gold-text underline underline-offset-4"
           >
             Concerns, Care and Reporting
           </Link>

@@ -75,12 +75,12 @@ export default async function JourneyDay({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={mindJourneyHref()}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← The 30-Day Mind-Renewal Journey
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {page.week_title}
       </p>
 
@@ -91,8 +91,8 @@ export default async function JourneyDay({ params }: Props) {
       {audioId && <PrayerAudio src={audioSrc} title={page.title} />}
 
       {worksheets.length > 0 && (
-        <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             {page.label ?? "Worksheet"}
           </h2>
           <ul className="mt-4 space-y-2">
@@ -100,12 +100,12 @@ export default async function JourneyDay({ params }: Props) {
               <li key={resource.file}>
                 <Link
                   href={mindResourceHref(resourceSlug(resource))}
-                  className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                  className="text-navy underline underline-offset-4 transition-colors hover:text-gold-text"
                 >
                   {resource.toolkit_number}. {resource.title}
                 </Link>
                 {resource.not_for_group_sharing && (
-                  <span className="mt-1 block text-sm text-[#6B5F53]">
+                  <span className="mt-1 block text-sm text-muted">
                     Private — not for group sharing.
                   </span>
                 )}
@@ -117,16 +117,16 @@ export default async function JourneyDay({ params }: Props) {
 
       <DayStatusControl day={day} saved={state?.status ?? null} supportPageSlug={supportSlug} />
 
-      <nav className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[#E5D9C7] pt-8">
+      <nav className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-8">
         {previous ? (
-          <Link href={mindDayHref(previous)} className="text-sm text-[#8B5E34] underline underline-offset-4 hover:text-[#2B2118]">
+          <Link href={mindDayHref(previous)} className="text-sm text-gold-text underline underline-offset-4 hover:text-navy">
             ← Day {previous}
           </Link>
         ) : (
           <span />
         )}
         {next ? (
-          <Link href={mindDayHref(next)} className="text-sm text-[#8B5E34] underline underline-offset-4 hover:text-[#2B2118]">
+          <Link href={mindDayHref(next)} className="text-sm text-gold-text underline underline-offset-4 hover:text-navy">
             Day {next} →
           </Link>
         ) : (

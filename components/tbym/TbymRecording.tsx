@@ -47,7 +47,7 @@ export default function TbymRecording({
             </svg>
           </span>
           <p
-            className="text-[13px] uppercase leading-relaxed tracking-[0.14em] text-[var(--tb-mute)]"
+            className="text-[13px] uppercase leading-relaxed tracking-[0.14em] text-[var(--tb-mute)] font-medium"
             style={{ fontFamily: "var(--font-tbym-mono)" }}
           >
             Recording not yet available. The full transcript is below.

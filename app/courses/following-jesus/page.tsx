@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 };
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
-const lede = { fontFamily: "var(--font-display)", fontWeight: 300 } as const;
+const lede = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
 
 export default async function FollowingJesusSeries() {
   const learner = await getLearner();
@@ -35,9 +35,9 @@ export default async function FollowingJesusSeries() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Video courses</p>
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Video courses</p>
       <h1
-        className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+        className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={heading}
       >
         Following Jesus
@@ -66,31 +66,31 @@ export default async function FollowingJesusSeries() {
           return (
             <li
               key={course.slug}
-              className={`rounded-sm border px-6 py-5 ${
-                open ? "border-[#D9CDBA] bg-white" : "border-[#E5D9C7] bg-[#F7F1E6]"
+              className={`rounded-xl border px-6 py-5 ${
+                open ? "border-field bg-white" : "border-line bg-sand"
               }`}
             >
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 Course {course.book} of 4
               </p>
               <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-                <h2 className="text-2xl text-[#2B2118]" style={heading}>
+                <h2 className="text-2xl text-navy" style={heading}>
                   {course.title}
-                  <span className="block text-lg text-[#6B5F53]">{course.subtitle}</span>
+                  <span className="block text-lg text-muted">{course.subtitle}</span>
                 </h2>
                 {open ? (
                   <Link
                     href={coursePath(course)}
-                    className="text-[15px] font-medium text-[#8B5E34] underline underline-offset-4"
+                    className="text-[15px] font-medium text-gold-text underline underline-offset-4"
                   >
                     {yours ? "Go to your course" : "See the course"} ›
                   </Link>
                 ) : (
-                  <span className="text-[15px] text-[#6B5F53]">Coming soon</span>
+                  <span className="text-[15px] text-muted">Coming soon</span>
                 )}
               </div>
               {open && (
-                <p className="mt-2 leading-relaxed text-[#6B5F53]">
+                <p className="mt-2 leading-relaxed text-muted">
                   {course.seriesLine}
                 </p>
               )}
@@ -100,11 +100,11 @@ export default async function FollowingJesusSeries() {
       </ol>
 
       {!learner && (
-        <p className="mt-10 text-sm text-[#6B5F53]">
+        <p className="mt-10 text-sm text-muted">
           Already bought a course?{" "}
           <Link
             href={`${SERIES_PATH}/sign-in?next=${encodeURIComponent(SERIES_PATH)}`}
-            className="underline underline-offset-4 hover:text-[#8B5E34]"
+            className="underline underline-offset-4 hover:text-gold-text"
           >
             Sign in
           </Link>{" "}

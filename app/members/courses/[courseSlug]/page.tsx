@@ -80,13 +80,13 @@ export default async function CourseOverview({
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href="/members"
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← Members
       </Link>
 
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {course.title}
@@ -94,14 +94,14 @@ export default async function CourseOverview({
 
       <p
         className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {course.description}
       </p>
 
       {completion.complete && (
-        <div className="mt-8 rounded-sm border border-[#8B5E34] bg-[#F3EADC] px-5 py-5 text-[#2B2118]">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <div className="mt-8 rounded-xl border border-gold-text bg-sand px-5 py-5 text-navy">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             Course complete
           </p>
           <p className="mt-1">
@@ -116,11 +116,11 @@ export default async function CourseOverview({
         </div>
       )}
 
-      <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      <div className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
         <ProgressBar done={done} total={countable.length} label="Your progress" />
         <Link
           href={lessonHref(courseSlug, nextLesson.slug)}
-          className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-5 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {!started
             ? "Start the course"
@@ -133,38 +133,38 @@ export default async function CourseOverview({
       <div className="mt-14 space-y-12">
         {course.modules.map((mod, mi) => (
           <section key={mod.slug}>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               Module {mi + 1}
             </p>
             <h2
-              className="mt-2 text-2xl text-[#2B2118]"
+              className="mt-2 text-2xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               {mod.title}
             </h2>
 
-            <ul className="mt-5 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
+            <ul className="mt-5 divide-y divide-line border-y border-line">
               {mod.lessons.map((lesson) => {
                 const complete = Boolean(progress.get(lesson.slug)?.completed_at);
                 return (
                   <li key={lesson.slug}>
                     <Link
                       href={lessonHref(courseSlug, lesson.slug)}
-                      className="group flex items-start gap-4 py-4 transition-colors hover:bg-[#F7F1E6]"
+                      className="group flex items-start gap-4 py-4 transition-colors hover:bg-sand"
                     >
                       <span
                         aria-hidden="true"
                         className={`mt-1 w-5 shrink-0 text-center text-sm ${
-                          complete ? "text-[#2C5651]" : "text-[#C6B9A6]"
+                          complete ? "text-navy" : "text-muted"
                         }`}
                       >
                         {complete ? "✓" : "○"}
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-[#2B2118] transition-colors group-hover:text-[#8B5E34]">
+                        <span className="block text-navy transition-colors group-hover:text-gold-text">
                           {lesson.order}. {lesson.title}
                         </span>
-                        <span className="mt-0.5 block text-sm text-[#6B5F53]">
+                        <span className="mt-0.5 block text-sm text-muted">
                           {lesson.source}
                           {complete && (
                             <span className="sr-only"> — complete</span>
@@ -180,9 +180,9 @@ export default async function CourseOverview({
         ))}
       </div>
 
-      <section className="mt-16 border-t border-[#E5D9C7] pt-10">
+      <section className="mt-16 border-t border-line pt-10">
         <h2
-          className="text-2xl text-[#2B2118]"
+          className="text-2xl text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           Your journal
@@ -194,7 +194,7 @@ export default async function CourseOverview({
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <Link
             href="/members/journal"
-            className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Read your journal
           </Link>

@@ -38,8 +38,8 @@ export default function PathChoice({
   }
 
   return (
-    <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Your path
       </h2>
 
@@ -53,10 +53,10 @@ export default function PathChoice({
                 aria-pressed={selected}
                 disabled={pending}
                 onClick={() => choose(option.id)}
-                className={`w-full rounded-sm border px-4 py-3 text-left text-sm leading-snug transition-colors disabled:opacity-60 ${
+                className={`w-full rounded-xl border px-4 py-3 text-left text-sm leading-snug transition-colors disabled:opacity-60 ${
                   selected
-                    ? "border-[#8B5E34] bg-white text-[#2B2118]"
-                    : "border-[#D9CDBA] text-[#5C5147] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-white text-navy"
+                    : "border-field text-muted hover:border-gold-text"
                 }`}
               >
                 {option.label}
@@ -66,14 +66,14 @@ export default function PathChoice({
         })}
       </ul>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Choosing is optional, and you can change it whenever you like. Your path
         only changes the order the course suggests. Nothing you have finished,
         written or visited is affected.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

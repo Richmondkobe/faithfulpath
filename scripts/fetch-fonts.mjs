@@ -60,6 +60,13 @@ const FACES = [
   { file: "newsreader-normal.woff2", family: "Newsreader:wght@300..600" },
   { file: "newsreader-italic.woff2", family: "Newsreader:ital,wght@1,300..600" },
   { file: "ibm-plex-sans-normal.woff2", family: "IBM+Plex+Sans:wght@400..600" },
+  // The site's faces since Stage 2 of the website audit (navy and gold, to
+  // match the Following Jesus pages): Source Serif 4 for headings and quiet
+  // intros, Source Sans 3 for everything else. Without the optical-size axis,
+  // for the same reason as Newsreader above.
+  { file: "site-source-serif-4-normal.woff2", family: "Source+Serif+4:wght@300..700" },
+  { file: "site-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,wght@1,300..700" },
+  { file: "site-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700" },
   { file: "ibm-plex-mono-400.woff2", family: "IBM+Plex+Mono:wght@400" },
   { file: "ibm-plex-mono-500.woff2", family: "IBM+Plex+Mono:wght@500" },
   { file: "source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400" },

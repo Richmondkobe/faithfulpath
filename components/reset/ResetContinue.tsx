@@ -55,13 +55,13 @@ export default function ResetContinue({
   }
 
   const primary =
-    "inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto";
+    "inline-flex w-full items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft sm:w-auto";
   const secondary =
-    "inline-flex w-full items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-center text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34] sm:w-auto";
+    "inline-flex w-full items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-center text-sm text-navy transition-colors hover:border-gold-text sm:w-auto";
   // Help, when it is what this learner asked for, is the larger of the two and
   // carries the warmer colour rather than the course's ordinary dark button.
   const helpPrimary =
-    "inline-flex w-full items-center justify-center rounded-sm bg-[#8B5E34] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#2B2118] sm:w-auto";
+    "inline-flex w-full items-center justify-center rounded-xl bg-gold-text px-7 py-4 text-center text-[15px] font-medium text-sun transition-colors hover:bg-navy sm:w-auto";
 
   const keepGoing = (
     <button type="button" onClick={onward} disabled={pending} className={helpFirst ? secondary : primary}>
@@ -81,7 +81,7 @@ export default function ResetContinue({
         {helpFirst ? keepGoing : getHelp}
       </div>
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

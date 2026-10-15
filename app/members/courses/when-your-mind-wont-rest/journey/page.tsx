@@ -44,21 +44,21 @@ export default async function JourneyHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
       {firstEntry ? (
         <>
           <h1
-            className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+            className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {journey.title}
           </h1>
 
           {notice && (
-            <div className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
+            <div className="mt-8 rounded-xl border border-line bg-sand px-5 py-5">
               <MindMarkdown source={notice} />
             </div>
           )}
@@ -66,7 +66,7 @@ export default async function JourneyHome() {
           {/* One button, and no checkbox. */}
           <Link
             href={mindDayHref(1)}
-            className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Continue to Day 1
           </Link>
@@ -74,22 +74,22 @@ export default async function JourneyHome() {
       ) : (
         <>
           <h1
-            className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+            className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {journey.title}
           </h1>
 
-          <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             {visitedWording(progress)}
           </p>
 
           {notice && (
-            <details className="group mt-8 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-4">
-              <summary className="cursor-pointer list-none text-sm text-[#8B5E34]">
+            <details className="group mt-8 rounded-xl border border-line bg-sand px-5 py-4">
+              <summary className="cursor-pointer list-none text-sm text-gold-text">
                 Please read before Day 1
               </summary>
-              <div className="mt-2 border-t border-[#E5D9C7] pt-2">
+              <div className="mt-2 border-t border-line pt-2">
                 <MindMarkdown source={notice} />
               </div>
             </details>
@@ -102,22 +102,22 @@ export default async function JourneyHome() {
           <div className="mt-12 space-y-10">
             {getJourneyWeeks().map((week) => (
               <section key={week.week}>
-                <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                   {week.title}
                 </h2>
-                <ul className="mt-4 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
+                <ul className="mt-4 divide-y divide-line border-y border-line">
                   {week.days.map((day) => {
                     const state = progress.get(day.day!);
                     return (
                       <li key={day.day}>
                         <Link
                           href={mindDayHref(day.day!)}
-                          className="group flex items-baseline justify-between gap-4 py-4 transition-colors hover:bg-[#F7F1E6]"
+                          className="group flex items-baseline justify-between gap-4 py-4 transition-colors hover:bg-sand"
                         >
-                          <span className="min-w-0 text-[#2B2118] transition-colors group-hover:text-[#8B5E34]">
+                          <span className="min-w-0 text-navy transition-colors group-hover:text-gold-text">
                             {day.title}
                           </span>
-                          <span className="shrink-0 text-sm text-[#6B5F53]">
+                          <span className="shrink-0 text-sm text-muted">
                             {state?.status
                               ? DAY_STATUS_LABELS[state.status]
                               : state

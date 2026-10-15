@@ -36,14 +36,14 @@ export default function ArticleIndex({
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#17222B] sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {heading}
       </h1>
       <p
         className="mt-5 max-w-xl text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {lede}
       </p>
@@ -52,21 +52,21 @@ export default function ArticleIndex({
 
       {/* Only from page two on: on page one it would be noise above the list. */}
       {pageCount > 1 && page > 1 && (
-        <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+        <p className="mt-8 text-[11px] uppercase tracking-[0.18em] text-navy font-medium">
           Page {page} of {pageCount}
         </p>
       )}
 
       {articles.length === 0 ? (
-        <p className="mt-14 leading-relaxed text-[#5A6A73]">{empty}</p>
+        <p className="mt-14 leading-relaxed text-muted">{empty}</p>
       ) : (
-        <ul className="mt-12 divide-y divide-[#D6DBD8] border-y border-[#D6DBD8]">
+        <ul className="mt-12 divide-y divide-line border-y border-line">
           {articles.map((a) => {
             const cat = getCategory(a.category);
             return (
               <li key={a.slug} className="py-8">
                 <Link href={"/articles/" + a.slug} className="group block">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-navy font-medium">
                     {displayDate(a.published_at)}
                     {/* Plain text inside the card: a link within a link is not
                         valid markup, so the label routes to the category only
@@ -79,7 +79,7 @@ export default function ArticleIndex({
                     )}
                   </p>
                   <h2
-                    className="mt-2 text-2xl text-[#17222B] transition-colors group-hover:text-[#2C5651]"
+                    className="mt-2 text-2xl text-navy transition-colors group-hover:text-navy"
                     style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                   >
                     {a.title}
@@ -94,16 +94,16 @@ export default function ArticleIndex({
 
       <ArticlePagination page={page} pageCount={pageCount} basePath={basePath} />
 
-      <div className="mt-16 border-t border-[#D6DBD8] pt-10">
+      <div className="mt-16 border-t border-line pt-10">
         <p
-          className="text-xl leading-snug text-[#17222B]"
+          className="text-xl leading-snug text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Reading only takes you so far.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#17222B] px-7 py-4 text-[15px] font-medium text-[#FCFCFB] transition-colors hover:bg-[#2C5651]"
+          className="mt-6 inline-flex items-center justify-center rounded-xl bg-navy px-7 py-4 text-[15px] font-medium text-paper transition-colors hover:bg-navy"
         >
           Talk to a pastor — {SITE.price}
         </Link>

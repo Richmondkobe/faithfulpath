@@ -57,14 +57,14 @@ export default async function Home() {
         <div className="grid items-center gap-12 sm:grid-cols-[1.15fr_1fr]">
           <div>
             <h1
-              className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.5rem]"
+              className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.5rem]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               Some things you cannot work out alone.
             </h1>
             <p
               className="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+              style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               I am Richmond — a pastor of more than twenty years, across ten
               countries. This is where I write, teach, and sit down with people
@@ -73,20 +73,20 @@ export default async function Home() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href="/talk-to-a-pastor"
-                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
                 Talk to a pastor — {SITE.price}
               </Link>
               <Link
                 href="/articles"
-                className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+                className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
               >
                 Read the articles
               </Link>
             </div>
           </div>
-          <div className="order-first sm:order-last">
-            <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-sm sm:max-w-none">
+          <div className="sm:order-last">
+            <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-xl sm:max-w-none">
               <Image
                 src="/richmond-1200.jpg"
                 alt="Richmond, pastor at Faithful Path Community"
@@ -101,18 +101,18 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
           Online course
         </p>
         <h2
-          className="mt-4 text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+          className="mt-4 text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           The Christian Spiritual Reset
         </h2>
         <p
           className="mt-5 max-w-xl text-lg leading-relaxed"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Some seasons do not call for another book. They call for somewhere to
           stop.
@@ -129,13 +129,13 @@ export default async function Home() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
             href="/membership#join"
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Start the Spiritual Reset — US$19/month
           </Link>
           <Link
             href="/membership"
-            className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             See what is included
           </Link>
@@ -145,18 +145,18 @@ export default async function Home() {
       {/* Following Jesus, in the Spiritual Reset section's layout and button
           styles: the primary to the series, the secondary straight to Begin. */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
           Video courses
         </p>
         <h2
-          className="mt-4 text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+          className="mt-4 text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Following Jesus
         </h2>
         <p
           className="mt-5 max-w-xl text-lg leading-relaxed"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Four video courses, one step at a time, from new life in Christ to
           helping others follow Jesus.
@@ -170,20 +170,20 @@ export default async function Home() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
             href={SERIES_PATH}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             See the four courses
           </Link>
           <Link
             href={`${SERIES_PATH}/begin`}
-            className="inline-flex items-center justify-center rounded-sm border border-[#E5D9C7] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Start with Begin — {fjSingle}
           </Link>
         </div>
       </section>
 
-      <section className="border-y border-[#E5D9C7] bg-[#F3EADC]">
+      <section className="border-y border-line bg-sand">
         <div className="mx-auto max-w-5xl px-6 py-12">
           <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
             {[
@@ -194,18 +194,18 @@ export default async function Home() {
             ].map(([figure, label]) => (
               <div key={label}>
                 <dt
-                  className="text-3xl text-[#2B2118] sm:text-4xl"
+                  className="text-3xl text-navy sm:text-4xl"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
                 >
                   {figure}
                 </dt>
-                <dd className="mt-1 text-[13px] leading-snug text-[#6B5F53]">
+                <dd className="mt-1 text-[13px] leading-snug text-muted">
                   {label}
                 </dd>
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B5F53]">
+          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted font-medium">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
@@ -213,7 +213,7 @@ export default async function Home() {
 
       <section className="mx-auto max-w-5xl px-6 py-14">
         <h2
-          className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+          className="text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           One honest hour
@@ -222,18 +222,18 @@ export default async function Home() {
           A private conversation, online, wherever you are. No church membership
           required, and you do not have to arrive with faith intact.
         </p>
-        <div className="mt-8 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
+        <div className="mt-8 divide-y divide-line border-y border-line">
           {STAGES.map((stage) => (
             <div
               key={stage.label}
               className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-6"
             >
-              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 {stage.label}
               </p>
               <div>
                 <h3
-                  className="text-xl text-[#2B2118]"
+                  className="text-xl text-navy"
                   style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                 >
                   {stage.title}
@@ -245,31 +245,31 @@ export default async function Home() {
         </div>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-10 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-10 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           See how it works
         </Link>
       </section>
 
-      <section className="border-t border-[#E5D9C7] bg-[#F3EADC]">
+      <section className="border-t border-line bg-sand">
         <div className="mx-auto max-w-5xl px-6 py-14">
           <h2
-            className="text-3xl tracking-[-0.01em] text-[#2B2118] sm:text-4xl"
+            className="text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             Writing and teaching
           </h2>
           {recent.length === 0 ? (
-            <p className="mt-6 max-w-xl leading-relaxed text-[#6B5F53]">
+            <p className="mt-6 max-w-xl leading-relaxed text-muted">
               Articles are on their way.
             </p>
           ) : (
-            <ul className="mt-10 divide-y divide-[#E5D9C7] border-y border-[#E5D9C7]">
+            <ul className="mt-10 divide-y divide-line border-y border-line">
               {recent.map((a) => (
                 <li key={a.slug} className="py-6">
                   <Link href={"/articles/" + a.slug} className="group block">
                     <h3
-                      className="text-xl text-[#2B2118] transition-colors group-hover:text-[#8B5E34]"
+                      className="text-xl text-navy transition-colors group-hover:text-gold-text"
                       style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
                     >
                       {a.title}
@@ -282,7 +282,7 @@ export default async function Home() {
           )}
           <Link
             href="/articles"
-            className="mt-8 inline-flex min-h-11 items-center text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
+            className="mt-8 inline-flex min-h-11 items-center text-[15px] font-medium text-gold-text underline-offset-4 hover:underline"
           >
             All articles
           </Link>

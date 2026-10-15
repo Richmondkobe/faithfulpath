@@ -60,18 +60,18 @@ export default function ResetTimer({ minutes }: { minutes: number[] }) {
   const ss = String(left % 60).padStart(2, "0");
 
   return (
-    <div className="mt-4 rounded-sm border border-[#D9CDBA] bg-[#F7F1E6] px-4 py-4">
+    <div className="mt-4 rounded-xl border border-field bg-sand px-4 py-4">
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-sm text-[#6B5F53]">Silence timer</span>
+        <span className="text-sm text-muted">Silence timer</span>
         {minutes.map((m) => (
           <button
             key={m}
             type="button"
             onClick={() => start(m)}
-            className={`rounded-sm border px-3 py-2 text-sm transition-colors ${
+            className={`rounded-xl border px-3 py-2 text-sm transition-colors ${
               chosen === m
-                ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                : "border-[#D9CDBA] bg-white text-[#5C5147] hover:border-[#8B5E34]"
+                ? "border-gold-text bg-sand text-navy"
+                : "border-field bg-white text-muted hover:border-gold-text"
             }`}
           >
             {m} min
@@ -81,13 +81,13 @@ export default function ResetTimer({ minutes }: { minutes: number[] }) {
 
       {chosen !== null && (
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <span className="text-2xl tabular-nums text-[#2B2118]">
+          <span className="text-2xl tabular-nums text-navy">
             {mm}:{ss}
           </span>
           <button
             type="button"
             onClick={() => setRunning((r) => !r)}
-            className="rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+            className="rounded-xl border-[1.5px] border-navy bg-white px-3 py-2 text-sm text-navy transition-colors hover:border-gold-text"
           >
             {running ? "Pause" : left === 0 ? "Done" : "Resume"}
           </button>
@@ -98,13 +98,13 @@ export default function ResetTimer({ minutes }: { minutes: number[] }) {
               setRunning(false);
               setLeft(0);
             }}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 hover:text-[#2B2118]"
+            className="text-sm text-gold-text underline underline-offset-4 hover:text-navy"
           >
             Clear
           </button>
         </div>
       )}
-      <p className="mt-3 text-sm text-[#6B5F53]">
+      <p className="mt-3 text-sm text-muted">
         Nothing here is saved. A shorter time is a fair choice.
       </p>
     </div>

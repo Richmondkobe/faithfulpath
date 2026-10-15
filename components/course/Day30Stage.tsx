@@ -48,20 +48,20 @@ export default function Day30Stage({
     });
 
   return (
-    <section className="mt-16 border-t border-[#E5D9C7] pt-10">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-16 border-t border-line pt-10">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Day 30
       </p>
       <h2
-        className="mt-2 text-2xl text-[#2B2118]"
+        className="mt-2 text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Complete the course
       </h2>
 
       {!open ? (
-        <div className="mt-4 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-          <p className="leading-relaxed text-[#4A4038]">
+        <div className="mt-4 rounded-xl border border-line bg-sand px-5 py-5">
+          <p className="leading-relaxed text-ink">
             This stage opens a month after you started the plan
             {opensOn ? ` — around ${opensOn}` : ""}. If your month is already
             done, you can open it now.
@@ -80,7 +80,7 @@ export default function Day30Stage({
                 }
               })
             }
-            className="mt-4 inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-6 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34] disabled:opacity-60"
+            className="mt-4 inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-6 py-3 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text disabled:opacity-60"
           >
             My month is complete
           </button>
@@ -89,7 +89,7 @@ export default function Day30Stage({
         <>
           <p
             className="mt-4 text-lg leading-relaxed"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {finalAction}
           </p>
@@ -98,7 +98,7 @@ export default function Day30Stage({
           <div id="certificate-name" className="mt-8 scroll-mt-24">
             <label
               htmlFor="certificate-name-input"
-              className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+              className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
             >
               Your name as you would like it on your certificate
             </label>
@@ -113,25 +113,25 @@ export default function Day30Stage({
                 }}
                 onBlur={() => name.trim() && saveName()}
                 placeholder="As you would like it printed"
-                className="min-w-0 flex-1 rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]"
+                className="min-w-0 flex-1 rounded-xl border border-field bg-white px-4 py-3 text-sm text-navy outline-none placeholder:text-placeholder focus:border-gold-text"
               />
               <button
                 type="button"
                 onClick={saveName}
                 disabled={pending || !name.trim()}
-                className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34] disabled:opacity-60"
+                className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text disabled:opacity-60"
               >
                 Save name
               </button>
             </div>
             {nameSaved && !pending && (
-              <p className="mt-2 text-sm text-[#5C5147]">Saved.</p>
+              <p className="mt-2 text-sm text-muted">Saved.</p>
             )}
           </div>
 
           <label
-            className={`mt-6 flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-4 text-sm leading-relaxed ${
-              done ? "border-[#8B5E34] bg-[#F3EADC]" : "border-[#D9CDBA]"
+            className={`mt-6 flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-4 text-sm leading-relaxed ${
+              done ? "border-gold-text bg-sand" : "border-field"
             }`}
           >
             <input
@@ -151,13 +151,13 @@ export default function Day30Stage({
                   }
                 });
               }}
-              className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+              className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
             />
-            <span className="text-[#2B2118]">{finalDoneLabel}</span>
+            <span className="text-navy">{finalDoneLabel}</span>
           </label>
           {done && (
             <div className="mt-4">
-              <p className="text-sm text-[#5C5147]">
+              <p className="text-sm text-muted">
                 The course is marked complete.
               </p>
               <CertificateButton
@@ -172,7 +172,7 @@ export default function Day30Stage({
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

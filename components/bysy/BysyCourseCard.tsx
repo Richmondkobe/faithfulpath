@@ -41,17 +41,17 @@ export default async function BysyCourseCard() {
   }
 
   return (
-    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
       {BYSY_NEW_LIVE && (
-        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Previous edition</p>
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Previous edition</p>
       )}
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Before You Say Yes
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+      <p className="mt-2 text-sm leading-relaxed text-ink">
         Discernment for dating, courtship and the decision to marry — whether
         you are considering someone, already engaged, or working out whether to
         begin.
@@ -60,11 +60,11 @@ export default async function BysyCourseCard() {
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
           href={route || !BYSY_SIMPLE_PUBLISHED ? BYSY_BASE : simpleHref("welcome")}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {route ? "Go to the course" : "Start the course"}
         </Link>
-        <span className="text-sm text-[#6B5F53]">
+        <span className="text-sm text-muted">
           {BYSY_SIMPLE_PUBLISHED ? SIMPLE_PAGES.length : getPages().length} pages
           · you will be shown a shorter way through
         </span>

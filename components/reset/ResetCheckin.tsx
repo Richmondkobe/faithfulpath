@@ -89,17 +89,17 @@ export default function ResetCheckin({
     <div className="mt-6">
       {questions.map((q, qi) => (
         <fieldset key={q.n} className="mt-6">
-          <legend className="text-[15px] font-medium leading-relaxed text-[#2B2118]">
+          <legend className="text-[15px] font-medium leading-relaxed text-navy">
             {q.n}. {q.prompt}
           </legend>
           <div className="mt-3 space-y-2">
             {q.options.map((opt, oi) => (
               <label
                 key={oi}
-                className={`flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-3 transition-colors ${
+                className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 transition-colors ${
                   picked[qi] === oi
-                    ? "border-[#8B5E34] bg-[#F3EADC]"
-                    : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand"
+                    : "border-field hover:border-gold-text"
                 }`}
               >
                 <input
@@ -107,9 +107,9 @@ export default function ResetCheckin({
                   name={`q${q.n}`}
                   checked={picked[qi] === oi}
                   onChange={() => answer(qi, oi)}
-                  className="mt-[3px] h-4 w-4 accent-[#8B5E34]"
+                  className="mt-[3px] h-4 w-4 accent-gold-text"
                 />
-                <span className="text-[15px] leading-relaxed text-[#2B2118]">{opt}</span>
+                <span className="text-[15px] leading-relaxed text-navy">{opt}</span>
               </label>
             ))}
           </div>
@@ -120,26 +120,26 @@ export default function ResetCheckin({
         type="button"
         disabled={!ready}
         onClick={() => setShown(checkinGuidanceFor(picked))}
-        className={`mt-6 inline-flex w-full items-center justify-center rounded-sm px-7 py-4 text-center text-[15px] font-medium transition-colors sm:w-auto ${
+        className={`mt-6 inline-flex w-full items-center justify-center rounded-xl px-7 py-4 text-center text-[15px] font-semibold transition-colors sm:w-auto ${
           ready
-            ? "bg-[#2B2118] text-[#FDFAF4] hover:bg-[#8B5E34]"
-            : "cursor-not-allowed border border-[#D9CDBA] text-[#8B8177]"
+            ? "bg-gold text-night hover:bg-gold-soft"
+            : "cursor-not-allowed border border-field text-muted"
         }`}
       >
         {showLabel}
       </button>
       {!ready && (
-        <p className="mt-2 text-sm text-[#6B5F53]">
+        <p className="mt-2 text-sm text-muted">
           Answer all three questions to see your guidance.
         </p>
       )}
 
       {shown && (
         <section
-          className={`mt-8 rounded-sm px-5 py-5 ${
+          className={`mt-8 rounded-xl px-5 py-5 ${
             shown === "A"
-              ? "border border-[#C9A227] bg-[#FBF6E9]"
-              : "border border-[#E5D9C7] bg-[#F7F1E6]"
+              ? "border border-gold bg-paper"
+              : "border border-line bg-sand"
           }`}
         >
           {guidance[shown]}
@@ -147,7 +147,7 @@ export default function ResetCheckin({
             <p className="mt-5">
               <a
                 href={helpHref}
-                className="inline-flex w-full items-center justify-center rounded-sm bg-[#8B5E34] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#2B2118] sm:w-auto"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-gold-text px-7 py-4 text-center text-[15px] font-medium text-sun transition-colors hover:bg-navy sm:w-auto"
               >
                 Find support where I live
               </a>
@@ -161,7 +161,7 @@ export default function ResetCheckin({
           learner's, and the recommendation is a recommendation. */}
       {shown && shown !== "A" && (
         <div className="mt-8">
-          <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             Choose your next step
           </h3>
           <ul className="mt-3 space-y-3">
@@ -173,21 +173,21 @@ export default function ResetCheckin({
                   <button
                     type="button"
                     onClick={() => take(href)}
-                    className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+                    className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
                       first
-                        ? "border-[#8B5E34] bg-[#F3EADC]"
-                        : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                        ? "border-gold-text bg-sand"
+                        : "border-field hover:border-gold-text"
                     }`}
                   >
-                    <span className="block font-medium text-[#2B2118]">
+                    <span className="block font-medium text-navy">
                       {card.label}
                       {first && (
-                        <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+                        <span className="ml-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                           Suggested
                         </span>
                       )}
                     </span>
-                    <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+                    <span className="mt-1 block text-sm leading-relaxed text-ink">
                       {card.body}
                     </span>
                   </button>

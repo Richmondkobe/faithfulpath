@@ -40,9 +40,9 @@ export default function RestlessList({
             <li key={entry.text}>
               <Link
                 href={mindLessonHref(entry.page)}
-                className="group block rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 transition-colors hover:border-[#8B5E34]"
+                className="group block rounded-xl border border-line bg-sand px-5 py-4 transition-colors hover:border-gold-text"
               >
-                <span className="block text-[#2B2118] transition-colors group-hover:text-[#8B5E34]">
+                <span className="block text-navy transition-colors group-hover:text-gold-text">
                   {entry.text}
                 </span>
               </Link>
@@ -56,14 +56,14 @@ export default function RestlessList({
         return (
           <li
             key={entry.text}
-            className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4"
+            className="rounded-xl border border-line bg-sand px-5 py-4"
           >
-            <p className="text-[#2B2118]">{entry.text}</p>
+            <p className="text-navy">{entry.text}</p>
             <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm">
               {lessonSlug && (
                 <Link
                   href={mindLessonHref(lessonSlug)}
-                  className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   Lesson {entry.lesson}
                   {entry.lesson_title ? `: ${entry.lesson_title}` : ""}
@@ -72,7 +72,7 @@ export default function RestlessList({
               {resource && (
                 <Link
                   href={mindResourceHref(resourceSlug(resource))}
-                  className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   {entry.resource_label ?? resource.title}
                 </Link>

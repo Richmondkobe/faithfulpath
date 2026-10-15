@@ -79,7 +79,7 @@ export default function About() {
             phone, where a square photo next to a three-line title leaves too
             little room for either. */}
         <div className="flex flex-col gap-8 sm:flex-row-reverse sm:items-start sm:gap-10">
-          <div className="relative aspect-square w-full max-w-[13rem] shrink-0 overflow-hidden rounded-sm">
+          <div className="relative aspect-square w-full max-w-[13rem] shrink-0 overflow-hidden rounded-xl">
             <Image
               src="/richmond-1200.jpg"
               alt="Richmond Kobe, pastor at Faithful Path Community"
@@ -91,7 +91,7 @@ export default function About() {
           </div>
 
           <h1
-            className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+            className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {TITLE}
@@ -106,8 +106,8 @@ export default function About() {
           remarkPlugins={[remarkAutolink]}
         />
 
-        <div className="mt-10 border-y border-[#E5D9C7] py-8">
-          <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-[#6B5F53]">
+        <div className="mt-10 border-y border-line py-8">
+          <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted font-medium">
             {COUNTRY_LINE}
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function About() {
 
         <Link
           href="/talk-to-a-pastor"
-          className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Talk to a pastor — {SITE.price}
         </Link>

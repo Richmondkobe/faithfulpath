@@ -21,22 +21,22 @@ export default function VideoBlock({
         <video
           controls
           preload="metadata"
-          className="w-full rounded-sm border border-[#E5D9C7] bg-[#2B2118]"
+          className="w-full rounded-xl border border-line bg-navy"
         >
           <source src={src} type="video/mp4" />
           Your browser cannot play this video.
         </video>
-        <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           {video.title}
           {video.length ? ` · ${video.length}` : ""}
         </p>
         {/* Some videos have no script file — there is nothing to transcribe. */}
         {video.script.trim() && (
           <details className="group mt-3">
-            <summary className="cursor-pointer list-none text-sm text-[#8B5E34] underline underline-offset-4">
+            <summary className="cursor-pointer list-none text-sm text-gold-text underline underline-offset-4">
               Read the full transcript
             </summary>
-            <div className="border-l-2 border-[#E5D9C7] pl-5">
+            <div className="border-l-2 border-line pl-5">
               <ArticleBody source={video.script} />
             </div>
           </details>
@@ -47,18 +47,18 @@ export default function VideoBlock({
 
   return (
     <section className="mt-10">
-      <div className="flex aspect-video w-full items-center justify-center rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <div className="flex aspect-video w-full items-center justify-center rounded-xl border border-line bg-sand">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Video coming soon
         </p>
       </div>
-      <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {video.title}
         {video.length ? ` · ${video.length}` : ""}
       </p>
 
       <h3
-        className="mt-6 text-xl text-[#2B2118]"
+        className="mt-6 text-xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         What Richmond says in this video

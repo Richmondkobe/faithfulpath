@@ -56,7 +56,7 @@ export default async function LbyrChapterPage({ params }: Props) {
     <LbyrShell
       notice={lesson.notice}
       eyebrow={
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-[#8B5E34]">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
           <Link href={lbyrLessonHref(order)} className="underline underline-offset-4">
             ← Lesson {order}: {lesson.title}
           </Link>
@@ -67,11 +67,11 @@ export default async function LbyrChapterPage({ params }: Props) {
       }
     >
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           From the book · Lead Before You’re Ready
         </p>
         <h1
-          className="mt-2 text-[clamp(1.8rem,5vw,2.4rem)] leading-[1.15] text-[#2B2118]"
+          className="mt-2 text-[clamp(1.8rem,5vw,2.4rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           {title ? title.c.map((r) => r.text).join("") : `Chapter ${chapter.chapter}`}
@@ -93,7 +93,7 @@ export default async function LbyrChapterPage({ params }: Props) {
                   <li key={k}>
                     {item.c.map((r, m) =>
                       r.bold ? (
-                        <strong key={m} className="font-medium text-[#2B2118]">{r.text}</strong>
+                        <strong key={m} className="font-medium text-navy">{r.text}</strong>
                       ) : (
                         <span key={m}>{r.text}</span>
                       )
@@ -108,7 +108,7 @@ export default async function LbyrChapterPage({ params }: Props) {
             out.push(
               <h2
                 key={i}
-                className="mt-8 text-[1.5rem] leading-snug text-[#2B2118]"
+                className="mt-8 text-[1.5rem] leading-snug text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
               >
                 {block.c.map((r) => r.text).join("")}
@@ -120,7 +120,7 @@ export default async function LbyrChapterPage({ params }: Props) {
             <p key={i} className="mt-4 text-[18px] leading-relaxed">
               {block.c.map((r, m) =>
                 r.bold ? (
-                  <strong key={m} className="font-medium text-[#2B2118]">{r.text}</strong>
+                  <strong key={m} className="font-medium text-navy">{r.text}</strong>
                 ) : (
                   <span key={m}>{r.text}</span>
                 )
@@ -136,13 +136,13 @@ export default async function LbyrChapterPage({ params }: Props) {
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
           <Link
             href={lbyrLessonHref(order)}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Back to Lesson {order}
           </Link>
           <Link
             href={`${lbyrLessonHref(order)}/worksheet`}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Open the worksheet
           </Link>

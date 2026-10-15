@@ -61,14 +61,14 @@ export default function Quiz({
   }
 
   return (
-    <section className="mt-16 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-16 border-t border-line pt-10">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Check-in
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-2 text-sm leading-relaxed text-muted">
         {questions.length} questions · {passMark} correct to pass
         {best !== null && ` · your best so far: ${best}/${questions.length}`}
       </p>
@@ -80,8 +80,8 @@ export default function Quiz({
 
           return (
             <li key={qi}>
-              <p className="text-lg leading-snug text-[#2B2118]">
-                <span className="text-[#8B5E34]">{qi + 1}.</span> {question.q}
+              <p className="text-lg leading-snug text-navy">
+                <span className="text-gold-text">{qi + 1}.</span> {question.q}
               </p>
 
               <div className="mt-3 space-y-2">
@@ -91,15 +91,15 @@ export default function Quiz({
 
                   // After marking: green on the right answer, red only on a
                   // wrong one the member actually chose.
-                  let tone = "border-[#D9CDBA]";
-                  if (marked && isAnswer) tone = "border-[#2C5651] bg-[#EEF4F1]";
-                  else if (marked && isChosen) tone = "border-[#C98A7E] bg-[#FBF1EF]";
-                  else if (isChosen) tone = "border-[#8B5E34] bg-[#F3EADC]";
+                  let tone = "border-field";
+                  if (marked && isAnswer) tone = "border-navy bg-sand";
+                  else if (marked && isChosen) tone = "border-danger-line bg-danger-bg";
+                  else if (isChosen) tone = "border-gold-text bg-sand";
 
                   return (
                     <label
                       key={oi}
-                      className={`flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-3 text-sm leading-relaxed transition-colors ${tone}`}
+                      className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-relaxed transition-colors ${tone}`}
                     >
                       <input
                         type="radio"
@@ -113,11 +113,11 @@ export default function Quiz({
                             return next;
                           })
                         }
-                        className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+                        className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
                       />
-                      <span className="text-[#2B2118]">{option}</span>
+                      <span className="text-navy">{option}</span>
                       {marked && isAnswer && (
-                        <span className="ml-auto shrink-0 text-[11px] uppercase tracking-[0.18em] text-[#2C5651]">
+                        <span className="ml-auto shrink-0 text-[11px] uppercase tracking-[0.18em] text-navy font-medium">
                           Correct
                         </span>
                       )}
@@ -127,7 +127,7 @@ export default function Quiz({
               </div>
 
               {marked && (
-                <p className="mt-3 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#5C5147]">
+                <p className="mt-3 rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-muted">
                   {choice === correct ? "Right. " : "Not quite. "}
                   {question.explanation}
                 </p>
@@ -138,7 +138,7 @@ export default function Quiz({
       </ol>
 
       {error && (
-        <p role="alert" className="mt-6 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-6 text-sm text-danger">
           {error}
         </p>
       )}
@@ -149,23 +149,23 @@ export default function Quiz({
             type="button"
             onClick={submit}
             disabled={!answeredAll}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             Submit answers
           </button>
           {!answeredAll && (
-            <p className="mt-3 text-sm text-[#6B5F53]">
+            <p className="mt-3 text-sm text-muted">
               Answer every question to submit.
             </p>
           )}
         </div>
       ) : (
-        <div className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4">
-          <p className="text-lg text-[#2B2118]">
+        <div className="mt-8 rounded-xl border border-line bg-sand px-5 py-4">
+          <p className="text-lg text-navy">
             You scored {score} out of {questions.length}.{" "}
             {passedNow ? "That is a pass." : `You need ${passMark} to pass.`}
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-2 text-sm leading-relaxed text-muted">
             {pending
               ? "Saving your score…"
               : passedEver
@@ -175,7 +175,7 @@ export default function Quiz({
           <button
             type="button"
             onClick={retry}
-            className="mt-4 text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="mt-4 text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Try again
           </button>

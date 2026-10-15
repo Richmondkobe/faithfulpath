@@ -119,22 +119,22 @@ async function CourseCard() {
   }
 
   return (
-    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
       {RESET_NEW_LIVE && (
-        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Previous edition</p>
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Previous edition</p>
       )}
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {course.title}
       </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[#4A4038]">
+      <p className="mt-2 text-sm leading-relaxed text-ink">
         {course.description}
       </p>
 
       {completion.complete && (
-        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Course complete
         </p>
       )}
@@ -150,7 +150,7 @@ async function CourseCard() {
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <Link
           href={simple ? simple.href : `/members/courses/${COURSE_SLUG}`}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           {simple
             ? simple.label
@@ -171,7 +171,7 @@ async function CourseCard() {
         {!simple && done > 0 && done < countable.length && (
           <Link
             href={lessonHref(COURSE_SLUG, next.slug)}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Continue: {next.title}
           </Link>
@@ -198,9 +198,9 @@ async function QuestionSection() {
   }
 
   return (
-    <section className="mt-12 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-12 border-t border-line pt-10">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         Ask Pastor Richmond
@@ -211,7 +211,7 @@ async function QuestionSection() {
       </p>
 
       {allowance.used ? (
-        <p className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 leading-relaxed text-[#6B5F53]">
+        <p className="mt-6 rounded-xl border border-line bg-sand px-5 py-4 leading-relaxed text-muted">
           You have used this month&rsquo;s question; your next one opens on{" "}
           {formatOpensOn(allowance.opensOn)}.
         </p>
@@ -227,7 +227,7 @@ function ManageBilling() {
     <form action="/api/membership/portal" method="POST">
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-6 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+        className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-6 py-3 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
       >
         Manage billing
       </button>
@@ -238,14 +238,14 @@ function ManageBilling() {
 /** For a member who has also bought Following Jesus, which lives outside the membership. */
 function FollowingJesusLink() {
   return (
-    <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <p className="text-[#2B2118]">You also have Following Jesus courses</p>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+    <div className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+      <p className="text-navy">You also have Following Jesus courses</p>
+      <p className="mt-2 text-sm leading-relaxed text-muted">
         Bought separately from the membership, and kept in their own place.
       </p>
       <Link
         href={SERIES_PATH}
-        className="mt-4 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        className="mt-4 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
       >
         Go to your Following Jesus courses
       </Link>
@@ -274,7 +274,7 @@ export default async function Members() {
     return (
       <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
         <h1
-          className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+          className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           {needsBilling(member) ? "Your payment did not go through" : "No membership on this email"}
@@ -282,10 +282,10 @@ export default async function Members() {
 
         <p
           className="mt-6 text-lg leading-relaxed"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           You are signed in as{" "}
-          <span className="break-words text-[#2B2118]">{email}</span>.{" "}
+          <span className="break-words text-navy">{email}</span>.{" "}
           {needsBilling(member)
             ? "Update your card and the membership will pick up where it left off."
             : "There is no active membership attached to this address. If you paid with a different one, sign out and sign back in with that address."}
@@ -297,16 +297,16 @@ export default async function Members() {
             who actually has a members row — a signed-in stranger has no
             journal, and requireMemberRow would turn them straight back. */}
         {member && (
-          <div className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-            <p className="text-[#2B2118]">Your journal stays yours</p>
-            <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+          <div className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
+            <p className="text-navy">Your journal stays yours</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
               Everything you wrote through the course is still here to read and
               to download, whether or not the membership is active.
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-4">
               <Link
                 href="/members/journal"
-                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
                 Read your journal
               </Link>
@@ -321,7 +321,7 @@ export default async function Members() {
           ) : (
             <Link
               href="/membership"
-              className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+              className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
             >
               See the membership
             </Link>
@@ -329,7 +329,7 @@ export default async function Members() {
           <form action={memberLogout}>
             <button
               type="submit"
-              className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+              className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-gold-text"
             >
               Sign out
             </button>
@@ -341,11 +341,11 @@ export default async function Members() {
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Members
       </p>
       <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Welcome to Faithful Path
@@ -356,7 +356,7 @@ export default async function Members() {
           <p
             key={paragraph.slice(0, 24)}
             className="text-lg leading-relaxed"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {paragraph}
           </p>
@@ -368,7 +368,7 @@ export default async function Members() {
       {/* Two courses, presented alike. Neither is the main one: a member may
           have come for either, and the membership includes both. */}
       <section className="mt-12">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Your courses
         </h2>
         <div className="mt-4 space-y-6">
@@ -396,7 +396,7 @@ export default async function Members() {
       </section>
 
       {member?.cancel_at_period_end && member.current_period_end && (
-        <p className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-8 rounded-xl border border-line bg-sand px-5 py-4 text-sm leading-relaxed text-muted">
           Your membership is set to end on{" "}
           {new Date(member.current_period_end).toLocaleDateString("en-GB", {
             day: "numeric", month: "long", year: "numeric",
@@ -405,9 +405,9 @@ export default async function Members() {
         </p>
       )}
 
-      <section className="mt-12 border-t border-[#E5D9C7] pt-10">
+      <section className="mt-12 border-t border-line pt-10">
         <h2
-          className="text-2xl text-[#2B2118]"
+          className="text-2xl text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           Your journal
@@ -419,7 +419,7 @@ export default async function Members() {
         <div className="mt-6 flex flex-wrap items-center gap-4">
           <Link
             href="/members/journal"
-            className="inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Read your journal
           </Link>
@@ -429,19 +429,19 @@ export default async function Members() {
 
       <QuestionSection />
 
-      <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-[#E5D9C7] pt-10">
+      <div className="mt-12 flex flex-wrap items-center gap-6 border-t border-line pt-10">
         <ManageBilling />
         <form action={memberLogout}>
           <button
             type="submit"
-            className="text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+            className="text-sm text-muted underline underline-offset-4 transition-colors hover:text-gold-text"
           >
             Sign out
           </button>
         </form>
       </div>
 
-      <p className="mt-6 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-6 text-sm leading-relaxed text-muted">
         Signed in as <span className="break-words">{email}</span>.
       </p>
     </main>

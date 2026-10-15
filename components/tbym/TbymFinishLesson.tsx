@@ -82,7 +82,7 @@ export default function TbymFinishLesson({
     });
   }
 
-  const label = "text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)]";
+  const label = "text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)] font-medium";
   // "Stop here for today" is the filled button; Continue is the outlined one
   // beside it, as the lesson template specifies. The approved preview drew
   // Continue as a text link; a button of the same size, unfilled, keeps the

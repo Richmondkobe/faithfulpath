@@ -29,14 +29,14 @@ export default async function MemberLogin({
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <h1
-        className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Member sign in
       </h1>
       <p
         className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Use the email address you paid with. We will email you a 6-digit code to
         type in — there is no password to remember.
@@ -45,7 +45,7 @@ export default async function MemberLogin({
       {notice && (
         <p
           role="alert"
-          className="mt-8 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-4 py-3 text-sm leading-relaxed text-[#8B3A2E]"
+          className="mt-8 rounded-xl border border-danger-line bg-danger-bg px-4 py-3 text-sm leading-relaxed text-danger"
         >
           {notice}
         </p>

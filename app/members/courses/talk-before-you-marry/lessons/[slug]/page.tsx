@@ -104,7 +104,7 @@ export default async function TbymLessonPage({ params }: Props) {
           would push one onto a line of its own, right-aligned and orphaned.
           Stacking below sm avoids that rather than waiting for it. */}
       <div
-        className="flex flex-col gap-1 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] sm:flex-row sm:items-center sm:justify-between sm:gap-3"
+        className="flex flex-col gap-1 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] sm:flex-row sm:items-center sm:justify-between sm:gap-3 font-medium"
         style={{ fontFamily: "var(--font-tbym-mono)" }}
       >
         <Link href={TBYM_BASE} className="underline underline-offset-4">
@@ -118,7 +118,7 @@ export default async function TbymLessonPage({ params }: Props) {
       {/* 1. Lesson title and Scripture */}
       <Card>
         <p
-          className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+          className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
           style={{ fontFamily: "var(--font-tbym-mono)" }}
         >
           Lesson {lesson.order}
@@ -157,7 +157,7 @@ export default async function TbymLessonPage({ params }: Props) {
           &ldquo;{lesson.scriptureText}&rdquo;
         </blockquote>
         <p
-          className="mt-3 text-[13px] uppercase tracking-[0.1em] text-[var(--tb-accent)]"
+          className="mt-3 text-[13px] uppercase tracking-[0.1em] text-[var(--tb-accent)] font-medium"
           style={{ fontFamily: "var(--font-tbym-mono)", fontWeight: 500 }}
         >
           {lesson.scriptureRef}
@@ -218,7 +218,7 @@ export default async function TbymLessonPage({ params }: Props) {
 
         <details className="mt-4 border-t border-[var(--tb-line)]">
           <summary
-            className="flex cursor-pointer justify-between py-4 text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)]"
+            className="flex cursor-pointer justify-between py-4 text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)] font-medium"
             style={{ fontFamily: "var(--font-tbym-mono)", fontWeight: 500 }}
           >
             Read the transcript
@@ -247,7 +247,7 @@ export default async function TbymLessonPage({ params }: Props) {
                 className="border-t border-[var(--tb-line)] pt-4"
               >
                 <p
-                  className="text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)]"
+                  className="text-[13px] uppercase tracking-[0.14em] text-[var(--tb-accent)] font-medium"
                   style={{ fontFamily: "var(--font-tbym-mono)", fontWeight: 500 }}
                 >
                   <span aria-hidden="true">{i + 1}. </span>

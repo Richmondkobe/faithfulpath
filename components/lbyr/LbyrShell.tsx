@@ -8,7 +8,7 @@ import type { Inline } from "@/lib/lbyr-html";
 /** A beige panel. Used only where the preview pages use one. */
 export function Panel({ children }: { children: ReactNode }) {
   return (
-    <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-6 py-7">
+    <section className="rounded-2xl border border-line bg-paper px-6 py-7">
       {children}
     </section>
   );
@@ -22,7 +22,7 @@ export function Plain({ children }: { children: ReactNode }) {
 export function SectionHeading({ children }: { children: ReactNode }) {
   return (
     <h2
-      className="text-[1.6rem] leading-tight text-[#2B2118]"
+      className="text-[1.6rem] leading-tight text-navy"
       style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
     >
       {children}
@@ -46,7 +46,7 @@ export default function LbyrShell({
   return (
     <>
       <main
-        className="mx-auto flex max-w-[760px] flex-col gap-5 px-4 pt-8 pb-14 text-[18px] text-[#4A4038]"
+        className="mx-auto flex max-w-[760px] flex-col gap-5 px-4 pt-8 pb-14 text-[18px] text-ink"
         style={{ fontFamily: "var(--font-sans)" }}
       >
         {eyebrow}
@@ -54,20 +54,20 @@ export default function LbyrShell({
       </main>
 
       <footer className="mx-auto max-w-[760px] px-4 pb-14">
-        <div className="border-t border-[#E5D9C7] pt-5 text-[13px] leading-relaxed text-[#6B5F53]">
+        <div className="border-t border-line pt-5 text-[13px] leading-relaxed text-muted">
           <nav
             aria-label="Course"
             className="flex flex-wrap items-center gap-x-5 gap-y-1"
           >
             <Link
               href={`${LBYR_BASE}#help`}
-              className="flex min-h-11 items-center text-[#8B5E34] underline underline-offset-4"
+              className="flex min-h-11 items-center text-gold-text underline underline-offset-4"
             >
               Need help with your next step?
             </Link>
             <Link
               href={lbyrConcernsHref}
-              className="flex min-h-11 items-center text-[#8B5E34] underline underline-offset-4"
+              className="flex min-h-11 items-center text-gold-text underline underline-offset-4"
             >
               Concerns, Care and Reporting
             </Link>

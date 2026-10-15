@@ -131,8 +131,8 @@ export default function SilenceTimer({
     const mm = Math.floor((remaining ?? 0) / 60);
     const ss = String((remaining ?? 0) % 60).padStart(2, "0");
     return (
-      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#1A1512] px-6 text-center">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B7355]">
+      <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-night px-6 text-center">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-muted font-medium">
           {phase === "opening"
             ? "Beginning"
             : phase === "closing"
@@ -140,14 +140,14 @@ export default function SilenceTimer({
               : "Silence"}
         </p>
         {phase === "silence" && (
-          <p className="mt-6 text-5xl tabular-nums text-[#C9B89E]" style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}>
+          <p className="mt-6 text-5xl tabular-nums text-gold-soft" style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}>
             {mm}:{ss}
           </p>
         )}
         <button
           type="button"
           onClick={stop}
-          className="mt-12 text-sm text-[#8B7355] underline underline-offset-4 transition-colors hover:text-[#C9B89E]"
+          className="mt-12 text-sm text-muted underline underline-offset-4 transition-colors hover:text-gold-soft"
         >
           Stop
         </button>
@@ -156,8 +156,8 @@ export default function SilenceTimer({
   }
 
   return (
-    <div className="mt-6 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <div className="mt-6 rounded-xl border border-line bg-sand px-5 py-5">
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Silence timer
       </p>
       <div className="mt-3 flex flex-wrap gap-2">
@@ -166,15 +166,15 @@ export default function SilenceTimer({
             key={n}
             type="button"
             onClick={() => setMinutes(n)}
-            className={`rounded-sm border px-4 py-2 text-sm transition-colors ${
+            className={`rounded-xl border px-4 py-2 text-sm transition-colors ${
               minutes === n
-                ? "border-[#8B5E34] bg-[#F3EADC] text-[#2B2118]"
-                : "border-[#D9CDBA] text-[#5C5147] hover:border-[#8B5E34]"
+                ? "border-gold-text bg-sand text-navy"
+                : "border-field text-muted hover:border-gold-text"
             }`}
           >
             {n} min
             {suggested === n && (
-              <span className="ml-1 text-[11px] text-[#8B5E34]">suggested</span>
+              <span className="ml-1 text-[11px] text-gold-text">suggested</span>
             )}
           </button>
         ))}
@@ -182,11 +182,11 @@ export default function SilenceTimer({
       <button
         type="button"
         onClick={begin}
-        className="mt-4 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+        className="mt-4 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
       >
         Begin {minutes} minutes of silence
       </button>
-      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-3 text-sm leading-relaxed text-muted">
         The screen dims and stays still while the time runs. You can stop at any
         moment.
       </p>

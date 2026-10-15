@@ -56,12 +56,12 @@ export default function ResetBegin({
         type="button"
         onClick={begin}
         disabled={pending}
-        className="inline-flex w-full items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft sm:w-auto"
       >
         {label}
       </button>
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

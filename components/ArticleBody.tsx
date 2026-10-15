@@ -89,7 +89,7 @@ function urlTransform(url: string): string {
 const components: Components = {
   h1: ({ children }) => (
     <h2
-      className="pt-6 text-2xl leading-snug text-[#2B2118] sm:text-3xl"
+      className="pt-6 text-2xl leading-snug text-navy sm:text-3xl"
       style={{ fontFamily: DISPLAY, fontWeight: 400 }}
     >
       {children}
@@ -98,7 +98,7 @@ const components: Components = {
   h2: ({ children }) => (
     <h2
       id={headingId(children)}
-      className="pt-6 text-2xl leading-snug text-[#2B2118] sm:text-3xl scroll-mt-6"
+      className="pt-6 text-2xl leading-snug text-navy sm:text-3xl scroll-mt-6"
       style={{ fontFamily: DISPLAY, fontWeight: 400 }}
     >
       {children}
@@ -106,7 +106,7 @@ const components: Components = {
   ),
   h3: ({ children }) => (
     <h3
-      className="pt-4 text-xl text-[#2B2118]"
+      className="pt-4 text-xl text-navy"
       style={{ fontFamily: DISPLAY, fontWeight: 500 }}
     >
       {children}
@@ -114,7 +114,7 @@ const components: Components = {
   ),
   h4: ({ children }) => (
     <h4
-      className="pt-2 text-lg text-[#2B2118]"
+      className="pt-2 text-lg text-navy"
       style={{ fontFamily: DISPLAY, fontWeight: 500 }}
     >
       {children}
@@ -123,13 +123,13 @@ const components: Components = {
   p: ({ children }) => (
     <p
       className="text-lg leading-relaxed"
-      style={{ fontFamily: DISPLAY, fontWeight: 300 }}
+      style={{ fontFamily: DISPLAY, fontWeight: 400 }}
     >
       {children}
     </p>
   ),
   strong: ({ children }) => (
-    <strong className="font-medium text-[#2B2118]">{children}</strong>
+    <strong className="font-medium text-navy">{children}</strong>
   ),
   em: ({ children }) => <em>{children}</em>,
   // Same tab: these are mostly internal links and scripture references, and a
@@ -137,7 +137,7 @@ const components: Components = {
   a: ({ href, children }) => (
     <a
       href={href}
-      className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+      className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
     >
       {children}
     </a>
@@ -155,20 +155,20 @@ const components: Components = {
   li: ({ children }) => <li>{children}</li>,
   blockquote: ({ children }) => (
     <blockquote
-      className="border-l-2 border-[#8B5E34] pl-6 text-lg leading-relaxed text-[#5C5147] italic"
-      style={{ fontFamily: DISPLAY, fontWeight: 300 }}
+      className="border-l-2 border-gold-text pl-6 text-lg leading-relaxed text-muted italic"
+      style={{ fontFamily: DISPLAY, fontWeight: 400 }}
     >
       {children}
     </blockquote>
   ),
-  hr: () => <hr className="border-t border-[#E5D9C7]" />,
+  hr: () => <hr className="border-t border-line" />,
   code: ({ children }) => (
-    <code className="rounded-sm bg-[#F3EBDD] px-1.5 py-0.5 text-[0.9em] text-[#2B2118]">
+    <code className="rounded-xl bg-sand px-1.5 py-0.5 text-[0.9em] text-navy">
       {children}
     </code>
   ),
   pre: ({ children }) => (
-    <pre className="overflow-x-auto rounded-sm bg-[#F3EBDD] p-4 text-sm text-[#2B2118]">
+    <pre className="overflow-x-auto rounded-xl bg-sand p-4 text-sm text-navy">
       {children}
     </pre>
   ),
@@ -180,12 +180,12 @@ const components: Components = {
     </div>
   ),
   th: ({ children }) => (
-    <th className="border-b border-[#E5D9C7] py-2 pr-4 font-medium text-[#2B2118]">
+    <th className="border-b border-line py-2 pr-4 font-medium text-navy">
       {children}
     </th>
   ),
   td: ({ children }) => (
-    <td className="border-b border-[#E5D9C7] py-2 pr-4 align-top">{children}</td>
+    <td className="border-b border-line py-2 pr-4 align-top">{children}</td>
   ),
 };
 

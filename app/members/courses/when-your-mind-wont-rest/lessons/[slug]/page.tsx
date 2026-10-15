@@ -193,12 +193,12 @@ export default async function MindLesson({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {module.title}
         {page.key_scripture && <> · {page.key_scripture}</>}
       </p>
@@ -210,14 +210,14 @@ export default async function MindLesson({ params }: Props) {
       {slides ? (
         <>
           <h1
-            className="mt-2 text-[2rem] leading-[1.15] text-[#2B2118]"
+            className="mt-2 text-[2rem] leading-[1.15] text-navy"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {page.title}
           </h1>
 
           <section className="mt-8">
-            <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               Watch or listen
             </h2>
             {/* What this lesson sets out to teach. Written from its own slides,
@@ -225,14 +225,14 @@ export default async function MindLesson({ params }: Props) {
                 something that would fit any lesson in the course. */}
             {objectives && (
               <>
-                <p className="mt-3 text-[15px] leading-relaxed text-[#4A4038]">
+                <p className="mt-3 text-[15px] leading-relaxed text-ink">
                   In this lesson, you will learn to:
                 </p>
                 <ul className="mt-2 space-y-2">
                   {objectives.map((objective) => (
                     <li
                       key={objective}
-                      className="relative pl-5 leading-relaxed text-[#2B2118] before:absolute before:left-0 before:top-[0.7em] before:h-1 before:w-1 before:rounded-full before:bg-[#8B5E34]"
+                      className="relative pl-5 leading-relaxed text-navy before:absolute before:left-0 before:top-[0.7em] before:h-1 before:w-1 before:rounded-full before:bg-gold-text"
                     >
                       {objective}
                     </li>
@@ -244,7 +244,7 @@ export default async function MindLesson({ params }: Props) {
             {/* Lessons not yet written up keep the single line from the deck's
                 own second slide, which is headed "Today you will learn". */}
             {willLearn && (
-              <p className="mt-3 text-lg leading-relaxed text-[#2B2118]">
+              <p className="mt-3 text-lg leading-relaxed text-navy">
                 In this lesson, you will learn{" "}
                 {willLearn.charAt(0).toLowerCase() + willLearn.slice(1)}
               </p>
@@ -256,7 +256,7 @@ export default async function MindLesson({ params }: Props) {
                 lessonTitle={page.title}
               />
             </div>
-            <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+            <p className="mt-3 text-sm leading-relaxed text-muted">
               About {Math.round(runtimeMinutes)} minutes, plus one short pause.
             </p>
 
@@ -275,16 +275,16 @@ export default async function MindLesson({ params }: Props) {
               default: a member who never opens the player loses nothing, which
               is also what makes the player safe to require JavaScript for. */}
           {narration.length > 0 && (
-            <details className="group mt-12 rounded-sm border border-[#E5D9C7]">
-              <summary className="cursor-pointer list-none px-5 py-4 text-sm text-[#2B2118] transition-colors hover:bg-[#F7F1E6]">
+            <details className="group mt-12 rounded-xl border border-line">
+              <summary className="cursor-pointer list-none px-5 py-4 text-sm text-navy transition-colors hover:bg-sand">
                 <span className="font-medium">Read the transcript</span>
-                <span className="ml-2 text-[#6B5F53]">
+                <span className="ml-2 text-muted">
                   — every word of the recording, in writing
                 </span>
               </summary>
-              <div className="border-t border-[#E5D9C7] px-5 pb-5">
+              <div className="border-t border-line px-5 pb-5">
                 {narration.map((paragraph, i) => (
-                  <p key={i} className="mt-4 leading-relaxed text-[#4A4038]">
+                  <p key={i} className="mt-4 leading-relaxed text-ink">
                     {paragraph}
                   </p>
                 ))}
@@ -294,17 +294,17 @@ export default async function MindLesson({ params }: Props) {
 
           {practice && (
             <section className="mt-12">
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 Take one step
               </h2>
               <p
-                className="mt-3 text-xl leading-snug text-[#2B2118]"
+                className="mt-3 text-xl leading-snug text-navy"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
               >
                 {practice.heading}
               </p>
               {practice.lines.map((line) => (
-                <p key={line} className="mt-3 leading-relaxed text-[#4A4038]">
+                <p key={line} className="mt-3 leading-relaxed text-ink">
                   {line}
                 </p>
               ))}
@@ -314,7 +314,7 @@ export default async function MindLesson({ params }: Props) {
                   sits under it, quieter, for a member who has someone safe to
                   tell and wants to. */}
               {isLesson && action && (
-                <div className="mt-8 border-t border-[#E5D9C7] pt-6">
+                <div className="mt-8 border-t border-line pt-6">
                   <NextFaithfulStep
                     lessonSlug={slug}
                     action={action}
@@ -343,7 +343,7 @@ export default async function MindLesson({ params }: Props) {
           teaching rather than the eight minutes of it. */}
       {slides && (worksheets.length > 0 || (chapter && chapterNumber)) && (
         <section className="mt-12">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             Go deeper
           </h2>
           {/* Two cards side by side, or one at full width — Lesson 21 has no
@@ -356,8 +356,8 @@ export default async function MindLesson({ params }: Props) {
             }`}
           >
             {worksheets.length > 0 && (
-              <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <div className="rounded-2xl border border-line bg-paper px-5 py-5">
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                   {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
                 </h3>
                 <ul className="mt-3 space-y-3">
@@ -365,19 +365,19 @@ export default async function MindLesson({ params }: Props) {
                     <li key={resource.file}>
                       <Link
                         href={mindResourceHref(resourceSlug(resource))}
-                        className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                        className="text-navy underline underline-offset-4 transition-colors hover:text-gold-text"
                       >
                         {resource.toolkit_number}. {resource.title}
                       </Link>
                       {resource.not_for_group_sharing && (
-                        <span className="mt-1 block text-sm text-[#6B5F53]">
+                        <span className="mt-1 block text-sm text-muted">
                           Private — not for group sharing.
                         </span>
                       )}
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+                <p className="mt-4 text-sm leading-relaxed text-muted">
                   Optional, and yours alone. You do not need to complete this to
                   finish the lesson.
                 </p>
@@ -385,19 +385,19 @@ export default async function MindLesson({ params }: Props) {
             )}
 
             {chapter && chapterNumber && (
-              <div className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <div className="rounded-2xl border border-line bg-paper px-5 py-5">
+                <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                   Complete chapter
                 </h3>
                 <p className="mt-3">
                   <Link
                     href={`${mindLessonHref(slug)}/chapter`}
-                    className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                    className="text-navy underline underline-offset-4 transition-colors hover:text-gold-text"
                   >
                     Read Chapter {chapterNumber}: {page.title}
                   </Link>
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+                <p className="mt-4 text-sm leading-relaxed text-muted">
                   Optional. Read this if you want the complete teaching from the
                   book. You do not need to read it to finish the lesson.
                 </p>
@@ -442,8 +442,8 @@ export default async function MindLesson({ params }: Props) {
       {/* Pages without a slide lecture keep the single worksheet box they have
           always had; the slide lessons put it in a Go deeper card above. */}
       {!slides && worksheets.length > 0 && (
-        <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <section className="mt-12 rounded-xl border border-line bg-sand px-5 py-5">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
           </h2>
           <ul className="mt-4 space-y-3">
@@ -451,19 +451,19 @@ export default async function MindLesson({ params }: Props) {
               <li key={resource.file}>
                 <Link
                   href={mindResourceHref(resourceSlug(resource))}
-                  className="text-[#2B2118] underline underline-offset-4 transition-colors hover:text-[#8B5E34]"
+                  className="text-navy underline underline-offset-4 transition-colors hover:text-gold-text"
                 >
                   {resource.toolkit_number}. {resource.title}
                 </Link>
                 {resource.not_for_group_sharing && (
-                  <span className="mt-1 block text-sm text-[#6B5F53]">
+                  <span className="mt-1 block text-sm text-muted">
                     Private — not for group sharing.
                   </span>
                 )}
               </li>
             ))}
           </ul>
-          <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-4 text-sm leading-relaxed text-muted">
             Optional, and yours alone. You do not need to complete this to
             finish the lesson.
           </p>
@@ -495,12 +495,12 @@ export default async function MindLesson({ params }: Props) {
           misses the linking readPageFile does, and two lessons name Finding
           Help Where You Live inside it. */}
       {(support || (isLesson && supportHref)) && (
-        <section className="mt-12 border-t border-[#E5D9C7] pt-6">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <section className="mt-12 border-t border-line pt-6">
+          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             Need more support?
           </h2>
           {support && (
-            <div className="mt-3 text-sm leading-relaxed text-[#6B5F53] [&_p]:mt-0">
+            <div className="mt-3 text-sm leading-relaxed text-muted [&_p]:mt-0">
               <MindMarkdown
                 source={linkCourseReferences(support, page.file)}
                 tight
@@ -511,7 +511,7 @@ export default async function MindLesson({ params }: Props) {
             <p className="mt-3">
               <Link
                 href={supportHref}
-                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {supportPageTitle ?? "When this course is not enough"}
               </Link>

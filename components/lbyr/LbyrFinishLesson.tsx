@@ -56,7 +56,7 @@ export default function LbyrFinishLesson({
     <div className="mt-3">
       <Link
         href={overviewHref}
-        className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+        className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
       >
         Stop here for today
       </Link>
@@ -71,19 +71,19 @@ export default function LbyrFinishLesson({
             type="button"
             onClick={() => mark(true)}
             disabled={pending}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             {pending ? "Saving…" : `Finish Lesson ${lessonOrder}`}
           </button>
           {stopHere}
-          <p className="mt-3 text-[15px] leading-relaxed text-[#6B5F53]">
+          <p className="mt-3 text-[15px] leading-relaxed text-muted">
             Your course progress is saved automatically.
           </p>
         </>
       ) : (
         <>
           <p
-            className="text-[19px] leading-snug text-[#2B2118]"
+            className="text-[19px] leading-snug text-navy"
             role="status"
             style={{ fontFamily: "var(--font-display)" }}
           >
@@ -97,14 +97,14 @@ export default function LbyrFinishLesson({
             <div className="mt-5">
               <Link
                 href={nextHref}
-                className="inline-flex min-h-11 items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
                 Continue to {nextLabel}
               </Link>
             </div>
           )}
           {stopHere}
-          <p className="mt-3 text-[15px] leading-relaxed text-[#6B5F53]">
+          <p className="mt-3 text-[15px] leading-relaxed text-muted">
             Your course progress is saved automatically.{" "}
             <button
               type="button"

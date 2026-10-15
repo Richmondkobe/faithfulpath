@@ -13,6 +13,7 @@ import { getPublishedProductBySlug, listPublishedProducts } from "@/lib/products
 import { coverPublicUrl, listSampleSlugs } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
 import { SITE } from "@/lib/site";
+import { SERIES_LISTED, coursePath, findCourse } from "@/lib/following-jesus";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -168,12 +169,46 @@ const RELATED_ARTICLES: Record<
   ],
 };
 
-// Guides that also exist as a guided online course behind the membership. The
-// note sits under the Buy button, where someone is deciding how they want to
-// work through the material.
-const COURSE_EDITION: ReadonlySet<string> = new Set([
-  "the-christian-spiritual-reset",
-]);
+// Books that also exist as a course: the five in the membership, and the four
+// Following Jesus books, each its own video course. The note sits under the
+// Buy button, where someone is deciding how they want to work through the
+// material (website audit V3, N12). The Life Guides booklet has no course.
+type CourseEdition = { text: string; href: string };
+const MEMBERSHIP_COURSE = "/membership";
+const fjCourse = (slug: string): CourseEdition | null => {
+  const course = findCourse(slug);
+  if (!course || !SERIES_LISTED || !course.launched || !course.listed) return null;
+  return {
+    text: `This book is also a Following Jesus video course: ${course.seriesLine.charAt(0).toLowerCase()}${course.seriesLine.slice(1, -1)}, each narrated, with a reading plan and a Leader’s Guide.`,
+    href: coursePath(course),
+  };
+};
+const COURSE_EDITION: Record<string, CourseEdition | null> = {
+  "the-christian-spiritual-reset": {
+    text: "This guide is also a guided online course — the same retreat led session by session, with video, guided prayers, timed silences, and printable workbooks.",
+    href: MEMBERSHIP_COURSE,
+  },
+  "when-your-mind-wont-rest": {
+    text: "This book is also a guided online course in the membership, taken lesson by lesson at your own pace.",
+    href: MEMBERSHIP_COURSE,
+  },
+  "before-you-say-yes": {
+    text: "This book is also a guided online course in the membership: 21 illustrated, narrated lessons, taken at your own pace.",
+    href: MEMBERSHIP_COURSE,
+  },
+  "talk-before-you-marry": {
+    text: "This book is also a guided online course for couples in the membership: 15 illustrated, narrated lessons, with conversations to have together.",
+    href: MEMBERSHIP_COURSE,
+  },
+  "lead-before-youre-ready": {
+    text: "This book is also a guided online course in the membership, for your first years of leading in a church.",
+    href: MEMBERSHIP_COURSE,
+  },
+  "following-jesus-book-1-begin": fjCourse("begin"),
+  "following-jesus-book-2-establish": fjCourse("establish"),
+  "following-jesus-book-3-grow": fjCourse("grow"),
+  "following-jesus-book-4-multiply": fjCourse("multiply"),
+};
 
 // Guides whose Read more list is a selection rather than everything relevant,
 // and so ends with a link to the full articles index.
@@ -277,7 +312,7 @@ export default async function Guide({ params }: Props) {
 
       <Link
         href="/guides"
-        className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← All books
       </Link>
@@ -289,7 +324,7 @@ export default async function Guide({ params }: Props) {
           {/* object-contain so the whole cover is visible — a cover whose
               proportions differ from 2/3 letterboxes against the panel colour
               rather than being cropped. */}
-          <div className="relative aspect-[2/3] overflow-hidden rounded-sm border border-[#E5D9C7] bg-[#F3EADC]">
+          <div className="relative aspect-[2/3] overflow-hidden rounded-xl border border-line bg-sand">
             {cover && (
               <Image
                 src={cover}
@@ -310,14 +345,14 @@ export default async function Guide({ params }: Props) {
           {category && (
             <Link
               href={bookCategoryHref(category.slug)}
-              className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+              className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-gold-text underline underline-offset-4 transition-colors hover:text-navy font-medium"
             >
               {category.label}
             </Link>
           )}
 
           <h1
-            className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
+            className="text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {guide.title}
@@ -329,7 +364,7 @@ export default async function Guide({ params }: Props) {
             </div>
           )}
 
-          <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             {formatPrice(guide.price_cents)} · PDF, instant download
           </p>
 
@@ -348,7 +383,7 @@ export default async function Guide({ params }: Props) {
               <TrackedSubmit
                 event="buy_book_click"
                 slug={slug}
-                className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
                 Buy — {formatPrice(guide.price_cents)}
               </TrackedSubmit>
@@ -363,7 +398,7 @@ export default async function Guide({ params }: Props) {
                   href={`/guides/${slug}/sample`}
                   target="_blank"
                   rel="noopener nofollow"
-                  className="inline-flex items-center justify-center rounded-sm border border-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+                  className="inline-flex items-center justify-center rounded-xl border border-navy px-7 py-4 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
                 >
                   Read a free sample
                 </TrackedAnchor>
@@ -376,15 +411,13 @@ export default async function Guide({ params }: Props) {
             </FinePrint>
           </form>
 
-          {COURSE_EDITION.has(slug) && (
-            <div className="mt-8 max-w-xl rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-4">
-              <p className="text-sm leading-relaxed text-[#6B5F53]">
-                This guide is also a guided online course — the same retreat led
-                session by session, with video, guided prayers, timed silences,
-                and printable workbooks.{" "}
+          {COURSE_EDITION[slug] && (
+            <div className="mt-8 max-w-xl rounded-2xl border border-line bg-paper px-5 py-4">
+              <p className="text-sm leading-relaxed text-muted">
+                {COURSE_EDITION[slug].text}{" "}
                 <Link
-                  href="/membership"
-                  className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  href={COURSE_EDITION[slug].href}
+                  className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   See the course
                 </Link>
@@ -394,14 +427,14 @@ export default async function Guide({ params }: Props) {
           )}
 
           {guide.description && (
-            <div className="mt-12 max-w-2xl border-t border-[#E5D9C7] pt-10">
+            <div className="mt-12 max-w-2xl border-t border-line pt-10">
               <Markdown source={guide.description} />
             </div>
           )}
 
           {related && (
-            <div className="mt-12 max-w-2xl border-t border-[#E5D9C7] pt-10">
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <div className="mt-12 max-w-2xl border-t border-line pt-10">
+              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 Read more
               </h2>
               <ul className="mt-6 space-y-5">
@@ -409,7 +442,7 @@ export default async function Guide({ params }: Props) {
                   <li key={article.href}>
                     <Link
                       href={article.href}
-                      className="block text-lg leading-snug text-[#2B2118] transition-colors hover:text-[#8B5E34]"
+                      className="block text-lg leading-snug text-navy transition-colors hover:text-gold-text"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontWeight: 400,
@@ -423,7 +456,7 @@ export default async function Guide({ params }: Props) {
               {MORE_ARTICLES.has(slug) && (
                 <Link
                   href="/articles"
-                  className="mt-6 inline-block text-[15px] font-medium text-[#8B5E34] underline-offset-4 hover:underline"
+                  className="mt-6 inline-block text-[15px] font-medium text-gold-text underline-offset-4 hover:underline"
                 >
                   More articles →
                 </Link>
@@ -433,16 +466,16 @@ export default async function Guide({ params }: Props) {
         </div>
       </div>
 
-      <div className="mt-16 border-t border-[#E5D9C7] pt-10">
+      <div className="mt-16 border-t border-line pt-10">
         <p
-          className="text-xl leading-snug text-[#2B2118]"
+          className="text-xl leading-snug text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Some things need a conversation, not a book.
         </p>
         <Link
           href="/talk-to-a-pastor"
-          className="mt-6 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Talk to a pastor — {SITE.price}
         </Link>

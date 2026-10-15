@@ -61,23 +61,23 @@ export default async function MindLessonChapter({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-4 sm:pt-24">
       <Link
         href={mindLessonHref(slug)}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         ← {page.title}
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {module.title} · Complete chapter
       </p>
 
       <h1
-        className="mt-2 text-[2rem] leading-[1.15] text-[#2B2118]"
+        className="mt-2 text-[2rem] leading-[1.15] text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Chapter {chapterNumber}: {page.title}
       </h1>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Optional. This is the complete teaching from the book. You do not need
         to read it to finish the lesson.
       </p>
@@ -86,10 +86,10 @@ export default async function MindLessonChapter({ params }: Props) {
         <MindMarkdown source={linkCourseReferences(chapter, page.file)} />
       </article>
 
-      <p className="mt-12 border-t border-[#E5D9C7] pt-6">
+      <p className="mt-12 border-t border-line pt-6">
         <Link
           href={mindLessonHref(slug)}
-          className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+          className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
         >
           ← Back to {page.title}
         </Link>

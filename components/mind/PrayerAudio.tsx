@@ -21,11 +21,11 @@ export default function PrayerAudio({
   // player that cannot play. Phase two adds the remaining prayers.
   if (!src) {
     return (
-      <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <section className="mt-12 rounded-xl border border-line bg-sand px-5 py-5">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Guided prayer
         </h2>
-        <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-3 text-sm leading-relaxed text-muted">
           The recording for this page is not available yet. The prayer is
           written out below, and reading it is the same prayer.
         </p>
@@ -34,12 +34,12 @@ export default function PrayerAudio({
   }
 
   return (
-    <section className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-12 rounded-xl border border-line bg-sand px-5 py-5">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Guided prayer
       </h2>
       <p
-        className="mt-2 text-lg text-[#2B2118]"
+        className="mt-2 text-lg text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {title}
@@ -51,11 +51,11 @@ export default function PrayerAudio({
         below.
       </audio>
 
-      <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-3 text-sm leading-relaxed text-muted">
         Read by Pastor Richmond Kobe. You can stop it at any point, and you do
         not have to finish it.
       </p>
-      <p className="mt-3 text-[10px] leading-relaxed text-[#8A7F73]">
+      <p className="mt-3 text-[10px] leading-relaxed text-muted">
         {getMindCourse().scripture.notice}
       </p>
     </section>

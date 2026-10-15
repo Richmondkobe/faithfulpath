@@ -27,7 +27,7 @@ export default async function BysyHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-10 sm:pt-14">
-      <Link href="/members" className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <Link href="/members" className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         ← Members
       </Link>
 
@@ -38,7 +38,7 @@ export default async function BysyHome() {
         <MindMarkdown source={linkHomeCalls(linkReferences(body))} />
       </article>
 
-      <p className="mt-12 border-t border-[#E5D9C7] pt-8 text-sm text-[#6B5F53]">
+      <p className="mt-12 border-t border-line pt-8 text-sm text-muted">
         {BYSY_SIMPLE_PUBLISHED ? SIMPLE_PAGES.length : getPages().length} pages,
         at your own pace. Nothing is locked and nothing is timed.
       </p>

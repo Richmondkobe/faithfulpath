@@ -73,14 +73,14 @@ export default function EvidenceTable({
   return (
     <section className="mt-6">
       {showMonitoringNote && (
-        <p className="rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-4 py-3 text-sm leading-relaxed text-[#4A4038]">
-          <strong className="font-medium text-[#2B2118]">Privacy and safety.</strong>{" "}
+        <p className="rounded-xl border border-line bg-sand px-4 py-3 text-sm leading-relaxed text-ink">
+          <strong className="font-medium text-navy">Privacy and safety.</strong>{" "}
           {MONITORING_NOTE}
         </p>
       )}
 
       {guidance && (
-        <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">{guidance}</p>
+        <p className="mt-4 text-sm leading-relaxed text-muted">{guidance}</p>
       )}
 
       <div className="mt-4 overflow-x-auto">
@@ -91,12 +91,12 @@ export default function EvidenceTable({
                 <th
                   key={c}
                   scope="col"
-                  className="border-b border-[#D9CDBA] px-2 py-2 text-left align-bottom font-medium text-[#2B2118]"
+                  className="border-b border-field px-2 py-2 text-left align-bottom font-medium text-navy"
                 >
                   {c}
                 </th>
               ))}
-              <th scope="col" className="w-10 border-b border-[#D9CDBA]">
+              <th scope="col" className="w-10 border-b border-field">
                 <span className="sr-only">Remove row</span>
               </th>
             </tr>
@@ -105,7 +105,7 @@ export default function EvidenceTable({
             {rows.map((row, r) => (
               <tr key={r}>
                 {row.map((cell, c) => (
-                  <td key={c} className="border-b border-[#E5D9C7] px-1 py-1 align-top">
+                  <td key={c} className="border-b border-line px-1 py-1 align-top">
                     <label className="sr-only" htmlFor={`${part}-${r}-${c}`}>
                       {columns[c]}, row {r + 1}
                     </label>
@@ -115,15 +115,15 @@ export default function EvidenceTable({
                       maxLength={FIELD_LIMIT}
                       value={cell}
                       onChange={(e) => setCell(r, c, e.target.value)}
-                      className="w-full rounded-sm border border-[#D9CDBA] bg-white px-3 py-2 text-sm leading-relaxed text-[#2B2118] outline-none focus:border-[#8B5E34]"
+                      className="w-full rounded-xl border border-field bg-white px-3 py-2 text-sm leading-relaxed text-navy outline-none focus:border-gold-text"
                     />
                   </td>
                 ))}
-                <td className="border-b border-[#E5D9C7] px-1 py-1 align-top">
+                <td className="border-b border-line px-1 py-1 align-top">
                   <button
                     type="button"
                     onClick={() => setRows((cur) => cur.filter((_, i) => i !== r))}
-                    className="px-2 py-2 text-[#8B5E34] transition-colors hover:text-[#8B3A2E]"
+                    className="px-2 py-2 text-gold-text transition-colors hover:text-danger"
                     aria-label={`Remove row ${r + 1}`}
                   >
                     ×
@@ -139,7 +139,7 @@ export default function EvidenceTable({
         <button
           type="button"
           onClick={() => setRows((cur) => [...cur, blank()])}
-          className="rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-navy transition-colors hover:border-gold-text"
         >
           Add a row
         </button>
@@ -147,20 +147,20 @@ export default function EvidenceTable({
           type="button"
           disabled={pending}
           onClick={save}
-          className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-3 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
         >
           {pending ? "Saving…" : "Save"}
         </button>
-        {savedAt && !pending && <span className="text-sm text-[#6B5F53]">Saved.</span>}
+        {savedAt && !pending && <span className="text-sm text-muted">Saved.</span>}
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Add as many rows as you need, or leave rows blank. Nothing here is
         counted or scored, and a short answer is not a worse one.
       </p>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

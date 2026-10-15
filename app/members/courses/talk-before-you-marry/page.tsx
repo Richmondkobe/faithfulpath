@@ -41,7 +41,7 @@ export default async function TbymCourseHome() {
     >
       <Link
         href="/members"
-        className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] underline underline-offset-4"
+        className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] underline underline-offset-4 font-medium"
         style={{ fontFamily: "var(--font-tbym-mono)" }}
       >
         ← Your courses
@@ -68,7 +68,7 @@ export default async function TbymCourseHome() {
         />
       </div>
       <p
-        className="mt-3 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+        className="mt-3 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
         style={{ fontFamily: "var(--font-tbym-mono)" }}
       >
         {doneCount} of {course.lesson_count} lessons complete
@@ -91,7 +91,7 @@ export default async function TbymCourseHome() {
               className="flex flex-wrap items-baseline gap-x-3 rounded-md border border-[var(--tb-line)] bg-[var(--tb-card)] px-5 py-4 text-[var(--tb-ink)]"
             >
               <span
-                className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+                className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
                 style={{ fontFamily: "var(--font-tbym-mono)" }}
               >
                 Lesson {lesson.order}
@@ -99,7 +99,7 @@ export default async function TbymCourseHome() {
               <span className="text-[1.05rem]">{lesson.title}</span>
               {progress.get(lesson.slug)?.completed_at && (
                 <span
-                  className="ml-auto text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+                  className="ml-auto text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
                   style={{ fontFamily: "var(--font-tbym-mono)" }}
                 >
                   Complete

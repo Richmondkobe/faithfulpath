@@ -37,13 +37,13 @@ export default function ResetChangePlan({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+        className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
       >
         {label}
       </button>
 
       {open && (
-        <div className="mt-3 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
+        <div className="mt-3 rounded-xl border border-line bg-sand px-5 py-5">
           <ResetPlanCards
             main={main}
             others={others}
@@ -51,7 +51,7 @@ export default function ResetChangePlan({
             othersLabel={othersLabel}
             othersHeading="Other ways to use this retreat"
           />
-          <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-4 text-sm leading-relaxed text-muted">
             Changing your plan keeps everything you have already finished.
           </p>
         </div>

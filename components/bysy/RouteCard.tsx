@@ -50,13 +50,13 @@ export default function RouteCard({
           router.push(href);
         })
       }
-      className="w-full rounded-sm border border-[#D9CDBA] px-5 py-4 text-left transition-colors hover:border-[#8B5E34] disabled:opacity-60"
+      className="w-full rounded-xl border border-field px-5 py-4 text-left transition-colors hover:border-gold-text disabled:opacity-60"
     >
-      <span className="block font-medium text-[#2B2118]">
+      <span className="block font-medium text-navy">
         {pending ? "One moment…" : label}
       </span>
       {description && (
-        <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+        <span className="mt-1 block text-sm leading-relaxed text-ink">
           {description}
         </span>
       )}

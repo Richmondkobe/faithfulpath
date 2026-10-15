@@ -16,14 +16,14 @@ export default function DeleteProduct({
   const [confirming, setConfirming] = useState(false);
 
   return (
-    <div className="mt-16 max-w-2xl border-t border-[#E5D9C7] pt-10">
+    <div className="mt-16 max-w-2xl border-t border-line pt-10">
       <p
-        className="text-lg text-[#2B2118]"
+        className="text-lg text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Delete this guide
       </p>
-      <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">
         Removes the guide and its cover and PDF from storage. This cannot be
         undone. Guides that have been bought cannot be deleted.
       </p>
@@ -32,13 +32,13 @@ export default function DeleteProduct({
         <button
           type="button"
           onClick={() => setConfirming(true)}
-          className="mt-5 inline-flex items-center justify-center rounded-sm border border-[#C8836F] px-6 py-3 text-sm font-medium text-[#8B3A2E] transition-colors hover:bg-[#8B3A2E] hover:text-[#FDFAF4]"
+          className="mt-5 inline-flex items-center justify-center rounded-xl border border-danger-line px-6 py-3 text-sm font-medium text-danger transition-colors hover:bg-danger hover:text-sun"
         >
           Delete
         </button>
       ) : (
-        <div className="mt-5 rounded-sm border border-[#C8836F] bg-[#F7EDE6] px-6 py-5">
-          <p className="text-sm leading-relaxed text-[#2B2118]">
+        <div className="mt-5 rounded-xl border border-danger-line bg-danger-bg px-6 py-5">
+          <p className="text-sm leading-relaxed text-navy">
             Delete <span className="font-medium">{title}</span> for good?
           </p>
           <form action={action} className="mt-4 flex items-center gap-5">
@@ -46,7 +46,7 @@ export default function DeleteProduct({
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center justify-center rounded-sm bg-[#8B3A2E] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#6F2E24] disabled:opacity-60"
+              className="inline-flex items-center justify-center rounded-xl bg-danger px-6 py-3 text-sm font-medium text-sun transition-colors hover:bg-danger disabled:opacity-60"
             >
               {pending ? "Deleting…" : "Yes, delete it"}
             </button>
@@ -54,7 +54,7 @@ export default function DeleteProduct({
               type="button"
               onClick={() => setConfirming(false)}
               disabled={pending}
-              className="text-sm text-[#5C5147] transition-colors hover:text-[#8B5E34] disabled:opacity-60"
+              className="text-sm text-muted transition-colors hover:text-gold-text disabled:opacity-60"
             >
               Cancel
             </button>
@@ -63,7 +63,7 @@ export default function DeleteProduct({
       )}
 
       {state.error && (
-        <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#8B3A2E]">
+        <p className="mt-4 max-w-lg text-sm leading-relaxed text-danger">
           {state.error}
         </p>
       )}

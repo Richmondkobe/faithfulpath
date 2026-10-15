@@ -79,15 +79,15 @@ export default function CheckinRuleBased({
   }
 
   return (
-    <section className="mt-16 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-16 border-t border-line pt-10">
       <h2
-        className="text-2xl text-[#2B2118]"
+        className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
       >
         {checkin.title}
       </h2>
       {checkin.intro && (
-        <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">{checkin.intro}</p>
+        <p className="mt-3 text-sm leading-relaxed text-muted">{checkin.intro}</p>
       )}
 
       {editing ? (
@@ -95,7 +95,7 @@ export default function CheckinRuleBased({
           <div className="mt-8 space-y-8">
             {(checkin.sections ?? []).map((section) => (
               <fieldset key={section.id}>
-                <legend className="text-lg leading-snug text-[#2B2118]">
+                <legend className="text-lg leading-snug text-navy">
                   {section.question}
                 </legend>
                 <div className="mt-3 space-y-2">
@@ -107,8 +107,8 @@ export default function CheckinRuleBased({
                     return (
                       <label
                         key={option.id}
-                        className={`flex cursor-pointer items-start gap-3 rounded-sm border px-4 py-3 text-sm leading-relaxed transition-colors ${
-                          chosen ? "border-[#8B5E34] bg-[#F3EADC]" : "border-[#D9CDBA]"
+                        className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm leading-relaxed transition-colors ${
+                          chosen ? "border-gold-text bg-sand" : "border-field"
                         }`}
                       >
                         <input
@@ -120,9 +120,9 @@ export default function CheckinRuleBased({
                               ? toggleMulti(section.id, option.id)
                               : setAnswers((p) => ({ ...p, [section.id]: option.id }))
                           }
-                          className="mt-0.5 h-4 w-4 shrink-0 accent-[#8B5E34]"
+                          className="mt-0.5 h-4 w-4 shrink-0 accent-gold-text"
                         />
-                        <span className="text-[#2B2118]">{option.text}</span>
+                        <span className="text-navy">{option.text}</span>
                       </label>
                     );
                   })}
@@ -132,7 +132,7 @@ export default function CheckinRuleBased({
           </div>
 
           {error && (
-            <p role="alert" className="mt-6 text-sm text-[#8B3A2E]">
+            <p role="alert" className="mt-6 text-sm text-danger">
               {error}
             </p>
           )}
@@ -141,12 +141,12 @@ export default function CheckinRuleBased({
             type="button"
             onClick={submit}
             disabled={pending || !isComplete(checkin, answers)}
-            className="mt-8 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             {pending ? "Saving…" : "See my guidance"}
           </button>
           {!isComplete(checkin, answers) && (
-            <p className="mt-3 text-sm text-[#6B5F53]">
+            <p className="mt-3 text-sm text-muted">
               Answer each question to see your guidance.
             </p>
           )}
@@ -154,24 +154,24 @@ export default function CheckinRuleBased({
       ) : (
         guidance && (
           <div
-            className={`mt-8 rounded-sm border px-5 py-5 ${
+            className={`mt-8 rounded-xl border px-5 py-5 ${
               guidance.block_continue || guidance.replace_primary
-                ? "border-[#C98A7E] bg-[#FBF1EF]"
-                : "border-[#E5D9C7] bg-[#F3EADC]"
+                ? "border-danger-line bg-danger-bg"
+                : "border-line bg-sand"
             }`}
           >
             <h3
-              className="text-xl text-[#2B2118]"
+              className="text-xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               {guidance.heading}
             </h3>
-            <p className="mt-3 leading-relaxed text-[#4A4038]">{guidance.text}</p>
+            <p className="mt-3 leading-relaxed text-ink">{guidance.text}</p>
 
             {guidance.cta && (
               <Link
                 href={ctaHref(guidance.cta, courseSlug)}
-                className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+                className="mt-5 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
                 {guidance.cta.text}
               </Link>
@@ -181,7 +181,7 @@ export default function CheckinRuleBased({
               <button
                 type="button"
                 onClick={() => setEditing(true)}
-                className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 Change my answers
               </button>
@@ -189,7 +189,7 @@ export default function CheckinRuleBased({
                 <button
                   type="button"
                   onClick={again}
-                  className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                  className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   Check another direction
                 </button>

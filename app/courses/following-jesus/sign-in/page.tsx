@@ -32,16 +32,16 @@ export default async function FollowingJesusSignIn({
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Following Jesus</p>
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Following Jesus</p>
       <h1
-        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[3rem]"
+        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Sign in to your course
       </h1>
       <p
         className="mt-6 text-lg leading-relaxed"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         Use the email address you paid with. We will email you a 6-digit code to
         type in — there is no password to remember.

@@ -49,14 +49,14 @@ export default async function TbymWorksheetPage({ params }: Props) {
     >
       <Link
         href={tbymLessonHref(lesson.slug)}
-        className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] underline underline-offset-4"
+        className="text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] underline underline-offset-4 font-medium"
         style={{ fontFamily: "var(--font-tbym-mono)" }}
       >
         ← Lesson {lesson.order}: {lesson.title}
       </Link>
 
       <p
-        className="mt-5 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)]"
+        className="mt-5 text-[12px] uppercase tracking-[0.16em] text-[var(--tb-accent)] font-medium"
         style={{ fontFamily: "var(--font-tbym-mono)" }}
       >
         Worksheet

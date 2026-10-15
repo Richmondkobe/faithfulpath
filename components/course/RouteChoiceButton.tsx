@@ -45,17 +45,17 @@ export default function RouteChoiceButton({
             router.push(href);
           })
         }
-        className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-left text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+        className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-left text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
       >
         {pending ? "Saving…" : children}
       </button>
       {chosen && (
-        <span className="mt-2 block text-sm text-[#5C5147]">
+        <span className="mt-2 block text-sm text-muted">
           This is your current route.
         </span>
       )}
       {error && (
-        <span role="alert" className="mt-2 block text-sm text-[#8B3A2E]">
+        <span role="alert" className="mt-2 block text-sm text-danger">
           {error}
         </span>
       )}

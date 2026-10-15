@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 };
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
-const lede = { fontFamily: "var(--font-display)", fontWeight: 300 } as const;
+const lede = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
 const primary =
-  "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]";
+  "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft";
 
 function Course({
   kicker,
@@ -44,10 +44,10 @@ function Course({
   items?: [string, string][];
 }) {
   return (
-    <li className="rounded-sm border border-[#D9CDBA] bg-white px-6 py-7 sm:px-8">
+    <li className="rounded-2xl border border-line bg-paper px-6 py-7 sm:px-8">
       {/* Bold and a deeper gold (8:1), so the label reads easily at both sizes. */}
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B4724]">{kicker}</p>
-      <h2 className="mt-3 text-3xl tracking-[-0.01em] text-[#2B2118]" style={heading}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">{kicker}</p>
+      <h2 className="mt-3 text-3xl tracking-[-0.01em] text-navy" style={heading}>
         {title}
       </h2>
       {line && (
@@ -57,10 +57,10 @@ function Course({
       )}
       <p className={`${line ? "mt-3" : "mt-4"} max-w-xl leading-relaxed`}>{body}</p>
       {items && (
-        <ul className="mt-5 max-w-xl list-disc space-y-2 pl-6 leading-relaxed marker:text-[#8B5E34]">
+        <ul className="mt-5 max-w-xl list-disc space-y-2 pl-6 leading-relaxed marker:text-gold-text">
           {items.map(([name, text]) => (
             <li key={name}>
-              <strong className="font-medium text-[#2B2118]">{name}</strong>: {text}
+              <strong className="font-medium text-navy">{name}</strong>: {text}
             </li>
           ))}
         </ul>
@@ -78,9 +78,9 @@ export default function Courses() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Online courses</p>
+      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Online courses</p>
       <h1
-        className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118] sm:text-[3.25rem]"
+        className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={heading}
       >
         Courses

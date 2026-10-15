@@ -191,12 +191,12 @@ export default async function BysyPage({ params, searchParams }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-10 sm:pt-14">
       <Link
         href={cameFrom ? simpleHref(cameFrom.slug) : BYSY_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
       >
         {cameFrom ? `← Back to ${lessonLabel(cameFrom)}` : "← Before You Say Yes"}
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {cameFrom ? (
           `Book chapter for ${lessonLabel(cameFrom)}`
         ) : (
@@ -216,7 +216,7 @@ export default async function BysyPage({ params, searchParams }: Props) {
           <>
             <MindMarkdown source={linkReferences(choices.before, page.file)} />
             <h2
-              className="mt-10 text-2xl text-[#2B2118]"
+              className="mt-10 text-2xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               {choices.spec.title}
@@ -228,7 +228,7 @@ export default async function BysyPage({ params, searchParams }: Props) {
           <>
             <MindMarkdown source={linkReferences(dated.before, page.file)} />
             <h3
-              className="mt-8 text-xl text-[#2B2118]"
+              className="mt-8 text-xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               {page.lesson === 5
@@ -264,7 +264,7 @@ export default async function BysyPage({ params, searchParams }: Props) {
           <>
             <MindMarkdown source={linkReferences(evidence.before, page.file)} />
             <h3
-              className="mt-8 text-xl text-[#2B2118]"
+              className="mt-8 text-xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               Part B — What I feel and what I know
@@ -282,7 +282,7 @@ export default async function BysyPage({ params, searchParams }: Props) {
           <>
             <MindMarkdown source={linkReferences(nextStep.before, page.file)} />
             <h2
-              className="mt-10 text-2xl text-[#2B2118]"
+              className="mt-10 text-2xl text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               Next faithful step
@@ -301,7 +301,7 @@ export default async function BysyPage({ params, searchParams }: Props) {
       {support && support.missing.length > 0 && (
         <div
           role="alert"
-          className="mt-8 rounded-sm border border-[#E3C9C3] bg-[#FBF1EF] px-5 py-4 text-sm leading-relaxed text-[#8B3A2E]"
+          className="mt-8 rounded-xl border border-danger-line bg-danger-bg px-5 py-4 text-sm leading-relaxed text-danger"
         >
           {/* Judged on what the reader can actually see, not on why. If no
               listing rendered, pointing at directories "above" is pointing at
@@ -347,10 +347,10 @@ export default async function BysyPage({ params, searchParams }: Props) {
           on, and a link at the foot saying "Finding Help Where You Live" to
           someone reading Finding Help Where You Live is a dead end. */}
       {page.file !== SUPPORT_FILE && (
-        <div className="mt-12 border-t border-[#E5D9C7] pt-8">
+        <div className="mt-12 border-t border-line pt-8">
           <Link
             href={bysySupportHref()}
-            className="text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
           >
             Finding Help Where You Live
           </Link>

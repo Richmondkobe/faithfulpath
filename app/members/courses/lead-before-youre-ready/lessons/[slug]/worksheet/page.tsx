@@ -51,7 +51,7 @@ export default async function LbyrWorksheet({ params }: Props) {
     <LbyrShell
       notice={lesson.notice}
       eyebrow={
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-[#8B5E34]">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
           <Link href={lbyrLessonHref(order)} className="underline underline-offset-4">
             ← Lesson {order}: {lesson.title}
           </Link>
@@ -62,23 +62,23 @@ export default async function LbyrWorksheet({ params }: Props) {
       }
     >
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Worksheet · Lesson {order}
         </p>
         <h1
-          className="mt-2 text-[clamp(1.8rem,5vw,2.4rem)] leading-[1.15] text-[#2B2118]"
+          className="mt-2 text-[clamp(1.8rem,5vw,2.4rem)] leading-[1.15] text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
         >
           Chapter {lesson.goDeeper.chapter}: Reflect and Act
         </h1>
-        <p className="mt-2 text-[19px] leading-snug text-[#6B5F53]">
+        <p className="mt-2 text-[19px] leading-snug text-muted">
           {lesson.title}
         </p>
       </Panel>
 
       <Plain>
         <Blocks blocks={lesson.goDeeper.worksheet} />
-        <p className="mt-8 text-[15px] leading-relaxed text-[#6B5F53]">
+        <p className="mt-8 text-[15px] leading-relaxed text-muted">
           Optional, and yours alone. You do not need to complete this to finish
           the lesson. There is nowhere here to type an answer and nothing is
           saved — print this page, or answer in a private format of your own.
@@ -90,7 +90,7 @@ export default async function LbyrWorksheet({ params }: Props) {
         <div className="mt-4 flex flex-col gap-3 sm:flex-row">
           <Link
             href={lbyrLessonHref(order)}
-            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#2B2118] transition-colors hover:border-[#8B5E34] hover:text-[#8B5E34]"
+            className="inline-flex min-h-11 items-center justify-center rounded-xl border border-navy px-7 py-3 text-[15px] font-medium text-navy transition-colors hover:border-gold-text hover:text-gold-text"
           >
             Back to Lesson {order}
           </Link>

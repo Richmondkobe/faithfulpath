@@ -30,7 +30,7 @@ export default function FooterSignup() {
   if (pathname?.startsWith(BYSY_RESOURCES_PATH)) return null;
 
   return (
-    <div className="mb-10 border-b border-[#E5D9C7] pb-10">
+    <div className="mb-10 border-b border-line pb-10">
       <SignupForm />
     </div>
   );

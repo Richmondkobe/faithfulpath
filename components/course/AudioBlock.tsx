@@ -14,7 +14,7 @@ export default function AudioBlock({
 }) {
   if (!src) {
     return (
-      <p className="mt-4 text-sm text-[#6B5F53]">
+      <p className="mt-4 text-sm text-muted">
         Audio coming soon{audio.length ? ` · ${audio.length}` : ""}. The prayer
         below is the same one, to read.
       </p>
@@ -27,7 +27,7 @@ export default function AudioBlock({
         <source src={src} type="audio/mpeg" />
         Your browser cannot play this audio.
       </audio>
-      <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {audio.title}
         {audio.length ? ` · ${audio.length}` : ""}
       </p>

@@ -47,7 +47,7 @@ export default function ResetReflection({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-4 inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] px-5 py-3 text-sm text-[#8B5E34] transition-colors hover:border-[#8B5E34] hover:text-[#2B2118]"
+        className="mt-4 inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-5 py-3 text-sm text-gold-text transition-colors hover:border-gold-text hover:text-navy"
       >
         {label}
       </button>
@@ -56,7 +56,7 @@ export default function ResetReflection({
 
   return (
     <div className="mt-4">
-      <label className="block text-sm text-[#6B5F53]">{label}</label>
+      <label className="block text-sm text-muted">{label}</label>
       <textarea
         value={text}
         rows={5}
@@ -64,22 +64,22 @@ export default function ResetReflection({
           setText(e.target.value);
           setState("idle");
         }}
-        className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-[15px] leading-relaxed text-[#2B2118] focus:border-[#8B5E34] focus:outline-none"
+        className="mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-[15px] leading-relaxed text-navy focus:border-gold-text focus:outline-none"
       />
       <div className="mt-2 flex flex-wrap items-center gap-3">
         <button
           type="button"
           onClick={save}
           disabled={pending}
-          className="rounded-sm border border-[#D9CDBA] bg-white px-4 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy bg-white px-4 py-2 text-sm text-navy transition-colors hover:border-gold-text"
         >
           {pending ? "Saving…" : "Save"}
         </button>
         {state === "saved" && (
-          <span className="text-sm text-[#6B5F53]">Saved. Only you can read this.</span>
+          <span className="text-sm text-muted">Saved. Only you can read this.</span>
         )}
         {state === "error" && (
-          <span role="alert" className="text-sm text-[#8B3A2E]">
+          <span role="alert" className="text-sm text-danger">
             That did not save. Your words are still here on the page.
           </span>
         )}

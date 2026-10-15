@@ -19,7 +19,7 @@ export default function ExitLink({ children }: { children: React.ReactNode }) {
     <button
       type="button"
       onClick={() => window.location.replace(NEUTRAL_DESTINATION)}
-      className="font-medium text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+      className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
     >
       {children}
     </button>

@@ -69,14 +69,14 @@ export default function ResetRouteCards({
                 aria-pressed={selected}
                 disabled={pending}
                 onClick={() => choose(card.id)}
-                className={`w-full rounded-sm border px-5 py-4 text-left transition-colors ${
+                className={`w-full rounded-xl border px-5 py-4 text-left transition-colors ${
                   selected
-                    ? "border-[#8B5E34] bg-[#F3EADC]"
-                    : "border-[#D9CDBA] hover:border-[#8B5E34]"
+                    ? "border-gold-text bg-sand"
+                    : "border-field hover:border-gold-text"
                 }`}
               >
-                <span className="block font-medium text-[#2B2118]">{card.label}</span>
-                <span className="mt-1 block text-sm leading-relaxed text-[#4A4038]">
+                <span className="block font-medium text-navy">{card.label}</span>
+                <span className="mt-1 block text-sm leading-relaxed text-ink">
                   {card.body}
                 </span>
               </button>
@@ -86,12 +86,12 @@ export default function ResetRouteCards({
       </ul>
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}
 
-      <p className="mt-4 text-sm leading-relaxed text-[#6B5F53]">
+      <p className="mt-4 text-sm leading-relaxed text-muted">
         Every starting point goes through Safety and Support first. You can
         return here and change this at any time, and nothing you have finished
         is lost.

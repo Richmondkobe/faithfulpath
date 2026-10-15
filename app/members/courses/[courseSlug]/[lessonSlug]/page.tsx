@@ -267,7 +267,7 @@ export default async function Lesson({
             return (
               <a
                 href={href}
-                className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {children}
               </a>
@@ -327,21 +327,21 @@ export default async function Lesson({
       <div className="flex flex-wrap items-center justify-between gap-4">
         <Link
           href={coursePath}
-          className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]"
+          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
         >
           ← {course.title}
         </Link>
         {showSafetyLink && <SafetyLink courseSlug={courseSlug} />}
       </div>
 
-      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         {isCountable(lesson)
           ? `${lessonModule.title} · Lesson ${lesson.order}`
           : lessonModule.title}
       </p>
 
       <h1
-        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-[#2B2118] sm:text-[2.75rem]"
+        className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {lesson.title}
@@ -349,12 +349,12 @@ export default async function Lesson({
 
       {front.outcome && (
         <div className="mt-5">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             What this lesson will do for you
           </p>
           <p
             className="mt-2 text-lg leading-relaxed"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+            style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
           >
             {front.outcome}
           </p>
@@ -440,7 +440,7 @@ export default async function Lesson({
           route runs through Lesson 23, which is a reference lesson, and without
           a way to tick it off Continue would stop there for good. */}
       {!front.action_done && (
-        <div className="mt-16 border-t border-[#E5D9C7] pt-10">
+        <div className="mt-16 border-t border-line pt-10">
           <MarkComplete
             courseSlug={courseSlug}
             lessonSlug={lesson.slug}
@@ -460,13 +460,13 @@ export default async function Lesson({
         />
       )}
 
-      <nav className="mt-12 flex flex-wrap items-start justify-between gap-6 border-t border-[#E5D9C7] pt-8">
+      <nav className="mt-12 flex flex-wrap items-start justify-between gap-6 border-t border-line pt-8">
         {previous ? (
           <Link href={lessonHref(courseSlug, previous.slug)} className="group max-w-[45%] min-w-0">
-            <span className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+            <span className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
               ← Previous
             </span>
-            <span className="mt-1 block text-[#2B2118] transition-colors group-hover:text-[#8B5E34]">
+            <span className="mt-1 block text-navy transition-colors group-hover:text-gold-text">
               {previous.title}
             </span>
           </Link>
@@ -480,7 +480,7 @@ export default async function Lesson({
         {blockContinue ? (
           <Link
             href={`${coursePath}/00-finding-help-where-you-live`}
-            className="inline-flex items-center justify-center rounded-sm bg-[#8B3A2E] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#6F2E24]"
+            className="inline-flex items-center justify-center rounded-xl bg-danger px-7 py-4 text-[15px] font-medium text-sun transition-colors hover:bg-danger"
           >
             Finding help where you live
           </Link>
@@ -491,17 +491,17 @@ export default async function Lesson({
                 ? resourceHref(courseSlug, replacePrimary.resource)
                 : `${coursePath}/${replacePrimary.lesson ?? ""}`
             }
-            className="inline-flex items-center justify-center rounded-sm bg-[#8B3A2E] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#6F2E24]"
+            className="inline-flex items-center justify-center rounded-xl bg-danger px-7 py-4 text-[15px] font-medium text-sun transition-colors hover:bg-danger"
           >
             {replacePrimary.text}
           </Link>
         ) : (
           next && (
             <Link href={lessonHref(courseSlug, next.slug)} className="group max-w-[45%] min-w-0 text-right">
-              <span className="block text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+              <span className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
                 Next →
               </span>
-              <span className="mt-1 block text-[#2B2118] transition-colors group-hover:text-[#8B5E34]">
+              <span className="mt-1 block text-navy transition-colors group-hover:text-gold-text">
                 {next.title}
               </span>
             </Link>

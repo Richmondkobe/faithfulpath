@@ -38,13 +38,13 @@ export default function CompletionRecord({ complete }: { complete: boolean }) {
   }
 
   return (
-    <section className="mt-10 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
+    <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
       {done ? (
         <>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
             Completed Before You Say Yes
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-[#4A4038]">
+          <p className="mt-3 text-sm leading-relaxed text-ink">
             That is the whole of the record: that you worked through it. It says
             nothing about your relationship, and it is not a judgement that you
             are ready for anything.
@@ -53,14 +53,14 @@ export default function CompletionRecord({ complete }: { complete: boolean }) {
             type="button"
             disabled={pending}
             onClick={() => set(false)}
-            className="mt-4 text-sm text-[#5C5147] underline underline-offset-4 transition-colors hover:text-[#2B2118] disabled:opacity-60"
+            className="mt-4 text-sm text-muted underline underline-offset-4 transition-colors hover:text-navy disabled:opacity-60"
           >
             {pending ? "Removing…" : "Remove this from my account"}
           </button>
         </>
       ) : (
         <>
-          <p className="text-sm leading-relaxed text-[#4A4038]">
+          <p className="text-sm leading-relaxed text-ink">
             You can mark this course completed. It records that you worked
             through it and nothing more — not what you decided, not which route
             you took, and not that you are ready for anything.
@@ -69,14 +69,14 @@ export default function CompletionRecord({ complete }: { complete: boolean }) {
             type="button"
             disabled={pending}
             onClick={() => set(true)}
-            className="mt-4 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-3 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
+            className="mt-4 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-3 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60"
           >
             {pending ? "Saving…" : "Mark as completed"}
           </button>
         </>
       )}
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

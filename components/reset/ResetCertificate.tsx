@@ -55,12 +55,12 @@ export default function ResetCertificate({
   }
 
   return (
-    <section className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F7F1E6] px-5 py-5">
-      <h3 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+    <section className="mt-8 rounded-xl border border-line bg-sand px-5 py-5">
+      <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         Certificate of Participation and Completion
       </h3>
 
-      <label className="mt-4 block text-sm text-[#6B5F53]" htmlFor="cert-name">
+      <label className="mt-4 block text-sm text-muted" htmlFor="cert-name">
         The name to print on it
       </label>
       <input
@@ -72,7 +72,7 @@ export default function ResetCertificate({
           setName(e.target.value);
           setError(null);
         }}
-        className="mt-2 w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-[15px] text-[#2B2118] focus:border-[#8B5E34] focus:outline-none"
+        className="mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-[15px] text-navy focus:border-gold-text focus:outline-none"
       />
 
       <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -80,7 +80,7 @@ export default function ResetCertificate({
           type="button"
           onClick={save}
           disabled={pending}
-          className="rounded-sm border border-[#D9CDBA] bg-white px-4 py-2 text-sm text-[#2B2118] transition-colors hover:border-[#8B5E34]"
+          className="rounded-xl border-[1.5px] border-navy bg-white px-4 py-2 text-sm text-navy transition-colors hover:border-gold-text"
         >
           {pending ? "Saving…" : stored ? "Update the name" : "Save the name"}
         </button>
@@ -88,7 +88,7 @@ export default function ResetCertificate({
         {stored && (
           <a
             href={courseHref}
-            className="inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-center text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-center text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
             Download your certificate
           </a>
@@ -96,17 +96,17 @@ export default function ResetCertificate({
       </div>
 
       {!stored && (
-        <p className="mt-2 text-sm text-[#6B5F53]">
+        <p className="mt-2 text-sm text-muted">
           Save a name and the download will appear.
         </p>
       )}
       {error && (
-        <p role="alert" className="mt-2 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-2 text-sm text-danger">
           {error}
         </p>
       )}
 
-      <div className="mt-4 text-sm leading-relaxed text-[#6B5F53]">{note}</div>
+      <div className="mt-4 text-sm leading-relaxed text-muted">{note}</div>
     </section>
   );
 }

@@ -66,16 +66,16 @@ export default function FinishLesson({
     : null;
 
   const primary =
-    "inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60";
+    "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60";
   const secondary =
-    "inline-flex items-center justify-center rounded-sm border border-[#D9CDBA] bg-white px-7 py-4 text-[15px] text-[#2B2118] transition-colors hover:border-[#8B5E34] disabled:opacity-60";
+    "inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy bg-white px-7 py-4 text-[15px] text-navy transition-colors hover:border-gold-text disabled:opacity-60";
 
   return (
-    <section className="mt-12 border-t border-[#E5D9C7] pt-10">
+    <section className="mt-12 border-t border-line pt-10">
       {done ? (
-        <div className="rounded-sm border border-[#8B5E34] bg-[#F3EADC] px-5 py-5">
-          <p className="text-[#2B2118]">You have finished this lesson.</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+        <div className="rounded-xl border border-gold-text bg-sand px-5 py-5">
+          <p className="text-navy">You have finished this lesson.</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">
             It stays open to you. Come back whenever you want to.
           </p>
 
@@ -84,8 +84,8 @@ export default function FinishLesson({
               congratulation, nothing that treats finishing as a score. */}
           {!next && finalMessage && (
             <p
-              className="mt-5 border-t border-[#D9C9AE] pt-5 text-lg leading-relaxed text-[#2B2118]"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 300 }}
+              className="mt-5 border-t border-line pt-5 text-lg leading-relaxed text-navy"
+              style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               {finalMessage}
             </p>
@@ -102,7 +102,7 @@ export default function FinishLesson({
                 <Link href={next.href} className={secondary}>
                   {continueLabel}
                 </Link>
-                <span className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+                <span className="mt-2 text-sm leading-relaxed text-muted">
                   {next.title}
                 </span>
               </span>
@@ -113,7 +113,7 @@ export default function FinishLesson({
             type="button"
             disabled={pending}
             onClick={toggle}
-            className="mt-5 block text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118] disabled:opacity-60"
+            className="mt-5 block text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy disabled:opacity-60"
           >
             Mark it unfinished
           </button>
@@ -121,12 +121,12 @@ export default function FinishLesson({
       ) : (
         <>
           <h2
-            className="text-2xl text-[#2B2118]"
+            className="text-2xl text-navy"
             style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
           >
             Ready to finish for today?
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#6B5F53]">
+          <p className="mt-3 text-sm leading-relaxed text-muted">
             The worksheet, the chapter and the reflection questions are not
             required. Finishing does not depend on any of them, or on having
             tried the step.
@@ -143,7 +143,7 @@ export default function FinishLesson({
       )}
 
       {error && (
-        <p role="alert" className="mt-3 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-3 text-sm text-danger">
           {error}
         </p>
       )}

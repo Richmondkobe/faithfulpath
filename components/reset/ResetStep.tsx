@@ -53,10 +53,10 @@ export default function ResetStep({
   return (
     <div className="mt-4">
       <label
-        className={`flex items-start gap-3 rounded-sm border px-4 py-3 transition-colors ${
+        className={`flex items-start gap-3 rounded-xl border px-4 py-3 transition-colors ${
           disabled
-            ? "cursor-not-allowed border-[#E5D9C7] text-[#8B8177]"
-            : "cursor-pointer border-[#D9CDBA] hover:border-[#8B5E34]"
+            ? "cursor-not-allowed border-line text-muted"
+            : "cursor-pointer border-field hover:border-gold-text"
         }`}
       >
         <input
@@ -64,21 +64,21 @@ export default function ResetStep({
           checked={checked}
           disabled={pending || disabled}
           onChange={toggle}
-          className="mt-[3px] h-4 w-4 accent-[#8B5E34]"
+          className="mt-[3px] h-4 w-4 accent-gold-text"
         />
         <span
           className={`text-[15px] leading-relaxed ${
-            disabled ? "text-[#8B8177]" : "text-[#2B2118]"
+            disabled ? "text-muted" : "text-navy"
           }`}
         >
           {label}
         </span>
       </label>
       {disabled && disabledHint && (
-        <p className="mt-2 text-sm text-[#6B5F53]">{disabledHint}</p>
+        <p className="mt-2 text-sm text-muted">{disabledHint}</p>
       )}
       {error && (
-        <p role="alert" className="mt-2 text-sm text-[#8B3A2E]">
+        <p role="alert" className="mt-2 text-sm text-danger">
           {error}
         </p>
       )}

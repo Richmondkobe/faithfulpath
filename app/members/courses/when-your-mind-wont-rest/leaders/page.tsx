@@ -57,11 +57,11 @@ export default async function LeadersHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
         For leaders · not part of the learner pathway
       </p>
 
@@ -76,8 +76,8 @@ export default async function LeadersHome() {
         acknowledgedAt={ack?.at ?? null}
       />
 
-      <nav className="mt-12 border-t border-[#E5D9C7] pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">
+      <nav className="mt-12 border-t border-line pt-8">
+        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           The leaders&rsquo; guidance
         </h2>
         <ul className="mt-4 space-y-2">
@@ -85,7 +85,7 @@ export default async function LeadersHome() {
             <li key={slug}>
               <Link
                 href={mindLeadersHref(slug)}
-                className="text-[15px] text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                className="text-[15px] text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
               >
                 {slug.replace(/^\d+-/, "").replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase())}
               </Link>

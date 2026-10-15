@@ -50,7 +50,7 @@ export default function TbymFooter({
             ) : (
               <span
                 key={link.label}
-                className="rounded-sm border border-dashed border-[var(--tb-accent)] px-2 py-1 text-[12px] text-[var(--tb-mute)]"
+                className="rounded-xl border border-dashed border-[var(--tb-accent)] px-2 py-1 text-[12px] text-[var(--tb-mute)]"
                 style={{ fontFamily: "var(--font-tbym-mono)" }}
               >
                 {link.label} — page not built yet

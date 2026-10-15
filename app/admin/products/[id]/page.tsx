@@ -24,7 +24,7 @@ export default async function EditProduct({
   return (
     <main className="mx-auto max-w-5xl px-6 pt-12 pb-20">
       <h1
-        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-[#2B2118]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
         {product.title}
@@ -33,24 +33,24 @@ export default async function EditProduct({
         product={product}
         coverUrl={coverPublicUrl(product.cover_path)}
       />
-      <div className="mt-16 max-w-2xl border-t border-[#E5D9C7] pt-10">
+      <div className="mt-16 max-w-2xl border-t border-line pt-10">
         <p
-          className="text-lg text-[#2B2118]"
+          className="text-lg text-navy"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
           Give this guide away
         </p>
-        <p className="mt-2 max-w-lg text-sm leading-relaxed text-[#6B5F53]">
+        <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted">
           Anyone with this link gets the guide free, without going through
           checkout. It is specific to this guide, and it does not expire —
           rotating GUIDE_CLAIM_SECRET invalidates every claim link at once.
         </p>
         {claimUrl ? (
-          <code className="mt-4 block overflow-x-auto rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-4 py-3 text-sm text-[#2B2118]">
+          <code className="mt-4 block overflow-x-auto rounded-xl border border-line bg-sand px-4 py-3 text-sm text-navy">
             {claimUrl}
           </code>
         ) : (
-          <p className="mt-4 text-sm text-[#8B3A2E]">
+          <p className="mt-4 text-sm text-danger">
             GUIDE_CLAIM_SECRET is not set, so no claim link can be generated.
           </p>
         )}
