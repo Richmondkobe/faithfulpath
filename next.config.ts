@@ -23,6 +23,8 @@ const nextConfig: NextConfig = {
     "/members/courses/christian-spiritual-reset-new/**/*": ["./content/courses/christian-spiritual-reset-new/**/*"],
     // The new Before You Say Yes edition (hidden test course): its pages.
     "/members/courses/before-you-say-yes-new/**/*": ["./content/courses/before-you-say-yes-new/**/*"],
+    // The new Talk Before You Marry edition (hidden test course): its pages.
+    "/members/courses/talk-before-you-marry-new/**/*": ["./content/courses/talk-before-you-marry-new/**/*"],
   },
   images: {
     remotePatterns: supabaseHost

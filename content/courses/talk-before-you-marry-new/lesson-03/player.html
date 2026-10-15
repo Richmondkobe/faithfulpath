@@ -1,0 +1,893 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Talk Before You Marry · Lesson 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+
+#stage.eve{background:linear-gradient(180deg,#f8eedb 0%,#f2dfbb 70%,#e8c995 100%)}
+.hills .h1{fill:#e8dcc2}.hills .h2{fill:#dccbaa}.hills .h3{fill:#cdb791}
+.tiny2{font-size:15px;font-weight:700;fill:#7a5536;text-anchor:middle;font-family:'Source Sans 3',sans-serif}
+.tiny3{font-size:11px;font-weight:700;fill:#7a5536;text-anchor:middle}
+.bigt{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;fill:#8a6a24}
+.hand2{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scr2{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.6vw,26px);color:#5b4a26;margin:.2em 0}.ref2{font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.chips{justify-content:center;margin:.3em 0}.chips span{font-size:clamp(16px,2.2vw,20px)}
+.lab2{margin:.4em auto}.glowp.on{box-shadow:0 0 0 3px #f0c77a}
+.pcard{position:relative;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.8em 1em;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08);display:flex;flex-direction:column;gap:.35em}
+.pcard>b{font-family:'Source Serif 4',serif;font-size:clamp(22px,3vw,30px)}
+.pcard svg{width:100%;max-height:22vh}
+.says{list-style:none;padding:0;margin:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.3vw,22px);color:#5b4a26}.says li{margin:.1em 0}
+.pl2{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.3vw,22px);margin:0;line-height:1.35}
+.love{color:#8a6a24;font-style:italic}.mute{color:var(--mute)}.strongline{font-weight:600;color:#2b3445}
+.keep2{grid-template-columns:1fr 1fr!important;gap:10px!important}
+@media(max-width:640px){.pl2,.says{font-size:18px!important;line-height:1.35}.pcard>b{font-size:22px}.pcard{padding:.6em .8em}.pcard svg{max-height:15vh}.qs,.qs.sm2{font-size:19px!important}.qs li{margin:.3em 0}.small3{font-size:15px!important}.safety{font-size:23px}.q2{font-size:19px}.tiny2{font-size:18px}.journal2 p{font-size:18px}.mot{font-size:16px!important}}
+.small3{font-size:clamp(14px,1.9vw,17px)}
+.qs{list-style:none;padding:0;margin:.2em auto;text-align:left;max-width:34em;font-size:clamp(18px,2.5vw,24px);line-height:1.35}
+.qs li{display:flex;align-items:center;gap:.6em;margin:.35em 0}.qs svg{width:1.8em;height:1.8em;flex:none}
+.qs.sm2{font-size:clamp(17px,2.3vw,22px)}.quote.sm2{font-size:clamp(18px,2.38vw,22px)}
+.safety{background:#fffaf0;border:2px solid #c9963f;border-radius:16px;padding:1.2em 1.6em;max-width:34em;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.2vw,32px);line-height:1.4;color:#3b3020}.safety p{margin:.3em 0}
+.chairsL{transform:translateX(-30px) scaleX(.86);transform-box:fill-box;transform-origin:center}.chairsR{transform:translateX(30px) scaleX(.86);transform-box:fill-box;transform-origin:center}
+.leanf{transition:transform 1.4s ease}.leanf.on{transform:translateX(14px) rotate(4deg);transform-box:fill-box;transform-origin:bottom}
+.stepb{transition:transform 1.6s ease}.stepb.on{transform:translateX(26px)}
+.turnback{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.sideL,.sideR{transition:transform 3s ease}.sideL.on{transform:translateX(-60px)}.sideR.on{transform:translateX(60px)}
+.lightwalk.on{animation:lw 14s ease-in-out forwards}@keyframes lw{0%{transform:translate(140px,30px)}100%{transform:translate(-120px,-30px)}}
+.lightrun.on{animation:lr 6s ease-in-out forwards}@keyframes lr{to{transform:translateX(340px)}}
+.frameL,.frameR{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}.frameL{transform:scaleX(-1)}.frameR{transform:scaleX(-1)}
+.turnf.on~*{}.pcard:has(.turnf.on) .frameL,.pcard:has(.turnf.on) .frameR{transform:none}
+.mapL,.mapR{transition:transform 2.5s ease}
+.mapL.on{transform:translateX(40px)}.mapR.on{transform:translateX(-40px)}
+.grow2{transform-box:fill-box;transform-origin:center}.envg{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}
+.shieldup{transform:translateY(20px)}.shieldup.on{transform:none}
+.litL.on{animation:lit 6s ease-in-out infinite}.litR.on{animation:lit 6s ease-in-out 3s infinite}@keyframes lit{0%,100%{opacity:.2}50%{opacity:1}}
+.ripple-line{animation:rl 4s ease-in-out infinite}@keyframes rl{50%{transform:translateX(-12px)}}
+.word .ref{display:block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:.3em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+
+.greek{font-family:'Source Serif 4','Times New Roman',serif;font-size:clamp(40px,7vw,72px);margin:0;line-height:1.2}
+.greek .type{display:inline-block;clip-path:inset(0 100% 0 0);transition:clip-path 2.6s ease}.greek.on .type{clip-path:inset(0 0 0 0)}
+.gloss{font-size:clamp(19px,2.75vw,26px);color:var(--mute);margin:.1em 0 .4em}
+.gkline{position:relative;display:flex;flex-direction:column;gap:.3em;padding-left:1.8em!important;font-family:'Source Serif 4',serif;font-size:clamp(17px,2.4vw,24px);background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:.6em 1em;text-align:left}
+.gk21{color:#8a6a24}.gkline .flow{position:absolute;left:.7em;top:1.6em;width:4px;height:1.4em;background:linear-gradient(#c9963f,#f0c77a);border-radius:2px}
+.twocolbtn{display:flex;gap:12px;justify-content:center;margin:.4em 0}.twocolbtn span{background:#f3ead4;border-radius:2em;padding:.2em .9em;font-size:clamp(14px,2vw,17px);color:#5b4a26}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,900px);text-align:left}
+.colc{background:#fffaf0;border:1px solid #d9c9a3;border-radius:14px;padding:.7em 1em;display:flex;flex-direction:column;gap:.35em}
+.colc>b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.8vw,27px);color:#8a6a24}.colc p{margin:0;font-size:clamp(16px,2.2vw,21px);line-height:1.35}.colc svg{width:100%;max-height:12vh}
+.nonneg{background:#fffaf0;border:2px solid #c9963f;border-radius:14px;padding:.6em 1.2em;text-align:left;max-width:36em;margin-top:.6em}
+.nonneg>b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.8vw,26px)}.nonneg ol,.nonneg ul{margin:.3em 0 0;padding-left:1.3em;font-size:clamp(17px,2.4vw,23px);line-height:1.4}
+.nonneg1{background:#fffaf0;border:2px solid #c9963f;border-radius:12px;padding:.5em 1em;max-width:34em;font-size:clamp(17px,2.4vw,22px)}
+.glowt.on{color:#8a6a24;font-weight:700}
+.lookup{transform-box:fill-box;transform-origin:bottom;transition:transform 1.2s ease}.lookup.on{transform:translateY(-6px)}
+.doorshut{transform-box:fill-box;transform-origin:left;transform:scaleX(.05);transition:transform 4s ease}.doorshut.on{transform:scaleX(1);animation:dshut 9s ease forwards}@keyframes dshut{0%{transform:scaleX(.05)}35%{transform:scaleX(1)}75%{transform:scaleX(1)}100%{transform:scaleX(.08)}}
+.uline.on{text-decoration:underline;text-decoration-color:#c9963f;text-decoration-thickness:3px}
+.bigli{font-weight:600}.row2 .panel{font-size:clamp(17px,2.4vw,22px)}.row2:has(.panel){width:min(100%,920px)}.scrgold{font-family:'Source Serif 4',serif;font-style:italic;font-size:20px;fill:#8a6a24}
+@media(max-width:640px){.cols2{grid-template-columns:1fr!important;gap:8px}.colc{padding:.5em .8em}.colc>b{font-size:20px}.colc p{font-size:17px!important}.colc svg{display:none}.nonneg ol,.nonneg ul{font-size:18px}.nonneg>b{font-size:20px}.gkline{font-size:17px}.gloss{font-size:20px}.greek{font-size:44px}.row2 .panel{font-size:18px!important}.panel svg{max-height:80px}.twocolbtn span{font-size:15px}}
+
+
+.youmark{}.fadeR{transition:opacity 2.5s ease}.slide:has(.youmark.on) .fadeR{opacity:.12}
+.slidemark{transition:transform 3s ease}.slide:has(.slidemark) .b.on .slidemark{transform:translateX(320px)}
+.heb,.hebsm{font-family:'Noto Serif Hebrew','SBL Hebrew','Times New Roman',serif}.heb{direction:rtl}.hebsm{font-size:1.25em;color:#8a6a24}
+.heb .type{clip-path:inset(0 0 0 100%)!important}.heb.on .type{clip-path:inset(0 0 0 0)!important}
+.sinkplan{transition:transform 4s ease}.slide:has(g[data-at="like deep water"].on) .sinkplan{transform:translateY(36px)}
+.bucketup{transform:translateY(40px)}.b.on .bucketup,.b.on>.bucketup{animation:bup 5s ease forwards}@keyframes bup{to{transform:translateY(-6px)}}
+.memglow{animation:breathe2 7s ease-in-out infinite}
+.ping{animation:ping 2s ease-in-out infinite}@keyframes ping{50%{opacity:.2}}
+.slidein{transform:translateX(60px)}.slidein.on{transform:none}
+.glowbox.on{filter:drop-shadow(0 0 8px #f0c77a)}
+.dropin{transform:translateY(-60px)}.dropin.on{transform:none}
+.inflate{transform-box:fill-box;transform-origin:left center}.b.on .inflate{animation:infl 7s ease forwards}@keyframes infl{60%{transform:translateX(225px) scale(1.2)}100%{transform:translateX(450px) scale(1.35)}}
+.driftout.on{animation:dout 6s ease forwards}@keyframes dout{to{transform:translateY(-30px);opacity:.15}}
+.basC,.basD{transition:transform 2s ease}.slide:has(g[data-at="A conviction may also be a deal-breaker"].on) .basC{transform:translateX(30px)}.slide:has(g[data-at="A conviction may also be a deal-breaker"].on) .basD{transform:translateX(-30px)}
+.carry{transition:transform 5s ease}.slide:has(p[data-at="You hypocrite first take the log"].on) .carry{transform:translateX(-700px)}
+.litbeam.on{filter:drop-shadow(0 0 10px #f6dfa6)}
+.lockfall.on{animation:lf 3s ease forwards}@keyframes lf{to{transform:translateY(90px);opacity:0}}
+.defs li{display:block}
+.verbrow{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin:.3em 0}.vb{display:flex;flex-direction:column;align-items:center;gap:.15em}.heb2{font-family:'Noto Serif Hebrew','SBL Hebrew','Times New Roman',serif;font-size:clamp(34px,5.4vw,52px);color:#8a6a24;line-height:1.3}.vb small{font-size:clamp(16px,2.2vw,20px);color:#5b4a26}
+@media(max-width:640px){.heb2{font-size:40px}.vb small{font-size:17px}.verbrow{gap:18px}}
+.say4{font-size:clamp(22px,3vw,30px);font-family:'Source Serif 4',serif}
+body.still .bucketup,body.still .inflate,body.still .driftout,body.still .memglow,body.still .ping{animation:none!important;transform:none!important}
+@media(max-width:640px){.say4{font-size:22px!important}.heb{font-size:52px}}
+
+.chairsL,.chairsR{transition:transform 3s ease}
+.slide:has(.turnmark.on) .chairsL{transform:translateX(-12px) scaleX(.95)}.slide:has(.turnmark.on) .chairsR{transform:translateX(12px) scaleX(.95)}
+.turnin2,.turnin3{transform-box:fill-box;transform-origin:center;transition:transform 3s ease}.turnin2{transform:scaleX(.9)}.turnin3{transform:scaleX(.9)}
+.slide:has(.turnmark.on) .turnin2,.slide:has(.turnmark.on) .turnin3{transform:scaleX(1) translateX(6px)}
+.slide:has(.turnmark.on) .turnin3{transform:scaleX(1) translateX(-6px)}
+.walkout{transition:transform 5s ease}.slide:has(.walkmark.on) .walkout{transform:translateX(260px)}
+.turnone{transform-box:fill-box;transform-origin:center;transform:scaleX(.85)}.b.on .turnone{animation:turn1 3s 1s ease forwards}@keyframes turn1{to{transform:scaleX(1) translateX(10px)}}
+.tip{transform-box:fill-box;transform-origin:50% 20%}.b.on .tip{animation:tip 4s ease-in-out infinite}@keyframes tip{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.drift{animation:drift 9s ease-in-out infinite}@keyframes drift{50%{transform:translateX(30px)}}
+.rulesrow{display:grid;grid-template-columns:minmax(180px,300px) 1fr;gap:20px;align-items:center;width:min(100%,920px)}
+.ruleart{max-height:44vh!important;margin:0!important}
+.rules{text-align:left;font-family:'Source Serif 4',serif;font-size:clamp(20px,2.7vw,28px);line-height:1.35;margin:0;padding-left:1.6em}.rules li{margin:.35em 0}
+.gkform{font-family:'Source Serif 4','Times New Roman',serif;font-size:1.25em;color:#8a6a24}
+.goldq{color:#8a6a24;font-style:italic}
+.lines2{max-width:40em}
+body.still .tip,body.still .drift,body.still .turnone{animation:none!important}
+@media(max-width:640px){.rulesrow{grid-template-columns:1fr;gap:4px}.ruleart{max-height:15vh!important}.rules{font-size:21px;line-height:1.3;padding-left:1.5em}.rules li{margin:.3em 0}.repairsc{max-height:14vh!important}.steps4{font-size:19px!important;line-height:1.4}.steps4 span{display:inline-block}.slide[data-n="14"] .q2{font-size:20px!important}.slide[data-n="14"] .goldq{font-size:21px!important;line-height:1.35}.lines2{font-size:17px!important}}
+
+body.still .lookup.on,body.still .doorshut{transform:none!important}
+body.still .leanf.on,body.still .stepb.on,body.still .sideL.on,body.still .sideR.on,body.still .shieldup{transform:none!important}
+</style>
+</head>
+<body>
+<div id="stage" class="eve">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path class="h1" d="M0 120 C200 90 360 130 560 105 S900 85 1200 115 V200 H0z"/><path class="h2" d="M0 150 C240 125 420 165 640 140 S960 125 1200 150 V200 H0z"/><path class="h3" d="M0 178 C260 160 480 192 700 176 S1000 165 1200 182 V200 H0z"/></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the wooden chair from the cover, seen from the side, facing right -->
+ <symbol id="chair" viewBox="0 0 70 112">
+  <ellipse cx="36" cy="108" rx="30" ry="3.5" fill="#000" opacity=".10"/>
+  <path d="M8 10 Q20 2 33 9" stroke="#7a5536" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M10 10 L15 63 M17 7 L20 63 M24 6 L25 63 M31 8 L30 63" stroke="#7a5536" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M7 60 Q36 55 65 61 L63 70 Q35 66 7 69 Z" fill="#7a5536"/>
+  <path d="M13 69 L9 107 M60 69 L64 107 M22 69 L25 104 M51 69 L48 104" stroke="#64432a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M12 89 L61 89" stroke="#64432a" stroke-width="2.6"/>
+ </symbol>
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="perw" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M10 62 L8 95 L32 95 L30 62 Z" fill="currentColor" opacity=".9"/>
+  <path d="M10 32 Q20 24 30 32 L31 66 Q20 69 9 66 Z" fill="currentColor"/>
+  <path d="M10 34 L6 60 L10 61 L13 40 Z M30 34 L34 60 L30 61 L27 40 Z" fill="currentColor" opacity=".85"/>
+  <path d="M10 20 Q8 6 20 6 Q32 6 30 20 L31 34 L26 30 L14 30 L9 34 Z" fill="#3a3330"/>
+  <circle cx="20" cy="17" r="8" fill="#c69d84"/>
+  <path d="M12 15 Q14 7 20 8 Q27 7 28 15 Q24 11 20 12 Q16 11 12 15Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="treeD" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#4f4338"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#5d7658"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#6b8564"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#556d51"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="note" viewBox="0 0 60 44"><path d="M2 6 L58 2 L56 40 L4 42 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"/><path d="M4 24 L56 21" stroke="#e8dcc0" stroke-width="1.2"/></symbol>
+ <symbol id="env" viewBox="0 0 70 46"><rect x="2" y="2" width="66" height="42" rx="3" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M3 4 L35 26 L67 4" fill="none" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="cloud" viewBox="0 0 120 70"><path d="M24 60 Q4 60 6 44 Q6 30 22 30 Q24 10 46 12 Q60 0 76 12 Q100 8 104 28 Q118 32 114 48 Q112 60 96 60 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/><circle cx="20" cy="66" r="3" fill="#fffaf0" stroke="#d9c9a3"/></symbol>
+ <symbol id="door" viewBox="0 0 40 70"><rect x="2" y="2" width="36" height="66" rx="2" fill="#a7805c" stroke="#7a5536" stroke-width="2"/><circle cx="31" cy="38" r="2.2" fill="#e9b25e"/></symbol>
+ <symbol id="laptop" viewBox="0 0 80 50"><rect x="12" y="2" width="56" height="36" rx="3" fill="#2b3445"/><rect x="16" y="6" width="48" height="28" fill="#a9c2d0"/><path d="M2 40 H78 L72 48 H8 Z" fill="#69707a"/></symbol>
+ <symbol id="cup" viewBox="0 0 30 30"><path d="M4 8 H22 L20 26 H6 Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M22 12 Q29 12 28 18 Q27 22 21 22" fill="none" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="shield" viewBox="0 0 50 60"><path d="M25 4 L46 12 Q46 42 25 56 Q4 42 4 12 Z" fill="#cdd8de" stroke="#69707a" stroke-width="3"/></symbol>
+ <symbol id="xtree" viewBox="0 0 40 60"><path d="M20 4 L34 26 L26 26 L38 44 L2 44 L14 26 L6 26 Z" fill="#6f8f6a"/><rect x="17" y="44" width="6" height="10" fill="#7a5536"/><circle cx="20" cy="4" r="3" fill="#e9b25e"/><circle cx="14" cy="34" r="2" fill="#d9818c"/><circle cx="26" cy="22" r="2" fill="#e9b25e"/><circle cx="25" cy="38" r="2" fill="#d9818c"/></symbol>
+ <symbol id="scale" viewBox="0 0 120 70"><path d="M60 8 V62 M40 66 H80" stroke="#7a5536" stroke-width="4"/><g class="tipbeam"><path d="M14 18 L106 18" stroke="#7a5536" stroke-width="4"/><path d="M14 18 L4 40 H24 Z M106 18 L96 40 H116 Z" fill="#e9d5a8" stroke="#7a5536" stroke-width="2"/></g></symbol>
+ <symbol id="frame" viewBox="0 0 60 50"><rect x="2" y="2" width="56" height="46" fill="#fffaf0" stroke="#b9925b" stroke-width="4"/><path d="M12 38 L24 24 L32 32 L40 22 L50 38 Z" fill="#c4d4b9"/><circle cx="18" cy="14" r="4" fill="#e9b25e"/></symbol>
+ <symbol id="map" viewBox="0 0 100 70"><path d="M2 8 L34 2 L66 8 L98 2 L98 62 L66 68 L34 62 L2 68 Z" fill="#f6edd6" stroke="#c9b48a" stroke-width="2"/><path d="M34 2 V62 M66 8 V68" stroke="#e1d2ad" stroke-width="1.5"/></symbol>
+ <symbol id="sign" viewBox="0 0 80 90"><rect x="37" y="20" width="6" height="68" fill="#7a5536"/><path d="M6 10 H70 L78 22 L70 34 H6 Z" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="table" viewBox="0 0 120 50"><rect x="4" y="4" width="112" height="8" rx="2" fill="#a7805c"/><path d="M14 12 V48 M106 12 V48" stroke="#7a5536" stroke-width="5"/></symbol>
+ <symbol id="sofa" viewBox="0 0 140 70"><rect x="6" y="14" width="128" height="30" rx="10" fill="#b88a6a"/><rect x="2" y="30" width="136" height="26" rx="8" fill="#a77a5b"/><path d="M14 56 V66 M126 56 V66" stroke="#64432a" stroke-width="5"/></symbol>
+ <symbol id="shelf" viewBox="0 0 120 120"><rect x="2" y="2" width="116" height="116" fill="#d8c4a0"/><path d="M2 40 H118 M2 80 H118" stroke="#a7805c" stroke-width="4"/><g fill="#8a6a4f"><rect x="10" y="14" width="8" height="26"/><rect x="20" y="18" width="7" height="22"/><rect x="30" y="12" width="9" height="28"/><rect x="60" y="54" width="8" height="26"/><rect x="70" y="58" width="10" height="22"/><rect x="20" y="92" width="8" height="26"/><rect x="88" y="90" width="9" height="28"/></g><g fill="#b5735e"><rect x="44" y="16" width="7" height="24"/><rect x="84" y="56" width="7" height="24"/><rect x="40" y="94" width="8" height="24"/></g></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="nb" viewBox="0 0 60 76"><rect x="4" y="2" width="52" height="72" rx="4" fill="#7a5536"/><rect x="10" y="2" width="46" height="72" rx="3" fill="#8b6340"/><rect x="18" y="20" width="30" height="12" rx="2" fill="#f4ead6"/></symbol>
+ <symbol id="leaf" viewBox="0 0 40 30"><path d="M2 15 Q12 0 38 4 Q30 26 2 15Z" fill="#7e9b78"/><path d="M4 15 Q20 10 36 6" stroke="#5f7a59" stroke-width="1.4" fill="none"/></symbol>
+ <symbol id="garm" viewBox="0 0 90 50"><path d="M6 40 Q44 24 84 40 L80 48 L10 48 Z" fill="#b9946a"/><path d="M14 30 Q46 14 78 30 L76 38 Q46 24 16 38 Z" fill="#c8a57a"/><ellipse cx="45" cy="48" rx="42" ry="3" fill="#000" opacity=".1"/></symbol>
+ <symbol id="boat" viewBox="0 0 120 60"><path d="M6 34 H114 Q104 56 60 56 Q16 56 6 34Z" fill="#8b6340"/><rect x="58" y="4" width="3" height="30" fill="#7a5536"/></symbol>
+ <symbol id="pen" viewBox="0 0 40 10"><path d="M2 5 L32 2 L38 5 L32 8 Z" fill="#2b3445"/></symbol>
+ <symbol id="pan" viewBox="0 0 50 30"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#69707a"/><rect x="32" y="13" width="16" height="5" rx="2" fill="#2b3445"/></symbol>
+ <symbol id="basket" viewBox="0 0 50 40"><path d="M4 12 H46 L40 38 H10 Z" fill="#c9a061"/><path d="M8 20 H42 M10 28 H40" stroke="#a8743f" stroke-width="2"/><path d="M12 12 Q16 2 24 6 Q32 0 38 12" fill="#cdd8de"/></symbol>
+ <symbol id="cal" viewBox="0 0 50 50"><rect x="3" y="7" width="44" height="40" rx="4" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><rect x="3" y="7" width="44" height="11" fill="#c9963f"/><path d="M14 3 V12 M36 3 V12" stroke="#2b3445" stroke-width="3"/></symbol>
+ <symbol id="bag" viewBox="0 0 40 44"><rect x="4" y="10" width="32" height="32" rx="6" fill="#8fae9f"/><path d="M12 10 Q12 2 20 2 Q28 2 28 10" fill="none" stroke="#5f7a6d" stroke-width="3"/><rect x="10" y="22" width="20" height="10" rx="2" fill="#6f8f80"/></symbol>
+ <symbol id="ear" viewBox="0 0 40 50"><path d="M30 18 Q30 4 18 4 Q6 4 6 18 Q6 26 12 30 Q16 34 14 42 Q14 48 22 46" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 20 Q14 12 20 12 Q24 12 24 18" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="hand" viewBox="0 0 50 50"><path d="M10 30 Q8 20 12 18 L14 30 L16 10 Q18 6 21 10 L21 28 L23 6 Q26 2 28 6 L28 28 L31 10 Q34 6 36 10 L35 32 Q36 44 26 46 Q14 46 10 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+ <symbol id="mend" viewBox="0 0 50 50"><path d="M8 14 H38 L34 44 H12 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M38 20 Q48 20 46 30 Q44 36 36 36" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M20 14 L24 26 L18 32 L22 44" fill="none" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="cordi" viewBox="0 0 60 40"><path d="M4 20 Q16 4 30 20 T56 20" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 22 Q16 38 30 22 T56 22" fill="none" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="shieldi" viewBox="0 0 50 50"><path d="M25 4 L44 11 Q44 36 25 46 Q6 36 6 11 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M4 48 H46" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the house of nine rooms: doors at x = 28 + i*64, windows above them -->
+ <symbol id="house9" viewBox="0 0 620 260">
+  <path d="M0 96 L310 8 L620 96 Z" fill="#9c5f4b"/>
+  <rect x="12" y="96" width="596" height="160" fill="#efe2c6"/>
+  <g fill="#3d4a5c"><rect x="28" y="112" width="36" height="28" rx="3"/><rect x="92" y="112" width="36" height="28" rx="3"/><rect x="156" y="112" width="36" height="28" rx="3"/><rect x="220" y="112" width="36" height="28" rx="3"/><rect x="284" y="112" width="36" height="28" rx="3"/><rect x="348" y="112" width="36" height="28" rx="3"/><rect x="412" y="112" width="36" height="28" rx="3"/><rect x="476" y="112" width="36" height="28" rx="3"/><rect x="540" y="112" width="36" height="28" rx="3"/></g>
+  <g fill="#8a6a4f"><rect x="30" y="170" width="32" height="86"/><rect x="94" y="170" width="32" height="86"/><rect x="158" y="170" width="32" height="86"/><rect x="222" y="170" width="32" height="86"/><rect x="286" y="170" width="32" height="86"/><rect x="350" y="170" width="32" height="86"/><rect x="414" y="170" width="32" height="86"/><rect x="478" y="170" width="32" height="86"/><rect x="542" y="170" width="32" height="86"/></g>
+  <g font-family="Source Sans 3,sans-serif" font-size="13" font-weight="700" fill="#5b4a26" text-anchor="middle"><text x="46" y="162">1</text><text x="110" y="162">2</text><text x="174" y="162">3</text><text x="238" y="162">4</text><text x="302" y="162">5</text><text x="366" y="162">6</text><text x="430" y="162">7</text><text x="494" y="162">8</text><text x="558" y="162">9</text></g>
+ </symbol>
+ <symbol id="box" viewBox="0 0 60 44"><rect x="2" y="8" width="56" height="34" fill="#c9a061" stroke="#a8743f" stroke-width="2"/><path d="M2 8 L12 2 H48 L58 8" fill="#d8b277" stroke="#a8743f" stroke-width="2"/><path d="M30 8 V42" stroke="#a8743f" stroke-width="2"/></symbol>
+ <symbol id="dcard" viewBox="0 0 50 36"><rect x="2" y="2" width="46" height="32" rx="3" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><path d="M9 12 H41 M9 19 H35" stroke="#d9c9a3" stroke-width="2"/><path d="M9 28 H26" stroke="#2b3445" stroke-width="2"/></symbol>
+ <symbol id="oar" viewBox="0 0 120 30"><path d="M6 15 H86" stroke="#8b6340" stroke-width="5" stroke-linecap="round"/><path d="M86 6 Q116 15 86 24 Z" fill="#a7805c"/></symbol>
+ <symbol id="brief" viewBox="0 0 40 32"><rect x="2" y="8" width="36" height="22" rx="3" fill="#6f5a49"/><path d="M14 8 V4 H26 V8" fill="none" stroke="#6f5a49" stroke-width="3"/></symbol>
+ <symbol id="cot" viewBox="0 0 60 44"><path d="M4 10 V42 M56 10 V42 M4 22 H56 M4 38 H56" stroke="#a7805c" stroke-width="3"/><path d="M12 22 V38 M20 22 V38 M28 22 V38 M36 22 V38 M44 22 V38" stroke="#c8a57a" stroke-width="2"/></symbol>
+ <symbol id="scroll" viewBox="0 0 200 120"><rect x="16" y="10" width="168" height="100" fill="#f5ead1" stroke="#d8c39a" stroke-width="2"/><rect x="6" y="4" width="16" height="112" rx="8" fill="#b88c5a"/><rect x="178" y="4" width="16" height="112" rx="8" fill="#b88c5a"/><path d="M34 34 H166 M34 50 H166 M34 66 H150 M34 82 H160" stroke="#d6c39b" stroke-width="3"/></symbol>
+ <symbol id="staff" viewBox="0 0 40 90"><path d="M20 88 V22 Q20 6 32 8 Q40 12 34 22" fill="none" stroke="#8b6340" stroke-width="5" stroke-linecap="round"/></symbol>
+ <symbol id="spring" viewBox="0 0 80 70"><ellipse cx="40" cy="58" rx="36" ry="10" fill="#b7cfd3"/><path d="M40 52 Q34 30 40 10 Q46 30 40 52" fill="#cfe2e5"/><path d="M40 20 Q26 26 22 44 M40 20 Q54 26 58 44" fill="none" stroke="#b7cfd3" stroke-width="3"/><path d="M8 58 Q20 50 30 58" stroke="#8a9aa6" stroke-width="2" fill="none"/></symbol>
+ <symbol id="basin" viewBox="0 0 80 40"><path d="M4 10 H76 Q70 38 40 38 Q10 38 4 10 Z" fill="#c8a57a" stroke="#8b6340" stroke-width="2"/><ellipse cx="40" cy="10" rx="36" ry="5" fill="#b7cfd3"/></symbol>
+ <symbol id="towel" viewBox="0 0 60 40"><path d="M6 4 H54 L50 36 H10 Z" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M12 12 H48 M12 28 H48" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="papers" viewBox="0 0 60 70"><g fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"><rect x="6" y="40" width="48" height="10"/><rect x="4" y="30" width="48" height="10"/><rect x="8" y="20" width="48" height="10"/><rect x="5" y="10" width="48" height="10"/><rect x="7" y="0" width="48" height="10"/><rect x="6" y="50" width="48" height="10"/></g></symbol>
+ <symbol id="trophy" viewBox="0 0 40 46"><path d="M10 4 H30 V16 Q30 28 20 30 Q10 28 10 16 Z" fill="#e9b25e"/><path d="M10 8 H4 Q4 18 12 20 M30 8 H36 Q36 18 28 20" fill="none" stroke="#e9b25e" stroke-width="3"/><rect x="17" y="30" width="6" height="8" fill="#c9963f"/><rect x="10" y="38" width="20" height="6" fill="#8b6340"/></symbol>
+ <symbol id="alarm" viewBox="0 0 40 40"><circle cx="20" cy="22" r="14" fill="#fffaf0" stroke="#2b3445" stroke-width="3"/><path d="M20 22 V14 M20 22 L26 25" stroke="#2b3445" stroke-width="2.5"/><circle cx="8" cy="8" r="5" fill="#2b3445"/><circle cx="32" cy="8" r="5" fill="#2b3445"/></symbol>
+ <symbol id="umb" viewBox="0 0 80 50"><path d="M4 26 Q40 -14 76 26 Q66 20 58 26 Q49 20 40 26 Q31 20 22 26 Q13 20 4 26Z" fill="#8fae9f"/><path d="M40 26 V44 Q40 48 36 48" fill="none" stroke="#5b4a26" stroke-width="2.5"/></symbol>
+ <symbol id="bread" viewBox="0 0 60 30"><ellipse cx="22" cy="18" rx="18" ry="10" fill="#c9a061"/><path d="M44 6 H56 L54 26 H46 Z" fill="#b5735e"/></symbol>
+ <symbol id="ftree" viewBox="0 0 70 60"><path d="M35 4 V30 M35 30 L14 46 M35 30 L56 46 M14 46 V56 M56 46 V56" stroke="#8b6340" stroke-width="3" fill="none"/><circle cx="35" cy="6" r="5" fill="#c9963f"/><circle cx="14" cy="56" r="4" fill="#c9963f"/><circle cx="56" cy="56" r="4" fill="#c9963f"/></symbol>
+ <symbol id="city" viewBox="0 0 60 40"><path d="M2 38 V20 H12 V10 H22 V24 H30 V4 H40 V18 H50 V14 H58 V38 Z" fill="#8a9aa6"/></symbol>
+ <symbol id="churchd" viewBox="0 0 60 40"><path d="M10 38 V18 L30 4 L50 18 V38 Z" fill="#efe2c6" stroke="#8b6340" stroke-width="2"/><path d="M24 38 V26 Q30 20 36 26 V38" fill="#8b6340"/><path d="M30 0 V8 M27 3 H33" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="vane" viewBox="0 0 30 30"><path d="M15 28 V8 M5 12 H25 M20 7 L25 12 L20 17" fill="none" stroke="#5b4a26" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="bible" viewBox="0 0 160 100"><path d="M80 16 Q46 4 8 12 V92 Q46 84 80 96 Q114 84 152 92 V12 Q114 4 80 16Z" fill="#fffaf0" stroke="#b9925b" stroke-width="3"/><path d="M80 16 V96" stroke="#b9925b" stroke-width="2"/><path d="M24 30 H66 M24 42 H66 M24 54 H62 M24 66 H66 M94 54 H136 M94 66 H132 M94 78 H136" stroke="#d9c9a3" stroke-width="3"/><path d="M115 22 V46 M106 30 H124" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="ring" viewBox="0 0 40 40"><ellipse cx="20" cy="24" rx="13" ry="10" fill="none" stroke="#c9963f" stroke-width="4"/><path d="M14 13 L20 5 L26 13 Z" fill="#f6ecd6" stroke="#b9925b" stroke-width="1.5"/></symbol>
+ <symbol id="clasp" viewBox="0 0 120 70"><path d="M2 46 Q20 34 44 32 L70 30 Q80 30 80 38 Q80 44 70 44 L56 44" fill="#d9b49a" stroke="#8b6340" stroke-width="2.5" stroke-linejoin="round"/><path d="M118 46 Q100 30 78 30 L56 32 Q44 34 44 42 Q46 50 58 50 L76 50 Q96 52 118 60Z" fill="#c69d84" stroke="#7a5536" stroke-width="2.5" stroke-linejoin="round"/><path d="M60 38 Q70 36 74 40 M60 44 Q70 42 74 46" stroke="#7a5536" stroke-width="1.6" fill="none"/></symbol>
+ <symbol id="palm" viewBox="0 0 80 50"><path d="M4 40 Q20 46 40 44 Q62 42 76 30 Q72 22 60 26 L50 30 Q38 26 24 28 Q10 30 4 40Z" fill="#d9b49a" stroke="#8b6340" stroke-width="2.5" stroke-linejoin="round"/></symbol>
+ <symbol id="chain" viewBox="0 0 200 40"><g fill="none" stroke="#6b7280" stroke-width="6"><rect x="4" y="10" width="40" height="20" rx="10"/><rect x="36" y="10" width="40" height="20" rx="10"/><rect x="68" y="10" width="40" height="20" rx="10"/><rect x="100" y="10" width="40" height="20" rx="10"/><rect x="132" y="10" width="40" height="20" rx="10"/><rect x="156" y="10" width="40" height="20" rx="10"/></g></symbol>
+ <symbol id="stone" viewBox="0 0 60 30"><rect x="1" y="1" width="58" height="28" rx="4" fill="#d6c3a0" stroke="#a88b62" stroke-width="2"/></symbol>
+ <symbol id="sword" viewBox="0 0 30 110"><path d="M15 2 L21 16 V78 H9 V16Z" fill="#c8ced6" stroke="#6b7280" stroke-width="2"/><rect x="2" y="78" width="26" height="6" rx="2" fill="#6b7280"/><rect x="11" y="84" width="8" height="22" rx="3" fill="#6b7280"/></symbol>
+ <symbol id="sun" viewBox="0 0 80 80"><circle cx="40" cy="40" r="22" fill="#f0c77a"/><circle cx="40" cy="40" r="36" fill="#f0c77a" fill-opacity=".25"/></symbol>
+ <symbol id="clockw" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#fffaf0" stroke="#5b4a26" stroke-width="3"/><path d="M30 30 V10 M30 30 L22 20" stroke="#2b3445" stroke-width="3" stroke-linecap="round"/><circle cx="30" cy="30" r="2.5" fill="#2b3445"/></symbol>
+ <symbol id="bills" viewBox="0 0 70 50"><rect x="8" y="2" width="54" height="44" rx="2" fill="#fffaf0" stroke="#b9925b" stroke-width="2" transform="rotate(-6 35 24)"/><rect x="10" y="6" width="54" height="42" rx="2" fill="#fffaf0" stroke="#b9925b" stroke-width="2"/><path d="M18 16 H54 M18 24 H50 M18 32 H40 M44 40 H56" stroke="#c9b48a" stroke-width="2.5"/></symbol>
+ <symbol id="bubble" viewBox="0 0 90 60"><path d="M8 6 H82 Q88 6 88 12 V38 Q88 44 82 44 H30 L16 56 L20 44 H8 Q2 44 2 38 V12 Q2 6 8 6Z" fill="#fffaf0" stroke="#b9925b" stroke-width="2.5"/><text x="20" y="33" style="font:700 20px 'Source Serif 4',serif;fill:#8a6a24">I…</text></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <linearGradient id="lampg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d2a6"/><stop offset=".7" stop-color="#e2c48e"/><stop offset="1" stop-color="#d6b47c"/></linearGradient>
+ <linearGradient id="dawng" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f3d58"/><stop offset=".7" stop-color="#7b7f95"/><stop offset="1" stop-color="#e8c58c"/></linearGradient>
+ <symbol id="well" viewBox="0 0 160 150"><path d="M30 20 V70 M130 20 V70" stroke="#7a5536" stroke-width="6"/><path d="M22 20 H138" stroke="#7a5536" stroke-width="7"/><path d="M80 20 V58" stroke="#8b6340" stroke-width="2"/><ellipse cx="80" cy="78" rx="64" ry="14" fill="#2f3a4c"/><path d="M16 78 V138 Q80 156 144 138 V78" fill="#b8a27e" stroke="#8b6340" stroke-width="3"/><path d="M16 96 Q80 112 144 96 M16 116 Q80 132 144 116 M48 84 V146 M80 90 V150 M112 84 V146" stroke="#9d8662" stroke-width="2" fill="none"/><ellipse cx="80" cy="78" rx="64" ry="14" fill="none" stroke="#8b6340" stroke-width="4"/></symbol>
+ <symbol id="bucket" viewBox="0 0 40 40"><path d="M8 4 Q20 -4 32 4" stroke="#5b4a26" stroke-width="2" fill="none"/><path d="M6 8 H34 L30 36 H10 Z" fill="#a88b62" stroke="#7a5536" stroke-width="2.5"/><path d="M8 14 H32" stroke="#7a5536" stroke-width="2"/></symbol>
+ <symbol id="heart" viewBox="0 0 80 72"><path d="M40 68 C10 46 2 30 4 20 C6 6 26 0 40 16 C54 0 74 6 76 20 C78 30 70 46 40 68Z" fill="#fffaf0" stroke="#b9925b" stroke-width="3"/></symbol>
+ <symbol id="basketp" viewBox="0 0 120 80"><path d="M6 20 H114 L100 76 H20 Z" fill="#e9d6ad" stroke="#a88b62" stroke-width="3"/><path d="M14 38 H106 M18 56 H102" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="card" viewBox="0 0 100 40"><rect x="2" y="2" width="96" height="36" rx="5" fill="#fffaf0" stroke="#b9925b" stroke-width="2"/></symbol>
+ <symbol id="beam" viewBox="0 0 300 30"><rect x="2" y="4" width="296" height="22" rx="3" fill="#b88a55" stroke="#7a5536" stroke-width="2"/><path d="M20 12 H120 M150 18 H260" stroke="#9c6f3e" stroke-width="2"/></symbol>
+ <symbol id="news" viewBox="0 0 200 140"><rect x="2" y="2" width="196" height="136" rx="3" fill="#fffaf0" stroke="#c9b48a" stroke-width="2"/><rect x="14" y="40" width="54" height="88" fill="#f3ead4"/><rect x="74" y="40" width="54" height="88" fill="#f3ead4"/><rect x="134" y="40" width="54" height="88" fill="#f3ead4"/></symbol>
+ <symbol id="coat" viewBox="0 0 60 90"><path d="M30 4 L10 22 L8 86 H52 L50 22 Z" fill="#c4ad84" stroke="#8b6340" stroke-width="2.5"/><path d="M30 4 V86" stroke="#8b6340" stroke-width="2"/><circle cx="30" cy="4" r="3" fill="#5b4a26"/></symbol>
+ <symbol id="lock" viewBox="0 0 30 34"><path d="M8 14 V9 Q15 0 22 9 V14" fill="none" stroke="#5b4a26" stroke-width="3"/><rect x="4" y="14" width="22" height="18" rx="3" fill="#c9963f"/></symbol>
+ <symbol id="lantern" viewBox="0 0 40 60"><path d="M14 4 H26 M20 4 V10" stroke="#5b4a26" stroke-width="2.5"/><rect x="8" y="10" width="24" height="40" rx="5" fill="#f6dfa6" stroke="#5b4a26" stroke-width="2.5"/><circle cx="20" cy="30" r="7" fill="#f0c77a"/><rect x="6" y="50" width="28" height="6" rx="2" fill="#5b4a26"/></symbol>
+ <symbol id="phone" viewBox="0 0 30 50"><rect x="2" y="2" width="26" height="46" rx="5" fill="#2b3445"/><rect x="5" y="7" width="20" height="34" rx="2" fill="#bcd0dc"/></symbol>
+ <symbol id="kneel" viewBox="0 0 50 70"><circle cx="30" cy="10" r="8" fill="#c69d84"/><path d="M22 20 Q34 18 36 30 L36 46 L44 66 H18 L16 50 Q12 34 22 20Z" fill="currentColor"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8eedb"/><stop offset="1" stop-color="#efd9b0"/></linearGradient>
+<linearGradient id="gardeneve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfb8"/><stop offset=".6" stop-color="#ecd3a4"/><stop offset="1" stop-color="#e3c48e"/></linearGradient>
+<linearGradient id="nightg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2a40"/><stop offset="1" stop-color="#3a4a66"/></linearGradient>
+<radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient>
+</defs></svg><section class="slide" data-n="1" data-theme="eve" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome back">Lesson 3 · Book chapter 3 · Part 2: Learn the Skills</p>
+ <svg class="scene" viewBox="0 0 800 360" aria-hidden="true"><g class="cam">
+  <rect width="800" height="360" fill="url(#lampg)"/>
+  <circle cx="400" cy="200" r="150" fill="url(#glowr)"/>
+  <path d="M80 330 H720" stroke="#c9963f" stroke-width="3"/>
+  <g class="b" data-at="it begins Part"><g class="slidemark"><use href="#marker" x="150" y="290" width="18" height="36"/></g><text x="160" y="352" class="tiny2" style="font-size:12px">Make Honesty Safe</text><text x="480" y="352" class="tiny2" style="font-size:12px">Learn the Skills</text></g>
+  <ellipse cx="300" cy="300" rx="70" ry="7" fill="#7a5536" fill-opacity=".14"/><ellipse cx="500" cy="300" rx="70" ry="7" fill="#7a5536" fill-opacity=".14"/>
+  <use href="#lamp" x="380" y="196" width="40" height="64"/><use href="#table" x="350" y="250" width="100" height="50"/>
+  <g class="b" data-at="The first two lessons" data-until="This one is about you alone"><rect x="380" y="240" width="40" height="14" fill="#fffaf0" stroke="#b9925b"/></g>
+  <g transform="translate(-14,0)"><use href="#chair" x="250" y="190" width="72" height="115"/></g>
+  <g class="fadeR"><g transform="translate(564,0) scale(-1,1)"><use href="#chair" x="0" y="190" width="72" height="115"/></g></g>
+  <g class="b youmark" data-at="This one is about you alone"><rect x="248" y="234" width="44" height="12" rx="2" fill="#8b6340"/></g>
+  <text class="b hand2" data-at="you cannot say what you have not admitted" x="400" y="60" text-anchor="middle">You cannot say what you have not admitted.</text>
+ </g></svg>
+ <h2 class="b up" data-at="what do I actually expect">Tell Yourself the Truth First</h2>
+ <p class="q b" data-at="what do I actually expect">What do I actually expect — and where did it come from?</p>
+</div></section>
+
+<section class="slide" data-n="2" data-theme="eve" aria-label="Slide 2">
+<div class="wrap">
+ <p class="label">“I just thought he would know”</p>
+ <svg class="scene" viewBox="0 0 800 300" aria-hidden="true">
+  <rect width="800" height="300" fill="url(#lampg)"/>
+  <use href="#shelf" x="40" y="40" width="130" height="130"/><use href="#lamp" x="690" y="150" width="40" height="60"/>
+  <use href="#table" x="330" y="200" width="160" height="70"/>
+  <use href="#sit" x="250" y="160" width="64" height="104" style="color:#c48a7d"/>
+  <g transform="translate(1150,0) scale(-1,1)"><use href="#chair" x="560" y="150" width="62" height="100"/></g>
+  <g class="b" data-at="makes plans with friends"><use href="#phone" x="380" y="176" width="18" height="30"/><use href="#cal" x="420" y="168" width="38" height="38"/><rect x="430" y="186" width="10" height="9" fill="#c9963f"/></g>
+  <g class="b" data-at="deeply upset" data-until="Because that's what my father did"><use href="#cloud" x="220" y="70" width="110" height="64"/></g>
+  <g class="b" data-at="what did you expect him" data-until="I just thought he would know"><rect x="470" y="70" width="70" height="50" rx="10" fill="#fffaf0" stroke="#b9925b"/><text x="505" y="104" class="qm" text-anchor="middle" style="font-size:28px">?</text></g>
+  <g class="b" data-at="I just thought he would know" data-until="Because that's what my father did"><rect x="70" y="200" width="160" height="40" rx="10" fill="#fffaf0" stroke="#b9925b"/><text x="150" y="225" class="tiny3" style="font-size:12px">“I just thought he would know.”</text></g>
+  <g class="b" data-at="Because that's what my father did"><rect x="200" y="20" width="200" height="120" rx="8" fill="#fff6e4" stroke="#c9963f" stroke-width="2" class="memglow"/><use href="#table" x="230" y="90" width="140" height="44"/><use href="#sit" x="226" y="58" width="40" height="64" style="color:#8f8574"/><g transform="translate(600,0) scale(-1,1)"><use href="#sit" x="226" y="58" width="40" height="64" style="color:#a2917b"/></g><use href="#cal" x="284" y="78" width="30" height="30"/></g>
+ </svg>
+ <p class="tag b" data-at="Disappointment often reveals">Disappointment often reveals an expectation that reflection has not yet brought into view.</p>
+</div></section>
+
+<section class="slide" data-n="3" data-theme="light" aria-label="Slide 3">
+<div class="wrap">
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#ead6ae"/><circle cx="660" cy="50" r="80" fill="url(#glowr)"/><rect y="200" width="800" height="60" fill="#d4bc92"/>
+  <use href="#well" x="320" y="60" width="170" height="160"/><use href="#bucket" x="452" y="150" width="34" height="34"/>
+ </svg>
+ <p class="label b" data-at="Our passage is">Proverbs 20:5</p>
+ <p class="quote b" data-at="The purpose in a man's heart">“The purpose in a man’s heart is like deep water, but a man of understanding will draw it out.”<span class="ref">Proverbs 20:5 (ESV)</span></p>
+</div></section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+<div class="wrap">
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#e3cfa6"/><rect x="290" y="30" width="220" height="190" fill="url(#dawng)" stroke="#8b6340" stroke-width="10"/><path d="M400 30 V220 M290 125 H510" stroke="#8b6340" stroke-width="6"/><rect x="270" y="220" width="260" height="14" fill="#8b6340"/><use href="#lamp" x="300" y="170" width="34" height="52"/>
+ </svg>
+ <p class="label">Psalm 139:23–24</p>
+ <p class="quote b" data-at="Search me O God">“Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!”<span class="ref">Psalm 139:23–24 (ESV)</span></p>
+</div></section>
+
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">A proverb, and a prayer</p>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="#f1e3c6"/>
+  <g class="b" data-at="Proverbs is a book"><use href="#scroll" x="60" y="40" width="200" height="120"/><text x="160" y="34" class="tiny2">Proverbs</text><g class="b" data-at="short sayings"><path d="M90 76 H230 M90 96 H210 M90 116 H226" stroke="#8a6a24" stroke-width="3"/></g></g>
+  <g class="b" data-at="In a land where water"><rect x="40" y="190" width="260" height="80" fill="#e6cf9f"/><use href="#well" x="120" y="170" width="90" height="90"/></g>
+  <g class="b" data-at="Psalm begins"><use href="#scroll" x="420" y="40" width="200" height="120"/><text x="520" y="34" class="tiny2">Psalm 139</text></g>
+  <g class="b" data-at="you have searched me"><circle cx="700" cy="200" r="70" fill="url(#glowr)"/><use href="#kneel" x="670" y="160" width="56" height="80" style="color:#6f817b"/></g>
+  <g class="b" data-at="honest searching happens before God"><rect width="800" height="280" fill="#f0c77a" fill-opacity=".14"/></g>
+ </svg>
+ <ul class="qs sm2 lines2">
+  <li class="b" data-at="Proverbs is a book">Proverbs: short sayings of wisdom for ordinary life</li>
+  <li class="b" data-at="It ends with David asking">Psalm 139: David asks the God who already knows him to search him</li>
+  <li class="b strongline" data-at="honest searching happens before God">Self-knowledge, under God</li>
+ </ul>
+</div></section>
+
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">The word for “purpose”</p>
+ <p class="greek heb b" data-at="One word in that proverb" lang="he" dir="rtl"><span class="type">עֵצָה</span></p>
+ <p class="word b" data-at="The Hebrew word translated">ʿēṣâ · “counsel, purpose, plan”</p>
+ <svg class="scene short" viewBox="0 0 800 130" aria-hidden="true">
+  <g class="b" data-at="the intention someone holds" data-until="Then the verb"><use href="#heart" x="160" y="20" width="110" height="100"/><g class="sinkplan"><use href="#note" x="196" y="54" width="38" height="28"/></g></g>
+  <g class="b" data-at="like deep water" data-until="Then the verb"><ellipse cx="215" cy="104" rx="70" ry="12" fill="#2f3a4c" fill-opacity=".8"/></g>
+  <g class="b" data-at="The same verb is used"><use href="#well" x="470" y="20" width="100" height="100"/><use href="#per" x="580" y="30" width="34" height="86" style="color:#7d6f5f"/><g fill="#efe7d6" stroke="#a2917b"><ellipse cx="660" cy="104" rx="16" ry="10"/><ellipse cx="692" cy="108" rx="16" ry="10"/><ellipse cx="720" cy="102" rx="14" ry="9"/></g><text x="600" y="128" class="tiny3">Exodus 2</text></g>
+  <g class="b" data-at="brings up what is already there"><g class="bucketup"><use href="#bucket" x="502" y="54" width="30" height="30"/></g></g>
+ </svg>
+ <div class="verbrow b" data-at="Then the verb"><span class="vb"><span class="heb2" lang="he" dir="rtl">יִדְלֶנָּה</span><small>in the verse: “will draw it out”</small></span><span class="vb"><span class="heb2" lang="he" dir="rtl">דָּלָה</span><small>dālâ · to draw (water)</small></span></div>
+ <p class="tag b" data-at="Understanding does not invent">What we intend can lie deeper than what we say.</p>
+</div></section>
+
+<section class="slide" data-n="7" data-theme="eve" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">The well and the bucket</p>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="url(#lampg)"/><rect y="220" width="800" height="60" fill="#cdb791"/>
+  <g class="b" data-at="in the lamplight of God's presence"><path d="M560 0 L800 0 L800 280 L420 280Z" fill="#f6dfa6" fill-opacity=".35"/></g>
+  <use href="#well" x="300" y="80" width="170" height="160"/>
+  <g class="b" data-at="Proverbs is speaking about understanding" data-until="first turn it towards ourselves"><use href="#per" x="190" y="120" width="44" height="110" style="color:#6f817b"/><use href="#perw" x="500" y="120" width="42" height="108" style="color:#c48a7d"/></g>
+  <g class="b" data-at="first turn it towards ourselves"><use href="#per" x="500" y="120" width="44" height="110" style="color:#6f817b"/><rect x="528" y="164" width="18" height="22" fill="#8b6340"/></g>
+  <g class="b" data-at="Some will be fresh"><g class="bucketup"><use href="#bucket" x="368" y="90" width="34" height="34"/></g><ellipse cx="385" cy="96" rx="14" ry="4" fill="#bcd6e4"/></g>
+  <g class="b" data-at="Some will be inherited"><use href="#bucket" x="250" y="190" width="34" height="34"/><use href="#frame" x="252" y="168" width="30" height="24"/></g>
+  <g class="b" data-at="cannot judge what you have never drawn up"><rect width="800" height="280" fill="#f0c77a" fill-opacity=".12"/></g>
+ </svg>
+ <p class="q2 b" data-at="Proverbs is speaking about understanding">Proverbs 20:5 speaks of understanding another person.</p>
+ <p class="tag b" data-at="first turn it towards ourselves">Here we apply it first to ourselves, before God.</p>
+</div></section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="label">1. How you find out what you expected</p>
+ <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true">
+  <rect width="800" height="220" fill="#f6eedd"/>
+  <use href="#journal" x="240" y="20" width="320" height="200"/>
+  <g class="b icons" data-at="Money and how much" data-until="The most useful question"><g><circle cx="312" cy="90" r="13" fill="#e2b85c" stroke="#a88b62" stroke-width="2"/><circle cx="326" cy="98" r="13" fill="#e2b85c" stroke="#a88b62" stroke-width="2"/></g><g class="b" data-at="expected to notice what needs doing"><path d="M350 70 L366 110 M356 104 H376" stroke="#7a5536" stroke-width="4"/></g><g class="b" data-at="Church and whether"><use href="#churchd" x="440" y="70" width="44" height="32"/></g><g class="b" data-at="Your parents and how much say"><use href="#sit" x="490" y="70" width="22" height="34" style="color:#8f8574"/><use href="#sit" x="510" y="70" width="22" height="34" style="color:#a2917b"/></g></g>
+  <g class="b" data-at="of course they should have known better"><text x="400" y="190" text-anchor="middle" class="hand2" style="font-size:15px">“of course they should have known better”</text></g>
+  <g class="b" data-at="not merely personal preferences"><use href="#shieldi" x="590" y="90" width="50" height="50"/><text x="615" y="156" class="tiny3">honesty · freedom from harm</text></g>
+ </svg>
+ <p class="q2 b" data-at="of course they should have known better">“When have I thought, about anyone, ‘of course they should have known better’?”</p>
+ <p class="tag b" data-at="A strong reaction is worth understanding">A strong reaction is worth understanding: what happened, what did I expect, and was a reasonable boundary crossed?</p>
+</div></section>
+
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label">Find it, trace it, decide</p>
+ <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true">
+  <rect width="800" height="220" fill="#f6eedd"/>
+  <g class="b" data-at="misread in two directions" data-until="Find it"><use href="#sign" x="350" y="40" width="100" height="120"/>
+   <g class="b" data-at="misread in two directions" data-until="learned the wrong lesson"><text x="250" y="70" class="tiny2">all my needs are baggage</text><text x="560" y="70" class="tiny2">it was only my overreaction</text></g>
+   <g class="b" data-at="learned the wrong lesson"><text x="250" y="70" class="tiny2" style="text-decoration:line-through;fill:#a88b62">all my needs are baggage</text></g>
+   <g class="b" data-at="really did behave badly"><text x="560" y="70" class="tiny2" style="text-decoration:line-through;fill:#a88b62">it was only my overreaction</text></g></g>
+  <g class="b" data-at="Find it"><use href="#well" x="60" y="60" width="110" height="110"/><g class="bucketup"><use href="#bucket" x="100" y="70" width="28" height="28"/></g><text x="115" y="196" class="tiny2">find</text></g>
+  <g class="b" data-at="Trace where it came from"><path class="draw" style="--len:260" d="M180 120 Q280 60 380 120" stroke="#c9963f" stroke-width="3" stroke-dasharray="6 6" fill="none"/><use href="#house" x="380" y="96" width="60" height="50"/><text x="410" y="196" class="tiny2">trace</text></g>
+  <g class="b" data-at="Then decide"><use href="#door" x="530" y="70" width="40" height="70"/><use href="#door" x="610" y="70" width="40" height="70"/><use href="#door" x="690" y="70" width="40" height="70"/><text x="550" y="160" class="tiny3">say it</text><text x="630" y="160" class="tiny3">adjust it</text><text x="710" y="160" class="tiny3">let it go</text><text x="630" y="196" class="tiny2">decide</text></g>
+ </svg>
+ <p class="q2 b" data-at="It does not mean every expectation">Not every expectation is baggage. <span class="b" data-at="Nor does it mean every strong reaction">Not every reaction is an overreaction.</span></p>
+ <p class="tag b" data-at="Find it">Find it. <span class="b" data-at="Trace where it came from">Trace where it came from.</span> <span class="b" data-at="Then decide">Then decide: communicate it, adjust it, or let it go.</span></p>
+</div></section>
+
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <p class="label">2. The rules you never knew were rules</p>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="#f6eedd"/>
+  <g class="b" data-at="Your definition of normal" data-until="Then one evening he says">
+   <rect x="30" y="16" width="360" height="248" rx="14" fill="#fffaf0" stroke="#e3d6b8"/><rect x="410" y="16" width="360" height="248" rx="14" fill="#fffaf0" stroke="#e3d6b8"/>
+   <use href="#house" x="160" y="30" width="100" height="84"/><use href="#house" x="540" y="30" width="100" height="84"/>
+   <g class="b grow2" data-at="You absorbed it"><use href="#per" x="120" y="130" width="40" height="100" style="color:#6f817b"/><use href="#perw" x="620" y="130" width="40" height="100" style="color:#c48a7d"/></g>
+   <g class="b" data-at="He assumes that couples"><use href="#phone" x="200" y="160" width="30" height="50"/><g class="ping"><circle cx="234" cy="158" r="7" fill="#c9963f"/></g><text x="210" y="248" class="tiny3">checking in</text></g>
+   <g class="b" data-at="nobody expected to hear"><use href="#phone" x="540" y="160" width="30" height="50"/><use href="#laptop" x="680" y="170" width="70" height="44"/><text x="590" y="248" class="tiny3">busy all day</text></g>
+  </g>
+  <g class="b" data-at="Then one evening he says">
+   <use href="#sofa" x="300" y="150" width="220" height="110"/><use href="#lamp" x="580" y="170" width="40" height="64"/>
+   <use href="#per" x="250" y="130" width="44" height="110" style="color:#6f817b"/><use href="#perw" x="540" y="130" width="42" height="108" style="color:#c48a7d"/>
+   <g class="b" data-at="Then one evening he says" data-until="Their preferred levels"><use href="#cloud" x="340" y="40" width="130" height="76"/></g>
+   <g class="b" data-at="I was at work" data-until="have they broken an agreement"><rect x="560" y="60" width="50" height="44" rx="10" fill="#fffaf0" stroke="#b9925b"/><text x="585" y="92" class="qm" text-anchor="middle" style="font-size:24px">?</text></g>
+   <g class="b" data-at="turns one preference into a test" data-until="have they broken an agreement"><use href="#scale" x="350" y="40" width="110" height="64"/></g>
+   <g class="b" data-at="have they broken an agreement"><use href="#card" x="200" y="40" width="190" height="76"/><text x="295" y="84" class="tiny2" style="font-size:13px">an agreement we made</text><use href="#card" x="420" y="40" width="190" height="76"/><text x="515" y="84" class="tiny2" style="font-size:13px">a rule I never told them</text></g>
+  </g>
+ </svg>
+ <p class="tag b" data-at="have they broken an agreement">Have they broken an agreement we made, or a rule I never told them existed?</p>
+</div></section>
+
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="label">Three questions from the side</p>
+ <div class="rulesrow">
+ <svg class="scene ruleart" viewBox="0 0 300 260" aria-hidden="true">
+  <rect width="300" height="260" rx="14" fill="#f6eedd"/>
+  <use href="#journal" x="60" y="130" width="180" height="120"/>
+  <g class="b slidein" data-at="approach from the side"><use href="#lantern" x="230" y="120" width="46" height="70"/></g>
+  <g class="b" data-at="What did my family always do" data-until="Married couples eat dinner"><use href="#table" x="70" y="60" width="160" height="56"/><use href="#cup" x="110" y="44" width="24" height="24"/><use href="#cup" x="160" y="44" width="24" height="24"/></g>
+  <g class="b" data-at="Married couples eat dinner"><text x="150" y="40" class="tiny3">dinner together · separate meals</text><g class="b" data-at="Holidays belong"><text x="150" y="70" class="tiny3">wider family · the two of you</text></g><g class="b" data-at="Big decisions are discussed"><text x="150" y="100" class="tiny3">decide together · decide alone</text></g></g>
+ </svg>
+ <ol class="rules">
+  <li class="b" data-at="What did my family always do">What did my family always do that I assumed every married couple does?</li>
+  <li class="b" data-at="What would genuinely surprise me">What would genuinely surprise me if my spouse didn’t do it?</li>
+  <li class="b uline" data-at="what would make me think something is wrong">What would make me think something is wrong with our marriage, even if my spouse saw nothing wrong at all?</li>
+ </ol>
+ </div>
+</div></section>
+
+<section class="slide" data-n="12" data-theme="eve" aria-label="Slide 12">
+<div class="wrap">
+ <p class="label">Custom or conviction?</p>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="url(#lampg)"/>
+  <g class="b" data-at="For Christian couples" data-until="In Rome believers disagreed"><use href="#coat" x="250" y="60" width="100" height="160"/><use href="#coat" x="450" y="60" width="100" height="160"/><text x="300" y="250" class="tiny2">family custom</text><text x="500" y="250" class="tiny2">conviction</text><path d="M240 60 H560" stroke="#5b4a26" stroke-width="5"/></g>
+  <g class="b" data-at="In Rome believers disagreed" data-until="When one person's family customs">
+   <rect y="200" width="800" height="80" fill="#c4ad84"/><use href="#table" x="150" y="160" width="500" height="90"/>
+   <use href="#sit" x="140" y="120" width="52" height="84" style="color:#9a8a76"/><use href="#sit" x="200" y="124" width="50" height="80" style="color:#8f8574"/><use href="#sit" x="550" y="120" width="52" height="84" style="color:#a2917b"/><use href="#sit" x="610" y="124" width="50" height="80" style="color:#978b78"/>
+   <g class="b glowbox" data-at="One person esteems one day"><use href="#cal" x="270" y="120" width="50" height="50"/><circle cx="295" cy="155" r="9" fill="#c9963f"/></g>
+   <g class="b glowbox" data-at="another esteems all days alike"><use href="#cal" x="480" y="120" width="50" height="50"/></g>
+   <text x="400" y="272" class="tiny3" style="fill:#5b4a26">artistic representation</text>
+  </g>
+  <g class="b" data-at="When one person's family customs"><use href="#coat" x="250" y="60" width="100" height="160"/><use href="#coat" x="450" y="60" width="100" height="160"/><path d="M240 60 H560" stroke="#5b4a26" stroke-width="5"/><text x="300" y="250" class="tiny2">family custom</text><text x="500" y="250" class="tiny2">conviction</text><g class="b lockfall" data-at="A family tradition has been given"><use href="#lock" x="284" y="120" width="32" height="36"/></g><g class="b" data-at="When one person's family customs" data-until="A family tradition has been given"><use href="#lock" x="284" y="120" width="32" height="36"/></g></g>
+ </svg>
+ <p class="quote sm2 b" data-at="Each one should be fully convinced">“Each one should be fully convinced in his own mind.”<span class="ref">Romans 14:5 (ESV)</span></p>
+ <p class="q2 b" data-at="not every custom is a command">Not every custom is a command.</p>
+ <p class="tag b" data-at="no longer free to discuss them honestly">When family customs are treated as God’s requirements, the other person is no longer free to discuss them honestly.</p>
+</div></section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label">3. Preference, conviction or deal-breaker</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <rect width="800" height="240" fill="#f6eedd"/>
+  <g class="b" data-at="Not every expectation carries"><use href="#basketp" x="100" y="130" width="150" height="100"/><use href="#basketp" x="325" y="130" width="150" height="100"/><use href="#basketp" x="550" y="130" width="150" height="100"/><text x="175" y="208" class="tiny2" style="font-size:22px">P</text><text x="400" y="208" class="tiny2" style="font-size:22px">C</text><text x="625" y="208" class="tiny2" style="font-size:22px">D</text></g>
+  <g class="b dropin" data-at="A preference is something"><use href="#card" x="100" y="104" width="150" height="40"/><text x="175" y="129" class="tiny3">most evenings together</text></g>
+  <g class="b dropin" data-at="A conviction is something you hold"><use href="#card" x="325" y="104" width="150" height="40"/><text x="400" y="129" class="tiny3">a marriage built on Christ</text></g>
+  <g class="b" data-at="different buildings on the same plot" data-until="A deal-breaker is something"><path d="M330 100 L360 60 L390 100 Z M410 100 V60 H470 V100" fill="none" stroke="#a88b62" stroke-width="3"/><path d="M310 102 H490" stroke="#7a5536" stroke-width="3"/></g>
+  <g class="b dropin" data-at="A deal-breaker is something"><use href="#card" x="550" y="104" width="150" height="40"/><text x="625" y="129" class="tiny3">children: yes or no</text></g>
+  <g class="b" data-at="not simply another preference to negotiate"><path class="draw" style="--len:640" d="M80 234 H720" stroke="#c9963f" stroke-width="4"/><use href="#shieldi" x="724" y="208" width="40" height="40"/></g>
+ </svg>
+ <ul class="qs sm2 lines2 defs">
+  <li class="b" data-at="A preference is something"><b>Preference:</b> something you would like and can live without</li>
+  <li class="b" data-at="A conviction is something you hold"><b>Conviction:</b> something you hold because of your faith, your values, or your understanding of marriage</li>
+  <li class="b" data-at="A deal-breaker is something"><b>Deal-breaker:</b> something you cannot accept in a marriage at all</li>
+  <li class="b strongline" data-at="not simply another preference to negotiate">Intimidation or violence is not a preference to negotiate.</li>
+ </ul>
+</div></section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="label">Sorting honestly</p>
+ <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true">
+  <rect width="800" height="220" fill="#f6eedd"/>
+  <use href="#basketp" x="100" y="120" width="150" height="100"/><g class="basC"><use href="#basketp" x="325" y="120" width="150" height="100"/></g><g class="basD"><use href="#basketp" x="550" y="120" width="150" height="100"/></g>
+  <text x="175" y="116" class="tiny2" style="font-size:20px">P</text><text x="400" y="116" class="tiny2" style="font-size:20px">C</text><text x="625" y="116" class="tiny2" style="font-size:20px">D</text>
+  <g class="b" data-at="The most common failure is inflation" data-until="Your partner can love you"><g class="inflate"><use href="#card" x="110" y="40" width="130" height="40"/><text x="175" y="65" class="tiny3">dishes before bed</text></g><g class="b" data-at="If you loved me you would"><use href="#heart" x="236" y="30" width="30" height="28"/></g></g>
+  <g class="b" data-at="Your partner can love you" data-until="Two questions do most"><use href="#card" x="110" y="150" width="130" height="40"/><text x="175" y="175" class="tiny3">dishes before bed</text></g>
+  <g class="b driftout" data-at="Some people deflate everything" data-until="Two questions do most"><use href="#card" x="335" y="40" width="110" height="34"/><use href="#card" x="560" y="40" width="110" height="34"/></g>
+  <g class="b" data-at="Lesson with better vocabulary" data-until="Two questions do most"><use href="#door" x="740" y="40" width="30" height="54"/></g>
+  <g class="b" data-at="A conviction may also be a deal-breaker"><ellipse cx="512" cy="170" rx="70" ry="44" fill="#f0c77a" fill-opacity=".3"/></g>
+  <g class="b" data-at="because you are angry about it today"><g class="drift"><use href="#cloud" x="560" y="10" width="110" height="64"/></g></g>
+ </svg>
+ <ul class="qs sm2 lines2">
+  <li class="b" data-at="Two questions do most">Is this something I need, something I believe, or something I simply like?</li>
+  <li class="b" data-at="if my partner never changed">If my partner never changed on this, could we still have a healthy marriage?</li>
+  <li class="b" data-at="A conviction may also be a deal-breaker">A conviction may also be a deal-breaker.</li>
+  <li class="b strongline" data-at="because you are angry about it today">Do not call something a deal-breaker because you are angry about it today.</li>
+ </ul>
+</div></section>
+
+<section class="slide" data-n="15" data-theme="eve" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label">The log and the speck</p>
+ <svg class="scene" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="url(#lampg)"/><rect y="200" width="800" height="60" fill="#b9a07a"/>
+  <rect x="120" y="150" width="560" height="20" fill="#8b6340"/><rect x="140" y="170" width="16" height="60" fill="#7a5536"/><rect x="644" y="170" width="16" height="60" fill="#7a5536"/>
+  <g class="b" data-at="Jesus gave a picture"><g class="carry"><g class="b litbeam" data-at="do not notice the log"><use href="#beam" x="170" y="118" width="440" height="34"/></g><g class="b" data-at="Jesus gave a picture" data-until="do not notice the log"><use href="#beam" x="170" y="118" width="440" height="34"/></g></g><path d="M200 214 q6 -8 12 0 M300 220 q6 -8 12 0 M520 216 q6 -8 12 0" stroke="#d8b98a" stroke-width="3" fill="none"/><text x="400" y="252" class="tiny3" style="fill:#5b4a26">artistic representation</text></g>
+  <g class="b" data-at="Why do you see the speck"><circle cx="660" cy="80" r="26" fill="#fff6e4"/><path d="M652 80 q8 -6 16 0" stroke="#b88a55" stroke-width="3" fill="none"/></g>
+  <g class="b" data-at="then you will see clearly to take"><rect width="800" height="260" fill="#fffaf0" fill-opacity=".18"/></g>
+  <g class="b" data-at="reclassify a preference as a conviction" data-until="examined through Scripture"><use href="#card" x="300" y="40" width="150" height="50"/><text x="375" y="70" class="tiny3">preference</text><circle cx="450" cy="44" r="6" fill="#9c5f4b"/><text x="470" y="48" class="tiny3" style="text-anchor:start">+ a verse</text></g>
+  <g class="b" data-at="examined through Scripture"><use href="#bible" x="300" y="40" width="200" height="110"/></g>
+ </svg>
+ <p class="quote sm2 b" data-at="You hypocrite first take the log">“You hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother’s eye.”<span class="ref">Matthew 7:5 (ESV)</span></p>
+ <p class="tag b" data-at="examined through Scripture">A genuine biblical conviction should be examined through Scripture, not defended by attaching an isolated verse to something we simply prefer.</p>
+</div></section>
+
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="label">4. Say what you actually want</p>
+ <div class="stack">
+  <div class="b" data-at="Couples tell me they agree" data-until="Then say it plainly">
+   <svg class="scene short3" viewBox="0 0 800 230" aria-hidden="true">
+    <rect width="800" height="230" fill="#f6eedd"/>
+    <g class="b" data-at="Couples tell me they agree" data-until="So get specific"><use href="#news" x="250" y="20" width="300" height="200"/><text x="400" y="56" class="tiny2" style="font-size:24px;font-family:'Source Serif 4',serif">We agree</text></g>
+    <g class="b" data-at="Money joint accounts" data-until="Sex what do you each expect"><circle cx="385" cy="70" r="28" fill="#e2b85c" stroke="#a88b62" stroke-width="3"/><circle cx="418" cy="84" r="28" fill="#e2b85c" stroke="#a88b62" stroke-width="3"/><text x="400" y="160" class="tiny2" style="font-size:20px">Money</text><text x="400" y="190" class="tiny3" style="font-size:15px">How much can either of us spend without asking?</text></g>
+    <g class="b" data-at="Sex what do you each expect" data-until="Children how many"><use href="#door" x="370" y="20" width="60" height="105"/><use href="#ring" x="436" y="90" width="26" height="26"/><use href="#ring" x="456" y="96" width="26" height="26"/><text x="400" y="160" class="tiny2" style="font-size:20px">Sex</text><text x="400" y="190" class="tiny3" style="font-size:15px">What do we each expect, and what were we each taught?</text></g>
+    <g class="b" data-at="Children how many" data-until="Church every Sunday"><use href="#cot" x="350" y="40" width="100" height="76"/><text x="400" y="160" class="tiny2" style="font-size:20px">Children</text><text x="400" y="190" class="tiny3" style="font-size:15px">How many, when, and what if it does not happen?</text></g>
+    <g class="b" data-at="Church every Sunday" data-until="Family how often"><use href="#churchd" x="350" y="30" width="100" height="80"/><text x="400" y="160" class="tiny2" style="font-size:20px">Faith and church</text><text x="400" y="190" class="tiny3" style="font-size:15px">Every Sunday, the same church, how much ministry?</text></g>
+    <g class="b" data-at="Family how often"><use href="#table" x="260" y="70" width="120" height="44"/><use href="#table" x="420" y="70" width="120" height="44"/><use href="#sit" x="270" y="40" width="30" height="50" style="color:#8f8574"/><use href="#sit" x="500" y="40" width="30" height="50" style="color:#a2917b"/><text x="400" y="160" class="tiny2" style="font-size:20px">Family</text><text x="400" y="190" class="tiny3" style="font-size:15px">How often, how long, how much say?</text></g>
+   </svg>
+   <p class="parts">Money · Sex · Children · Faith and church · Family</p>
+  </div>
+  <div class="b" data-at="Then say it plainly">
+   <ul class="qs lines2 say4">
+    <li class="b" data-at="This is what I want">This is what I want.</li>
+    <li class="b" data-at="This is why I want it">This is why I want it.</li>
+    <li class="b" data-at="This is what I would be hoping">This is what I would be hoping for from you.</li>
+    <li class="b strongline" data-at="What do you want">What do you want?</li>
+   </ul>
+   <p class="q2 b" data-at="I don't know is a real answer">“I don’t know” is a real answer. Write it down.</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="17" data-theme="eve" aria-label="Slide 17">
+<div class="wrap">
+ <p class="label">Bringing it together</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <rect width="800" height="240" fill="url(#lampg)"/>
+  <use href="#lamp" x="380" y="40" width="40" height="64"/>
+  <g class="turnin2"><use href="#chair" x="300" y="40" width="54" height="86"/></g><g class="turnin3"><g transform="translate(800,0) scale(-1,1)"><use href="#chair" x="300" y="40" width="54" height="86"/></g></g>
+  <path class="b draw" data-at="Let us bring it together" style="--len:640" d="M80 200 H720" stroke="#c9963f" stroke-width="3"/>
+  <g class="b pop" data-at="Disappointment can reveal"><use href="#cloud" x="100" y="150" width="70" height="40"/></g>
+  <g class="b pop" data-at="Some of your firmest rules"><use href="#house" x="280" y="150" width="40" height="34"/><use href="#house" x="330" y="150" width="40" height="34"/></g>
+  <g class="b pop" data-at="Sort them honestly"><use href="#basketp" x="460" y="152" width="60" height="40"/></g>
+  <g class="b pop" data-at="say what you actually want"><use href="#bubble" x="620" y="146" width="70" height="48"/></g>
+  <g class="b" data-at="Draw up what is there"><use href="#well" x="560" y="30" width="80" height="80"/></g>
+  <g class="b turnmark" data-at="a little more towards each other"></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="Disappointment can reveal">Disappointment can reveal what you expected</li>
+  <li class="b" data-at="Some of your firmest rules">Some of your rules were never spoken</li>
+  <li class="b" data-at="Sort them honestly">Sort them: preference, conviction or deal-breaker</li>
+  <li class="b" data-at="say what you actually want">Say what you actually want, and ask what they want</li>
+ </ol>
+</div></section>
+
+<section class="slide" data-n="18" data-theme="light" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">Prepare on your own · The Private Inventory</p>
+ <svg class="scene short" viewBox="0 0 800 130" aria-hidden="true">
+  <rect x="150" y="10" width="220" height="110" rx="10" fill="#f3e9d4"/><rect x="430" y="10" width="220" height="110" rx="10" fill="#f3e9d4"/><use href="#journal" x="200" y="34" width="120" height="82"/><use href="#journal" x="480" y="34" width="120" height="82"/>
+  <g class="b" data-at="not shared with your partner through this course"><use href="#lock" x="246" y="70" width="26" height="30"/><use href="#lock" x="526" y="70" width="26" height="30"/></g>
+  <g class="b" data-at="Take several sittings"><use href="#cal" x="680" y="40" width="60" height="60"/><circle cx="696" cy="80" r="5" fill="#c9963f"/><circle cx="712" cy="80" r="5" fill="#c9963f"/><circle cx="728" cy="80" r="5" fill="#c9963f"/></g>
+  <g class="b" data-at="Never downgrade a safety concern"><use href="#shieldi" x="70" y="40" width="50" height="50"/></g>
+ </svg>
+ <div class="journal2 breathe">
+  <p class="b small3" data-at="not shared with your partner through this course">Your answers are not shared with your partner through this course. Nothing you type here is saved. If you keep a written copy, choose somewhere private.</p>
+  <p class="b" data-at="Part One is this lesson's"><b>Part One:</b> the three questions</p>
+  <p class="b" data-at="Part Two takes the five areas"><b>Part Two:</b> the five areas, with where each came from, and P, C or D</p>
+  <p class="b" data-at="Part Three asks three hard questions"><b>Part Three:</b> the three hardest questions</p>
+  <p class="b love" data-at="Begin with one small step">First step: finish the sentence “Of course they should have known…”</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="19" data-theme="light" aria-label="Slide 19">
+<div class="wrap">
+ <div class="stack">
+  <div class="b" data-at="if either of you is afraid" data-until="For everyone else"><div class="safety"><p>If either of you is afraid of how the other will respond, do not do the together part.</p><p>Stop, and speak with someone you trust on your own first.</p></div></div>
+  <div class="b" data-at="For everyone else">
+   <p class="label">Talk together</p>
+   <svg class="scene short" viewBox="0 0 800 120" aria-hidden="true"><use href="#chair" x="280" y="14" width="64" height="102"/><g transform="translate(800,0) scale(-1,1)"><use href="#chair" x="280" y="14" width="64" height="102"/></g><use href="#lamp" x="380" y="40" width="40" height="60"/><use href="#journal" x="120" y="60" width="80" height="54"/><use href="#journal" x="600" y="60" width="80" height="54"/><g class="b" data-at="Do not exchange inventories"><use href="#lock" x="148" y="74" width="20" height="24"/><use href="#lock" x="628" y="74" width="20" height="24"/></g><g class="b pop" data-at="write the date you expect"><use href="#cal" x="700" y="30" width="56" height="56"/><circle cx="728" cy="66" r="11" fill="none" stroke="#c9963f" stroke-width="2.5"/></g></svg>
+   <ul class="qs sm2">
+    <li class="b" data-at="Do not exchange inventories">Do not exchange inventories.</li>
+    <li class="b strongline" data-at="what surprised you about your own answers">Each answers one question: “What surprised you about your own answers?”</li>
+    <li class="b" data-at="If you both feel comfortable">If you both feel comfortable: agree to use your private inventories to prepare for the rooms ahead. You do not have to exchange your pages.</li>
+    <li class="b" data-at="write the date you expect">Write the date you expect to begin Lesson 6, the first room.</li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="20" data-theme="eve" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">Remember</p>
+ <svg class="scene short3" viewBox="0 0 800 200" aria-hidden="true"><rect width="800" height="200" fill="#e3cfa6"/><circle cx="660" cy="40" r="80" fill="url(#glowr)"/><rect y="170" width="800" height="30" fill="#cdb791"/><use href="#well" x="330" y="40" width="140" height="132"/><use href="#bucket" x="446" y="40" width="30" height="30"/></svg>
+ <p class="quote b" data-at="The purpose in a man's heart">“The purpose in a man’s heart is like deep water, but a man of understanding will draw it out.”<span class="ref">Proverbs 20:5</span></p>
+ <p class="quote b" data-at="Search me O God">“Search me, O God, and know my heart!”<span class="ref">Psalm 139:23</span></p>
+</div></section>
+
+<section class="slide" data-n="21" data-theme="eve" aria-label="Slide 21">
+<svg class="sunbg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle class="breathe" cx="600" cy="640" r="160" fill="#f0c77a" fill-opacity=".40"/><circle cx="600" cy="640" r="280" fill="#f0c77a" fill-opacity=".12"/></svg>
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <div class="prayer stack">
+  <div class="b" data-at="Lord God you have searched us" data-until="Keep us from using your word">
+   <p>Lord God, you have searched us and known us.</p>
+   <p class="b" data-at="Search our hearts now">Search our hearts now, and show us what is there.</p>
+   <p class="b" data-at="Help us to tell the difference">Help us to tell the difference between what we prefer, what we believe, and what we truly need.</p>
+  </div>
+  <div class="b" data-at="Keep us from using your word" data-until="You do not have to finish">
+   <p>Keep us from using your word to win, and give us courage to say plainly what we want.</p>
+   <p class="b" data-at="Lead us in the way everlasting">Lead us in the way everlasting. In Jesus’ name. Amen.</p>
+  </div>
+  <div class="b" data-at="You do not have to finish">
+   <p class="close">You do not have to finish your inventory today. When you are ready, begin with one sentence.</p>
+   <p class="close">Stop here for today, or continue to Lesson 4.</p>
+  </div>
+ </div>
+ <p class="small2 b" data-at="Let us pray" data-until="Lord God you have searched us">If you are watching together, you may like to pray this aloud together.</p>
+</div></section>
+
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 21</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="tbym-lesson-03.mp3" preload="auto"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome back. This is Lesson 3, and it begins Part 2 of the course: learning the skills. The first two lessons were about the relationship. This one is about you, alone, before your partner is in the room. Here is the idea in one line: you cannot say what you have not admitted, even to yourself. So the question for this lesson is simple to ask and harder to answer: what do I actually expect, and where did it come from?", "2": "Most people cannot tell you what they expect from a marriage. Ask, and you hear: “I’m fairly flexible.” They are not lying. They genuinely cannot see them. A couple marries, and within a few months she finds that he regularly makes plans with friends without mentioning them to her first. She is deeply upset, in a way that surprises even her. So I ask: what did you expect him to do instead? “I don’t know. I just thought he would know to tell me.” Why did you think he would know? A pause. Then: “Because that’s what my father did. He always talked about plans with my mother first.” She was not being unreasonable. She held a real picture of what consideration looks like, and nobody had ever asked her to say it out loud, because to her it was not an expectation at all. It was simply what married people do. Disappointment often reveals an expectation that reflection has not yet brought into view.", "3": "So before we look at your expectations, we open the Scriptures. Our passage is a single proverb, Proverbs chapter 20, verse 5. “The purpose in a man’s heart is like deep water, but a man of understanding will draw it out.”", "4": "And alongside it, the prayer that closes Psalm 139. “Search me, O God, and know my heart! Try me and know my thoughts! And see if there be any grievous way in me, and lead me in the way everlasting!”", "5": "Proverbs is a book of short sayings of wisdom for ordinary life. It is not a book about marriage, and this proverb is not about engagement. It is about how hard it can be to know what is really in a person’s heart. In a land where water was precious, a deep well held life, but you could not reach it by looking. Psalm 139 begins, “O Lord, you have searched me and known me!” It ends with David asking the God who already knows him completely to search him still. Together they teach us that honest searching happens before God. We do not only look inward. We ask him to show us what is there.", "6": "One word in that proverb gives this lesson its shape. The Hebrew word translated “purpose” is ʿēṣâ. It often means counsel or a plan, the intention someone holds and acts on. The proverb says that what a person intends can lie in the heart like deep water: real, and hard to reach. Then the verb. A man of understanding will “draw it out”. The Hebrew verb is dālâ, the ordinary word for drawing water. The same verb is used when Moses draws water for the flock in Exodus chapter 2. Understanding does not invent what is in the heart. It patiently brings up what is already there.", "7": "Proverbs is speaking about understanding another person, and you will need that skill. In this lesson we first turn it towards ourselves. Before you can tell your partner what you expect, you need to draw up what is in your own heart, in the lamplight of God’s presence, not alone with your anxieties. What comes up will not all be the same. Some will be fresh and right, and should be said clearly. Some will be inherited, and you may not want to keep it. But you cannot judge what you have never drawn up.", "8": "Our first point is how you find out what you expected. The expectations can be about anything. Money, and how much is discussed before it is spent. Whether one of you is expected to notice what needs doing without being told. Church, and whether you go together. Your parents, and how much say they have. None of these will feel like expectations to you. They will feel like the way things are. The most useful question I know for surfacing them is this: when have I thought, about anyone, not only my partner, “of course they should have known better”? That sentence can point to an unnamed expectation. But some standards, including honesty and freedom from harm, are not merely personal preferences. A strong reaction is worth understanding: what happened, what did I expect, and was a reasonable boundary crossed?", "9": "Now a caution, because this can be misread in two directions. It does not mean every expectation you hold should be surrendered. Some of your expectations are entirely right, and you should state them clearly and hold to them. Anyone who concludes that all their needs are just baggage has learned the wrong lesson, and will be easier to mistreat afterwards. Nor does it mean every strong reaction was an overreaction. Sometimes the other person really did behave badly. The goal is narrower than that, and harder. Find it. Trace where it came from. Then decide, deliberately, whether it needs to be communicated, adjusted, or let go. That is why you do this alone first. Alone you can discover what is actually there.", "10": "Our second point is the rules you never knew were rules. Your definition of normal was assembled somewhere: your family, your culture, your church. You did not choose it. You absorbed it, and stopped noticing it, the way you stopped noticing your own accent. The person you are marrying assembled theirs somewhere else. He assumes that couples who love each other check in during the day. She grew up where everyone was busy and nobody expected to hear from anyone. Then one evening he says, “You didn’t check on me once today. If you really cared, you would have.” And she is genuinely bewildered: “Why would I? I was at work.” Their preferred levels of contact differ, and that can be discussed. But “If you really cared” turns one preference into a test of love. So before you conclude that your partner is uncaring, ask: have they broken an agreement we made, or a rule I never told them existed? A broken agreement calls for accountability; an unspoken expectation calls for clarification. Neither excuses disrespect or harm.", "11": "Three questions help bring these rules to the surface. They work better than asking yourself directly what you expect, because they approach from the side. What did my family always do that I assumed every married couple does? What would genuinely surprise me if my spouse didn’t do it? And the sharpest of the three: what would make me think something is wrong with our marriage, even if my spouse saw nothing wrong at all? The answers are rarely dramatic. Married couples eat dinner together, or they eat separately when schedules differ. Holidays belong to the wider family, or to the two of you. Big decisions are discussed, or one of you simply makes them. Almost none of these has ever been said out loud, because to the person holding them they are not opinions. They are simply how a marriage works.", "12": "For Christian couples: some of what you consider normal genuinely is biblical conviction. Much of it is your culture, your church tradition, or your parents’ marriage wearing biblical clothing. In Rome, believers disagreed about food and special days. Paul wrote, “One person esteems one day as better than another, while another esteems all days alike. Each one should be fully convinced in his own mind.” Paul is speaking there about matters of conscience among believers in a church, not about marriage. But the principle helps us here: not every custom is a command. When one person’s family customs are treated as God’s requirements, the other person is no longer free to discuss them honestly. A family tradition has been given an authority that Scripture itself may not give it.", "13": "Our third point is preference, conviction or deal-breaker. Not every expectation carries the same weight, and much trouble comes from failing to sort them. A preference is something you would like and can live without. “I’d prefer we spend most evenings together.” That is worth saying and negotiating, but an evening with friends is not evidence that something is wrong. A conviction is something you hold because of your faith, your values, or your understanding of what a marriage is. “I believe our marriage should be built on Christ.” Two people with genuinely different convictions here are not disagreeing about evenings. They are proposing to build different buildings on the same plot. A deal-breaker is something you cannot accept in a marriage at all. “I cannot marry someone who does not want children.” That may be a genuine incompatibility. Do not decide its importance for each other. And intimidation or violence is not simply another preference to negotiate.", "14": "The most common failure is inflation: treating preferences as convictions, and convictions as deal-breakers. Within a few sentences, “I would prefer” becomes “If you loved me, you would.” That turns a preference into a test of love. Your partner can love you entirely and still not have known you wanted the dishes done before bed. There is a quieter failure in the opposite direction. Some people deflate everything. They talk themselves out of every expectation and arrive at the wedding having agreed to a marriage they never wanted. That is not humility. That is Lesson 1 with better vocabulary. Two questions do most of the sorting. Is this something I need, something I believe, or something I simply like? And, if my partner never changed on this, could we still have a healthy marriage? These categories help you think, but they are not completely separate. A conviction may also be a deal-breaker. The question is not only what you believe, but whether you could freely and wisely marry someone who disagrees with you about it. And one warning: do not call something a deal-breaker because you are angry about it today. If you discover a serious concern, you may pause, and seek advice.", "15": "Jesus gave a picture that belongs here. “Why do you see the speck that is in your brother’s eye, but do not notice the log that is in your own eye? Or how can you say to your brother, ‘Let me take the speck out of your eye,’ when there is the log in your own eye? You hypocrite, first take the log out of your own eye, and then you will see clearly to take the speck out of your brother’s eye.” Jesus warns against judging others while excusing ourselves. He does not forbid helping a brother: look at yourself first, and then you will see clearly. Here is a specifically Christian trap. It is easy to reclassify a preference as a conviction by attaching a verse to it. Then your partner cannot disagree with you without appearing to disagree with God, which is exactly what rule four from Lesson 2 forbids. If you find yourself reaching for a verse to give weight to something that was, an hour ago, just what you wanted, stop. A genuine biblical conviction should be examined through Scripture, not defended by attaching an isolated verse to something we simply prefer.", "16": "Our fourth point is to say what you actually want. Couples tell me they agree about money, children and faith. Then I ask what that means in practice, and the room goes quiet. They have exchanged headlines, not the article underneath. So get specific. Money: joint accounts or separate, and how much can either of you spend without asking? Sex: what do you each expect, and what were you each taught, at home and in church? Some of that teaching was good, and some was fear dressed as holiness. Children: how many, when, and what if it does not happen? Church: every Sunday, the same church, and how much ministry? Family: how often you visit, and how much say parents have. Then say it plainly. This is what I want. This is why I want it. This is what I would be hoping for from you. What do you want? Without that last sentence, you have issued terms. And if you discover that you do not know what you want, “I don’t know” is a real answer. Write it down.", "17": "Let us bring it together. Disappointment can reveal what you expected. Some of your firmest rules were never spoken. Sort them honestly: preference, conviction or deal-breaker. And say what you actually want, and ask what your partner wants. Draw up what is there, before God, and you will bring something true to the conversations ahead. That is how two chairs turn, a little more towards each other.", "18": "Now the exercise: the Private Inventory. Read this first: your answers are not shared with your partner through this course. Nothing you type here is saved. If you keep a written copy, choose somewhere private. Written for nobody, an inventory produces the answers that are actually there. Take several sittings. Part One is this lesson’s three questions. Part Two takes the five areas. For each, write what you want, specifically. Then write where it came from: your family, your church, a past relationship, or your own thinking. Then mark it P, C or D. Never downgrade a safety concern. Part Three asks three hard questions, including this one: is there anything I have been hoping marriage will change? Marriage does not usually change these things. It reveals them. Begin with one small step: finish the sentence, “Of course they should have known…”", "19": "When you are ready, come together. But first, if either of you is afraid of how the other will respond, do not do the together part. Stop, and speak with someone you trust on your own first. For everyone else, do something very limited. Do not exchange inventories. Instead, each of you answers one question out loud: what surprised you about your own answers? Not what you wrote, but what surprised you about it. If you both feel comfortable, you may agree that you will use your private inventories to prepare for the rooms ahead. You do not have to exchange your private pages, and neither person needs to disclose an answer before they are ready. And write the date you expect to begin Lesson 6, the first room.", "20": "Remember these words of Scripture. “The purpose in a man’s heart is like deep water, but a man of understanding will draw it out.” And, “Search me, O God, and know my heart!” The God who already knows you is the safest place to begin telling yourself the truth.", "21": "Let us pray. If you are watching together, you may like to pray this aloud together. Lord God, you have searched us and known us. Search our hearts now, and show us what is there. Help us to tell the difference between what we prefer, what we believe, and what we truly need. Keep us from using your word to win, and give us courage to say plainly what we want. Lead us in the way everlasting. In Jesus’ name. Amen. You do not have to finish your inventory today. When you are ready, begin with one sentence. Then stop here for today, or continue to Lesson 4."};
+const TIMES = {"1": [0.14, 0.56, 1.27, 1.59, 1.74, 3.09, 3.29, 3.46, 4.41, 5.4, 5.53, 5.65, 6.72, 7.27, 7.35, 8.5, 8.59, 9.13, 9.34, 10.16, 10.39, 10.81, 10.9, 12.43, 12.68, 13.21, 13.34, 13.66, 14.35, 15.29, 15.64, 15.82, 16.52, 16.75, 16.88, 16.96, 18.04, 18.27, 18.4, 18.56, 19.27, 19.4, 19.72, 20.9, 21.04, 21.47, 22.02, 22.37, 22.47, 22.64, 22.97, 23.8, 24.17, 24.36, 25.66, 25.81, 25.91, 26.41, 26.54, 26.84, 27.56, 27.68, 28.14, 28.35, 28.73, 28.99, 29.37, 29.61, 30.58, 30.83, 30.98, 31.22, 31.71, 32.65, 32.84, 33.14, 33.31, 33.46, 33.69], "2": [34.71, 34.98, 35.34, 35.78, 36.09, 36.31, 36.57, 36.69, 37.35, 37.53, 37.57, 38.74, 39.16, 39.44, 39.61, 40.58, 40.74, 41.13, 42.22, 42.36, 42.46, 42.75, 43.74, 43.93, 44.61, 45.02, 45.32, 46.17, 46.27, 46.63, 47.47, 47.62, 47.89, 47.94, 48.2, 48.71, 48.9, 49.4, 49.55, 49.73, 50.44, 50.78, 51.24, 51.42, 52.11, 52.58, 53.13, 53.34, 53.53, 53.68, 54.9, 55.15, 55.35, 55.74, 56.64, 56.77, 56.81, 57.07, 57.25, 58.14, 58.5, 59.57, 59.83, 60.01, 60.94, 61.22, 61.4, 61.53, 62.04, 62.16, 62.27, 62.5, 63.6, 63.79, 64.14, 64.95, 65.13, 65.47, 65.75, 65.89, 66.1, 66.4, 66.55, 66.84, 67.41, 67.89, 68.08, 68.2, 68.52, 68.66, 68.85, 69.67, 69.8, 70.86, 71.56, 71.89, 72.17, 72.38, 72.53, 72.97, 73.5, 73.66, 74.09, 74.37, 74.64, 75.05, 75.2, 75.34, 75.65, 76.87, 77.05, 77.26, 77.7, 78.04, 79.37, 79.57, 79.86, 79.91, 80.36, 81.2, 81.32, 81.53, 82.44, 82.72, 83.37, 83.57, 83.96, 84.23, 84.55, 84.89, 84.99, 85.12, 85.39, 85.48, 85.72, 86.4, 86.74, 86.84, 87.66, 87.75, 87.97, 88.36, 88.46, 89.46, 89.66, 90.68, 90.85, 90.99, 91.47, 91.8, 92.27, 92.65, 93.34, 94.24, 94.57, 95.2, 95.37, 96.37, 96.6, 97.27, 97.56, 97.9, 98.11, 98.45, 98.68], "3": [99.71, 99.96, 100.35, 100.47, 100.72, 100.84, 101.04, 102.23, 102.53, 102.93, 103.01, 104.14, 104.29, 104.83, 104.96, 105.02, 105.48, 106.38, 106.98, 108.14, 109.38, 109.46, 110.01, 110.22, 110.26, 110.66, 111.15, 111.32, 111.57, 111.93, 112.96, 113.09, 113.16, 113.6, 113.7, 114.73, 114.9, 115.24, 115.35], "4": [116.22, 116.4, 117.17, 117.55, 117.64, 118.16, 118.39, 119.01, 121.88, 122.34, 122.55, 122.72, 123.39, 123.6, 123.8, 124.02, 124.83, 125.21, 125.75, 125.97, 126.2, 126.42, 127.72, 127.94, 128.46, 128.63, 128.84, 129.19, 129.55, 130.12, 130.44, 130.6, 131.33, 131.52, 131.88, 132.23, 132.38, 132.44, 132.93], "5": [134.03, 134.52, 134.66, 134.71, 134.99, 135.09, 135.49, 136.09, 136.21, 136.75, 136.98, 137.56, 138.77, 138.87, 139.03, 139.2, 139.28, 139.51, 139.81, 140.94, 141.11, 141.29, 141.82, 142.13, 142.35, 142.66, 144.05, 144.15, 144.28, 144.54, 144.85, 145.19, 145.27, 145.51, 145.69, 145.83, 146.06, 146.28, 146.41, 146.91, 147.04, 147.08, 147.57, 148.48, 148.61, 148.68, 149.06, 149.26, 149.74, 149.96, 150.92, 151.1, 151.45, 151.89, 152.26, 153.16, 153.3, 153.45, 153.63, 153.87, 154.17, 154.32, 154.48, 155.55, 157.3, 158.23, 158.42, 159.29, 159.44, 159.58, 160.12, 160.48, 160.95, 161.3, 162.07, 162.26, 162.62, 162.79, 163.19, 163.78, 163.86, 164.27, 164.45, 165.04, 165.44, 165.61, 166.35, 166.48, 166.9, 167.05, 168.17, 169.19, 169.46, 169.82, 170.55, 170.84, 171.34, 171.92, 172.5, 172.98, 173.84, 174.01, 174.19, 174.51, 174.94, 175.38, 176.34, 176.7, 177.17, 177.77, 177.92, 178.35, 178.61, 178.98, 179.21], "6": [180.21, 180.45, 180.73, 180.84, 181.06, 181.45, 181.78, 182.01, 182.38, 182.55, 183.66, 183.76, 184.17, 184.45, 185.14, 185.76, 186.18, 187.34, 187.47, 187.8, 188.1, 188.79, 188.97, 189.01, 190.06, 190.21, 190.89, 191.32, 191.92, 192.16, 192.55, 193.49, 193.56, 194.03, 194.47, 194.75, 194.95, 195.01, 195.46, 196.16, 196.34, 196.63, 196.78, 196.86, 197.34, 197.63, 197.91, 198.89, 199.53, 199.7, 200.07, 200.28, 201.45, 201.82, 201.91, 202.78, 202.86, 203.18, 203.28, 204.09, 204.67, 205.19, 205.5, 206.66, 206.77, 207.23, 207.58, 208.22, 209.08, 209.25, 209.87, 210.25, 210.42, 211.0, 212.25, 212.33, 212.74, 213.05, 213.23, 213.55, 213.72, 214.26, 214.65, 215.09, 215.26, 215.36, 215.98, 216.12, 216.83, 218.29, 219.31, 219.55, 219.88, 220.48, 220.74, 220.88, 221.07, 221.15, 222.32, 222.56, 223.24, 223.7, 224.0, 224.34, 224.51, 225.04], "7": [226.02, 226.85, 227.06, 227.86, 228.4, 229.53, 230.05, 231.09, 231.3, 231.52, 231.75, 232.2, 232.47, 233.67, 233.8, 234.04, 234.68, 234.81, 235.3, 235.55, 235.72, 236.24, 237.69, 238.11, 238.27, 238.45, 238.71, 238.89, 239.42, 239.72, 239.85, 240.89, 241.07, 241.39, 241.51, 242.0, 242.24, 242.44, 242.59, 242.72, 242.95, 243.26, 244.16, 244.31, 244.41, 245.17, 245.35, 245.72, 246.63, 246.91, 247.39, 247.6, 247.8, 249.18, 249.44, 249.82, 250.04, 250.25, 250.56, 250.83, 251.01, 251.11, 252.25, 252.55, 252.71, 252.84, 253.31, 253.52, 254.28, 254.45, 254.67, 254.78, 255.05, 256.15, 256.45, 256.61, 256.74, 257.83, 257.99, 258.11, 258.26, 258.54, 258.76, 258.85, 259.16, 259.94, 260.12, 260.26, 260.69, 261.44, 261.64, 261.77, 261.93, 262.38, 262.74], "8": [263.52, 263.69, 264.23, 265.05, 265.2, 265.51, 265.69, 266.16, 266.41, 266.7, 266.84, 268.2, 268.34, 269.37, 269.56, 269.72, 270.09, 271.29, 272.1, 272.25, 272.48, 272.86, 273.01, 273.71, 274.13, 274.22, 274.32, 275.48, 275.82, 276.06, 276.16, 276.43, 276.58, 277.24, 277.34, 277.81, 278.08, 278.51, 278.89, 279.28, 279.58, 280.51, 281.43, 281.62, 281.85, 282.07, 282.28, 283.17, 283.31, 284.28, 284.43, 284.59, 284.89, 285.18, 285.37, 286.28, 286.57, 286.71, 287.01, 287.18, 287.62, 287.91, 289.03, 289.15, 289.78, 289.91, 290.1, 290.64, 290.93, 291.01, 291.35, 291.75, 292.4, 292.47, 292.8, 293.3, 293.78, 293.89, 294.14, 294.29, 294.92, 295.13, 295.31, 296.65, 296.96, 297.2, 297.33, 298.12, 298.54, 299.57, 299.86, 300.17, 300.39, 301.54, 301.68, 302.13, 302.26, 302.5, 302.63, 302.99, 304.1, 304.39, 305.07, 305.38, 305.78, 305.97, 306.21, 306.87, 308.91, 309.12, 309.39, 310.25, 310.87, 311.81, 311.97, 312.42, 312.65, 313.61, 313.75, 314.16, 314.67, 315.31, 316.93, 316.98, 317.49, 318.25, 318.42, 318.79, 320.04, 320.23, 321.05, 321.37, 321.53, 321.66, 322.52, 322.68, 322.94, 322.99, 323.7, 324.17], "9": [325.42, 325.99, 326.06, 327.11, 327.5, 327.76, 328.0, 328.16, 328.83, 328.98, 329.24, 330.49, 330.68, 330.91, 331.24, 331.5, 332.11, 333.03, 333.23, 333.86, 334.18, 334.32, 335.36, 335.64, 335.73, 335.89, 336.78, 337.0, 337.72, 338.4, 338.56, 338.72, 338.94, 339.38, 339.52, 340.22, 340.41, 340.75, 340.84, 341.73, 342.08, 342.27, 342.99, 343.27, 343.61, 343.79, 344.25, 344.38, 344.91, 345.72, 345.94, 346.45, 346.6, 347.0, 348.04, 348.18, 348.35, 348.65, 349.11, 349.29, 350.09, 351.37, 351.66, 351.86, 352.0, 352.35, 352.82, 353.28, 353.91, 354.17, 354.4, 356.05, 356.81, 356.95, 357.14, 357.77, 358.26, 358.74, 359.31, 360.31, 360.38, 360.69, 360.85, 361.38, 361.61, 362.16, 362.33, 363.35, 363.77, 364.42, 364.84, 365.05, 365.17, 365.49, 366.3, 366.51, 367.42, 368.58, 368.8, 368.91, 369.23, 369.31, 369.44, 370.67, 371.58, 371.72, 372.03, 373.01, 373.26, 373.4, 373.61, 373.84, 374.04, 374.26, 374.7, 375.86, 376.34, 376.5, 376.67, 377.23, 377.49, 377.72, 378.23], "10": [379.26, 379.41, 379.84, 380.15, 380.35, 380.44, 380.95, 381.08, 381.54, 381.86, 382.12, 383.29, 383.49, 384.15, 384.27, 384.82, 385.1, 385.76, 386.84, 386.96, 387.83, 388.01, 388.86, 389.04, 390.09, 390.2, 390.37, 390.7, 391.08, 391.99, 392.2, 392.77, 393.39, 393.57, 394.12, 394.74, 395.43, 395.51, 395.79, 396.03, 396.56, 397.19, 397.45, 397.71, 398.98, 399.05, 399.59, 399.78, 399.86, 400.9, 401.59, 401.92, 402.48, 403.62, 403.78, 404.32, 404.52, 404.99, 405.09, 405.34, 405.55, 405.92, 406.26, 406.52, 406.83, 406.95, 407.89, 408.07, 408.37, 408.57, 408.82, 409.29, 409.54, 409.99, 410.17, 410.63, 411.2, 411.29, 411.6, 411.84, 412.82, 413.24, 413.48, 413.88, 414.03, 414.96, 415.09, 415.39, 415.69, 415.84, 415.99, 416.42, 417.56, 417.69, 417.86, 418.12, 418.94, 419.05, 419.24, 420.01, 420.19, 420.57, 420.79, 421.51, 422.57, 423.03, 423.37, 424.18, 424.39, 424.64, 424.8, 425.8, 425.98, 426.61, 427.04, 427.16, 427.85, 428.38, 428.82, 429.12, 429.33, 429.47, 430.92, 431.05, 431.18, 431.41, 431.85, 432.8, 433.17, 433.59, 434.23, 434.63, 434.68, 435.1, 435.22, 436.06, 436.54, 437.0, 437.23, 437.84, 438.04, 438.2, 438.74, 438.92, 440.27, 441.2, 441.47, 441.69, 442.24, 442.37, 443.01, 443.16, 444.02, 444.27, 444.3, 444.84, 444.97, 445.31, 445.68, 445.85, 447.16, 447.38, 448.0, 448.68, 449.18, 449.4, 451.0, 451.27, 452.14, 453.18, 453.68, 453.84, 455.58, 455.94, 456.81, 457.69, 457.95], "11": [459.06, 459.35, 459.95, 460.24, 460.62, 460.87, 461.3, 461.41, 461.51, 462.8, 462.96, 463.27, 463.68, 463.89, 464.36, 464.78, 465.42, 465.66, 465.78, 466.83, 467.17, 467.33, 467.81, 468.08, 468.15, 469.42, 469.68, 469.9, 470.08, 470.66, 471.21, 471.5, 471.68, 471.86, 472.41, 472.87, 473.36, 473.76, 475.08, 475.43, 475.67, 476.42, 477.1, 477.52, 477.67, 477.85, 478.54, 478.92, 479.14, 480.04, 480.36, 480.43, 481.2, 481.31, 481.4, 482.42, 482.65, 482.8, 483.09, 483.28, 483.63, 484.23, 484.36, 484.75, 484.93, 485.09, 486.07, 486.44, 486.59, 486.77, 487.26, 487.48, 488.01, 488.32, 488.44, 489.32, 489.47, 490.02, 490.2, 490.67, 491.89, 492.25, 492.72, 492.89, 493.22, 494.06, 494.2, 494.43, 494.6, 495.25, 495.47, 496.14, 497.24, 497.83, 498.25, 498.38, 498.47, 498.95, 499.96, 500.24, 500.4, 500.52, 500.84, 500.94, 501.81, 502.06, 502.65, 502.74, 503.79, 503.91, 504.15, 504.24, 504.37, 504.77, 505.12, 505.93, 506.36, 506.63, 506.74, 507.08, 507.35, 507.59, 507.77, 508.0, 508.18, 508.97, 509.29, 509.4, 509.5, 509.87, 510.37, 510.94, 511.07, 511.2, 511.59, 512.63, 512.77, 512.88, 513.69, 514.02, 514.05, 514.46], "12": [515.71, 515.92, 516.42, 517.41, 517.73, 517.86, 518.07, 518.18, 518.67, 519.58, 520.6, 520.77, 521.36, 522.61, 522.9, 523.0, 523.18, 523.37, 523.5, 524.48, 524.61, 525.05, 526.0, 526.22, 526.42, 526.87, 527.33, 527.76, 528.24, 529.09, 529.25, 530.12, 530.82, 531.48, 531.78, 532.31, 532.47, 532.96, 534.16, 534.43, 535.43, 535.71, 536.19, 536.75, 537.08, 537.83, 538.03, 538.38, 538.58, 539.54, 539.73, 540.15, 540.84, 541.17, 541.51, 542.47, 542.84, 543.24, 543.5, 543.65, 544.17, 544.93, 545.09, 545.35, 545.71, 546.87, 547.21, 547.32, 547.85, 548.13, 548.42, 548.9, 549.01, 549.86, 550.2, 550.76, 550.88, 550.93, 551.74, 552.07, 552.46, 553.77, 553.99, 554.11, 554.68, 555.05, 555.21, 556.25, 556.62, 556.99, 557.59, 557.73, 557.78, 558.83, 559.23, 559.53, 560.04, 560.49, 561.07, 561.2, 561.65, 561.87, 562.31, 563.58, 563.77, 564.01, 564.64, 564.82, 565.03, 565.5, 565.93, 566.08, 566.65, 566.98, 568.24, 568.31, 568.88, 569.53, 569.75, 569.94, 570.27, 570.38, 571.14, 571.31, 571.94, 572.54, 572.77, 573.01, 573.21], "13": [574.07, 574.26, 574.66, 575.05, 575.55, 576.52, 577.42, 577.57, 577.9, 579.15, 579.49, 579.85, 580.79, 581.25, 581.36, 581.75, 582.8, 582.95, 583.32, 583.68, 584.15, 584.38, 584.92, 585.04, 585.45, 586.04, 586.17, 586.99, 587.14, 587.65, 587.79, 587.96, 588.74, 589.0, 589.26, 589.61, 590.59, 590.81, 591.19, 591.36, 591.72, 592.13, 592.71, 593.93, 594.09, 594.22, 594.47, 594.98, 595.08, 596.25, 596.42, 596.53, 597.04, 597.22, 598.04, 598.24, 598.57, 599.07, 599.23, 599.78, 599.91, 600.95, 601.07, 601.8, 601.97, 602.5, 602.68, 603.19, 603.57, 603.68, 603.83, 604.71, 604.9, 605.87, 606.17, 606.4, 607.29, 607.46, 607.68, 607.73, 608.26, 609.36, 609.61, 610.1, 610.33, 610.89, 611.15, 611.34, 611.66, 611.8, 612.87, 613.27, 613.76, 614.04, 614.8, 615.36, 616.13, 616.81, 616.98, 617.52, 618.26, 618.68, 619.86, 620.15, 620.38, 621.09, 621.21, 621.7, 622.23, 622.89, 623.1, 623.17, 623.71, 624.88, 624.95, 625.4, 626.29, 626.4, 626.9, 627.05, 627.42, 628.07, 628.21, 628.24, 628.75, 629.05, 630.12, 630.36, 630.78, 631.12, 631.8, 631.9, 632.12, 632.38, 632.64, 633.83, 634.1, 634.29, 634.48, 634.53, 635.17, 637.17, 637.35, 637.6, 638.12, 638.31, 638.97, 639.16, 639.37, 640.3, 640.46, 641.46, 641.74, 642.64, 642.81, 643.05, 643.58, 643.86, 644.51, 644.62], "14": [646.15, 646.23, 646.57, 646.98, 647.82, 647.99, 649.28, 649.67, 650.73, 651.0, 652.13, 652.32, 653.36, 653.61, 653.97, 655.33, 655.61, 655.65, 655.91, 657.07, 657.28, 657.52, 658.01, 659.03, 659.21, 659.4, 659.75, 660.19, 660.32, 661.54, 661.76, 662.08, 662.18, 662.77, 663.05, 663.1, 663.47, 663.56, 664.32, 664.58, 665.14, 665.44, 665.72, 665.98, 666.95, 667.15, 667.66, 667.9, 668.11, 668.53, 668.68, 669.14, 669.23, 669.77, 670.11, 670.56, 671.63, 671.8, 671.91, 671.95, 672.54, 673.09, 673.24, 673.38, 673.78, 674.89, 675.2, 675.52, 676.14, 677.23, 677.37, 677.69, 678.27, 678.43, 678.62, 678.98, 680.22, 680.36, 680.8, 680.91, 680.97, 681.37, 681.71, 682.14, 682.31, 682.34, 682.9, 683.06, 683.4, 684.64, 684.8, 684.95, 685.26, 686.47, 686.7, 686.87, 688.13, 688.34, 688.76, 690.31, 690.54, 691.21, 691.43, 691.79, 691.87, 691.97, 693.24, 693.42, 693.61, 694.08, 694.23, 694.93, 695.42, 695.61, 696.42, 696.68, 697.15, 697.26, 697.72, 698.72, 699.58, 699.73, 699.92, 700.42, 700.75, 701.26, 701.43, 702.18, 702.36, 702.51, 702.88, 703.09, 703.15, 703.58, 704.91, 705.24, 706.08, 706.41, 706.57, 707.64, 707.83, 707.99, 708.13, 708.56, 709.26, 710.51, 710.62, 711.37, 711.6, 712.14, 712.4, 712.44, 712.83, 714.0, 714.08, 714.86, 715.04, 715.42, 715.8, 716.11, 716.22, 717.19, 717.32, 717.66, 717.87, 718.05, 718.77, 718.96, 719.59, 720.02, 720.46, 720.66, 721.35, 721.53, 721.7, 722.04, 722.91, 723.08, 723.31, 724.31, 724.59, 724.88, 725.19, 725.81, 725.94, 726.39, 726.88, 727.33, 727.7, 728.05, 728.57, 728.9, 729.05, 730.16, 730.27, 730.47, 731.1, 731.16, 731.76, 732.82, 732.95, 733.11, 733.99, 734.18, 734.48], "15": [735.78, 736.19, 736.44, 736.55, 737.07, 737.31, 737.9, 739.03, 739.24, 739.36, 739.5, 739.85, 739.97, 740.56, 740.74, 740.94, 741.08, 741.26, 741.78, 742.49, 742.67, 742.84, 743.11, 743.57, 743.68, 744.19, 744.35, 744.53, 744.66, 744.92, 745.3, 746.34, 747.07, 747.35, 747.55, 747.67, 747.97, 748.1, 748.25, 749.1, 749.39, 749.52, 749.9, 749.98, 750.49, 750.72, 750.82, 751.06, 751.69, 752.0, 752.26, 752.42, 752.53, 753.01, 753.2, 753.44, 753.79, 754.58, 754.82, 755.79, 756.18, 756.47, 756.55, 757.07, 757.26, 757.36, 757.59, 757.98, 758.79, 759.1, 759.39, 759.57, 759.71, 760.01, 760.57, 760.7, 760.98, 761.06, 761.65, 761.84, 761.95, 762.11, 762.62, 763.55, 763.95, 764.35, 764.76, 765.24, 765.65, 765.89, 766.58, 767.87, 768.0, 768.21, 768.42, 768.81, 769.28, 769.33, 770.23, 770.43, 770.57, 771.03, 771.94, 772.13, 772.37, 772.53, 772.67, 772.99, 774.28, 774.7, 774.88, 774.92, 775.89, 776.58, 777.59, 777.73, 777.92, 778.41, 778.65, 779.62, 779.67, 780.33, 780.57, 780.62, 781.82, 781.99, 782.65, 782.7, 783.18, 783.38, 784.28, 784.52, 784.71, 785.18, 785.64, 786.15, 786.34, 786.9, 787.32, 787.81, 787.91, 788.45, 788.66, 789.43, 789.61, 789.74, 790.45, 790.76, 791.08, 791.54, 791.82, 792.56, 793.98, 794.18, 794.38, 794.77, 795.23, 795.71, 795.93, 795.98, 796.49, 796.6, 796.9, 797.41, 797.53, 798.06, 798.27, 799.1, 799.4, 799.79, 800.6, 800.98, 801.21, 801.32, 802.34, 803.58, 803.72, 804.44, 805.08, 805.93, 806.17, 806.31, 806.96, 807.19, 808.25, 808.56, 809.15, 809.36, 809.95, 810.15, 810.93, 811.38, 811.49, 812.02, 812.15, 812.58], "16": [813.47, 813.6, 814.06, 814.42, 814.6, 814.7, 815.13, 815.45, 815.66, 816.24, 817.07, 817.6, 817.85, 818.06, 818.26, 818.72, 819.07, 819.79, 820.41, 820.62, 821.49, 821.67, 821.84, 822.29, 822.48, 822.69, 823.04, 823.18, 824.17, 824.34, 824.42, 824.79, 825.09, 825.92, 826.16, 826.33, 826.99, 828.03, 828.37, 828.51, 829.18, 830.52, 830.88, 831.32, 832.62, 833.69, 834.06, 834.6, 834.89, 835.96, 836.18, 836.41, 836.8, 837.05, 837.52, 837.63, 837.82, 838.36, 838.87, 839.91, 841.13, 841.38, 841.53, 841.77, 842.05, 843.23, 843.43, 843.79, 843.96, 844.3, 844.6, 845.43, 845.62, 846.38, 846.64, 846.81, 848.01, 848.37, 848.51, 848.8, 849.27, 849.48, 849.85, 850.33, 850.7, 850.96, 851.36, 851.83, 851.96, 853.03, 854.05, 854.21, 854.99, 855.77, 855.94, 856.18, 856.31, 856.43, 856.67, 856.86, 857.94, 858.83, 859.2, 859.77, 860.04, 860.47, 861.2, 861.37, 861.65, 862.03, 863.09, 863.94, 864.21, 864.68, 864.83, 865.52, 865.73, 865.95, 866.3, 866.58, 867.07, 868.08, 868.5, 868.84, 869.09, 870.24, 870.7, 870.89, 871.34, 871.62, 872.74, 873.12, 873.37, 873.97, 874.21, 874.73, 875.49, 875.81, 876.07, 876.46, 876.62, 876.86, 877.05, 877.62, 877.96, 878.26, 879.14, 879.48, 879.66, 879.92, 880.98, 881.43, 881.7, 882.24, 883.36, 883.54, 883.71, 884.32, 885.3, 885.46, 885.59, 885.71, 886.23, 886.49, 886.6, 886.76, 887.08, 887.26, 887.58, 887.69, 888.77, 888.96, 889.23, 889.51, 889.68, 889.74, 890.14, 891.26, 891.58, 891.75], "17": [892.86, 893.05, 893.19, 893.48, 893.63, 894.84, 895.72, 895.94, 896.45, 896.7, 896.81, 898.14, 898.43, 898.54, 898.71, 899.32, 899.82, 899.95, 900.25, 901.24, 901.64, 901.82, 903.06, 904.02, 905.06, 905.22, 905.65, 906.77, 906.93, 907.23, 907.49, 907.63, 908.13, 908.92, 909.1, 909.6, 909.8, 909.92, 910.37, 911.39, 911.86, 912.05, 912.27, 912.42, 913.05, 913.44, 914.3, 914.46, 914.61, 914.8, 915.07, 915.57, 916.04, 916.16, 916.26, 917.23, 917.97, 918.23, 918.37, 918.62, 919.04, 919.55, 920.54, 920.62, 921.03, 921.37, 922.03, 922.34], "18": [923.34, 923.65, 923.79, 924.83, 924.92, 925.44, 926.52, 926.85, 927.07, 927.79, 928.08, 928.66, 928.82, 929.12, 929.5, 929.64, 929.82, 930.25, 930.52, 930.73, 931.48, 931.91, 932.06, 932.4, 932.79, 932.93, 934.17, 934.3, 934.43, 934.67, 934.71, 935.06, 935.87, 936.33, 936.72, 938.08, 938.4, 938.56, 939.51, 939.71, 940.39, 941.13, 941.29, 941.85, 941.99, 942.13, 942.69, 943.78, 944.02, 944.46, 945.59, 945.9, 946.33, 946.53, 946.76, 947.32, 947.63, 948.74, 949.07, 949.38, 949.72, 949.8, 950.18, 951.15, 951.39, 952.1, 952.42, 952.64, 952.75, 953.43, 954.96, 955.16, 955.49, 955.72, 955.84, 956.15, 956.84, 956.97, 957.55, 957.72, 958.73, 958.78, 959.2, 960.35, 960.5, 960.72, 961.04, 962.23, 962.43, 962.75, 962.97, 963.78, 964.62, 964.77, 965.83, 966.17, 967.06, 967.12, 967.66, 968.83, 969.25, 969.71, 970.32, 970.75, 971.22, 972.4, 973.02, 973.26, 974.21, 974.41, 974.58, 975.15, 975.38, 975.58, 975.78, 976.28, 976.76, 977.01, 978.25, 978.9, 979.11, 979.43, 980.12, 980.62, 980.9, 981.35, 981.51, 982.18, 983.05, 983.52, 983.72, 984.21, 984.75, 985.7, 986.07, 986.16, 987.35, 987.52, 988.06, 988.23, 988.48, 988.63], "19": [989.68, 989.93, 990.1, 990.21, 990.99, 991.3, 992.3, 992.51, 993.61, 993.9, 994.29, 994.4, 994.6, 994.73, 995.49, 995.61, 995.92, 996.12, 996.46, 996.68, 997.82, 998.02, 998.27, 998.52, 998.63, 999.08, 999.88, 1000.8, 1000.99, 1001.46, 1001.6, 1002.12, 1002.32, 1002.87, 1003.1, 1003.34, 1003.66, 1004.96, 1005.11, 1005.52, 1006.19, 1006.42, 1006.94, 1007.3, 1008.37, 1008.5, 1008.68, 1009.26, 1010.68, 1011.6, 1011.89, 1011.99, 1012.22, 1012.79, 1013.27, 1013.85, 1014.11, 1015.06, 1015.23, 1015.88, 1016.13, 1016.44, 1016.7, 1017.07, 1018.42, 1018.71, 1018.93, 1019.11, 1019.76, 1019.96, 1020.16, 1020.89, 1021.06, 1021.39, 1022.3, 1022.45, 1022.59, 1022.98, 1023.21, 1024.19, 1024.35, 1024.65, 1025.33, 1025.59, 1025.69, 1025.86, 1026.32, 1026.48, 1027.01, 1028.2, 1028.33, 1028.91, 1029.11, 1029.21, 1029.77, 1030.92, 1031.06, 1031.23, 1031.49, 1031.74, 1031.89, 1032.55, 1032.74, 1033.24, 1034.05, 1034.23, 1034.59, 1035.1, 1035.46, 1035.58, 1036.25, 1036.35, 1036.97, 1037.43, 1037.61, 1037.78, 1038.75, 1038.96, 1039.31, 1039.4, 1039.83, 1039.98, 1040.51, 1040.65, 1041.65, 1042.63, 1042.86, 1043.31], "20": [1044.33, 1044.84, 1045.14, 1045.64, 1045.73, 1046.85, 1046.93, 1047.46, 1047.57, 1047.6, 1048.03, 1048.43, 1048.56, 1048.82, 1049.21, 1049.99, 1050.13, 1050.17, 1050.51, 1050.62, 1051.53, 1051.69, 1052.01, 1052.1, 1053.2, 1053.93, 1054.44, 1054.71, 1054.92, 1055.32, 1055.61, 1055.81, 1056.0, 1057.17, 1057.29, 1057.65, 1057.83, 1058.33, 1058.7, 1059.3, 1059.49, 1059.6, 1060.28, 1060.71, 1060.84, 1061.25, 1061.61, 1062.15, 1062.26], "21": [1063.19, 1063.39, 1063.53, 1064.57, 1064.7, 1064.88, 1064.99, 1065.42, 1066.2, 1066.34, 1066.47, 1066.75, 1066.89, 1067.22, 1067.44, 1067.85, 1068.99, 1069.25, 1070.23, 1070.35, 1070.51, 1070.99, 1071.52, 1071.71, 1072.01, 1072.99, 1073.39, 1073.54, 1073.94, 1074.83, 1075.01, 1075.35, 1075.49, 1075.78, 1075.97, 1076.91, 1077.17, 1077.38, 1077.51, 1077.81, 1077.9, 1078.41, 1079.41, 1079.6, 1079.74, 1080.92, 1081.13, 1081.26, 1082.32, 1082.49, 1082.8, 1082.96, 1083.41, 1084.46, 1084.72, 1084.93, 1085.16, 1085.65, 1085.84, 1086.28, 1086.4, 1087.35, 1087.53, 1087.75, 1087.94, 1088.56, 1088.7, 1088.97, 1089.68, 1089.98, 1090.12, 1091.05, 1091.37, 1091.67, 1091.83, 1091.92, 1092.39, 1093.67, 1093.86, 1094.41, 1095.11, 1100.96, 1101.12, 1101.31, 1101.6, 1101.83, 1101.94, 1102.37, 1102.56, 1103.28, 1104.23, 1104.58, 1104.78, 1104.92, 1105.69, 1106.09, 1106.33, 1106.75, 1108.01, 1108.28, 1108.74, 1108.99, 1109.17, 1110.06, 1110.24, 1110.87, 1110.99]};
+
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=1112.1;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('tbym-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('tbym-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=w.scrollHeight;w.style.zoom=h>avail?Math.max(.55,avail/h):1;});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>
