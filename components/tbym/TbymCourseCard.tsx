@@ -3,6 +3,7 @@ import Link from "next/link";
 import ProgressBar from "@/components/course/ProgressBar";
 import { getCourseProgress } from "@/lib/course-progress";
 import { getTbymCourse, TBYM_BASE, TBYM_SLUG } from "@/lib/tbym-course";
+import { TBYM_NEW_LIVE } from "@/lib/tbym-new-live";
 
 /**
  * Talk Before You Marry, on the members page.
@@ -32,6 +33,9 @@ export default async function TbymCourseCard() {
 
   return (
     <section className="rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+      {TBYM_NEW_LIVE && (
+        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-[#8B5E34]">Previous edition</p>
+      )}
       <h2
         className="text-2xl text-[#2B2118]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}

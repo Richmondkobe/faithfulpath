@@ -34,6 +34,8 @@ import { BYSY_PUBLISHED } from "@/lib/bysy-links";
 import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 import BysyNewEditionCard from "@/components/bysy/BysyNewEditionCard";
 import { TBYM_PUBLISHED } from "@/lib/tbym-course";
+import { TBYM_NEW_LIVE } from "@/lib/tbym-new-live";
+import TbymNewEditionCard from "@/components/tbym/TbymNewEditionCard";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
@@ -385,6 +387,8 @@ export default async function Members() {
           {/* One lesson of fourteen is written. Same reasoning as the card
               above it: built, and deliberately not reachable until the course
               is finished. */}
+          {/* The Talk Before You Marry new edition sits above the previous edition's card. */}
+          {TBYM_NEW_LIVE && <TbymNewEditionCard />}
           {TBYM_PUBLISHED && <TbymCourseCard />}
           {LBYR_PUBLISHED && <LbyrCourseCard />}
         </div>
