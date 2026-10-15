@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { socialMeta } from "@/lib/social-meta";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   articlesPageHref,
   countPublishedByCategory,
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (page === null) return { title: "Not found" };
 
   return {
-    title: `Articles — page ${page}`,
+    title: `Christian Articles on Faith and Life — page ${page}`,
     description: `Writing and teaching on faith, marriage, grief, and staying with God when it is hard — page ${page}.`,
     // Each page is its own canonical. Pointing them all at /articles would be
     // telling Google that pages two and up are duplicates, which is how their
@@ -65,7 +65,7 @@ export default async function ArticlesPage({ params }: Props) {
   if (page === null) notFound();
 
   // One list, one URL: page one lives at /articles.
-  if (page === 1) redirect("/articles");
+  if (page === 1) permanentRedirect("/articles");
 
   const [{ articles, pageCount }, counts] = await Promise.all([
     listPublishedArticlePage(page),

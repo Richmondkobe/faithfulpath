@@ -8,6 +8,8 @@ Status: Faithful Path master lesson template — Version 1.0. Adjust per topic (
 
 **Not for Following Jesus:** the four *Following Jesus* video courses (Begin, Establish, Grow, Multiply) are sold separately and arrive as reviewed, final HTML pages with their own structure. The site serves those files as they are, swapping only file paths, button links and the saving of answers (see `content/courses/following-jesus/`), so this template does not apply to them. Do not rebuild them to match it.
 
+**Checks:** `npm run verify:mind` holds *When Your Mind Won't Rest* to this template section by section. `npm run verify:lessons` holds the current editions of *The Christian Spiritual Reset*, *Before You Say Yes* and *Talk Before You Marry* (reviewed HTML pages with their own section names) to the rules they share with it: watch or listen before a collapsed transcript, completion pressed and never inferred, "Stop here for today" after completion, support offered before completion, and an honest word about where any writing goes.
+
 **Short lessons:** the standard structure should remain recognisable, but brevity is permitted. Sections should not be filled with unnecessary content merely to make the page look complete.
 
 ---

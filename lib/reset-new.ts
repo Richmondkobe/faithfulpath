@@ -5,24 +5,21 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
-import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
+import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
+import { HELP_PATH } from "@/lib/site";
 
 /*
- * The Christian Spiritual Reset, new edition: a hidden test course.
+ * The Christian Spiritual Reset: the current edition, live for members since October 2026. The
+ * previous edition is retired; its pages were removed and its old addresses
+ * redirect here (app/members/courses/[courseSlug]).
  *
- * Built alongside the live Reset (/members/courses/christian-spiritual-reset),
- * never instead of it. Three rules keep the two apart:
- *
- *  1. Its own course_slug, "christian-spiritual-reset-new". It only ever reads
- *     and writes course_progress rows with that slug, through the member's own
- *     session (RLS keeps them to their own rows). It never reads or writes the
- *     live course's progress, reflections, quiz scores or the journal.
- *  2. Its own folders: content/courses/christian-spiritual-reset-new/ for the
- *     pages and PDFs, course-media/audio/christian-spiritual-reset-new/ for the
- *     recordings. Nothing of the live course's is replaced.
- *  3. Not listed. Nothing on the site links here, the pages say noindex, and
- *     it is not in the sitemap. Members only, like the live course.
+ *  1. Its own course_slug, "christian-spiritual-reset-new". It only ever reads and writes
+ *     course_progress rows with that slug, through the member's own session
+ *     (RLS keeps them to their own rows). The previous edition's progress and
+ *     reflections stay in the database, untouched.
+ *  2. Its own folders: content/courses/christian-spiritual-reset-new/ for the pages,
+ *     course-media/audio/christian-spiritual-reset-new/ for the recordings.
+ *  3. Members only; the pages say noindex and are not in the sitemap.
  *
  * Removing it: delete this file, app/members/courses/christian-spiritual-reset-new/
  * and content/courses/christian-spiritual-reset-new/. Nothing else depends on it.
@@ -611,17 +608,23 @@ function retitle(html: string, title: string): string {
 export function playerHtml(unit: ResetNewUnit, raw: string): string {
   let html = retitle(swap(raw, GOOGLE_FONTS, SELF_HOSTED_FONTS), `${unit.label} · The Christian Spiritual Reset`);
   html = swap(html, `<audio id="aud" src="${unit.narration}"`, `<audio id="aud" src="${unitPath(unit)}/audio/${unit.narration}"`);
+  // A clear focus ring for keyboard users: some players' own style drew only a
+  // faint tint on the skip button (website audit X8). Later in the head, so it
+  // wins over the page's rule without changing it.
+  html = beforeHeadEnd(html, PLAYER_FOCUS);
   return beforeHeadEnd(html, NOINDEX);
 }
 
-// Before the switch, a "Test edition" banner; after it, a quiet bar back to the course page.
-const TEST_BANNER = RESET_NEW_LIVE
-  ? `<div data-reset style="background:#121d33;color:#f3ecd8;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">The Christian Spiritual Reset · <a href="${RESET_NEW_PATH}" style="color:#e3c98a">Course page</a></div>`
-  : `<div data-reset style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a></div>`;
+const PLAYER_FOCUS =
+  "<style data-reset>:focus-visible{outline:2px solid #e3c98a;outline-offset:2px}.skipq:focus-visible{outline:2px solid #e3c98a;outline-offset:2px}</style>";
+
+// A quiet bar back to the course page, its link a full 44px tap target.
+const COURSE_BAR = `<div data-reset style="background:#121d33;color:#f3ecd8;text-align:center;font:600 14px/1.4 'Source Sans 3',system-ui,sans-serif;padding:0 12px">The Christian Spiritual Reset · <a href="${RESET_NEW_PATH}" style="color:#e3c98a;display:inline-flex;align-items:center;min-height:44px;padding:0 6px">Course page</a></div>`;
 
 /** The unit page as the website serves it. */
 export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>): string {
   let html = retitle(swap(raw, GOOGLE_FONTS, SELF_HOSTED_FONTS), `${unit.label}: ${unit.title} · The Christian Spiritual Reset`);
+  html = transcriptHeadings(html);
   html = beforeHeadEnd(html, NOINDEX);
   html = beforeHeadEnd(html, NEVER_STALE);
 
@@ -629,7 +632,7 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
   const notes = html.match(/ *<div class="preview-note">[^<]*<\/div>\n?/g) ?? [];
   if (notes.length !== 1) throw new Error(`Expected one preview note, found ${notes.length}.`);
   html = swap(html, notes[0], "");
-  html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  html = swap(html, '<header class="top">', `${COURSE_BAR}\n<header class="top">`);
 
   // The player, from this site.
   html = swap(html, '<iframe src="player.html"', `<iframe src="${unitPath(unit)}/player"`);
@@ -642,7 +645,7 @@ export function unitHtml(unit: ResetNewUnit, raw: string, completed: Set<string>
     html = swap(
       html,
       findingHelp,
-      '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
+      `<a href="${HELP_PATH}" target="_blank" rel="noopener">Finding Help Where You Live</a>`
     );
   }
   // "See Your First 30 Days Home" and any other link to a guide page.
@@ -747,12 +750,12 @@ export function guideHtml(g: ResetNewGuide, raw: string): string {
   const notes = html.match(/ *<div class="preview-note">[^<]*<\/div>\n?/g) ?? [];
   if (notes.length !== 1) throw new Error(`Expected one preview note, found ${notes.length}.`);
   html = swap(html, notes[0], "");
-  html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  html = swap(html, '<header class="top">', `${COURSE_BAR}\n<header class="top">`);
   html = swap(html, `<a ${DEAD}>Need help?</a>`, '<a href="/contact">Need help?</a>');
   html = swap(
     html,
     `<a ${DEAD}>Finding Help Where You Live</a>`,
-    '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>'
+    `<a href="${HELP_PATH}" target="_blank" rel="noopener">Finding Help Where You Live</a>`
   );
   html = swap(html, `<a class="btn gold" ${DEAD}>Back to the course page</a>`, `<a class="btn gold" href="${RESET_NEW_PATH}">Back to the course page</a>`);
   return html;
@@ -772,7 +775,7 @@ function localDate(iso: string): string {
 }
 const LOCAL_DATES = `<script data-reset>document.querySelectorAll('time.ld').forEach(function(t){var d=new Date(t.getAttribute('datetime'));if(!isNaN(d))t.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});});</script>`;
 
-/** The test edition's own small contents page. */
+/** The course's own small contents page. */
 /** The member's record for the course page: their confirmed plan and the dated acknowledgements. */
 export type ResetRecord = { planKey?: string | null; planLabel: string | null; acks: { title: string; date: string }[] };
 
@@ -892,7 +895,7 @@ ${record.acks.length ? `<ul class="acks">${record.acks.map((a) => `<li>✓ You c
 <p><b>Day 30 Review:</b> ${reviewSavedAt ? `saved, ${localDate(reviewSavedAt)} <span class="m">(private)</span>` : `<span class="m">optional, on Lesson 16</span>`}</p>
 </section>`;
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Christian Spiritual Reset${RESET_NEW_LIVE ? "" : " · Test edition"}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
+<title>The Christian Spiritual Reset</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
 <style data-reset>
 body{margin:0;background:#f8f0e1;color:#1f2d4f;font:17px/1.55 'Source Sans 3',system-ui,sans-serif}
 header{background:linear-gradient(180deg,#121d33,#1f2d4f 60%,#4b5f84);color:#f3ecd8;padding:34px 16px 40px}
@@ -913,22 +916,15 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .rec h2{font:600 20px/1.3 'Source Serif 4',serif;margin:0 0 6px}.rec p{margin:.35em 0}.rec .m{color:#5a6577;font-size:15px}
 .rec a{color:#8a6a24}li.myplan>div{background:#f4f7f1;border:2px solid #8fa58e;border-radius:14px;padding:14px 16px}li.myplan .k2{font:600 13px/1.3 'Source Sans 3',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#4d6b4a;margin:0 0 4px}li.myplan ol{margin:.4em 0;padding-left:1.3em}li.myplan ol li{margin:.35em 0;line-height:1.4}li.myplan ol a{display:inline;background:none;border:0;padding:0;color:#1f2d4f;text-decoration:none}li.myplan ol a:hover{text-decoration:underline}li.myplan .m{font-size:15px;color:#5a6577;margin:.3em 0}li.myplan .m a{display:inline;background:none;border:0;padding:0;border-radius:0;color:#8a6a24;text-decoration:underline}li.myplan .ok{color:#2f6b3a;font-weight:700}.lg{background:#fffaf0;border:1px solid #e0d4b6;border-radius:12px;padding:10px 14px;font-size:15px;margin:0 0 18px}.lg a{color:#8a6a24;font-weight:700;white-space:nowrap}.acks{list-style:none;padding:0;margin:.4em 0;display:block}.acks li{color:#2f6b3a;font-weight:600;margin:.25em 0}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
-footer a{color:#8a6a24}
+footer a{color:#8a6a24;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
 </style></head><body>
-${RESET_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
-<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">${RESET_NEW_LIVE ? "New edition" : "New edition: the units built so far, for testing."}</p></div></header>
-<main class="w"><div class="note">${
-    RESET_NEW_LIVE
-      ? RESET_OLD_RETIRED
-        ? 'Take the course at your own pace. Your progress is saved as you go. Anything you wrote in the previous edition, and any certificate you earned there, is kept in <a href="/members/journal">your journal</a>.'
-        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes. The previous edition, with everything you wrote there, stays open from your members page."
-      : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
-  }</div>
+<header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">A guided retreat for tired Christians.</p></div></header>
+<main class="w"><div class="note">${'Take the course at your own pace. Your progress is saved as you go. Anything you wrote in the previous edition, and any certificate you earned there, is kept in <a href="/members/journal">your journal</a>.'}</div>
 ${recordCard}
 <p class="lg"><b>Leading a group?</b> The Leader’s Guide is for small groups, church retreats, couples, and pastors and leaders. <a href="${downloadHref(LEADERS_GUIDE)}">⬇ Leader’s Guide (PDF)</a></p>
 <ul>${rows}</ul></main>
 ${LOCAL_DATES}
-<footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
+<footer><a href="/members">Back to your membership</a> · <a href="/contact">Questions? Contact us</a></footer>
 </body></html>`;
 }
 

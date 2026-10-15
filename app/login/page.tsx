@@ -4,7 +4,7 @@ import LoginForm from "@/components/LoginForm";
 import { isAdmin } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Sign in | Faithful Path Community",
+  title: "Sign in",
   robots: { index: false, follow: false },
 };
 

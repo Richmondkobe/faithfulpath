@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import NotFoundPage from "@/components/NotFoundPage";
 
 export const metadata: Metadata = {
-  title: "Page not found | Faithful Path Community",
-  robots: { index: false, follow: false },
+  title: "Page not found",
+  // No robots setting: Next already marks every 404 noindex, and a second tag
+  // only repeated it (website audit S14).
 };
 
 /**

@@ -1,6 +1,6 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { RESET_SLUG } from "@/lib/reset-simple-links";
-import { routeFinished } from "@/lib/reset-simple";
+import { routeFinished } from "@/lib/reset-route";
 
 // Whether a learner has finished the Reset's simple layer, for the certificate.
 //

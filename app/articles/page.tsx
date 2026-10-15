@@ -11,7 +11,7 @@ import ArticleIndex from "@/components/ArticleIndex";
 export const revalidate = 300;
 
 export const metadata: Metadata = {
-  title: "Articles",
+  title: "Christian Articles on Faith and Life",
   description:
     "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
   // Page one of the index is /articles, never /articles/page/1 — which

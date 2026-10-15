@@ -1,7 +1,7 @@
-# The Christian Spiritual Reset — new edition (hidden test course)
+# The Christian Spiritual Reset — current edition
 
-Built alongside the live course, never instead of it. Members only, not linked
-from anywhere, `noindex`. Address: `/members/courses/christian-spiritual-reset-new`.
+The edition members take, listed on /members. Members only, `noindex`.
+Address: `/members/courses/christian-spiritual-reset-new`.
 
 What it holds now: the two approved pilots, Lesson 1 and Session 1
 (reviewer: "integration-ready", 8 October 2026), Lesson 2 (script approved
@@ -34,11 +34,15 @@ script for them.
   Session 1 to 10 workbook pages (Session 3 with cards to cut out, Session 4 with a lament page), and "If you are not sure you belong to Christ".
 
 What the website changes as each page is sent out (`lib/reset-new.ts`):
-fonts from this site; the tab title; the preview note removed and a small
-"Test edition" banner added; the player and recordings from this site; the
+fonts from this site; the tab title; the preview note removed and a quiet bar
+back to the course page added; the player and recordings from this site; the
 placeholder links pointed at the downloads, the contact page and Finding Help
 Where You Live; the finish buttons save progress and link to the course page
 or to the next unit (Lesson 11 leads on to Session 1, Session 1 to Session 2, and Session 2 to Session 3; Session 3 has one button only, back to the course page, because every plan takes a break before the next session; so has Session 4, which also has "Skip this session and rest", back to the course page with nothing recorded; and so has Session 5, with the same skip button; and Session 6, optional, whose "Set this session aside for now" also records nothing; and Sessions 7 to 9, one button, labelled by plan; and Session 10, the last, whose one button reads "Finish my retreat" ("Finish my three-hour reset" on that plan), back to the course page, because Lesson 12 is for the first morning home; and Lesson 12, "Stop here for today" only, because Lesson 13 is for later in the first week; and Lessons 13 to 15, the same, because Lesson 14 is for week 3, Lesson 15 for whenever it applies, and Lesson 16 for Day 30; and Lesson 16, the last, "Back to the course page" only). Lesson 14 has no safety card and so no Finding Help link; the site adds that link only where a page has one. Lesson 15 puts its safety card at the top of the page, above the player, and its who-does-what sections are open to read without watching anything first. The guide page gets the same fonts, banner and links, and its "Back to the course page" button.
+
+For keyboard and screen-reader users, with nothing else visible changed: the
+transcript's headings are marked level 3 (`aria-level`), and the players get a
+clear focus ring (some drew only a faint tint on the skip button).
 
 ## Recordings (not in git)
 
@@ -117,15 +121,10 @@ stay in the list; none is hidden or shown as missing. Without a confirmed plan,
 the card asks the member to confirm it in Session 1. Nothing new is saved: it
 reads the plan already saved on Session 1.
 
-## The switch (design, section 14)
+## Live
 
-`lib/reset-new-live.ts`, `RESET_NEW_LIVE`. When true: a "New edition" card on
-/members above the previous edition's card (which gains a "Previous edition"
-label and is otherwise unchanged); one line on the previous edition's course
-overview, "A new edition of this course is available."; the new edition's pages
-lose the "Test edition" banner (a plain bar back to the course page instead) and
-its course page loses the testing wording. Setting it to false restores the
-state before the switch. Neither setting reads, moves, copies or changes any
-member, progress, journal, Day 30 record or certificate; no progress is
-transferred, and the previous edition stays fully open.
+Live for members since October 2026 (the switch, `RESET_NEW_LIVE`, was removed
+in the website clean-up, Stage 3). The previous edition is retired: its pages
+send visitors here, and its members' progress, journal entries, check-ins and
+certificates stay stored; the journal and the certificate still read them.
 

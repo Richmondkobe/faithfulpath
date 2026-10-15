@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { display, sans } from "@/lib/fonts";
-import { SITE } from "@/lib/site";
+import { HELP_PATH, SITE } from "@/lib/site";
 import FooterSignup from "@/components/FooterSignup";
 import JsonLd from "@/components/JsonLd";
 import VercelAnalytics from "@/components/analytics/VercelAnalytics";
@@ -12,7 +12,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://faithfulpathcommunity.com"),
-  title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
+  // Every page's title ends "| Faithful Path Community" from here, rather than
+  // each page typing it (website audit S6). A page that must not carry it sets
+  // title: { absolute: … }.
+  title: {
+    default: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
+    template: "%s | Faithful Path Community",
+  },
   description:
     "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
   authors: [{ name: "Richmond Kobe" }],
@@ -150,13 +156,23 @@ export default function RootLayout({
             </p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
               Pastoral and spiritual guidance online. Not a substitute for
-              therapy, medical care, or emergency services.
+              therapy, medical care, or emergency services.{" "}
+              {/* Help in a crisis, one tap from any page (website audit N3). */}
+              <Link
+                href={HELP_PATH}
+                prefetch={false}
+                className="font-semibold text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
+              >
+                Find help where you live
+              </Link>
+              .
             </p>
             <nav aria-label="Footer" className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
               {FOOTER_NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
+                  prefetch={false}
                   className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text"
                 >
                   {item.label}
@@ -181,6 +197,7 @@ export default function RootLayout({
                   )}
                   <Link
                     href={item.href}
+                    prefetch={false}
                     className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text"
                   >
                     {item.label}

@@ -24,7 +24,7 @@ import {
 } from "@/lib/mind-links";
 
 export const metadata: Metadata = {
-  title: "When Your Mind Won't Rest | Faithful Path Community",
+  title: "When Your Mind Won't Rest",
   robots: { index: false, follow: false },
 };
 

@@ -4,12 +4,13 @@ import { socialMeta } from "@/lib/social-meta";
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import { TrackedAnchor } from "@/components/analytics/Tracked";
 import JsonLd from "@/components/JsonLd";
-import { abs, graph, orgRef } from "@/lib/schema";
+import { abs, breadcrumbs, graph, orgRef } from "@/lib/schema";
 import Link from "next/link";
 import { display, sans } from "@/lib/fonts";
 
 export const metadata: Metadata = {
-  title: "Talk to a Pastor — Online Pastoral Counselling (US$60)",
+  // Exact, without the site name: it is already at the length a search result shows.
+  title: { absolute: "Talk to a Pastor — Online Pastoral Counselling (US$60)" },
   description:
     "One hour online with a pastor of twenty years. Written intake, a live conversation, and a written follow-up within 24 hours. US$60.",
   alternates: { canonical: "/talk-to-a-pastor" },
@@ -64,27 +65,33 @@ const STAGES = [
   },
 ];
 
-const SERVICE_SCHEMA = graph({
-  "@type": "Service",
-  name: "Talk to a Pastor",
-  serviceType: "Pastoral counselling",
-  url: abs("/talk-to-a-pastor"),
-  provider: orgRef,
-  areaServed: "Worldwide",
-  availableChannel: {
-    "@type": "ServiceChannel",
-    serviceUrl: abs("/talk-to-a-pastor"),
-    availableLanguage: "en",
-  },
-  offers: {
-    "@type": "Offer",
-    price: "60.00",
-    priceCurrency: "USD",
-    availability: "https://schema.org/InStock",
+const SERVICE_SCHEMA = graph(
+  breadcrumbs([{ name: "Home", path: "/" }, { name: "Talk to a Pastor" }]),
+  {
+    "@type": "Service",
+    name: "Talk to a Pastor",
+    serviceType: "Pastoral counselling",
+    description:
+      "One hour of online pastoral counselling with Pastor Richmond Kobe: a written intake before, a live video conversation, and a written follow-up within 24 hours. Pastoral, not clinical care.",
+    audience: { "@type": "Audience", audienceType: "Christians and anyone seeking pastoral guidance" },
     url: abs("/talk-to-a-pastor"),
-    seller: orgRef,
-  },
-});
+    provider: orgRef,
+    areaServed: "Worldwide",
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: abs("/talk-to-a-pastor"),
+      availableLanguage: "en",
+    },
+    offers: {
+      "@type": "Offer",
+      price: "60.00",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: abs("/talk-to-a-pastor"),
+      seller: orgRef,
+    },
+  }
+);
 
 export default function Home() {
   return (
@@ -96,15 +103,17 @@ export default function Home() {
 
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
-        <p className="text-[11px] uppercase tracking-[0.22em] text-gold-text font-medium">
-          Faithful Path Community
+        {/* Names the service in plain words above the headline (website audit
+            S13); the site's name is already in the header. */}
+        <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-medium">
+          Online Christian pastoral counselling
         </p>
 
         <h1
           className="mt-8 text-[2.75rem] leading-[1.05] tracking-[-0.02em] text-navy sm:text-[4.25rem]"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
-          Talk to a pastor.
+          Talk to a Pastor.
         </h1>
 
         <p

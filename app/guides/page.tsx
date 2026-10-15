@@ -18,7 +18,7 @@ import { SITE } from "@/lib/site";
 // The URL stays /guides. What these are called changed; where they live did
 // not, so every link already shared still lands. Filtering is a query string
 // for the same reason — one canonical URL for the store.
-const TITLE = "Books | Faithful Path Community";
+const TITLE = "Books";
 
 // No count in the description. The previous one opened "Five practical
 // Christian books" and was still saying so at ten, which is how a number in
@@ -62,8 +62,12 @@ export const metadata: Metadata = {
   },
 };
 
-/** One book in the grid. Its title is an h3, under the category's h2. */
-function BookCard({ book }: { book: Product }) {
+/**
+ * One book in the grid. Its title is an h3, under the category's h2. The very
+ * first cover is on screen as the page opens, so it loads at once rather than
+ * waiting to be scrolled to (website audit P5).
+ */
+function BookCard({ book, first = false }: { book: Product; first?: boolean }) {
   const cover = coverPublicUrl(book.cover_path);
   return (
     <li>
@@ -77,6 +81,7 @@ function BookCard({ book }: { book: Product }) {
               alt={`Cover of ${book.title}`}
               fill
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 40vw, 90vw"
+              {...(first ? { loading: "eager" as const, fetchPriority: "high" as const } : {})}
               className="object-contain transition-opacity group-hover:opacity-90"
             />
           )}
@@ -176,7 +181,7 @@ export default async function Guides({
         <>
           <BookCategoryRow counts={counts} active={active} />
 
-          {groups.map((group) => (
+          {groups.map((group, gi) => (
             <section key={group.heading} className="mt-14">
               <h2
                 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
@@ -185,8 +190,8 @@ export default async function Guides({
                 {group.heading}
               </h2>
               <ul className="mt-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-                {group.books.map((book) => (
-                  <BookCard key={book.id} book={book} />
+                {group.books.map((book, bi) => (
+                  <BookCard key={book.id} book={book} first={gi === 0 && bi === 0} />
                 ))}
               </ul>
             </section>
@@ -205,7 +210,7 @@ export default async function Guides({
           href="/talk-to-a-pastor"
           className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
-          Talk to a pastor — {SITE.price}
+          Talk to a Pastor — {SITE.price}
         </Link>
       </div>
     </main>

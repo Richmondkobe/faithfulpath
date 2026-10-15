@@ -1,4 +1,4 @@
-# Before You Say Yes — International Resources
+# Finding Help Where You Live
 
 *This is the live version of the resources page printed at the back of* Before You Say Yes, *and the support page for the* Before You Say Yes *course.*
 

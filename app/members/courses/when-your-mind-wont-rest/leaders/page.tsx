@@ -9,7 +9,7 @@ import MindMarkdown from "@/components/mind/MindMarkdown";
 import LeadersGate from "@/components/mind/LeadersGate";
 
 export const metadata: Metadata = {
-  title: "Using This Course With Others | Faithful Path Community",
+  title: "Using This Course With Others",
   robots: { index: false, follow: false },
 };
 

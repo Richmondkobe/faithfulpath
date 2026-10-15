@@ -3,16 +3,20 @@ import { join } from "node:path";
 import type { Metadata } from "next";
 import { socialMeta } from "@/lib/social-meta";
 import Image from "next/image";
+// A fixed import: a hashed, long-cached file with its own size and a blurred
+// placeholder, rather than a plain path re-checked on every visit (website
+// audit P6).
+import richmond from "@/public/richmond-1200.jpg";
 import Link from "next/link";
 
 import ArticleBody from "@/components/ArticleBody";
 import JsonLd from "@/components/JsonLd";
 import { remarkAutolink } from "@/lib/markdown-plugins";
-import { graph, personRichmond } from "@/lib/schema";
+import { breadcrumbs, graph, personRichmond } from "@/lib/schema";
 import { COUNTRIES, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Pastor Richmond Kobe | Faithful Path Community",
+  title: "About Pastor Richmond Kobe",
   description:
     "Richmond Kobe has pastored for more than twenty years across ten countries. Here is who he is and how he works with people one at a time.",
   alternates: { canonical: "/about" },
@@ -44,7 +48,7 @@ const TITLE = SOURCE.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? "About";
 const COUNTRY_LINE = COUNTRIES.join(" · ");
 
 // The closing link is a button on this page, not a sentence with a link in it.
-const BUTTON_LINE = `[Talk to a pastor — ${SITE.price}](/talk-to-a-pastor)`;
+const BUTTON_LINE = `[Talk to a Pastor — ${SITE.price}](/talk-to-a-pastor)`;
 
 // Matched as a whole line, not as a substring: a country appended to the end of
 // the line would otherwise split cleanly and leave " · Malaysia" stranded at the
@@ -72,7 +76,7 @@ const BODY_AFTER = afterCountries.replace(BUTTON_LINE, "").trimEnd();
 export default function About() {
   return (
     <>
-      <JsonLd data={graph(personRichmond())} />
+      <JsonLd data={graph(personRichmond(), breadcrumbs([{ name: "Home", path: "/" }, { name: "About" }]))} />
 
       <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
         {/* The portrait sits beside the heading from 640px up and above it on a
@@ -81,10 +85,11 @@ export default function About() {
         <div className="flex flex-col gap-8 sm:flex-row-reverse sm:items-start sm:gap-10">
           <div className="relative aspect-square w-full max-w-[13rem] shrink-0 overflow-hidden rounded-xl">
             <Image
-              src="/richmond-1200.jpg"
+              src={richmond}
+              placeholder="blur"
               alt="Richmond Kobe, pastor at Faithful Path Community"
               fill
-              priority
+              preload
               sizes="13rem"
               className="object-cover"
             />
@@ -118,7 +123,7 @@ export default function About() {
           href="/talk-to-a-pastor"
           className="mt-8 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
-          Talk to a pastor — {SITE.price}
+          Talk to a Pastor — {SITE.price}
         </Link>
       </main>
     </>

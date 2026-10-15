@@ -60,12 +60,3 @@ export async function signedMediaUrl(
   return data?.signedUrl ?? null;
 }
 
-/** Signs several at once, keyed by the file name asked for. */
-export async function signedMediaUrls(
-  kind: MediaKind,
-  files: string[]
-): Promise<Record<string, string | null>> {
-  const unique = [...new Set(files)];
-  const signed = await Promise.all(unique.map((f) => signedMediaUrl(kind, f)));
-  return Object.fromEntries(unique.map((f, i) => [f, signed[i]]));
-}

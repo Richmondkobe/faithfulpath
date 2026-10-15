@@ -7,7 +7,7 @@ import { mindLeadersHref } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 
 export const metadata: Metadata = {
-  title: "For leaders | Faithful Path Community",
+  title: "For leaders",
   robots: { index: false, follow: false },
 };
 

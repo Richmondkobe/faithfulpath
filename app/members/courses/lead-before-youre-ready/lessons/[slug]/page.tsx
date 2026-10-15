@@ -27,7 +27,7 @@ import LbyrFinishLesson from "@/components/lbyr/LbyrFinishLesson";
 import LbyrCheckList from "@/components/lbyr/LbyrCheckList";
 
 export const metadata: Metadata = {
-  title: "Lead Before You’re Ready | Faithful Path Community",
+  title: "Lead Before You’re Ready",
   robots: { index: false, follow: false },
 };
 

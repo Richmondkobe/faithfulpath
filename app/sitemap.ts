@@ -38,7 +38,7 @@ const STATIC_PATHS = [
   ...publicSeriesPaths(),
   "/talk-to-a-pastor",
   "/contact",
-  "/before-you-say-yes/resources",
+  "/help",
   // The legal pages. Crawlable on purpose: a reader deciding whether to buy
   // should be able to find the refund terms without being sold to first, and a
   // payment provider checking the site expects to reach them from a search.
@@ -74,42 +74,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return Array.from({ length: pages }, (_, i) => categoryHref(category.slug, i + 1));
   });
 
-  const now = new Date();
+  // Dates only where they are true (website audit S7). A list of articles
+  // changes when its newest article does; fixed pages and books have no
+  // reliable "last changed" date, so they give none rather than "now", which
+  // would teach search engines to ignore every date here. changeFrequency and
+  // priority are left out: Google ignores both.
+  const newest = (list: { updated_at: string }[]) =>
+    list.length ? new Date(Math.max(...list.map((a) => Date.parse(a.updated_at)))) : undefined;
+  const latestArticle = newest(articles);
+  const latestIn = (slug: string) => newest(articles.filter((a) => a.category === slug));
 
   return [
     ...STATIC_PATHS.map((path) => ({
       url: `${SITE.url}${path}`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: path === "" ? 1 : 0.8,
+      ...(path === "/articles" && latestArticle ? { lastModified: latestArticle } : {}),
     })),
-    ...categoryPages.map((path) => ({
-      url: `${SITE.url}${path}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      // A real way in for a reader who wants one topic, but still a route to
-      // the writing rather than the writing itself.
-      priority: 0.6,
-    })),
+    ...categoryPages.map((path) => {
+      const slug = path.split("/")[3];
+      const lastModified = latestIn(slug);
+      return { url: `${SITE.url}${path}`, ...(lastModified ? { lastModified } : {}) };
+    }),
     ...articlePages.map((path) => ({
       url: `${SITE.url}${path}`,
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      // Below /articles itself: these are routes to the writing, not the
-      // writing, and page one is the one worth ranking.
-      priority: 0.5,
+      ...(latestArticle ? { lastModified: latestArticle } : {}),
     })),
     ...articles.map((a) => ({
       url: `${SITE.url}/articles/${a.slug}`,
       lastModified: new Date(a.updated_at),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
     })),
-    ...guides.map((g) => ({
-      url: `${SITE.url}/guides/${g.slug}`,
-      lastModified: new Date(g.created_at),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
+    ...guides.map((g) => ({ url: `${SITE.url}/guides/${g.slug}` })),
   ];
 }

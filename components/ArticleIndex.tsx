@@ -105,7 +105,7 @@ export default function ArticleIndex({
           href="/talk-to-a-pastor"
           className="mt-6 inline-flex items-center justify-center rounded-xl bg-navy px-7 py-4 text-[15px] font-medium text-paper transition-colors hover:bg-navy"
         >
-          Talk to a pastor — {SITE.price}
+          Talk to a Pastor — {SITE.price}
         </Link>
       </div>
     </main>

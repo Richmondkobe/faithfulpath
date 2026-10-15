@@ -28,4 +28,4 @@ I am not a therapist, a psychologist or a doctor, and nothing on this site repla
 
 I keep hours for exactly that.
 
-[Talk to a pastor — US$60](/talk-to-a-pastor)
+[Talk to a Pastor — US$60](/talk-to-a-pastor)

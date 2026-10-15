@@ -10,16 +10,7 @@ import {
   type FjCourse,
   type FjLesson,
 } from "@/lib/following-jesus";
-import {
-  beforeBodyEnd,
-  beforeHeadEnd,
-  escapeHtml,
-  linkSupportPages,
-  readCoursePage,
-  swap,
-  websitePage,
-  websitePlayer,
-} from "@/lib/fj-html";
+import { beforeBodyEnd, beforeHeadEnd, escapeHtml, linkSupportPages, readCoursePage, swap, transcriptHeadings, websitePage, websitePlayer } from "@/lib/fj-html";
 
 // The lesson, player and completion pages as the website serves them. Each
 // change is one of those listed in content/courses/following-jesus/README.md;
@@ -175,6 +166,9 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
     title: tabTitle(`Lesson ${n}: ${lesson.title}`),
     indexable: false,
   });
+
+  // Transcript headings, told to screen readers as level 3 (website audit X10).
+  html = transcriptHeadings(html);
 
   // The player, from this site, behind the same purchase check as the lesson.
   html = swap(html, '<iframe src="player.html"', `<iframe src="${lessonPath(course, lesson)}/player"`);

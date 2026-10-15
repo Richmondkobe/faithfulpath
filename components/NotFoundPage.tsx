@@ -54,7 +54,7 @@ export default function NotFoundPage() {
               href="/talk-to-a-pastor"
               className="text-gold-text underline underline-offset-4"
             >
-              Talk to a pastor
+              Talk to a Pastor
             </Link>{" "}
             — if you came looking for help with something of your own.
           </li>

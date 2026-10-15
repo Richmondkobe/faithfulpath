@@ -24,6 +24,8 @@
 //      * a line marked data-fj-changed, only if the exact before and after are
 //        in ALLOWED_TEXT_CHANGES below;
 //      * role="img" on the lessons' labelled progress dashes, for screen readers;
+//      * aria-level="3" on the transcript's <h4> headings, for screen readers
+//        (they sit directly under an <h2>); the tag and its look are unchanged;
 //      * one colour: the site's added styles may redefine --gold-d as #8f6420,
 //        the deeper gold, and no other colour or setting of the page;
 //      * Support Page names made into links (data-fj-link): each must wrap
@@ -149,6 +151,7 @@ function snapshot(titles) {
   const inSkipped = (el) => el.closest("[data-fj]") || el.closest(".preview-note") || el.closest(".pathline");
   const describe = (el) => {
     const inDashes = !!el.parentElement?.classList.contains("steps8");
+    const inTranscript = !!el.closest(".tx");
     const attrs = {};
     for (const a of el.attributes) attrs[a.name] = a.value;
     const text = [...el.childNodes]
@@ -157,7 +160,7 @@ function snapshot(titles) {
       .join("")
       .replace(/\s+/g, " ")
       .trim();
-    return { tag: el.tagName.toLowerCase(), attrs, text, inDashes };
+    return { tag: el.tagName.toLowerCase(), attrs, text, inDashes, inTranscript };
   };
   return {
     title: document.title,
@@ -202,6 +205,8 @@ function compareElements(name, a, b) {
       if (key === "role" && s.attrs.role === "img" && o.attrs.role === undefined && s.attrs.class === "steps8" && o.attrs["aria-label"]) continue;
       if (key === "class" && o.inDashes && s.inDashes && [o.attrs[key], s.attrs[key]].every((v) => v === undefined || v === "on")) continue;
       if (key === "onclick" && o.attrs[key] === "return false" && s.attrs[key] === undefined) continue;
+      // A transcript heading told to screen readers as level 3: tag and look unchanged.
+      if (key === "aria-level" && o.tag === "h4" && s.inTranscript && o.attrs[key] === undefined && s.attrs[key] === "3") continue;
       fail(`${where} — ${key} changed from ${JSON.stringify(o.attrs[key])} to ${JSON.stringify(s.attrs[key])}`);
     }
   }

@@ -23,7 +23,7 @@ import PatternFinder, { type Pattern } from "@/components/mind/PatternFinder";
 import EraseEntries from "@/components/mind/EraseEntries";
 
 export const metadata: Metadata = {
-  title: "Pause | Faithful Path Community",
+  title: "Pause",
   robots: { index: false, follow: false },
 };
 

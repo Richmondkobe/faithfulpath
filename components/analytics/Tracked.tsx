@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { track } from "@vercel/analytics";
 import type { ReactNode } from "react";
 
@@ -43,15 +42,6 @@ export function TrackedAnchor({
     >
       {children}
     </a>
-  );
-}
-
-/** An internal link. */
-export function TrackedLink({ href, event, slug, className, children }: Props & { href: string }) {
-  return (
-    <Link href={href} className={className} onClick={() => send(event, slug)}>
-      {children}
-    </Link>
   );
 }
 

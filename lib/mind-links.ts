@@ -8,10 +8,6 @@ export const MIND_COURSE_SLUG = "when-your-mind-wont-rest";
 
 export const MIND_BASE = `/members/courses/${MIND_COURSE_SLUG}`;
 
-export function mindHomeHref(): string {
-  return MIND_BASE;
-}
-
 /** A Start Here page or a numbered lesson — both live under /lessons. */
 export function mindLessonHref(slug: string): string {
   return `${MIND_BASE}/lessons/${slug}`;

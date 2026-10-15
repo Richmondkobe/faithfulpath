@@ -300,10 +300,6 @@ const LINKED_PAGES: { title: string; file: string }[] = [
   { title: "My Mind Is Restless Right Now", file: "m0/lessons/07-my-mind-is-restless-right-now.md" },
 ];
 
-export function linkedPageTitles(): { title: string; file: string }[] {
-  return LINKED_PAGES;
-}
-
 const COURSE_BASE = "/members/courses/when-your-mind-wont-rest";
 
 /**
@@ -360,11 +356,6 @@ function stripFallbackList(file: string, body: string): string {
     .join("\n")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
-}
-
-/** The notes this file carries, for the build assertion to check against. */
-export function authorNotesFor(file: string): string[] {
-  return AUTHOR_NOTES[file] ?? [];
 }
 
 function stripAuthorNotes(file: string, body: string): string {
@@ -628,17 +619,6 @@ export const findDownload = cache((slug: string) =>
 /* ---------------------------------------------------------------- audio */
 
 export type MindAudio = { id: string; page?: string; pages?: string[] };
-
-/** The recordings that exist at launch, from the manifest's audio.launch. */
-export const getLaunchAudio = cache((): MindAudio[] => {
-  const audio = getMindCourse().audio as { launch?: MindAudio[] } | undefined;
-  return audio?.launch ?? [];
-});
-
-/** Which pages a recording belongs to — one page, or several. */
-export function audioPages(entry: MindAudio): string[] {
-  return entry.pages ?? (entry.page ? [entry.page] : []);
-}
 
 /* -------------------------------------------------------------- journey */
 

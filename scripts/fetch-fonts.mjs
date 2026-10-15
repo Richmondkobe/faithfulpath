@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 //
-// Downloads the site's five faces from Google into fonts/, so that `next build`
+// Downloads the site's faces from Google into fonts/, so that `next build`
 // never has to.
 //
 //   node scripts/fetch-fonts.mjs          # download
@@ -54,21 +54,14 @@ const FJ_EXTRA = "ḥṣḏʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0
 
 /** family: the css2 `family=` value. Each face becomes one file. */
 const FACES = [
-  // Without the optical-size axis (opsz): it more than doubled both files
-  // (172 KB and 197 KB against 79 KB and 91 KB), on every page. Headings now
-  // use the font's default optical size (15 October 2026, website audit P2).
-  { file: "newsreader-normal.woff2", family: "Newsreader:wght@300..600" },
-  { file: "newsreader-italic.woff2", family: "Newsreader:ital,wght@1,300..600" },
-  { file: "ibm-plex-sans-normal.woff2", family: "IBM+Plex+Sans:wght@400..600" },
   // The site's faces since Stage 2 of the website audit (navy and gold, to
   // match the Following Jesus pages): Source Serif 4 for headings and quiet
   // intros, Source Sans 3 for everything else. Without the optical-size axis,
-  // for the same reason as Newsreader above.
+  // which more than doubles each file. (Newsreader, IBM Plex Sans and IBM Plex
+  // Mono, the faces before, were removed in Stage 3.)
   { file: "site-source-serif-4-normal.woff2", family: "Source+Serif+4:wght@300..700" },
   { file: "site-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,wght@1,300..700" },
   { file: "site-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700" },
-  { file: "ibm-plex-mono-400.woff2", family: "IBM+Plex+Mono:wght@400" },
-  { file: "ibm-plex-mono-500.woff2", family: "IBM+Plex+Mono:wght@500" },
   { file: "source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400" },
   { file: "source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400" },
   { file: "source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..600" },
@@ -80,9 +73,15 @@ const FACES = [
   // Sans has; in the serif it falls back to the device's font, exactly as it
   // did in the preview from Google). Its one Hebrew and one Arabic word fall
   // back the same way: neither family has Hebrew or Arabic.
-  { file: "fj-source-serif-4-normal.woff2", family: "Source+Serif+4:opsz,wght@8..60,400..600", extra: FJ_EXTRA },
-  { file: "fj-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,opsz,wght@1,8..60,400", extra: FJ_EXTRA },
+  // Without the optical-size axis since Stage 3 of the website audit (P11):
+  // it more than doubled the file, on every lesson page of every course.
+  { file: "fj-source-serif-4-normal.woff2", family: "Source+Serif+4:wght@400..600", extra: FJ_EXTRA },
+  { file: "fj-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,wght@1,400", extra: FJ_EXTRA },
   { file: "fj-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: FJ_EXTRA },
+  // The Hebrew words in Talk Before You Marry's lessons (3 to 10, 12 to 15),
+  // served from this site rather than fetched from Google by members' browsers
+  // (website audit X13). Only the letters and points those lessons use.
+  { file: "fj-noto-serif-hebrew.woff2", family: "Noto+Serif+Hebrew:wght@400..600", extra: "ְֲִֵֶַָּבדהוזילנעצק" },
 ];
 
 // --only <prefix>: fetch just the faces whose file starts with it, leaving the

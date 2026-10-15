@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbs, graph } from "@/lib/schema";
 import { socialMeta } from "@/lib/social-meta";
 import Link from "next/link";
 import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
@@ -9,7 +11,7 @@ import { formatPrice } from "@/lib/products";
 // (Richmond, 8 October 2026). The membership's own page is unchanged and one
 // click on.
 
-const TITLE = "Courses | Faithful Path Community";
+const TITLE = "Courses";
 const DESCRIPTION =
   "Online courses with Pastor Richmond Kobe: The Christian Spiritual Reset, with the membership, and the four Following Jesus video courses.";
 
@@ -78,6 +80,7 @@ export default function Courses() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+      <JsonLd data={graph(breadcrumbs([{ name: "Home", path: "/" }, { name: "Courses" }]))} />
       <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Online courses</p>
       <h1
         className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"

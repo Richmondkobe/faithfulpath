@@ -2,7 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import SignupForm from "@/components/SignupForm";
-import { BYSY_BASE, BYSY_RESOURCES_PATH } from "@/lib/bysy-links";
+import { BYSY_BASE } from "@/lib/bysy-links";
+import { HELP_PATH } from "@/lib/site";
 
 /**
  * The footer's mailing-list form, everywhere except Before You Say Yes and its
@@ -27,7 +28,7 @@ import { BYSY_BASE, BYSY_RESOURCES_PATH } from "@/lib/bysy-links";
 export default function FooterSignup() {
   const pathname = usePathname();
   if (pathname?.startsWith(BYSY_BASE)) return null;
-  if (pathname?.startsWith(BYSY_RESOURCES_PATH)) return null;
+  if (pathname?.startsWith(HELP_PATH)) return null;
 
   return (
     <div className="mb-10 border-b border-line pb-10">

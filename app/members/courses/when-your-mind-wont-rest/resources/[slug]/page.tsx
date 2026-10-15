@@ -13,7 +13,7 @@ import { MIND_BASE } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 
 export const metadata: Metadata = {
-  title: "Worksheet | Faithful Path Community",
+  title: "Worksheet",
   robots: { index: false, follow: false },
 };
 

@@ -11,6 +11,6 @@ export const COUNTRIES = [
   "Kenya", "Rwanda", "Uganda", "Nigeria", "Singapore",
 ];
 
-
-
-
+/** Finding Help Where You Live: crisis lines and support by country. Moved
+ * from /before-you-say-yes/resources, which redirects here. */
+export const HELP_PATH = "/help";

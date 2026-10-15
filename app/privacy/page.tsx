@@ -12,7 +12,7 @@ const PATH = "/privacy";
 const SOURCE = readLegal("privacy");
 
 export const metadata: Metadata = {
-  title: `${TITLE} | Faithful Path Community`,
+  title: `${TITLE}`,
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {

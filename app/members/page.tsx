@@ -6,42 +6,15 @@ import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
 import { getOwnedOffers } from "@/lib/following-jesus-access";
 import { SERIES_PATH } from "@/lib/following-jesus";
 import { memberLogout } from "@/app/members/actions";
-import {
-  getCountableLessons,
-  getCourse,
-  getLessons,
-  lessonHref,
-} from "@/lib/course";
-import {
-  getCourseProgress,
-  completedCount,
-  getCompletion,
-  getRoute,
-  nextLessonFor,
-} from "@/lib/course-progress";
-import ProgressBar from "@/components/course/ProgressBar";
-import CertificateButton from "@/components/course/CertificateButton";
 import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
 import MindCourseCard from "@/components/mind/MindCourseCard";
-import BysyCourseCard from "@/components/bysy/BysyCourseCard";
-import TbymCourseCard from "@/components/tbym/TbymCourseCard";
 import LbyrCourseCard from "@/components/lbyr/LbyrCourseCard";
-import { getResetPlan } from "@/app/members/courses/christian-spiritual-reset/actions";
-import { resetRouteProgress, routeFinished } from "@/lib/reset-simple";
-import { RESET_SIMPLE_PUBLISHED, resetSimpleHref } from "@/lib/reset-simple-links";
-import { BYSY_PUBLISHED } from "@/lib/bysy-links";
-import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
 import BysyNewEditionCard from "@/components/bysy/BysyNewEditionCard";
-import { TBYM_PUBLISHED } from "@/lib/tbym-course";
-import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
 import TbymNewEditionCard from "@/components/tbym/TbymNewEditionCard";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
-import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
 import NewEditionCard from "@/components/reset-new/NewEditionCard";
-
-const COURSE_SLUG = "christian-spiritual-reset";
 
 // Written for both courses. The route chooser and Quick Start it used to name
 // belong to the Spiritual Reset alone; what is said here has to be true of the
@@ -58,134 +31,10 @@ const WELCOME = [
 ];
 
 export const metadata: Metadata = {
-  title: "Members | Faithful Path Community",
+  title: "Members",
   robots: { index: false, follow: false },
 };
 
-async function CourseCard() {
-  const course = getCourse(COURSE_SLUG);
-  if (!course) return null;
-
-  const lessons = getLessons(COURSE_SLUG);
-  const countable = getCountableLessons(COURSE_SLUG);
-
-  // /members is the page a paying member lands on, so it must not break because
-  // the course tables are missing or unreadable. Drop the card and log it
-  // instead — the membership itself is unaffected.
-  let progress;
-  let route = null;
-  let completion = { complete: false, name: null as string | null, finishedAt: null as string | null };
-  try {
-    progress = await getCourseProgress(COURSE_SLUG);
-    route = await getRoute(COURSE_SLUG);
-    completion = await getCompletion(
-      COURSE_SLUG,
-      lessons[lessons.length - 1].slug
-    );
-  } catch (err) {
-    console.error("Course card hidden — could not read progress:", err);
-    return null;
-  }
-
-  const done = completedCount(progress, countable);
-  const next = nextLessonFor(COURSE_SLUG, lessons, countable, progress, route);
-
-  // Once the simple layer is published it is what this card offers: the way in,
-  // the count and the progress all come from there. The 38-page course stays
-  // exactly where it is and becomes the Go Deeper Library behind it. While the
-  // flag is off none of this is reached and the card is unchanged.
-  let simple = null as null | {
-    href: string;
-    label: string;
-    done: number;
-    total: number;
-  };
-  if (RESET_SIMPLE_PUBLISHED) {
-    try {
-      const plan = await getResetPlan();
-      const isDone = (slug: string) => Boolean(progress.get(slug)?.completed_at);
-      const counted = resetRouteProgress(plan, isDone);
-      const finish = routeFinished(plan, isDone);
-      const started = progress.size > 0 || plan !== null;
-      simple = {
-        href: resetSimpleHref(started && finish.next ? finish.next : "welcome"),
-        label: started ? "Go to the course" : "Start the course",
-        ...counted,
-      };
-    } catch (err) {
-      // The card falls back to the existing course rather than disappearing.
-      console.error("Simple layer progress unreadable, showing the course:", err);
-    }
-  }
-
-  return (
-    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
-      {RESET_NEW_LIVE && (
-        <p className="mb-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Previous edition</p>
-      )}
-      <h2
-        className="text-2xl text-navy"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
-      >
-        {course.title}
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-ink">
-        {course.description}
-      </p>
-
-      {completion.complete && (
-        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
-          Course complete
-        </p>
-      )}
-
-      <div className="mt-5">
-        <ProgressBar
-          done={simple ? simple.done : done}
-          total={simple ? simple.total : countable.length}
-          label="Your progress"
-        />
-      </div>
-
-      <div className="mt-5 flex flex-wrap items-center gap-5">
-        <Link
-          href={simple ? simple.href : `/members/courses/${COURSE_SLUG}`}
-          className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
-        >
-          {simple
-            ? simple.label
-            : progress.size === 0 && route === null
-              ? "Start the course"
-              : "Go to the course"}
-        </Link>
-        {completion.complete && (
-          <CertificateButton
-            courseSlug={COURSE_SLUG}
-            name={completion.name}
-            nameFieldHref={`${lessonHref(COURSE_SLUG, lessons[lessons.length - 1].slug)}#certificate-name`}
-          />
-        )}
-        {/* The simple layer's own button already says continue and goes to the
-            right page, so a second link beside it would be the same offer
-            twice under two different names. */}
-        {!simple && done > 0 && done < countable.length && (
-          <Link
-            href={lessonHref(COURSE_SLUG, next.slug)}
-            className="text-sm text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
-          >
-            Continue: {next.title}
-          </Link>
-        )}
-      </div>
-    </section>
-  );
-}
-
-/**
- * One written question a month. The allowance is read here and the form only
- * rendered when it is available — askMemberQuestion re-checks it anyway, since
- * a hidden form is not a control.
- */
 async function QuestionSection() {
   let allowance;
   try {
@@ -365,32 +214,17 @@ export default async function Members() {
 
       {ownsFollowingJesus && <FollowingJesusLink />}
 
-      {/* Two courses, presented alike. Neither is the main one: a member may
-          have come for either, and the membership includes both. */}
+      {/* The five courses, presented alike. None is the main one: a member
+          may have come for any of them, and the membership includes all. */}
       <section className="mt-12">
         <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
           Your courses
         </h2>
         <div className="mt-4 space-y-6">
-          {/* The Reset new edition, once switched on, sits above the previous
-              edition's card; the previous edition's card is otherwise unchanged. */}
-          {RESET_NEW_LIVE && <NewEditionCard />}
-          {/* Retired: the card goes; nothing it reads is changed or deleted. */}
-          {!(RESET_NEW_LIVE && RESET_OLD_RETIRED) && <CourseCard />}
+          <NewEditionCard />
           <MindCourseCard />
-          {/* Built, and deliberately not reachable: the course stays unlinked
-              until the pre-publish checklist has been run in full. */}
-          {/* The Before You Say Yes new edition sits above the previous edition's card. */}
-          {BYSY_NEW_LIVE && <BysyNewEditionCard />}
-          {/* Retired: the card goes; nothing it reads is changed or deleted. */}
-          {BYSY_PUBLISHED && !(BYSY_NEW_LIVE && BYSY_OLD_RETIRED) && <BysyCourseCard />}
-          {/* One lesson of fourteen is written. Same reasoning as the card
-              above it: built, and deliberately not reachable until the course
-              is finished. */}
-          {/* The Talk Before You Marry new edition sits above the previous edition's card. */}
-          {TBYM_NEW_LIVE && <TbymNewEditionCard />}
-          {/* Retired: the card goes; nothing it reads is changed or deleted. */}
-          {TBYM_PUBLISHED && !(TBYM_NEW_LIVE && TBYM_OLD_RETIRED) && <TbymCourseCard />}
+          <BysyNewEditionCard />
+          <TbymNewEditionCard />
           {LBYR_PUBLISHED && <LbyrCourseCard />}
         </div>
       </section>

@@ -34,7 +34,7 @@ export async function generateMetadata({
   const a = await getPublishedArticleBySlug(slug);
   if (!a) return {};
 
-  // No " | Faithful Path Community" here, and none in meta_title either: Google
+  // No "" here, and none in meta_title either: Google
   // appends the site name to a result itself, and a title that carries it as
   // well is the name twice in a listing, at the cost of the words that would
   // have been shown instead. The rest of the site keeps the suffix — those
@@ -44,7 +44,7 @@ export async function generateMetadata({
   const url = `/articles/${slug}`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     authors: [{ name: AUTHOR.name }],
     alternates: { canonical: url },
@@ -171,7 +171,7 @@ export default async function ArticlePage({
           href="/talk-to-a-pastor"
           className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
-          Talk to a pastor — {SITE.price}
+          Talk to a Pastor — {SITE.price}
         </Link>
       </div>
     </main>

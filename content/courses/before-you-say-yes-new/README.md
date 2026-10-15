@@ -1,7 +1,7 @@
-# Before You Say Yes — new edition (hidden test course)
+# Before You Say Yes — current edition
 
-Built alongside the live course, never instead of it. Members only, not linked
-from anywhere, `noindex`. Address: `/members/courses/before-you-say-yes-new`.
+The edition members take, listed on /members. Members only, `noindex`.
+Address: `/members/courses/before-you-say-yes-new`.
 
 What it holds: all 21 lessons, each approved by the reviewer as finished
 production (Reviews 1–51, 11–13 October 2026), recorded by Richmond.
@@ -24,30 +24,32 @@ production (Reviews 1–51, 11–13 October 2026), recorded by Richmond.
 
 ## What the website changes as each page is sent out (`lib/bysy-new.ts`)
 
-Fonts from this site; the tab title; a small "Test edition" banner; the player
+Fonts from this site; the tab title; a quiet bar back to the course page; the player
 and recording from this site; "Need help?" to the contact page; "Finding Help
-Where You Live" to /before-you-say-yes/resources (new tab); "Leave this page"
+Where You Live" to /help (new tab); "Leave this page"
 replaces the page with a neutral one (as the live course does); and "I have
 completed this lesson" saves progress, then shows the page's own thank-you line
 with "Stop here for today" (course page) and "Continue to Lesson N ›"
-(Lesson 21: "Back to the course page").
+(Lesson 21: "Back to the course page"). For screen readers, the transcript's
+headings are marked level 3 (`aria-level`); nothing visible changes.
 
 ## Recordings (not in git)
 
 Private bucket `course-media`, folder `audio/before-you-say-yes-new/`:
-`bysy-lesson-01.mp3` to `bysy-lesson-21.mp3`. Upload with
-`bash scripts/bysy-new-publish.sh` (or one at a time:
-`npm run media:upload -- path/to/bysy-lesson-01.mp3 --course before-you-say-yes-new`).
+`bysy-lesson-01.mp3` to `bysy-lesson-21.mp3`. Upload one at a time with
+`npm run media:upload -- path/to/bysy-lesson-01.mp3 --course before-you-say-yes-new`.
 
-## Switching it on
+## Live
 
-`lib/bysy-new-live.ts`: `BYSY_NEW_LIVE`. Listing it on /members and retiring
-the previous edition are separate steps, as they were for the Reset.
+Live for members and listed on /members since October 2026. The previous
+edition is retired: its pages were removed in the website clean-up (Stage 3),
+and `next.config.ts` redirects its old addresses here. Its members' progress
+rows are untouched.
 
 ## Removing it
 
-Delete `lib/bysy-new.ts`, `lib/bysy-new-live.ts`,
+Delete `lib/bysy-new.ts`,
 `app/members/courses/before-you-say-yes-new/`,
 `content/courses/before-you-say-yes-new/`, `scripts/verify-bysy-new.mjs`,
-`scripts/render-bysy-new.ts`, `scripts/bysy-new-publish.sh`, and its one line
+`scripts/render-bysy-new.ts`, and its one line
 in `next.config.ts`. Nothing else depends on them.

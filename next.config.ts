@@ -5,6 +5,28 @@ const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
   ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).hostname
   : undefined;
 
+// What the site's pages may load, and where their forms may go. Inline
+// scripts and styles are allowed because Next.js and the course pages use
+// them. Supabase serves the covers and course recordings and handles sign-in;
+// Stripe is reached only as a page the browser is sent on to after a form.
+const supabaseOrigin = supabaseHost ? `https://${supabaseHost}` : "";
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline'",
+  "style-src 'self' 'unsafe-inline'",
+  `img-src 'self' data: blob: ${supabaseOrigin}`,
+  `media-src 'self' blob: ${supabaseOrigin}`,
+  "font-src 'self' data:",
+  `connect-src 'self' ${supabaseOrigin} ${supabaseHost ? `wss://${supabaseHost}` : ""}`,
+  "frame-src 'self'",
+  "frame-ancestors 'self'",
+  "form-action 'self' https://checkout.stripe.com https://billing.stripe.com",
+  "base-uri 'self'",
+  "object-src 'none'",
+]
+  .map((d) => d.replace(/\s+/g, " ").trim())
+  .join("; ");
+
 const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
@@ -42,8 +64,51 @@ const nextConfig: NextConfig = {
         ]
       : [],
   },
+  // No "X-Powered-By: Next.js" on every response.
+  poweredByHeader: false,
+  // Security headers for every page (website audit X4). SAMEORIGIN rather than
+  // DENY: the course pages frame their own players from this site.
+  //
+  // The Content Security Policy is report-only for now (Richmond, 15 October
+  // 2026): browsers note in their console anything it would have blocked, and
+  // block nothing. Once a few weeks pass with no unexpected reports, the same
+  // policy can move to "Content-Security-Policy" to be enforced.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(self)" },
+          { key: "Content-Security-Policy-Report-Only", value: CONTENT_SECURITY_POLICY },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
+      // Finding Help Where You Live moved from the Before You Say Yes address
+      // to one that suits every course (Richmond, 15 October 2026).
+      {
+        source: "/before-you-say-yes/resources",
+        destination: "/help",
+        permanent: true,
+      },
+      // Retired course editions, whose pages have been removed: every old
+      // address, bookmarks and emails included, opens the current edition.
+      // Their members' progress rows are untouched.
+      {
+        source: "/members/courses/talk-before-you-marry/:path*",
+        destination: "/members/courses/talk-before-you-marry-new",
+        permanent: true,
+      },
+      {
+        source: "/members/courses/before-you-say-yes/:path*",
+        destination: "/members/courses/before-you-say-yes-new",
+        permanent: true,
+      },
       // Pages whose topic maps directly onto an existing new article
       {
         source: "/christian-leadership-training",

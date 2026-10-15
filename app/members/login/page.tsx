@@ -4,7 +4,7 @@ import MemberLoginForm from "@/components/MemberLoginForm";
 import { getSessionEmail } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Member sign in | Faithful Path Community",
+  title: "Member sign in",
   robots: { index: false, follow: false },
 };
 

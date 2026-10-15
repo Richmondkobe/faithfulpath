@@ -14,7 +14,7 @@ import {
 } from "@/lib/lbyr-course";
 
 export const metadata: Metadata = {
-  title: "Lead Before You’re Ready | Faithful Path Community",
+  title: "Lead Before You’re Ready",
   robots: { index: false, follow: false },
 };
 

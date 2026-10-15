@@ -4,7 +4,7 @@ import { stripe } from "@/lib/stripe";
 import { sendSignInCode } from "@/lib/sign-in-code";
 
 export const metadata: Metadata = {
-  title: "Welcome | Faithful Path Community",
+  title: "Welcome",
   robots: { index: false, follow: false },
 };
 

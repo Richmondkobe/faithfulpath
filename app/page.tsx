@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { socialMeta } from "@/lib/social-meta";
 import Image from "next/image";
+// A fixed import: a hashed, long-cached file with its own size and a blurred
+// placeholder, rather than a plain path re-checked on every visit (website
+// audit P6).
+import richmond from "@/public/richmond-1200.jpg";
 import Link from "next/link";
 import { SITE, COUNTRIES } from "@/lib/site";
 import { listPublishedArticles } from "@/lib/articles-db";
@@ -56,8 +60,13 @@ export default async function Home() {
       <section className="mx-auto max-w-5xl px-6 pt-16 pb-20 sm:pt-24">
         <div className="grid items-center gap-12 sm:grid-cols-[1.15fr_1fr]">
           <div>
+            {/* Names the service in plain words above the headline, for
+                readers and search engines alike (website audit S13). */}
+            <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-medium">
+              Online Christian pastoral counselling
+            </p>
             <h1
-              className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.5rem]"
+              className="mt-4 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.5rem]"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
             >
               Some things you cannot work out alone.
@@ -75,7 +84,7 @@ export default async function Home() {
                 href="/talk-to-a-pastor"
                 className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
               >
-                Talk to a pastor — {SITE.price}
+                Talk to a Pastor — {SITE.price}
               </Link>
               <Link
                 href="/articles"
@@ -88,10 +97,11 @@ export default async function Home() {
           <div className="sm:order-last">
             <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-xl sm:max-w-none">
               <Image
-                src="/richmond-1200.jpg"
+                src={richmond}
+                placeholder="blur"
                 alt="Richmond, pastor at Faithful Path Community"
                 fill
-                priority
+                loading="eager"
                 sizes="(max-width: 640px) 20rem, 24rem"
                 className="object-cover"
               />

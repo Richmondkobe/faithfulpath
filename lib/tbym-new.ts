@@ -5,24 +5,21 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
-import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
+import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
+import { HELP_PATH } from "@/lib/site";
 
 /*
- * Talk Before You Marry, new edition: a hidden test course, built the same way
- * as the Before You Say Yes new edition (lib/bysy-new.ts).
+ * Talk Before You Marry: the current edition, live for members since October 2026. The
+ * previous edition is retired; its pages were removed and its old addresses
+ * redirect here (next.config.ts).
  *
- * Built alongside the live course (/members/courses/talk-before-you-marry),
- * never instead of it:
- *
- *  1. Its own course_slug, "talk-before-you-marry-new". It only ever reads and
- *     writes course_progress rows with that slug, through the member's own
- *     session (RLS keeps them to their own rows). Nothing of the live course's
- *     progress or reflections is read or written.
- *  2. Its own folders: content/courses/talk-before-you-marry-new/ for the
- *     pages, course-media/audio/talk-before-you-marry-new/ for the recordings.
- *  3. Not listed while TBYM_NEW_LIVE is false: nothing links here, the pages
- *     say noindex, and it is not in the sitemap. Members only.
+ *  1. Its own course_slug, "talk-before-you-marry-new". It only ever reads and writes
+ *     course_progress rows with that slug, through the member's own session
+ *     (RLS keeps them to their own rows). The previous edition's progress and
+ *     reflections stay in the database, untouched.
+ *  2. Its own folders: content/courses/talk-before-you-marry-new/ for the pages,
+ *     course-media/audio/talk-before-you-marry-new/ for the recordings.
+ *  3. Members only; the pages say noindex and are not in the sitemap.
  *
  * The HTML is Richmond's finished lesson pages, served as the files themselves.
  * Changes on the way out are exact swaps that must match a set number of times
@@ -32,7 +29,7 @@ import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
  * code for it, and nothing here adds any. Only "I have completed this lesson"
  * is saved, as progress.
  *
- * Removing it: delete this file, lib/tbym-new-live.ts,
+ * Removing it: delete this file,
  * app/members/courses/talk-before-you-marry-new/,
  * content/courses/talk-before-you-marry-new/ and scripts/verify-tbym-new.mjs,
  * and its one line in next.config.ts. Nothing else depends on them.
@@ -180,9 +177,9 @@ export async function readUnitFile(unit: TbymNewUnit, name: "page.html" | "playe
   return readFile(join(CONTENT_ROOT, unit.slug, name), "utf8");
 }
 
-// The pages ask Google for the fonts; the site serves the two Source families
-// itself. Lessons 3 to 10 and 12 to 15 also ask for Noto Serif Hebrew, which
-// the site does not hold, so that one family still comes from Google.
+// The pages ask Google for the fonts; the site serves them all itself: the two
+// Source families, and Noto Serif Hebrew for the Hebrew words in Lessons 3 to
+// 10 and 12 to 15 (a small file of just the letters those lessons use).
 const SOURCE_FAMILIES = "family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700";
 const PLAYER_FAMILIES = "family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400";
 const HEBREW = "family=Noto+Serif+Hebrew:wght@400;600&";
@@ -190,8 +187,7 @@ const pageFonts = (hebrew: boolean) =>
   `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?${hebrew ? HEBREW : ""}${SOURCE_FAMILIES}&display=swap">`;
 const playerFonts = (hebrew: boolean) =>
   `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?${hebrew ? HEBREW : ""}${PLAYER_FAMILIES}&display=swap" rel="stylesheet">`;
-const HEBREW_FONT =
-  '<link data-tbym rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;600&display=swap">';
+const HEBREW_FONT = `<style data-tbym>@font-face{font-family:'Noto Serif Hebrew';font-style:normal;font-weight:400 600;font-display:swap;src:url(${"/courses/following-jesus/fonts"}/fj-noto-serif-hebrew.woff2) format('woff2')}</style>`;
 const FONT_PATH = "/courses/following-jesus/fonts";
 const SELF_HOSTED_FONTS = `<style data-tbym>
 @font-face{font-family:'Source Serif 4';font-style:normal;font-weight:400 600;font-display:swap;src:url(${FONT_PATH}/fj-source-serif-4-normal.woff2) format('woff2')}
@@ -211,7 +207,7 @@ const NEVER_STALE =
 const PLACEHOLDER = 'href="#"';
 // "Finding Help Where You Live": the site's international helplines page, open
 // to anyone without signing in. A new tab, so nothing typed on the lesson is lost.
-const HELP_HREF = "/before-you-say-yes/resources";
+const HELP_HREF = HELP_PATH;
 const NEW_TAB = 'target="_blank" rel="noopener"';
 // "Leave this page", if a page has one: replaces the page (not added to
 // history) with a neutral one, as the Before You Say Yes pages do.
@@ -232,9 +228,8 @@ export function playerHtml(unit: TbymNewUnit, raw: string): string {
   return beforeHeadEnd(html, NOINDEX);
 }
 
-const TEST_BANNER = TBYM_NEW_LIVE
-  ? `<div data-tbym style="background:#121d33;color:#f3ecd8;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">${COURSE} · <a href="${TBYM_NEW_PATH}" style="color:#e3c98a">Course page</a></div>`
-  : `<div data-tbym style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${TBYM_NEW_PATH}" style="color:#fff">Course page</a></div>`;
+// A quiet bar back to the course page, its link a full 44px tap target.
+const COURSE_BAR = `<div data-tbym style="background:#121d33;color:#f3ecd8;text-align:center;font:600 14px/1.4 'Source Sans 3',system-ui,sans-serif;padding:0 12px">${COURSE} · <a href="${TBYM_NEW_PATH}" style="color:#e3c98a;display:inline-flex;align-items:center;min-height:44px;padding:0 6px">Course page</a></div>`;
 
 /** Swap a placeholder link that must appear between min and max times; returns the page unchanged at zero if min is 0. */
 function linkPlaceholder(html: string, slug: string, text: string, attrs: string, min: number, max: number): string {
@@ -247,9 +242,13 @@ function linkPlaceholder(html: string, slug: string, text: string, attrs: string
 /** The lesson page as the website serves it. */
 export function unitHtml(unit: TbymNewUnit, raw: string, completed: Set<string>): string {
   let html = retitle(selfHostFonts(raw, pageFonts), `${unit.label}: ${unit.title} · ${COURSE}`);
+  html = transcriptHeadings(html);
+  // The lesson's place in the course, said in words as well as by the gold dot
+  // (website audit X11).
+  html = swap(html, '<span class="steps21">', `<span class="steps21" role="img" aria-label="${unit.label} of ${TBYM_NEW_UNITS.length}">`);
   html = beforeHeadEnd(html, NOINDEX);
   html = beforeHeadEnd(html, NEVER_STALE);
-  html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  html = swap(html, '<header class="top">', `${COURSE_BAR}\n<header class="top">`);
 
   // Each reflection box is named by the question above it, so a screen reader
   // reads the question rather than "edit text, blank". The finished pages put
@@ -325,7 +324,7 @@ export function unitHtml(unit: TbymNewUnit, raw: string, completed: Set<string>)
   return html;
 }
 
-/** The test edition's contents page. */
+/** The course's contents page. */
 export function homeHtml(completed: Set<string>): string {
   const count = TBYM_NEW_UNITS.filter((u) => completed.has(u.slug)).length;
   const sections = PARTS.map((p) => {
@@ -339,7 +338,7 @@ export function homeHtml(completed: Set<string>): string {
   }).join("");
   const finished = count === TBYM_NEW_UNITS.length ? `<p class="fin">✓ Completed ${COURSE}.</p>` : "";
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${COURSE}${TBYM_NEW_LIVE ? "" : " · Test edition"}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
+<title>${COURSE}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
 <style data-tbym>
 body{margin:0;background:#fbf6ea;color:#2b3445;font:17px/1.55 'Source Sans 3',system-ui,sans-serif}
 header{background:linear-gradient(180deg,#f7efdf,#f3e3c4);padding:34px 16px 34px}
@@ -363,23 +362,16 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .t{font:600 19px/1.3 'Source Serif 4',serif}
 .st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
-footer a{color:#8a6a24}
+footer a{color:#8a6a24;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
 </style></head><body>
-${TBYM_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${TBYM_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>${COURSE}</h1><p class="s">A Christian course for couples preparing for marriage: 15 illustrated teaching lessons, each about 15 to 20 minutes, from the book <i>Talk Before You Marry</i>.</p></div></header>
-<main class="w"><div class="note">${
-    TBYM_NEW_LIVE
-      ? TBYM_OLD_RETIRED
-        ? "Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."
-        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
-      : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
-  }</div>
+<main class="w"><div class="note">${"Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."}</div>
 <div class="safe"><b>If you are afraid of your partner</b>, or have been threatened, hurt, pressured or watched, go to <a href="${HELP_HREF}" ${NEW_TAB}>Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>
 <p class="prog">${count} of ${TBYM_NEW_UNITS.length} lessons completed. The reflections on each lesson page are private: nothing you type there is saved.</p>
 ${finished}
 <p class="lg"><b>Walking with an engaged couple, or leading a group?</b> The Leader's Guide is for pastors, mentoring couples and premarital group leaders. <a href="${leadersGuideHref}">⬇ Leader's Guide (PDF)</a></p>
 ${sections}</main>
-<footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
+<footer><a href="/members">Back to your membership</a> · <a href="/contact">Questions? Contact us</a></footer>
 </body></html>`;
 }
 

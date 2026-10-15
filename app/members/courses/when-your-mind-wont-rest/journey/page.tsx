@@ -14,7 +14,7 @@ import { MIND_BASE, mindDayHref } from "@/lib/mind-links";
 import MindMarkdown from "@/components/mind/MindMarkdown";
 
 export const metadata: Metadata = {
-  title: "The 30-Day Mind-Renewal Journey | Faithful Path Community",
+  title: "The 30-Day Mind-Renewal Journey",
   robots: { index: false, follow: false },
 };
 

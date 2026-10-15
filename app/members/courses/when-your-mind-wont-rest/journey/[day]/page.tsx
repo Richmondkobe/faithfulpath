@@ -18,7 +18,7 @@ import DayStatusControl from "@/components/mind/DayStatus";
 import PrayerAudio from "@/components/mind/PrayerAudio";
 
 export const metadata: Metadata = {
-  title: "The 30-Day Mind-Renewal Journey | Faithful Path Community",
+  title: "The 30-Day Mind-Renewal Journey",
   robots: { index: false, follow: false },
 };
 

@@ -37,6 +37,18 @@ export function swap(html: string, from: string, to: string, times = 1): string 
   return html.split(from).join(to);
 }
 
+/**
+ * A lesson transcript's headings are <h4>, directly under the section's <h2>,
+ * which skips a level for screen readers. Each is marked aria-level="3": the
+ * tag, and so its look, stays as approved (website audit X10). Only headings
+ * inside the transcript (<div class="tx">) are touched.
+ */
+export function transcriptHeadings(html: string): string {
+  return html.replace(/<div class="tx"([^>]*)>([\s\S]*?)<\/div>/g, (_m, attrs: string, body: string) =>
+    `<div class="tx"${attrs}>${body.split("<h4>").join('<h4 aria-level="3">')}</div>`
+  );
+}
+
 /** Put markup in just before the closing tag of the body. */
 export function beforeBodyEnd(html: string, markup: string): string {
   return swap(html, "</body>", `${markup}\n</body>`);

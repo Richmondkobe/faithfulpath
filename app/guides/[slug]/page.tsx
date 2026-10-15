@@ -60,6 +60,14 @@ const RELATED_ARTICLES: Record<
       href: "/articles/retreat-for-pastors",
       title: "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
     },
+    {
+      href: "/articles/how-to-start-praying-again",
+      title: "How to Start Praying Again After a Long Time Away",
+    },
+    {
+      href: "/articles/is-it-ok-to-be-angry-with-god-lament",
+      title: "Is It All Right to Be Angry With God? A Christian Guide to Lament",
+    },
   ],
   "talk-before-you-marry": [
     {
@@ -71,6 +79,18 @@ const RELATED_ARTICLES: Record<
       href: "/articles/questions-to-ask-before-marriage-christian",
       title:
         "25 Questions to Ask Before Marriage: A Christian Guide for Serious Couples",
+    },
+    {
+      href: "/articles/talking-about-sex-before-marriage-christian-couples",
+      title: "The Sex Conversation Before Marriage: A Christian Guide for Engaged Couples",
+    },
+    {
+      href: "/articles/merging-finances-christian-couple-before-marriage",
+      title: "Money Before Marriage: A Christian Financial Guide for Engaged Couples",
+    },
+    {
+      href: "/articles/living-together-before-marriage-premarital-counselling",
+      title: "Premarital Counselling When You Already Live Together",
     },
     {
       href: "/articles/couples-spiritual-reset-weekend",
@@ -94,6 +114,16 @@ const RELATED_ARTICLES: Record<
     {
       href: "/articles/how-long-to-date-before-engagement",
       title: "How Long Should Christians Date Before Getting Engaged?",
+    },
+  ],
+  "following-jesus-book-1-begin": [
+    {
+      href: "/articles/what-does-it-mean-to-be-born-again",
+      title: "What Does It Mean to Be Born Again? A Simple Guide for New Christians",
+    },
+    {
+      href: "/articles/what-do-christians-believe",
+      title: "What Do Christians Believe? The Core Truths of the Faith Explained",
     },
   ],
   "lead-before-youre-ready": [
@@ -217,15 +247,50 @@ const MORE_ARTICLES: ReadonlySet<string> = new Set([
   "when-your-mind-wont-rest",
 ]);
 
+/**
+ * The description search engines show: the subtitle, then the opening of the
+ * book's own description as plain text, cut at a word to about 155 characters.
+ * The subtitle alone ("New Life in Christ") said too little about who the book
+ * is for (website audit S3).
+ */
+function searchDescription(subtitle: string | null, markdown: string | null): string | null {
+  const plain = (markdown ?? "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/[#>*_`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const sub = subtitle?.trim().replace(/[.:;,]$/, "");
+  // Skip the subtitle when the description already opens with the same words.
+  const repeats = sub && plain.toLowerCase().startsWith(sub.toLowerCase().split(",")[0]);
+  const text = [repeats ? null : sub, plain].filter(Boolean).join(". ");
+  if (!text) return null;
+  if (text.length <= 155) return text;
+  const cut = text.slice(0, 154);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s.,;:—–-]+$/, "")}…`;
+}
+
+/**
+ * A book description's headings, raised so the shallowest is an h2 under the
+ * page's h1 (some were written from ###, which skipped a level for screen
+ * readers and search engines; website audit S13). The stored text is unchanged.
+ */
+function headingsFromTwo(markdown: string): string {
+  const levels = [...markdown.matchAll(/^(#{2,6})\s/gm)].map((m) => m[1].length);
+  if (levels.length === 0) return markdown;
+  const shift = Math.min(...levels) - 2;
+  if (shift <= 0) return markdown;
+  return markdown.replace(/^(#{2,6})(\s)/gm, (_m, hashes: string, space: string) => `${"#".repeat(hashes.length - shift)}${space}`);
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = await getPublishedProductBySlug(slug);
 
-  if (!guide) return { title: "Book not found | Faithful Path Community" };
+  if (!guide) return { title: "Book not found" };
 
   const description =
-    guide.subtitle ??
-    guide.description?.slice(0, 155) ??
+    searchDescription(guide.subtitle, guide.description) ??
     "A short, practical guide from Faithful Path Community.";
 
   // Page metadata replaces the root layout's openGraph/twitter objects wholesale
@@ -242,7 +307,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ];
 
   return {
-    title: `${guide.title} | Faithful Path Community`,
+    title: `${guide.title}`,
     description,
     alternates: { canonical: `/guides/${slug}` },
     openGraph: {
@@ -428,7 +493,7 @@ export default async function Guide({ params }: Props) {
 
           {guide.description && (
             <div className="mt-12 max-w-2xl border-t border-line pt-10">
-              <Markdown source={guide.description} />
+              <Markdown source={headingsFromTwo(guide.description)} />
             </div>
           )}
 
@@ -477,7 +542,7 @@ export default async function Guide({ params }: Props) {
           href="/talk-to-a-pastor"
           className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
-          Talk to a pastor — {SITE.price}
+          Talk to a Pastor — {SITE.price}
         </Link>
       </div>
     </main>

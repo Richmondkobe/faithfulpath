@@ -1,69 +1,28 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import ArticleBody from "@/components/ArticleBody";
-import { requireActiveMember } from "@/lib/member-gate";
-import { getCourse, getResource } from "@/lib/course";
-import { ESV_NOTICE } from "@/components/course/CourseFooter";
-
-export const metadata: Metadata = {
-  title: "Resource | Faithful Path Community",
-  robots: { index: false, follow: false },
-};
+import { notFound, redirect } from "next/navigation";
+import { RESET_NEW_PATH } from "@/lib/reset-new";
+import { RESET_SLUG } from "@/lib/reset-simple-links";
 
 /**
- * A printable worksheet. The member fills these in on paper, so the page is
- * plain and the print rules below drop everything that is not the document —
- * the site chrome, the links, the backgrounds.
+ * The retired Reset edition's printable resources (Richmond, 15 October 2026):
+ * each opens the lesson of the current edition that now carries it. One with
+ * no match opens the course page.
  */
-export default async function ResourcePage({
+const CURRENT_HOME: Record<string, string> = {
+  "digital-boundary-agreement": "lesson-09",
+  "retreat-packing-checklist": "lesson-09",
+  "emergency-information-card": "lesson-11",
+  "testing-worksheet": "lesson-12",
+  "two-week-plan": "lesson-13",
+  "rule-of-life-template": "lesson-14",
+};
+
+export default async function RetiredResource({
   params,
 }: {
   params: Promise<{ courseSlug: string; resourceSlug: string }>;
 }) {
-  await requireActiveMember();
-
   const { courseSlug, resourceSlug } = await params;
-  const course = getCourse(courseSlug);
-  const resource = getResource(courseSlug, resourceSlug);
-  if (!course || !resource) notFound();
-
-  return (
-    <main className="resource-sheet mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <style>{`
-        @media print {
-          header, footer, .no-print { display: none !important; }
-          .resource-sheet { max-width: none; padding: 0; }
-          a { text-decoration: none; color: inherit; }
-          body { background: #fff; }
-        }
-      `}</style>
-
-      <div className="no-print">
-        <Link
-          href={`/members/courses/${courseSlug}`}
-          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
-        >
-          ← {course.title}
-        </Link>
-      </div>
-
-      <h1
-        className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[2.75rem]"
-        style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
-      >
-        {resource.title}
-      </h1>
-
-      <p className="no-print mt-4 text-sm text-muted">
-        Print this page from your browser (File → Print) to fill it in by hand.
-      </p>
-
-      <ArticleBody source={resource.body} title={resource.title} />
-
-      <p className="mt-16 border-t border-line pt-6 text-xs leading-relaxed text-muted">
-        {ESV_NOTICE}
-      </p>
-    </main>
-  );
+  if (courseSlug !== RESET_SLUG) notFound();
+  const unit = CURRENT_HOME[resourceSlug];
+  redirect(unit ? `${RESET_NEW_PATH}/${unit}` : RESET_NEW_PATH);
 }

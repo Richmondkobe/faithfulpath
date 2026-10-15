@@ -5,24 +5,21 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
-import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
+import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
+import { HELP_PATH } from "@/lib/site";
 
 /*
- * Before You Say Yes, new edition: a hidden test course, built the same way as
- * the Reset new edition (lib/reset-new.ts).
+ * Before You Say Yes: the current edition, live for members since October 2026. The
+ * previous edition is retired; its pages were removed and its old addresses
+ * redirect here (next.config.ts).
  *
- * Built alongside the live course (/members/courses/before-you-say-yes), never
- * instead of it:
- *
- *  1. Its own course_slug, "before-you-say-yes-new". It only ever reads and
- *     writes course_progress rows with that slug, through the member's own
- *     session (RLS keeps them to their own rows). Nothing of the live course's
- *     progress or reflections is read or written.
+ *  1. Its own course_slug, "before-you-say-yes-new". It only ever reads and writes
+ *     course_progress rows with that slug, through the member's own session
+ *     (RLS keeps them to their own rows). The previous edition's progress and
+ *     reflections stay in the database, untouched.
  *  2. Its own folders: content/courses/before-you-say-yes-new/ for the pages,
  *     course-media/audio/before-you-say-yes-new/ for the recordings.
- *  3. Not listed while BYSY_NEW_LIVE is false: nothing links here, the pages
- *     say noindex, and it is not in the sitemap. Members only.
+ *  3. Members only; the pages say noindex and are not in the sitemap.
  *
  * The HTML is Richmond's reviewed lesson pages, served as the files themselves.
  * Changes on the way out are exact swaps that must match a set number of times
@@ -32,7 +29,7 @@ import { BYSY_NEW_LIVE, BYSY_OLD_RETIRED } from "@/lib/bysy-new-live";
  * code for it, and nothing here adds any. Only "I have completed this lesson"
  * is saved, as progress.
  *
- * Removing it: delete this file, lib/bysy-new-live.ts,
+ * Removing it: delete this file,
  * app/members/courses/before-you-say-yes-new/,
  * content/courses/before-you-say-yes-new/ and scripts/verify-bysy-new.mjs, and
  * its one line in next.config.ts. Nothing else depends on them.
@@ -223,16 +220,16 @@ export function playerHtml(unit: BysyNewUnit, raw: string): string {
 const TBYM_LINK = `<a href="/members/courses/talk-before-you-marry-new" style="color:inherit"><i>Talk Before You Marry</i></a>`;
 const COMING_SOON = "<i>Talk Before You Marry</i> (coming soon).";
 
-const TEST_BANNER = BYSY_NEW_LIVE
-  ? `<div data-bysy style="background:#121d33;color:#f3ecd8;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">${COURSE} · <a href="${BYSY_NEW_PATH}" style="color:#e3c98a">Course page</a></div>`
-  : `<div data-bysy style="background:#8a6a24;color:#fff;text-align:center;font:600 13px/1.4 'Source Sans 3',system-ui,sans-serif;padding:6px 12px">Test edition · not yet published · <a href="${BYSY_NEW_PATH}" style="color:#fff">Course page</a></div>`;
+// A quiet bar back to the course page, its link a full 44px tap target.
+const COURSE_BAR = `<div data-bysy style="background:#121d33;color:#f3ecd8;text-align:center;font:600 14px/1.4 'Source Sans 3',system-ui,sans-serif;padding:0 12px">${COURSE} · <a href="${BYSY_NEW_PATH}" style="color:#e3c98a;display:inline-flex;align-items:center;min-height:44px;padding:0 6px">Course page</a></div>`;
 
 /** The lesson page as the website serves it. */
 export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>): string {
   let html = retitle(swap(raw, PAGE_FONTS, SELF_HOSTED_FONTS), `${unit.label}: ${unit.title} · ${COURSE}`);
+  html = transcriptHeadings(html);
   html = beforeHeadEnd(html, NOINDEX);
   html = beforeHeadEnd(html, NEVER_STALE);
-  html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
+  html = swap(html, '<header class="top">', `${COURSE_BAR}\n<header class="top">`);
   if (html.includes(COMING_SOON)) html = swap(html, COMING_SOON, `${TBYM_LINK}.`);
 
   // The player, from this site.
@@ -243,9 +240,9 @@ export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>)
   const help = `<a ${PLACEHOLDER}>Finding Help Where You Live</a>`;
   const helpCount = html.split(help).length - 1;
   if (helpCount < 1 || helpCount > 2) throw new Error(`${unit.slug}: expected one or two Finding Help links, found ${helpCount}.`);
-  html = swap(html, help, '<a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a>', helpCount);
+  html = swap(html, help, `<a href="${HELP_PATH}" target="_blank" rel="noopener">Finding Help Where You Live</a>`, helpCount);
   // In-worksheet mentions that were plain bold text in the reviewed pages become links too.
-  html = html.split("<b>Finding Help Where You Live</b>").join('<a href="/before-you-say-yes/resources" target="_blank" rel="noopener"><b>Finding Help Where You Live</b></a>');
+  html = html.split("<b>Finding Help Where You Live</b>").join(`<a href="${HELP_PATH}" target="_blank" rel="noopener"><b>Finding Help Where You Live</b></a>`);
   const leave = `<a ${PLACEHOLDER}>Leave this page</a>`;
   if (html.includes(leave)) {
     html = swap(
@@ -299,7 +296,7 @@ export function unitHtml(unit: BysyNewUnit, raw: string, completed: Set<string>)
   return html;
 }
 
-/** The test edition's contents page. */
+/** The course's contents page. */
 export function homeHtml(completed: Set<string>): string {
   const count = BYSY_NEW_UNITS.filter((u) => completed.has(u.slug)).length;
   const sections = PARTS.map((p) => {
@@ -315,7 +312,7 @@ export function homeHtml(completed: Set<string>): string {
     ? `<p class="fin">✓ Completed ${COURSE}. Next, when you are ready: ${TBYM_LINK}.</p>`
     : "";
   return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${COURSE}${BYSY_NEW_LIVE ? "" : " · Test edition"}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
+<title>${COURSE}</title>${NOINDEX}${SELF_HOSTED_FONTS}${NEVER_STALE}
 <style data-bysy>
 body{margin:0;background:#fbf6ea;color:#2b3445;font:17px/1.55 'Source Sans 3',system-ui,sans-serif}
 header{background:linear-gradient(180deg,#f7efdf,#f3e3c4);padding:34px 16px 34px}
@@ -339,23 +336,16 @@ li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0
 .t{font:600 19px/1.3 'Source Serif 4',serif}
 .st{font-size:14px;color:#5a6577}.st.done{color:#2f6b3a;font-weight:600}
 footer{text-align:center;font-size:13px;color:#5a6577;padding:0 16px 30px}
-footer a{color:#8a6a24}
+footer a{color:#8a6a24;display:inline-flex;align-items:center;min-height:44px;padding:0 4px}
 </style></head><body>
-${BYSY_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${BYSY_NEW_PATH}" style="color:#fff">Course page</a>`, "")}
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>${COURSE}</h1><p class="s">A Christian course on dating with wisdom: 21 illustrated teaching lessons, each about 20 minutes, from the book <i>Before You Say Yes</i>.</p></div></header>
-<main class="w"><div class="note">${
-    BYSY_NEW_LIVE
-      ? BYSY_OLD_RETIRED
-        ? "Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."
-        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes."
-      : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
-  }</div>
-<div class="safe"><b>If you are afraid of the person you are dating</b>, or have been threatened, hurt, pressured or watched, go to <a href="/before-you-say-yes/resources" target="_blank" rel="noopener">Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>
+<main class="w"><div class="note">${"Take the lessons in order, one at a time, at your own pace. Your progress is saved as you finish each lesson."}</div>
+<div class="safe"><b>If you are afraid of the person you are dating</b>, or have been threatened, hurt, pressured or watched, go to <a href="${HELP_PATH}" target="_blank" rel="noopener">Finding Help Where You Live</a> first, on a device they cannot access. If you are in immediate danger, contact emergency services.</div>
 <p class="prog">${count} of ${BYSY_NEW_UNITS.length} lessons completed. The reflections on each lesson page are private: nothing you type there is saved.</p>
 ${finished}
 <p class="lg"><b>Leading a group, or walking with a young adult?</b> The Leader's Guide is for small-group leaders, pastors, mentors and parents. <a href="${leadersGuideHref}">⬇ Leader's Guide (PDF)</a></p>
 ${sections}</main>
-<footer><a href="/members">Back to your membership</a> · <a href="/contact">Need help?</a></footer>
+<footer><a href="/members">Back to your membership</a> · <a href="/contact">Questions? Contact us</a></footer>
 </body></html>`;
 }
 

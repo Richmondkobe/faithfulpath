@@ -5,7 +5,7 @@ import { COURSES, OFFERS, SERIES_PATH, coursePath, findCourse, isOfferId } from 
 import { getLearner, isCourseSession, recordCoursePurchase } from "@/lib/following-jesus-access";
 
 export const metadata: Metadata = {
-  title: "Thank you | Following Jesus | Faithful Path Community",
+  title: "Thank you | Following Jesus",
   robots: { index: false, follow: false },
 };
 

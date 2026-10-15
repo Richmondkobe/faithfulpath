@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!category) return { title: "Not found" };
 
   return {
-    title: `${category.label}`,
+    title: `${category.label}: Christian Articles`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug) },
     ...socialMeta({

@@ -7,7 +7,7 @@ import { getPublishedProductBySlug } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 
 export const metadata: Metadata = {
-  title: "Your guide | Faithful Path Community",
+  title: "Your guide",
   robots: { index: false, follow: false },
 };
 

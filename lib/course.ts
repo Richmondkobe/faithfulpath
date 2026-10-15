@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cache } from "react";
 import type { Checkin } from "@/lib/checkin";
@@ -118,31 +118,10 @@ export const getLessons = cache((courseSlug: string): LessonMeta[] => {
   return course.modules.flatMap((m) => m.lessons);
 });
 
-/** Look a lesson up by its displayed number, for routes defined in those terms. */
-export function lessonByOrder(
-  courseSlug: string,
-  order: number
-): LessonMeta | null {
-  return getLessons(courseSlug).find((l) => l.order === order) ?? null;
-}
-
 /** The lesson carrying the route buttons, if the course has one. */
 export function getRouteLesson(courseSlug: string): LessonMeta | null {
   return getLessons(courseSlug).find((l) => l.route_choice === true) ?? null;
 }
-
-/**
- * Lessons that count toward progress. Reference lessons — the resources page and
- * the programme list — are part of the course to read, but there is nothing to
- * complete in them, so they are left out of the count.
- */
-export function isCountable(lesson: LessonMeta): boolean {
-  return lesson.type !== "reference";
-}
-
-export const getCountableLessons = cache((courseSlug: string): LessonMeta[] =>
-  getLessons(courseSlug).filter(isCountable)
-);
 
 export function findLesson(
   courseSlug: string,
@@ -213,77 +192,6 @@ export const getLessonFront = cache(
   }
 );
 
-export const getLessonBody = cache(
-  (courseSlug: string, file: string): string => {
-    const raw = readFileSync(join(ROOT, courseSlug, file), "utf8");
-    return raw.replace(FRONT_MATTER, "").trim();
-  }
-);
-
-const H2 = (title: string) =>
-  new RegExp(`^##\\s+${title}\\s*$`, "im");
-
-/**
- * Splits a teaching lesson into the parts the page lays out separately. A body
- * without the headings — a session or reference lesson — comes back whole in
- * `inBrief`, which is what those layouts render.
- */
-export const getLessonSections = cache(
-  (courseSlug: string, file: string): LessonSections => {
-    const body = getLessonBody(courseSlug, file);
-
-    const deeperMatch = body.match(H2("Read the deeper teaching"));
-    const beforeDeeper =
-      deeperMatch?.index === undefined ? body : body.slice(0, deeperMatch.index);
-    const deeper =
-      deeperMatch?.index === undefined
-        ? null
-        : body.slice(deeperMatch.index + deeperMatch[0].length).trim();
-
-    const keyMatch = beforeDeeper.match(H2("Key Scripture"));
-    const briefMatch = beforeDeeper.match(H2("In brief"));
-
-    if (keyMatch?.index === undefined || briefMatch?.index === undefined) {
-      return { keyScripture: null, inBrief: beforeDeeper.trim(), deeper };
-    }
-
-    const keyScripture = beforeDeeper
-      .slice(keyMatch.index + keyMatch[0].length, briefMatch.index)
-      .trim();
-    const inBrief = beforeDeeper
-      .slice(briefMatch.index + briefMatch[0].length)
-      .trim();
-
-    return { keyScripture: keyScripture || null, inBrief, deeper };
-  }
-);
-
-export type Resource = { slug: string; title: string; body: string };
-
-export const getResource = cache(
-  (courseSlug: string, slug: string): Resource | null => {
-    if (!/^[a-z0-9-]+$/.test(slug)) return null;
-    try {
-      const raw = readFileSync(
-        join(ROOT, courseSlug, "resources", `${slug}.md`),
-        "utf8"
-      );
-      const fm = parseFrontMatter(raw);
-      return {
-        slug,
-        title: typeof fm.title === "string" ? fm.title : slug,
-        body: raw.replace(FRONT_MATTER, "").trim(),
-      };
-    } catch {
-      return null;
-    }
-  }
-);
-
-export function resourceHref(courseSlug: string, slug: string): string {
-  return `/members/courses/${courseSlug}/resources/${slug}`;
-}
-
 /**
  * A lesson's quiz and reflection prompts. Both live in the same JSON file.
  * Retreat sessions have prompts but no questions, and the reference lesson has
@@ -330,99 +238,6 @@ export type AudioScript = {
 };
 
 /**
- * Whole-line italics in a script are directions to the person recording it —
- * "record this unhurried" — and are never shown to a member.
- */
-function stripRecordingNotes(body: string): string {
-  return body
-    .split(/\n{2,}/)
-    .filter((block) => !/^\*[^*][\s\S]*\*$/.test(block.trim()))
-    .join("\n\n")
-    .trim();
-}
-
-export const getVideoScript = cache(
-  (courseSlug: string, id: string): VideoScript | null => {
-    if (!/^[a-z0-9-]+$/.test(id)) return null;
-    try {
-      const raw = readFileSync(join(ROOT, courseSlug, "videos", `${id}.md`), "utf8");
-      const fm = parseFrontMatter(raw);
-      return {
-        id,
-        title: typeof fm.title === "string" ? fm.title : id,
-        length: typeof fm.length === "string" ? fm.length : null,
-        beforeHeading:
-          typeof fm.before_heading === "string" ? fm.before_heading : null,
-        script: stripRecordingNotes(raw.replace(FRONT_MATTER, "")),
-      };
-    } catch {
-      return null;
-    }
-  }
-);
-
-export const getAudioScript = cache(
-  (courseSlug: string, id: string): AudioScript | null => {
-    if (!/^[a-z0-9-]+$/.test(id)) return null;
-    try {
-      const raw = readFileSync(join(ROOT, courseSlug, "audio", `${id}.md`), "utf8");
-      const fm = parseFrontMatter(raw);
-      // The script itself is deliberately not returned: the guided prayer is
-      // spoken, and the written prayer already follows in the lesson.
-      return {
-        id,
-        title: typeof fm.title === "string" ? fm.title : id,
-        length: typeof fm.length === "string" ? fm.length : null,
-      };
-    } catch {
-      return null;
-    }
-  }
-);
-
-/** The lengths the silence timer offers, from audio/silence-timers.md. */
-export const getSilenceLengths = cache((courseSlug: string): number[] => {
-  try {
-    const raw = readFileSync(
-      join(ROOT, courseSlug, "audio", "silence-timers.md"),
-      "utf8"
-    );
-    const fm = parseFrontMatter(raw);
-    const lengths = Array.isArray(fm.lengths)
-      ? (fm.lengths as string[]).map((n) => Number(n)).filter((n) => n > 0)
-      : [];
-    return lengths.length > 0 ? lengths : [5, 10, 20, 30];
-  } catch {
-    return [5, 10, 20, 30];
-  }
-});
-
-const WORD_MINUTES: Record<string, number> = {
-  five: 5,
-  ten: 10,
-  fifteen: 15,
-  twenty: 20,
-  "twenty-five": 25,
-  thirty: 30,
-  forty: 40,
-  "forty-five": 45,
-  sixty: 60,
-};
-
-/**
- * The length a session suggests, written in words in its Silence section —
- * "Suggested length: fifteen minutes". Offered alongside the standard set when
- * it is not already one of them.
- */
-export function suggestedSilenceMinutes(body: string): number | null {
-  const section = body.split(/^##\s+Silence\s*$/m)[1];
-  if (!section) return null;
-  const m = section.match(/Suggested length:\s*([a-z-]+)\s*minutes/i);
-  if (!m) return null;
-  return WORD_MINUTES[m[1].toLowerCase()] ?? null;
-}
-
-/**
  * Splits a lesson body so a component can be placed at a named heading, and
  * returns the pieces in order. Used to put the guided-prayer player under its
  * own heading and each Day-30 video above its week, without the content having
@@ -433,98 +248,3 @@ export function suggestedSilenceMinutes(body: string): number | null {
 export type BodyPiece =
   | { kind: "markdown"; source: string }
   | { kind: "slot"; id: string };
-
-export function spliceAtHeadings(
-  body: string,
-  slots: { id: string; heading: string; where: "before" | "after" | "endOfSection" }[]
-): BodyPiece[] {
-  type Cut = { index: number; id: string };
-  const cuts: Cut[] = [];
-
-  for (const slot of slots) {
-    const escaped = slot.heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const re = new RegExp(`^${escaped}\\s*$`, "m");
-    const m = body.match(re);
-    if (m?.index === undefined) continue;
-
-    if (slot.where === "before") {
-      cuts.push({ index: m.index, id: slot.id });
-    } else if (slot.where === "after") {
-      cuts.push({ index: m.index + m[0].length, id: slot.id });
-    } else {
-      // End of the section: just before the next heading of any level, or the
-      // end of the body.
-      const rest = body.slice(m.index + m[0].length);
-      const nextHeading = rest.search(/^#{1,6}\s+/m);
-      cuts.push({
-        index: nextHeading === -1 ? body.length : m.index + m[0].length + nextHeading,
-        id: slot.id,
-      });
-    }
-  }
-
-  cuts.sort((a, b) => a.index - b.index);
-
-  const pieces: BodyPiece[] = [];
-  let from = 0;
-  for (const cut of cuts) {
-    const source = body.slice(from, cut.index).trim();
-    if (source) pieces.push({ kind: "markdown", source });
-    pieces.push({ kind: "slot", id: cut.id });
-    from = cut.index;
-  }
-  const tail = body.slice(from).trim();
-  if (tail) pieces.push({ kind: "markdown", source: tail });
-
-  return pieces;
-}
-
-/* ------------------------------------------------------- printable PDFs */
-
-export type CourseDownload = {
-  id: string;
-  title: string;
-  pages: number;
-};
-
-/**
- * Titles as the content README specifies them, page counts included — both
- * verified against the PDFs themselves (59 and 43).
- *
- * The files live in the content folder, not public/, so they are served by a
- * route that checks the membership first. Putting them in public/ would make
- * them a plain URL anyone could share.
- */
-const DOWNLOADS: Record<string, CourseDownload> = {
-  workbook: {
-    id: "workbook",
-    title: "The Christian Spiritual Reset — Workbook (printable, A4, 59 pages)",
-    pages: 59,
-  },
-  "session-guide": {
-    id: "session-guide",
-    title: "Retreat Session Guide (printable, A4, 43 pages)",
-    pages: 43,
-  },
-};
-
-/** Resolves a download, and only if the PDF is actually present. */
-export function getDownload(
-  courseSlug: string,
-  id: string
-): CourseDownload | null {
-  const meta = DOWNLOADS[id];
-  if (!meta) return null;
-  return downloadPath(courseSlug, id) ? meta : null;
-}
-
-/** Absolute path to a download's PDF, or null if it is not there. */
-export function downloadPath(courseSlug: string, id: string): string | null {
-  if (!/^[a-z0-9-]+$/.test(id) || !/^[a-z0-9-]+$/.test(courseSlug)) return null;
-  const path = join(ROOT, courseSlug, "downloads", `${id}.pdf`);
-  return existsSync(path) ? path : null;
-}
-
-export function downloadHref(courseSlug: string, id: string): string {
-  return `/members/courses/${courseSlug}/downloads/${id}`;
-}

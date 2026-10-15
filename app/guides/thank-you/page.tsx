@@ -5,7 +5,7 @@ import { getPurchaseBySessionId, recordPurchase } from "@/lib/purchases";
 import { getProductById } from "@/lib/products-db";
 
 export const metadata: Metadata = {
-  title: "Thank you | Faithful Path Community",
+  title: "Thank you",
   robots: { index: false, follow: false },
 };
 

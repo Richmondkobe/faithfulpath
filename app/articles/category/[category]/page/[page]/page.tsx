@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { socialMeta } from "@/lib/social-meta";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
   countPublishedByCategory,
   listPublishedArticlePage,
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${category.label} — page ${page}`,
+    title: `${category.label}: Christian Articles — page ${page}`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug, page) },
     ...socialMeta({
@@ -69,7 +69,7 @@ export default async function CategoryPagePaged({ params }: Props) {
 
   const page = parsePage(rawPage);
   if (page === null) notFound();
-  if (page === 1) redirect(categoryHref(category.slug));
+  if (page === 1) permanentRedirect(categoryHref(category.slug));
 
   const [{ articles, pageCount }, counts] = await Promise.all([
     listPublishedArticlePage(page, category.slug),

@@ -40,7 +40,11 @@ check(writes.length && writes.every((w) => w === "RESET_NEW_KEY"), "writes only 
 const reads = [...all.matchAll(/\.eq\("course_slug",\s*([\w"'-]+)/g)].map((m) => m[1]);
 check(reads.length && reads.every((r) => r === "RESET_NEW_KEY"), "reads only its own progress", `reads course_slug ${reads.join(", ")}`);
 check(/RESET_NEW_KEY = "christian-spiritual-reset-new"/.test(all), "course key is christian-spiritual-reset-new", "course key changed");
-check(!(/journal|course_reflections/.test(all)), "never touches the journal or reflections", "mentions the journal or reflections");
+// The course page links members to their journal (/members/journal) for what
+// they wrote in the previous edition: a link, not access. Anything that reads
+// or writes journal or reflection data still fails.
+const noJournalLink = all.replace(/<a href="\/members\/journal">your journal<\/a>/g, "");
+check(!(/journal|course_reflections/.test(noJournalLink)), "never touches the journal or reflections (one link to the journal page aside)", "mentions the journal or reflections");
 
 
 // My Day 30 Review (Lesson 16): the one other thing this edition saves, in its own file.

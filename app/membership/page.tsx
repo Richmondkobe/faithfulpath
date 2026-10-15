@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { HELP_PATH } from "@/lib/site";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
 import { TrackedSubmit } from "@/components/analytics/Tracked";
-import { abs, graph, orgRef } from "@/lib/schema";
+import { abs, breadcrumbs, graph, orgRef } from "@/lib/schema";
 import { listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 
 // From the approved page's own heading and opening line.
-const TITLE = "Five Christian courses, one membership | Faithful Path Community";
+const TITLE = "Five Christian courses, one membership";
+// Under 160 characters, with the price early, so a search result shows it
+// whole (website audit S5).
 const DESCRIPTION =
-  "Practical, Scripture-centred guidance with Pastor Richmond Kobe for seasons when you need help taking the next faithful step: through tiredness, worry, dating, marriage and your first years of church leadership. US$19 a month.";
+  "Five Christian courses with Pastor Richmond Kobe for US$19 a month: burnout, worry, dating, marriage and church leadership. Learn at home; cancel any time.";
 
 // A purpose-built 1200x630 card, like the ones the guides use. The course cover
 // itself is portrait 2/3, which a social card would crop to a band and cut the
@@ -154,39 +157,55 @@ function Faq({
   );
 }
 
-// Course, not an accredited programme. There is deliberately no
-// educationalCredentialAwarded and no EducationalOccupationalCredential: the
-// course ends in a certificate of completion, which is not a qualification, and
-// claiming otherwise in structured data would be a claim about accreditation.
-const COURSE_SCHEMA = graph({
-  "@type": "Course",
-  name: "The Christian Spiritual Reset",
+// The membership, and the five courses it opens, as the page shows them
+// (website audit S4: this used to describe the Spiritual Reset alone). Course,
+// not an accredited programme: there is deliberately no
+// educationalCredentialAwarded, since a certificate of completion is not a
+// qualification and structured data should not claim it is.
+const MONTHLY = {
+  "@type": "Offer",
+  price: "19.00",
+  priceCurrency: "USD",
+  availability: "https://schema.org/InStock",
   url: abs("/membership"),
-  description:
-    "The complete online edition of The Christian Spiritual Reset \u2014 a guided Christian retreat for people who are exhausted, spiritually dry, or unable to hear God.",
-  provider: orgRef,
-  inLanguage: "en",
-  hasCourseInstance: {
-    "@type": "CourseInstance",
-    courseMode: "online",
-  },
-  offers: {
-    "@type": "Offer",
+  seller: orgRef,
+  priceSpecification: {
+    "@type": "UnitPriceSpecification",
     price: "19.00",
     priceCurrency: "USD",
-    availability: "https://schema.org/InStock",
-    url: abs("/membership"),
-    seller: orgRef,
-    priceSpecification: {
-      "@type": "UnitPriceSpecification",
-      price: "19.00",
-      priceCurrency: "USD",
-      billingDuration: 1,
-      billingIncrement: 1,
-      unitCode: "MON",
-    },
+    billingDuration: 1,
+    billingIncrement: 1,
+    unitCode: "MON",
   },
-});
+};
+const COURSE_SCHEMA = graph(
+  breadcrumbs([{ name: "Home", path: "/" }, { name: "Courses", path: "/courses" }, { name: "Membership" }]),
+  {
+    "@type": "Product",
+    name: "Faithful Path Membership",
+    description: DESCRIPTION,
+    url: abs("/membership"),
+    brand: orgRef,
+    offers: MONTHLY,
+  },
+  {
+    "@type": "ItemList",
+    name: "Courses in the Faithful Path Membership",
+    itemListElement: COURSES.map((course, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Course",
+        name: course.title,
+        description: `${course.title}: ${course.line}`,
+        provider: orgRef,
+        inLanguage: "en",
+        hasCourseInstance: { "@type": "CourseInstance", courseMode: "online" },
+        offers: { ...MONTHLY, category: "Subscription" },
+      },
+    })),
+  }
+);
 
 // Refreshed like the book pages, so a new cover shows without a deploy.
 export const revalidate = 300;
@@ -280,7 +299,7 @@ export default async function Membership() {
         These courses are pastoral, not clinical. They are not a substitute for
         medical care, counselling or crisis support. If you are in danger or
         need more help, see{" "}
-        <Link href="/before-you-say-yes/resources" className={link}>
+        <Link href={HELP_PATH} className={link}>
           Finding Help Where You Live
         </Link>
         .

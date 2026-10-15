@@ -5,7 +5,7 @@ import { getSessionEmail } from "@/lib/auth";
 import { SERIES_PATH } from "@/lib/following-jesus";
 
 export const metadata: Metadata = {
-  title: "Sign in | Following Jesus | Faithful Path Community",
+  title: "Sign in | Following Jesus",
   robots: { index: false, follow: false },
 };
 

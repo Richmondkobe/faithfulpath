@@ -19,7 +19,7 @@ import LbyrShell, { Panel, Plain, SectionHeading } from "@/components/lbyr/LbyrS
 import LbyrProgress from "@/components/lbyr/LbyrProgress";
 
 export const metadata: Metadata = {
-  title: "Lead Before You’re Ready | Faithful Path Community",
+  title: "Lead Before You’re Ready",
   robots: { index: false, follow: false },
 };
 

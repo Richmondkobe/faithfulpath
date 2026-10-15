@@ -14,7 +14,7 @@ import JournalButton from "@/components/course/JournalButton";
 const COURSE_SLUG = "christian-spiritual-reset";
 
 export const metadata: Metadata = {
-  title: "Your journal | Faithful Path Community",
+  title: "Your journal",
   robots: { index: false, follow: false },
 };
 
@@ -23,16 +23,16 @@ export const metadata: Metadata = {
  * ended. What they wrote is theirs to keep and to take with them; the course
  * itself stays behind requireActiveMember.
  *
- * Nothing on this page edits. A member who is still active gets a link through
- * to the lesson, where the writing actually happens.
+ * Nothing on this page edits. For When Your Mind Won't Rest, an active member
+ * gets a link through to the lesson, where the writing happens. The Reset
+ * entries were written in its previous edition, now retired, so they link to
+ * the current edition instead, and a member who finished it can download the
+ * certificate they earned here.
  *
- * Two of the five courses are here, and only two (Richmond, 8 October 2026).
- * Talk Before You Marry and Lead Before You're Ready store nothing a member
- * writes, by design. Before You Say Yes stores answers but is deliberately left
- * out: lib/bysy-export-policy.ts keeps every answer inside the course until a
- * page is approved for export, needs EXPORT_WARNING and a member's own choice,
- * and the course never shows earlier answers unaided. Do not add it here, or to
- * the PDF, without that decision.
+ * Two courses are here, and only two (Richmond, 8 October 2026). The current
+ * editions of the other courses store nothing a member writes, by design. The
+ * previous Before You Say Yes edition stored answers but was deliberately kept
+ * out of the journal and the PDF; those answers stay in the database, unread.
  */
 export default async function JournalPage() {
   const email = await requireMemberRow();

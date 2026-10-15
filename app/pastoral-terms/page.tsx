@@ -12,7 +12,7 @@ const PATH = "/pastoral-terms";
 const SOURCE = readLegal("pastoral-terms");
 
 export const metadata: Metadata = {
-  title: `${TITLE} | Faithful Path Community`,
+  title: `${TITLE}`,
   description: DESCRIPTION,
   alternates: { canonical: PATH },
   openGraph: {

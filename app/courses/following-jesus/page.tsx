@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbs, graph } from "@/lib/schema";
 import { socialMeta } from "@/lib/social-meta";
 import Link from "next/link";
 import { COURSES, OFFERS, coursePath, offersOpenCourse, singleOfferFor, SERIES_LISTED, SERIES_PATH } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
 import { formatPrice } from "@/lib/products";
 
-const TITLE = "Following Jesus — Four Video Courses | Faithful Path Community";
+const TITLE = "Following Jesus — Four Video Courses";
 const DESCRIPTION =
   "Four video courses with Pastor Richmond Kobe, from new life in Christ to helping others follow Jesus: Begin, Establish, Grow and Multiply.";
 
@@ -35,6 +37,7 @@ export default async function FollowingJesusSeries() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+      <JsonLd data={graph(breadcrumbs([{ name: "Home", path: "/" }, { name: "Courses", path: "/courses" }, { name: "Following Jesus" }]))} />
       <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Video courses</p>
       <h1
         className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"

@@ -19,6 +19,13 @@ are and makes only these changes as each page is sent out:
   series and to the home page, and (when the course may be listed) its search
   description, canonical address, share preview and Course data
   (`publicCoursePage()` in `lib/fj-html.ts`).
+- each lesson's transcript headings (`<h4>`) are marked `aria-level="3"` for
+  screen readers, since they sit directly under an `<h2>`; the tag and its look
+  are unchanged (`transcriptHeadings()` in `lib/fj-html.ts`).
+
+The serif font is served without its optical-size range (Stage 3 of the
+website audit), which made the file more than twice the size; the characters
+it covers, Greek included, are unchanged.
 
 `CHECKSUMS.sha256` in each course folder records the originals, so a check can
 prove the files were never changed. A new approved version of a page replaces

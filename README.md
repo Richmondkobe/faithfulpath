@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Faithful Path Community
 
-## Getting Started
+The website at https://faithfulpathcommunity.com: Pastor Richmond Kobe's
+articles, books, courses, membership and Talk to a Pastor sessions. Next.js
+(see `AGENTS.md`: this version differs from older guides), Supabase for
+accounts and data, Stripe for payments, deployed on Vercel from `main`.
 
-First, run the development server:
+## Running it
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    npm install
+    cp .env.example .env.local   # then fill in the values
+    npm run dev                  # http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things are
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/` — the pages. `app/members/` is the members area; its courses are in
+  `app/members/courses/`.
+- `content/` — written content in files: the About page, legal pages, and each
+  course's lessons. Course lesson pages are Richmond's approved files, served
+  unchanged; each course folder's README lists what the site changes as a page
+  is sent out. Lesson pages follow `docs/LESSON-TEMPLATE.md`.
+- `lib/` — the code behind the pages. `app/globals.css` holds the brand colours
+  (navy and gold); pages use their names, never colour codes.
+- `scripts/` — checks and tools.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Checks before a change goes live
 
-## Learn More
+    npx tsc --noEmit
+    npm run lint
+    npm run verify:fj          # Following Jesus pages are the approved files
+    npm run verify:reset-new   # and the same for the other three courses
+    npm run verify:bysy-new
+    npm run verify:tbym-new
+    npm run verify:lessons     # lesson pages follow docs/LESSON-TEMPLATE.md
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Course recordings live in the private Supabase bucket `course-media`
+(`npm run media:upload`), never in git.
