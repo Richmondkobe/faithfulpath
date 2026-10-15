@@ -251,6 +251,18 @@ export function unitHtml(unit: TbymNewUnit, raw: string, completed: Set<string>)
   html = beforeHeadEnd(html, NEVER_STALE);
   html = swap(html, '<header class="top">', `${TEST_BANNER}\n<header class="top">`);
 
+  // Each reflection box is named by the question above it, so a screen reader
+  // reads the question rather than "edit text, blank". The finished pages put
+  // the label beside the box without linking them; every box follows the one
+  // pattern below, and a box that does not is an error, not a skipped fix.
+  const boxes = html.split("<textarea").length - 1;
+  let q = 0;
+  html = html.replace(/<div class="fld"><label>([^<]*)<\/label><textarea/g, (_m, label: string) => {
+    q++;
+    return `<div class="fld"><label id="tbym-q${q}">${label}</label><textarea aria-labelledby="tbym-q${q}"`;
+  });
+  if (q !== boxes) throw new Error(`${unit.slug}: ${boxes - q} reflection box(es) without a question label.`);
+
   // The player, from this site.
   html = swap(html, '<iframe src="player.html"', `<iframe src="${unitPath(unit)}/player"`);
 

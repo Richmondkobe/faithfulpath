@@ -44,7 +44,7 @@ import { join } from "node:path";
 import { chromium } from "playwright";
 
 import { COURSES, SUPPORT_PAGES, tabTitle } from "../lib/following-jesus.ts";
-import { linkSupportPages, readCoursePage, websitePage } from "../lib/fj-html.ts";
+import { linkSupportPages, publicCoursePage, readCoursePage, websitePage } from "../lib/fj-html.ts";
 import { completionPage, lessonPage, playerPage } from "../lib/fj-lessons.ts";
 import { welcomePage } from "../lib/fj-welcome.ts";
 import { answersApiPath, withAnswers } from "../lib/fj-answers-page.ts";
@@ -94,7 +94,10 @@ async function pagesFor(course) {
   const pages = [];
   const raw = (file) => readCoursePage(course, file);
 
-  const welcome = linkSupportPages(websitePage(await raw("welcome.html"), { title: tabTitle(course.fullTitle), indexable: true }), course);
+  const welcome = linkSupportPages(
+    publicCoursePage(websitePage(await raw("welcome.html"), { title: tabTitle(course.fullTitle), indexable: true }), course, { indexable: true }),
+    course
+  );
   pages.push({ name: "welcome (visitor)", original: await raw("welcome.html"), served: welcomePage(welcome, course, null, new Set(), null) });
   pages.push({
     name: "welcome (owner)",
@@ -264,6 +267,10 @@ for (const course of COURSES.filter((c) => c.launched)) {
       if (url.startsWith("https://storage.invalid/")) continue;
       if (originalUrls.has(url) && !FORBIDDEN.test(url)) continue;
       if (url === "http://www.w3.org/2000/svg") continue;
+      // The welcome page's search data and share preview name this site's own
+      // addresses, and schema.org as the vocabulary; neither is a request.
+      if (url.startsWith("https://faithfulpathcommunity.com/") || url === "https://faithfulpathcommunity.com") continue;
+      if (url === "https://schema.org") continue;
       fail(`${p.name}: refers to ${url}`);
     }
     if (FORBIDDEN.test(p.served.replace(/fonts\.googleapis\.com[^"]*"/g, ""))) {

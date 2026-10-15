@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { listArticles } from "@/lib/articles-db";
 import { displayDate } from "@/lib/article";
+import { requireAdmin } from "@/lib/auth";
 
 export default async function AdminArticles() {
+  // Checked here as well as in the layout: a layout does not stop its pages
+  // rendering on their own, and these read with the service-role key.
+  await requireAdmin();
   const articles = await listArticles();
 
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import Link from "next/link";
 import { COURSES, OFFERS, coursePath, offersOpenCourse, singleOfferFor, SERIES_LISTED, SERIES_PATH } from "@/lib/following-jesus";
 import { getLearner, getOwnedOffers } from "@/lib/following-jesus-access";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: SERIES_PATH },
+  ...socialMeta({ title: "Following Jesus — Four Video Courses", description: DESCRIPTION, path: SERIES_PATH }),
   ...(SERIES_LISTED ? {} : { robots: { index: false, follow: false } }),
 };
 

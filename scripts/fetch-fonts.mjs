@@ -54,8 +54,11 @@ const FJ_EXTRA = "ḥṣḏʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0
 
 /** family: the css2 `family=` value. Each face becomes one file. */
 const FACES = [
-  { file: "newsreader-normal.woff2", family: "Newsreader:opsz,wght@6..72,300..600" },
-  { file: "newsreader-italic.woff2", family: "Newsreader:ital,opsz,wght@1,6..72,300..600" },
+  // Without the optical-size axis (opsz): it more than doubled both files
+  // (172 KB and 197 KB against 79 KB and 91 KB), on every page. Headings now
+  // use the font's default optical size (15 October 2026, website audit P2).
+  { file: "newsreader-normal.woff2", family: "Newsreader:wght@300..600" },
+  { file: "newsreader-italic.woff2", family: "Newsreader:ital,wght@1,300..600" },
   { file: "ibm-plex-sans-normal.woff2", family: "IBM+Plex+Sans:wght@400..600" },
   { file: "ibm-plex-mono-400.woff2", family: "IBM+Plex+Mono:wght@400" },
   { file: "ibm-plex-mono-500.woff2", family: "IBM+Plex+Mono:wght@500" },

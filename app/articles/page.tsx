@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import {
   countPublishedByCategory,
   listPublishedArticlePage,
@@ -16,6 +17,11 @@ export const metadata: Metadata = {
   // Page one of the index is /articles, never /articles/page/1 — which
   // redirects here rather than existing as a second copy of this page.
   alternates: { canonical: "/articles" },
+  ...socialMeta({
+    title: "Articles — Faithful Path Community",
+    description: "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
+    path: "/articles",
+  }),
 };
 
 export default async function Articles() {

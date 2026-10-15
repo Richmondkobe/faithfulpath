@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { tbymMono as mono } from "@/lib/fonts";
+import { tbymMono as mono } from "@/lib/fonts-tbym";
 import { TBYM_NEW_LIVE, TBYM_OLD_RETIRED } from "@/lib/tbym-new-live";
 
 import "./tbym.css";

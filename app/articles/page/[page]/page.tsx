@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import { notFound, redirect } from "next/navigation";
 import {
   articlesPageHref,
@@ -39,6 +40,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // telling Google that pages two and up are duplicates, which is how their
     // articles stop being indexed.
     alternates: { canonical: articlesPageHref(page) },
+    ...socialMeta({
+      title: `Articles — page ${page}`,
+      description: `Writing and teaching on faith, marriage, grief, and staying with God when it is hard — page ${page}.`,
+      path: articlesPageHref(page),
+    }),
   };
 }
 

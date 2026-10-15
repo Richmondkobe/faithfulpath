@@ -90,7 +90,7 @@ marked `↳` and sits directly beneath the entry it concerns.
 | GBV Helpline 1195 (Kenya) | HAK; State Dept of Gender Affairs | 18 Sep 2026 | 1195, toll-free, 24/7, NGO operator, government partnership, referral pathways incl. police | Verified |
 | Lagos DSVA (Nigeria) | lagosdsva.org | 18 Sep 2026 | 0800 033 3333, 24/7, WhatsApp 0916 984 8920, statutory basis, any age, Lagos only, services | Verified |
 | DOVVSU (Ghana) | police.gov.gh | 18 Sep 2026 | Police unit status, legal basis, free services, One-Stop Centre — no hotline number published | Verified |
-| The Ark Foundation (Ghana) | arkfoundationghana.org | 18 Sep 2026 | Independent Christian NGO, services, locations, works alongside police without requiring it | Verified |
+| The Ark Foundation (Ghana) | arkfoundationghana.org | 18 Sep 2026 | Independent Christian NGO, services, locations, works alongside police without requiring it. 15 Oct 2026: the site fails over https (certificate error) and opens over http, so the page links to http://arkfoundationghana.org; switch back to https once theirs works | Verified |
 | ↳ The Ark Foundation telephone number | arkfoundationghana.org | — | Own pages refer to a hotline but do not publish the number | Confirm directly |
 | Women Helpline 181 (India) | MWCD; Mission Shakti | 18 Sep 2026 | 181, 24/7, referral function, 34 states/UTs, police and OSC pathways | Verified |
 | One Stop Centres (India) | MWCD | 18 Sep 2026 | 969 operational Mar 2026, services incl. FIR support | Verified |

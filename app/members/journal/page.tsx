@@ -4,8 +4,11 @@ import { requireMemberRow } from "@/lib/member-gate";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { getJournal, journalDate, type Journal } from "@/lib/journal";
 import { getMindJournal } from "@/lib/mind-journal";
-import { lessonHref } from "@/lib/course";
+import { getLessons } from "@/lib/course";
+import { getCompletion } from "@/lib/course-progress";
+import { resetSimpleCompletion } from "@/lib/reset-certificate";
 import { mindLessonHref } from "@/lib/mind-links";
+import { RESET_NEW_PATH } from "@/lib/reset-new";
 import JournalButton from "@/components/course/JournalButton";
 
 const COURSE_SLUG = "christian-spiritual-reset";
@@ -36,7 +39,11 @@ export default async function JournalPage() {
   const member = await getMemberByEmail(email);
   const active = isActive(member);
 
-  const [reset, mind] = await Promise.all([getJournal(COURSE_SLUG), getMindJournal()]);
+  const [reset, mind, certificate] = await Promise.all([
+    getJournal(COURSE_SLUG),
+    getMindJournal(),
+    resetCertificate(),
+  ]);
   const journals: Journal[] = [reset, mind].filter(
     (j): j is Journal => j !== null && j.modules.length > 0
   );
@@ -94,6 +101,26 @@ export default async function JournalPage() {
         <JournalButton variant="primary" />
       </div>
 
+      {/* The previous Reset edition is retired, and its pages with it, so this
+          is the one place a member who finished it can still download the
+          certificate they earned. Same check as the certificate route, which
+          also needs an active membership. */}
+      {active && certificate && (
+        <div className="mt-8 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
+          <p className="text-[#2B2118]">Your certificate</p>
+          <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+            You completed the previous edition of The Christian Spiritual Reset.
+          </p>
+          <Link
+            href={`/members/courses/${COURSE_SLUG}/certificate`}
+            prefetch={false}
+            className="mt-4 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
+          >
+            Download your certificate
+          </Link>
+        </div>
+      )}
+
       {journals.length === 0 ? (
         <div className="mt-12 rounded-sm border border-[#E5D9C7] bg-[#F3EADC] px-5 py-5">
           <p className="text-[#2B2118]">Nothing written yet</p>
@@ -103,7 +130,7 @@ export default async function JournalPage() {
           </p>
           {active && (
             <Link
-              href={`/members/courses/${COURSE_SLUG}`}
+              href={RESET_NEW_PATH}
               className="mt-5 inline-flex items-center justify-center rounded-sm bg-[#2B2118] px-7 py-4 text-[15px] font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34]"
             >
               Go to the course
@@ -123,6 +150,24 @@ export default async function JournalPage() {
               >
                 {journal.courseTitle}
               </h2>
+              {/* The Reset entries were written in the previous edition, whose
+                  lesson pages are retired; they open the current edition. */}
+              {journal.courseSlug === COURSE_SLUG && (
+                <p className="mt-2 text-sm leading-relaxed text-[#6B5F53]">
+                  Written in the previous edition of the course.
+                  {active && (
+                    <>
+                      {" "}
+                      <Link
+                        href={RESET_NEW_PATH}
+                        className="text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
+                      >
+                        Open the current edition
+                      </Link>
+                    </>
+                  )}
+                </p>
+              )}
 
               <div className="mt-8 space-y-14">
           {journal.modules.map((mod, mi) => (
@@ -201,13 +246,9 @@ export default async function JournalPage() {
                       </div>
                     )}
 
-                    {active && (
+                    {active && journal.courseSlug !== COURSE_SLUG && (
                       <Link
-                        href={
-                          journal.courseSlug === COURSE_SLUG
-                            ? lessonHref(COURSE_SLUG, lesson.slug)
-                            : mindLessonHref(lesson.slug)
-                        }
+                        href={mindLessonHref(lesson.slug)}
                         className="mt-4 inline-block text-sm text-[#8B5E34] underline underline-offset-4 transition-colors hover:text-[#2B2118]"
                       >
                         Open the lesson
@@ -229,4 +270,19 @@ export default async function JournalPage() {
       </div>
     </main>
   );
+}
+
+/**
+ * Whether the member finished the previous Reset edition and gave a name to
+ * print: the same two readings the certificate route makes, read-only.
+ */
+async function resetCertificate(): Promise<boolean> {
+  const lessons = getLessons(COURSE_SLUG);
+  if (lessons.length === 0) return false;
+  let completion = await getCompletion(COURSE_SLUG, lessons[lessons.length - 1].slug);
+  if (!completion.complete) {
+    const simple = await resetSimpleCompletion();
+    if (simple.complete) completion = simple;
+  }
+  return completion.complete && Boolean(completion.name);
 }

@@ -14,7 +14,11 @@ are and makes only these changes as each page is sent out:
   the website;
 - the Google Fonts link is served from this site instead;
 - a small script saves progress and the learner's own answers;
-- the "Preview: … will work on the website" notes are removed.
+- the "Preview: … will work on the website" notes are removed;
+- each course's public welcome page gets a slim bar above it, back to the
+  series and to the home page, and (when the course may be listed) its search
+  description, canonical address, share preview and Course data
+  (`publicCoursePage()` in `lib/fj-html.ts`).
 
 `CHECKSUMS.sha256` in each course folder records the originals, so a check can
 prove the files were never changed. A new approved version of a page replaces

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import { TrackedAnchor } from "@/components/analytics/Tracked";
@@ -12,6 +13,12 @@ export const metadata: Metadata = {
   description:
     "One hour online with a pastor of twenty years. Written intake, a live conversation, and a written follow-up within 24 hours. US$60.",
   alternates: { canonical: "/talk-to-a-pastor" },
+  ...socialMeta({
+    title: "Talk to a Pastor — Online Pastoral Counselling",
+    description:
+      "One hour online with a pastor of twenty years. Written intake, a live conversation, and a written follow-up within 24 hours. US$60.",
+    path: "/talk-to-a-pastor",
+  }),
 };
 
 const COUNTRIES = [

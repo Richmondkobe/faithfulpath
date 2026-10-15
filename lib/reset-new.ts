@@ -6,7 +6,7 @@ import { MEDIA_BUCKET } from "@/lib/course-media";
 import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap } from "@/lib/fj-html";
-import { RESET_NEW_LIVE } from "@/lib/reset-new-live";
+import { RESET_NEW_LIVE, RESET_OLD_RETIRED } from "@/lib/reset-new-live";
 
 /*
  * The Christian Spiritual Reset, new edition: a hidden test course.
@@ -902,6 +902,7 @@ h1{font:600 clamp(26px,5vw,38px)/1.2 'Source Serif 4',serif;margin:6px 0 8px}
 p.s{margin:0;opacity:.9}
 main{padding:22px 16px 40px}
 .note{background:#fff7e3;border:1px solid #e0d4b6;border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:18px}
+.note a{color:#8a6a24;font-weight:700}
 ul{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 li a{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;background:#fffaf0;border:1px solid #e0d4b6;border-radius:14px;padding:16px;color:inherit;text-decoration:none}
 li a:hover,li a:focus-visible{border-color:#8a6a24;outline:none;box-shadow:0 0 0 3px rgba(138,106,36,.25)}
@@ -918,7 +919,9 @@ ${RESET_NEW_LIVE ? "" : TEST_BANNER.replace(` · <a href="${RESET_NEW_PATH}" sty
 <header><div class="w"><p class="k">Faithful Path · Membership course</p><h1>The Christian Spiritual Reset</h1><p class="s">${RESET_NEW_LIVE ? "New edition" : "New edition: the units built so far, for testing."}</p></div></header>
 <main class="w"><div class="note">${
     RESET_NEW_LIVE
-      ? "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes. The previous edition, with everything you wrote there, stays open from your members page."
+      ? RESET_OLD_RETIRED
+        ? 'Take the course at your own pace. Your progress is saved as you go. Anything you wrote in the previous edition, and any certificate you earned there, is kept in <a href="/members/journal">your journal</a>.'
+        : "This is the new edition of the course. Your progress here is kept apart from the previous edition, so nothing you did there changes. The previous edition, with everything you wrote there, stays open from your members page."
       : "Only members can open this page, and nothing on the site links here. Your progress here is kept apart from the current course, so nothing you have done there changes."
   }</div>
 ${recordCard}

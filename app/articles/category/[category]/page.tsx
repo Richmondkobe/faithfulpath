@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import { notFound } from "next/navigation";
 import {
   countPublishedByCategory,
@@ -21,6 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${category.label}`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug) },
+    ...socialMeta({
+      title: `${category.label} — Articles`,
+      description: category.description,
+      path: categoryHref(category.slug),
+    }),
   };
 }
 

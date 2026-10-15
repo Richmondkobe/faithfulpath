@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { track } from "@vercel/analytics";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
@@ -12,6 +12,8 @@ export default function SignupForm() {
     "idle"
   );
   const [message, setMessage] = useState("");
+  const nameId = useId();
+  const emailId = useId();
 
   async function handleSubmit() {
     if (status === "loading") return;
@@ -66,7 +68,7 @@ export default function SignupForm() {
   }
 
   const inputClass =
-    "w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#A2968A] focus:border-[#8B5E34]";
+    "w-full rounded-sm border border-[#D9CDBA] bg-white px-4 py-3 text-sm text-[#2B2118] outline-none placeholder:text-[#7A7066] focus:border-[#8B5E34]";
 
   return (
     <div>
@@ -80,32 +82,49 @@ export default function SignupForm() {
         Scripture, and something honest about walking with God. No noise.
       </p>
 
-      <div className="mt-4 max-w-md space-y-2">
+      {/* A real form, so Enter and the browser's autofill behave as people
+          expect; the checks above still run, in place of the browser's own. */}
+      <form
+        noValidate
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="mt-4 max-w-md space-y-2"
+      >
+        {/* Labels a screen reader announces; the placeholder vanishes as
+            soon as someone types. */}
+        <label htmlFor={nameId} className="sr-only">
+          Your full name
+        </label>
         <input
+          id={nameId}
           type="text"
+          name="name"
+          autoComplete="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleSubmit();
-          }}
           placeholder="Your full name"
           required
           className={inputClass}
         />
         <div className="flex flex-col gap-2 sm:flex-row">
+          <label htmlFor={emailId} className="sr-only">
+            Email address
+          </label>
           <input
+            id={emailId}
             type="email"
+            name="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSubmit();
-            }}
             placeholder="your@email.com"
             required
             className={inputClass + " flex-1"}
           />
           <button
-            onClick={handleSubmit}
+            type="submit"
             disabled={status === "loading"}
             className="rounded-sm bg-[#2B2118] px-6 py-3 text-sm font-medium text-[#FDFAF4] transition-colors hover:bg-[#8B5E34] disabled:opacity-60"
           >
@@ -120,10 +139,10 @@ export default function SignupForm() {
           No spam. Unsubscribe any time. See our{" "}
           <FinePrintLink href="/privacy">Privacy Policy</FinePrintLink>.
         </FinePrint>
-      </div>
+      </form>
 
       {status === "error" && (
-        <p className="mt-2 text-sm text-[#8B3A2E]">{message}</p>
+        <p role="alert" className="mt-2 text-sm text-[#8B3A2E]">{message}</p>
       )}
     </div>
   );

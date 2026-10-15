@@ -9,12 +9,24 @@ import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import { bookCategoryHref, getBookCategory } from "@/lib/book-categories";
 import { notFound } from "next/navigation";
 import Markdown from "@/components/Markdown";
-import { getPublishedProductBySlug } from "@/lib/products-db";
+import { getPublishedProductBySlug, listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl, listSampleSlugs } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
 import { SITE } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
+
+// Built once and reused, as articles are, rather than rebuilt from the
+// database on every visit (it took 1.6 to 2.1 seconds before the first byte).
+// Nothing here depends on who is looking. Saving a book in the admin calls
+// revalidatePath("/guides/[slug]"); this is the backstop for rows edited
+// directly in Supabase.
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const products = await listPublishedProducts();
+  return products.map((p) => ({ slug: p.slug }));
+}
 
 // Purpose-built 1200x630 social cards, one per guide. A guide without one falls
 // back to the site card rather than to its own cover: covers are portrait 2/3

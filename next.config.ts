@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
     "/members/courses/talk-before-you-marry-new/**/*": ["./content/courses/talk-before-you-marry-new/**/*"],
   },
   images: {
+    // Keep resized images for 31 days rather than the default 4 hours. A book
+    // cover's file name carries its upload time (lib/storage.ts), so a new
+    // cover is a new address and is never hidden behind an old copy. The same
+    // goes for anything in public/: replace an image under a new file name.
+    minimumCacheTTL: 2678400,
     remotePatterns: supabaseHost
       ? [
           {

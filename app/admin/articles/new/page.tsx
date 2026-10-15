@@ -1,6 +1,8 @@
 import ArticleForm from "@/components/admin/ArticleForm";
+import { requireAdmin } from "@/lib/auth";
 
-export default function NewArticle() {
+export default async function NewArticle() {
+  await requireAdmin();
   return (
     <main className="mx-auto max-w-5xl px-6 pt-12 pb-20">
       <h1

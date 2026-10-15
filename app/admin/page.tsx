@@ -3,8 +3,12 @@ import Link from "next/link";
 import { listProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 import { formatPrice } from "@/lib/products";
+import { requireAdmin } from "@/lib/auth";
 
 export default async function Admin() {
+  // Checked here as well as in the layout: a layout does not stop its pages
+  // rendering on their own, and these read with the service-role key.
+  await requireAdmin();
   const products = await listProducts();
 
   return (

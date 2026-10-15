@@ -17,8 +17,11 @@ import localFont from "next/font/local";
 //
 // Newsreader and IBM Plex Sans are variable, so one file covers the whole
 // weight range. That is what was being served before: the generated CSS pointed
-// weights 300, 400, 500 and 600 at the same file. IBM Plex Mono is not
-// variable, so it needs a file per weight.
+// weights 300, 400, 500 and 600 at the same file.
+//
+// Only fonts every page needs belong here: the root layout imports this file,
+// and Next preloads every font declared in it on every page. A course's own
+// face goes in a file of its own (lib/fonts-tbym.ts).
 
 export const display = localFont({
   src: [
@@ -35,16 +38,6 @@ export const display = localFont({
 export const sans = localFont({
   src: [{ path: "../fonts/ibm-plex-sans-normal.woff2", weight: "400 600", style: "normal" }],
   variable: "--font-sans",
-  display: "swap",
-  adjustFontFallback: "Arial",
-});
-
-export const tbymMono = localFont({
-  src: [
-    { path: "../fonts/ibm-plex-mono-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/ibm-plex-mono-500.woff2", weight: "500", style: "normal" },
-  ],
-  variable: "--font-tbym-mono",
   display: "swap",
   adjustFontFallback: "Arial",
 });

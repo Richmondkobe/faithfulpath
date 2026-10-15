@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   description:
     "Richmond Kobe has pastored for more than twenty years across ten countries. Here is who he is and how he works with people one at a time.",
   alternates: { canonical: "/about" },
+  ...socialMeta({
+    title: "About Pastor Richmond Kobe",
+    description:
+      "Richmond Kobe has pastored for more than twenty years across ten countries. Here is who he is and how he works with people one at a time.",
+    path: "/about",
+  }),
 };
 
 // The page's text, read once at build time. A file rather than a Supabase row,
@@ -74,7 +81,7 @@ export default function About() {
         <div className="flex flex-col gap-8 sm:flex-row-reverse sm:items-start sm:gap-10">
           <div className="relative aspect-square w-full max-w-[13rem] shrink-0 overflow-hidden rounded-sm">
             <Image
-              src="/richmond.jpg"
+              src="/richmond-1200.jpg"
               alt="Richmond Kobe, pastor at Faithful Path Community"
               fill
               priority

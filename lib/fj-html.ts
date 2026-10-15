@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { SERIES_PATH, SUPPORT_PAGES, supportPath, type FjCourse } from "@/lib/following-jesus";
+import { SERIES_PATH, SUPPORT_PAGES, coursePath, singleOfferFor, supportPath, type FjCourse } from "@/lib/following-jesus";
+import { abs, breadcrumbs, graph, orgRef } from "@/lib/schema";
 
 // The Following Jesus pages are Richmond's reviewed, final HTML, served as
 // whole documents rather than rebuilt in React: their wording, slides, colours
@@ -122,6 +123,70 @@ export function websitePage(
     out = beforeHeadEnd(out, '<meta data-fj name="robots" content="noindex, nofollow">');
   }
   return out;
+}
+
+/**
+ * A course's public welcome page: the page people reach from search, before
+ * they buy. The reviewed file has no site menu and nothing for search engines
+ * beyond its title, so two things are added, both marked data-fj:
+ *
+ *  - a slim bar above the page, back to the series and to the home page, so a
+ *    visitor not ready to buy is not left at a dead end;
+ *  - when the page may be listed, its description, canonical address, share
+ *    preview and Course data, all from the course's own fields.
+ */
+export function publicCoursePage(html: string, course: FjCourse, { indexable }: { indexable: boolean }): string {
+  const path = coursePath(course);
+  const description = `${course.fullTitle} — ${course.seriesLine.replace(/\.$/, "")}. A Following Jesus video course with Pastor Richmond Kobe.`;
+  let out = html;
+  if (indexable) {
+    const title = `${course.fullTitle} | Following Jesus`;
+    const offer = singleOfferFor(course);
+    const data = graph(
+      {
+        "@type": "Course",
+        name: course.fullTitle,
+        description,
+        url: abs(path),
+        provider: orgRef,
+        inLanguage: "en",
+        ...(offer
+          ? { offers: { "@type": "Offer", price: (offer.priceCents / 100).toFixed(2), priceCurrency: "USD", category: "Paid", url: abs(path) } }
+          : {}),
+      },
+      breadcrumbs([
+        { name: "Home", path: "/" },
+        { name: "Courses", path: "/courses" },
+        { name: "Following Jesus", path: SERIES_PATH },
+        { name: course.title },
+      ])
+    );
+    out = beforeHeadEnd(
+      out,
+      [
+        `<meta data-fj name="description" content="${escapeHtml(description)}">`,
+        `<link data-fj rel="canonical" href="${abs(path)}">`,
+        `<meta data-fj property="og:type" content="website">`,
+        `<meta data-fj property="og:site_name" content="Faithful Path Community">`,
+        `<meta data-fj property="og:url" content="${abs(path)}">`,
+        `<meta data-fj property="og:title" content="${escapeHtml(title)}">`,
+        `<meta data-fj property="og:description" content="${escapeHtml(description)}">`,
+        `<meta data-fj property="og:image" content="${abs("/og-default.png")}">`,
+        `<meta data-fj name="twitter:card" content="summary_large_image">`,
+        `<meta data-fj name="twitter:title" content="${escapeHtml(title)}">`,
+        `<meta data-fj name="twitter:description" content="${escapeHtml(description)}">`,
+        `<meta data-fj name="twitter:image" content="${abs("/og-default.png")}">`,
+        `<script data-fj type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`,
+      ].join("\n")
+    );
+  }
+  // Each link is padded to a 44px tap height for phones.
+  const bar =
+    `<nav data-fj aria-label="Site" style="background:#121d33;font:600 14px/1.3 'Source Sans 3',system-ui,sans-serif;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0 12px;padding:0 12px">` +
+    `<a href="${SERIES_PATH}" style="color:#f3ecd8;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 6px">← All four courses</a>` +
+    `<a href="/" style="color:#e3c98a;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;padding:0 6px">Faithful Path Community</a>` +
+    `</nav>`;
+  return swap(out, "<body>", `<body>\n${bar}`);
 }
 
 /** The player is framed inside the lesson page; it gets the fonts and nothing else. */

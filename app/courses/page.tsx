@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import Link from "next/link";
 import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
 import { formatPrice } from "@/lib/products";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/courses" },
-  openGraph: { type: "website", url: "/courses", siteName: "Faithful Path Community", title: TITLE, description: DESCRIPTION },
+  ...socialMeta({ title: "Courses with Pastor Richmond Kobe", description: DESCRIPTION, path: "/courses" }),
 };
 
 const heading = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
@@ -103,7 +104,7 @@ export default function Courses() {
             ["The Christian Spiritual Reset", "a guided retreat at home for burnout and spiritual dryness."],
             ["When Your Mind Won’t Rest", "overthinking, worry and fear."],
             ["Before You Say Yes", "discernment in dating and the decision to marry."],
-            ["Talk Before You Marry", "fourteen lessons for couples before marriage."],
+            ["Talk Before You Marry", "fifteen lessons for couples before marriage."],
             ["Lead Before You’re Ready", "for your first years of leading in a church."],
           ]}
         />

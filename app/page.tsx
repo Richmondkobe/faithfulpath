@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/social-meta";
 import Image from "next/image";
 import Link from "next/link";
 import { SITE, COUNTRIES } from "@/lib/site";
@@ -12,6 +13,12 @@ import { formatPrice } from "@/lib/products";
 // the real one.
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  ...socialMeta({
+    title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
+    description:
+      "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+    path: "/",
+  }),
 };
 
 // Matches /articles: revalidatePath on save keeps this fresh, and this is the
@@ -81,7 +88,7 @@ export default async function Home() {
           <div className="order-first sm:order-last">
             <div className="relative aspect-square w-full max-w-xs overflow-hidden rounded-sm sm:max-w-none">
               <Image
-                src="/richmond.jpg"
+                src="/richmond-1200.jpg"
                 alt="Richmond, pastor at Faithful Path Community"
                 fill
                 priority

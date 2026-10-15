@@ -4,12 +4,16 @@ import DeleteProduct from "@/components/admin/DeleteProduct";
 import { getProductById } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 import { claimUrlFor } from "@/lib/claim";
+import { requireAdmin } from "@/lib/auth";
 
 export default async function EditProduct({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  // Checked here as well as in the layout: a layout does not stop its pages
+  // rendering on their own, and these read with the service-role key.
+  await requireAdmin();
   const { id } = await params;
   const product = await getProductById(id);
 

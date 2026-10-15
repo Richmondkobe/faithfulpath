@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Faithful Path Community",
-    url: "https://faithfulpathcommunity.com",
+    // No url here: a page that inherited it would share as the home page.
+    // Each page gives its own through lib/social-meta.ts.
     title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",

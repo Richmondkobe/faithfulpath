@@ -1,6 +1,8 @@
 import ProductForm from "@/components/admin/ProductForm";
+import { requireAdmin } from "@/lib/auth";
 
-export default function NewProduct() {
+export default async function NewProduct() {
+  await requireAdmin();
   return (
     <main className="mx-auto max-w-5xl px-6 pt-12 pb-20">
       <h1
