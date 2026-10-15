@@ -25,14 +25,14 @@ export default function CategoryRow({
           {active ? (
             <Link
               href="/articles"
-              className="inline-flex items-center rounded-xl border border-line px-3 py-1.5 text-sm text-muted transition-colors hover:border-navy hover:text-navy"
+              className="inline-flex items-center rounded-xl border border-gold-line px-3 py-1.5 text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-paper"
             >
               All
             </Link>
           ) : (
             <span
               aria-current="page"
-              className="inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm text-paper"
+              className="inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm font-semibold text-paper"
             >
               All
             </span>
@@ -44,7 +44,7 @@ export default function CategoryRow({
             <li key={c.slug}>
               <span
                 aria-current="page"
-                className="inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm text-paper"
+                className="inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm font-semibold text-paper"
               >
                 {c.label}
               </span>
@@ -53,7 +53,7 @@ export default function CategoryRow({
             <li key={c.slug}>
               <Link
                 href={categoryHref(c.slug)}
-                className="inline-flex items-center rounded-xl border border-line px-3 py-1.5 text-sm text-muted transition-colors hover:border-navy hover:text-navy"
+                className="inline-flex items-center rounded-xl border border-gold-line px-3 py-1.5 text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-paper"
               >
                 {c.label}
               </Link>

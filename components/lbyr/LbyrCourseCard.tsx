@@ -29,7 +29,7 @@ export default async function LbyrCourseCard() {
   }
 
   return (
-    <section className="rounded-2xl border border-line bg-paper px-5 py-5">
+    <section className="rounded-2xl border border-gold bg-paper px-5 py-5">
       <h2
         className="text-2xl text-navy"
         style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}

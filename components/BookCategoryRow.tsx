@@ -26,9 +26,9 @@ export default function BookCategoryRow({
   if (shown.length === 0) return null;
 
   const selected =
-    "inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm text-paper";
+    "inline-flex items-center rounded-xl border border-navy bg-navy px-3 py-1.5 text-sm font-semibold text-paper";
   const link =
-    "inline-flex items-center rounded-xl border border-line px-3 py-1.5 text-sm text-muted transition-colors hover:border-navy hover:text-navy";
+    "inline-flex items-center rounded-xl border border-gold-line px-3 py-1.5 text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-paper";
 
   return (
     <nav aria-label="Book categories" className="mt-10">
