@@ -100,7 +100,9 @@ export default function Courses() {
       >
         Courses
       </h1>
-      <p className="mt-6 text-lg leading-relaxed" style={lede}>
+      {/* A little wider than the page's 640px paragraphs, so this one short
+          sentence sits on one line (Richmond, 17 October 2026). */}
+      <p className="mt-6 max-w-[45rem]! text-lg leading-relaxed" style={lede}>
         Two ways to learn with Pastor Richmond Kobe, online and at your own pace.
       </p>
 
