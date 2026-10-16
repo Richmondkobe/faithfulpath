@@ -43,7 +43,7 @@ export default async function LbyrFinish() {
   return (
     <LbyrShell notice={notice}>
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Finish
         </p>
         <h1

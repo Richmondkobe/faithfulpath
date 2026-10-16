@@ -44,7 +44,7 @@ export default async function JourneyHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <Link href={MIND_BASE} className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
@@ -80,7 +80,7 @@ export default async function JourneyHome() {
             {journey.title}
           </h1>
 
-          <p className="mt-5 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <p className="mt-5 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             {visitedWording(progress)}
           </p>
 
@@ -102,7 +102,7 @@ export default async function JourneyHome() {
           <div className="mt-12 space-y-10">
             {getJourneyWeeks().map((week) => (
               <section key={week.week}>
-                <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+                <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                   {week.title}
                 </h2>
                 <ul className="mt-4 divide-y divide-line border-y border-line">

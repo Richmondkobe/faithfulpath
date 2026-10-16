@@ -48,14 +48,14 @@ export default async function LbyrOverview() {
       eyebrow={
         <Link
           href="/members"
-          className="text-[12px] uppercase tracking-[0.16em] text-gold-text underline underline-offset-4 font-medium"
+          className="text-[13px] uppercase tracking-[0.12em] text-gold-text underline underline-offset-4 font-medium"
         >
           ← Your courses
         </Link>
       }
     >
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           A ten-lesson course
         </p>
         <h1
@@ -92,12 +92,12 @@ export default async function LbyrOverview() {
                     href={lbyrLessonHref(order)}
                     className="flex flex-wrap items-baseline gap-x-3 rounded-xl border-[1.5px] border-navy bg-sand px-5 py-4 text-navy transition-colors hover:border-gold-text"
                   >
-                    <span className="text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
+                    <span className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                       Lesson {order}
                     </span>
                     <span className="text-[1.05rem]">{lesson.title}</span>
                     {done(order) && (
-                      <span className="ml-auto text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
+                      <span className="ml-auto text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                         Complete
                       </span>
                     )}

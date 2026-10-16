@@ -47,7 +47,7 @@ export default async function MindCourseStart() {
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← {course.title}
       </Link>
@@ -84,7 +84,7 @@ export default async function MindCourseStart() {
       </p>
 
       {started && (
-        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           {doneCount} of {lessons.length} lessons finished
         </p>
       )}

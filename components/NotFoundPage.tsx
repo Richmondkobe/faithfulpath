@@ -18,7 +18,7 @@ import Link from "next/link";
 export default function NotFoundPage() {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Nothing here
       </p>
       <h1
@@ -36,7 +36,7 @@ export default function NotFoundPage() {
       </p>
 
       <div className="mt-10 rounded-xl border border-line bg-sand px-7 py-8">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Where to go instead
         </p>
         <ul className="mt-4 space-y-3 text-lg leading-relaxed">

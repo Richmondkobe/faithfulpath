@@ -65,7 +65,7 @@ export default async function LbyrLessonPage({ params }: Props) {
     <LbyrShell
       notice={lesson.notice}
       eyebrow={
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           <Link href={LBYR_BASE} className="underline underline-offset-4">
             Lead Before You’re Ready
           </Link>
@@ -77,7 +77,7 @@ export default async function LbyrLessonPage({ params }: Props) {
     >
       {/* 1. Heading, with the progress bar counting completed lessons. */}
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Lesson {order} · {lesson.module}
         </p>
         <h1
@@ -94,7 +94,7 @@ export default async function LbyrLessonPage({ params }: Props) {
 
       {/* 2. Key Scripture */}
       <Plain>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Key Scripture
         </p>
         <p
@@ -103,7 +103,7 @@ export default async function LbyrLessonPage({ params }: Props) {
         >
           <Inlines nodes={lesson.scripture.text} />
         </p>
-        <p className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="mt-2 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           {lesson.scripture.ref}
         </p>
       </Plain>

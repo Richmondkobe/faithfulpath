@@ -53,7 +53,7 @@ export default function LessonQuestions({
 
   return (
     <section className="mt-12">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Let it settle
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-muted">{intro}</p>

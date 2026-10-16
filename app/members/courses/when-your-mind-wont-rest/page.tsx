@@ -57,7 +57,7 @@ export default async function MindCourseHome() {
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-14 sm:pt-24">
       <Link
         href="/members"
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← Members
       </Link>
@@ -98,7 +98,7 @@ export default async function MindCourseHome() {
           {done > 0 ? "Continue the course" : "Start the Course"}
         </Link>
         {done > 0 && (
-          <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             {done} of {lessons.length} lessons finished
           </p>
         )}
@@ -131,7 +131,7 @@ export default async function MindCourseHome() {
 
       {/* The toolkit, linked from the course home as the manifest requires. */}
       <section className="mt-12 border-t border-line pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Your toolkit
         </h2>
         {course.downloads.map((download) => (
@@ -151,7 +151,7 @@ export default async function MindCourseHome() {
           because none of them is a way into the course — they are optional
           stops along it, and nothing depends on doing any of them. */}
       <section className="mt-12 border-t border-line pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Optional pauses along the way
         </h2>
         <ul className="mt-4 space-y-2">

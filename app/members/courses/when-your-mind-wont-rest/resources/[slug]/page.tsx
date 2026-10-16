@@ -68,13 +68,13 @@ export default async function MindResource({ params }: Props) {
       <div className="no-print">
         <Link
           href={MIND_BASE}
-          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+          className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
         >
           ← When Your Mind Won&rsquo;t Rest
         </Link>
       </div>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Worksheet {resource.toolkit_number}
       </p>
 

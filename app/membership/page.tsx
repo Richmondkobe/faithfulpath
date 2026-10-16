@@ -217,10 +217,10 @@ export default async function Membership() {
   const link =
     "font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy";
   return (
-    <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
+    <main className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] pt-16 pb-20 sm:pt-24">
       <JsonLd data={COURSE_SCHEMA} />
 
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
+      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">
         Membership · US$19 a month
       </p>
       <h1

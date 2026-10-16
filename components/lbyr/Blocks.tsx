@@ -205,13 +205,13 @@ export default function Blocks({ blocks }: { blocks: Block[] }) {
             );
           case "label":
             return (
-              <p key={i} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p key={i} className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 <Inlines nodes={b.c} />
               </p>
             );
           case "ref":
             return (
-              <p key={i} className="mt-2 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p key={i} className="mt-2 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 <Inlines nodes={b.c} />
               </p>
             );

@@ -115,7 +115,7 @@ export default async function ArticlePage({
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <JsonLd data={schema} />
 
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         {date}
         {category && (
           <>

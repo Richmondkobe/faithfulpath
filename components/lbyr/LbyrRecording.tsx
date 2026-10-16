@@ -24,7 +24,7 @@ export default function LbyrRecording({
   return (
     <>
       <div className="rounded-xl border border-dashed border-field bg-cream px-5 py-6">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Recording coming soon
         </p>
         <p className="mt-2 text-[17px] leading-relaxed text-ink">

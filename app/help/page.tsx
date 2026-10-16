@@ -44,7 +44,7 @@ export default function FindingHelp() {
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 break-words sm:pt-24">
       <Link
         href="/"
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← Home
       </Link>

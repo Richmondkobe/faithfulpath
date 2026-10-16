@@ -78,7 +78,7 @@ export default function About() {
     <>
       <JsonLd data={graph(personRichmond(), breadcrumbs([{ name: "Home", path: "/" }, { name: "About" }]))} />
 
-      <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+      <main className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] pt-16 pb-20 sm:pt-24">
         {/* The portrait sits beside the heading from 640px up and above it on a
             phone, where a square photo next to a three-line title leaves too
             little room for either. */}
@@ -112,7 +112,7 @@ export default function About() {
         />
 
         <div className="mt-10 border-y border-line py-8">
-          <p className="text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted font-medium">
+          <p className="text-[13px] uppercase leading-relaxed tracking-[0.12em] text-muted font-medium">
             {COUNTRY_LINE}
           </p>
         </div>

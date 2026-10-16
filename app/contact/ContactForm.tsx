@@ -31,7 +31,8 @@ export default function ContactForm() {
 
   const field =
     "mt-2 w-full rounded-xl border border-line bg-cream px-4 py-3 text-navy outline-none focus:border-gold-text";
-  const label = "block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium";
+  // Ordinary sentence-case labels: easier to read than small capitals (website audit V22, 17 October 2026).
+  const label = "block text-[15px] font-medium text-navy";
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">

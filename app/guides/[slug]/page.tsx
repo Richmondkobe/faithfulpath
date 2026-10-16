@@ -380,7 +380,7 @@ export default async function Guide({ params }: Props) {
 
       <Link
         href="/guides"
-        className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="inline-flex min-h-11 items-center text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← All books
       </Link>
@@ -413,7 +413,7 @@ export default async function Guide({ params }: Props) {
           {category && (
             <Link
               href={bookCategoryHref(category.slug)}
-              className="inline-flex min-h-11 items-center text-[11px] uppercase tracking-[0.18em] text-gold-text underline underline-offset-4 transition-colors hover:text-navy font-medium"
+              className="inline-flex min-h-11 items-center text-[13px] uppercase tracking-[0.12em] text-gold-text underline underline-offset-4 transition-colors hover:text-navy font-medium"
             >
               {category.label}
             </Link>
@@ -432,7 +432,7 @@ export default async function Guide({ params }: Props) {
             </div>
           )}
 
-          <p className="mt-6 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <p className="mt-6 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             {formatPrice(guide.price_cents)} · PDF, instant download
           </p>
 
@@ -505,7 +505,7 @@ export default async function Guide({ params }: Props) {
 
           {related && (
             <div className="mt-12 max-w-2xl border-t border-line pt-10">
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 Read more
               </h2>
               <ul className="mt-6 space-y-5">

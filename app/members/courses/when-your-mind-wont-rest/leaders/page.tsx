@@ -57,11 +57,11 @@ export default async function LeadersHome() {
 
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-      <Link href={MIND_BASE} className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <Link href={MIND_BASE} className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         For leaders · not part of the learner pathway
       </p>
 
@@ -77,7 +77,7 @@ export default async function LeadersHome() {
       />
 
       <nav className="mt-12 border-t border-line pt-8">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           The leaders&rsquo; guidance
         </h2>
         <ul className="mt-4 space-y-2">

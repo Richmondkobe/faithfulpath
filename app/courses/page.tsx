@@ -53,7 +53,7 @@ function Course({
   return (
     <li className="rounded-2xl border border-line bg-paper px-6 py-7 sm:px-8">
       {/* Bold and a deeper gold (8:1), so the label reads easily at both sizes. */}
-      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">{kicker}</p>
+      <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">{kicker}</p>
       <h2 className="mt-3 text-3xl tracking-[-0.01em] text-navy" style={heading}>
         {title}
       </h2>
@@ -91,11 +91,11 @@ export default function Courses() {
   const all = formatPrice(OFFERS["following-jesus-all-four"].priceCents);
 
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+    <main className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] pt-16 pb-20 sm:pt-24">
       <JsonLd data={graph(breadcrumbs([{ name: "Home", path: "/" }, { name: "Courses" }]))} />
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Online courses</p>
+      {/* No "Online courses" label above: it only repeated the heading (website audit V22). */}
       <h1
-        className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
+        className="text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={heading}
       >
         Courses

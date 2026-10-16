@@ -16,7 +16,7 @@ const button =
 function Shell({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Following Jesus</p>
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">Following Jesus</p>
       <h1
         className="mt-3 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={heading}

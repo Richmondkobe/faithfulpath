@@ -117,7 +117,7 @@ export default async function ThankYou({
       <div className="mt-16 border-t border-line pt-10">
         <Link
           href="/guides"
-          className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+          className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
         >
           ← All guides
         </Link>

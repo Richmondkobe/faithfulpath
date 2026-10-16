@@ -193,12 +193,12 @@ export default async function MindLesson({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         {module.title}
         {page.key_scripture && <> · {page.key_scripture}</>}
       </p>
@@ -217,7 +217,7 @@ export default async function MindLesson({ params }: Props) {
           </h1>
 
           <section className="mt-8">
-            <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+            <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
               Watch or listen
             </h2>
             {/* What this lesson sets out to teach. Written from its own slides,
@@ -294,7 +294,7 @@ export default async function MindLesson({ params }: Props) {
 
           {practice && (
             <section className="mt-12">
-              <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 Take one step
               </h2>
               <p
@@ -343,7 +343,7 @@ export default async function MindLesson({ params }: Props) {
           teaching rather than the eight minutes of it. */}
       {slides && (worksheets.length > 0 || (chapter && chapterNumber)) && (
         <section className="mt-12">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             Go deeper
           </h2>
           {/* Two cards side by side, or one at full width — Lesson 21 has no
@@ -357,7 +357,7 @@ export default async function MindLesson({ params }: Props) {
           >
             {worksheets.length > 0 && (
               <div className="rounded-2xl border border-line bg-paper px-5 py-5">
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+                <h3 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                   {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
                 </h3>
                 <ul className="mt-3 space-y-3">
@@ -386,7 +386,7 @@ export default async function MindLesson({ params }: Props) {
 
             {chapter && chapterNumber && (
               <div className="rounded-2xl border border-line bg-paper px-5 py-5">
-                <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+                <h3 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                   Complete chapter
                 </h3>
                 <p className="mt-3">
@@ -443,7 +443,7 @@ export default async function MindLesson({ params }: Props) {
           always had; the slide lessons put it in a Go deeper card above. */}
       {!slides && worksheets.length > 0 && (
         <section className="mt-12 rounded-xl border border-line bg-sand px-5 py-5">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             {worksheets.length === 1 ? "Worksheet" : "Worksheets"}
           </h2>
           <ul className="mt-4 space-y-3">
@@ -496,7 +496,7 @@ export default async function MindLesson({ params }: Props) {
           Help Where You Live inside it. */}
       {(support || (isLesson && supportHref)) && (
         <section className="mt-12 border-t border-line pt-6">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             Need more support?
           </h2>
           {support && (

@@ -36,9 +36,9 @@ export default async function FollowingJesusSeries() {
   const each = listedTitles.length <= 1 ? "" : " each";
 
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-16 pb-20 sm:pt-24">
+    <main className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] pt-16 pb-20 sm:pt-24">
       <JsonLd data={graph(breadcrumbs([{ name: "Home", path: "/" }, { name: "Courses", path: "/courses" }, { name: "Following Jesus" }]))} />
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Video courses</p>
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">Video courses</p>
       <h1
         className="mt-3 text-[2.5rem] leading-[1.08] tracking-[-0.02em] text-navy sm:text-[3.25rem]"
         style={heading}
@@ -73,7 +73,7 @@ export default async function FollowingJesusSeries() {
                 open ? "border-field bg-white" : "border-line bg-sand"
               }`}
             >
-              <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 Course {course.book} of 4
               </p>
               <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">

@@ -26,7 +26,7 @@ export default function LegalPageBody({
 }) {
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 break-words sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Legal
       </p>
 

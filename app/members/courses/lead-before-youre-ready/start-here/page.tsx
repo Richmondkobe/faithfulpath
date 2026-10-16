@@ -39,7 +39,7 @@ export default async function LbyrStartHere() {
   return (
     <LbyrShell notice={lessonOne.notice}>
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           A ten-lesson course
         </p>
         <h1

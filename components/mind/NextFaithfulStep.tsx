@@ -91,7 +91,7 @@ export default function NextFaithfulStep({
   if (secondary) {
     return (
       <section>
-        <h3 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <h3 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           If it helps, tell someone
         </h3>
         <p className="mt-3 text-[15px] leading-relaxed text-ink">

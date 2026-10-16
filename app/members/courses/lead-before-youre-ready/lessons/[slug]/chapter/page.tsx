@@ -56,7 +56,7 @@ export default async function LbyrChapterPage({ params }: Props) {
     <LbyrShell
       notice={lesson.notice}
       eyebrow={
-        <div className="flex flex-wrap items-center justify-between gap-3 text-[12px] uppercase tracking-[0.16em] text-gold-text font-medium">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           <Link href={lbyrLessonHref(order)} className="underline underline-offset-4">
             ← Lesson {order}: {lesson.title}
           </Link>
@@ -67,7 +67,7 @@ export default async function LbyrChapterPage({ params }: Props) {
       }
     >
       <Panel>
-        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           From the book · Lead Before You’re Ready
         </p>
         <h1

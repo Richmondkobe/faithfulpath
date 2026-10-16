@@ -11,7 +11,7 @@ export default function ProgressBar({
 
   return (
     <div>
-      <div className="flex items-baseline justify-between text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <div className="flex items-baseline justify-between text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         <span>{label ?? "Progress"}</span>
         <span>
           {done} of {total} complete

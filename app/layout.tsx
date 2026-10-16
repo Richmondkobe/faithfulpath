@@ -117,7 +117,7 @@ export default function RootLayout({
                 >
                   {SITE.name}
                 </span>
-                <span className="mt-1.5 hidden text-xs uppercase tracking-[0.16em] text-gold-soft sm:block font-medium">
+                <span className="mt-1.5 hidden text-[13px] uppercase tracking-[0.12em] text-gold-soft sm:block font-medium">
                   {SITE.tagline}
                 </span>
               </Link>

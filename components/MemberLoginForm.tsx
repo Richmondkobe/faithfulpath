@@ -16,7 +16,7 @@ const errorClass =
 const inputClass =
   "mt-2 w-full rounded-xl border border-field bg-white px-4 py-3 text-sm text-navy outline-none placeholder:text-placeholder focus:border-gold-text";
 const labelClass =
-  "block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium";
+  "block text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium";
 const buttonClass =
   "inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft disabled:opacity-60";
 

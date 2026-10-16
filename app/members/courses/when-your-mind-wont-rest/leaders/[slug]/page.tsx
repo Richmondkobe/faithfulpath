@@ -38,7 +38,7 @@ export default async function LeadersPage({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={mindLeadersHref()}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← Using This Course With Others
       </Link>

@@ -102,10 +102,10 @@ export default function Home() {
       <JsonLd data={SERVICE_SCHEMA} />
 
       {/* Hero */}
-      <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
+      <section className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] pt-20 pb-16 sm:pt-32 sm:pb-24">
         {/* Names the service in plain words above the headline (website audit
             S13); the site's name is already in the header. */}
-        <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Online Christian pastoral counselling
         </p>
 
@@ -156,7 +156,7 @@ export default function Home() {
 
       {/* Credential band */}
       <section className="border-y border-line bg-sand">
-        <div className="mx-auto max-w-3xl px-6 py-12">
+        <div className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] py-12">
           <dl className="grid grid-cols-2 gap-y-8 sm:grid-cols-4">
             {[
               ["20", "years pastoring"],
@@ -178,14 +178,14 @@ export default function Home() {
             ))}
           </dl>
 
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted font-medium">
+          <p className="mt-10 text-[13px] uppercase leading-relaxed tracking-[0.12em] text-muted font-medium">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
       </section>
 
       {/* What the conversation is */}
-      <section className="mx-auto max-w-3xl px-6 py-14 sm:py-28">
+      <section className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] py-14 sm:py-28">
         <h2
           className="text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -196,7 +196,7 @@ export default function Home() {
         <div className="mt-8 divide-y divide-line border-y border-line">
           {STAGES.map((stage) => (
             <div key={stage.label} className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-6">
-              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p className="pt-1 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 {stage.label}
               </p>
               <div>
@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* Who comes */}
       <section className="bg-navy py-20 text-sand sm:py-28">
-        <div className="mx-auto max-w-3xl px-6">
+        <div className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem]">
           <h2
             className="text-3xl tracking-[-0.01em] text-sun sm:text-4xl"
             style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -243,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* Who I am */}
-      <section className="mx-auto max-w-3xl px-6 py-14 sm:py-28">
+      <section className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] py-14 sm:py-28">
         <h2
           className="text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
@@ -273,8 +273,8 @@ export default function Home() {
 
       {/* What this isn't */}
       <section className="border-y border-line bg-sand">
-        <div className="mx-auto max-w-3xl px-6 py-16">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <div className="mx-auto max-w-5xl px-6 [&>*]:max-w-3xl [&_p]:max-w-[40rem] py-16">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             Please read this first
           </h2>
           <div className="mt-6 max-w-xl space-y-4 leading-relaxed text-ink">

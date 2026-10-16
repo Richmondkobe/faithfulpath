@@ -54,7 +54,7 @@ export default async function MindCourseCard() {
       </p>
 
       {started && (
-        <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           {done > 0 && `${done} of ${lessons.length} lessons finished`}
           {done > 0 && journey.size > 0 && " · "}
           {journey.size > 0 && visitedWording(journey)}

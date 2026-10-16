@@ -75,12 +75,12 @@ export default async function JourneyDay({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={mindJourneyHref()}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← The 30-Day Mind-Renewal Journey
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         {page.week_title}
       </p>
 
@@ -92,7 +92,7 @@ export default async function JourneyDay({ params }: Props) {
 
       {worksheets.length > 0 && (
         <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
-          <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             {page.label ?? "Worksheet"}
           </h2>
           <ul className="mt-4 space-y-2">

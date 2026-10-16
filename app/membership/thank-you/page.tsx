@@ -65,7 +65,7 @@ export default async function MembershipThankYou({
 
       {paidEmail ? (
         <div className="mt-10 rounded-xl border border-line bg-sand px-5 py-4">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+          <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
             You paid as
           </p>
           <p className="mt-1 break-words text-lg text-navy">{paidEmail}</p>

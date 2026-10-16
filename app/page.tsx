@@ -62,7 +62,7 @@ export default async function Home() {
           <div>
             {/* Names the service in plain words above the headline, for
                 readers and search engines alike (website audit S13). */}
-            <p className="text-xs uppercase tracking-[0.18em] text-gold-text font-medium">
+            <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
               Online Christian pastoral counselling
             </p>
             <h1
@@ -111,7 +111,7 @@ export default async function Home() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">
           Online course
         </p>
         <h2
@@ -155,7 +155,7 @@ export default async function Home() {
       {/* Following Jesus, in the Spiritual Reset section's layout and button
           styles: the primary to the series, the secondary straight to Begin. */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gold-text">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">
           Video courses
         </p>
         <h2
@@ -215,7 +215,7 @@ export default async function Home() {
               </div>
             ))}
           </dl>
-          <p className="mt-10 text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted font-medium">
+          <p className="mt-10 text-[13px] uppercase leading-relaxed tracking-[0.12em] text-muted font-medium">
             {COUNTRIES.join(" · ")}
           </p>
         </div>
@@ -238,7 +238,7 @@ export default async function Home() {
               key={stage.label}
               className="grid gap-2 py-6 sm:grid-cols-[5rem_1fr] sm:gap-6"
             >
-              <p className="pt-1 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p className="pt-1 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 {stage.label}
               </p>
               <div>

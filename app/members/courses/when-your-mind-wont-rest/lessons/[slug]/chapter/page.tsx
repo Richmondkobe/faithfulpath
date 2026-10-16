@@ -61,12 +61,12 @@ export default async function MindLessonChapter({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-4 sm:pt-24">
       <Link
         href={mindLessonHref(slug)}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← {page.title}
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         {module.title} · Complete chapter
       </p>
 

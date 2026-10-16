@@ -46,7 +46,7 @@ export default function ClaimForm({
 
       <label
         htmlFor="email"
-        className="block text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="block text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         Your email
       </label>

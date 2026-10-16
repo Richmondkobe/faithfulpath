@@ -58,7 +58,7 @@ export default function Acknowledgement({
 
   return (
     <section className="mt-10 rounded-xl border border-line bg-sand px-5 py-5">
-      <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Three boundaries
       </h2>
       <p className="mt-3 text-sm leading-relaxed text-ink">{intro}</p>

@@ -60,7 +60,7 @@ export default async function JournalPage() {
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
       <Link
         href="/members"
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← Members
       </Link>
@@ -172,7 +172,7 @@ export default async function JournalPage() {
               <div className="mt-8 space-y-14">
           {journal.modules.map((mod, mi) => (
             <section key={`${mod.title}-${mi}`}>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+              <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                 Module {mi + 1}
               </p>
               <h2
@@ -218,7 +218,7 @@ export default async function JournalPage() {
 
                     {lesson.nextStep && (
                       <div className="mt-5 rounded-xl border border-line bg-sand px-4 py-4">
-                        <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+                        <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
                           Your next step
                         </p>
                         <p className="mt-2 text-[15px] leading-relaxed text-navy">

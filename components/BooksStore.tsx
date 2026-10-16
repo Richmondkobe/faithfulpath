@@ -91,7 +91,7 @@ function BookCard({ book, first = false }: { book: Product; first?: boolean }) {
         {book.subtitle && (
           <p className="mt-1 leading-relaxed text-muted">{book.subtitle}</p>
         )}
-        <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           {formatPrice(book.price_cents)}
         </p>
       </Link>
@@ -175,7 +175,7 @@ export default async function BooksStore({ active }: { active?: string }) {
           {groups.map((group, gi) => (
             <section key={group.heading} className="mt-14">
               <h2
-                className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+                className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
                 style={{ fontWeight: 500 }}
               >
                 {group.heading}

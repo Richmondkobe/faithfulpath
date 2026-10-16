@@ -192,7 +192,7 @@ export default async function Members() {
 
   return (
     <main className="mx-auto max-w-2xl px-6 pt-16 pb-20 sm:pt-24">
-      <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         Members
       </p>
       <h1
@@ -219,7 +219,7 @@ export default async function Members() {
       {/* The five courses, presented alike. None is the main one: a member
           may have come for any of them, and the membership includes all. */}
       <section className="mt-12">
-        <h2 className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+        <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
           Your courses
         </h2>
         <div className="mt-4 space-y-6">

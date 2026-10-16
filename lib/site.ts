@@ -1,7 +1,8 @@
 export const SITE = {
   name: "Faithful Path Community",
   url: "https://faithfulpathcommunity.com",
-  tagline: "Pastoral guidance for people who are stuck",
+  // Richmond's wording, 17 October 2026 (website audit V22).
+  tagline: "Pastoral guidance for the next faithful step",
   bookingUrl: "https://cal.com/getclb/talk-to-a-pastor",
   price: "US$60",
 };

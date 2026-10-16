@@ -80,12 +80,12 @@ export default async function MindCheckin({ params }: Props) {
     <main className="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
       <Link
         href={MIND_BASE}
-        className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium"
+        className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium"
       >
         ← When Your Mind Won&rsquo;t Rest
       </Link>
 
-      <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">
+      <p className="mt-4 text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
         {isPatternFinder ? "Pattern Finder" : "Module pause"} · optional
       </p>
 
