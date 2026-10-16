@@ -1,0 +1,848 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lead Before You’re Ready · Lesson 6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Hebrew:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'Noto Serif Hebrew','SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+
+#stage.eve{background:linear-gradient(180deg,#f8eedb 0%,#f2dfbb 70%,#e8c995 100%)}
+.hills .h1{fill:#e8dcc2}.hills .h2{fill:#dccbaa}.hills .h3{fill:#cdb791}
+.tiny2{font-size:15px;font-weight:700;fill:#7a5536;text-anchor:middle;font-family:'Source Sans 3',sans-serif}
+.tiny3{font-size:11px;font-weight:700;fill:#7a5536;text-anchor:middle}
+.bigt{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;fill:#8a6a24}
+.hand2{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scr2{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.6vw,26px);color:#5b4a26;margin:.2em 0}.ref2{font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.chips{justify-content:center;margin:.3em 0}.chips span{font-size:clamp(16px,2.2vw,20px)}
+.lab2{margin:.4em auto}.glowp.on{box-shadow:0 0 0 3px #f0c77a}
+.pcard{position:relative;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.8em 1em;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08);display:flex;flex-direction:column;gap:.35em}
+.pcard>b{font-family:'Source Serif 4',serif;font-size:clamp(22px,3vw,30px)}
+.pcard svg{width:100%;max-height:22vh}
+.says{list-style:none;padding:0;margin:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.3vw,22px);color:#5b4a26}.says li{margin:.1em 0}
+.pl2{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.3vw,22px);margin:0;line-height:1.35}
+.love{color:#8a6a24;font-style:italic}.mute{color:var(--mute)}.strongline{font-weight:600;color:#2b3445}
+.keep2{grid-template-columns:1fr 1fr!important;gap:10px!important}
+.small3{font-size:clamp(14px,1.9vw,17px)}
+.qs{list-style:none;padding:0;margin:.2em auto;text-align:left;max-width:34em;font-size:clamp(18px,2.5vw,24px);line-height:1.35}
+.qs li{display:flex;align-items:center;gap:.6em;margin:.35em 0}.qs svg{width:1.8em;height:1.8em;flex:none}
+.qs.sm2{font-size:clamp(17px,2.3vw,22px)}.quote.sm2{font-size:clamp(18px,2.38vw,22px)}
+.safety{background:#fffaf0;border:2px solid #c9963f;border-radius:16px;padding:1.2em 1.6em;max-width:34em;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.2vw,32px);line-height:1.4;color:#3b3020}.safety p{margin:.3em 0}
+.chairsL{transform:translateX(-30px) scaleX(.86);transform-box:fill-box;transform-origin:center}.chairsR{transform:translateX(30px) scaleX(.86);transform-box:fill-box;transform-origin:center}
+.leanf{transition:transform 1.4s ease}.leanf.on{transform:translateX(14px) rotate(4deg);transform-box:fill-box;transform-origin:bottom}
+.stepb{transition:transform 1.6s ease}.stepb.on{transform:translateX(26px)}
+.turnback{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.sideL,.sideR{transition:transform 3s ease}.sideL.on{transform:translateX(-60px)}.sideR.on{transform:translateX(60px)}
+.lightwalk.on{animation:lw 14s ease-in-out forwards}@keyframes lw{0%{transform:translate(140px,30px)}100%{transform:translate(-120px,-30px)}}
+.lightrun.on{animation:lr 6s ease-in-out forwards}@keyframes lr{to{transform:translateX(340px)}}
+.frameL,.frameR{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}.frameL{transform:scaleX(-1)}.frameR{transform:scaleX(-1)}
+.turnf.on~*{}.pcard:has(.turnf.on) .frameL,.pcard:has(.turnf.on) .frameR{transform:none}
+.mapL,.mapR{transition:transform 2.5s ease}
+.mapL.on{transform:translateX(40px)}.mapR.on{transform:translateX(-40px)}
+.grow2{transform-box:fill-box;transform-origin:center}.envg{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}
+.shieldup{transform:translateY(20px)}.shieldup.on{transform:none}
+.litL.on{animation:lit 6s ease-in-out infinite}.litR.on{animation:lit 6s ease-in-out 3s infinite}@keyframes lit{0%,100%{opacity:.2}50%{opacity:1}}
+.ripple-line{animation:rl 4s ease-in-out infinite}@keyframes rl{50%{transform:translateX(-12px)}}
+.word .ref{display:block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:.3em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+body.still .leanf.on,body.still .stepb.on,body.still .sideL.on,body.still .sideR.on,body.still .shieldup{transform:none!important}
+.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:.6em 0}.threecol .panel{display:flex;flex-direction:column;gap:6px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:12px;padding:12px 14px;font-size:clamp(14px,1.6vw,19px);text-align:left}.threecol .panel b{font-family:'Source Serif 4',serif;font-size:1.25em;color:#a06a1f}@media (max-width:600px){.threecol{grid-template-columns:1fr;gap:8px}.threecol .panel{padding:8px 12px;font-size:14px;gap:2px}}
+.agenda{background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;box-shadow:0 8px 22px rgba(0,0,0,.08);padding:14px 20px;max-width:640px;margin:.4em auto;text-align:left;font-size:clamp(13px,1.6vw,18px)}.agenda p{margin:.35em 0}.agenda .ah{font-family:'Source Serif 4',serif;font-weight:600;border-bottom:2px solid #c9963f;padding-bottom:4px}.agenda .t{display:inline-block;width:3.2em;color:#a06a1f;font-weight:700}.agenda .lab{font-size:.75em;background:#c9963f;color:#fff;border-radius:4px;padding:1px 6px;margin:0 4px}.agenda .lab2{background:#7f8fa6}.agenda .prop{display:block;margin-left:3.2em;font-style:italic;color:#5a4636}.agenda .ok{font-size:.8em;color:#5f7d3a;margin-left:6px}.agenda .fin{font-weight:700}.agenda .msg{color:#7a6a58;font-size:.9em;border-top:1px dashed #d9c9a3;padding-top:4px}
+.rec{width:100%;max-width:680px;margin:.4em auto;border-collapse:collapse;background:#fffaf0;font-size:clamp(12px,1.5vw,17px);text-align:left}.rec th{background:#efe2c6;color:#5a4636}.rec td,.rec th{border:1px solid #d9c9a3;padding:5px 8px}
+.vn{display:block;font-family:'Source Sans 3',sans-serif;font-size:.62em;letter-spacing:.08em;text-transform:uppercase;color:#a06a1f;margin-bottom:.2em}
+.flick{animation:flick 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}@keyframes flick{50%{transform:scaleY(.94) translateY(2px)}}
+.journal2 p b{font-size:1em}
+</style>
+</head>
+<body>
+<div id="stage" class="light">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path class="h1" d="M0 120 C200 90 360 130 560 105 S900 85 1200 115 V200 H0z"/><path class="h2" d="M0 150 C240 125 420 165 640 140 S960 125 1200 150 V200 H0z"/><path class="h3" d="M0 178 C260 160 480 192 700 176 S1000 165 1200 182 V200 H0z"/></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the wooden chair from the cover, seen from the side, facing right -->
+ <symbol id="chair" viewBox="0 0 70 112">
+  <ellipse cx="36" cy="108" rx="30" ry="3.5" fill="#000" opacity=".10"/>
+  <path d="M8 10 Q20 2 33 9" stroke="#7a5536" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M10 10 L15 63 M17 7 L20 63 M24 6 L25 63 M31 8 L30 63" stroke="#7a5536" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M7 60 Q36 55 65 61 L63 70 Q35 66 7 69 Z" fill="#7a5536"/>
+  <path d="M13 69 L9 107 M60 69 L64 107 M22 69 L25 104 M51 69 L48 104" stroke="#64432a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M12 89 L61 89" stroke="#64432a" stroke-width="2.6"/>
+ </symbol>
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="perw" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M10 62 L8 95 L32 95 L30 62 Z" fill="currentColor" opacity=".9"/>
+  <path d="M10 32 Q20 24 30 32 L31 66 Q20 69 9 66 Z" fill="currentColor"/>
+  <path d="M10 34 L6 60 L10 61 L13 40 Z M30 34 L34 60 L30 61 L27 40 Z" fill="currentColor" opacity=".85"/>
+  <path d="M10 20 Q8 6 20 6 Q32 6 30 20 L31 34 L26 30 L14 30 L9 34 Z" fill="#3a3330"/>
+  <circle cx="20" cy="17" r="8" fill="#c69d84"/>
+  <path d="M12 15 Q14 7 20 8 Q27 7 28 15 Q24 11 20 12 Q16 11 12 15Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="treeD" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#4f4338"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#5d7658"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#6b8564"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#556d51"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="note" viewBox="0 0 60 44"><path d="M2 6 L58 2 L56 40 L4 42 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"/><path d="M4 24 L56 21" stroke="#e8dcc0" stroke-width="1.2"/></symbol>
+ <symbol id="env" viewBox="0 0 70 46"><rect x="2" y="2" width="66" height="42" rx="3" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M3 4 L35 26 L67 4" fill="none" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="cloud" viewBox="0 0 120 70"><path d="M24 60 Q4 60 6 44 Q6 30 22 30 Q24 10 46 12 Q60 0 76 12 Q100 8 104 28 Q118 32 114 48 Q112 60 96 60 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/><circle cx="20" cy="66" r="3" fill="#fffaf0" stroke="#d9c9a3"/></symbol>
+ <symbol id="door" viewBox="0 0 40 70"><rect x="2" y="2" width="36" height="66" rx="2" fill="#a7805c" stroke="#7a5536" stroke-width="2"/><circle cx="31" cy="38" r="2.2" fill="#e9b25e"/></symbol>
+ <symbol id="laptop" viewBox="0 0 80 50"><rect x="12" y="2" width="56" height="36" rx="3" fill="#2b3445"/><rect x="16" y="6" width="48" height="28" fill="#a9c2d0"/><path d="M2 40 H78 L72 48 H8 Z" fill="#69707a"/></symbol>
+ <symbol id="cup" viewBox="0 0 30 30"><path d="M4 8 H22 L20 26 H6 Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M22 12 Q29 12 28 18 Q27 22 21 22" fill="none" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="shield" viewBox="0 0 50 60"><path d="M25 4 L46 12 Q46 42 25 56 Q4 42 4 12 Z" fill="#cdd8de" stroke="#69707a" stroke-width="3"/></symbol>
+ <symbol id="xtree" viewBox="0 0 40 60"><path d="M20 4 L34 26 L26 26 L38 44 L2 44 L14 26 L6 26 Z" fill="#6f8f6a"/><rect x="17" y="44" width="6" height="10" fill="#7a5536"/><circle cx="20" cy="4" r="3" fill="#e9b25e"/><circle cx="14" cy="34" r="2" fill="#d9818c"/><circle cx="26" cy="22" r="2" fill="#e9b25e"/><circle cx="25" cy="38" r="2" fill="#d9818c"/></symbol>
+ <symbol id="scale" viewBox="0 0 120 70"><path d="M60 8 V62 M40 66 H80" stroke="#7a5536" stroke-width="4"/><g class="tipbeam"><path d="M14 18 L106 18" stroke="#7a5536" stroke-width="4"/><path d="M14 18 L4 40 H24 Z M106 18 L96 40 H116 Z" fill="#e9d5a8" stroke="#7a5536" stroke-width="2"/></g></symbol>
+ <symbol id="frame" viewBox="0 0 60 50"><rect x="2" y="2" width="56" height="46" fill="#fffaf0" stroke="#b9925b" stroke-width="4"/><path d="M12 38 L24 24 L32 32 L40 22 L50 38 Z" fill="#c4d4b9"/><circle cx="18" cy="14" r="4" fill="#e9b25e"/></symbol>
+ <symbol id="map" viewBox="0 0 100 70"><path d="M2 8 L34 2 L66 8 L98 2 L98 62 L66 68 L34 62 L2 68 Z" fill="#f6edd6" stroke="#c9b48a" stroke-width="2"/><path d="M34 2 V62 M66 8 V68" stroke="#e1d2ad" stroke-width="1.5"/></symbol>
+ <symbol id="sign" viewBox="0 0 80 90"><rect x="37" y="20" width="6" height="68" fill="#7a5536"/><path d="M6 10 H70 L78 22 L70 34 H6 Z" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="table" viewBox="0 0 120 50"><rect x="4" y="4" width="112" height="8" rx="2" fill="#a7805c"/><path d="M14 12 V48 M106 12 V48" stroke="#7a5536" stroke-width="5"/></symbol>
+ <symbol id="sofa" viewBox="0 0 140 70"><rect x="6" y="14" width="128" height="30" rx="10" fill="#b88a6a"/><rect x="2" y="30" width="136" height="26" rx="8" fill="#a77a5b"/><path d="M14 56 V66 M126 56 V66" stroke="#64432a" stroke-width="5"/></symbol>
+ <symbol id="shelf" viewBox="0 0 120 120"><rect x="2" y="2" width="116" height="116" fill="#d8c4a0"/><path d="M2 40 H118 M2 80 H118" stroke="#a7805c" stroke-width="4"/><g fill="#8a6a4f"><rect x="10" y="14" width="8" height="26"/><rect x="20" y="18" width="7" height="22"/><rect x="30" y="12" width="9" height="28"/><rect x="60" y="54" width="8" height="26"/><rect x="70" y="58" width="10" height="22"/><rect x="20" y="92" width="8" height="26"/><rect x="88" y="90" width="9" height="28"/></g><g fill="#b5735e"><rect x="44" y="16" width="7" height="24"/><rect x="84" y="56" width="7" height="24"/><rect x="40" y="94" width="8" height="24"/></g></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="nb" viewBox="0 0 60 76"><rect x="4" y="2" width="52" height="72" rx="4" fill="#7a5536"/><rect x="10" y="2" width="46" height="72" rx="3" fill="#8b6340"/><rect x="18" y="20" width="30" height="12" rx="2" fill="#f4ead6"/></symbol>
+ <symbol id="leaf" viewBox="0 0 40 30"><path d="M2 15 Q12 0 38 4 Q30 26 2 15Z" fill="#7e9b78"/><path d="M4 15 Q20 10 36 6" stroke="#5f7a59" stroke-width="1.4" fill="none"/></symbol>
+ <symbol id="garm" viewBox="0 0 90 50"><path d="M6 40 Q44 24 84 40 L80 48 L10 48 Z" fill="#b9946a"/><path d="M14 30 Q46 14 78 30 L76 38 Q46 24 16 38 Z" fill="#c8a57a"/><ellipse cx="45" cy="48" rx="42" ry="3" fill="#000" opacity=".1"/></symbol>
+ <symbol id="boat" viewBox="0 0 120 60"><path d="M6 34 H114 Q104 56 60 56 Q16 56 6 34Z" fill="#8b6340"/><rect x="58" y="4" width="3" height="30" fill="#7a5536"/></symbol>
+ <symbol id="pen" viewBox="0 0 40 10"><path d="M2 5 L32 2 L38 5 L32 8 Z" fill="#2b3445"/></symbol>
+ <symbol id="pan" viewBox="0 0 50 30"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#69707a"/><rect x="32" y="13" width="16" height="5" rx="2" fill="#2b3445"/></symbol>
+ <symbol id="basket" viewBox="0 0 50 40"><path d="M4 12 H46 L40 38 H10 Z" fill="#c9a061"/><path d="M8 20 H42 M10 28 H40" stroke="#a8743f" stroke-width="2"/><path d="M12 12 Q16 2 24 6 Q32 0 38 12" fill="#cdd8de"/></symbol>
+ <symbol id="cal" viewBox="0 0 50 50"><rect x="3" y="7" width="44" height="40" rx="4" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><rect x="3" y="7" width="44" height="11" fill="#c9963f"/><path d="M14 3 V12 M36 3 V12" stroke="#2b3445" stroke-width="3"/></symbol>
+ <symbol id="bag" viewBox="0 0 40 44"><rect x="4" y="10" width="32" height="32" rx="6" fill="#8fae9f"/><path d="M12 10 Q12 2 20 2 Q28 2 28 10" fill="none" stroke="#5f7a6d" stroke-width="3"/><rect x="10" y="22" width="20" height="10" rx="2" fill="#6f8f80"/></symbol>
+ <symbol id="ear" viewBox="0 0 40 50"><path d="M30 18 Q30 4 18 4 Q6 4 6 18 Q6 26 12 30 Q16 34 14 42 Q14 48 22 46" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 20 Q14 12 20 12 Q24 12 24 18" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="hand" viewBox="0 0 50 50"><path d="M10 30 Q8 20 12 18 L14 30 L16 10 Q18 6 21 10 L21 28 L23 6 Q26 2 28 6 L28 28 L31 10 Q34 6 36 10 L35 32 Q36 44 26 46 Q14 46 10 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+ <symbol id="mend" viewBox="0 0 50 50"><path d="M8 14 H38 L34 44 H12 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M38 20 Q48 20 46 30 Q44 36 36 36" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M20 14 L24 26 L18 32 L22 44" fill="none" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="cordi" viewBox="0 0 60 40"><path d="M4 20 Q16 4 30 20 T56 20" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 22 Q16 38 30 22 T56 22" fill="none" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="shieldi" viewBox="0 0 50 50"><path d="M25 4 L44 11 Q44 36 25 46 Q6 36 6 11 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M4 48 H46" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8eedb"/><stop offset="1" stop-color="#efd9b0"/></linearGradient>
+<linearGradient id="gardeneve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfb8"/><stop offset=".6" stop-color="#ecd3a4"/><stop offset="1" stop-color="#e3c48e"/></linearGradient>
+<radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient>
+</defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient>
+<linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient>
+<linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ead2"/><stop offset=".7" stop-color="#f3dcb3"/><stop offset="1" stop-color="#e9c48a"/></linearGradient>
+<!-- the cover: ten walnut steps in three flights climbing to an open door -->
+<symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol>
+<symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol>
+<symbol id="board" viewBox="0 0 200 140"><rect x="2" y="2" width="196" height="136" rx="6" fill="#c9a77a" stroke="#8a6a4f" stroke-width="4"/><rect x="16" y="14" width="40" height="30" fill="#fffaf0" transform="rotate(-4 36 29)"/><rect x="150" y="90" width="34" height="34" fill="#f4ead6" transform="rotate(5 167 107)"/><circle cx="36" cy="16" r="3" fill="#c95f5f"/></symbol>
+<symbol id="bush" viewBox="0 0 110 130"><path d="M40 130 L50 70 M70 130 L60 72 M55 130 V80" stroke="#6b5847" stroke-width="5"/><ellipse cx="55" cy="72" rx="44" ry="30" fill="#7e8f5a"/><g class="flick"><path d="M30 70 Q24 40 40 22 Q42 44 52 50 Q50 20 62 4 Q66 34 78 40 Q84 24 92 22 Q92 56 80 74 Z" fill="#e9973f" opacity=".9"/><path d="M42 70 Q40 50 52 38 Q56 54 64 56 Q66 44 74 40 Q76 60 68 74 Z" fill="#f6d58e"/></g><circle cx="55" cy="55" r="52" fill="url(#glowr)"/></symbol>
+<symbol id="horeb" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#dawnsky)"/><circle cx="640" cy="80" r="44" fill="#fff3cf" opacity=".8"/><path d="M0 230 L160 120 L260 170 L420 60 L560 160 L680 110 L800 180 V300 H0Z" fill="#c9a57a"/><path d="M0 260 Q200 230 400 250 T800 245 V300 H0Z" fill="#b48e62"/><g fill="#fbf6ea" stroke="#d9c9a3"><ellipse cx="120" cy="262" rx="14" ry="8"/><ellipse cx="150" cy="268" rx="14" ry="8"/><ellipse cx="180" cy="260" rx="14" ry="8"/></g><use href="#bush" x="470" y="160" width="80" height="94"/><path d="M380 270 L404 230" stroke="#7a5536" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="stone" viewBox="0 0 70 36"><path d="M4 30 Q2 12 20 8 Q40 2 58 10 Q70 18 66 30 Z" fill="#b8a991"/><path d="M14 14 Q30 8 46 12" stroke="#d6cab4" stroke-width="2" fill="none"/></symbol>
+<symbol id="hilltown" viewBox="0 0 800 260"><rect width="800" height="260" fill="#f3e3c2"/><path d="M0 200 Q200 90 420 120 T800 150 V260 H0Z" fill="#d8c08f"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="300" y="100" width="40" height="30"/><rect x="345" y="92" width="44" height="38"/><rect x="395" y="104" width="36" height="26"/><rect x="438" y="96" width="40" height="34"/></g><path d="M280 132 H500" stroke="#b8a07a" stroke-width="6"/><g fill="#8a9a6a"><circle cx="150" cy="190" r="16"/><circle cx="200" cy="200" r="14"/><circle cx="600" cy="170" r="16"/><circle cx="650" cy="180" r="14"/><circle cx="700" cy="172" r="15"/></g></symbol>
+<symbol id="scroll" viewBox="0 0 200 56"><rect x="20" y="8" width="160" height="40" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><rect x="6" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><rect x="178" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><path d="M36 20 H164 M36 28 H150 M36 36 H160" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="port" viewBox="0 0 800 160"><rect width="800" height="160" fill="#eef0ea"/><rect x="0" y="110" width="800" height="50" fill="#9fb4bf"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="50" width="120" height="60"/><rect x="560" y="40" width="150" height="70"/></g><g fill="#d8c8a6"><rect x="90" y="56" width="8" height="54"/><rect x="120" y="56" width="8" height="54"/><rect x="150" y="56" width="8" height="54"/><rect x="180" y="56" width="8" height="54"/><rect x="575" y="48" width="9" height="62"/><rect x="610" y="48" width="9" height="62"/><rect x="645" y="48" width="9" height="62"/><rect x="680" y="48" width="9" height="62"/></g><path d="M74 50 L140 26 L206 50Z M552 40 L635 12 L718 40Z" fill="#c9a77a"/><g fill="#8b6340"><path d="M300 120 H400 Q390 140 350 140 Q310 140 300 120Z"/><path d="M420 126 H500 Q492 142 460 142 Q428 142 420 126Z"/></g><path d="M350 120 V80 L380 110Z M460 126 V92 L484 120Z" fill="#fffaf0" stroke="#c9b48a"/></symbol>
+<symbol id="i-bible" viewBox="0 0 40 40"><rect x="6" y="4" width="28" height="32" rx="3" fill="#7a5536"/><path d="M20 10 V26 M14 16 H26" stroke="#f0c77a" stroke-width="3"/></symbol>
+<symbol id="i-guitar" viewBox="0 0 40 40"><circle cx="15" cy="27" r="9" fill="#b88a6a"/><circle cx="21" cy="21" r="7" fill="#b88a6a"/><circle cx="15" cy="27" r="3" fill="#5b4a26"/><path d="M22 18 L36 4" stroke="#5b4a26" stroke-width="3"/></symbol>
+<symbol id="i-mat" viewBox="0 0 40 40"><rect x="10" y="2" width="20" height="28" fill="#a7805c"/><circle cx="26" cy="17" r="1.5" fill="#e9b25e"/><rect x="4" y="32" width="32" height="6" rx="2" fill="#c9963f"/></symbol>
+<symbol id="i-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#d98c4a"/><path d="M4 20 H36 M20 4 V36 M9 8 Q20 20 9 32 M31 8 Q20 20 31 32" stroke="#5b4a26" stroke-width="1.6" fill="none"/></symbol>
+<symbol id="i-clip" viewBox="0 0 40 40"><rect x="7" y="5" width="26" height="32" rx="3" fill="#a7805c"/><rect x="11" y="10" width="18" height="24" fill="#fffaf0"/><rect x="14" y="2" width="12" height="6" rx="2" fill="#69707a"/><path d="M14 16 H26 M14 22 H26 M14 28 H22" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="i-agenda" viewBox="0 0 40 40"><rect x="6" y="3" width="28" height="34" rx="2" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M11 12 H29 M11 19 H29 M11 26 H24" stroke="#c9963f" stroke-width="2.5"/></symbol>
+<symbol id="i-speech" viewBox="0 0 40 40"><path d="M4 6 H36 V28 H16 L8 36 V28 H4 Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#c9963f">?</text></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sheep" viewBox="0 0 40 28"><ellipse cx="20" cy="14" rx="15" ry="10" fill="#fbf6ea" stroke="#d9c9a3"/><circle cx="35" cy="11" r="5" fill="#5b4a3a"/><path d="M12 22 V27 M26 22 V27" stroke="#5b4a3a" stroke-width="2.5"/></symbol>
+<symbol id="shepherd" viewBox="0 0 40 100"><use href="#per" width="40" height="100" style="color:#8a6a4f"/><path d="M36 24 Q44 18 40 10 Q36 6 33 12 M38 14 L34 96" stroke="#7a5536" stroke-width="3.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="flockhill" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3ead2"/><path d="M0 190 Q220 120 460 160 T800 140 V300 H0Z" fill="#c9d6b4"/><path d="M0 240 Q260 200 520 230 T800 220 V300 H0Z" fill="#b5c79c"/><use href="#sheep" x="200" y="200" width="44" height="30"/><use href="#sheep" x="260" y="212" width="44" height="30"/><use href="#sheep" x="320" y="198" width="44" height="30"/><use href="#sheep" x="390" y="214" width="44" height="30"/><use href="#sheep" x="450" y="200" width="44" height="30"/><use href="#sheep" x="300" y="240" width="44" height="30"/><use href="#sheep" x="380" y="246" width="44" height="30"/><use href="#shepherd" x="540" y="140" width="48" height="120"/></symbol>
+<symbol id="asiamap" viewBox="0 0 800 300"><rect width="800" height="300" fill="#dfe8ea"/><path d="M60 120 Q140 60 260 70 Q380 40 520 60 Q640 50 740 90 L760 180 Q660 230 520 220 Q380 250 240 230 Q120 230 70 190 Z" fill="#efe2c6" stroke="#c9b48a" stroke-width="2"/><path d="M260 70 L250 230 M420 50 L400 240 M560 60 L560 220 M200 150 H700" stroke="#d9c9a3" stroke-width="1.5" stroke-dasharray="5 5"/></symbol>
+<symbol id="link" viewBox="0 0 30 40"><rect x="4" y="3" width="22" height="34" rx="11" fill="none" stroke="#8a6a4f" stroke-width="5"/></symbol>
+<symbol id="ledger" viewBox="0 0 60 44"><path d="M30 6 Q16 0 3 4 V40 Q16 36 30 42 Q44 36 57 40 V4 Q44 0 30 6Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M30 6 V42 M8 14 H24 M8 20 H24 M8 26 H22 M36 14 H52 M36 20 H52" stroke="#c9b48a" stroke-width="1.6"/></symbol>
+<symbol id="fire" viewBox="0 0 40 40"><path d="M6 36 L34 30 M6 30 L34 36" stroke="#7a5536" stroke-width="4"/><path d="M12 32 Q10 18 20 6 Q22 18 28 20 Q30 26 26 32 Z" fill="#e9973f"/><path d="M16 32 Q16 22 21 16 Q24 24 24 32 Z" fill="#f6d58e"/></symbol>
+<symbol id="tent" viewBox="0 0 60 40"><path d="M2 38 L30 4 L58 38 Z" fill="#cbb08a"/><path d="M30 4 V38" stroke="#a58262" stroke-width="2"/></symbol>
+<symbol id="lbldoor" viewBox="0 0 60 90"><rect x="4" y="4" width="52" height="84" rx="3" fill="#a7805c" stroke="#7a5536" stroke-width="3"/><circle cx="46" cy="50" r="3" fill="#e9b25e"/></symbol>
+<symbol id="folder" viewBox="0 0 60 44"><path d="M2 8 H22 L26 14 H58 V42 H2 Z" fill="#e9c47a" stroke="#b9925b" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="vines" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e3b8"/><circle cx="660" cy="60" r="38" fill="#fff3cf" opacity=".85"/><path d="M0 160 Q300 100 800 140 V300 H0Z" fill="#d9c08a"/><g stroke="#7a5536" stroke-width="2"><path d="M40 300 L300 150 M140 300 L380 152 M240 300 L460 150 M340 300 L540 150 M440 300 L620 148 M540 300 L700 146 M640 300 L780 146"/></g><g fill="#7e9b5a"><circle cx="120" cy="250" r="9"/><circle cx="200" cy="205" r="8"/><circle cx="260" cy="170" r="7"/><circle cx="220" cy="250" r="9"/><circle cx="300" cy="205" r="8"/><circle cx="350" cy="172" r="7"/><circle cx="320" cy="250" r="9"/><circle cx="400" cy="205" r="8"/><circle cx="440" cy="172" r="7"/><circle cx="420" cy="250" r="9"/><circle cx="500" cy="205" r="8"/><circle cx="530" cy="172" r="7"/><circle cx="520" cy="250" r="9"/><circle cx="600" cy="205" r="8"/><circle cx="610" cy="172" r="7"/><circle cx="620" cy="250" r="9"/><circle cx="690" cy="205" r="8"/></g></symbol>
+<symbol id="lampscroll" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><rect x="560" y="40" width="110" height="90" fill="#cfe0e6" stroke="#a7805c" stroke-width="6"/><rect x="0" y="230" width="800" height="70" fill="#d9c8a6"/><use href="#table" x="200" y="190" width="400" height="90"/><use href="#scroll" x="250" y="150" width="220" height="60"/><use href="#lamp" x="480" y="110" width="60" height="90"/></symbol>
+<symbol id="ephesus" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect x="0" y="230" width="800" height="70" fill="#9fb4bf"/><path d="M420 230 Q520 90 700 120 L760 230Z" fill="#d8c8a6"/><g fill="none" stroke="#b8a07a" stroke-width="4"><path d="M480 220 Q560 140 680 160"/><path d="M500 220 Q570 160 670 175"/><path d="M520 220 Q580 180 660 190"/></g><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="150" width="120" height="80"/><rect x="230" y="170" width="90" height="60"/></g><g fill="#d8c8a6"><rect x="90" y="156" width="8" height="74"/><rect x="120" y="156" width="8" height="74"/><rect x="150" y="156" width="8" height="74"/><rect x="180" y="156" width="8" height="74"/></g><path d="M74 150 L140 120 L206 150Z" fill="#c9a77a"/></symbol>
+<symbol id="dawntown" viewBox="0 0 800 300"><rect width="800" height="300" fill="#3a4a66"/><rect y="160" width="800" height="60" fill="#e9c48a" opacity=".55"/><path d="M0 200 Q400 180 800 200 V300 H0Z" fill="#4f5d58"/><rect x="0" y="230" width="360" height="70" fill="#6d8a99"/><g fill="#2f3a48"><rect x="40" y="170" width="60" height="40"/><rect x="110" y="160" width="70" height="50"/><rect x="190" y="175" width="50" height="35"/><rect x="250" y="165" width="64" height="45"/></g><path d="M500 210 Q600 150 760 170" stroke="#e9dcc0" stroke-width="3" fill="none" stroke-dasharray="6 6"/><use href="#per" x="610" y="140" width="22" height="56" style="color:#8a6a4f"/></symbol>
+<symbol id="nightroom" viewBox="0 0 800 300"><rect width="800" height="300" fill="#2f3a52"/><rect x="460" y="50" width="200" height="140" fill="#1f2838" stroke="#a7805c" stroke-width="8"/><g fill="#f4ead6"><circle cx="500" cy="80" r="2"/><circle cx="560" cy="100" r="1.6"/><circle cx="620" cy="70" r="2"/></g><g fill="#3a4660"><rect x="480" y="150" width="30" height="40"/><rect x="520" y="140" width="40" height="50"/><rect x="580" y="155" width="30" height="35"/></g><rect y="240" width="800" height="60" fill="#45546a"/><use href="#lamp" x="260" y="160" width="60" height="90"/><circle cx="290" cy="190" r="90" fill="url(#glowr)" opacity=".6"/><path d="M150 250 L180 120 Q200 110 210 130 L190 250Z" fill="none" stroke="#c9a061" stroke-width="5"/><path d="M160 240 L190 130 M170 245 L198 140 M180 248 L204 150" stroke="#e9dcc0" stroke-width="1"/></symbol>
+<symbol id="spring" viewBox="0 0 800 300"><rect width="800" height="300" fill="#eef0ea"/><path d="M0 220 Q400 190 800 230 V300 H0Z" fill="#c9d6b4"/><g fill="#b8a991"><ellipse cx="360" cy="200" rx="50" ry="22"/><ellipse cx="440" cy="196" rx="40" ry="18"/></g><path d="M400 200 Q420 240 470 260 T640 300" stroke="#8fb3c4" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="400" cy="196" r="12" fill="#a9c9d6"/></symbol>
+<symbol id="stadium" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e3c2"/><g fill="#e2d3b2"><rect y="40" width="800" height="20"/><rect y="70" width="800" height="20"/><rect y="100" width="800" height="20"/></g><rect y="160" width="800" height="100" fill="#d9b88a"/><path d="M0 210 H800" stroke="#fffaf0" stroke-width="3" stroke-dasharray="20 14"/><rect x="700" y="130" width="8" height="90" fill="#7a5536"/><circle cx="704" cy="128" r="14" fill="none" stroke="#7e9b5a" stroke-width="5"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveskyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3a46a"/><stop offset="1" stop-color="#f3d6a4"/></linearGradient>
+<linearGradient id="nightg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232c44"/><stop offset="1" stop-color="#46506a"/></linearGradient>
+<symbol id="campbase" viewBox="0 0 800 300"><path d="M0 120 L120 80 L230 110 L360 60 L470 100 L600 70 L800 110 V300 H0Z" fill="#cdb08a" opacity=".7"/><rect y="170" width="800" height="130" fill="#e3cfa6"/><path d="M0 180 Q400 160 800 182 V300 H0Z" fill="#dcc497"/><use href="#tent" x="40" y="140" width="90" height="60"/><use href="#tent" x="150" y="128" width="70" height="46"/><use href="#tent" x="600" y="132" width="80" height="54"/><use href="#tent" x="700" y="146" width="90" height="60"/><use href="#tent" x="520" y="124" width="60" height="40"/></symbol>
+<symbol id="awning" viewBox="0 0 160 120"><path d="M10 30 L80 6 L150 30Z" fill="#b5694a"/><path d="M10 30 H150" stroke="#7a5536" stroke-width="3"/><path d="M22 30 V118 M138 30 V118" stroke="#7a5536" stroke-width="4"/><use href="#sit" x="55" y="40" width="50" height="78" style="color:#6d4f3a"/></symbol>
+<symbol id="queue" viewBox="0 0 400 120"><g style="color:#8a6a4f"><use href="#per" x="0" y="20" width="22" height="56"/><use href="#per" x="30" y="30" width="22" height="56" style="color:#56607a"/><use href="#per" x="60" y="22" width="22" height="56" style="color:#a8423f"/><use href="#per" x="92" y="36" width="22" height="56"/><use href="#per" x="124" y="28" width="22" height="56" style="color:#6f817b"/><use href="#per" x="156" y="44" width="22" height="56" style="color:#56607a"/><use href="#per" x="190" y="34" width="22" height="56"/><use href="#per" x="222" y="50" width="22" height="56" style="color:#a58262"/><use href="#per" x="256" y="40" width="22" height="56" style="color:#6f817b"/><use href="#per" x="290" y="56" width="22" height="56"/><use href="#per" x="322" y="46" width="22" height="56" style="color:#a8423f"/><use href="#per" x="356" y="60" width="22" height="56" style="color:#56607a"/></g></symbol>
+<symbol id="grp" viewBox="0 0 120 80"><ellipse cx="60" cy="72" rx="56" ry="8" fill="#000" opacity=".06"/><use href="#sit" x="42" y="14" width="36" height="58" style="color:#6d4f3a"/><use href="#per" x="4" y="22" width="20" height="50" style="color:#56607a"/><use href="#per" x="96" y="22" width="20" height="50" style="color:#a8423f"/><use href="#per" x="22" y="30" width="18" height="44" style="color:#6f817b"/><use href="#per" x="82" y="30" width="18" height="44" style="color:#a58262"/></symbol>
+<symbol id="campday" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><circle cx="140" cy="60" r="34" fill="#fff3cf"/><use href="#campbase" width="800" height="300"/><use href="#awning" x="320" y="120" width="160" height="120"/><use href="#queue" x="430" y="150" width="360" height="110"/></symbol>
+<symbol id="campeve" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#eveskyg)"/><circle cx="700" cy="150" r="40" fill="#f7c27a" opacity=".9"/><use href="#campbase" width="800" height="300"/><rect width="800" height="300" fill="#7a4a2a" opacity=".12"/><g fill="#7a5536" opacity=".18"><path d="M330 240 L120 262 L130 250 Z"/><path d="M440 252 L200 286 L210 272Z"/><path d="M560 262 L330 296 L340 284Z"/></g><use href="#awning" x="320" y="120" width="160" height="120"/><use href="#queue" x="430" y="150" width="360" height="110"/></symbol>
+<symbol id="campgrp" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><circle cx="140" cy="60" r="34" fill="#fff3cf"/><use href="#campbase" width="800" height="300"/><use href="#awning" x="340" y="110" width="120" height="90"/><use href="#grp" x="40" y="196" width="130" height="86"/><use href="#grp" x="210" y="220" width="130" height="86"/><use href="#grp" x="470" y="214" width="130" height="86"/><use href="#grp" x="640" y="196" width="130" height="86"/><use href="#grp" x="560" y="160" width="90" height="60"/><use href="#grp" x="150" y="160" width="90" height="60"/></symbol>
+<symbol id="mtnnight" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#nightg)"/><g fill="#f4ead6"><circle cx="80" cy="40" r="2"/><circle cx="170" cy="80" r="1.5"/><circle cx="260" cy="30" r="2"/><circle cx="380" cy="60" r="1.5"/><circle cx="520" cy="26" r="2"/><circle cx="640" cy="70" r="1.6"/><circle cx="730" cy="34" r="2"/><circle cx="460" cy="96" r="1.2"/></g><path d="M0 300 L0 220 Q160 160 300 120 Q380 96 430 110 Q560 150 800 230 V300Z" fill="#3a4258"/><path d="M360 120 Q400 100 440 116 L436 128 Q400 116 364 130Z" fill="#4a5470"/></symbol>
+<symbol id="hall" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e9d6"/><rect y="230" width="800" height="70" fill="#e2d2b2"/><rect x="40" y="40" width="70" height="110" fill="#d9e4e6" stroke="#b49a76" stroke-width="5"/><rect x="690" y="40" width="70" height="110" fill="#d9e4e6" stroke="#b49a76" stroke-width="5"/><path d="M370 160 H430 L420 236 H380Z" fill="#a7805c"/><rect x="362" y="152" width="76" height="12" rx="2" fill="#8a6a4f"/></symbol>
+<symbol id="chairrow" viewBox="0 0 560 60"><g fill="#b48e62"><rect x="0" y="0" width="34" height="30" rx="3"/><rect x="60" y="0" width="34" height="30" rx="3"/><rect x="120" y="0" width="34" height="30" rx="3"/><rect x="180" y="0" width="34" height="30" rx="3"/><rect x="240" y="0" width="34" height="30" rx="3"/><rect x="300" y="0" width="34" height="30" rx="3"/><rect x="360" y="0" width="34" height="30" rx="3"/><rect x="420" y="0" width="34" height="30" rx="3"/><rect x="480" y="0" width="34" height="30" rx="3"/></g><g stroke="#8a6a4f" stroke-width="3"><path d="M4 30V56 M30 30V56 M64 30V56 M90 30V56 M124 30V56 M150 30V56 M184 30V56 M210 30V56 M244 30V56 M270 30V56 M304 30V56 M330 30V56 M364 30V56 M390 30V56 M424 30V56 M450 30V56 M484 30V56 M510 30V56"/></g></symbol>
+<symbol id="wall" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><g fill="#d8c3a0"><rect x="40" y="70" width="90" height="70"/><rect x="150" y="56" width="80" height="84"/><rect x="260" y="74" width="90" height="66"/><rect x="380" y="60" width="80" height="80"/><rect x="490" y="70" width="90" height="70"/><rect x="610" y="58" width="80" height="82"/></g><g fill="#7a5536"><rect x="74" y="104" width="20" height="36"/><rect x="180" y="96" width="20" height="44"/><rect x="296" y="106" width="20" height="34"/><rect x="410" y="100" width="20" height="40"/><rect x="526" y="104" width="20" height="36"/><rect x="640" y="98" width="20" height="42"/></g><rect y="250" width="800" height="50" fill="#d9c8a6"/></symbol>
+<symbol id="wallb" viewBox="0 0 800 120"><path d="M0 120 V20 H110 L130 50 L150 30 V120Z M190 120 V36 L210 20 H330 V60 L350 80 V120Z M400 120 V24 H520 L540 56 V120Z M590 120 V30 H700 L720 20 H800 V120Z" fill="#cbb08a" stroke="#a88d66" stroke-width="2"/><g stroke="#a88d66" stroke-width="1.5"><path d="M0 60 H140 M0 90 H150 M190 64 H330 M190 94 H350 M400 64 H540 M400 94 H540 M590 64 H800 M590 94 H800"/></g></symbol>
+<symbol id="wallfull" viewBox="0 0 800 120"><rect y="20" width="800" height="100" fill="#cbb08a" stroke="#a88d66" stroke-width="2"/><g stroke="#a88d66" stroke-width="1.5"><path d="M0 50 H800 M0 80 H800 M0 106 H800"/></g><g fill="#cbb08a" stroke="#a88d66" stroke-width="2"><rect x="20" y="6" width="30" height="16"/><rect x="120" y="6" width="30" height="16"/><rect x="220" y="6" width="30" height="16"/><rect x="320" y="6" width="30" height="16"/><rect x="420" y="6" width="30" height="16"/><rect x="520" y="6" width="30" height="16"/><rect x="620" y="6" width="30" height="16"/><rect x="720" y="6" width="30" height="16"/></g></symbol>
+<symbol id="cafe" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e4cc"/><rect y="236" width="800" height="64" fill="#d9c4a0"/><rect x="560" y="30" width="190" height="130" fill="#d6e2e2" stroke="#a7805c" stroke-width="7"/><path d="M655 30 V160 M560 95 H750" stroke="#a7805c" stroke-width="4"/><g fill="#7e9b5a"><circle cx="70" cy="190" r="22"/><circle cx="90" cy="170" r="18"/><circle cx="56" cy="168" r="16"/></g><rect x="56" y="196" width="34" height="40" fill="#b5694a"/><path d="M200 26 V70" stroke="#8a6a4f" stroke-width="2"/><path d="M184 70 H216 L208 86 H192Z" fill="#c9963f"/></symbol>
+<symbol id="i-cradle" viewBox="0 0 40 40"><path d="M6 18 Q20 36 34 18Z" fill="#e8c7a0" stroke="#a7805c" stroke-width="2"/><path d="M8 34 Q20 40 32 34" stroke="#a7805c" stroke-width="2" fill="none"/><circle cx="20" cy="16" r="4" fill="#f0d4b0"/></symbol>
+<symbol id="i-case" viewBox="0 0 40 40"><rect x="5" y="13" width="30" height="20" rx="3" fill="#8a6a4f"/><path d="M15 13 V9 H25 V13" stroke="#5a4636" stroke-width="2.5" fill="none"/><path d="M5 21 H35" stroke="#5a4636" stroke-width="1.5"/></symbol>
+<symbol id="i-hcup" viewBox="0 0 40 40"><path d="M11 10 H29 L26 34 H14Z" fill="#fffaf0" stroke="#8fa9b4" stroke-width="2"/><path d="M27 6 L22 18" stroke="#8fa9b4" stroke-width="2"/><path d="M17 22 H23 M20 19 V25" stroke="#c95f5f" stroke-width="2"/></symbol>
+<symbol id="puzzle" viewBox="0 0 50 50"><path d="M6 14 H18 Q16 6 24 6 Q32 6 30 14 H42 V26 Q50 24 50 32 Q50 40 42 38 V46 H6Z" fill="#d9b88a" stroke="#a7805c" stroke-width="2"/></symbol>
+<symbol id="heart" viewBox="0 0 40 36"><path d="M20 34 C4 22 0 14 6 7 C12 1 18 5 20 10 C22 5 28 1 34 7 C40 14 36 22 20 34Z" fill="#c95f5f"/></symbol>
+<symbol id="gate" viewBox="0 0 60 60"><path d="M4 58 V8 M56 58 V8" stroke="#7a5536" stroke-width="5"/><g stroke="#a7805c" stroke-width="3"><path d="M8 16 H52 M8 50 H52 M14 16 V50 M24 16 V50 M34 16 V50 M44 16 V50"/></g></symbol>
+<symbol id="gateopen" viewBox="0 0 60 60"><path d="M4 58 V8 M56 58 V8" stroke="#7a5536" stroke-width="5"/><g stroke="#a7805c" stroke-width="3"><path d="M8 16 L20 22 M8 50 L20 48 M10 17 V49 M16 20 V48"/></g></symbol>
+<symbol id="rolecard" viewBox="0 0 160 60"><rect x="1" y="1" width="158" height="58" rx="8" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/></symbol>
+<symbol id="body" viewBox="0 0 120 200"><circle cx="60" cy="26" r="20" fill="none" stroke="#a7805c" stroke-width="3"/><path d="M60 46 V120 M60 64 L22 104 M60 64 L98 104 M60 120 L34 190 M60 120 L86 190" stroke="#a7805c" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="tick" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="#7e9b5a"/><path d="M8 15 L13 20 L22 10" stroke="#fffaf0" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="box" viewBox="0 0 40 30"><rect x="2" y="4" width="36" height="24" fill="#c9a77a" stroke="#8a6a4f" stroke-width="2"/><path d="M2 12 H38" stroke="#8a6a4f" stroke-width="2"/></symbol>
+<symbol id="rota" viewBox="0 0 240 150"><rect x="2" y="2" width="236" height="146" rx="6" fill="#fffaf0" stroke="#a7805c" stroke-width="3"/><g fill="none" stroke="#d9c9a3" stroke-width="2"><path d="M2 40 H238 M2 76 H238 M2 112 H238 M80 2 V148 M160 2 V148"/></g><g fill="#c9b48a"><rect x="14" y="52" width="50" height="10" rx="3"/><rect x="94" y="52" width="50" height="10" rx="3"/><rect x="174" y="52" width="50" height="10" rx="3"/><rect x="14" y="88" width="50" height="10" rx="3"/><rect x="94" y="88" width="50" height="10" rx="3"/><rect x="14" y="124" width="50" height="10" rx="3"/><rect x="174" y="124" width="50" height="10" rx="3"/></g><g fill="#a58262"><rect x="14" y="16" width="50" height="10" rx="3"/><rect x="94" y="16" width="50" height="10" rx="3"/><rect x="174" y="16" width="50" height="10" rx="3"/></g><circle cx="120" cy="-2" r="5" fill="#c95f5f"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="greyskyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a96a3"/><stop offset="1" stop-color="#c6ccd0"/></linearGradient>
+<symbol id="stormboat" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#greyskyg)"/><path d="M0 200 Q60 170 120 200 T240 200 T360 200 T480 200 T600 200 T720 200 T840 200 V300 H0Z" fill="#6f8796"/><path d="M0 230 Q50 210 100 232 T200 232 T300 232 T400 232 T500 232 T600 232 T700 232 T800 232 V300 H0Z" fill="#587282"/><g transform="rotate(-10 400 190)"><path d="M320 190 H480 L460 222 H340Z" fill="#7a5536"/><path d="M398 190 V110" stroke="#5a4636" stroke-width="5"/><path d="M402 116 L452 182 H402Z" fill="#e9dcc0"/></g><path d="M0 260 Q40 244 80 262 T160 262 T240 262 T320 262 T400 262 T480 262 T560 262 T640 262 T720 262 T800 262 V300 H0Z" fill="#4b6574"/></symbol>
+<symbol id="netboat" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect y="170" width="800" height="130" fill="#9fb4bf"/><path d="M0 190 Q200 180 400 192 T800 188" stroke="#b9cad2" stroke-width="3" fill="none"/><path d="M240 170 H560 L530 214 H270Z" fill="#8a6a4f"/><path d="M240 170 H560" stroke="#5a4636" stroke-width="4"/><use href="#sit" x="280" y="98" width="50" height="80" style="color:#56607a"/><use href="#sit" x="470" y="98" width="50" height="80" style="color:#a8423f"/><g stroke="#a7805c" stroke-width="1.5" fill="none"><path d="M330 150 Q400 200 470 150"/><path d="M340 140 L460 170 M340 170 L460 140 M360 136 L360 180 M380 134 L380 186 M400 134 L400 188 M420 134 L420 186 M440 136 L440 180"/></g></symbol>
+<symbol id="galhill" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e8c6"/><circle cx="660" cy="64" r="34" fill="#fff3cf"/><rect y="200" width="800" height="100" fill="#9fb4bf" opacity=".6"/><path d="M0 220 Q200 120 420 150 T800 190 V300 H0Z" fill="#c9d6a0"/><path d="M0 260 Q300 220 800 250 V300 H0Z" fill="#b2c28a"/><g fill="#8a9a6a"><circle cx="120" cy="196" r="16"/><circle cx="560" cy="170" r="14"/><circle cx="700" cy="196" r="18"/></g></symbol>
+<symbol id="aaronhur" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#eveskyg)"/><path d="M0 300 L0 230 Q200 150 400 140 Q600 150 800 230 V300Z" fill="#c9a57a"/><path d="M0 300 L0 270 Q400 240 800 270 V300Z" fill="#b48e62"/><ellipse cx="400" cy="150" rx="26" ry="10" fill="#9a8a76"/><use href="#sit" x="374" y="70" width="52" height="84" style="color:#6d4f3a"/><path d="M386 94 L370 54 M414 94 L430 54" stroke="#6d4f3a" stroke-width="7" stroke-linecap="round"/><use href="#per" x="336" y="66" width="30" height="76" style="color:#8a6a4f"/><use href="#per" x="434" y="66" width="30" height="76" style="color:#56607a"/><path d="M360 86 L372 60 M440 86 L428 60" stroke="#e9c48a" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="cell" viewBox="0 0 800 300"><rect width="800" height="300" fill="#a8998a"/><g stroke="#968776" stroke-width="2"><path d="M0 60 H800 M0 120 H800 M0 180 H800 M0 240 H800 M100 0 V60 M300 0 V60 M500 0 V60 M700 0 V60 M200 60 V120 M400 60 V120 M600 60 V120 M100 120 V180 M300 120 V180 M500 120 V180 M700 120 V180"/></g><rect x="540" y="40" width="80" height="70" fill="#f3e0b0"/><g stroke="#5a4636" stroke-width="5"><path d="M560 40 V110 M580 40 V110 M600 40 V110"/></g><path d="M540 110 L380 300 H520 L620 110Z" fill="#f6e8c6" opacity=".35"/><rect y="250" width="800" height="50" fill="#8a7b6c"/><use href="#sit" x="300" y="170" width="56" height="90" style="color:#6d4f3a"/><rect x="350" y="214" width="70" height="8" fill="#a7805c"/><rect x="360" y="204" width="40" height="10" fill="#fffaf0"/></symbol>
+<symbol id="entrance" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e9d6"/><rect y="240" width="800" height="60" fill="#e2d2b2"/><rect x="80" y="50" width="130" height="190" fill="#d9e4e6" stroke="#a7805c" stroke-width="8"/><path d="M145 50 V240" stroke="#a7805c" stroke-width="4"/><rect x="250" y="190" width="120" height="14" fill="#a7805c"/><path d="M262 204 V240 M358 204 V240" stroke="#8a6a4f" stroke-width="4"/><g fill="#fffaf0" stroke="#d9c9a3"><rect x="262" y="178" width="26" height="12"/><rect x="296" y="178" width="26" height="12"/></g><use href="#chairrow" x="480" y="200" width="300" height="34"/></symbol>
+<symbol id="heater" viewBox="0 0 40 40"><rect x="4" y="10" width="32" height="26" rx="4" fill="#d9c9a3" stroke="#a7805c" stroke-width="2"/><g stroke="#c95f5f" stroke-width="2"><path d="M10 16 V30 M16 16 V30 M22 16 V30 M28 16 V30"/></g></symbol>
+<symbol id="phone" viewBox="0 0 20 34"><rect x="1" y="1" width="18" height="32" rx="4" fill="#2b3445"/><rect x="3" y="5" width="14" height="22" fill="#9fb4bf"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="courtyard" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect y="40" width="800" height="150" fill="#e6d4b2"/><g fill="#d8c3a0"><rect x="60" y="40" width="30" height="150"/><rect x="250" y="40" width="30" height="150"/><rect x="520" y="40" width="30" height="150"/><rect x="710" y="40" width="30" height="150"/></g><path d="M0 40 H800" stroke="#b49a76" stroke-width="8"/><rect y="190" width="800" height="110" fill="#d9c49c"/><ellipse cx="400" cy="250" rx="260" ry="34" fill="#cbb48a"/><g><use href="#sit" x="170" y="190" width="40" height="64" style="color:#8a6a4f"/><use href="#sit" x="230" y="200" width="40" height="64" style="color:#56607a"/><use href="#sit" x="300" y="206" width="40" height="64" style="color:#6d4f3a"/><use href="#sit" x="460" y="206" width="40" height="64" style="color:#a58262"/><use href="#sit" x="530" y="200" width="40" height="64" style="color:#6f817b"/><use href="#sit" x="590" y="190" width="40" height="64" style="color:#8a6a4f"/><use href="#per" x="388" y="160" width="28" height="72" style="color:#56607a"/></g></symbol>
+<symbol id="scribe" viewBox="0 0 800 300"><use href="#courtyard" width="800" height="300"/><rect x="330" y="236" width="140" height="16" fill="#a7805c"/><use href="#scroll" x="340" y="214" width="120" height="30"/><use href="#pen" x="420" y="210" width="40" height="10"/></symbol>
+<symbol id="housechurch" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><rect x="580" y="40" width="100" height="80" fill="#cfe0e6" stroke="#a7805c" stroke-width="6"/><rect y="230" width="800" height="70" fill="#d9c8a6"/><use href="#lamp" x="120" y="150" width="40" height="60"/><circle cx="140" cy="170" r="70" fill="url(#glowr)" opacity=".5"/><use href="#per" x="380" y="120" width="34" height="90" style="color:#6d4f3a"/><use href="#scroll" x="356" y="140" width="80" height="22"/><g><use href="#sit" x="200" y="170" width="44" height="70" style="color:#56607a"/><use href="#sit" x="260" y="176" width="44" height="70" style="color:#a8423f"/><use href="#sit" x="480" y="176" width="44" height="70" style="color:#6f817b"/><use href="#sit" x="540" y="170" width="44" height="70" style="color:#a58262"/><use href="#sit" x="610" y="180" width="40" height="64" style="color:#8a6a4f"/></g></symbol>
+<symbol id="antiochmap" viewBox="0 0 800 300"><rect width="800" height="300" fill="#9fb4bf"/><path d="M380 0 H800 V300 H560 Q520 240 500 180 Q470 120 420 90 Q390 60 380 0Z" fill="#e3cfa6"/><path d="M380 0 Q390 60 420 90 Q470 120 500 180 Q520 240 560 300" stroke="#c9b48a" stroke-width="3" fill="none"/><circle cx="560" cy="60" r="7" fill="#c9963f"/><text x="600" y="64" class="tiny2" style="text-anchor:start">Antioch</text><circle cx="600" cy="250" r="7" fill="#c9963f"/><text x="640" y="254" class="tiny2" style="text-anchor:start">Jerusalem</text><path d="M560 66 Q620 150 600 244" stroke="#8a6a4f" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/></symbol>
+<symbol id="nightwall" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#nightg)"/><circle cx="640" cy="60" r="26" fill="#f4ead6"/><use href="#wallb" x="0" y="140" width="800" height="120"/><rect width="800" height="300" fill="#232c44" opacity=".35"/><rect y="260" width="800" height="40" fill="#3a4258"/></symbol>
+<symbol id="wallday" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><use href="#wallb" x="0" y="80" width="800" height="120"/><rect y="200" width="800" height="100" fill="#dcc497"/><path d="M640 100 h40 v100 h-40z" fill="#5a4636"/></symbol>
+<symbol id="clock" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#fffaf0" stroke="#5a4636" stroke-width="3"/><g stroke="#a7805c" stroke-width="2"><path d="M30 6 V10 M30 50 V54 M6 30 H10 M50 30 H54"/></g><circle cx="30" cy="30" r="2.5" fill="#5a4636"/></symbol>
+<symbol id="fence" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e8c6"/><circle cx="660" cy="60" r="36" fill="#fff3cf"/><rect x="60" y="60" width="260" height="170" fill="#e2d2b2" stroke="#b49a76" stroke-width="4"/><path d="M50 60 L190 10 L330 60Z" fill="#b5694a"/><rect y="230" width="800" height="70" fill="#c9d6a0"/><g fill="#fffaf0" stroke="#d9c9a3"><rect x="380" y="170" width="16" height="70"/><rect x="410" y="170" width="16" height="70"/><rect x="440" y="170" width="16" height="70"/><rect x="470" y="170" width="16" height="70"/></g><g fill="#c9b48a"><rect x="500" y="170" width="16" height="70"/><rect x="530" y="170" width="16" height="70"/><rect x="560" y="170" width="16" height="70"/></g><path d="M370 190 H590 M370 220 H590" stroke="#d9c9a3" stroke-width="5"/><use href="#per" x="600" y="160" width="30" height="76" style="color:#56607a"/></symbol>
+<symbol id="nightroom2" viewBox="0 0 800 300"><rect width="800" height="300" fill="#4a5470"/><rect x="560" y="40" width="160" height="110" fill="#232c44" stroke="#8a7b6c" stroke-width="6"/><rect y="230" width="800" height="70" fill="#5a6278"/><rect x="200" y="200" width="400" height="16" fill="#8a6a4f"/><g><use href="#sit" x="190" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="260" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="490" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="420" y="140" width="44" height="70" style="color:#7a8296"/></g></symbol>
+<symbol id="sheet" viewBox="0 0 200 260"><rect x="2" y="2" width="196" height="256" rx="4" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/></symbol>
+</defs></svg>
+
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome to Lesson">Lesson 6 · Book chapter 6 · Part 2: Learn the Craft</p>
+ <h1 class="b up" data-at="Welcome to Lesson">Running a Meeting People Want to Attend</h1>
+ <svg class="scene" viewBox="0 0 800 380" aria-hidden="true"><g class="cam">
+  <rect width="800" height="380" fill="url(#creamg)"/>
+  <path d="M60 330 H740" stroke="#c9963f" stroke-width="2.5"/>
+  <use href="#doorlight" x="300" y="20" width="280" height="290"/><use href="#stairs" x="250" y="110" width="300" height="215"/>
+  <path d="M260,305 285,305 L285,290 310,290 L310,275 335,275 L335,260 360,260 L360,245 385,245" stroke="#f0c77a" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <use href="#per" x="361" y="186" width="22" height="56" style="color:#56607a"/>
+  <g class="b pop" data-at="In Lesson 5 we saw"><use href="#cup" x="392" y="226" width="20" height="20"/></g>
+  <g class="b" data-at="Today we look at"><rect x="383" y="235" width="30" height="16" rx="3" fill="none" stroke="#c9963f" stroke-width="2.5" stroke-dasharray="5 3"/></g>
+  <g class="b up" data-at="the team meeting"><use href="#table" x="110" y="296" width="140" height="34"/><rect x="164" y="290" width="26" height="8" fill="#fffaf0" stroke="#d9c9a3"/><use href="#per" x="100" y="270" width="18" height="46" style="color:#a8423f"/><use href="#per" x="240" y="270" width="18" height="46" style="color:#6f817b"/><use href="#per" x="128" y="276" width="16" height="40" style="color:#a58262"/><use href="#per" x="214" y="276" width="16" height="40" style="color:#8a6a4f"/></g>
+ </g></svg>
+ <p class="q b" data-at="How do I lead a meeting">How do I lead a meeting that respects people’s time and moves the work forward?</p>
+</div></section>
+
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+<div class="wrap">
+ <p class="label">Volunteers resent wasted evenings</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#fence" width="800" height="300"/>
+  <g class="b" data-at="ninety minutes on a weeknight" data-until="with the best intentions"><use href="#nightroom2" width="800" height="300"/>
+   <svg x="610" y="56" width="70" height="70" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/><g class="b" data-at="ninety minutes on a weeknight" data-until="that achieves nothing"><path d="M30 30 L20.5 39.5 M30 30 L30 50" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></g><g class="b" data-at="that achieves nothing"><path d="M30 30 L16.5 30 M30 30 L30 10" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></g></svg>
+   <g class="b pop" data-at="on the drive home"><rect x="120" y="30" width="230" height="40" rx="12" fill="#fffaf0" stroke="#d9c9a3"/><text x="235" y="55" class="tiny3" style="font-size:12px">“What did we decide?”</text></g></g>
+  <g class="b" data-at="with the best intentions"><rect width="800" height="300" fill="#f3e9d6"/><rect y="240" width="800" height="60" fill="#e2d2b2"/><use href="#board" x="300" y="30" width="200" height="140"/><use href="#chairrow" x="140" y="200" width="520" height="40"/>
+   <use href="#per" x="250" y="120" width="30" height="76" style="color:#56607a"/>
+   <g class="b pop" data-at="Some meetings are for decisions"><g class="tiny3" style="font-size:12px"><text x="400" y="70">decide · learn</text><text x="400" y="96">pray · care</text></g></g></g>
+ </svg>
+ <p class="big2 b up" data-at="A volunteer will often give you">A volunteer will often give you a Saturday morning cheerfully.</p>
+ <p class="big2 b up" data-at="What can gradually wear them down">What can gradually wear them down is ninety minutes that achieves nothing.</p>
+ <p class="tag b" data-at="Each one needs a clear purpose">Every meeting needs a clear purpose.</p>
+</div></section>
+
+<section class="slide" data-n="3" data-theme="light" aria-label="Slide 3">
+<div class="wrap">
+ <p class="label">Selected excerpts from Acts 15</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#courtyard" width="800" height="300"/>
+  <g class="b" data-at="James began his judgement"><use href="#scribe" width="800" height="300"/></g>
+  <g class="b" data-at="From their letter"><use href="#housechurch" width="800" height="300"/></g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="Our passage is from Acts" data-until="The apostles and the elders were gathered"><p class="big2">Acts 15 · selected excerpts</p></div>
+  <div class="b" data-at="The apostles and the elders were gathered" data-until="And all the assembly fell silent"><p class="scripture" style="font-size:.92em"><b class="vn">Verses 6–7</b> “The apostles and the elders were gathered together to consider this matter. And after there had been much debate, Peter stood up and said to them, ‘Brothers, you know that in the early days God made a choice among you, that by my mouth the Gentiles should hear the word of the gospel and believe…’”<span class="ref">Acts 15:6–7 (ESV)</span></p></div>
+  <div class="b" data-at="And all the assembly fell silent" data-until="James began his judgement"><p class="scripture"><b class="vn">Verse 12</b> “And all the assembly fell silent, and they listened to Barnabas and Paul as they related what signs and wonders God had done through them among the Gentiles.”<span class="ref">Acts 15:12 (ESV)</span></p></div>
+  <div class="b" data-at="James began his judgement" data-until="Then it seemed good to the apostles"><p class="scripture"><b class="vn">Verse 19</b> “Therefore my judgment is that we should not trouble those of the Gentiles who turn to God…”<span class="ref">Acts 15:19 (ESV)</span></p></div>
+  <div class="b" data-at="Then it seemed good to the apostles" data-until="From their letter"><p class="scripture"><b class="vn">Verse 22</b> “Then it seemed good to the apostles and the elders, with the whole church, to choose men from among them and send them to Antioch with Paul and Barnabas…”<span class="ref">Acts 15:22 (ESV)</span></p></div>
+  <div class="b" data-at="From their letter" data-until="So when they were sent off"><p class="scripture"><b class="vn">Verse 28</b> “For it has seemed good to the Holy Spirit and to us to lay on you no greater burden than these requirements…”<span class="ref">Acts 15:28 (ESV)</span></p></div>
+  <div class="b" data-at="So when they were sent off"><p class="scripture"><b class="vn">Verses 30–31</b> “So when they were sent off, they went down to Antioch, and having gathered the congregation together, they delivered the letter. And when they had read it, they rejoiced because of its encouragement.”<span class="ref">Acts 15:30–31 (ESV)</span></p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+<div class="wrap">
+ <p class="label">A question about the gospel</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#antiochmap" width="800" height="300"/>
+  <g class="b walkin2" data-at="Some men came down from Judea"><use href="#per" x="590" y="160" width="14" height="36" style="color:#6d4f3a"/><use href="#per" x="606" y="164" width="14" height="36" style="color:#8a6a4f"/></g>
+  <g class="b pop" data-at="no small dissension and debate"><use href="#per" x="470" y="40" width="16" height="40" style="color:#56607a"/><use href="#per" x="490" y="40" width="16" height="40" style="color:#a8423f"/><use href="#per" x="650" y="90" width="16" height="40" style="color:#6d4f3a"/><use href="#per" x="670" y="90" width="16" height="40" style="color:#8a6a4f"/><path d="M510 60 Q580 50 646 100 M646 86 Q580 90 510 74" stroke="#c95f5f" stroke-width="2" fill="none"/></g>
+  <g class="b" data-at="were appointed to go up"><use href="#per" x="600" y="200" width="14" height="36" style="color:#56607a"/><use href="#per" x="616" y="196" width="14" height="36" style="color:#a8423f"/></g>
+  <g class="b" data-at="It was about the gospel itself"><path d="M560 66 Q620 150 600 244" stroke="#c9963f" stroke-width="5" fill="none" opacity=".8"/></g>
+  <g class="b" data-at="This was a unique moment"><rect x="380" y="10" width="410" height="280" fill="none" stroke="#c9963f" stroke-width="4"/></g>
+  <g class="b" data-at="But the shape of their process"><g fill="#fffaf0" stroke="#c9963f" stroke-width="2"><circle cx="60" cy="260" r="16"/><circle cx="110" cy="260" r="16"/><circle cx="160" cy="260" r="16"/><circle cx="210" cy="260" r="16"/><circle cx="260" cy="260" r="16"/></g></g>
+ </svg>
+ <ul class="steps" style="list-style:none;padding-left:0">
+  <li class="b" data-at="Luke says that Paul and Barnabas">Acts 15:1–2 — “no small dissension and debate”</li>
+  <li class="b" data-at="It was about the gospel itself"><b>The question:</b> must Gentile believers be circumcised and keep the law of Moses?</li>
+  <li class="b" data-at="This was a unique moment">A unique decision, with apostolic authority. We draw only the shape of the process.</li>
+ </ul>
+</div></section>
+
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">The original meaning</p>
+ <p class="heb b" data-at="In Greek it is" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,6vw,64px)"><span class="type">ἔδοξεν</span></p>
+ <p class="word b up" data-at="In Greek it is">edoxen<span class="ref">“it seemed good” · <span class="b" data-at="It appears three times">Acts 15:22 · 25 · 28</span></span></p>
+ <p class="gloss b" data-at="It was a common word">a common word for reaching a considered judgement</p>
+ <p class="scripture b" data-at="But look at how the letter">“For it has seemed good to <u class="k">the Holy Spirit</u> and to us…”<span class="ref">Acts 15:28 (ESV)</span></p>
+ <p class="refs b" data-at="This was a unique apostolic decision" style="text-align:center">Unique to the council — not a pattern for claiming divine authority over our own preferences.</p>
+ <p class="tag b" data-at="But one habit is worth keeping">Seek God · listen carefully · reach a clear judgement · tell people plainly</p>
+</div></section>
+
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">Five things the council did</p>
+ <svg class="scene short2" viewBox="0 0 800 140" aria-hidden="true">
+  <rect width="800" height="140" fill="url(#creamg)"/>
+  <path d="M100 70 H700" stroke="#d9c9a3" stroke-width="2"/>
+  <g fill="#fffaf0" stroke="#c9963f" stroke-width="2.5"><circle cx="100" cy="70" r="40"/><circle cx="250" cy="70" r="40"/><circle cx="400" cy="70" r="40"/><circle cx="550" cy="70" r="40"/><circle cx="700" cy="70" r="40"/></g>
+  <g class="b pop" data-at="One clear question"><text x="100" y="84" class="tiny2" style="font-size:36px">?</text></g>
+  <g class="b pop" data-at="Evidence from people"><use href="#per" x="228" y="44" width="20" height="50" style="color:#56607a"/><use href="#per" x="252" y="44" width="20" height="50" style="color:#a8423f"/></g>
+  <g class="b pop" data-at="Genuine debate"><path d="M376 60 Q400 40 424 60 M376 80 Q400 100 424 80" stroke="#8a6a4f" stroke-width="3" fill="none"/></g>
+  <g class="b pop" data-at="A stated decision"><use href="#tick" x="530" y="50" width="40" height="40"/></g>
+  <g class="b pop" data-at="And a written message"><use href="#env" x="672" y="52" width="56" height="36"/></g>
+  <g class="b" data-at="But many church meetings struggle"><g fill="none" stroke="#c9963f" stroke-width="6"><circle cx="100" cy="70" r="46"/><circle cx="550" cy="70" r="46"/><circle cx="700" cy="70" r="46"/></g></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="One clear question">One clear question</li>
+  <li class="b" data-at="Evidence from people">Evidence from people who had been there</li>
+  <li class="b" data-at="Genuine debate">Genuine debate</li>
+  <li class="b" data-at="A stated decision">A stated decision</li>
+  <li class="b" data-at="And a written message">A written message to those affected</li>
+ </ol>
+ <p class="tag2 b" data-at="These are five features">Five features of this account, not five rules for every meeting.</p>
+</div></section>
+
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">Acts 6, again — for the process</p>
+ <svg class="scene short3" viewBox="0 0 800 280" aria-hidden="true">
+  <use href="#courtyard" width="800" height="300"/>
+  <g class="b pop" data-at="We met Acts"><rect x="20" y="16" width="110" height="30" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="75" y="36" class="tiny2">Lesson 2</text></g>
+  <g class="b pop" data-at="some widows are being overlooked"><rect x="220" y="10" width="360" height="32" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="400" y="31" class="tiny3" style="font-size:12px">Some widows are being overlooked</text></g>
+  <g class="b pop" data-at="and propose a solution"><rect x="300" y="50" width="200" height="30" rx="8" fill="#fffaf0" stroke="#c9963f"/><text x="400" y="70" class="tiny2">Choose seven</text></g>
+  <g class="b pop" data-at="seven men of good repute"><text x="400" y="100" class="tiny3" style="font-size:12px">good repute · the Spirit · wisdom</text></g>
+  <g class="b" data-at="what they said pleased"><rect width="800" height="300" fill="#fff3cf" opacity=".25"/></g>
+  <g class="b pop" data-at="Six verses do not tell us"><svg x="680" y="10" width="60" height="60" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/></svg></g>
+ </svg>
+ <p class="big2 b up" data-at="A problem, a proposal">A problem stated plainly · a proposal · clear criteria · the group chooses</p>
+ <p class="scripture b" data-at="what they said pleased">“And what they said pleased the whole gathering.”<span class="ref">Acts 6:5 (ESV)</span></p>
+ <p class="tag b" data-at="The lesson is not speed">Clear responsibility and follow-through, not speed at any cost.</p>
+</div></section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="label">Nehemiah walked the walls first</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <g class="b" data-at="Nehemiah gives us another" data-until="Only then did he gather">
+   <use href="#nightwall" width="800" height="300"/>
+   <g class="b walkin2" data-at="Then I arose in the night"><use href="#per" x="120" y="196" width="20" height="50" style="color:#d9c9a3"/><use href="#per" x="96" y="200" width="18" height="46" style="color:#b9b0a0"/><circle cx="136" cy="214" r="30" fill="url(#glowr)"/></g>
+  </g>
+  <g class="b" data-at="Only then did he gather">
+   <use href="#wallday" width="800" height="300"/>
+   <use href="#per" x="380" y="190" width="28" height="72" style="color:#6d4f3a"/>
+   <g style="color:#56607a"><use href="#per" x="200" y="214" width="20" height="50"/><use href="#per" x="230" y="218" width="20" height="50" style="color:#a8423f"/><use href="#per" x="260" y="214" width="20" height="50" style="color:#6f817b"/><use href="#per" x="520" y="214" width="20" height="50" style="color:#a58262"/><use href="#per" x="550" y="218" width="20" height="50"/><use href="#per" x="580" y="214" width="20" height="50" style="color:#8a6a4f"/></g>
+   <g class="b" data-at="the hand of my God"><rect width="800" height="300" fill="#fff3cf" opacity=".25"/></g>
+   <g class="b pop" data-at="Let us rise up and build"><rect x="150" y="166" width="20" height="14" fill="#cbb08a" stroke="#a88d66"/><rect x="600" y="166" width="20" height="14" fill="#cbb08a" stroke="#a88d66"/></g>
+   <g class="b pop" data-at="He came knowing what"><rect x="20" y="16" width="130" height="80" rx="8" fill="#2f3a52"/><circle cx="85" cy="56" r="20" fill="url(#glowr)"/><use href="#per" x="76" y="40" width="14" height="36" style="color:#d9c9a3"/></g>
+  </g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="He had arrived in Jerusalem" data-until="Only then did he gather"><p class="scripture">“Then I arose in the night… and inspected the wall.”<span class="ref">Nehemiah 2:12, 15 (ESV)</span></p></div>
+  <div class="b" data-at="Only then did he gather" data-until="Their answer"><p class="scripture">“You see the trouble we are in… Come, let us build…”<span class="ref">Nehemiah 2:17 (ESV)</span></p></div>
+  <div class="b" data-at="Their answer"><p class="scripture">“Let us rise up and build.”<span class="ref">Nehemiah 2:18 (ESV)</span></p><p class="tag2 b" data-at="His own inspection did not replace">His preparation helped him involve others well.</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label b" data-at="So our first point">1. Do the thinking before, not during</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#f3e9d6"/><rect y="200" width="800" height="60" fill="#e2d2b2"/>
+  <use href="#table" x="250" y="170" width="300" height="50"/>
+  <use href="#sit" x="210" y="100" width="50" height="80" style="color:#56607a"/><use href="#sit" x="280" y="96" width="46" height="74" style="color:#a8423f"/><use href="#sit" x="470" y="96" width="46" height="74" style="color:#6f817b"/><g transform="translate(1340 0) scale(-1 1)"><use href="#sit" x="740" y="100" width="50" height="80" style="color:#8a6a4f"/></g>
+  <g class="b" data-at="It is not an argument for" data-until="The single biggest improvement"><rect x="360" y="150" width="80" height="22" fill="#fffaf0" stroke="#d9c9a3"/><g class="tiny2" style="fill:#9a8a76;font-size:22px"><text x="330" y="80">?</text><text x="400" y="60">?</text><text x="470" y="80">?</text></g></g>
+  <g class="b" data-at="The single biggest improvement"><rect x="350" y="140" width="100" height="32" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><path d="M360 150 H420 M360 158 H440 M360 166 H430" stroke="#c9b48a" stroke-width="2"/></g>
+  <g class="b pop" data-at="What should we do about" data-until="I think we should move"><rect x="40" y="20" width="250" height="40" rx="12" fill="#fffaf0" stroke="#d9c9a3"/><text x="165" y="45" class="tiny3" style="font-size:11px">“What should we do about the welcome team?”</text></g>
+  <g class="b pop" data-at="I think we should move"><rect x="480" y="20" width="290" height="40" rx="12" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><text x="625" y="45" class="tiny3" style="font-size:11px">“Two teams alternating fortnightly — what’s wrong?”</text></g>
+  <g class="b" data-at="If nobody can change your mind"><path d="M360 158 H440" stroke="#c95f5f" stroke-width="2"/><path d="M455 158 H500" stroke="#c9963f" stroke-width="3"/></g>
+ </svg>
+ <p class="scripture b" data-at="Proverbs says">“Without counsel plans fail, but with many advisers they succeed.”<span class="ref">Proverbs 15:22 (ESV)</span></p>
+ <p class="big2 b up" data-at="arrive with a proposal, not a blank page">Arrive with a proposal, not a blank page.</p>
+ <p class="tag b" data-at="Here's what I'm thinking">“Here’s what I’m thinking, and why. Tell me what I’ve got wrong.”</p>
+</div></section>
+
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <p class="label b" data-at="Our second point">2. Order is a spiritual concern</p>
+ <svg class="scene short3" viewBox="0 0 800 280" aria-hidden="true">
+  <g class="b" data-at="Our second point" data-until="Applied to your team meeting">
+   <use href="#housechurch" width="800" height="300"/>
+   <g class="b" data-at="Our second point" data-until="Let all things be done"><g stroke="#8a6a4f" stroke-width="2" fill="none"><path d="M230 160 q20 -30 40 -10 M300 150 q20 -30 40 -10 M500 150 q20 -30 40 -10 M560 160 q20 -30 40 -10"/></g></g>
+   <g class="b" data-at="For God is not a God"><rect width="800" height="300" fill="#fff3cf" opacity=".3"/></g>
+  </g>
+  <g class="b" data-at="Applied to your team meeting">
+   <rect width="800" height="280" fill="#f3e9d6"/><rect y="220" width="800" height="60" fill="#e2d2b2"/>
+   <svg x="340" y="30" width="120" height="120" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/><path d="M30 30 L17 33.5 M30 30 L30 50" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></svg>
+   <g class="b pop" data-at="her babysitter"><rect x="560" y="60" width="180" height="130" rx="10" fill="#2f3a52"/><rect x="620" y="90" width="50" height="90" fill="#f0c77a"/><use href="#per" x="680" y="110" width="22" height="56" style="color:#a8423f"/><use href="#per" x="626" y="104" width="20" height="50" style="color:#6f817b"/></g>
+   <g class="b" data-at="you value people"><circle cx="400" cy="90" r="64" fill="none" stroke="#c9963f" stroke-width="4"/></g>
+  </g>
+ </svg>
+ <p class="scripture b" data-at="For God is not a God">“For God is not a God of confusion but of peace.”<span class="ref">1 Corinthians 14:33 (ESV)</span></p>
+ <p class="scripture b" data-at="And he ends">“But all things should be done decently and in order.”<span class="ref">1 Corinthians 14:40 (ESV)</span></p>
+ <p class="tag b" data-at="Applied to your team meeting">Starting and finishing on time is a way of caring for people.</p>
+</div></section>
+
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="label b" data-at="Our third point">3. One page, sent at least two days ahead</p>
+ <div class="threecol">
+  <div class="panel b" data-at="Before the meeting"><b>Before</b><span>one-sentence purpose</span><span class="b" data-at="Give each item a time">timed items: <i>decide · discuss · inform</i></span><span class="b" data-at="Send any reading">reading in advance</span><span class="b" data-at="And move routine information">routine information by message</span></div>
+  <div class="panel b" data-at="During the meeting"><b>During</b><span>start on time</span><span class="b" data-at="Pray meaningfully">pray meaningfully</span><span class="b" data-at="Take the most demanding">hardest item first</span><span class="b" data-at="Invite different perspectives">different perspectives</span><span class="b" data-at="And record each decision">decision · owner · date</span></div>
+  <div class="panel b" data-at="After the meeting"><b>After</b><span>send the record</span><span class="b" data-at="Keep confidential matters">confidential matters in the restricted record</span><span class="b" data-at="And check progress">check progress before next time</span></div>
+ </div>
+ <p class="tag2 b" data-at="That last habit">Checking in between meetings keeps the next one from becoming a review of what didn’t happen.</p>
+</div></section>
+
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+<div class="wrap">
+ <p class="label b" data-at="Our fourth point">4. Make room for every voice</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#f3e9d6"/><rect y="200" width="800" height="60" fill="#e2d2b2"/>
+  <use href="#table" x="200" y="170" width="400" height="50"/>
+  <use href="#sit" x="170" y="100" width="50" height="80" style="color:#56607a"/><use href="#sit" x="260" y="96" width="46" height="74" style="color:#a8423f"/><use href="#sit" x="460" y="96" width="46" height="74" style="color:#6f817b"/><g transform="translate(1320 0) scale(-1 1)"><use href="#sit" x="690" y="110" width="44" height="70" style="color:#a58262"/></g>
+  <g class="b" data-at="The one who dominates" data-until="someone who hasn't spoken"><rect x="160" y="10" width="300" height="70" rx="14" fill="#fffaf0" stroke="#d9c9a3"/><path d="M200 30 H420 M200 46 H430 M200 62 H380" stroke="#c9b48a" stroke-width="3"/></g>
+  <g class="b" data-at="someone who hasn't spoken" data-until="The one who rarely speaks"><rect x="180" y="40" width="80" height="34" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><rect x="400" y="40" width="120" height="34" rx="10" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><path d="M412 57 H508" stroke="#c9b48a" stroke-width="3"/></g>
+  <g class="b" data-at="The one who rarely speaks"><circle cx="630" cy="140" r="56" fill="url(#glowr)" opacity=".6"/></g>
+  <g class="b pop" data-at="now or after the meeting"><rect x="660" y="40" width="110" height="40" rx="8" fill="#fffaf0" stroke="#c9963f"/><text x="715" y="65" class="tiny3" style="font-size:11px">now or later</text></g>
+ </svg>
+ <p class="quote sm2 b" data-at="I'd like to hear from someone">“I’d like to hear from someone who hasn’t spoken yet.”</p>
+ <p class="quote sm2 b" data-at="Grace, would you like">“Would you like to add anything, now or after the meeting?”</p>
+ <p class="tag2 b" data-at="Silence may mean">Make room for different ways to contribute.</p>
+</div></section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label">How often?</p>
+ <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true">
+  <rect width="800" height="220" fill="url(#creamg)"/>
+  <g id="m12"><g fill="#fffaf0" stroke="#d9c9a3"><rect x="40" y="60" width="50" height="60" rx="6"/><rect x="100" y="60" width="50" height="60" rx="6"/><rect x="160" y="60" width="50" height="60" rx="6"/><rect x="220" y="60" width="50" height="60" rx="6"/><rect x="280" y="60" width="50" height="60" rx="6"/><rect x="340" y="60" width="50" height="60" rx="6"/><rect x="400" y="60" width="50" height="60" rx="6"/><rect x="460" y="60" width="50" height="60" rx="6"/><rect x="520" y="60" width="50" height="60" rx="6"/><rect x="580" y="60" width="50" height="60" rx="6"/><rect x="640" y="60" width="50" height="60" rx="6"/><rect x="700" y="60" width="50" height="60" rx="6"/></g></g>
+  <g fill="#c9963f"><circle cx="65" cy="96" r="8"/><circle cx="245" cy="96" r="8"/><circle cx="425" cy="96" r="8"/><circle cx="605" cy="96" r="8"/></g>
+  <g class="b" data-at="How often should you meet" data-until="consider meeting less often"><g fill="#c9963f"><circle cx="125" cy="96" r="8"/><circle cx="185" cy="96" r="8"/><circle cx="305" cy="96" r="8"/><circle cx="365" cy="96" r="8"/><circle cx="485" cy="96" r="8"/><circle cx="545" cy="96" r="8"/><circle cx="665" cy="96" r="8"/><circle cx="725" cy="96" r="8"/></g></g>
+  <g class="b pop" data-at="Decisions, coordination, prayer"><text x="400" y="40" class="tiny3" style="font-size:12px">decisions · coordination · prayer · training · care</text></g>
+  <g class="b" data-at="consider meeting less often"><g fill="none" stroke="#c9963f" stroke-width="3"><circle cx="65" cy="96" r="14"/><circle cx="245" cy="96" r="14"/><circle cx="425" cy="96" r="14"/><circle cx="605" cy="96" r="14"/></g></g>
+  <g class="b pop" data-at="someone taking an interest"><use href="#cup" x="110" y="150" width="30" height="30"/><use href="#cup" x="290" y="150" width="30" height="30"/><use href="#cup" x="470" y="150" width="30" height="30"/><use href="#cup" x="650" y="150" width="30" height="30"/></g>
+ </svg>
+ <p class="big2 b up" data-at="As often as the work">Meet as often as the work and the people need.</p>
+ <p class="tag b" data-at="Habit alone is a poor one">Habit alone is a poor reason to meet.</p>
+</div></section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="label b" data-at="Let us bring it together">Bringing it together</p>
+ <svg class="scene short2" viewBox="0 0 800 130" aria-hidden="true">
+  <path class="b draw" data-at="Let us bring it together" style="--len:700" d="M60 100 H740" stroke="#c9963f" stroke-width="2.5" fill="none"/>
+  <g class="b pop" data-at="Do the thinking before"><rect x="100" y="50" width="56" height="40" rx="6" fill="#2f3a52"/><circle cx="128" cy="70" r="14" fill="url(#glowr)"/></g>
+  <g class="b pop" data-at="Remember that order"><svg x="285" y="44" width="50" height="50" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/><path d="M30 30 L17 33.5 M30 30 L30 50" stroke="#5a4636" stroke-width="3"/></svg></g>
+  <g class="b pop" data-at="Put it on one page"><use href="#sheet" x="474" y="40" width="40" height="52"/></g>
+  <g class="b pop" data-at="And make room for every voice"><use href="#per" x="652" y="44" width="20" height="50" style="color:#a58262"/><circle cx="662" cy="70" r="26" fill="url(#glowr)"/></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="Do the thinking before">Do the thinking before: arrive with a proposal you want tested</li>
+  <li class="b" data-at="Remember that order">Order is a way of caring: start and finish on time</li>
+  <li class="b" data-at="Put it on one page">One page: purpose, timed items, decisions, owners and dates</li>
+  <li class="b" data-at="And make room for every voice">Make room for every voice</li>
+ </ol>
+ <p class="tag b" data-at="Then, like the church in Antioch">“They rejoiced because of its encouragement.”</p>
+</div></section>
+
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label">Watch it happen: the one-page agenda</p>
+ <div class="agenda b" data-at="On Monday evening he writes">
+  <p class="ah">Worship team meeting · Thursday · 7:30–8:30</p>
+  <p class="b" data-at="At the top, the purpose"><b>Purpose:</b> agree how we will cover Sundays over the summer, and pray for one another.</p>
+  <p class="b" data-at="Half past seven"><span class="t">7:30</span> Welcome and prayer · 10 min</p>
+  <p class="b" data-at="Twenty to eight"><span class="t">7:40</span> Summer rota <span class="lab">DECIDE</span> · 20 min <span class="b ok" data-at="The pastor confirms">✓ team may decide</span><br><span class="b prop" data-at="Here's my proposal">Proposal: two smaller teams on alternate Sundays in July and August</span></p>
+  <p class="b" data-at="Eight o'clock"><span class="t">8:00</span> Songs for the autumn <span class="lab lab2">DISCUSS</span> · 15 min</p>
+  <p class="b" data-at="A quarter past eight"><span class="t">8:15</span> Praying for each other · 15 min</p>
+  <p class="b fin" data-at="And we finish at half past"><span class="t">8:30</span> Finish</p>
+  <p class="b msg" data-at="So he moves it to a message">By message instead: the sound-desk training date</p>
+ </div>
+ <p class="tag2 b" data-at="He sends the agenda on Tuesday">Sent on Tuesday — two days ahead.</p>
+</div></section>
+
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="label">Watch it happen: the meeting and the record</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <g class="b" data-at="On Thursday he starts" data-until="The next morning">
+   <rect width="800" height="240" fill="#f3e9d6"/><rect y="190" width="800" height="50" fill="#e2d2b2"/>
+   <use href="#table" x="200" y="160" width="400" height="46"/><use href="#sheet" x="380" y="140" width="40" height="24"/>
+   <use href="#sit" x="170" y="96" width="46" height="74" style="color:#56607a"/><use href="#sit" x="250" y="90" width="44" height="70" style="color:#a8423f"/><use href="#sit" x="470" y="90" width="44" height="70" style="color:#6f817b"/><g transform="translate(1320 0) scale(-1 1)"><use href="#sit" x="690" y="100" width="44" height="70" style="color:#a58262"/></g>
+   <svg x="680" y="20" width="70" height="70" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/><g class="b" data-at="On Thursday he starts" data-until="and they finish at half past"><path d="M30 30 L20.5 39.5 M30 30 L30 50" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></g><g class="b" data-at="and they finish at half past"><path d="M30 30 L17 33.5 M30 30 L30 50" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></g></svg>
+   <g class="b pop" data-at="One of the singers points out"><path d="M276 70 V50" stroke="#a8423f" stroke-width="4" stroke-linecap="round"/></g>
+   <g class="b" data-at="Then he notices that Grace"><circle cx="650" cy="140" r="50" fill="url(#glowr)" opacity=".6"/></g>
+   <g class="b pop" data-at="We agree, then"><use href="#tick" x="420" y="120" width="28" height="28"/></g>
+   <g class="b" data-at="They spend the last fifteen" data-until="and they finish at half past"><rect width="800" height="240" fill="#fff3cf" opacity=".25"/></g>
+  </g>
+  <g class="b" data-at="The next morning"><rect width="800" height="240" fill="url(#creamg)"/><use href="#stairs" x="280" y="20" width="240" height="172"/><g fill="#f0c77a"><rect x="348" y="174" width="20" height="4"/><rect x="368" y="162" width="20" height="4"/><rect x="388" y="150" width="20" height="4"/><rect x="408" y="138" width="20" height="4"/><rect x="428" y="126" width="20" height="4"/></g><g class="breathe"><rect x="448" y="114" width="20" height="4" fill="#f0c77a"/><circle cx="458" cy="116" r="22" fill="url(#glowr)"/></g></g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="On Thursday he starts" data-until="One of the singers"><p class="quote sm2">“Here’s what I’m thinking, and here’s why. Tell me what I’ve got wrong.”</p></div>
+  <div class="b" data-at="One of the singers" data-until="The songs discussion"><p class="quote sm2 b" data-at="Grace, would you like">“Grace, would you like to add anything, now or after the meeting?”</p></div>
+  <div class="b" data-at="The songs discussion" data-until="The next morning"><p class="quote sm2">“Let’s carry the songs to next month, so that we still have time to pray for each other.”</p><p class="refs b" data-at="and they finish at half past" style="text-align:center">Prayed for one another · finished at 8:30</p></div>
+  <div class="b" data-at="The next morning"><table class="rec"><tr><th>Decision or action</th><th>Owner</th><th>Due</th></tr><tr class="b" data-at="Use two alternating teams"><td>Two alternating teams, July–August</td><td>Worship-team leader tells the church office</td><td>Before the rota is published</td></tr><tr class="b" data-at="Draft the revised rota"><td>Draft the revised rota</td><td>Daniel</td><td>20 June</td></tr><tr class="b" data-at="Carry the autumn song choices"><td>Autumn song choices</td><td>Meeting chair</td><td>Next meeting</td></tr></table></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="17" data-theme="light" aria-label="Slide 17">
+<div class="wrap">
+ <p class="label">Reflect, on your own, after the lesson</p>
+ <div class="journal2 breathe">
+  <p><b>Five questions are waiting on the lesson page.</b><br><span class="mute">Take them at your own pace.</span></p>
+  <p class="b" data-at="Here is the first">To start you thinking: <i>Think of your last team meeting. What was decided, who owns each item, and by when?</i></p>
+  <p class="b" data-at="Write down what was decided">Decision: ________ &nbsp; Owner: ________ &nbsp; By: ________</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="18" data-theme="light" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">This week’s action</p>
+ <div class="journal2 breathe">
+  <p class="b" data-at="This week, prepare a one-page">1. This week, prepare a one-page agenda for your next meeting.</p>
+  <p class="b" data-at="one clear purpose, timed items">2. One clear purpose · timed items labelled decide, discuss or inform · a space for decisions, owners and dates.</p>
+  <p class="b" data-at="When that meeting is scheduled">3. When the meeting is scheduled, send it at least two days beforehand where practical.</p>
+  <p class="b" data-at="And finish at the agreed time">4. Finish at the agreed time, even if you carry an item.</p>
+ </div>
+ <p class="tag2 b" data-at="Use the Meeting Agenda">Use the Meeting Agenda and Action Record sheet on the lesson page.</p>
+</div></section>
+
+<section class="slide" data-n="19" data-theme="light" aria-label="Slide 19">
+<div class="wrap">
+ <p class="label">Remember</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true"><use href="#housechurch" width="800" height="300"/></svg>
+ <p class="scripture b" data-at="Remember these words">“But all things should be done decently and in order.”<span class="ref">1 Corinthians 14:40</span></p>
+ <p class="scripture b" data-at="When they had read it">“And when they had read it, they rejoiced because of its encouragement.”<span class="ref">Acts 15:31</span></p>
+ <p class="tag2 b" data-at="A well-run meeting">A well-run meeting is a way of loving the people who give you their time.</p>
+</div></section>
+
+<section class="slide" data-n="20" data-theme="light" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <svg class="scene short2" viewBox="0 0 800 200" aria-hidden="true">
+  <rect width="800" height="200" fill="url(#creamg)"/>
+  <g class="breathe"><use href="#doorlight" x="400" y="-30" width="200" height="200"/></g><use href="#stairs" x="340" y="20" width="240" height="172"/>
+  <g fill="#f0c77a"><rect x="348" y="174" width="20" height="4"/><rect x="368" y="162" width="20" height="4"/><rect x="388" y="150" width="20" height="4"/><rect x="408" y="138" width="20" height="4"/><rect x="428" y="126" width="20" height="4"/></g>
+  <use href="#per" x="450" y="78" width="18" height="44" style="color:#56607a"/>
+  <use href="#per" x="300" y="146" width="16" height="40" style="color:#a8423f"/><use href="#per" x="320" y="150" width="15" height="36" style="color:#6f817b"/><use href="#per" x="282" y="148" width="15" height="38" style="color:#a58262"/>
+  <g class="b" data-at="When you are ready, write"><rect x="448" y="114" width="20" height="4" fill="#f0c77a"/><text x="240" y="186" class="tiny2" text-anchor="end">Step 6 of 10</text></g>
+ </svg>
+ <div class="prayer stack">
+  <div class="b" data-at="Lord God, you are not" data-until="Help me to prepare well"><p>Lord God, you are not a God of confusion but of peace.</p><p>Thank you for the people who give their time to serve with me.</p></div>
+  <div class="b" data-at="Help me to prepare well" data-until="Give us wisdom to seek"><p>Help me to prepare well, to listen to every voice, and to decide clearly.</p><p>Make our meetings places where your people are built up, not worn out.</p></div>
+  <div class="b" data-at="Give us wisdom to seek" data-until="When you are ready, write"><p>Give us wisdom to seek you together, and grace to finish what we begin.</p><p>In Jesus’ name. Amen.</p></div>
+  <div class="b" data-at="When you are ready, write"><p class="close">When you are ready, write your one-page agenda.<br>Then stop here for today, or continue to Lesson 7.</p></div>
+ </div>
+</div></section>
+
+
+
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 20</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="lbyr-lesson-06.mp3" preload="auto"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome to Lesson 6. In Lesson 5 we saw how to help volunteers stay and grow: preparing them, listening to them, and thanking them specifically. Today we look at something that can quietly undo all of that: the team meeting. How do I lead a meeting that respects people’s time and moves the work forward?", "2": "A volunteer will often give you a Saturday morning cheerfully. What can gradually wear them down is ninety minutes on a weeknight that achieves nothing they could name on the drive home. Poor meetings are one of the reasons good people go cold on a ministry. And new leaders often create them with the best intentions. We call everyone together, because togetherness feels like leadership. Then we fill the time, because we called it. Some meetings are for decisions. Others are for learning, prayer or care. Each one needs a clear purpose, rather than an evening filled by habit. The early church faced a far greater question than any of ours. And the way they met to address it is worth watching closely.", "3": "Our passage is from Acts chapter 15. We will read selected excerpts from across the chapter, and I will give the verse numbers as we go. Verses 6 and 7. “The apostles and the elders were gathered together to consider this matter. And after there had been much debate, Peter stood up and said to them, ’Brothers, you know that in the early days God made a choice among you, that by my mouth the Gentiles should hear the word of the gospel and believe.’” Verse 12. “And all the assembly fell silent, and they listened to Barnabas and Paul as they related what signs and wonders God had done through them among the Gentiles.” From verse 19, James began his judgement with these words: “Therefore my judgment is that we should not trouble those of the Gentiles who turn to God.” His sentence continues in the next verse. Verse 22. “Then it seemed good to the apostles and the elders, with the whole church, to choose men from among them and send them to Antioch with Paul and Barnabas.” From their letter, verse 28. “For it has seemed good to the Holy Spirit and to us to lay on you no greater burden than these requirements.” The letter goes on to name them. Verses 30 and 31. “So when they were sent off, they went down to Antioch, and having gathered the congregation together, they delivered the letter. And when they had read it, they rejoiced because of its encouragement.”", "4": "To hear this passage rightly, we need its setting. Some men came down from Judea to the church in Antioch, teaching that Gentile believers had to be circumcised and keep the law of Moses in order to be saved. Luke says that Paul and Barnabas “had no small dissension and debate with them,” and that Paul, Barnabas and some others “were appointed to go up to Jerusalem to the apostles and the elders about this question.” This was not a dispute about the rota or the music. It was about the gospel itself: how a person is saved, and whether Jewish and Gentile believers belong to one church. This was a unique moment. The decision carried the authority of the apostles, and it settled a question of the gospel for the whole church. Your team meeting is not the Jerusalem council, and I want to be careful about that. But the shape of their process is still worth learning from.", "5": "Notice one word that keeps returning. “It seemed good.” In Greek it is edoxen. It appears three times in this passage, in verses 22, 25 and 28. It was a common word for reaching a considered judgement, the kind of language used when a group made and announced a decision. It is not a mysterious word. But look at how the letter uses it: “For it has seemed good to the Holy Spirit and to us.” The council listened to testimony, considered the Scriptures, debated the matter and reached a judgement. In their letter, they described that judgement as having seemed good to the Holy Spirit and to them. This was a unique apostolic decision, not a pattern for claiming divine authority over our own preferences. But one habit is worth keeping: seek God, listen carefully, reach a clear judgement, and tell people plainly what has been decided.", "6": "Watch the structure of their meeting. One clear question. They “were gathered together to consider this matter,” this one matter. Evidence from people who had been there. Peter spoke from his own experience. Barnabas and Paul reported what God had done among the Gentiles, and the assembly listened in silence. Genuine debate. There was “much debate,” and it was allowed. A stated decision. James gave his judgement, tied to Scripture. Then it seemed good to the apostles and the elders, with the whole church, to send men with a letter. And a written message to those affected. They wrote a letter, chose people to carry it, and explained it in person. And the church in Antioch “rejoiced because of its encouragement.” These are five features we can observe in this account, not five rules every church meeting must follow. And not every decision in a church today is made by everyone present. But many church meetings struggle with the first of those, and the last two. No clear question. No clear decision. And nobody told.", "7": "We met Acts 6 in Lesson 2, when we looked at how the apostles shared responsibility. Now look at the process. A complaint arises: some widows are being overlooked in the daily distribution. The Twelve summon the disciples, state the problem plainly, and propose a solution. They define the criteria: “seven men of good repute, full of the Spirit and of wisdom.” And they ask the group to choose. Luke says, “what they said pleased the whole gathering.” A problem, a proposal, clear criteria, and the people affected involved in the choice. Six verses do not tell us how many hours that took. The lesson is not speed at any cost. It is clarity about who is responsible, and following through.", "8": "Nehemiah gives us another short, effective meeting. He had arrived in Jerusalem, and before he said a word to anyone, he went out at night. “Then I arose in the night, I and a few men with me,” he writes. “I went up in the night by the valley and inspected the wall.” Only then did he gather the people. “Then I said to them, ’You see the trouble we are in, how Jerusalem lies in ruins with its gates burned. Come, let us build the wall of Jerusalem, that we may no longer suffer derision.’” And he told them of “the hand of my God that had been upon me for good,” and what the king had said. Their answer: “Let us rise up and build.” The problem, named honestly. The action, stated clearly. The reason for hope. And notice that Nehemiah had walked the walls himself first. He came knowing what he was asking people to do. His own inspection did not replace their insight; it prepared him to involve them well.", "9": "So our first point: do the thinking before the meeting, not during it. Proverbs says, “Without counsel plans fail, but with many advisers they succeed.” That is an argument for consulting people. It is not an argument for doing all your thinking out loud in a room of twelve. The single biggest improvement many leaders can make is to arrive with a proposal, not a blank page. Write down, before the meeting, what you think should happen and why. Then present it as a proposal you genuinely want tested. “Here’s what I’m thinking, and here’s why. Tell me what I’ve got wrong.” People engage far better with something concrete. “What should we do about the welcome team?” often produces silence. “I think we should move to two teams alternating fortnightly. What’s wrong with that?” produces useful discussion in a few minutes. This is not deciding in advance. If nobody can change your mind, you did not need the meeting.", "10": "Our second point: order is a spiritual concern. In 1 Corinthians 14, Paul is writing about Corinthian gatherings for worship that had become disorderly, with people speaking over one another. He says, “Let all things be done for building up.” He gives his reason: “For God is not a God of confusion but of peace.” And he ends, “But all things should be done decently and in order.” Paul was writing about worship, not about a planning meeting. But the principle he gives applies more widely. Order is not the enemy of the Spirit. Disorder can stop people from being built up. Applied to your team meeting, starting on time and finishing on time is a pastoral act, not mere administration. Finishing when you said you would tells a mother of three that you respect her babysitter arrangement. It is one of the clearest ways you can show that you value people.", "11": "Our third point is the format. One page, sent at least two days ahead. Before the meeting: state the purpose in one sentence. Give each item a time allowance, and label it decide, discuss or inform. Send any reading in advance. And move routine information to a message, where that will work for your team. During the meeting: start on time. Pray meaningfully, not as a formality. Take the most demanding item while people are fresh. Invite different perspectives. And record each decision, who owns it, and by when. If an item needs more time, agree a follow-up, rather than assuming everyone can stay. After the meeting: send a brief record of the decisions, owners and dates, with any context people need. Keep confidential matters in the appropriate restricted record, not in the general notes. And check progress before the next meeting. That last habit, checking in between meetings, stops your next meeting becoming a review of everything that did not happen.", "12": "Our fourth point: make room for every voice. There are two people you will need to help. The one who dominates may be the most experienced person there. Handle it through the structure rather than personally: “I’d like to hear from someone who hasn’t spoken yet.” If it continues, have a private conversation. Thank them for their contribution, and ask for their help in drawing out the quieter members. Inviting their help may improve the discussion. The one who rarely speaks may be reflecting, uncertain, feeling left out, or more comfortable contributing in writing. Invite their view without putting them on the spot: “Grace, would you like to add anything, now or after the meeting?” Then leave time for a reply. Silence may mean someone is thinking. It may also mean uncertainty or discomfort. Make room for different ways to contribute.", "13": "How often should you meet? As often as the work and the people need. Decisions, coordination, prayer, training and care can all be good reasons to meet. Habit alone is a poor one. A meeting with no decision on the agenda may still be needed for training, coordination or prayer. If your team meets monthly out of habit, and half those meetings have nothing to decide and no other clear purpose, consider meeting less often for planning and handling the rest by message, where your church allows. Then use the time you have freed for what your volunteers often want more of: someone taking an interest in them personally.", "14": "Let us bring it together. Do the thinking before the meeting, and arrive with a proposal you genuinely want tested. Remember that order is a way of caring for people: start on time and finish on time. Put it on one page: a clear purpose, timed items, and a record of decisions, owners and dates. And make room for every voice. Then, like the church in Antioch, people may leave encouraged. “They rejoiced because of its encouragement.”", "15": "Let me show you what this looks like. Do you remember the man who leads the worship team, from Lesson 3? His team meets once a month. This month there is one real decision to make: how to cover Sundays over the summer, when several people will be away. On Monday evening he writes a one-page agenda. At the top, the purpose, in one sentence: “To agree how we will cover Sundays over the summer, and to pray for one another.” Then the items, each with a time and a label. Half past seven: welcome and prayer, ten minutes. Twenty to eight: the summer rota, to decide, twenty minutes. Here’s my proposal: two smaller teams on alternate Sundays in July and August. Eight o’clock: songs for the autumn, to discuss, fifteen minutes. A quarter past eight: praying for each other. And we finish at half past eight. He notices one more item: the sound-desk training date. That is information only. So he moves it to a message. Before he sends it, he checks with his pastor that the team is authorised to agree the summer rota. If the change needed approval, the meeting would agree a recommendation instead. The pastor confirms that the team can decide. He sends the agenda on Tuesday, two days before the meeting.", "16": "On Thursday he starts on time, and opens in prayer. When they reach the rota, he says, “Here’s what I’m thinking, and here’s why. Tell me what I’ve got wrong.” One of the singers points out that two people on the same team are married and will be away together. They adjust the teams. Then he notices that Grace has not spoken. “Grace, would you like to add anything, now or after the meeting?” She says the plan works for her, and offers to lead one of the two teams. “We agree, then,” he says. “Two teams on alternate Sundays in July and August. Daniel will draft the rota by the twentieth of June.” The songs discussion is running long. So he says, “Let’s carry the songs to next month, so that we still have time to pray for each other.” They spend the last fifteen minutes praying for one another, and they finish at half past eight. The next morning he sends a short action record. Use two alternating teams in July and August: he will tell the church office before the rota is published. Draft the revised rota: Daniel, by the twentieth of June. Carry the autumn song choices to the next meeting: he will put them on the agenda. And one line: “Thank you for a good meeting.”", "17": "On the lesson page you will find five questions to reflect on. Answer them privately, at your own pace, after the lesson. Here is the first, to start you thinking. Think of your last team meeting. Write down what was decided, who owns each item, and by when. If you cannot, that is your answer. The other four ask which items could be a message instead, whether you arrive with a proposal or an open question, what you need to go and see for yourself, and who has spoken least in your recent meetings.", "18": "Here is this week’s action. This week, prepare a one-page agenda for your next meeting: one clear purpose, timed items labelled decide, discuss or inform, and a space for decisions, owners and dates. Move routine information to a message where you can. Keep anything that needs explanation, questions or shared understanding. When that meeting is scheduled, send the agenda at least two days beforehand where practical. And finish at the agreed time, even if you have to carry an item. If you do not lead a meeting yet, write a one-page agenda for one you attend, as practice, and offer it to the person who leads it if that would help. Use the Meeting Agenda and Action Record sheet on the lesson page.", "19": "Remember these words of Scripture. “But all things should be done decently and in order.” And, “When they had read it, they rejoiced because of its encouragement.” A well-run meeting is not about control. It is a way of loving the people who give you their time.", "20": "Let us pray. Lord God, you are not a God of confusion but of peace. Thank you for the people who give their time to serve with me. Help me to prepare well, to listen to every voice, and to decide clearly. Make our meetings places where your people are built up, not worn out. Give us wisdom to seek you together, and grace to finish what we begin. In Jesus’ name. Amen. When you are ready, write your one-page agenda. Then stop here for today, or continue to Lesson 7."};
+const TIMES = {"1": [0.15, 0.79, 0.92, 1.32, 1.61, 2.75, 2.86, 3.14, 3.28, 3.89, 4.2, 5.11, 5.34, 6.53, 7.58, 8.19, 8.86, 9.33, 9.45, 10.1, 10.32, 10.88, 11.24, 12.75, 13.19, 13.39, 13.64, 13.75, 14.21, 14.39, 14.59, 15.43, 16.09, 16.43, 16.53, 17.41, 17.55, 18.08, 19.05, 19.33, 19.5, 19.65, 20.0, 20.04, 20.59, 20.79, 21.36, 21.88, 22.56, 22.73, 23.25, 23.33, 23.7], "2": [24.95, 24.99, 25.68, 25.99, 26.39, 26.64, 26.87, 26.94, 27.5, 27.93, 29.26, 29.42, 29.69, 30.31, 30.56, 30.79, 31.19, 31.45, 31.96, 32.36, 32.48, 32.51, 33.59, 33.76, 34.24, 34.75, 34.87, 35.08, 35.4, 35.54, 35.6, 35.97, 36.96, 37.26, 37.94, 38.11, 38.33, 38.45, 38.55, 39.13, 39.38, 39.76, 39.98, 40.5, 40.65, 40.68, 41.95, 42.17, 42.45, 42.95, 43.36, 43.84, 44.13, 44.37, 44.47, 44.96, 46.73, 46.95, 47.32, 47.83, 48.97, 49.41, 50.17, 50.65, 50.92, 52.19, 52.49, 52.63, 52.97, 53.05, 53.83, 54.18, 54.44, 54.86, 55.42, 55.73, 56.26, 56.37, 56.59, 58.12, 58.79, 58.94, 59.13, 59.96, 60.75, 60.95, 62.34, 62.64, 63.26, 63.56, 63.6, 64.04, 65.27, 65.67, 65.91, 66.03, 66.51, 66.95, 67.13, 68.42, 68.66, 69.03, 69.62, 70.14, 70.22, 70.71, 71.13, 71.76, 72.05, 72.35, 72.47, 73.6, 73.76, 73.83, 74.12, 74.29, 74.61, 74.78, 75.19, 75.56, 75.75, 76.1, 76.6], "3": [77.89, 78.15, 79.09, 79.26, 79.56, 80.3, 81.24, 82.32, 82.7, 83.21, 83.97, 84.9, 85.11, 85.56, 85.66, 86.49, 86.84, 86.98, 87.22, 87.5, 87.62, 88.01, 88.74, 89.02, 89.21, 90.25, 91.05, 92.27, 92.39, 93.18, 93.33, 93.5, 94.23, 94.35, 94.84, 95.55, 95.66, 96.11, 96.35, 97.33, 97.49, 97.92, 98.11, 98.3, 98.46, 98.81, 99.61, 99.93, 100.22, 100.66, 100.8, 101.05, 101.16, 101.95, 103.16, 103.36, 103.64, 103.83, 103.97, 104.14, 104.48, 105.02, 105.4, 105.62, 105.68, 106.16, 106.46, 107.07, 107.28, 107.49, 107.71, 108.29, 108.4, 109.16, 109.37, 109.68, 109.79, 110.13, 110.24, 110.32, 110.94, 111.22, 112.47, 112.73, 112.83, 114.19, 114.36, 114.88, 115.16, 116.22, 116.36, 116.49, 117.01, 117.17, 117.85, 118.14, 118.86, 119.03, 119.18, 119.75, 120.0, 120.67, 120.84, 121.46, 121.77, 122.01, 122.28, 122.55, 122.94, 123.32, 123.39, 124.95, 125.14, 125.54, 125.89, 126.63, 127.59, 128.29, 128.5, 128.79, 130.17, 130.82, 131.08, 131.68, 131.83, 132.03, 132.14, 132.37, 132.67, 133.03, 133.37, 133.46, 133.57, 134.34, 134.47, 134.81, 134.92, 136.36, 136.52, 137.05, 137.8, 137.91, 137.98, 138.36, 139.49, 141.29, 141.52, 141.66, 142.04, 142.38, 142.49, 142.63, 143.57, 143.84, 144.01, 144.92, 145.12, 145.22, 145.57, 146.45, 146.57, 147.04, 147.43, 147.66, 148.02, 148.56, 148.75, 149.15, 149.38, 149.58, 150.52, 150.69, 151.22, 151.48, 152.77, 152.96, 153.1, 153.95, 154.24, 154.39, 154.52, 154.61, 155.84, 156.07, 156.24, 157.62, 157.96, 158.91, 159.11, 159.28, 160.07, 160.22, 160.45, 160.61, 160.79, 161.08, 161.45, 161.93, 162.13, 162.39, 163.85, 163.93, 164.21, 164.5, 164.7, 164.8, 165.16, 166.11, 166.67, 166.79, 166.95, 167.53, 167.92, 169.11, 169.32, 169.48, 169.66, 169.89, 170.07, 170.99, 171.63, 172.71, 173.1, 173.54, 173.61, 174.36, 175.16, 175.31, 175.81, 175.88, 176.64, 176.81, 177.09, 177.25, 177.43, 177.67, 178.25, 178.43, 179.23, 179.61, 179.69, 179.9], "4": [181.27, 181.51, 181.78, 182.0, 182.52, 183.45, 183.58, 183.95, 184.26, 185.0, 185.33, 185.6, 185.86, 186.15, 186.33, 186.78, 186.92, 187.02, 187.41, 187.52, 188.52, 188.93, 189.07, 189.63, 190.18, 190.38, 190.46, 190.58, 191.48, 191.83, 192.15, 192.24, 192.62, 192.73, 193.33, 193.55, 193.82, 193.95, 194.07, 195.28, 195.6, 196.07, 196.34, 196.82, 197.01, 197.71, 198.17, 198.49, 198.93, 199.62, 199.95, 200.46, 200.66, 201.25, 201.41, 201.67, 202.63, 203.35, 203.55, 203.77, 204.47, 204.67, 205.26, 205.34, 205.64, 205.8, 205.94, 206.94, 207.06, 207.22, 208.06, 208.24, 208.45, 209.09, 209.56, 209.77, 211.01, 211.22, 211.39, 211.65, 211.7, 212.26, 212.58, 212.65, 213.36, 213.66, 213.79, 214.85, 214.96, 215.15, 215.51, 215.61, 216.44, 217.56, 217.8, 217.83, 218.36, 218.5, 219.52, 219.64, 219.96, 220.53, 220.83, 221.44, 222.35, 222.87, 223.02, 223.48, 224.74, 225.02, 225.24, 225.28, 225.88, 227.09, 227.18, 227.75, 228.21, 228.34, 228.93, 229.02, 229.17, 230.18, 230.31, 230.41, 230.82, 230.89, 231.4, 231.5, 231.6, 232.11, 232.26, 232.38, 232.72, 234.0, 234.21, 234.57, 235.03, 235.18, 235.47, 235.57, 236.24, 237.37, 237.63, 237.72, 238.01, 238.11, 238.28, 238.74, 239.04, 239.88, 240.07, 240.15, 240.57, 240.71, 240.86, 241.55, 241.65, 242.09, 242.45, 242.92], "5": [243.67, 244.06, 244.38, 244.71, 244.84, 245.25, 246.42, 246.55, 246.97, 248.07, 248.27, 248.76, 248.9, 250.25, 251.59, 251.72, 252.25, 252.59, 253.11, 253.25, 253.46, 254.33, 254.46, 255.08, 255.28, 255.5, 256.36, 256.42, 256.74, 256.85, 257.45, 257.76, 258.89, 259.34, 259.64, 259.8, 260.14, 260.22, 260.69, 261.07, 261.39, 261.47, 261.65, 262.96, 263.39, 263.95, 266.34, 267.65, 267.76, 267.95, 268.35, 268.42, 269.3, 270.18, 270.32, 270.55, 270.64, 270.85, 270.94, 271.23, 271.72, 272.11, 272.33, 272.41, 272.56, 273.09, 273.43, 273.53, 273.66, 274.02, 274.51, 274.75, 274.93, 275.96, 276.04, 276.56, 277.14, 277.25, 278.18, 278.85, 278.92, 279.82, 280.36, 280.43, 281.13, 281.25, 281.76, 281.85, 283.26, 283.43, 283.6, 284.24, 284.38, 285.09, 285.34, 285.92, 286.12, 286.47, 286.99, 287.45, 287.56, 287.68, 288.02, 288.77, 289.0, 289.14, 290.12, 290.35, 290.55, 290.6, 291.16, 292.08, 293.08, 293.38, 293.44, 294.08, 294.27, 294.85, 295.44, 296.22, 296.62, 296.99, 297.32, 298.59, 298.77, 299.11, 299.74, 299.91, 300.26, 301.19, 301.71, 302.42, 302.89, 303.87, 304.24, 304.33, 304.75, 305.7, 305.89, 306.2, 306.61, 307.17, 307.41, 307.6, 307.84], "6": [308.89, 309.29, 309.39, 310.07, 310.17, 310.33, 311.55, 311.86, 312.15, 313.26, 313.9, 314.03, 314.5, 314.95, 315.09, 315.6, 315.85, 316.69, 316.96, 317.32, 318.36, 318.9, 319.14, 319.6, 319.75, 319.93, 320.19, 320.93, 321.2, 321.74, 321.92, 322.13, 322.42, 323.67, 324.26, 324.43, 324.82, 325.42, 325.59, 326.0, 326.18, 326.52, 326.81, 326.9, 328.05, 328.17, 328.28, 328.82, 329.29, 329.41, 330.9, 331.58, 332.67, 332.82, 333.06, 333.54, 334.29, 334.46, 334.61, 335.21, 336.44, 336.5, 337.01, 338.43, 338.91, 339.18, 339.4, 340.14, 340.56, 340.66, 342.0, 342.18, 342.29, 342.68, 342.99, 343.09, 343.25, 343.94, 344.06, 344.25, 345.12, 345.29, 345.39, 345.71, 346.49, 346.59, 347.0, 347.33, 347.52, 347.59, 348.67, 349.15, 349.32, 349.84, 350.45, 350.61, 350.99, 352.27, 352.5, 352.87, 352.93, 353.86, 354.31, 354.69, 354.81, 355.2, 355.89, 356.2, 356.78, 357.02, 357.22, 358.33, 358.5, 358.59, 359.1, 359.37, 360.37, 361.09, 361.74, 361.89, 362.07, 363.44, 363.73, 363.83, 364.24, 364.71, 364.83, 364.99, 365.39, 365.51, 365.67, 366.48, 366.84, 367.17, 367.63, 368.0, 368.33, 368.64, 368.92, 369.94, 370.1, 370.39, 370.66, 371.13, 371.26, 371.31, 371.68, 372.31, 372.48, 372.83, 373.1, 373.61, 374.75, 374.97, 375.3, 375.67, 376.05, 376.56, 376.74, 376.82, 377.25, 377.38, 378.34, 378.53, 378.6, 379.0, 379.88, 380.18, 380.45, 381.56, 381.84, 382.12, 383.21, 383.42, 383.86], "7": [385.01, 385.15, 385.47, 385.91, 386.45, 387.71, 387.89, 388.02, 388.34, 388.44, 388.69, 388.84, 389.46, 389.89, 391.51, 392.04, 392.26, 392.37, 392.45, 393.9, 394.05, 394.74, 395.81, 396.25, 396.81, 396.98, 397.26, 398.15, 398.31, 398.38, 398.78, 400.03, 400.12, 400.55, 400.99, 401.06, 402.18, 402.64, 402.71, 403.2, 404.08, 404.26, 404.81, 404.87, 406.21, 406.36, 406.81, 406.89, 408.22, 408.66, 408.94, 409.06, 409.32, 410.17, 410.66, 410.77, 410.85, 411.73, 411.95, 412.07, 413.17, 413.34, 413.47, 413.92, 414.02, 414.38, 414.51, 415.73, 416.0, 416.84, 417.2, 417.4, 417.77, 418.32, 418.43, 418.87, 420.14, 420.4, 421.28, 421.49, 422.79, 423.17, 424.65, 424.86, 424.93, 425.47, 426.22, 426.96, 427.1, 427.18, 428.57, 429.05, 429.74, 429.9, 430.2, 430.44, 430.61, 430.92, 431.29, 431.79, 432.08, 432.89, 433.0, 433.51, 433.71, 433.95, 434.42, 434.6, 434.88, 435.74, 435.83, 436.0, 437.03, 437.31, 437.66, 437.82, 439.07, 439.21, 439.83], "8": [440.57, 441.57, 441.83, 442.07, 442.78, 443.44, 444.13, 445.29, 445.42, 445.56, 446.09, 446.22, 447.37, 447.54, 447.93, 448.06, 448.28, 448.32, 448.73, 448.91, 449.76, 449.88, 450.16, 450.44, 450.58, 451.74, 452.04, 452.23, 452.74, 452.86, 452.94, 453.87, 454.23, 454.39, 454.42, 454.76, 455.09, 455.29, 455.9, 456.09, 457.17, 457.37, 457.77, 457.99, 458.1, 458.17, 458.54, 458.74, 458.83, 459.7, 459.85, 460.47, 460.54, 461.64, 462.05, 462.42, 462.59, 462.77, 463.12, 463.25, 464.54, 464.76, 464.91, 465.26, 465.38, 466.43, 466.61, 466.98, 467.1, 467.65, 467.85, 468.06, 468.95, 469.2, 470.01, 470.47, 470.58, 471.22, 471.39, 471.59, 472.02, 473.14, 474.21, 474.4, 474.56, 474.94, 475.01, 475.38, 475.49, 476.83, 477.03, 477.17, 477.37, 477.7, 478.03, 478.46, 479.3, 479.49, 479.66, 480.07, 480.39, 480.54, 480.64, 481.1, 481.22, 481.46, 481.93, 482.16, 482.35, 482.56, 482.95, 483.1, 483.31, 484.03, 484.17, 484.44, 484.52, 484.86, 485.08, 485.93, 486.14, 487.19, 487.38, 487.54, 488.05, 488.44, 488.69, 489.9, 490.0, 491.01, 491.5, 492.56, 492.8, 493.62, 494.14, 495.03, 495.17, 495.77, 495.95, 496.72, 497.0, 497.54, 497.78, 498.78, 498.99, 499.45, 499.54, 499.99, 500.5, 501.34, 501.6, 502.01, 502.52, 502.74, 502.85, 503.14, 503.68, 504.08, 504.21, 505.17, 505.42, 505.65, 506.42, 506.59, 506.87, 507.39, 507.61, 508.61, 508.76, 509.28, 509.56, 509.74, 510.25, 510.52], "9": [511.25, 511.68, 511.86, 512.26, 513.33, 513.57, 513.67, 514.51, 515.02, 515.15, 516.09, 516.66, 517.07, 517.94, 518.42, 519.29, 519.77, 520.33, 520.81, 521.71, 521.87, 522.06, 522.44, 523.2, 523.36, 524.52, 524.87, 525.03, 525.13, 525.78, 525.93, 526.57, 527.52, 527.62, 527.77, 528.02, 528.12, 528.63, 528.76, 529.07, 529.37, 529.54, 530.02, 530.22, 530.62, 530.72, 530.78, 531.06, 531.17, 532.09, 532.19, 532.73, 533.09, 534.04, 534.36, 534.76, 534.96, 535.65, 535.8, 536.09, 536.53, 536.69, 536.73, 537.7, 537.96, 538.0, 538.33, 539.45, 539.78, 540.46, 540.84, 540.92, 541.73, 541.98, 542.07, 542.34, 542.54, 543.21, 543.39, 544.52, 544.77, 545.22, 545.41, 545.61, 545.66, 546.29, 546.54, 547.32, 547.66, 548.7, 549.0, 549.14, 549.3, 549.79, 550.0, 550.33, 551.09, 551.37, 551.51, 551.7, 551.83, 552.11, 552.75, 553.1, 553.59, 553.97, 554.32, 554.51, 554.99, 556.26, 556.44, 556.63, 556.8, 557.06, 557.37, 557.43, 557.92, 558.87, 559.3, 559.88, 561.08, 561.23, 561.6, 561.71, 561.95, 562.25, 562.36, 562.67, 563.28, 563.99, 565.81, 566.04, 566.3, 566.44, 567.4, 568.03, 568.52, 569.38, 569.49, 569.53, 569.83, 571.01, 571.19, 571.34, 571.68, 572.29, 572.4, 573.67, 573.83, 574.36, 574.56, 574.89, 574.99, 575.75, 575.88, 576.1, 576.41, 576.68, 576.76], "10": [577.59, 577.83, 578.4, 579.2, 579.73, 579.92, 579.97, 580.89, 582.21, 582.65, 583.37, 584.79, 585.0, 585.55, 585.9, 586.59, 587.24, 587.35, 588.27, 588.41, 588.59, 589.08, 590.14, 590.29, 590.71, 591.33, 591.53, 591.79, 592.57, 592.71, 593.67, 593.99, 594.27, 594.68, 594.83, 595.17, 595.34, 595.83, 596.55, 596.74, 597.07, 597.27, 598.32, 598.57, 598.91, 599.07, 599.28, 599.4, 599.65, 599.76, 600.55, 600.74, 600.9, 602.01, 602.19, 602.45, 603.34, 603.54, 603.87, 604.29, 604.58, 604.71, 605.11, 606.11, 606.39, 606.52, 607.44, 607.84, 608.08, 608.61, 609.04, 610.01, 610.38, 610.79, 610.84, 611.42, 612.32, 612.54, 612.62, 613.37, 613.6, 614.19, 614.83, 615.08, 616.36, 616.86, 617.07, 617.41, 617.59, 618.13, 618.28, 618.4, 619.56, 620.26, 620.52, 621.02, 621.42, 621.71, 622.08, 622.44, 623.28, 623.7, 623.84, 624.18, 624.52, 625.21, 625.77, 625.96, 626.38, 626.59, 627.14, 627.32, 627.68, 627.89, 627.95, 628.59, 629.3, 629.66, 629.96, 631.4, 631.99, 632.16, 632.29, 632.61, 632.75, 633.41, 633.76, 633.82, 634.2, 634.28, 634.76, 634.99, 635.14, 635.69, 635.84, 636.59, 637.95, 638.08, 638.23, 638.42, 638.53, 638.62, 639.41, 640.12, 640.33, 640.51, 640.9, 641.13, 641.28, 641.83], "11": [642.66, 642.92, 643.34, 644.05, 644.22, 644.31, 645.52, 645.81, 646.58, 646.97, 647.11, 647.42, 647.6, 647.88, 648.85, 649.28, 649.38, 650.11, 650.56, 650.62, 651.38, 651.53, 651.95, 653.14, 653.37, 653.88, 654.38, 654.51, 654.9, 655.81, 656.02, 656.46, 656.86, 657.81, 658.53, 658.89, 659.95, 660.46, 660.77, 661.34, 661.45, 662.86, 663.24, 663.69, 664.31, 665.25, 665.46, 665.53, 666.64, 666.96, 667.31, 667.49, 667.84, 667.99, 668.2, 669.29, 669.88, 669.96, 670.93, 671.89, 672.16, 673.34, 674.1, 675.67, 676.24, 676.49, 676.53, 678.05, 678.43, 678.53, 678.89, 679.76, 680.61, 680.83, 681.44, 681.59, 682.93, 683.97, 684.84, 686.53, 686.78, 687.22, 687.67, 688.54, 688.81, 689.16, 689.6, 689.82, 690.02, 691.02, 691.16, 691.26, 691.62, 691.92, 692.18, 693.0, 693.38, 693.43, 693.92, 694.35, 694.74, 694.92, 695.54, 696.14, 696.34, 697.38, 697.67, 697.77, 698.57, 698.94, 699.04, 699.46, 699.99, 700.13, 700.23, 701.44, 702.23, 702.52, 703.35, 703.52, 703.94, 704.86, 705.23, 706.35, 706.69, 707.45, 708.1, 708.26, 708.42, 709.12, 709.77, 710.68, 711.08, 711.24, 711.32, 711.85, 713.02, 713.24, 713.6, 714.16, 714.53, 714.64, 715.04, 715.78, 716.02, 716.44, 717.17, 717.61, 717.78, 718.21, 719.0, 719.58, 719.74, 720.12, 720.52, 720.99, 721.04, 721.64, 721.82, 722.54, 722.71, 722.92, 723.24], "12": [724.37, 724.54, 724.97, 725.86, 726.2, 726.6, 726.81, 727.14, 728.02, 728.26, 728.42, 728.77, 729.2, 729.4, 729.55, 729.83, 729.92, 730.5, 730.76, 731.13, 731.38, 732.54, 732.88, 733.2, 733.31, 733.76, 734.72, 735.2, 736.15, 736.55, 736.74, 736.98, 737.08, 737.8, 738.21, 738.5, 739.81, 740.05, 740.31, 740.45, 740.7, 740.94, 741.42, 741.63, 742.01, 742.64, 743.67, 743.86, 744.02, 745.31, 745.56, 745.63, 746.21, 747.89, 748.25, 748.54, 748.76, 748.96, 750.29, 750.53, 750.96, 751.11, 751.32, 752.05, 752.25, 752.76, 753.09, 753.19, 753.78, 755.09, 755.83, 756.01, 756.68, 756.97, 757.6, 757.7, 759.08, 759.17, 759.48, 759.73, 760.12, 760.88, 761.04, 761.2, 762.31, 763.44, 763.85, 764.17, 764.84, 765.0, 765.3, 766.03, 766.86, 767.05, 768.29, 768.76, 768.91, 769.26, 769.72, 770.02, 770.2, 770.39, 770.47, 771.86, 772.81, 773.01, 773.12, 773.37, 773.52, 773.75, 774.84, 775.22, 775.59, 775.91, 776.02, 777.05, 777.27, 777.57, 777.94, 778.16, 778.2, 779.51, 780.24, 780.43, 780.71, 781.21, 781.45, 782.32, 782.49, 782.68, 783.18, 783.45, 784.55, 784.78, 786.13, 786.47, 786.81, 787.01, 787.53, 787.92, 788.02], "13": [789.37, 789.58, 789.97, 790.2, 790.36, 791.2, 791.4, 791.76, 791.92, 792.0, 792.45, 792.81, 792.88, 793.29, 794.13, 795.13, 796.41, 797.22, 797.87, 798.11, 798.88, 799.06, 799.31, 799.45, 799.67, 800.16, 800.28, 801.21, 801.61, 802.18, 802.35, 802.39, 802.72, 803.74, 803.82, 804.41, 804.69, 805.02, 805.62, 805.87, 806.02, 806.95, 807.13, 807.58, 807.73, 808.25, 808.5, 809.4, 810.64, 810.82, 811.92, 812.09, 812.25, 812.74, 813.12, 813.75, 813.95, 814.04, 814.9, 815.07, 815.45, 815.76, 816.24, 816.42, 816.89, 817.0, 817.98, 818.16, 818.55, 818.81, 819.2, 820.31, 820.85, 821.28, 821.63, 822.45, 822.56, 823.25, 823.41, 824.03, 824.12, 824.5, 824.68, 825.72, 825.9, 826.05, 826.56, 827.98, 828.21, 828.61, 828.71, 829.14, 829.32, 829.5, 830.35, 830.49, 830.72, 830.87, 831.76, 832.17, 832.52, 832.93, 833.53, 834.11, 834.57, 834.67, 835.24, 835.39, 835.63], "14": [836.78, 836.98, 837.12, 837.41, 837.54, 838.8, 839.13, 839.24, 839.72, 840.08, 840.18, 841.18, 841.33, 841.84, 841.97, 842.01, 842.69, 842.9, 843.65, 844.05, 845.46, 846.01, 846.23, 846.66, 846.82, 846.87, 847.16, 847.28, 847.74, 847.87, 848.83, 849.32, 849.48, 849.93, 850.15, 850.63, 850.9, 851.97, 852.12, 852.23, 852.36, 852.62, 853.48, 853.59, 853.86, 854.76, 855.13, 855.92, 856.07, 856.1, 856.54, 856.64, 857.7, 858.35, 858.55, 859.44, 859.61, 859.88, 860.17, 860.42, 860.83, 861.98, 862.37, 862.69, 862.82, 863.23, 863.34, 864.36, 864.75, 864.98, 865.43, 866.61, 866.81, 867.57, 867.92, 868.0, 868.21], "15": [869.45, 869.68, 869.8, 870.12, 870.3, 870.53, 870.74, 871.05, 871.92, 872.02, 872.19, 872.6, 872.71, 873.09, 873.2, 873.58, 873.67, 874.15, 874.85, 875.05, 876.3, 876.55, 876.96, 877.28, 877.64, 877.68, 878.83, 879.12, 879.58, 879.8, 879.94, 880.4, 880.89, 881.46, 881.58, 882.58, 882.83, 882.98, 883.31, 883.96, 884.17, 884.28, 885.1, 885.28, 885.85, 886.31, 886.51, 886.69, 887.82, 887.99, 888.4, 888.9, 889.13, 889.54, 889.59, 889.97, 890.43, 891.4, 891.58, 891.65, 892.28, 892.55, 893.41, 893.55, 893.88, 894.99, 895.2, 895.68, 895.92, 896.11, 896.32, 896.69, 897.41, 897.63, 897.75, 898.61, 898.81, 898.98, 899.39, 899.54, 899.83, 900.64, 900.81, 900.95, 901.68, 902.0, 902.18, 902.24, 902.7, 902.81, 902.85, 903.82, 904.1, 904.47, 905.43, 905.91, 906.1, 906.78, 907.03, 908.04, 908.38, 908.55, 909.25, 909.37, 909.72, 910.47, 910.59, 911.46, 911.8, 912.96, 913.25, 913.48, 914.49, 914.87, 915.38, 915.87, 915.99, 916.45, 917.05, 917.19, 917.7, 917.85, 918.87, 919.09, 920.06, 920.63, 920.76, 920.9, 921.79, 921.92, 923.06, 923.58, 924.81, 924.9, 925.25, 925.67, 926.39, 926.91, 927.13, 927.34, 928.28, 928.41, 928.52, 928.98, 929.1, 929.41, 929.81, 930.47, 930.65, 931.21, 931.5, 931.8, 932.55, 932.66, 933.07, 933.43, 933.94, 934.66, 934.84, 934.99, 935.68, 936.63, 936.81, 936.94, 937.32, 937.46, 937.65, 937.69, 938.99, 939.37, 939.5, 939.89, 940.26, 940.42, 940.79, 940.94, 941.11, 941.85, 942.05, 942.13, 942.52, 942.73, 943.43, 943.57, 943.99, 944.1, 944.52, 945.38, 945.52, 945.64, 946.16, 946.47, 947.33, 947.4, 947.86, 947.98, 948.45, 948.52, 949.43, 950.44, 950.54, 951.11, 951.82, 952.0, 952.1, 952.59, 952.83, 954.14, 954.29, 954.74, 954.9, 955.6, 955.85, 956.67, 956.94, 957.28, 957.62, 957.71], "16": [958.53, 958.71, 959.3, 959.46, 959.93, 960.11, 960.89, 961.1, 961.54, 961.68, 962.66, 962.82, 962.97, 963.34, 963.44, 963.9, 964.1, 964.9, 965.25, 965.4, 965.55, 966.26, 966.5, 966.8, 967.71, 967.95, 968.08, 968.29, 968.44, 968.72, 969.7, 969.86, 969.97, 970.07, 970.55, 970.97, 971.2, 971.43, 971.75, 972.16, 972.31, 972.38, 972.81, 973.17, 973.26, 974.0, 974.31, 974.47, 974.62, 974.93, 976.08, 976.31, 976.79, 976.88, 978.18, 978.38, 978.51, 979.16, 979.33, 979.71, 979.87, 980.07, 981.12, 982.25, 982.36, 982.45, 982.64, 982.73, 982.97, 983.64, 984.05, 984.37, 984.73, 984.83, 985.79, 985.99, 986.28, 986.36, 986.71, 987.14, 987.29, 988.13, 988.32, 988.74, 988.85, 989.25, 989.47, 989.57, 989.67, 989.96, 991.3, 991.47, 991.83, 992.06, 992.22, 993.22, 993.44, 993.81, 993.94, 994.51, 995.1, 995.23, 995.7, 995.86, 996.97, 997.43, 997.59, 998.03, 998.11, 998.48, 998.67, 998.78, 999.4, 999.51, 1000.3, 1000.37, 1000.85, 1001.48, 1001.7, 1002.08, 1003.07, 1003.31, 1003.47, 1004.73, 1004.99, 1005.4, 1005.48, 1006.03, 1006.14, 1006.52, 1007.39, 1007.6, 1007.82, 1007.96, 1008.32, 1008.51, 1008.92, 1009.04, 1009.36, 1009.56, 1009.76, 1011.05, 1011.18, 1011.53, 1011.6, 1011.98, 1012.51, 1012.9, 1013.36, 1013.51, 1013.71, 1014.64, 1014.79, 1014.91, 1015.39, 1015.63, 1015.98, 1016.37, 1017.35, 1017.44, 1017.83, 1018.37, 1018.52, 1018.89, 1018.95, 1019.46, 1019.88, 1020.77, 1021.16, 1021.51, 1022.3, 1022.82, 1023.03, 1023.58, 1023.91, 1024.94, 1025.1, 1025.27, 1025.61, 1025.69, 1026.1, 1026.59, 1027.01, 1027.11, 1027.53, 1027.79, 1028.99, 1029.58, 1029.67, 1030.31, 1031.31, 1031.86, 1032.01, 1032.12, 1032.73, 1032.85, 1033.75, 1034.15, 1034.28, 1034.71, 1035.08, 1035.65, 1035.77, 1035.88, 1036.36, 1037.35, 1037.5, 1037.67, 1037.95, 1038.14, 1038.27, 1038.41, 1039.41, 1039.6, 1039.91, 1040.79, 1041.09, 1041.27, 1041.49, 1041.54, 1041.82], "17": [1043.01, 1043.3, 1043.39, 1043.81, 1044.61, 1044.73, 1044.86, 1045.36, 1045.75, 1046.38, 1046.49, 1046.96, 1047.8, 1048.22, 1048.45, 1049.46, 1049.64, 1049.85, 1050.07, 1051.03, 1051.39, 1051.51, 1052.59, 1052.83, 1052.96, 1053.04, 1053.85, 1053.96, 1054.4, 1054.49, 1055.3, 1055.55, 1055.67, 1055.83, 1056.27, 1056.55, 1057.34, 1057.71, 1058.08, 1058.33, 1058.5, 1059.38, 1059.65, 1060.01, 1060.25, 1060.89, 1061.06, 1061.24, 1061.95, 1062.09, 1062.22, 1062.98, 1063.3, 1063.42, 1063.61, 1064.71, 1064.86, 1065.05, 1065.41, 1065.81, 1066.08, 1066.49, 1066.69, 1066.86, 1066.89, 1067.44, 1068.17, 1068.42, 1068.68, 1069.11, 1069.26, 1069.31, 1070.09, 1070.21, 1070.31, 1070.61, 1071.38, 1071.72, 1071.87, 1072.1, 1072.18, 1072.43, 1072.54, 1072.81, 1072.98, 1073.8, 1073.96, 1074.23, 1074.38, 1074.83, 1075.27, 1075.44, 1075.63, 1076.06], "18": [1077.0, 1077.31, 1077.51, 1077.77, 1078.13, 1079.4, 1079.65, 1080.36, 1080.79, 1080.82, 1081.2, 1081.54, 1081.98, 1082.13, 1082.29, 1082.65, 1083.56, 1083.89, 1084.24, 1085.22, 1085.73, 1086.23, 1086.79, 1087.69, 1088.34, 1088.64, 1089.64, 1089.78, 1089.81, 1090.27, 1090.41, 1091.35, 1091.99, 1092.3, 1093.5, 1093.87, 1094.4, 1095.11, 1095.28, 1095.32, 1095.96, 1096.14, 1096.34, 1096.97, 1097.34, 1097.83, 1098.03, 1098.41, 1099.32, 1100.18, 1100.33, 1100.75, 1102.2, 1102.44, 1102.71, 1103.08, 1103.16, 1103.95, 1104.3, 1104.45, 1104.91, 1105.13, 1105.5, 1105.72, 1106.04, 1106.79, 1107.02, 1108.13, 1108.32, 1108.82, 1109.11, 1109.25, 1109.68, 1110.44, 1110.75, 1110.88, 1111.02, 1111.22, 1111.31, 1111.71, 1111.79, 1112.77, 1112.91, 1113.11, 1113.32, 1113.89, 1114.35, 1114.4, 1114.87, 1115.63, 1116.06, 1116.11, 1116.6, 1117.08, 1117.73, 1117.9, 1118.22, 1118.42, 1119.24, 1119.48, 1120.63, 1120.89, 1121.27, 1121.43, 1121.55, 1121.66, 1122.11, 1122.29, 1122.7, 1123.2, 1123.4, 1123.68, 1123.83, 1124.51, 1124.99, 1125.1, 1125.65, 1126.27, 1126.49, 1126.97, 1127.4, 1127.83, 1128.02, 1128.1, 1128.53], "19": [1129.41, 1129.83, 1130.14, 1130.49, 1130.57, 1131.42, 1131.6, 1131.86, 1132.31, 1132.57, 1132.7, 1133.15, 1133.95, 1134.18, 1134.29, 1135.23, 1135.87, 1136.07, 1136.22, 1136.43, 1136.65, 1137.15, 1137.31, 1138.01, 1138.46, 1138.55, 1138.74, 1140.27, 1140.33, 1140.68, 1140.94, 1141.42, 1141.6, 1141.88, 1142.17, 1143.34, 1143.43, 1143.55, 1143.6, 1143.86, 1143.97, 1144.41, 1144.48, 1144.99, 1145.16, 1145.38, 1145.55, 1145.75], "20": [1146.51, 1146.67, 1146.81, 1147.96, 1148.26, 1149.02, 1149.18, 1149.28, 1149.58, 1149.63, 1149.94, 1150.05, 1150.82, 1150.98, 1151.1, 1152.16, 1152.5, 1152.62, 1152.76, 1152.86, 1153.3, 1153.46, 1153.73, 1153.92, 1154.33, 1154.45, 1154.89, 1155.08, 1155.94, 1156.22, 1156.35, 1156.47, 1156.95, 1157.75, 1157.87, 1158.26, 1158.4, 1158.77, 1159.66, 1159.81, 1159.91, 1160.48, 1161.77, 1162.04, 1162.17, 1162.66, 1163.23, 1163.41, 1163.63, 1164.15, 1164.28, 1164.66, 1165.21, 1165.58, 1165.91, 1166.98, 1167.16, 1167.33, 1167.87, 1168.0, 1168.36, 1168.55, 1169.52, 1169.68, 1170.16, 1170.27, 1170.74, 1170.98, 1171.1, 1172.13, 1172.32, 1172.85, 1173.75, 1179.62, 1179.77, 1179.93, 1180.09, 1180.99, 1181.33, 1181.53, 1181.91, 1182.28, 1183.23, 1183.44, 1183.83, 1184.58, 1184.73, 1185.53, 1185.71, 1186.59, 1186.71]};
+
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=1187.8;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('lbyr-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('lbyr-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=w.scrollHeight;w.style.zoom=h>avail?Math.max(.55,avail/h):1;});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>

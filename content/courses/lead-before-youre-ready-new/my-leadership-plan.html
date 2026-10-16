@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Leadership Plan · Lead Before You’re Ready</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--sage:#8fae9f;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(180deg,#f7efdf,#f3e3c4);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.steps21{display:flex;gap:4px}.steps21 i{width:10px;height:10px;border-radius:50%;background:#e2d3b4}.steps21 i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.step{border-left:6px solid var(--gold)}.next{background:#fdf3dc;border:2px solid var(--gold);box-shadow:0 8px 22px rgba(201,150,63,.18)}.next h2{font-size:26px}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.5em 0}.reflect textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}
+.privacy{background:#f4ecd8;border-radius:10px;padding:8px 12px;font-size:15px}
+ul.read{list-style:none;padding:0}ul.read li{margin:.4em 0}
+.note{background:#f6efe6;border:1px solid #e6d3c2}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}
+
+.route{counter-reset:st}.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.fld{margin:.6em 0}.fld label{display:block;font-weight:600;margin-bottom:.2em}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+.safe1{background:#fffaf0;border:2px solid var(--gold);border-radius:12px;padding:10px 14px;font-family:'Source Serif 4',serif;font-size:18px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{background:#fffaf0;border:1px solid var(--line);border-radius:12px;padding:12px}
+.choice b{font-family:'Source Serif 4',serif;font-size:19px;display:block;margin-bottom:.3em}
+@media(max-width:640px){.choices{grid-template-columns:1fr}}
+@media print{.player,.finish,details>summary~*:not(.printme){} .player{display:none}header.top .hills{display:none}}
+
+.mute2{color:var(--mute);font-weight:400}
+.sr{position:absolute;left:-9999px}
+.hero{position:relative;margin:-6px 0 0}.hero svg{width:100%;height:auto;display:block;border-radius:14px}
+.opening p{font-size:18px;line-height:1.6}
+.verse{font-family:'Source Serif 4',serif;font-size:19px;border-left:4px solid var(--gold);padding:6px 14px;margin:12px 0;background:#fffaf0;border-radius:0 10px 10px 0}.verse .ref{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--mute);margin-top:4px}
+.comp{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px}.comp p{margin:.3em 0}.comp .big{font-family:'Source Serif 4',serif;font-size:21px}
+ol.ten{list-style:none;padding:0;margin:.4em 0}ol.ten li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}ol.ten .sn{flex:0 0 30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}ol.ten a{color:var(--ink);text-decoration:none}ol.ten a:hover b{text-decoration:underline}
+.rq{margin:16px 0}.rq p{margin:.25em 0}
+textarea.grow{width:100%;box-sizing:border-box;min-height:70px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;font-size:16px;background:#fffdf8;resize:vertical;overflow:hidden}
+.hb{display:block;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin:6px 0;background:#fffdf8;cursor:pointer;font-size:16px}.hb input[type=radio]{margin-right:8px;transform:scale(1.15)}
+.inl{border:0;border-bottom:1px solid var(--line);background:transparent;font:inherit;width:55%}
+.fl{margin:10px 0}.fl label{display:block;margin-bottom:4px}.fl input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:9px;font:inherit;font-size:16px;background:#fffdf8}
+.printbar{text-align:center;margin:18px 0}.printbar .btn{font-size:17px;padding:12px 26px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+.prayer2{text-align:center;font-family:'Source Serif 4',serif;font-size:19px;line-height:2;padding:10px 0}.prayer2 p{margin:0}
+.bless{text-align:center}.bless .verse{display:inline-block;text-align:left;max-width:640px}
+.nexts a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fffdf8;text-decoration:none;color:var(--ink)}
+.printhead{display:none}
+@media (max-width:600px){.opening p{font-size:17px}.verse{font-size:17px}.prayer2{font-size:17px;line-height:1.8}.inl{width:100%;display:block;margin-top:6px}}
+@media (prefers-reduced-motion:reduce){.fadein{animation:none!important}}
+.fadein{animation:fi 2.4s ease both}@keyframes fi{from{opacity:0}to{opacity:1}}
+@page{margin:14mm}
+@media print{header.top,.noprint,.hero,.nexts,footer,.printbar,.opening,.tencard,.unsaved,.hideprint,.comphelp,#compsec:not(.done2){display:none!important}textarea::placeholder,input::placeholder{color:transparent!important}body{font-size:12pt}.card{padding:8px 0!important;margin:6px 0!important;border:0!important;background:none!important}.stepc{border-left:0!important;padding-left:0!important}h2{font-size:15pt;margin:.2em 0}.rq{margin:6px 0}.rq p{font-size:11pt}textarea.grow{min-height:40px!important;font-size:11pt}.fl{margin:4px 0}.fl input{padding:5px;font-size:11pt}.prayer2{font-size:12pt;line-height:1.5}.bless .verse{font-size:11pt}details{display:block}.printhead{display:block;font-family:'Source Serif 4',serif}textarea.grow,.fl input{border:1px solid #bbb;min-height:0;height:auto}.card{box-shadow:none!important;break-inside:avoid}.hb{border:0;padding:2px 0}.hb:not(.sel){display:none}}
+</style></head>
+<body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Lead Before You’re Ready · Closing page</span><span class="steps21" aria-label="All ten steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+ <p class="eyebrow">Course completion</p>
+ <h1>My Leadership Plan</h1>
+ <p class="question">Bringing the ten lessons together</p>
+ <span class="chip">About 10–15 minutes</span><span class="chip">Private · nothing scored</span>
+ <p style="margin:.6em 0 0" class="noprint"><span class="helplink"><a href="#concerns">Concerns, Care and Reporting</a></span></p>
+</div><svg class="hills" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<div class="printhead"><h1>My Leadership Plan</h1><p>Lead Before You’re Ready · printed <span id="pdate"></span></p></div>
+<section class="card opening"><div class="hero"><svg viewBox="0 0 800 360" role="img" aria-label="The staircase with all ten steps lit; the leader, partway up, reaches a hand down to another person on the lower steps"><defs><linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient><linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient><radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient><symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol><symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol><symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol></defs>
+<rect width="800" height="360" fill="url(#creamg)"/><path d="M60 320 H740" stroke="#c9963f" stroke-width="2.5"/>
+<g class="fadein"><use href="#doorlight" x="300" y="10" width="280" height="290"/></g><use href="#stairs" x="250" y="100" width="300" height="215"/>
+<path d="M260,295 285,295 L285,280 310,280 L310,265 335,265 L335,250 360,250 L360,235 385,235 L385,220 410,220 L410,205 435,205 L435,190 460,190 L460,175 485,175 L485,160 510,160" stroke="#e3b44f" stroke-width="7" fill="none" stroke-linecap="round"/>
+<use href="#per" x="336" y="178" width="28" height="72" style="color:#56607a"/><path d="M342 202 L314 230" stroke="#56607a" stroke-width="6" stroke-linecap="round"/>
+<use href="#per" x="276" y="234" width="26" height="66" style="color:#6f817b"/><path d="M296 254 L314 232" stroke="#6f817b" stroke-width="6" stroke-linecap="round"/><circle cx="314" cy="231" r="26" fill="url(#glowr)"/>
+<text x="400" y="345" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="14" fill="#7a6a58" letter-spacing="2">STEP 10 OF 10</text></svg></div>
+ <p style="margin-top:14px">You have reached the end of the course, but not the end of learning. None of us arrives. This page helps you look back over the ten lessons, choose a few realistic commitments for your own leadership, and name your next step. Take your time. Write as much or as little as you like.</p>
+ <p class="verse">“And I am sure of this, that he who began a good work in you will bring it to completion at the day of Jesus Christ.”<span class="ref">PHILIPPIANS 1:6 (ESV)</span></p>
+ <p>Paul was encouraging believers that God would continue his good work among them. As we finish this course, our confidence rests in God’s faithfulness, not in having mastered leadership.</p>
+</section>
+
+<section class="card" id="compsec"><h2>My course completion</h2>
+ <div class="comp pending" id="comp" aria-live="polite"><p class="big">Your completion record appears here when you are signed in.</p></div>
+ <p class="refs comphelp" style="margin:.6em 0 0">This records that you took part. It is not a test, and none of the plan below is required.</p>
+</section>
+
+<section class="card tencard"><details open><summary><b>Looking back: the ten steps</b></summary><ol class="ten"><li><span class="sn">1</span><div><a href="../02%20Lessons/Lesson%2001%20-%20Called%20Not%20Qualified/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Called, Not Qualified</b></a><br><span class="mute2">Our sufficiency is from God; calling is not certainty, and not permission to stay as you are</span></div></li><li><span class="sn">2</span><div><a href="../02%20Lessons/Lesson%2002%20-%20Leading%20Yourself%20First/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Leading Yourself First</b></a><br><span class="mute2">A modest fixed time with God, a trusted person, and real rest</span></div></li><li><span class="sn">3</span><div><a href="../02%20Lessons/Lesson%2003%20-%20Knowing%20Your%20Role/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Knowing Your Role</b></a><br><span class="mute2">Delegated authority is entrusted, limited and accountable</span></div></li><li><span class="sn">4</span><div><a href="../02%20Lessons/Lesson%2004%20-%20Building%20a%20Volunteer%20Team/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Building a Volunteer Team</b></a><br><span class="mute2">Choose prayerfully, ask clearly, and let people say no</span></div></li><li><span class="sn">5</span><div><a href="../02%20Lessons/Lesson%2005%20-%20Helping%20Volunteers%20Stay%20and%20Grow/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Helping Volunteers Stay and Grow</b></a><br><span class="mute2">Prepare, send and listen; pass on skills in four steps</span></div></li><li><span class="sn">6</span><div><a href="../02%20Lessons/Lesson%2006%20-%20Running%20a%20Meeting%20People%20Want%20to%20Attend/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Running a Meeting People Want to Attend</b></a><br><span class="mute2">One page, finish on time, and make room for every voice</span></div></li><li><span class="sn">7</span><div><a href="../02%20Lessons/Lesson%2007%20-%20The%20Conversation%20You%27re%20Avoiding/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>The Conversation You’re Avoiding</b></a><br><span class="mute2">Go to find out, not to deliver a verdict</span></div></li><li><span class="sn">8</span><div><a href="../02%20Lessons/Lesson%2008%20-%20Criticism%20Control%20and%20Ongoing%20Pastoral%20Needs/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Criticism, Control and Ongoing Pastoral Needs</b></a><br><span class="mute2">Assess criticism, address over-centralised responsibility, support ongoing care</span></div></li><li><span class="sn">9</span><div><a href="../02%20Lessons/Lesson%2009%20-%20Burnout%20and%20Boundaries/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Burnout and Boundaries</b></a><br><span class="mute2">Recognise exhaustion early, respect your limits, and seek rest and support</span></div></li><li><span class="sn">10</span><div><a href="../02%20Lessons/Lesson%2010%20-%20Growing%20the%20Next%20Leader/3%20Finished%20Lesson/Open-This-Lesson-Page.html"><b>Growing the Next Leader</b></a><br><span class="mute2">Entrust what you received to faithful people who can teach others</span></div></li></ol></details></section>
+
+<section class="card stepc reflect"><h2><span class="n">1</span>Four reflections</h2>
+ <p class="unsaved">Your answers stay on this page while it is open. Print your plan or copy your answers before leaving. Nothing you write is saved to your account.</p>
+ <p class="refs hideprint">Private and optional. Skip any you like.</p>
+ <div class="rq"><p class="rh"><b>1 · My calling</b> <span class="mute2">(Lessons 1 and 3)</span></p><p>When you began, you may have felt that they chose the wrong person. What has God shown you since about his call and your role?</p><label class="sr" for="r0">My calling</label><textarea id="r0" class="grow" placeholder="When I began this course, I… Now I see, or I am still learning, that…"></textarea></div><div class="rq"><p class="rh"><b>2 · My own soul</b> <span class="mute2">(Lessons 2 and 9)</span></p><p>What will help you keep walking with God, and keep going without wearing out?</p><label class="sr" for="r1">My own soul</label><textarea id="r1" class="grow" placeholder="To keep my own walk with God and my health, I will…"></textarea></div><div class="rq"><p class="rh"><b>3 · My team</b> <span class="mute2">(Lessons 4 to 8)</span></p><p>Think of the people you lead. What is the next good step for them, or for one of them?</p><label class="sr" for="r2">My team</label><textarea id="r2" class="grow" placeholder="For the people I lead, the next step is…"></textarea></div><div class="rq"><p class="rh"><b>4 · The next leader</b> <span class="mute2">(Lesson 10)</span></p><p>Who might you help to grow, or what will you look for?</p><label class="sr" for="r3">The next leader</label><textarea id="r3" class="grow" placeholder="The person I hope to invest in, or what I am looking for, is…"></textarea></div>
+</section>
+
+<section class="card stepc"><h2><span class="n">2</span>One habit I will continue</h2>
+ <p>Choose one. One habit kept is worth more than ten intended.</p>
+ <fieldset style="border:0;padding:0;margin:0"><legend class="sr">One habit</legend><label class="hb"><input type="radio" name="habit" value="A modest fixed time with God"> A modest fixed time with God <span class="mute2">(Lesson 2)</span></label><label class="hb"><input type="radio" name="habit" value="A monthly conversation with a trusted person"> A monthly conversation with a trusted person <span class="mute2">(Lesson 2)</span></label><label class="hb"><input type="radio" name="habit" value="Clear agreements about what is mine to decide"> Clear agreements about what is mine to decide <span class="mute2">(Lesson 3)</span></label><label class="hb"><input type="radio" name="habit" value="Thanking volunteers specifically"> Thanking volunteers specifically <span class="mute2">(Lesson 5)</span></label><label class="hb"><input type="radio" name="habit" value="A one-page agenda, and finishing on time"> A one-page agenda, and finishing on time <span class="mute2">(Lesson 6)</span></label><label class="hb"><input type="radio" name="habit" value="Having the conversation sooner rather than later"> Having the conversation sooner rather than later <span class="mute2">(Lesson 7)</span></label><label class="hb"><input type="radio" name="habit" value="A protected day off each week"> A protected day off each week <span class="mute2">(Lesson 9)</span></label><label class="hb"><input type="radio" name="habit" value="Bringing someone into the thinking, not just the doing"> Bringing someone into the thinking, not just the doing <span class="mute2">(Lesson 10)</span></label><label class="hb"><input type="radio" name="habit" value="own" id="hown"> My own: <input type="text" id="hownt" aria-label="My own habit" class="inl"></label></fieldset>
+ <div class="fl"><label for="hwhen"><b>When and how I will keep it</b></label><input type="text" id="hwhen" placeholder=""></div><div class="fl"><label for="hwho"><b>Who could help me keep it</b></label><input type="text" id="hwho" placeholder=""></div>
+</section>
+
+<section class="card stepc"><h2><span class="n">3</span>The next leader</h2>
+ <p class="refs">Use initials or a general description rather than a full name. If you have not yet identified anyone, that is fine; write your next step instead.</p>
+ <div class="fl"><label for="p1"><b>The person I will invest in, or what I am looking for</b></label><input type="text" id="p1" placeholder="Initials or a description"></div><div class="fl"><label for="p2"><b>Who needs to agree, if anyone</b></label><input type="text" id="p2" placeholder=""></div><div class="fl"><label for="p3"><b>My next step, and when</b></label><input type="text" id="p3" placeholder=""></div>
+ <p class="refs noprint">Use the <a href="../02%20Lessons/Lesson%2010%20-%20Growing%20the%20Next%20Leader/3%20Finished%20Lesson/Open-This-Lesson-Page.html">Developing a Leader and Handover sheet in Lesson 10</a>.</p>
+</section>
+
+<section class="card stepc"><h2><span class="n">4</span>Keeping my plan alive</h2>
+ <div class="fl"><label for="k1"><b>If I choose to discuss part of this plan, who could help me?</b></label><input type="text" id="k1" placeholder=""></div><div class="fl"><label for="k2"><b>A date to look at it again</b></label><input type="text" id="k2" placeholder="We suggest three months from now"></div>
+</section>
+<div class="printbar noprint"><button class="btn" onclick="doPrint()">Print my plan</button></div>
+
+<section class="card"><h2 style="text-align:center">A commissioning prayer</h2>
+ <div class="prayer2">
+  <p>Lord Jesus, you called me before I was ready, and you have been faithful.</p>
+  <p>Thank you for all you have taught me in these lessons.</p>
+  <p>Strengthen me by the grace that is in you.</p>
+  <p>Keep my soul close to you, and keep me from wearing out.</p>
+  <p>Help me to serve the people you have given me with honesty, patience and love.</p>
+  <p>Give me eyes to see the next leader, and the humility to make room for them.</p>
+  <p>Finish the good work you have begun in me.</p>
+  <p>In Jesus’ name. Amen.</p>
+ </div>
+ <div class="bless"><p class="verse">“The LORD bless you and keep you; the LORD make his face to shine upon you and be gracious to you; the LORD lift up his countenance upon you and give you peace.”<span class="ref">NUMBERS 6:24–26 (ESV)</span></p>
+ <p class="verse">“You then, my child, be strengthened by the grace that is in Christ Jesus.”<span class="ref">2 TIMOTHY 2:1 (ESV)</span></p></div>
+</section>
+
+<section class="card nexts noprint"><h2>Where next</h2>
+ <a href="#talk-to-a-pastor"><b>Talk to a Pastor</b><br><span class="mute2">If you would like to talk through your leadership, your plan, or something this course raised.</span></a>
+ <a href="#courses"><b>Other Faithful Path courses</b><br><span class="mute2">Following Jesus · Talk Before You Marry · The Christian Spiritual Reset · Before You Say Yes · When Your Mind Won’t Rest</span></a>
+ <a href="#concerns"><b>Concerns, Care and Reporting</b><br><span class="mute2">As on every page of the course.</span></a>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · <span id="concerns"><a href="#concerns">Concerns, Care and Reporting</a></span></footer>
+<script>
+/* Completion record.
+   The website supplies the learner's progress as window.LBYR_PROGRESS =
+   { completed: { "1": "2026-10-20", ... "10": "2026-12-20" } }  (lesson number -> date marked complete).
+   Only this progress record is stored by the website. Plan answers on this page are never saved or sent. */
+(function(){
+ var LESSONS=[{n:1,t:"Called, Not Qualified",u:"../02%20Lessons/Lesson%2001%20-%20Called%20Not%20Qualified/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:2,t:"Leading Yourself First",u:"../02%20Lessons/Lesson%2002%20-%20Leading%20Yourself%20First/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:3,t:"Knowing Your Role",u:"../02%20Lessons/Lesson%2003%20-%20Knowing%20Your%20Role/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:4,t:"Building a Volunteer Team",u:"../02%20Lessons/Lesson%2004%20-%20Building%20a%20Volunteer%20Team/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:5,t:"Helping Volunteers Stay and Grow",u:"../02%20Lessons/Lesson%2005%20-%20Helping%20Volunteers%20Stay%20and%20Grow/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:6,t:"Running a Meeting People Want to Attend",u:"../02%20Lessons/Lesson%2006%20-%20Running%20a%20Meeting%20People%20Want%20to%20Attend/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:7,t:"The Conversation You’re Avoiding",u:"../02%20Lessons/Lesson%2007%20-%20The%20Conversation%20You%27re%20Avoiding/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:8,t:"Criticism, Control and Ongoing Pastoral Needs",u:"../02%20Lessons/Lesson%2008%20-%20Criticism%20Control%20and%20Ongoing%20Pastoral%20Needs/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:9,t:"Burnout and Boundaries",u:"../02%20Lessons/Lesson%2009%20-%20Burnout%20and%20Boundaries/3%20Finished%20Lesson/Open-This-Lesson-Page.html"},{n:10,t:"Growing the Next Leader",u:"../02%20Lessons/Lesson%2010%20-%20Growing%20the%20Next%20Leader/3%20Finished%20Lesson/Open-This-Lesson-Page.html"}];
+ var box=document.getElementById('comp');
+ var P=window.LBYR_PROGRESS;
+ if(!P||!P.completed){return;}
+ box.classList.remove('pending');document.getElementById('compsec').classList.add('done2');
+ var done=LESSONS.filter(function(l){return P.completed[String(l.n)];});
+ if(done.length===10){
+  var last=done.map(function(l){return P.completed[String(l.n)];}).sort().pop();
+  var d=new Date(last+'T12:00:00');
+  var s=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  box.innerHTML='<p class="big">You completed <i>Lead Before You’re Ready</i> on '+s+'.</p>';
+ } else {
+  var next=LESSONS.filter(function(l){return !P.completed[String(l.n)];})[0];
+  box.innerHTML='<p class="big">You have completed '+done.length+' of the ten lessons.</p><p>Your next lesson is <a href="'+next.u+'">Lesson '+next.n+': '+next.t+'</a>. You can still use the rest of this page.</p>';
+ }
+})();
+/* Writing fields grow as you type. */
+document.querySelectorAll('textarea.grow').forEach(function(t){t.addEventListener('input',function(){t.style.height='auto';t.style.height=(t.scrollHeight+2)+'px';});});
+/* Mark the chosen habit so it prints. */
+document.querySelectorAll('input[name=habit]').forEach(function(r){r.addEventListener('change',function(){document.querySelectorAll('.hb').forEach(function(l){l.classList.toggle('sel',l.contains(document.querySelector('input[name=habit]:checked')));});});});
+document.getElementById('hownt').addEventListener('focus',function(){document.getElementById('hown').checked=true;document.getElementById('hown').dispatchEvent(new Event('change'));});
+function doPrint(){document.getElementById('pdate').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});window.print();}
+/* Warn before leaving if anything has been typed. Nothing is sent anywhere. */
+(function(){var typed=false;document.querySelectorAll('textarea,input').forEach(function(t){t.addEventListener('input',function(){typed=true;});t.addEventListener('change',function(){typed=true;});});
+addEventListener('beforeunload',function(e){if(typed){e.preventDefault();e.returnValue='Your plan is not saved. Print it first?';return e.returnValue;}});})();
+</script>
+</body></html>

@@ -61,6 +61,7 @@ const served = [
   ["welcome (member)", Lbyr.welcomeHtml(read("welcome.html"), { signedIn: true, active: true })],
   ["how-this-course-works", Lbyr.howHtml(read("how-this-course-works.html"))],
   ["course page", Lbyr.homeHtml(new Map())],
+  ["my-leadership-plan", Lbyr.planHtml(read("my-leadership-plan.html"), new Map([["lesson-01", "2026-10-20T09:00:00Z"]]))],
   ...added.flatMap((u) => [
     [`${u.slug}`, Lbyr.unitHtml(u, read(`${u.slug}/page.html`), new Map())],
     [`${u.slug} (completed)`, Lbyr.unitHtml(u, read(`${u.slug}/page.html`), new Map([[u.slug, "2026-10-20T09:00:00Z"]]))],
@@ -81,6 +82,22 @@ for (const [name, page] of served) {
   check(!/href="#concerns"|<a [^>]*href="#|02%20Lessons|\.html"/.test(html), `${name}: no placeholder or file links left`, `${name}: a placeholder or file link is left`);
   check(/noindex/.test(html), `${name}: noindex`, `${name}: missing noindex`);
 }
+
+// My Leadership Plan: the record goes in before the page's own script, as
+// dates, and only what was completed.
+const planWith = (m) => Lbyr.planHtml(read("my-leadership-plan.html"), new Map(m));
+const recordAt = (html) => html.indexOf("window.LBYR_PROGRESS=");
+const pageScriptAt = (html) => html.indexOf("/* Completion record.");
+const all10 = Lbyr.LBYR_NEW_UNITS.map((u, i) => [u.slug, `2026-${String(10 + Math.floor(i / 5)).padStart(2, "0")}-${String(20 + (i % 5)).padStart(2, "0")}T09:00:00Z`]);
+for (const [label, m] of [["none", []], ["one", [["lesson-03", "2026-10-21T09:00:00Z"]]], ["all ten", all10]]) {
+  const html = planWith(m);
+  check(recordAt(html) > 0 && recordAt(html) < pageScriptAt(html), `plan (${label}): progress supplied before the page's script`, `plan (${label}): progress not supplied first`);
+  const times = JSON.parse(/var t=(\{[^}]*\})/.exec(html)[1]);
+  check(Object.keys(times).length === m.length, `plan (${label}): ${m.length} lesson(s) in the record`, `plan (${label}): record has ${Object.keys(times).length} lessons`);
+}
+check(!/href="#talk-to-a-pastor"|href="#courses"/.test(planWith([])) && /href="\/talk-to-a-pastor"/.test(planWith([])) && /href="\/courses"/.test(planWith([])),
+  "plan: Talk to a Pastor and Other courses go to the site's pages", "plan: Talk to a Pastor or Other courses not linked");
+check(/Nothing you write is saved to your account/.test(read("my-leadership-plan.html")), "plan: says nothing written is saved", "plan lost its privacy promise");
 
 // The pages keep their promises about the writing.
 check(/Your written answers are not saved to your account/.test(read("how-this-course-works.html")),

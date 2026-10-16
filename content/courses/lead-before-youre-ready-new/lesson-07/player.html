@@ -1,0 +1,858 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lead Before You’re Ready · Lesson 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Noto+Serif+Hebrew:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'Noto Serif Hebrew','SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+
+#stage.eve{background:linear-gradient(180deg,#f8eedb 0%,#f2dfbb 70%,#e8c995 100%)}
+.hills .h1{fill:#e8dcc2}.hills .h2{fill:#dccbaa}.hills .h3{fill:#cdb791}
+.tiny2{font-size:15px;font-weight:700;fill:#7a5536;text-anchor:middle;font-family:'Source Sans 3',sans-serif}
+.tiny3{font-size:11px;font-weight:700;fill:#7a5536;text-anchor:middle}
+.bigt{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;fill:#8a6a24}
+.hand2{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scr2{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.6vw,26px);color:#5b4a26;margin:.2em 0}.ref2{font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.chips{justify-content:center;margin:.3em 0}.chips span{font-size:clamp(16px,2.2vw,20px)}
+.lab2{margin:.4em auto}.glowp.on{box-shadow:0 0 0 3px #f0c77a}
+.pcard{position:relative;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.8em 1em;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08);display:flex;flex-direction:column;gap:.35em}
+.pcard>b{font-family:'Source Serif 4',serif;font-size:clamp(22px,3vw,30px)}
+.pcard svg{width:100%;max-height:22vh}
+.says{list-style:none;padding:0;margin:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.3vw,22px);color:#5b4a26}.says li{margin:.1em 0}
+.pl2{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.3vw,22px);margin:0;line-height:1.35}
+.love{color:#8a6a24;font-style:italic}.mute{color:var(--mute)}.strongline{font-weight:600;color:#2b3445}
+.keep2{grid-template-columns:1fr 1fr!important;gap:10px!important}
+.small3{font-size:clamp(14px,1.9vw,17px)}
+.qs{list-style:none;padding:0;margin:.2em auto;text-align:left;max-width:34em;font-size:clamp(18px,2.5vw,24px);line-height:1.35}
+.qs li{display:flex;align-items:center;gap:.6em;margin:.35em 0}.qs svg{width:1.8em;height:1.8em;flex:none}
+.qs.sm2{font-size:clamp(17px,2.3vw,22px)}.quote.sm2{font-size:clamp(18px,2.38vw,22px)}
+.safety{background:#fffaf0;border:2px solid #c9963f;border-radius:16px;padding:1.2em 1.6em;max-width:34em;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.2vw,32px);line-height:1.4;color:#3b3020}.safety p{margin:.3em 0}
+.chairsL{transform:translateX(-30px) scaleX(.86);transform-box:fill-box;transform-origin:center}.chairsR{transform:translateX(30px) scaleX(.86);transform-box:fill-box;transform-origin:center}
+.leanf{transition:transform 1.4s ease}.leanf.on{transform:translateX(14px) rotate(4deg);transform-box:fill-box;transform-origin:bottom}
+.stepb{transition:transform 1.6s ease}.stepb.on{transform:translateX(26px)}
+.turnback{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.sideL,.sideR{transition:transform 3s ease}.sideL.on{transform:translateX(-60px)}.sideR.on{transform:translateX(60px)}
+.lightwalk.on{animation:lw 14s ease-in-out forwards}@keyframes lw{0%{transform:translate(140px,30px)}100%{transform:translate(-120px,-30px)}}
+.lightrun.on{animation:lr 6s ease-in-out forwards}@keyframes lr{to{transform:translateX(340px)}}
+.frameL,.frameR{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}.frameL{transform:scaleX(-1)}.frameR{transform:scaleX(-1)}
+.turnf.on~*{}.pcard:has(.turnf.on) .frameL,.pcard:has(.turnf.on) .frameR{transform:none}
+.mapL,.mapR{transition:transform 2.5s ease}
+.mapL.on{transform:translateX(40px)}.mapR.on{transform:translateX(-40px)}
+.grow2{transform-box:fill-box;transform-origin:center}.envg{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}
+.shieldup{transform:translateY(20px)}.shieldup.on{transform:none}
+.litL.on{animation:lit 6s ease-in-out infinite}.litR.on{animation:lit 6s ease-in-out 3s infinite}@keyframes lit{0%,100%{opacity:.2}50%{opacity:1}}
+.ripple-line{animation:rl 4s ease-in-out infinite}@keyframes rl{50%{transform:translateX(-12px)}}
+.word .ref{display:block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:.3em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+body.still .leanf.on,body.still .stepb.on,body.still .sideL.on,body.still .sideR.on,body.still .shieldup{transform:none!important}
+.threecol{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:.6em 0}.threecol .panel{display:flex;flex-direction:column;gap:6px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:12px;padding:12px 14px;font-size:clamp(14px,1.6vw,19px);text-align:left}.threecol .panel b{font-family:'Source Serif 4',serif;font-size:1.25em;color:#a06a1f}@media (max-width:600px){.threecol{grid-template-columns:1fr;gap:8px}.threecol .panel{padding:8px 12px;font-size:14px;gap:2px}}
+.agenda{background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;box-shadow:0 8px 22px rgba(0,0,0,.08);padding:14px 20px;max-width:640px;margin:.4em auto;text-align:left;font-size:clamp(13px,1.6vw,18px)}.agenda p{margin:.35em 0}.agenda .ah{font-family:'Source Serif 4',serif;font-weight:600;border-bottom:2px solid #c9963f;padding-bottom:4px}.agenda .t{display:inline-block;width:3.2em;color:#a06a1f;font-weight:700}.agenda .lab{font-size:.75em;background:#c9963f;color:#fff;border-radius:4px;padding:1px 6px;margin:0 4px}.agenda .lab2{background:#7f8fa6}.agenda .prop{display:block;margin-left:3.2em;font-style:italic;color:#5a4636}.agenda .ok{font-size:.8em;color:#5f7d3a;margin-left:6px}.agenda .fin{font-weight:700}.agenda .msg{color:#7a6a58;font-size:.9em;border-top:1px dashed #d9c9a3;padding-top:4px}
+.rec{width:100%;max-width:680px;margin:.4em auto;border-collapse:collapse;background:#fffaf0;font-size:clamp(12px,1.5vw,17px);text-align:left}.rec th{background:#efe2c6;color:#5a4636}.rec td,.rec th{border:1px solid #d9c9a3;padding:5px 8px}
+.vn{display:block;font-family:'Source Sans 3',sans-serif;font-size:.62em;letter-spacing:.08em;text-transform:uppercase;color:#a06a1f;margin-bottom:.2em}
+.opener{display:flex;flex-direction:column;gap:10px;max-width:720px;margin:.6em auto}.op{display:grid;grid-template-columns:9em 1fr;gap:12px;align-items:center;background:#fffaf0;border:1px solid #d9c9a3;border-radius:12px;padding:12px 16px;text-align:left}.op.gold{border:2px solid #c9963f}.op .ol{font-family:'Source Sans 3',sans-serif;font-weight:700;color:#a06a1f;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(11px,1.2vw,14px)}.op .ot{font-family:'Source Serif 4',serif;font-size:clamp(16px,2vw,24px);color:var(--ink)}@media (max-width:600px){.op{grid-template-columns:1fr;gap:2px;padding:8px 12px}.op .ot{font-size:17px}}
+.fourcol{grid-template-columns:repeat(4,1fr)}@media (max-width:800px){.fourcol{grid-template-columns:repeat(2,1fr)}}@media (max-width:600px){.fourcol{grid-template-columns:1fr}}
+.flick{animation:flick 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}@keyframes flick{50%{transform:scaleY(.94) translateY(2px)}}
+.journal2 p b{font-size:1em}
+</style>
+</head>
+<body>
+<div id="stage" class="light">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path class="h1" d="M0 120 C200 90 360 130 560 105 S900 85 1200 115 V200 H0z"/><path class="h2" d="M0 150 C240 125 420 165 640 140 S960 125 1200 150 V200 H0z"/><path class="h3" d="M0 178 C260 160 480 192 700 176 S1000 165 1200 182 V200 H0z"/></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the wooden chair from the cover, seen from the side, facing right -->
+ <symbol id="chair" viewBox="0 0 70 112">
+  <ellipse cx="36" cy="108" rx="30" ry="3.5" fill="#000" opacity=".10"/>
+  <path d="M8 10 Q20 2 33 9" stroke="#7a5536" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M10 10 L15 63 M17 7 L20 63 M24 6 L25 63 M31 8 L30 63" stroke="#7a5536" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M7 60 Q36 55 65 61 L63 70 Q35 66 7 69 Z" fill="#7a5536"/>
+  <path d="M13 69 L9 107 M60 69 L64 107 M22 69 L25 104 M51 69 L48 104" stroke="#64432a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M12 89 L61 89" stroke="#64432a" stroke-width="2.6"/>
+ </symbol>
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="perw" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M10 62 L8 95 L32 95 L30 62 Z" fill="currentColor" opacity=".9"/>
+  <path d="M10 32 Q20 24 30 32 L31 66 Q20 69 9 66 Z" fill="currentColor"/>
+  <path d="M10 34 L6 60 L10 61 L13 40 Z M30 34 L34 60 L30 61 L27 40 Z" fill="currentColor" opacity=".85"/>
+  <path d="M10 20 Q8 6 20 6 Q32 6 30 20 L31 34 L26 30 L14 30 L9 34 Z" fill="#3a3330"/>
+  <circle cx="20" cy="17" r="8" fill="#c69d84"/>
+  <path d="M12 15 Q14 7 20 8 Q27 7 28 15 Q24 11 20 12 Q16 11 12 15Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="treeD" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#4f4338"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#5d7658"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#6b8564"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#556d51"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="note" viewBox="0 0 60 44"><path d="M2 6 L58 2 L56 40 L4 42 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"/><path d="M4 24 L56 21" stroke="#e8dcc0" stroke-width="1.2"/></symbol>
+ <symbol id="env" viewBox="0 0 70 46"><rect x="2" y="2" width="66" height="42" rx="3" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M3 4 L35 26 L67 4" fill="none" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="cloud" viewBox="0 0 120 70"><path d="M24 60 Q4 60 6 44 Q6 30 22 30 Q24 10 46 12 Q60 0 76 12 Q100 8 104 28 Q118 32 114 48 Q112 60 96 60 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/><circle cx="20" cy="66" r="3" fill="#fffaf0" stroke="#d9c9a3"/></symbol>
+ <symbol id="door" viewBox="0 0 40 70"><rect x="2" y="2" width="36" height="66" rx="2" fill="#a7805c" stroke="#7a5536" stroke-width="2"/><circle cx="31" cy="38" r="2.2" fill="#e9b25e"/></symbol>
+ <symbol id="laptop" viewBox="0 0 80 50"><rect x="12" y="2" width="56" height="36" rx="3" fill="#2b3445"/><rect x="16" y="6" width="48" height="28" fill="#a9c2d0"/><path d="M2 40 H78 L72 48 H8 Z" fill="#69707a"/></symbol>
+ <symbol id="cup" viewBox="0 0 30 30"><path d="M4 8 H22 L20 26 H6 Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M22 12 Q29 12 28 18 Q27 22 21 22" fill="none" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="shield" viewBox="0 0 50 60"><path d="M25 4 L46 12 Q46 42 25 56 Q4 42 4 12 Z" fill="#cdd8de" stroke="#69707a" stroke-width="3"/></symbol>
+ <symbol id="xtree" viewBox="0 0 40 60"><path d="M20 4 L34 26 L26 26 L38 44 L2 44 L14 26 L6 26 Z" fill="#6f8f6a"/><rect x="17" y="44" width="6" height="10" fill="#7a5536"/><circle cx="20" cy="4" r="3" fill="#e9b25e"/><circle cx="14" cy="34" r="2" fill="#d9818c"/><circle cx="26" cy="22" r="2" fill="#e9b25e"/><circle cx="25" cy="38" r="2" fill="#d9818c"/></symbol>
+ <symbol id="scale" viewBox="0 0 120 70"><path d="M60 8 V62 M40 66 H80" stroke="#7a5536" stroke-width="4"/><g class="tipbeam"><path d="M14 18 L106 18" stroke="#7a5536" stroke-width="4"/><path d="M14 18 L4 40 H24 Z M106 18 L96 40 H116 Z" fill="#e9d5a8" stroke="#7a5536" stroke-width="2"/></g></symbol>
+ <symbol id="frame" viewBox="0 0 60 50"><rect x="2" y="2" width="56" height="46" fill="#fffaf0" stroke="#b9925b" stroke-width="4"/><path d="M12 38 L24 24 L32 32 L40 22 L50 38 Z" fill="#c4d4b9"/><circle cx="18" cy="14" r="4" fill="#e9b25e"/></symbol>
+ <symbol id="map" viewBox="0 0 100 70"><path d="M2 8 L34 2 L66 8 L98 2 L98 62 L66 68 L34 62 L2 68 Z" fill="#f6edd6" stroke="#c9b48a" stroke-width="2"/><path d="M34 2 V62 M66 8 V68" stroke="#e1d2ad" stroke-width="1.5"/></symbol>
+ <symbol id="sign" viewBox="0 0 80 90"><rect x="37" y="20" width="6" height="68" fill="#7a5536"/><path d="M6 10 H70 L78 22 L70 34 H6 Z" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="table" viewBox="0 0 120 50"><rect x="4" y="4" width="112" height="8" rx="2" fill="#a7805c"/><path d="M14 12 V48 M106 12 V48" stroke="#7a5536" stroke-width="5"/></symbol>
+ <symbol id="sofa" viewBox="0 0 140 70"><rect x="6" y="14" width="128" height="30" rx="10" fill="#b88a6a"/><rect x="2" y="30" width="136" height="26" rx="8" fill="#a77a5b"/><path d="M14 56 V66 M126 56 V66" stroke="#64432a" stroke-width="5"/></symbol>
+ <symbol id="shelf" viewBox="0 0 120 120"><rect x="2" y="2" width="116" height="116" fill="#d8c4a0"/><path d="M2 40 H118 M2 80 H118" stroke="#a7805c" stroke-width="4"/><g fill="#8a6a4f"><rect x="10" y="14" width="8" height="26"/><rect x="20" y="18" width="7" height="22"/><rect x="30" y="12" width="9" height="28"/><rect x="60" y="54" width="8" height="26"/><rect x="70" y="58" width="10" height="22"/><rect x="20" y="92" width="8" height="26"/><rect x="88" y="90" width="9" height="28"/></g><g fill="#b5735e"><rect x="44" y="16" width="7" height="24"/><rect x="84" y="56" width="7" height="24"/><rect x="40" y="94" width="8" height="24"/></g></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="nb" viewBox="0 0 60 76"><rect x="4" y="2" width="52" height="72" rx="4" fill="#7a5536"/><rect x="10" y="2" width="46" height="72" rx="3" fill="#8b6340"/><rect x="18" y="20" width="30" height="12" rx="2" fill="#f4ead6"/></symbol>
+ <symbol id="leaf" viewBox="0 0 40 30"><path d="M2 15 Q12 0 38 4 Q30 26 2 15Z" fill="#7e9b78"/><path d="M4 15 Q20 10 36 6" stroke="#5f7a59" stroke-width="1.4" fill="none"/></symbol>
+ <symbol id="garm" viewBox="0 0 90 50"><path d="M6 40 Q44 24 84 40 L80 48 L10 48 Z" fill="#b9946a"/><path d="M14 30 Q46 14 78 30 L76 38 Q46 24 16 38 Z" fill="#c8a57a"/><ellipse cx="45" cy="48" rx="42" ry="3" fill="#000" opacity=".1"/></symbol>
+ <symbol id="boat" viewBox="0 0 120 60"><path d="M6 34 H114 Q104 56 60 56 Q16 56 6 34Z" fill="#8b6340"/><rect x="58" y="4" width="3" height="30" fill="#7a5536"/></symbol>
+ <symbol id="pen" viewBox="0 0 40 10"><path d="M2 5 L32 2 L38 5 L32 8 Z" fill="#2b3445"/></symbol>
+ <symbol id="pan" viewBox="0 0 50 30"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#69707a"/><rect x="32" y="13" width="16" height="5" rx="2" fill="#2b3445"/></symbol>
+ <symbol id="basket" viewBox="0 0 50 40"><path d="M4 12 H46 L40 38 H10 Z" fill="#c9a061"/><path d="M8 20 H42 M10 28 H40" stroke="#a8743f" stroke-width="2"/><path d="M12 12 Q16 2 24 6 Q32 0 38 12" fill="#cdd8de"/></symbol>
+ <symbol id="cal" viewBox="0 0 50 50"><rect x="3" y="7" width="44" height="40" rx="4" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><rect x="3" y="7" width="44" height="11" fill="#c9963f"/><path d="M14 3 V12 M36 3 V12" stroke="#2b3445" stroke-width="3"/></symbol>
+ <symbol id="bag" viewBox="0 0 40 44"><rect x="4" y="10" width="32" height="32" rx="6" fill="#8fae9f"/><path d="M12 10 Q12 2 20 2 Q28 2 28 10" fill="none" stroke="#5f7a6d" stroke-width="3"/><rect x="10" y="22" width="20" height="10" rx="2" fill="#6f8f80"/></symbol>
+ <symbol id="ear" viewBox="0 0 40 50"><path d="M30 18 Q30 4 18 4 Q6 4 6 18 Q6 26 12 30 Q16 34 14 42 Q14 48 22 46" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 20 Q14 12 20 12 Q24 12 24 18" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="hand" viewBox="0 0 50 50"><path d="M10 30 Q8 20 12 18 L14 30 L16 10 Q18 6 21 10 L21 28 L23 6 Q26 2 28 6 L28 28 L31 10 Q34 6 36 10 L35 32 Q36 44 26 46 Q14 46 10 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+ <symbol id="mend" viewBox="0 0 50 50"><path d="M8 14 H38 L34 44 H12 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M38 20 Q48 20 46 30 Q44 36 36 36" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M20 14 L24 26 L18 32 L22 44" fill="none" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="cordi" viewBox="0 0 60 40"><path d="M4 20 Q16 4 30 20 T56 20" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 22 Q16 38 30 22 T56 22" fill="none" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="shieldi" viewBox="0 0 50 50"><path d="M25 4 L44 11 Q44 36 25 46 Q6 36 6 11 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M4 48 H46" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8eedb"/><stop offset="1" stop-color="#efd9b0"/></linearGradient>
+<linearGradient id="gardeneve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfb8"/><stop offset=".6" stop-color="#ecd3a4"/><stop offset="1" stop-color="#e3c48e"/></linearGradient>
+<radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient>
+</defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient>
+<linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient>
+<linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ead2"/><stop offset=".7" stop-color="#f3dcb3"/><stop offset="1" stop-color="#e9c48a"/></linearGradient>
+<!-- the cover: ten walnut steps in three flights climbing to an open door -->
+<symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol>
+<symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol>
+<symbol id="board" viewBox="0 0 200 140"><rect x="2" y="2" width="196" height="136" rx="6" fill="#c9a77a" stroke="#8a6a4f" stroke-width="4"/><rect x="16" y="14" width="40" height="30" fill="#fffaf0" transform="rotate(-4 36 29)"/><rect x="150" y="90" width="34" height="34" fill="#f4ead6" transform="rotate(5 167 107)"/><circle cx="36" cy="16" r="3" fill="#c95f5f"/></symbol>
+<symbol id="bush" viewBox="0 0 110 130"><path d="M40 130 L50 70 M70 130 L60 72 M55 130 V80" stroke="#6b5847" stroke-width="5"/><ellipse cx="55" cy="72" rx="44" ry="30" fill="#7e8f5a"/><g class="flick"><path d="M30 70 Q24 40 40 22 Q42 44 52 50 Q50 20 62 4 Q66 34 78 40 Q84 24 92 22 Q92 56 80 74 Z" fill="#e9973f" opacity=".9"/><path d="M42 70 Q40 50 52 38 Q56 54 64 56 Q66 44 74 40 Q76 60 68 74 Z" fill="#f6d58e"/></g><circle cx="55" cy="55" r="52" fill="url(#glowr)"/></symbol>
+<symbol id="horeb" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#dawnsky)"/><circle cx="640" cy="80" r="44" fill="#fff3cf" opacity=".8"/><path d="M0 230 L160 120 L260 170 L420 60 L560 160 L680 110 L800 180 V300 H0Z" fill="#c9a57a"/><path d="M0 260 Q200 230 400 250 T800 245 V300 H0Z" fill="#b48e62"/><g fill="#fbf6ea" stroke="#d9c9a3"><ellipse cx="120" cy="262" rx="14" ry="8"/><ellipse cx="150" cy="268" rx="14" ry="8"/><ellipse cx="180" cy="260" rx="14" ry="8"/></g><use href="#bush" x="470" y="160" width="80" height="94"/><path d="M380 270 L404 230" stroke="#7a5536" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="stone" viewBox="0 0 70 36"><path d="M4 30 Q2 12 20 8 Q40 2 58 10 Q70 18 66 30 Z" fill="#b8a991"/><path d="M14 14 Q30 8 46 12" stroke="#d6cab4" stroke-width="2" fill="none"/></symbol>
+<symbol id="hilltown" viewBox="0 0 800 260"><rect width="800" height="260" fill="#f3e3c2"/><path d="M0 200 Q200 90 420 120 T800 150 V260 H0Z" fill="#d8c08f"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="300" y="100" width="40" height="30"/><rect x="345" y="92" width="44" height="38"/><rect x="395" y="104" width="36" height="26"/><rect x="438" y="96" width="40" height="34"/></g><path d="M280 132 H500" stroke="#b8a07a" stroke-width="6"/><g fill="#8a9a6a"><circle cx="150" cy="190" r="16"/><circle cx="200" cy="200" r="14"/><circle cx="600" cy="170" r="16"/><circle cx="650" cy="180" r="14"/><circle cx="700" cy="172" r="15"/></g></symbol>
+<symbol id="scroll" viewBox="0 0 200 56"><rect x="20" y="8" width="160" height="40" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><rect x="6" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><rect x="178" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><path d="M36 20 H164 M36 28 H150 M36 36 H160" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="port" viewBox="0 0 800 160"><rect width="800" height="160" fill="#eef0ea"/><rect x="0" y="110" width="800" height="50" fill="#9fb4bf"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="50" width="120" height="60"/><rect x="560" y="40" width="150" height="70"/></g><g fill="#d8c8a6"><rect x="90" y="56" width="8" height="54"/><rect x="120" y="56" width="8" height="54"/><rect x="150" y="56" width="8" height="54"/><rect x="180" y="56" width="8" height="54"/><rect x="575" y="48" width="9" height="62"/><rect x="610" y="48" width="9" height="62"/><rect x="645" y="48" width="9" height="62"/><rect x="680" y="48" width="9" height="62"/></g><path d="M74 50 L140 26 L206 50Z M552 40 L635 12 L718 40Z" fill="#c9a77a"/><g fill="#8b6340"><path d="M300 120 H400 Q390 140 350 140 Q310 140 300 120Z"/><path d="M420 126 H500 Q492 142 460 142 Q428 142 420 126Z"/></g><path d="M350 120 V80 L380 110Z M460 126 V92 L484 120Z" fill="#fffaf0" stroke="#c9b48a"/></symbol>
+<symbol id="i-bible" viewBox="0 0 40 40"><rect x="6" y="4" width="28" height="32" rx="3" fill="#7a5536"/><path d="M20 10 V26 M14 16 H26" stroke="#f0c77a" stroke-width="3"/></symbol>
+<symbol id="i-guitar" viewBox="0 0 40 40"><circle cx="15" cy="27" r="9" fill="#b88a6a"/><circle cx="21" cy="21" r="7" fill="#b88a6a"/><circle cx="15" cy="27" r="3" fill="#5b4a26"/><path d="M22 18 L36 4" stroke="#5b4a26" stroke-width="3"/></symbol>
+<symbol id="i-mat" viewBox="0 0 40 40"><rect x="10" y="2" width="20" height="28" fill="#a7805c"/><circle cx="26" cy="17" r="1.5" fill="#e9b25e"/><rect x="4" y="32" width="32" height="6" rx="2" fill="#c9963f"/></symbol>
+<symbol id="i-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#d98c4a"/><path d="M4 20 H36 M20 4 V36 M9 8 Q20 20 9 32 M31 8 Q20 20 31 32" stroke="#5b4a26" stroke-width="1.6" fill="none"/></symbol>
+<symbol id="i-clip" viewBox="0 0 40 40"><rect x="7" y="5" width="26" height="32" rx="3" fill="#a7805c"/><rect x="11" y="10" width="18" height="24" fill="#fffaf0"/><rect x="14" y="2" width="12" height="6" rx="2" fill="#69707a"/><path d="M14 16 H26 M14 22 H26 M14 28 H22" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="i-agenda" viewBox="0 0 40 40"><rect x="6" y="3" width="28" height="34" rx="2" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M11 12 H29 M11 19 H29 M11 26 H24" stroke="#c9963f" stroke-width="2.5"/></symbol>
+<symbol id="i-speech" viewBox="0 0 40 40"><path d="M4 6 H36 V28 H16 L8 36 V28 H4 Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#c9963f">?</text></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="sheep" viewBox="0 0 40 28"><ellipse cx="20" cy="14" rx="15" ry="10" fill="#fbf6ea" stroke="#d9c9a3"/><circle cx="35" cy="11" r="5" fill="#5b4a3a"/><path d="M12 22 V27 M26 22 V27" stroke="#5b4a3a" stroke-width="2.5"/></symbol>
+<symbol id="shepherd" viewBox="0 0 40 100"><use href="#per" width="40" height="100" style="color:#8a6a4f"/><path d="M36 24 Q44 18 40 10 Q36 6 33 12 M38 14 L34 96" stroke="#7a5536" stroke-width="3.5" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="flockhill" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3ead2"/><path d="M0 190 Q220 120 460 160 T800 140 V300 H0Z" fill="#c9d6b4"/><path d="M0 240 Q260 200 520 230 T800 220 V300 H0Z" fill="#b5c79c"/><use href="#sheep" x="200" y="200" width="44" height="30"/><use href="#sheep" x="260" y="212" width="44" height="30"/><use href="#sheep" x="320" y="198" width="44" height="30"/><use href="#sheep" x="390" y="214" width="44" height="30"/><use href="#sheep" x="450" y="200" width="44" height="30"/><use href="#sheep" x="300" y="240" width="44" height="30"/><use href="#sheep" x="380" y="246" width="44" height="30"/><use href="#shepherd" x="540" y="140" width="48" height="120"/></symbol>
+<symbol id="asiamap" viewBox="0 0 800 300"><rect width="800" height="300" fill="#dfe8ea"/><path d="M60 120 Q140 60 260 70 Q380 40 520 60 Q640 50 740 90 L760 180 Q660 230 520 220 Q380 250 240 230 Q120 230 70 190 Z" fill="#efe2c6" stroke="#c9b48a" stroke-width="2"/><path d="M260 70 L250 230 M420 50 L400 240 M560 60 L560 220 M200 150 H700" stroke="#d9c9a3" stroke-width="1.5" stroke-dasharray="5 5"/></symbol>
+<symbol id="link" viewBox="0 0 30 40"><rect x="4" y="3" width="22" height="34" rx="11" fill="none" stroke="#8a6a4f" stroke-width="5"/></symbol>
+<symbol id="ledger" viewBox="0 0 60 44"><path d="M30 6 Q16 0 3 4 V40 Q16 36 30 42 Q44 36 57 40 V4 Q44 0 30 6Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M30 6 V42 M8 14 H24 M8 20 H24 M8 26 H22 M36 14 H52 M36 20 H52" stroke="#c9b48a" stroke-width="1.6"/></symbol>
+<symbol id="fire" viewBox="0 0 40 40"><path d="M6 36 L34 30 M6 30 L34 36" stroke="#7a5536" stroke-width="4"/><path d="M12 32 Q10 18 20 6 Q22 18 28 20 Q30 26 26 32 Z" fill="#e9973f"/><path d="M16 32 Q16 22 21 16 Q24 24 24 32 Z" fill="#f6d58e"/></symbol>
+<symbol id="tent" viewBox="0 0 60 40"><path d="M2 38 L30 4 L58 38 Z" fill="#cbb08a"/><path d="M30 4 V38" stroke="#a58262" stroke-width="2"/></symbol>
+<symbol id="lbldoor" viewBox="0 0 60 90"><rect x="4" y="4" width="52" height="84" rx="3" fill="#a7805c" stroke="#7a5536" stroke-width="3"/><circle cx="46" cy="50" r="3" fill="#e9b25e"/></symbol>
+<symbol id="folder" viewBox="0 0 60 44"><path d="M2 8 H22 L26 14 H58 V42 H2 Z" fill="#e9c47a" stroke="#b9925b" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="vines" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e3b8"/><circle cx="660" cy="60" r="38" fill="#fff3cf" opacity=".85"/><path d="M0 160 Q300 100 800 140 V300 H0Z" fill="#d9c08a"/><g stroke="#7a5536" stroke-width="2"><path d="M40 300 L300 150 M140 300 L380 152 M240 300 L460 150 M340 300 L540 150 M440 300 L620 148 M540 300 L700 146 M640 300 L780 146"/></g><g fill="#7e9b5a"><circle cx="120" cy="250" r="9"/><circle cx="200" cy="205" r="8"/><circle cx="260" cy="170" r="7"/><circle cx="220" cy="250" r="9"/><circle cx="300" cy="205" r="8"/><circle cx="350" cy="172" r="7"/><circle cx="320" cy="250" r="9"/><circle cx="400" cy="205" r="8"/><circle cx="440" cy="172" r="7"/><circle cx="420" cy="250" r="9"/><circle cx="500" cy="205" r="8"/><circle cx="530" cy="172" r="7"/><circle cx="520" cy="250" r="9"/><circle cx="600" cy="205" r="8"/><circle cx="610" cy="172" r="7"/><circle cx="620" cy="250" r="9"/><circle cx="690" cy="205" r="8"/></g></symbol>
+<symbol id="lampscroll" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><rect x="560" y="40" width="110" height="90" fill="#cfe0e6" stroke="#a7805c" stroke-width="6"/><rect x="0" y="230" width="800" height="70" fill="#d9c8a6"/><use href="#table" x="200" y="190" width="400" height="90"/><use href="#scroll" x="250" y="150" width="220" height="60"/><use href="#lamp" x="480" y="110" width="60" height="90"/></symbol>
+<symbol id="ephesus" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect x="0" y="230" width="800" height="70" fill="#9fb4bf"/><path d="M420 230 Q520 90 700 120 L760 230Z" fill="#d8c8a6"/><g fill="none" stroke="#b8a07a" stroke-width="4"><path d="M480 220 Q560 140 680 160"/><path d="M500 220 Q570 160 670 175"/><path d="M520 220 Q580 180 660 190"/></g><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="150" width="120" height="80"/><rect x="230" y="170" width="90" height="60"/></g><g fill="#d8c8a6"><rect x="90" y="156" width="8" height="74"/><rect x="120" y="156" width="8" height="74"/><rect x="150" y="156" width="8" height="74"/><rect x="180" y="156" width="8" height="74"/></g><path d="M74 150 L140 120 L206 150Z" fill="#c9a77a"/></symbol>
+<symbol id="dawntown" viewBox="0 0 800 300"><rect width="800" height="300" fill="#3a4a66"/><rect y="160" width="800" height="60" fill="#e9c48a" opacity=".55"/><path d="M0 200 Q400 180 800 200 V300 H0Z" fill="#4f5d58"/><rect x="0" y="230" width="360" height="70" fill="#6d8a99"/><g fill="#2f3a48"><rect x="40" y="170" width="60" height="40"/><rect x="110" y="160" width="70" height="50"/><rect x="190" y="175" width="50" height="35"/><rect x="250" y="165" width="64" height="45"/></g><path d="M500 210 Q600 150 760 170" stroke="#e9dcc0" stroke-width="3" fill="none" stroke-dasharray="6 6"/><use href="#per" x="610" y="140" width="22" height="56" style="color:#8a6a4f"/></symbol>
+<symbol id="nightroom" viewBox="0 0 800 300"><rect width="800" height="300" fill="#2f3a52"/><rect x="460" y="50" width="200" height="140" fill="#1f2838" stroke="#a7805c" stroke-width="8"/><g fill="#f4ead6"><circle cx="500" cy="80" r="2"/><circle cx="560" cy="100" r="1.6"/><circle cx="620" cy="70" r="2"/></g><g fill="#3a4660"><rect x="480" y="150" width="30" height="40"/><rect x="520" y="140" width="40" height="50"/><rect x="580" y="155" width="30" height="35"/></g><rect y="240" width="800" height="60" fill="#45546a"/><use href="#lamp" x="260" y="160" width="60" height="90"/><circle cx="290" cy="190" r="90" fill="url(#glowr)" opacity=".6"/><path d="M150 250 L180 120 Q200 110 210 130 L190 250Z" fill="none" stroke="#c9a061" stroke-width="5"/><path d="M160 240 L190 130 M170 245 L198 140 M180 248 L204 150" stroke="#e9dcc0" stroke-width="1"/></symbol>
+<symbol id="spring" viewBox="0 0 800 300"><rect width="800" height="300" fill="#eef0ea"/><path d="M0 220 Q400 190 800 230 V300 H0Z" fill="#c9d6b4"/><g fill="#b8a991"><ellipse cx="360" cy="200" rx="50" ry="22"/><ellipse cx="440" cy="196" rx="40" ry="18"/></g><path d="M400 200 Q420 240 470 260 T640 300" stroke="#8fb3c4" stroke-width="16" fill="none" stroke-linecap="round"/><circle cx="400" cy="196" r="12" fill="#a9c9d6"/></symbol>
+<symbol id="stadium" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e3c2"/><g fill="#e2d3b2"><rect y="40" width="800" height="20"/><rect y="70" width="800" height="20"/><rect y="100" width="800" height="20"/></g><rect y="160" width="800" height="100" fill="#d9b88a"/><path d="M0 210 H800" stroke="#fffaf0" stroke-width="3" stroke-dasharray="20 14"/><rect x="700" y="130" width="8" height="90" fill="#7a5536"/><circle cx="704" cy="128" r="14" fill="none" stroke="#7e9b5a" stroke-width="5"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveskyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3a46a"/><stop offset="1" stop-color="#f3d6a4"/></linearGradient>
+<linearGradient id="nightg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#232c44"/><stop offset="1" stop-color="#46506a"/></linearGradient>
+<symbol id="campbase" viewBox="0 0 800 300"><path d="M0 120 L120 80 L230 110 L360 60 L470 100 L600 70 L800 110 V300 H0Z" fill="#cdb08a" opacity=".7"/><rect y="170" width="800" height="130" fill="#e3cfa6"/><path d="M0 180 Q400 160 800 182 V300 H0Z" fill="#dcc497"/><use href="#tent" x="40" y="140" width="90" height="60"/><use href="#tent" x="150" y="128" width="70" height="46"/><use href="#tent" x="600" y="132" width="80" height="54"/><use href="#tent" x="700" y="146" width="90" height="60"/><use href="#tent" x="520" y="124" width="60" height="40"/></symbol>
+<symbol id="awning" viewBox="0 0 160 120"><path d="M10 30 L80 6 L150 30Z" fill="#b5694a"/><path d="M10 30 H150" stroke="#7a5536" stroke-width="3"/><path d="M22 30 V118 M138 30 V118" stroke="#7a5536" stroke-width="4"/><use href="#sit" x="55" y="40" width="50" height="78" style="color:#6d4f3a"/></symbol>
+<symbol id="queue" viewBox="0 0 400 120"><g style="color:#8a6a4f"><use href="#per" x="0" y="20" width="22" height="56"/><use href="#per" x="30" y="30" width="22" height="56" style="color:#56607a"/><use href="#per" x="60" y="22" width="22" height="56" style="color:#a8423f"/><use href="#per" x="92" y="36" width="22" height="56"/><use href="#per" x="124" y="28" width="22" height="56" style="color:#6f817b"/><use href="#per" x="156" y="44" width="22" height="56" style="color:#56607a"/><use href="#per" x="190" y="34" width="22" height="56"/><use href="#per" x="222" y="50" width="22" height="56" style="color:#a58262"/><use href="#per" x="256" y="40" width="22" height="56" style="color:#6f817b"/><use href="#per" x="290" y="56" width="22" height="56"/><use href="#per" x="322" y="46" width="22" height="56" style="color:#a8423f"/><use href="#per" x="356" y="60" width="22" height="56" style="color:#56607a"/></g></symbol>
+<symbol id="grp" viewBox="0 0 120 80"><ellipse cx="60" cy="72" rx="56" ry="8" fill="#000" opacity=".06"/><use href="#sit" x="42" y="14" width="36" height="58" style="color:#6d4f3a"/><use href="#per" x="4" y="22" width="20" height="50" style="color:#56607a"/><use href="#per" x="96" y="22" width="20" height="50" style="color:#a8423f"/><use href="#per" x="22" y="30" width="18" height="44" style="color:#6f817b"/><use href="#per" x="82" y="30" width="18" height="44" style="color:#a58262"/></symbol>
+<symbol id="campday" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><circle cx="140" cy="60" r="34" fill="#fff3cf"/><use href="#campbase" width="800" height="300"/><use href="#awning" x="320" y="120" width="160" height="120"/><use href="#queue" x="430" y="150" width="360" height="110"/></symbol>
+<symbol id="campeve" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#eveskyg)"/><circle cx="700" cy="150" r="40" fill="#f7c27a" opacity=".9"/><use href="#campbase" width="800" height="300"/><rect width="800" height="300" fill="#7a4a2a" opacity=".12"/><g fill="#7a5536" opacity=".18"><path d="M330 240 L120 262 L130 250 Z"/><path d="M440 252 L200 286 L210 272Z"/><path d="M560 262 L330 296 L340 284Z"/></g><use href="#awning" x="320" y="120" width="160" height="120"/><use href="#queue" x="430" y="150" width="360" height="110"/></symbol>
+<symbol id="campgrp" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><circle cx="140" cy="60" r="34" fill="#fff3cf"/><use href="#campbase" width="800" height="300"/><use href="#awning" x="340" y="110" width="120" height="90"/><use href="#grp" x="40" y="196" width="130" height="86"/><use href="#grp" x="210" y="220" width="130" height="86"/><use href="#grp" x="470" y="214" width="130" height="86"/><use href="#grp" x="640" y="196" width="130" height="86"/><use href="#grp" x="560" y="160" width="90" height="60"/><use href="#grp" x="150" y="160" width="90" height="60"/></symbol>
+<symbol id="mtnnight" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#nightg)"/><g fill="#f4ead6"><circle cx="80" cy="40" r="2"/><circle cx="170" cy="80" r="1.5"/><circle cx="260" cy="30" r="2"/><circle cx="380" cy="60" r="1.5"/><circle cx="520" cy="26" r="2"/><circle cx="640" cy="70" r="1.6"/><circle cx="730" cy="34" r="2"/><circle cx="460" cy="96" r="1.2"/></g><path d="M0 300 L0 220 Q160 160 300 120 Q380 96 430 110 Q560 150 800 230 V300Z" fill="#3a4258"/><path d="M360 120 Q400 100 440 116 L436 128 Q400 116 364 130Z" fill="#4a5470"/></symbol>
+<symbol id="hall" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e9d6"/><rect y="230" width="800" height="70" fill="#e2d2b2"/><rect x="40" y="40" width="70" height="110" fill="#d9e4e6" stroke="#b49a76" stroke-width="5"/><rect x="690" y="40" width="70" height="110" fill="#d9e4e6" stroke="#b49a76" stroke-width="5"/><path d="M370 160 H430 L420 236 H380Z" fill="#a7805c"/><rect x="362" y="152" width="76" height="12" rx="2" fill="#8a6a4f"/></symbol>
+<symbol id="chairrow" viewBox="0 0 560 60"><g fill="#b48e62"><rect x="0" y="0" width="34" height="30" rx="3"/><rect x="60" y="0" width="34" height="30" rx="3"/><rect x="120" y="0" width="34" height="30" rx="3"/><rect x="180" y="0" width="34" height="30" rx="3"/><rect x="240" y="0" width="34" height="30" rx="3"/><rect x="300" y="0" width="34" height="30" rx="3"/><rect x="360" y="0" width="34" height="30" rx="3"/><rect x="420" y="0" width="34" height="30" rx="3"/><rect x="480" y="0" width="34" height="30" rx="3"/></g><g stroke="#8a6a4f" stroke-width="3"><path d="M4 30V56 M30 30V56 M64 30V56 M90 30V56 M124 30V56 M150 30V56 M184 30V56 M210 30V56 M244 30V56 M270 30V56 M304 30V56 M330 30V56 M364 30V56 M390 30V56 M424 30V56 M450 30V56 M484 30V56 M510 30V56"/></g></symbol>
+<symbol id="wall" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><g fill="#d8c3a0"><rect x="40" y="70" width="90" height="70"/><rect x="150" y="56" width="80" height="84"/><rect x="260" y="74" width="90" height="66"/><rect x="380" y="60" width="80" height="80"/><rect x="490" y="70" width="90" height="70"/><rect x="610" y="58" width="80" height="82"/></g><g fill="#7a5536"><rect x="74" y="104" width="20" height="36"/><rect x="180" y="96" width="20" height="44"/><rect x="296" y="106" width="20" height="34"/><rect x="410" y="100" width="20" height="40"/><rect x="526" y="104" width="20" height="36"/><rect x="640" y="98" width="20" height="42"/></g><rect y="250" width="800" height="50" fill="#d9c8a6"/></symbol>
+<symbol id="wallb" viewBox="0 0 800 120"><path d="M0 120 V20 H110 L130 50 L150 30 V120Z M190 120 V36 L210 20 H330 V60 L350 80 V120Z M400 120 V24 H520 L540 56 V120Z M590 120 V30 H700 L720 20 H800 V120Z" fill="#cbb08a" stroke="#a88d66" stroke-width="2"/><g stroke="#a88d66" stroke-width="1.5"><path d="M0 60 H140 M0 90 H150 M190 64 H330 M190 94 H350 M400 64 H540 M400 94 H540 M590 64 H800 M590 94 H800"/></g></symbol>
+<symbol id="wallfull" viewBox="0 0 800 120"><rect y="20" width="800" height="100" fill="#cbb08a" stroke="#a88d66" stroke-width="2"/><g stroke="#a88d66" stroke-width="1.5"><path d="M0 50 H800 M0 80 H800 M0 106 H800"/></g><g fill="#cbb08a" stroke="#a88d66" stroke-width="2"><rect x="20" y="6" width="30" height="16"/><rect x="120" y="6" width="30" height="16"/><rect x="220" y="6" width="30" height="16"/><rect x="320" y="6" width="30" height="16"/><rect x="420" y="6" width="30" height="16"/><rect x="520" y="6" width="30" height="16"/><rect x="620" y="6" width="30" height="16"/><rect x="720" y="6" width="30" height="16"/></g></symbol>
+<symbol id="cafe" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e4cc"/><rect y="236" width="800" height="64" fill="#d9c4a0"/><rect x="560" y="30" width="190" height="130" fill="#d6e2e2" stroke="#a7805c" stroke-width="7"/><path d="M655 30 V160 M560 95 H750" stroke="#a7805c" stroke-width="4"/><g fill="#7e9b5a"><circle cx="70" cy="190" r="22"/><circle cx="90" cy="170" r="18"/><circle cx="56" cy="168" r="16"/></g><rect x="56" y="196" width="34" height="40" fill="#b5694a"/><path d="M200 26 V70" stroke="#8a6a4f" stroke-width="2"/><path d="M184 70 H216 L208 86 H192Z" fill="#c9963f"/></symbol>
+<symbol id="i-cradle" viewBox="0 0 40 40"><path d="M6 18 Q20 36 34 18Z" fill="#e8c7a0" stroke="#a7805c" stroke-width="2"/><path d="M8 34 Q20 40 32 34" stroke="#a7805c" stroke-width="2" fill="none"/><circle cx="20" cy="16" r="4" fill="#f0d4b0"/></symbol>
+<symbol id="i-case" viewBox="0 0 40 40"><rect x="5" y="13" width="30" height="20" rx="3" fill="#8a6a4f"/><path d="M15 13 V9 H25 V13" stroke="#5a4636" stroke-width="2.5" fill="none"/><path d="M5 21 H35" stroke="#5a4636" stroke-width="1.5"/></symbol>
+<symbol id="i-hcup" viewBox="0 0 40 40"><path d="M11 10 H29 L26 34 H14Z" fill="#fffaf0" stroke="#8fa9b4" stroke-width="2"/><path d="M27 6 L22 18" stroke="#8fa9b4" stroke-width="2"/><path d="M17 22 H23 M20 19 V25" stroke="#c95f5f" stroke-width="2"/></symbol>
+<symbol id="puzzle" viewBox="0 0 50 50"><path d="M6 14 H18 Q16 6 24 6 Q32 6 30 14 H42 V26 Q50 24 50 32 Q50 40 42 38 V46 H6Z" fill="#d9b88a" stroke="#a7805c" stroke-width="2"/></symbol>
+<symbol id="heart" viewBox="0 0 40 36"><path d="M20 34 C4 22 0 14 6 7 C12 1 18 5 20 10 C22 5 28 1 34 7 C40 14 36 22 20 34Z" fill="#c95f5f"/></symbol>
+<symbol id="gate" viewBox="0 0 60 60"><path d="M4 58 V8 M56 58 V8" stroke="#7a5536" stroke-width="5"/><g stroke="#a7805c" stroke-width="3"><path d="M8 16 H52 M8 50 H52 M14 16 V50 M24 16 V50 M34 16 V50 M44 16 V50"/></g></symbol>
+<symbol id="gateopen" viewBox="0 0 60 60"><path d="M4 58 V8 M56 58 V8" stroke="#7a5536" stroke-width="5"/><g stroke="#a7805c" stroke-width="3"><path d="M8 16 L20 22 M8 50 L20 48 M10 17 V49 M16 20 V48"/></g></symbol>
+<symbol id="rolecard" viewBox="0 0 160 60"><rect x="1" y="1" width="158" height="58" rx="8" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/></symbol>
+<symbol id="body" viewBox="0 0 120 200"><circle cx="60" cy="26" r="20" fill="none" stroke="#a7805c" stroke-width="3"/><path d="M60 46 V120 M60 64 L22 104 M60 64 L98 104 M60 120 L34 190 M60 120 L86 190" stroke="#a7805c" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="tick" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="#7e9b5a"/><path d="M8 15 L13 20 L22 10" stroke="#fffaf0" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+<symbol id="box" viewBox="0 0 40 30"><rect x="2" y="4" width="36" height="24" fill="#c9a77a" stroke="#8a6a4f" stroke-width="2"/><path d="M2 12 H38" stroke="#8a6a4f" stroke-width="2"/></symbol>
+<symbol id="rota" viewBox="0 0 240 150"><rect x="2" y="2" width="236" height="146" rx="6" fill="#fffaf0" stroke="#a7805c" stroke-width="3"/><g fill="none" stroke="#d9c9a3" stroke-width="2"><path d="M2 40 H238 M2 76 H238 M2 112 H238 M80 2 V148 M160 2 V148"/></g><g fill="#c9b48a"><rect x="14" y="52" width="50" height="10" rx="3"/><rect x="94" y="52" width="50" height="10" rx="3"/><rect x="174" y="52" width="50" height="10" rx="3"/><rect x="14" y="88" width="50" height="10" rx="3"/><rect x="94" y="88" width="50" height="10" rx="3"/><rect x="14" y="124" width="50" height="10" rx="3"/><rect x="174" y="124" width="50" height="10" rx="3"/></g><g fill="#a58262"><rect x="14" y="16" width="50" height="10" rx="3"/><rect x="94" y="16" width="50" height="10" rx="3"/><rect x="174" y="16" width="50" height="10" rx="3"/></g><circle cx="120" cy="-2" r="5" fill="#c95f5f"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="greyskyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a96a3"/><stop offset="1" stop-color="#c6ccd0"/></linearGradient>
+<symbol id="stormboat" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#greyskyg)"/><path d="M0 200 Q60 170 120 200 T240 200 T360 200 T480 200 T600 200 T720 200 T840 200 V300 H0Z" fill="#6f8796"/><path d="M0 230 Q50 210 100 232 T200 232 T300 232 T400 232 T500 232 T600 232 T700 232 T800 232 V300 H0Z" fill="#587282"/><g transform="rotate(-10 400 190)"><path d="M320 190 H480 L460 222 H340Z" fill="#7a5536"/><path d="M398 190 V110" stroke="#5a4636" stroke-width="5"/><path d="M402 116 L452 182 H402Z" fill="#e9dcc0"/></g><path d="M0 260 Q40 244 80 262 T160 262 T240 262 T320 262 T400 262 T480 262 T560 262 T640 262 T720 262 T800 262 V300 H0Z" fill="#4b6574"/></symbol>
+<symbol id="netboat" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect y="170" width="800" height="130" fill="#9fb4bf"/><path d="M0 190 Q200 180 400 192 T800 188" stroke="#b9cad2" stroke-width="3" fill="none"/><path d="M240 170 H560 L530 214 H270Z" fill="#8a6a4f"/><path d="M240 170 H560" stroke="#5a4636" stroke-width="4"/><use href="#sit" x="280" y="98" width="50" height="80" style="color:#56607a"/><use href="#sit" x="470" y="98" width="50" height="80" style="color:#a8423f"/><g stroke="#a7805c" stroke-width="1.5" fill="none"><path d="M330 150 Q400 200 470 150"/><path d="M340 140 L460 170 M340 170 L460 140 M360 136 L360 180 M380 134 L380 186 M400 134 L400 188 M420 134 L420 186 M440 136 L440 180"/></g></symbol>
+<symbol id="galhill" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e8c6"/><circle cx="660" cy="64" r="34" fill="#fff3cf"/><rect y="200" width="800" height="100" fill="#9fb4bf" opacity=".6"/><path d="M0 220 Q200 120 420 150 T800 190 V300 H0Z" fill="#c9d6a0"/><path d="M0 260 Q300 220 800 250 V300 H0Z" fill="#b2c28a"/><g fill="#8a9a6a"><circle cx="120" cy="196" r="16"/><circle cx="560" cy="170" r="14"/><circle cx="700" cy="196" r="18"/></g></symbol>
+<symbol id="aaronhur" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#eveskyg)"/><path d="M0 300 L0 230 Q200 150 400 140 Q600 150 800 230 V300Z" fill="#c9a57a"/><path d="M0 300 L0 270 Q400 240 800 270 V300Z" fill="#b48e62"/><ellipse cx="400" cy="150" rx="26" ry="10" fill="#9a8a76"/><use href="#sit" x="374" y="70" width="52" height="84" style="color:#6d4f3a"/><path d="M386 94 L370 54 M414 94 L430 54" stroke="#6d4f3a" stroke-width="7" stroke-linecap="round"/><use href="#per" x="336" y="66" width="30" height="76" style="color:#8a6a4f"/><use href="#per" x="434" y="66" width="30" height="76" style="color:#56607a"/><path d="M360 86 L372 60 M440 86 L428 60" stroke="#e9c48a" stroke-width="4" stroke-linecap="round"/></symbol>
+<symbol id="cell" viewBox="0 0 800 300"><rect width="800" height="300" fill="#a8998a"/><g stroke="#968776" stroke-width="2"><path d="M0 60 H800 M0 120 H800 M0 180 H800 M0 240 H800 M100 0 V60 M300 0 V60 M500 0 V60 M700 0 V60 M200 60 V120 M400 60 V120 M600 60 V120 M100 120 V180 M300 120 V180 M500 120 V180 M700 120 V180"/></g><rect x="540" y="40" width="80" height="70" fill="#f3e0b0"/><g stroke="#5a4636" stroke-width="5"><path d="M560 40 V110 M580 40 V110 M600 40 V110"/></g><path d="M540 110 L380 300 H520 L620 110Z" fill="#f6e8c6" opacity=".35"/><rect y="250" width="800" height="50" fill="#8a7b6c"/><use href="#sit" x="300" y="170" width="56" height="90" style="color:#6d4f3a"/><rect x="350" y="214" width="70" height="8" fill="#a7805c"/><rect x="360" y="204" width="40" height="10" fill="#fffaf0"/></symbol>
+<symbol id="entrance" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e9d6"/><rect y="240" width="800" height="60" fill="#e2d2b2"/><rect x="80" y="50" width="130" height="190" fill="#d9e4e6" stroke="#a7805c" stroke-width="8"/><path d="M145 50 V240" stroke="#a7805c" stroke-width="4"/><rect x="250" y="190" width="120" height="14" fill="#a7805c"/><path d="M262 204 V240 M358 204 V240" stroke="#8a6a4f" stroke-width="4"/><g fill="#fffaf0" stroke="#d9c9a3"><rect x="262" y="178" width="26" height="12"/><rect x="296" y="178" width="26" height="12"/></g><use href="#chairrow" x="480" y="200" width="300" height="34"/></symbol>
+<symbol id="heater" viewBox="0 0 40 40"><rect x="4" y="10" width="32" height="26" rx="4" fill="#d9c9a3" stroke="#a7805c" stroke-width="2"/><g stroke="#c95f5f" stroke-width="2"><path d="M10 16 V30 M16 16 V30 M22 16 V30 M28 16 V30"/></g></symbol>
+<symbol id="phone" viewBox="0 0 20 34"><rect x="1" y="1" width="18" height="32" rx="4" fill="#2b3445"/><rect x="3" y="5" width="14" height="22" fill="#9fb4bf"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="courtyard" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect y="40" width="800" height="150" fill="#e6d4b2"/><g fill="#d8c3a0"><rect x="60" y="40" width="30" height="150"/><rect x="250" y="40" width="30" height="150"/><rect x="520" y="40" width="30" height="150"/><rect x="710" y="40" width="30" height="150"/></g><path d="M0 40 H800" stroke="#b49a76" stroke-width="8"/><rect y="190" width="800" height="110" fill="#d9c49c"/><ellipse cx="400" cy="250" rx="260" ry="34" fill="#cbb48a"/><g><use href="#sit" x="170" y="190" width="40" height="64" style="color:#8a6a4f"/><use href="#sit" x="230" y="200" width="40" height="64" style="color:#56607a"/><use href="#sit" x="300" y="206" width="40" height="64" style="color:#6d4f3a"/><use href="#sit" x="460" y="206" width="40" height="64" style="color:#a58262"/><use href="#sit" x="530" y="200" width="40" height="64" style="color:#6f817b"/><use href="#sit" x="590" y="190" width="40" height="64" style="color:#8a6a4f"/><use href="#per" x="388" y="160" width="28" height="72" style="color:#56607a"/></g></symbol>
+<symbol id="scribe" viewBox="0 0 800 300"><use href="#courtyard" width="800" height="300"/><rect x="330" y="236" width="140" height="16" fill="#a7805c"/><use href="#scroll" x="340" y="214" width="120" height="30"/><use href="#pen" x="420" y="210" width="40" height="10"/></symbol>
+<symbol id="housechurch" viewBox="0 0 800 300"><rect width="800" height="300" fill="#efe2c6"/><rect x="580" y="40" width="100" height="80" fill="#cfe0e6" stroke="#a7805c" stroke-width="6"/><rect y="230" width="800" height="70" fill="#d9c8a6"/><use href="#lamp" x="120" y="150" width="40" height="60"/><circle cx="140" cy="170" r="70" fill="url(#glowr)" opacity=".5"/><use href="#per" x="380" y="120" width="34" height="90" style="color:#6d4f3a"/><use href="#scroll" x="356" y="140" width="80" height="22"/><g><use href="#sit" x="200" y="170" width="44" height="70" style="color:#56607a"/><use href="#sit" x="260" y="176" width="44" height="70" style="color:#a8423f"/><use href="#sit" x="480" y="176" width="44" height="70" style="color:#6f817b"/><use href="#sit" x="540" y="170" width="44" height="70" style="color:#a58262"/><use href="#sit" x="610" y="180" width="40" height="64" style="color:#8a6a4f"/></g></symbol>
+<symbol id="antiochmap" viewBox="0 0 800 300"><rect width="800" height="300" fill="#9fb4bf"/><path d="M380 0 H800 V300 H560 Q520 240 500 180 Q470 120 420 90 Q390 60 380 0Z" fill="#e3cfa6"/><path d="M380 0 Q390 60 420 90 Q470 120 500 180 Q520 240 560 300" stroke="#c9b48a" stroke-width="3" fill="none"/><circle cx="560" cy="60" r="7" fill="#c9963f"/><text x="600" y="64" class="tiny2" style="text-anchor:start">Antioch</text><circle cx="600" cy="250" r="7" fill="#c9963f"/><text x="640" y="254" class="tiny2" style="text-anchor:start">Jerusalem</text><path d="M560 66 Q620 150 600 244" stroke="#8a6a4f" stroke-width="2.5" stroke-dasharray="6 6" fill="none"/></symbol>
+<symbol id="nightwall" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#nightg)"/><circle cx="640" cy="60" r="26" fill="#f4ead6"/><use href="#wallb" x="0" y="140" width="800" height="120"/><rect width="800" height="300" fill="#232c44" opacity=".35"/><rect y="260" width="800" height="40" fill="#3a4258"/></symbol>
+<symbol id="wallday" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><use href="#wallb" x="0" y="80" width="800" height="120"/><rect y="200" width="800" height="100" fill="#dcc497"/><path d="M640 100 h40 v100 h-40z" fill="#5a4636"/></symbol>
+<symbol id="clock" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27" fill="#fffaf0" stroke="#5a4636" stroke-width="3"/><g stroke="#a7805c" stroke-width="2"><path d="M30 6 V10 M30 50 V54 M6 30 H10 M50 30 H54"/></g><circle cx="30" cy="30" r="2.5" fill="#5a4636"/></symbol>
+<symbol id="fence" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f6e8c6"/><circle cx="660" cy="60" r="36" fill="#fff3cf"/><rect x="60" y="60" width="260" height="170" fill="#e2d2b2" stroke="#b49a76" stroke-width="4"/><path d="M50 60 L190 10 L330 60Z" fill="#b5694a"/><rect y="230" width="800" height="70" fill="#c9d6a0"/><g fill="#fffaf0" stroke="#d9c9a3"><rect x="380" y="170" width="16" height="70"/><rect x="410" y="170" width="16" height="70"/><rect x="440" y="170" width="16" height="70"/><rect x="470" y="170" width="16" height="70"/></g><g fill="#c9b48a"><rect x="500" y="170" width="16" height="70"/><rect x="530" y="170" width="16" height="70"/><rect x="560" y="170" width="16" height="70"/></g><path d="M370 190 H590 M370 220 H590" stroke="#d9c9a3" stroke-width="5"/><use href="#per" x="600" y="160" width="30" height="76" style="color:#56607a"/></symbol>
+<symbol id="nightroom2" viewBox="0 0 800 300"><rect width="800" height="300" fill="#4a5470"/><rect x="560" y="40" width="160" height="110" fill="#232c44" stroke="#8a7b6c" stroke-width="6"/><rect y="230" width="800" height="70" fill="#5a6278"/><rect x="200" y="200" width="400" height="16" fill="#8a6a4f"/><g><use href="#sit" x="190" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="260" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="490" y="140" width="44" height="70" style="color:#7a8296"/><use href="#sit" x="420" y="140" width="44" height="70" style="color:#7a8296"/></g></symbol>
+<symbol id="sheet" viewBox="0 0 200 260"><rect x="2" y="2" width="196" height="256" rx="4" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="twodoors" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f3e9d6"/><rect y="250" width="800" height="50" fill="#e2d2b2"/><rect x="150" y="60" width="150" height="190" fill="#a7805c"/><rect x="160" y="70" width="130" height="180" fill="#c9a77a"/><circle cx="276" cy="160" r="5" fill="#5a4636"/><rect x="500" y="60" width="150" height="190" fill="#7a6a58"/><rect x="510" y="70" width="130" height="180" fill="#9a8a76"/><circle cx="626" cy="160" r="5" fill="#3a3028"/></symbol>
+<symbol id="shepseek" viewBox="0 0 800 300"><use href="#flockhill" width="800" height="300"/><g opacity=".9"><path d="M560 200 Q620 170 700 150" stroke="#c9963f" stroke-width="2" stroke-dasharray="5 5" fill="none"/><use href="#shepherd" x="540" y="140" width="30" height="76"/><g fill="#b8a991"><ellipse cx="720" cy="150" rx="26" ry="12"/><ellipse cx="690" cy="160" rx="18" ry="9"/></g><use href="#sheep" x="704" y="122" width="34" height="24"/></g></symbol>
+<symbol id="village" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f4e4c2"/><g fill="#e3cfa6" stroke="#c9b48a"><rect x="40" y="80" width="160" height="150"/><rect x="230" y="60" width="140" height="170"/><rect x="560" y="70" width="180" height="160"/></g><g fill="#7a5536"><rect x="100" y="170" width="34" height="60"/><rect x="290" y="160" width="30" height="70"/><rect x="630" y="160" width="34" height="70"/></g><rect y="230" width="800" height="70" fill="#dcc497"/><rect x="380" y="200" width="180" height="34" fill="#cbb08a" stroke="#a88d66"/><use href="#sit" x="400" y="140" width="44" height="70" style="color:#56607a"/><g transform="translate(980 0) scale(-1 1)"><use href="#sit" x="460" y="140" width="44" height="70" style="color:#6d4f3a"/></g></symbol>
+<symbol id="templecourt" viewBox="0 0 800 300"><rect width="800" height="300" fill="#f1e6cf"/><rect x="100" y="40" width="600" height="160" fill="#e3cfa6"/><g fill="#d8c3a0"><rect x="130" y="40" width="26" height="160"/><rect x="230" y="40" width="26" height="160"/><rect x="330" y="40" width="26" height="160"/><rect x="444" y="40" width="26" height="160"/><rect x="544" y="40" width="26" height="160"/><rect x="644" y="40" width="26" height="160"/></g><path d="M90 40 H710" stroke="#b49a76" stroke-width="10"/><g fill="#cbb48a"><rect y="200" width="800" height="20"/><rect y="220" width="800" height="20" fill="#c3aa80"/><rect y="240" width="800" height="60" fill="#d9c49c"/></g></symbol>
+<symbol id="nightkitchen" viewBox="0 0 800 300"><rect width="800" height="300" fill="#3a4258"/><rect x="520" y="40" width="160" height="110" fill="#232c44" stroke="#8a7b6c" stroke-width="6"/><circle cx="640" cy="80" r="14" fill="#f4ead6" opacity=".8"/><rect y="230" width="800" height="70" fill="#4a5470"/><rect x="220" y="190" width="300" height="14" fill="#8a6a4f"/><path d="M240 204 V260 M500 204 V260" stroke="#6d4f3a" stroke-width="5"/><use href="#lamp" x="260" y="130" width="40" height="60"/><circle cx="280" cy="150" r="80" fill="url(#glowr)" opacity=".45"/><use href="#sit" x="340" y="120" width="56" height="90" style="color:#8a96a8"/><use href="#cup" x="404" y="168" width="22" height="22"/></symbol>
+</defs></svg>
+
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome to Lesson">Lesson 7 · Book chapter 7 · Part 2: Learn the Craft</p>
+ <h1 class="b up" data-at="Welcome to Lesson">The Conversation You’re Avoiding</h1>
+ <svg class="scene" viewBox="0 0 800 380" aria-hidden="true"><g class="cam">
+  <rect width="800" height="380" fill="url(#creamg)"/>
+  <path d="M60 330 H740" stroke="#c9963f" stroke-width="2.5"/>
+  <use href="#doorlight" x="300" y="20" width="280" height="290"/><use href="#stairs" x="250" y="110" width="300" height="215"/>
+  <path d="M260,305 285,305 L285,290 310,290 L310,275 335,275 L335,260 360,260 L360,245 385,245 L385,230 410,230" stroke="#f0c77a" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+  <use href="#per" x="386" y="171" width="22" height="56" style="color:#56607a"/>
+  <g class="b pop" data-at="In Lesson 6 we learned"><use href="#sheet" x="416" y="200" width="20" height="26"/></g>
+  <g class="b" data-at="Today is the last lesson"><rect x="408" y="220" width="30" height="16" rx="3" fill="none" stroke="#c9963f" stroke-width="2.5" stroke-dasharray="5 3"/></g>
+  <g class="b up" data-at="A volunteer who keeps arriving late"><use href="#per" x="150" y="280" width="20" height="50" style="color:#a58262"/></g>
+  <g class="b pop" data-at="rehearsed it in the car"><rect x="600" y="270" width="120" height="40" rx="10" fill="#56607a"/><circle cx="625" cy="312" r="9" fill="#2b3445"/><circle cx="695" cy="312" r="9" fill="#2b3445"/><rect x="610" y="236" width="100" height="26" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><text x="660" y="254" class="tiny3" style="font-size:11px">“So I said…”</text></g>
+ </g></svg>
+ <p class="q b" data-at="How do I have the hard">How do I have the hard conversation I have been putting off — and win the person, not the argument?</p>
+</div></section>
+
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+<div class="wrap">
+ <p class="label">Two kinds of concern</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#twodoors" width="800" height="300"/>
+  <g class="b" data-at="The first is an ordinary"><rect x="160" y="70" width="130" height="180" fill="#fff3cf" opacity=".6"/><use href="#chair" x="176" y="170" width="40" height="64"/><g transform="translate(450 0) scale(-1 1)"><use href="#chair" x="176" y="170" width="40" height="64"/></g></g>
+  <g class="b pop" data-at="Someone keeps arriving late"><g class="tiny3" style="font-size:12px;text-anchor:start"><text x="20" y="90">lateness</text><text x="20" y="120">a hurtful comment</text><text x="20" y="150">a task not done</text><text x="20" y="180">an attitude</text></g></g>
+  <g class="b" data-at="The second is a matter"><use href="#shieldi" x="555" y="100" width="40" height="40"/><rect x="490" y="20" width="170" height="34" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="575" y="42" class="tiny3" style="font-size:11px">Concerns, Care and Reporting</text></g>
+  <g class="b" data-at="They go to your church's reporting"><path d="M650 220 Q700 200 740 160" stroke="#8a7b6c" stroke-width="2.5" stroke-dasharray="6 5" fill="none"/><use href="#sign" x="720" y="96" width="60" height="70"/></g>
+  <g class="b" data-at="This whole lesson"><rect x="146" y="56" width="158" height="200" fill="none" stroke="#c9963f" stroke-width="5"/></g>
+ </svg>
+ <p class="big2 b up" data-at="The first is an ordinary"><b>An ordinary difficult conversation:</b> lateness, a hurtful comment, a task not done, an attitude affecting the team.</p>
+ <p class="big2 b up" data-at="The second is a matter"><b>A matter for formal reporting:</b> abuse, harm, crime, serious safeguarding concerns.</p>
+ <p class="tag b" data-at="This whole lesson">This lesson is about the first kind. The second goes to the reporting route.</p>
+</div></section>
+
+<section class="slide" data-n="3" data-theme="light" aria-label="Slide 3">
+<div class="wrap">
+ <p class="label">Avoidance is not patience</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#nightkitchen" width="800" height="300"/>
+  <g class="b" data-at="I'm praying about it" data-until="A common reason for waiting"><rect x="30" y="20" width="200" height="30" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><text x="130" y="40" class="tiny3" style="font-size:11px">“I’m praying about it.”</text></g>
+  <g class="b" data-at="I don't want to make it worse" data-until="A common reason for waiting"><rect x="30" y="60" width="200" height="30" rx="10" fill="#fffaf0" stroke="#d9c9a3" opacity=".9"/><text x="130" y="80" class="tiny3" style="font-size:11px">“I don’t want to make it worse.”</text></g>
+  <g class="b" data-at="I'm not the right person" data-until="A common reason for waiting"><rect x="30" y="100" width="200" height="30" rx="10" fill="#fffaf0" stroke="#d9c9a3" opacity=".8"/><text x="130" y="120" class="tiny3" style="font-size:11px">“I’m not the right person.”</text></g>
+  <g class="b" data-at="It's not that serious" data-until="A common reason for waiting"><rect x="30" y="140" width="200" height="30" rx="10" fill="#fffaf0" stroke="#d9c9a3" opacity=".7"/><text x="130" y="160" class="tiny3" style="font-size:11px">“It’s not that serious.”</text></g>
+  <g class="b pop" data-at="A common reason for waiting"><text x="130" y="110" class="tiny2" style="font-size:40px;fill:#e9dcc0">?</text></g>
+  <g class="b" data-at="They tend to harden" data-until="while they are still small"><path d="M600 300 L606 270 L598 250 L610 225 L602 200" stroke="#2b3445" stroke-width="3" fill="none"/></g>
+  <g class="b" data-at="while they are still small"><path d="M600 300 L604 288" stroke="#2b3445" stroke-width="3" fill="none"/><circle cx="602" cy="292" r="22" fill="url(#glowr)"/></g>
+ </svg>
+ <p class="big2 b up" data-at="New leaders tell themselves">“I’m praying about it.” · “I don’t want to make it worse.” · “I’m not the right person.” · “It’s not that serious.”</p>
+ <p class="big2 b up" data-at="Work out what is making you hesitate">Work out what is making you hesitate.</p>
+ <p class="tag b" data-at="The kindest leaders">Have hard conversations early, while they are still small.</p>
+</div></section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+<div class="wrap">
+ <p class="label">Matthew 18:12–17</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#shepseek" width="800" height="300"/>
+  <g class="b" data-at="If your brother sins against you"><use href="#village" width="800" height="300"/></g>
+  <g class="b" data-at="If he refuses to listen to them"><use href="#housechurch" width="800" height="300"/></g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="Our passage is from Matthew" data-until="What do you think"><p class="big2">Matthew 18 · verses 12–17 · Jesus is speaking to his disciples</p></div>
+  <div class="b" data-at="What do you think" data-until="If your brother sins against you"><p class="scripture" style="font-size:.9em">“What do you think? If a man has a hundred sheep, and one of them has gone astray, does he not leave the ninety-nine on the mountains and go in search of the one that went astray? And if he finds it, truly, I say to you, he rejoices over it more than over the ninety-nine that never went astray. So it is not the will of my Father who is in heaven that one of these little ones should perish.<span class="ref">Matthew 18:12–14 (ESV)</span></p></div>
+  <div class="b" data-at="If your brother sins against you" data-until="If he refuses to listen to them"><p class="scripture">If your brother sins against you, go and tell him his fault, between you and him alone. If he listens to you, <u class="k">you have gained your brother</u>. But if he does not listen, take one or two others along with you, that every charge may be established by the evidence of two or three witnesses.<span class="ref">Matthew 18:15–16 (ESV)</span></p></div>
+  <div class="b" data-at="If he refuses to listen to them"><p class="scripture">If he refuses to listen to them, tell it to the church. And if he refuses to listen even to the church, let him be to you as a Gentile and a tax collector.”<span class="ref">Matthew 18:17 (ESV)</span></p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">The shepherd comes first</p>
+ <svg class="scene short2" viewBox="0 0 800 170" aria-hidden="true">
+  <rect width="800" height="170" fill="url(#creamg)"/>
+  <path d="M60 120 H740" stroke="#d9c9a3" stroke-width="4"/>
+  <g class="b" data-at="Then comes the shepherd"><path d="M300 120 H740" stroke="#c9963f" stroke-width="4"/></g>
+  <g fill="#fffaf0" stroke="#c9963f" stroke-width="2"><circle cx="110" cy="120" r="10"/><circle cx="300" cy="120" r="10"/><circle cx="500" cy="120" r="10"/><circle cx="690" cy="120" r="10"/></g>
+  <g class="b up" data-at="Who is the greatest"><use href="#per" x="100" y="72" width="16" height="36" style="color:#a58262"/><text x="110" y="156" class="tiny3" style="font-size:11px">18:1–10</text></g>
+  <g class="b up" data-at="Then comes the shepherd"><use href="#shepherd" x="282" y="54" width="22" height="56"/><use href="#sheep" x="306" y="86" width="26" height="18"/><text x="300" y="156" class="tiny3" style="font-size:11px">18:12–14</text></g>
+  <g class="b up" data-at="Only then does Jesus speak"><use href="#sit" x="472" y="70" width="28" height="44" style="color:#56607a"/><use href="#sit" x="502" y="70" width="28" height="44" style="color:#6d4f3a"/><text x="500" y="156" class="tiny3" style="font-size:11px">18:15–17</text></g>
+  <g class="b up" data-at="seventy-seven times"><use href="#hand" x="668" y="64" width="44" height="44"/><text x="690" y="156" class="tiny3" style="font-size:11px">18:21–35</text></g>
+  <g class="b" data-at="Its aim is restoration"><rect x="40" y="40" width="720" height="100" rx="14" fill="url(#glowr)" opacity=".35"/></g>
+  <g class="b pop" data-at="are applied by churches"><rect x="420" y="10" width="160" height="26" rx="6" fill="#fffaf0" stroke="#d9c9a3"/><text x="500" y="28" class="tiny3" style="font-size:10px">16–17 · the church’s process</text></g>
+ </svg>
+ <ul class="steps" style="list-style:none;padding-left:0;font-size:.95em">
+  <li class="b" data-at="Matthew 18 opens">Matthew 18:1–14 — the greatest, the little ones, and the one sheep</li>
+  <li class="b" data-at="Only then does Jesus speak">Matthew 18:15–17 — a brother who sins</li>
+  <li class="b" data-at="Peter asks how often">Matthew 18:21–35 — forgiveness without counting</li>
+  <li class="b" data-at="Its aim is restoration"><b>Its aim is restoration, not personal victory</b> — and wrongdoing is taken seriously.</li>
+ </ul>
+</div></section>
+
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">The original meaning</p>
+ <p class="heb b" data-at="In Greek it is" style="font-family:'Source Serif 4',serif;font-size:clamp(34px,6vw,64px)"><span class="type">ἐκέρδησας</span></p>
+ <p class="word b up" data-at="In Greek it is">ekerdēsas<span class="ref">“you have gained” · Matthew 18:15 · from kerdainō, to gain, to win</span></p>
+ <div class="twocol2 b" data-at="But in the New Testament" style="margin-top:.4em">
+  <div class="panel"><b>1 Corinthians 9:19</b><span class="ps">“that I might win more of them”</span></div>
+  <div class="panel b" data-at="And Peter speaks"><b>1 Peter 3:1</b><span>“they may be won without a word”</span></div>
+ </div>
+ <p class="gloss b" data-at="The goal is not to prove">The goal is not to prove yourself right, but to seek your brother’s restoration.</p>
+ <p class="refs b" data-at="but you cannot decide" style="text-align:center">“If he listens to you…” — you cannot decide how they will respond.</p>
+ <p class="tag b" data-at="So the aim is to gain">Gain the person, not the argument.</p>
+</div></section>
+
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">Three details that matter</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <rect width="800" height="240" fill="#f3e9d6"/><rect y="190" width="800" height="50" fill="#e2d2b2"/>
+  <use href="#chair" x="300" y="100" width="56" height="90"/><g transform="translate(1000 0) scale(-1 1)"><use href="#chair" x="300" y="100" width="56" height="90"/></g>
+  <g class="b" data-at="First, for a suitable"><rect x="370" y="40" width="60" height="110" fill="#a7805c"/><circle cx="420" cy="96" r="4" fill="#5a4636"/></g>
+  <g class="b pop" data-at="That does not forbid"><use href="#nb" x="60" y="80" width="40" height="52"/><use href="#sign" x="110" y="70" width="60" height="70"/><text x="110" y="168" class="tiny3" style="font-size:11px">advice · reporting route</text></g>
+  <g class="b walkin2" data-at="Second, it starts with you"><use href="#per" x="230" y="104" width="30" height="76" style="color:#56607a"/></g>
+  <g class="b" data-at="And third, the goal"><circle cx="400" cy="150" r="110" fill="url(#glowr)" opacity=".5"/></g>
+  <g fill="#fffaf0" stroke="#c9963f" stroke-width="2"><g class="b" data-at="First, for a suitable"><circle cx="620" cy="60" r="16"/><text x="620" y="66" class="tiny2" style="stroke:none">1</text></g><g class="b" data-at="Second, it starts with you"><circle cx="670" cy="60" r="16"/><text x="670" y="66" class="tiny2" style="stroke:none">2</text></g><g class="b" data-at="And third, the goal"><circle cx="720" cy="60" r="16"/><text x="720" y="66" class="tiny2" style="stroke:none">3</text></g></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="First, for a suitable">For a suitable ordinary wrong, it begins privately: “between you and him alone”</li>
+  <li class="b" data-at="Second, it starts with you">It starts with you going: “go and tell him”</li>
+  <li class="b" data-at="And third, the goal">The goal is to gain the person</li>
+ </ol>
+ <p class="tag2 b" data-at="And it never requires anyone">A private approach is never required where someone may be harmed.</p>
+</div></section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="label">Take the appropriate initiative</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true">
+  <use href="#templecourt" width="800" height="300"/>
+  <g class="b" data-at="Now look at something" data-until="and go. First"><use href="#per" x="380" y="150" width="30" height="76" style="color:#6d4f3a"/><use href="#basket" x="400" y="180" width="26" height="20"/></g>
+  <g class="b" data-at="and go. First"><use href="#basket" x="390" y="206" width="26" height="20"/><g class="walkin2"><use href="#per" x="560" y="150" width="30" height="76" style="color:#6d4f3a"/></g></g>
+  <g class="b" data-at="Read that carefully"><rect width="800" height="300" fill="#fbf4e4" opacity=".85"/><use href="#per" x="250" y="110" width="40" height="100" style="color:#56607a"/><use href="#per" x="510" y="110" width="40" height="100" style="color:#a8423f"/><g class="b" data-at="Read that carefully" data-until="Jesus still tells you"><path d="M300 160 H500 M310 150 L300 160 L310 170 M490 150 L500 160 L490 170" stroke="#8a6a4f" stroke-width="3" fill="none"/></g><g class="b" data-at="Jesus still tells you"><path d="M300 160 H500 M490 150 L500 160 L490 170" stroke="#c9963f" stroke-width="4" fill="none"/></g>
+   <g class="b pop" data-at="Sometimes it means seeking advice"><use href="#sign" x="370" y="190" width="60" height="70"/></g></g>
+ </svg>
+ <p class="scripture b" data-at="So if you are offering" style="font-size:.94em">“So if you are offering your gift at the altar and there remember that your brother has something against you, leave your gift there before the altar and go. First be reconciled to your brother, and then come and offer your gift.”<span class="ref">Matthew 5:23–24 (ESV)</span></p>
+ <p class="tag2 b" data-at="But taking initiative">Take appropriate initiative — which may mean a private conversation, seeking advice, or using the reporting route.</p>
+</div></section>
+
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label b" data-at="So our first point">1. Go to find out, not to deliver a verdict</p>
+ <svg class="scene short3" viewBox="0 0 800 250" aria-hidden="true">
+  <rect width="800" height="250" fill="url(#creamg)"/>
+  <g transform="translate(330 60)"><path d="M70 0 V120 M20 120 H120" stroke="#8a6a4f" stroke-width="4"/>
+   <g class="b" data-at="So our first point" data-until="So go to find out"><path d="M0 50 L140 10" stroke="#8a6a4f" stroke-width="4"/><rect x="-10" y="44" width="30" height="20" fill="#c9963f"/></g>
+   <g class="b" data-at="So go to find out"><path d="M0 30 H140" stroke="#8a6a4f" stroke-width="4"/><rect x="-10" y="20" width="30" height="20" fill="#c9963f"/><rect x="120" y="20" width="30" height="20" fill="#c9963f"/></g></g>
+  <g class="b pop" data-at="may be caring for a parent"><rect x="30" y="30" width="200" height="110" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#door" x="50" y="44" width="44" height="80"/><use href="#per" x="110" y="64" width="22" height="56" style="color:#a58262"/><use href="#per" x="140" y="70" width="20" height="52" style="color:#9a8a76"/></g>
+  <g class="b pop" data-at="The comment that hurt you"><rect x="570" y="30" width="200" height="44" rx="12" fill="#fffaf0" stroke="#d9c9a3"/><rect x="580" y="80" width="180" height="30" rx="10" fill="#efe2c6" stroke="#d9c9a3" stroke-dasharray="4 3"/></g>
+  <g class="b pop" data-at="promised something by a previous"><use href="#note" x="620" y="140" width="60" height="44"/></g>
+ </svg>
+ <p class="scripture b" data-at="Proverbs says">“If one gives an answer before he hears, it is his folly and shame.”<span class="ref">Proverbs 18:13 (ESV)</span></p>
+ <p class="scripture b" data-at="The one who states his case">“The one who states his case first seems right, until the other comes and examines him.”<span class="ref">Proverbs 18:17 (ESV)</span></p>
+</div></section>
+
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <p class="label b" data-at="Our second point">2. Open with observation, not accusation</p>
+ <div class="opener">
+  <div class="op b" data-at="an observation, its impact"><span class="ol">Observation</span><span class="b ot" data-at="For example">“I’ve noticed you’ve arrived after the start for the last three weeks.</span></div>
+  <div class="op b" data-at="its impact, and an open"><span class="ol">Impact</span><span class="b ot" data-at="We've needed someone else">We’ve needed someone else to cover the welcome.</span></div>
+  <div class="op gold b" data-at="and an open question"><span class="ol">Open question</span><span class="b ot" data-at="Is there something affecting">Is there something affecting your availability that you’d like me to understand?”</span></div>
+ </div>
+ <p class="refs b" data-at="Compare that with" style="text-align:center;color:#8a5a5a">Not: “You’ve been late three weeks running.”</p>
+ <p class="tag b" data-at="Then stop talking">Then stop talking. Let the silence sit.</p>
+</div></section>
+
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="label b" data-at="Our third point">3. Address the behaviour, not the character</p>
+ <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true">
+  <rect width="800" height="220" fill="url(#creamg)"/>
+  <g class="b pop" data-at="The set-up wasn't done"><rect x="60" y="30" width="260" height="50" rx="10" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><text x="190" y="61" class="tiny3" style="font-size:12px">“The set-up wasn’t done twice.”</text></g>
+  <g class="b pop" data-at="You're unreliable" data-until="Then say what you need"><rect x="60" y="100" width="260" height="50" rx="10" fill="#fffaf0" stroke="#c95f5f"/><text x="190" y="131" class="tiny3" style="font-size:12px;fill:#8a5a5a">“You’re unreliable.”</text></g>
+  <g class="b" data-at="Then say what you need"><rect x="60" y="100" width="260" height="50" rx="10" fill="#efe2c6" opacity=".7"/><path d="M80 125 H300" stroke="#c95f5f" stroke-width="2"/></g>
+  <g class="b pop" data-at="Then say what you need"><use href="#cal" x="400" y="40" width="80" height="80"/><circle cx="450" cy="92" r="12" fill="none" stroke="#c9963f" stroke-width="3"/></g>
+  <g class="b pop" data-at="or should we move you"><use href="#cal" x="500" y="40" width="80" height="80"/><circle cx="530" cy="78" r="12" fill="none" stroke="#7f8fa6" stroke-width="3"/></g>
+  <g class="b" data-at="And leave a door open"><rect x="660" y="30" width="80" height="150" fill="#a7805c"/><path d="M670 40 L720 54 V170 L670 172Z" fill="#fff3cf"/></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="The set-up wasn't done">Behaviour, not labels</li>
+  <li class="b" data-at="Then say what you need">Say what you need, specifically — and check it is agreed</li>
+  <li class="b" data-at="And leave a door open">Leave a door open</li>
+ </ol>
+</div></section>
+
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+<div class="wrap">
+ <p class="label b" data-at="Our fourth point">4. The truth in love is one act, not two</p>
+ <svg class="scene short2" viewBox="0 0 800 140" aria-hidden="true">
+  <rect width="800" height="140" fill="url(#creamg)"/>
+  <g class="b" data-at="Our fourth point" data-until="Most of us collapse it"><path d="M100 70 C200 30 300 110 400 70 S600 30 700 70" stroke="#c9963f" stroke-width="5" fill="none"/><path d="M100 70 C200 110 300 30 400 70 S600 110 700 70" stroke="#7a5536" stroke-width="5" fill="none"/></g>
+  <g class="b" data-at="We are loving and never" data-until="Or we are truthful"><path d="M100 90 C250 130 400 40 700 110" stroke="#c9963f" stroke-width="5" fill="none"/></g>
+  <g class="b" data-at="Or we are truthful" data-until="Galatians 6 gives"><path d="M100 70 H700" stroke="#7a5536" stroke-width="5" fill="none" stroke-dasharray="40 6 20 6"/></g>
+  <g class="b" data-at="Galatians 6 gives"><path d="M100 70 C200 30 300 110 400 70 S600 30 700 70" stroke="#c9963f" stroke-width="5" fill="none"/><path d="M100 70 C200 110 300 30 400 70 S600 110 700 70" stroke="#7a5536" stroke-width="5" fill="none"/></g>
+ </svg>
+ <p class="scripture b" data-at="Paul tells the church that">“…speaking the truth in love, we are to grow up in every way into him who is the head, into Christ.”<span class="ref">Ephesians 4:15 (ESV, excerpt)</span></p>
+ <p class="scripture b" data-at="Galatians 6 gives">“…restore him in a spirit of gentleness. Keep watch on yourself…”<span class="ref">Galatians 6:1 (ESV, excerpt)</span></p>
+ <p class="scripture b" data-at="And Proverbs reminds us">“A soft answer turns away wrath, but a harsh word stirs up anger.”<span class="ref">Proverbs 15:1 (ESV)</span></p>
+</div></section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label">If it goes badly</p>
+ <div class="threecol fourcol">
+  <div class="panel b" data-at="If they become angry"><b>Angry</b><span>Stay calm. Offer a pause.</span><span class="b" data-at="If there are threats">End it if there are threats or a safety concern, and seek support.</span></div>
+  <div class="panel b" data-at="If they become upset"><b>Upset</b><span>Stop pressing. Offer a pause, without asking for an explanation.</span></div>
+  <div class="panel b" data-at="If they disagree with your account"><b>Disagreeing</b><span>Listen and check the facts.</span><span class="b" data-at="Separate what you observed">What I saw · what I assumed</span></div>
+  <div class="panel b" data-at="And if they raise something you did"><b>About you</b><span>“Let me think about that properly.”</span></div>
+ </div>
+ <p class="tag2 b" data-at="If an ordinary disagreement does not resolve">Unresolved? Seek help through your church’s agreed process.</p>
+</div></section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="label">When it still doesn’t work out</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <g class="b" data-at="And sometimes, even when" data-until="Remember Paul and Barnabas"><use href="#nightroom" width="800" height="300"/>
+   <g class="b" data-at="the other person's part"><rect x="400" y="0" width="400" height="260" fill="#1f2838" opacity=".35"/></g></g>
+  <g class="b" data-at="Remember Paul and Barnabas" data-until="So do your part"><rect width="800" height="260" fill="#f1e6cf"/><use href="#port" x="0" y="100" width="800" height="160"/>
+   <g class="b walkin2" data-at="that they separated"><path d="M330 200 L280 200 L292 214 L320 214Z" fill="#8a6a4f"/><path d="M470 200 L520 200 L508 214 L480 214Z" fill="#8a6a4f"/></g>
+   <g class="b" data-at="And the story goes on"><circle cx="300" cy="200" r="34" fill="url(#glowr)"/><circle cx="500" cy="200" r="34" fill="url(#glowr)"/></g></g>
+  <g class="b" data-at="So do your part"><use href="#nightroom" width="800" height="300"/><rect width="800" height="300" fill="#fff3cf" opacity=".18"/></g>
+ </svg>
+ <p class="scripture b" data-at="If possible, so far">“<u class="k b" data-at="There are two qualifiers">If possible</u>, <u class="k b" data-at="There are two qualifiers">so far as it depends on you</u>, live peaceably with all.”<span class="ref">Romans 12:18 (ESV)</span></p>
+ <p class="refs b" data-at="Theirs was a disagreement" style="text-align:center">Paul and Barnabas: a disagreement between colleagues, not wrongdoing — and both continued in the Lord’s work.</p>
+ <p class="tag b" data-at="So do your part">Do your part promptly, gently and through the right route. Leave the rest with God.</p>
+</div></section>
+
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label b" data-at="Let us bring it together">Bringing it together</p>
+ <svg class="scene short2" viewBox="0 0 800 130" aria-hidden="true">
+  <path class="b draw" data-at="Let us bring it together" style="--len:700" d="M60 100 H740" stroke="#c9963f" stroke-width="2.5" fill="none"/>
+  <g class="b pop" data-at="Go to find out"><path d="M100 70 H160 M130 50 V92" stroke="#8a6a4f" stroke-width="3"/><rect x="94" y="62" width="14" height="10" fill="#c9963f"/><rect x="152" y="62" width="14" height="10" fill="#c9963f"/></g>
+  <g class="b pop" data-at="Open with what you have noticed"><g fill="#fffaf0" stroke="#c9963f"><rect x="270" y="56" width="26" height="30" rx="4"/><rect x="298" y="56" width="26" height="30" rx="4"/><rect x="326" y="56" width="26" height="30" rx="4" stroke-width="2.5"/></g></g>
+  <g class="b pop" data-at="Address the behaviour"><rect x="470" y="40" width="34" height="56" fill="#a7805c"/><path d="M474 44 L496 50 V92 L474 94Z" fill="#fff3cf"/></g>
+  <g class="b pop" data-at="And speak the truth in love"><path d="M620 70 C640 50 660 90 680 70 S710 50 720 70" stroke="#c9963f" stroke-width="4" fill="none"/><path d="M620 70 C640 90 660 50 680 70 S710 90 720 70" stroke="#7a5536" stroke-width="4" fill="none"/></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="Go to find out">Go to find out, not to deliver a verdict</li>
+  <li class="b" data-at="Open with what you have noticed">Open with observation, then stop and listen</li>
+  <li class="b" data-at="Address the behaviour">Address behaviour, ask clearly, and leave a door open</li>
+  <li class="b" data-at="And speak the truth in love">Speak the truth in love, gently, watching yourself</li>
+ </ol>
+ <p class="tag2 b" data-at="For an ordinary wrong, take">For an ordinary wrong, take the appropriate initiative. For harm or abuse, use the reporting route.</p>
+</div></section>
+
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="label">Watch it happen: the opening sentence</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <use href="#hall" width="800" height="300"/>
+  <use href="#table" x="300" y="200" width="200" height="50"/><use href="#cup" x="340" y="182" width="22" height="22"/><use href="#cup" x="430" y="182" width="22" height="22"/>
+  <use href="#sit" x="260" y="130" width="56" height="90" style="color:#56607a"/><g transform="translate(1040 0) scale(-1 1)"><use href="#sit" x="490" y="130" width="56" height="90" style="color:#a8423f"/></g>
+  <svg x="700" y="20" width="60" height="60" viewBox="0 0 60 60"><use href="#clock" width="60" height="60"/><path d="M30 30 L22 22 M30 30 L30 10" stroke="#5a4636" stroke-width="3" stroke-linecap="round"/></svg>
+  <g class="b" data-at="Then he waits" data-until="Then she says"><rect width="800" height="300" fill="#fbf4e4" opacity=".25"/></g>
+  <g class="b pop" data-at="It's my mother" data-until="I didn't want to make a fuss"><rect x="40" y="30" width="150" height="100" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#sit" x="90" y="50" width="40" height="64" style="color:#9a8a76"/><rect x="70" y="106" width="100" height="8" fill="#a7805c"/></g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="Let me show you" data-until="He says, I've noticed"><p class="big2">A volunteer has arrived late three weeks running. <span class="b" data-at="Lateness is not necessarily">This is leadership, not church discipline.</span></p></div>
+  <div class="b" data-at="He says, I've noticed" data-until="Then she says"><p class="quote sm2"><span class="b" data-at="He says, I've noticed">“I’ve noticed you’ve arrived after the start for the last three weeks.</span> <span class="b" data-at="We've needed someone else">We’ve needed someone else to cover the welcome.</span> <span class="b" data-at="Is there something affecting">Is there something affecting your availability that you’d like me to understand?”</span></p><p class="refs b" data-at="Then he waits" style="text-align:center">Then he waits.</p></div>
+  <div class="b" data-at="Then she says"><p class="quote sm2">“It’s my mother… I didn’t want to make a fuss.”</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="17" data-theme="light" aria-label="Slide 17">
+<div class="wrap">
+ <p class="label">Watch it happen: the next step</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <g class="b" data-at="He says, Thank you for telling" data-until="Afterwards he records">
+   <use href="#hall" width="800" height="300"/>
+   <use href="#table" x="300" y="180" width="200" height="50"/><use href="#cup" x="340" y="162" width="22" height="22"/><use href="#cup" x="430" y="162" width="22" height="22"/>
+   <use href="#sit" x="260" y="110" width="56" height="90" style="color:#56607a"/><g transform="translate(1040 0) scale(-1 1)"><use href="#sit" x="490" y="110" width="56" height="90" style="color:#a8423f"/></g>
+   <circle cx="400" cy="150" r="90" fill="url(#glowr)" opacity=".4"/>
+   <g class="b" data-at="The start is the most important"><g fill="#fffaf0" stroke="#d9c9a3"><rect x="40" y="20" width="80" height="26"/><rect x="122" y="20" width="80" height="26"/><rect x="204" y="20" width="80" height="26"/><rect x="286" y="20" width="110" height="26"/></g><g class="tiny3" style="font-size:10px"><text x="80" y="37">welcome</text><text x="162" y="37">games</text><text x="244" y="37">talk</text><text x="341" y="37">closing discussion</text></g>
+    <g class="b" data-at="could you lead the closing"><rect x="286" y="20" width="110" height="26" fill="none" stroke="#c9963f" stroke-width="3" stroke-dasharray="6 4"/></g></g>
+   <g class="b pop" data-at="Let's see how it goes"><use href="#cal" x="620" y="20" width="60" height="60"/><circle cx="660" cy="62" r="10" fill="none" stroke="#c9963f" stroke-width="3"/></g>
+   <g class="b pop" data-at="He tells her he will check"><rect x="560" y="96" width="200" height="30" rx="8" fill="#fffaf0" stroke="#7f8fa6" stroke-dasharray="5 4"/><text x="660" y="116" class="tiny3" style="font-size:11px">to check: supervision arrangements</text></g>
+   <g class="b" data-at="And if things change"><rect x="720" y="140" width="50" height="90" fill="#a7805c"/><path d="M726 146 L758 154 V224 L726 226Z" fill="#fff3cf"/></g>
+  </g>
+  <g class="b" data-at="Afterwards he records"><rect width="800" height="240" fill="url(#creamg)"/><use href="#stairs" x="280" y="20" width="240" height="172"/><g fill="#f0c77a"><rect x="348" y="174" width="20" height="4"/><rect x="368" y="162" width="20" height="4"/><rect x="388" y="150" width="20" height="4"/><rect x="408" y="138" width="20" height="4"/><rect x="428" y="126" width="20" height="4"/><rect x="448" y="114" width="20" height="4"/></g><g class="breathe"><rect x="468" y="102" width="20" height="4" fill="#f0c77a"/><circle cx="478" cy="104" r="22" fill="url(#glowr)"/></g></g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="He says, Thank you for telling" data-until="She thinks, and says yes"><p class="quote sm2">“Thank you for telling me.”</p><p class="quote sm2 b" data-at="Would arriving at quarter past">“Would arriving at 7:15 work, and could you lead the closing discussion instead of the welcome?”</p></div>
+  <div class="b" data-at="She thinks, and says yes" data-until="Afterwards he records"><p class="quote sm2">“Let’s see how it goes for a month, and talk again.”</p><p class="refs b" data-at="He tells her he will check" style="text-align:center">Subject to the church’s usual supervision and safeguarding arrangements.</p></div>
+  <div class="b" data-at="Afterwards he records"><p class="big2">He records only the agreed arrangement — nothing about her mother.</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="18" data-theme="light" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">Reflect, on your own, after the lesson</p>
+ <div class="journal2 breathe">
+  <p><b>Five questions are waiting on the lesson page.</b><br><span class="mute">Take them at your own pace.</span></p>
+  <p class="b" data-at="Here is the first">To start you thinking: <i>Think of the person you have in mind. What exactly are you afraid will happen if you speak to them?</i></p>
+  <p class="b" data-at="What exactly are you afraid">I am afraid that… ____________</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="19" data-theme="light" aria-label="Slide 19">
+<div class="wrap">
+ <p class="label">This week’s action</p>
+ <div class="journal2 breathe">
+  <p class="b" data-at="This week, identify">1. This week, identify the appropriate next step.</p>
+  <p class="b" data-at="If it is an ordinary conversation">2. If it is an ordinary conversation that belongs to you: prepare your opening sentence, your genuine question, and the change you hope to discuss.</p>
+  <p class="b" data-at="Arrange the conversation when">3. Arrange the conversation when appropriate, and leave room to listen.</p>
+  <p class="b" data-at="If you need advice">4. If you need advice, supervision or a reporting route, begin there instead.</p>
+  <p class="b mute" data-at="After any conversation">Afterwards, reflect on what you learned and what you agreed.</p>
+ </div>
+ <p class="tag2 b" data-at="Use the Conversation Preparation">Use the Conversation Preparation sheet on the lesson page.</p>
+</div></section>
+
+<section class="slide" data-n="20" data-theme="light" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">Remember</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true"><use href="#shepseek" width="800" height="300"/></svg>
+ <p class="scripture b" data-at="Remember these words">“If he listens to you, you have gained your brother.”<span class="ref">Matthew 18:15</span></p>
+ <p class="scripture b" data-at="And, If possible">“If possible, so far as it depends on you, live peaceably with all.”<span class="ref">Romans 12:18</span></p>
+ <p class="tag2 b" data-at="The aim is not to win">Seek the person’s good, and leave the outcome with God.</p>
+</div></section>
+
+<section class="slide" data-n="21" data-theme="light" aria-label="Slide 21">
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <svg class="scene short2" viewBox="0 0 800 200" aria-hidden="true">
+  <rect width="800" height="200" fill="url(#creamg)"/>
+  <g class="breathe"><use href="#doorlight" x="400" y="-30" width="200" height="200"/></g><use href="#stairs" x="340" y="20" width="240" height="172"/>
+  <g fill="#f0c77a"><rect x="348" y="174" width="20" height="4"/><rect x="368" y="162" width="20" height="4"/><rect x="388" y="150" width="20" height="4"/><rect x="408" y="138" width="20" height="4"/><rect x="428" y="126" width="20" height="4"/><rect x="448" y="114" width="20" height="4"/></g>
+  <use href="#per" x="470" y="66" width="18" height="44" style="color:#56607a"/>
+  <use href="#per" x="300" y="146" width="16" height="40" style="color:#a8423f"/><use href="#per" x="320" y="150" width="15" height="36" style="color:#6f817b"/><use href="#per" x="282" y="148" width="15" height="38" style="color:#a58262"/>
+  <g class="b" data-at="When you are ready, take"><rect x="468" y="102" width="20" height="4" fill="#f0c77a"/><text x="240" y="186" class="tiny2" text-anchor="end">Step 7 of 10</text></g>
+ </svg>
+ <div class="prayer stack">
+  <div class="b" data-at="Lord Jesus, good Shepherd" data-until="Help me to speak the truth"><p>Lord Jesus, good Shepherd, you went in search of the one who went astray.</p><p>Give me courage to go, and humility to listen before I speak.</p></div>
+  <div class="b" data-at="Help me to speak the truth" data-until="Make me a leader"><p>Help me to speak the truth in love, gently, watching myself.</p><p>Where peace depends on me, help me to do my part, and leave the rest with you.</p></div>
+  <div class="b" data-at="Make me a leader" data-until="When you are ready, take"><p>Make me a leader who gains people, not arguments.</p><p>In your name. Amen.</p></div>
+  <div class="b" data-at="When you are ready, take"><p class="close">When you are ready, take your next step.<br>Then stop here for today, or continue to Lesson 8.</p></div>
+ </div>
+</div></section>
+
+
+
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 20</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="lbyr-lesson-07.mp3" preload="auto"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome to Lesson 7. In Lesson 6 we learned how to lead meetings that respect people’s time. Today is the last lesson in Part 2, and it is about a conversation. You may already know who it is with. A volunteer who keeps arriving late. Someone whose comment last month is still sitting with you. A team member whose attitude everyone has noticed and nobody has addressed. You may have rehearsed it in the car and not had it. How do I have the hard conversation I have been putting off, and win the person, not the argument?", "2": "Before we go any further, we need to separate two kinds of concern. The first is an ordinary difficult conversation. Someone keeps arriving late. Someone said something that hurt. A task keeps not being done. An attitude is affecting the team. These are the conversations this lesson is about. The second is a matter for formal reporting: abuse, harm, crime, or a serious safeguarding concern. Those do not belong in a private conversation. They go to your church’s reporting route, which you will find on the Concerns, Care and Reporting page. This whole lesson, its example and its action are for the first kind only.", "3": "New leaders tell themselves several stories about why they are waiting. “I’m praying about it.” Sometimes that is true. Sometimes it means waiting for the situation to resolve itself, so that we never have to speak. “I don’t want to make it worse.” But problems that are left alone rarely stand still. They tend to harden into a permanent feature of the team. “I’m not the right person.” Sometimes that is true. The conversation may belong with your ministry head, a safeguarding lead or another person. Find out before you act. “It’s not that serious.” Perhaps. But it may still be worth understanding why it is troubling you. A common reason for waiting is fear of upsetting someone. Others include uncertainty, a difference in power, or a real risk of a harmful reaction. Work out what is making you hesitate, before assuming that the answer is simply more courage. The kindest leaders are often not the ones who avoid hard conversations. They are the ones who have them early, while they are still small.", "4": "Our passage is from Matthew chapter 18, verses 12 to 17. Jesus is speaking to his disciples. “What do you think? If a man has a hundred sheep, and one of them has gone astray, does he not leave the ninety-nine on the mountains and go in search of the one that went astray? And if he finds it, truly, I say to you, he rejoices over it more than over the ninety-nine that never went astray. So it is not the will of my Father who is in heaven that one of these little ones should perish. If your brother sins against you, go and tell him his fault, between you and him alone. If he listens to you, you have gained your brother. But if he does not listen, take one or two others along with you, that every charge may be established by the evidence of two or three witnesses. If he refuses to listen to them, tell it to the church. And if he refuses to listen even to the church, let him be to you as a Gentile and a tax collector.”", "5": "To hear this passage rightly, we need its setting. Matthew 18 opens with the disciples asking, “Who is the greatest in the kingdom of heaven?” Jesus places a child among them, and warns them not to cause “these little ones” to stumble. Then comes the shepherd, who leaves the ninety-nine to go in search of the one that went astray. Only then does Jesus speak about a brother who sins. And straight afterwards, Peter asks how often he must forgive, and Jesus answers, “seventy-seven times.” So the instructions about a brother who sins sit between a shepherd searching for the lost and a call to forgive without counting. The passage begins with the heart of a shepherd who seeks the wandering sheep. Its aim is restoration, not personal victory. But Jesus also takes wrongdoing seriously. When someone refuses correction, the later steps involve the wider church and appropriate accountability. The later steps, taking others along and telling it to the church, are applied by churches through their own agreed processes, and Lesson 3 showed us how to work within those. This lesson is about the first step: going to the person.", "6": "Notice one word in verse 15. “If he listens to you, you have gained your brother.” In Greek it is ekerdēsas, from a verb that means to gain or to win. It is often a word from trade: to gain, to make a profit. But in the New Testament it is also used for winning people. Paul says, “I have made myself a servant to all, that I might win more of them.” And Peter speaks of husbands who “may be won without a word.” The goal is not to prove yourself right. The goal is to seek your brother’s restoration. Jesus says, “If he listens to you, you have gained your brother.” You can approach someone with humility and love, but you cannot decide how they will respond. So the aim is to gain the person, not the argument.", "7": "Three details in verse 15 matter enormously. First, for a suitable ordinary wrong between believers, it begins privately: “between you and him alone.” Not in a team message. Not by telling three other people first. That does not forbid you from seeking confidential advice. And it never requires anyone to confront a person who may harm them. Concerns about abuse, harm or crime go to the reporting route, not to a private meeting. Second, it starts with you going. “Go and tell him.” Jesus does not say, wait for them to come to you. And third, the goal is to gain the person. That shapes everything about how you go.", "8": "Now look at something Jesus says in the Sermon on the Mount. “So if you are offering your gift at the altar and there remember that your brother has something against you, leave your gift there before the altar and go. First be reconciled to your brother, and then come and offer your gift.” Read that carefully. In this passage, they have something against you. And Jesus still tells you to take the initiative. In Matthew 18, Jesus teaches us to address an ordinary wrong rather than spread it among others. In Matthew 5, he teaches us to take reconciliation seriously even when someone has something against us. In both passages, we are called to take appropriate initiative rather than wait for the other person. But taking initiative does not always mean meeting privately. Sometimes it means seeking advice or using the proper reporting process.", "9": "So our first point: go to find out, not to deliver a verdict. Proverbs says, “If one gives an answer before he hears, it is his folly and shame.” And, “The one who states his case first seems right, until the other comes and examines him.” You are walking in with one side of the story, possibly your own. There is a real chance that what you are certain about is partly wrong. The volunteer who keeps arriving late may be caring for a parent every morning, and not wanting to say so. The comment that hurt you may have been about something entirely different. The team member with the difficult attitude may have been promised something by a previous leader that nobody told you about. So go to find out. That changes the whole shape of the conversation. And it is why the opening sentence matters so much.", "10": "Our second point: open with observation, not accusation. First, choose a suitable setting and format. A private, unhurried conversation is often best. A phone call, a video call or a careful written exchange may sometimes be more accessible or more suitable. Avoid a rushed conversation just before a service. And where it would help, allow the person to bring someone to support them. Then open with a simple structure: an observation, its impact, and an open question. For example: “I’ve noticed you’ve arrived after the start for the last three weeks. We’ve needed someone else to cover the welcome. Is there something affecting your availability that you’d like me to understand?” That is factual. It explains why it matters. And it does not guess at anyone’s private life. Compare that with, “You’ve been late three weeks running.” The same fact. A completely different conversation. Then stop talking. Ask the question, and let the silence sit. Many new leaders fill it, and lose what the person was about to say.", "11": "Our third point: address the behaviour, not the character. “The set-up wasn’t done twice this month” is workable. “You’re unreliable” is a label. People defend labels, rather than change behaviour. Then say what you need, specifically. End with a clear, concrete request, and check that it has been agreed. “Can you be here by quarter past nine, or should we move you to the later service, where the timing works better?” And leave a door open. Offer a change of role, a break, or help, where that is honest. You are hoping to keep this person where that is right, though sometimes responsibilities need to change.", "12": "Our fourth point: speaking the truth in love is one act, not two. In Ephesians 4, Paul tells the church that “speaking the truth in love, we are to grow up in every way into him who is the head, into Christ.” He is describing how a body grows. Honesty and love are not in tension. They belong to the same movement. Most of us collapse it in one direction or the other. We are loving and never truthful, so nothing changes and resentment builds. Or we are truthful and not loving, and we win the point and lose the person. Galatians 6 gives the posture. Those who are spiritual should “restore him in a spirit of gentleness. Keep watch on yourself, lest you too be tempted.” Restore. Gently. Watch yourself. That last phrase protects us from the quiet self-righteousness that hard conversations can breed. You may be correcting someone in an area where you are not perfect either. And Proverbs reminds us, “A soft answer turns away wrath, but a harsh word stirs up anger.” Your tone matters. But it does not control the other person’s response, and it does not make you responsible for their anger.", "13": "Sometimes it goes badly. If they become angry, stay calm and offer a pause. “Would you like to continue, or should we agree another time?” If there are threats, intimidation or a safety concern, end the conversation and seek appropriate support. If they become upset, stop pressing. Offer a pause, without asking them to explain. You can say, “We can stop here, and come back to this another time.” If they disagree with your account, listen and check the facts. Separate what you observed from what you inferred. Agree any clear expectations, and a time to review them. Do not try to force a confession. If an ordinary disagreement does not resolve, seek help through your church’s agreed process, and tell the person why others are being involved. And if they raise something you did, resist the urge to explain. Say, “Let me think about that properly,” and mean it. A leader who can receive correction without defending will be trusted with a great deal.", "14": "And sometimes, even when you do it well, it still does not work out. Romans 12 is realistic in a way that can relieve you. “If possible, so far as it depends on you, live peaceably with all.” There are two qualifiers in one short verse: “if possible,” and “so far as it depends on you.” Paul knows that some peace is not achievable, and that the other person’s part is not yours to control. Remember Paul and Barnabas from Lesson 5. Theirs was a disagreement between colleagues in ministry, not a matter of wrongdoing. Yet it was so sharp “that they separated from each other.” And the story goes on, and both of them continued in the Lord’s work. So do your part promptly, gently and through the right route. Then leave with God what is beyond your control.", "15": "Let us bring it together. Go to find out, not to deliver a verdict. Open with what you have noticed, then stop and listen. Address the behaviour, ask clearly for what you need, and leave a door open. And speak the truth in love, gently, watching yourself. For an ordinary wrong, take the appropriate initiative. For harm or abuse, use the reporting route. And remember the aim. “If he listens to you, you have gained your brother.”", "16": "Let me show you what this looks like. Do you remember the man who leads the youth group, from Lesson 2? One of his volunteers has arrived after the start for the last three weeks. The young people have noticed, and so have the other leaders. Lateness is not necessarily a sin, and this is not church discipline. It is a leadership application of the same principles. He has been putting it off. Then, on a weekday, he asks if she has twenty minutes, and they sit down with a cup of tea in a quiet corner of the hall. He says, “I’ve noticed you’ve arrived after the start for the last three weeks. We’ve needed someone else to cover the welcome. Is there something affecting your availability that you’d like me to understand?” Then he waits. The silence feels long. Then she says, “It’s my mother. She’s moved in with us, and on Friday evenings I have to settle her before I can leave. I didn’t want to make a fuss.”", "17": "He says, “Thank you for telling me. I’m sorry it’s been so hard.” Then he says what he needs, clearly. “The start is the most important part of the evening, because the young people need to see the leaders there when they arrive. Would arriving at quarter past seven work, and could you lead the closing discussion instead of the welcome?” She thinks, and says yes. He checks that they have both understood the same thing. “So, quarter past seven, and you’ll lead the closing discussion. Let’s see how it goes for a month, and talk again.” He tells her he will check the change against the youth ministry’s usual supervision and safeguarding arrangements, so that it is clear who is responsible for the young people at each point of the evening. Then he leaves a door open. “And if things change with your mother, tell me. We can look at a break, or a different role.” Afterwards he records only the agreed arrangement, in the place his church keeps such records, and nothing about her mother. And privately he notes: eleven minutes. He had dreaded it for a month.", "18": "On the lesson page you will find five questions to reflect on. Answer them privately, at your own pace, after the lesson. Here is the first, to start you thinking. Think of the person you have in mind. What exactly are you afraid will happen if you speak to them? The other four ask whether this is an ordinary disagreement or a matter for advice or reporting, what you might not know about their side, how your opening sentence sounds when you read it aloud, and whether there is anyone you should go to because they have something against you.", "19": "Here is this week’s action. This week, identify the appropriate next step. If it is an ordinary conversation that belongs to you, prepare your opening sentence, your genuine question, and the change you hope to discuss. Arrange the conversation when appropriate, and leave room to listen. If you need advice, supervision or a reporting route, begin there instead. If the concern involves harm, intimidation or misconduct, do not arrange a private conversation. After any conversation, reflect on what you learned and what you agreed. Some conversations are shorter than we feared; others take time and follow-up. Use the Conversation Preparation sheet on the lesson page.", "20": "Remember these words of Scripture. “If he listens to you, you have gained your brother.” And, “If possible, so far as it depends on you, live peaceably with all.” The aim is not to win the argument. The aim is to seek the person’s good, and to leave the outcome with God.", "21": "Let us pray. Lord Jesus, good Shepherd, you went in search of the one who went astray. Give me courage to go, and humility to listen before I speak. Help me to speak the truth in love, gently, watching myself. Where peace depends on me, help me to do my part, and leave the rest with you. Make me a leader who gains people, not arguments. In your name. Amen. When you are ready, take your next step. Then stop here for today, or continue to Lesson 8."};
+const TIMES = {"1": [0.12, 0.5, 0.59, 1.93, 2.09, 3.01, 3.14, 3.54, 3.69, 3.85, 4.26, 4.83, 4.99, 5.56, 5.99, 6.95, 7.64, 7.79, 7.89, 8.35, 8.79, 9.02, 9.51, 10.27, 10.39, 10.53, 10.85, 10.91, 12.43, 12.52, 12.68, 13.06, 13.31, 13.49, 13.57, 13.72, 14.55, 14.62, 15.4, 15.57, 15.87, 16.36, 17.16, 17.55, 17.79, 18.27, 18.6, 18.91, 19.02, 19.33, 19.7, 19.86, 20.62, 20.68, 21.03, 21.42, 21.65, 22.28, 22.74, 22.97, 23.83, 24.0, 24.42, 24.64, 25.61, 25.75, 25.91, 26.09, 26.57, 26.68, 26.79, 26.87, 27.5, 27.67, 27.91, 28.16, 28.98, 29.26, 29.43, 29.57, 29.89, 30.0, 30.42, 31.58, 31.71, 31.92, 32.12, 32.48, 33.38, 33.56, 33.9, 33.97, 34.96, 35.26, 35.41], "2": [36.38, 36.78, 36.95, 37.29, 37.52, 38.55, 38.68, 38.98, 39.08, 39.73, 40.05, 40.54, 40.63, 41.85, 41.94, 42.58, 42.74, 42.84, 43.4, 43.96, 45.48, 45.97, 46.33, 46.83, 47.73, 48.28, 48.58, 49.11, 49.25, 50.22, 50.34, 51.05, 51.4, 51.69, 52.0, 52.95, 53.17, 53.94, 54.1, 54.63, 54.7, 55.41, 55.77, 55.82, 55.93, 56.95, 57.18, 57.72, 57.91, 58.94, 59.03, 59.67, 59.8, 59.84, 60.19, 60.37, 60.91, 62.07, 62.9, 63.59, 64.44, 64.62, 64.66, 65.26, 66.07, 67.23, 67.57, 67.71, 68.04, 68.47, 68.56, 68.6, 69.05, 70.6, 70.75, 70.99, 71.11, 71.25, 71.8, 72.4, 72.97, 73.21, 73.31, 73.45, 73.96, 74.16, 74.24, 75.19, 75.63, 75.92, 76.58, 77.51, 77.69, 78.04, 78.81, 78.99, 79.71, 79.96, 80.13, 80.95, 81.05, 81.19, 81.3, 81.74, 82.29], "3": [83.45, 83.76, 84.55, 84.84, 85.68, 86.24, 87.08, 87.42, 87.98, 88.19, 88.3, 89.23, 89.5, 89.92, 90.26, 91.0, 91.87, 92.1, 92.26, 93.09, 93.84, 94.02, 94.34, 94.83, 94.95, 95.05, 95.91, 96.07, 96.59, 97.46, 97.62, 97.78, 97.93, 98.39, 98.7, 98.84, 100.02, 100.33, 100.73, 101.08, 101.28, 101.56, 101.75, 102.74, 102.92, 103.54, 103.73, 103.81, 104.18, 104.7, 105.11, 105.6, 106.5, 106.7, 107.03, 107.22, 107.75, 108.19, 108.22, 108.9, 109.43, 109.55, 109.66, 110.83, 111.0, 111.27, 111.34, 111.65, 112.58, 113.44, 113.61, 113.79, 114.74, 114.81, 115.7, 115.87, 116.3, 116.47, 116.6, 117.21, 117.83, 117.89, 118.72, 119.1, 119.36, 119.71, 120.75, 121.19, 121.46, 121.89, 122.11, 123.17, 123.45, 123.8, 124.03, 125.48, 126.81, 126.96, 127.11, 127.35, 127.74, 127.88, 128.24, 129.04, 129.52, 129.72, 129.9, 130.42, 131.3, 131.45, 131.8, 132.22, 132.42, 132.92, 133.15, 133.55, 133.71, 134.3, 135.34, 135.7, 136.17, 137.45, 137.58, 138.02, 138.14, 139.07, 139.26, 139.29, 139.71, 140.13, 140.3, 140.36, 140.93, 142.29, 142.63, 143.04, 143.35, 143.52, 143.93, 144.08, 145.1, 145.52, 146.19, 146.36, 146.5, 146.93, 147.06, 147.51, 147.86, 149.16, 149.24, 149.92, 150.76, 150.96, 151.32, 151.62, 151.68, 152.43, 152.62, 153.06, 153.46, 155.18, 155.45, 155.58, 155.66, 156.41, 156.6, 156.86, 157.18, 158.02, 158.3, 158.48, 158.6, 159.06], "4": [160.29, 160.46, 161.02, 161.35, 161.53, 162.11, 163.69, 164.18, 164.76, 165.15, 165.25, 166.32, 166.5, 166.63, 167.25, 167.55, 167.71, 167.83, 169.64, 170.03, 170.9, 171.3, 171.52, 171.58, 172.02, 172.79, 172.93, 173.19, 173.29, 173.48, 173.71, 173.98, 174.86, 175.1, 175.21, 175.53, 175.82, 175.94, 176.35, 176.72, 176.9, 176.96, 177.78, 177.95, 178.23, 178.34, 178.88, 179.02, 179.1, 179.51, 179.68, 179.98, 181.2, 181.41, 181.53, 181.65, 182.22, 182.83, 183.46, 183.6, 183.97, 184.11, 184.81, 184.99, 185.85, 186.24, 186.5, 186.95, 187.16, 187.42, 187.54, 187.95, 188.37, 188.57, 188.9, 189.24, 190.23, 190.65, 190.82, 191.0, 191.31, 191.38, 191.87, 192.0, 192.19, 192.75, 192.98, 193.15, 193.3, 194.07, 194.3, 194.54, 194.68, 194.99, 195.31, 195.85, 196.14, 197.48, 197.64, 197.82, 198.19, 198.56, 199.03, 199.5, 199.82, 199.96, 200.19, 200.31, 200.57, 201.28, 201.69, 202.11, 202.31, 202.56, 203.64, 203.8, 203.94, 204.39, 204.49, 205.12, 205.29, 205.48, 205.92, 206.07, 207.17, 207.39, 207.53, 207.73, 208.01, 208.27, 209.06, 209.32, 209.85, 210.09, 210.4, 210.81, 211.18, 211.38, 211.98, 212.31, 212.76, 213.3, 213.49, 213.63, 214.3, 214.45, 214.6, 215.1, 215.26, 215.62, 215.85, 216.21, 217.62, 217.76, 217.95, 218.63, 218.77, 219.17, 219.3, 219.96, 220.18, 220.54, 220.71, 220.83, 221.92, 222.05, 222.16, 222.31, 222.97, 223.08, 223.51, 223.95, 224.08, 224.18, 224.99, 225.19, 225.38, 225.58, 225.73, 226.17, 226.34, 226.4, 227.13, 227.31, 227.34, 227.75], "5": [228.66, 228.8, 229.1, 229.38, 229.92, 231.18, 231.33, 231.69, 232.13, 233.33, 234.52, 234.97, 235.14, 235.22, 235.99, 237.09, 237.3, 237.45, 237.53, 238.23, 238.4, 238.47, 238.99, 239.08, 240.15, 240.57, 241.07, 241.13, 241.62, 241.95, 242.18, 242.62, 243.05, 243.33, 243.59, 243.69, 244.16, 244.4, 244.67, 245.12, 245.23, 246.48, 246.79, 247.13, 247.2, 248.08, 248.21, 248.57, 248.67, 249.08, 249.47, 249.59, 249.84, 249.95, 250.43, 250.52, 250.61, 250.95, 251.13, 251.4, 252.61, 253.03, 253.41, 253.65, 254.1, 254.53, 254.78, 254.83, 255.22, 255.35, 256.51, 256.68, 257.18, 258.3, 258.67, 259.17, 259.5, 259.92, 260.06, 260.37, 261.26, 261.5, 262.0, 262.93, 263.63, 264.07, 265.35, 265.59, 265.72, 266.63, 266.93, 266.98, 267.4, 267.59, 268.58, 269.01, 269.4, 269.45, 270.04, 270.57, 270.68, 270.8, 271.71, 271.84, 271.88, 272.29, 272.42, 272.98, 273.41, 274.81, 274.9, 275.51, 276.07, 276.24, 276.34, 276.74, 276.82, 276.87, 277.77, 277.89, 278.43, 278.53, 279.17, 280.29, 280.62, 281.14, 281.33, 282.6, 283.19, 283.83, 285.01, 285.21, 285.75, 286.3, 286.68, 287.46, 289.03, 289.22, 289.8, 290.53, 291.62, 291.72, 292.19, 292.84, 293.46, 293.57, 294.09, 294.9, 295.09, 295.93, 297.28, 297.39, 297.71, 298.6, 298.96, 299.25, 299.72, 299.92, 300.27, 300.4, 300.49, 300.6, 301.49, 301.67, 302.11, 302.31, 302.93, 303.21, 303.47, 303.79, 304.25, 305.48, 305.68, 306.1, 306.27, 306.93, 307.19, 307.34, 307.76, 308.08, 308.94, 309.18, 309.6, 309.78, 310.16, 310.24, 310.69, 311.63, 312.1, 312.26, 312.37], "6": [313.65, 314.1, 314.5, 315.07, 315.24, 315.73, 316.01, 317.74, 318.3, 318.42, 319.0, 319.2, 319.35, 320.14, 320.33, 321.63, 321.87, 322.31, 322.54, 323.42, 324.3, 324.53, 326.07, 326.58, 326.8, 327.19, 327.33, 328.04, 328.21, 328.37, 329.43, 329.54, 329.71, 330.02, 330.07, 330.43, 330.66, 331.72, 331.8, 332.75, 332.84, 333.08, 333.12, 334.23, 334.37, 334.52, 334.59, 334.92, 335.77, 335.89, 336.1, 336.55, 337.0, 337.17, 337.59, 338.68, 338.96, 340.01, 340.22, 340.41, 340.71, 341.27, 341.32, 341.84, 342.02, 342.61, 342.77, 342.88, 343.14, 343.44, 343.75, 343.86, 344.51, 344.87, 345.17, 345.66, 345.77, 346.35, 346.58, 346.81, 346.96, 347.3, 347.68, 347.71, 348.61, 348.71, 349.16, 349.38, 349.75, 349.87, 350.23, 350.78, 351.59, 351.7, 352.17, 352.41, 352.52, 352.93, 353.07, 353.56, 355.07, 355.51, 356.4, 356.59, 356.83, 357.39, 357.51, 358.26, 358.5, 358.82, 359.33, 359.59, 360.66, 360.84, 360.99, 361.48, 361.96, 362.15, 362.89, 363.09, 363.91, 364.1, 364.26, 364.68, 365.2, 365.5, 365.67, 365.9, 366.97, 367.15, 367.35, 367.71, 367.95, 368.05, 368.5, 368.58, 369.54, 369.87, 370.02], "7": [371.44, 371.71, 372.36, 372.51, 373.37, 373.97, 375.27, 376.2, 376.39, 376.42, 376.93, 377.47, 377.83, 378.18, 379.09, 379.23, 379.61, 380.75, 381.22, 381.81, 382.02, 382.68, 383.77, 384.04, 384.14, 384.2, 384.5, 385.52, 385.77, 385.91, 386.26, 386.63, 386.86, 387.19, 388.39, 388.59, 388.82, 389.14, 389.61, 389.86, 390.12, 390.64, 391.45, 392.65, 392.8, 392.96, 393.37, 394.21, 394.79, 394.98, 395.57, 395.61, 396.13, 396.33, 396.51, 396.9, 397.52, 398.15, 398.4, 399.27, 399.76, 400.0, 400.69, 400.89, 401.03, 401.14, 401.8, 402.39, 402.76, 402.96, 403.0, 403.55, 404.67, 405.53, 405.64, 406.14, 406.32, 406.56, 407.56, 408.27, 408.52, 408.79, 409.64, 410.32, 410.55, 410.81, 411.53, 411.92, 412.07, 412.32, 412.44, 412.73, 412.85, 413.53, 413.73, 414.64, 414.77, 415.18, 415.41, 415.51, 415.92, 416.0, 417.15, 417.35, 417.83, 418.37, 418.62, 418.84, 419.02], "8": [420.0, 420.28, 420.54, 420.64, 421.15, 421.6, 421.97, 422.08, 422.15, 422.59, 422.76, 422.82, 423.62, 423.9, 424.03, 424.32, 424.46, 425.02, 425.28, 425.67, 425.79, 425.93, 426.52, 427.1, 427.39, 427.96, 428.19, 428.34, 428.74, 428.96, 429.45, 429.98, 430.57, 430.97, 431.21, 431.6, 431.87, 432.34, 432.51, 433.33, 433.55, 434.58, 435.11, 435.26, 436.21, 436.33, 436.52, 437.57, 437.8, 438.16, 438.67, 438.87, 439.22, 439.49, 440.41, 440.7, 440.95, 442.05, 442.18, 442.43, 443.4, 443.55, 443.73, 444.26, 444.73, 445.51, 445.75, 446.3, 446.66, 447.05, 447.2, 447.34, 447.66, 447.8, 449.17, 449.36, 449.95, 450.81, 451.12, 451.26, 451.41, 451.69, 452.02, 452.75, 453.03, 454.17, 454.56, 454.96, 455.08, 455.38, 456.24, 456.38, 457.59, 457.76, 458.19, 458.4, 458.51, 458.82, 459.86, 461.08, 461.44, 461.63, 462.06, 462.26, 462.71, 463.17, 464.13, 464.29, 464.62, 465.58, 465.73, 465.84, 466.3, 466.42, 466.89, 467.7, 468.77, 469.16, 469.46, 469.94, 470.11, 470.27, 470.48, 471.6, 471.83, 472.26, 473.15, 473.37, 473.67, 474.28, 474.71, 475.12, 476.57, 477.52, 477.71, 478.22, 478.79, 479.76, 479.93, 480.57, 480.67, 481.17, 481.84], "9": [483.03, 483.82, 483.94, 484.35, 485.25, 485.47, 485.6, 486.03, 486.68, 487.17, 487.28, 487.68, 487.94, 489.21, 489.7, 490.71, 490.89, 491.27, 491.57, 491.73, 492.21, 492.67, 492.82, 493.94, 494.09, 494.3, 494.52, 495.18, 495.37, 496.26, 497.12, 497.2, 497.55, 497.73, 498.17, 498.37, 498.76, 499.6, 500.08, 500.9, 501.26, 501.49, 501.78, 502.32, 502.44, 503.09, 504.06, 504.22, 504.38, 504.86, 505.13, 505.35, 505.67, 506.03, 506.14, 506.23, 507.08, 507.65, 507.9, 508.86, 509.02, 509.14, 509.19, 509.59, 510.16, 510.36, 510.62, 510.77, 510.91, 511.46, 511.96, 512.14, 512.71, 513.72, 513.79, 514.52, 514.72, 515.07, 515.55, 516.19, 516.36, 516.5, 516.94, 517.14, 517.17, 517.68, 517.96, 518.84, 519.06, 519.39, 519.81, 519.92, 520.23, 521.45, 521.52, 522.07, 522.24, 522.62, 523.14, 523.41, 523.61, 523.85, 524.16, 524.64, 525.49, 526.71, 526.82, 527.17, 527.62, 527.85, 527.94, 528.52, 529.54, 529.71, 529.88, 530.09, 530.66, 531.17, 531.39, 531.44, 532.02, 532.72, 532.89, 533.36, 533.69, 533.85, 534.49, 535.39, 535.61, 535.74, 536.07, 536.85, 537.11, 537.68, 537.8, 538.23, 538.65, 538.77, 538.85, 540.23, 540.42, 540.54, 540.7, 541.09, 541.25, 541.68, 542.55, 543.34, 543.71], "10": [544.63, 544.85, 545.35, 546.44, 546.96, 547.21, 548.75, 549.26, 550.82, 551.57, 552.01, 552.06, 552.6, 553.11, 553.23, 554.35, 554.45, 555.22, 555.89, 556.91, 557.11, 557.61, 558.64, 558.69, 559.11, 559.75, 559.82, 560.26, 560.93, 561.09, 561.14, 561.69, 562.0, 562.97, 563.17, 563.95, 564.1, 564.39, 565.23, 565.36, 565.61, 566.85, 567.52, 567.58, 568.1, 569.0, 569.46, 569.96, 570.0, 571.66, 571.9, 572.21, 572.34, 572.49, 573.41, 573.85, 573.94, 574.47, 574.67, 575.02, 575.59, 575.71, 576.22, 577.1, 578.1, 578.51, 578.74, 578.79, 579.29, 580.48, 580.63, 581.75, 582.0, 582.93, 583.1, 583.27, 583.7, 584.63, 584.79, 585.97, 586.15, 586.63, 586.78, 587.33, 587.71, 587.82, 588.31, 588.41, 588.52, 588.98, 589.26, 590.28, 590.47, 590.84, 591.25, 591.55, 591.65, 591.97, 592.06, 593.23, 593.5, 593.76, 594.25, 594.81, 595.02, 595.85, 596.08, 596.23, 596.47, 596.65, 596.86, 598.08, 598.3, 598.5, 599.43, 599.51, 600.23, 600.57, 600.74, 601.71, 601.84, 602.0, 602.25, 602.51, 602.81, 603.0, 603.55, 604.06, 604.7, 605.15, 605.52, 606.42, 606.67, 606.86, 607.28, 607.54, 607.94, 608.84, 608.91, 609.31, 610.2, 610.27, 611.14, 611.71, 613.21, 613.36, 613.7, 614.75, 615.13, 615.2, 616.21, 616.35, 616.54, 616.62, 617.29, 618.11, 618.39, 618.59, 619.1, 619.37, 620.06, 620.19, 620.69, 620.85, 620.93, 621.37, 621.56, 621.9, 622.0], "11": [622.77, 622.91, 623.29, 624.23, 624.77, 624.89, 625.9, 626.34, 626.42, 627.74, 627.83, 628.12, 628.29, 628.59, 628.8, 629.22, 629.44, 629.93, 630.13, 631.39, 631.81, 632.9, 633.05, 633.1, 634.04, 634.32, 634.76, 635.49, 635.84, 636.07, 636.55, 637.51, 637.73, 638.2, 638.53, 638.7, 639.38, 641.05, 641.36, 641.56, 641.61, 642.12, 642.76, 643.71, 643.93, 644.41, 644.63, 644.75, 644.94, 645.13, 646.06, 646.27, 646.42, 646.58, 646.83, 647.03, 647.44, 647.84, 648.79, 648.92, 649.17, 649.3, 649.58, 649.72, 649.85, 649.96, 650.32, 651.26, 651.4, 651.51, 652.05, 652.35, 653.44, 653.59, 653.82, 653.88, 654.22, 655.06, 655.42, 655.46, 655.88, 656.01, 656.74, 656.8, 657.62, 657.79, 658.21, 658.47, 658.75, 658.89, 659.94, 660.09, 660.19, 660.58, 660.67, 660.99, 661.17, 661.65, 661.79, 662.04, 662.2, 662.89, 663.04, 663.63, 664.66, 664.9, 664.99], "12": [666.2, 666.41, 666.79, 667.59, 668.27, 668.36, 668.77, 668.9, 669.62, 669.79, 670.15, 670.62, 670.97, 671.9, 672.02, 672.64, 673.82, 674.22, 674.31, 674.85, 675.09, 675.71, 675.79, 676.22, 676.38, 677.06, 677.3, 677.38, 677.53, 677.94, 678.18, 678.32, 678.74, 679.57, 679.82, 680.2, 680.37, 680.53, 680.62, 681.4, 681.66, 682.82, 682.99, 683.12, 683.76, 684.02, 684.05, 684.43, 685.81, 686.48, 686.7, 687.44, 687.58, 688.0, 688.21, 689.32, 689.44, 689.99, 690.12, 690.23, 690.75, 692.05, 692.45, 692.55, 692.79, 693.35, 693.5, 693.73, 694.07, 694.63, 694.89, 695.07, 696.03, 696.2, 696.32, 696.89, 697.14, 697.39, 698.28, 698.49, 698.99, 699.6, 699.77, 700.44, 701.53, 702.16, 702.33, 702.45, 703.2, 703.43, 703.65, 704.17, 704.6, 704.72, 705.06, 705.13, 705.66, 705.87, 706.24, 706.33, 707.59, 708.37, 709.09, 709.17, 710.22, 710.66, 710.82, 710.92, 711.67, 712.27, 712.93, 713.27, 713.53, 713.56, 714.18, 714.39, 715.71, 716.1, 716.47, 716.58, 717.51, 717.96, 718.25, 718.64, 718.82, 719.89, 721.24, 722.37, 722.68, 723.98, 724.2, 724.65, 725.07, 725.55, 725.71, 725.89, 725.96, 726.57, 726.98, 727.68, 727.83, 728.22, 729.05, 729.25, 730.55, 730.67, 730.83, 730.98, 731.48, 731.85, 731.98, 732.08, 732.46, 732.63, 732.87, 732.94, 733.21, 733.67, 734.75, 734.9, 735.48, 735.97, 736.69, 736.74, 737.25, 737.69, 738.12, 738.47, 739.37, 739.5, 739.56, 740.01, 740.48, 741.01, 741.32, 742.28, 742.46, 742.98, 744.05, 744.2, 744.31, 744.5, 744.82, 745.44, 745.61, 745.87, 746.41, 747.46, 747.62, 747.71, 747.93, 748.23, 748.5, 748.65, 749.37, 749.6, 749.84], "13": [750.98, 752.23, 752.34, 752.71, 753.68, 753.84, 753.99, 754.39, 755.21, 755.62, 756.43, 756.73, 757.12, 757.15, 758.56, 758.73, 758.88, 759.12, 759.25, 760.24, 760.39, 760.65, 760.83, 761.3, 761.67, 762.86, 763.0, 763.19, 763.3, 764.18, 765.33, 765.5, 765.54, 765.99, 767.11, 767.39, 767.47, 768.44, 768.58, 769.05, 769.66, 771.0, 771.17, 771.38, 771.81, 772.68, 773.21, 774.26, 774.67, 774.71, 775.6, 776.14, 776.67, 776.89, 777.05, 778.35, 778.5, 778.7, 779.52, 779.67, 779.87, 780.32, 781.08, 781.3, 781.56, 781.83, 781.98, 782.25, 782.64, 783.79, 783.99, 784.29, 784.87, 785.06, 785.26, 786.14, 786.95, 787.12, 787.43, 787.51, 788.57, 789.28, 789.51, 789.66, 790.42, 790.66, 790.89, 791.03, 791.96, 792.54, 792.89, 793.31, 794.78, 794.95, 795.05, 795.46, 795.6, 796.02, 796.62, 796.78, 797.04, 797.36, 797.5, 797.96, 798.01, 799.27, 799.41, 799.53, 800.16, 801.06, 801.26, 801.56, 802.56, 802.9, 803.4, 803.67, 803.85, 804.42, 804.84, 805.82, 805.99, 806.27, 806.35, 806.82, 807.26, 807.64, 807.7, 808.02, 809.28, 809.41, 809.54, 809.73, 810.08, 810.52, 810.69, 811.39, 812.08, 812.27, 812.63, 812.78, 813.78, 814.48, 814.68, 814.8, 815.09, 815.38, 815.6, 816.47, 816.65, 816.91, 817.58, 817.62, 818.1, 818.31, 818.55, 819.05, 819.71, 820.15, 820.82, 820.99, 821.12, 821.68, 821.88, 821.93, 822.33], "14": [823.35, 823.52, 824.41, 824.71, 824.92, 825.06, 825.27, 825.38, 826.2, 826.34, 826.75, 826.96, 827.22, 827.51, 828.25, 829.46, 829.63, 830.37, 830.53, 830.56, 831.06, 831.35, 831.56, 832.02, 832.87, 833.05, 833.94, 834.25, 834.63, 834.78, 834.91, 835.39, 835.55, 836.19, 836.51, 837.21, 837.47, 838.42, 838.64, 838.74, 839.16, 840.12, 840.3, 840.69, 841.16, 842.05, 842.22, 843.5, 844.31, 844.6, 845.26, 845.49, 845.66, 846.34, 846.57, 847.49, 847.91, 848.38, 848.6, 848.95, 849.37, 849.65, 850.11, 851.46, 852.12, 852.39, 852.63, 852.9, 853.49, 854.03, 854.26, 854.66, 855.11, 855.23, 856.5, 856.89, 857.27, 857.44, 857.99, 858.21, 858.57, 858.7, 859.79, 860.09, 861.22, 861.58, 862.18, 862.39, 863.48, 863.7, 863.74, 864.16, 864.29, 865.59, 865.75, 865.86, 866.02, 866.35, 867.12, 867.37, 867.5, 868.22, 868.48, 868.7, 869.84, 870.0, 870.07, 870.57, 870.92, 871.86, 872.13, 872.43, 872.57, 872.9, 873.65, 873.78, 873.85, 874.35, 875.2, 875.37, 875.53, 875.7, 876.11, 876.86, 877.48, 877.74, 877.99, 878.08, 878.38, 879.18, 879.35, 879.73, 879.89, 880.23, 880.44, 880.58, 880.96, 881.11], "15": [882.34, 882.51, 882.67, 882.9, 883.02, 884.16, 884.47, 884.6, 885.0, 885.88, 886.19, 886.34, 886.81, 886.85, 887.93, 888.27, 888.51, 888.77, 888.91, 889.07, 890.09, 890.35, 891.14, 891.36, 892.22, 892.71, 892.83, 893.92, 894.41, 894.98, 895.12, 895.41, 895.57, 896.31, 896.48, 896.75, 896.81, 897.26, 898.25, 898.42, 898.9, 899.03, 899.44, 899.57, 900.5, 901.54, 902.01, 903.32, 903.5, 903.62, 904.24, 905.04, 905.44, 905.6, 906.31, 907.47, 907.63, 908.25, 908.43, 909.23, 909.64, 909.74, 910.39, 911.15, 911.35, 911.82, 912.06, 912.81, 912.98, 913.12, 913.65, 913.75, 914.48, 914.65, 914.89, 915.29, 915.5], "16": [916.64, 916.88, 917.01, 917.3, 917.49, 917.79, 918.04, 918.39, 919.2, 919.33, 919.54, 919.95, 920.06, 920.46, 920.64, 921.0, 921.12, 921.42, 922.37, 922.72, 924.28, 924.5, 924.6, 924.79, 925.54, 925.75, 926.23, 926.57, 926.69, 927.22, 927.32, 927.42, 927.96, 928.28, 929.54, 929.64, 930.02, 930.41, 930.62, 931.68, 931.84, 932.18, 932.38, 932.53, 932.73, 934.03, 934.63, 934.8, 935.1, 935.9, 935.93, 936.82, 937.07, 937.29, 937.47, 937.82, 938.24, 939.43, 939.55, 939.69, 939.75, 940.41, 941.57, 941.7, 941.79, 942.29, 943.86, 944.0, 944.19, 944.37, 944.76, 944.88, 945.79, 946.57, 946.72, 946.76, 947.79, 947.97, 948.43, 948.54, 948.74, 949.01, 949.44, 950.27, 950.45, 950.57, 950.91, 951.19, 951.37, 951.42, 951.71, 951.85, 952.56, 952.69, 952.77, 953.28, 953.74, 953.84, 953.95, 955.07, 955.21, 956.22, 956.4, 956.93, 957.09, 957.78, 958.04, 958.15, 958.67, 958.79, 958.9, 959.37, 959.62, 960.62, 960.8, 961.17, 961.67, 962.01, 962.1, 962.42, 962.52, 963.38, 963.55, 963.73, 964.26, 964.87, 965.1, 966.31, 966.5, 966.68, 966.99, 967.18, 967.38, 968.55, 969.09, 969.24, 970.15, 970.23, 970.82, 971.24, 972.3, 972.52, 972.7, 974.08, 974.33, 974.5, 975.86, 976.15, 976.51, 976.64, 976.82, 977.35, 977.51, 977.68, 978.2, 978.65, 978.74, 978.94, 979.04, 979.4, 979.57, 979.92, 979.98, 980.14, 981.34, 981.45, 981.7, 981.93, 982.01, 982.21, 982.26], "17": [983.18, 983.32, 984.19, 984.48, 984.57, 984.69, 985.03, 985.67, 985.83, 986.29, 986.44, 986.65, 986.87, 987.91, 988.33, 988.61, 988.97, 989.16, 989.34, 989.92, 990.79, 990.93, 991.79, 991.97, 992.06, 992.5, 993.17, 993.48, 993.58, 993.78, 994.62, 994.99, 995.11, 995.45, 995.85, 996.23, 996.34, 996.67, 996.77, 997.32, 997.82, 998.03, 998.21, 999.48, 999.63, 1000.18, 1000.34, 1000.75, 1001.18, 1001.61, 1002.57, 1002.77, 1003.02, 1003.24, 1003.73, 1003.83, 1004.4, 1005.22, 1005.66, 1005.77, 1005.86, 1007.09, 1007.37, 1008.11, 1008.28, 1008.68, 1009.61, 1009.74, 1010.15, 1010.34, 1010.47, 1010.66, 1010.98, 1011.54, 1011.62, 1011.97, 1012.85, 1013.9, 1014.21, 1014.6, 1015.39, 1015.56, 1015.75, 1016.08, 1016.16, 1016.68, 1017.95, 1018.19, 1018.36, 1018.56, 1018.64, 1018.99, 1019.17, 1019.21, 1020.38, 1020.6, 1021.09, 1022.32, 1022.47, 1022.83, 1023.41, 1023.52, 1023.68, 1024.08, 1024.18, 1024.66, 1025.23, 1025.39, 1025.7, 1026.39, 1026.97, 1027.83, 1028.32, 1029.12, 1030.31, 1030.53, 1030.7, 1030.83, 1031.01, 1031.46, 1031.67, 1031.79, 1032.57, 1032.76, 1032.87, 1033.15, 1033.84, 1034.09, 1034.4, 1034.9, 1035.05, 1035.23, 1036.31, 1036.47, 1036.62, 1036.97, 1037.03, 1037.38, 1038.28, 1038.47, 1038.61, 1039.03, 1039.49, 1039.67, 1039.83, 1040.18, 1040.5, 1041.23, 1041.34, 1041.5, 1041.72, 1041.81, 1041.85, 1042.64, 1042.83, 1042.87, 1043.36, 1044.34, 1044.99, 1045.1, 1045.77, 1046.17, 1046.34, 1046.77, 1047.88, 1048.01, 1048.09, 1048.49, 1048.77, 1049.17, 1049.5, 1049.78, 1050.73, 1050.97, 1051.6, 1051.94, 1052.03, 1052.9, 1053.11, 1053.68, 1053.83, 1054.63, 1055.05, 1055.85, 1055.99, 1056.18, 1056.57, 1056.94, 1057.16, 1057.19], "18": [1058.35, 1058.58, 1058.66, 1059.12, 1059.78, 1059.9, 1060.05, 1060.56, 1061.03, 1061.73, 1061.85, 1062.39, 1063.15, 1063.5, 1063.72, 1064.85, 1065.05, 1065.28, 1065.55, 1066.52, 1066.85, 1066.97, 1068.07, 1068.31, 1068.45, 1068.53, 1069.52, 1069.63, 1070.07, 1070.2, 1071.24, 1071.56, 1071.66, 1071.75, 1072.28, 1072.46, 1072.68, 1072.79, 1073.82, 1074.0, 1074.71, 1074.88, 1075.09, 1075.55, 1075.75, 1076.63, 1076.78, 1076.94, 1077.35, 1077.47, 1078.39, 1078.53, 1078.77, 1079.52, 1079.92, 1080.24, 1080.54, 1080.69, 1080.8, 1081.52, 1082.65, 1082.84, 1082.88, 1083.3, 1083.56, 1084.14, 1084.39, 1085.48, 1085.68, 1085.78, 1086.13, 1086.4, 1086.69, 1087.03, 1087.19, 1088.05, 1088.3, 1088.56, 1089.05, 1089.67, 1090.13, 1090.28, 1090.47, 1090.71, 1090.84, 1092.01, 1092.23, 1092.54, 1092.75, 1093.02, 1093.48, 1093.63, 1093.83, 1094.14, 1094.72, 1095.02, 1095.18, 1095.38, 1095.91, 1096.39], "19": [1096.86, 1097.22, 1097.4, 1097.65, 1097.98, 1098.9, 1099.13, 1099.83, 1100.56, 1100.75, 1101.47, 1101.81, 1102.82, 1102.97, 1103.08, 1103.25, 1103.34, 1103.91, 1104.71, 1104.89, 1105.39, 1105.5, 1106.27, 1106.77, 1107.0, 1107.51, 1108.51, 1108.66, 1109.27, 1110.2, 1110.45, 1110.53, 1111.04, 1111.18, 1111.5, 1111.61, 1112.75, 1113.25, 1113.33, 1114.21, 1114.43, 1115.59, 1115.76, 1116.13, 1116.54, 1116.67, 1117.49, 1117.63, 1117.75, 1118.0, 1118.69, 1119.37, 1119.66, 1119.69, 1120.23, 1120.83, 1121.2, 1121.49, 1122.64, 1122.79, 1122.88, 1123.44, 1123.92, 1124.72, 1125.68, 1125.79, 1126.88, 1127.03, 1127.28, 1127.71, 1127.76, 1128.17, 1129.63, 1129.92, 1130.29, 1131.48, 1132.04, 1132.2, 1132.49, 1132.62, 1133.36, 1133.51, 1133.8, 1133.92, 1134.85, 1135.14, 1136.02, 1136.16, 1136.66, 1136.86, 1136.99, 1137.85, 1138.24, 1138.51, 1139.02, 1139.21, 1139.6, 1140.13, 1140.46, 1140.58, 1141.42, 1142.1, 1142.52, 1142.73, 1142.79, 1143.23], "20": [1144.42, 1144.87, 1145.18, 1145.61, 1145.69, 1146.99, 1147.16, 1147.29, 1147.8, 1147.97, 1148.43, 1148.6, 1148.78, 1149.15, 1149.31, 1150.25, 1150.96, 1151.15, 1152.03, 1152.25, 1152.61, 1152.74, 1152.85, 1153.35, 1153.51, 1154.26, 1154.56, 1155.19, 1155.39, 1156.46, 1156.65, 1157.22, 1157.39, 1157.76, 1157.88, 1158.27, 1158.42, 1159.37, 1159.59, 1160.0, 1160.31, 1160.43, 1160.9, 1161.0, 1161.61, 1162.41, 1162.57, 1162.69, 1163.2, 1163.42, 1164.0, 1164.24], "21": [1165.1, 1165.28, 1165.42, 1166.26, 1166.52, 1167.37, 1167.58, 1168.59, 1168.72, 1169.08, 1169.19, 1169.61, 1169.72, 1169.8, 1170.09, 1170.23, 1170.5, 1171.42, 1171.58, 1171.78, 1172.29, 1172.37, 1173.26, 1173.39, 1173.94, 1174.06, 1174.48, 1174.84, 1174.91, 1176.07, 1176.31, 1176.45, 1176.58, 1177.1, 1177.18, 1177.63, 1177.78, 1178.74, 1179.85, 1180.26, 1181.51, 1181.8, 1182.17, 1182.7, 1182.83, 1183.63, 1183.89, 1184.03, 1184.16, 1184.39, 1184.57, 1185.45, 1185.65, 1185.95, 1186.06, 1186.44, 1186.65, 1187.48, 1187.81, 1187.98, 1188.02, 1188.39, 1188.57, 1189.01, 1189.97, 1190.2, 1191.34, 1191.48, 1191.71, 1192.65, 1198.48, 1198.71, 1198.88, 1199.05, 1199.66, 1199.92, 1200.05, 1200.36, 1201.36, 1201.62, 1202.02, 1202.24, 1202.44, 1203.17, 1203.37, 1203.99, 1204.11]};
+
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=1205.3;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('lbyr-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('lbyr-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=w.scrollHeight;w.style.zoom=h>avail?Math.max(.55,avail/h):1;});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>

@@ -408,6 +408,46 @@ export function unitHtml(unit: LbyrNewUnit, raw: string, completed: Map<string, 
   );
 }
 
+/* ------------------------------------------------- My Leadership Plan */
+
+const PLAN_SCRIPT_START = "<script>\n/* Completion record.";
+const LESSON_FILE_LINK = /\.\.\/02%20Lessons\/Lesson%20(\d\d)%20-%20[^"]*?\/3%20Finished%20Lesson\/Open-This-Lesson-Page\.html/g;
+
+/**
+ * The closing page. Its own script shows the completion record from
+ * window.LBYR_PROGRESS = { completed: { "1": "2026-10-20", … } }, which the
+ * site supplies just before it: each completed lesson's first completion,
+ * as a date in the member's own time zone (worked out in their browser from
+ * the saved time). The completion date it shows is the latest of these, and
+ * since a lesson keeps its first date, it stays the same on every visit.
+ */
+export function planHtml(raw: string, completed: Map<string, string>): string {
+  // Lesson links (the ten steps, the page's own lesson list, and the Lesson
+  // 10 sheet), "Talk to a Pastor" and "Other Faithful Path courses". Both of
+  // the last open in a new tab, so nothing typed on the plan is lost.
+  const lessonLinks = raw.match(LESSON_FILE_LINK) ?? [];
+  if (lessonLinks.length !== 21) throw new Error(`My Leadership Plan: expected 21 lesson links, found ${lessonLinks.length}.`);
+  let html = raw.replace(LESSON_FILE_LINK, (_m, nn: string) => unitPath(LBYR_NEW_UNITS[Number(nn) - 1]));
+  html = swap(html, 'href="#talk-to-a-pastor"', `href="/talk-to-a-pastor" ${NEW_TAB}`);
+  html = swap(html, 'href="#courses"', `href="/courses" ${NEW_TAB}`);
+  html = websitePage(html, { bar: "member", concernsNewTab: true });
+
+  const times: Record<string, string> = {};
+  for (const u of LBYR_NEW_UNITS) {
+    const at = completed.get(u.slug);
+    if (at) times[String(u.n)] = at;
+  }
+  const progress = `<script data-lbyr>
+(function(){
+  var t=${JSON.stringify(times)},c={};
+  for(var n in t){var d=new Date(t[n]);c[n]=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);}
+  window.LBYR_PROGRESS={completed:c};
+})();
+</script>
+`;
+  return swap(html, PLAN_SCRIPT_START, progress + PLAN_SCRIPT_START);
+}
+
 /* --------------------------------------------------------- course page */
 
 /** The course page: Start Here, the ten lessons in their parts, My Leadership Plan and the Leader's Guide. */
