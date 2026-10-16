@@ -52,6 +52,9 @@ const CHARS = [
 // Characters the Following Jesus pages use beyond CHARS.
 const FJ_EXTRA = "ḥṣḏʾ–—Ἅ" + range(0x391, 0x3a1).join("") + range(0x3a3, 0x3a9).join("") + range(0x3b1, 0x3c9).join("");
 
+// Characters the Lead Before You're Ready pages use beyond CHARS and FJ_EXTRA.
+const LBYR_EXTRA = "ʿἐἔάέίόύ";
+
 /** family: the css2 `family=` value. Each face becomes one file. */
 const FACES = [
   // The site's faces since Stage 2 of the website audit (navy and gold, to
@@ -82,6 +85,14 @@ const FACES = [
   // served from this site rather than fetched from Google by members' browsers
   // (website audit X13). Only the letters and points those lessons use.
   { file: "fj-noto-serif-hebrew.woff2", family: "Noto+Serif+Hebrew:wght@400..600", extra: "ְֲִֵֶַָּבדהוזילנעצק" },
+  // Lead Before You're Ready's new edition (lib/lbyr-new.ts), the same two
+  // families as the fj- files, plus what its pages use beyond them: "ʿ" and
+  // accented Greek in the transcripts, and the Hebrew letters in the players
+  // of Lessons 4 to 10. Separate files, so the other courses' are untouched.
+  { file: "lbyr-source-serif-4-normal.woff2", family: "Source+Serif+4:wght@400..600", extra: FJ_EXTRA + LBYR_EXTRA },
+  { file: "lbyr-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,wght@1,400", extra: FJ_EXTRA + LBYR_EXTRA },
+  { file: "lbyr-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: FJ_EXTRA + LBYR_EXTRA },
+  { file: "lbyr-noto-serif-hebrew.woff2", family: "Noto+Serif+Hebrew:wght@400..600", extra: "ְִֵֶַָֹּׁאדהוחיךלמנעקש" },
 ];
 
 // --only <prefix>: fetch just the faces whose file starts with it, leaving the

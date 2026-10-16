@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How This Course Works · Lead Before You’re Ready</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--sage:#8fae9f;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(180deg,#f7efdf,#f3e3c4);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.steps21{display:flex;gap:4px}.steps21 i{width:10px;height:10px;border-radius:50%;background:#e2d3b4}.steps21 i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.step{border-left:6px solid var(--gold)}.next{background:#fdf3dc;border:2px solid var(--gold);box-shadow:0 8px 22px rgba(201,150,63,.18)}.next h2{font-size:26px}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.5em 0}.reflect textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}
+.privacy{background:#f4ecd8;border-radius:10px;padding:8px 12px;font-size:15px}
+ul.read{list-style:none;padding:0}ul.read li{margin:.4em 0}
+.note{background:#f6efe6;border:1px solid #e6d3c2}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}
+
+.route{counter-reset:st}.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.fld{margin:.6em 0}.fld label{display:block;font-weight:600;margin-bottom:.2em}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+.safe1{background:#fffaf0;border:2px solid var(--gold);border-radius:12px;padding:10px 14px;font-family:'Source Serif 4',serif;font-size:18px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{background:#fffaf0;border:1px solid var(--line);border-radius:12px;padding:12px}
+.choice b{font-family:'Source Serif 4',serif;font-size:19px;display:block;margin-bottom:.3em}
+@media(max-width:640px){.choices{grid-template-columns:1fr}}
+@media print{.player,.finish,details>summary~*:not(.printme){} .player{display:none}header.top .hills{display:none}}
+
+.mute2{color:var(--mute);font-weight:400}
+.hero svg{width:100%;height:auto;display:block;border-radius:14px}
+.lead p{font-size:18px;line-height:1.65}
+.cq{font-family:'Source Serif 4',serif;font-size:23px;line-height:1.4;text-align:center;padding:10px 6px;margin:0}
+.verse{font-family:'Source Serif 4',serif;font-size:19px;border-left:4px solid var(--gold);padding:6px 14px;margin:12px 0;background:#fffaf0;border-radius:0 10px 10px 0}.verse .ref{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--mute);margin-top:4px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.part{background:#fffaf0;border:1px solid var(--line);border-top:6px solid var(--gold);border-radius:12px;padding:12px 14px}.part b{display:block;font-family:'Source Serif 4',serif;font-size:18px}.part .l{font-size:13px;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.part.p2{border-top-color:#7f8fa6}.part.p3{border-top-color:#7e9b5a}
+.weeks{display:grid;gap:10px}.wk{display:grid;grid-template-columns:70px 1.2fr 1fr 2fr;gap:12px;align-items:start;border-bottom:1px solid var(--line);padding:10px 0}.wk .n{font-weight:700;color:var(--gold-d)}.wk .t{font-weight:600}.wk.h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);padding-top:0}
+.urgent{background:#f3f0f6;border-left:6px solid #7f8fa6;border-radius:10px;padding:12px 16px;font-size:17px}
+.secs{counter-reset:s;list-style:none;padding:0}.secs li{margin:10px 0;padding-left:40px;position:relative}.secs li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.navbtns{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin:10px 0}.navbtns .btn{font-size:17px;padding:12px 24px;text-decoration:none}
+.small{font-size:14px;color:var(--mute)}
+ul.who li{margin:6px 0}
+.fadein{animation:fi 2.4s ease both}@keyframes fi{from{opacity:0}to{opacity:1}}@media (prefers-reduced-motion:reduce){.fadein{animation:none!important}}
+@media (max-width:700px){.parts{grid-template-columns:1fr}.lead p{font-size:17px}.cq{font-size:20px}.wk{grid-template-columns:1fr;gap:2px;background:#fffaf0;border:1px solid var(--line);border-radius:10px;padding:10px 14px}.wk.h{display:none}.wk .n:before{content:"Week "}.wk .n{font-size:14px}.wk .f:before{content:"Focus: ";color:var(--mute)}.wk .a:before{content:"Action: ";color:var(--mute)}}
+</style></head>
+<body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Lead Before You’re Ready · Start Here</span><span class="steps21" aria-label="Ten steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Start Here · 2 of 2</p>
+ <h1>How This Course Works</h1>
+ <p class="question">One lesson a week, at your own pace</p>
+ <p style="margin:.6em 0 0"><span class="helplink"><a href="#concerns">Concerns, Care and Reporting</a></span></p>
+</div><svg class="hills" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card lead"><h2>One lesson a week</h2>
+ <p>Each lesson takes about 20 minutes to watch, with a little more time to reflect and a practical action for the week. We recommend one lesson a week, in order: the first three lessons are about you, and they prepare you for the practical craft that follows.</p>
+ <p>All the lessons are open. If you are facing a hard conversation this week, you can go straight to Lesson 7.</p>
+ <p class="urgent"><b>Urgent concerns come first.</b> Urgent concerns should be addressed promptly, not held for the relevant lesson.</p>
+</section>
+<section class="card"><h2>The Ten-Week Practice Plan</h2>
+ <p>The book’s own route through the course. Each week has one main focus and one main action.</p>
+ <div class="weeks"><div class="wk h"><span>Week</span><span>Lesson</span><span>Focus</span><span>Main action</span></div><div class="wk"><span class="n">1</span><span class="t">Called, Not Qualified</span><span class="f">Calling and preparation</span><span class="a">Ask for help with one skill you need</span></div><div class="wk"><span class="n">2</span><span class="t">Leading Yourself First</span><span class="f">Leading yourself</span><span class="a">Protect time for prayer and personal reading</span></div><div class="wk"><span class="n">3</span><span class="t">Knowing Your Role</span><span class="f">Role clarity</span><span class="a">Agree decisions, limits and reporting routes</span></div><div class="wk"><span class="n">4</span><span class="t">Building a Volunteer Team</span><span class="f">Recruitment</span><span class="a">Make one clear, pressure-free invitation</span></div><div class="wk"><span class="n">5</span><span class="t">Helping Volunteers Stay and Grow</span><span class="f">Volunteer support</span><span class="a">Listen to one volunteer and agree useful support</span></div><div class="wk"><span class="n">6</span><span class="t">Running a Meeting People Want to Attend</span><span class="f">Meetings</span><span class="a">Use a timed agenda and record next steps</span></div><div class="wk"><span class="n">7</span><span class="t">The Conversation You’re Avoiding</span><span class="f">Difficult conversations</span><span class="a">Prepare for or take an appropriate next step on one concern, including seeking advice or reporting when needed</span></div><div class="wk"><span class="n">8</span><span class="t">Criticism, Control and Ongoing Pastoral Needs</span><span class="f">Continuing challenges</span><span class="a">Address one pattern with a suitable response</span></div><div class="wk"><span class="n">9</span><span class="t">Burnout and Boundaries</span><span class="f">Capacity</span><span class="a">Agree one workable rest and cover plan</span></div><div class="wk"><span class="n">10</span><span class="t">Growing the Next Leader</span><span class="f">Developing others</span><span class="a">Identify a possible person and, where appropriate and authorised, invite them into a supported learning plan</span></div></div>
+ <p class="small" style="margin-top:10px">Allow about 20–30 minutes for each lesson and reflection, plus time for the week’s action. Repeat a week when needed.</p>
+</section>
+<section class="card"><h2>What you will find on each lesson page</h2><ol class="secs">
+ <li><b>Watch and Learn</b> — a narrated lesson of about 20 minutes, with slides, subtitles and a transcript. Scripture is read slowly, and its background and original words are explained.</li>
+ <li><b>Reflect and Practise</b> — five questions to reflect on, this week’s action, and, in most lessons, a practical sheet for real ministry (for example, a Role and Decision Agreement to fill in with your pastor or ministry head).</li>
+ <li><b>Go Deeper (optional)</b> — a seven-day reading plan, the book chapter, questions to talk about with a leaders’ group or mentor, and a look back at an earlier lesson.</li></ol>
+ <p>At the end of the course, <b>My Leadership Plan</b> helps you bring the ten lessons together into a few practical commitments.</p>
+</section>
+<section class="card lead"><h2>Your reflections are private</h2>
+ <p>Your reflection answers are private and optional. You can write on the page and print your answers, or use your own notebook. Your written answers are not saved to your account. Print or copy them before leaving the page. The course saves only your lesson-completion progress. You can complete every lesson without answering any of them.</p>
+ <p>Keep sensitive ministry information — pastoral details, safeguarding matters or passwords — in your church’s proper secure system, never in a reflection or on a worksheet.</p></section>
+<section class="card lead"><h2>Better with someone else</h2>
+ <p>If you can, work through the course with a friend who also leads, a mentor, or the person who appointed you to your role. Share only what is appropriate. Several lessons will encourage you to talk with your pastor or ministry head, because a course cannot know your church.</p></section>
+<section class="card lead"><h2>Completing the course</h2>
+ <p>When you mark a lesson complete, it records that you took part. It is not a test, and nothing is scored. When all ten are complete, My Leadership Plan shows the date you finished.</p></section>
+<section class="card lead"><h2>If something concerns you</h2>
+ <p>If you have a concern about harm, abuse or misconduct, you do not need to wait for a lesson or to confront the person concerned first. Use the appropriate reporting route.</p>
+ <p><a href="#concerns"><b>Concerns, Care and Reporting</b></a></p></section>
+<div class="navbtns"><a class="btn" href="../02%20Lessons/Lesson%2001%20-%20Called%20Not%20Qualified/3%20Finished%20Lesson/Open-This-Lesson-Page.html">Begin Lesson 1: Called, Not Qualified</a><a class="btn alt" href="Welcome.html">Back to Welcome</a></div>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · <span id="concerns"><a href="#concerns">Concerns, Care and Reporting</a></span></footer>
+</body></html>

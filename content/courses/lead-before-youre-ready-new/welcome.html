@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Welcome · Lead Before You’re Ready</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--sage:#8fae9f;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(180deg,#f7efdf,#f3e3c4);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.steps21{display:flex;gap:4px}.steps21 i{width:10px;height:10px;border-radius:50%;background:#e2d3b4}.steps21 i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.step{border-left:6px solid var(--gold)}.next{background:#fdf3dc;border:2px solid var(--gold);box-shadow:0 8px 22px rgba(201,150,63,.18)}.next h2{font-size:26px}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.5em 0}.reflect textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:8px;padding:8px;background:#fff}
+.privacy{background:#f4ecd8;border-radius:10px;padding:8px 12px;font-size:15px}
+ul.read{list-style:none;padding:0}ul.read li{margin:.4em 0}
+.note{background:#f6efe6;border:1px solid #e6d3c2}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}
+
+.route{counter-reset:st}.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.fld{margin:.6em 0}.fld label{display:block;font-weight:600;margin-bottom:.2em}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+.safe1{background:#fffaf0;border:2px solid var(--gold);border-radius:12px;padding:10px 14px;font-family:'Source Serif 4',serif;font-size:18px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}.choice{background:#fffaf0;border:1px solid var(--line);border-radius:12px;padding:12px}
+.choice b{font-family:'Source Serif 4',serif;font-size:19px;display:block;margin-bottom:.3em}
+@media(max-width:640px){.choices{grid-template-columns:1fr}}
+@media print{.player,.finish,details>summary~*:not(.printme){} .player{display:none}header.top .hills{display:none}}
+
+.mute2{color:var(--mute);font-weight:400}
+.hero svg{width:100%;height:auto;display:block;border-radius:14px}
+.lead p{font-size:18px;line-height:1.65}
+.cq{font-family:'Source Serif 4',serif;font-size:23px;line-height:1.4;text-align:center;padding:10px 6px;margin:0}
+.verse{font-family:'Source Serif 4',serif;font-size:19px;border-left:4px solid var(--gold);padding:6px 14px;margin:12px 0;background:#fffaf0;border-radius:0 10px 10px 0}.verse .ref{display:block;font-family:'Source Sans 3',sans-serif;font-size:13px;letter-spacing:.08em;color:var(--mute);margin-top:4px}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.part{background:#fffaf0;border:1px solid var(--line);border-top:6px solid var(--gold);border-radius:12px;padding:12px 14px}.part b{display:block;font-family:'Source Serif 4',serif;font-size:18px}.part .l{font-size:13px;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.part.p2{border-top-color:#7f8fa6}.part.p3{border-top-color:#7e9b5a}
+.weeks{display:grid;gap:10px}.wk{display:grid;grid-template-columns:70px 1.2fr 1fr 2fr;gap:12px;align-items:start;border-bottom:1px solid var(--line);padding:10px 0}.wk .n{font-weight:700;color:var(--gold-d)}.wk .t{font-weight:600}.wk.h{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);padding-top:0}
+.urgent{background:#f3f0f6;border-left:6px solid #7f8fa6;border-radius:10px;padding:12px 16px;font-size:17px}
+.secs{counter-reset:s;list-style:none;padding:0}.secs li{margin:10px 0;padding-left:40px;position:relative}.secs li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.navbtns{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin:10px 0}.navbtns .btn{font-size:17px;padding:12px 24px;text-decoration:none}
+.small{font-size:14px;color:var(--mute)}
+ul.who li{margin:6px 0}
+.fadein{animation:fi 2.4s ease both}@keyframes fi{from{opacity:0}to{opacity:1}}@media (prefers-reduced-motion:reduce){.fadein{animation:none!important}}
+@media (max-width:700px){.parts{grid-template-columns:1fr}.lead p{font-size:17px}.cq{font-size:20px}.wk{grid-template-columns:1fr;gap:2px;background:#fffaf0;border:1px solid var(--line);border-radius:10px;padding:10px 14px}.wk.h{display:none}.wk .n:before{content:"Week "}.wk .n{font-size:14px}.wk .f:before{content:"Focus: ";color:var(--mute)}.wk .a:before{content:"Action: ";color:var(--mute)}}
+</style></head>
+<body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Lead Before You’re Ready · Start Here</span><span class="steps21" aria-label="Ten steps"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Start Here · 1 of 2</p>
+ <h1>Welcome</h1>
+ <p class="question">A practical course for new church leaders</p>
+ <p style="margin:.6em 0 0"><span class="helplink"><a href="#concerns">Concerns, Care and Reporting</a></span></p>
+</div><svg class="hills" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card lead"><div class="hero"><svg viewBox="0 0 800 340" role="img" aria-label="A walnut staircase climbing to an open door, with warm light coming through it; the first step is marked in gold"><defs><linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient><linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient><radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient><symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol><symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol></defs>
+<rect width="800" height="340" fill="url(#creamg)"/><path d="M60 315 H740" stroke="#c9963f" stroke-width="2.5"/>
+<g class="fadein"><use href="#doorlight" x="300" y="5" width="280" height="290"/></g><use href="#stairs" x="250" y="95" width="300" height="215"/>
+<path d="M260,290 285,290" stroke="#e3b44f" stroke-width="7" stroke-linecap="round"/>
+<text x="272" y="332" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="13" fill="#7a6a58" letter-spacing="2">STEP 1</text></svg></div>
+ <p style="margin-top:14px">You said yes to leading something in your church. Perhaps a home group, a worship team, the youth, the welcome team or a Bible study. And somewhere since then, you may have wondered whether they chose the wrong person.</p>
+ <p>This course is for you. It is ten short lessons for leaders in their first years, taught from Scripture and from practical experience in the local church.</p>
+</section>
+<section class="card"><p class="kicker" style="text-align:center">The course question</p><p class="cq">How does a willing, unready believer lead God’s people faithfully in the first years?</p></section>
+<section class="card"><h2>Who this course is for</h2><ul class="who">
+ <li>New leaders of a small group, worship team, youth ministry, welcome team, Bible study, outreach or church department</li>
+ <li>Leaders who have been serving for a while but were never given the basics</li>
+ <li>Pastors and ministry mentors training new leaders (a Leader’s Guide is available for group use)</li></ul></section>
+<section class="card lead"><h2>The staircase and the open door</h2>
+ <p>Throughout the course you will see a staircase climbing towards an open door. Each lesson is one step. You do not need to be at the top to begin; you only need to take the next step. The open door reminds us that growth begins with an invitation to serve and learn. We do not have to know everything before we begin, but we must remain willing to learn, prepare and serve faithfully.</p></section>
+<section class="card"><h2>The three parts</h2><div class="parts">
+ <div class="part"><span class="l">Lessons 1–3</span><b>Part 1 · Start With Yourself</b>Your calling, your own walk with God, and where your role begins and ends</div>
+ <div class="part p2"><span class="l">Lessons 4–7</span><b>Part 2 · Learn the Craft</b>Recruiting volunteers, helping them stay and grow, running meetings, and the conversation you are avoiding</div>
+ <div class="part p3"><span class="l">Lessons 8–10</span><b>Part 3 · Face What Tests You</b>Criticism and continuing challenges, burnout and boundaries, and growing the next leader</div></div></section>
+<section class="card">
+ <p class="cq" style="font-style:italic">“You are not required to be ready. You are required to be willing, teachable, and honest about what you do not know.”</p>
+ <p class="small" style="text-align:center;margin-top:0">— <i>Lead Before You’re Ready</i></p>
+ <p style="margin-top:18px">Paul reminds us that our sufficiency comes from God:</p>
+ <p class="verse">“Not that we are sufficient in ourselves to claim anything as coming from us, but our sufficiency is from God…”<span class="ref">2 CORINTHIANS 3:5 (ESV)</span></p>
+ <p class="small">This course offers pastoral teaching and practical suggestions. Apply them within your church’s leadership, safeguarding procedures and local requirements. A willingness to serve does not replace preparation or supervision for your particular role.</p>
+</section>
+<div class="navbtns"><a class="btn" href="How-This-Course-Works.html">Next: How This Course Works</a><a class="btn alt" href="../02%20Lessons/Lesson%2001%20-%20Called%20Not%20Qualified/3%20Finished%20Lesson/Open-This-Lesson-Page.html">Go straight to Lesson 1</a></div>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · <span id="concerns"><a href="#concerns">Concerns, Care and Reporting</a></span></footer>
+</body></html>

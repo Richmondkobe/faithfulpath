@@ -1,0 +1,837 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lead Before You’re Ready · Lesson 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+
+#stage.eve{background:linear-gradient(180deg,#f8eedb 0%,#f2dfbb 70%,#e8c995 100%)}
+.hills .h1{fill:#e8dcc2}.hills .h2{fill:#dccbaa}.hills .h3{fill:#cdb791}
+.tiny2{font-size:15px;font-weight:700;fill:#7a5536;text-anchor:middle;font-family:'Source Sans 3',sans-serif}
+.tiny3{font-size:11px;font-weight:700;fill:#7a5536;text-anchor:middle}
+.bigt{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;fill:#8a6a24}
+.hand2{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scr2{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.6vw,26px);color:#5b4a26;margin:.2em 0}.ref2{font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.chips{justify-content:center;margin:.3em 0}.chips span{font-size:clamp(16px,2.2vw,20px)}
+.lab2{margin:.4em auto}.glowp.on{box-shadow:0 0 0 3px #f0c77a}
+.pcard{position:relative;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.8em 1em;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08);display:flex;flex-direction:column;gap:.35em}
+.pcard>b{font-family:'Source Serif 4',serif;font-size:clamp(22px,3vw,30px)}
+.pcard svg{width:100%;max-height:22vh}
+.says{list-style:none;padding:0;margin:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.3vw,22px);color:#5b4a26}.says li{margin:.1em 0}
+.pl2{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.3vw,22px);margin:0;line-height:1.35}
+.love{color:#8a6a24;font-style:italic}.mute{color:var(--mute)}.strongline{font-weight:600;color:#2b3445}
+.keep2{grid-template-columns:1fr 1fr!important;gap:10px!important}
+.small3{font-size:clamp(14px,1.9vw,17px)}
+.qs{list-style:none;padding:0;margin:.2em auto;text-align:left;max-width:34em;font-size:clamp(18px,2.5vw,24px);line-height:1.35}
+.qs li{display:flex;align-items:center;gap:.6em;margin:.35em 0}.qs svg{width:1.8em;height:1.8em;flex:none}
+.qs.sm2{font-size:clamp(17px,2.3vw,22px)}.quote.sm2{font-size:clamp(18px,2.38vw,22px)}
+.safety{background:#fffaf0;border:2px solid #c9963f;border-radius:16px;padding:1.2em 1.6em;max-width:34em;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.2vw,32px);line-height:1.4;color:#3b3020}.safety p{margin:.3em 0}
+.chairsL{transform:translateX(-30px) scaleX(.86);transform-box:fill-box;transform-origin:center}.chairsR{transform:translateX(30px) scaleX(.86);transform-box:fill-box;transform-origin:center}
+.leanf{transition:transform 1.4s ease}.leanf.on{transform:translateX(14px) rotate(4deg);transform-box:fill-box;transform-origin:bottom}
+.stepb{transition:transform 1.6s ease}.stepb.on{transform:translateX(26px)}
+.turnback{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.sideL,.sideR{transition:transform 3s ease}.sideL.on{transform:translateX(-60px)}.sideR.on{transform:translateX(60px)}
+.lightwalk.on{animation:lw 14s ease-in-out forwards}@keyframes lw{0%{transform:translate(140px,30px)}100%{transform:translate(-120px,-30px)}}
+.lightrun.on{animation:lr 6s ease-in-out forwards}@keyframes lr{to{transform:translateX(340px)}}
+.frameL,.frameR{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}.frameL{transform:scaleX(-1)}.frameR{transform:scaleX(-1)}
+.turnf.on~*{}.pcard:has(.turnf.on) .frameL,.pcard:has(.turnf.on) .frameR{transform:none}
+.mapL,.mapR{transition:transform 2.5s ease}
+.mapL.on{transform:translateX(40px)}.mapR.on{transform:translateX(-40px)}
+.grow2{transform-box:fill-box;transform-origin:center}.envg{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}
+.shieldup{transform:translateY(20px)}.shieldup.on{transform:none}
+.litL.on{animation:lit 6s ease-in-out infinite}.litR.on{animation:lit 6s ease-in-out 3s infinite}@keyframes lit{0%,100%{opacity:.2}50%{opacity:1}}
+.ripple-line{animation:rl 4s ease-in-out infinite}@keyframes rl{50%{transform:translateX(-12px)}}
+.word .ref{display:block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:.3em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+body.still .leanf.on,body.still .stepb.on,body.still .sideL.on,body.still .sideR.on,body.still .shieldup{transform:none!important}
+.flick{animation:flick 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}@keyframes flick{50%{transform:scaleY(.94) translateY(2px)}}
+.journal2 p b{font-size:1em}
+</style>
+</head>
+<body>
+<div id="stage" class="light">
+<svg class="hills" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true"><path class="h1" d="M0 120 C200 90 360 130 560 105 S900 85 1200 115 V200 H0z"/><path class="h2" d="M0 150 C240 125 420 165 640 140 S960 125 1200 150 V200 H0z"/><path class="h3" d="M0 178 C260 160 480 192 700 176 S1000 165 1200 182 V200 H0z"/></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the wooden chair from the cover, seen from the side, facing right -->
+ <symbol id="chair" viewBox="0 0 70 112">
+  <ellipse cx="36" cy="108" rx="30" ry="3.5" fill="#000" opacity=".10"/>
+  <path d="M8 10 Q20 2 33 9" stroke="#7a5536" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M10 10 L15 63 M17 7 L20 63 M24 6 L25 63 M31 8 L30 63" stroke="#7a5536" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M7 60 Q36 55 65 61 L63 70 Q35 66 7 69 Z" fill="#7a5536"/>
+  <path d="M13 69 L9 107 M60 69 L64 107 M22 69 L25 104 M51 69 L48 104" stroke="#64432a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M12 89 L61 89" stroke="#64432a" stroke-width="2.6"/>
+ </symbol>
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="perw" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M10 62 L8 95 L32 95 L30 62 Z" fill="currentColor" opacity=".9"/>
+  <path d="M10 32 Q20 24 30 32 L31 66 Q20 69 9 66 Z" fill="currentColor"/>
+  <path d="M10 34 L6 60 L10 61 L13 40 Z M30 34 L34 60 L30 61 L27 40 Z" fill="currentColor" opacity=".85"/>
+  <path d="M10 20 Q8 6 20 6 Q32 6 30 20 L31 34 L26 30 L14 30 L9 34 Z" fill="#3a3330"/>
+  <circle cx="20" cy="17" r="8" fill="#c69d84"/>
+  <path d="M12 15 Q14 7 20 8 Q27 7 28 15 Q24 11 20 12 Q16 11 12 15Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="treeD" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#4f4338"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#5d7658"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#6b8564"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#556d51"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="note" viewBox="0 0 60 44"><path d="M2 6 L58 2 L56 40 L4 42 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"/><path d="M4 24 L56 21" stroke="#e8dcc0" stroke-width="1.2"/></symbol>
+ <symbol id="env" viewBox="0 0 70 46"><rect x="2" y="2" width="66" height="42" rx="3" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M3 4 L35 26 L67 4" fill="none" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="cloud" viewBox="0 0 120 70"><path d="M24 60 Q4 60 6 44 Q6 30 22 30 Q24 10 46 12 Q60 0 76 12 Q100 8 104 28 Q118 32 114 48 Q112 60 96 60 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/><circle cx="20" cy="66" r="3" fill="#fffaf0" stroke="#d9c9a3"/></symbol>
+ <symbol id="door" viewBox="0 0 40 70"><rect x="2" y="2" width="36" height="66" rx="2" fill="#a7805c" stroke="#7a5536" stroke-width="2"/><circle cx="31" cy="38" r="2.2" fill="#e9b25e"/></symbol>
+ <symbol id="laptop" viewBox="0 0 80 50"><rect x="12" y="2" width="56" height="36" rx="3" fill="#2b3445"/><rect x="16" y="6" width="48" height="28" fill="#a9c2d0"/><path d="M2 40 H78 L72 48 H8 Z" fill="#69707a"/></symbol>
+ <symbol id="cup" viewBox="0 0 30 30"><path d="M4 8 H22 L20 26 H6 Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M22 12 Q29 12 28 18 Q27 22 21 22" fill="none" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="shield" viewBox="0 0 50 60"><path d="M25 4 L46 12 Q46 42 25 56 Q4 42 4 12 Z" fill="#cdd8de" stroke="#69707a" stroke-width="3"/></symbol>
+ <symbol id="xtree" viewBox="0 0 40 60"><path d="M20 4 L34 26 L26 26 L38 44 L2 44 L14 26 L6 26 Z" fill="#6f8f6a"/><rect x="17" y="44" width="6" height="10" fill="#7a5536"/><circle cx="20" cy="4" r="3" fill="#e9b25e"/><circle cx="14" cy="34" r="2" fill="#d9818c"/><circle cx="26" cy="22" r="2" fill="#e9b25e"/><circle cx="25" cy="38" r="2" fill="#d9818c"/></symbol>
+ <symbol id="scale" viewBox="0 0 120 70"><path d="M60 8 V62 M40 66 H80" stroke="#7a5536" stroke-width="4"/><g class="tipbeam"><path d="M14 18 L106 18" stroke="#7a5536" stroke-width="4"/><path d="M14 18 L4 40 H24 Z M106 18 L96 40 H116 Z" fill="#e9d5a8" stroke="#7a5536" stroke-width="2"/></g></symbol>
+ <symbol id="frame" viewBox="0 0 60 50"><rect x="2" y="2" width="56" height="46" fill="#fffaf0" stroke="#b9925b" stroke-width="4"/><path d="M12 38 L24 24 L32 32 L40 22 L50 38 Z" fill="#c4d4b9"/><circle cx="18" cy="14" r="4" fill="#e9b25e"/></symbol>
+ <symbol id="map" viewBox="0 0 100 70"><path d="M2 8 L34 2 L66 8 L98 2 L98 62 L66 68 L34 62 L2 68 Z" fill="#f6edd6" stroke="#c9b48a" stroke-width="2"/><path d="M34 2 V62 M66 8 V68" stroke="#e1d2ad" stroke-width="1.5"/></symbol>
+ <symbol id="sign" viewBox="0 0 80 90"><rect x="37" y="20" width="6" height="68" fill="#7a5536"/><path d="M6 10 H70 L78 22 L70 34 H6 Z" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="table" viewBox="0 0 120 50"><rect x="4" y="4" width="112" height="8" rx="2" fill="#a7805c"/><path d="M14 12 V48 M106 12 V48" stroke="#7a5536" stroke-width="5"/></symbol>
+ <symbol id="sofa" viewBox="0 0 140 70"><rect x="6" y="14" width="128" height="30" rx="10" fill="#b88a6a"/><rect x="2" y="30" width="136" height="26" rx="8" fill="#a77a5b"/><path d="M14 56 V66 M126 56 V66" stroke="#64432a" stroke-width="5"/></symbol>
+ <symbol id="shelf" viewBox="0 0 120 120"><rect x="2" y="2" width="116" height="116" fill="#d8c4a0"/><path d="M2 40 H118 M2 80 H118" stroke="#a7805c" stroke-width="4"/><g fill="#8a6a4f"><rect x="10" y="14" width="8" height="26"/><rect x="20" y="18" width="7" height="22"/><rect x="30" y="12" width="9" height="28"/><rect x="60" y="54" width="8" height="26"/><rect x="70" y="58" width="10" height="22"/><rect x="20" y="92" width="8" height="26"/><rect x="88" y="90" width="9" height="28"/></g><g fill="#b5735e"><rect x="44" y="16" width="7" height="24"/><rect x="84" y="56" width="7" height="24"/><rect x="40" y="94" width="8" height="24"/></g></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="nb" viewBox="0 0 60 76"><rect x="4" y="2" width="52" height="72" rx="4" fill="#7a5536"/><rect x="10" y="2" width="46" height="72" rx="3" fill="#8b6340"/><rect x="18" y="20" width="30" height="12" rx="2" fill="#f4ead6"/></symbol>
+ <symbol id="leaf" viewBox="0 0 40 30"><path d="M2 15 Q12 0 38 4 Q30 26 2 15Z" fill="#7e9b78"/><path d="M4 15 Q20 10 36 6" stroke="#5f7a59" stroke-width="1.4" fill="none"/></symbol>
+ <symbol id="garm" viewBox="0 0 90 50"><path d="M6 40 Q44 24 84 40 L80 48 L10 48 Z" fill="#b9946a"/><path d="M14 30 Q46 14 78 30 L76 38 Q46 24 16 38 Z" fill="#c8a57a"/><ellipse cx="45" cy="48" rx="42" ry="3" fill="#000" opacity=".1"/></symbol>
+ <symbol id="boat" viewBox="0 0 120 60"><path d="M6 34 H114 Q104 56 60 56 Q16 56 6 34Z" fill="#8b6340"/><rect x="58" y="4" width="3" height="30" fill="#7a5536"/></symbol>
+ <symbol id="pen" viewBox="0 0 40 10"><path d="M2 5 L32 2 L38 5 L32 8 Z" fill="#2b3445"/></symbol>
+ <symbol id="pan" viewBox="0 0 50 30"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#69707a"/><rect x="32" y="13" width="16" height="5" rx="2" fill="#2b3445"/></symbol>
+ <symbol id="basket" viewBox="0 0 50 40"><path d="M4 12 H46 L40 38 H10 Z" fill="#c9a061"/><path d="M8 20 H42 M10 28 H40" stroke="#a8743f" stroke-width="2"/><path d="M12 12 Q16 2 24 6 Q32 0 38 12" fill="#cdd8de"/></symbol>
+ <symbol id="cal" viewBox="0 0 50 50"><rect x="3" y="7" width="44" height="40" rx="4" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><rect x="3" y="7" width="44" height="11" fill="#c9963f"/><path d="M14 3 V12 M36 3 V12" stroke="#2b3445" stroke-width="3"/></symbol>
+ <symbol id="bag" viewBox="0 0 40 44"><rect x="4" y="10" width="32" height="32" rx="6" fill="#8fae9f"/><path d="M12 10 Q12 2 20 2 Q28 2 28 10" fill="none" stroke="#5f7a6d" stroke-width="3"/><rect x="10" y="22" width="20" height="10" rx="2" fill="#6f8f80"/></symbol>
+ <symbol id="ear" viewBox="0 0 40 50"><path d="M30 18 Q30 4 18 4 Q6 4 6 18 Q6 26 12 30 Q16 34 14 42 Q14 48 22 46" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 20 Q14 12 20 12 Q24 12 24 18" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="hand" viewBox="0 0 50 50"><path d="M10 30 Q8 20 12 18 L14 30 L16 10 Q18 6 21 10 L21 28 L23 6 Q26 2 28 6 L28 28 L31 10 Q34 6 36 10 L35 32 Q36 44 26 46 Q14 46 10 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+ <symbol id="mend" viewBox="0 0 50 50"><path d="M8 14 H38 L34 44 H12 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M38 20 Q48 20 46 30 Q44 36 36 36" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M20 14 L24 26 L18 32 L22 44" fill="none" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="cordi" viewBox="0 0 60 40"><path d="M4 20 Q16 4 30 20 T56 20" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 22 Q16 38 30 22 T56 22" fill="none" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="shieldi" viewBox="0 0 50 50"><path d="M25 4 L44 11 Q44 36 25 46 Q6 36 6 11 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M4 48 H46" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8eedb"/><stop offset="1" stop-color="#efd9b0"/></linearGradient>
+<linearGradient id="gardeneve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfb8"/><stop offset=".6" stop-color="#ecd3a4"/><stop offset="1" stop-color="#e3c48e"/></linearGradient>
+<radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient>
+</defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient>
+<linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient>
+<linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ead2"/><stop offset=".7" stop-color="#f3dcb3"/><stop offset="1" stop-color="#e9c48a"/></linearGradient>
+<!-- the cover: ten walnut steps in three flights climbing to an open door -->
+<symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol>
+<symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol>
+<symbol id="board" viewBox="0 0 200 140"><rect x="2" y="2" width="196" height="136" rx="6" fill="#c9a77a" stroke="#8a6a4f" stroke-width="4"/><rect x="16" y="14" width="40" height="30" fill="#fffaf0" transform="rotate(-4 36 29)"/><rect x="150" y="90" width="34" height="34" fill="#f4ead6" transform="rotate(5 167 107)"/><circle cx="36" cy="16" r="3" fill="#c95f5f"/></symbol>
+<symbol id="bush" viewBox="0 0 110 130"><path d="M40 130 L50 70 M70 130 L60 72 M55 130 V80" stroke="#6b5847" stroke-width="5"/><ellipse cx="55" cy="72" rx="44" ry="30" fill="#7e8f5a"/><g class="flick"><path d="M30 70 Q24 40 40 22 Q42 44 52 50 Q50 20 62 4 Q66 34 78 40 Q84 24 92 22 Q92 56 80 74 Z" fill="#e9973f" opacity=".9"/><path d="M42 70 Q40 50 52 38 Q56 54 64 56 Q66 44 74 40 Q76 60 68 74 Z" fill="#f6d58e"/></g><circle cx="55" cy="55" r="52" fill="url(#glowr)"/></symbol>
+<symbol id="horeb" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#dawnsky)"/><circle cx="640" cy="80" r="44" fill="#fff3cf" opacity=".8"/><path d="M0 230 L160 120 L260 170 L420 60 L560 160 L680 110 L800 180 V300 H0Z" fill="#c9a57a"/><path d="M0 260 Q200 230 400 250 T800 245 V300 H0Z" fill="#b48e62"/><g fill="#fbf6ea" stroke="#d9c9a3"><ellipse cx="120" cy="262" rx="14" ry="8"/><ellipse cx="150" cy="268" rx="14" ry="8"/><ellipse cx="180" cy="260" rx="14" ry="8"/></g><use href="#bush" x="470" y="160" width="80" height="94"/><path d="M380 270 L404 230" stroke="#7a5536" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="stone" viewBox="0 0 70 36"><path d="M4 30 Q2 12 20 8 Q40 2 58 10 Q70 18 66 30 Z" fill="#b8a991"/><path d="M14 14 Q30 8 46 12" stroke="#d6cab4" stroke-width="2" fill="none"/></symbol>
+<symbol id="hilltown" viewBox="0 0 800 260"><rect width="800" height="260" fill="#f3e3c2"/><path d="M0 200 Q200 90 420 120 T800 150 V260 H0Z" fill="#d8c08f"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="300" y="100" width="40" height="30"/><rect x="345" y="92" width="44" height="38"/><rect x="395" y="104" width="36" height="26"/><rect x="438" y="96" width="40" height="34"/></g><path d="M280 132 H500" stroke="#b8a07a" stroke-width="6"/><g fill="#8a9a6a"><circle cx="150" cy="190" r="16"/><circle cx="200" cy="200" r="14"/><circle cx="600" cy="170" r="16"/><circle cx="650" cy="180" r="14"/><circle cx="700" cy="172" r="15"/></g></symbol>
+<symbol id="scroll" viewBox="0 0 200 56"><rect x="20" y="8" width="160" height="40" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><rect x="6" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><rect x="178" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><path d="M36 20 H164 M36 28 H150 M36 36 H160" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="port" viewBox="0 0 800 160"><rect width="800" height="160" fill="#eef0ea"/><rect x="0" y="110" width="800" height="50" fill="#9fb4bf"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="50" width="120" height="60"/><rect x="560" y="40" width="150" height="70"/></g><g fill="#d8c8a6"><rect x="90" y="56" width="8" height="54"/><rect x="120" y="56" width="8" height="54"/><rect x="150" y="56" width="8" height="54"/><rect x="180" y="56" width="8" height="54"/><rect x="575" y="48" width="9" height="62"/><rect x="610" y="48" width="9" height="62"/><rect x="645" y="48" width="9" height="62"/><rect x="680" y="48" width="9" height="62"/></g><path d="M74 50 L140 26 L206 50Z M552 40 L635 12 L718 40Z" fill="#c9a77a"/><g fill="#8b6340"><path d="M300 120 H400 Q390 140 350 140 Q310 140 300 120Z"/><path d="M420 126 H500 Q492 142 460 142 Q428 142 420 126Z"/></g><path d="M350 120 V80 L380 110Z M460 126 V92 L484 120Z" fill="#fffaf0" stroke="#c9b48a"/></symbol>
+<symbol id="i-bible" viewBox="0 0 40 40"><rect x="6" y="4" width="28" height="32" rx="3" fill="#7a5536"/><path d="M20 10 V26 M14 16 H26" stroke="#f0c77a" stroke-width="3"/></symbol>
+<symbol id="i-guitar" viewBox="0 0 40 40"><circle cx="15" cy="27" r="9" fill="#b88a6a"/><circle cx="21" cy="21" r="7" fill="#b88a6a"/><circle cx="15" cy="27" r="3" fill="#5b4a26"/><path d="M22 18 L36 4" stroke="#5b4a26" stroke-width="3"/></symbol>
+<symbol id="i-mat" viewBox="0 0 40 40"><rect x="10" y="2" width="20" height="28" fill="#a7805c"/><circle cx="26" cy="17" r="1.5" fill="#e9b25e"/><rect x="4" y="32" width="32" height="6" rx="2" fill="#c9963f"/></symbol>
+<symbol id="i-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#d98c4a"/><path d="M4 20 H36 M20 4 V36 M9 8 Q20 20 9 32 M31 8 Q20 20 31 32" stroke="#5b4a26" stroke-width="1.6" fill="none"/></symbol>
+<symbol id="i-clip" viewBox="0 0 40 40"><rect x="7" y="5" width="26" height="32" rx="3" fill="#a7805c"/><rect x="11" y="10" width="18" height="24" fill="#fffaf0"/><rect x="14" y="2" width="12" height="6" rx="2" fill="#69707a"/><path d="M14 16 H26 M14 22 H26 M14 28 H22" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="i-agenda" viewBox="0 0 40 40"><rect x="6" y="3" width="28" height="34" rx="2" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M11 12 H29 M11 19 H29 M11 26 H24" stroke="#c9963f" stroke-width="2.5"/></symbol>
+<symbol id="i-speech" viewBox="0 0 40 40"><path d="M4 6 H36 V28 H16 L8 36 V28 H4 Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#c9963f">?</text></symbol>
+</defs></svg>
+
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome to Lead Before">Lesson 1 · Book chapter 1 · Part 1: Start With Yourself</p>
+ <h1 class="b up" data-at="Welcome to Lead Before">Lead Before You’re Ready</h1>
+ <svg class="scene" viewBox="0 0 800 400" aria-hidden="true"><g class="cam">
+  <rect width="800" height="400" fill="url(#creamg)"/>
+  <path class="b draw" data-at="Welcome to Lead Before" style="--len:700" d="M60 330 H740" stroke="#c9963f" stroke-width="2.5" fill="none"/>
+  <g class="b" data-at="I'm Pastor Richmond Kobe"><use href="#doorlight" x="300" y="40" width="280" height="290"/><use href="#stairs" x="250" y="110" width="300" height="215"/></g>
+  <g class="b pop" data-at="a small group"><use href="#i-bible" x="80" y="340" width="34" height="34"/></g>
+  <g class="b pop" data-at="a worship team"><use href="#i-guitar" x="230" y="340" width="34" height="34"/></g>
+  <g class="b pop" data-at="a welcome team"><use href="#i-mat" x="383" y="340" width="34" height="34"/></g>
+  <g class="b pop" data-at="a youth ministry"><use href="#i-ball" x="536" y="340" width="34" height="34"/></g>
+  <g class="b pop" data-at="a department"><use href="#i-clip" x="686" y="340" width="34" height="34"/></g>
+  <g class="b" data-at="start with yourself" data-until="You will see a staircase"><path d="M260,305 285,305 L285,290 310,290 L310,275 335,275" stroke="#f0c77a" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M180 300 L297 290" stroke="#c9963f" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/><rect x="20" y="284" width="160" height="28" rx="7" fill="#fffaf0" stroke="#d9c9a3"/><text x="100" y="303" class="tiny2">Start With Yourself</text></g>
+  <g class="b" data-at="learn the craft" data-until="You will see a staircase"><path d="M335,260 360,260 L360,245 385,245 L385,230 410,230 L410,215 435,215" stroke="#f0c77a" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M180 250 L384 238" stroke="#c9963f" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/><rect x="20" y="234" width="160" height="28" rx="7" fill="#fffaf0" stroke="#d9c9a3"/><text x="100" y="253" class="tiny2">Learn the Craft</text></g>
+  <g class="b" data-at="face what tests you" data-until="You will see a staircase"><path d="M435,200 460,200 L460,185 485,185 L485,170 510,170" stroke="#f0c77a" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M180 200 L472 185" stroke="#c9963f" stroke-width="1.5" stroke-dasharray="4 4" fill="none"/><rect x="20" y="184" width="160" height="28" rx="7" fill="#fffaf0" stroke="#d9c9a3"/><text x="100" y="203" class="tiny2">Face What Tests You</text></g>
+  <g class="b up" data-at="It is not a ladder"><use href="#per" x="236" y="270" width="24" height="60" style="color:#6f817b"/></g>
+  <g class="b" data-at="growing in service"><rect x="560" y="236" width="200" height="34" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="660" y="259" class="tiny2">Each step: growing in service</text></g>
+ </g></svg>
+ <p class="q b" data-at="you are not required to be ready" data-until="But we begin with a feeling">You are not required to be ready. <span class="b" data-at="You are required to be willing">You are required to be willing, teachable, and honest about what you do not know.</span></p>
+ <p class="parts b" data-at="every role also needs character" data-until="But we begin with a feeling">character · preparation · support</p>
+ <div class="b" data-at="But we begin with a feeling"><h2>Called, Not Qualified</h2><p class="q">What do I do with the feeling that they chose the wrong person?</p></div>
+</div></section>
+
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+<div class="wrap">
+ <p class="label">“They’ve made a mistake”</p>
+ <svg class="scene" viewBox="0 0 800 360" aria-hidden="true">
+  <rect width="800" height="360" fill="#f6eedd"/>
+  <g class="b" data-at="Someone asked you to lead" data-until="And somewhere between saying yes">
+   <rect x="0" y="290" width="800" height="70" fill="#e9dcc0"/>
+   <use href="#board" x="300" y="60" width="200" height="140"/>
+   <g class="b" data-at="would you take this on"><rect x="340" y="90" width="120" height="44" fill="#fffaf0" stroke="#c9963f"/><text x="400" y="110" class="tiny3">Home group</text><text x="400" y="124" class="tiny3">leader needed</text></g>
+   <use href="#per" x="230" y="170" width="52" height="128" style="color:#56607a"/>
+   <use href="#perw" x="520" y="172" width="50" height="126" style="color:#c48a7d"/>
+   <g class="b pop" data-at="And you said yes"><circle cx="476" cy="96" r="12" fill="#c9963f"/><path d="M470 96 L475 101 L483 91" stroke="#fffaf0" stroke-width="3" fill="none"/></g>
+   <g class="b" data-at="Maybe it was your pastor"><rect x="40" y="30" width="70" height="46" rx="6" fill="#fffaf0" stroke="#d9c9a3"/><use href="#per" x="58" y="34" width="16" height="40" style="color:#56607a"/><use href="#perw" x="78" y="36" width="15" height="38" style="color:#c48a7d"/></g>
+   <g class="b" data-at="Maybe a ministry head"><rect x="120" y="30" width="70" height="46" rx="6" fill="#fffaf0" stroke="#d9c9a3"/><use href="#per" x="138" y="34" width="16" height="40" style="color:#8fae9f"/><use href="#per" x="158" y="34" width="16" height="40" style="color:#c48a7d"/></g>
+   <g class="b" data-at="Maybe nobody asked at all"><rect x="200" y="30" width="70" height="46" rx="6" fill="#fffaf0" stroke="#d9c9a3"/><use href="#chair" x="222" y="36" width="24" height="38"/></g>
+  </g>
+  <g class="b" data-at="And somewhere between saying yes" data-until="I want to say something">
+   <rect width="800" height="360" fill="#e8dcc6"/>
+   <rect x="0" y="280" width="800" height="80" fill="#d9c8a6"/>
+   <rect x="80" y="60" width="160" height="120" fill="#2b3445" stroke="#a7805c" stroke-width="6"/><circle cx="200" cy="96" r="12" fill="#f4ead6" opacity=".8"/>
+   <use href="#table" x="300" y="230" width="260" height="60"/>
+   <use href="#sit" x="380" y="170" width="70" height="112" style="color:#c48a7d"/>
+   <use href="#cup" x="470" y="208" width="26" height="26"/>
+   <use href="#lamp" x="600" y="160" width="50" height="75"/>
+   <g class="b up" data-at="They've made a mistake"><text x="420" y="110" class="bigt" text-anchor="middle">They’ve made a mistake.</text></g>
+   <g class="b up" data-at="I'm not the right person"><text x="420" y="150" class="hand2" text-anchor="middle">I’m not the right person for this.</text></g>
+  </g>
+  <g class="b" data-at="I want to say something">
+   <rect width="800" height="360" fill="url(#creamg)"/>
+   <use href="#doorlight" x="330" y="20" width="260" height="270"/><use href="#stairs" x="270" y="90" width="300" height="215"/>
+   <use href="#per" x="256" y="245" width="24" height="60" style="color:#c48a7d"/>
+  </g>
+ </svg>
+ <p class="big b up" data-at="Feeling inadequate does not">Feeling inadequate does not, by itself, mean you were wrongly chosen.</p>
+</div></section>
+
+<section class="slide" data-n="3" data-theme="dawn" aria-label="Slide 3">
+<div class="wrap">
+ <p class="label">Exodus 3:10–12</p>
+ <div class="stack">
+  <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true"><use href="#horeb" width="800" height="300"/></svg>
+ </div>
+ <div class="stack">
+  <div class="b" data-at="Come, I will send you" data-until="But Moses said to God"><p class="scripture">“Come, I will send you to Pharaoh that you may bring my people, the children of Israel, out of Egypt.”<span class="ref">Exodus 3:10 (ESV)</span></p></div>
+  <div class="b" data-at="But Moses said to God" data-until="He said, But I will"><p class="scripture">But Moses said to God, “<u class="k b" data-at="Who am I that">Who am I</u> that I should go to Pharaoh and bring the children of Israel out of Egypt?”<span class="ref">Exodus 3:11 (ESV)</span></p></div>
+  <div class="b" data-at="He said, But I will"><p class="scripture">He said, “<u class="k b" data-at="But I will be with you">But I will be with you</u>, and this shall be the sign for you, that I have sent you: when you have brought the people out of Egypt, you shall serve God on this mountain.”<span class="ref">Exodus 3:12 (ESV)</span></p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+<div class="wrap">
+ <p class="label">Who stood before the bush</p>
+ <svg class="scene" viewBox="0 0 800 360" aria-hidden="true">
+  <g class="b" data-at="Moses had grown up" data-until="He settled in the land">
+   <rect width="800" height="360" fill="#f3e1bd"/><circle cx="660" cy="70" r="40" fill="#f6d58e" opacity=".7"/>
+   <g fill="#c99b62">
+    <rect x="80" y="250" width="40" height="16"/><rect x="126" y="250" width="40" height="16"/><rect x="172" y="250" width="40" height="16"/><rect x="218" y="250" width="40" height="16"/>
+    <rect x="100" y="230" width="40" height="16"/><rect x="146" y="230" width="40" height="16"/><rect x="192" y="230" width="40" height="16"/>
+    <rect x="480" y="260" width="40" height="16"/><rect x="526" y="260" width="40" height="16"/><rect x="572" y="260" width="40" height="16"/>
+   </g>
+   <g opacity=".55"><use href="#per" x="300" y="200" width="30" height="74" style="color:#a58262"/><use href="#per" x="350" y="204" width="28" height="70" style="color:#a58262"/><use href="#per" x="640" y="210" width="28" height="68" style="color:#a58262"/></g>
+   <g class="b" data-at="tried to help his people"><use href="#per" x="420" y="180" width="44" height="110" style="color:#56607a"/></g>
+   <g class="b" data-at="he ran"><rect width="800" height="360" fill="#2b3445" opacity=".18"/><g fill="#a58262" opacity=".6"><ellipse cx="500" cy="320" rx="6" ry="3"/><ellipse cx="540" cy="312" rx="6" ry="3"/><ellipse cx="580" cy="322" rx="6" ry="3"/><ellipse cx="620" cy="312" rx="6" ry="3"/><ellipse cx="660" cy="322" rx="6" ry="3"/><ellipse cx="700" cy="312" rx="6" ry="3"/><ellipse cx="740" cy="322" rx="6" ry="3"/></g></g>
+  </g>
+  <g class="b" data-at="He settled in the land">
+   <rect width="800" height="360" fill="#f2e3c4"/>
+   <path d="M0 230 Q200 190 400 220 T800 210 V360 H0Z" fill="#e2c999"/>
+   <path d="M120 230 L200 170 L280 230Z" fill="#cbb08a"/><path d="M200 170 L200 230" stroke="#a58262" stroke-width="2"/>
+   <ellipse cx="360" cy="240" rx="30" ry="10" fill="#9fb4bf"/><rect x="335" y="222" width="50" height="14" rx="4" fill="#b8a07a"/>
+   <g fill="#fbf6ea" stroke="#d9c9a3"><ellipse cx="520" cy="250" rx="22" ry="14"/><ellipse cx="570" cy="258" rx="22" ry="14"/><ellipse cx="610" cy="246" rx="22" ry="14"/><ellipse cx="660" cy="256" rx="22" ry="14"/></g>
+   <g class="b walkin" data-at="keeping the flock of his father-in-law"><use href="#per" x="700" y="180" width="38" height="96" style="color:#8a6a4f"/><path d="M738 190 L746 276" stroke="#7a5536" stroke-width="4"/></g>
+   <g class="b" data-at="forty years passed"><rect x="250" y="40" width="300" height="46" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><text x="400" y="70" class="tiny2">Forty years in Midian</text></g>
+  </g>
+ </svg>
+ <div class="b up" data-at="So this is not a rising">
+  <p class="parts">Exodus 2:11–15 · Acts 7:30 · Exodus 7:7</p>
+  <p class="big2">Not a rising young leader — a man whose one attempt at leading ended in failure and flight.</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">Five objections</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#f2e3c4"/><path d="M0 200 Q400 170 800 200 V260 H0Z" fill="#e2c999"/>
+  <use href="#bush" x="660" y="70" width="110" height="130"/>
+  <path d="M60 220 L100 150" stroke="#7a5536" stroke-width="6" stroke-linecap="round"/>
+  <g class="b pop" data-at="Who am I"><use href="#stone" x="150" y="190" width="70" height="36"/></g>
+  <g class="b pop" data-at="what he should say"><use href="#stone" x="250" y="186" width="70" height="36"/></g>
+  <g class="b pop" data-at="they will not believe him"><use href="#stone" x="350" y="190" width="70" height="36"/></g>
+  <g class="b pop" data-at="never been a good speaker"><use href="#stone" x="450" y="186" width="70" height="36"/></g>
+  <g class="b pop" data-at="please send someone else"><use href="#stone" x="560" y="194" width="70" height="36" opacity=".55"/></g>
+  <g class="b" data-at="answers the first four with patience"><g fill="url(#glowr)"><circle cx="185" cy="200" r="40"/><circle cx="285" cy="196" r="40"/><circle cx="385" cy="200" r="40"/><circle cx="485" cy="196" r="40"/></g></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="Who am I">“Who am I?” <span class="mute">(3:11)</span></li>
+  <li class="b" data-at="what he should say">“What is his name?” <span class="mute">(3:13)</span></li>
+  <li class="b" data-at="they will not believe him">“They will not believe me.” <span class="mute">(4:1)</span></li>
+  <li class="b" data-at="never been a good speaker">“I am not eloquent.” <span class="mute">(4:10)</span></li>
+  <li class="b" data-at="please send someone else">“Oh, my Lord, please send someone else.” <span class="mute">(4:13)</span></li>
+ </ol>
+</div></section>
+
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">The original meaning</p>
+ <p class="heb b" data-at="In Hebrew it is" dir="rtl"><span class="type">אֶהְיֶה עִמָּךְ</span></p>
+ <p class="word b up" data-at="In Hebrew it is">ʾehyeh ʿimmāk<span class="ref">Exodus 3:12</span></p>
+ <p class="gloss b" data-at="I will be with you">“I will be with you”</p>
+ <div class="lexcon b" data-at="Notice how God begins"><span><b>ʾehyeh</b>I will be</span><span><b>ʿimmāk</b>with you</span></div>
+ <p class="big b up" data-at="Moses questioned his ability">Moses questioned his ability. <span class="b" data-at="God answered first with the promise">God answered first with the promise of his presence.</span></p>
+ <div class="twocol2 b" data-at="two verses later" style="margin-top:.6em">
+  <div class="panel"><b>Exodus 3:12</b><span>A promise of presence to Moses</span></div>
+  <div class="panel b" data-at="God reveals his name"><b>Exodus 3:14</b><span>God reveals his name — a different statement, in its own setting</span></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">A unique call, and an ordinary one</p>
+ <svg class="scene" viewBox="0 0 800 330" aria-hidden="true">
+  <rect width="800" height="330" fill="#f6eedd"/>
+  <g class="b" data-at="Why the anger at the fifth" data-until="I want to be careful here">
+   <path d="M0 260 Q400 230 800 260 V330 H0Z" fill="#e2c999"/>
+   <g opacity=".6"><use href="#stone" x="120" y="250" width="60" height="30"/><use href="#stone" x="200" y="246" width="60" height="30"/><use href="#stone" x="280" y="250" width="60" height="30"/><use href="#stone" x="360" y="246" width="60" height="30"/></g>
+   <use href="#stone" x="460" y="252" width="60" height="30"/>
+   <g class="b" data-at="send someone else"><text x="490" y="235" class="hand2" text-anchor="middle">“send someone else”</text></g>
+   <g class="b walkin2" data-at="provided Moses' brother Aaron"><use href="#per" x="640" y="160" width="40" height="100" style="color:#8a6a4f"/></g>
+  </g>
+  <g class="b" data-at="I want to be careful here">
+   <g class="b" data-at="I want to be careful here" data-until="Most of us will never">
+    <rect x="250" y="40" width="300" height="220" fill="#fffaf0" stroke="#b9925b" stroke-width="10"/>
+    <svg x="260" y="50" width="280" height="200" viewBox="0 0 800 300"><use href="#horeb" width="800" height="300"/></svg>
+   </g>
+   <g class="b" data-at="Most of us will never">
+    <rect x="40" y="70" width="150" height="110" fill="#fffaf0" stroke="#b9925b" stroke-width="6"/>
+    <svg x="46" y="76" width="138" height="98" viewBox="0 0 800 300"><use href="#horeb" width="800" height="300"/></svg>
+    <use href="#board" x="300" y="60" width="160" height="112"/>
+    <g class="b" data-at="a need you can see"><rect x="330" y="82" width="100" height="36" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><text x="380" y="105" class="tiny3">Help needed</text></g>
+    <g class="b" data-at="a nudge you cannot shake"><use href="#perw" x="500" y="150" width="50" height="126" style="color:#c48a7d"/><circle cx="525" cy="200" r="18" fill="url(#glowr)"/></g>
+    <g class="b" data-at="the confirmation of people"><use href="#per" x="590" y="160" width="40" height="100" style="color:#56607a"/><use href="#perw" x="640" y="162" width="40" height="98" style="color:#8fae9f"/><use href="#per" x="690" y="160" width="40" height="100" style="color:#a58262"/></g>
+    <g class="b" data-at="God's presence is our foundation"><rect width="800" height="330" fill="url(#glowr)" opacity=".5"/></g>
+   </g>
+  </g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="Why the anger at the fifth" data-until="I want to be careful here"><p class="big2">The <span class="sc">Lord</span>’s anger was kindled after “please send someone else.” And he still gave Moses Aaron.</p></div>
+  <div class="b" data-at="I want to be careful here" data-until="Most of us will never"><p class="big2">Moses’ call at the bush was unique in Israel’s history.</p></div>
+  <div class="b" data-at="Most of us will never"><p class="big2">Your call will usually come through a need, a nudge, and the confirmation of people who know you.</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="label b" data-at="Our first point is simple">Point 1</p>
+ <h2 class="b up" data-at="Our first point is simple">The feeling you’re having is normal</h2>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <g class="b" data-at="the prophet Jeremiah"><use href="#hilltown" width="800" height="260"/></g>
+  <g class="b" data-at="does not tell us his exact age"><rect x="40" y="30" width="170" height="36" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="125" y="54" class="tiny2">age not given</text></g>
+  <g class="b" data-at="rejection, imprisonment and danger" data-until="And God's reply"><rect x="560" y="30" width="200" height="36" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><text x="660" y="54" class="tiny2">rejection · prison · danger</text></g>
+ </svg>
+ <p class="scripture b" data-at="Do not say, I am only">“Do not say, ‘I am only a youth’… Do not be afraid of them, for <u class="k b" data-at="for I am with you to deliver">I am with you</u> to deliver you, declares the <span class="sc">Lord</span>.”<span class="ref">Jeremiah 1:7–8 (ESV)</span></p>
+ <p class="tag b" data-at="Again, God answers">Again, God answers with the promise of his presence.</p>
+</div></section>
+
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label">Acts 4:13</p>
+ <svg class="scene" viewBox="0 0 800 330" aria-hidden="true">
+  <rect width="800" height="330" fill="#efe4cc"/>
+  <g fill="#e2d3b2"><rect x="80" y="40" width="30" height="220"/><rect x="250" y="40" width="30" height="220"/><rect x="520" y="40" width="30" height="220"/><rect x="690" y="40" width="30" height="220"/></g>
+  <rect x="0" y="260" width="800" height="70" fill="#d9c8a6"/>
+  <g class="b" data-at="the trained religious leaders">
+   <path d="M110 250 Q400 120 690 250" fill="none" stroke="#cbb08a" stroke-width="30" opacity=".5"/>
+   <use href="#sit" x="120" y="180" width="50" height="80" style="color:#8a6a4f"/><use href="#sit" x="200" y="150" width="50" height="80" style="color:#6f5a8a"/><use href="#sit" x="290" y="130" width="50" height="80" style="color:#8a6a4f"/><use href="#sit" x="460" y="130" width="50" height="80" style="color:#6f5a8a"/><use href="#sit" x="550" y="150" width="50" height="80" style="color:#8a6a4f"/><use href="#sit" x="630" y="180" width="50" height="80" style="color:#6f5a8a"/>
+  </g>
+  <g class="b up" data-at="Peter and John"><use href="#per" x="350" y="190" width="44" height="110" style="color:#7a8a9a"/><use href="#per" x="405" y="192" width="42" height="108" style="color:#a58262"/></g>
+  <g class="b" data-at="These were fishermen"><rect x="620" y="270" width="150" height="50" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><path d="M630 300 Q660 280 690 300 T750 300" stroke="#8a6a4f" stroke-width="2" fill="none"/><path d="M640 290 L760 310 M650 310 L740 285" stroke="#b8a07a" stroke-width="1"/></g>
+  <g class="b" data-at="they recognized that they had been with Jesus"><ellipse cx="398" cy="240" rx="80" ry="90" fill="url(#glowr)"/></g>
+  <g class="b" data-at="That does not make training unnecessary"><rect x="40" y="270" width="200" height="50" rx="8" fill="#fffaf0" stroke="#d9c9a3"/><use href="#nb" x="56" y="276" width="30" height="38"/><use href="#pen" x="96" y="294" width="40" height="10"/><text x="185" y="300" class="tiny3">keep learning</text></g>
+ </svg>
+ <p class="quote b" data-at="they recognized that they had been with Jesus">“They recognized that they had been with Jesus.”<span class="ref">Acts 4:13 (ESV)</span></p>
+ <p class="big2 b up" data-at="Acts 4 reminds us">Formal status is not the whole measure of a leader. That does not make training unnecessary.</p>
+</div></section>
+
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <p class="label b" data-at="Our second point">Point 2</p>
+ <h2 class="b up" data-at="Our second point">The one thing you cannot borrow</h2>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <g class="b" data-at="trained under Gamaliel" data-until="If even Paul knew">
+   <rect width="800" height="260" fill="#efe4cc"/><rect x="0" y="200" width="800" height="60" fill="#d9c8a6"/>
+   <use href="#table" x="250" y="160" width="300" height="80"/>
+   <use href="#scroll" x="300" y="120" width="200" height="56"/>
+   <use href="#lamp" x="560" y="110" width="40" height="60"/>
+  </g>
+  <g class="b" data-at="If even Paul knew">
+   <rect width="800" height="260" fill="url(#creamg)"/>
+   <use href="#doorlight" x="330" y="-20" width="230" height="250"/><use href="#stairs" x="280" y="40" width="270" height="194"/>
+   <g class="b" data-at="a pressure God never put on you" data-until="You cannot borrow"><use href="#per" x="250" y="170" width="24" height="60" style="color:#56607a"/><rect x="240" y="180" width="18" height="24" rx="4" fill="#8a6a4f"/></g>
+   <g class="b" data-at="You cannot borrow someone"><use href="#per" x="250" y="170" width="24" height="60" style="color:#56607a"/><rect x="222" y="214" width="18" height="18" rx="4" fill="#8a6a4f"/></g>
+   <g class="b" data-at="a real, daily, ongoing connection"><path class="draw" style="--len:400" d="M528 54 L262 196" stroke="#f0c77a" stroke-width="4" fill="none" stroke-linecap="round"/></g>
+  </g>
+ </svg>
+ <p class="scripture b" data-at="Not that we are sufficient">“Not that we are sufficient in ourselves to claim anything as coming from us, but <u class="k b" data-at="our sufficiency is from God">our sufficiency is from God</u>.”<span class="ref">2 Corinthians 3:5 (ESV)</span></p>
+ <p class="tag2 b" data-at="That is the subject of the next">Next: Lesson 2 · Leading Yourself First</p>
+</div></section>
+
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="label b" data-at="Our third point">Point 3</p>
+ <h2 class="b up" data-at="Our third point">What God asks of a leader</h2>
+ <div class="twocol2">
+  <div class="panel b" data-at="Read 1 Timothy chapter">
+   <b>1 Timothy 3:1–7</b><span class="small3 mute">Qualifications for overseers</span>
+   <div class="parts3"><span class="b" data-at="faithful, self-controlled">faithful</span><span class="b" data-at="self-controlled, hospitable">self-controlled</span><span class="b" data-at="hospitable, gentle">hospitable</span><span class="b" data-at="gentle, free from greed">gentle</span><span class="b" data-at="free from greed">free from greed</span><span class="b" data-at="respected even by those">respected</span><span class="b" data-at="the ability to teach">able to teach</span></div>
+  </div>
+  <div class="panel b" data-at="every church should also be clear">
+   <b>Every role</b><span>needs its own character, training and competence</span>
+   <div class="parts3"><span>welcome team</span><span>worship</span><span>youth</span><span>small group</span></div>
+  </div>
+ </div>
+ <svg class="scene short2" viewBox="0 0 800 160" aria-hidden="true" style="margin-top:.5em">
+  <g class="b" data-at="Then Paul writes to the church in Corinth"><use href="#port" width="800" height="160"/></g>
+ </svg>
+ <p class="quote sm2 b" data-at="not many of you were wise">“not many of you were wise according to worldly standards, not many were powerful, not many were of noble birth.”<span class="ref">1 Corinthians 1:26 (ESV)</span></p>
+</div></section>
+
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+<div class="wrap">
+ <p class="label">Willingness is a beginning</p>
+ <svg class="scene" viewBox="0 0 800 340" aria-hidden="true">
+  <rect width="800" height="340" fill="url(#creamg)"/>
+  <g class="b" data-at="Willingness is a beginning"><use href="#doorlight" x="330" y="10" width="270" height="280"/></g>
+  <use href="#stairs" x="260" y="80" width="320" height="230"/>
+  <g class="b up" data-at="It opens the door"><use href="#per" x="276" y="234" width="26" height="64" style="color:#c48a7d"/></g>
+  <g class="b pop" data-at="The character the role needs"><use href="#lamp" x="300" y="240" width="26" height="40"/><text x="313" y="296" class="tiny3">character</text></g>
+  <g class="b pop" data-at="the preparation and training"><use href="#lamp" x="330" y="222" width="26" height="40"/><text x="343" y="278" class="tiny3">preparation</text></g>
+  <g class="b pop" data-at="the competence to do it well"><use href="#lamp" x="360" y="206" width="26" height="40"/><text x="373" y="262" class="tiny3">competence</text></g>
+  <g class="b pop" data-at="the supervision of someone"><use href="#lamp" x="390" y="190" width="26" height="40"/><text x="403" y="246" class="tiny3">supervision</text></g>
+  <g class="b" data-at="especially work with children"><rect x="40" y="200" width="200" height="90" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><text x="140" y="226" class="tiny2">This role needs…</text><path d="M60 248 H220 M60 266 H220 M60 284 H200" stroke="#d9c9a3" stroke-width="2"/></g>
+ </svg>
+ <p class="big b up" data-at="Willingness is a beginning">Willingness opens the door.</p>
+ <p class="big2 b up" data-at="those are what help you walk">Character, preparation, competence and supervision help you walk through it.</p>
+ <p class="tag b" data-at="So your uncertainty is not your enemy">Your uncertainty can keep you teachable. Let it also show you what you need to learn.</p>
+</div></section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label b" data-at="Our fourth point">Point 4</p>
+ <h2 class="b up" data-at="Our fourth point">What “called” does and does not mean</h2>
+ <svg class="scene short3" viewBox="0 0 800 250" aria-hidden="true">
+  <rect width="800" height="250" fill="#f6eedd"/>
+  <g class="b" data-at="wait for a supernatural confirmation" data-until="More often, as we said"><use href="#per" x="120" y="120" width="40" height="100" style="color:#56607a"/><path d="M200 60 Q300 20 400 60" stroke="#d9c9a3" stroke-width="2" fill="none" stroke-dasharray="6 6"/><circle cx="460" cy="120" r="34" fill="#fffaf0" stroke="#8a6a4f" stroke-width="3"/><path class="spinhand" d="M460 120 L460 96 M460 120 L478 128" stroke="#2b3445" stroke-width="3"/></g>
+  <g class="b" data-at="More often, as we said">
+   <use href="#board" x="60" y="40" width="160" height="112"/><rect x="90" y="62" width="100" height="36" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><text x="140" y="85" class="tiny3">Help needed</text>
+   <use href="#perw" x="320" y="100" width="46" height="116" style="color:#c48a7d"/><circle cx="343" cy="146" r="16" fill="url(#glowr)"/>
+   <g class="b" data-at="the confirmation of people"><use href="#per" x="470" y="100" width="40" height="100" style="color:#56607a"/><use href="#perw" x="520" y="102" width="40" height="98" style="color:#8fae9f"/><use href="#per" x="570" y="100" width="40" height="100" style="color:#a58262"/></g>
+  </g>
+ </svg>
+ <p class="big b up" data-at="calling is not the same as feeling certain">Calling is not the same as feeling certain.</p>
+ <p class="big2 b up" data-at="God frequently speaks">God frequently speaks through his people, not only through our emotions.</p>
+</div></section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="label">Not permission to stay as you are</p>
+ <svg class="scene" viewBox="0 0 800 330" aria-hidden="true">
+  <rect width="800" height="330" fill="url(#creamg)"/>
+  <use href="#doorlight" x="360" y="0" width="270" height="270"/><use href="#stairs" x="300" y="70" width="320" height="230"/>
+  <g class="b" data-at="God did not wait for Moses"><rect x="60" y="60" width="150" height="110" fill="#fffaf0" stroke="#b9925b" stroke-width="6"/><svg x="66" y="66" width="138" height="98" viewBox="0 0 800 300"><use href="#horeb" width="800" height="300"/></svg></g>
+  <g class="b" data-at="provided the help Moses needed"><g fill="#a58262" opacity=".55"><ellipse cx="220" cy="230" rx="6" ry="3"/><ellipse cx="250" cy="250" rx="6" ry="3"/><ellipse cx="280" cy="262" rx="6" ry="3"/></g></g>
+  <use href="#per" x="316" y="226" width="26" height="64" style="color:#56607a"/>
+  <g class="b grow" data-at="character must continue to grow"><path d="M356 286 V262" stroke="#6f8f6a" stroke-width="3"/><path d="M356 270 Q344 262 342 252 Q354 254 356 268 M356 266 Q368 256 372 246 Q358 248 356 262" fill="#7e9b78"/></g>
+  <g class="b pop" data-at="running a meeting"><use href="#i-agenda" x="440" y="168" width="30" height="30"/></g>
+  <g class="b pop" data-at="recruiting a volunteer"><use href="#cup" x="500" y="138" width="30" height="30"/></g>
+  <g class="b pop" data-at="handling a critic"><use href="#i-speech" x="560" y="106" width="30" height="30"/></g>
+ </svg>
+ <p class="big b up" data-at="calling is not permission to stay">Calling is not permission to stay as you are.</p>
+ <p class="big2 b up" data-at="Being called does not download">Being called does not download the skills.</p>
+ <p class="tag2 b" data-at="never permission to bypass">Not permission to bypass the training, supervision or safeguarding the role requires.</p>
+</div></section>
+
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label b" data-at="Let us bring it together">Bringing it together</p>
+ <svg class="scene short2" viewBox="0 0 800 140" aria-hidden="true">
+  <path class="b draw" data-at="Let us bring it together" style="--len:700" d="M60 100 H740" stroke="#c9963f" stroke-width="2.5" fill="none"/>
+  <g class="b pop" data-at="The feeling you are having is normal"><use href="#marker" x="110" y="50" width="24" height="50"/></g>
+  <g class="b pop" data-at="Our sufficiency is from God"><use href="#marker" x="290" y="50" width="24" height="50"/></g>
+  <g class="b pop" data-at="God places great importance"><use href="#marker" x="470" y="50" width="24" height="50"/></g>
+  <g class="b pop" data-at="calling is neither the same"><use href="#marker" x="650" y="50" width="24" height="50"/></g>
+  <g class="b" data-at="Underneath it all"><circle cx="400" cy="100" r="60" fill="url(#glowr)"/></g>
+ </svg>
+ <ol class="steps">
+  <li class="b" data-at="The feeling you are having is normal">The feeling you’re having is normal</li>
+  <li class="b" data-at="Our sufficiency is from God">Our sufficiency is from God</li>
+  <li class="b" data-at="God places great importance">Character matters greatly, and every role needs its own skills</li>
+  <li class="b" data-at="calling is neither the same">Calling is not certainty, and not permission to stay as you are</li>
+ </ol>
+ <p class="tag b" data-at="Underneath it all">“I will be with you.”</p>
+</div></section>
+
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="label">Watch it happen: asking for help</p>
+ <svg class="scene" viewBox="0 0 800 340" aria-hidden="true">
+  <g class="b" data-at="A woman in her first month" data-until="That Sunday, she finds">
+   <rect width="800" height="340" fill="#f6eedd"/><rect x="0" y="270" width="800" height="70" fill="#e9dcc0"/>
+   <rect x="80" y="50" width="160" height="120" fill="#cfe0e6" stroke="#a7805c" stroke-width="6"/><circle cx="200" cy="90" r="16" fill="#f6d58e"/>
+   <use href="#table" x="300" y="220" width="260" height="60"/><use href="#sit" x="360" y="160" width="70" height="112" style="color:#c48a7d"/>
+   <rect x="440" y="196" width="90" height="28" fill="#fffaf0" stroke="#d9c9a3" transform="rotate(-4 485 210)"/>
+   <use href="#cup" x="540" y="198" width="24" height="24"/>
+   <g class="b" data-at="First: lead a discussion"><text x="620" y="80" class="hand" style="font-size:16px">1. Lead a discussion…</text></g>
+   <g class="b" data-at="Second: know what to do"><text x="620" y="110" class="hand" style="font-size:16px">2. When someone shares…</text></g>
+   <g class="b" data-at="Third: plan the term"><text x="620" y="140" class="hand" style="font-size:16px">3. Plan the term</text></g>
+   <g class="b" data-at="The second one surprised her"><path d="M620 116 H760" stroke="#c9963f" stroke-width="2.5"/></g>
+  </g>
+  <g class="b" data-at="That Sunday, she finds">
+   <rect width="800" height="340" fill="#f6eedd"/><rect x="0" y="270" width="800" height="70" fill="#e9dcc0"/>
+   <use href="#board" x="60" y="50" width="160" height="112"/>
+   <use href="#perw" x="300" y="140" width="54" height="136" style="color:#c48a7d"/><use href="#per" x="420" y="138" width="56" height="138" style="color:#56607a"/>
+   <rect x="340" y="196" width="26" height="32" rx="3" fill="#7a5536"/>
+   <g class="b" data-at="Could you help me with one"><rect x="520" y="40" width="250" height="60" rx="12" fill="#fffaf0" stroke="#d9c9a3"/><text x="645" y="76" class="hand2" text-anchor="middle">“Could you help me with one?”</text></g>
+   <g class="b" data-at="Let's start with the second"><rect x="520" y="120" width="250" height="44" rx="10" fill="#fffaf0" stroke="#c9963f" stroke-width="2"/><text x="645" y="148" class="tiny2">2. When someone shares… ✓</text></g>
+   <g class="b pop" data-at="thirty minutes on Thursday"><use href="#cal" x="560" y="186" width="56" height="56"/><text x="588" y="232" class="tiny3" style="font-size:12px">THU</text></g>
+   <g class="b pop" data-at="who in our church to call"><rect x="640" y="196" width="110" height="44" rx="6" fill="#fffaf0" stroke="#d9c9a3"/><text x="695" y="223" class="tiny3" style="font-size:12px">Who to call</text></g>
+  </g>
+ </svg>
+ <div class="stack">
+  <div class="b" data-at="A woman in her first month" data-until="That Sunday, she finds"><p class="big2">Three things I don’t know how to do yet.</p></div>
+  <div class="b" data-at="That Sunday, she finds" data-until="That is all"><p class="big2">“Could you help me with one of these?”</p></div>
+  <div class="b" data-at="That is all"><p class="big2">One list, one honest question, one appointment.</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="17" data-theme="light" aria-label="Slide 17">
+<div class="wrap">
+ <p class="label">Reflect, on your own, after the lesson</p>
+ <div class="journal2 breathe">
+  <p><b>Five questions are waiting on the lesson page.</b><br><span class="mute">Take them at your own pace.</span></p>
+  <p class="b" data-at="Here is the first">To start you thinking: <i>The main reason I feel unqualified to lead is…</i></p>
+  <p class="b" data-at="The other four">______________________________</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="18" data-theme="light" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">This week’s action</p>
+ <div class="journal2 breathe">
+  <p class="b" data-at="Write down three things">1. Write down three things you do not know how to do in this role.</p>
+  <p class="b" data-at="Take that list to the person">2. Take the list to the person who put you in the role, or to whoever oversees your work.</p>
+  <p class="b" data-at="ask them to help you with one">3. Ask them to help you with one of the three. <b>Do it this week.</b></p>
+ </div>
+ <p class="tag b" data-at="Keep it simple and specific">You are not confessing failure. You are learning from the people God has put around you.</p>
+</div></section>
+
+<section class="slide" data-n="19" data-theme="dawn" aria-label="Slide 19">
+<div class="wrap">
+ <p class="label">Remember</p>
+ <svg class="scene short3" viewBox="0 0 800 300" aria-hidden="true"><use href="#horeb" width="800" height="300"/></svg>
+ <p class="scripture b" data-at="But I will be with you">“But I will be with you.”<span class="ref">Exodus 3:12</span></p>
+ <p class="scripture b" data-at="our sufficiency is from God">“Our sufficiency is from God.”<span class="ref">2 Corinthians 3:5</span></p>
+ <p class="tag2 b" data-at="The God who promised">God has not abandoned his people. Depend on his grace, seek his wisdom, and ask for help.</p>
+</div></section>
+
+<section class="slide" data-n="20" data-theme="light" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <svg class="scene short2" viewBox="0 0 800 200" aria-hidden="true">
+  <rect width="800" height="200" fill="url(#creamg)"/>
+  <g class="breathe"><use href="#doorlight" x="400" y="-30" width="200" height="200"/></g><use href="#stairs" x="340" y="20" width="240" height="172"/>
+  <use href="#per" x="352" y="138" width="18" height="44" style="color:#56607a"/>
+  <g class="b" data-at="When you are ready, write"><rect x="348" y="174" width="24" height="4" fill="#f0c77a"/><text x="250" y="186" class="tiny2" text-anchor="end">Step 1 of 10</text></g>
+ </svg>
+ <div class="prayer stack">
+  <div class="b" data-at="Lord God, you called Moses" data-until="Where I am afraid"><p>Lord God, you called Moses when he felt unready, and you promised, “I will be with you.”</p><p>Thank you that my sufficiency is from you, and not from myself.</p></div>
+  <div class="b" data-at="Where I am afraid" data-until="Help me to serve"><p>Where I am afraid, give me courage. Where I am unprepared, make me teachable.</p><p>Grow in me the character this work needs, and give me humility to ask for help.</p></div>
+  <div class="b" data-at="Help me to serve" data-until="When you are ready, write"><p>Help me to serve the people you have entrusted to me, for your glory and not my own.</p><p>In Jesus’ name. Amen.</p></div>
+  <div class="b" data-at="When you are ready, write"><p class="close">When you are ready, write your list of three things.<br>Then stop here for today, or continue to Lesson 2.</p></div>
+ </div>
+</div></section>
+
+
+
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 20</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="lbyr-lesson-01.mp3" preload="auto"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome to Lead Before You’re Ready. I’m Pastor Richmond Kobe. For more than twenty years I have pastored in more than one country and more than one culture, and I have watched a great many good people step into leadership with real love for God and very little practical training. This course is for you if you are in your first year or two of leading something in a church: a small group, a worship team, a welcome team, a youth ministry, a department. Across ten lessons we will take three parts in order: start with yourself; learn the craft; and face what tests you. You will see a staircase in every lesson. Each lesson lights one step. Please hear what that picture means. It is not a ladder for climbing above other people. Each step is about growing in service and in responsibility, not in importance. Here is the line that carries the whole course: you are not required to be ready. You are required to be willing, teachable, and honest about what you do not know. That is where we begin. It is not where we end, because every role also needs character, preparation and support, and we will come to those today. But we begin with a feeling.", "2": "Someone asked you to lead. Maybe it was your pastor. Maybe a ministry head. Maybe nobody asked at all, and the need was simply sitting there until you picked it up. Either way, somebody said the words that changed your Sundays: would you take this on? And you said yes. And somewhere between saying yes and today, a quiet thought arrived. They’ve made a mistake. I’m not the right person for this. I want to say something to you before we go one step further. Feeling inadequate does not, by itself, mean you were wrongly chosen. Many leaders in Scripture felt exactly that. Their stories invite us to bring our doubts to God and to seek help, rather than treating confidence as the test of a calling. And the first of them is Moses.", "3": "Our passage is from the book of Exodus. The Scripture readings in this course are from the English Standard Version. Exodus chapter 3, verses 10 to 12. God is speaking to Moses from the burning bush. “Come, I will send you to Pharaoh that you may bring my people, the children of Israel, out of Egypt.” But Moses said to God, “Who am I that I should go to Pharaoh and bring the children of Israel out of Egypt?” He said, “But I will be with you, and this shall be the sign for you, that I have sent you: when you have brought the people out of Egypt, you shall serve God on this mountain.”", "4": "To hear this passage rightly, we need to know who was standing in front of that bush. Moses had grown up in Pharaoh’s household. As a young man he once tried to help his people. He killed an Egyptian who was beating a Hebrew, the matter became known, and he ran. That story is in Exodus chapter 2. He settled in the land of Midian, married, and worked as a shepherd, keeping the flock of his father-in-law. Stephen, in the book of Acts, says that forty years passed in the wilderness before God appeared to him. And Exodus tells us he was about eighty when he finally stood before Pharaoh. So this is not a rising young leader full of confidence. This is a man whose one attempt at leading ended in failure and flight, and who had spent decades looking after someone else’s sheep.", "5": "And Moses does not say yes. He argues for a chapter and a half. First he asks, “Who am I?” Then he asks what he should say if the people want to know God’s name. Then he insists they will not believe him. Then he protests that he has never been a good speaker. And finally, in chapter 4, verse 13, he says, “Oh, my Lord, please send someone else.” Five objections. And God answers the first four with patience: a promise, his name, signs, and the reminder that he made the human mouth. It is only at the fifth that the text tells us the anger of the Lord was kindled against Moses.", "6": "Now look at what God says in reply to the first objection. In Hebrew it is a short phrase: ʾehyeh ʿimmāk. “I will be with you.” Notice how God begins. He does not start by telling Moses that he is wrong about himself, or that he is really an excellent speaker. Moses questioned his ability. God answered first with the promise of his presence. Later he would also give Moses signs, and his brother Aaron to help him. But the first answer, and the deepest one, was this: I will be with you. You may notice that two verses later, when God reveals his name, the same Hebrew verb, to be, appears again. That is worth seeing, but it is a different statement in a different setting. In verse 12, God makes a promise of his presence to Moses. In verse 14, God reveals his name. We do not need to join them together to hear the promise. “I will be with you” is enough.", "7": "Why the anger at the fifth? The text tells us that the Lord’s anger was kindled after Moses asked him to send someone else. This suggests that the issue had moved beyond expressing weakness to resisting the assignment God had given him. God had been patient with the earlier questions. And even then, God did not withdraw the call. He provided Moses’ brother Aaron to go with him. I want to be careful here. Moses’ call at the burning bush was unique in Israel’s history. God spoke to him directly, gave him signs, and sent him to bring a nation out of slavery. Your appointment to lead the welcome team was not that, and it would be foolish to pretend otherwise. Most of us will never stand before a burning bush. A call to serve in the church usually comes in ordinary ways: a need you can see, a nudge you cannot shake, and the confirmation of people who know you. But the principle we carry from Moses holds. When God calls his people to serve, what he offers is not first a better opinion of ourselves. It is his presence. God’s presence is our foundation, and his help enables us to grow in the responsibilities of our calling.", "8": "Our first point is simple: the feeling you are having is normal. The same pattern appears in the prophet Jeremiah. When God called him, Jeremiah objected, “I do not know how to speak, for I am only a youth.” The passage does not tell us his exact age. What we do know is the assignment. He was called to speak God’s word in Judah in the decades before Jerusalem fell to Babylon, and it would bring him rejection, imprisonment and danger. And God’s reply is not a speech about Jeremiah’s hidden potential. It is a redirection: “Do not say, ’I am only a youth’; for to all to whom I send you, you shall go, and whatever I command you, you shall speak. Do not be afraid of them, for I am with you to deliver you, declares the LORD.” Again, God answers with the promise of his presence.", "9": "Then think of Peter and John in the book of Acts. They are standing before the Sanhedrin, the trained religious leaders of Jerusalem, and they speak with such boldness that the council is astonished, because they could see these were “uneducated, common men.” They had not been through the formal training of the religious teachers of their day. These were fishermen, standing in front of the theological faculty of their nation. And the verse ends with the detail that matters: “they recognized that they had been with Jesus.” Their time with Jesus mattered. Their courage did not depend on elite credentials. Now, please hear this carefully. That does not make training unnecessary. Peter and John had spent considerable time learning directly from Jesus. They lacked the formal religious credentials recognised by the council, but they were not without preparation. Acts 4 reminds us that formal status is not the whole measure of a leader. It is not permission to stop learning.", "10": "Our second point: there is one thing you cannot borrow. The apostle Paul was trained under Gamaliel, one of the most respected teachers of his time, and he knew the Scriptures deeply. Yet he writes this to the Corinthian church: “Not that we are sufficient in ourselves to claim anything as coming from us, but our sufficiency is from God, who has made us sufficient to be ministers of a new covenant.” Paul is speaking of his own apostolic ministry. But the principle reaches all of us who serve. If even Paul knew that his ministry depended on God, then the pressure you are feeling to be enough on your own is a pressure God never put on you. You cannot borrow someone else’s gifting, and you do not need to. What you need is a real, daily, ongoing connection with the One who called you. That is the subject of the next lesson, and it is not an accident that it comes second.", "11": "Our third point is what God actually asks of a leader. And here new leaders can easily get the emphasis wrong. We tend to look first for impressive ability. Paul’s instructions give sustained attention to character. Read 1 Timothy chapter 3, verses 1 to 7, slowly. Paul is writing about overseers in the church, and he describes a person of sound character: faithful, self-controlled, hospitable, gentle, free from greed, and respected even by those outside the church. He also requires the ability to teach, maturity, and responsible care of one’s own household. These are substantial requirements. This is not a call to appoint anyone who happens to be willing. That passage is about overseers specifically. But it shows us the shape of what matters, and every church should also be clear about the character, training and competence needed for each volunteer role. Then Paul writes to the church in Corinth, a wealthy, status-conscious port city, and tells them to look at themselves: “not many of you were wise according to worldly standards, not many were powerful, not many were of noble birth.” God chose the weak and the overlooked, so that no one could boast before him.", "12": "So let me say clearly what willingness is, and what it is not. Willingness is a beginning. It opens the door. But willingness on its own does not qualify anyone to lead. The character the role needs, the preparation and training it requires, the competence to do it well, and the supervision of someone you answer to: those are what help you walk through that door well. And some roles, especially work with children and young people, have particular requirements your church must put in place before anyone begins. So your uncertainty is not your enemy. It can keep you teachable. Let it also show you what you need to learn, and who you need to ask.", "13": "Our fourth point is what “called” does and does not mean. Two cautions before we close. First, calling is not the same as feeling certain. Many new leaders wait for a supernatural confirmation before they will fully commit. That is not the usual pattern. More often, as we said, a call arrives as a need you can see, a nudge you cannot shake, and the confirmation of people who know you. If your pastor and your church see something in you, take that seriously. God frequently speaks through his people, and not only through our emotions.", "14": "Second, calling is not permission to stay as you are. God did not wait for Moses to feel capable before sending him. He promised his presence and provided the help Moses needed. And God places great importance on character, and character must continue to grow. But faithful leadership also requires us to develop the skills, judgement and responsibility our particular roles demand. You will need to learn things you do not know yet. This course exists because leadership has real skills attached to it: running a meeting, recruiting a volunteer, handling a critic. Being called does not download those skills into you. And it is never permission to bypass the training, supervision or safeguarding requirements of the role you have been given.", "15": "Let us bring it together. The feeling you are having is normal; Moses, Jeremiah and the apostles knew it too. Our sufficiency is from God, not from ourselves. God places great importance on character, and every role also needs its own skills and preparation. And calling is neither the same as feeling certain, nor permission to stay as you are. Underneath it all is the answer God gave a shepherd in the wilderness: “I will be with you.”", "16": "Let me show you what this looks like in practice. A woman in her first month of leading a home group sits down one evening and does what this lesson will ask of you. She writes three things she does not yet know how to do. First: lead a discussion when people go off topic. Second: know what to do when someone shares something serious. Third: plan the term. The second one surprised her. She had not realised it was worrying her until she wrote it down. That Sunday, she finds her pastor after the service. She does not apologise for herself, and she does not make a speech. She says, “I’ve written down three things I don’t know how to do yet in this role. Could you help me with one of these?” Her pastor looks at the list and says, “Let’s start with the second, because it matters most. Can we have thirty minutes on Thursday? I’ll show you what our church does when someone shares something serious, and who in our church to call.” That is all. One list, one honest question, one appointment. And it sets a pattern. Asking for help in your first month will protect you for years. Waiting until you are drowning sets a very different one.", "17": "On the lesson page you will find five questions to reflect on. Answer them privately, at your own pace, after the lesson. You do not need to answer them now. Here is the first, to start you thinking. Finish this sentence without softening it: the main reason I feel unqualified to lead is... The other four take you back to the qualities Paul lists for overseers in 1 Timothy 3, and which of them matter for your own role, to the person who first suggested you might lead, to Moses’ last objection, “send someone else,” and to Peter and John, who had been with Jesus. Be specific. Specific answers help you notice what needs to change.", "18": "And here is this week’s action. It is the same thing you just watched. Write down three things you do not know how to do in this role. Take that list to the person who put you in the position, whether that is your pastor or your ministry head, and ask them to help you with one of the three. If no one formally appointed you, take the list to the pastor, ministry leader or another appropriate person responsible for overseeing your work. Do it this week. Keep it simple and specific. You are not confessing failure. You are doing what good leaders do from the very beginning: learning from the people God has put around you.", "19": "Remember these two words of Scripture. “But I will be with you.” And, “our sufficiency is from God.” You are not required to be ready. You are required to be willing, teachable, and honest about what you do not know. The God who promised to be with Moses has not abandoned his people. As we serve Christ, we can depend on his grace, seek his wisdom and ask others for the help we need.", "20": "Let us pray. Lord God, you called Moses when he felt unready, and you promised him, “I will be with you.” Thank you that my sufficiency is from you, and not from myself. Where I am afraid, give me courage. Where I am unprepared, make me teachable. Grow in me the character this work needs, and give me the humility to ask for help. Help me to serve the people you have entrusted to me, for your glory and not my own. In Jesus’ name. Amen. When you are ready, write your list of three things. Then stop here for today, or continue to Lesson 2."};
+const TIMES = {"1": [0.14, 0.69, 1.35, 1.83, 2.37, 2.69, 3.6, 3.91, 4.44, 4.97, 6.1, 6.21, 6.47, 6.66, 7.09, 7.93, 8.04, 8.99, 9.02, 9.17, 9.42, 9.69, 10.02, 10.97, 11.13, 11.37, 11.55, 11.85, 13.14, 13.28, 13.38, 13.58, 13.92, 13.99, 14.5, 14.89, 15.2, 15.99, 16.49, 16.75, 17.77, 17.93, 18.35, 18.58, 18.78, 19.67, 19.84, 20.25, 20.6, 21.19, 22.31, 22.49, 23.13, 23.34, 23.51, 24.46, 24.63, 24.86, 25.04, 25.14, 25.31, 25.82, 26.16, 26.35, 27.12, 27.25, 27.7, 28.4, 28.53, 28.58, 29.63, 29.68, 30.17, 31.06, 31.11, 31.64, 32.52, 32.59, 33.09, 33.93, 34.0, 34.37, 35.28, 35.35, 36.76, 37.15, 37.47, 38.22, 38.43, 38.57, 38.89, 39.27, 39.75, 39.89, 40.9, 41.37, 41.52, 42.64, 43.04, 43.14, 44.27, 44.45, 44.99, 45.32, 45.8, 46.73, 46.88, 47.02, 47.29, 47.33, 48.08, 48.22, 48.65, 49.55, 49.87, 50.34, 50.79, 51.15, 52.15, 52.64, 52.93, 53.2, 53.43, 53.78, 54.87, 54.98, 55.16, 55.37, 55.44, 55.94, 56.06, 56.57, 56.9, 57.22, 58.32, 58.64, 59.44, 59.62, 59.96, 60.63, 60.79, 61.48, 61.82, 61.94, 63.32, 63.77, 63.92, 65.48, 65.82, 66.06, 66.16, 66.59, 66.71, 67.23, 67.33, 67.67, 68.7, 68.88, 68.99, 69.4, 70.05, 70.14, 70.3, 71.23, 71.4, 71.53, 72.18, 72.26, 72.42, 73.2, 73.83, 74.16, 74.76, 75.13, 75.42, 75.6, 75.74, 76.05, 76.94, 77.51, 77.71, 77.91, 78.1, 79.21, 79.33, 79.49, 79.73, 79.99, 80.24, 80.74, 81.13, 81.48, 81.95, 82.43, 82.8, 83.71, 84.76, 84.9, 85.99, 86.19, 86.32, 86.52, 86.84, 86.96, 87.35, 88.09, 88.3, 88.49, 89.23, 89.44, 89.49], "2": [90.85, 91.31, 91.75, 91.89, 92.02, 93.05, 93.37, 93.44, 93.59, 93.73, 94.84, 95.14, 95.17, 95.7, 96.47, 96.74, 97.23, 97.7, 97.8, 98.57, 98.7, 98.76, 99.12, 99.23, 99.65, 100.09, 100.82, 101.12, 101.31, 101.59, 101.69, 102.51, 102.76, 103.32, 103.82, 104.14, 104.2, 104.71, 104.9, 105.4, 105.54, 106.76, 107.03, 107.22, 107.52, 107.75, 108.52, 108.67, 108.79, 109.78, 110.97, 111.16, 111.94, 112.32, 112.67, 113.12, 113.36, 114.28, 114.34, 114.95, 115.38, 116.68, 116.87, 117.12, 117.16, 118.37, 118.51, 118.76, 118.84, 119.13, 119.51, 119.65, 120.74, 120.84, 121.14, 121.23, 121.48, 121.94, 122.07, 122.38, 122.76, 122.9, 123.12, 123.45, 123.83, 124.88, 125.39, 126.09, 126.32, 126.86, 127.17, 128.05, 128.39, 128.58, 128.75, 129.29, 130.44, 130.78, 131.24, 131.35, 131.89, 132.37, 133.07, 134.03, 134.18, 134.89, 135.45, 135.67, 135.78, 136.12, 136.27, 136.73, 136.83, 137.66, 137.78, 137.86, 138.22, 138.95, 139.29, 139.48, 139.9, 140.6, 140.83, 140.92, 141.37, 141.47, 141.51, 142.79, 142.94, 143.01, 143.48, 143.6, 144.25, 144.38], "3": [145.82, 146.03, 146.61, 146.77, 147.02, 147.09, 147.61, 147.96, 149.18, 149.26, 149.8, 150.32, 150.48, 150.7, 151.24, 151.49, 151.79, 152.03, 152.53, 153.11, 154.31, 154.94, 156.17, 156.72, 157.23, 158.64, 158.79, 159.35, 159.45, 160.12, 160.4, 160.48, 161.02, 162.14, 163.03, 163.15, 163.33, 163.74, 163.94, 164.07, 165.16, 165.34, 165.52, 165.69, 166.01, 166.27, 166.77, 166.86, 167.37, 167.47, 168.21, 168.42, 168.54, 169.75, 169.95, 170.47, 170.79, 170.89, 171.76, 171.97, 172.12, 172.32, 172.51, 172.62, 172.82, 173.07, 173.19, 173.74, 173.9, 174.18, 174.27, 174.77, 174.85, 175.44, 175.65, 175.73, 176.97, 177.11, 177.92, 178.12, 178.24, 178.45, 178.57, 178.81, 179.57, 179.74, 179.89, 180.15, 180.32, 180.41, 180.84, 181.01, 181.62, 181.76, 181.88, 182.07, 182.53, 183.34, 183.49, 183.65, 183.84, 184.16, 184.24, 184.64, 184.83, 184.93, 185.77, 185.94, 186.18, 186.67, 187.05, 187.29, 187.53], "4": [188.71, 188.82, 189.17, 189.4, 189.9, 190.8, 190.93, 191.27, 191.4, 191.75, 191.92, 192.1, 192.74, 192.86, 193.28, 193.38, 193.63, 194.71, 195.58, 195.83, 196.22, 196.65, 196.82, 197.45, 198.92, 199.09, 199.17, 199.47, 200.18, 200.3, 200.65, 201.06, 201.16, 201.48, 201.68, 202.71, 202.9, 203.28, 203.38, 204.29, 204.44, 204.62, 205.07, 205.14, 206.23, 206.32, 206.99, 207.42, 208.47, 208.68, 208.86, 209.99, 210.19, 210.9, 211.06, 211.28, 211.89, 213.21, 213.34, 213.83, 213.95, 214.01, 214.35, 214.46, 215.26, 216.02, 216.19, 216.55, 216.67, 216.71, 217.52, 217.91, 217.99, 218.42, 218.58, 218.79, 219.18, 219.28, 220.19, 221.1, 221.22, 221.29, 221.56, 221.68, 222.44, 222.78, 222.97, 223.54, 224.02, 224.51, 224.61, 224.68, 225.32, 225.73, 226.04, 226.47, 226.57, 227.37, 227.6, 228.18, 228.53, 229.04, 229.15, 229.34, 229.84, 230.65, 230.78, 230.91, 231.52, 231.93, 232.3, 233.18, 233.83, 234.08, 234.22, 234.43, 234.47, 235.08, 235.4, 235.83, 236.14, 236.25, 237.45, 237.69, 237.84, 237.89, 238.34, 238.63, 238.96, 239.42, 239.52, 240.18, 240.58, 240.79, 241.5, 241.69, 242.58, 242.75, 242.91, 243.04, 243.41, 244.32, 244.73, 245.06, 245.52, 245.9], "5": [246.97, 247.14, 247.94, 248.2, 248.54, 248.8, 249.74, 249.96, 250.67, 250.89, 250.94, 251.59, 251.8, 251.83, 253.03, 253.32, 253.44, 254.37, 254.55, 254.71, 255.72, 255.84, 255.95, 256.35, 256.54, 256.63, 256.82, 257.49, 257.64, 257.72, 258.13, 258.37, 258.46, 258.68, 259.04, 259.88, 260.03, 260.16, 260.88, 261.14, 261.29, 261.53, 261.83, 262.72, 262.88, 263.01, 263.84, 264.17, 264.28, 264.43, 264.82, 265.0, 265.05, 265.25, 266.4, 266.71, 267.77, 267.94, 269.25, 270.14, 271.02, 271.8, 272.33, 272.67, 273.51, 274.33, 274.88, 275.57, 276.69, 277.25, 278.96, 279.16, 279.5, 280.1, 280.19, 280.65, 281.01, 281.29, 282.46, 282.55, 283.32, 283.59, 284.24, 285.51, 285.68, 285.75, 286.43, 286.62, 286.78, 287.27, 287.36, 287.86, 289.05, 289.19, 289.43, 290.01, 290.23, 290.32, 291.07, 291.27, 291.35, 291.86, 292.25, 292.52, 292.73, 293.4, 293.57, 293.67, 294.15, 294.37, 295.1, 295.7], "6": [296.78, 297.43, 297.8, 298.01, 298.25, 298.61, 299.17, 299.36, 299.91, 300.1, 300.21, 300.75, 301.83, 301.97, 302.55, 302.7, 302.85, 302.9, 303.33, 304.07, 304.82, 305.56, 305.69, 305.91, 306.05, 306.31, 307.15, 307.56, 307.77, 308.1, 309.2, 309.4, 309.62, 309.89, 310.38, 310.55, 310.92, 311.52, 311.68, 311.86, 312.01, 312.41, 312.75, 313.65, 313.92, 314.11, 314.3, 314.43, 314.94, 315.14, 315.74, 316.94, 317.47, 318.15, 318.35, 319.54, 319.85, 320.36, 320.88, 321.05, 321.12, 321.64, 321.74, 321.95, 323.27, 323.62, 323.77, 323.94, 324.39, 324.62, 325.2, 326.13, 326.29, 326.49, 326.93, 327.36, 327.47, 327.79, 328.43, 328.6, 328.68, 329.1, 330.02, 330.18, 330.25, 330.83, 331.46, 331.68, 332.53, 332.71, 332.94, 333.11, 333.39, 334.27, 334.42, 334.58, 335.11, 335.34, 335.53, 335.99, 336.76, 337.03, 337.39, 337.99, 338.21, 339.1, 339.2, 339.65, 340.16, 340.95, 341.17, 341.86, 342.43, 343.56, 343.8, 343.93, 344.25, 345.15, 345.31, 345.44, 345.58, 345.63, 346.11, 347.01, 347.15, 347.22, 347.71, 348.86, 349.09, 350.41, 350.7, 351.09, 351.15, 351.65, 351.79, 352.02, 352.59, 352.8, 353.93, 354.08, 354.42, 354.79, 355.46, 355.55, 355.88, 356.05, 356.34, 356.52, 357.57, 357.77, 357.99, 358.24, 358.95, 359.18, 359.35, 360.13, 361.18, 361.35, 361.64, 361.79, 362.08, 362.67, 362.86], "7": [364.0, 364.35, 364.54, 364.9, 365.05, 365.11, 366.22, 366.33, 366.8, 367.14, 367.43, 367.61, 367.69, 368.16, 368.54, 368.85, 369.46, 369.8, 370.34, 370.76, 370.98, 371.1, 371.5, 371.91, 373.05, 373.22, 374.25, 374.4, 374.59, 375.11, 375.36, 375.77, 376.22, 376.88, 377.57, 377.78, 378.41, 378.55, 379.13, 379.5, 379.71, 379.98, 380.96, 381.27, 381.48, 381.71, 382.49, 382.67, 382.87, 383.28, 384.49, 384.75, 385.14, 385.9, 386.3, 386.49, 386.93, 387.46, 387.57, 388.64, 388.78, 389.54, 390.31, 390.84, 391.3, 391.42, 391.66, 391.89, 392.85, 392.94, 393.26, 393.35, 393.47, 393.93, 395.2, 395.89, 396.45, 396.64, 396.71, 397.18, 397.89, 398.13, 398.78, 398.93, 399.49, 400.96, 401.3, 401.74, 401.83, 402.06, 403.35, 403.63, 403.81, 404.87, 405.04, 405.42, 405.58, 405.74, 406.02, 406.05, 406.67, 406.87, 406.95, 408.31, 408.53, 409.15, 409.28, 409.58, 409.65, 410.12, 410.45, 410.63, 410.88, 411.65, 411.79, 411.94, 412.1, 412.22, 412.74, 412.84, 413.37, 414.78, 415.24, 415.36, 415.63, 415.87, 416.31, 416.92, 417.32, 417.35, 417.85, 418.74, 418.83, 419.2, 419.34, 419.82, 419.93, 420.01, 420.52, 421.16, 421.55, 421.66, 422.29, 423.35, 423.42, 423.87, 424.04, 424.22, 425.18, 425.26, 425.82, 425.97, 426.39, 427.32, 427.54, 427.6, 428.65, 428.81, 429.31, 429.5, 429.76, 430.63, 430.79, 430.87, 431.57, 431.71, 432.18, 432.51, 433.02, 434.2, 434.58, 435.06, 435.48, 435.66, 436.05, 436.2, 437.02, 437.34, 437.57, 438.13, 438.39, 438.82, 439.3, 439.53, 439.89, 440.43, 440.55, 441.76, 441.9, 442.11, 442.32, 443.76, 444.15, 445.08, 445.23, 445.38, 446.33, 446.93, 447.18, 447.64, 448.16, 448.37, 448.49, 449.04, 449.2, 449.29, 450.61, 450.81, 450.97], "8": [451.87, 452.18, 452.69, 453.26, 453.44, 454.76, 454.89, 455.45, 455.67, 455.82, 456.59, 456.85, 457.99, 458.06, 458.55, 459.08, 459.73, 459.87, 459.94, 460.42, 461.51, 461.88, 462.27, 462.63, 463.09, 463.84, 464.99, 465.21, 465.39, 465.62, 465.89, 466.1, 466.23, 467.06, 467.3, 467.49, 467.78, 468.23, 468.31, 469.33, 469.41, 470.07, 470.27, 470.53, 470.77, 470.98, 471.24, 471.8, 472.99, 473.21, 473.37, 473.57, 473.9, 474.2, 474.37, 475.64, 475.78, 475.96, 476.43, 476.54, 477.02, 477.39, 477.84, 478.02, 478.76, 478.9, 478.99, 479.6, 480.01, 480.68, 481.01, 481.14, 482.07, 482.25, 482.39, 482.56, 482.78, 482.98, 484.02, 485.08, 485.33, 486.53, 486.82, 487.17, 487.69, 487.96, 488.19, 488.23, 488.76, 489.46, 489.78, 490.19, 491.18, 491.31, 491.46, 491.51, 492.62, 492.8, 493.01, 493.75, 493.87, 494.14, 494.53, 494.59, 495.35, 495.5, 495.65, 495.99, 496.16, 496.45, 496.56, 496.91, 497.29, 497.46, 497.73, 498.42, 498.58, 498.98, 499.08, 499.52, 500.0, 500.16, 500.37, 501.47, 501.64, 501.92, 502.1, 502.58, 502.72, 503.33, 503.56, 503.76, 503.99, 504.27, 504.52, 504.69, 505.14, 505.63, 506.17, 506.26, 507.25, 508.04, 508.4, 508.99, 509.19, 509.26, 509.79, 509.97, 510.2], "9": [511.29, 511.52, 511.83, 512.0, 512.4, 512.55, 513.1, 513.24, 513.32, 513.58, 513.69, 514.9, 515.05, 515.2, 516.08, 516.55, 516.66, 517.86, 517.97, 518.53, 519.11, 519.58, 519.68, 520.73, 520.86, 520.99, 521.52, 521.67, 522.11, 522.89, 523.07, 523.13, 523.7, 523.87, 525.19, 525.61, 525.77, 525.97, 526.44, 526.74, 527.4, 528.99, 529.49, 530.62, 530.8, 530.98, 531.31, 531.53, 531.87, 531.97, 532.57, 533.12, 533.28, 533.4, 534.0, 534.54, 534.68, 534.86, 535.92, 536.25, 536.38, 537.46, 538.19, 538.29, 538.71, 538.82, 538.94, 539.83, 540.54, 540.61, 540.81, 541.65, 541.91, 542.0, 542.57, 543.08, 543.32, 543.41, 544.19, 544.41, 545.48, 545.63, 546.74, 546.95, 547.14, 547.42, 547.8, 548.02, 549.47, 549.65, 550.08, 550.44, 551.28, 552.47, 552.62, 553.17, 553.34, 553.67, 554.21, 554.45, 554.94, 556.52, 556.74, 557.19, 557.55, 557.92, 559.15, 559.34, 559.54, 559.85, 560.14, 560.68, 562.42, 562.78, 562.92, 563.27, 563.45, 563.91, 564.69, 565.18, 565.61, 566.34, 566.64, 567.79, 567.93, 568.42, 568.51, 569.06, 569.58, 570.34, 571.08, 571.23, 571.33, 572.2, 572.42, 572.54, 572.69, 573.07, 573.58, 575.07, 576.24, 576.79, 577.39, 577.56, 578.04, 579.0, 579.19, 579.59, 579.69, 580.04, 580.62, 580.74, 580.8, 581.85, 581.94, 582.14, 582.56, 583.43, 583.54, 584.02], "10": [584.8, 585.06, 585.54, 586.5, 586.74, 586.89, 587.33, 587.63, 587.83, 588.26, 589.4, 589.55, 590.05, 590.45, 590.66, 591.21, 591.49, 592.52, 592.75, 592.85, 592.92, 593.29, 594.08, 594.6, 594.71, 594.94, 595.69, 595.84, 596.0, 596.31, 596.41, 597.09, 598.0, 598.32, 598.58, 599.04, 599.34, 599.48, 599.6, 600.32, 601.36, 601.78, 601.96, 602.41, 602.6, 603.38, 603.53, 604.41, 604.56, 605.04, 605.57, 605.72, 606.12, 606.42, 607.41, 607.77, 608.1, 609.2, 609.38, 609.67, 610.84, 610.99, 611.19, 611.44, 611.56, 612.39, 612.55, 612.69, 613.44, 613.54, 613.58, 613.88, 615.12, 615.47, 615.58, 616.08, 616.2, 616.44, 616.75, 617.53, 618.65, 618.81, 618.9, 619.58, 620.17, 620.47, 620.55, 620.75, 620.9, 622.08, 622.25, 622.72, 623.1, 623.62, 623.77, 623.97, 624.47, 625.03, 625.26, 626.24, 626.43, 626.51, 627.03, 627.32, 627.4, 627.95, 628.07, 628.33, 628.74, 628.96, 629.21, 629.93, 630.07, 630.11, 630.59, 631.2, 631.57, 631.85, 632.02, 632.91, 633.05, 633.46, 633.81, 634.22, 634.61, 635.14, 635.69, 635.81, 635.99, 636.25, 636.49, 637.4, 637.65, 637.8, 638.28, 638.46, 638.52, 639.48, 640.41, 641.09, 641.69, 641.9, 641.98, 642.29, 642.47, 642.89, 643.43, 643.92, 644.18, 644.26, 644.93, 645.01, 645.13, 645.55, 646.56, 646.72, 646.86, 647.04, 647.4, 647.51, 648.32, 648.47, 648.57, 648.99], "11": [650.21, 650.38, 650.78, 651.15, 651.28, 651.44, 651.85, 652.59, 653.07, 653.19, 653.23, 654.24, 654.41, 655.04, 655.36, 655.89, 656.1, 656.72, 656.97, 657.13, 657.65, 658.63, 658.77, 659.1, 659.22, 659.46, 659.95, 660.16, 660.74, 661.57, 662.02, 663.27, 663.46, 664.34, 665.04, 665.17, 666.54, 667.39, 667.92, 669.11, 669.93, 670.08, 670.94, 671.27, 672.51, 672.93, 673.28, 674.08, 674.2, 674.29, 675.31, 675.46, 675.6, 676.31, 676.35, 676.88, 676.98, 677.52, 678.73, 679.77, 680.22, 681.39, 682.75, 683.71, 684.08, 684.34, 685.52, 685.69, 686.27, 686.64, 686.81, 687.23, 687.83, 687.9, 689.01, 689.15, 689.53, 690.21, 690.37, 690.86, 690.99, 692.12, 693.33, 693.54, 694.3, 695.23, 695.36, 695.77, 696.03, 697.2, 697.51, 697.62, 698.48, 700.05, 700.27, 700.41, 700.59, 700.64, 700.98, 701.15, 701.72, 702.23, 702.42, 702.85, 702.93, 703.08, 704.2, 704.44, 704.93, 705.16, 705.56, 706.48, 708.15, 708.28, 708.41, 708.82, 709.05, 709.14, 709.73, 709.88, 710.14, 711.1, 711.38, 711.73, 712.46, 712.75, 713.18, 713.39, 714.11, 714.44, 714.51, 715.49, 716.36, 716.58, 717.61, 718.39, 718.63, 719.03, 719.73, 720.76, 721.03, 721.37, 721.76, 721.88, 722.0, 722.44, 722.57, 723.49, 723.55, 724.34, 724.86, 725.38, 725.77, 726.7, 726.87, 727.21, 727.38, 727.52, 727.81, 727.95, 729.12, 729.38, 729.7, 729.8, 729.99, 730.12, 730.69, 731.16, 731.27, 731.78, 733.17, 733.5, 733.79, 733.96, 735.04, 735.39, 735.73, 736.0, 736.11, 736.61, 737.58, 738.12, 738.71, 738.8, 739.3, 739.53, 739.69, 740.65, 740.89, 741.12, 741.34, 741.68, 741.93, 742.43, 742.85], "12": [743.5, 744.33, 744.56, 744.74, 745.08, 745.68, 746.06, 746.78, 747.77, 748.01, 748.41, 748.58, 748.75, 749.87, 750.69, 750.86, 750.91, 751.93, 752.13, 752.68, 752.78, 753.76, 753.93, 754.57, 754.72, 754.94, 755.27, 755.47, 755.71, 756.36, 756.99, 757.14, 758.2, 758.29, 758.83, 758.96, 759.36, 760.2, 760.29, 761.19, 761.43, 761.99, 762.16, 763.26, 763.35, 764.18, 764.32, 764.58, 764.74, 765.47, 765.67, 765.75, 766.64, 766.79, 767.33, 767.54, 767.93, 768.65, 769.11, 769.2, 769.39, 769.72, 769.86, 770.25, 770.5, 770.79, 771.04, 772.01, 772.2, 772.49, 773.28, 773.89, 774.28, 774.47, 775.02, 775.29, 775.6, 776.41, 776.6, 777.26, 778.09, 778.28, 778.75, 778.96, 779.24, 779.38, 779.86, 780.48, 780.96, 782.15, 782.97, 783.22, 784.3, 784.46, 784.78, 785.01, 785.91, 786.02, 786.24, 786.57, 786.73, 788.03, 788.23, 788.44, 788.87, 789.21, 789.66, 789.94, 790.07, 790.36, 790.48, 791.37, 791.55, 792.05, 792.19, 792.43, 792.53], "13": [793.68, 793.87, 794.24, 794.96, 795.14, 795.3, 796.02, 796.81, 797.0, 797.26, 797.55, 798.3, 798.56, 799.16, 799.46, 799.6, 800.84, 801.78, 802.33, 802.53, 802.89, 802.96, 803.49, 803.78, 804.27, 805.44, 805.78, 806.11, 806.59, 806.96, 807.18, 807.22, 808.23, 809.45, 809.93, 810.1, 810.3, 810.73, 811.94, 812.19, 812.35, 812.69, 812.83, 813.34, 814.56, 814.83, 815.39, 815.59, 815.69, 816.53, 816.62, 817.01, 817.62, 817.8, 817.85, 818.25, 818.39, 818.55, 819.4, 819.48, 819.88, 820.03, 820.41, 821.26, 821.42, 821.48, 822.3, 822.48, 822.96, 823.13, 823.4, 824.35, 824.49, 824.66, 825.35, 825.54, 825.67, 826.27, 826.51, 826.96, 827.1, 827.59, 827.85, 828.08, 829.43, 829.7, 830.35, 830.87, 831.08, 831.29, 832.14, 832.29, 832.5, 832.78, 833.07, 833.26], "14": [834.29, 835.23, 835.76, 835.93, 836.28, 836.78, 836.89, 837.39, 837.62, 837.85, 838.69, 839.03, 839.19, 839.47, 839.78, 839.91, 840.46, 840.56, 840.86, 841.5, 841.88, 842.36, 843.06, 843.2, 843.72, 843.88, 844.48, 844.67, 845.25, 845.33, 845.82, 846.35, 847.45, 847.67, 848.09, 848.6, 849.03, 849.72, 849.89, 851.07, 851.21, 851.85, 852.21, 852.84, 852.97, 854.16, 854.37, 854.97, 855.62, 856.17, 856.84, 857.06, 857.18, 857.73, 857.81, 859.01, 860.0, 860.2, 862.02, 862.2, 862.89, 863.38, 864.48, 864.63, 864.77, 865.02, 865.12, 865.57, 866.03, 866.14, 866.26, 866.55, 866.76, 867.49, 867.8, 868.22, 868.86, 869.29, 869.89, 870.12, 870.53, 871.08, 871.55, 871.71, 872.25, 872.57, 872.62, 873.55, 874.13, 874.19, 875.33, 875.83, 875.88, 876.81, 877.16, 877.64, 877.84, 878.11, 878.7, 878.94, 879.37, 879.59, 880.6, 880.78, 880.89, 881.07, 881.53, 882.19, 882.36, 883.1, 883.21, 884.14, 885.23, 885.55, 886.4, 887.7, 887.82, 887.95, 888.42, 888.62, 888.83, 889.02], "15": [890.02, 890.18, 890.34, 890.6, 890.73, 891.73, 891.8, 892.33, 892.52, 892.62, 893.08, 893.24, 894.14, 894.95, 895.91, 896.04, 896.17, 896.89, 897.16, 897.33, 898.3, 898.57, 899.56, 899.76, 899.98, 900.77, 901.05, 901.26, 902.44, 902.74, 903.25, 903.69, 904.41, 904.57, 905.56, 905.83, 906.17, 906.65, 907.09, 907.58, 907.81, 908.2, 908.88, 909.11, 910.5, 910.75, 911.34, 911.57, 911.96, 912.08, 912.58, 912.84, 913.29, 914.2, 914.41, 915.02, 915.14, 915.7, 915.97, 916.13, 917.1, 917.72, 917.89, 918.57, 918.74, 918.98, 919.52, 920.02, 920.3, 920.35, 920.99, 921.16, 921.24, 922.62, 923.06, 923.5, 923.83, 924.15], "16": [924.85, 925.07, 925.2, 925.51, 925.71, 925.95, 926.17, 926.48, 926.85, 927.01, 928.36, 928.41, 928.78, 928.88, 929.04, 929.54, 929.94, 930.06, 930.47, 930.53, 930.87, 931.56, 931.97, 932.3, 932.5, 932.96, 933.11, 933.38, 933.56, 933.77, 934.21, 934.39, 934.74, 934.85, 935.65, 935.88, 936.27, 936.58, 937.01, 937.23, 937.46, 937.74, 938.02, 938.34, 938.56, 938.7, 939.61, 940.49, 940.73, 940.76, 941.68, 941.85, 942.21, 942.42, 942.62, 943.66, 944.54, 944.82, 945.01, 945.17, 945.71, 945.89, 946.28, 946.7, 947.07, 948.24, 948.91, 949.23, 949.32, 950.27, 950.34, 950.73, 950.95, 951.55, 952.38, 952.59, 952.8, 953.19, 954.04, 954.19, 954.41, 955.01, 955.32, 955.77, 956.03, 956.3, 956.45, 957.14, 957.45, 958.51, 958.68, 959.19, 959.35, 960.26, 960.61, 960.73, 962.07, 962.26, 962.47, 962.74, 963.62, 963.77, 964.78, 964.96, 965.15, 965.38, 965.76, 966.07, 966.1, 967.42, 967.6, 968.72, 968.96, 969.33, 969.72, 970.06, 970.6, 970.78, 971.14, 971.41, 971.65, 971.81, 972.1, 972.46, 972.7, 972.92, 973.84, 974.05, 974.24, 974.56, 974.72, 974.91, 975.13, 975.26, 976.46, 976.57, 977.04, 977.3, 977.41, 977.48, 977.86, 977.99, 979.06, 979.32, 979.65, 979.82, 979.89, 980.67, 981.02, 981.17, 981.76, 982.86, 983.05, 983.17, 983.38, 983.83, 984.26, 984.44, 985.59, 985.8, 986.1, 986.28, 986.5, 986.63, 987.12, 987.5, 987.68, 988.08, 988.59, 989.01, 990.0, 990.24, 990.75, 990.89, 991.05, 991.53, 991.64, 992.75, 992.89, 993.05, 993.81, 994.13, 994.98, 995.29, 995.67, 996.58, 996.88, 997.76, 997.93, 998.05, 998.43, 998.54, 999.43, 999.92, 1000.09, 1000.54, 1000.65, 1000.79, 1001.28, 1001.87, 1002.05, 1002.57, 1002.71, 1002.91, 1003.87, 1004.4, 1004.79, 1005.02, 1005.16, 1006.19, 1006.56, 1006.63, 1007.09, 1007.62], "17": [1008.56, 1008.75, 1008.82, 1009.22, 1009.92, 1010.03, 1010.15, 1010.52, 1010.96, 1011.59, 1011.69, 1012.19, 1013.02, 1013.37, 1013.57, 1014.51, 1014.72, 1014.91, 1015.15, 1015.95, 1016.31, 1016.42, 1017.45, 1017.56, 1017.72, 1017.96, 1018.19, 1018.27, 1018.7, 1018.91, 1019.84, 1020.17, 1020.32, 1020.41, 1021.23, 1021.35, 1021.82, 1021.98, 1022.92, 1023.36, 1023.58, 1024.14, 1024.56, 1025.14, 1025.7, 1025.79, 1026.15, 1026.58, 1026.73, 1027.11, 1028.1, 1028.19, 1028.55, 1029.66, 1029.84, 1030.06, 1030.44, 1030.72, 1030.85, 1031.12, 1031.23, 1031.32, 1032.03, 1032.56, 1033.11, 1033.32, 1034.14, 1035.13, 1035.61, 1035.73, 1036.87, 1037.01, 1037.2, 1037.58, 1037.77, 1038.03, 1038.23, 1039.3, 1039.41, 1039.51, 1040.0, 1040.14, 1040.5, 1041.21, 1041.33, 1041.62, 1042.57, 1042.66, 1043.25, 1043.72, 1045.19, 1045.52, 1045.89, 1046.64, 1046.85, 1046.97, 1047.54, 1047.76, 1048.42, 1048.61, 1048.77, 1048.98, 1049.16, 1050.16, 1050.33, 1051.44, 1052.02, 1052.57, 1052.87, 1053.0, 1053.51, 1053.76, 1054.11, 1054.22], "18": [1055.2, 1055.43, 1055.66, 1055.82, 1056.05, 1056.38, 1057.39, 1057.5, 1057.67, 1057.76, 1058.18, 1058.52, 1058.69, 1059.09, 1060.23, 1060.66, 1061.07, 1061.5, 1062.11, 1062.28, 1062.47, 1062.81, 1063.08, 1063.3, 1063.48, 1063.8, 1063.95, 1064.15, 1064.96, 1065.28, 1065.5, 1065.84, 1065.95, 1066.05, 1066.52, 1066.7, 1066.99, 1067.13, 1067.22, 1067.3, 1068.26, 1068.51, 1068.74, 1068.9, 1069.06, 1069.73, 1069.9, 1070.06, 1070.56, 1071.27, 1071.52, 1071.94, 1072.18, 1072.3, 1072.65, 1072.86, 1073.07, 1073.33, 1073.44, 1073.55, 1074.71, 1074.86, 1075.04, 1075.22, 1075.78, 1076.28, 1077.03, 1077.33, 1077.41, 1077.81, 1077.92, 1078.02, 1078.94, 1079.47, 1080.06, 1080.24, 1080.68, 1081.26, 1081.72, 1082.55, 1082.82, 1083.49, 1083.62, 1084.64, 1084.87, 1085.01, 1085.25, 1086.33, 1086.62, 1086.75, 1087.47, 1087.69, 1089.08, 1089.28, 1089.4, 1089.84, 1090.63, 1091.87, 1092.08, 1092.18, 1092.66, 1092.9, 1093.21, 1093.72, 1093.99, 1094.27, 1094.36, 1094.76, 1095.82, 1096.37, 1096.64, 1096.73, 1097.31, 1097.65, 1097.9, 1098.17, 1098.64], "19": [1099.53, 1099.92, 1100.25, 1100.48, 1100.83, 1100.9, 1102.01, 1102.24, 1102.49, 1102.72, 1102.85, 1103.15, 1103.83, 1104.59, 1104.85, 1105.94, 1106.11, 1106.31, 1107.39, 1107.55, 1107.66, 1108.03, 1108.85, 1108.98, 1109.12, 1110.2, 1110.37, 1110.48, 1111.17, 1111.25, 1111.4, 1112.21, 1112.87, 1113.21, 1114.02, 1114.32, 1114.61, 1114.76, 1114.94, 1115.2, 1116.0, 1116.09, 1116.45, 1116.62, 1117.12, 1117.2, 1117.38, 1117.58, 1118.42, 1118.66, 1119.17, 1119.8, 1120.01, 1121.08, 1121.24, 1121.37, 1121.68, 1122.56, 1122.7, 1122.9, 1123.46, 1123.62, 1123.85, 1124.69, 1125.0, 1125.19, 1126.06, 1126.3, 1126.79, 1127.39, 1127.52, 1127.65, 1128.11, 1128.25], "20": [1129.08, 1129.26, 1129.41, 1130.18, 1130.45, 1131.27, 1131.47, 1131.83, 1132.47, 1132.65, 1132.79, 1133.26, 1134.37, 1134.52, 1134.68, 1135.22, 1135.87, 1136.03, 1136.24, 1136.38, 1136.67, 1137.81, 1138.25, 1138.82, 1139.03, 1139.28, 1140.57, 1140.75, 1141.04, 1141.88, 1142.08, 1142.41, 1142.58, 1143.95, 1144.18, 1144.32, 1144.47, 1145.36, 1145.57, 1145.74, 1146.74, 1146.93, 1147.03, 1147.22, 1148.26, 1148.55, 1148.75, 1150.03, 1150.37, 1150.49, 1150.74, 1150.83, 1151.45, 1151.69, 1152.04, 1152.91, 1153.13, 1153.37, 1153.58, 1153.69, 1154.47, 1154.69, 1155.04, 1155.19, 1156.27, 1156.5, 1156.64, 1156.73, 1157.05, 1157.15, 1157.53, 1157.7, 1157.83, 1158.36, 1158.45, 1158.92, 1159.03, 1159.28, 1159.74, 1159.97, 1160.2, 1160.36, 1160.95, 1161.09, 1161.65, 1162.19, 1167.96, 1168.1, 1168.24, 1168.37, 1169.17, 1169.47, 1169.59, 1170.03, 1170.14, 1170.53, 1171.48, 1171.68, 1172.11, 1172.48, 1172.67, 1173.41, 1173.71, 1174.3, 1174.45]};
+
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=1175.5;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('lbyr-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('lbyr-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=w.scrollHeight;w.style.zoom=h>avail?Math.max(.55,avail/h):1;});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>

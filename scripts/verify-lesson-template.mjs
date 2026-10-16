@@ -4,7 +4,7 @@
 //
 // The template was written from When Your Mind Won't Rest, whose own check
 // (verify:mind) enforces it section by section. The Spiritual Reset, Before You
-// Say Yes and Talk Before You Marry editions are Richmond's reviewed HTML pages
+// Say Yes, Talk Before You Marry and Lead Before You're Ready editions are Richmond's reviewed HTML pages
 // with their own section names, so this checks each lesson page, as the site
 // serves it, against the template's rules that every one of them shares:
 //
@@ -32,11 +32,20 @@ import { join } from "node:path";
 import * as Tbym from "../lib/tbym-new.ts";
 import * as Bysy from "../lib/bysy-new.ts";
 import * as Reset from "../lib/reset-new.ts";
+import * as Lbyr from "../lib/lbyr-new.ts";
 
 const EDITIONS = [
   { name: "Talk Before You Marry", folder: "talk-before-you-marry-new", units: Tbym.TBYM_NEW_UNITS, build: Tbym.unitHtml },
   { name: "Before You Say Yes", folder: "before-you-say-yes-new", units: Bysy.BYSY_NEW_UNITS, build: Bysy.unitHtml },
   { name: "The Christian Spiritual Reset", folder: "christian-spiritual-reset-new", units: Reset.RESET_NEW_UNITS, build: Reset.unitHtml },
+  // Hidden test course: only the lessons added so far.
+  {
+    name: "Lead Before You’re Ready",
+    folder: "lead-before-youre-ready-new",
+    units: Lbyr.LBYR_NEW_UNITS.filter(Lbyr.unitAdded),
+    build: (unit, raw) => Lbyr.unitHtml(unit, raw, new Map()),
+    last: Lbyr.LBYR_NEW_UNITS[Lbyr.LBYR_NEW_UNITS.length - 1],
+  },
 ];
 
 let failures = 0;
@@ -74,7 +83,8 @@ for (const ed of EDITIONS) {
     // 3. One completion button; then rest is the default.
     const finishes = html.match(/I have completed this lesson|Mark this lesson complete/g) ?? [];
     if (finishes.length !== 1) fail(`${where}: ${finishes.length} completion buttons, expected one`);
-    const isLast = unit === lessons[lessons.length - 1];
+    // An edition whose lessons are still being added names its real last one.
+    const isLast = unit === (ed.last ?? lessons[lessons.length - 1]);
     if (!/Stop here for today|Back to the course page/.test(html)) {
       fail(`${where}: no "Stop here for today" (or "Back to the course page") after completion`);
     }

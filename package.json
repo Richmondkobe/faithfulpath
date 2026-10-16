@@ -23,6 +23,7 @@
     "verify:reset-new": "node scripts/verify-reset-new.mjs",
     "verify:bysy-new": "node scripts/verify-bysy-new.mjs",
     "verify:tbym-new": "node scripts/verify-tbym-new.mjs",
+    "verify:lbyr-new": "NEXT_PUBLIC_SUPABASE_URL=https://placeholder.invalid SUPABASE_SERVICE_ROLE_KEY=placeholder STRIPE_SECRET_KEY=placeholder tsx scripts/verify-lbyr-new.mjs",
     "verify:lessons": "NEXT_PUBLIC_SUPABASE_URL=https://placeholder.invalid SUPABASE_SERVICE_ROLE_KEY=placeholder STRIPE_SECRET_KEY=placeholder tsx scripts/verify-lesson-template.mjs"
   },
   "dependencies": {

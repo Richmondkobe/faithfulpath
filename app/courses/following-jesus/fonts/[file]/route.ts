@@ -9,6 +9,11 @@ const FILES = new Set([
   "fj-source-sans-3-normal.woff2",
   // Talk Before You Marry's Hebrew words (lib/tbym-new.ts).
   "fj-noto-serif-hebrew.woff2",
+  // Lead Before You're Ready's new edition (lib/lbyr-new.ts).
+  "lbyr-source-serif-4-normal.woff2",
+  "lbyr-source-serif-4-italic.woff2",
+  "lbyr-source-sans-3-normal.woff2",
+  "lbyr-noto-serif-hebrew.woff2",
 ]);
 
 export async function GET(

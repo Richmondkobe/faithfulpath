@@ -40,13 +40,15 @@ const nextConfig: NextConfig = {
   // routes serve nothing else, so say so rather than rely on it.
   outputFileTracingIncludes: {
     "/courses/following-jesus/**/*": ["./content/courses/following-jesus/**/*.html"],
-    "/courses/following-jesus/fonts/*": ["./fonts/fj-*.woff2"],
+    "/courses/following-jesus/fonts/*": ["./fonts/fj-*.woff2", "./fonts/lbyr-*.woff2"],
     // The new Reset edition (hidden test course): its pages and PDFs.
     "/members/courses/christian-spiritual-reset-new/**/*": ["./content/courses/christian-spiritual-reset-new/**/*"],
     // The new Before You Say Yes edition (hidden test course): its pages.
     "/members/courses/before-you-say-yes-new/**/*": ["./content/courses/before-you-say-yes-new/**/*"],
     // The new Talk Before You Marry edition (hidden test course): its pages.
     "/members/courses/talk-before-you-marry-new/**/*": ["./content/courses/talk-before-you-marry-new/**/*"],
+    // The new Lead Before You're Ready edition (hidden test course): its pages.
+    "/members/courses/lead-before-youre-ready-new/**/*": ["./content/courses/lead-before-youre-ready-new/**/*"],
   },
   images: {
     // Keep resized images for 31 days rather than the default 4 hours. A book
