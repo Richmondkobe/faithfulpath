@@ -16,7 +16,10 @@ export const metadata: Metadata = {
   // each page typing it (website audit S6). A page that must not carry it sets
   // title: { absolute: … }.
   title: {
-    default: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
+    // Under about 60 characters, so Google shows it whole (website audit V9;
+    // Richmond's wording, 17 October 2026). The share previews keep their
+    // longer title.
+    default: "Faithful Path Community — Online Pastoral Guidance",
     template: "%s | Faithful Path Community",
   },
   description:

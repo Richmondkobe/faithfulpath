@@ -24,9 +24,11 @@ export default function ArticlePagination({
 
   // min-h-11 is 44px: the Newer/Older links were 20px tall, which is a hard
   // thing to hit with a thumb at the bottom of a long index.
+  // 48px tall and a little padding either side, comfortably above the 44px
+  // tap minimum rather than exactly on it (website audit, 16 October 2026).
   const link =
-    "inline-flex min-h-11 items-center text-sm text-navy underline underline-offset-4 transition-colors hover:text-navy";
-  const disabled = "inline-flex min-h-11 items-center text-sm text-muted";
+    "inline-flex min-h-12 items-center px-2 text-sm text-navy underline underline-offset-4 transition-colors hover:text-navy";
+  const disabled = "inline-flex min-h-12 items-center px-2 text-sm text-muted";
 
   return (
     <nav

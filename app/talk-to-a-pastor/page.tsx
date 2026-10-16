@@ -337,11 +337,6 @@ export default function Home() {
         </FinePrint>
       </section>
 
-      <footer className="border-t border-line py-10">
-        <p className="mx-auto max-w-3xl px-6 text-[13px] text-muted">
-          Faithful Path Community
-        </p>
-      </footer>
     </main>
   );
 }

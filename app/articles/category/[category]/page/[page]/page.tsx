@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${category.label}: Christian Articles — page ${page}`,
+    title: `${category.label} — page ${page}`,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug, page) },
     ...socialMeta({

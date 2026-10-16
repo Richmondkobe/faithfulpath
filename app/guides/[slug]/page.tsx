@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { LBYR_WELCOME_PATH } from "@/lib/lbyr-new";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
@@ -232,7 +233,9 @@ const COURSE_EDITION: Record<string, CourseEdition | null> = {
   },
   "lead-before-youre-ready": {
     text: "This book is also a guided online course in the membership, for your first years of leading in a church.",
-    href: MEMBERSHIP_COURSE,
+    // The course's public Welcome page, which shows the course and offers the
+    // membership under it (Richmond, 17 October 2026).
+    href: LBYR_WELCOME_PATH,
   },
   "following-jesus-book-1-begin": fjCourse("begin"),
   "following-jesus-book-2-establish": fjCourse("establish"),

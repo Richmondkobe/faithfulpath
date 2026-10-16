@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!category) return { title: "Not found" };
 
   return {
-    title: `${category.label}: Christian Articles`,
+    // Short enough for Google to show whole; the description says "Christian articles".
+    title: category.label,
     description: category.description,
     alternates: { canonical: categoryHref(category.slug) },
     ...socialMeta({
