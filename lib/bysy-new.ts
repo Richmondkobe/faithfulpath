@@ -7,6 +7,7 @@ import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
 import { HELP_PATH } from "@/lib/site";
+import { playerTextGold } from "@/lib/course-gold";
 
 /*
  * Before You Say Yes: the current edition, live for members since October 2026. The
@@ -213,6 +214,7 @@ export function playerHtml(unit: BysyNewUnit, raw: string): string {
   const src = `src="${unit.narration}"`;
   if (html.split(src).length - 1 !== 1) throw new Error(`${unit.slug}: expected the recording once in the player.`);
   html = swap(html, src, `src="${unitPath(unit)}/audio/${unit.narration}"`);
+  html = beforeHeadEnd(html, playerTextGold("data-bysy", [".refrain", ".num", ".pn", ".cards21 span i"]));
   return beforeHeadEnd(html, NOINDEX);
 }
 

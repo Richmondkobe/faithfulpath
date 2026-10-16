@@ -110,6 +110,14 @@ check(!/href="#talk-to-a-pastor"|href="#courses"/.test(planWith([])) && /href="\
   "plan: Talk to a Pastor and Other courses go to the site's pages", "plan: Talk to a Pastor or Other courses not linked");
 check(/Nothing you write is saved to your account/.test(read("my-leadership-plan.html")), "plan: says nothing written is saved", "plan lost its privacy promise");
 
+// Progress dots readable by screen readers; darker gold for text on the cream slides.
+for (const u of added) {
+  const page = Lbyr.unitHtml(u, read(`${u.slug}/page.html`), new Map());
+  check(/<span class="steps21" role="img" aria-label="Step \d+ of 10">/.test(page), `${u.slug}: progress dots have a role`, `${u.slug}: progress dots have no role`);
+  check(Lbyr.playerHtml(u, read(`${u.slug}/player.html`)).includes("<style data-lbyr>.refrain,.num{color:#8a6a24}</style>"),
+    `${u.slug}/player: darker gold for refrains and numbers`, `${u.slug}/player: darker gold missing`);
+}
+
 // The pages keep their promises about the writing.
 check(/Your written answers are not saved to your account/.test(read("how-this-course-works.html")),
   "How This Course Works: says written answers are not saved", "How This Course Works lost its privacy promise");

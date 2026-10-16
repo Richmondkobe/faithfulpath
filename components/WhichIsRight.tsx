@@ -5,7 +5,7 @@ import Link from "next/link";
  *
  * On /guides and /membership, because those are the two pages where somebody
  * is deciding between them — and where, without this, the answer to "what is
- * the difference between the US$29 book and the US$19 month?" is nowhere on the
+ * the difference between a book and the US$19 month?" is nowhere on the
  * page.
  *
  * `here` marks the option the reader is already looking at. It stays in the
@@ -15,7 +15,9 @@ import Link from "next/link";
 const OPTIONS = [
   {
     need: "A book to read and print",
-    action: "Buy a book — US$29, PDF, yours to keep",
+    // "from": the books are US$20 (Following Jesus) or US$29 (Richmond,
+    // 17 October 2026).
+    action: "Buy a book — from US$20, PDF, yours to keep",
     href: "/guides",
   },
   {

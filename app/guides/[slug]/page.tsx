@@ -480,12 +480,15 @@ export default async function Guide({ params }: Props) {
             <div className="mt-8 max-w-xl rounded-2xl border border-line bg-paper px-5 py-4">
               <p className="text-sm leading-relaxed text-muted">
                 {COURSE_EDITION[slug].text}{" "}
-                <Link
+                {/* A plain link: the Following Jesus course pages are whole HTML
+                    documents, not React pages, so <Link> pre-loaded them in the
+                    background and the request never finished. */}
+                <a
                   href={COURSE_EDITION[slug].href}
                   className="font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
                 >
                   See the course
-                </Link>
+                </a>
                 .
               </p>
             </div>

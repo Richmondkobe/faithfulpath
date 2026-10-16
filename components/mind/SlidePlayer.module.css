@@ -15,6 +15,11 @@
   --cream: #f7f3ec;
   --navy: #1e2a3a;
   --gold: #c78a2c;
+  /* Gold as text on the cream and card slides: a deeper shade of the same
+     gold, 5.3:1 on the cream rather than 2.7:1 (website audit A3 / V26,
+     Richmond, 17 October 2026). Dark slides keep the bright gold, which reads
+     at 4.9:1 on navy. Borders, dots and shapes keep the bright gold too. */
+  --gold-text: #8a5a14;
   --mute: #5e6674;
   --card: #fffdf9;
   --line: #e4ddd0;
@@ -58,8 +63,14 @@
 
 /* ---------------------------------------------- the slide's own markup */
 
-.player :global(.label) {
+/* On a dark slide, gold text stays the bright gold. */
+.player .dark :global(.label),
+.player .dark :global(.flow i) {
   color: var(--gold);
+}
+
+.player :global(.label) {
+  color: var(--gold-text);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: clamp(12px, 2.6vw, 15px);
@@ -119,7 +130,7 @@
 }
 
 .player :global(.flow i) {
-  color: var(--gold);
+  color: var(--gold-text);
   font-style: normal;
 }
 

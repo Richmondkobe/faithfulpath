@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TBYM_NEW_PATH } from "@/lib/tbym-new";
 
 /**
@@ -19,12 +18,13 @@ export default function TbymNewEditionCard() {
         parts: from making honesty safe, through the nine rooms of a shared life, to keeping talking.
       </p>
       <div className="mt-5">
-        <Link
+        {/* A plain link: the course page is a whole HTML document, so <Link> would pre-load it and the request would hang. */}
+        <a
           href={TBYM_NEW_PATH}
           className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
         >
           Open the course
-        </Link>
+        </a>
       </div>
     </section>
   );

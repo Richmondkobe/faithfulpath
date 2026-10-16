@@ -82,12 +82,14 @@ export default async function FollowingJesusSeries() {
                   <span className="block text-lg text-muted">{course.subtitle}</span>
                 </h2>
                 {open ? (
-                  <Link
+                  // A plain link: each course page is a whole HTML document, not a
+                  // React page, so <Link> pre-loaded it and the request hung.
+                  <a
                     href={coursePath(course)}
                     className="text-[15px] font-medium text-gold-text underline underline-offset-4"
                   >
                     {yours ? "Go to your course" : "See the course"} ›
-                  </Link>
+                  </a>
                 ) : (
                   <span className="text-[15px] text-muted">Coming soon</span>
                 )}

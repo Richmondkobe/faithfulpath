@@ -11,6 +11,7 @@ import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
 import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
 import { SITE } from "@/lib/site";
+import { playerTextGold } from "@/lib/course-gold";
 
 /*
  * Lead Before You're Ready: the new edition (October 2026), a hidden test
@@ -290,6 +291,10 @@ function websitePage(
   if (!indexable) out = beforeHeadEnd(out, NOINDEX);
   out = beforeHeadEnd(out, NEVER_STALE);
   out = swap(out, "<body>", `<body>\n${courseBar(bar)}`);
+  // The progress dots carry their words ("Step 1 of 10") as a label, which
+  // screen readers only read on an element with a role. Marked as an image,
+  // as Talk Before You Marry's are (website audit X11). Nothing visible changes.
+  out = swap(out, '<span class="steps21" aria-label=', '<span class="steps21" role="img" aria-label=');
 
   // "Concerns, Care and Reporting", in the header and the footer of every
   // page: the course's page of that name. From a page with writing boxes it
@@ -380,6 +385,7 @@ export function playerHtml(unit: LbyrNewUnit, raw: string): string {
   if (html.includes(PLAYER_FONTS(true))) html = swap(html, PLAYER_FONTS(true), `${SELF_HOSTED_FONTS}${HEBREW_FONT}`);
   else html = swap(html, PLAYER_FONTS(false), SELF_HOSTED_FONTS);
   html = swap(html, `src="${unit.narration}"`, `src="${unitPath(unit)}/audio/${unit.narration}"`);
+  html = beforeHeadEnd(html, playerTextGold("data-lbyr", [".refrain", ".num"]));
   return beforeHeadEnd(html, NOINDEX);
 }
 
