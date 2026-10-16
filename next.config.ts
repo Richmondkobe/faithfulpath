@@ -180,24 +180,27 @@ const nextConfig: NextConfig = {
         destination: "/articles/money-while-dating",
         permanent: true,
       },
+      // The old denomination dating pages: the neutral article on dating across
+      // churches and denominations, not the Pentecostal one (website audit
+      // N14; Richmond, 17 October 2026).
       {
         source: "/baptist-dating",
-        destination: "/articles/pentecostal-christian-dating",
+        destination: "/articles/what-does-equally-yoked-mean",
         permanent: true,
       },
       {
         source: "/orthodox-dating",
-        destination: "/articles/pentecostal-christian-dating",
+        destination: "/articles/what-does-equally-yoked-mean",
         permanent: true,
       },
       {
         source: "/anglican-christian-dating",
-        destination: "/articles/pentecostal-christian-dating",
+        destination: "/articles/what-does-equally-yoked-mean",
         permanent: true,
       },
       {
         source: "/messianic-christian-dating",
-        destination: "/articles/pentecostal-christian-dating",
+        destination: "/articles/what-does-equally-yoked-mean",
         permanent: true,
       },
       {

@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     description:
       "Emergency numbers, crisis and abuse helplines, forced-marriage support, debt advice and counselling registers, by country.",
     siteName: "Faithful Path Community",
-    images: ["/og-default.png"],
+    images: ["/og-site.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description:
       "Emergency numbers, crisis and abuse helplines, forced-marriage support, debt advice and counselling registers, by country.",
-    images: ["/og-default.png"],
+    images: ["/og-site.png"],
   },
 };
 

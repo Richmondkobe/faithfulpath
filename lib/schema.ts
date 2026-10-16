@@ -37,9 +37,9 @@ export const orgRef = { "@id": ORG_ID };
  * `full: false` gives the reference-plus-name form that is enough for an
  * author field; /about emits the full Person once, under the same @id.
  *
- * No `logo` on the Organization: there is no logo file in public/ — only a
- * social card and a portrait — and claiming a portrait is the organisation's
- * logo would be wrong. Add one and it belongs here.
+ * The Organization's logo is public/logo.png, the gold-ring "FP" monogram
+ * Richmond chose on 17 October 2026 (website audit S9): square, 512px, as
+ * Google asks.
  */
 export function organizationAndWebSite() {
   return {
@@ -51,6 +51,7 @@ export function organizationAndWebSite() {
         name: SITE.name,
         url: SITE.url,
         email: "info@faithfulpathcommunity.com",
+        logo: { "@type": "ImageObject", url: abs("/logo.png"), width: 512, height: 512 },
         sameAs: SOCIAL,
       },
       {

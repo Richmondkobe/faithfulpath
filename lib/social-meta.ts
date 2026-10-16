@@ -9,7 +9,7 @@ import type { Metadata } from "next";
 // through this, so the preview always names the page it came from.
 
 const SITE_NAME = "Faithful Path Community";
-const DEFAULT_IMAGE = { url: "/og-default.png", width: 1200, height: 630, alt: SITE_NAME };
+const DEFAULT_IMAGE = { url: "/og-site.png", width: 1200, height: 630, alt: SITE_NAME };
 
 export function socialMeta({
   title,

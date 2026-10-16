@@ -306,7 +306,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // better than the generic site card, which says nothing about the book, but
   // worse than a card drawn for the shape.
   const images = [
-    OG_IMAGES[slug] ?? coverPublicUrl(guide.cover_path) ?? "/og-default.png",
+    OG_IMAGES[slug] ?? coverPublicUrl(guide.cover_path) ?? "/og-site.png",
   ];
 
   return {

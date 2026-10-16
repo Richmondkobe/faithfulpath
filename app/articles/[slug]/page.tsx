@@ -55,13 +55,12 @@ export async function generateMetadata({
       description,
       siteName: "Faithful Path Community",
       authors: [AUTHOR.name],
-      images: ["/og-default.png"],
+      // The image is the article's own card, ./opengraph-image.tsx.
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/og-default.png"],
     },
   };
 }
@@ -86,8 +85,7 @@ export default async function ArticlePage({
 
   // dateModified is the row's updated_at, not the publication date: saying a
   // corrected article was last modified the day it went out is simply untrue.
-  // The image is the site card, because articles carry no image of their own —
-  // one per article would be better, and would belong here.
+  // The image is the article's own share card (./opengraph-image.tsx).
   const schema = graph(
     {
       "@type": "Article",
@@ -97,7 +95,7 @@ export default async function ArticlePage({
       description: a.meta_description,
       datePublished: iso,
       dateModified: isoDay(a.updated_at) || iso,
-      image: abs("/og-default.png"),
+      image: abs(`/articles/${a.slug}/opengraph-image`),
       inLanguage: "en",
       ...(category ? { articleSection: category.label } : {}),
       author: personRef,

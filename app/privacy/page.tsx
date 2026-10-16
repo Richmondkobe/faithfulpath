@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     siteName: "Faithful Path Community",
-    images: ["/og-default.png"],
+    images: ["/og-site.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/og-default.png"],
+    images: ["/og-site.png"],
   },
 };
 

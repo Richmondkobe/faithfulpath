@@ -28,7 +28,7 @@ const DESCRIPTION =
 // any one of them, and a portrait cover would crop to a band in a social card —
 // see the note above OG_IMAGES in app/guides/[slug]/page.tsx.
 const OG_IMAGE = {
-  url: "/og-default.png",
+  url: "/og-site.png",
   width: 1200,
   height: 630,
   alt: "Faithful Path Community",

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
     images: [
       {
-        url: "/og-default.png",
+        url: "/og-site.png",
         width: 1200,
         height: 630,
         alt: "Faithful Path Community",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
-    images: ["/og-default.png"],
+    images: ["/og-site.png"],
   },
 };
 

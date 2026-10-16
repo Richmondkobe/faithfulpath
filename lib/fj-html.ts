@@ -183,11 +183,11 @@ export function publicCoursePage(html: string, course: FjCourse, { indexable }: 
         `<meta data-fj property="og:url" content="${abs(path)}">`,
         `<meta data-fj property="og:title" content="${escapeHtml(title)}">`,
         `<meta data-fj property="og:description" content="${escapeHtml(description)}">`,
-        `<meta data-fj property="og:image" content="${abs("/og-default.png")}">`,
+        `<meta data-fj property="og:image" content="${abs("/og-site.png")}">`,
         `<meta data-fj name="twitter:card" content="summary_large_image">`,
         `<meta data-fj name="twitter:title" content="${escapeHtml(title)}">`,
         `<meta data-fj name="twitter:description" content="${escapeHtml(description)}">`,
-        `<meta data-fj name="twitter:image" content="${abs("/og-default.png")}">`,
+        `<meta data-fj name="twitter:image" content="${abs("/og-site.png")}">`,
         `<script data-fj type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`,
       ].join("\n")
     );

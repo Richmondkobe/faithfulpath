@@ -92,6 +92,12 @@ const FACES = [
   { file: "lbyr-source-serif-4-normal.woff2", family: "Source+Serif+4:wght@400..600", extra: FJ_EXTRA + LBYR_EXTRA },
   { file: "lbyr-source-serif-4-italic.woff2", family: "Source+Serif+4:ital,wght@1,400", extra: FJ_EXTRA + LBYR_EXTRA },
   { file: "lbyr-source-sans-3-normal.woff2", family: "Source+Sans+3:wght@400..700", extra: FJ_EXTRA + LBYR_EXTRA },
+  // The share cards drawn by app/articles/[slug]/opengraph-image.tsx and the
+  // site's general card. Their renderer reads only TTF, OTF or WOFF, and one
+  // weight per file, so these are single-weight TTF copies of the site's two
+  // families (website audit S9, 17 October 2026).
+  { file: "og-source-serif-4-600.ttf", family: "Source+Serif+4:wght@600", extra: FJ_EXTRA, ttf: true },
+  { file: "og-source-sans-3-600.ttf", family: "Source+Sans+3:wght@600", extra: FJ_EXTRA, ttf: true },
   { file: "lbyr-noto-serif-hebrew.woff2", family: "Noto+Serif+Hebrew:wght@400..600", extra: "ְִֵֶַָֹּׁאדהוחיךלמנעקש" },
 ];
 
@@ -110,7 +116,8 @@ for (const face of FACES) {
   const cssUrl =
     `https://fonts.googleapis.com/css2?family=${face.family}` +
     `&text=${encodeURIComponent(chars)}&display=swap`;
-  const cssRes = await fetch(cssUrl, { headers: { "User-Agent": UA } });
+  // With no browser User-Agent, Google answers with TrueType instead of woff2.
+  const cssRes = await fetch(cssUrl, { headers: face.ttf ? {} : { "User-Agent": UA } });
   if (!cssRes.ok) {
     console.error(`  ${face.file}: css request failed — ${cssRes.status}`);
     process.exit(1);
@@ -151,16 +158,20 @@ for (const face of FACES) {
   // A character the face simply has no glyph for is left out by Google, which is
   // information rather than a fault — but a face missing a letter would not be.
   const missing = [...chars].filter((ch) => !covered.has(ch.codePointAt(0)));
-  const missingLetters = missing.filter((ch) => /\p{L}/u.test(ch));
+  // Google's TrueType answer lists no unicode-range, so there is nothing here
+  // to check for those files; the share cards are looked at once drawn.
+  const missingLetters = face.ttf ? [] : missing.filter((ch) => /\p{L}/u.test(ch));
   if (missingLetters.length) {
     console.error(`  ${face.file}: no glyph for ${missingLetters.length} letter(s): ${missingLetters.slice(0, 12).join(" ")}`);
     process.exit(1);
   }
 
-  const bin = Buffer.from(await (await fetch(url, { headers: { "User-Agent": UA } })).arrayBuffer());
-  // woff2 files begin with "wOF2".
-  if (bin.subarray(0, 4).toString("latin1") !== "wOF2") {
-    console.error(`  ${face.file}: not a woff2 file`);
+  const bin = Buffer.from(await (await fetch(url, face.ttf ? {} : { headers: { "User-Agent": UA } })).arrayBuffer());
+  // woff2 files begin with "wOF2"; TrueType with 00 01 00 00 (or "true").
+  const magic = bin.subarray(0, 4);
+  const ok = face.ttf ? magic.equals(Buffer.from([0, 1, 0, 0])) || magic.toString("latin1") === "true" : magic.toString("latin1") === "wOF2";
+  if (!ok) {
+    console.error(`  ${face.file}: not a ${face.ttf ? "TrueType" : "woff2"} file`);
     process.exit(1);
   }
 
@@ -176,7 +187,7 @@ for (const face of FACES) {
       `weight ${weight.padEnd(9)} ${style.padEnd(7)} ` +
       `${String(covered.size).padStart(3)} glyphs  ` +
       `${same ? "unchanged" : check ? "WOULD CHANGE" : "written"}` +
-      (missing.length ? `  (${missing.length} symbol(s) the face lacks)` : "")
+      (face.ttf ? "  (TrueType: coverage not listed by Google)" : missing.length ? `  (${missing.length} symbol(s) the face lacks)` : "")
   );
 }
 console.log(
