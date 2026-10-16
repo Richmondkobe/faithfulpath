@@ -10,6 +10,7 @@ import { getLearner, type Learner } from "@/lib/following-jesus-access";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, swap, transcriptHeadings } from "@/lib/fj-html";
 import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
+import { SITE } from "@/lib/site";
 
 /*
  * Lead Before You're Ready: the new edition (October 2026), a hidden test
@@ -309,7 +310,15 @@ const LESSON_1_FILE =
 
 /** The Welcome page. Open to anyone; a visitor without an active membership sees how to join or sign in under it. */
 export function welcomeHtml(raw: string, viewer: { signedIn: boolean; active: boolean }): string {
-  let html = websitePage(raw, { bar: viewer.active ? "member" : "visitor", concernsNewTab: false });
+  // Once live, the one page of the course search engines may list
+  // (Richmond, 16 October 2026). Its description is the page's own words.
+  let html = websitePage(raw, { bar: viewer.active ? "member" : "visitor", concernsNewTab: false, indexable: LBYR_NEW_LIVE });
+  if (LBYR_NEW_LIVE) {
+    html = beforeHeadEnd(
+      html,
+      `<link data-lbyr rel="canonical" href="${SITE.url}${LBYR_WELCOME_PATH}"><meta data-lbyr name="description" content="A practical course for new church leaders: ten short lessons for leaders in their first years, taught from Scripture and from practical experience in the local church. Part of the Faithful Path membership.">`
+    );
+  }
   html = swap(html, 'href="How-This-Course-Works.html"', `href="${LBYR_HOW_PATH}"`);
   html = swap(html, LESSON_1_FILE, `href="${unitPath(LBYR_NEW_UNITS[0])}"`);
   if (!viewer.active) {

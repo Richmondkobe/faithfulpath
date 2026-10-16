@@ -1,10 +1,15 @@
 # Lead Before You're Ready — new edition (October 2026)
 
-A hidden test course until Richmond says "publish" (`LBYR_NEW_LIVE` in
-`lib/lbyr-new-live.ts`). While hidden, every address below is "not found" on
-the live site and opens only on Vercel previews and locally. The September
-edition (`content/courses/lead-before-youre-ready/`, `LBYR_PUBLISHED`) stays
-live and unchanged until then.
+Live since 16 October 2026 (`LBYR_NEW_LIVE` in `lib/lbyr-new-live.ts`):
+listed on /members, its Welcome page linked from /courses, in the sitemap and
+open to search engines (every other page stays noindex).
+
+The September edition (`content/courses/lead-before-youre-ready/`) is retired
+(`LBYR_OLD_RETIRED`): its card is off /members and `next.config.ts` sends its
+addresses here (temporary redirects; its Concerns page to the new one).
+Nothing was deleted: its pages, its recordings in
+`course-media/audio/lead-before-youre-ready/` and its members' progress rows
+are kept, and setting `LBYR_OLD_RETIRED` to false restores it.
 
 Address: `/members/courses/lead-before-youre-ready-new`.
 

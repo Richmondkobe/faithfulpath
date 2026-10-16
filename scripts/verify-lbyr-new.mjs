@@ -12,6 +12,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 import * as Lbyr from "../lib/lbyr-new.ts";
+import { LBYR_NEW_LIVE } from "../lib/lbyr-new-live.ts";
 
 const root = process.cwd();
 const dir = join(root, "content/courses/lead-before-youre-ready-new");
@@ -80,7 +81,12 @@ for (const [name, page] of served) {
   );
   check(!/googleapis|gstatic|vercel|analytics|gtag|plausible/i.test(html), `${name}: nothing from Google, no analytics`, `${name}: loads something from outside the site`);
   check(!/href="#concerns"|<a [^>]*href="#|02%20Lessons|\.html"/.test(html), `${name}: no placeholder or file links left`, `${name}: a placeholder or file link is left`);
-  check(/noindex/.test(html), `${name}: noindex`, `${name}: missing noindex`);
+  // Once live, the Welcome page alone is open to search engines.
+  if (name.startsWith("welcome") && LBYR_NEW_LIVE) {
+    check(!/noindex/.test(html) && /rel="canonical" href="https:\/\/faithfulpathcommunity\.com\/members\/courses\/lead-before-youre-ready-new\/welcome"/.test(html),
+      `${name}: open to search engines, with its canonical address`, `${name}: still noindex, or no canonical`);
+  } else check(/noindex/.test(html), `${name}: noindex`, `${name}: missing noindex`);
+  check(!/Test edition/.test(html) || !LBYR_NEW_LIVE, `${name}: no test-edition note`, `${name}: still says "Test edition"`);
 }
 
 // My Leadership Plan: the record goes in before the page's own script, as

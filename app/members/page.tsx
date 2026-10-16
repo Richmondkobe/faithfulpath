@@ -13,6 +13,8 @@ import LbyrCourseCard from "@/components/lbyr/LbyrCourseCard";
 import BysyNewEditionCard from "@/components/bysy/BysyNewEditionCard";
 import TbymNewEditionCard from "@/components/tbym/TbymNewEditionCard";
 import { LBYR_PUBLISHED } from "@/lib/lbyr-links";
+import { LBYR_NEW_LIVE, LBYR_OLD_RETIRED } from "@/lib/lbyr-new-live";
+import LbyrNewEditionCard from "@/components/lbyr/LbyrNewEditionCard";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 import NewEditionCard from "@/components/reset-new/NewEditionCard";
 
@@ -225,7 +227,9 @@ export default async function Members() {
           <MindCourseCard />
           <BysyNewEditionCard />
           <TbymNewEditionCard />
-          {LBYR_PUBLISHED && <LbyrCourseCard />}
+          {LBYR_NEW_LIVE && <LbyrNewEditionCard />}
+          {/* The September edition, until retired (lib/lbyr-new-live.ts). */}
+          {LBYR_PUBLISHED && !(LBYR_NEW_LIVE && LBYR_OLD_RETIRED) && <LbyrCourseCard />}
         </div>
       </section>
 

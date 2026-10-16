@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { LBYR_NEW_LIVE, LBYR_OLD_RETIRED } from "./lib/lbyr-new-live";
 
 // Guide covers are served from the public Supabase storage bucket.
 const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -111,6 +112,24 @@ const nextConfig: NextConfig = {
         destination: "/members/courses/before-you-say-yes-new",
         permanent: true,
       },
+      // Lead Before You're Ready, September edition: retired, but its pages are
+      // kept and can come back (lib/lbyr-new-live.ts), so these are temporary
+      // redirects that no browser remembers. Its Concerns page opens the new
+      // Concerns page; everything else opens the new course page.
+      ...(LBYR_NEW_LIVE && LBYR_OLD_RETIRED
+        ? [
+            {
+              source: "/members/courses/lead-before-youre-ready/concerns-care-and-reporting",
+              destination: "/members/courses/lead-before-youre-ready-new/concerns-care-and-reporting",
+              permanent: false,
+            },
+            {
+              source: "/members/courses/lead-before-youre-ready/:path*",
+              destination: "/members/courses/lead-before-youre-ready-new",
+              permanent: false,
+            },
+          ]
+        : []),
       // Pages whose topic maps directly onto an existing new article
       {
         source: "/christian-leadership-training",

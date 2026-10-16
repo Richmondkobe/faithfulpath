@@ -10,6 +10,7 @@ import {
 import { CATEGORIES, categoryHref } from "@/lib/categories";
 import { listPublishedProducts } from "@/lib/products-db";
 import { publicSeriesPaths } from "@/lib/following-jesus";
+import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
 
 // The sitemap is a cached Route Handler, so without this it would only ever
 // reflect the articles and guides that existed at build time. An hour is short
@@ -36,6 +37,9 @@ const STATIC_PATHS = [
   // Following Jesus: the series home and the Begin welcome page, the public
   // sales pages for the separately sold courses. Their lessons are not here.
   ...publicSeriesPaths(),
+  // Lead Before You're Ready's Welcome page, its public way in. The rest of
+  // the course is for members.
+  ...(LBYR_NEW_LIVE ? ["/members/courses/lead-before-youre-ready-new/welcome"] : []),
   "/talk-to-a-pastor",
   "/contact",
   "/help",

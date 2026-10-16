@@ -5,6 +5,11 @@ import { socialMeta } from "@/lib/social-meta";
 import Link from "next/link";
 import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
 import { formatPrice } from "@/lib/products";
+import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
+
+// Lead Before You're Ready's Welcome page, open to anyone. A whole HTML page,
+// not a React one, so a plain link rather than <Link>.
+const LBYR_WELCOME = "/members/courses/lead-before-youre-ready-new/welcome";
 
 // The page behind the menu's "Courses": the site's two kinds of course side by
 // side, so a visitor can find Following Jesus without being sent the link
@@ -42,8 +47,8 @@ function Course({
   body: string;
   href: string;
   button: string;
-  /** Courses listed in the card, as [name, one line]. */
-  items?: [string, string][];
+  /** Courses listed in the card, as [name, one line, and where its name links, if anywhere]. */
+  items?: [string, string, string?][];
 }) {
   return (
     <li className="rounded-2xl border border-line bg-paper px-6 py-7 sm:px-8">
@@ -60,9 +65,16 @@ function Course({
       <p className={`${line ? "mt-3" : "mt-4"} max-w-xl leading-relaxed`}>{body}</p>
       {items && (
         <ul className="mt-5 max-w-xl list-disc space-y-2 pl-6 leading-relaxed marker:text-gold-text">
-          {items.map(([name, text]) => (
+          {items.map(([name, text, link]) => (
             <li key={name}>
-              <strong className="font-medium text-navy">{name}</strong>: {text}
+              {link ? (
+                <a href={link} className="font-medium text-navy underline underline-offset-4 transition-colors hover:text-gold-text">
+                  {name}
+                </a>
+              ) : (
+                <strong className="font-medium text-navy">{name}</strong>
+              )}
+              : {text}
             </li>
           ))}
         </ul>
@@ -108,7 +120,7 @@ export default function Courses() {
             ["When Your Mind Won’t Rest", "overthinking, worry and fear."],
             ["Before You Say Yes", "discernment in dating and the decision to marry."],
             ["Talk Before You Marry", "fifteen lessons for couples before marriage."],
-            ["Lead Before You’re Ready", "for your first years of leading in a church."],
+            ["Lead Before You’re Ready", "for your first years of leading in a church.", LBYR_NEW_LIVE ? LBYR_WELCOME : undefined],
           ]}
         />
         <Course
