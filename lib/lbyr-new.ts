@@ -308,16 +308,39 @@ const LESSON_1_FILE =
 
 /* --------------------------------------------------------- Start Here */
 
+const WELCOME_SHARE_TITLE = `${COURSE}: a practical course for new church leaders`;
+const WELCOME_DESCRIPTION =
+  "A practical course for new church leaders: ten short lessons for leaders in their first years, taught from Scripture and from practical experience in the local church. Part of the Faithful Path membership.";
+
 /** The Welcome page. Open to anyone; a visitor without an active membership sees how to join or sign in under it. */
 export function welcomeHtml(raw: string, viewer: { signedIn: boolean; active: boolean }): string {
   // Once live, the one page of the course search engines may list
   // (Richmond, 16 October 2026). Its description is the page's own words.
   let html = websitePage(raw, { bar: viewer.active ? "member" : "visitor", concernsNewTab: false, indexable: LBYR_NEW_LIVE });
   if (LBYR_NEW_LIVE) {
-    html = beforeHeadEnd(
-      html,
-      `<link data-lbyr rel="canonical" href="${SITE.url}${LBYR_WELCOME_PATH}"><meta data-lbyr name="description" content="A practical course for new church leaders: ten short lessons for leaders in their first years, taught from Scripture and from practical experience in the local church. Part of the Faithful Path membership.">`
-    );
+    // Its share preview too (Richmond, 16 October 2026): the page's own words,
+    // and the book's staircase card, which shows the same staircase and door.
+    // The tab title stays as the approved file has it.
+    const url = `${SITE.url}${LBYR_WELCOME_PATH}`;
+    const image = `${SITE.url}/og-lead-before-youre-ready.png`;
+    const tags = [
+      `<link data-lbyr rel="canonical" href="${url}">`,
+      `<meta data-lbyr name="description" content="${escapeHtml(WELCOME_DESCRIPTION)}">`,
+      `<meta data-lbyr property="og:type" content="website">`,
+      `<meta data-lbyr property="og:site_name" content="${escapeHtml(SITE.name)}">`,
+      `<meta data-lbyr property="og:url" content="${url}">`,
+      `<meta data-lbyr property="og:title" content="${escapeHtml(WELCOME_SHARE_TITLE)}">`,
+      `<meta data-lbyr property="og:description" content="${escapeHtml(WELCOME_DESCRIPTION)}">`,
+      `<meta data-lbyr property="og:image" content="${image}">`,
+      `<meta data-lbyr property="og:image:width" content="1200">`,
+      `<meta data-lbyr property="og:image:height" content="630">`,
+      `<meta data-lbyr property="og:image:alt" content="${escapeHtml(COURSE)}">`,
+      `<meta data-lbyr name="twitter:card" content="summary_large_image">`,
+      `<meta data-lbyr name="twitter:title" content="${escapeHtml(WELCOME_SHARE_TITLE)}">`,
+      `<meta data-lbyr name="twitter:description" content="${escapeHtml(WELCOME_DESCRIPTION)}">`,
+      `<meta data-lbyr name="twitter:image" content="${image}">`,
+    ];
+    html = beforeHeadEnd(html, tags.join(""));
   }
   html = swap(html, 'href="How-This-Course-Works.html"', `href="${LBYR_HOW_PATH}"`);
   html = swap(html, LESSON_1_FILE, `href="${unitPath(LBYR_NEW_UNITS[0])}"`);

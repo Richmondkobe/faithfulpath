@@ -85,6 +85,11 @@ for (const [name, page] of served) {
   if (name.startsWith("welcome") && LBYR_NEW_LIVE) {
     check(!/noindex/.test(html) && /rel="canonical" href="https:\/\/faithfulpathcommunity\.com\/members\/courses\/lead-before-youre-ready-new\/welcome"/.test(html),
       `${name}: open to search engines, with its canonical address`, `${name}: still noindex, or no canonical`);
+    for (const tag of ['property="og:url" content="https://faithfulpathcommunity.com/members/courses/lead-before-youre-ready-new/welcome"',
+      'property="og:image" content="https://faithfulpathcommunity.com/og-lead-before-youre-ready.png"', 'property="og:title"', 'property="og:description"', 'name="twitter:card" content="summary_large_image"']) {
+      check(html.includes(tag), `${name}: share preview has ${tag.split(" ")[0]}`, `${name}: share preview is missing ${tag}`);
+    }
+    check(/<title>Welcome · Lead Before You’re Ready<\/title>/.test(html), `${name}: tab title as the approved file has it`, `${name}: tab title changed`);
   } else check(/noindex/.test(html), `${name}: noindex`, `${name}: missing noindex`);
   check(!/Test edition/.test(html) || !LBYR_NEW_LIVE, `${name}: no test-edition note`, `${name}: still says "Test edition"`);
 }

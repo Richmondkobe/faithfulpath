@@ -137,6 +137,8 @@ export async function saveProduct(
 
   revalidatePath("/admin");
   revalidatePath("/guides");
+  // The saved category shelves behind /guides?category=… (next.config.ts).
+  revalidatePath("/guides/shelf/[category]", "page");
   revalidatePath(`/guides/${slug}`);
   redirect("/admin");
 }
@@ -216,6 +218,8 @@ export async function deleteProduct(
 
   revalidatePath("/admin");
   revalidatePath("/guides");
+  // The saved category shelves behind /guides?category=… (next.config.ts).
+  revalidatePath("/guides/shelf/[category]", "page");
   revalidatePath(`/guides/${product.slug}`);
   redirect("/admin");
 }

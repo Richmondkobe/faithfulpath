@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 import { LBYR_NEW_LIVE, LBYR_OLD_RETIRED } from "./lib/lbyr-new-live";
+import { BOOK_CATEGORIES } from "./lib/book-categories";
+
+const BOOK_CATEGORY_SLUGS = BOOK_CATEGORIES.map((c) => c.slug);
 
 // Guide covers are served from the public Supabase storage bucket.
 const supabaseHost = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -89,6 +92,22 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  // The books store's category filter, /guides?category=<slug>, served from a
+  // saved shelf page (app/guides/shelf/[category]) so /guides itself can be
+  // saved rather than built on every visit (website audit P3). The address in
+  // the browser does not change. Only the four category slugs match; any other
+  // value falls through to /guides, which shows the whole store as before.
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: "/guides",
+          has: [{ type: "query", key: "category", value: `(?<category>${BOOK_CATEGORY_SLUGS.join("|")})` }],
+          destination: "/guides/shelf/:category",
+        },
+      ],
+    };
   },
   async redirects() {
     return [
