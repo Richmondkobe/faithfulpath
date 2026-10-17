@@ -305,6 +305,104 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Old Zyro pages with an article that answers the same question
+      // (content/restored-articles/proposed-404-mapping.csv; Richmond,
+      // 17 October 2026). The rest of that list is in lib/gone-paths.ts.
+      {
+        source: "/how-many-spiritual-gifts-are-there-a-biblical-guide",
+        destination: "/articles/can-christians-have-multiple-spiritual-gifts",
+        permanent: true,
+      },
+      {
+        source: "/bible-support-for-capital-punishment-justice-and-mercy",
+        destination: "/articles/capital-punishment-bible-christians",
+        permanent: true,
+      },
+      {
+        source: "/is-hell-eternal-or-temporary",
+        destination: "/articles/christian-view-of-afterlife",
+        permanent: true,
+      },
+      {
+        source: "/spiritual-gifts-test-and-application",
+        destination: "/articles/can-christians-have-multiple-spiritual-gifts",
+        permanent: true,
+      },
+      {
+        source: "/will-we-have-physical-bodies-in-heaven",
+        destination: "/articles/christian-view-of-afterlife",
+        permanent: true,
+      },
+      {
+        source: "/is-anxiety-a-spiritual-failure-or-mental-health-issue-anxiety-symptoms",
+        destination: "/articles/is-anxiety-a-sin",
+        permanent: true,
+      },
+      {
+        source: "/the-essential-guide-to-spiritual-discernment-for-christians",
+        destination: "/articles/how-to-hear-gods-voice",
+        permanent: true,
+      },
+      {
+        source: "/understanding-severe-old-testament-laws-harsh-punishments",
+        destination: "/articles/capital-punishment-bible-christians",
+        permanent: true,
+      },
+      {
+        source: "/christian-dating-and-purity",
+        destination: "/articles/christian-dating-boundaries",
+        permanent: true,
+      },
+      {
+        source: "/transform-your-mind-break-free-from-negative-thoughts",
+        destination: "/articles/renewing-your-mind-not-positive-thinking",
+        permanent: true,
+      },
+      {
+        source: "/adventist-christian-dating-guide",
+        destination: "/articles/what-does-equally-yoked-mean",
+        permanent: true,
+      },
+      {
+        source: "/christian-dating-red-flags",
+        destination: "/articles/christian-dating-red-flags",
+        permanent: true,
+      },
+      {
+        source: "/burnout-in-ministry",
+        destination: "/articles/retreat-for-pastors",
+        permanent: true,
+      },
+      {
+        source: "/strengthen-marriage-faith-communication",
+        destination: "/articles/christian-marriage-help-real-problem",
+        permanent: true,
+      },
+      {
+        source: "/discover-your-spiritual-strengths-todayspiritual-gifts-test",
+        destination: "/articles/can-christians-have-multiple-spiritual-gifts",
+        permanent: true,
+      },
+      {
+        source: "/tithing-vs-generosity",
+        destination: "/articles/wealth-and-prosperity-biblical-truths",
+        permanent: true,
+      },
+      {
+        source: "/renewing-the-mind-scripture",
+        destination: "/articles/renewing-your-mind-not-positive-thinking",
+        permanent: true,
+      },
+      {
+        source: "/signs-of-spiritual-growth-recognizing-the-journey-in-faith",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/multiple-spiritual-gifts",
+        destination: "/articles/can-christians-have-multiple-spiritual-gifts",
+        permanent: true,
+      },
       // Old service pages that map onto the offer
       {
         source: "/christian-counseling",
