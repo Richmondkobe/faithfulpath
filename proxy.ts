@@ -61,6 +61,6 @@ export const config = {
     "/auth/:path*",
     // The gone URLs. Spelled out rather than built from GONE_PATHS, because a
     // matcher is read at build time; lib/gone-paths.ts keeps the two together.
-    "/(hidden-gems-lesser-known-parables-of-jesus|financial-miracle-testimony|spiritual-gates-explained|understanding-john-653-56-eat-my-flesh-drink-my-blo|christian-mental-health-podcasts|globalism-in-prophecy|can-christians-have-multiple-spiritual-gifts|christian-social-media-outreach|bible-verses-on-technology-advancement|christian-dating-apps|fruits-vs-gifts-of-the-holy-spirit-explained-fruits|can-the-devil-perform-miracles|christian-dating-and-long-distance|can-satan-be-forgiven|1-timothy-5-17-18-explained|mark-823-symbolism|youth-ministry-lessons-parables|the-minor-prophets|lower-cholesterol-christian-guide|womens-bible-study-topics|wealth-and-prosperity-biblical-truths|aliens-in-the-bible|what-does-the-bible-say-about-masturbation|jesus-siblings|forbidden-fruit-garden-eden|capital-punishment-bible-christians|did-jesus-descend-into-hell|christian-view-of-afterlife|predestination-and-free-will)",
+    "/(understanding-john-653-56-eat-my-flesh-drink-my-blo|christian-mental-health-podcasts|christian-dating-apps|fruits-vs-gifts-of-the-holy-spirit-explained-fruits|christian-dating-and-long-distance|can-satan-be-forgiven|1-timothy-5-17-18-explained|mark-823-symbolism|youth-ministry-lessons-parables|the-minor-prophets|lower-cholesterol-christian-guide|what-does-the-bible-say-about-masturbation)",
   ],
 };

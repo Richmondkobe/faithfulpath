@@ -208,6 +208,103 @@ const nextConfig: NextConfig = {
         destination: "/articles/renewing-your-mind-not-positive-thinking",
         permanent: true,
       },
+      // The old Zyro articles, restored as articles (17 October 2026; their
+      // bodies and the list are in content/restored-articles/).
+      {
+        source: "/spiritual-gates-explained",
+        destination: "/articles/spiritual-gates-explained",
+        permanent: true,
+      },
+      {
+        source: "/aliens-in-the-bible",
+        destination: "/articles/aliens-in-the-bible",
+        permanent: true,
+      },
+      {
+        source: "/jesus-siblings",
+        destination: "/articles/jesus-siblings",
+        permanent: true,
+      },
+      {
+        source: "/did-jesus-descend-into-hell",
+        destination: "/articles/did-jesus-descend-into-hell",
+        permanent: true,
+      },
+      {
+        source: "/predestination-and-free-will",
+        destination: "/articles/predestination-and-free-will",
+        permanent: true,
+      },
+      {
+        source: "/hidden-gems-lesser-known-parables-of-jesus",
+        destination: "/articles/hidden-gems-lesser-known-parables-of-jesus",
+        permanent: true,
+      },
+      {
+        source: "/forbidden-fruit-garden-eden",
+        destination: "/articles/forbidden-fruit-garden-eden",
+        permanent: true,
+      },
+      {
+        source: "/christian-view-of-afterlife",
+        destination: "/articles/christian-view-of-afterlife",
+        permanent: true,
+      },
+      {
+        source: "/capital-punishment-bible-christians",
+        destination: "/articles/capital-punishment-bible-christians",
+        permanent: true,
+      },
+      {
+        source: "/can-the-devil-perform-miracles",
+        destination: "/articles/can-the-devil-perform-miracles",
+        permanent: true,
+      },
+      {
+        source: "/financial-miracle-testimony",
+        destination: "/articles/financial-miracle-testimony",
+        permanent: true,
+      },
+      {
+        source: "/globalism-in-prophecy",
+        destination: "/articles/globalism-in-prophecy",
+        permanent: true,
+      },
+      {
+        source: "/wealth-and-prosperity-biblical-truths",
+        destination: "/articles/wealth-and-prosperity-biblical-truths",
+        permanent: true,
+      },
+      {
+        source: "/can-christians-have-multiple-spiritual-gifts",
+        destination: "/articles/can-christians-have-multiple-spiritual-gifts",
+        permanent: true,
+      },
+      {
+        source: "/bible-verses-on-technology-advancement",
+        destination: "/articles/bible-verses-on-technology-advancement",
+        permanent: true,
+      },
+      {
+        source: "/christian-social-media-outreach",
+        destination: "/articles/christian-social-media-outreach",
+        permanent: true,
+      },
+      {
+        source: "/womens-bible-study-topics",
+        destination: "/articles/womens-bible-study-topics",
+        permanent: true,
+      },
+      {
+        source: "/did-jesus-descend-into-hell-understanding-the-creed-jesus-descended-into-hell",
+        destination: "/articles/did-jesus-descend-into-hell",
+        permanent: true,
+      },
+      {
+        source: "/did-jesus-have-siblings-exploring-his-family",
+        destination: "/articles/jesus-siblings",
+        permanent: true,
+      },
       // Old service pages that map onto the offer
       {
         source: "/christian-counseling",

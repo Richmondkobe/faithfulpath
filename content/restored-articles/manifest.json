@@ -1,0 +1,202 @@
+{
+  "note": "Old Zyro articles restored from ~/faithfulpath-backup (17 Oct 2026). Insert each as a published article at /articles/<slug>, then redirect old_path there.",
+  "extra_redirects": [
+    {
+      "source": "/did-jesus-descend-into-hell-understanding-the-creed-jesus-descended-into-hell",
+      "destination": "/articles/did-jesus-descend-into-hell"
+    },
+    {
+      "source": "/did-jesus-have-siblings-exploring-his-family",
+      "destination": "/articles/jesus-siblings"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "spiritual-gates-explained",
+      "title": "Spiritual Gates Explained: The Meaning of the “Gates of Hell” in Matthew 16:18 for Christians Today",
+      "meta_title": "What Are the Gates of Hell? Matthew 16:18 Explained",
+      "meta_description": "What did Jesus mean by \"the gates of hell shall not prevail\"? Explore Sheol, Hades and the church's victory in Christ from Matthew 16:18.",
+      "excerpt": "What did Jesus mean by \"the gates of hell shall not prevail\"? Explore Sheol, Hades and the church's victory in Christ from Matthew 16:18.",
+      "published_at": "2025-08-09",
+      "category": null,
+      "body_file": "spiritual-gates-explained.md",
+      "old_path": "/spiritual-gates-explained"
+    },
+    {
+      "slug": "aliens-in-the-bible",
+      "title": "Aliens in the Bible: What Scripture Really Says About Extraterrestrial Life for Christians 2025",
+      "meta_title": "Are There Aliens in the Bible? What Scripture Says",
+      "meta_description": "Does the Bible mention aliens? Look at Ezekiel's vision, angels, and the word \"alien\" in Scripture, and what it means for faith.",
+      "excerpt": "Does the Bible mention aliens? Look at Ezekiel's vision, angels, and the word \"alien\" in Scripture, and what it means for faith.",
+      "published_at": "2025-05-01",
+      "category": null,
+      "body_file": "aliens-in-the-bible.md",
+      "old_path": "/aliens-in-the-bible"
+    },
+    {
+      "slug": "jesus-siblings",
+      "title": "Jesus Siblings: What the Bible Really Says About the Brothers and Sisters of Jesus",
+      "meta_title": "Did Jesus Have Brothers and Sisters? What the Bible Says",
+      "meta_description": "Mark 6:3 names Jesus' brothers James, Joses, Judas and Simon. Explore the Catholic, Orthodox and Protestant views on who they were.",
+      "excerpt": "Mark 6:3 names Jesus' brothers James, Joses, Judas and Simon. Explore the Catholic, Orthodox and Protestant views on who they were.",
+      "published_at": "2025-04-23",
+      "category": null,
+      "body_file": "jesus-siblings.md",
+      "old_path": "/jesus-siblings"
+    },
+    {
+      "slug": "did-jesus-descend-into-hell",
+      "title": "Did Jesus Descend Into Hell? What the Bible and Church Teach About Christ After Death",
+      "meta_title": "Did Jesus Descend into Hell? The Creed and Scripture",
+      "meta_description": "What does \"He descended into hell\" in the Apostles' Creed mean? Explore 1 Peter 3, Ephesians 4, Hades, Sheol and church tradition.",
+      "excerpt": "What does \"He descended into hell\" in the Apostles' Creed mean? Explore 1 Peter 3, Ephesians 4, Hades, Sheol and church tradition.",
+      "published_at": "2025-04-24",
+      "category": null,
+      "body_file": "did-jesus-descend-into-hell.md",
+      "old_path": "/did-jesus-descend-into-hell"
+    },
+    {
+      "slug": "predestination-and-free-will",
+      "title": "Predestination and Free Will: What the Bible Really Teaches for Christians Today",
+      "meta_title": "Predestination and Free Will: What Does the Bible Teach?",
+      "meta_description": "How do God's sovereignty and human choice fit together? Romans 8, Ephesians 1, Calvinism, Arminianism, compatibilism and Molinism explained.",
+      "excerpt": "How do God's sovereignty and human choice fit together? Romans 8, Ephesians 1, Calvinism, Arminianism, compatibilism and Molinism explained.",
+      "published_at": "2025-04-25",
+      "category": null,
+      "body_file": "predestination-and-free-will.md",
+      "old_path": "/predestination-and-free-will"
+    },
+    {
+      "slug": "hidden-gems-lesser-known-parables-of-jesus",
+      "title": "Hidden Gems: Lesser-Known Parables of Jesus",
+      "meta_title": "Lesser-Known Parables of Jesus and Their Lessons Today",
+      "meta_description": "Five overlooked parables of Jesus, from the new cloth to the tenant farmers, and what they teach about grace, faithfulness and the kingdom of God.",
+      "excerpt": "Five overlooked parables of Jesus, from the new cloth to the tenant farmers, and what they teach about grace, faithfulness and the kingdom of God.",
+      "published_at": "2025-03-18",
+      "category": null,
+      "body_file": "hidden-gems-lesser-known-parables-of-jesus.md",
+      "old_path": "/hidden-gems-lesser-known-parables-of-jesus"
+    },
+    {
+      "slug": "forbidden-fruit-garden-eden",
+      "title": "What Was the Forbidden Fruit in the Garden of Eden? Understanding Its True Identity Beyond the Apple",
+      "meta_title": "What Was the Forbidden Fruit in the Garden of Eden?",
+      "meta_description": "The Bible never says the forbidden fruit was an apple. Learn what Genesis actually says, where the apple idea came from, and what the fruit symbolises.",
+      "excerpt": "The Bible never says the forbidden fruit was an apple. Learn what Genesis actually says, where the apple idea came from, and what the fruit symbolises.",
+      "published_at": "2025-04-25",
+      "category": null,
+      "body_file": "forbidden-fruit-garden-eden.md",
+      "old_path": "/forbidden-fruit-garden-eden"
+    },
+    {
+      "slug": "christian-view-of-afterlife",
+      "title": "Christian View of Afterlife: What Happens After Death According to Scripture [2025 Updated]",
+      "meta_title": "The Christian View of the Afterlife: What the Bible Says",
+      "meta_description": "What happens when a Christian dies? Explore Sheol, Paradise, resurrection, Heaven and Hell, and the hope Scripture gives believers and grieving families.",
+      "excerpt": "What happens when a Christian dies? Explore Sheol, Paradise, resurrection, Heaven and Hell, and the hope Scripture gives believers and grieving families.",
+      "published_at": "2025-07-12",
+      "category": null,
+      "body_file": "christian-view-of-afterlife.md",
+      "old_path": "/christian-view-of-afterlife"
+    },
+    {
+      "slug": "capital-punishment-bible-christians",
+      "title": "Capital Punishment and the Bible: Should Christians Support the Death Penalty?",
+      "meta_title": "Capital Punishment in the Bible: A Christian Perspective",
+      "meta_description": "What does the Bible say about the death penalty? Old Testament law, Jesus' call to mercy, church history and denominational views, explained clearly.",
+      "excerpt": "What does the Bible say about the death penalty? Old Testament law, Jesus' call to mercy, church history and denominational views, explained clearly.",
+      "published_at": "2025-04-25",
+      "category": null,
+      "body_file": "capital-punishment-bible-christians.md",
+      "old_path": "/capital-punishment-bible-christians"
+    },
+    {
+      "slug": "can-the-devil-perform-miracles",
+      "title": "Can the Devil Perform Miracles? Understanding False Signs in Light of Revelation 13:13-14",
+      "meta_title": "Can the Devil Perform Miracles? What the Bible Says",
+      "meta_description": "Scripture shows Satan can produce false signs, but his power is limited. Learn how to tell true miracles from counterfeits and test every spirit.",
+      "excerpt": "Scripture shows Satan can produce false signs, but his power is limited. Learn how to tell true miracles from counterfeits and test every spirit.",
+      "published_at": "2025-04-27",
+      "category": null,
+      "body_file": "can-the-devil-perform-miracles.md",
+      "old_path": "/can-the-devil-perform-miracles"
+    },
+    {
+      "slug": "financial-miracle-testimony",
+      "title": "Financial Miracle Testimony: How God Provided in Times of Need [Updated 2025]",
+      "meta_title": "Financial Miracle Testimony: Stories of God's Provision",
+      "meta_description": "Real stories of God's provision in times of need, plus biblical keys to trusting Him and discerning His will when money is tight.",
+      "excerpt": "Real stories of God's provision in times of need, plus biblical keys to trusting Him and discerning His will when money is tight.",
+      "published_at": "2025-07-14",
+      "category": null,
+      "body_file": "financial-miracle-testimony.md",
+      "old_path": "/financial-miracle-testimony"
+    },
+    {
+      "slug": "globalism-in-prophecy",
+      "title": "Globalism in Prophecy: Biblical Insights on One-World Government and End-Time Trends",
+      "meta_title": "Globalism in Prophecy: The Bible on World Government",
+      "meta_description": "How Daniel and Revelation speak to world government, digital control and the Antichrist, and why Christ's coming kingdom gives believers hope.",
+      "excerpt": "How Daniel and Revelation speak to world government, digital control and the Antichrist, and why Christ's coming kingdom gives believers hope.",
+      "published_at": "2025-07-12",
+      "category": null,
+      "body_file": "globalism-in-prophecy.md",
+      "old_path": "/globalism-in-prophecy"
+    },
+    {
+      "slug": "wealth-and-prosperity-biblical-truths",
+      "title": "What the Bible Says About Wealth and Prosperity: Biblical Truths for Christians in 2025",
+      "meta_title": "Wealth and Prosperity: What the Bible Really Teaches",
+      "meta_description": "From Abraham and Solomon to Jesus and Paul, see what Scripture teaches about money, generosity, contentment and trusting God over riches.",
+      "excerpt": "From Abraham and Solomon to Jesus and Paul, see what Scripture teaches about money, generosity, contentment and trusting God over riches.",
+      "published_at": "2025-05-01",
+      "category": null,
+      "body_file": "wealth-and-prosperity-biblical-truths.md",
+      "old_path": "/wealth-and-prosperity-biblical-truths"
+    },
+    {
+      "slug": "can-christians-have-multiple-spiritual-gifts",
+      "title": "Can Christians Have Multiple Spiritual Gifts?",
+      "meta_title": "Can Christians Have Multiple Spiritual Gifts?",
+      "meta_description": "Can one believer have more than one spiritual gift? See what Scripture says, how gifts grow over time, and how to use them to serve the Church.",
+      "excerpt": "Can one believer have more than one spiritual gift? See what Scripture says, how gifts grow over time, and how to use them to serve the Church.",
+      "published_at": "2025-04-12",
+      "category": null,
+      "body_file": "can-christians-have-multiple-spiritual-gifts.md",
+      "old_path": "/can-christians-have-multiple-spiritual-gifts"
+    },
+    {
+      "slug": "bible-verses-on-technology-advancement",
+      "title": "Bible Verses on Technology Advancement",
+      "meta_title": "Bible Verses on Technology: Faith in a Digital Age",
+      "meta_description": "Key Bible verses to guide Christians through rapid technology advancement, from stewardship and wisdom to sharing the gospel online.",
+      "excerpt": "Key Bible verses to guide Christians through rapid technology advancement, from stewardship and wisdom to sharing the gospel online.",
+      "published_at": "2025-04-12",
+      "category": null,
+      "body_file": "bible-verses-on-technology-advancement.md",
+      "old_path": "/bible-verses-on-technology-advancement"
+    },
+    {
+      "slug": "christian-social-media-outreach",
+      "title": "10 Instagram Strategies for Effective Christian Social Media Outreach by Churches",
+      "meta_title": "Christian Social Media Outreach: Instagram for Churches",
+      "meta_description": "Practical ways churches can use Instagram to share the Gospel: profiles, Scripture graphics, testimonies, live prayer, events and measuring impact.",
+      "excerpt": "Practical ways churches can use Instagram to share the Gospel: profiles, Scripture graphics, testimonies, live prayer, events and measuring impact.",
+      "published_at": "2025-05-12",
+      "category": "church-leadership",
+      "body_file": "christian-social-media-outreach.md",
+      "old_path": "/christian-social-media-outreach"
+    },
+    {
+      "slug": "womens-bible-study-topics",
+      "title": "Top Women’s Bible Study Topics and Guides for Women’s Ministry Growth",
+      "meta_title": "Women's Bible Study Topics and Study Guides",
+      "meta_description": "Meaningful Bible study topics for women's groups, tips for leading well, and trusted study guides from Beth Moore, Priscilla Shirer and more.",
+      "excerpt": "Meaningful Bible study topics for women's groups, tips for leading well, and trusted study guides from Beth Moore, Priscilla Shirer and more.",
+      "published_at": "2025-05-12",
+      "category": null,
+      "body_file": "womens-bible-study-topics.md",
+      "old_path": "/womens-bible-study-topics"
+    }
+  ]
+}
