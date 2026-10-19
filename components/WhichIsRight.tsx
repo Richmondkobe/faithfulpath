@@ -15,9 +15,9 @@ import Link from "next/link";
 const OPTIONS = [
   {
     need: "A book to read and print",
-    // "from": the books are US$20 (Following Jesus) or US$29 (Richmond,
-    // 17 October 2026).
-    action: "Buy a book — from US$20, PDF, yours to keep",
+    // "from": the books are US$6.99 (Following Jesus) or US$9.99, matching
+    // the outside ebook stores (Richmond, 19 October 2026).
+    action: "Buy a book — from US$6.99, PDF, yours to keep",
     href: "/guides",
   },
   {
