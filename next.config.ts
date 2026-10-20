@@ -91,6 +91,15 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy-Report-Only", value: CONTENT_SECURITY_POLICY },
         ],
       },
+      // The service worker (public/sw.js): never cached, so a change to it
+      // reaches phones on their next visit.
+      {
+        source: "/sw.js",
+        headers: [
+          { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+        ],
+      },
     ];
   },
   // The books store's category filter, /guides?category=<slug>, served from a

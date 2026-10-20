@@ -8,6 +8,7 @@ import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
 import AccountLink from "@/components/AccountLink";
+import RegisterServiceWorker from "@/components/pwa/RegisterServiceWorker";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -49,6 +50,15 @@ export const metadata: Metadata = {
       "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
     images: ["/og-site.png"],
   },
+  // Added to an iPhone's home screen, the site opens full screen under this
+  // name (app/manifest.ts does the same for Android; the icon is
+  // app/apple-icon.png).
+  appleWebApp: {
+    capable: true,
+    title: "Faithful Path",
+    statusBarStyle: "black",
+  },
+  other: { "apple-mobile-web-app-capable": "yes" },
 };
 
 // The main menu. `wide` items show only from tablet width up: on a phone the
@@ -209,6 +219,14 @@ export default function RootLayout({
               ))}
             </nav>
 
+            <Link
+              href="/install"
+              prefetch={false}
+              className="-mx-1 mt-2 inline-flex min-h-[44px] items-center px-1 text-sm text-muted transition-colors hover:text-gold-text"
+            >
+              Install the app
+            </Link>
+
             {/* Who the reader is actually buying from. Required on a page that
                 takes payment, and the address is the one the legal pages name. */}
             <p className="mt-6 text-sm leading-relaxed text-muted">
@@ -228,6 +246,7 @@ export default function RootLayout({
         </footer>
 
         <VercelAnalytics />
+        <RegisterServiceWorker />
       </body>
     </html>
   );

@@ -28,6 +28,9 @@ import { Analytics } from "@vercel/analytics/next";
  * Nothing is lost by it. Every funnel event this site records — booking, buying
  * a book, opening a sample, joining, subscribing — happens on a public page.
  *
+ * /install, the page on adding the site to a home screen, is left out too
+ * (Richmond, 21 October 2026: no analytics on that page).
+ *
  * beforeSend stays as the second line: it reduces the URL to its pathname, so a
  * query string cannot carry a token or an email address into a payload by
  * accident, and it drops anything under /members that a client-side navigation
@@ -35,7 +38,7 @@ import { Analytics } from "@vercel/analytics/next";
  */
 export default function VercelAnalytics() {
   const pathname = usePathname();
-  if (pathname?.startsWith("/members") || pathname?.startsWith("/courses")) return null;
+  if (pathname?.startsWith("/members") || pathname?.startsWith("/courses") || pathname === "/install") return null;
 
   return (
     <Analytics
@@ -46,7 +49,7 @@ export default function VercelAnalytics() {
         } catch {
           // Already a path, or unparseable; carry on with what we have.
         }
-        if (path.startsWith("/members") || path.startsWith("/courses")) return null;
+        if (path.startsWith("/members") || path.startsWith("/courses") || path === "/install") return null;
         return { ...event, url: path };
       }}
     />
