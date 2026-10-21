@@ -39,8 +39,11 @@ export default function VideoEmbed({ video, priority = false }: { video: Pick<Vi
             className="object-cover"
           />
           <span className="absolute inset-0 bg-night/20 transition-colors group-hover:bg-night/10" />
-          <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-gold shadow-lg ring-4 ring-night/30 transition-transform group-hover:scale-105 sm:h-20 sm:w-20">
-            <svg viewBox="0 0 24 24" aria-hidden="true" className="ml-1 h-7 w-7 fill-night sm:h-8 sm:w-8">
+          {/* In the bottom-right corner, clear of the title words on the
+              thumbnails. The whole picture is the button, so the tap area is
+              far larger than the circle. */}
+          <span className="absolute bottom-3 right-3 flex h-12 w-12 items-center justify-center rounded-full bg-gold shadow-lg ring-4 ring-night/30 transition-transform group-hover:scale-105 sm:bottom-4 sm:right-4 sm:h-14 sm:w-14">
+            <svg viewBox="0 0 24 24" aria-hidden="true" className="ml-0.5 h-6 w-6 fill-night sm:h-7 sm:w-7">
               <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" />
             </svg>
           </span>
