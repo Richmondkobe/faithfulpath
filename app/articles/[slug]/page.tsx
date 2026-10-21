@@ -15,6 +15,8 @@ import JsonLd from "@/components/JsonLd";
 import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import BookPromo from "@/components/BookPromo";
 import { bookForArticle } from "@/lib/book-promo";
+import VideoEmbed from "@/components/video/VideoEmbed";
+import { videoForArticle, videoSchema } from "@/lib/videos";
 
 // Saving in the admin calls revalidatePath("/articles/[slug]"); this is the
 // backstop for rows edited directly in Supabase.
@@ -79,6 +81,9 @@ export default async function ArticlePage({
   const category = getCategory(a.category);
 
   const bodyAlreadySellsABook = /\/guides\/[a-z0-9-]+/.test(a.body_md);
+  // The one video that matches this article, if any (lib/videos.ts).
+  const video = videoForArticle(a.slug);
+
   const promoBook = bodyAlreadySellsABook
     ? null
     : bookForArticle(a.slug, a.category);
@@ -101,6 +106,7 @@ export default async function ArticlePage({
       author: personRef,
       publisher: orgRef,
     },
+    ...(video ? [videoSchema(video, abs, orgRef)] : []),
     breadcrumbs([
       { name: "Home", path: "/" },
       { name: "Articles", path: "/articles" },
@@ -146,7 +152,20 @@ export default async function ArticlePage({
         </div>
       </div>
 
-      <ArticleBody source={a.body_md} title={a.title} />
+      <ArticleBody
+        source={a.body_md}
+        title={a.title}
+        afterOpening={
+          video && (
+            <figure className="py-2">
+              <VideoEmbed video={video} />
+              <figcaption className="mt-3 text-[15px] leading-snug text-muted">
+                Watch: {video.title}
+              </figcaption>
+            </figure>
+          )
+        }
+      />
 
       {/* Only where the prose does not already sell a book. Thirty-four of the
           articles have a promo written into them by hand, in three different

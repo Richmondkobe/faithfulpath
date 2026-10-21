@@ -43,6 +43,7 @@ const STATIC_PATHS = [
   "/talk-to-a-pastor",
   "/contact",
   "/help",
+  "/videos",
   // How to add the site to a phone's home screen.
   "/install",
   // The legal pages. Crawlable on purpose: a reader deciding whether to buy

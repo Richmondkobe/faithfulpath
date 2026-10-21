@@ -81,7 +81,10 @@ const NAV: { href: string; label: string; wide?: boolean }[] = [
 
 // The footer lists everything, and the membership too (website audit N11).
 const FOOTER_NAV = [
-  ...NAV.slice(0, 4),
+  ...NAV.slice(0, 3),
+  // In the footer only, not the main menu (Richmond, 21 October 2026).
+  { href: "/videos", label: "Videos" },
+  NAV[3],
   { href: "/membership", label: "Membership" },
   ...NAV.slice(4),
 ];

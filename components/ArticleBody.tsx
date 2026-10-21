@@ -199,21 +199,37 @@ export default function ArticleBody({
   // differently — the course's route buttons, say. Everything not named here
   // keeps the styling below.
   components: overrides,
+  // Something to show after the opening section, before the first "## "
+  // heading (an article's video). With no such heading it goes at the end.
+  afterOpening,
 }: {
   source: string;
   title?: string;
   remarkPlugins?: NonNullable<Options["remarkPlugins"]>;
   components?: Partial<Components>;
+  afterOpening?: ReactNode;
 }) {
-  return (
-    <div className="mt-10 space-y-6">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm, ...remarkPlugins]}
-        components={overrides ? { ...components, ...overrides } : components}
-        urlTransform={urlTransform}
-      >
-        {stripDuplicateTitle(source, title)}
-      </ReactMarkdown>
-    </div>
+  const body = stripDuplicateTitle(source, title);
+  const markdown = (text: string) => (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm, ...remarkPlugins]}
+      components={overrides ? { ...components, ...overrides } : components}
+      urlTransform={urlTransform}
+    >
+      {text}
+    </ReactMarkdown>
   );
+
+  if (afterOpening) {
+    const cut = body.search(/^## /m);
+    return (
+      <div className="mt-10 space-y-6">
+        {cut > 0 ? markdown(body.slice(0, cut)) : markdown(body)}
+        {afterOpening}
+        {cut > 0 && markdown(body.slice(cut))}
+      </div>
+    );
+  }
+
+  return <div className="mt-10 space-y-6">{markdown(body)}</div>;
 }

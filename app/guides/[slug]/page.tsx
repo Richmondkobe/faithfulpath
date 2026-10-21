@@ -5,6 +5,8 @@ import { LBYR_WELCOME_PATH } from "@/lib/lbyr-new";
 
 import FinePrint, { FinePrintLink } from "@/components/FinePrint";
 import JsonLd from "@/components/JsonLd";
+import VideoEmbed from "@/components/video/VideoEmbed";
+import { videosForBook, videoSchema } from "@/lib/videos";
 import { TrackedAnchor, TrackedSubmit } from "@/components/analytics/Tracked";
 import { abs, breadcrumbs, graph, orgRef, personRef } from "@/lib/schema";
 import { bookCategoryHref, getBookCategory } from "@/lib/book-categories";
@@ -339,6 +341,8 @@ export default async function Guide({ params }: Props) {
   const cover = coverPublicUrl(guide.cover_path);
   const hasSample = (await listSampleSlugs()).has(slug);
   const related = RELATED_ARTICLES[slug];
+  // Videos from this book's series (lib/videos.ts), shown under "Watch the series".
+  const videos = videosForBook(slug);
 
   // The price comes from the row, not a constant: structured data that says 29
   // while the button charges something else is worse than none at all.
@@ -365,6 +369,7 @@ export default async function Guide({ params }: Props) {
         seller: orgRef,
       },
     },
+    ...videos.map((v) => videoSchema(v, abs, orgRef)),
     breadcrumbs([
       { name: "Home", path: "/" },
       { name: "Books", path: "/guides" },
@@ -501,6 +506,27 @@ export default async function Guide({ params }: Props) {
             <div className="mt-12 max-w-2xl border-t border-line pt-10">
               <Markdown source={headingsFromTwo(guide.description)} />
             </div>
+          )}
+
+          {videos.length > 0 && (
+            <section className="mt-12 max-w-2xl border-t border-line pt-10">
+              <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
+                Watch the series
+              </h2>
+              <ul className="mt-6 space-y-10">
+                {videos.map((v) => (
+                  <li key={v.id}>
+                    <VideoEmbed video={v} />
+                    <h3
+                      className="mt-4 text-lg leading-snug text-navy"
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+                    >
+                      {v.title}
+                    </h3>
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
           {related && (

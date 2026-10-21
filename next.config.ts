@@ -22,7 +22,9 @@ const CONTENT_SECURITY_POLICY = [
   `media-src 'self' blob: ${supabaseOrigin}`,
   "font-src 'self' data:",
   `connect-src 'self' ${supabaseOrigin} ${supabaseHost ? `wss://${supabaseHost}` : ""}`,
-  "frame-src 'self'",
+  // YouTube's no-cookie player, loaded only when a video's play button is
+  // pressed (components/video/VideoEmbed.tsx).
+  "frame-src 'self' https://www.youtube-nocookie.com",
   "frame-ancestors 'self'",
   "form-action 'self' https://checkout.stripe.com https://billing.stripe.com",
   "base-uri 'self'",
