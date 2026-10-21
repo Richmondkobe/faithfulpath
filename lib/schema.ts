@@ -25,7 +25,7 @@ const SOCIAL = [
   "https://www.instagram.com/faithfulpathcommunty/",
   "https://www.linkedin.com/in/richmondkobe/",
   "https://www.tiktok.com/@christianheritagehub",
-  "https://www.youtube.com/@ChristianHeritageHub",
+  "https://www.youtube.com/channel/UCKRk5vFH9j9WzfQDKlA81yg",
 ];
 
 /** A reference to the Organization, for use as provider, publisher, worksFor. */
