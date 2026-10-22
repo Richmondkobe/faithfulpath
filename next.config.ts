@@ -172,8 +172,9 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Its own article since 22 October 2026 (Richmond).
         source: "/christian-marriage-counseling",
-        destination: "/articles/christian-marriage-help-real-problem",
+        destination: "/articles/christian-marriage-counseling",
         permanent: true,
       },
       {
@@ -329,6 +330,22 @@ const nextConfig: NextConfig = {
       {
         source: "/exploring-the-apocrypha-guide",
         destination: "/articles/apocrypha-controversy",
+        permanent: true,
+      },
+      // Still had impressions (Richmond, 22 October 2026).
+      {
+        source: "/christian-counseling-service",
+        destination: "/talk-to-a-pastor",
+        permanent: true,
+      },
+      {
+        source: "/christian-dating-and-marriage",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
+      {
+        source: "/rebuild-trust-after-infidelity-christian-marriage",
+        destination: "/articles/christian-marriage-counseling",
         permanent: true,
       },
       // About 900 impressions (Richmond, 22 October 2026).
