@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import type { Article } from "@/lib/article";
+import { containsPattern, searchPhrase, searchTerms } from "@/lib/article-search";
 
 const UUID =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -182,4 +183,76 @@ export async function getPublishedArticleBySlug(
 
   if (error) throw new Error(`Could not load article: ${error.message}`);
   return (data as Article) ?? null;
+}
+
+export type ArticleCard = Pick<
+  Article,
+  "id" | "slug" | "title" | "excerpt" | "published_at" | "category" | "created_at"
+>;
+
+/** The most results one search shows. */
+const SEARCH_LIMIT = 100;
+
+/**
+ * Published articles containing every word or "quoted phrase" of the search,
+ * in the title, the excerpt or the body, ignoring case. Title matches come
+ * first (the whole search as a phrase, then every word), then articles with
+ * the whole phrase in the excerpt or body, then the rest; newest first within
+ * each.
+ *
+ * Each word is its own ilike filter value (escaped by containsPattern), never
+ * part of a hand-built filter string, so the search text cannot change the
+ * query. One query per column, since a word may be in any of them; the body is
+ * matched in Postgres and never sent back.
+ */
+export async function searchPublishedArticles(q: string): Promise<ArticleCard[]> {
+  const terms = searchTerms(q);
+  if (terms.length === 0) return [];
+  const phrase = searchPhrase(q);
+  const columns = "id, slug, title, excerpt, published_at, category, created_at";
+
+  const matching = (column: "title" | "excerpt" | "body_md", words: string[], select: string) =>
+    words
+      .reduce(
+        (query, w) => query.ilike(column, containsPattern(w)),
+        supabaseAdmin.from("articles").select(select).eq("published", true)
+      )
+      .limit(SEARCH_LIMIT);
+
+  const [inTitle, inExcerpt, inBody, phraseInBody] = await Promise.all([
+    matching("title", terms, columns),
+    matching("excerpt", terms, columns),
+    matching("body_md", terms, columns),
+    // Only worth asking when the search is more than one term.
+    terms.length > 1 ? matching("body_md", [phrase], "id") : null,
+  ]);
+
+  for (const r of [inTitle, inExcerpt, inBody, phraseInBody]) {
+    if (r?.error) throw new Error(`Could not search articles: ${r.error.message}`);
+  }
+
+  const found = new Map<string, ArticleCard>();
+  for (const r of [inTitle, inExcerpt, inBody]) {
+    for (const a of (r.data ?? []) as unknown as ArticleCard[]) found.set(a.id, a);
+  }
+  const bodyPhrase = new Set(((phraseInBody?.data ?? []) as unknown as { id: string }[]).map((a) => a.id));
+
+  const rank = (a: ArticleCard) => {
+    const title = a.title.toLowerCase();
+    if (title.includes(phrase)) return 0;
+    if (terms.every((t) => title.includes(t))) return 1;
+    if ((a.excerpt ?? "").toLowerCase().includes(phrase) || bodyPhrase.has(a.id) || terms.length === 1) return 2;
+    return 3;
+  };
+  const time = (a: ArticleCard) => (a.published_at ? Date.parse(a.published_at) : 0);
+
+  return [...found.values()]
+    .sort(
+      (a, b) =>
+        rank(a) - rank(b) ||
+        time(b) - time(a) ||
+        Date.parse(b.created_at) - Date.parse(a.created_at) ||
+        b.id.localeCompare(a.id)
+    )
+    .slice(0, SEARCH_LIMIT);
 }
