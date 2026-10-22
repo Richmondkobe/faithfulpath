@@ -319,6 +319,12 @@ const nextConfig: NextConfig = {
       // Old Zyro pages with an article that answers the same question
       // (content/restored-articles/proposed-404-mapping.csv; Richmond,
       // 17 October 2026). The rest of that list is in lib/gone-paths.ts.
+      // Ranked for "apocrypha controversy" (Richmond, 22 October 2026).
+      {
+        source: "/exploring-the-apocrypha-guide",
+        destination: "/articles/apocrypha-controversy",
+        permanent: true,
+      },
       {
         source: "/how-many-spiritual-gifts-are-there-a-biblical-guide",
         destination: "/articles/can-christians-have-multiple-spiritual-gifts",
