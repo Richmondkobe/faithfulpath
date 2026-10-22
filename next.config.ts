@@ -316,6 +316,12 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Renamed by Richmond, 22 October 2026.
+      {
+        source: "/articles/church-leadership-training",
+        destination: "/articles/christian-leadership-development",
+        permanent: true,
+      },
       // Old Zyro pages with an article that answers the same question
       // (content/restored-articles/proposed-404-mapping.csv; Richmond,
       // 17 October 2026). The rest of that list is in lib/gone-paths.ts.

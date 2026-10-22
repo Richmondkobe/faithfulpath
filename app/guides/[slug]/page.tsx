@@ -136,8 +136,8 @@ const RELATED_ARTICLES: Record<
         "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
     },
     {
-      href: "/articles/church-leadership-training",
-      title: "Church Leadership Training: How to Raise Up Leaders Who Last",
+      href: "/articles/christian-leadership-development",
+      title: "Christian Leadership Development: How to Train New Leaders Who Last",
     },
     {
       href: "/articles/church-retreat-ideas",
