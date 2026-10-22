@@ -325,6 +325,12 @@ const nextConfig: NextConfig = {
         destination: "/articles/apocrypha-controversy",
         permanent: true,
       },
+      // About 900 impressions (Richmond, 22 October 2026).
+      {
+        source: "/christian-dating-tips",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
       {
         source: "/how-many-spiritual-gifts-are-there-a-biblical-guide",
         destination: "/articles/can-christians-have-multiple-spiritual-gifts",
