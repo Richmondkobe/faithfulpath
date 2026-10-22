@@ -106,7 +106,8 @@ const components: Components = {
   ),
   h3: ({ children }) => (
     <h3
-      className="pt-4 text-xl text-navy"
+      id={headingId(children)}
+      className="pt-4 text-xl text-navy scroll-mt-6"
       style={{ fontFamily: DISPLAY, fontWeight: 500 }}
     >
       {children}
