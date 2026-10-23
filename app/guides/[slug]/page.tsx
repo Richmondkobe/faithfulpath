@@ -96,9 +96,8 @@ const RELATED_ARTICLES: Record<
       title: "Premarital Counselling When You Already Live Together",
     },
     {
-      href: "/articles/couples-spiritual-reset-weekend",
-      title:
-        "How to Take a Christian Couples' Retreat Without Turning It Into Marriage Therapy",
+      href: "/articles/christian-couples-retreat",
+      title: "Christian Couples Retreat: Themes, Activities and a Weekend Schedule",
     },
     {
       href: "/articles/christian-dating-advice-wrong-question",

@@ -179,7 +179,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/christian-marriage-retreats",
-        destination: "/articles/couples-spiritual-reset-weekend",
+        destination: "/articles/christian-couples-retreat",
         permanent: true,
       },
       {
@@ -321,6 +321,12 @@ const nextConfig: NextConfig = {
       {
         source: "/articles/church-leadership-training",
         destination: "/articles/christian-leadership-development",
+        permanent: true,
+      },
+      // Rewritten and renamed by Richmond, 23 October 2026.
+      {
+        source: "/articles/couples-spiritual-reset-weekend",
+        destination: "/articles/christian-couples-retreat",
         permanent: true,
       },
       // Old Zyro pages with an article that answers the same question
