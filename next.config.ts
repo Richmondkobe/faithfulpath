@@ -383,6 +383,17 @@ const nextConfig: NextConfig = {
         destination: "/articles/how-to-study-the-bible-for-beginners",
         permanent: true,
       },
+      // Old Zyro dream pages, redirected by Richmond, 23 October 2026.
+      {
+        source: "/understanding-prophetic-dreams-in-christianity-a-guide-to-divine-communication-and-interpretation",
+        destination: "/articles/prophetic-dreams-in-the-bible",
+        permanent: true,
+      },
+      {
+        source: "/divine-dreams-biblical-guidance",
+        destination: "/articles/prophetic-dreams-in-the-bible",
+        permanent: true,
+      },
       // About 900 impressions (Richmond, 22 October 2026).
       {
         source: "/christian-dating-tips",
