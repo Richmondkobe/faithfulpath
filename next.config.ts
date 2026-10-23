@@ -394,6 +394,17 @@ const nextConfig: NextConfig = {
         destination: "/articles/prophetic-dreams-in-the-bible",
         permanent: true,
       },
+      // Spiritual dryness article rewritten and renamed by Richmond, 23 October 2026.
+      {
+        source: "/articles/how-to-pray-when-you-feel-nothing",
+        destination: "/articles/spiritual-dryness",
+        permanent: true,
+      },
+      {
+        source: "/overcome-spiritual-dryness-and-reconnect-with-faith",
+        destination: "/articles/spiritual-dryness",
+        permanent: true,
+      },
       // About 900 impressions (Richmond, 22 October 2026).
       {
         source: "/christian-dating-tips",
