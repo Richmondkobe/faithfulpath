@@ -370,6 +370,13 @@ const nextConfig: NextConfig = {
         destination: "/articles/what-does-the-bible-say-about-worry",
         permanent: true,
       },
+      // About 440 impressions, gone until the beginners' article (Richmond,
+      // 23 October 2026).
+      {
+        source: "/bible-study-methods",
+        destination: "/articles/how-to-study-the-bible-for-beginners",
+        permanent: true,
+      },
       // About 900 impressions (Richmond, 22 October 2026).
       {
         source: "/christian-dating-tips",
