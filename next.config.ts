@@ -348,6 +348,28 @@ const nextConfig: NextConfig = {
         destination: "/articles/christian-marriage-counseling",
         permanent: true,
       },
+      // Fear and anxiety pages, gone until the worry article (Richmond,
+      // 23 October 2026).
+      {
+        source: "/overcoming-fear-trusting-god",
+        destination: "/articles/what-does-the-bible-say-about-worry",
+        permanent: true,
+      },
+      {
+        source: "/fearless-faith-living-boldly-in-gods-promises",
+        destination: "/articles/what-does-the-bible-say-about-worry",
+        permanent: true,
+      },
+      {
+        source: "/fears-holding-me-back-christian-perspective",
+        destination: "/articles/what-does-the-bible-say-about-worry",
+        permanent: true,
+      },
+      {
+        source: "/spiritual-counseling-for-anxiety",
+        destination: "/articles/what-does-the-bible-say-about-worry",
+        permanent: true,
+      },
       // About 900 impressions (Richmond, 22 October 2026).
       {
         source: "/christian-dating-tips",
