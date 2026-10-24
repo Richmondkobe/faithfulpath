@@ -257,6 +257,7 @@ How it must read:
 - The order: the greeting; then an opening of one or two sentences that connects the real thing on their site to why the article (or offer) fits their readers, in your own words (do not simply quote a line back to them); then Richmond's one-sentence introduction; then the ask; then the closing.
 - Warm, humble, pastoral, plain English. Canadian spelling (counselling, centre, honour, favour).
 - Under ${MAX_WORDS - words(SIGN_OFF) - words(OPT_OUT) - 5} words in the body. A short subject line, no clickbait.
+- Never describe their team, church, readers or ministry beyond what their page actually says. Keep it plain: if the page does not say it, do not say it.
 - No exclamation marks. No flattery beyond one sincere sentence. No pressure, no deadlines, no mention of following up.
 - One clear, gentle ask, as above.
 - End the body with a short closing such as "With thanks," or "Grace and peace,". Do not write the signature or any unsubscribe line; those are added after.
