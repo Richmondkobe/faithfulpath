@@ -3,7 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
-import { findByDomain, isMissingTable, outreachClient } from "@/lib/outreach-db";
+import { findByDomain, getProspect, isMissingTable, outreachClient } from "@/lib/outreach-db";
+import { draftProspectEmail, type DraftResult } from "@/lib/outreach-draft";
 import { domainFromUrl, isOutreachGoal, isOutreachStatus, looksLikeEmail, normaliseUrl } from "@/lib/outreach";
 
 export type OutreachFormState = {
@@ -161,4 +162,21 @@ export async function updateProspect(
   revalidatePath("/admin/outreach");
   revalidatePath(`/admin/outreach/${id}`);
   redirect("/admin/outreach");
+}
+
+/** Drafts (or redrafts) one site's email and marks it Drafted. Nothing is sent. */
+export async function draftProspect(id: string): Promise<DraftResult> {
+  await requireAdmin();
+  const p = await getProspect(id);
+  if (!p) return { ok: false, error: "That site is not in the list." };
+  try {
+    const result = await draftProspectEmail(p, await outreachClient());
+    if (result.ok) {
+      revalidatePath("/admin/outreach");
+      revalidatePath(`/admin/outreach/${id}`);
+    }
+    return result;
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : "The draft failed." };
+  }
 }

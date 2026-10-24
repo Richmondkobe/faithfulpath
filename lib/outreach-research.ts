@@ -120,8 +120,8 @@ const SUBMIT_TOOL = {
   },
 } as const;
 
-type ApiBlock = { type: string; [k: string]: unknown };
-type ApiResponse = {
+export type ApiBlock = { type: string; [k: string]: unknown };
+export type ApiResponse = {
   content: ApiBlock[];
   stop_reason: string;
   usage?: { server_tool_use?: { web_search_requests?: number } };
@@ -129,7 +129,7 @@ type ApiResponse = {
   error?: { message?: string };
 };
 
-async function callClaude(body: object): Promise<ApiResponse> {
+export async function callClaude(body: object): Promise<ApiResponse> {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error("ANTHROPIC_API_KEY is not set for this site.");
   const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -194,7 +194,7 @@ You have at most ${MAX_SEARCHES} web searches, so search efficiently. When you a
 }
 
 /** Plain-language host checks for addresses that came from the model. */
-function publicUrl(raw: string | null | undefined): URL | null {
+export function publicUrl(raw: string | null | undefined): URL | null {
   const n = raw ? normaliseUrl(raw) : null;
   if (!n) return null;
   const u = new URL(n);
@@ -209,7 +209,7 @@ const sameSite = (u: URL, domain: string) => {
 };
 
 /** A page's text, or null when it could not be loaded. Capped in time and size. */
-async function fetchPage(url: URL): Promise<{ status: number; html: string; url: URL } | null> {
+export async function fetchPage(url: URL): Promise<{ status: number; html: string; url: URL } | null> {
   try {
     const res = await fetch(url, {
       redirect: "follow",
@@ -243,7 +243,7 @@ const SOCIAL = /(^|\.)(facebook|instagram|twitter|x|tiktok|youtube|youtu|pintere
 const CONTACT_WORDS = /contact|get-?in-?touch|reach-?us|write-?for-?us|submi(t|ssion)|contribut|guest-?post|connect-?with/i;
 const ABOUT_WORDS = /\babout\b|about-?us|our-?team|staff|leadership-?team/i;
 
-function decodeEntities(s: string): string {
+export function decodeEntities(s: string): string {
   return s
     .replace(/&#(\d+);/g, (_, d) => String.fromCharCode(Number(d)))
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCharCode(parseInt(h, 16)))
@@ -252,7 +252,7 @@ function decodeEntities(s: string): string {
     .replace(/&amp;/gi, "&");
 }
 
-function pageTitle(html: string): string {
+export function pageTitle(html: string): string {
   return decodeEntities(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "").trim();
 }
 
@@ -345,17 +345,11 @@ export async function runResearch(
   type Submitted = { sites?: ResearchSite[]; rejected?: { site: string; reason: string }[] };
   let submitted = null as Submitted | null;
   let container: string | undefined;
-  // Set once the agent has stopped without handing the list back; the next
-  // request then requires submit_sites. Never on a paused turn, which may
-  // still have a search waiting to run.
-  let mustSubmit = false;
-  let lastStop = "";
 
   emit({ type: "progress", message: `Searching the web (up to ${MAX_SEARCHES} searches; usually two to four minutes)…` });
 
   for (let i = 0; i < MAX_REQUESTS && !submitted; i++) {
     const remaining = MAX_SEARCHES - searches;
-    if (remaining <= 0 && lastStop !== "pause_turn") mustSubmit = true;
     const res = await callClaude({
       model: RESEARCH_MODEL,
       max_tokens: 16000,
@@ -363,10 +357,8 @@ export async function runResearch(
       ...(container ? { container } : {}),
       // max_uses counts per request, so each continuation gets only what is left.
       tools: [{ type: "web_search_20260318", name: "web_search", max_uses: Math.max(1, remaining) }, SUBMIT_TOOL],
-      ...(mustSubmit ? { tool_choice: { type: "tool", name: "submit_sites" } } : {}),
     });
     container = res.container?.id ?? container;
-    lastStop = res.stop_reason;
     searches += res.usage?.server_tool_use?.web_search_requests ?? 0;
 
     const queries = res.content
@@ -384,8 +376,9 @@ export async function runResearch(
     messages.push({ role: "assistant", content: res.content });
     if (res.stop_reason === "pause_turn") continue;
     // It finished without handing the list back: ask once more, and make it.
-    messages.push({ role: "user", content: "Please call submit_sites now with what you have found." });
-    mustSubmit = true;
+    // It finished without handing the list back. This model cannot be made
+    // to call a tool, so it is asked, plainly, with no more searching.
+    messages.push({ role: "user", content: "Do not search again. Call submit_sites now with what you have found." });
   }
 
   if (!submitted) throw new Error("The research agent did not hand back a list. Nothing was added; try again.");

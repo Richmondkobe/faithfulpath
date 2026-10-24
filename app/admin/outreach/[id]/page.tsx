@@ -4,6 +4,10 @@ import { requireAdmin } from "@/lib/auth";
 import { articlePaths, getProspect } from "@/lib/outreach-db";
 import { STATUS_LABELS } from "@/lib/outreach";
 import { ProspectForm } from "@/components/admin/OutreachForms";
+import { DraftButton } from "@/components/admin/DraftButtons";
+
+// "Draft email" runs on the server from this page, and can take a minute.
+export const maxDuration = 120;
 
 export const metadata: Metadata = {
   title: "Outreach site",
@@ -34,7 +38,9 @@ export default async function OutreachProspectPage({ params }: { params: Promise
         {" · added "}
         {new Date(p.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
       </p>
-      <ProspectForm p={p} articlePaths={paths} />
+      <DraftButton id={p.id} hasDraft={Boolean(p.draft_body)} />
+      {/* Keyed on updated_at, so a new draft shows in the fields at once. */}
+      <ProspectForm key={p.updated_at} p={p} articlePaths={paths} />
     </main>
   );
 }

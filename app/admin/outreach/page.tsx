@@ -15,6 +15,7 @@ import {
 import { AddProspectForm } from "@/components/admin/OutreachForms";
 import ProspectRow from "@/components/admin/ProspectRow";
 import FindSitesPanel from "@/components/admin/FindSitesPanel";
+import { DraftAllButton } from "@/components/admin/DraftButtons";
 import { RESEARCH_TOPICS } from "@/lib/outreach-research";
 import { getCategory } from "@/lib/categories";
 
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
   title: "Outreach",
   robots: { index: false, follow: false },
 };
+
+// Research runs and drafting are server work started from this page.
+export const maxDuration = 300;
 
 type Props = { searchParams: Promise<{ status?: string; goal?: string }> };
 
@@ -90,6 +94,12 @@ export default async function AdminOutreach({ searchParams }: Props) {
 
       <FindSitesPanel
         topics={RESEARCH_TOPICS.map((slug) => ({ slug, label: getCategory(slug)?.label ?? slug }))}
+      />
+
+      <DraftAllButton
+        items={prospects
+          .filter((p) => p.status === "new" && (p.contact_email || p.contact_page_url))
+          .map((p) => ({ id: p.id, site_name: p.site_name }))}
       />
 
       <nav aria-label="Filter by status" className="mt-8">
