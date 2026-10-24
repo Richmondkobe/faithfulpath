@@ -318,6 +318,20 @@ export default function ProductForm({
         </label>
       </div>
 
+      <div className="flex items-start gap-3">
+        <input
+          id="featured_on_start"
+          name="featured_on_start"
+          type="checkbox"
+          defaultChecked={product?.featured_on_start ?? false}
+          className="mt-0.5 h-4 w-4 accent-gold-text"
+        />
+        <label htmlFor="featured_on_start" className="text-sm text-ink">
+          Featured on /start — the one book at the top of the Instagram link page. Ticking it here takes it off
+          whichever book had it before.
+        </label>
+      </div>
+
       {state.error && (
         <p
           role="alert"

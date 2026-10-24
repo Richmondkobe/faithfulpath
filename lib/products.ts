@@ -16,6 +16,8 @@ export type Product = {
   category: string | null;
   /** Position within the category. Lower first; ties fall back to newest. */
   sort_order: number;
+  /** The one book at the top of /start. Missing until its migration has run. */
+  featured_on_start?: boolean;
   created_at: string;
 };
 

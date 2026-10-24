@@ -53,6 +53,7 @@ export async function saveProduct(
   const description = String(formData.get("description") ?? "").trim();
   const priceInput = String(formData.get("price") ?? "").trim();
   const published = formData.get("published") === "on";
+  const featuredOnStart = formData.get("featured_on_start") === "on";
   const categoryInput = String(formData.get("category") ?? "").trim();
   const sortInput = String(formData.get("sort_order") ?? "").trim();
 
@@ -92,7 +93,13 @@ export async function saveProduct(
     published,
     category,
     sort_order,
+    featured_on_start: featuredOnStart,
   };
+
+  // /start is for buying, so only a book that is on sale can lead it.
+  if (featuredOnStart && !published) {
+    return { error: "Only a published book can be featured on /start. Tick Published as well, or untick Featured." };
+  }
 
   try {
     if (coverPath) {
@@ -124,11 +131,21 @@ export async function saveProduct(
     }
   }
 
+  // One featured book at a time: clear whichever book had it before setting it
+  // here. (The database's unique index enforces this too.)
+  if (featuredOnStart) {
+    let clear = supabaseAdmin.from("products").update({ featured_on_start: false }).eq("featured_on_start", true);
+    if (id) clear = clear.neq("id", id);
+    const { error: clearError } = await clear;
+    if (clearError) return { error: featuredError(clearError) };
+  }
+
   const { error } = id
     ? await supabaseAdmin.from("products").update(fields).eq("id", id)
     : await supabaseAdmin.from("products").insert(fields);
 
   if (error) {
+    if (/featured_on_start/.test(error.message)) return { error: featuredError(error) };
     if (error.code === "23505") {
       return { error: `The slug "${slug}" is already in use.` };
     }
@@ -140,7 +157,17 @@ export async function saveProduct(
   // The saved category shelves behind /guides?category=… (next.config.ts).
   revalidatePath("/guides/shelf/[category]", "page");
   revalidatePath(`/guides/${slug}`);
+  revalidatePath("/start");
   redirect("/admin");
+}
+
+/** Plain words for the featured flag's two ways to fail. */
+function featuredError(error: { code?: string; message: string }): string {
+  if (error.code === "PGRST204" || error.code === "42703" || /column/i.test(error.message)) {
+    return "The Featured on /start setting is not set up in the database yet: run supabase/migrations/20261025120000_featured_on_start.sql in Supabase first.";
+  }
+  if (error.code === "23505") return "Another book is already featured on /start. Try saving again.";
+  return `Could not save: ${error.message}`;
 }
 
 export type DeleteState = { error: string | null };
