@@ -14,6 +14,9 @@ import {
 } from "@/lib/outreach";
 import { AddProspectForm } from "@/components/admin/OutreachForms";
 import ProspectRow from "@/components/admin/ProspectRow";
+import FindSitesPanel from "@/components/admin/FindSitesPanel";
+import { RESEARCH_TOPICS } from "@/lib/outreach-research";
+import { getCategory } from "@/lib/categories";
 
 export const metadata: Metadata = {
   title: "Outreach",
@@ -84,6 +87,10 @@ export default async function AdminOutreach({ searchParams }: Props) {
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">
         Christian blogs, ministry sites and directories that might link to an article. Click a row to edit it.
       </p>
+
+      <FindSitesPanel
+        topics={RESEARCH_TOPICS.map((slug) => ({ slug, label: getCategory(slug)?.label ?? slug }))}
+      />
 
       <nav aria-label="Filter by status" className="mt-8">
         <p className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">Status</p>
