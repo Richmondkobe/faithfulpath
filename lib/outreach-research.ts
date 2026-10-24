@@ -69,6 +69,10 @@ export type ResearchSummary = {
   emailsBlanked: number;
   /** Addresses the checker found published on a site when the agent had none. */
   emailsFound: number;
+  /** Sites where only a personal or other-domain address was found (it is in the notes). */
+  otherAddresses: number;
+  /** Sites that turned the checker away. */
+  blocked: number;
 };
 
 const SUBMIT_TOOL = {
@@ -293,10 +297,16 @@ function publishedEmails(html: string): string[] {
 }
 
 /** The best published address for outreach: on the site's own domain, and a general one if there is one. */
+/** Whether an address belongs to the site itself: its domain or a subdomain of it. */
+const onDomain = (email: string, domain: string) => {
+  const d = email.split("@")[1] ?? "";
+  return d === domain || d.endsWith("." + domain);
+};
+
+/** The best address on the site's own domain, a general one if there is one. */
 function pickEmail(emails: string[], domain: string): string | null {
-  const own = emails.filter((e) => { const d = e.split("@")[1]; return d === domain || d.endsWith("." + domain); });
-  const pool = own.length ? own : emails;
-  return pool.find((e) => /^(info|hello|contact|editor|editors|office|admin|team|connect|media|press)@/.test(e)) ?? pool[0] ?? null;
+  const own = emails.filter((e) => onDomain(e, domain));
+  return own.find((e) => /^(info|hello|contact|editor|editors|office|admin|team|connect|media|press)@/.test(e)) ?? own[0] ?? null;
 }
 
 /** Whether an address is written on the page, allowing the usual ways of hiding it from spam bots. */
@@ -389,6 +399,8 @@ export async function runResearch(
     searches: Math.min(searches, MAX_SEARCHES),
     emailsBlanked: 0,
     emailsFound: 0,
+    otherAddresses: 0,
+    blocked: 0,
   };
 
   // ----- checking each site before it is saved -----
@@ -411,6 +423,10 @@ export async function runResearch(
       skip(`${domain} did not load${page ? ` (status ${page.status})` : ""}`);
       continue;
     }
+    // Sites that turn automated visitors away (401, 403, 429): the site is
+    // there, but nothing on it can be read, so its contacts cannot be checked.
+    const blocked = new Set<number>();
+    if (page.status >= 400) blocked.add(page.status);
 
     if (SOCIAL.test(domain)) { skip(`${domain} is a social media site`); continue; }
 
@@ -423,6 +439,7 @@ export async function runResearch(
     const tryPage = async (u: URL | null) => {
       if (!u || !sameSite(u, domain) || pages.some((p) => p.url.href === u.href)) return;
       const c = await fetchPage(u);
+      if (c && [401, 403, 429].includes(c.status)) blocked.add(c.status);
       if (!c || c.status >= 400) return;
       const kind = contactKind(c.url, pageTitle(c.html)) ?? contactKind(u, "");
       if (kind) pages.push({ url: c.url, html: c.html, kind });
@@ -435,7 +452,10 @@ export async function runResearch(
     }
     const contactPage = pages.find((p) => p.kind === "contact") ?? pages.find((p) => p.kind === "about") ?? null;
 
-    // The email is kept only if this code saw it on the site.
+    // The email is kept only if this code saw it on the site, and only if it
+    // is on the site's own domain. A personal or other-domain address seen on
+    // the site goes in the notes for Richmond to check instead.
+    const others: string[] = [];
     let email = (s.contact_email ?? "").trim().toLowerCase() || null;
     if (email) {
       let seen = false;
@@ -444,6 +464,7 @@ export async function runResearch(
         const src = publicUrl(s.email_source_url);
         if (src && sameSite(src, domain) && ![home.href, ...pages.map((p) => p.url.href)].includes(src.href)) {
           const p = await fetchPage(src);
+          if (p && [401, 403, 429].includes(p.status)) blocked.add(p.status);
           if (p) sources.push(p.html);
         }
         seen = sources.some((h) => pageShowsEmail(h, email!));
@@ -452,20 +473,33 @@ export async function runResearch(
         summary.emailsBlanked++;
         note += ` The agent gave an email address (${email}) that could not be found on the site, so it was not used.`;
         email = null;
+      } else if (!onDomain(email, domain)) {
+        others.push(email);
+        email = null;
       }
     }
     // None from the agent: an address published on the contact page, the
     // about page or the home page, in that order.
     if (!email) {
       for (const src of [...pages.filter((p) => p.kind === "contact"), ...pages.filter((p) => p.kind === "about"), { url: page.url, html: page.html }]) {
-        const found = pickEmail(publishedEmails(src.html), domain);
+        const all = publishedEmails(src.html);
+        const found = pickEmail(all, domain);
         if (found) {
           email = found;
           summary.emailsFound++;
           note += ` Email found by the checker on ${src.url.href}.`;
           break;
         }
+        for (const o of all) if (!others.includes(o)) others.push(o);
       }
+    }
+    if (others.length) {
+      summary.otherAddresses++;
+      note += ` Other address found: ${others.slice(0, 3).join(", ")} (check before using).`;
+    }
+    if (blocked.size) {
+      summary.blocked++;
+      note += ` The site blocked the automatic checker (status ${[...blocked].join(", ")}), so its contact details could not be checked. Find them on the site yourself.`;
     }
 
     const suggested = allowedPaths.has(s.suggested_page) ? s.suggested_page : articles[0].path;

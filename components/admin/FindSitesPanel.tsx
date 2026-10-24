@@ -168,6 +168,18 @@ export default function FindSitesPanel({ topics }: { topics: { slug: string; lab
               site by the checker; each site&rsquo;s notes say on which page.
             </p>
           )}
+          {summary.otherAddresses > 0 && (
+            <p className="mt-2">
+              {summary.otherAddresses} {summary.otherAddresses === 1 ? "site has" : "sites have"} only a personal or other-domain
+              address, put in the notes as &ldquo;Other address found&rdquo; for you to check.
+            </p>
+          )}
+          {summary.blocked > 0 && (
+            <p className="mt-2">
+              {summary.blocked} {summary.blocked === 1 ? "site" : "sites"} blocked the checker, so contacts there could not be
+              checked; the notes say so.
+            </p>
+          )}
           {summary.emailsBlanked > 0 && (
             <p className="mt-2">
               {summary.emailsBlanked} email {summary.emailsBlanked === 1 ? "address was" : "addresses were"} left blank because{" "}
