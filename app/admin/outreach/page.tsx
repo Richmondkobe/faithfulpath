@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
-import { articlePaths, countByGoal, countByStatus, listProspects } from "@/lib/outreach-db";
+import { articlePaths, countByGoal, countByStatus, listProspects, outreachClient } from "@/lib/outreach-db";
 import {
   GOAL_LABELS,
   OUTREACH_GOALS,
@@ -16,6 +16,7 @@ import { AddProspectForm } from "@/components/admin/OutreachForms";
 import ProspectRow from "@/components/admin/ProspectRow";
 import FindSitesPanel from "@/components/admin/FindSitesPanel";
 import { DraftAllButton } from "@/components/admin/DraftButtons";
+import { DAILY_LIMIT, sentToday } from "@/lib/outreach-send";
 import { RESEARCH_TOPICS } from "@/lib/outreach-research";
 import { getCategory } from "@/lib/categories";
 
@@ -49,7 +50,11 @@ export default async function AdminOutreach({ searchParams }: Props) {
   const active = isOutreachStatus(sp.status ?? "") ? (sp.status as OutreachStatus) : null;
   const activeGoal = isOutreachGoal(sp.goal ?? "") ? (sp.goal as OutreachGoal) : null;
 
-  const [list, paths] = await Promise.all([listProspects(), articlePaths()]);
+  const [list, paths, today] = await Promise.all([
+    listProspects(),
+    articlePaths(),
+    outreachClient().then(sentToday).catch(() => 0),
+  ]);
 
   const heading = (
     <h1
@@ -90,6 +95,9 @@ export default async function AdminOutreach({ searchParams }: Props) {
       {heading}
       <p className="mt-4 max-w-2xl leading-relaxed text-muted">
         Christian blogs, ministry sites and directories that might link to an article. Click a row to edit it.
+      </p>
+      <p className="mt-2 text-sm font-medium text-navy">
+        {today} of {DAILY_LIMIT} sent today
       </p>
 
       <FindSitesPanel

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { findByDomain, getProspect, isMissingTable, outreachClient } from "@/lib/outreach-db";
 import { draftProspectEmail, type DraftResult } from "@/lib/outreach-draft";
+import { approveProspect as approve, markSentByHand, sendProspect as send, type SendResult } from "@/lib/outreach-send";
 import { domainFromUrl, isOutreachGoal, isOutreachStatus, looksLikeEmail, normaliseUrl } from "@/lib/outreach";
 
 export type OutreachFormState = {
@@ -179,4 +180,45 @@ export async function draftProspect(id: string): Promise<DraftResult> {
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : "The draft failed." };
   }
+}
+
+type Simple = { ok: true } | { ok: false; error: string };
+
+function refresh(id: string) {
+  revalidatePath("/admin/outreach");
+  revalidatePath(`/admin/outreach/${id}`);
+}
+
+/** Drafted to Approved. */
+export async function approveProspectAction(id: string): Promise<Simple> {
+  await requireAdmin();
+  const p = await getProspect(id);
+  if (!p) return { ok: false, error: "That site is not in the list." };
+  const r = await approve(p, await outreachClient());
+  if (r.ok) refresh(id);
+  return r;
+}
+
+/** Sends one Approved site's saved draft. All the limits are checked in lib/outreach-send. */
+export async function sendProspectAction(id: string): Promise<SendResult> {
+  await requireAdmin();
+  try {
+    const r = await send(id, await outreachClient());
+    refresh(id);
+    return r;
+  } catch (err) {
+    refresh(id);
+    return { ok: false, error: err instanceof Error ? err.message : "The send failed." };
+  }
+}
+
+/** For a contact-page site Richmond has written to himself. */
+export async function markSentAction(id: string): Promise<Simple> {
+  await requireAdmin();
+  const p = await getProspect(id);
+  if (!p) return { ok: false, error: "That site is not in the list." };
+  if (p.contact_email) return { ok: false, error: "This site has a contact email; approve and send it from here instead." };
+  const r = await markSentByHand(p, await outreachClient());
+  if (r.ok) refresh(id);
+  return r;
 }

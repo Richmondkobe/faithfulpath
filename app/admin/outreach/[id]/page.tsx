@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
-import { articlePaths, getProspect } from "@/lib/outreach-db";
+import { articlePaths, getProspect, outreachClient } from "@/lib/outreach-db";
 import { STATUS_LABELS } from "@/lib/outreach";
 import { ProspectForm } from "@/components/admin/OutreachForms";
 import { DraftButton } from "@/components/admin/DraftButtons";
+import SendPanel from "@/components/admin/SendPanel";
+import { DAILY_LIMIT, sentToday } from "@/lib/outreach-send";
 
 // "Draft email" runs on the server from this page, and can take a minute.
 export const maxDuration = 120;
@@ -17,7 +19,7 @@ export const metadata: Metadata = {
 export default async function OutreachProspectPage({ params }: { params: Promise<{ id: string }> }) {
   await requireAdmin();
   const { id } = await params;
-  const [p, paths] = await Promise.all([getProspect(id), articlePaths()]);
+  const [p, paths, today] = await Promise.all([getProspect(id), articlePaths(), outreachClient().then(sentToday)]);
   if (!p) notFound();
 
   return (
@@ -38,7 +40,9 @@ export default async function OutreachProspectPage({ params }: { params: Promise
         {" · added "}
         {new Date(p.created_at).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
       </p>
-      <DraftButton id={p.id} hasDraft={Boolean(p.draft_body)} />
+      {/* No redrafting once it has gone or been answered. */}
+      {["new", "drafted", "approved"].includes(p.status) && <DraftButton id={p.id} hasDraft={Boolean(p.draft_body)} />}
+      <SendPanel p={p} sentToday={today} dailyLimit={DAILY_LIMIT} />
       {/* Keyed on updated_at, so a new draft shows in the fields at once. */}
       <ProspectForm key={p.updated_at} p={p} articlePaths={paths} />
     </main>
