@@ -34,6 +34,12 @@ export default async function AdminLayout({
               >
                 Articles
               </Link>
+              <Link
+                href="/admin/outreach"
+                className="text-muted transition-colors hover:text-gold-text"
+              >
+                Outreach
+              </Link>
             </nav>
             <span className="text-muted">{email}</span>
           </div>
