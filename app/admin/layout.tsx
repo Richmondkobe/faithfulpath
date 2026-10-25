@@ -15,7 +15,7 @@ export default async function AdminLayout({
 
   return (
     <div>
-      <div className="border-b border-line bg-sand">
+      <div role="region" aria-label="Admin" className="border-b border-line bg-sand">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-6 py-3 text-sm">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <span className="text-[11px] uppercase tracking-[0.18em] text-gold-text font-medium">

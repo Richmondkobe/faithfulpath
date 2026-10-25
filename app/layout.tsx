@@ -138,10 +138,10 @@ export default function RootLayout({
             menu in one row, then Give and the account link. Phones and
             tablets: the name and a Menu button. */}
         <header className="bg-navy">
-          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-6 py-3 lg:flex-nowrap lg:py-5">
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-3 px-4 py-2 sm:px-6 lg:flex-nowrap lg:gap-x-4 lg:py-5">
             <Link href="/" className="flex min-h-[44px] shrink-0 flex-col justify-center">
               <span
-                className="block text-xl leading-none text-sun"
+                className="block whitespace-nowrap text-[1.15rem] leading-none text-sun max-[359px]:text-base sm:text-xl"
                 style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
               >
                 {SITE.name}

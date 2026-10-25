@@ -39,7 +39,7 @@ export default function MobileMenu({ items }: { items: { href: string; label: st
           setOpenedOn(pathname);
           setOpen(!isOpen);
         }}
-        className="flex min-h-[44px] items-center gap-2 rounded-lg px-2 text-[15px] font-semibold text-sun transition-colors hover:text-gold"
+        className="-mr-2 flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-lg px-2 text-[15px] font-semibold text-sun transition-colors hover:text-gold"
       >
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
           {isOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
