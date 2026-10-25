@@ -5,6 +5,8 @@ import CommunityNav from "@/components/community/CommunityNav";
 import ProfileForm from "@/components/community/ProfileForm";
 import Markdown from "@/components/Markdown";
 import MarkJoined from "@/components/community/MarkJoined";
+import VerseOfTheDay from "@/components/community/VerseOfTheDay";
+import { ESV_NOTICE, versesAroundToday } from "@/lib/verses";
 import { DISPLAY, errorClass, quietButtonClass } from "@/components/community/styles";
 import { getCommunityViewer, loadAnnouncements, loadAnswered } from "@/lib/community-db";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
@@ -43,7 +45,11 @@ export default async function CommunityHome({ searchParams }: Props) {
   }
 
   const name = viewer.profile?.first_name;
-  const [{ announcements, seenBefore }, [latestAnswer]] = await Promise.all([loadAnnouncements(viewer), loadAnswered(viewer, 1)]);
+  const [{ announcements, seenBefore }, [latestAnswer], verses] = await Promise.all([
+    loadAnnouncements(viewer),
+    loadAnswered(viewer, 1),
+    versesAroundToday(),
+  ]);
   const isNew = (createdAt: string) => !seenBefore || new Date(createdAt).getTime() > seenBefore.getTime();
 
   return (
@@ -55,6 +61,13 @@ export default async function CommunityHome({ searchParams }: Props) {
           {name ? `Welcome, ${name}` : "Welcome to the community"}
         </h1>
         <p className="mt-4 text-lg leading-relaxed">A place to grow, pray and walk with others.</p>
+
+        {/* Shown only when the ESV text could be fetched (lib/verses.ts). */}
+        {verses.length > 0 && (
+          <div className="mt-8">
+            <VerseOfTheDay verses={verses} notice={ESV_NOTICE} />
+          </div>
+        )}
 
         {announcements.length > 0 && (
           <section aria-labelledby="announcements" className="mt-10">

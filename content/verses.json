@@ -1,0 +1,1835 @@
+{
+ "about": "Verse of the day on the community home: one reference per date, 01-01 to 12-31 including 02-29. Change any reference and redeploy; the ESV wording is fetched from api.esv.org. Keep each to one to three verses.",
+ "verses": [
+  {
+   "date": "01-01",
+   "ref": "Isaiah 43:18-19",
+   "theme": "hope"
+  },
+  {
+   "date": "01-02",
+   "ref": "John 3:16",
+   "theme": "God's love"
+  },
+  {
+   "date": "01-03",
+   "ref": "Philippians 4:6-7",
+   "theme": "prayer"
+  },
+  {
+   "date": "01-04",
+   "ref": "Romans 15:13",
+   "theme": "hope"
+  },
+  {
+   "date": "01-05",
+   "ref": "Matthew 11:28-30",
+   "theme": "rest"
+  },
+  {
+   "date": "01-06",
+   "ref": "Hebrews 11:1",
+   "theme": "faith"
+  },
+  {
+   "date": "01-07",
+   "ref": "Matthew 16:24",
+   "theme": "discipleship"
+  },
+  {
+   "date": "01-08",
+   "ref": "1 Corinthians 13:4-5",
+   "theme": "relationships"
+  },
+  {
+   "date": "01-09",
+   "ref": "Matthew 28:19-20",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "01-10",
+   "ref": "Romans 5:8",
+   "theme": "God's love"
+  },
+  {
+   "date": "01-11",
+   "ref": "1 Thessalonians 5:16-18",
+   "theme": "prayer"
+  },
+  {
+   "date": "01-12",
+   "ref": "Jeremiah 29:11",
+   "theme": "hope"
+  },
+  {
+   "date": "01-13",
+   "ref": "Psalm 23:1-3",
+   "theme": "rest"
+  },
+  {
+   "date": "01-14",
+   "ref": "Hebrews 11:6",
+   "theme": "faith"
+  },
+  {
+   "date": "01-15",
+   "ref": "Luke 9:23",
+   "theme": "discipleship"
+  },
+  {
+   "date": "01-16",
+   "ref": "1 Corinthians 13:6-7",
+   "theme": "relationships"
+  },
+  {
+   "date": "01-17",
+   "ref": "Acts 1:8",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "01-18",
+   "ref": "1 John 4:9-10",
+   "theme": "God's love"
+  },
+  {
+   "date": "01-19",
+   "ref": "Matthew 7:7-8",
+   "theme": "prayer"
+  },
+  {
+   "date": "01-20",
+   "ref": "Isaiah 40:31",
+   "theme": "hope"
+  },
+  {
+   "date": "01-21",
+   "ref": "Psalm 46:1-2",
+   "theme": "rest"
+  },
+  {
+   "date": "01-22",
+   "ref": "Ephesians 2:8-9",
+   "theme": "faith"
+  },
+  {
+   "date": "01-23",
+   "ref": "Matthew 4:19",
+   "theme": "discipleship"
+  },
+  {
+   "date": "01-24",
+   "ref": "1 Corinthians 13:13",
+   "theme": "relationships"
+  },
+  {
+   "date": "01-25",
+   "ref": "Mark 16:15",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "01-26",
+   "ref": "1 John 4:16",
+   "theme": "God's love"
+  },
+  {
+   "date": "01-27",
+   "ref": "Jeremiah 33:3",
+   "theme": "prayer"
+  },
+  {
+   "date": "01-28",
+   "ref": "Lamentations 3:24",
+   "theme": "hope"
+  },
+  {
+   "date": "01-29",
+   "ref": "Psalm 62:1-2",
+   "theme": "rest"
+  },
+  {
+   "date": "01-30",
+   "ref": "Romans 10:17",
+   "theme": "faith"
+  },
+  {
+   "date": "01-31",
+   "ref": "John 15:5",
+   "theme": "discipleship"
+  },
+  {
+   "date": "02-01",
+   "ref": "1 Peter 4:8",
+   "theme": "relationships"
+  },
+  {
+   "date": "02-02",
+   "ref": "2 Timothy 2:2",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "02-03",
+   "ref": "1 John 4:19",
+   "theme": "God's love"
+  },
+  {
+   "date": "02-04",
+   "ref": "James 5:16",
+   "theme": "prayer"
+  },
+  {
+   "date": "02-05",
+   "ref": "Psalm 42:11",
+   "theme": "hope"
+  },
+  {
+   "date": "02-06",
+   "ref": "Psalm 62:5-6",
+   "theme": "rest"
+  },
+  {
+   "date": "02-07",
+   "ref": "Romans 1:16",
+   "theme": "faith"
+  },
+  {
+   "date": "02-08",
+   "ref": "John 15:8",
+   "theme": "discipleship"
+  },
+  {
+   "date": "02-09",
+   "ref": "Ephesians 4:32",
+   "theme": "relationships"
+  },
+  {
+   "date": "02-10",
+   "ref": "Romans 10:14-15",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "02-11",
+   "ref": "Romans 8:38-39",
+   "theme": "God's love"
+  },
+  {
+   "date": "02-12",
+   "ref": "Psalm 145:18",
+   "theme": "prayer"
+  },
+  {
+   "date": "02-13",
+   "ref": "Romans 8:28",
+   "theme": "hope"
+  },
+  {
+   "date": "02-14",
+   "ref": "Isaiah 30:15",
+   "theme": "rest"
+  },
+  {
+   "date": "02-15",
+   "ref": "Romans 10:9",
+   "theme": "faith"
+  },
+  {
+   "date": "02-16",
+   "ref": "John 14:15",
+   "theme": "discipleship"
+  },
+  {
+   "date": "02-17",
+   "ref": "Ephesians 4:29",
+   "theme": "relationships"
+  },
+  {
+   "date": "02-18",
+   "ref": "Romans 10:13",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "02-19",
+   "ref": "Ephesians 2:4-5",
+   "theme": "God's love"
+  },
+  {
+   "date": "02-20",
+   "ref": "Hebrews 4:16",
+   "theme": "prayer"
+  },
+  {
+   "date": "02-21",
+   "ref": "Hebrews 6:19",
+   "theme": "hope"
+  },
+  {
+   "date": "02-22",
+   "ref": "Exodus 33:14",
+   "theme": "rest"
+  },
+  {
+   "date": "02-23",
+   "ref": "Galatians 2:16",
+   "theme": "faith"
+  },
+  {
+   "date": "02-24",
+   "ref": "John 14:21",
+   "theme": "discipleship"
+  },
+  {
+   "date": "02-25",
+   "ref": "Ephesians 4:2",
+   "theme": "relationships"
+  },
+  {
+   "date": "02-26",
+   "ref": "Matthew 9:37-38",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "02-27",
+   "ref": "Ephesians 3:17-19",
+   "theme": "God's love"
+  },
+  {
+   "date": "02-28",
+   "ref": "1 John 5:14-15",
+   "theme": "prayer"
+  },
+  {
+   "date": "02-29",
+   "ref": "Psalm 31:24",
+   "theme": "hope"
+  },
+  {
+   "date": "03-01",
+   "ref": "Psalm 4:8",
+   "theme": "rest"
+  },
+  {
+   "date": "03-02",
+   "ref": "2 Corinthians 5:7",
+   "theme": "faith"
+  },
+  {
+   "date": "03-03",
+   "ref": "John 13:34",
+   "theme": "discipleship"
+  },
+  {
+   "date": "03-04",
+   "ref": "Ephesians 5:25",
+   "theme": "relationships"
+  },
+  {
+   "date": "03-05",
+   "ref": "Matthew 5:13",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "03-06",
+   "ref": "Zephaniah 3:17",
+   "theme": "God's love"
+  },
+  {
+   "date": "03-07",
+   "ref": "Matthew 6:6",
+   "theme": "prayer"
+  },
+  {
+   "date": "03-08",
+   "ref": "Psalm 130:5",
+   "theme": "hope"
+  },
+  {
+   "date": "03-09",
+   "ref": "Psalm 127:2",
+   "theme": "rest"
+  },
+  {
+   "date": "03-10",
+   "ref": "Mark 9:23-24",
+   "theme": "faith"
+  },
+  {
+   "date": "03-11",
+   "ref": "Romans 12:1",
+   "theme": "discipleship"
+  },
+  {
+   "date": "03-12",
+   "ref": "Colossians 3:14",
+   "theme": "relationships"
+  },
+  {
+   "date": "03-13",
+   "ref": "John 4:35",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "03-14",
+   "ref": "Jeremiah 31:3",
+   "theme": "God's love"
+  },
+  {
+   "date": "03-15",
+   "ref": "Romans 8:26",
+   "theme": "prayer"
+  },
+  {
+   "date": "03-16",
+   "ref": "Psalm 33:20-22",
+   "theme": "hope"
+  },
+  {
+   "date": "03-17",
+   "ref": "Psalm 116:7",
+   "theme": "rest"
+  },
+  {
+   "date": "03-18",
+   "ref": "Matthew 17:20",
+   "theme": "faith"
+  },
+  {
+   "date": "03-19",
+   "ref": "Romans 12:11",
+   "theme": "discipleship"
+  },
+  {
+   "date": "03-20",
+   "ref": "Colossians 3:19",
+   "theme": "relationships"
+  },
+  {
+   "date": "03-21",
+   "ref": "John 17:20-21",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "03-22",
+   "ref": "Psalm 136:1",
+   "theme": "God's love"
+  },
+  {
+   "date": "03-23",
+   "ref": "Colossians 4:2",
+   "theme": "prayer"
+  },
+  {
+   "date": "03-24",
+   "ref": "Psalm 71:14",
+   "theme": "hope"
+  },
+  {
+   "date": "03-25",
+   "ref": "Mark 6:31",
+   "theme": "rest"
+  },
+  {
+   "date": "03-26",
+   "ref": "James 1:2-3",
+   "theme": "faith"
+  },
+  {
+   "date": "03-27",
+   "ref": "Galatians 5:22-23",
+   "theme": "discipleship"
+  },
+  {
+   "date": "03-28",
+   "ref": "Proverbs 17:17",
+   "theme": "relationships"
+  },
+  {
+   "date": "03-29",
+   "ref": "John 20:21",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "03-30",
+   "ref": "Lamentations 3:22-23",
+   "theme": "God's love"
+  },
+  {
+   "date": "03-31",
+   "ref": "Psalm 5:3",
+   "theme": "prayer"
+  },
+  {
+   "date": "04-01",
+   "ref": "Psalm 39:7",
+   "theme": "hope"
+  },
+  {
+   "date": "04-02",
+   "ref": "John 14:27",
+   "theme": "rest"
+  },
+  {
+   "date": "04-03",
+   "ref": "1 Peter 1:8-9",
+   "theme": "faith"
+  },
+  {
+   "date": "04-04",
+   "ref": "Galatians 5:25",
+   "theme": "discipleship"
+  },
+  {
+   "date": "04-05",
+   "ref": "Proverbs 27:17",
+   "theme": "relationships"
+  },
+  {
+   "date": "04-06",
+   "ref": "Isaiah 6:8",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "04-07",
+   "ref": "Psalm 103:8",
+   "theme": "God's love"
+  },
+  {
+   "date": "04-08",
+   "ref": "Psalm 62:8",
+   "theme": "prayer"
+  },
+  {
+   "date": "04-09",
+   "ref": "Proverbs 23:18",
+   "theme": "hope"
+  },
+  {
+   "date": "04-10",
+   "ref": "Isaiah 26:4",
+   "theme": "rest"
+  },
+  {
+   "date": "04-11",
+   "ref": "John 11:25-26",
+   "theme": "faith"
+  },
+  {
+   "date": "04-12",
+   "ref": "Galatians 6:9",
+   "theme": "discipleship"
+  },
+  {
+   "date": "04-13",
+   "ref": "Proverbs 15:1",
+   "theme": "relationships"
+  },
+  {
+   "date": "04-14",
+   "ref": "Isaiah 52:7",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "04-15",
+   "ref": "Psalm 103:11-12",
+   "theme": "God's love"
+  },
+  {
+   "date": "04-16",
+   "ref": "Psalm 55:22",
+   "theme": "prayer"
+  },
+  {
+   "date": "04-17",
+   "ref": "Micah 7:7",
+   "theme": "hope"
+  },
+  {
+   "date": "04-18",
+   "ref": "Psalm 91:1-2",
+   "theme": "rest"
+  },
+  {
+   "date": "04-19",
+   "ref": "John 14:6",
+   "theme": "faith"
+  },
+  {
+   "date": "04-20",
+   "ref": "Ephesians 2:10",
+   "theme": "discipleship"
+  },
+  {
+   "date": "04-21",
+   "ref": "Proverbs 16:24",
+   "theme": "relationships"
+  },
+  {
+   "date": "04-22",
+   "ref": "Psalm 96:3",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "04-23",
+   "ref": "Psalm 86:15",
+   "theme": "God's love"
+  },
+  {
+   "date": "04-24",
+   "ref": "Mark 11:24",
+   "theme": "prayer"
+  },
+  {
+   "date": "04-25",
+   "ref": "Romans 5:3-5",
+   "theme": "hope"
+  },
+  {
+   "date": "04-26",
+   "ref": "Psalm 91:4",
+   "theme": "rest"
+  },
+  {
+   "date": "04-27",
+   "ref": "John 1:12",
+   "theme": "faith"
+  },
+  {
+   "date": "04-28",
+   "ref": "Ephesians 4:1-3",
+   "theme": "discipleship"
+  },
+  {
+   "date": "04-29",
+   "ref": "Proverbs 18:24",
+   "theme": "relationships"
+  },
+  {
+   "date": "04-30",
+   "ref": "Psalm 67:1-2",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "05-01",
+   "ref": "Isaiah 54:10",
+   "theme": "God's love"
+  },
+  {
+   "date": "05-02",
+   "ref": "John 14:13-14",
+   "theme": "prayer"
+  },
+  {
+   "date": "05-03",
+   "ref": "Romans 8:18",
+   "theme": "hope"
+  },
+  {
+   "date": "05-04",
+   "ref": "Psalm 131:2",
+   "theme": "rest"
+  },
+  {
+   "date": "05-05",
+   "ref": "John 20:29",
+   "theme": "faith"
+  },
+  {
+   "date": "05-06",
+   "ref": "Ephesians 5:1-2",
+   "theme": "discipleship"
+  },
+  {
+   "date": "05-07",
+   "ref": "Proverbs 31:30",
+   "theme": "relationships"
+  },
+  {
+   "date": "05-08",
+   "ref": "Habakkuk 2:14",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "05-09",
+   "ref": "Isaiah 43:1",
+   "theme": "God's love"
+  },
+  {
+   "date": "05-10",
+   "ref": "Luke 18:1",
+   "theme": "prayer"
+  },
+  {
+   "date": "05-11",
+   "ref": "2 Corinthians 4:16-17",
+   "theme": "hope"
+  },
+  {
+   "date": "05-12",
+   "ref": "Jeremiah 6:16",
+   "theme": "rest"
+  },
+  {
+   "date": "05-13",
+   "ref": "John 6:35",
+   "theme": "faith"
+  },
+  {
+   "date": "05-14",
+   "ref": "Philippians 2:3-4",
+   "theme": "discipleship"
+  },
+  {
+   "date": "05-15",
+   "ref": "Ecclesiastes 4:9-10",
+   "theme": "relationships"
+  },
+  {
+   "date": "05-16",
+   "ref": "1 Corinthians 3:6-7",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "05-17",
+   "ref": "Isaiah 43:4",
+   "theme": "God's love"
+  },
+  {
+   "date": "05-18",
+   "ref": "Psalm 116:1-2",
+   "theme": "prayer"
+  },
+  {
+   "date": "05-19",
+   "ref": "2 Corinthians 4:8-9",
+   "theme": "hope"
+  },
+  {
+   "date": "05-20",
+   "ref": "Hebrews 4:9-10",
+   "theme": "rest"
+  },
+  {
+   "date": "05-21",
+   "ref": "John 8:12",
+   "theme": "faith"
+  },
+  {
+   "date": "05-22",
+   "ref": "Philippians 2:5",
+   "theme": "discipleship"
+  },
+  {
+   "date": "05-23",
+   "ref": "Ecclesiastes 4:12",
+   "theme": "relationships"
+  },
+  {
+   "date": "05-24",
+   "ref": "1 Corinthians 9:22",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "05-25",
+   "ref": "Isaiah 49:15-16",
+   "theme": "God's love"
+  },
+  {
+   "date": "05-26",
+   "ref": "Psalm 17:6",
+   "theme": "prayer"
+  },
+  {
+   "date": "05-27",
+   "ref": "1 Peter 1:3",
+   "theme": "hope"
+  },
+  {
+   "date": "05-28",
+   "ref": "Psalm 37:7",
+   "theme": "rest"
+  },
+  {
+   "date": "05-29",
+   "ref": "John 8:31-32",
+   "theme": "faith"
+  },
+  {
+   "date": "05-30",
+   "ref": "Philippians 3:13-14",
+   "theme": "discipleship"
+  },
+  {
+   "date": "05-31",
+   "ref": "Song of Solomon 8:7",
+   "theme": "relationships"
+  },
+  {
+   "date": "06-01",
+   "ref": "1 Corinthians 12:27",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "06-02",
+   "ref": "John 15:9",
+   "theme": "God's love"
+  },
+  {
+   "date": "06-03",
+   "ref": "Psalm 141:2",
+   "theme": "prayer"
+  },
+  {
+   "date": "06-04",
+   "ref": "Revelation 21:4",
+   "theme": "hope"
+  },
+  {
+   "date": "06-05",
+   "ref": "Proverbs 3:24",
+   "theme": "rest"
+  },
+  {
+   "date": "06-06",
+   "ref": "Romans 3:23-24",
+   "theme": "faith"
+  },
+  {
+   "date": "06-07",
+   "ref": "Philippians 4:8",
+   "theme": "discipleship"
+  },
+  {
+   "date": "06-08",
+   "ref": "Genesis 2:24",
+   "theme": "relationships"
+  },
+  {
+   "date": "06-09",
+   "ref": "2 Corinthians 5:20",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "06-10",
+   "ref": "John 15:13",
+   "theme": "God's love"
+  },
+  {
+   "date": "06-11",
+   "ref": "Ephesians 6:18",
+   "theme": "prayer"
+  },
+  {
+   "date": "06-12",
+   "ref": "Isaiah 61:1",
+   "theme": "hope"
+  },
+  {
+   "date": "06-13",
+   "ref": "Psalm 29:11",
+   "theme": "rest"
+  },
+  {
+   "date": "06-14",
+   "ref": "Romans 6:23",
+   "theme": "faith"
+  },
+  {
+   "date": "06-15",
+   "ref": "Colossians 3:12-13",
+   "theme": "discipleship"
+  },
+  {
+   "date": "06-16",
+   "ref": "Ruth 1:16",
+   "theme": "relationships"
+  },
+  {
+   "date": "06-17",
+   "ref": "2 Corinthians 9:7",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "06-18",
+   "ref": "1 John 3:1",
+   "theme": "God's love"
+  },
+  {
+   "date": "06-19",
+   "ref": "Psalm 34:4",
+   "theme": "prayer"
+  },
+  {
+   "date": "06-20",
+   "ref": "Psalm 30:5",
+   "theme": "hope"
+  },
+  {
+   "date": "06-21",
+   "ref": "2 Thessalonians 3:16",
+   "theme": "rest"
+  },
+  {
+   "date": "06-22",
+   "ref": "Romans 8:1",
+   "theme": "faith"
+  },
+  {
+   "date": "06-23",
+   "ref": "Colossians 3:16",
+   "theme": "discipleship"
+  },
+  {
+   "date": "06-24",
+   "ref": "Romans 12:15",
+   "theme": "relationships"
+  },
+  {
+   "date": "06-25",
+   "ref": "2 Corinthians 9:8",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "06-26",
+   "ref": "Galatians 2:20",
+   "theme": "God's love"
+  },
+  {
+   "date": "06-27",
+   "ref": "Psalm 34:17",
+   "theme": "prayer"
+  },
+  {
+   "date": "06-28",
+   "ref": "Psalm 46:10",
+   "theme": "hope"
+  },
+  {
+   "date": "06-29",
+   "ref": "Psalm 85:8",
+   "theme": "rest"
+  },
+  {
+   "date": "06-30",
+   "ref": "1 John 1:9",
+   "theme": "faith"
+  },
+  {
+   "date": "07-01",
+   "ref": "Colossians 3:17",
+   "theme": "discipleship"
+  },
+  {
+   "date": "07-02",
+   "ref": "Romans 12:16",
+   "theme": "relationships"
+  },
+  {
+   "date": "07-03",
+   "ref": "Ephesians 4:11-12",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "07-04",
+   "ref": "Titus 3:4-5",
+   "theme": "God's love"
+  },
+  {
+   "date": "07-05",
+   "ref": "Psalm 40:1",
+   "theme": "prayer"
+  },
+  {
+   "date": "07-06",
+   "ref": "Psalm 27:13-14",
+   "theme": "hope"
+  },
+  {
+   "date": "07-07",
+   "ref": "Colossians 3:15",
+   "theme": "rest"
+  },
+  {
+   "date": "07-08",
+   "ref": "Acts 4:12",
+   "theme": "faith"
+  },
+  {
+   "date": "07-09",
+   "ref": "Colossians 3:23",
+   "theme": "discipleship"
+  },
+  {
+   "date": "07-10",
+   "ref": "Romans 12:18",
+   "theme": "relationships"
+  },
+  {
+   "date": "07-11",
+   "ref": "Ephesians 4:15-16",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "07-12",
+   "ref": "Psalm 36:7",
+   "theme": "God's love"
+  },
+  {
+   "date": "07-13",
+   "ref": "Psalm 66:19-20",
+   "theme": "prayer"
+  },
+  {
+   "date": "07-14",
+   "ref": "Psalm 18:2",
+   "theme": "hope"
+  },
+  {
+   "date": "07-15",
+   "ref": "Isaiah 32:17",
+   "theme": "rest"
+  },
+  {
+   "date": "07-16",
+   "ref": "Hebrews 12:1-2",
+   "theme": "faith"
+  },
+  {
+   "date": "07-17",
+   "ref": "1 Timothy 4:12",
+   "theme": "discipleship"
+  },
+  {
+   "date": "07-18",
+   "ref": "Romans 13:8",
+   "theme": "relationships"
+  },
+  {
+   "date": "07-19",
+   "ref": "Colossians 1:28",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "07-20",
+   "ref": "Psalm 63:3",
+   "theme": "God's love"
+  },
+  {
+   "date": "07-21",
+   "ref": "Psalm 86:5-6",
+   "theme": "prayer"
+  },
+  {
+   "date": "07-22",
+   "ref": "Psalm 121:1-2",
+   "theme": "hope"
+  },
+  {
+   "date": "07-23",
+   "ref": "Psalm 23:4",
+   "theme": "rest"
+  },
+  {
+   "date": "07-24",
+   "ref": "Hebrews 10:23",
+   "theme": "faith"
+  },
+  {
+   "date": "07-25",
+   "ref": "2 Timothy 2:15",
+   "theme": "discipleship"
+  },
+  {
+   "date": "07-26",
+   "ref": "Romans 15:7",
+   "theme": "relationships"
+  },
+  {
+   "date": "07-27",
+   "ref": "Colossians 4:5-6",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "07-28",
+   "ref": "Psalm 145:8-9",
+   "theme": "God's love"
+  },
+  {
+   "date": "07-29",
+   "ref": "Isaiah 65:24",
+   "theme": "prayer"
+  },
+  {
+   "date": "07-30",
+   "ref": "Psalm 121:7-8",
+   "theme": "hope"
+  },
+  {
+   "date": "07-31",
+   "ref": "Isaiah 43:2",
+   "theme": "rest"
+  },
+  {
+   "date": "08-01",
+   "ref": "1 Corinthians 15:57-58",
+   "theme": "faith"
+  },
+  {
+   "date": "08-02",
+   "ref": "2 Timothy 3:16-17",
+   "theme": "discipleship"
+  },
+  {
+   "date": "08-03",
+   "ref": "Galatians 6:2",
+   "theme": "relationships"
+  },
+  {
+   "date": "08-04",
+   "ref": "1 Thessalonians 2:8",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "08-05",
+   "ref": "Psalm 147:3",
+   "theme": "God's love"
+  },
+  {
+   "date": "08-06",
+   "ref": "Lamentations 3:25",
+   "theme": "prayer"
+  },
+  {
+   "date": "08-07",
+   "ref": "Isaiah 26:3",
+   "theme": "hope"
+  },
+  {
+   "date": "08-08",
+   "ref": "Psalm 56:3-4",
+   "theme": "rest"
+  },
+  {
+   "date": "08-09",
+   "ref": "1 Corinthians 16:13-14",
+   "theme": "faith"
+  },
+  {
+   "date": "08-10",
+   "ref": "James 1:22",
+   "theme": "discipleship"
+  },
+  {
+   "date": "08-11",
+   "ref": "Galatians 5:13",
+   "theme": "relationships"
+  },
+  {
+   "date": "08-12",
+   "ref": "Acts 2:42",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "08-13",
+   "ref": "Psalm 34:18",
+   "theme": "God's love"
+  },
+  {
+   "date": "08-14",
+   "ref": "Psalm 42:8",
+   "theme": "prayer"
+  },
+  {
+   "date": "08-15",
+   "ref": "Isaiah 12:2",
+   "theme": "hope"
+  },
+  {
+   "date": "08-16",
+   "ref": "Psalm 112:7",
+   "theme": "rest"
+  },
+  {
+   "date": "08-17",
+   "ref": "2 Timothy 1:7",
+   "theme": "faith"
+  },
+  {
+   "date": "08-18",
+   "ref": "James 4:8",
+   "theme": "discipleship"
+  },
+  {
+   "date": "08-19",
+   "ref": "Hebrews 10:24-25",
+   "theme": "relationships"
+  },
+  {
+   "date": "08-20",
+   "ref": "Acts 2:46-47",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "08-21",
+   "ref": "Deuteronomy 7:9",
+   "theme": "God's love"
+  },
+  {
+   "date": "08-22",
+   "ref": "Psalm 119:147",
+   "theme": "prayer"
+  },
+  {
+   "date": "08-23",
+   "ref": "Nahum 1:7",
+   "theme": "hope"
+  },
+  {
+   "date": "08-24",
+   "ref": "Matthew 6:34",
+   "theme": "rest"
+  },
+  {
+   "date": "08-25",
+   "ref": "2 Timothy 4:7",
+   "theme": "faith"
+  },
+  {
+   "date": "08-26",
+   "ref": "James 4:10",
+   "theme": "discipleship"
+  },
+  {
+   "date": "08-27",
+   "ref": "Hebrews 13:1-2",
+   "theme": "relationships"
+  },
+  {
+   "date": "08-28",
+   "ref": "Acts 20:24",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "08-29",
+   "ref": "Micah 7:18",
+   "theme": "God's love"
+  },
+  {
+   "date": "08-30",
+   "ref": "Mark 1:35",
+   "theme": "prayer"
+  },
+  {
+   "date": "08-31",
+   "ref": "Joshua 1:9",
+   "theme": "hope"
+  },
+  {
+   "date": "09-01",
+   "ref": "Matthew 6:33",
+   "theme": "rest"
+  },
+  {
+   "date": "09-02",
+   "ref": "1 Peter 5:10",
+   "theme": "faith"
+  },
+  {
+   "date": "09-03",
+   "ref": "1 Peter 2:9",
+   "theme": "discipleship"
+  },
+  {
+   "date": "09-04",
+   "ref": "James 1:19",
+   "theme": "relationships"
+  },
+  {
+   "date": "09-05",
+   "ref": "Philemon 1:6",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "09-06",
+   "ref": "Psalm 100:5",
+   "theme": "God's love"
+  },
+  {
+   "date": "09-07",
+   "ref": "Matthew 18:20",
+   "theme": "prayer"
+  },
+  {
+   "date": "09-08",
+   "ref": "Deuteronomy 31:8",
+   "theme": "hope"
+  },
+  {
+   "date": "09-09",
+   "ref": "Matthew 6:26",
+   "theme": "rest"
+  },
+  {
+   "date": "09-10",
+   "ref": "Psalm 20:7",
+   "theme": "faith"
+  },
+  {
+   "date": "09-11",
+   "ref": "1 Peter 3:15",
+   "theme": "discipleship"
+  },
+  {
+   "date": "09-12",
+   "ref": "1 Thessalonians 5:11",
+   "theme": "relationships"
+  },
+  {
+   "date": "09-13",
+   "ref": "Proverbs 11:25",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "09-14",
+   "ref": "Psalm 117:1-2",
+   "theme": "God's love"
+  },
+  {
+   "date": "09-15",
+   "ref": "Psalm 19:14",
+   "theme": "prayer"
+  },
+  {
+   "date": "09-16",
+   "ref": "John 16:33",
+   "theme": "hope"
+  },
+  {
+   "date": "09-17",
+   "ref": "Luke 12:25-26",
+   "theme": "rest"
+  },
+  {
+   "date": "09-18",
+   "ref": "Psalm 56:11",
+   "theme": "faith"
+  },
+  {
+   "date": "09-19",
+   "ref": "1 Peter 4:10",
+   "theme": "discipleship"
+  },
+  {
+   "date": "09-20",
+   "ref": "1 Thessalonians 5:15",
+   "theme": "relationships"
+  },
+  {
+   "date": "09-21",
+   "ref": "Proverbs 11:30",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "09-22",
+   "ref": "Romans 8:31-32",
+   "theme": "God's love"
+  },
+  {
+   "date": "09-23",
+   "ref": "Psalm 51:10",
+   "theme": "prayer"
+  },
+  {
+   "date": "09-24",
+   "ref": "2 Corinthians 12:9",
+   "theme": "hope"
+  },
+  {
+   "date": "09-25",
+   "ref": "Psalm 16:8",
+   "theme": "rest"
+  },
+  {
+   "date": "09-26",
+   "ref": "Isaiah 55:8-9",
+   "theme": "faith"
+  },
+  {
+   "date": "09-27",
+   "ref": "2 Peter 3:18",
+   "theme": "discipleship"
+  },
+  {
+   "date": "09-28",
+   "ref": "1 John 4:7",
+   "theme": "relationships"
+  },
+  {
+   "date": "09-29",
+   "ref": "Luke 19:10",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "09-30",
+   "ref": "Psalm 23:6",
+   "theme": "God's love"
+  },
+  {
+   "date": "10-01",
+   "ref": "Psalm 139:23-24",
+   "theme": "prayer"
+  },
+  {
+   "date": "10-02",
+   "ref": "Philippians 1:6",
+   "theme": "hope"
+  },
+  {
+   "date": "10-03",
+   "ref": "Psalm 16:9",
+   "theme": "rest"
+  },
+  {
+   "date": "10-04",
+   "ref": "Isaiah 55:10-11",
+   "theme": "faith"
+  },
+  {
+   "date": "10-05",
+   "ref": "1 John 2:6",
+   "theme": "discipleship"
+  },
+  {
+   "date": "10-06",
+   "ref": "1 John 4:11-12",
+   "theme": "relationships"
+  },
+  {
+   "date": "10-07",
+   "ref": "Luke 8:15",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "10-08",
+   "ref": "Psalm 33:5",
+   "theme": "God's love"
+  },
+  {
+   "date": "10-09",
+   "ref": "Psalm 90:12",
+   "theme": "prayer"
+  },
+  {
+   "date": "10-10",
+   "ref": "Philippians 4:13",
+   "theme": "hope"
+  },
+  {
+   "date": "10-11",
+   "ref": "Psalm 27:1",
+   "theme": "rest"
+  },
+  {
+   "date": "10-12",
+   "ref": "Numbers 6:24-26",
+   "theme": "faith"
+  },
+  {
+   "date": "10-13",
+   "ref": "1 John 3:18",
+   "theme": "discipleship"
+  },
+  {
+   "date": "10-14",
+   "ref": "1 John 4:20-21",
+   "theme": "relationships"
+  },
+  {
+   "date": "10-15",
+   "ref": "Mark 4:20",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "10-16",
+   "ref": "Psalm 57:10",
+   "theme": "God's love"
+  },
+  {
+   "date": "10-17",
+   "ref": "Psalm 25:4-5",
+   "theme": "prayer"
+  },
+  {
+   "date": "10-18",
+   "ref": "Psalm 73:26",
+   "theme": "hope"
+  },
+  {
+   "date": "10-19",
+   "ref": "Psalm 27:4",
+   "theme": "rest"
+  },
+  {
+   "date": "10-20",
+   "ref": "Deuteronomy 6:4-5",
+   "theme": "faith"
+  },
+  {
+   "date": "10-21",
+   "ref": "Micah 6:8",
+   "theme": "discipleship"
+  },
+  {
+   "date": "10-22",
+   "ref": "Matthew 5:9",
+   "theme": "relationships"
+  },
+  {
+   "date": "10-23",
+   "ref": "John 12:24",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "10-24",
+   "ref": "Ephesians 1:4-5",
+   "theme": "God's love"
+  },
+  {
+   "date": "10-25",
+   "ref": "Psalm 143:8",
+   "theme": "prayer"
+  },
+  {
+   "date": "10-26",
+   "ref": "Habakkuk 3:17-18",
+   "theme": "hope"
+  },
+  {
+   "date": "10-27",
+   "ref": "Psalm 84:10",
+   "theme": "rest"
+  },
+  {
+   "date": "10-28",
+   "ref": "Joshua 24:15",
+   "theme": "faith"
+  },
+  {
+   "date": "10-29",
+   "ref": "Psalm 119:11",
+   "theme": "discipleship"
+  },
+  {
+   "date": "10-30",
+   "ref": "Matthew 6:14",
+   "theme": "relationships"
+  },
+  {
+   "date": "10-31",
+   "ref": "John 15:16",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "11-01",
+   "ref": "Psalm 103:13",
+   "theme": "God's love"
+  },
+  {
+   "date": "11-02",
+   "ref": "Psalm 143:10",
+   "theme": "prayer"
+  },
+  {
+   "date": "11-03",
+   "ref": "Psalm 9:9-10",
+   "theme": "hope"
+  },
+  {
+   "date": "11-04",
+   "ref": "Psalm 84:11",
+   "theme": "rest"
+  },
+  {
+   "date": "11-05",
+   "ref": "1 Samuel 16:7",
+   "theme": "faith"
+  },
+  {
+   "date": "11-06",
+   "ref": "Psalm 119:9",
+   "theme": "discipleship"
+  },
+  {
+   "date": "11-07",
+   "ref": "Matthew 18:21-22",
+   "theme": "relationships"
+  },
+  {
+   "date": "11-08",
+   "ref": "Galatians 6:10",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "11-09",
+   "ref": "Isaiah 40:11",
+   "theme": "God's love"
+  },
+  {
+   "date": "11-10",
+   "ref": "James 1:5",
+   "theme": "prayer"
+  },
+  {
+   "date": "11-11",
+   "ref": "Psalm 34:8",
+   "theme": "hope"
+  },
+  {
+   "date": "11-12",
+   "ref": "Psalm 61:3-4",
+   "theme": "rest"
+  },
+  {
+   "date": "11-13",
+   "ref": "Proverbs 18:10",
+   "theme": "faith"
+  },
+  {
+   "date": "11-14",
+   "ref": "Psalm 37:3",
+   "theme": "discipleship"
+  },
+  {
+   "date": "11-15",
+   "ref": "Luke 6:37",
+   "theme": "relationships"
+  },
+  {
+   "date": "11-16",
+   "ref": "Hebrews 3:13",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "11-17",
+   "ref": "Luke 15:20",
+   "theme": "God's love"
+  },
+  {
+   "date": "11-18",
+   "ref": "Proverbs 3:5-6",
+   "theme": "prayer"
+  },
+  {
+   "date": "11-19",
+   "ref": "Romans 12:2",
+   "theme": "hope"
+  },
+  {
+   "date": "11-20",
+   "ref": "Psalm 18:28",
+   "theme": "rest"
+  },
+  {
+   "date": "11-21",
+   "ref": "Isaiah 9:6",
+   "theme": "faith"
+  },
+  {
+   "date": "11-22",
+   "ref": "Psalm 86:11",
+   "theme": "discipleship"
+  },
+  {
+   "date": "11-23",
+   "ref": "Psalm 133:1",
+   "theme": "relationships"
+  },
+  {
+   "date": "11-24",
+   "ref": "1 Peter 4:11",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "11-25",
+   "ref": "John 10:11",
+   "theme": "God's love"
+  },
+  {
+   "date": "11-26",
+   "ref": "Jude 1:20-21",
+   "theme": "prayer"
+  },
+  {
+   "date": "11-27",
+   "ref": "Psalm 37:4",
+   "theme": "hope"
+  },
+  {
+   "date": "11-28",
+   "ref": "Isaiah 40:28-29",
+   "theme": "rest"
+  },
+  {
+   "date": "11-29",
+   "ref": "Isaiah 53:5",
+   "theme": "faith"
+  },
+  {
+   "date": "11-30",
+   "ref": "Proverbs 4:23",
+   "theme": "discipleship"
+  },
+  {
+   "date": "12-01",
+   "ref": "Proverbs 10:12",
+   "theme": "relationships"
+  },
+  {
+   "date": "12-02",
+   "ref": "Romans 1:11-12",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "12-03",
+   "ref": "John 10:27-28",
+   "theme": "God's love"
+  },
+  {
+   "date": "12-04",
+   "ref": "1 Timothy 2:1-2",
+   "theme": "prayer"
+  },
+  {
+   "date": "12-05",
+   "ref": "Psalm 37:5",
+   "theme": "hope"
+  },
+  {
+   "date": "12-06",
+   "ref": "Isaiah 58:11",
+   "theme": "rest"
+  },
+  {
+   "date": "12-07",
+   "ref": "Luke 1:37",
+   "theme": "faith"
+  },
+  {
+   "date": "12-08",
+   "ref": "Proverbs 16:3",
+   "theme": "discipleship"
+  },
+  {
+   "date": "12-09",
+   "ref": "Proverbs 12:25",
+   "theme": "relationships"
+  },
+  {
+   "date": "12-10",
+   "ref": "Romans 15:5-6",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "12-11",
+   "ref": "2 Thessalonians 2:16-17",
+   "theme": "God's love"
+  },
+  {
+   "date": "12-12",
+   "ref": "Romans 12:12",
+   "theme": "prayer"
+  },
+  {
+   "date": "12-13",
+   "ref": "Psalm 94:19",
+   "theme": "hope"
+  },
+  {
+   "date": "12-14",
+   "ref": "Psalm 19:7",
+   "theme": "rest"
+  },
+  {
+   "date": "12-15",
+   "ref": "Mark 10:27",
+   "theme": "faith"
+  },
+  {
+   "date": "12-16",
+   "ref": "Proverbs 3:9",
+   "theme": "discipleship"
+  },
+  {
+   "date": "12-17",
+   "ref": "Proverbs 22:6",
+   "theme": "relationships"
+  },
+  {
+   "date": "12-18",
+   "ref": "Daniel 12:3",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "12-19",
+   "ref": "Psalm 52:8",
+   "theme": "God's love"
+  },
+  {
+   "date": "12-20",
+   "ref": "Psalm 4:1",
+   "theme": "prayer"
+  },
+  {
+   "date": "12-21",
+   "ref": "Isaiah 54:17",
+   "theme": "hope"
+  },
+  {
+   "date": "12-22",
+   "ref": "Psalm 119:105",
+   "theme": "rest"
+  },
+  {
+   "date": "12-23",
+   "ref": "Matthew 28:20",
+   "theme": "faith"
+  },
+  {
+   "date": "12-24",
+   "ref": "Matthew 5:14-16",
+   "theme": "discipleship"
+  },
+  {
+   "date": "12-25",
+   "ref": "Luke 2:10-11",
+   "theme": "Christmas"
+  },
+  {
+   "date": "12-26",
+   "ref": "Psalm 127:3",
+   "theme": "relationships"
+  },
+  {
+   "date": "12-27",
+   "ref": "Psalm 78:4",
+   "theme": "growing and multiplying"
+  },
+  {
+   "date": "12-28",
+   "ref": "Psalm 90:14",
+   "theme": "God's love"
+  },
+  {
+   "date": "12-29",
+   "ref": "Psalm 6:9",
+   "theme": "prayer"
+  },
+  {
+   "date": "12-30",
+   "ref": "Psalm 3:3",
+   "theme": "hope"
+  },
+  {
+   "date": "12-31",
+   "ref": "Psalm 119:165",
+   "theme": "rest"
+  }
+ ]
+}
