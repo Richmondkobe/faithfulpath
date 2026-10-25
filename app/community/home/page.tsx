@@ -9,7 +9,8 @@ import MarkJoined from "@/components/community/MarkJoined";
 import { DISPLAY, buttonClass, errorClass, quietButtonClass } from "@/components/community/styles";
 import GuidelinesList from "@/components/community/GuidelinesList";
 import { GUIDELINES_PATH } from "@/lib/community-guidelines";
-import { getCommunityViewer, loadAnnouncements, loadAnswered } from "@/lib/community-db";
+import { getCommunityViewer, loadAnnouncements, loadAnswered, nextGathering } from "@/lib/community-db";
+import NextGatheringTime from "@/components/community/NextGatheringTime";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
 import { agreeToGuidelines, leaveCommunity } from "@/app/community/actions";
 
@@ -91,7 +92,13 @@ export default async function CommunityHome({ searchParams }: Props) {
   }
 
   const name = viewer.profile?.first_name;
-  const [{ announcements, seenBefore }, [latestAnswer]] = await Promise.all([loadAnnouncements(viewer), loadAnswered(viewer, 1)]);
+  const [{ announcements, seenBefore }, [latestAnswer], gathering] = await Promise.all([
+    loadAnnouncements(viewer),
+    loadAnswered(viewer, 1),
+    // The next real date: skipped weeks are passed over (lib/community.ts).
+    nextGathering(viewer.supabase).catch(() => ({ next: null })),
+  ]);
+  const nextStart = gathering.next?.start ?? null;
   const isNew = (createdAt: string) => !seenBefore || new Date(createdAt).getTime() > seenBefore.getTime();
 
   return (
@@ -172,7 +179,15 @@ export default async function CommunityHome({ searchParams }: Props) {
               <p className="mt-2 text-2xl text-navy" style={DISPLAY}>
                 Weekly Gathering
               </p>
-              <p className="mt-2 leading-relaxed">The next time we meet, in your own time zone.</p>
+              <p className="mt-2 leading-relaxed">
+                {nextStart ? (
+                  <>
+                    Next: <NextGatheringTime iso={nextStart} />
+                  </>
+                ) : (
+                  "The next time we meet, in your own time zone."
+                )}
+              </p>
               <span className="mt-4 inline-block font-semibold text-gold-text">See the next gathering ›</span>
             </Link>
           </li>
