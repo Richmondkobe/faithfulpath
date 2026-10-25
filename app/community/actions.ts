@@ -13,6 +13,7 @@ import { getCommunityViewer } from "@/lib/community-db";
 import { notifyNewMember, notifyPrayerForReview } from "@/lib/community-email";
 import { syncCommunityMember } from "@/lib/community-sync";
 import { removeFromCommunityGroup } from "@/lib/mailerlite-community";
+import { sendWelcomeEmail } from "@/lib/community-welcome";
 import {
   ANSWER_MAX,
   COMMUNITY_HOME,
@@ -84,9 +85,14 @@ async function createProfile(
     if (error.code !== "23505") console.error("Community profile not saved:", error.message);
     return error.code === "23505";
   }
+  // Only here, where a new profile has just been saved, so the welcome email
+  // goes once and never on a later sign-in.
   after(async () => {
-    await syncCommunityMember({ userId, email, fullName: d.fullName, country: d.country });
-    await notifyNewMember({ fullName: d.fullName, email, country: d.country, phone: d.phone || null, message: d.message });
+    await Promise.allSettled([
+      syncCommunityMember({ userId, email, fullName: d.fullName, country: d.country }),
+      notifyNewMember({ fullName: d.fullName, email, country: d.country, phone: d.phone || null, message: d.message }),
+      sendWelcomeEmail({ email, fullName: d.fullName }),
+    ]);
   });
   revalidatePath("/admin/community");
   return true;
