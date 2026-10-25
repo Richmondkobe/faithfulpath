@@ -75,6 +75,8 @@ const NAV: { href: string; label: string; wide?: boolean }[] = [
   // series side by side; the membership's own page is one click on.
   { href: "/courses", label: "Courses" },
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
+  // The free community (Richmond, 26 October 2026).
+  { href: "/community", label: "Community" },
   { href: "/about", label: "About", wide: true },
   { href: "/contact", label: "Contact", wide: true },
 ];

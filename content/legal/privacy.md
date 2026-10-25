@@ -1,12 +1,12 @@
 # Privacy Policy
 
-*Last updated: 27 September 2026*
+*Last updated: 26 October 2026*
 
 Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path Community, in Thailand. This page explains what information the site collects, why, where it is kept, and what you can ask us to do with it. If anything here is unclear, write to info@faithfulpathcommunity.com.
 
 ## The short version
 
-- We collect only what is needed to send you what you asked for: an email address for the newsletter, payment and contact details for a purchase, and what you choose to write in a course journal or a pastoral intake form.
+- We collect only what is needed to send you what you asked for: an email address for the newsletter, payment and contact details for a purchase, your name and country if you join the free community, and what you choose to write in a course journal, a prayer request or a pastoral intake form.
 - We do not sell or rent your information to anyone.
 - We do not run advertising trackers on this site.
 - Pastoral session notes are deleted twelve months after the session, or sooner if you ask.
@@ -22,6 +22,8 @@ Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path C
 
 **Membership.** Your email address (used to sign you in with a one-time code), your subscription status, your progress through the course, your answers to the reflection prompts and check-ins, your route and retreat choices, and the name you ask to appear on your completion certificate. Written questions you send to Richmond through the membership are stored with your account.
 
+**The free community.** If you join, we keep your full name, your country, your email address (used to sign you in with a one-time code) and the date you joined. On the Prayer Wall we keep the prayer requests you share, whether you chose to show your first name or "Anonymous", any "answered" update you add, which requests you tapped "I prayed" on, and any request you reported. Only your first name is ever shown to other members, and only on requests you choose to share with your name; your full name, country and email address are never shown to them. Who prayed for a request is not shown to anyone: other members see only the number. Every request is read by Richmond before it appears, and only signed-in community members can see the Prayer Wall; it is never shown to search engines or to visitors who are not signed in. We also add your name, country and email address to a "Faithful Path Community" group in MailerLite, so that we can email community announcements; every such email has an unsubscribe link. We record when you last looked at the announcements, to mark new ones.
+
 **Talk to a Pastor sessions.** Your name, email address and time zone for scheduling; your answers to the written intake questions; the notes Richmond writes before and after the session; and, if you agree at booking, a transcript of the conversation used only to write your follow-up.
 
 **Technical information.** Our hosting provider records standard server logs (IP address, browser type, pages requested) for security and to keep the site running. We use Vercel Web Analytics, which counts page views and button clicks without cookies and without identifying you. It is not used on the course pages inside your membership.
@@ -29,7 +31,7 @@ Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path C
 ## What we do not do
 
 - We do not sell, rent or trade your information.
-- We do not use your journal entries, reflections or intake answers for marketing.
+- We do not use your journal entries, reflections, prayer requests or intake answers for marketing.
 - We do not read journal entries or reflection answers as a matter of routine. They are yours. Richmond reads only what you deliberately send him: a written question, or the intake form for a session.
 - Course check-ins are not monitored in real time and do not contact anyone on your behalf.
 
@@ -40,12 +42,12 @@ Faithful Path Community is run from Thailand and used by people around the world
 | Service | What it does | Where |
 | --- | --- | --- |
 | Vercel | Hosts the website | United States and global edge network |
-| Supabase | Stores member accounts, purchases, course progress and journal entries | Singapore |
+| Supabase | Stores member accounts, purchases, course progress, journal entries, community profiles and prayer requests | Singapore |
 | Stripe | Processes payments | United States and Europe |
 | Cal.com | Scheduling and the written intake form for sessions | United States |
 | Zoom or Google Meet | Video for sessions | United States |
-| MailerLite | Sends the newsletter | European Union |
-| Resend | Sends sign-in codes and purchase emails | United States |
+| MailerLite | Sends the newsletter and community announcements | European Union |
+| Resend | Sends sign-in codes and purchase emails, and tells Richmond when a prayer request is waiting for him | United States |
 | Google Calendar | Holds session appointments | United States |
 
 Each of these companies is bound by its own privacy terms and processes information only on our instructions.
@@ -56,6 +58,7 @@ Each of these companies is bound by its own privacy terms and processes informat
 - **Contact messages:** up to twelve months, then deleted.
 - **Purchase records:** for as long as required for tax and accounting, normally seven years. Download links expire but can be re-issued on request.
 - **Membership:** for as long as your membership is active. If you cancel, your journal entries and reflections remain readable and exportable from your account. You may ask for the whole account to be deleted at any time.
+- **The free community:** your profile and prayer requests are kept for as long as you are a member of the community. You can delete any of your prayer requests yourself at any time, from the Prayer Wall. Requests Richmond does not approve are kept, hidden, so that a pattern of misuse can be seen, and are deleted with your profile. To delete everything, choose "Leave the community" on the community home: your profile, every prayer request you shared, your "I prayed" taps and your reports are deleted straight away, and you are taken out of the community group in MailerLite. Your sign-in, and any membership or purchase, are not affected. You can also write to us and we will do it for you.
 - **Pastoral sessions:** intake answers, session notes and any transcript are deleted twelve months after the session, and sooner if you ask. Your booking record in Cal.com is deleted at the same time.
 
 ## Confidentiality of pastoral conversations
@@ -76,15 +79,15 @@ Write to info@faithfulpathcommunity.com and we will respond within thirty days. 
 
 ## Cookies
 
-The site sets a cookie only when it has to: to keep you signed in as a member, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies, and our analytics sets none.
+The site sets a cookie only when it has to: to keep you signed in as a member or to the community, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies, and our analytics sets none.
 
 ## Children
 
-The site, the membership and pastoral sessions are for adults aged eighteen and over. We do not knowingly collect information from anyone younger. If you believe a child has given us information, write to us and we will delete it.
+The site, the membership, the community and pastoral sessions are for adults aged eighteen and over. We do not knowingly collect information from anyone younger. If you believe a child has given us information, write to us and we will delete it.
 
 ## Security
 
-Connections to the site are encrypted. Member accounts use one-time sign-in codes rather than passwords. Access to member data and session notes is limited to Richmond. No system is perfectly secure; if we ever became aware of a breach affecting your information, we would tell you promptly.
+Connections to the site are encrypted. Member accounts use one-time sign-in codes rather than passwords. Access to member data, community profiles, prayer requests awaiting review and session notes is limited to Richmond. No system is perfectly secure; if we ever became aware of a breach affecting your information, we would tell you promptly.
 
 ## Changes to this page
 

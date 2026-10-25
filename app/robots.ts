@@ -10,6 +10,11 @@ export default function robots(): MetadataRoute.Robots {
         "/api/",
         "/admin/",
         "/login",
+        // The signed-in community pages. They also say noindex and send
+        // anyone signed out to the sign-in page.
+        "/community/home",
+        "/community/prayer",
+        "/community/gathering",
         "/guides/thank-you",
         "/guides/*/claim",
         // Not "/guides/*/sample": the samples answer with X-Robots-Tag:

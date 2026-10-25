@@ -41,6 +41,8 @@ const STATIC_PATHS = [
   // the course is for members.
   ...(LBYR_NEW_LIVE ? ["/members/courses/lead-before-youre-ready-new/welcome"] : []),
   "/talk-to-a-pastor",
+  // The free community's public welcome page. Its signed-in pages are not here.
+  "/community",
   "/contact",
   "/help",
   "/videos",

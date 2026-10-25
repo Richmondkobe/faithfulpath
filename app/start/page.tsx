@@ -13,7 +13,7 @@ export const revalidate = 300;
 /**
  * /start — the link in the Instagram bio. Built for a phone first: the
  * featured book (Richmond's choice, "Featured on /start" in the admin), the
- * other books, then the membership and Talk to a Pastor.
+ * other books, then the membership, Talk to a Pastor and the free community.
  *
  * Kept out of search results and the sitemap: it repeats what /guides and the
  * home page already say, and exists for people arriving from Instagram.
@@ -111,7 +111,7 @@ export default async function Start() {
         </section>
       )}
 
-      <section aria-label="Membership and pastoral conversations" className="mt-10 space-y-4">
+      <section aria-label="Membership, pastoral conversations and the community" className="mt-10 space-y-4">
         <TrackedLink
           href="/membership"
           event="start_membership"
@@ -142,6 +142,21 @@ export default async function Start() {
             within 24 hours.
           </p>
           <span className="mt-4 inline-block font-semibold text-gold-text">Book a conversation ›</span>
+        </TrackedLink>
+
+        <TrackedLink
+          href="/community"
+          event="start_community"
+          className="block rounded-2xl bg-navy p-5 transition-colors hover:bg-night"
+        >
+          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft">Free</p>
+          <p className="mt-2 text-xl text-sun" style={DISPLAY}>
+            Join the community
+          </p>
+          <p className="mt-2 leading-relaxed text-sand">
+            A place to grow, pray and walk with others: a Prayer Wall and a weekly online gathering.
+          </p>
+          <span className="mt-4 inline-block font-semibold text-gold-soft">Join free ›</span>
         </TrackedLink>
       </section>
     </main>
