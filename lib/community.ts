@@ -24,6 +24,9 @@ export const COMMUNITY_HOME = "/community/home";
 export const COMMUNITY_JOIN = "/community/join";
 export const COMMUNITY_SIGN_IN = "/community/sign-in";
 
+/** A yes/no cookie: this browser's person has joined, so the footer stops inviting them. */
+export const JOINED_COOKIE = "fp_community";
+
 export type CommunityProfile = {
   user_id: string;
   email: string;

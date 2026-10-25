@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import CommunityNav from "@/components/community/CommunityNav";
 import ProfileForm from "@/components/community/ProfileForm";
 import Markdown from "@/components/Markdown";
+import MarkJoined from "@/components/community/MarkJoined";
 import { DISPLAY, errorClass, quietButtonClass } from "@/components/community/styles";
 import { getCommunityViewer, loadAnnouncements } from "@/lib/community-db";
 import { COMMUNITY_SIGN_IN, shortDate } from "@/lib/community";
@@ -48,6 +49,7 @@ export default async function CommunityHome({ searchParams }: Props) {
   return (
     <>
       <CommunityNav current="home" />
+      <MarkJoined />
       <main className="mx-auto max-w-3xl px-4 pt-10 pb-20 sm:px-6 sm:pt-14">
         <h1 className="text-[2.25rem] leading-[1.1] text-navy sm:text-[2.75rem]" style={DISPLAY}>
           {name ? `Welcome, ${name}` : "Welcome to the community"}

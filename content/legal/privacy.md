@@ -79,7 +79,7 @@ Write to info@faithfulpathcommunity.com and we will respond within thirty days. 
 
 ## Cookies
 
-The site sets a cookie only when it has to: to keep you signed in as a member or to the community, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies, and our analytics sets none.
+The site sets a cookie only when it has to: to keep you signed in as a member or to the community, to remember (as a simple yes) that you have joined the community so the footer stops inviting you, and at checkout where Stripe sets its own cookies to prevent fraud. There are no advertising or tracking cookies, and our analytics sets none.
 
 ## Children
 

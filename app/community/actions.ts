@@ -2,6 +2,7 @@
 
 import { after } from "next/server";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -17,6 +18,7 @@ import {
   COMMUNITY_HOME,
   COUNTRY_MAX,
   FULL_NAME_MAX,
+  JOINED_COOKIE,
   JOIN_MESSAGE_LABEL,
   JOIN_MESSAGE_MAX,
   PHONE_MAX,
@@ -265,6 +267,8 @@ export async function leaveCommunity(formData: FormData) {
       if (e) console.error(`MailerLite: could not remove a member who left the community: ${e}`);
     })
   );
+  // The footer may invite them again.
+  (await cookies()).delete(JOINED_COOKIE);
   revalidatePath("/community/prayer");
   redirect("/community?left=1");
 }

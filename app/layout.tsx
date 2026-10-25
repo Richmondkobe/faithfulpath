@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { display, sans } from "@/lib/fonts";
 import { HELP_PATH, SITE } from "@/lib/site";
-import FooterSignup from "@/components/FooterSignup";
+import FooterCommunityInvite from "@/components/FooterCommunityInvite";
 import JsonLd from "@/components/JsonLd";
 import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
@@ -165,7 +165,7 @@ export default function RootLayout({
 
         <footer className="border-t border-line bg-sand">
           <div className="mx-auto max-w-5xl px-6 py-12">
-            <FooterSignup />
+            <FooterCommunityInvite />
             <p
               className="text-lg text-navy"
               style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
