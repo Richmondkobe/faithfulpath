@@ -8,8 +8,10 @@ import {
   COMMUNITY_SIGN_IN,
   nextOccurrence,
   type Announcement,
+  type AnsweredPrayer,
   type CommunityProfile,
   type Gathering,
+  type PrayerAnswer,
   type PrayerRequest,
 } from "@/lib/community";
 
@@ -89,6 +91,8 @@ export type WallData = {
   mine: PrayerRequest[];
   prayed: Set<string>;
   reported: Set<string>;
+  /** Answers this person may see: approved ones, and their own however they stand. */
+  answers: Map<string, PrayerAnswer>;
   postedToday: number;
 };
 
@@ -99,13 +103,15 @@ function startOfBangkokDay(): Date {
 
 export async function loadWall(viewer: CommunityViewer): Promise<WallData> {
   const db = viewer.supabase;
-  const [approved, mine, prayed, reported] = await Promise.all([
+  const [approved, mine, prayed, reported, answers] = await Promise.all([
     db.from("prayer_requests").select("*").eq("status", "approved").order("created_at", { ascending: false }).limit(100),
     db.from("prayer_requests").select("*").eq("user_id", viewer.user.id).neq("status", "approved").order("created_at", { ascending: false }),
     db.from("prayer_prayed").select("request_id").eq("user_id", viewer.user.id),
     db.from("prayer_reports").select("request_id").eq("user_id", viewer.user.id),
+    // RLS returns only what this person may see.
+    db.from("prayer_answers").select("*").limit(500),
   ]);
-  for (const r of [approved, mine, prayed, reported]) {
+  for (const r of [approved, mine, prayed, reported, answers]) {
     if (r.error) throw new Error(`Could not load the Prayer Wall: ${r.error.message}`);
   }
   const mineRows = (mine.data ?? []) as PrayerRequest[];
@@ -119,8 +125,30 @@ export async function loadWall(viewer: CommunityViewer): Promise<WallData> {
     mine: mineRows,
     prayed: new Set((prayed.data ?? []).map((r) => r.request_id as string)),
     reported: new Set((reported.data ?? []).map((r) => r.request_id as string)),
+    answers: new Map(((answers.data ?? []) as PrayerAnswer[]).map((a) => [a.request_id, a])),
     postedToday,
   };
+}
+
+/* -------------------------------------------------------- answered prayers */
+
+/**
+ * Answered prayers shared on the Answered Prayers page, newest answer first:
+ * approved, shared, and still on the wall (RLS leaves out the rest).
+ */
+export async function loadAnswered(viewer: CommunityViewer, limit = 100): Promise<AnsweredPrayer[]> {
+  const { data, error } = await viewer.supabase
+    .from("prayer_answers")
+    .select("*, request:prayer_requests(*)")
+    .eq("status", "approved")
+    .eq("share", true)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) {
+    console.error("Answered prayers not loaded:", error.message);
+    return [];
+  }
+  return ((data ?? []) as AnsweredPrayer[]).filter((a) => a.request?.status === "approved" && a.request.answered_at);
 }
 
 /* ----------------------------------------------------------- announcements */

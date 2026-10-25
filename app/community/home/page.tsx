@@ -6,8 +6,8 @@ import ProfileForm from "@/components/community/ProfileForm";
 import Markdown from "@/components/Markdown";
 import MarkJoined from "@/components/community/MarkJoined";
 import { DISPLAY, errorClass, quietButtonClass } from "@/components/community/styles";
-import { getCommunityViewer, loadAnnouncements } from "@/lib/community-db";
-import { COMMUNITY_SIGN_IN, shortDate } from "@/lib/community";
+import { getCommunityViewer, loadAnnouncements, loadAnswered } from "@/lib/community-db";
+import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
 import { leaveCommunity } from "@/app/community/actions";
 
 export const metadata: Metadata = {
@@ -43,7 +43,7 @@ export default async function CommunityHome({ searchParams }: Props) {
   }
 
   const name = viewer.profile?.first_name;
-  const { announcements, seenBefore } = await loadAnnouncements(viewer);
+  const [{ announcements, seenBefore }, [latestAnswer]] = await Promise.all([loadAnnouncements(viewer), loadAnswered(viewer, 1)]);
   const isNew = (createdAt: string) => !seenBefore || new Date(createdAt).getTime() > seenBefore.getTime();
 
   return (
@@ -129,6 +129,23 @@ export default async function CommunityHome({ searchParams }: Props) {
             </Link>
           </li>
         </ul>
+
+        {/* The latest shared answered prayer; nothing until there is one. */}
+        {latestAnswer && (
+          <section aria-labelledby="latest-answer" className="mt-4 rounded-2xl border border-gold-line/60 bg-paper p-6">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Answered 🙌</p>
+            <h2 id="latest-answer" className="mt-2 text-xl text-navy" style={DISPLAY}>
+              God is answering prayer
+            </h2>
+            <p className="mt-2 line-clamp-3 leading-relaxed">{latestAnswer.note ?? latestAnswer.request.body}</p>
+            <p className="mt-2 text-[13px] text-muted">
+              {prayerName(latestAnswer.request)} · {shortDate(latestAnswer.request.answered_at ?? latestAnswer.created_at)}
+            </p>
+            <Link href="/community/answered" className="mt-4 inline-block font-semibold text-gold-text underline underline-offset-4">
+              See all answered prayers ›
+            </Link>
+          </section>
+        )}
 
         {/* For anyone without a live paid membership (Richmond, 26 October 2026). */}
         {!viewer.paidMember && (

@@ -66,6 +66,21 @@ export async function deletePrayer(formData: FormData) {
   done("Deleted.");
 }
 
+/** A praise update or an answered prayer: approve it, hide it from the page, or show it again. */
+export async function setAnswerStatus(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status") ?? "");
+  if (!["approved", "hidden"].includes(status)) failed("Changing the answered prayer", "that is not a choice");
+  const { error } = await supabase
+    .from("prayer_answers")
+    .update({ status, reviewed_at: new Date().toISOString() })
+    .eq("request_id", id);
+  if (error) failed("Changing the answered prayer", error.message);
+  revalidatePath("/community/answered");
+  done(status === "approved" ? "Approved. It is on the Answered Prayers page." : "Hidden from the Answered Prayers page.", "#answered");
+}
+
 /** Banning stops posting and reporting. The person can still read and pray. */
 export async function setBanned(formData: FormData) {
   const supabase = await db();

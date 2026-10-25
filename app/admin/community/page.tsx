@@ -9,6 +9,7 @@ import {
   shortDate,
   upcomingOccurrences,
   type Announcement,
+  type AnsweredPrayer,
   type CommunityProfile,
   type Gathering,
   type PrayerRequest,
@@ -25,6 +26,7 @@ import {
   retryMailerLite,
   saveAnnouncement,
   saveGathering,
+  setAnswerStatus,
   setBanned,
   toggleSkipWeek,
 } from "@/app/admin/community/actions";
@@ -195,7 +197,7 @@ export default async function AdminCommunity({ searchParams }: Props) {
   const sp = await searchParams;
   const supabase = await createSupabaseServerClient();
 
-  const [requests, profiles, gatherings, notices] = await Promise.all([
+  const [requests, profiles, gatherings, notices, answerRows] = await Promise.all([
     supabase.from("prayer_requests").select("*").order("created_at", { ascending: false }).limit(300),
     supabase.from("community_profiles").select("*").order("joined_at", { ascending: false }),
     supabase.from("community_gatherings").select("*").order("starts_at", { ascending: false }).limit(30),
@@ -205,6 +207,11 @@ export default async function AdminCommunity({ searchParams }: Props) {
       .order("pinned", { ascending: false })
       .order("created_at", { ascending: false })
       .limit(50),
+    supabase
+      .from("prayer_answers")
+      .select("*, request:prayer_requests(*)")
+      .order("created_at", { ascending: false })
+      .limit(300),
   ]);
 
   if ([requests, profiles, gatherings, notices].some((r) => isMissingCommunityTable(r.error))) {
@@ -220,7 +227,10 @@ export default async function AdminCommunity({ searchParams }: Props) {
       </main>
     );
   }
-  const loadError = [requests, profiles, gatherings, notices].find((r) => r.error)?.error;
+  const loadError = [requests, profiles, gatherings, notices, answerRows].find((r) => r.error)?.error;
+  const answers = ((answerRows.data ?? []) as AnsweredPrayer[]).filter((a) => a.request);
+  const praisePending = answers.filter((a) => a.status === "pending");
+  const praiseDone = answers.filter((a) => a.status !== "pending");
   const announcements = (notices.data ?? []) as Announcement[];
 
   const all = (requests.data ?? []) as PrayerRequest[];
@@ -236,6 +246,46 @@ export default async function AdminCommunity({ searchParams }: Props) {
     const p = byUser.get(r.user_id);
     return p ? `${p.full_name}, ${p.country} · ${p.email}` : "Unknown member";
   };
+
+  const AnswerRow = ({ a }: { a: AnsweredPrayer }) => (
+    <li className="rounded-xl border border-gold-line/60 bg-paper p-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+        <p className="text-navy">
+          <span className="font-semibold">Answered 🙌 · {prayerName(a.request)}</span>
+          <span className="text-muted"> · {author(a.request)}</span>
+        </p>
+        <p className="text-muted">{shortDate(a.created_at)}</p>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2 text-[13px]">
+        {a.status === "pending" && <span className="rounded-full bg-sand px-3 py-0.5 font-semibold text-gold-text">New praise update</span>}
+        {a.status === "hidden" && <span className="rounded-full bg-danger-bg px-3 py-0.5 font-semibold text-danger">Hidden from the page</span>}
+        <span className="rounded-full bg-sand px-3 py-0.5 text-gold-text">
+          {a.share ? "Chose to share on the Answered Prayers page" : "Chose not to share on the page (shown on the Prayer Wall only)"}
+        </span>
+        {a.request.status !== "approved" && <span className="rounded-full bg-sand px-3 py-0.5 text-gold-text">Request not on the wall</span>}
+      </div>
+      <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text">The prayer</p>
+      <p className="mt-1 whitespace-pre-line leading-relaxed text-ink">{a.request.body}</p>
+      <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text">Praise update</p>
+      <p className="mt-1 whitespace-pre-line leading-relaxed text-ink">{a.note ?? <span className="text-muted">None, just marked answered.</span>}</p>
+      <div className="mt-4 flex flex-wrap items-center gap-2">
+        {a.status !== "approved" && (
+          <form action={setAnswerStatus}>
+            <input type="hidden" name="id" value={a.request_id} />
+            <input type="hidden" name="status" value="approved" />
+            <button className={gold}>{a.status === "pending" ? "Approve" : "Show again"}</button>
+          </form>
+        )}
+        {a.status !== "hidden" && (
+          <form action={setAnswerStatus}>
+            <input type="hidden" name="id" value={a.request_id} />
+            <input type="hidden" name="status" value="hidden" />
+            <button className={small}>{a.status === "pending" ? "Don't show it" : "Hide from the page"}</button>
+          </form>
+        )}
+      </div>
+    </li>
+  );
 
   const RequestRow = ({ r, actions }: { r: PrayerRequest; actions: ("approve" | "reject")[] }) => {
     const p = byUser.get(r.user_id);
@@ -260,7 +310,6 @@ export default async function AdminCommunity({ searchParams }: Props) {
           {p?.is_banned && <span className="rounded-full bg-danger-bg px-3 py-0.5 text-danger">Author banned</span>}
         </div>
         <p className="mt-3 whitespace-pre-line leading-relaxed text-ink">{r.body}</p>
-        {r.answer_note && <p className="mt-2 whitespace-pre-line text-sm text-muted">Update: {r.answer_note}</p>}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {actions.includes("approve") && (
             <form action={approvePrayer}>
@@ -321,15 +370,39 @@ export default async function AdminCommunity({ searchParams }: Props) {
 
       <section id="review" className="mt-10 scroll-mt-6">
         <h2 className={H2} style={DISPLAY}>
-          Waiting for review ({pending.length})
+          Waiting for review ({pending.length + praisePending.length})
         </h2>
-        <p className="mt-1 text-sm text-muted">New requests, and approved ones a member has reported. Nothing here is on the wall.</p>
-        {pending.length === 0 ? (
+        <p className="mt-1 text-sm text-muted">
+          New requests, approved ones a member has reported, and new praise updates on answered prayers. Nothing here is
+          shown to members yet.
+        </p>
+        {pending.length + praisePending.length === 0 ? (
           <p className="mt-4 text-muted">Nothing waiting.</p>
         ) : (
           <ul className="mt-4 space-y-3">
+            {praisePending.map((a) => (
+              <AnswerRow key={a.request_id} a={a} />
+            ))}
             {pending.map((r) => (
               <RequestRow key={r.id} r={r} actions={["approve", "reject"]} />
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section id="answered" className="mt-14 scroll-mt-6">
+        <h2 className={H2} style={DISPLAY}>
+          Answered prayers ({praiseDone.length})
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          Shown on the Answered Prayers page when the member chose to share it. Hide any you would rather keep off it.
+        </p>
+        {praiseDone.length === 0 ? (
+          <p className="mt-4 text-muted">None yet.</p>
+        ) : (
+          <ul className="mt-4 space-y-3">
+            {praiseDone.map((a) => (
+              <AnswerRow key={a.request_id} a={a} />
             ))}
           </ul>
         )}

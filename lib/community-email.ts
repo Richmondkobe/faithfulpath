@@ -17,7 +17,7 @@ export async function notifyPrayerForReview({
   shownAs,
   fromEmail,
 }: {
-  kind: "new" | "reported";
+  kind: "new" | "reported" | "praise";
   body: string;
   shownAs: string;
   fromEmail: string;
@@ -29,12 +29,15 @@ export async function notifyPrayerForReview({
   }
   const from = process.env.RESEND_FROM ?? "Faithful Path <questions@faithfulpathcommunity.com>";
   const review = `${SITE.url}/admin/community`;
-  const subject = kind === "new" ? "New prayer request to review" : "A prayer request was reported";
+  const subject =
+    kind === "new" ? "New prayer request to review" : kind === "praise" ? "New answered prayer to review" : "A prayer request was reported";
   const lead =
     kind === "new"
       ? `A new prayer request is waiting for your approval. It will be shown as "${shownAs}".`
-      : `A member reported this prayer request, so it is off the wall and back in your review list. It is shown as "${shownAs}".`;
-  const footer = kind === "new" ? `Posted by: ${fromEmail}` : `Reported by: ${fromEmail}`;
+      : kind === "praise"
+        ? `A member has marked their prayer request answered and written a praise update. It is waiting for your approval before it appears. It is shown as "${shownAs}".`
+        : `A member reported this prayer request, so it is off the wall and back in your review list. It is shown as "${shownAs}".`;
+  const footer = kind === "reported" ? `Reported by: ${fromEmail}` : `Posted by: ${fromEmail}`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {

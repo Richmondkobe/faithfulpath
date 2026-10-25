@@ -348,19 +348,51 @@ export async function reportPrayerRequest(formData: FormData) {
   redirect("/community/prayer?reported=1");
 }
 
+/**
+ * "Answered 🙌": marks the author's own request answered, with an optional
+ * praise update and "Share this on the Answered Prayers page". The database
+ * decides the rest: with no update it shows straight away; with one it waits
+ * for Richmond, who is emailed.
+ */
 export async function markPrayerAnswered(formData: FormData) {
   const viewer = await getCommunityViewer();
   if (!viewer) redirect("/community/sign-in");
   const id = String(formData.get("id") ?? "");
-  const note = String(formData.get("answer_note") ?? "").trim().slice(0, ANSWER_MAX);
-  const { error } = await viewer.supabase
+  const note = String(formData.get("answer_note") ?? "").replace(/\r\n/g, "\n").trim().slice(0, ANSWER_MAX);
+  const share = formData.get("share") === "on";
+
+  const { data: request, error } = await viewer.supabase
     .from("prayer_requests")
-    .update({ answered_at: new Date().toISOString(), answer_note: note || null })
+    .update({ answered_at: new Date().toISOString() })
     .eq("id", id)
-    .eq("user_id", viewer.user.id);
-  if (error) console.error("Answered not saved:", error.message);
+    .eq("user_id", viewer.user.id)
+    .select("body, show_name, display_name")
+    .maybeSingle();
+  if (error || !request) {
+    console.error("Answered not saved:", error?.message ?? "not their request");
+    redirect(`/community/prayer#p-${id}`);
+  }
+  const { error: answerError } = await viewer.supabase
+    .from("prayer_answers")
+    .insert({ request_id: id, user_id: viewer.user.id, note: note || null, share });
+  if (answerError && answerError.code !== "23505") console.error("Answer not saved:", answerError.message);
+
+  if (!answerError && note) {
+    const { email } = viewer;
+    after(() =>
+      notifyPrayerForReview({
+        kind: "praise",
+        body: `The request:\n${request.body}\n\nTheir praise update${share ? " (to share on the Answered Prayers page)" : ""}:\n${note}`,
+        shownAs: prayerName(request),
+        fromEmail: email,
+      }).then(() => undefined)
+    );
+  }
   revalidatePath("/community/prayer");
-  redirect(`/community/prayer#p-${id}`);
+  revalidatePath("/community/answered");
+  revalidatePath("/community/home");
+  revalidatePath("/admin/community");
+  redirect(`/community/prayer?tab=answered#p-${id}`);
 }
 
 export async function deleteOwnPrayerRequest(formData: FormData) {

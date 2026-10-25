@@ -15,6 +15,7 @@ export default function robots(): MetadataRoute.Robots {
         "/account",
         "/community/home",
         "/community/prayer",
+        "/community/answered",
         "/community/gathering",
         "/guides/thank-you",
         "/give/thank-you",

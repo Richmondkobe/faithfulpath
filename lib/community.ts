@@ -79,6 +79,20 @@ export type PrayerRequest = {
   created_at: string;
 };
 
+/** A member's "Answered 🙌", with its optional praise update (prayer_answers). */
+export type PrayerAnswer = {
+  request_id: string;
+  user_id: string;
+  note: string | null;
+  share: boolean;
+  status: "pending" | "approved" | "hidden";
+  created_at: string;
+  reviewed_at: string | null;
+};
+
+/** An answered prayer as the Answered Prayers page shows it. */
+export type AnsweredPrayer = PrayerAnswer & { request: PrayerRequest };
+
 export type Gathering = {
   id: string;
   title: string;
