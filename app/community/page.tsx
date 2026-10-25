@@ -29,7 +29,7 @@ const GETS = [
   },
   {
     title: "Free, with no card",
-    text: "Joining costs nothing and needs only your first name, your country and your email. There is no password: we email you a 6-digit code to sign in.",
+    text: "Joining costs nothing and needs only your name, your country and your email. There is no password: we email you a 6-digit code to sign in.",
   },
 ];
 
