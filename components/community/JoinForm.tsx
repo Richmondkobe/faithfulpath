@@ -13,16 +13,13 @@ import { buttonClass, errorClass, inputClass, labelClass } from "@/components/co
 const initialCode: CommunityCodeState = { error: null };
 
 /**
- * Joining the community, or signing back in to it: the same 6-digit code as
- * the membership sign-in. "join" also asks for the details in DetailsFields,
+ * Joining the community: the same 6-digit code as the site's one sign-in, with the details in DetailsFields,
  * which are saved once the code is typed in.
  */
 export default function JoinForm({
-  mode,
   stamp,
   restartHref,
 }: {
-  mode: "join" | "sign-in";
   /** Signed when the page was opened (lib/form-stamp.ts). */
   stamp: string;
   restartHref: string;
@@ -42,11 +39,7 @@ export default function JoinForm({
         <div className="rounded-2xl border border-line bg-paper px-5 py-4">
           <p className="text-lg text-navy">Check your email</p>
           <p className="mt-2 text-sm leading-relaxed text-muted">
-            {mode === "join" ? (
-              <>A 6-digit code is on its way to </>
-            ) : (
-              <>If that address has joined the community, a 6-digit code is on its way to </>
-            )}
+            A 6-digit code is on its way to{" "}
             <span className="break-words text-navy">{sendState.sent}</span>. Type it below. If nothing arrives in a few
             minutes, check your spam folder.
           </p>
@@ -82,7 +75,7 @@ export default function JoinForm({
             </p>
           )}
           <button type="submit" disabled={verifying} className={buttonClass}>
-            {verifying ? "Signing you in…" : mode === "join" ? "Join the community" : "Sign in"}
+            {verifying ? "Signing you in…" : "Join the community"}
           </button>
         </form>
 
@@ -98,7 +91,6 @@ export default function JoinForm({
 
   return (
     <form action={sendAction} className="mt-8 max-w-md space-y-5">
-      <input type="hidden" name="mode" value={mode} />
       <input type="hidden" name="stamp" value={stamp} />
       {/* For robots only: off-screen, out of the tab order, hidden from screen
           readers. A person never fills it. */}
@@ -107,8 +99,7 @@ export default function JoinForm({
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
       </div>
 
-      {mode === "join" ? (
-        <DetailsFields
+      <DetailsFields
           withMessage
           fullName={sendState.details.fullName}
           country={sendState.details.country}
@@ -133,23 +124,6 @@ export default function JoinForm({
             </div>
           }
         />
-      ) : (
-        <div>
-          <label htmlFor="email" className={labelClass}>
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="your@email.com"
-            defaultValue={sendState.email}
-            className={inputClass}
-          />
-        </div>
-      )}
 
       {sendState.error && (
         <p role="alert" className={errorClass}>

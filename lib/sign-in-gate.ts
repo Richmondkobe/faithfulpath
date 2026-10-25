@@ -23,8 +23,17 @@ import { isCourseSession, recordCoursePurchase } from "@/lib/following-jesus-acc
  *     course sale found this way is recorded, exactly as the thank-you page
  *     does; a membership is only read here, and its row is left to the webhook.
  *
+ * From 26 October 2026 this is the one sign-in for everyone (Richmond), so
+ * it also sends a code to:
+ *
+ *   * anyone who has bought a book;
+ *   * anyone who has joined the free community.
+ *
+ * Signing in only reads these tables; it never creates or changes a
+ * membership. Where each person lands is decided by /account.
+ *
  * Everyone else sees the same "check your email" as before and is sent
- * nothing, so the form still does not say who has paid.
+ * nothing, so the form still does not say who has an account.
  */
 export async function maySendSignInCode(email: string): Promise<boolean> {
   if (email === ADMIN_EMAIL) return true;
@@ -37,6 +46,17 @@ export async function maySendSignInCode(email: string): Promise<boolean> {
     .eq("email", email);
   if (error) throw new Error(`Could not check course purchases: ${error.message}`);
   if (count) return true;
+
+  const books = await supabaseAdmin.from("purchases").select("id", { count: "exact", head: true }).eq("email", email);
+  if (books.error) throw new Error(`Could not check book purchases: ${books.error.message}`);
+  if (books.count) return true;
+
+  const community = await supabaseAdmin
+    .from("community_profiles")
+    .select("user_id", { count: "exact", head: true })
+    .eq("email", email);
+  if (community.error) throw new Error(`Could not check the community: ${community.error.message}`);
+  if (community.count) return true;
 
   return paidJustNow(email);
 }

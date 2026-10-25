@@ -11,7 +11,7 @@ import { GATHERING_MINUTES, isOccurrenceOf, type Gathering } from "@/lib/communi
 export async function GET(request: NextRequest, ctx: RouteContext<"/community/gathering/[id]/calendar">) {
   const { id } = await ctx.params;
   const viewer = await getCommunityViewer();
-  if (!viewer?.inCommunity) return NextResponse.redirect(new URL("/community/sign-in", request.url));
+  if (!viewer?.inCommunity) return NextResponse.redirect(new URL("/members/login", request.url));
 
   const all = await listGatherings(viewer.supabase).catch(() => [] as Gathering[]);
   const g = all.find((x) => x.id === id);

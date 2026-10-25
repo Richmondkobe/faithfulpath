@@ -12,14 +12,15 @@ const LINKS = [
 export default function CommunityNav({ current }: { current: (typeof LINKS)[number]["key"] }) {
   return (
     <div className="border-b border-line bg-sand">
-      <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-4 py-2 sm:px-6">
-        <nav aria-label="Community" className="-mx-2 flex flex-wrap items-center text-[15px] font-semibold">
+      {/* One row. On a phone it scrolls sideways rather than wrapping onto three. */}
+      <div className="mx-auto flex max-w-3xl items-center gap-x-4 overflow-x-auto px-4 [scrollbar-width:thin] sm:px-6">
+        <nav aria-label="Community" className="-mx-2 flex shrink-0 items-center whitespace-nowrap text-[15px] font-semibold">
           {LINKS.map((l) => (
             <Link
               key={l.key}
               href={l.href}
               aria-current={current === l.key ? "page" : undefined}
-              className={`flex min-h-11 items-center px-2 transition-colors ${
+              className={`flex min-h-12 items-center px-2 transition-colors ${
                 current === l.key ? "text-navy underline decoration-gold decoration-2 underline-offset-8" : "text-gold-text hover:text-navy"
               }`}
             >
@@ -27,8 +28,8 @@ export default function CommunityNav({ current }: { current: (typeof LINKS)[numb
             </Link>
           ))}
         </nav>
-        <form action={communitySignOut}>
-          <button type="submit" className="min-h-11 text-sm text-muted underline-offset-4 hover:text-gold-text hover:underline">
+        <form action={communitySignOut} className="ml-auto shrink-0">
+          <button type="submit" className="min-h-12 whitespace-nowrap text-sm text-muted underline-offset-4 hover:text-gold-text hover:underline">
             Sign out
           </button>
         </form>

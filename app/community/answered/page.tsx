@@ -70,8 +70,8 @@ export default async function AnsweredPrayers() {
             ‹ Back to the Prayer Wall
           </Link>
         </p>
+        <CommunityFooter />
       </main>
-      <CommunityFooter />
     </>
   );
 }

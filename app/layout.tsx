@@ -8,6 +8,7 @@ import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import { organizationAndWebSite } from "@/lib/schema";
 import SocialLinks from "@/components/SocialLinks";
 import AccountLink from "@/components/AccountLink";
+import MobileMenu from "@/components/MobileMenu";
 import RegisterServiceWorker from "@/components/pwa/RegisterServiceWorker";
 import "./globals.css";
 
@@ -61,40 +62,52 @@ export const metadata: Metadata = {
   other: { "apple-mobile-web-app-capable": "yes" },
 };
 
-// The main menu. `wide` items show only from tablet width up: on a phone the
-// site name already goes home, and About and Contact are in the footer, so the
-// menu fits on one row under the name (website audit V1, N17). "Sign in" is
-// not here: AccountLink shows it, or "My courses" to someone signed in.
-const NAV: { href: string; label: string; wide?: boolean }[] = [
-  { href: "/", label: "Home", wide: true },
+// The main menu (Richmond, 26 October 2026): one row on computers, with a
+// small gold "Give" button beside "Sign in" / "My account"; a Menu button on
+// phones and tablets (components/MobileMenu). The site name goes home. Contact
+// is in the footer.
+const NAV: { href: string; label: string }[] = [
   { href: "/articles", label: "Articles" },
   // The URL stays /guides: the pages, their links and anything already shared
   // are unaffected by what the menu calls them.
   { href: "/guides", label: "Books" },
-  // /courses lists the membership's Spiritual Reset and the Following Jesus
-  // series side by side; the membership's own page is one click on.
+  // /courses lists the membership's courses and the Following Jesus series
+  // side by side; the membership's own page is one click on.
   { href: "/courses", label: "Courses" },
-  { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
-  // The free community (Richmond, 26 October 2026).
   { href: "/community", label: "Community" },
-  // Support the Ministry (Richmond, 26 October 2026).
-  { href: "/give", label: "Give" },
-  { href: "/about", label: "About", wide: true },
-  { href: "/contact", label: "Contact", wide: true },
+  { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
+  { href: "/about", label: "About" },
 ];
 
-// The footer lists everything, and the membership too (website audit N11).
-const FOOTER_NAV = [
-  ...NAV.slice(0, 3),
-  // In the footer only, not the main menu (Richmond, 21 October 2026).
-  { href: "/videos", label: "Videos" },
-  NAV[3],
-  { href: "/membership", label: "Membership" },
-  ...NAV.slice(4),
+// The footer: three short columns (Richmond, 26 October 2026). The account
+// column is added in the markup, as AccountLink chooses its own words.
+const FOOTER_COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
+  {
+    title: "Ministry",
+    links: [
+      { href: "/about", label: "About" },
+      { href: "/community", label: "Community" },
+      { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
+      { href: "/give", label: "Give" },
+      { href: "/contact", label: "Contact" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { href: "/articles", label: "Articles" },
+      { href: "/guides", label: "Books" },
+      { href: "/courses", label: "Courses" },
+      { href: "/community/guidelines", label: "Community Guidelines" },
+      { href: HELP_PATH, label: "Help" },
+    ],
+  },
 ];
 
 const HEADER_LINK =
-  "min-h-[44px] min-w-[44px] items-center justify-center whitespace-nowrap px-1 text-sun transition-colors hover:text-gold";
+  "flex min-h-[44px] items-center whitespace-nowrap px-1 text-sun transition-colors hover:text-gold";
+const FOOTER_LINK =
+  "flex min-h-[44px] w-fit items-center text-[15px] text-muted transition-colors hover:text-gold-text";
 
 // The footer's Legal row. Separate from NAV because these belong at the foot of
 // the page only — putting them in the header menu would give them a prominence
@@ -121,39 +134,45 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        {/* Navy, as on the Following Jesus pages. On a phone: the name and
-            the account link on one row, the menu on the next, and the tagline
-            left for wider screens. */}
+        {/* Navy, as on the Following Jesus pages. Computers: the name, the
+            menu in one row, then Give and the account link. Phones and
+            tablets: the name and a Menu button. */}
         <header className="bg-navy">
-          <div className="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-5">
-            <div className="flex items-center justify-between gap-4">
-              <Link href="/" className="flex min-h-[44px] flex-col justify-center">
-                <span
-                  className="block text-xl leading-none text-sun"
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-                >
-                  {SITE.name}
-                </span>
-                <span className="mt-1.5 hidden text-[13px] uppercase tracking-[0.12em] text-gold-soft sm:block font-medium">
-                  {SITE.tagline}
-                </span>
-              </Link>
-              <AccountLink className={`flex shrink-0 text-[15px] font-semibold sm:hidden ${HEADER_LINK}`} />
-            </div>
+          <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-6 py-3 lg:flex-nowrap lg:py-5">
+            <Link href="/" className="flex min-h-[44px] shrink-0 flex-col justify-center">
+              <span
+                className="block text-xl leading-none text-sun"
+                style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
+              >
+                {SITE.name}
+              </span>
+              <span className="mt-1.5 hidden text-[13px] font-medium uppercase tracking-[0.12em] text-gold-soft xl:block">
+                {SITE.tagline}
+              </span>
+            </Link>
 
-            {/* Each menu named, so a screen reader can tell them apart. */}
-            <nav aria-label="Main" className="-mx-1 flex flex-wrap items-center gap-x-4 gap-y-0 text-[15px] font-semibold">
+            {/* Computers. Each menu is named, so a screen reader can tell them apart. */}
+            <nav aria-label="Main" className="hidden items-center gap-x-5 text-[15px] font-semibold lg:flex">
               {NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`${item.wide ? "hidden sm:flex" : "flex"} ${HEADER_LINK}`}
-                >
+                <Link key={item.href} href={item.href} className={HEADER_LINK}>
                   {item.label}
                 </Link>
               ))}
-              <AccountLink className={`hidden sm:flex ${HEADER_LINK}`} />
             </nav>
+            <div className="hidden shrink-0 items-center gap-4 text-[15px] font-semibold lg:flex">
+              <Link
+                href="/give"
+                className="flex min-h-[40px] items-center rounded-lg bg-gold px-4 text-night transition-colors hover:bg-gold-soft"
+              >
+                Give
+              </Link>
+              <AccountLink className={HEADER_LINK} />
+            </div>
+
+            {/* Phones and tablets. */}
+            <div className="contents lg:hidden">
+              <MobileMenu items={NAV} />
+            </div>
           </div>
         </header>
 
@@ -187,18 +206,36 @@ export default function RootLayout({
               </Link>
               .
             </p>
-            <nav aria-label="Footer" className="-mx-1 mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-              {FOOTER_NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  prefetch={false}
-                  className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text"
-                >
-                  {item.label}
-                </Link>
+            <nav aria-label="Footer" className="mt-8 grid gap-8 sm:grid-cols-3">
+              {FOOTER_COLUMNS.map((col) => (
+                <div key={col.title}>
+                  <h2 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-gold-text">{col.title}</h2>
+                  <ul className="mt-2">
+                    {col.links.map((item) => (
+                      <li key={item.href}>
+                        <Link href={item.href} prefetch={false} className={FOOTER_LINK}>
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-              <AccountLink className="flex min-h-[44px] min-w-[44px] items-center justify-center px-1 text-muted transition-colors hover:text-gold-text" />
+              <div>
+                <h2 className="text-[13px] font-semibold uppercase tracking-[0.14em] text-gold-text">Account</h2>
+                <ul className="mt-2">
+                  <li>
+                    <AccountLink className={FOOTER_LINK} />
+                  </li>
+                  <li>
+                    {/* Stripe's portal login: managing a monthly gift or the
+                        membership, from any page (Richmond, 26 October 2026). */}
+                    <a href={STRIPE_PORTAL_LOGIN_URL} className={FOOTER_LINK}>
+                      Manage my subscription
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </nav>
             {/* Legal, on its own row under the site navigation rather than
                 mixed into it: these are pages a reader goes looking for
@@ -206,7 +243,7 @@ export default function RootLayout({
                 harder to find, not tidier. */}
             <nav
               aria-label="Legal"
-              className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm"
+              className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-line pt-6 text-sm"
             >
               {LEGAL_LINKS.map((item, i) => (
                 <span key={item.href} className="flex items-center gap-x-3">
@@ -225,15 +262,6 @@ export default function RootLayout({
                 </span>
               ))}
             </nav>
-
-            {/* Stripe's portal login: managing a monthly gift or the
-                membership, from any page (Richmond, 26 October 2026). */}
-            <a
-              href={STRIPE_PORTAL_LOGIN_URL}
-              className="-mx-1 mt-2 flex min-h-[44px] w-fit items-center px-1 text-sm text-muted transition-colors hover:text-gold-text"
-            >
-              Manage my subscription
-            </a>
 
             <Link
               href="/install"

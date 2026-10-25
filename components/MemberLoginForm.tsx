@@ -127,7 +127,7 @@ export default function MemberLoginForm({
       </div>
       <div>
         <label htmlFor="email" className={labelClass}>
-          Email you paid with
+          Your email
         </label>
         <input
           id="email"

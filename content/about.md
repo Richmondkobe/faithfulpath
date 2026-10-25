@@ -16,7 +16,7 @@ Different countries, the same conversations: a marriage that has gone quiet, a m
 
 **I write.** The [articles](/articles) on this site are the things I find myself saying most often. They are free, and I try to give the useful part away rather than hold it back.
 
-**I teach.** Five short, practical [books](/guides) — on overthinking and worry, Christian dating, spiritual burnout, church leadership and preparing for marriage — and a guided online retreat, [The Christian Spiritual Reset](/membership), which walks you through the burnout book with video, guided prayer and a workbook. I have written eighteen books in all; the others are on [my author page at Lulu](https://www.lulu.com/spotlight/toptierconsultant).
+**I teach.** Five short, practical [books](/guides) — on overthinking and worry, Christian dating, spiritual burnout, church leadership and preparing for marriage — and five Christian courses built on them, with video, guided prayer and workbooks, in the [membership](/membership): US$19 a month, cancel any time. I have written eighteen books in all; the others are on [my author page at Lulu](https://www.lulu.com/spotlight/toptierconsultant).
 
 **I sit down with people.** A [Talk to a Pastor](/talk-to-a-pastor) session is one honest hour, online, with a written intake before and a written follow-up after. Premarital counselling has been a particular focus of my ministry for many years, and it still is.
 

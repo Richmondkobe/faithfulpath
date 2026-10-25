@@ -9,14 +9,14 @@ import { JOINED_COOKIE } from "@/lib/community";
 
 /**
  * The footer's invitation to the free community, in place of the newsletter
- * form (Richmond, 26 October 2026). The newsletter itself is untouched:
- * /api/subscribe and the "Website subscribers" group in MailerLite are as they
- * were, and components/FooterSignup.tsx is kept, unused, should the form be
- * wanted back.
+ * form (Richmond, 26 October 2026; the form's code was removed the same day).
+ * The newsletter's subscribers in MailerLite ("Website subscribers") are
+ * untouched.
  *
- * Hidden where the newsletter form was hidden, for the same reason (see
- * FooterSignup.tsx): Before You Say Yes and /help, which may be read on a
- * device someone else can see. Hidden on the community's own pages, which
+ * Hidden where the newsletter form used to be hidden: Before You Say Yes and
+ * /help. That course is written for people who may be being monitored, and
+ * /help lists helplines; both may be read on a device someone else can see,
+ * and an invitation to sign up has no place at the foot of either. Hidden on the community's own pages, which
  * already say all of this, and for anyone who has joined: the community home
  * sets a small cookie saying so (components/community/MarkJoined.tsx), read
  * here in the browser so every page stays cached.

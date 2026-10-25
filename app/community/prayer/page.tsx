@@ -316,8 +316,8 @@ export default async function PrayerWall({ searchParams }: Props) {
           </section>
           </>
         )}
+        <CommunityFooter />
       </main>
-      <CommunityFooter />
     </>
   );
 }

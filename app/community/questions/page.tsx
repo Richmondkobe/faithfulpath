@@ -192,8 +192,8 @@ export default async function AskPastorRichmond({ searchParams }: Props) {
             </ul>
           )}
         </section>
+        <CommunityFooter />
       </main>
-      <CommunityFooter />
     </>
   );
 }

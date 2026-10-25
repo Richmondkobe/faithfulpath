@@ -29,7 +29,7 @@ export default async function CommunityJoin() {
         Tell us a little about yourself, and we will email you a 6-digit code to type in. There is no password and
         no card.
       </p>
-      <JoinForm mode="join" stamp={makeFormStamp()} restartHref="/community/join" />
+      <JoinForm stamp={makeFormStamp()} restartHref="/community/join" />
       <p className="mt-8 text-sm text-muted">
         Already joined, or a member of the membership?{" "}
         <Link href={COMMUNITY_SIGN_IN} className="font-semibold text-gold-text underline underline-offset-4">

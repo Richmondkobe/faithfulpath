@@ -264,8 +264,8 @@ export default async function CommunityHome({ searchParams }: Props) {
           </h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">
             {viewer.profile
-              ? `Signed in as ${viewer.email}. Only your first name is ever shown, and only on prayer requests you choose to share with your name.`
-              : "You are already in the community. Tell us a little about yourself to share prayer requests."}
+              ? `Signed in as ${viewer.email}. Only your first name is ever shown, and only on prayer requests and questions you choose to share with your name.`
+              : "You are already in the community. Tell us a little about yourself to share prayer requests and questions."}
           </p>
           <ProfileForm
             fullName={viewer.profile?.full_name ?? meta?.full_name ?? ""}
@@ -282,7 +282,7 @@ export default async function CommunityHome({ searchParams }: Props) {
               Leave the community
             </h2>
             <p className="mt-2 text-[15px] leading-relaxed text-muted">
-              This deletes your community details and every prayer request you have shared. It does not affect a
+              This deletes your community details and every prayer request and question you have shared. It does not affect a
               membership or anything you have bought.
             </p>
             {leave === "failed" && (
@@ -309,8 +309,8 @@ export default async function CommunityHome({ searchParams }: Props) {
             )}
           </section>
         )}
+        <CommunityFooter />
       </main>
-      <CommunityFooter />
     </>
   );
 }

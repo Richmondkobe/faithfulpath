@@ -67,8 +67,8 @@ export default async function WeeklyGathering() {
             The next gathering has not been set yet. Please check back soon.
           </p>
         )}
+        <CommunityFooter />
       </main>
-      <CommunityFooter />
     </>
   );
 }

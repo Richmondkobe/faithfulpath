@@ -63,12 +63,17 @@ function splitText(value: string): MdNode[] {
       out.push({ type: "text", value: value.slice(last, m.index) });
     }
     const isEmail = Boolean(m[1]);
+    // A full stop (or ! ? :) closing the sentence is not part of the address:
+    // "chat at 988lifeline.org/es." links 988lifeline.org/es and leaves the
+    // full stop as text.
+    const address = isEmail ? m[0] : m[0].replace(/[.!?:]+$/, "");
     out.push({
       type: "link",
-      url: isEmail ? `mailto:${m[0]}` : `https://${m[0]}`,
-      children: [{ type: "text", value: m[0] }],
+      url: isEmail ? `mailto:${address}` : `https://${address}`,
+      children: [{ type: "text", value: address }],
     });
-    last = m.index + m[0].length;
+    last = m.index + address.length;
+    re.lastIndex = last;
   }
 
   if (out.length === 0) return [{ type: "text", value }];

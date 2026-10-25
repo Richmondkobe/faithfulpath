@@ -24,7 +24,8 @@ export const GATHERING_MINUTES = 60;
 
 export const COMMUNITY_HOME = "/community/home";
 export const COMMUNITY_JOIN = "/community/join";
-export const COMMUNITY_SIGN_IN = "/community/sign-in";
+/** The one sign-in for everyone (Richmond, 26 October 2026); /community/sign-in forwards here. */
+export const COMMUNITY_SIGN_IN = "/members/login";
 
 /** A yes/no cookie: this browser's person has joined, so the footer stops inviting them. */
 export const JOINED_COOKIE = "fp_community";
@@ -94,7 +95,6 @@ export type PrayerRequest = {
   report_count: number;
   prayed_count: number;
   answered_at: string | null;
-  answer_note: string | null;
   approved_at: string | null;
   created_at: string;
 };

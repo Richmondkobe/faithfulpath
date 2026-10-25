@@ -18,14 +18,17 @@ import { maySendSignInCode } from "@/lib/sign-in-gate";
 export type MemberLoginState = { error: string | null; sent: string | null };
 
 /**
- * Where to go once signed in. /members, unless the form came from a Following
- * Jesus course, whose buyers are not members and belong back on their course.
- * Only paths inside the series are accepted, so this cannot be pointed
- * anywhere else.
+ * Where to go once signed in. A Following Jesus course or a community page
+ * that sent them here, if there was one; otherwise /account, which sends a
+ * member or buyer to /members and someone who has only joined the free
+ * community to the community home. Only those paths are accepted, so this
+ * cannot be pointed anywhere else.
  */
 function afterSignIn(formData: FormData): string {
   const next = String(formData.get("next") ?? "");
-  return /^\/courses\/following-jesus(\/[a-z0-9-]+)*$/.test(next) ? next : "/members";
+  if (/^\/courses\/following-jesus(\/[a-z0-9-]+)*$/.test(next)) return next;
+  if (/^\/community(\/[a-z0-9-]+)*$/.test(next)) return next;
+  return "/account";
 }
 export type MemberCodeState = { error: string | null };
 
@@ -47,7 +50,7 @@ export async function sendMemberLink(
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
 
   if (!email || !email.includes("@")) {
-    return { error: "Enter the email address you paid with.", sent: null };
+    return { error: "Enter your email address.", sent: null };
   }
 
   // A robot filled this form with other people's addresses from 18 September

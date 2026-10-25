@@ -5,9 +5,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { supabaseAdmin } from "@/lib/supabase/admin";
 import { siteUrl } from "@/lib/stripe";
-import { maySendSignInCode } from "@/lib/sign-in-gate";
 import { checkFormStamp } from "@/lib/form-stamp";
 import { getCommunityViewer } from "@/lib/community-db";
 import { notifyNewMember, notifyNewQuestion, notifyPrayerForReview } from "@/lib/community-email";
@@ -17,6 +15,7 @@ import { sendWelcomeEmail } from "@/lib/community-welcome";
 import {
   ANSWER_MAX,
   COMMUNITY_HOME,
+  COMMUNITY_SIGN_IN,
   COUNTRY_MAX,
   FULL_NAME_MAX,
   JOINED_COOKIE,
@@ -115,34 +114,24 @@ export type CommunityCodeSendState = {
 export type CommunityCodeState = { error: string | null };
 
 /**
- * Sends the same 6-digit sign-in code as the membership sign-in, for the
- * community. Two forms use it:
- *
- *   * "join" (/community/join): full name, email, country, an optional phone
- *     and a required message. Open to anyone, which the membership sign-in is
- *     not, so it is guarded by a hidden field robots fill and a signed stamp
- *     that shows the form was opened by a browser a few seconds earlier
- *     (lib/form-stamp.ts).
- *   * "sign-in" (/community/sign-in): email only, for someone who has already
- *     joined. A code goes only to an address with a community profile, or one
- *     the membership sign-in would send to anyway.
- *
- * Either way the reply is the same "check your email", so neither form says
- * who has joined or paid. Nothing about how the membership sign-in sends its
- * codes is changed.
+ * Joining the community (/community/join): the same 6-digit sign-in code as
+ * everywhere else, with full name, email, country, an optional phone, a
+ * required message and the guidelines tick box. Open to anyone, which the
+ * site's sign-in is not, so it is guarded by a hidden field robots fill and a
+ * signed stamp that shows the form was opened by a browser a few seconds
+ * earlier (lib/form-stamp.ts). The reply is always "check your email", so the
+ * form does not say who has joined. Signing in again later is done on the
+ * site's one sign-in page, /members/login.
  */
 export async function sendCommunityCode(
   _prev: CommunityCodeSendState,
   formData: FormData
 ): Promise<CommunityCodeSendState> {
-  const mode = formData.get("mode") === "sign-in" ? "sign-in" : "join";
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const details = readDetails(formData);
 
-  if (mode === "join") {
-    const problem = detailsProblem(details, true);
-    if (problem) return { error: problem, sent: null, email, details };
-  }
+  const problem = detailsProblem(details, true);
+  if (problem) return { error: problem, sent: null, email, details };
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { error: "Enter your email address.", sent: null, email, details };
   }
@@ -150,23 +139,6 @@ export async function sendCommunityCode(
   const looksFine = { error: null, sent: email, email, details };
   if (String(formData.get("website") ?? "") !== "") return looksFine;
   if (!checkFormStamp(String(formData.get("stamp") ?? ""))) return looksFine;
-
-  if (mode === "sign-in") {
-    let allowed = true;
-    try {
-      const { count, error } = await supabaseAdmin
-        .from("community_profiles")
-        .select("user_id", { count: "exact", head: true })
-        .eq("email", email);
-      if (error) throw new Error(error.message);
-      allowed = Boolean(count) || (await maySendSignInCode(email));
-    } catch (err) {
-      // As on the membership sign-in: a real person locked out is worse than
-      // one robot getting through.
-      console.error("Community sign-in check failed; sending the code:", err instanceof Error ? err.message : err);
-    }
-    if (!allowed) return looksFine;
-  }
 
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signInWithOtp({
@@ -176,7 +148,7 @@ export async function sendCommunityCode(
       shouldCreateUser: true,
       // Kept on a brand-new account only, so the community home can fill in
       // the name if the emailed link is used instead of the code.
-      ...(mode === "join" ? { data: { full_name: details.fullName, country: details.country } } : {}),
+      data: { full_name: details.fullName, country: details.country },
     },
   });
   if (error) {
@@ -206,7 +178,7 @@ export async function verifyCommunityCode(
     return { error: "That code did not work. It may have expired or been used already — ask for a new one." };
   }
 
-  // From the join form only (the sign-in form sends no details). If this
+  // The details from the join form. If this
   // fails, the community home asks for the details again.
   if (!detailsProblem(details, true)) await createProfile(supabase, data.user.id, email, details);
 
@@ -230,7 +202,7 @@ export type ProfileState = { error: string | null; saved: boolean };
  */
 export async function saveCommunityProfile(_prev: ProfileState, formData: FormData): Promise<ProfileState> {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
 
   const d = readDetails(formData);
   const problem = detailsProblem(d, !viewer.profile);
@@ -263,7 +235,7 @@ export async function saveCommunityProfile(_prev: ProfileState, formData: FormDa
 /** The one-time agreement for members who joined before the guidelines. */
 export async function agreeToGuidelines(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer?.profile) redirect("/community/sign-in");
+  if (!viewer?.profile) redirect(COMMUNITY_SIGN_IN);
   if (formData.get("agree_guidelines") === "on") {
     const { error } = await viewer.supabase
       .from("community_profiles")
@@ -278,7 +250,7 @@ export async function agreeToGuidelines(formData: FormData) {
 /** Removes the profile, prayer requests, taps and reports. Not the sign-in, and never a membership. */
 export async function leaveCommunity(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   if (formData.get("confirm") !== "yes") redirect(`${COMMUNITY_HOME}?leave=confirm`);
   const { error } = await viewer.supabase.rpc("community_leave");
   if (error) {
@@ -310,7 +282,7 @@ export type PrayerPostState = { error: string | null; posted: boolean };
  */
 export async function postPrayerRequest(_prev: PrayerPostState, formData: FormData): Promise<PrayerPostState> {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   if (!viewer.profile) return { error: "Add your name and country on the community home before posting.", posted: false };
   if (viewer.profile.is_banned) return { error: "Posting is closed on this account.", posted: false };
 
@@ -338,7 +310,7 @@ export async function postPrayerRequest(_prev: PrayerPostState, formData: FormDa
 
 export async function prayForRequest(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer?.inCommunity) redirect("/community/sign-in");
+  if (!viewer?.inCommunity) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   const { error } = await viewer.supabase.from("prayer_prayed").insert({ request_id: id, user_id: viewer.user.id });
   // 23505: already prayed for it — one per member, and nothing to say.
@@ -348,7 +320,7 @@ export async function prayForRequest(formData: FormData) {
 
 export async function reportPrayerRequest(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer?.inCommunity) redirect("/community/sign-in");
+  if (!viewer?.inCommunity) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   if (formData.get("confirm") !== "yes") redirect(`/community/prayer?report=${encodeURIComponent(id)}#p-${id}`);
 
@@ -376,7 +348,7 @@ export async function reportPrayerRequest(formData: FormData) {
  */
 export async function markPrayerAnswered(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   const note = String(formData.get("answer_note") ?? "").replace(/\r\n/g, "\n").trim().slice(0, ANSWER_MAX);
   const share = formData.get("share") === "on";
@@ -417,7 +389,7 @@ export async function markPrayerAnswered(formData: FormData) {
 
 export async function deleteOwnPrayerRequest(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   if (formData.get("confirm") !== "yes") redirect(`/community/prayer?remove=${encodeURIComponent(id)}#p-${id}`);
   const { error } = await viewer.supabase.from("prayer_requests").delete().eq("id", id).eq("user_id", viewer.user.id);
@@ -438,7 +410,7 @@ export type QuestionState = { error: string | null; asked: boolean };
  */
 export async function askQuestion(_prev: QuestionState, formData: FormData): Promise<QuestionState> {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   if (!viewer.inCommunity || viewer.needsAgreement) redirect(COMMUNITY_HOME);
   if (!viewer.profile) return { error: "Add your details on the community home before asking.", asked: false };
 
@@ -463,7 +435,7 @@ export async function askQuestion(_prev: QuestionState, formData: FormData): Pro
 
 export async function reportQuestion(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer?.inCommunity) redirect("/community/sign-in");
+  if (!viewer?.inCommunity) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   if (formData.get("confirm") !== "yes") redirect(`/community/questions?report=${encodeURIComponent(id)}#q-${id}`);
   const { data: q } = await viewer.supabase.from("community_questions").select("body, show_name, display_name").eq("id", id).maybeSingle();
@@ -487,7 +459,7 @@ export async function reportQuestion(formData: FormData) {
 
 export async function deleteOwnQuestion(formData: FormData) {
   const viewer = await getCommunityViewer();
-  if (!viewer) redirect("/community/sign-in");
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
   const id = String(formData.get("id") ?? "");
   const { error } = await viewer.supabase.from("community_questions").delete().eq("id", id).eq("user_id", viewer.user.id);
   if (error) console.error("Own question not deleted:", error.message);
