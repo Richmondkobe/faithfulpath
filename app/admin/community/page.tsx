@@ -319,6 +319,61 @@ export default async function AdminCommunity({ searchParams }: Props) {
         )}
       </section>
 
+      <section id="people" className="mt-14 scroll-mt-6">
+        <h2 className={H2} style={DISPLAY}>
+          People who joined ({people.length})
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          Newest first, with what each person wrote when they joined. You are also emailed each time someone joins.
+          Members of the paid membership are in the community without joining, so they appear here once they add
+          their details.
+        </p>
+        {people.length === 0 ? (
+          <p className="mt-4 text-muted">No one yet.</p>
+        ) : (
+          <ul className="mt-4 space-y-3">
+            {people.map((p) => (
+              <li key={p.user_id} id={`m-${p.user_id}`} className="scroll-mt-6 rounded-xl border border-line bg-paper p-4">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="text-lg text-navy" style={DISPLAY}>
+                    {p.full_name}
+                  </p>
+                  <p className="text-sm text-muted">Joined {shortDate(p.joined_at)}</p>
+                </div>
+                <dl className="mt-2 grid gap-x-6 gap-y-1 text-sm sm:grid-cols-[auto_1fr]">
+                  <dt className="text-muted">Email</dt>
+                  <dd className="break-words">
+                    <a href={`mailto:${p.email}`} className="text-gold-text underline underline-offset-4">
+                      {p.email}
+                    </a>
+                  </dd>
+                  <dt className="text-muted">Country</dt>
+                  <dd>{p.country}</dd>
+                  <dt className="text-muted">Phone</dt>
+                  <dd>{p.phone ?? <span className="text-muted">Not given</span>}</dd>
+                  <dt className="text-muted">MailerLite</dt>
+                  <dd>{p.mailerlite_synced_at ? "Added" : <span className="font-semibold text-danger">Not added yet (see below)</span>}</dd>
+                </dl>
+                <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text">About them and why they joined</p>
+                <p className="mt-1 whitespace-pre-line rounded-lg border-l-2 border-gold bg-cream px-3 py-2 leading-relaxed text-ink">
+                  {p.join_message}
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2">
+                  {p.is_banned && <span className="text-sm font-semibold text-danger">Banned from posting</span>}
+                  <form action={setBanned}>
+                    <input type="hidden" name="user_id" value={p.user_id} />
+                    <input type="hidden" name="banned" value={p.is_banned ? "no" : "yes"} />
+                    <button className={`${small} ${p.is_banned ? "" : "text-danger"}`}>
+                      {p.is_banned ? "Allow posting again" : "Ban from posting"}
+                    </button>
+                  </form>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
       {notInMailerLite.length > 0 && (
         <section id="mailerlite" className="mt-10 scroll-mt-6 rounded-xl border border-danger-line bg-danger-bg p-5">
           <h2 className="text-xl text-danger" style={DISPLAY}>
@@ -497,39 +552,6 @@ export default async function AdminCommunity({ searchParams }: Props) {
         </details>
       )}
 
-      <section id="people" className="mt-14 scroll-mt-6">
-        <h2 className={H2} style={DISPLAY}>
-          People who joined ({people.length})
-        </h2>
-        <p className="mt-1 text-sm text-muted">Members of the paid membership are in the community without joining, so they appear here only once they add their name.</p>
-        {people.length === 0 ? (
-          <p className="mt-4 text-muted">No one yet.</p>
-        ) : (
-          <ul className="mt-4 divide-y divide-line rounded-xl border border-line bg-paper">
-            {people.map((p) => (
-              <li key={p.user_id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm">
-                <p className="text-navy">
-                  <span className="font-semibold">{p.full_name}</span>, {p.country}
-                  <span className="text-muted"> · {p.email} · joined {shortDate(p.joined_at)}</span>
-                  {p.mailerlite_synced_at ? (
-                    <span className="text-muted"> · in MailerLite</span>
-                  ) : (
-                    <span className="font-semibold text-danger"> · not in MailerLite</span>
-                  )}
-                  {p.is_banned && <span className="ml-2 font-semibold text-danger">Banned from posting</span>}
-                </p>
-                <form action={setBanned}>
-                  <input type="hidden" name="user_id" value={p.user_id} />
-                  <input type="hidden" name="banned" value={p.is_banned ? "no" : "yes"} />
-                  <button className={`${small} ${p.is_banned ? "" : "text-danger"}`}>
-                    {p.is_banned ? "Allow posting again" : "Ban from posting"}
-                  </button>
-                </form>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </main>
   );
 }

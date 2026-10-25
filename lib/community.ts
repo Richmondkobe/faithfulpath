@@ -11,6 +11,9 @@ export const PRAYERS_PER_DAY = 3;
 export const FULL_NAME_MAX = 80;
 export const FIRST_NAME_MAX = 40;
 export const COUNTRY_MAX = 60;
+export const PHONE_MAX = 30;
+export const JOIN_MESSAGE_MAX = 500;
+export const JOIN_MESSAGE_LABEL = "Tell us a little about yourself and why you’d like to join";
 
 /** A gathering is shown as "next" until this long after it starts. */
 export const GATHERING_GRACE_MINUTES = 90;
@@ -27,6 +30,8 @@ export type CommunityProfile = {
   full_name: string;
   first_name: string;
   country: string;
+  phone: string | null;
+  join_message: string;
   joined_at: string;
   is_banned: boolean;
   mailerlite_synced_at: string | null;

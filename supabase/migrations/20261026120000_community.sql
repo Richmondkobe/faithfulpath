@@ -37,6 +37,11 @@ create table if not exists public.community_profiles (
   full_name  text not null check (char_length(btrim(full_name)) between 1 and 80),
   first_name text not null check (char_length(btrim(first_name)) between 1 and 40),
   country    text not null check (char_length(btrim(country)) between 2 and 60),
+  -- Optional. Never shown to other members; for the admin only.
+  phone      text check (phone is null or char_length(phone) <= 30),
+  -- "Tell us a little about yourself and why you'd like to join", required,
+  -- so Richmond can read and welcome each person himself.
+  join_message text not null check (char_length(btrim(join_message)) between 1 and 500),
   joined_at  timestamptz not null default now(),
   is_banned  boolean not null default false,
   -- Adding them to the "Faithful Path Community" group in MailerLite. Joining
@@ -68,9 +73,9 @@ as $$
     );
 $$;
 
--- What a member may change on their own profile: their name and country.
--- The email, the joining date, the ban and the MailerLite status are not
--- theirs to set.
+-- What a member may change on their own profile: their name, country and
+-- phone. Their joining message stays as they wrote it. The email, the joining
+-- date, the ban and the MailerLite status are not theirs to set.
 create or replace function public.community_profiles_guard()
 returns trigger
 language plpgsql
@@ -87,6 +92,7 @@ begin
     else
       new.user_id   := old.user_id;
       new.email     := old.email;
+      new.join_message := old.join_message;
       new.joined_at := old.joined_at;
       new.is_banned := old.is_banned;
       new.mailerlite_synced_at := old.mailerlite_synced_at;
@@ -96,6 +102,8 @@ begin
   new.full_name  := btrim(new.full_name);
   new.first_name := btrim(new.first_name);
   new.country    := btrim(new.country);
+  new.phone      := nullif(btrim(coalesce(new.phone, '')), '');
+  new.join_message := btrim(new.join_message);
   return new;
 end;
 $$;

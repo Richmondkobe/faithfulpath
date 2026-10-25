@@ -7,14 +7,14 @@ import {
   type CommunityCodeSendState,
   type CommunityCodeState,
 } from "@/app/community/actions";
-import { COUNTRY_MAX, FULL_NAME_MAX } from "@/lib/community";
+import DetailsFields from "@/components/community/DetailsFields";
 import { buttonClass, errorClass, inputClass, labelClass } from "@/components/community/styles";
 
 const initialCode: CommunityCodeState = { error: null };
 
 /**
  * Joining the community, or signing back in to it: the same 6-digit code as
- * the membership sign-in. "join" also asks for a full name and country,
+ * the membership sign-in. "join" also asks for the details in DetailsFields,
  * which are saved once the code is typed in.
  */
 export default function JoinForm({
@@ -27,7 +27,12 @@ export default function JoinForm({
   stamp: string;
   restartHref: string;
 }) {
-  const initialSend: CommunityCodeSendState = { error: null, sent: null, fullName: "", country: "" };
+  const initialSend: CommunityCodeSendState = {
+    error: null,
+    sent: null,
+    email: "",
+    details: { fullName: "", country: "", phone: "", message: "" },
+  };
   const [sendState, sendAction, sending] = useActionState(sendCommunityCode, initialSend);
   const [codeState, codeAction, verifying] = useActionState(verifyCommunityCode, initialCode);
 
@@ -49,8 +54,10 @@ export default function JoinForm({
 
         <form action={codeAction} className="mt-8 space-y-4">
           <input type="hidden" name="email" value={sendState.sent} />
-          <input type="hidden" name="full_name" value={sendState.fullName} />
-          <input type="hidden" name="country" value={sendState.country} />
+          <input type="hidden" name="full_name" value={sendState.details.fullName} />
+          <input type="hidden" name="country" value={sendState.details.country} />
+          <input type="hidden" name="phone" value={sendState.details.phone} />
+          <input type="hidden" name="join_message" value={sendState.details.message} />
           <div>
             <label htmlFor="token" className={labelClass}>
               Enter the 6-digit code from your email
@@ -99,47 +106,48 @@ export default function JoinForm({
         <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
       </div>
 
-      {mode === "join" && (
-        <>
-          <div>
-            <label htmlFor="full_name" className={labelClass}>
-              Full name
-            </label>
-            <input
-              id="full_name"
-              name="full_name"
-              type="text"
-              required
-              autoComplete="name"
-              maxLength={FULL_NAME_MAX}
-              defaultValue={sendState.fullName}
-              className={inputClass}
-            />
-          </div>
-          <div>
-            <label htmlFor="country" className={labelClass}>
-              Country you live in
-            </label>
-            <input
-              id="country"
-              name="country"
-              type="text"
-              required
-              autoComplete="country-name"
-              maxLength={COUNTRY_MAX}
-              defaultValue={sendState.country}
-              className={inputClass}
-            />
-          </div>
-        </>
+      {mode === "join" ? (
+        <DetailsFields
+          withMessage
+          fullName={sendState.details.fullName}
+          country={sendState.details.country}
+          phone={sendState.details.phone}
+          message={sendState.details.message}
+          emailField={
+            <div>
+              <label htmlFor="email" className={labelClass}>
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="your@email.com"
+                defaultValue={sendState.email}
+                className={inputClass}
+              />
+            </div>
+          }
+        />
+      ) : (
+        <div>
+          <label htmlFor="email" className={labelClass}>
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="your@email.com"
+            defaultValue={sendState.email}
+            className={inputClass}
+          />
+        </div>
       )}
-
-      <div>
-        <label htmlFor="email" className={labelClass}>
-          Email
-        </label>
-        <input id="email" name="email" type="email" required autoComplete="email" placeholder="your@email.com" className={inputClass} />
-      </div>
 
       {sendState.error && (
         <p role="alert" className={errorClass}>

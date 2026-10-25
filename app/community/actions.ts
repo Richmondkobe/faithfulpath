@@ -9,7 +9,7 @@ import { siteUrl } from "@/lib/stripe";
 import { maySendSignInCode } from "@/lib/sign-in-gate";
 import { checkFormStamp } from "@/lib/form-stamp";
 import { getCommunityViewer } from "@/lib/community-db";
-import { notifyPrayerForReview } from "@/lib/community-email";
+import { notifyNewMember, notifyPrayerForReview } from "@/lib/community-email";
 import { syncCommunityMember } from "@/lib/community-sync";
 import { removeFromCommunityGroup } from "@/lib/mailerlite-community";
 import {
@@ -17,31 +17,99 @@ import {
   COMMUNITY_HOME,
   COUNTRY_MAX,
   FULL_NAME_MAX,
+  JOIN_MESSAGE_LABEL,
+  JOIN_MESSAGE_MAX,
+  PHONE_MAX,
   PRAYER_MAX,
   firstNameOf,
   prayerName,
 } from "@/lib/community";
+
+/* ----------------------------------------------------------------- details */
+
+/** What someone gives on joining. Phone is optional; the message is required. */
+export type JoinDetails = { fullName: string; country: string; phone: string; message: string };
+
+const cleanName = (v: FormDataEntryValue | null) => String(v ?? "").trim().replace(/\s+/g, " ");
+
+function readDetails(formData: FormData): JoinDetails {
+  return {
+    fullName: cleanName(formData.get("full_name")),
+    country: cleanName(formData.get("country")),
+    phone: cleanName(formData.get("phone")),
+    message: String(formData.get("join_message") ?? "").replace(/\r\n/g, "\n").trim(),
+  };
+}
+
+/** The first thing wrong with the details, or null. `withJoining` adds the phone and message. */
+function detailsProblem(d: JoinDetails, withJoining: boolean): string | null {
+  if (!d.fullName) return "Enter your full name.";
+  if (d.fullName.length > FULL_NAME_MAX) return `Keep your name under ${FULL_NAME_MAX} characters.`;
+  if (d.country.length < 2) return "Enter the country you live in.";
+  if (d.country.length > COUNTRY_MAX) return `Keep the country under ${COUNTRY_MAX} characters.`;
+  if (d.phone && (d.phone.length > PHONE_MAX || !/^\+?[\d\s().-]{5,}$/.test(d.phone))) {
+    return "That phone number does not look right. Use only numbers, spaces and + ( ) -, or leave it empty.";
+  }
+  if (withJoining) {
+    if (d.message.length < 2) return `Please fill in “${JOIN_MESSAGE_LABEL}”.`;
+    if (d.message.length > JOIN_MESSAGE_MAX) return `Please keep your message under ${JOIN_MESSAGE_MAX} characters.`;
+  }
+  return null;
+}
+
+/**
+ * Saves a new profile through the person's own session, then, once the
+ * response has gone, adds them to MailerLite (name and country only) and
+ * emails Richmond their details and message. Returns false if it was not
+ * saved; an existing profile (23505) is left as it is.
+ */
+async function createProfile(
+  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  userId: string,
+  email: string,
+  d: JoinDetails
+): Promise<boolean> {
+  const { error } = await supabase.from("community_profiles").insert({
+    user_id: userId,
+    email,
+    full_name: d.fullName,
+    first_name: firstNameOf(d.fullName),
+    country: d.country,
+    phone: d.phone || null,
+    join_message: d.message,
+  });
+  if (error) {
+    if (error.code !== "23505") console.error("Community profile not saved:", error.message);
+    return error.code === "23505";
+  }
+  after(async () => {
+    await syncCommunityMember({ userId, email, fullName: d.fullName, country: d.country });
+    await notifyNewMember({ fullName: d.fullName, email, country: d.country, phone: d.phone || null, message: d.message });
+  });
+  revalidatePath("/admin/community");
+  return true;
+}
 
 /* ----------------------------------------------------------------- sign in */
 
 export type CommunityCodeSendState = {
   error: string | null;
   sent: string | null;
-  fullName: string;
-  country: string;
+  /** As typed, so the form can show it again after an error. */
+  email: string;
+  details: JoinDetails;
 };
 export type CommunityCodeState = { error: string | null };
-
-const cleanName = (v: FormDataEntryValue | null) => String(v ?? "").trim().replace(/\s+/g, " ");
 
 /**
  * Sends the same 6-digit sign-in code as the membership sign-in, for the
  * community. Two forms use it:
  *
- *   * "join" (/community/join): full name, country and email. Open to anyone,
- *     which the membership sign-in is not, so it is guarded by a hidden field
- *     robots fill and a signed stamp that shows the form was opened by a
- *     browser a few seconds earlier (lib/form-stamp.ts).
+ *   * "join" (/community/join): full name, email, country, an optional phone
+ *     and a required message. Open to anyone, which the membership sign-in is
+ *     not, so it is guarded by a hidden field robots fill and a signed stamp
+ *     that shows the form was opened by a browser a few seconds earlier
+ *     (lib/form-stamp.ts).
  *   * "sign-in" (/community/sign-in): email only, for someone who has already
  *     joined. A code goes only to an address with a community profile, or one
  *     the membership sign-in would send to anyway.
@@ -56,21 +124,17 @@ export async function sendCommunityCode(
 ): Promise<CommunityCodeSendState> {
   const mode = formData.get("mode") === "sign-in" ? "sign-in" : "join";
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
-  const fullName = cleanName(formData.get("full_name"));
-  const country = cleanName(formData.get("country"));
-  const keep = { fullName, country };
+  const details = readDetails(formData);
 
   if (mode === "join") {
-    if (!fullName) return { error: "Enter your full name.", sent: null, ...keep };
-    if (fullName.length > FULL_NAME_MAX) return { error: `Keep your name under ${FULL_NAME_MAX} characters.`, sent: null, ...keep };
-    if (country.length < 2) return { error: "Enter the country you live in.", sent: null, ...keep };
-    if (country.length > COUNTRY_MAX) return { error: `Keep the country under ${COUNTRY_MAX} characters.`, sent: null, ...keep };
+    const problem = detailsProblem(details, true);
+    if (problem) return { error: problem, sent: null, email, details };
   }
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { error: "Enter your email address.", sent: null, ...keep };
+    return { error: "Enter your email address.", sent: null, email, details };
   }
 
-  const looksFine = { error: null, sent: email, ...keep };
+  const looksFine = { error: null, sent: email, email, details };
   if (String(formData.get("website") ?? "") !== "") return looksFine;
   if (!checkFormStamp(String(formData.get("stamp") ?? ""))) return looksFine;
 
@@ -99,13 +163,13 @@ export async function sendCommunityCode(
       shouldCreateUser: true,
       // Kept on a brand-new account only, so the community home can fill in
       // the name if the emailed link is used instead of the code.
-      ...(mode === "join" ? { data: { full_name: fullName, country } } : {}),
+      ...(mode === "join" ? { data: { full_name: details.fullName, country: details.country } } : {}),
     },
   });
   if (error) {
     if (error.status === 429 || /rate limit|only request this after|seconds/i.test(error.message)) return looksFine;
     console.error("Community sign-in code failed:", error.message);
-    return { error: "Could not send the code just now. Please try again in a moment.", sent: null, ...keep };
+    return { error: "Could not send the code just now. Please try again in a moment.", sent: null, email, details };
   }
   return looksFine;
 }
@@ -117,8 +181,7 @@ export async function verifyCommunityCode(
 ): Promise<CommunityCodeState> {
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const token = String(formData.get("token") ?? "").replace(/\D/g, "");
-  const fullName = cleanName(formData.get("full_name")).slice(0, FULL_NAME_MAX);
-  const country = cleanName(formData.get("country")).slice(0, COUNTRY_MAX);
+  const details = readDetails(formData);
 
   if (!email.includes("@")) return { error: "Start again below and we will send a fresh code." };
   if (token.length !== 6) return { error: "Enter the 6-digit code from your email." };
@@ -130,19 +193,9 @@ export async function verifyCommunityCode(
     return { error: "That code did not work. It may have expired or been used already — ask for a new one." };
   }
 
-  if (fullName && country.length >= 2) {
-    // An existing profile is left as it is (23505): joining again changes nothing.
-    const userId = data.user.id;
-    const { error: profileError } = await supabase
-      .from("community_profiles")
-      .insert({ user_id: userId, email, full_name: fullName, first_name: firstNameOf(fullName), country });
-    if (profileError && profileError.code !== "23505") {
-      console.error("Community profile not saved:", profileError.message);
-    } else if (!profileError) {
-      // Joined: MailerLite after the response, so it can never hold them up.
-      after(() => syncCommunityMember({ userId, email, fullName, country }).then(() => undefined));
-    }
-  }
+  // From the join form only (the sign-in form sends no details). If this
+  // fails, the community home asks for the details again.
+  if (!detailsProblem(details, true)) await createProfile(supabase, data.user.id, email, details);
 
   redirect(COMMUNITY_HOME);
 }
@@ -157,30 +210,40 @@ export async function communitySignOut() {
 
 export type ProfileState = { error: string | null; saved: boolean };
 
+/**
+ * Joining from the community home (someone who used the emailed link, or a
+ * paying member adding their details), or changing name, country or phone
+ * later. The joining message is asked for only the first time.
+ */
 export async function saveCommunityProfile(_prev: ProfileState, formData: FormData): Promise<ProfileState> {
   const viewer = await getCommunityViewer();
   if (!viewer) redirect("/community/sign-in");
 
-  const fullName = cleanName(formData.get("full_name"));
-  const country = cleanName(formData.get("country"));
-  if (!fullName) return { error: "Enter your full name.", saved: false };
-  if (fullName.length > FULL_NAME_MAX) return { error: `Keep your name under ${FULL_NAME_MAX} characters.`, saved: false };
-  if (country.length < 2) return { error: "Enter the country you live in.", saved: false };
-  if (country.length > COUNTRY_MAX) return { error: `Keep the country under ${COUNTRY_MAX} characters.`, saved: false };
+  const d = readDetails(formData);
+  const problem = detailsProblem(d, !viewer.profile);
+  if (problem) return { error: problem, saved: false };
 
-  const fields = { full_name: fullName, first_name: firstNameOf(fullName), country };
-  const { error } = viewer.profile
-    ? await viewer.supabase.from("community_profiles").update(fields).eq("user_id", viewer.user.id)
-    : await viewer.supabase.from("community_profiles").insert({ user_id: viewer.user.id, email: viewer.email, ...fields });
+  if (!viewer.profile) {
+    const ok = await createProfile(viewer.supabase, viewer.user.id, viewer.email, d);
+    if (!ok) return { error: "That could not be saved just now. Please try again.", saved: false };
+    revalidatePath(COMMUNITY_HOME);
+    return { error: null, saved: true };
+  }
+
+  const { error } = await viewer.supabase
+    .from("community_profiles")
+    .update({ full_name: d.fullName, first_name: firstNameOf(d.fullName), country: d.country, phone: d.phone || null })
+    .eq("user_id", viewer.user.id);
   if (error) {
     console.error("Community profile save failed:", error.message);
     return { error: "That could not be saved just now. Please try again.", saved: false };
   }
-  // Joining, or a changed name or country: MailerLite is brought up to date.
+  // A changed name or country: MailerLite is brought up to date.
   const { id: userId } = viewer.user;
   const { email } = viewer;
-  after(() => syncCommunityMember({ userId, email, fullName, country }).then(() => undefined));
+  after(() => syncCommunityMember({ userId, email, fullName: d.fullName, country: d.country }).then(() => undefined));
   revalidatePath(COMMUNITY_HOME);
+  revalidatePath("/admin/community");
   return { error: null, saved: true };
 }
 

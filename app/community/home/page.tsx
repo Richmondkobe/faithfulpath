@@ -35,8 +35,8 @@ export default async function CommunityHome({ searchParams }: Props) {
         <h1 className="mt-3 text-[2.25rem] leading-[1.1] text-navy" style={DISPLAY}>
           One last step
         </h1>
-        <p className="mt-5 text-lg leading-relaxed">Tell us your name and the country you live in, and you are in.</p>
-        <ProfileForm fullName={meta?.full_name ?? ""} country={meta?.country ?? ""} submitLabel="Join the community" />
+        <p className="mt-5 text-lg leading-relaxed">Tell us a little about yourself, and you are in.</p>
+        <ProfileForm fullName={meta?.full_name ?? ""} country={meta?.country ?? ""} joining submitLabel="Join the community" />
       </main>
     );
   }
@@ -140,16 +140,18 @@ export default async function CommunityHome({ searchParams }: Props) {
 
         <section aria-labelledby="profile" className="mt-14 border-t border-line pt-8">
           <h2 id="profile" className="text-xl text-navy" style={DISPLAY}>
-            {viewer.profile ? "Your details" : "Add your name"}
+            {viewer.profile ? "Your details" : "Tell us about yourself"}
           </h2>
           <p className="mt-2 text-[15px] leading-relaxed text-muted">
             {viewer.profile
               ? `Signed in as ${viewer.email}. Only your first name is ever shown, and only on prayer requests you choose to share with your name.`
-              : "You are already in the community. Add your name and country to share prayer requests."}
+              : "You are already in the community. Tell us a little about yourself to share prayer requests."}
           </p>
           <ProfileForm
             fullName={viewer.profile?.full_name ?? meta?.full_name ?? ""}
             country={viewer.profile?.country ?? meta?.country ?? ""}
+            phone={viewer.profile?.phone ?? ""}
+            joining={!viewer.profile}
             submitLabel="Save"
           />
         </section>
