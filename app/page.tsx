@@ -110,49 +110,40 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* The membership as it is today (Richmond, 26 October 2026): five
+          courses, not the Spiritual Reset alone. */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
         <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">
-          Online course
+          The membership
         </p>
         <h2
           className="mt-4 text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
-          The Christian Spiritual Reset
+          Five Christian courses, one membership
         </h2>
         <p
           className="mt-5 max-w-xl text-lg leading-relaxed"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
-          Some seasons do not call for another book. They call for somewhere to
-          stop.
+          Learn at home, at your own pace, with Pastor Richmond.
         </p>
         <p className="mt-4 max-w-xl leading-relaxed">
-          This is a guided retreat you take at home, at whatever pace your life
-          allows — video teaching, guided prayers, timers to hold the silence
-          for you, and printable workbooks, all read online. It opens with
-          membership at US$19 a month, and you can stop whenever you need to.
+          Spiritual burnout, worry and overthinking, Christian dating, preparing
+          for marriage, and church leadership: each course has video teaching,
+          guided prayers and workbooks. US$19 a month, cancel any time.
         </p>
-        {/* The hero's pair, in the same order and the same two styles: the
-            primary goes straight to the Join button, the secondary to the page
-            for someone still reading. */}
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Link
-            href="/membership#join"
-            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
-          >
-            Start the Spiritual Reset — US$19/month
-          </Link>
+        <div className="mt-8">
           <Link
             href="/membership"
-            className="inline-flex items-center justify-center rounded-xl border-[1.5px] border-navy px-7 py-4 text-[15px] font-semibold text-navy transition-colors hover:border-gold-text hover:text-gold-text"
+            className="inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
           >
-            See what is included
+            See the membership
           </Link>
         </div>
       </section>
 
-      {/* Following Jesus, in the Spiritual Reset section's layout and button
+      {/* Following Jesus, in the membership section's layout and button
           styles: the primary to the series, the secondary straight to Begin. */}
       <section className="mx-auto max-w-5xl px-6 pb-16">
         <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">

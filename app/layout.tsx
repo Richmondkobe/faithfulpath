@@ -98,6 +98,8 @@ const FOOTER_COLUMNS: { title: string; links: { href: string; label: string }[] 
       { href: "/articles", label: "Articles" },
       { href: "/guides", label: "Books" },
       { href: "/courses", label: "Courses" },
+      { href: "/membership", label: "Membership" },
+      { href: "/videos", label: "Videos" },
       { href: "/community/guidelines", label: "Community Guidelines" },
       { href: HELP_PATH, label: "Help" },
     ],

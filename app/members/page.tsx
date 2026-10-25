@@ -5,6 +5,7 @@ import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
 import { getOwnedOffers } from "@/lib/following-jesus-access";
 import { SERIES_PATH } from "@/lib/following-jesus";
+import { hasBooks } from "@/lib/book-library";
 import { PORTAL_LABEL, STRIPE_PORTAL_LOGIN_URL } from "@/lib/site";
 import { memberLogout } from "@/app/members/actions";
 import JournalButton from "@/components/course/JournalButton";
@@ -133,6 +134,10 @@ export default async function Members() {
   // (Richmond, 8 October 2026). Read through their own session, as always.
   const ownsFollowingJesus = (await getOwnedOffers()).size > 0;
   if (!member && ownsFollowingJesus) redirect(SERIES_PATH);
+  // Someone who has only bought a book sees their books, never "No membership
+  // on this email" (Richmond, 26 October 2026).
+  const ownsBooks = await hasBooks(email).catch(() => false);
+  if (!member && ownsBooks) redirect("/members/books");
 
   // Signed in, but this address has no live membership. Say so plainly: a
   // silent bounce to /membership would look like the payment never worked.
@@ -298,6 +303,14 @@ export default async function Members() {
 
       <p className="mt-6 text-sm leading-relaxed text-muted">
         Signed in as <span className="break-words">{email}</span>.
+        {ownsBooks && (
+          <>
+            {" "}
+            <Link href="/members/books" className="text-gold-text underline underline-offset-4">
+              Your books
+            </Link>
+          </>
+        )}
       </p>
     </main>
   );
