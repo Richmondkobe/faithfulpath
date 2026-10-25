@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CommunityNav from "@/components/community/CommunityNav";
+import CommunityFooter from "@/components/community/CommunityFooter";
 import LocalTime from "@/components/community/LocalTime";
 import { DISPLAY, quietButtonClass } from "@/components/community/styles";
 import { nextGathering, requireCommunity } from "@/lib/community-db";
@@ -67,6 +68,7 @@ export default async function WeeklyGathering() {
           </p>
         )}
       </main>
+      <CommunityFooter />
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { COUNTRY_MAX, FULL_NAME_MAX, JOIN_MESSAGE_LABEL, JOIN_MESSAGE_MAX, PHONE_MAX } from "@/lib/community";
 import { inputClass, labelClass } from "@/components/community/styles";
+import { GUIDELINES_PATH } from "@/lib/community-guidelines";
 
 /**
  * The details asked on joining: full name, country, an optional phone and a
@@ -15,6 +16,7 @@ export default function DetailsFields({
   country = "",
   phone = "",
   message = "",
+  agreed = false,
   withMessage,
   emailField,
 }: {
@@ -22,6 +24,8 @@ export default function DetailsFields({
   country?: string;
   phone?: string;
   message?: string;
+  agreed?: boolean;
+  /** Joining: the message and the guidelines tick box are asked for too. */
   withMessage: boolean;
   /** The join form's email box, which goes straight after the name. */
   emailField?: ReactNode;
@@ -100,6 +104,25 @@ export default function DetailsFields({
               {length} / {JOIN_MESSAGE_MAX}
             </span>
           </p>
+        </div>
+      )}
+      {withMessage && (
+        <div className="flex items-start gap-3 rounded-xl border border-line bg-paper px-4 py-3">
+          <input
+            id="agree_guidelines"
+            name="agree_guidelines"
+            type="checkbox"
+            required
+            defaultChecked={agreed}
+            className="mt-0.5 h-5 w-5 shrink-0 accent-[#a97a29]"
+          />
+          <label htmlFor="agree_guidelines" className="leading-snug text-navy">
+            I have read and agree to the{" "}
+            <a href={GUIDELINES_PATH} target="_blank" rel="noopener" className="font-semibold text-gold-text underline underline-offset-4">
+              Community Guidelines
+            </a>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </label>
         </div>
       )}
     </>

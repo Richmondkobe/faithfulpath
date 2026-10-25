@@ -10,7 +10,7 @@ import { siteUrl } from "@/lib/stripe";
 import { maySendSignInCode } from "@/lib/sign-in-gate";
 import { checkFormStamp } from "@/lib/form-stamp";
 import { getCommunityViewer } from "@/lib/community-db";
-import { notifyNewMember, notifyPrayerForReview } from "@/lib/community-email";
+import { notifyNewMember, notifyNewQuestion, notifyPrayerForReview } from "@/lib/community-email";
 import { syncCommunityMember } from "@/lib/community-sync";
 import { removeFromCommunityGroup } from "@/lib/mailerlite-community";
 import { sendWelcomeEmail } from "@/lib/community-welcome";
@@ -24,6 +24,7 @@ import {
   JOIN_MESSAGE_MAX,
   PHONE_MAX,
   PRAYER_MAX,
+  QUESTION_MAX,
   firstNameOf,
   prayerName,
 } from "@/lib/community";
@@ -31,7 +32,7 @@ import {
 /* ----------------------------------------------------------------- details */
 
 /** What someone gives on joining. Phone is optional; the message is required. */
-export type JoinDetails = { fullName: string; country: string; phone: string; message: string };
+export type JoinDetails = { fullName: string; country: string; phone: string; message: string; agreed: boolean };
 
 const cleanName = (v: FormDataEntryValue | null) => String(v ?? "").trim().replace(/\s+/g, " ");
 
@@ -41,6 +42,7 @@ function readDetails(formData: FormData): JoinDetails {
     country: cleanName(formData.get("country")),
     phone: cleanName(formData.get("phone")),
     message: String(formData.get("join_message") ?? "").replace(/\r\n/g, "\n").trim(),
+    agreed: formData.get("agree_guidelines") === "on",
   };
 }
 
@@ -56,6 +58,7 @@ function detailsProblem(d: JoinDetails, withJoining: boolean): string | null {
   if (withJoining) {
     if (d.message.length < 2) return `Please fill in “${JOIN_MESSAGE_LABEL}”.`;
     if (d.message.length > JOIN_MESSAGE_MAX) return `Please keep your message under ${JOIN_MESSAGE_MAX} characters.`;
+    if (!d.agreed) return "Please tick the box to agree to the Community Guidelines.";
   }
   return null;
 }
@@ -80,6 +83,8 @@ async function createProfile(
     country: d.country,
     phone: d.phone || null,
     join_message: d.message,
+    // Stamped by the database at the moment of joining.
+    guidelines_agreed_at: d.agreed ? new Date().toISOString() : null,
   });
   if (error) {
     if (error.code !== "23505") console.error("Community profile not saved:", error.message);
@@ -255,6 +260,21 @@ export async function saveCommunityProfile(_prev: ProfileState, formData: FormDa
   return { error: null, saved: true };
 }
 
+/** The one-time agreement for members who joined before the guidelines. */
+export async function agreeToGuidelines(formData: FormData) {
+  const viewer = await getCommunityViewer();
+  if (!viewer?.profile) redirect("/community/sign-in");
+  if (formData.get("agree_guidelines") === "on") {
+    const { error } = await viewer.supabase
+      .from("community_profiles")
+      .update({ guidelines_agreed_at: new Date().toISOString() })
+      .eq("user_id", viewer.user.id);
+    if (error) console.error("Guidelines agreement not saved:", error.message);
+  }
+  revalidatePath(COMMUNITY_HOME);
+  redirect(COMMUNITY_HOME);
+}
+
 /** Removes the profile, prayer requests, taps and reports. Not the sign-in, and never a membership. */
 export async function leaveCommunity(formData: FormData) {
   const viewer = await getCommunityViewer();
@@ -405,4 +425,73 @@ export async function deleteOwnPrayerRequest(formData: FormData) {
   revalidatePath("/community/prayer");
   revalidatePath("/admin/community");
   redirect("/community/prayer");
+}
+
+/* ------------------------------------------------------ ask pastor richmond */
+
+export type QuestionState = { error: string | null; asked: boolean };
+
+/**
+ * A question for Pastor Richmond. The database makes it pending, copies the
+ * first name in if asked, and refuses a third question in seven days or one
+ * from a banned member; the checks here only give a clearer message first.
+ */
+export async function askQuestion(_prev: QuestionState, formData: FormData): Promise<QuestionState> {
+  const viewer = await getCommunityViewer();
+  if (!viewer) redirect("/community/sign-in");
+  if (!viewer.inCommunity || viewer.needsAgreement) redirect(COMMUNITY_HOME);
+  if (!viewer.profile) return { error: "Add your details on the community home before asking.", asked: false };
+
+  const body = String(formData.get("body") ?? "").replace(/\r\n/g, "\n").trim();
+  const showName = formData.get("show_name") === "name";
+  if (body.length < 5) return { error: "Write your question first.", asked: false };
+  if (body.length > QUESTION_MAX) return { error: `Please keep it under ${QUESTION_MAX.toLocaleString("en-GB")} characters.`, asked: false };
+
+  const { error } = await viewer.supabase.from("community_questions").insert({ user_id: viewer.user.id, body, show_name: showName });
+  if (error) {
+    if (error.code === "P0001") return { error: error.message, asked: false };
+    console.error("Question not saved:", error.message);
+    return { error: "That could not be sent just now. Please try again.", asked: false };
+  }
+  const shownAs = prayerName({ show_name: showName, display_name: viewer.profile.first_name });
+  const { email } = viewer;
+  after(() => notifyNewQuestion({ body, shownAs, fromEmail: email }));
+  revalidatePath("/community/questions");
+  revalidatePath("/admin/community");
+  return { error: null, asked: true };
+}
+
+export async function reportQuestion(formData: FormData) {
+  const viewer = await getCommunityViewer();
+  if (!viewer?.inCommunity) redirect("/community/sign-in");
+  const id = String(formData.get("id") ?? "");
+  if (formData.get("confirm") !== "yes") redirect(`/community/questions?report=${encodeURIComponent(id)}#q-${id}`);
+  const { data: q } = await viewer.supabase.from("community_questions").select("body, show_name, display_name").eq("id", id).maybeSingle();
+  const { error } = await viewer.supabase.from("community_question_reports").insert({ question_id: id, user_id: viewer.user.id });
+  if (error && error.code !== "23505") {
+    console.error("Question report not saved:", error.message);
+    redirect("/community/questions?reported=failed");
+  }
+  if (!error && q) {
+    const { email } = viewer;
+    after(() =>
+      notifyPrayerForReview({ kind: "reported", body: `A reported question for Ask Pastor Richmond:\n\n${q.body}`, shownAs: prayerName(q), fromEmail: email }).then(
+        () => undefined
+      )
+    );
+  }
+  revalidatePath("/community/questions");
+  revalidatePath("/admin/community");
+  redirect("/community/questions?reported=1");
+}
+
+export async function deleteOwnQuestion(formData: FormData) {
+  const viewer = await getCommunityViewer();
+  if (!viewer) redirect("/community/sign-in");
+  const id = String(formData.get("id") ?? "");
+  const { error } = await viewer.supabase.from("community_questions").delete().eq("id", id).eq("user_id", viewer.user.id);
+  if (error) console.error("Own question not deleted:", error.message);
+  revalidatePath("/community/questions");
+  revalidatePath("/admin/community");
+  redirect("/community/questions");
 }

@@ -8,6 +8,8 @@
 export const PRAYER_MAX = 1000;
 export const ANSWER_MAX = 500;
 export const PRAYERS_PER_DAY = 3;
+export const QUESTION_MAX = 1000;
+export const QUESTIONS_PER_WEEK = 2;
 export const FULL_NAME_MAX = 80;
 export const FIRST_NAME_MAX = 40;
 export const COUNTRY_MAX = 60;
@@ -41,6 +43,24 @@ export type CommunityProfile = {
   mailerlite_error: string | null;
   welcome_sent_at: string | null;
   welcome_error: string | null;
+  /** When they agreed to the Community Guidelines; null for members who joined before them. */
+  guidelines_agreed_at: string | null;
+};
+
+/** An "Ask Pastor Richmond" question (community_questions). */
+export type CommunityQuestion = {
+  id: string;
+  user_id: string;
+  body: string;
+  show_name: boolean;
+  display_name: string | null;
+  status: "pending" | "published" | "declined";
+  answer: string | null;
+  decline_note: string | null;
+  reported_at: string | null;
+  report_count: number;
+  published_at: string | null;
+  created_at: string;
 };
 
 export type Announcement = {

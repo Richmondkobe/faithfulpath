@@ -10,6 +10,7 @@ import {
   type Announcement,
   type AnsweredPrayer,
   type CommunityProfile,
+  type CommunityQuestion,
   type Gathering,
   type PrayerAnswer,
   type PrayerRequest,
@@ -32,7 +33,11 @@ export type CommunityViewer = {
   profile: CommunityProfile | null;
   paidMember: boolean;
   isAdmin: boolean;
-  /** May read the wall and the gathering: joined, a paying member, or the admin. */
+  /** Removed from the community by Richmond: nothing of the community is open to them. */
+  removed: boolean;
+  /** Joined before the Community Guidelines and has not agreed to them yet. */
+  needsAgreement: boolean;
+  /** May read the wall and the gathering: joined, a paying member, or the admin (and not removed). */
   inCommunity: boolean;
 };
 
@@ -55,12 +60,13 @@ export async function getCommunityViewer(): Promise<CommunityViewer | null> {
   if (!user?.email) return null;
   const email = user.email.toLowerCase();
 
-  const [profileResult, member] = await Promise.all([
+  const [profileResult, member, removedResult] = await Promise.all([
     supabase.from("community_profiles").select("*").eq("user_id", user.id).maybeSingle(),
     getMemberByEmail(email).catch((err) => {
       console.error("Community: could not check membership:", err instanceof Error ? err.message : err);
       return null;
     }),
+    supabase.rpc("community_is_removed"),
   ]);
   if (profileResult.error && !isMissingCommunityTable(profileResult.error)) {
     throw new Error(`Could not load your community profile: ${profileResult.error.message}`);
@@ -69,7 +75,18 @@ export async function getCommunityViewer(): Promise<CommunityViewer | null> {
   const profile = (profileResult.data as CommunityProfile | null) ?? null;
   const paidMember = isActive(member);
   const isAdmin = email === ADMIN_EMAIL;
-  return { supabase, user, email, profile, paidMember, isAdmin, inCommunity: Boolean(profile) || paidMember || isAdmin };
+  const removed = !isAdmin && removedResult.data === true;
+  return {
+    supabase,
+    user,
+    email,
+    profile,
+    paidMember,
+    isAdmin,
+    removed,
+    needsAgreement: Boolean(profile) && !profile?.guidelines_agreed_at && !isAdmin,
+    inCommunity: !removed && (Boolean(profile) || paidMember || isAdmin),
+  };
 }
 
 /**
@@ -80,7 +97,9 @@ export async function getCommunityViewer(): Promise<CommunityViewer | null> {
 export async function requireCommunity(): Promise<CommunityViewer> {
   const viewer = await getCommunityViewer();
   if (!viewer) redirect(COMMUNITY_SIGN_IN);
-  if (!viewer.inCommunity) redirect(COMMUNITY_HOME);
+  // Not joined, removed, or yet to agree to the guidelines: the community
+  // home says which and what to do.
+  if (!viewer.inCommunity || viewer.needsAgreement) redirect(COMMUNITY_HOME);
   return viewer;
 }
 
@@ -149,6 +168,34 @@ export async function loadAnswered(viewer: CommunityViewer, limit = 100): Promis
     return [];
   }
   return ((data ?? []) as AnsweredPrayer[]).filter((a) => a.request?.status === "approved" && a.request.answered_at);
+}
+
+/* ------------------------------------------------------ ask pastor richmond */
+
+/** Published questions, newest answer first, and this member's own that are not published. */
+export async function loadQuestions(viewer: CommunityViewer): Promise<{
+  published: CommunityQuestion[];
+  mine: CommunityQuestion[];
+  reported: Set<string>;
+  askedThisWeek: number;
+}> {
+  const db = viewer.supabase;
+  const weekAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+  const [published, mine, reported] = await Promise.all([
+    db.from("community_questions").select("*").eq("status", "published").order("published_at", { ascending: false }).limit(300),
+    db.from("community_questions").select("*").eq("user_id", viewer.user.id).order("created_at", { ascending: false }),
+    db.from("community_question_reports").select("question_id").eq("user_id", viewer.user.id),
+  ]);
+  for (const r of [published, mine, reported]) {
+    if (r.error) throw new Error(`Could not load the questions: ${r.error.message}`);
+  }
+  const own = (mine.data ?? []) as CommunityQuestion[];
+  return {
+    published: (published.data ?? []) as CommunityQuestion[],
+    mine: own.filter((q) => q.status !== "published"),
+    reported: new Set((reported.data ?? []).map((r) => r.question_id as string)),
+    askedThisWeek: own.filter((q) => q.created_at >= weekAgo).length,
+  };
 }
 
 /* ----------------------------------------------------------- announcements */

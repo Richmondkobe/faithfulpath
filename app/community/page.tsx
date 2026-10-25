@@ -6,6 +6,7 @@ import EntryButton from "@/components/community/EntryButton";
 import { DISPLAY } from "@/components/community/styles";
 import { socialMeta } from "@/lib/social-meta";
 import { HELP_PATH } from "@/lib/site";
+import { GUIDELINES_PATH } from "@/lib/community-guidelines";
 
 const TITLE = "The Faithful Path Community";
 const DESCRIPTION =
@@ -26,6 +27,10 @@ const GETS = [
   {
     title: "The Weekly Gathering",
     text: "An online gathering on Zoom each week, to pray and open the Bible together. The time is shown in your own time zone, with a button to add it to your calendar.",
+  },
+  {
+    title: "Ask Pastor Richmond",
+    text: "Ask a question about faith, the Bible or following Jesus, with your first name or anonymously. Pastor Richmond answers on a board the whole community can read.",
   },
   {
     title: "Free, with no card",
@@ -112,7 +117,7 @@ export default function Community() {
           <h2 id="gets" className="text-2xl text-navy" style={DISPLAY}>
             What members get
           </h2>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-3">
+          <ul className="mt-5 grid gap-4 sm:grid-cols-2">
             {GETS.map((g) => (
               <li key={g.title} className="rounded-2xl border border-gold-line/60 bg-paper p-5">
                 <h3 className="text-lg text-navy" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
@@ -129,6 +134,13 @@ export default function Community() {
             </Link>{" "}
             (US$19 a month). Joining the community is free and does not include them. Members of the membership are
             already part of the community.
+          </p>
+          <p className="mt-3 text-[15px] leading-relaxed text-muted">
+            Every member agrees to our{" "}
+            <Link href={GUIDELINES_PATH} className="font-semibold text-gold-text underline underline-offset-4 hover:text-navy">
+              Community Guidelines
+            </Link>
+            , to keep the community safe and encouraging for everyone.
           </p>
         </section>
 

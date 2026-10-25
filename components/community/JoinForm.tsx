@@ -31,7 +31,7 @@ export default function JoinForm({
     error: null,
     sent: null,
     email: "",
-    details: { fullName: "", country: "", phone: "", message: "" },
+    details: { fullName: "", country: "", phone: "", message: "", agreed: false },
   };
   const [sendState, sendAction, sending] = useActionState(sendCommunityCode, initialSend);
   const [codeState, codeAction, verifying] = useActionState(verifyCommunityCode, initialCode);
@@ -58,6 +58,7 @@ export default function JoinForm({
           <input type="hidden" name="country" value={sendState.details.country} />
           <input type="hidden" name="phone" value={sendState.details.phone} />
           <input type="hidden" name="join_message" value={sendState.details.message} />
+          {sendState.details.agreed && <input type="hidden" name="agree_guidelines" value="on" />}
           <div>
             <label htmlFor="token" className={labelClass}>
               Enter the 6-digit code from your email
@@ -113,6 +114,7 @@ export default function JoinForm({
           country={sendState.details.country}
           phone={sendState.details.phone}
           message={sendState.details.message}
+          agreed={sendState.details.agreed}
           emailField={
             <div>
               <label htmlFor="email" className={labelClass}>

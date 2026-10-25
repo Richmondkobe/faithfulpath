@@ -7,6 +7,7 @@ import { DISPLAY } from "@/components/community/styles";
 import { getSessionEmail } from "@/lib/auth";
 import { makeFormStamp } from "@/lib/form-stamp";
 import { COMMUNITY_HOME, COMMUNITY_SIGN_IN } from "@/lib/community";
+import { GUIDELINES_PATH } from "@/lib/community-guidelines";
 
 export const metadata: Metadata = {
   title: "Join the community",
@@ -34,7 +35,11 @@ export default async function CommunityJoin() {
         <Link href={COMMUNITY_SIGN_IN} className="font-semibold text-gold-text underline underline-offset-4">
           Sign in
         </Link>
-        . Only your first name is ever shown, and only on prayer requests you choose to share with your name. See the{" "}
+        . Only your first name is ever shown, and only on posts you choose to share with your name. Please read the{" "}
+        <Link href={GUIDELINES_PATH} className="font-semibold text-gold-text underline underline-offset-4">
+          Community Guidelines
+        </Link>{" "}
+        before joining. See the{" "}
         <Link href="/privacy" className="underline underline-offset-4">
           Privacy Policy
         </Link>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CommunityNav from "@/components/community/CommunityNav";
+import CommunityFooter from "@/components/community/CommunityFooter";
 import { DISPLAY } from "@/components/community/styles";
 import { loadAnswered, requireCommunity } from "@/lib/community-db";
 import { prayerName, shortDate } from "@/lib/community";
@@ -70,6 +71,7 @@ export default async function AnsweredPrayers() {
           </Link>
         </p>
       </main>
+      <CommunityFooter />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CommunityNav from "@/components/community/CommunityNav";
+import CommunityFooter from "@/components/community/CommunityFooter";
 import PrayerPostForm from "@/components/community/PrayerPostForm";
 import { DISPLAY, inputClass, labelClass, okClass, quietButtonClass } from "@/components/community/styles";
 import { loadWall, requireCommunity } from "@/lib/community-db";
@@ -316,6 +317,7 @@ export default async function PrayerWall({ searchParams }: Props) {
           </>
         )}
       </main>
+      <CommunityFooter />
     </>
   );
 }

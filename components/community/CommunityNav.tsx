@@ -5,6 +5,7 @@ const LINKS = [
   { href: "/community/home", label: "Community home", key: "home" },
   { href: "/community/prayer", label: "Prayer Wall", key: "prayer" },
   { href: "/community/gathering", label: "Weekly Gathering", key: "gathering" },
+  { href: "/community/questions", label: "Ask Pastor Richmond", key: "questions" },
 ] as const;
 
 /** The strip across the top of the signed-in community pages. */

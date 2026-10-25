@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import CommunityNav from "@/components/community/CommunityNav";
+import CommunityFooter from "@/components/community/CommunityFooter";
 import ProfileForm from "@/components/community/ProfileForm";
 import Markdown from "@/components/Markdown";
 import MarkJoined from "@/components/community/MarkJoined";
-import { DISPLAY, errorClass, quietButtonClass } from "@/components/community/styles";
+import { DISPLAY, buttonClass, errorClass, quietButtonClass } from "@/components/community/styles";
+import GuidelinesList from "@/components/community/GuidelinesList";
+import { GUIDELINES_PATH } from "@/lib/community-guidelines";
 import { getCommunityViewer, loadAnnouncements, loadAnswered } from "@/lib/community-db";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
-import { leaveCommunity } from "@/app/community/actions";
+import { agreeToGuidelines, leaveCommunity } from "@/app/community/actions";
 
 export const metadata: Metadata = {
   title: "Community home",
@@ -28,6 +31,51 @@ export default async function CommunityHome({ searchParams }: Props) {
   if (!viewer) redirect(COMMUNITY_SIGN_IN);
   const { leave } = await searchParams;
   const meta = viewer.user.user_metadata as { full_name?: string; country?: string } | undefined;
+
+  if (viewer.removed) {
+    return (
+      <main className="mx-auto max-w-2xl px-4 pt-12 pb-20 sm:px-6 sm:pt-16">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-gold-text">Faithful Path Community</p>
+        <h1 className="mt-3 text-[2.25rem] leading-[1.1] text-navy" style={DISPLAY}>
+          The community is closed to this account
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed">
+          Pastor Richmond has removed this email address from the community. If you have a membership or have bought a
+          book or course, those are not affected. You can write to info@faithfulpathcommunity.com.
+        </p>
+      </main>
+    );
+  }
+
+  if (viewer.needsAgreement) {
+    return (
+      <main className="mx-auto max-w-2xl px-4 pt-12 pb-20 sm:px-6 sm:pt-16">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-gold-text">Faithful Path Community</p>
+        <h1 className="mt-3 text-[2.25rem] leading-[1.1] text-navy" style={DISPLAY}>
+          Our Community Guidelines
+        </h1>
+        <p className="mt-5 text-lg leading-relaxed">
+          To keep the community safe and encouraging for everyone, every member now agrees to a few simple guidelines.
+          Please read them, then tick the box to carry on. You only need to do this once.
+        </p>
+        <GuidelinesList />
+        <form action={agreeToGuidelines} className="mt-8 space-y-5">
+          <label className="flex items-start gap-3 rounded-xl border border-line bg-paper px-4 py-3 text-navy">
+            <input type="checkbox" name="agree_guidelines" required className="mt-0.5 h-5 w-5 shrink-0 accent-[#a97a29]" />
+            <span className="leading-snug">
+              I have read and agree to the{" "}
+              <Link href={GUIDELINES_PATH} className="font-semibold text-gold-text underline underline-offset-4">
+                Community Guidelines
+              </Link>
+            </span>
+          </label>
+          <button type="submit" className={buttonClass}>
+            Agree and continue
+          </button>
+        </form>
+      </main>
+    );
+  }
 
   if (!viewer.inCommunity) {
     return (
@@ -129,6 +177,18 @@ export default async function CommunityHome({ searchParams }: Props) {
             </Link>
           </li>
         </ul>
+
+        <Link
+          href="/community/questions"
+          className="mt-4 block rounded-2xl border border-gold-line/60 bg-paper p-6 transition-colors hover:border-gold-line"
+        >
+          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Questions and answers</p>
+          <p className="mt-2 text-2xl text-navy" style={DISPLAY}>
+            Ask Pastor Richmond
+          </p>
+          <p className="mt-2 leading-relaxed">Ask about faith, the Bible or following Jesus, and read his answers.</p>
+          <span className="mt-4 inline-block font-semibold text-gold-text">Ask a question ›</span>
+        </Link>
 
         {/* The latest shared answered prayer; nothing until there is one. */}
         {latestAnswer && (
@@ -235,6 +295,7 @@ export default async function CommunityHome({ searchParams }: Props) {
           </section>
         )}
       </main>
+      <CommunityFooter />
     </>
   );
 }

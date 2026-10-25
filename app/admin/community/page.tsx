@@ -11,12 +11,18 @@ import {
   type Announcement,
   type AnsweredPrayer,
   type CommunityProfile,
+  type CommunityQuestion,
   type Gathering,
   type PrayerRequest,
 } from "@/lib/community";
 import { inputClass, labelClass } from "@/components/community/styles";
 import {
   approvePrayer,
+  declineQuestion,
+  deleteQuestion,
+  publishAnswer,
+  removeMember,
+  unpublishQuestion,
   deleteAnnouncement,
   deleteGathering,
   deletePrayer,
@@ -46,6 +52,8 @@ type Props = {
     delete?: string;
     deleteGathering?: string;
     deleteAnnouncement?: string;
+    deleteQuestion?: string;
+    removeMember?: string;
   }>;
 };
 
@@ -197,7 +205,7 @@ export default async function AdminCommunity({ searchParams }: Props) {
   const sp = await searchParams;
   const supabase = await createSupabaseServerClient();
 
-  const [requests, profiles, gatherings, notices, answerRows] = await Promise.all([
+  const [requests, profiles, gatherings, notices, answerRows, questionRows] = await Promise.all([
     supabase.from("prayer_requests").select("*").order("created_at", { ascending: false }).limit(300),
     supabase.from("community_profiles").select("*").order("joined_at", { ascending: false }),
     supabase.from("community_gatherings").select("*").order("starts_at", { ascending: false }).limit(30),
@@ -212,6 +220,7 @@ export default async function AdminCommunity({ searchParams }: Props) {
       .select("*, request:prayer_requests(*)")
       .order("created_at", { ascending: false })
       .limit(300),
+    supabase.from("community_questions").select("*").order("created_at", { ascending: false }).limit(500),
   ]);
 
   if ([requests, profiles, gatherings, notices].some((r) => isMissingCommunityTable(r.error))) {
@@ -227,7 +236,11 @@ export default async function AdminCommunity({ searchParams }: Props) {
       </main>
     );
   }
-  const loadError = [requests, profiles, gatherings, notices, answerRows].find((r) => r.error)?.error;
+  const loadError = [requests, profiles, gatherings, notices, answerRows, questionRows].find((r) => r.error)?.error;
+  const questions = (questionRows.data ?? []) as CommunityQuestion[];
+  const questionsPending = questions.filter((q) => q.status === "pending");
+  const questionsPublished = questions.filter((q) => q.status === "published");
+  const questionsDeclined = questions.filter((q) => q.status === "declined");
   const answers = ((answerRows.data ?? []) as AnsweredPrayer[]).filter((a) => a.request);
   const praisePending = answers.filter((a) => a.status === "pending");
   const praiseDone = answers.filter((a) => a.status !== "pending");
@@ -242,7 +255,7 @@ export default async function AdminCommunity({ searchParams }: Props) {
   const meetings = (gatherings.data ?? []) as Gathering[];
   const notInMailerLite = people.filter((p) => !p.mailerlite_synced_at);
 
-  const author = (r: PrayerRequest) => {
+  const author = (r: Pick<PrayerRequest, "user_id">) => {
     const p = byUser.get(r.user_id);
     return p ? `${p.full_name}, ${p.country} · ${p.email}` : "Unknown member";
   };
@@ -281,6 +294,79 @@ export default async function AdminCommunity({ searchParams }: Props) {
             <input type="hidden" name="id" value={a.request_id} />
             <input type="hidden" name="status" value="hidden" />
             <button className={small}>{a.status === "pending" ? "Don't show it" : "Hide from the page"}</button>
+          </form>
+        )}
+      </div>
+    </li>
+  );
+
+  const QuestionRow = ({ q }: { q: CommunityQuestion }) => (
+    <li id={`cq-${q.id}`} className="scroll-mt-6 rounded-xl border border-gold-line/60 bg-paper p-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+        <p className="text-navy">
+          <span className="font-semibold">Question · shown as {prayerName(q)}</span>
+          <span className="text-muted"> · {author(q)}</span>
+        </p>
+        <p className="text-muted">{shortDate(q.created_at)}</p>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-2 text-[13px]">
+        {q.reported_at && (
+          <span className="rounded-full bg-danger-bg px-3 py-0.5 font-semibold text-danger">
+            Reported{q.report_count > 1 ? ` ${q.report_count} times` : ""}
+          </span>
+        )}
+        {q.status === "pending" && !q.reported_at && <span className="rounded-full bg-sand px-3 py-0.5 font-semibold text-gold-text">New question</span>}
+        {q.status === "declined" && <span className="rounded-full bg-sand px-3 py-0.5 text-gold-text">Declined</span>}
+      </div>
+      <p className="mt-3 whitespace-pre-line leading-relaxed text-ink">{q.body}</p>
+      {q.decline_note && <p className="mt-2 whitespace-pre-line text-sm text-muted">Your private note: {q.decline_note}</p>}
+      {q.status !== "declined" && (
+        <form action={publishAnswer} className="mt-4 space-y-3">
+          <input type="hidden" name="id" value={q.id} />
+          <div>
+            <label htmlFor={`ans-${q.id}`} className={labelClass}>
+              Your answer (Markdown: **bold**, *italics*, [link](https://…), - lists)
+            </label>
+            <textarea id={`ans-${q.id}`} name="answer" rows={6} maxLength={10000} defaultValue={q.answer ?? ""} className={inputClass} />
+          </div>
+          <button className={gold}>{q.status === "published" ? "Save the answer" : "Publish"}</button>
+        </form>
+      )}
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        {q.status === "pending" && (
+          <details>
+            <summary className={`${small} cursor-pointer list-none`}>Decline…</summary>
+            <form action={declineQuestion} className="mt-3 space-y-3">
+              <input type="hidden" name="id" value={q.id} />
+              <div>
+                <label htmlFor={`dec-${q.id}`} className={labelClass}>
+                  A private note to them (optional, emailed)
+                </label>
+                <textarea id={`dec-${q.id}`} name="decline_note" rows={3} maxLength={2000} className={inputClass} />
+              </div>
+              <button className={small}>Decline the question</button>
+            </form>
+          </details>
+        )}
+        {q.status === "published" && (
+          <form action={unpublishQuestion}>
+            <input type="hidden" name="id" value={q.id} />
+            <button className={small}>Take off the board</button>
+          </form>
+        )}
+        {sp.deleteQuestion === q.id ? (
+          <form action={deleteQuestion} className="flex items-center gap-2">
+            <input type="hidden" name="id" value={q.id} />
+            <input type="hidden" name="confirm" value="yes" />
+            <button className={danger}>Yes, delete for good</button>
+            <Link href={`/admin/community#cq-${q.id}`} className="text-sm underline">
+              Cancel
+            </Link>
+          </form>
+        ) : (
+          <form action={deleteQuestion}>
+            <input type="hidden" name="id" value={q.id} />
+            <button className={small}>Delete</button>
           </form>
         )}
       </div>
@@ -370,16 +456,19 @@ export default async function AdminCommunity({ searchParams }: Props) {
 
       <section id="review" className="mt-10 scroll-mt-6">
         <h2 className={H2} style={DISPLAY}>
-          Waiting for review ({pending.length + praisePending.length})
+          Waiting for review ({pending.length + praisePending.length + questionsPending.length})
         </h2>
         <p className="mt-1 text-sm text-muted">
           New requests, approved ones a member has reported, and new praise updates on answered prayers. Nothing here is
           shown to members yet.
         </p>
-        {pending.length + praisePending.length === 0 ? (
+        {pending.length + praisePending.length + questionsPending.length === 0 ? (
           <p className="mt-4 text-muted">Nothing waiting.</p>
         ) : (
           <ul className="mt-4 space-y-3">
+            {questionsPending.map((q) => (
+              <QuestionRow key={q.id} q={q} />
+            ))}
             {praisePending.map((a) => (
               <AnswerRow key={a.request_id} a={a} />
             ))}
@@ -387,6 +476,34 @@ export default async function AdminCommunity({ searchParams }: Props) {
               <RequestRow key={r.id} r={r} actions={["approve", "reject"]} />
             ))}
           </ul>
+        )}
+      </section>
+
+      <section id="questions" className="mt-14 scroll-mt-6">
+        <h2 className={H2} style={DISPLAY}>
+          Ask Pastor Richmond ({questionsPublished.length} answered)
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          New questions are in &ldquo;Waiting for review&rdquo; above. Answered ones are shown to members, newest first.
+        </p>
+        {questionsPublished.length === 0 ? (
+          <p className="mt-4 text-muted">None answered yet.</p>
+        ) : (
+          <ul className="mt-4 space-y-3">
+            {questionsPublished.map((q) => (
+              <QuestionRow key={q.id} q={q} />
+            ))}
+          </ul>
+        )}
+        {questionsDeclined.length > 0 && (
+          <details className="mt-4">
+            <summary className="cursor-pointer text-sm font-semibold text-gold-text">Declined ({questionsDeclined.length})</summary>
+            <ul className="mt-3 space-y-3">
+              {questionsDeclined.map((q) => (
+                <QuestionRow key={q.id} q={q} />
+              ))}
+            </ul>
+          </details>
         )}
       </section>
 
@@ -465,6 +582,14 @@ export default async function AdminCommunity({ searchParams }: Props) {
                 <p className="mt-1 whitespace-pre-line rounded-lg border-l-2 border-gold bg-cream px-3 py-2 leading-relaxed text-ink">
                   {p.join_message}
                 </p>
+                <p className="mt-3 text-sm">
+                  <span className="text-muted">Community Guidelines: </span>
+                  {p.guidelines_agreed_at ? (
+                    <>agreed {shortDate(p.guidelines_agreed_at)}</>
+                  ) : (
+                    <span className="text-gold-text">not yet (asked next time they open the community)</span>
+                  )}
+                </p>
                 <div className="mt-3 flex flex-wrap items-center gap-2">
                   {p.is_banned && <span className="text-sm font-semibold text-danger">Banned from posting</span>}
                   <form action={setBanned}>
@@ -474,6 +599,25 @@ export default async function AdminCommunity({ searchParams }: Props) {
                       {p.is_banned ? "Allow posting again" : "Ban from posting"}
                     </button>
                   </form>
+                  {sp.removeMember === p.user_id ? (
+                    <form action={removeMember} className="flex flex-wrap items-center gap-2 rounded-lg bg-danger-bg px-3 py-2 text-sm">
+                      <input type="hidden" name="user_id" value={p.user_id} />
+                      <input type="hidden" name="confirm" value="yes" />
+                      <span className="text-danger">
+                        Remove {p.full_name}? This deletes their community details and every post, and {p.email} cannot
+                        rejoin. A membership, purchase or gift is not affected.
+                      </span>
+                      <button className={danger}>Yes, remove them</button>
+                      <Link href={`/admin/community#m-${p.user_id}`} className="underline">
+                        Cancel
+                      </Link>
+                    </form>
+                  ) : (
+                    <form action={removeMember}>
+                      <input type="hidden" name="user_id" value={p.user_id} />
+                      <button className={`${small} text-danger`}>Remove member…</button>
+                    </form>
+                  )}
                 </div>
               </li>
             ))}
