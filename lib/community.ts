@@ -39,6 +39,8 @@ export type CommunityProfile = {
   is_banned: boolean;
   mailerlite_synced_at: string | null;
   mailerlite_error: string | null;
+  welcome_sent_at: string | null;
+  welcome_error: string | null;
 };
 
 export type Announcement = {

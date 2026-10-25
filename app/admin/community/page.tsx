@@ -21,6 +21,7 @@ import {
   deletePrayer,
   rejectPrayer,
   retryAnnouncementEmail,
+  resendWelcome,
   retryMailerLite,
   saveAnnouncement,
   saveGathering,
@@ -368,6 +369,24 @@ export default async function AdminCommunity({ searchParams }: Props) {
                   <dd>{p.phone ?? <span className="text-muted">Not given</span>}</dd>
                   <dt className="text-muted">MailerLite</dt>
                   <dd>{p.mailerlite_synced_at ? "Added" : <span className="font-semibold text-danger">Not added yet (see below)</span>}</dd>
+                  <dt className="text-muted">Welcome email</dt>
+                  <dd className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    {p.welcome_sent_at ? (
+                      <span>Sent {shortDate(p.welcome_sent_at)}</span>
+                    ) : p.welcome_error ? (
+                      <span className="font-semibold text-danger">
+                        Failed <span className="font-normal break-words">({p.welcome_error})</span>
+                      </span>
+                    ) : (
+                      <span className="text-muted">Not sent (joined before welcome emails began)</span>
+                    )}
+                    {!p.welcome_sent_at && (
+                      <form action={resendWelcome}>
+                        <input type="hidden" name="user_id" value={p.user_id} />
+                        <button className={small}>{p.welcome_error ? "Resend" : "Send"}</button>
+                      </form>
+                    )}
+                  </dd>
                 </dl>
                 <p className="mt-3 text-[13px] uppercase tracking-[0.12em] text-gold-text">About them and why they joined</p>
                 <p className="mt-1 whitespace-pre-line rounded-lg border-l-2 border-gold bg-cream px-3 py-2 leading-relaxed text-ink">

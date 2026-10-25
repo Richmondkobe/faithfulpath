@@ -91,7 +91,7 @@ async function createProfile(
     await Promise.allSettled([
       syncCommunityMember({ userId, email, fullName: d.fullName, country: d.country }),
       notifyNewMember({ fullName: d.fullName, email, country: d.country, phone: d.phone || null, message: d.message }),
-      sendWelcomeEmail({ email, fullName: d.fullName }),
+      sendWelcomeEmail({ userId, email, fullName: d.fullName }),
     ]);
   });
   revalidatePath("/admin/community");

@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { requireAdmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { syncCommunityMember } from "@/lib/community-sync";
+import { sendWelcomeEmail } from "@/lib/community-welcome";
 import { emailCommunityGroup } from "@/lib/mailerlite-community";
 import { announcementEmailHtml } from "@/lib/announcement-email";
 import type { Announcement, CommunityProfile } from "@/lib/community";
@@ -148,6 +149,17 @@ export async function retryMailerLite(formData: FormData) {
   }
   if (failures) failed("Adding to MailerLite", `${failures} of ${people.length} still failed; the reason is shown next to each`);
   done(people.length === 1 ? "Added to MailerLite." : `${people.length} added to MailerLite.`, "#mailerlite");
+}
+
+/** Sends (or sends again) one member's welcome email. */
+export async function resendWelcome(formData: FormData) {
+  const supabase = await db();
+  const userId = String(formData.get("user_id") ?? "");
+  const { data, error } = await supabase.from("community_profiles").select("email, full_name").eq("user_id", userId).single();
+  if (error) failed("Sending the welcome email", error.message);
+  const e = await sendWelcomeEmail({ userId, email: data.email, fullName: data.full_name });
+  if (e) failed("Sending the welcome email", e);
+  done(`Welcome email sent to ${data.email}.`, `#m-${userId}`);
 }
 
 /* ----------------------------------------------------------- announcements */

@@ -85,13 +85,29 @@ export function welcomeEmail(firstName: string, when: string | null) {
   return { subject, text, html };
 }
 
-/** Sends the welcome email. Never throws: the person has already joined. */
-export async function sendWelcomeEmail(p: { email: string; fullName: string }): Promise<boolean> {
+/**
+ * Sends the welcome email and records on the profile whether it went, for
+ * Admin -> Community. Never throws: the person has already joined. Returns the
+ * error, or null when it was sent.
+ *
+ * The record is written with the service-role client, as the MailerLite one
+ * is: this runs after the response, with no cookie jar to refresh a session
+ * into. It writes only the two welcome columns of this one profile.
+ */
+export async function sendWelcomeEmail(p: { userId: string; email: string; fullName: string }): Promise<string | null> {
+  const error = await deliver(p);
+  if (error) console.error(`Welcome email not sent: ${error}`);
+  const { error: saveError } = await supabaseAdmin
+    .from("community_profiles")
+    .update(error ? { welcome_error: error } : { welcome_sent_at: new Date().toISOString(), welcome_error: null })
+    .eq("user_id", p.userId);
+  if (saveError) console.error("Welcome email status not saved:", saveError.message);
+  return error;
+}
+
+async function deliver(p: { email: string; fullName: string }): Promise<string | null> {
   const key = process.env.RESEND_API_KEY;
-  if (!key) {
-    console.error("RESEND_API_KEY is not set — new community member not sent a welcome email.");
-    return false;
-  }
+  if (!key) return "RESEND_API_KEY is not set for this site.";
   const firstName = firstNameOf(p.fullName) || "friend";
   const { subject, text, html } = welcomeEmail(firstName, await nextGatheringWhen());
   try {
@@ -102,12 +118,11 @@ export async function sendWelcomeEmail(p: { email: string; fullName: string }): 
       body: JSON.stringify({ from: FROM, to: [p.email], reply_to: REPLY_TO, subject, text, html }),
     });
     if (!res.ok) {
-      console.error("Resend error (welcome email):", res.status, await res.text());
-      return false;
+      const body = (await res.json().catch(() => ({}))) as { message?: string };
+      return `Resend ${res.status}: ${body.message ?? "no detail"}`;
     }
-    return true;
+    return null;
   } catch (err) {
-    console.error("Resend request failed (welcome email):", err);
-    return false;
+    return `Resend did not answer: ${err instanceof Error ? err.message : "network error"}`;
   }
 }
