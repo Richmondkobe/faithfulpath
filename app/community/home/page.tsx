@@ -130,14 +130,27 @@ export default async function CommunityHome({ searchParams }: Props) {
           </li>
         </ul>
 
+        {/* For anyone without a live paid membership (Richmond, 26 October 2026). */}
         {!viewer.paidMember && (
-          <p className="mt-8 text-[15px] leading-relaxed text-muted">
-            Looking for the courses? They are in the{" "}
-            <Link href="/membership" className="font-semibold text-gold-text underline underline-offset-4">
-              membership
-            </Link>{" "}
-            (US$19 a month), which is separate from the free community.
-          </p>
+          <section
+            aria-labelledby="courses"
+            className="mt-4 rounded-2xl border border-gold-line/60 bg-paper p-6"
+          >
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Go deeper</p>
+            <h2 id="courses" className="mt-2 text-2xl text-navy" style={DISPLAY}>
+              Courses with Pastor Richmond
+            </h2>
+            <p className="mt-2 leading-relaxed">
+              Five Christian courses on rest, worry, dating, marriage and church leadership. Learn at your own pace.
+              US$19 a month, cancel any time.
+            </p>
+            <Link
+              href="/membership"
+              className="mt-5 inline-flex min-h-12 items-center justify-center rounded-xl bg-gold px-7 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
+            >
+              See the membership
+            </Link>
+          </section>
         )}
 
         <section aria-labelledby="profile" className="mt-14 border-t border-line pt-8">
