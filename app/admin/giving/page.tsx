@@ -126,7 +126,7 @@ export default async function AdminGiving() {
         {allGifts.length === 0 ? (
           <p className="mt-4 text-muted">No gifts yet.</p>
         ) : (
-          <div className="mt-4 overflow-x-auto rounded-xl border border-line bg-paper">
+          <div tabIndex={0} role="region" aria-label="All gifts" className="mt-4 overflow-x-auto rounded-xl border border-line bg-paper">
             <table className="w-full text-left text-sm">
               <thead className="border-b border-line text-[13px] uppercase tracking-[0.12em] text-gold-text">
                 <tr>
