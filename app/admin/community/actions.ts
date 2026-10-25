@@ -96,12 +96,29 @@ export async function saveGathering(formData: FormData) {
   if (!startsAt) failed("Saving the gathering", "it needs a date and time");
   if (!/^https:\/\/\S+$/.test(zoomUrl)) failed("Saving the gathering", "the Zoom link must start with https://");
 
-  const fields = { title, description: description || null, starts_at: startsAt, zoom_url: zoomUrl };
+  const repeats = formData.get("repeats_weekly") === "on";
+  const fields = { title, description: description || null, starts_at: startsAt, zoom_url: zoomUrl, repeats_weekly: repeats };
   const { error } = id
     ? await supabase.from("community_gatherings").update(fields).eq("id", id)
     : await supabase.from("community_gatherings").insert(fields);
   if (error) failed("Saving the gathering", error.message);
   done("Gathering saved.", "#gatherings");
+}
+
+/** "Skip one week", or undo it: one Bangkok date, the series carries on. */
+export async function toggleSkipWeek(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  const date = String(formData.get("date") ?? "");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) failed("Skipping a week", "that date is not valid");
+  const { data, error } = await supabase.from("community_gatherings").select("skipped_dates").eq("id", id).single();
+  if (error) failed("Skipping a week", error.message);
+  const current = (data.skipped_dates ?? []) as string[];
+  const skipping = !current.includes(date);
+  const next = skipping ? [...current, date].sort() : current.filter((d) => d !== date);
+  const { error: saveError } = await supabase.from("community_gatherings").update({ skipped_dates: next }).eq("id", id);
+  if (saveError) failed("Skipping a week", saveError.message);
+  done(skipping ? "That week is skipped. The series carries on the week after." : "That week is back on.", `#g-${id}`);
 }
 
 export async function deleteGathering(formData: FormData) {

@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getCommunityViewer } from "@/lib/community-db";
-import { GATHERING_MINUTES, type Gathering } from "@/lib/community";
+import { listGatherings } from "@/lib/community-db";
+import { GATHERING_MINUTES, isOccurrenceOf, type Gathering } from "@/lib/community";
 
 /**
  * "Add to calendar": the gathering as an .ics file, for community members
@@ -12,11 +13,19 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/community/ga
   const viewer = await getCommunityViewer();
   if (!viewer?.inCommunity) return NextResponse.redirect(new URL("/community/sign-in", request.url));
 
-  const { data, error } = await viewer.supabase.from("community_gatherings").select("*").eq("id", id).maybeSingle();
-  if (error || !data) return new NextResponse("Not found", { status: 404 });
-  const g = data as Gathering;
+  const all = await listGatherings(viewer.supabase).catch(() => [] as Gathering[]);
+  const g = all.find((x) => x.id === id);
+  if (!g) return new NextResponse("Not found", { status: 404 });
 
-  const start = new Date(g.starts_at);
+  // The week asked for: one of this gathering's own coming dates, never
+  // a skipped one. Without it, the next one.
+  const asked = request.nextUrl.searchParams.get("start");
+  const startIso = asked && isOccurrenceOf(g, all, asked, Date.now()) ? asked : null;
+  if (!startIso) return new NextResponse("That gathering is not on the calendar.", { status: 404 });
+
+  // Just this week, not a repeating entry: a skipped week or a change to the
+  // series would not reach a calendar that had already saved one.
+  const start = new Date(startIso);
   const end = new Date(start.getTime() + GATHERING_MINUTES * 60_000);
   const description = [g.description?.trim(), `Join on Zoom: ${g.zoom_url}`].filter(Boolean).join("\n\n");
 
@@ -27,7 +36,7 @@ export async function GET(request: NextRequest, ctx: RouteContext<"/community/ga
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:gathering-${g.id}@faithfulpathcommunity.com`,
+    `UID:gathering-${g.id}-${icsDate(start)}@faithfulpathcommunity.com`,
     `DTSTAMP:${icsDate(new Date(g.updated_at))}`,
     `DTSTART:${icsDate(start)}`,
     `DTEND:${icsDate(end)}`,

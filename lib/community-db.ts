@@ -6,7 +6,7 @@ import { getMemberByEmail, isActive } from "@/lib/members";
 import {
   COMMUNITY_HOME,
   COMMUNITY_SIGN_IN,
-  GATHERING_GRACE_MINUTES,
+  nextOccurrence,
   type Announcement,
   type CommunityProfile,
   type Gathering,
@@ -157,16 +157,14 @@ export async function loadAnnouncements(
 
 /* --------------------------------------------------------------- gathering */
 
-/** The next gathering, including one that started in the last 90 minutes. */
-export async function nextGathering(db: SupabaseClient): Promise<Gathering | null> {
-  const since = new Date(Date.now() - GATHERING_GRACE_MINUTES * 60_000).toISOString();
-  const { data, error } = await db
-    .from("community_gatherings")
-    .select("*")
-    .gte("starts_at", since)
-    .order("starts_at", { ascending: true })
-    .limit(1)
-    .maybeSingle();
+/** Every gathering. A handful at most: the repeats are worked out, not stored. */
+export async function listGatherings(db: SupabaseClient): Promise<Gathering[]> {
+  const { data, error } = await db.from("community_gatherings").select("*").order("starts_at", { ascending: true });
   if (error) throw new Error(`Could not load the gathering: ${error.message}`);
-  return (data as Gathering | null) ?? null;
+  return (data ?? []) as Gathering[];
+}
+
+/** The next gathering that takes place (one that started in the last 90 minutes counts). */
+export async function nextGathering(db: SupabaseClient) {
+  return nextOccurrence(await listGatherings(db), Date.now());
 }

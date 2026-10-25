@@ -4,8 +4,10 @@ import { requireAdmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isMissingCommunityTable } from "@/lib/community-db";
 import {
+  bangkokDate,
   prayerName,
   shortDate,
+  upcomingOccurrences,
   type Announcement,
   type CommunityProfile,
   type Gathering,
@@ -23,6 +25,7 @@ import {
   saveAnnouncement,
   saveGathering,
   setBanned,
+  toggleSkipWeek,
 } from "@/app/admin/community/actions";
 
 // Emailing an announcement waits for MailerLite.
@@ -65,8 +68,11 @@ function bangkokLocal(iso: string): string {
   return `${get("year")}-${get("month")}-${get("day")}T${get("hour")}:${get("minute")}`;
 }
 
-/** Whether a gathering has started. This page is rendered per request, never cached. */
-const isPast = (iso: string) => new Date(iso).getTime() < Date.now();
+/** A gathering's coming dates. This page is rendered per request, never cached. */
+const coming = (g: Gathering, all: Gathering[], count: number) => upcomingOccurrences(g, all, Date.now(), count);
+
+const bangkokDay = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "Asia/Bangkok" });
 
 const bangkokLabel = (iso: string) =>
   new Date(iso).toLocaleString("en-GB", { dateStyle: "full", timeStyle: "short", timeZone: "Asia/Bangkok" });
@@ -167,6 +173,15 @@ function GatheringForm({ g }: { g?: Gathering }) {
           />
         </div>
       </div>
+      <label className="flex min-h-11 items-center gap-2 text-navy">
+        <input
+          type="checkbox"
+          name="repeats_weekly"
+          defaultChecked={g ? g.repeats_weekly : true}
+          className="h-5 w-5 accent-[#a97a29]"
+        />
+        Repeats every week
+      </label>
       <button type="submit" className={gold}>
         {g ? "Save changes" : "Add gathering"}
       </button>
@@ -476,8 +491,10 @@ export default async function AdminCommunity({ searchParams }: Props) {
           Weekly Gathering
         </h2>
         <p className="mt-1 text-sm text-muted">
-          Enter the time in Bangkok time. Members see it in their own time zone. The next one still to come (or
-          started in the last 90 minutes) is the one shown.
+          Enter the time in Bangkok time. Members see it in their own time zone. With &ldquo;Repeats every
+          week&rdquo; ticked, once a gathering ends it is shown again one week later at the same Bangkok time, with
+          the same title, description and Zoom link, until you delete it or add a different gathering (the series
+          then ends where the new one starts). &ldquo;Skip&rdquo; leaves out one week and keeps the series.
         </p>
         <div className="mt-4 rounded-xl border border-gold-line/60 bg-paper p-5">
           <h3 className="font-semibold text-navy">Add a gathering</h3>
@@ -489,12 +506,40 @@ export default async function AdminCommunity({ searchParams }: Props) {
           <ul className="mt-4 space-y-3">
             {meetings.map((g) => (
               <li id={`g-${g.id}`} key={g.id} className="scroll-mt-6 rounded-xl border border-line bg-paper p-4">
-                <p className="font-semibold text-navy">
-                  {g.title}{" "}
-                  <span className="font-normal text-muted">
-                    · {bangkokLabel(g.starts_at)} Bangkok{isPast(g.starts_at) ? " · past" : ""}
-                  </span>
-                </p>
+                {(() => {
+                  const dates = coming(g, meetings, g.repeats_weekly ? 5 : 1);
+                  return (
+                    <>
+                      <p className="font-semibold text-navy">
+                        {g.title}{" "}
+                        <span className="font-normal text-muted">
+                          · {g.repeats_weekly ? "every week from " : ""}
+                          {bangkokLabel(g.starts_at)} Bangkok
+                          {dates.length === 0 ? (g.repeats_weekly ? " · series ended" : " · past") : ""}
+                        </span>
+                      </p>
+                      {g.repeats_weekly && dates.length > 0 && (
+                        <div className="mt-3">
+                          <p className="text-[13px] uppercase tracking-[0.12em] text-gold-text">Coming weeks</p>
+                          <ul className="mt-2 flex flex-wrap gap-2">
+                            {dates.map((o) => (
+                              <li key={o.start}>
+                                <form action={toggleSkipWeek} className="flex items-center gap-2 rounded-lg border border-line bg-cream px-3 py-1 text-sm">
+                                  <input type="hidden" name="id" value={g.id} />
+                                  <input type="hidden" name="date" value={bangkokDate(o.start)} />
+                                  <span className={o.skipped ? "text-muted line-through" : "text-navy"}>{bangkokDay(o.start)}</span>
+                                  <button className="min-h-9 text-[13px] font-semibold text-gold-text underline underline-offset-4">
+                                    {o.skipped ? "Undo skip" : "Skip"}
+                                  </button>
+                                </form>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
                 <details className="mt-2">
                   <summary className="cursor-pointer text-sm font-semibold text-gold-text">Edit</summary>
                   <div className="mt-3">

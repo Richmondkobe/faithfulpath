@@ -3,6 +3,7 @@ import CommunityNav from "@/components/community/CommunityNav";
 import LocalTime from "@/components/community/LocalTime";
 import { DISPLAY, quietButtonClass } from "@/components/community/styles";
 import { nextGathering, requireCommunity } from "@/lib/community-db";
+import { shortDate } from "@/lib/community";
 
 export const metadata: Metadata = {
   title: "Weekly Gathering",
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 /** The next gathering. The Zoom link is only ever in this signed-in page and its calendar file. */
 export default async function WeeklyGathering() {
   const viewer = await requireCommunity();
-  const g = await nextGathering(viewer.supabase);
+  const { next, skippedBefore } = await nextGathering(viewer.supabase);
+  const g = next?.gathering ?? null;
 
   return (
     <>
@@ -25,14 +27,23 @@ export default async function WeeklyGathering() {
           Each week we meet online on Zoom to pray and open the Bible together. Come as you are.
         </p>
 
-        {g ? (
+        {skippedBefore.length > 0 && (
+          <p className="mt-8 rounded-2xl border border-line bg-paper px-5 py-4 leading-relaxed">
+            There is no gathering on {skippedBefore.map((o) => shortDate(o.start)).join(" or ")}.
+            {g ? " We meet again on the date below." : ""}
+          </p>
+        )}
+
+        {g && next ? (
           <section aria-labelledby="next" className="mt-8 rounded-2xl bg-navy p-5 sm:p-7">
-            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft">Next gathering</p>
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft">
+              Next gathering{g.repeats_weekly ? " · every week" : ""}
+            </p>
             <h2 id="next" className="mt-2 text-2xl text-sun sm:text-3xl" style={DISPLAY}>
               {g.title}
             </h2>
             <div className="mt-5 rounded-xl bg-paper px-4 py-4">
-              <LocalTime iso={g.starts_at} />
+              <LocalTime iso={next.start} />
             </div>
             {g.description && <p className="mt-5 whitespace-pre-line leading-relaxed text-sand">{g.description}</p>}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -44,7 +55,7 @@ export default async function WeeklyGathering() {
               >
                 Join on Zoom
               </a>
-              <a href={`/community/gathering/${g.id}/calendar`} className={`${quietButtonClass} min-h-14 text-[15px]`}>
+              <a href={`/community/gathering/${g.id}/calendar?start=${encodeURIComponent(next.start)}`} className={`${quietButtonClass} min-h-14 text-[15px]`}>
                 Add to calendar
               </a>
             </div>
