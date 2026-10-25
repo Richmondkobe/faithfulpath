@@ -12,6 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         "/login",
         // The signed-in community pages. They also say noindex and send
         // anyone signed out to the sign-in page.
+        "/account",
         "/community/home",
         "/community/prayer",
         "/community/gathering",

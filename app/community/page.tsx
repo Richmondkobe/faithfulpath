@@ -33,6 +33,26 @@ const GETS = [
   },
 ];
 
+/** The statement of faith: each belief's opening words in bold, then the rest. */
+const BELIEFS: [string, string][] = [
+  ["The Bible", " is the inspired Word of God, true and our final authority for faith and life."],
+  ["There is one God,", " eternally existing as Father, Son and Holy Spirit."],
+  [
+    "Jesus Christ",
+    " is fully God and fully man. He was born of a virgin, lived without sin, died on the cross for our sins, rose bodily from the dead, and will return.",
+  ],
+  ["Salvation", " is a gift of God's grace, received through faith in Jesus Christ alone, not by our own works."],
+  [
+    "The Holy Spirit",
+    " lives in every believer, giving new life, power for holy living, and gifts to serve the church.",
+  ],
+  [
+    "The Church",
+    " is the family of believers, called to worship together, care for one another, and make disciples of all nations.",
+  ],
+  ["Every believer", " is called to grow and multiply, becoming more like Christ and helping others follow Him."],
+];
+
 /**
  * /community — the public welcome page for the free community.
  *
@@ -112,12 +132,22 @@ export default function Community() {
           </p>
         </section>
 
-        <section aria-labelledby="believe" className="mt-14 rounded-2xl border border-dashed border-gold-line bg-sand px-5 py-6">
+        <section aria-labelledby="believe" className="mt-14">
           <h2 id="believe" className="text-2xl text-navy" style={DISPLAY}>
             What we believe
           </h2>
-          {/* TODO (Richmond): write the short statement of faith here. */}
-          <p className="mt-3 font-semibold text-danger">TODO: Pastor Richmond to write the statement of faith.</p>
+          {/* Richmond's wording, 26 October 2026, word for word. */}
+          <ul className="mt-5 space-y-3">
+            {BELIEFS.map(([lead, rest]) => (
+              <li key={lead} className="flex gap-3 leading-relaxed">
+                <span aria-hidden="true" className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                <span>
+                  <strong className="font-semibold text-navy">{lead}</strong>
+                  {rest}
+                </span>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section aria-label="Join" className="mt-14 rounded-2xl bg-navy px-5 py-10 text-center">
