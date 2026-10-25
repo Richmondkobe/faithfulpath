@@ -25,7 +25,7 @@ export default async function CommunityJoin() {
         Join free
       </h1>
       <p className="mt-5 text-lg leading-relaxed">
-        Tell us your name and country, and we will email you a 6-digit code to type in. There is no password and
+        Tell us a little about yourself, and we will email you a 6-digit code to type in. There is no password and
         no card.
       </p>
       <JoinForm mode="join" stamp={makeFormStamp()} restartHref="/community/join" />

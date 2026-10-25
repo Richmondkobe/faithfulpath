@@ -80,7 +80,7 @@ export default function DetailsFields({
       </div>
       {withMessage && (
         <div>
-          <label htmlFor="join_message" className={`${labelClass} normal-case tracking-normal text-[15px]`}>
+          <label htmlFor="join_message" className="block text-[15px] font-semibold leading-snug text-gold-text">
             {JOIN_MESSAGE_LABEL}
           </label>
           <textarea
