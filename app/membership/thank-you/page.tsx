@@ -32,7 +32,9 @@ export default async function MembershipThankYou({
       // membership Stripe has confirmed, paid in the last day, to the address
       // it was paid with.
       const recent = Date.now() / 1000 - session.created < 24 * 60 * 60;
-      if (paidEmail && session.mode === "subscription" && session.status === "complete" && recent) {
+      // Not for a monthly gift, which is a subscription but not a membership.
+      const isGift = session.metadata?.type === "gift";
+      if (paidEmail && !isGift && session.mode === "subscription" && session.status === "complete" && recent) {
         codeSent = await sendSignInCode(paidEmail);
       }
     } catch (err) {

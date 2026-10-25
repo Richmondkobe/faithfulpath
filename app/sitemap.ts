@@ -43,6 +43,7 @@ const STATIC_PATHS = [
   "/talk-to-a-pastor",
   // The free community's public welcome page. Its signed-in pages are not here.
   "/community",
+  "/give",
   "/contact",
   "/help",
   "/videos",

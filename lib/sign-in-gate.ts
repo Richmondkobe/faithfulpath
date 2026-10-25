@@ -52,6 +52,8 @@ async function paidJustNow(email: string): Promise<boolean> {
   });
 
   for (const session of sessions.data as Stripe.Checkout.Session[]) {
+    // A monthly gift is a subscription but not a membership: nothing to sign in to.
+    if (session.metadata?.type === "gift") continue;
     if (session.mode === "subscription") return true;
     if (isCourseSession(session) && session.payment_status === "paid") {
       await recordCoursePurchase(session);

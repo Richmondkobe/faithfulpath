@@ -91,6 +91,11 @@ export async function syncMemberFromSubscription(
     expand: ["customer"],
   });
 
+  // A monthly gift to the ministry is a subscription too, but it is not a
+  // membership and must never create or change a members row. The webhook
+  // sends gifts elsewhere; this is the backstop.
+  if (subscription.metadata?.type === "gift") return;
+
   const customer = subscription.customer as Stripe.Customer | Stripe.DeletedCustomer;
   const customerId = typeof customer === "string" ? customer : customer.id;
   const email = typeof customer === "string" ? null : customerEmail(customer);

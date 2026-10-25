@@ -111,7 +111,7 @@ export default async function Start() {
         </section>
       )}
 
-      <section aria-label="Membership, pastoral conversations and the community" className="mt-10 space-y-4">
+      <section aria-label="Membership, pastoral conversations, the community and giving" className="mt-10 space-y-4">
         <TrackedLink
           href="/membership"
           event="start_membership"
@@ -157,6 +157,20 @@ export default async function Start() {
             A place to grow, pray and walk with others: a Prayer Wall and a weekly online gathering.
           </p>
           <span className="mt-4 inline-block font-semibold text-gold-soft">Join free ›</span>
+        </TrackedLink>
+
+        <TrackedLink
+          href="/give"
+          event="start_give"
+          className="flex items-center justify-between gap-4 rounded-2xl border border-gold-line/60 bg-paper px-5 py-4 transition-colors hover:border-gold-line active:bg-cream"
+        >
+          <span>
+            <span className="block text-lg text-navy" style={DISPLAY}>
+              Support the ministry
+            </span>
+            <span className="mt-0.5 block text-[15px] text-muted">Give monthly or once.</span>
+          </span>
+          <span aria-hidden="true" className="text-xl text-gold-text">›</span>
         </TrackedLink>
       </section>
     </main>

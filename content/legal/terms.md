@@ -1,8 +1,8 @@
 # Terms of Purchase and Use
 
-*Last updated: 27 September 2026*
+*Last updated: 26 October 2026*
 
-These terms cover the website faithfulpathcommunity.com, the digital books sold on it, and the Faithful Path membership. Pastoral sessions have their own page: [Pastoral Conversation Terms](/pastoral-terms). The site is operated by Richmond Kobe, trading as Faithful Path Community, in Thailand. By buying a book or joining the membership you agree to these terms.
+These terms cover the website faithfulpathcommunity.com, the digital books sold on it, the Faithful Path membership, and gifts to the ministry. Pastoral sessions have their own page: [Pastoral Conversation Terms](/pastoral-terms). The site is operated by Richmond Kobe, trading as Faithful Path Community, in Thailand. By buying a book, joining the membership or giving a gift you agree to these terms.
 
 ## 1. Who this is for
 
@@ -36,31 +36,43 @@ At checkout you are asked to agree to immediate delivery and to waive any statut
 
 **Your content.** Journal entries, reflections and questions remain yours. We store them so that you can return to them and do not use them for any other purpose. See the [Privacy Policy](/privacy).
 
-## 4. Not a substitute for professional care
+## 4. Gifts
+
+**What a gift is.** Gifts made on the [Support the Ministry](/give) page support the work of Faithful Path Community: teaching, praying with people, and the community. A gift is voluntary. It does not purchase any product or service, and it does not give access to anything: it is not a membership, it does not open a course, and it is not payment for a pastoral session.
+
+**Not tax-deductible.** Faithful Path Community is not yet a registered charity, so gifts are not tax-deductible.
+
+**Monthly gifts.** A Ministry Partner gift is taken every month on the same date, in US dollars, until you cancel. You can cancel at any time, with no notice and no fee, through the "Manage or cancel my monthly gift" button on the thank-you page, or by writing to us. No further gifts are taken after you cancel.
+
+**Receipts.** Stripe, our payment processor, emails you a receipt for every gift, including each monthly gift.
+
+**Mistakes and refunds.** If you gave by mistake, for example the wrong amount, the same gift twice, or a monthly gift you meant to cancel, write to info@faithfulpathcommunity.com within fourteen days of the gift and we will refund it. Gifts are not refunded after fourteen days.
+
+## 5. Not a substitute for professional care
 
 The books, the membership and everything on this site are pastoral and spiritual teaching. They are not psychotherapy, medical treatment, legal advice or emergency help, and they do not replace them. If you are unwell, in crisis or in danger, please contact a doctor, a qualified counsellor or your local emergency number. The course includes a "Finding Help Where You Live" page with international helplines.
 
-## 5. Intellectual property
+## 6. Intellectual property
 
 The text, recordings, workbooks and design on this site belong to Richmond Kobe unless otherwise stated. Scripture quotations are from the English Standard Version (ESV), used by permission of Crossway; the full notice appears where quotations are used. You may quote short passages from articles with attribution and a link.
 
-## 6. Availability
+## 7. Availability
 
 We aim to keep the site and membership available at all times but cannot guarantee it. Planned maintenance will be brief. If the membership were ever discontinued, members would be told at least thirty days in advance and would keep access to their journal exports.
 
-## 7. Liability
+## 8. Liability
 
 To the extent the law allows, our liability to you is limited to the amount you have paid us in the twelve months before the claim. Nothing in these terms limits liability for anything the law does not permit to be limited.
 
-## 8. Governing law
+## 9. Governing law
 
 These terms are governed by the laws of Thailand. If you live elsewhere, nothing in these terms takes away consumer rights that the law of your own country gives you and does not allow you to give up.
 
-## 9. Changes
+## 10. Changes
 
 When these terms change, the date at the top is updated. Changes that affect an active membership will be announced by email before they take effect.
 
-## 10. Contact
+## 11. Contact
 
 Richmond Kobe, trading as Faithful Path Community, Thailand
 info@faithfulpathcommunity.com

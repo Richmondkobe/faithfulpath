@@ -41,6 +41,12 @@ export default async function AdminLayout({
                 Community
               </Link>
               <Link
+                href="/admin/giving"
+                className="text-muted transition-colors hover:text-gold-text"
+              >
+                Giving
+              </Link>
+              <Link
                 href="/admin/outreach"
                 className="text-muted transition-colors hover:text-gold-text"
               >

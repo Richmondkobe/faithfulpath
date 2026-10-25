@@ -22,6 +22,8 @@ Faithful Path Community is operated by Richmond Kobe, trading as Faithful Path C
 
 **Membership.** Your email address (used to sign you in with a one-time code), your subscription status, your progress through the course, your answers to the reflection prompts and check-ins, your route and retreat choices, and the name you ask to appear on your completion certificate. Written questions you send to Richmond through the membership are stored with your account.
 
+**Gifts.** If you give through the Support the Ministry page, you enter your card details directly with Stripe, our payment processor; we never see or store your card number. From Stripe we receive your name, your email address, the amount, whether it is a one-time or a monthly gift, and the date, and we keep a record of each gift. Richmond is emailed these details for every new gift and every new monthly partner, so that he can thank you. A gift is kept entirely separate from any book purchase or membership.
+
 **The free community.** If you join, we keep your full name, your country, your email address (used to sign you in with a one-time code), your phone number if you choose to give it, what you write about yourself and why you would like to join, and the date you joined. Richmond is emailed these details when you join, so that he can welcome you himself. Your phone number and your joining message are seen only by Richmond. On the Prayer Wall we keep the prayer requests you share, whether you chose to show your first name or "Anonymous", any "answered" update you add, which requests you tapped "I prayed" on, and any request you reported. Only your first name is ever shown to other members, and only on requests you choose to share with your name; your full name, country, email address, phone number and joining message are never shown to them. Who prayed for a request is not shown to anyone: other members see only the number. Every request is read by Richmond before it appears, and only signed-in community members can see the Prayer Wall; it is never shown to search engines or to visitors who are not signed in. We also add your name, country and email address (not your phone number or your message) to a "Faithful Path Community" group in MailerLite, so that we can email community announcements; every such email has an unsubscribe link. We record when you last looked at the announcements, to mark new ones.
 
 **Talk to a Pastor sessions.** Your name, email address and time zone for scheduling; your answers to the written intake questions; the notes Richmond writes before and after the session; and, if you agree at booking, a transcript of the conversation used only to write your follow-up.
@@ -43,11 +45,11 @@ Faithful Path Community is run from Thailand and used by people around the world
 | --- | --- | --- |
 | Vercel | Hosts the website | United States and global edge network |
 | Supabase | Stores member accounts, purchases, course progress, journal entries, community profiles and prayer requests | Singapore |
-| Stripe | Processes payments | United States and Europe |
+| Stripe | Processes payments and gifts, and emails receipts | United States and Europe |
 | Cal.com | Scheduling and the written intake form for sessions | United States |
 | Zoom or Google Meet | Video for sessions | United States |
 | MailerLite | Sends the newsletter and community announcements | European Union |
-| Resend | Sends sign-in codes and purchase emails, and tells Richmond when someone joins the community or a prayer request is waiting for him | United States |
+| Resend | Sends sign-in codes and purchase emails, and tells Richmond when someone joins the community, gives a gift, or a prayer request is waiting for him | United States |
 | Google Calendar | Holds session appointments | United States |
 
 Each of these companies is bound by its own privacy terms and processes information only on our instructions.
@@ -57,6 +59,7 @@ Each of these companies is bound by its own privacy terms and processes informat
 - **Newsletter:** until you unsubscribe, after which your address is removed from the list.
 - **Contact messages:** up to twelve months, then deleted.
 - **Purchase records:** for as long as required for tax and accounting, normally seven years. Download links expire but can be re-issued on request.
+- **Gift records:** for as long as required for tax and accounting, normally seven years. Cancelling a monthly gift stops further gifts; the record of gifts already made is kept for the same period.
 - **Membership:** for as long as your membership is active. If you cancel, your journal entries and reflections remain readable and exportable from your account. You may ask for the whole account to be deleted at any time.
 - **The free community:** your profile and prayer requests are kept for as long as you are a member of the community. You can delete any of your prayer requests yourself at any time, from the Prayer Wall. Requests Richmond does not approve are kept, hidden, so that a pattern of misuse can be seen, and are deleted with your profile. To delete everything, choose "Leave the community" on the community home: your profile, every prayer request you shared, your "I prayed" taps and your reports are deleted straight away, and you are taken out of the community group in MailerLite. Your sign-in, and any membership or purchase, are not affected. You can also write to us and we will do it for you.
 - **Pastoral sessions:** intake answers, session notes and any transcript are deleted twelve months after the session, and sooner if you ask. Your booking record in Cal.com is deleted at the same time.

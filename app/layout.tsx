@@ -77,6 +77,8 @@ const NAV: { href: string; label: string; wide?: boolean }[] = [
   { href: "/talk-to-a-pastor", label: "Talk to a Pastor" },
   // The free community (Richmond, 26 October 2026).
   { href: "/community", label: "Community" },
+  // Support the Ministry (Richmond, 26 October 2026).
+  { href: "/give", label: "Give" },
   { href: "/about", label: "About", wide: true },
   { href: "/contact", label: "Contact", wide: true },
 ];

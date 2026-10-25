@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
         "/community/prayer",
         "/community/gathering",
         "/guides/thank-you",
+        "/give/thank-you",
         "/guides/*/claim",
         // Not "/guides/*/sample": the samples answer with X-Robots-Tag:
         // noindex, and a crawler can only obey that if it may fetch them.

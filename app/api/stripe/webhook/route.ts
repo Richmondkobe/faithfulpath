@@ -4,6 +4,13 @@ import { stripe } from "@/lib/stripe";
 import { recordPurchase } from "@/lib/purchases";
 import { syncMemberFromSubscription } from "@/lib/members";
 import { isCourseSession, recordCoursePurchase } from "@/lib/following-jesus-access";
+import {
+  isGiftSession,
+  isGiftSubscription,
+  recordMonthlyGift,
+  recordOneTimeGift,
+  syncPartner,
+} from "@/lib/giving-server";
 
 /**
  * The webhook endpoint is pinned to its own Stripe API version, which is not the
@@ -76,6 +83,19 @@ export async function POST(request: NextRequest) {
       case "checkout.session.async_payment_succeeded": {
         const session = event.data.object as Stripe.Checkout.Session;
 
+        // Gifts first, before anything else can see them: a monthly gift is a
+        // subscription too, and must never be taken for a membership. They go
+        // to the gifts tables only (lib/giving-server.ts).
+        if (isGiftSession(session)) {
+          if (session.mode === "subscription") {
+            const id = typeof session.subscription === "string" ? session.subscription : session.subscription?.id;
+            if (id) await syncPartner(id);
+          } else {
+            await recordOneTimeGift(session);
+          }
+          break;
+        }
+
         // Guides and memberships both land here. Without this branch a
         // membership signup would be written into purchases as a guide sale.
         if (session.mode === "subscription") {
@@ -107,15 +127,28 @@ export async function POST(request: NextRequest) {
       case "customer.subscription.updated":
       case "customer.subscription.deleted": {
         const subscription = event.data.object as Stripe.Subscription;
-        await syncMemberFromSubscription(subscription.id);
+        // A monthly gift, not a membership. (syncMemberFromSubscription also
+        // refuses gifts, in case one ever reaches it another way.)
+        if (isGiftSubscription(subscription)) await syncPartner(subscription.id);
+        else await syncMemberFromSubscription(subscription.id);
         break;
       }
 
       // Renewals and failed payments.
       case "invoice.paid":
       case "invoice.payment_failed": {
-        const id = subscriptionIdFromInvoice(event.data.object as Stripe.Invoice);
-        if (id) await syncMemberFromSubscription(id);
+        const invoice = event.data.object as Stripe.Invoice;
+        const id = subscriptionIdFromInvoice(invoice);
+        if (!id) break;
+        // The invoice does not say what it is for, so the subscription is
+        // read to tell a monthly gift from a membership.
+        const subscription = await stripe.subscriptions.retrieve(id);
+        if (isGiftSubscription(subscription)) {
+          if (event.type === "invoice.paid") await recordMonthlyGift(invoice, subscription);
+          await syncPartner(id);
+        } else {
+          await syncMemberFromSubscription(id);
+        }
         break;
       }
 

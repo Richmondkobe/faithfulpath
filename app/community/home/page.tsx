@@ -153,6 +153,19 @@ export default async function CommunityHome({ searchParams }: Props) {
           </section>
         )}
 
+        <Link
+          href="/give"
+          className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-line bg-paper px-6 py-4 transition-colors hover:border-gold-line"
+        >
+          <span>
+            <span className="block text-lg text-navy" style={DISPLAY}>
+              Support the ministry
+            </span>
+            <span className="mt-0.5 block text-[15px] text-muted">Help keep the community free for everyone.</span>
+          </span>
+          <span aria-hidden="true" className="text-xl text-gold-text">›</span>
+        </Link>
+
         <section aria-labelledby="profile" className="mt-14 border-t border-line pt-8">
           <h2 id="profile" className="text-xl text-navy" style={DISPLAY}>
             {viewer.profile ? "Your details" : "Tell us about yourself"}
