@@ -5,6 +5,7 @@ import { getSessionEmail } from "@/lib/auth";
 import { getMemberByEmail, isActive, needsBilling } from "@/lib/members";
 import { getOwnedOffers } from "@/lib/following-jesus-access";
 import { SERIES_PATH } from "@/lib/following-jesus";
+import { PORTAL_LABEL, STRIPE_PORTAL_LOGIN_URL } from "@/lib/site";
 import { memberLogout } from "@/app/members/actions";
 import JournalButton from "@/components/course/JournalButton";
 import MemberQuestionForm from "@/components/MemberQuestionForm";
@@ -83,6 +84,20 @@ function ManageBilling() {
         Manage billing
       </button>
     </form>
+  );
+}
+
+/**
+ * Stripe's portal login page, for managing the membership (or a monthly gift)
+ * from any device, beside the "Manage billing" button, which opens it directly.
+ */
+function PortalLoginLink() {
+  return (
+    <p className="mt-4 text-sm">
+      <a href={STRIPE_PORTAL_LOGIN_URL} className="text-gold-text underline underline-offset-4 hover:text-navy">
+        {PORTAL_LABEL}
+      </a>
+    </p>
   );
 }
 
@@ -186,6 +201,7 @@ export default async function Members() {
             </button>
           </form>
         </div>
+        {member?.stripe_customer_id && <PortalLoginLink />}
       </main>
     );
   }
@@ -278,6 +294,7 @@ export default async function Members() {
           </button>
         </form>
       </div>
+      <PortalLoginLink />
 
       <p className="mt-6 text-sm leading-relaxed text-muted">
         Signed in as <span className="break-words">{email}</span>.

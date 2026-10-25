@@ -3,6 +3,7 @@ import Link from "next/link";
 import { stripe } from "@/lib/stripe";
 import { isGiftSession } from "@/lib/giving-server";
 import { giftAmount } from "@/lib/giving";
+import { PORTAL_LABEL, STRIPE_PORTAL_LOGIN_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Thank you",
@@ -74,16 +75,25 @@ export default async function GiveThankYou({ searchParams }: Props) {
               That page could not be opened just now. Please try again, or write to info@faithfulpathcommunity.com.
             </p>
           )}
-          <form method="POST" action="/api/give/portal" className="mt-5">
-            <input type="hidden" name="session_id" value={sessionId} />
-            <button
-              type="submit"
-              className="inline-flex min-h-12 items-center rounded-xl border border-gold-line/60 bg-white px-6 text-[15px] font-semibold text-gold-text hover:border-gold-line"
-            >
-              Manage or cancel my monthly gift
-            </button>
-          </form>
-          <p className="mt-3 text-[13px] text-muted">You may like to bookmark this page to find the button again.</p>
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <form method="POST" action="/api/give/portal">
+              <input type="hidden" name="session_id" value={sessionId} />
+              <button
+                type="submit"
+                className="inline-flex min-h-12 items-center rounded-xl border border-gold-line/60 bg-white px-6 text-[15px] font-semibold text-gold-text hover:border-gold-line"
+              >
+                Manage or cancel my monthly gift
+              </button>
+            </form>
+            <a href={STRIPE_PORTAL_LOGIN_URL} className="min-h-11 content-center text-[15px] text-gold-text underline underline-offset-4 hover:text-navy">
+              {PORTAL_LABEL}
+            </a>
+          </div>
+          <p className="mt-3 text-[13px] leading-relaxed text-muted">
+            The button opens your gift straight away from this page. The link works any time, from any device: type the
+            email you gave with and Stripe emails you a sign-in link. It is also at the foot of every page, as
+            &ldquo;Manage my subscription&rdquo;.
+          </p>
         </section>
       )}
 

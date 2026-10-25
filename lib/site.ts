@@ -7,6 +7,15 @@ export const SITE = {
   price: "US$60",
 };
 
+/**
+ * Stripe's customer portal login page (Richmond, 26 October 2026): someone
+ * types the email they pay with and Stripe emails them a link to manage or
+ * cancel a monthly gift or the membership. Change it here and every link on
+ * the site follows.
+ */
+export const STRIPE_PORTAL_LOGIN_URL = "https://billing.stripe.com/p/login/dRm6oH1Iz3Q90vK55Y1B600";
+export const PORTAL_LABEL = "Manage or cancel my monthly gift or membership";
+
 export const COUNTRIES = [
   "Canada", "United States", "Ghana", "Philippines", "Thailand",
   "Kenya", "Rwanda", "Uganda", "Nigeria", "Singapore",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { display, sans } from "@/lib/fonts";
-import { HELP_PATH, SITE } from "@/lib/site";
+import { HELP_PATH, SITE, STRIPE_PORTAL_LOGIN_URL } from "@/lib/site";
 import FooterCommunityInvite from "@/components/FooterCommunityInvite";
 import JsonLd from "@/components/JsonLd";
 import VercelAnalytics from "@/components/analytics/VercelAnalytics";
@@ -225,6 +225,15 @@ export default function RootLayout({
                 </span>
               ))}
             </nav>
+
+            {/* Stripe's portal login: managing a monthly gift or the
+                membership, from any page (Richmond, 26 October 2026). */}
+            <a
+              href={STRIPE_PORTAL_LOGIN_URL}
+              className="-mx-1 mt-2 flex min-h-[44px] w-fit items-center px-1 text-sm text-muted transition-colors hover:text-gold-text"
+            >
+              Manage my subscription
+            </a>
 
             <Link
               href="/install"

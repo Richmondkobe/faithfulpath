@@ -3,6 +3,7 @@ import Link from "next/link";
 import GiftChoice from "@/components/give/GiftChoice";
 import { socialMeta } from "@/lib/social-meta";
 import { DEFAULT_MONTHLY, DEFAULT_ONCE, GIFT_NOTE, MONTHLY_AMOUNTS, ONCE_AMOUNTS } from "@/lib/giving";
+import { STRIPE_PORTAL_LOGIN_URL } from "@/lib/site";
 
 const TITLE = "Support the Ministry";
 const DESCRIPTION =
@@ -69,6 +70,16 @@ export default async function Give({ searchParams }: Props) {
             lead="A single gift, whenever you would like to give."
           />
         </div>
+
+        <p className="mt-6 text-center text-[15px]">
+          Already a Ministry Partner?{" "}
+          <a
+            href={STRIPE_PORTAL_LOGIN_URL}
+            className="font-semibold text-gold-text underline underline-offset-4 hover:text-navy"
+          >
+            Manage or cancel your monthly gift.
+          </a>
+        </p>
 
         <p className="mx-auto mt-8 max-w-2xl rounded-xl border border-line bg-paper px-5 py-4 text-center text-[15px] leading-relaxed text-ink">
           {GIFT_NOTE}
