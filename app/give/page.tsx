@@ -20,6 +20,35 @@ const DISPLAY = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
 
 type Props = { searchParams: Promise<{ error?: string }> };
 
+// What gifts pay for, in Richmond's own list (27 October 2026), written up for
+// the page. Plain facts, no amounts: there are no figures to report yet.
+const PURPOSES = [
+  {
+    title: "The tools that carry the teaching",
+    text: "Website hosting, the domain and email, and the software and design tools behind the articles, the daily videos and the Free Community.",
+  },
+  {
+    title: "A place to do the work",
+    text: "Rent for the office and home where the teaching is prepared and the prayer and pastoral conversations happen, with internet, phone and utilities.",
+  },
+  {
+    title: "Travel for ministry",
+    text: "Getting to meetings, trainings and the places where Pastor Richmond serves in person.",
+  },
+  {
+    title: "Care for others",
+    text: "Practical help for people in need, and for fellow pastors who are struggling because of where they serve.",
+  },
+  {
+    title: "Room to grow",
+    text: "Registering the ministry formally and, as it grows, bringing others on to serve alongside Pastor Richmond.",
+  },
+  {
+    title: "More time for ministry",
+    text: "Today Pastor Richmond works another job to support himself and this ministry, as Paul made tents (Acts 18:3). Your gifts help him give more of his time to teaching, prayer and pastoral care.",
+  },
+];
+
 /**
  * /give — "Support the Ministry". Two choices side by side (one above the
  * other on a phone), monthly first and marked Recommended. Each posts to
@@ -45,6 +74,22 @@ export default async function Give({ searchParams }: Props) {
             Pastor Richmond Kobe
           </p>
         </div>
+      </section>
+
+      <section aria-labelledby="makes-possible" className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
+        <h2 id="makes-possible" className="text-center text-3xl text-navy" style={DISPLAY}>
+          What your giving makes possible
+        </h2>
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {PURPOSES.map((p) => (
+            <li key={p.title} className="rounded-2xl border border-line bg-paper p-5">
+              <h3 className="text-lg text-navy" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+                {p.title}
+              </h3>
+              <p className="mt-2 text-[15px] leading-relaxed">{p.text}</p>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <div id="give" className="mx-auto max-w-4xl scroll-mt-6 px-4 pt-12 pb-20 sm:px-6">
