@@ -31,7 +31,7 @@ export default async function CommunityJoin() {
       </p>
       <JoinForm stamp={makeFormStamp()} restartHref="/community/join" />
       <p className="mt-8 text-sm text-muted">
-        Already joined, or a member of the membership?{" "}
+        Already joined, or in the Course Membership?{" "}
         <Link href={COMMUNITY_SIGN_IN} className="font-semibold text-gold-text underline underline-offset-4">
           Sign in
         </Link>

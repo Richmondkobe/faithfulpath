@@ -130,10 +130,10 @@ export default function Community() {
           <p className="mt-5 text-[15px] leading-relaxed text-muted">
             The courses are part of the separate{" "}
             <Link href="/membership" className="font-semibold text-gold-text underline underline-offset-4 hover:text-navy">
-              membership
+              Course Membership
             </Link>{" "}
-            (US$19 a month). Joining the community is free and does not include them. Members of the membership are
-            already part of the community.
+            (US$19 a month). Joining the Free Community costs nothing and does not include the courses. Everyone in
+            the Course Membership is already part of the community.
           </p>
           <p className="mt-3 text-[15px] leading-relaxed text-muted">
             Every member agrees to our{" "}

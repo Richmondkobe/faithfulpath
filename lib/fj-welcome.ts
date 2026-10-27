@@ -249,11 +249,19 @@ export function welcomePage(
 
   // The page's own "Start Lesson 1 ›": into the lesson for an owner, down to
   // the ways to buy for everyone else.
+  // Someone who does not own it yet is told plainly that the button leads to
+  // buying, not into a lesson (third-party website review, 27 October 2026).
   const startHref = owns ? `${coursePath(course)}/${course.lessons[0].slug}` : "#buy";
+  const single = singleOfferFor(course);
+  const startLabel = owns
+    ? "Start Lesson 1 ›"
+    : single
+      ? `Get access to ${escapeHtml(course.title)} — ${formatPrice(single.priceCents)} ›`
+      : "See how to get this course ›";
   let out = swap(
     html,
     '<button class="btn gold">Start Lesson 1 ›</button>',
-    `<a class="btn gold" href="${startHref}">Start Lesson 1 ›</a>`
+    `<a class="btn gold" href="${startHref}">${startLabel}</a>`
   );
 
   // Under the page, just before the main column closes.
