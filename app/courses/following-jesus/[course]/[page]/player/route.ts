@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { findCourse, findLesson } from "@/lib/following-jesus";
+import { findCourse, findLesson, isSampleLesson } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
 import { playerPage } from "@/lib/fj-lessons";
@@ -19,7 +19,7 @@ export async function GET(
   const lesson = course?.launched ? findLesson(course, page) : null;
   if (!course || !lesson) notFound();
 
-  if (!(await learnerWithAccess(course))) {
+  if (!isSampleLesson(course, lesson.slug) && !(await learnerWithAccess(course))) {
     return new Response("Sign in to watch this lesson.", { status: 403 });
   }
 

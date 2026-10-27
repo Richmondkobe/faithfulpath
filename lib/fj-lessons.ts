@@ -6,10 +6,12 @@ import {
   chapterNumber,
   coursePath,
   downloadPath,
+  singleOfferFor,
   tabTitle,
   type FjCourse,
   type FjLesson,
 } from "@/lib/following-jesus";
+import { formatPrice } from "@/lib/products";
 import { beforeBodyEnd, beforeHeadEnd, escapeHtml, linkSupportPages, readCoursePage, swap, transcriptHeadings, websitePage, websitePlayer } from "@/lib/fj-html";
 
 // The lesson, player and completion pages as the website serves them. Each
@@ -248,6 +250,50 @@ export async function lessonPage(course: FjCourse, lesson: FjLesson, progress: C
   );
 
   return withPrintRules(linkSupportPages(html, course), true);
+}
+
+/**
+ * The free sample lesson for a visitor who has not bought the course: the
+ * same lesson page, with nothing saved. The "completed" card becomes the way
+ * on to the course, its script is left out, and a note at the top says it is
+ * the free lesson and that answers are not kept.
+ */
+export async function sampleLessonPage(course: FjCourse, lesson: FjLesson): Promise<string> {
+  let html = await lessonPage(course, lesson, { completed: new Set(), courseCompletedAt: null });
+
+  const start = html.indexOf(FINISH);
+  const end = start === -1 ? -1 : html.indexOf("</section>", start);
+  if (start === -1 || end === -1) throw new Error(`${course.title} ${lesson.slug} has no finish card.`);
+  const single = singleOfferFor(course);
+  const buy = single ? `Get access to ${escapeHtml(course.title)} — ${formatPrice(single.priceCents)} ›` : "See how to get this course ›";
+  const rest = course.lessons.length - 1;
+  html =
+    html.slice(0, start) +
+    `${FINISH}
+  <h2 id="h-finish">You have finished the free lesson</h2>
+  <p class="sub">This is Lesson 1 of ${escapeHtml(course.title)}. The full course has all ${course.lessons.length} lessons: ${rest} more, each with its chapter, worksheet and reading plan, and the Leader's Guide for taking it with a group.</p>
+  <div class="btns" style="justify-content:center"><a class="btn gold" href="${coursePath(course)}#buy">${buy}</a><a class="btn" href="${coursePath(course)}">Back to the course page</a></div>
+ ` +
+    html.slice(end);
+
+  // The "completed" script: there is no button for it to work on.
+  const script = html.match(/<script data-fj>\s*\(function\(\)\{\s*var btn=document\.getElementById\('done'\)[\s\S]*?<\/script>/);
+  if (!script) throw new Error(`${course.title} ${lesson.slug}: the completed script was not found.`);
+  html = html.replace(script[0], "");
+  // The lesson's own line for the same button, which would fail without it.
+  html = swap(
+    html,
+    "document.getElementById('done').onclick=",
+    "if(document.getElementById('done'))document.getElementById('done').onclick="
+  );
+
+  html = swap(
+    html,
+    '<main class="container">',
+    `<main class="container">
+<p data-fj class="noprint" style="margin:16px 0 0;padding:10px 16px;border-radius:12px;background:#f6ecd4;color:#3b2f1a;font-size:15px;text-align:center">Free sample lesson · You can write your answers here, but they are not saved. <a href="${coursePath(course)}#buy" style="color:inherit;font-weight:600">Get the full course</a> to keep them.</p>`
+  );
+  return html;
 }
 
 /**

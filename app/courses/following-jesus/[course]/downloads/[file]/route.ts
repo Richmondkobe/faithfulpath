@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { coursePath, findCourse } from "@/lib/following-jesus";
+import { coursePath, findCourse, isSampleDownload } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { signedDownload } from "@/lib/fj-storage";
 
@@ -18,7 +18,7 @@ export async function GET(
   const course = findCourse(courseSlug);
   if (!course || !course.launched) notFound();
 
-  if (!(await learnerWithAccess(course))) {
+  if (!isSampleDownload(course, file) && !(await learnerWithAccess(course))) {
     return NextResponse.redirect(new URL(`${coursePath(course)}#buy`, request.url), 307);
   }
 

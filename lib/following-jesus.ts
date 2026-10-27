@@ -377,6 +377,25 @@ export function chapterFile(course: FjCourse, lesson: FjLesson): string {
   return `chapter-${String(chapterNumber(course, lesson)).padStart(2, "0")}.pdf`;
 }
 
+/**
+ * The one lesson anyone may open without buying: Begin, Lesson 1, with its
+ * recording, its chapter and its worksheet (third-party website review and
+ * Richmond, 27 October 2026). Answers and "completed" are not saved for a
+ * visitor; a buyer sees the lesson exactly as before.
+ */
+export const SAMPLE_LESSON = { course: "begin", lesson: "lesson-01" } as const;
+
+export function isSampleLesson(course: FjCourse, lessonSlug: string): boolean {
+  return course.slug === SAMPLE_LESSON.course && lessonSlug === SAMPLE_LESSON.lesson;
+}
+
+/** The sample lesson's own two PDFs, and nothing else from the course. */
+export function isSampleDownload(course: FjCourse, file: string): boolean {
+  const lesson = course.slug === SAMPLE_LESSON.course ? findLesson(course, SAMPLE_LESSON.lesson) : null;
+  if (!lesson) return false;
+  return file === chapterFile(course, lesson) || file === `worksheet-${lesson.slug.slice(-2)}.pdf`;
+}
+
 export function downloadPath(course: FjCourse, file: string): string {
   return `${coursePath(course)}/downloads/${file}`;
 }

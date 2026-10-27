@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
-import { findCourse, findLesson } from "@/lib/following-jesus";
+import { findCourse, findLesson, isSampleLesson } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { signedLessonAudio } from "@/lib/fj-storage";
 
 /**
  * A fresh signed URL for a lesson's recording, for the player to pick up when
- * the one in the page has lapsed. Buyers only, like the page itself.
+ * the one in the page has lapsed. Buyers only, like the page itself, except
+ * for the free sample lesson.
  */
 export async function GET(
   _request: Request,
@@ -16,7 +17,7 @@ export async function GET(
   const lesson = course?.launched ? findLesson(course, page) : null;
   if (!course || !lesson) return NextResponse.json({ error: "Not found." }, { status: 404 });
 
-  if (!(await learnerWithAccess(course))) {
+  if (!isSampleLesson(course, lesson.slug) && !(await learnerWithAccess(course))) {
     return NextResponse.json({ error: "Not signed in to this course." }, { status: 403 });
   }
 

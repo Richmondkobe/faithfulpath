@@ -3,6 +3,7 @@ import {
   OFFERS,
   SERIES_PATH,
   singleOfferFor,
+  isSampleLesson,
   upgradePriceCents,
   formatDay,
   lessonList,
@@ -261,7 +262,10 @@ export function welcomePage(
   let out = swap(
     html,
     '<button class="btn gold">Start Lesson 1 ›</button>',
-    `<a class="btn gold" href="${startHref}">${startLabel}</a>`
+    `<a class="btn gold" href="${startHref}">${startLabel}</a>` +
+      (!owns && isSampleLesson(course, course.lessons[0].slug)
+        ? `<a class="btn" href="${coursePath(course)}/${course.lessons[0].slug}">Try Lesson 1 free ›</a>`
+        : "")
   );
 
   // Under the page, just before the main column closes.

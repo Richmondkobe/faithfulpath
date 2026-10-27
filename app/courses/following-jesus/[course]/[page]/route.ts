@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
-import { FINISH_FIRST, coursePath, findCourse, findLesson } from "@/lib/following-jesus";
+import { FINISH_FIRST, coursePath, findCourse, findLesson, isSampleLesson } from "@/lib/following-jesus";
 import { learnerWithAccess } from "@/lib/following-jesus-access";
 import { htmlResponse } from "@/lib/fj-html";
-import { completionPage, lessonPage } from "@/lib/fj-lessons";
+import { completionPage, lessonPage, sampleLessonPage } from "@/lib/fj-lessons";
 import { getCourseProgress, hasCompletedPathway } from "@/lib/fj-progress";
 import { getAnswers } from "@/lib/fj-answers";
 import { answersApiPath, withAnswers } from "@/lib/fj-answers-page";
@@ -26,6 +26,10 @@ export async function GET(
   if (!lesson && !isCompletion) notFound();
 
   const learner = await learnerWithAccess(course);
+  // The free sample lesson, for anyone who has not bought the course.
+  if (!learner && lesson && isSampleLesson(course, lesson.slug)) {
+    return htmlResponse(await sampleLessonPage(course, lesson));
+  }
   if (!learner) {
     return NextResponse.redirect(new URL(`${coursePath(course)}#buy`, request.url), 307);
   }
