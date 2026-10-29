@@ -108,10 +108,26 @@ export default async function ThankYou({
         >
           Download the PDF
         </a>
-        <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted">
-          Keep this link — it stays valid, so you can come back to it.
-          {purchase.email ? ` A receipt has gone to ${purchase.email}.` : ""}
-        </p>
+        {purchase.email ? (
+          <>
+            <p className="mt-5 max-w-lg leading-relaxed">
+              We are also emailing {product ? product.title : "your book"} to{" "}
+              <span className="break-words font-semibold text-navy">{purchase.email}</span>, with this download
+              link. It can take a few minutes; if it has not arrived, check your spam folder.
+            </p>
+            <p className="mt-3 max-w-lg leading-relaxed">
+              You can download it again any time from <strong>Your books</strong>:{" "}
+              <Link href="/members/login" className="font-semibold text-gold-text underline underline-offset-4">
+                sign in
+              </Link>{" "}
+              with that email address.
+            </p>
+          </>
+        ) : (
+          <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted">
+            Keep this link — it stays valid, so you can come back to it.
+          </p>
+        )}
       </div>
 
       <div className="mt-16 border-t border-line pt-10">

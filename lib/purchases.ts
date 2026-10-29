@@ -1,4 +1,6 @@
 import type Stripe from "stripe";
+import { after } from "next/server";
+import { sendBookDelivery } from "@/lib/book-delivery";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import type { Purchase } from "@/lib/products";
 
@@ -109,5 +111,9 @@ export async function recordPurchase(
     throw new Error(`Could not record purchase: ${error.message}`);
   }
 
-  return data as Purchase;
+  // Only the call that saved the row gets here, so the book is emailed once.
+  // After the response, so neither Stripe nor the buyer waits on Resend.
+  const purchase = data as Purchase;
+  after(() => sendBookDelivery(purchase));
+  return purchase;
 }
