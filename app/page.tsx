@@ -60,7 +60,7 @@ const STEPS = [
     // articles stay in the main menu and footer.
     label: "Grow in faith",
     title: "Learn step by step",
-    body: "Guided courses on following Jesus, marriage, rest and renewal, with short lessons, reflection and prayer. Included in membership, US$19 a month.",
+    body: "Guided courses on rest, worry, dating, marriage and church leadership, with short lessons, reflection and prayer. Included in membership, US$19 a month.",
     href: "/membership",
     cta: "Take a course",
   },
