@@ -54,13 +54,15 @@ const STAGES = [
 
 // The three ways in (third-party website review, 27 October 2026): the free
 // community first, then reading, then a private conversation.
-const STEPS = [
+const STEPS: { label: string; title: string; body: string; href: string; cta: string; more?: { href: string; cta: string } }[] = [
   {
     label: "Explore faith",
     title: "Read and learn",
-    body: "Free articles and teaching on the Bible, prayer and following Jesus, wherever you are in your faith.",
+    body: "Free articles on the Bible, prayer and following Jesus, plus step-by-step courses for members, wherever you are in your faith.",
     href: "/articles",
     cta: "Read the articles",
+    // A second way in, beside the first (Richmond, 30 October 2026).
+    more: { href: "/membership", cta: "Take a course" },
   },
   {
     label: "Join the Free Community",
@@ -161,12 +163,19 @@ export default async function Home() {
                 {step.title}
               </h3>
               <p className="mt-2 flex-1 leading-relaxed">{step.body}</p>
-              <Link
-                href={step.href}
-                className="mt-5 inline-flex min-h-11 items-center text-[15px] font-semibold text-gold-text underline-offset-4 hover:underline"
-              >
-                {step.cta} ›
-              </Link>
+              {/* Side by side when they fit; on a narrow phone the second
+                  link wraps onto its own line instead of squeezing. */}
+              <div className="mt-5 flex flex-wrap gap-x-6">
+                {[{ href: step.href, cta: step.cta }, ...(step.more ? [step.more] : [])].map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex min-h-11 items-center text-[15px] font-semibold text-gold-text underline-offset-4 hover:underline"
+                  >
+                    {link.cta} ›
+                  </Link>
+                ))}
+              </div>
             </li>
           ))}
         </ul>
