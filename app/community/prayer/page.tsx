@@ -69,6 +69,16 @@ function PrayerCard({
       )}
       <p className="mt-3 whitespace-pre-line leading-relaxed text-ink">{p.body}</p>
 
+      {p.pastor_reply && (
+        <div className="mt-4 rounded-xl border border-gold-line/60 bg-sand px-4 py-3">
+          <p className="font-semibold text-navy">
+            Pastor Richmond replied{" "}
+            {p.pastor_replied_at && <span className="text-[13px] font-normal text-muted">{shortDate(p.pastor_replied_at)}</span>}
+          </p>
+          <p className="mt-1 whitespace-pre-line leading-relaxed">{p.pastor_reply}</p>
+        </div>
+      )}
+
       {p.answered_at && (
         <div className="mt-4 rounded-xl border border-gold-line/60 bg-sand px-4 py-3">
           <p className="font-semibold text-navy">

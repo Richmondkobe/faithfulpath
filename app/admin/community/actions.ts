@@ -7,9 +7,9 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { syncCommunityMember } from "@/lib/community-sync";
 import { sendWelcomeEmail } from "@/lib/community-welcome";
 import { emailCommunityGroup, removeFromCommunityGroup } from "@/lib/mailerlite-community";
-import { emailQuestionAnswered, emailQuestionDeclined } from "@/lib/community-email";
+import { emailPrayerReply, emailQuestionAnswered, emailQuestionDeclined } from "@/lib/community-email";
 import { announcementEmailHtml } from "@/lib/announcement-email";
-import type { Announcement, CommunityProfile } from "@/lib/community";
+import { PASTOR_REPLY_MAX, type Announcement, type CommunityProfile } from "@/lib/community";
 
 /**
  * The admin's community actions. Each checks requireAdmin() (a server action
@@ -66,6 +66,52 @@ export async function deletePrayer(formData: FormData) {
   const { error } = await supabase.from("prayer_requests").delete().eq("id", id);
   if (error) failed("Deleting", error.message);
   done("Deleted.");
+}
+
+/**
+ * Saves Pastor Richmond’s reply under a request on the wall. The first save
+ * emails the member who posted it; correcting it afterwards does not email
+ * them again. Only the reply columns are written.
+ */
+export async function savePrayerReply(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  const reply = String(formData.get("reply") ?? "").replace(/\r\n/g, "\n").trim();
+  if (!reply) failed("Saving the reply", "write the reply first");
+  if (reply.length > PASTOR_REPLY_MAX) failed("Saving the reply", `it can be up to ${PASTOR_REPLY_MAX} characters`);
+  const { data: before, error: readError } = await supabase
+    .from("prayer_requests")
+    .select("user_id, status, pastor_replied_at")
+    .eq("id", id)
+    .single();
+  if (readError) failed("Saving the reply", readError.message);
+  if (before.status !== "approved") failed("Saving the reply", "only requests on the wall can have a reply");
+  const { error } = await supabase
+    .from("prayer_requests")
+    .update({ pastor_reply: reply, pastor_replied_at: before.pastor_replied_at ?? new Date().toISOString() })
+    .eq("id", id);
+  if (error) failed("Saving the reply", error.message);
+
+  let note = "Reply saved.";
+  if (!before.pastor_replied_at) {
+    const { data: who } = await supabase.from("community_profiles").select("email, first_name").eq("user_id", before.user_id).maybeSingle();
+    if (who) {
+      const e = await emailPrayerReply({ email: who.email, firstName: who.first_name, requestId: id, reply });
+      note = e ? `Reply saved and on the wall, but the email to the member did not go: ${e}` : `Reply saved and on the wall, and ${who.email} has been emailed.`;
+    } else {
+      note = "Reply saved and on the wall. The member has no community profile, so no email was sent.";
+    }
+  }
+  done(note, `#r-${id}`);
+}
+
+export async function deletePrayerReply(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  if (formData.get("confirm") !== "yes") redirect(`${BACK}?deleteReply=${encodeURIComponent(id)}#r-${id}`);
+  const { error } = await supabase.from("prayer_requests").update({ pastor_reply: null, pastor_replied_at: null }).eq("id", id);
+  if (error) failed("Deleting the reply", error.message);
+  done("Reply deleted. The request stays on the wall.", `#r-${id}`);
 }
 
 /** A praise update or an answered prayer: approve it, hide it from the page, or show it again. */

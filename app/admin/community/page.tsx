@@ -5,6 +5,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { isMissingCommunityTable } from "@/lib/community-db";
 import {
   bangkokDate,
+  PASTOR_REPLY_MAX,
   prayerName,
   shortDate,
   upcomingOccurrences,
@@ -26,12 +27,14 @@ import {
   deleteAnnouncement,
   deleteGathering,
   deletePrayer,
+  deletePrayerReply,
   rejectPrayer,
   retryAnnouncementEmail,
   resendWelcome,
   retryMailerLite,
   saveAnnouncement,
   saveGathering,
+  savePrayerReply,
   setAnswerStatus,
   setBanned,
   toggleSkipWeek,
@@ -49,6 +52,7 @@ type Props = {
   searchParams: Promise<{
     done?: string;
     error?: string;
+    deleteReply?: string;
     delete?: string;
     deleteGathering?: string;
     deleteAnnouncement?: string;
@@ -373,6 +377,66 @@ export default async function AdminCommunity({ searchParams }: Props) {
     </li>
   );
 
+  /** Pastor Richmond’s reply under a request on the wall: write it, or edit or delete it. */
+  const ReplyBox = ({ r }: { r: PrayerRequest }) => {
+    const form = (
+      <form action={savePrayerReply} className="mt-3 space-y-3">
+        <input type="hidden" name="id" value={r.id} />
+        <div>
+          <label htmlFor={`reply-${r.id}`} className={labelClass}>
+            {r.pastor_reply ? "Edit your reply" : "Write a reply"} (plain text, up to {PASTOR_REPLY_MAX} characters)
+          </label>
+          <textarea
+            id={`reply-${r.id}`}
+            name="reply"
+            rows={4}
+            required
+            maxLength={PASTOR_REPLY_MAX}
+            defaultValue={r.pastor_reply ?? ""}
+            className={inputClass}
+          />
+          {!r.pastor_reply && (
+            <p className="mt-1 text-[13px] text-muted">
+              It appears under the request on the Prayer Wall, and the member is emailed it.
+            </p>
+          )}
+        </div>
+        <button className={gold}>Save</button>
+      </form>
+    );
+    if (!r.pastor_reply) return <div className="mt-4 border-t border-line pt-3">{form}</div>;
+    return (
+      <div className="mt-4 rounded-xl border border-gold-line/60 bg-sand px-4 py-3">
+        <p className="font-semibold text-navy">
+          Pastor Richmond replied{" "}
+          {r.pastor_replied_at && <span className="text-[13px] font-normal text-muted">{shortDate(r.pastor_replied_at)}</span>}
+        </p>
+        <p className="mt-1 whitespace-pre-line leading-relaxed text-ink">{r.pastor_reply}</p>
+        <div className="mt-3 flex flex-wrap items-start gap-2">
+          <details className="w-full sm:w-auto sm:flex-1">
+            <summary className={`${small} cursor-pointer list-none`}>Edit</summary>
+            {form}
+          </details>
+          {sp.deleteReply === r.id ? (
+            <form action={deletePrayerReply} className="flex items-center gap-2">
+              <input type="hidden" name="id" value={r.id} />
+              <input type="hidden" name="confirm" value="yes" />
+              <button className={danger}>Yes, delete the reply</button>
+              <Link href={`/admin/community#r-${r.id}`} className="text-sm underline">
+                Cancel
+              </Link>
+            </form>
+          ) : (
+            <form action={deletePrayerReply}>
+              <input type="hidden" name="id" value={r.id} />
+              <button className={small}>Delete reply</button>
+            </form>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   const RequestRow = ({ r, actions }: { r: PrayerRequest; actions: ("approve" | "reject")[] }) => {
     const p = byUser.get(r.user_id);
     return (
@@ -396,6 +460,7 @@ export default async function AdminCommunity({ searchParams }: Props) {
           {p?.is_banned && <span className="rounded-full bg-danger-bg px-3 py-0.5 text-danger">Author banned</span>}
         </div>
         <p className="mt-3 whitespace-pre-line leading-relaxed text-ink">{r.body}</p>
+        {r.status === "approved" && <ReplyBox r={r} />}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {actions.includes("approve") && (
             <form action={approvePrayer}>

@@ -8,6 +8,8 @@
 export const PRAYER_MAX = 1000;
 export const ANSWER_MAX = 500;
 export const PRAYERS_PER_DAY = 3;
+/** Pastor Richmond’s reply under a request on the wall. */
+export const PASTOR_REPLY_MAX = 600;
 export const QUESTION_MAX = 1000;
 export const QUESTIONS_PER_WEEK = 2;
 export const FULL_NAME_MAX = 80;
@@ -97,6 +99,9 @@ export type PrayerRequest = {
   answered_at: string | null;
   approved_at: string | null;
   created_at: string;
+  /** Written by Pastor Richmond only (supabase/migrations/20261102120000_pastor_reply.sql). */
+  pastor_reply?: string | null;
+  pastor_replied_at?: string | null;
 };
 
 /** A member's "Answered 🙌", with its optional praise update (prayer_answers). */

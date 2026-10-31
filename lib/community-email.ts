@@ -187,6 +187,28 @@ export async function emailQuestionAnswered(m: { email: string; firstName: strin
   );
 }
 
+/** Tells the member Pastor Richmond has replied under their prayer request, with the reply. */
+export async function emailPrayerReply(m: { email: string; firstName: string; requestId: string; reply: string }): Promise<string | null> {
+  const link = `${SITE.url}/community/prayer#p-${m.requestId}`;
+  return send(
+    {
+      from: MEMBER_FROM,
+      to: [m.email],
+      reply_to: INBOX,
+      subject: "Pastor Richmond replied to your prayer request",
+      text: `Dear ${m.firstName},\n\nI have replied to your prayer request on the Prayer Wall:\n\n${m.reply}\n\nSee it on the Prayer Wall: ${link}\n\nGrace and peace,\nPastor Richmond Kobe\nFaithful Path Community`,
+      html:
+        `<div style="font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#2b3445;max-width:560px">` +
+        `<p>Dear ${escape(m.firstName)},</p>` +
+        `<p>I have replied to your prayer request on the Prayer Wall:</p>` +
+        `<p style="white-space:pre-wrap;border-left:3px solid #d4a24c;padding-left:12px">${escape(m.reply)}</p>` +
+        `<p><a href="${link}" style="color:#5e4412">See it on the Prayer Wall</a></p>` +
+        `<p>Grace and peace,<br>Pastor Richmond Kobe<br>Faithful Path Community</p></div>`,
+    },
+    "prayer reply"
+  );
+}
+
 /** A private note to the member about a question Richmond is not answering on the board. */
 export async function emailQuestionDeclined(m: { email: string; firstName: string; body: string; note: string }): Promise<string | null> {
   const short = m.body.length > 200 ? `${m.body.slice(0, 200).trimEnd()}…` : m.body;
