@@ -100,6 +100,9 @@ export async function saveArticle(
   // every one rather than working out which two.
   revalidatePath("/articles/category/[category]", "page");
   revalidatePath("/articles/category/[category]/page/[page]", "page");
+  // The sitemap is built on every request (app/sitemap.ts); this keeps it
+  // fresh straight away should it ever be cached again.
+  revalidatePath("/sitemap.xml");
 
   redirect("/admin/articles");
 }
@@ -133,6 +136,7 @@ export async function deleteArticle(
   revalidatePath("/");
   revalidatePath("/articles");
   revalidatePath(`/articles/${article.slug}`);
+  revalidatePath("/sitemap.xml");
 
   redirect("/admin/articles");
 }

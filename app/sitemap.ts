@@ -12,11 +12,13 @@ import { listPublishedProducts } from "@/lib/products-db";
 import { publicSeriesPaths } from "@/lib/following-jesus";
 import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
 
-// The sitemap is a cached Route Handler, so without this it would only ever
-// reflect the articles and guides that existed at build time. An hour is short
-// enough that newly published work gets crawled promptly, and long enough that
-// crawlers don't hit Supabase on every request.
-export const revalidate = 3600;
+// Built fresh on every request (4 November 2026). It used to be cached with
+// revalidate = 3600, but on Vercel the cached copy was never refreshed: it was
+// still served 28 hours later, without the nine articles published that day.
+// Crawlers ask for it a few times a day, so a few small Supabase reads each
+// time cost nothing, and a new article or guide is listed the moment it is
+// published, however it was published.
+export const dynamic = "force-dynamic";
 
 // Everything a stranger should be able to find. Deliberately absent: the
 // post-purchase page (already noindex), the admin area and its login, the
