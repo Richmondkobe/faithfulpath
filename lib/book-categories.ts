@@ -6,8 +6,8 @@
 // change, and a row carrying an unknown slug shows no label instead of
 // breaking a page.
 //
-// Adding a category needs the check constraint in
-// supabase/migrations/20261003160000_product_categories.sql widened too. That
+// Adding a category needs the check constraint on products.category widened
+// too (latest: supabase/migrations/20261105120000_spiritual_growth_category.sql). That
 // is deliberate: it makes a typo in the admin dropdown impossible.
 //
 // The order below is the order the filter buttons appear in, and the order the
@@ -24,6 +24,8 @@ export const BOOK_CATEGORIES: readonly BookCategory[] = [
   { slug: "following-jesus-series", label: "Following Jesus Series" },
   { slug: "dating-marriage-and-relationships", label: "Dating, Marriage & Relationships" },
   { slug: "rest-worry-and-renewal", label: "Rest, Worry & Renewal" },
+  // Stand Firm (Richmond, 5 November 2026).
+  { slug: "spiritual-growth-and-warfare", label: "Spiritual Growth & Warfare" },
   { slug: "church-leadership", label: "Church Leadership" },
 ] as const;
 

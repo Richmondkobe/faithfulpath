@@ -32,6 +32,13 @@ import { PDFDocument, PDFName, PDFDict, PDFArray, PDFRef, PDFHexString, PDFStrin
 import { extractText, getDocumentProxy } from "unpdf";
 
 const FALLBACK_PAGES = 12;
+
+// Books whose first chapter neither the outline nor the text can find, with the
+// last page of the sample. Stand Firm's outline lists its four Parts, not its
+// chapters, and every chapter page opens with a "PART ONE · …" running header
+// rather than the chapter heading. Chapter 1 ends on page 20; Chapter 2 starts
+// on 21 (Richmond, 5 November 2026). Check the number after revising the book.
+const LAST_PAGE = { "stand-firm": 20 };
 const SAMPLES_PREFIX = "samples";
 const dry = process.argv.includes("--dry");
 
@@ -212,7 +219,10 @@ for (const book of books) {
   }
 
   let last, note;
-  if (chapters.length >= 2) {
+  if (LAST_PAGE[book.slug]) {
+    last = Math.min(LAST_PAGE[book.slug], total);
+    note = `set in LAST_PAGE: chapter 2 starts on p${last + 1}`;
+  } else if (chapters.length >= 2) {
     last = chapters[1].page - 1;
     note = `${how}: #${chapters[0].n} p${chapters[0].page}, #${chapters[1].n} p${chapters[1].page}`;
   } else {
@@ -221,7 +231,7 @@ for (const book of books) {
   }
   // A boundary that would give away most of the book, or almost none of it, is
   // more likely a detection failure than a very long first chapter.
-  if (last < 4 || last > Math.max(FALLBACK_PAGES, Math.ceil(total * 0.3))) {
+  if (!LAST_PAGE[book.slug] && (last < 4 || last > Math.max(FALLBACK_PAGES, Math.ceil(total * 0.3)))) {
     last = Math.min(FALLBACK_PAGES, total);
     note += ` — implausible, using first ${last} pages instead`;
   }
