@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 3 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 1: Understanding the Battle</span><span class="steps" aria-label="Lesson 3 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 3 · Chapter 4 · Part 1: Understanding the Battle</p>
+ <h1>How the Enemy Works</h1>
+ <p class="question">How do I recognise the enemy’s schemes when they are happening?</p>
+ <span class="chip">About 13 minutes</span><span class="chip">2 Corinthians 2:10–11</span><span class="chip">Part 1 · Understanding the Battle</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> distinguish a condemning accusation from a specific wrong that needs repentance.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 13 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why Paul’s words about Satan’s “designs” come in a passage about forgiveness (2 Corinthians 2:5–11)</li>
+  <li>Five patterns Scripture describes: lies, accusation, temptation, fear and division</li>
+  <li>How to tell conviction that leads to repentance from accusation that says you are beyond God’s grace</li>
+  <li>Why we learn the enemy’s designs only to turn our attention back to Christ</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 3 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · How the enemy works</h4><p>Welcome back to Stand Firm. In Lesson 2 we saw that the enemy is real, but he is not God’s equal, and Christ has already defeated him. Today we ask a practical question: how does the enemy work? How do I recognise his schemes when they are happening?</p>
+<h4>2 · Imagine a woman named Mei</h4><p>Imagine a woman named Mei. She has led a small group at her church for six years. One evening, after a leaders’ meeting, another leader makes a careless comment about her group in front of everyone. Mei says nothing, but on the drive home she replays it again and again. Over the next few weeks, small things begin to add up. She notices every time that leader is praised. She starts to wonder whether people at church really value her. When she prays, a heavy thought presses in: you have never been good enough for ministry anyway. By the end of the month, Mei is quietly thinking about leaving the church altogether. Nothing dramatic has happened. There has been no obvious attack. And yet something is slowly pulling Mei away from peace, from her church family and from confidence in God’s love. Let us open the Bible.</p>
+<h4>3 · 2 Corinthians 2:10–11</h4><p>Second Corinthians chapter 2, verses 10 and 11. “Anyone whom you forgive, I also forgive. Indeed, what I have forgiven, if I have forgiven anything, has been for your sake in the presence of Christ, so that we would not be outwitted by Satan; for we are not ignorant of his designs.”</p>
+<h4>4 · Point 1: A verse about forgiveness</h4><p>Our first main point: this is a verse about forgiveness. It is worth noticing where it comes from. Paul is not giving a general lecture on demons. He is writing to a church that has disciplined one of its members. That person has now repented, and Paul urges the church to “turn to forgive and comfort him, or he may be overwhelmed by excessive sorrow,” and to “reaffirm your love for him.”</p>
+<h4>5 · Two dangers</h4><p>Only then does Paul mention Satan. The risk he sees is twofold: a repentant man crushed by despair, and a church that withholds forgiveness and becomes hard and divided. Both would serve the enemy’s purposes. That tells us something important. Some of the enemy’s designs have nothing to do with the dramatic. They happen in ordinary church relationships: in unforgiveness, in discouragement and in quiet division. That is exactly where Mei’s struggle is taking place.</p>
+<h4>6 · Point 2: Five patterns at a glance</h4><p>Our second main point: five patterns at a glance. The New Testament describes the enemy’s work in several ways. Here are five recurring patterns: lies, accusation, temptation, fear and division. They are not a complete list, but they give us a useful starting point. We will look at each one briefly.</p>
+<h4>7 · Lies</h4><p>First, lies. Jesus called the devil “a liar and the father of lies.” From the garden onwards, deception has been part of his work. The serpent’s first words twisted God’s command: “Did God actually say, …?” And deception is not always obvious. Paul warns that “even Satan disguises himself as an angel of light.” A lie can sound spiritual. It can contain some truth. It can quietly shift our focus away from Christ. The answer to lies is truth: God’s Word, understood in context and held together with other believers.</p>
+<h4>8 · Accusation</h4><p>Second, accusation. In a vision recorded by the prophet Zechariah, Joshua the high priest stands before the angel of the Lord in filthy garments, “and Satan standing at his right hand to accuse him.” But the Lord rebukes the accuser, and Joshua’s filthy garments are removed and replaced with clean ones. Revelation calls the devil “the accuser of our brothers.” We will come back to accusation in a moment, because it needs care.</p>
+<h4>9 · Temptation</h4><p>Third, temptation. The tempter came to Jesus in the wilderness, as we saw in Lesson 2. Yet Scripture never allows us to blame the devil for every temptation. James is clear that each person is tempted by his own desire. The enemy can exploit our desires, but he cannot make us choose sin. And God gives a promise for every believer facing temptation: “with the temptation he will also provide the way of escape, that you may be able to endure it.” There is always a faithful path.</p>
+<h4>10 · Fear</h4><p>Fourth, fear. We need to be careful here. Fear is a normal human response, and not every fear is a spiritual attack. Much of it comes from real dangers, hard experiences or the strain of life. But fear can also be used to drive us away from obedience, from trust or from God’s people. Paul reminded Timothy that “God gave us a spirit not of fear but of power and love and self-control.” And Peter does not tell us to run from the roaring lion. He says, “Resist him, firm in your faith…”</p>
+<h4>11 · Division</h4><p>Fifth, division. Paul writes, “Be angry and do not sin; do not let the sun go down on your anger, and give no opportunity to the devil.” Anger is not always sin, but anger left to grow can give the enemy room to work. Division often begins small: a careless word, a hurt left unspoken, a story we tell ourselves about someone’s motives. That is how Mei’s month began. Her hurt was real. But as she replayed it and withdrew from others, she became increasingly isolated.</p>
+<h4>12 · Point 3: Conviction is not accusation</h4><p>Our third main point: conviction is not accusation. This is one of the most important things to learn in this lesson. It is important to distinguish accusation from conviction, but the difference cannot be judged simply by how painful or specific a thought feels. Accusation can point to a real sin, and recognising genuine wrongdoing can hurt deeply.</p>
+<h4>13 · The better question</h4><p>The better question is this. Does the thought truthfully identify wrongdoing and point towards repentance and God’s mercy? Or does it turn our failures into a verdict that we are beyond his grace? Thoughts like you are worthless, God is finished with you, or you will never change belong to the second kind. Paul tells the Corinthians that godly grief leads to repentance. Godly grief draws us to the cross. Condemnation pushes us away from it.</p>
+<h4>14 · Not God’s verdict over her</h4><p>The thought that pressed on Mei, you have never been good enough, should be tested against the gospel, as we learned in Lesson 1. Whatever its source, it is not God’s verdict over her. “There is therefore now no condemnation for those who are in Christ Jesus.” And if a thought does point to genuine wrongdoing, Romans 8:1 does not cancel the need to deal with it. A real wrong may still need confession and, where possible, repair. The difference is that we do it as forgiven people, not as people trying to earn our way back.</p>
+<h4>15 · Mei’s way back</h4><p>Return to Mei. Imagine that, before leaving the church, she decides to speak to her pastor. As they talk, she begins to see the pattern. A real hurt had been left unspoken. Comparison had grown into resentment. And an accusing thought had made it all feel like proof that she did not belong. Her pastor prays with her. Then he encourages her to do something difficult: to speak privately and gently with the other leader. The conversation is awkward at first. But the other leader apologises. It had been a careless comment, not a judgement on Mei’s ministry. Their friendship does not become perfect overnight, but it is restored.</p>
+<h4>16 · Not every story ends this well</h4><p>Not every situation ends this well. Some conflicts take a long time to resolve, and some relationships need wise boundaries. Where there is persistent harm or serious misconduct, seeking accountable help, and sometimes a healthier church community, can be a faithful step. But Mei’s story shows how ordinary faithfulness, honesty, prayer, humility and forgiveness, can stand against the enemy’s designs.</p>
+<h4>17 · Eyes on Christ</h4><p>Some Christians think that being “not ignorant of his designs” means studying the enemy in great detail, or seeing his hand in every difficulty. That is not Paul’s point. Paul was concerned that the church would not be outwitted, and his answer was forgiveness, comfort and love. We learn how the enemy works so that we can recognise his designs. Then we turn our full attention back to Jesus.</p>
+<h4>18 · Bringing it together</h4><p>Let us bring it together. Paul’s words about the enemy’s designs come in a passage about forgiveness. The enemy works through lies, accusation, temptation, fear and division, often in quiet, ordinary ways. And conviction is not accusation: one draws us to the cross, the other pushes us away. Truth, grace and forgiveness equip us to resist the enemy’s schemes.</p>
+<h4>19 · This week’s practice</h4><p>Here is your practice for this week. Write down one accusing thought, a thought that tells you that you are beyond God’s grace. Then write Romans 8:1 beside it: “There is therefore now no condemnation for those who are in Christ Jesus.” Then ask three questions. Is there a specific wrong here that needs confession or repair? It is fine if the answer is no, or if you are unsure. What condemning verdict do I need to reject? And in light of Romans 8:1, what is one faithful step I can take? Remember, a thought can point to something genuinely wrong and still carry a false verdict about your worth. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>20 · Remember</h4><p>Remember this word of Scripture: “There is therefore now no condemnation for those who are in Christ Jesus.” And here is this week’s declaration, a statement of trust: I will hold to the truth, receive God’s forgiveness, and seek peace with God’s people. My eyes are on Christ.</p>
+<h4>21 · Prayer</h4><p>Let us pray. Lord Jesus, thank you that you know every scheme of the enemy, and that you have already triumphed over him. Give me wisdom to recognise lies, and the courage to hold on to your truth. When I hear accusation, remind me that there is no condemnation for those who are in you. When I am tempted, show me the way of escape. When I am afraid, help me to stand firm in faith. Where there is hurt or division in my relationships, give me humility to seek peace and grace to forgive. Keep my eyes on you. Amen. This week, write down one accusing thought, with Romans 8:1 beside it. Then stop here for today, or continue to Lesson 4.</p>
+<p class="refs"><b>Scripture in this lesson:</b> 2 Corinthians 2:5–11 · John 8:44 · Genesis 3:1 · 2 Corinthians 11:14 · Zechariah 3:1–5 · Revelation 12:10 · 2 Corinthians 7:10 · Romans 8:1 · James 1:14 · 1 Corinthians 10:13 · 2 Timothy 1:7 · 1 Peter 5:8–9 · Ephesians 4:26–27</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Write down one accusing thought, one that tells you that you are beyond God’s grace, and write Romans 8:1 beside it:</p>
+  <p class="prompt">“There is therefore now no condemnation for those who are in Christ Jesus.”</p>
+  <p>Then answer three short prompts:</p>
+  <p class="prompt">1. Is there a specific wrong here that needs confession or repair? (“No” or “unsure” is a fine answer.)</p>
+  <textarea aria-label="Is there a specific wrong here"></textarea>
+  <p class="prompt">2. What condemning verdict do I need to reject?</p>
+  <textarea aria-label="What condemning verdict do I need to reject"></textarea>
+  <p class="prompt">3. In light of Romans 8:1, one faithful step I can take is…</p>
+  <textarea aria-label="One faithful step"></textarea>
+  <p class="refs">A thought can point to something genuinely wrong and still carry a false verdict about your worth or belonging.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“There is therefore now no condemnation for those who are in Christ Jesus.”<span class="r">Romans 8:1 (ESV)</span></div><p class="d">I will hold to the truth, receive God’s forgiveness, and seek peace with God’s people. My eyes are on Christ.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/><path d="M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z"/></g></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Why do you think Paul connected Satan’s designs with forgiveness in 2 Corinthians 2?<textarea></textarea></li>
+  <li>How would you explain the difference between conviction and accusation to a friend?<textarea></textarea></li>
+  <li>Which of the five patterns do you find hardest to recognise when it is happening?<textarea></textarea></li>
+  <li>Is there an unresolved hurt in your life that needs a wise next step?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 3 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>2 Corinthians 2:5–11</td><td>How did Paul want the church to treat the repentant man?</td><td>Lord, make me quick to forgive and comfort.</td><td>Forgiveness guards God’s people.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Genesis 3:1–7</td><td>How did the serpent twist God’s word?</td><td>Help me to hold on to what you have truly said.</td><td>God’s word is true.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Zechariah 3:1–5</td><td>What did the Lord do with Joshua’s filthy garments?</td><td>Thank you that you rebuke the accuser and clothe your people.</td><td>The Lord has clothed me with grace.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>1 Corinthians 10:12–13</td><td>What way of escape do I need this week?</td><td>Show me the faithful path when I am tempted.</td><td>God is faithful.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>2 Timothy 1:6–8</td><td>Where does fear hold me back from obedience?</td><td>Give me power, love and self-control.</td><td>God has not given me a spirit of fear.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Ephesians 4:25–32</td><td>Is there anger I am nursing that needs a wise first step?</td><td>Give me humility to seek peace.</td><td>I will not give the enemy a foothold.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Romans 8:1–4</td><td>Which accusing thought does Romans 8:1 answer for me?</td><td>Thank you that there is no condemnation in Christ.</td><td>My eyes are on Christ.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 4.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapter</summary><p>Chapter 4 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>A wise first step with anger</summary><p>If there is a hurt between you and another believer, the aim is not to force agreement before bedtime but to avoid nursing resentment. You may need time, rest or help before a constructive conversation. Ask God for wisdom about the first step, and talk with a mature Christian if you need help. Forgiveness does not always mean trust is restored at once, or that harm is excused.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Why do you think Paul connected Satan’s designs with forgiveness, comfort and love?</li>
+  <li>How can a church help someone like Mei before she quietly leaves?</li>
+  <li>Why is it unhelpful to study the enemy in great detail or to see his hand in every difficulty?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 2 we saw that the enemy is real but already defeated. Today we saw how he works, so that we can recognise his designs and turn back to Christ.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

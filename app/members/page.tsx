@@ -19,6 +19,7 @@ import { LBYR_NEW_LIVE, LBYR_OLD_RETIRED } from "@/lib/lbyr-new-live";
 import LbyrNewEditionCard from "@/components/lbyr/LbyrNewEditionCard";
 import { getQuestionAllowance, formatOpensOn } from "@/lib/questions";
 import NewEditionCard from "@/components/reset-new/NewEditionCard";
+import StandFirmCourseCard from "@/components/stand-firm/StandFirmCourseCard";
 
 // Written for both courses. The route chooser and Quick Start it used to name
 // belong to the Spiritual Reset alone; what is said here has to be true of the
@@ -27,7 +28,7 @@ import NewEditionCard from "@/components/reset-new/NewEditionCard";
 const WELCOME = [
   "You are in the right place.",
   "Everything here moves at a pace you can safely manage. There are no grades, deadlines, or rewards for finishing quickly. You may shorten an exercise, pause a session, or come back to it later.",
-  "There are five courses below. Begin with any of them; none has to be finished before another is started.",
+  "There are six courses below. Begin with any of them; none has to be finished before another is started.",
   "Each begins by asking what you have room for today, and each keeps a shorter way in for when that is very little.",
   "If your mind is restless right now, you do not have to start at the beginning. There is a page that takes you straight to the part that matches.",
   "You do not have to carry the whole course at once.",
@@ -237,7 +238,7 @@ export default async function Members() {
 
       {ownsFollowingJesus && <FollowingJesusLink />}
 
-      {/* The five courses, presented alike. None is the main one: a member
+      {/* The six courses, presented alike. None is the main one: a member
           may have come for any of them, and the membership includes all. */}
       <section className="mt-12">
         <h2 className="text-[13px] uppercase tracking-[0.12em] text-gold-text font-medium">
@@ -249,6 +250,7 @@ export default async function Members() {
           <BysyNewEditionCard />
           <TbymNewEditionCard />
           {LBYR_NEW_LIVE && <LbyrNewEditionCard />}
+          <StandFirmCourseCard />
           {/* The September edition, until retired (lib/lbyr-new-live.ts). */}
           {LBYR_PUBLISHED && !(LBYR_NEW_LIVE && LBYR_OLD_RETIRED) && <LbyrCourseCard />}
         </div>

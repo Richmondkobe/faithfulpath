@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 10 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 3: Standing Firm in Everyday Life</span><span class="steps" aria-label="Lesson 10 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 10 · Chapters 16–17 · Part 3: Standing Firm in Everyday Life</p>
+ <h1>Together and Free</h1>
+ <p class="question">What freedom do I have in Christ, and who will walk in it with me?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Galatians 5:1, 13</span><span class="chip">Part 3 · Everyday Life</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> identify a trustworthy person or church connection for support.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>The freedom every believer has in Christ, read in its setting</li>
+  <li>How the church in Acts 4 prayed together under pressure</li>
+  <li>Turning from the old ways, and how prayer for freedom is done with care</li>
+  <li>Why we walk in freedom together, not alone</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 10 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Together and free</h4><p>Welcome back to Stand Firm. In Lesson 9 we learned to submit to God, resist the devil and worship, even when the battle is long. Today we bring together two questions that belong side by side. What freedom do I have in Christ, and who will walk in it with me?</p>
+<h4>2 · Imagine a woman named Lucia</h4><p>Imagine a woman named Lucia. Before she came to Christ, she regularly visited a spirit medium. She wore charms for protection and consulted fortune-tellers before big decisions. Two years ago she put her trust in Jesus, and her life has changed in many ways. But she still has troubling nightmares, and sometimes she feels a sudden dread when she walks past the shrine near her mother’s house. A box of old charms still sits at the back of her wardrobe. Recently she watched a video of a deliverance meeting online. People were shouting, and the whole thing was being filmed. It frightened her. She has never told anyone at church about her past. Is that what I need? Am I still bound in some way? Or am I already free? Let us open the Bible.</p>
+<h4>3 · Galatians 5:1, 13</h4><p>Galatians chapter 5, verses 1 and 13. For freedom Christ has set us free; stand firm therefore, and do not submit again to a yoke of slavery. For you were called to freedom, brothers. Only do not use your freedom as an opportunity for the flesh, but through love serve one another.</p>
+<h4>4 · Point 1: The freedom every believer has</h4><p>Our first main point: the freedom every believer has in Christ. Galatians 5:1 is often quoted in teaching about deliverance, but in its setting Paul is addressing a different question. The Galatians were being pressed to accept circumcision and rely on keeping the law to be made right with God. Paul calls that “a yoke of slavery.” The freedom he defends is freedom from trying to earn our standing with God. We are made right with God by grace, through faith in Christ, not by our own religious performance.</p>
+<h4>5 · Free in Christ</h4><p>Paul’s word for freedom is eleutheria, and in this one verse he joins it to the verb set free: for freedom Christ has set us free. Freedom is not something we achieve. Christ has achieved it for us. And Scripture shows how wide that freedom is. God “has delivered us from the domain of darkness and transferred us to the kingdom of his beloved Son.” “There is therefore now no condemnation for those who are in Christ Jesus.” This is the foundation for Lucia. She does not need a dramatic meeting to belong to Christ. Through faith in him, she has already been transferred into his kingdom. But Paul’s command still applies: “stand firm therefore.” Freedom is a gift to receive, and a gift to live out.</p>
+<h4>6 · The man among the tombs</h4><p>Mark chapter 5 is a very different passage. Jesus meets a man severely afflicted by an unclean spirit, living among the tombs, whom no one could restrain. Jesus did not need a long struggle. He commanded the spirits to leave, and they did. Afterwards the people of the town found the man “sitting there, clothed and in his right mind.” Jesus restored his dignity and his peace. And he sent him home to tell his friends what God had done for him: “Go home to your friends and tell them how much the Lord has done for you, and how he has had mercy on you.” This account shows Christ’s complete authority over every evil power. But it is an extraordinary account, not the pattern for every struggle, and it is different from the freedom Paul describes in Galatians.</p>
+<h4>7 · What is clear</h4><p>Christians differ about some aspects of spiritual oppression and prayer for freedom. Our focus here is our belonging to Christ and walking faithfully with trustworthy believers. Whatever view we hold, some things are clear. Believers belong to Christ. Believers are called to resist the devil, not to fear him. And nightmares or feelings of dread, by themselves, do not show that someone is under spiritual oppression. They can have many causes, and they call for prayer, wisdom and, where needed, medical care.</p>
+<h4>8 · Point 2: We do not walk alone</h4><p>Our second main point: we do not walk alone. Paul says we’re free to serve one another in love. In Acts 4, we see what that looks like when believers face pressure together. Peter and John had been arrested for preaching about Jesus, and then released with a warning never to speak in his name again. The threat was real. What did they do next? “When they were released, they went to their friends.” They did not carry the pressure alone. They went straight to the community of believers.</p>
+<h4>9 · They lifted their voices together</h4><p>And the church responded by praying together. “They lifted their voices together to God.” They began with who God is: “Sovereign Lord, who made the heaven and the earth and the sea and everything in them.” They prayed using words from Psalm 2. And they asked for boldness: “grant to your servants to continue to speak your word with all boldness.” God answered. “The place in which they were gathered together was shaken, and they were all filled with the Holy Spirit and continued to speak the word of God with boldness.” The threats had not disappeared, but the church was strengthened to stand.</p>
+<h4>10 · Why we need one another</h4><p>Their prayer together was joined to practical care. “Now the full number of those who believed were of one heart and soul,” and “there was not a needy person among them.” Scripture gives us many reasons why we need one another. We are one body, and no member can say to another, “I have no need of you.” “Two are better than one,” because when one falls, the other can lift him up. We “bear one another’s burdens.” And we confess and pray together: “Therefore, confess your sins to one another and pray for one another, that you may be healed.” Hidden struggles often grow stronger in isolation, and weaker when they are brought into the light. That does not mean telling everyone. It means choosing someone trustworthy.</p>
+<h4>11 · A real church, not a perfect one</h4><p>No church Lucia finds will be perfect. Every congregation is made up of forgiven but imperfect people, and sometimes we will be disappointed. That is not a reason to give up on God’s people. Look for a church that is centred on Christ, teaches Scripture faithfully, welcomes accountability and cares for its members. As we saw in Lesson 6, believers stand together, like shields side by side. Online sermons can be a real blessing, especially for those who are unwell or far from a church. But for most of us they are meant to support life in a local fellowship, not to replace it.</p>
+<h4>12 · Point 3: Walking in freedom</h4><p>Our third main point: walking in freedom. When the gospel came to Ephesus, many new believers had been involved in magic. Luke writes: “Also many of those who were now believers came, confessing and divulging their practices. And a number of those who had practiced magic arts brought their books together and burned them in the sight of all.” This account does not set out a required procedure for everyone. But it suggests a helpful pattern.</p>
+<h4>13 · Confess, renounce, let go, walk on</h4><p>Confess: bring past involvement into the light before God, and to a trusted leader where that helps. Renounce: turn clearly away from those practices, and declare your trust in Christ alone. Let go: a believer may choose to dispose of things they own and have used or kept for occult practice or spiritual protection. This is their own free choice, and ordinary cultural and family belongings are not in view. And walk on: continue in Scripture, prayer, worship and fellowship. As Paul says, “walk by the Spirit, and you will not gratify the desires of the flesh.” Letting go of an object is not a ritual that buys protection. Lucia already belongs to Christ. Letting go of the charms is one way she chooses to stop relying on them.</p>
+<h4>14 · When someone asks for focused prayer</h4><p>Sometimes a believer asks for focused prayer for freedom. Where a church offers this, it should reflect the dignity Jesus restored to the man in Mark 5. The person freely agrees and can stop at any time. There is no shouting at them, no restraint and no filming. At least two mature leaders pray together, under the care of their church, and prayer is followed by ongoing discipleship. Prayer and medical care go together; no one is told to stop their treatment. The authority belongs to Christ. Our part is to pray in his name, quietly and confidently, with love for the person in front of us.</p>
+<h4>15 · Lucia walks in freedom</h4><p>Imagine that Lucia finally tells her pastor about her past and about the box of charms. He listens carefully, and reminds her that she already belongs to Christ’s kingdom. With her agreement, he and an experienced woman from the church meet with her in a quiet room. Lucia confesses her past involvement and renounces it in her own words, and they pray for her calmly in Jesus’ name. Afterwards, Lucia decides to let go of the charms, and together they dispose of them. She already belongs to Christ. Letting go of the charms is one way she chooses to stop relying on them. Over the following months she meets regularly with the older woman to read Scripture and pray, and she also sees her doctor about her sleep. The nightmares gradually become less frequent, though she still has some difficult nights. On those nights she reminds herself that she belongs to Christ, and the dread near the shrine slowly loses its grip. And like the man in Mark 5, she begins to tell others how much the Lord has done for her.</p>
+<h4>16 · Two misunderstandings</h4><p>So we avoid two misunderstandings. Some think every persistent struggle needs deliverance ministry. But Scripture shows many ways God brings freedom: repentance, truth, prayer, fellowship, wise help and steady discipleship. Others think strong Christians are those who need others least. But even the apostles went to their friends and prayed together. Mature believers are often those who have learned to depend on God’s people, as well as serve them.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. Every believer is free in Christ: forgiven, accepted and brought into his kingdom, not by our performance but by his grace. We do not walk alone: like the church in Acts, we pray together and carry one another’s burdens. And we walk in freedom: turning from the old ways, walking by the Spirit and serving one another in love. Every believer belongs to Christ and is free in him, and we walk in that freedom with trustworthy believers.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Take one step towards a trustworthy believer or church connection. Write down one person or church connection you can trust. Then choose one realistic step: a visit, a phone call, joining a small group, or sharing a burden you have been carrying alone. Think of Lucia, who might write: This Sunday I’ll ask my pastor if we can talk and pray privately. Choose someone who listens patiently and lets you decide how much to share. If you are not part of a church, visit one this month; if that is difficult, ask a believer to call or visit you. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “For freedom Christ has set us free; stand firm therefore, and do not submit again to a yoke of slavery.” And here is this week’s declaration, a statement of trust: Christ has set me free. I belong to his kingdom, and I belong to his people. I will not return to the old ways. Together we will stand firm.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Lord Jesus, thank you that you have delivered me from the domain of darkness and brought me into your kingdom. Thank you that there is no condemnation for those who are in you. Forgive me for the times I have tried to stand alone. I turn from every practice and allegiance that opposes you, and I give myself fully to you. Lead me to trustworthy believers, and help me to be faithful among them. Help me to share my burdens, and to carry the burdens of others. Fill us with your Holy Spirit, so that together we may stand firm. Give me courage to tell others how much you have done for me. In Jesus’ name, Amen. This week, take one step towards a trustworthy believer or church connection. Then stop here for today, or continue to Lesson 11.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Galatians 5:1, 13, 16 · Galatians 2:16 · Colossians 1:13 · Romans 8:1 · Mark 5:1–20 · Acts 4:23–34 · 1 Corinthians 12:21 · Ecclesiastes 4:9–10 · Galatians 6:2 · James 5:16 · Acts 19:18–19</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Take one step towards a trustworthy believer or church connection.</p>
+  <p class="prompt">1. One person or church connection I can trust is…</p>
+  <textarea aria-label="One person or church connection I can trust"></textarea>
+  <p class="prompt">2. One step I will take towards them this week is… (a visit, a phone call, joining a small group, or sharing a burden)</p>
+  <textarea aria-label="One step I will take this week"></textarea>
+  <p class="prompt">3. (Optional) Something I may ask them to pray with me about is…</p>
+  <textarea aria-label="Optional: something I may ask them to pray about"></textarea>
+  <p class="refs">For example, Lucia might write: “This Sunday I’ll ask my pastor if we can talk and pray privately.” Choose someone who listens patiently and lets you decide how much to share. If you are not part of a church, visit one this month; if that is difficult, ask a believer to call or visit you.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“For freedom Christ has set us free; stand firm therefore, and do not submit again to a yoke of slavery.”<span class="r">Galatians 5:1 (ESV)</span></div><p class="d">Christ has set me free. I belong to his kingdom, and I belong to his people. I will not return to the old ways. Together we will stand firm.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z" fill="#e9b25e"/><path d="M14 86 L6 128 M10 82 H20" stroke="#e9b25e" stroke-width="3"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>How does reading Galatians 5:1 in its setting change how you understand freedom in Christ?<textarea></textarea></li>
+  <li>What does Mark 5:15 show about the kind of freedom Jesus brings?<textarea></textarea></li>
+  <li>What stands out to you about how the church prayed together in Acts 4?<textarea></textarea></li>
+  <li>Which reason for needing one another do you find most important in your own life right now?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 10 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Galatians 5:1–6</td><td>What does it mean that my standing with God is a gift, not something I earn?</td><td>Thank you that you have set me free.</td><td>Christ has set me free.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Colossians 1:9–14</td><td>What has God delivered me from, and what has he brought me into?</td><td>Thank you for bringing me into your kingdom.</td><td>I belong to the kingdom of God’s beloved Son.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Acts 4:23–31</td><td>What do I notice about how the believers prayed together?</td><td>Give us boldness to speak your word.</td><td>God hears his people when they pray together.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Acts 4:32–37</td><td>Who around me needs practical care this week?</td><td>Make us of one heart and soul.</td><td>We belong to one another in Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>1 Corinthians 12:12–27</td><td>Where have I been acting as if I have no need of others?</td><td>Help me to belong to your people.</td><td>I am a member of Christ’s body.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Acts 19:17–20</td><td>Is there anything from my past I need to bring into the light?</td><td>I turn from every practice that opposes you.</td><td>I will not return to the old ways.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Galatians 5:13–26</td><td>How can I use my freedom to serve someone in love this week?</td><td>Help me to walk by the Spirit.</td><td>I will walk by the Spirit.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 11.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+  <details><summary>The full chapters</summary><p>Chapters 16 and 17 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Felix’s story</summary><p><i>Imagine a young man named Felix.</i> He came to faith as a teenager in a lively youth group. Two years ago he moved to a new city for work. The first church he visited felt unfriendly, and after that he never quite got round to finding another. Now he watches sermons online on Sunday mornings, when he remembers. His faith feels thin, he is lonely, and late at night he finds himself returning to habits he thought he had left behind. When a friend from home asks whether he has found a church, Felix says, “I don’t really need one. My faith is between me and God.” But his friend keeps encouraging him, and Felix tries another church. An older couple invites him for lunch, and a few weeks later he joins a small group that meets on Wednesday evenings. After some months he trusts one of the men enough to tell him about the habits he has been struggling with. The man does not condemn him. He prays with him, checks in during the week and helps him put practical boundaries in place. Felix still has hard days, and some nights are still lonely. But he is no longer fighting alone, and he begins helping with the church’s welcome team, looking out for newcomers who, like him, might otherwise slip away.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>What is the difference between the freedom Paul describes in Galatians 5:1 and the deliverance described in Mark 5?</li>
+  <li>What can we learn from the way the believers prayed together in Acts 4?</li>
+  <li>Who in your church could you stand with, and who could stand with you?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 9 we learned to submit, resist and worship, even when the battle is long. Today we saw that every believer belongs to Christ and is free in him, and that we walk in that freedom with trustworthy believers.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

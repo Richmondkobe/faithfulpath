@@ -266,6 +266,11 @@ export default async function Membership() {
           );
         })}
       </ul>
+      {/* Richmond's approved line for the new course (7 November 2026). */}
+      <p className="mt-4 rounded-2xl border border-gold bg-paper px-5 py-4 leading-relaxed">
+        <Bold>New: Stand Firm.</Bold> A 12-lesson course on spiritual warfare and the armour of God, with
+        narrated lessons and a Leader&rsquo;s Guide for groups. Included in your membership.
+      </p>
 
       <H2>Also included</H2>
       <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">

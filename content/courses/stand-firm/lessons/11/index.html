@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 11 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 4: Living in Victory</span><span class="steps" aria-label="Lesson 11 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+ <p class="eyebrow">Lesson 11 · Chapters 18–19 · Part 4: Living in Victory</p>
+ <h1>Guarding Your Heart and Passing Faith On</h1>
+ <p class="question">How do I keep my heart, and help someone else’s faith grow?</p>
+ <span class="chip">About 16 minutes</span><span class="chip">Proverbs 4:20–27</span><span class="chip">Part 4 · Living in Victory</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> name one rhythm that guards your heart and one person whose faith you can encourage.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 16 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>What the Bible means by “heart”, and how hearts drift</li>
+  <li>Ordinary rhythms that keep the heart, over the long haul</li>
+  <li>How faith is passed on in ordinary moments, as with Lois, Eunice and Timothy</li>
+  <li>Why we are called to be faithful, not to control the outcome</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 11 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Guarding your heart and passing faith on</h4><p>Welcome back to Stand Firm. In Lesson 10 we saw that every believer belongs to Christ and is free in him, and that we walk in that freedom together. Now we begin Part 4, living in victory. Today’s lesson asks two questions that belong together. How do I keep my heart, and help someone else’s faith grow?</p>
+<h4>2 · Imagine a man named Tomas</h4><p>Imagine a man named Tomas. He has followed Christ for more than twenty-five years. He is a deacon, he leads a home group, and younger believers look up to him. If you had asked him a few years ago whether he could ever drift from God, he would have said no. But slowly, almost without noticing, things have changed. A painful conflict at church left him quietly cynical. His work has become more demanding, and his time with God has shrunk to a hurried prayer in the car. He still leads his home group, but he no longer shares anything personal. Recently he has begun exchanging late-night messages with a colleague who seems to understand him better than anyone else. Nothing physical has happened, but the secrecy is already harming his marriage, and he has not mentioned the messages to his wife. Tomas knows something is wrong. How did I get here? Let us open the Bible.</p>
+<h4>3 · Proverbs 4:20–27</h4><p>Proverbs chapter 4, verses 20 to 27. My son, be attentive to my words; incline your ear to my sayings. Let them not escape from your sight; keep them within your heart. For they are life to those who find them, and healing to all their flesh. Keep your heart with all vigilance, for from it flow the springs of life. Put away from you crooked speech, and put devious talk far from you. Let your eyes look directly forward, and your gaze be straight before you. Ponder the path of your feet; then all your ways will be sure. Do not swerve to the right or to the left; turn your foot away from evil.</p>
+<h4>4 · Point 1: What the Bible means by “heart”</h4><p>Our first main point: what the Bible means by the heart, and how hearts drift. In everyday speech, the heart usually means our emotions. But in Scripture the heart is much broader. The Hebrew word is lēb: the inner centre of a person, where we think, desire, decide and trust. Jesus said, “out of the abundance of the heart his mouth speaks.” That is why Proverbs says that “from it flow the springs of life.” What happens in the heart eventually shapes everything else: our words, our choices and our relationships. If the spring is clouded, the stream will be too.</p>
+<h4>5 · A father’s instruction</h4><p>Proverbs 4 is written as a father’s instruction to his son, and around the command to guard the heart, he speaks of the whole person. First he tells his son what the heart is meant to hold: “keep them within your heart.” Guarding the heart begins with receiving and keeping God’s wisdom. Then he speaks of our ears: “incline your ear to my sayings.” Our mouths: “Put away from you crooked speech.” Our eyes: “Let your eyes look directly forward.” And our feet: “Ponder the path of your feet.” So guarding the heart is not only an inward feeling. It involves what we listen to, what we say, what we look at and where we go. The heart shapes the whole of life, and our daily choices shape the heart.</p>
+<h4>6 · How hearts drift</h4><p>Few believers wake up one morning and decide to abandon their faith. More often, drift happens gradually. Hebrews warns, “we must pay much closer attention to what we have heard, lest we drift away from it.” Hebrews is warning us to hold on to the good news of Jesus. Here are four ways drift can begin. Neglect: other priorities slowly crowd God out. Nursed resentment: hurt we keep feeding, until it shapes how we see others and God. Isolation: we stop letting anyone see our inner life. And small compromises: sin rarely arrives as a dramatic choice, and secrecy is often the first warning sign. Long years of faith do not make us immune. Paul writes, “let anyone who thinks that he stands take heed lest he fall.” None of this is meant to make us anxious. It is meant to make us honest, so that we notice drift early and turn back.</p>
+<h4>7 · God guards our hearts too</h4><p>Guarding the heart is our responsibility, but we are not left to do it alone. Paul writes, “do not be anxious about anything, but in everything by prayer and supplication with thanksgiving let your requests be made known to God. And the peace of God, which surpasses all understanding, will guard your hearts and your minds in Christ Jesus.” Notice that it is God’s peace that guards the heart. And Jude reminds us that God “is able to keep you from stumbling.” So we guard our hearts with vigilance, but not with fear. We keep coming back to the One who keeps us.</p>
+<h4>8 · Point 2: Rhythms that keep the heart</h4><p>Our second main point: rhythms that keep the heart. Guarding the heart is not mainly about a few dramatic decisions. It is shaped by ordinary rhythms, repeated over time. Time alone with God: even in his busiest days, Jesus rose “very early in the morning, while it was still dark,” and went out to pray. Rest: when his disciples were worn out, Jesus said, “Come away by yourselves to a desolate place and rest a while.” Gratitude: “Bless the LORD, O my soul, and forget not all his benefits…” And honest friendship: a heart that is known by others is harder to lose in secret. These rhythms look different in different seasons. A brief prayer, listening to Scripture, or accepting help can sustain faith when long quiet times are hard. Being exhausted is not spiritual failure.</p>
+<h4>9 · Faithful over the long haul</h4><p>The Christian life is not only a series of battles. It is a long journey of faithfulness. Hebrews calls us to “run with endurance the race that is set before us, looking to Jesus, the founder and perfecter of our faith.” Some seasons feel dry. In Psalm 73, Asaph admits that his feet had almost stumbled, yet in God’s presence he could say, “My flesh and my heart may fail, but God is the strength of my heart and my portion forever.” And near the end of his life Paul could say, “I have fought the good fight, I have finished the race, I have kept the faith.” That is the goal: not a perfect record, but a life that keeps returning to Christ to the end.</p>
+<h4>10 · Tomas turns back</h4><p>Imagine that one evening, after another long exchange of messages, Tomas reads Proverbs 4:23 in his daily reading plan. It stops him. The next day he tells his wife about the messages. She is hurt, and honesty begins a slow process of rebuilding trust. Tomas accepts responsibility without expecting quick reassurance. He ends the private messaging and keeps his contact with his colleague professional. He asks an older friend from church to meet with him regularly and ask him honest questions. Over the following months he sets aside unhurried time with God each morning, talks with his pastor about the old church conflict, and steps back from one ministry role for a season so that he can rest. His heart does not change overnight. But it is turning again towards the springs of life.</p>
+<h4>11 · Point 3: It begins with our own hearts</h4><p>Our third main point: passing faith on. A guarded heart does not only keep us. It helps someone else’s faith grow. In Deuteronomy 6, before Moses says anything about children, he calls the people to love God “with all your heart and with all your soul and with all your might.” Then he says, “these words that I command you today shall be on your heart.” Here the Hebrew word for heart is lēbāb, a fuller form of the same word we met in Proverbs. Only then does he say, “You shall teach them diligently to your children.” The order matters. Passing on faith begins with our own love for God. That does not mean we must be perfect. Our walk with God, including the way we repent and return to him, is part of what we pass on.</p>
+<h4>12 · Faith in ordinary moments</h4><p>Notice where this teaching happens: “when you sit in your house, and when you walk by the way, and when you lie down, and when you rise.” These are ordinary moments: meals, journeys, bedtimes and mornings. Many of the most lasting conversations about faith happen unplanned: a question in the car, a worry at bedtime. We do not need to be Bible scholars. We need to be available, honest and ready to point to God. And when a child asks why we follow God’s ways, Moses says the answer begins with a story: “We were Pharaoh’s slaves in Egypt. And the LORD brought us out of Egypt with a mighty hand.” Our answers, too, can begin with what God has done.</p>
+<h4>13 · A sincere faith passed on</h4><p>We see this in Timothy’s life. Paul wrote to him, “I am reminded of your sincere faith, a faith that dwelt first in your grandmother Lois and your mother Eunice and now, I am sure, dwells in you as well.” And he reminded Timothy that from childhood he had known “the sacred writings, which are able to make you wise for salvation through faith in Christ Jesus.” Their example shows what it can look like to encourage faith across generations.</p>
+<h4>14 · A calling for every believer</h4><p>So passing faith on is not only for parents. It is a calling open to every mature believer. Paul was not Timothy’s father, yet he called him “my beloved child.” Passing faith on can include parenting, mentoring, friendship and service in the church. A grandparent who prays, a friend who reads Scripture with someone, a Sunday school teacher, a youth leader: each can shape a growing faith. As the psalmist says, “We will not hide them from their children, but tell to the coming generation the glorious deeds of the LORD.”</p>
+<h4>15 · Without fear, with honest questions</h4><p>When children are afraid of spiritual things, start with Jesus. Speak simply and calmly: there is evil in the world, but God is greater, and they can always talk to him and to us. John wrote, “he who is in you is greater than he who is in the world.” Give them words to pray, such as “In peace I will both lie down and sleep; for you alone, O LORD, make me dwell in safety.” And when young people begin to ask hard questions, listen before answering, admit when you do not know, and look for answers together. Questions are not the enemy of faith.</p>
+<h4>16 · Faithful, not in control</h4><p>Many parents take comfort in Proverbs 22:6: “Train up a child in the way he should go; even when he is old he will not depart from it.” It is a wise and encouraging proverb. But proverbs describe how life generally works under God; they are not unconditional guarantees. Each child must come to faith personally. We are called to be faithful, not to control the outcome. If you are grieving someone who has wandered, keep praying and keep showing love. Jesus pictured a father who saw his returning son “while he was still a long way off,” and ran to welcome him.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. The heart is the centre of life, and hearts drift slowly, so we notice drift early and turn back. We keep our hearts through ordinary rhythms: time with God, rest, gratitude and honest friendship, trusting the God whose peace guards us. And from a guarded heart, faith is passed on, in ordinary moments, through parenting, mentoring, friendship and service. We guard our hearts in Christ, and a guarded heart helps another person’s faith grow.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Choose one daily rhythm that guards your heart, and keep it all week. It might be time with God before you look at your phone, a short prayer of thanks at the end of each day, or reading a psalm on your way to work. Write down when and where you will keep it. Think of Tomas, who might write: Each morning before work, I’ll read Scripture and pray, with my phone in another room. Then name one person whose faith you can encourage this week, and one simple way to do it. You might write: On Thursday I’ll ask a friend from church how I can pray for them. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “Keep your heart with all vigilance, for from it flow the springs of life.” And here is this week’s declaration, a statement of trust: I will guard my heart, for from it flow the springs of life. I will keep running with endurance, looking to Jesus. I will speak of his faithfulness to the next generation, and trust him with their story.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Father, you know my heart better than I do. Show me where I have drifted, and give me grace to turn back to you. Help me to listen to your word, to speak what is true, to keep my eyes on what is good and to walk in your ways. Guard my heart and mind with your peace. Deepen my love for you, so that my life points others to you. Help me to speak of your faithfulness in ordinary moments, and to trust you with what I cannot control. Keep me faithful to the end. In Jesus’ name, Amen. This week, keep one daily rhythm that guards your heart, and encourage one person’s faith. Then stop here for today, or continue to Lesson 12.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Proverbs 4:20–27 · Luke 6:45 · Hebrews 2:1 · 1 Corinthians 10:12 · Philippians 4:6–7 · Jude 24 · Mark 1:35 · Mark 6:31 · Psalm 103:2 · Hebrews 12:1–2 · Psalm 73:2, 26 · 2 Timothy 4:7 · Deuteronomy 6:5–7, 20–21 · 2 Timothy 1:2, 5; 3:15 · Psalm 78:4 · 1 John 4:4 · Psalm 4:8 · Proverbs 22:6 · Luke 15:20</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Choose one daily rhythm that guards your heart, and keep it all week. Then name one person whose faith you can encourage.</p>
+  <p class="prompt">1. The rhythm I will keep each day is…</p>
+  <textarea aria-label="The rhythm I will keep each day"></textarea>
+  <p class="prompt">2. When and where I will keep it…</p>
+  <textarea aria-label="When and where I will keep it"></textarea>
+  <p class="prompt">3. One person whose faith I can encourage, and one simple way I will do it…</p>
+  <textarea aria-label="One person whose faith I can encourage"></textarea>
+  <p class="refs">For example, Tomas might write: “Each morning before work, I’ll read Scripture and pray, with my phone in another room.” And for encouraging someone’s faith: “On Thursday I’ll ask a friend from church how I can pray for them.”</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Keep your heart with all vigilance, for from it flow the springs of life.”<span class="r">Proverbs 4:23 (ESV)</span></div><p class="d">I will guard my heart, for from it flow the springs of life. I will keep running with endurance, looking to Jesus. I will speak of his faithfulness to the next generation, and trust him with their story.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z" fill="#e9b25e"/><path d="M14 86 L6 128 M10 82 H20" stroke="#e9b25e" stroke-width="3"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>How does the Bible’s meaning of “heart” differ from the way we often use the word?<textarea></textarea></li>
+  <li>Which of the four causes of drift (neglect, nursed resentment, isolation, small compromises) do you find most relevant to your life right now?<textarea></textarea></li>
+  <li>Why do you think Deuteronomy 6 places love for God before teaching children?<textarea></textarea></li>
+  <li>Who are the young people or newer believers God has placed around you, and how could you encourage them?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 11 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Proverbs 4:20–27</td><td>How are my ears, mouth, eyes and feet shaping my heart?</td><td>Search my heart, and lead me in your way.</td><td>I will guard my heart.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Hebrews 2:1–4</td><td>Where have I begun to drift?</td><td>Help me to pay close attention to your word.</td><td>I will hold fast to what I have heard.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Philippians 4:4–9</td><td>What do I need to bring to God in prayer today?</td><td>Guard my heart and mind with your peace.</td><td>God’s peace guards my heart.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Mark 6:30–32</td><td>What rhythm of rest do I need in this season?</td><td>Teach me to come away with you and rest.</td><td>Jesus knows my limits.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Deuteronomy 6:4–9</td><td>Do I love God with all my heart?</td><td>Deepen my love for you.</td><td>I will love the Lord with all my heart.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>2 Timothy 1:3–7</td><td>Who shaped my faith, and whose faith can I encourage?</td><td>Show me whose faith I can encourage.</td><td>I will encourage someone to trust Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Psalm 78:1–8</td><td>What has God done that I can tell someone?</td><td>Help me to tell of your faithfulness.</td><td>I will tell the next generation what God has done.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 12.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+  <details><summary>The full chapters</summary><p>Chapters 18 and 19 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Kwame and Efua’s story</summary><p><i>Imagine a couple named Kwame and Efua.</i> They have two children. Their eight-year-old daughter, Akosua, heard frightening stories from her cousins about witches and evil spirits, and now she is afraid to sleep with the light off. Their fifteen-year-old son, Kojo, has grown quiet about his faith; last week he asked, “How do we even know any of this is true?” Kwame and Efua begin praying with Akosua each night before she sleeps. Efua teaches her Psalm 4:8, and they gently explain that frightening stories are not always true, and that Jesus is always with her and stronger than anything that frightens her. They listen when she is scared, without making her prove that she is brave. After a few weeks Akosua still likes a small night light, and bedtime has become calmer. With Kojo, Kwame tries a different approach. Instead of lecturing, he asks his son to share his questions, and they agree to look into one each week. Kwame admits he does not know every answer. He also asks Kojo whether he would like to meet with a young man from their church whom he respects, and Kojo agrees. Kojo’s questions are not all resolved, but he knows his faith is something he can explore honestly, and that his parents will keep loving him whatever he decides.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>How does Philippians 4:6–7 help us guard our hearts without anxiety?</li>
+  <li>What ordinary moments in your week could become opportunities to talk about faith?</li>
+  <li>What would it look like for you to be faithful over the long haul?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 10 we saw that every believer belongs to Christ and is free in him, and that we walk in that freedom together. Today we saw that we guard our hearts in Christ, and that a guarded heart helps another person’s faith grow.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

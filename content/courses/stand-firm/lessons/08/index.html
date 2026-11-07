@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 8 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 3: Standing Firm in Everyday Life</span><span class="steps" aria-label="Lesson 8 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 8 · Chapter 13 · Part 3: Standing Firm in Everyday Life</p>
+ <h1>Is This a Spiritual Attack?</h1>
+ <p class="question">How do I test spiritual claims and respond wisely when life is difficult?</p>
+ <span class="chip">About 14½ minutes</span><span class="chip">1 John 4:1–3</span><span class="chip">Part 3 · Everyday Life</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> explain why a spiritual claim should be accepted, questioned or rejected.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 14½ minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>What John meant by “test the spirits”, read in its setting</li>
+  <li>Five questions for testing a spiritual claim, and what Scripture says to those who fear curses</li>
+  <li>Why we can respond faithfully without being certain of the cause</li>
+  <li>How wise counsel protects us from two opposite errors</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 8 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Is this a spiritual attack?</h4><p>Welcome back to Stand Firm. In Part 2 we looked at the armour of God, piece by piece. Now we begin Part 3, standing firm in ordinary life. Today’s lesson asks a question many believers carry when life becomes hard: is this a spiritual attack? And behind it lies a deeper question. How do I test spiritual claims and respond wisely when life is difficult?</p>
+<h4>2 · Imagine a man named Tunde</h4><p>Imagine a man named Tunde. In the past year his small business has struggled, his son has been unwell, and he has had a painful falling-out with his brother. One night, scrolling online, he finds a video by a man who calls himself a prophet. The prophet says that many viewers are under a family curse, and that only a special prayer, offered after a donation, can break it. Tunde does not send money, but he cannot stop thinking about it. What if it’s true? What if all these problems are an attack, and I don’t know how to stop it? He starts to see danger everywhere: in a bad dream, a broken appliance, a cold look from a neighbour. Let us open the Bible.</p>
+<h4>3 · 1 John 4:1–3</h4><p>First John, chapter 4, verses 1 to 3. “Beloved, do not believe every spirit, but test the spirits to see whether they are from God, for many false prophets have gone out into the world. By this you know the Spirit of God: every spirit that confesses that Jesus Christ has come in the flesh is from God, and every spirit that does not confess Jesus is not from God. This is the spirit of the antichrist, which you heard was coming and now is in the world already.”</p>
+<h4>4 · Point 1: What John was talking about</h4><p>Our first main point: what John was talking about. John was writing to churches troubled by false teachers. Some had left the fellowship, and they were teaching things about Jesus that denied the truth of the gospel. When John says “test the spirits,” he has these teachers and their message in view. John’s word for test, dokimazete, was used for testing metal, to see whether it was genuine, the way gold is tested by fire. And the test he gives is about Christ: do they confess “that Jesus Christ has come in the flesh”? So the first meaning of this passage is not about identifying the cause of every difficulty in our lives. It is about testing teaching, and those who claim to speak for God.</p>
+<h4>5 · A wider principle, drawn carefully</h4><p>That makes this passage directly relevant to Tunde, because a man claiming to be a prophet has made a spiritual claim about his life. From there we can draw a wider principle, carefully. Christians should not simply believe every spiritual claim, whether it comes from a preacher, a dream, a feeling or a frightening thought. Everything should be tested by the truth of God revealed in Christ and in Scripture. That does not mean we despise what God may be saying. Many believers have been encouraged and strengthened by genuine words from the Lord. But the same passage that tells us not to despise prophecy tells us to test everything: “Do not despise prophecies, but test everything; hold fast what is good.”</p>
+<h4>6 · Point 2: Testing spiritual claims today</h4><p>Our second main point: testing spiritual claims today. Scripture gives us several questions. First, does it agree with the gospel? Does it honour Jesus Christ and agree with what God has revealed in Scripture? Second, what is its fruit? Jesus said of false prophets, “You will recognize them by their fruits.” Look at the teacher’s conduct and the effects of the ministry over time. Third, is money involved in a troubling way? Peter warned about false teachers: “in their greed they will exploit you with false words.” Fourth, does it draw you towards God’s people, or away from them? Healthy ministry welcomes accountability, including leaders having their own claims examined. And fifth, does it bring you to Christ, or make you dependent on a particular person? Any ministry that puts itself between you and Christ has lost its way. These questions help us assess a claim. Passing them does not, by itself, prove that a particular prediction or message came from God.</p>
+<h4>7 · Feelings are not the test</h4><p>Notice what the questions do not rely on. An immediate feeling of comfort or fear is not enough to establish whether a claim is true. Truthful correction can be uncomfortable at first, and manipulative reassurance can feel comforting. That is why the fruit is seen over time, and why the questions look at the message, the conduct and the effects together, rather than at how a moment made us feel.</p>
+<h4>8 · Testing what Tunde heard</h4><p>By these questions, the message Tunde heard raises serious concerns. It asserted that viewers’ hardships showed a family curse, without establishing that claim. It made spiritual help conditional on payment. And it offered a special prayer from a stranger, rather than pointing viewers to Christ and to trustworthy counsel. Tunde does not need to decide what is in that man’s heart. But he has good reasons not to accept what he heard.</p>
+<h4>9 · Curses and Christ</h4><p>Tunde’s fear about a family curse deserves a careful, pastoral answer. In many cultures, fear of curses is very real, and it can be deeply troubling. Scripture takes spiritual evil seriously. But it also gives believers strong reassurance. “Like a sparrow in its flitting, like a swallow in its flying, a curse that is causeless does not alight.” This proverb is not a formula for deciding whether someone has become vulnerable to a curse, and Tunde’s difficulties do not establish that a curse has been placed on him. Above all, believers belong to Christ, who “disarmed the rulers and authorities.” And nothing in all creation “will be able to separate us from the love of God in Christ Jesus our Lord.”</p>
+<h4>10 · Family patterns, and belonging to Christ</h4><p>That does not mean believers never face hardship, or that family patterns do not affect us. Some families do carry painful patterns, such as addiction, anger or broken relationships, and these can affect the next generation. Those patterns call for repentance where needed, healing, wise help and the support of God’s people. But a believer does not need to buy protection or live in fear of words spoken against them. They belong to Christ.</p>
+<h4>11 · Point 3: Certainty about the cause is often unnecessary</h4><p>Our third main point: why certainty about the cause is often unnecessary. Some believers think that discernment means always being able to identify the exact spiritual cause of a problem. But Scripture rarely asks us to diagnose causes with certainty. It asks us to test claims, walk in truth, resist fear and act faithfully. In Lesson 1 we met four simple questions. They are not a test that identifies the cause of a difficulty, but they help us pray and think more clearly. Here is how they might look for Tunde.</p>
+<h4>12 · The four questions for Tunde</h4><p>First, my own heart. Tunde realises that he spoke harshly to his brother during their argument. That needs to be confessed and, if possible, put right. Second, the world around me. He notices that the hours he spends watching frightening videos are feeding his anxiety and drawing him away from Scripture and church. Third, truth and lies. The fear that he is cursed and helpless contradicts what God says about those who belong to Christ, and he can answer it with Scripture. Fourth, ordinary needs. His son needs proper medical care. His business needs wise advice. His relationship with his brother needs a humble conversation.</p>
+<h4>13 · More than one answer is true</h4><p>Notice that more than one answer is true at once. Tunde’s situation includes his own sin, unhelpful influences, frightening lies and ordinary practical needs. Spiritual opposition may be part of the picture, but it is not the whole picture. And it does not change what he is called to do: trust Christ, resist fear, act wisely and seek help.</p>
+<h4>14 · The value of wise counsel</h4><p>One of the best protections in discernment is not facing our questions alone. “Where there is no guidance, a people falls, but in an abundance of counselors there is safety.” A mature pastor or Christian friend can help us test spiritual claims, notice patterns we cannot see, and remember practical steps we have overlooked. They can also help us avoid two opposite errors: dismissing real spiritual opposition, or seeing it behind everything. And healthy leaders welcome having their claims examined. If the claim comes from your own leader, seek counsel from another trustworthy Christian who can assess it independently.</p>
+<h4>15 · Tunde finds clarity</h4><p>Imagine that Tunde finally speaks with his pastor. The pastor listens carefully, and does not laugh at his fears. Together they read 1 John 4 and Romans 8. The pastor prays with him, and also helps him think through practical steps: a doctor’s appointment for his son, a meeting with a business mentor from the church, and a plan to call his brother. Tunde also decides to stop watching the videos that fed his fear. His problems do not disappear immediately, and fearful thoughts may return. But he now has people to turn to and practical steps to take. He knows whom he belongs to, and he knows he is not facing his difficulties alone.</p>
+<h4>16 · Testing is not unbelief</h4><p>Some think that being cautious about spiritual claims shows a lack of faith. But testing is not unbelief. It is obedience to Scripture. The same God who speaks also tells us to “test everything; hold fast what is good.” We test, not to keep God at a distance, but to stay close to the truth he has given.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. John told believers to test teachers by their confession of Christ. Today we test every spiritual claim by the gospel, its fruit, its handling of money, whether it builds up God’s people, and whether it brings us to Christ. Believers need not live in fear of curses, because they belong to Christ. And we do not need to be certain of the cause before we act faithfully. We test every spiritual claim by Christ and Scripture, and we can respond faithfully without being certain of the cause.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Take one spiritual claim that troubles you, perhaps a message, a prediction or a word, to your pastor or a mature believer, and test it together. Write down the claim you heard. Then work through the five questions: Does it agree with the gospel? What is its fruit? Is money involved in a troubling way? Does it draw you towards God’s people? Does it bring you to Christ? Finally, write what you think now, and why: whether to accept it, question it or reject it. If you are still unsure, that is fine; keep testing it together. These questions help us assess a claim. Passing them does not, by itself, prove that a particular prediction or message came from God. If the claim comes from your own leader, seek counsel from another trustworthy Christian who can assess it independently. And if no claim troubles you right now, use the claim Tunde heard in this lesson. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “Do not despise prophecies, but test everything; hold fast what is good.” And here is this week’s declaration, a statement of trust: I will not believe every spirit. I will test what I hear by the truth of Christ. I belong to him, and I will walk in wisdom, not in fear.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Lord Jesus, thank you that I belong to you, and that nothing can separate me from your love. Give me wisdom to test every spiritual claim by your truth. Keep me from both carelessness and fear. When I do not understand what is happening in my life, help me to confess my own sin, resist lies, care for practical needs and seek wise counsel. Protect me from voices that would exploit or frighten me, and draw me closer to you and to your people. Amen. This week, take one spiritual claim to a trusted believer and test it together. Then stop here for today, or continue to Lesson 9.</p>
+<p class="refs"><b>Scripture in this lesson:</b> 1 John 4:1–3 · 1 John 2:19 · 1 Thessalonians 5:20–21 · Matthew 7:15–20 · Galatians 1:8 · 2 Peter 2:3 · Proverbs 26:2 · Colossians 2:15 · Romans 8:38–39 · Proverbs 11:14</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Take one spiritual claim that troubles you to your pastor or a mature believer, and test it together.</p>
+  <p class="prompt">1. The claim I heard is…</p>
+  <textarea aria-label="The claim I heard"></textarea>
+  <p class="prompt">2. What the five questions show: Does it agree with the gospel? What is its fruit? Is money involved in a troubling way? Does it draw me towards God’s people? Does it bring me to Christ?</p>
+  <textarea aria-label="What the five questions show"></textarea>
+  <p class="prompt">3. What I think now, and why: accept, question or reject. (Unsure is fine; keep testing it together.)</p>
+  <textarea aria-label="What I think now"></textarea>
+  <p class="refs">The person I will talk it through with is… These questions help us assess a claim. Passing them does not, by itself, prove that a particular prediction or message came from God. If the claim comes from your own leader, seek counsel from another trustworthy Christian who can assess it independently. No troubling claim to test? Use the claim Tunde heard in this lesson.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Do not despise prophecies, but test everything; hold fast what is good.”<span class="r">1 Thessalonians 5:20–21 (ESV)</span></div><p class="d">I will not believe every spirit. I will test what I hear by the truth of Christ. I belong to him, and I will walk in wisdom, not in fear.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z" fill="#e9b25e"/><path d="M14 86 L6 128 M10 82 H20" stroke="#e9b25e" stroke-width="3"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>How does reading 1 John 4:1–3 in its setting change how you understand “test the spirits”?<textarea></textarea></li>
+  <li>Which of the five questions for testing a spiritual claim do you find most helpful?<textarea></textarea></li>
+  <li>Why is it important that more than one of the four questions can be true at once?<textarea></textarea></li>
+  <li>Who are the wise counsellors you can turn to when you need help discerning?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 8 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>1 John 4:1–6</td><td>What does John ask believers to test, and what is the test?</td><td>Lord, give me wisdom to test what I hear.</td><td>I will test what I hear by the truth of Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>1 John 2:18–27</td><td>What helped John’s readers stay in the truth?</td><td>Help me to abide in what I have heard from the beginning.</td><td>The truth of Christ keeps me steady.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Matthew 7:15–23</td><td>What fruit do I look for in those who teach me?</td><td>Give me eyes to see good fruit.</td><td>A tree is known by its fruit.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>1 Thessalonians 5:16–24</td><td>How can I avoid both despising prophecy and believing everything?</td><td>Help me to test everything and hold fast what is good.</td><td>I will hold fast what is good.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Romans 8:31–39</td><td>Which fear do I need to bring under this promise?</td><td>Thank you that nothing can separate me from your love.</td><td>Nothing can separate me from God’s love.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Colossians 2:8–15</td><td>What has Christ done to the rulers and authorities?</td><td>Thank you that you have disarmed the powers.</td><td>I belong to Christ, who has triumphed.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Proverbs 11:14; 15:22</td><td>Who will I ask for wise counsel this week?</td><td>Lead me to wise and faithful counsellors.</td><td>In an abundance of counsellors there is safety.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 9.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapter</summary><p>Chapter 13 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Read the passage in its setting</summary><p>Read 1 John 4:1–6, and 1 John 2:18–27 for the background of those who had left the fellowship. Notice what John asks believers to test, and what the test is.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Why do you think fear-driven spiritual messages can feel so convincing?</li>
+  <li>Which of the five questions would have helped Tunde most, and why?</li>
+  <li>How can a church help people test spiritual claims without becoming suspicious of everything?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Part 2 we put on the armour of God. Today we began Part 3 by learning to test spiritual claims and to respond faithfully without being certain of the cause.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

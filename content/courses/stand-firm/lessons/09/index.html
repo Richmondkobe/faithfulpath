@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 9 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 3: Standing Firm in Everyday Life</span><span class="steps" aria-label="Lesson 9 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 9 · Chapters 14–15 · Part 3: Standing Firm in Everyday Life</p>
+ <h1>Submit, Resist and Worship</h1>
+ <p class="question">What do I do when the battle does not end quickly?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">James 4:6–10</span><span class="chip">Part 3 · Everyday Life</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> describe what humble resistance looks like in one real struggle.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why James puts “Submit yourselves to God” before “Resist the devil”</li>
+  <li>What resisting looks like, and why it is not a technique</li>
+  <li>How God meets us with grace when the battle does not end quickly</li>
+  <li>How Jehoshaphat’s people worshipped before they saw the outcome</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 9 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Submit, resist and worship</h4><p>Welcome back to Stand Firm. In Lesson 8 we learned to test spiritual claims and to respond faithfully without being certain of the cause. Today we turn to a question many believers carry for a long time. We have prayed, we have resisted, and the struggle is still there. What do I do when the battle does not end quickly?</p>
+<h4>2 · Imagine a man named Victor</h4><p>Imagine a man named Victor. He teaches at a college, serves as an usher at church and loves his family. But he carries two burdens that will not go away. The first is his temper. When his teenage son is disrespectful, Victor’s anger flares, and he says things he regrets. He apologises to God, promises to do better, and then it happens again. The second is physical. For several years Victor has suffered from severe migraines. A well-meaning friend told him, “You need to resist the devil. Rebuke these headaches, and they will leave.” So every night for weeks, Victor has prayed loudly, commanding the enemy to go. His temper has not changed, and the migraines still come. The Bible says if I resist the devil, he will flee. So why am I still struggling? Let us open the Bible.</p>
+<h4>3 · James 4:6–10</h4><p>James chapter 4, verses 6 to 10. But he gives more grace. Therefore it says, “God opposes the proud but gives grace to the humble.” Submit yourselves therefore to God. Resist the devil, and he will flee from you. Draw near to God, and he will draw near to you. Cleanse your hands, you sinners, and purify your hearts, you double-minded. Be wretched and mourn and weep. Let your laughter be turned to mourning and your joy to gloom. Humble yourselves before the Lord, and he will exalt you.</p>
+<h4>4 · Point 1: Submission comes first</h4><p>Our first main point: submission comes first, then resistance. James 4:7 is one of the best-known verses on spiritual warfare. But notice the order. Before “Resist the devil” comes “Submit yourselves therefore to God.” The word therefore points us back to what James has just said. He has been writing to believers caught up in quarrels, jealousy and selfish ambition: “What causes quarrels and what causes fights among you? Is it not this, that your passions are at war within you?” Then he quotes Scripture: “God opposes the proud but gives grace to the humble.” So in its setting, submitting to God means humbling ourselves before him: turning from pride, admitting our need and coming back to him. That is why James calls people to mourn. James is calling us to take our sin seriously and turn back to God. We can do that because he gives more grace.</p>
+<h4>5 · What resisting looks like</h4><p>James’s word for resist, antistēte, means to stand against, to refuse to give way. Paul uses the same Greek verb in Ephesians 6, when he says “withstand in the evil day.” Scripture shows us several ways to resist. Refusing the lie: answering the enemy’s deception with what God has said. Refusing the opportunity: Paul writes, “Be angry and do not sin; do not let the sun go down on your anger, and give no opportunity to the devil.” And refusing to give up: resistance is not one dramatic moment, but continuing to stand, again and again, in the strength God provides.</p>
+<h4>6 · Authority is Christ’s, not our technique</h4><p>Notice what resistance is not. It does not depend on the volume of our voice or the exact words we use. Many believers speak aloud in prayer and address the enemy in Jesus’ name, and Scripture gives believers real authority in Christ. But the authority belongs to Christ, not to our technique. Even the archangel Michael, when contending with the devil, did not bring his own judgment against him, but said, “The Lord rebuke you.” Our confidence rests in the Lord.</p>
+<h4>7 · “He will flee”, and the battle may return</h4><p>James gives a real promise: “Resist the devil, and he will flee from you.” Believers do not need to be afraid of the enemy or feel powerless before him. But the promise does not mean that every symptom, temptation or hardship will disappear immediately, or that the battle will never return. As we saw in Lesson 2, after Jesus resisted the devil in the wilderness, the devil “departed from him until an opportune time.” So when the same temptation comes back, it does not mean that our earlier resistance failed. We resist again, and keep drawing near to God, who promises to draw near to us.</p>
+<h4>8 · Point 2: When the battle does not end quickly</h4><p>Our second main point: when the battle does not end quickly. Victor’s migraines raise a hard question. What about struggles that continue even when we pray, resist and seek God faithfully? Paul knew this experience. He spoke of “a thorn” in the flesh, “a messenger of Satan to harass me.” Three times he pleaded with the Lord for it to leave. And the Lord said to him, “My grace is sufficient for you, for my power is made perfect in weakness.” Paul prayed, and God answered, but not with removal. He answered with grace. Paul’s experience does not establish the cause of Victor’s migraines. It shows that persistent suffering need not mean that prayer or faith has failed. So we do not stop praying. Scripture encourages us to pray for the sick, and God does heal. But our confidence rests in his grace, whether he removes the difficulty now, or gives us strength to carry it.</p>
+<h4>9 · Victor learns to stand</h4><p>Imagine that Victor talks to his pastor about both struggles. His pastor helps him see that they need different responses. For his anger, Victor begins with humility. He confesses it honestly to God, and then he apologises to his son. He asks a friend from the men’s group to check in with him each week, and when anger rises, he prays before he speaks. Slowly the pattern begins to change, though he still has hard days. For his migraines, the elders of the church pray for him and anoint him with oil. Victor keeps praying for healing, and he also returns to his doctor, who adjusts his treatment. Some weeks are still difficult. But Victor no longer believes that each migraine is a sign of failure. He is learning what Paul learned: God’s grace is sufficient, even while he waits.</p>
+<h4>10 · Point 3: Worship as trust</h4><p>Our third main point: worship as trust. In Second Chronicles 20, King Jehoshaphat of Judah receives terrifying news: a great army is coming against him. The Bible is honest about his first reaction: “Then Jehoshaphat was afraid.” But fear did not have the last word. He “set his face to seek the LORD, and proclaimed a fast throughout all Judah.” He prayed, remembering God’s power, and then admitted his weakness plainly: “We do not know what to do, but our eyes are on you.” And all Judah stood before the Lord together, with their little ones, their wives and their children.</p>
+<h4>11 · “The battle is not yours but God’s”</h4><p>Then God spoke to the people through a Levite named Jahaziel: “Do not be afraid and do not be dismayed at this great horde, for the battle is not yours but God’s.” And he went on: “Stand firm, hold your position, and see the salvation of the LORD on your behalf, O Judah and Jerusalem.” Stand firm: the call of this whole course. And notice how the people responded. Before they saw the outcome, they fell down before the Lord, worshipping him.</p>
+<h4>12 · The singers went out ahead</h4><p>The next morning Jehoshaphat did something remarkable. He appointed singers to go out ahead of the army, praising God and saying, “Give thanks to the LORD, for his steadfast love endures forever.” “And when they began to sing and praise, the LORD set an ambush,” and the armies that had come against Judah turned on one another.</p>
+<h4>13 · Reading this story carefully</h4><p>This passage needs to be read with care. God gave Judah a specific promise, for a specific situation: “You will not need to fight in this battle.” The victory came because God had promised it and kept his word, not because the singers found the right technique. The passage does not teach that if we worship enough, every problem will disappear in the same way. But it does teach lasting principles about how God’s people face trouble. They turned to God when they were afraid. They humbled themselves together. They prayed honestly. They listened for God’s word. And they worshipped before they saw the outcome. Those principles apply to us, even when God’s answer comes in a different way.</p>
+<h4>14 · Worship is not pretending</h4><p>Worship in the battle is not pretending that everything is fine. It is lifting our eyes from the size of the problem to the greatness and faithfulness of God. Many psalms begin in distress and move towards praise, not because the trouble has gone, but because the psalmist has remembered God. “Why are you cast down, O my soul, and why are you in turmoil within me? Hope in God; for I shall again praise him, my salvation and my God.” Paul and Silas, locked in prison, were praying and singing hymns to God before their release. Worship in a hard season can include lament and tears. But it tells the truth about God, even while sorrow remains.</p>
+<h4>15 · Fasting: humbling ourselves before God</h4><p>Jehoshaphat also proclaimed a fast. Throughout Scripture, fasting is a way of humbling ourselves and seeking God with special seriousness. Jesus said, “And when you fast,” and taught that it should be done before God, not to impress others. Fasting is not a way of earning God’s favour or forcing his hand. It is always voluntary, and food fasting is not suitable for everyone, so seek advice where your health makes it unwise. Anyone can set aside media or another distraction and give that time to God. What matters is the heart: turning from ordinary comforts to seek God more fully.</p>
+<h4>16 · Two misunderstandings</h4><p>So we avoid two misunderstandings. Some treat resistance, worship or fasting as techniques for getting results: if we speak with enough intensity, sing loud enough or fast long enough, God must act. But God is not moved by technique. He responds to his people with grace, according to his wisdom. Others think that submitting to God means passively accepting whatever happens, including sin and evil. But James calls us to submit to God and to resist the devil. We humble ourselves before God, and we stand firmly against everything that opposes him.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. Submission comes first: we humble ourselves before God, and then we resist the devil, standing against his lies and refusing him any opportunity. When the battle does not end quickly, we keep praying, and we receive grace while we wait. And like Jehoshaphat, we worship before we see the outcome, with our eyes on God. We stand by submitting to God, resisting the devil and worshipping, even when the battle is long.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Name one faithful response to the struggle you are facing. One way to humble yourself before God in it: perhaps confessing something, letting go of pride, or asking for help. And one way to stand against the enemy there. Think of Victor, who might write: When I’m tempted to speak harshly, I’ll pause, ask God for help and answer gently. Then set aside one time this week to worship God before you ask him for anything. You might read Psalm 42, or sing, “his steadfast love endures forever.” And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “Submit yourselves therefore to God. Resist the devil, and he will flee from you.” And here is this week’s declaration, a statement of trust: I submit myself to God. I resist the devil, firm in my faith. When I do not know what to do, my eyes are on him. When the battle is long, his grace is sufficient for me.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Father, I humble myself before you. Forgive my pride, and the ways I have tried to fight in my own strength. By your grace, help me to resist the devil, firm in faith, and to keep drawing near to you. When I do not know what to do, help me to turn my eyes to you. Where I am waiting for an answer, help me to keep praying and keep trusting. Let your grace be sufficient for me. Give me a song of trust, even in hard seasons. Your steadfast love endures for ever. In Jesus’ name, Amen. This week, name one faithful response to your struggle, and worship God before you ask him for anything. Then stop here for today, or continue to Lesson 10.</p>
+<p class="refs"><b>Scripture in this lesson:</b> James 4:1–10 · Ephesians 6:13 · Ephesians 4:26–27 · Jude 9 · Luke 4:13 · 2 Corinthians 12:7–9 · James 5:14 · 2 Chronicles 20:1–23 · Psalm 42:11 · Acts 16:25 · Matthew 6:16</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Name one faithful response to the struggle you are facing. Then set aside one time this week to worship God before you ask him for anything.</p>
+  <p class="prompt">1. The struggle I am facing is…</p>
+  <textarea aria-label="The struggle I am facing"></textarea>
+  <p class="prompt">2. One way I will humble myself before God in it is… (perhaps confessing something, letting go of pride, or asking for help)</p>
+  <textarea aria-label="One way I will humble myself before God"></textarea>
+  <p class="prompt">3. One way I will stand against the enemy there is…</p>
+  <textarea aria-label="One way I will stand against the enemy"></textarea>
+  <p class="prompt">4. The time I will set aside to worship before I ask is…</p>
+  <textarea aria-label="The time I will set aside to worship"></textarea>
+  <p class="refs">For example, Victor might write: “When I’m tempted to speak harshly, I’ll pause, ask God for help and answer gently.” For worship, you might read Psalm 42, or pray, “Give thanks to the LORD, for his steadfast love endures forever.”</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Submit yourselves therefore to God. Resist the devil, and he will flee from you.”<span class="r">James 4:7 (ESV)</span></div><p class="d">I submit myself to God. I resist the devil, firm in my faith. When I do not know what to do, my eyes are on him. When the battle is long, his grace is sufficient for me.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z" fill="#e9b25e"/><path d="M14 86 L6 128 M10 82 H20" stroke="#e9b25e" stroke-width="3"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Why do you think James puts “Submit yourselves therefore to God” before “Resist the devil”?<textarea></textarea></li>
+  <li>How does Luke 4:13 help you when the same temptation returns?<textarea></textarea></li>
+  <li>What does Paul’s experience in 2 Corinthians 12 teach about God’s grace in a continuing struggle?<textarea></textarea></li>
+  <li>What stands out to you in Jehoshaphat’s response to fear?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 9 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>James 4:1–10</td><td>Where do I need to humble myself before God?</td><td>Lord, I humble myself before you.</td><td>God gives grace to the humble.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Ephesians 4:25–32</td><td>Is there an opportunity I have been giving the enemy?</td><td>Help me to close the door I have left open.</td><td>I will give no opportunity to the devil.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>1 Peter 5:6–11</td><td>Which anxiety do I need to cast on God today?</td><td>I cast my anxieties on you, because you care for me.</td><td>God cares for me.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>2 Corinthians 12:7–10</td><td>Where do I need God’s grace while I wait?</td><td>Let your grace be sufficient for me.</td><td>His power is made perfect in my weakness.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>2 Chronicles 20:1–13</td><td>Where do I not know what to do?</td><td>My eyes are on you.</td><td>My eyes are on the Lord.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>2 Chronicles 20:14–22</td><td>How can I worship before I see the outcome?</td><td>Give me a song of trust.</td><td>His steadfast love endures for ever.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Psalm 42</td><td>What do I need to say honestly to God, and what do I need to remember about him?</td><td>Help me to hope in you.</td><td>I shall again praise him.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 10.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+  <details><summary>The full chapters</summary><p>Chapters 14 and 15 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Carmen’s story</summary><p><i>Imagine a woman named Carmen.</i> She leads worship at a small church going through a painful season: the pastor’s wife is seriously ill, several families have left after a disagreement, and Sunday gatherings feel heavy. Carmen wonders whether it is dishonest to praise God when she feels like this. The pastor calls the church to a week of prayer and voluntary fasting, ending with an evening of worship; each person takes part in the way that suits them, and no one is asked how much they have fasted. They read 2 Chronicles 20 together and pray, “We do not know what to do, but our eyes are on you.” On the final evening, Carmen’s voice breaks more than once as they sing, “His love endures forever.” The weeks that follow are still hard, and the church keeps praying for the pastor’s wife. But two families come back to talk, the leaders begin listening to those who were hurt, and a meal rota begins for the pastor’s family. Carmen finds she can lead worship again, not because everything has been resolved, but because she has remembered who God is.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>What does Ephesians 4:26–27 teach about how we can give the enemy an opportunity?</li>
+  <li>Why is it important to distinguish the specific promise in 2 Chronicles 20 from the lasting principles we can learn?</li>
+  <li>How can worship be honest when we are struggling?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 8 we learned to test spiritual claims. Today we saw that we stand by submitting to God, resisting the devil and worshipping, even when the battle is long.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

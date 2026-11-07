@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 12 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 4: Living in Victory</span><span class="steps" aria-label="Lesson 12 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+ <p class="eyebrow">Lesson 12 · Chapter 20 and Conclusion · Part 4: Living in Victory</p>
+ <h1>Until He Comes: Stand Firm</h1>
+ <p class="question">What does standing firm look like for the rest of my life?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Matthew 28:18–20</span><span class="chip">Part 4 · Living in Victory</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> write a simple personal plan for standing firm with others.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>The risen Jesus has all authority, and every believer has a part in his mission</li>
+  <li>The certain end of the enemy, and hope without fear</li>
+  <li>Having done all, stand, even when relief has not yet come</li>
+  <li>Your own Stand Firm Plan</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 12 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Until he comes</h4><p>Welcome back to Stand Firm. In Lesson 11 we learned to guard our hearts and to pass faith on. This is our final lesson. Over twelve lessons we have looked at the enemy, the armour of God and what it means to stand in everyday life. Now we look ahead, with one last question. What does standing firm look like for the rest of my life?</p>
+<h4>2 · Remember Simon</h4><p>Do you remember Simon, from our first lesson? Everything seemed to be going wrong at once: his car, his job, his marriage and his prayer life. A friend told him it was spiritual warfare, and Simon went home unsure whether to feel relieved or afraid. When he tried to pray, a troubling thought came: God is tired of you. A year has passed, and the battles of life have not stopped. So what does standing firm look like for Simon now, and for the rest of his life? Let us open the Bible.</p>
+<h4>3 · Matthew 28:18–20</h4><p>Matthew chapter 28, verses 18 to 20. And Jesus came and said to them, “All authority in heaven and on earth has been given to me. Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age.”</p>
+<h4>4 · Point 1: Authority that sends us out</h4><p>Our first main point: authority that sends us out. After his resurrection, the eleven disciples went to the mountain in Galilee where Jesus had told them to go. Matthew writes, “And when they saw him they worshiped him, but some doubted.” Even then, Jesus came to them. He did not wait for every doubt to be settled. He declared, “All authority in heaven and on earth has been given to me.” In Lesson 2 we saw that Jesus is our victorious Captain, who disarmed the powers of darkness through his cross and resurrection. Here the risen Lord stands before his followers with all authority.</p>
+<h4>5 · “Go therefore”</h4><p>Notice what follows: “Go therefore.” Christ’s victory is not something to keep to ourselves. Because he has all authority, his people are sent to make disciples. Making disciples includes sharing the gospel, baptising those who come to faith, and teaching them to live by what Jesus commanded. When the risen Jesus appeared to Paul, he described Paul’s mission like this: “to open their eyes, so that they may turn from darkness to light and from the power of Satan to God.” So spiritual warfare is not only defensive. Every time the gospel is shared, every time someone turns to Christ, and every time a believer grows in obedience, God’s kingdom advances. And Matthew closes with Jesus’ promise: “I am with you always, to the end of the age.” We do not go alone.</p>
+<h4>6 · Every believer has a part</h4><p>Not everyone is called to be a pastor or to serve overseas. But every believer has a part in making disciples. That might mean sharing your faith with a neighbour, teaching children, mentoring a younger believer, welcoming newcomers, praying for those who share the gospel, or showing Christ’s love through practical service. Peter says to be ready to give “a reason for the hope that is in you; yet do it with gentleness and respect.” Age does not disqualify us. The psalmist says of the righteous, “They still bear fruit in old age.” And our usefulness to God is not measured by how much we can do. For those living with illness or limited energy, praying, encouraging others and staying part of the church’s life are real ways of sharing in Christ’s work.</p>
+<h4>7 · Empowered by the Spirit</h4><p>And Jesus did not send his disciples out in their own strength. He told them to wait “until you are clothed with power from on high.” At Pentecost the Spirit was poured out, and fearful disciples became bold witnesses. The same Spirit empowers believers today. He gives courage, he gives gifts to every believer “for the common good,” and Paul urges us to keep being “filled with the Spirit.” Mission is not a burden we carry alone. It is the Spirit’s work through ordinary people who depend on him.</p>
+<h4>8 · Point 2: “They have conquered him”</h4><p>Our second main point: the certain end of the enemy. The book of Revelation is full of symbolic visions, and Christians understand many of its details in different ways. But some of its central messages are clear. Revelation 12 describes the defeat of “the accuser of our brothers,” and then says: “And they have conquered him by the blood of the Lamb and by the word of their testimony, for they loved not their lives even unto death.” The word for conquered is enikēsan, from the same root as nikē, victory. God’s people have conquered the enemy, not by their own power, but in Christ.</p>
+<h4>9 · How they conquered</h4><p>Notice how they conquer. “By the blood of the Lamb“: the victory rests first on Christ’s sacrifice. As we saw in Lesson 5, the accuser has no final case against those Christ has redeemed. “By the word of their testimony“: their faithful witness to Jesus. It is not a spoken formula, but loyalty to Christ that speaks. And “they loved not their lives even unto death.” Around the world today, many Christians face opposition for their faith. Their faithfulness reminds us that victory in Christ does not always look like escape from suffering. Sometimes it looks like steadfast loyalty to him through it.</p>
+<h4>10 · The certain end</h4><p>And the story does not end in a stalemate. Revelation tells us that the devil, who deceived the nations, will be thrown into the lake of fire. Christians differ about the timing and order of the events around Christ’s return. But the outcome is not in doubt. The enemy’s final judgement is certain, and God will make all things new. “He will wipe away every tear from their eyes, and death shall be no more, neither shall there be mourning, nor crying, nor pain anymore, for the former things have passed away.” We stand firm now, often in weakness, because we know how the story ends.</p>
+<h4>11 · Hope without fear</h4><p>Some believers become anxious about the end times, watching every headline. But Jesus said, “See that you are not alarmed.” And when his disciples asked about the timing of his kingdom, he said, “It is not for you to know times or seasons that the Father has fixed by his own authority. But you will receive power when the Holy Spirit has come upon you, and you will be my witnesses.” Jesus turns us from speculating about dates to living as his witnesses. His return is our “blessed hope,” not a source of dread. Because Christ is risen and death will be defeated, even quiet acts of faithfulness matter to him. As Paul writes at the close of his great chapter on the resurrection, “Therefore, my beloved brothers, be steadfast, immovable, always abounding in the work of the Lord, knowing that in the Lord your labor is not in vain.”</p>
+<h4>12 · Point 3: Having done all, stand</h4><p>Our third main point: having done all, stand. Paul’s words in Ephesians 6, which we heard in our very first lesson, are worth hearing once more: “Therefore take up the whole armor of God, that you may be able to withstand in the evil day, and having done all, to stand firm.” Paul does not promise that the evil day will never come. He assumes that it will. And the goal is not a dramatic victory parade. The goal is to remain faithful to Christ through the evil day, however long the pressure lasts.</p>
+<h4>13 · What standing firm looks like</h4><p>Sometimes standing firm looks like resisting a temptation, answering a lie with the truth, or praying through a difficult night. Sometimes it looks like confessing sin, asking for help, or taking a wise practical step. And sometimes it simply means continuing to trust God when relief has not yet come. Paul knew that kind of standing well. He wrote, “We are afflicted in every way, but not crushed; perplexed, but not driven to despair; persecuted, but not forsaken; struck down, but not destroyed…” If your struggle continues, that does not, by itself, mean you have failed. You are being invited to stand, not in your own strength, but in the strength of the Lord.</p>
+<h4>14 · You are not alone</h4><p>And you are not meant to stand alone. Christ stands with you. He has all authority, and he has promised, “I am with you always.” The Holy Spirit lives in you, helping you in your weakness. And God has given you his people, so that you can stand side by side, carry one another’s burdens and encourage one another until the end. The armour of God was described to a church, and it is best worn together.</p>
+<h4>15 · The journey we have taken</h4><p>Look back at the journey we have taken. In Part 1, we saw that spiritual warfare is real, but we do not need to fear it: the enemy is real, but already defeated by Christ. In Part 2, we put on the armour of God: truth, righteousness, the gospel of peace, faith, salvation and the word of God, worn through prayer. In Part 3, we brought that armour into everyday life: testing spiritual claims, submitting and resisting, worshipping, and walking in freedom together. And in Part 4, we looked to the long road ahead: guarding our hearts, passing on our faith, and joining Christ’s mission until he comes.</p>
+<h4>16 · Simon, a year later</h4><p>Imagine Simon a year later. Not every problem has been solved. His manager is still difficult, and some weeks are still hard. But Simon has learned to respond wisely to ordinary troubles, without needing to identify the source of every difficulty. He and his wife have learned to pray together, and to stop treating each other as the enemy. When the old thought returns, God is tired of you, he now knows how to answer it with the gospel: “There is therefore now no condemnation for those who are in Christ Jesus.” And one Sunday, when a younger man at church tells him that everything is going wrong, Simon listens carefully, and offers to pray with him. He belongs to Christ, and he is not standing alone.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. The risen Jesus has all authority, and he sends every believer to share in his mission, with the Spirit’s power. The enemy’s end is certain, so we live in hope, not fear. And until Christ comes, having done all, we stand, even when relief has not yet come. Christ’s victory is certain, so we stand, serve and hope, even before relief comes.</p>
+<h4>18 · This week’s practice: My Stand Firm Plan</h4><p>Here is your practice for this week, and for the road ahead. If you’d like, take some time to write My Stand Firm Plan on the lesson page. Write one truth you stand on, the piece of armour you most need to remember each day, your daily rhythm of Word and prayer, the people you stand with, and one person you will help to stand. Think of Simon, who might write: The truth I stand on is that there is no condemnation for those who are in Christ Jesus. Then end with the closing prayer on the page. Your plan is private, and nothing is scored. And if you would like a guide for the coming week, the seven-day Armour of God prayer guide is on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “Therefore take up the whole armor of God, that you may be able to withstand in the evil day, and having done all, to stand firm.” And here is this week’s declaration, a statement of trust: I am strong in the Lord and in the strength of his might. Jesus has all authority, and he is with me always. I am not standing alone. Having done all, I will stand firm.</p>
+<h4>20 · Prayer and blessing</h4><p>Let us pray. Lord Jesus, all authority in heaven and on earth belongs to you. Thank you that you have already won the victory, and that you are with us always, to the end of the age. I take up the whole armour of God today, not in my own strength, but in yours. Where I am weary, renew me. Where I am afraid, give me peace. Where the battle has not yet ended, help me to keep standing. Fill me with your Holy Spirit, and make me your witness where I live. Surround me with your people, and keep me faithful until the day you return. In your name, Amen. Receive this blessing from the letter of Jude. “Now to him who is able to keep you from stumbling and to present you blameless before the presence of his glory with great joy, to the only God, our Savior, through Jesus Christ our Lord, be glory, majesty, dominion, and authority, before all time and now and forever. Amen.” Thank you for walking this course with us. If you’d like to make a plan for the weeks ahead, you’ll find My Stand Firm Plan on the lesson page. And having done all, stand firm.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Matthew 28:16–20 · Acts 26:18 · 1 Peter 3:15 · Psalm 92:14 · Luke 24:49 · 1 Corinthians 12:7 · Ephesians 5:18 · Revelation 12:10–11 · Revelation 20:10 · Revelation 21:4 · Matthew 24:6 · Acts 1:7–8 · Titus 2:13 · 1 Corinthians 15:58 · Ephesians 6:13 · 2 Corinthians 4:8–9 · Romans 8:1 · Jude 24–25</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice: My Stand Firm Plan <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+  <p>Private, and nothing is scored. Write here and print, or copy it into your own notebook.</p>
+  <p class="prompt">1. One truth I stand on is…</p>
+  <textarea aria-label="One truth I stand on"></textarea>
+  <p class="prompt">2. The piece of armour I most need to remember each day is…</p>
+  <textarea aria-label="The piece of armour I most need to remember"></textarea>
+  <p class="prompt">3. My daily rhythm of Word and prayer is…</p>
+  <textarea aria-label="My daily rhythm of Word and prayer"></textarea>
+  <p class="prompt">4. The people I stand with are…</p>
+  <textarea aria-label="The people I stand with"></textarea>
+  <p class="prompt">5. One person I will help to stand is…</p>
+  <textarea aria-label="One person I will help to stand"></textarea>
+  <p class="refs">For example, Simon might write: “The truth I stand on: there is no condemnation for those who are in Christ Jesus.”</p>
+  <p class="prompt" style="margin-top:1em"><b>A closing prayer of commissioning</b></p>
+  <p>Lord Jesus, you have all authority, and you are with me always. Send me out in the strength of your Spirit, to stand with your people, to help others stand, and to be faithful until you come. Having done all, help me to stand firm. Amen.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Armour of God prayer guide ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Therefore take up the whole armor of God, that you may be able to withstand in the evil day, and having done all, to stand firm.”<span class="r">Ephesians 6:13 (ESV)</span></div><p class="d">I am strong in the Lord and in the strength of his might. Jesus has all authority, and he is with me always. I am not standing alone. Having done all, I will stand firm.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z" fill="#e9b25e"/><path d="M14 86 L6 128 M10 82 H20" stroke="#e9b25e" stroke-width="3"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>How does Christ’s authority in Matthew 28 connect his victory with our mission?<textarea></textarea></li>
+  <li>What does Revelation 12:11 teach about how God’s people overcome the accuser?<textarea></textarea></li>
+  <li>What is the most important truth you have learned from this course?<textarea></textarea></li>
+  <li>Where do you most need to stand firm in this season of your life?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 12: The Armour of God prayer guide <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. This is the book’s own 7-day Armour of God prayer guide, so that you can keep using it after the course ends. Begin with the whole armour, then pray through its six pieces over the next six days. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:10–13</td><td>Where am I trying to stand in my own strength?</td><td>Lord, I cannot stand in my own strength. I lean on you today.</td><td>I am strong in the Lord and in the strength of his might.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Ephesians 6:14; John 8:31–36</td><td>Is there a lie I have been believing, or an area where I have not been honest?</td><td>Show me any lie I have accepted, and help me to walk in honesty.</td><td>I will hold to God’s truth and walk in it.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Ephesians 6:14; Romans 8:33–34</td><td>Am I resting in Christ’s righteousness, or trying to earn my standing with God?</td><td>Thank you that I am clothed in your righteousness.</td><td>I am clothed in Christ’s righteousness, and I will walk in it.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Ephesians 6:15; Romans 5:1</td><td>Where do I need God’s peace today, and with whom could I share the good news of that peace?</td><td>Steady my feet, and make me ready to share the gospel with gentleness and respect.</td><td>I have peace with God through Jesus Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Ephesians 6:16; Psalm 77:7–15</td><td>What doubt or fear keeps returning, and what has God shown me of his faithfulness?</td><td>Help me to hold up the shield of faith today.</td><td>I trust the God who has been faithful.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Ephesians 6:17; 1 Peter 1:3–5</td><td>Where do I need to remember what God has done, is doing and will do?</td><td>Guard my mind with the living hope of the resurrection.</td><td>My hope is anchored in the risen Lord.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Ephesians 6:17–18; Psalm 119:11</td><td>Which verse do I need to store in my heart, and who can I pray for today?</td><td>Teach me to pray at all times, and to stand with my brothers and sisters in prayer.</td><td>I will stand on God’s Word and pray in the Spirit.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <span class="done">Thank you. You’ve reached the end of Lesson 12. Having done all, stand firm.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">When all twelve lessons are marked complete, your dated record appears: “You completed Stand Firm on [date].” Completion records that you took part. The plan, the prayer guide and reflections are never required.</p>
+ <p class="refs noprint" style="margin:.6em 0 0"><a href="https://faithfulpathcommunity.com/talk-to-a-pastor">Talk to a Pastor</a> · <a href="https://faithfulpathcommunity.com/guides/stand-firm">The Stand Firm book</a> · <a href="https://faithfulpathcommunity.com/membership">Other Faithful Path courses</a></p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+  <details><summary>The full chapter</summary><p>Chapter 20 and the Conclusion of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Rafael’s story</summary><p><i>Imagine a man named Rafael.</i> He is sixty-four and recently retired after thirty years as a schoolteacher. He has followed Christ since his twenties and served faithfully in his church, but since retiring he has felt unsettled. The news seems full of wars and disasters, and he has started watching online videos claiming that the final days have arrived; the more he watches, the more anxious he becomes. He also feels his useful years are over: “I’m not a pastor or a missionary. I’m just a retired teacher. What difference can I make now?” When he shares his worries with his small group, one member gently suggests that he take a break from the end-times videos and read through Revelation slowly with a good guide instead. Rafael agrees, and finds that the book, read carefully, leaves him with more hope than fear. Around the same time, his church starts a homework club for children from families who have recently arrived in the area. Rafael volunteers, and his years of teaching become a gift once again. Over time, some of the parents begin asking him about his faith, and he shares simply what Christ has done for him. Rafael still prays, “Come, Lord Jesus.” But now he prays it with hope.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>How does Jesus redirect the disciples from their question about timing towards their calling as witnesses (Acts 1:6–8)?</li>
+  <li>What part might God be inviting you to play in his mission in this season of your life?</li>
+  <li>Who could you share this journey with, so that you are not standing alone?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 1 we met Simon, unsure whether to feel relieved or afraid. Across twelve lessons we have seen that the enemy is real but defeated, that God gives us his whole armour, and that we stand together in everyday life. Today we saw that Christ’s victory is certain, so we stand, serve and hope, even before relief comes.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

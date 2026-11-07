@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 5 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 2: The Armour of God</span><span class="steps" aria-label="Lesson 5 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 5 · Chapters 7–8 · Part 2: The Armour of God</p>
+ <h1>The Breastplate of Righteousness and the Shoes of Peace</h1>
+ <p class="question">What steadies my heart when I feel accused or unsettled?</p>
+ <span class="chip">About 13 minutes</span><span class="chip">Ephesians 6:14–15</span><span class="chip">Part 2 · The Armour of God</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> explain how standing in Christ’s righteousness gives you peace with God and readiness to share it.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 13 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>What the breastplate and the shoes picture in Ephesians 6:14–15, and whose armour it first was (Isaiah 59:17)</li>
+  <li>The righteousness God gives in Christ, and the righteous life that grows from it</li>
+  <li>How the gospel of peace gives us firm ground, even while trouble remains</li>
+  <li>How to be ready to share the gospel of peace with gentleness and respect</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 5 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · The breastplate and the shoes</h4><p>Welcome back to Stand Firm. In Lesson 4 we heard Paul’s call to be strong in the Lord, and we looked at the belt of truth. Today we look at the next two pieces of armour: the breastplate of righteousness and the shoes of the gospel of peace. Together they answer a question many believers carry: what steadies my heart when I feel accused or unsettled?</p>
+<h4>2 · Imagine a woman named Priya</h4><p>Imagine a woman named Priya. She grew up in a home where love always seemed to depend on performance. Good marks brought warmth; mistakes brought silence. When she became a Christian at university, she was overwhelmed by grace. But over the years, without noticing, she slipped back into the old pattern. Now Priya serves in three ministries at church, and she rarely says no. On good weeks she feels close to God. But when she fails, she feels as if God’s approval has been withdrawn. One Sunday, after a sharp word to a teenager in the children’s ministry, she sits in her car and thinks: how can someone like you call herself a Christian? Many sincere believers swing between those two places: trying to earn God’s acceptance, and feeling crushed when they fall short. Let us open the Bible.</p>
+<h4>3 · Ephesians 6:14–15</h4><p>Ephesians chapter 6, verses 14 and 15. “Stand therefore, having fastened on the belt of truth, and having put on the breastplate of righteousness, and, as shoes for your feet, having put on the readiness given by the gospel of peace.”</p>
+<h4>4 · Covering the centre, keeping your footing</h4><p>Let us see what Paul’s two pictures mean. A breastplate covered the chest, where a blow could do the most damage. Some attacks aim at the very centre of our relationship with God. Is he really for me? Do I really belong to him? Am I accepted, or only tolerated? The shoes picture something else. Roman soldiers commonly wore sturdy sandal-boots, often studded with nails for grip. They helped a soldier keep his footing on rough ground and stay steady under pressure. We should not press every detail of the picture, but the main idea is clear: you cannot stand firm if your feet keep slipping.</p>
+<h4>5 · God wears it first</h4><p>As we saw in Lesson 4, this armour has deep roots. The prophet Isaiah describes the Lord coming to save his people: “He put on righteousness as a breastplate…” Before Paul ever told believers to put it on, God wore it first. So the righteousness that protects us begins with God himself, not with us.</p>
+<h4>6 · “Readiness” from the gospel of peace</h4><p>The word translated “readiness” can mean preparation, or being prepared. Some readers hear it mainly as firm footing; others hear it as being ready to go and share the good news. Both ideas fit the rest of Scripture, and we will look at each. But what matters most is the source: the gospel of peace. Paul is not describing a technique for staying calm. He is describing what the good news of Jesus gives to those who believe it.</p>
+<h4>7 · Point 1: Righteousness received</h4><p>Our first main point: the breastplate is righteousness received, and then lived. Bible teachers discuss what Paul means by righteousness here. Some emphasise the righteousness God gives us in Christ; others emphasise the righteous life Christians are called to live. Both ideas are biblical, and they belong together. First, the righteousness God gives. Listen to how Paul puts it. “For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.” This is the foundation. Our standing before God does not rest on our performance. It rests on Christ: his perfect life, his death in our place and his resurrection.</p>
+<h4>8 · Righteousness lived</h4><p>Second, the righteousness we live. In this same letter Paul calls believers to “put on the new self, created after the likeness of God in true righteousness and holiness.” God does not only declare us righteous. He also begins to make us righteous in how we live. These two must never be confused, and never be separated. We do not live rightly in order to be accepted. We live rightly because we have been accepted. And because someone will always ask, Paul answers the question himself: “Are we to continue in sin that grace may abound? By no means!” Grace does not make holiness optional. It makes holiness possible.</p>
+<h4>9 · A welcome given, not earned</h4><p>Jesus told a parable about a son who comes home. When he returns, the father says, “Bring quickly the best robe, and put it on him…” He welcomes his son before any long record of changed behaviour could be established. The father’s welcome helps us picture acceptance that is given rather than earned. For Priya, that is a powerful reminder of the grace she has received in Christ.</p>
+<h4>10 · Answering the accuser</h4><p>So what does Priya do with the thought in her car? Paul gives her a better question to ask. “Who shall bring any charge against God’s elect? It is God who justifies. Who is to condemn? Christ Jesus is the one who died—more than that, who was raised—who is at the right hand of God, who indeed is interceding for us.” Notice how Paul answers. He does not say, “You have never done anything wrong.” He points away from us to God and to Christ. When a thought tells Priya that she cannot really be a Christian, the answer is not to list her good deeds. The answer is to look to her Advocate.</p>
+<h4>11 · Priya learns to rest</h4><p>This does not mean her sharp words to the teenager do not matter. They do. She should apologise. But her apology can flow from security, not from fear. She does not need to win back God’s love. She needs to walk in it. Imagine that Priya shares her struggle with an older woman in her church, who listens carefully and then asks a simple question: “Do you serve because you are loved, or so that you will be loved?” The question stays with her. Over the following months, Priya steps back from one of her three ministries, not out of guilt, but to make room for rest and time with God. She begins each morning with a short passage about what Christ has done. The old pattern does not disappear overnight. But slowly, her service becomes a response to a verdict already given.</p>
+<h4>12 · Point 2: The gospel of peace gives us firm ground</h4><p>Our second main point: the gospel of peace gives us firm ground and prepares us to carry good news. We begin with the firm ground. The deepest peace the gospel brings is peace with God. “Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.” The war between us and God, caused by our sin, has been ended by Christ. That is firm ground. When accusation or fear tries to unsettle us, we are not standing on our feelings or our performance. We are standing on what Christ has done. This connects closely with the breastplate: because we are right with God through Christ, we have peace with him.</p>
+<h4>13 · Peace that holds in trouble</h4><p>On the night before his death, Jesus said to his disciples, “I have said these things to you, that in me you may have peace. In the world you will have tribulation. But take heart; I have overcome the world.” Jesus did not promise a trouble-free life. In the same breath that he spoke of peace, he spoke of tribulation. The peace he gives is not the absence of trouble. It is a settled security in him that can remain while trouble is still present. Feeling anxious or unsettled does not mean that you have lost your peace with God. The shoes of the gospel of peace do not stop the ground from shaking. They help us keep our footing.</p>
+<h4>14 · Point 3: Ready to carry good news</h4><p>Our third main point: the gospel of peace makes us ready to carry good news. In Ephesians, peace also has a wider meaning. Paul writes that Christ “himself is our peace,” breaking down the dividing wall between groups once divided by deep hostility. So the gospel of peace is not only about our private relationship with God. It creates a family where former enemies become one. We cannot control how others respond, but we can seek peace as far as it depends on us. Paul’s words also echo the prophet Isaiah: “How beautiful upon the mountains are the feet of him who brings good news, who publishes peace…” The gospel that steadies our feet also sends us out.</p>
+<h4>15 · With gentleness and respect</h4><p>Peter shows us what that readiness looks like. He writes to believers who may suffer for doing good. Even under pressure, they are to honour Christ and answer with gentleness and respect: “always being prepared to make a defense to anyone who asks you for a reason for the hope that is in you; yet do it with gentleness and respect…” First, we are prepared: we have thought about what we believe and why. Second, witness is a conversation, not an attack. Third, we speak with gentleness and respect. The way we share the gospel of peace should match its message. And notice how this joins the two pieces of armour. One day a colleague asks Priya why her faith matters so much to her. For years her answer would have been about trying harder. Now she can speak of grace: she has been accepted because of Christ, and she has peace with God.</p>
+<h4>16 · Bringing it together</h4><p>Let us bring it together. We stand on what Christ has given: his righteousness and peace with God. The breastplate is righteousness received, and then lived. The gospel of peace gives us firm ground: peace with God through Christ. And that same gospel of peace makes us ready to carry good news to others, with gentleness and respect.</p>
+<h4>17 · This week’s practice</h4><p>Here is your practice for this week. Write a few sentences on why you follow Jesus, and begin with these words: “Because Christ has made me right with God, I have peace with him, and…” Then share what you have written with a trusted believer. Before you write, ask yourself Priya’s question: do I serve because I am loved, or so that I will be loved? And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>18 · Remember</h4><p>Remember this word of Scripture: “Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.” And here is this week’s declaration, a statement of trust: I am accepted because of Christ. I stand on the peace he has made, and I will be ready to share it.</p>
+<h4>19 · Prayer</h4><p>Let us pray. Father, thank you that my standing with you does not rest on my performance, but on Jesus, who died for me, rose again and now intercedes for me. When accusation comes, help me to look to my Advocate. Where I have sinned, give me honesty to confess it and grace to make it right. Thank you that through Christ I have peace with you. Give me firm footing when life is unsettled, and prepare me to share the good news with gentleness and respect. In Jesus’ name, Amen. This week, write why you follow Jesus, and share it with a trusted believer. Then stop here for today, or continue to Lesson 6.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Ephesians 6:14–15 · Isaiah 59:17 · 2 Corinthians 5:21 · Ephesians 4:24 · Romans 6:1–2 · Luke 15:22 · Romans 8:33–34 · Romans 5:1 · John 16:33 · Ephesians 2:14 · Isaiah 52:7 · 1 Peter 3:13–17</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p class="prompt" style="margin-top:0">Before you write: Do I serve because I am loved, or so that I will be loved?</p>
+  <p>Write a few sentences on why you follow Jesus, beginning:</p>
+  <p class="prompt">“Because Christ has made me right with God, I have peace with him, and…”</p>
+  <textarea aria-label="Why I follow Jesus"></textarea>
+  <p>Then share what you have written with a trusted believer.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Therefore, since we have been justified by faith, we have peace with God through our Lord Jesus Christ.”<span class="r">Romans 5:1 (ESV)</span></div><p class="d">I am accepted because of Christ. I stand on the peace he has made, and I will be ready to share it.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/><path d="M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z"/></g></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Do you tend to swing between trying to earn God’s acceptance and feeling crushed when you fail?<textarea></textarea></li>
+  <li>How would you explain the difference between the righteousness God gives and the righteousness we live?<textarea></textarea></li>
+  <li>What is the difference between seeking peace and avoiding a necessary disagreement?<textarea></textarea></li>
+  <li>How could you share your faith with more gentleness and respect?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 5 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:14–15</td><td>Which piece of armour do I most need today, and why?</td><td>Lord, clothe me with what you have given.</td><td>My strength is in the Lord.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Romans 8:31–39</td><td>Which of Paul’s questions answers my accusing thoughts?</td><td>Thank you that Christ intercedes for me.</td><td>I am accepted because of Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Philippians 3:7–11</td><td>What did Paul count as loss, and why?</td><td>Help me to rest in the righteousness that comes from you.</td><td>His righteousness covers me.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Luke 15:11–24</td><td>What did the father give before the son could prove anything?</td><td>Thank you for welcoming me home.</td><td>I am welcomed by my Father’s grace.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Romans 5:1–11</td><td>What does peace with God change about this week?</td><td>Give me firm footing when life is unsettled.</td><td>“…we have peace with God through our Lord Jesus Christ.” (Romans 5:1)</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>John 16:25–33</td><td>Where do I need Christ’s peace while trouble is still present?</td><td>Help me to take heart in you.</td><td>Christ has overcome the world.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>1 Peter 3:13–17</td><td>Who might ask me about the hope I have?</td><td>Prepare me to answer with gentleness and respect.</td><td>I will be ready to share the good news.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 6.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapters</summary><p>Chapters 7 and 8 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Somchai finds his footing</summary><p><i>Imagine a young man named Somchai, the first person in his family to follow Jesus. At festival times the tension grows, and whenever he tries to explain his faith the conversation becomes an argument. An older Christian who also came to faith from a family of another religion advises him to honour his parents in every way he can with a clear conscience, to help at home, to be patient, and to answer simply and kindly when they ask. Over the next months Somchai stops trying to win every argument. The tension does not disappear. But one evening his mother quietly asks, “What is it about Jesus that matters so much to you?” This time, Somchai is ready, and he answers with gentleness.</i></p><p class="refs">Where family pressure becomes threatening or coercive, it is right to seek help from trusted church leaders and, where needed, from others who can protect you.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Why is it important that our standing with God comes first, and our way of life grows out of it?</li>
+  <li>What is the difference between seeking peace and simply avoiding every disagreement?</li>
+  <li>How might the way we share our faith either match or contradict the gospel of peace?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 4 we saw that our strength is the Lord’s, and that truth believed and lived holds everything in place. Righteousness and peace stand on that same truth.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

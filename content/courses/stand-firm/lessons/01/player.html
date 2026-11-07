@@ -1,0 +1,815 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stand Firm · Lesson 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#f7efdf;--cream:#fbf6ea;--gold:#c9963f;--gold2:#e9b25e;--ink:#2b3445;--mute:#69707a;--sage:#8fae9f;--rose:#d9818c;--night:#1d2738}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{background:var(--night);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;display:flex;flex-direction:column}
+#stage{position:relative;flex:1;overflow:hidden;transition:background 1.2s ease}
+#stage.light{background:linear-gradient(180deg,#fbf6ea 0%,#f7efdf 70%,#efe2c4 100%)}
+#stage.dawn{background:linear-gradient(180deg,#f6ead2 0%,#f3dcb3 60%,#e9c48a 100%)}
+.hills{position:absolute;left:0;right:0;bottom:0;width:100%;height:14vh;min-height:60px;pointer-events:none}
+.hills .h1{fill:#dfe7d8}.hills .h2{fill:#cddcc8}.hills .h3{fill:#b9cdb7}
+.slide{position:absolute;inset:0;padding:3.5vh 5vw 16vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;opacity:0;pointer-events:none;transition:opacity .7s ease}
+.slide.cur{opacity:1;pointer-events:auto}
+.wrap{width:min(100%,1040px);display:flex;flex-direction:column;align-items:center;position:relative}
+.label{font-family:'Source Serif 4',serif;letter-spacing:.3em;text-transform:uppercase;font-size:clamp(14px,1.88vw,16px);color:#8a6a24;margin:0 0 .7em}
+.label::after{content:"";display:block;width:3em;height:1px;background:currentColor;margin:.6em auto 0;opacity:.7}
+h1{font-weight:700;font-size:clamp(38px,6.75vw,70px);line-height:1.1;margin:0 0 .25em;color:var(--ink)}
+h2{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,4.0vw,42px);line-height:1.2;margin:.1em 0 .4em;color:var(--ink)}
+.q{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.12vw,32px);color:#8a6a24;margin:.1em 0}
+.q2{font-size:clamp(19px,2.62vw,26px);color:var(--ink);max-width:36em;margin:.4em auto 0;line-height:1.4}
+.big{font-family:'Source Serif 4',serif;font-weight:600;font-size:clamp(25px,3.75vw,40px);margin:.3em 0 0;max-width:26em;line-height:1.25}
+.big2{font-family:'Source Serif 4',serif;font-size:clamp(22px,3.25vw,35px);margin:.4em 0 0;max-width:28em;line-height:1.3;color:#5b4a26}
+.tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(21px,3.0vw,30px);color:#8a6a24;margin:.4em 0 0}
+.tag2{font-size:clamp(16px,2.25vw,20px);color:var(--mute);letter-spacing:.08em;margin:.3em 0 0}
+.scene{width:min(100%,900px);max-height:50vh;height:auto;display:block;overflow:hidden;margin:.2em auto .3em;border-radius:16px}
+.scene.short{max-height:18vh;border-radius:0}.scene.short2{max-height:24vh;border-radius:0}.scene.short3{max-height:30vh}
+.stack{display:grid;width:100%;justify-items:center}.stack>*{grid-area:1/1}.stack>div{width:100%;display:flex;flex-direction:column;align-items:center}
+.parts{font-size:clamp(15px,2.12vw,19px);color:var(--mute);letter-spacing:.04em;margin:.2em 0}
+.parts span.b.on{color:#8a6a24;font-weight:700}
+.lbl7{font-family:'Source Serif 4',serif;font-style:italic;font-size:22px;fill:#8a6a24}
+.tiny{font-size:9px;font-weight:700;fill:#8a6a24;text-anchor:middle}
+.qm{font-size:26px;font-weight:700;fill:#c9963f;font-family:'Source Serif 4',serif}
+.qm2{font-size:20px;font-weight:700;fill:#a58262}
+.no{font-family:'Source Serif 4',serif;font-style:italic;font-size:30px;fill:#8a6a24}
+.hand{font-family:'Source Serif 4',serif;font-style:italic;font-size:12px;fill:#8a6a24}
+.scr{font-family:'Source Serif 4',serif;font-size:18px;fill:#5b4a26}.scr.gold{fill:#c9963f;font-weight:700}
+.dots{font-size:14px;font-weight:700;fill:#69707a}.cal{font-size:26px;font-weight:700;fill:#2b3445}.cal2{font-size:26px;font-weight:700;fill:#c95f5f}
+.scripture{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.88vw,29px);line-height:1.5;max-width:34em;margin:.2em auto}
+.scripture .ref,.quote .ref,.prayer .ref{display:block;margin-top:.5em;font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.sc{font-variant:small-caps}
+.quote{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.12vw,32px);line-height:1.45;max-width:28em;margin:.3em 0}
+.quote.small{font-size:clamp(18px,2.38vw,22px)}
+.heb{font-family:'SBL Hebrew','Ezra SIL','Times New Roman',serif;font-size:clamp(45px,8.75vw,88px);margin:0;color:var(--ink);line-height:1.2}
+.heb .type{display:inline-block;clip-path:inset(0 0 0 100%);transition:clip-path 2.6s ease}.heb.on .type{clip-path:inset(0 0 0 0)}
+.word{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(32px,5.5vw,58px);margin:0}
+.gloss{font-size:clamp(19px,2.75vw,28px);color:var(--mute);margin:.1em 0 .5em}
+.twocol2{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:min(100%,820px);text-align:left}
+.panel{background:#fffaf0;border:1px solid #e3d6b8;border-radius:14px;padding:.7em .9em;display:flex;flex-direction:column;gap:.35em;font-size:clamp(16px,2.25vw,21px)}
+.panel>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.3em;color:#8a6a24}
+.panel svg{width:100%;max-height:70px}.mini{display:flex;flex-direction:column;gap:.2em}.ps{font-family:'Source Serif 4',serif}.ps i{color:var(--mute);font-size:.85em}
+.note{color:var(--mute)}.note.strong{color:var(--ink);font-weight:700}
+.parts3{display:flex;gap:6px;flex-wrap:wrap}.parts3 span{background:#f3ead4;border-radius:2em;padding:.2em .7em;font-size:.9em}
+u.k{text-decoration:none;background-image:linear-gradient(var(--gold),var(--gold));background-repeat:no-repeat;background-position:0 92%;background-size:0 3px;transition:background-size .9s ease}u.k.on{background-size:100% 3px}
+.lexcon{display:flex;gap:10px;margin-top:.6em;flex-wrap:wrap;justify-content:center}.lexcon span{border:1px solid #d9c9a3;border-radius:12px;padding:.35em .9em;font-size:clamp(16px,2.25vw,20px);background:#fbf6ea}.lexcon b{display:block;font-size:.75em;letter-spacing:.12em;text-transform:uppercase;color:#8a6a24}
+.meetL,.meetR{transition:transform 1.6s ease}.meetL{transform:translateX(-14px)}.meetR{transform:translateX(14px)}.b.on .meetL,.b.on .meetR{transform:none}
+.refrain{display:flex;gap:16px;justify-content:center;margin:0 0 .5em;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(22px,3.25vw,32px);color:#c9963f}
+.refrain .notgood{color:#5b4a26;font-weight:700}
+.bgrow{display:grid;grid-template-columns:1fr 1.4fr;gap:14px;width:min(100%,860px);align-items:center}
+.framed{background:#fffaf0;border:6px solid #e3d6b8;border-radius:8px;padding:4px}.framed svg{width:100%;display:block}.framed small,.tile small,.tile3 small{display:block;font-size:15px;color:var(--mute);margin-top:2px}
+.glowring{animation:glowr 2.6s ease-in-out infinite}@keyframes glowr{50%{opacity:.3}}
+.trio{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px}.tile svg{width:100%;display:block}
+.tile.glowtile.on{box-shadow:0 0 0 3px #f0c77a,0 8px 24px rgba(201,150,63,.3)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:min(100%,760px);align-items:center}
+.jr,.pl{width:100%;max-height:34vh}
+.cards7{display:flex;gap:10px;justify-content:center;margin:.4em 0}
+.card7{width:clamp(38px,8vw,78px);aspect-ratio:3/4;background:#fffaf0;border:1px solid #d9c9a3;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.75vw,38px);color:#8a6a24;box-shadow:0 6px 14px rgba(43,52,69,.1);transform:translateY(-40px) rotate(-6deg)}
+.card7.on{transform:none;transition:opacity .6s ease,transform 1s cubic-bezier(.2,.8,.3,1.2)}
+.cardrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;width:min(100%,880px)}.cardrow.one{grid-template-columns:minmax(0,560px);justify-content:center}
+.mcard{perspective:1200px}
+.flip{position:relative;transform-style:preserve-3d;transition:transform 1.2s ease;opacity:1!important;min-height:clamp(250px,44vh,380px)}
+.flip.on{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.7em;display:flex;flex-direction:column;gap:.4em;box-shadow:0 10px 26px rgba(43,52,69,.1);text-align:left}
+.face.back{transform:rotateY(180deg);justify-content:center;background:#fdf3dc;border:2px solid #c9963f}
+.face b{font-family:'Source Serif 4',serif;font-size:clamp(20px,2.75vw,28px)}
+.face p{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,31px);line-height:1.35;margin:0}.face p small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75em;color:var(--mute);margin-top:.6em}
+.face svg{width:100%;flex:1;min-height:0;border-radius:10px}
+.num{position:absolute;top:.5em;right:.7em;font-family:'Source Serif 4',serif;font-size:20px;color:#c9963f;font-weight:700}
+.sc2{display:grid;grid-template-columns:1fr;flex:1;min-height:0}.sc2>*{grid-area:1/1}.sc2 svg{height:100%}
+.fan{display:flex;justify-content:center;margin:.6em 0 0;height:44px;position:relative;width:300px}
+.fanc{position:absolute;left:50%;width:30px;height:40px;margin-left:-15px;background:#fffaf0;border:1px solid #d9c9a3;border-radius:6px;font-size:13px;line-height:40px;color:#8a6a24;transition:transform 1.4s ease;transform-origin:50% 120%}
+.fan.on .fanc{transform:rotate(calc((var(--i) - 3)*14deg)) translateY(-6px)}
+.cord{width:min(80%,420px);height:30px;margin-top:.4em}
+.journal2{background:#fffaf0;border:1px solid #e0d4b6;border-left:8px solid #c9963f;border-radius:10px 16px 16px 10px;padding:1em 1.4em;max-width:38em;text-align:left;box-shadow:0 8px 24px rgba(43,52,69,.08)}
+.journal2 p{margin:.5em 0;font-size:clamp(19px,2.62vw,25px);line-height:1.45}.journal2 b{font-family:'Source Serif 4',serif;font-size:1.15em}
+.mot{color:var(--mute);font-style:italic}.small2{font-size:clamp(16px,2.25vw,20px)!important;color:var(--mute)}
+.prayer{font-family:'Source Serif 4',serif;font-size:clamp(21px,3.0vw,30px);line-height:1.45;max-width:32em;color:#3b3020}
+.prayer p{margin:.3em 0}.close{margin-top:1em;font-size:clamp(18px,2.5vw,22px);color:#6b521f}
+.sunbg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.trio3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,820px)}
+.tile3{position:relative;background:#fffaf0;border:1px solid #e3d6b8;border-radius:12px;padding:6px;overflow:hidden}.tile3 svg{width:100%;display:block}
+.tile3 i{position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 3px #f0c77a;background:rgba(247,217,143,.12);pointer-events:none}
+.steps{text-align:left;font-size:clamp(20px,2.75vw,28px);line-height:1.45;margin:.2em auto;padding-left:1.4em;max-width:30em}.steps li{margin:.3em 0}
+
+.one6{width:min(100%,620px)}
+.panel6{background:#fffaf0;border:1px solid #e3d6b8;border-radius:16px;padding:.9em 1.2em;display:flex;flex-direction:column;align-items:center;gap:.5em;text-align:center}
+.panel6>b{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(30px,4.5vw,45px);color:#8a6a24}
+.big6{font-size:clamp(22px,3.25vw,32px);color:var(--ink)}
+.panel6 .mini{flex-direction:row;align-items:center;gap:.7em;text-align:left}.shield{width:46px;height:46px;flex:none}
+.panel6 .ps{font-size:clamp(20px,2.75vw,26px)}.panel6 .ps i{display:block;font-size:.75em;color:var(--mute)}
+.panel6 .note.strong{font-size:clamp(20px,2.75vw,26px)}
+.panel6 .parts3 span{font-size:clamp(20px,2.75vw,26px);padding:.25em .9em}
+.meet{width:min(70%,240px)}
+.lexrow{display:flex;flex-direction:column;align-items:center;gap:.15em}.lexrow b{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#8a6a24}
+.panel6 .lexrow+.lexrow{border-top:1px solid #e3d6b8;padding-top:.5em;margin-top:.2em}
+.bicon{width:clamp(44px,8vw,64px);height:clamp(44px,8vw,64px);margin-bottom:.2em}
+.prayer.stack>div{display:block}.prayer.stack p{margin:.35em 0}
+@media(max-width:640px){.prayer{font-size:19px}.panel6{padding:.8em}}
+/* ---------- beats and motion ---------- */
+.b{opacity:0;transition:opacity .8s ease,transform .9s ease}
+.b.on{opacity:1}
+.up{transform:translateY(12px)}.up.on{transform:none}
+.pop{transform:scale(.6);transform-box:fill-box;transform-origin:center}.pop.on{transform:scale(1)}
+.draw{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 2.4s ease}
+.b.on .draw,.draw.b.on,.cord.on .draw{stroke-dashoffset:0}
+.walkin{transform:translateX(-90px)}.walkin.on{transform:none;transition:opacity .8s,transform 4s ease-out}
+.walkin2{transform:translateX(90px)}.walkin2.on{transform:none;transition:opacity .8s,transform 3.5s ease-out}
+.walkin3{transform:translateX(60px)}.walkin3.on{transform:none;transition:opacity .8s,transform 3s ease-out}
+.walkfrom{transform:translateX(-120px)}.walkfrom.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkfrom2{transform:translateX(140px)}.walkfrom2.on{transform:none;transition:opacity 1s,transform 5s ease-out}
+.walkacross{transform:translateX(-120px)}.walkacross.on{transform:translateX(140px);transition:opacity .8s,transform 12s linear}
+.walklong.on{animation:walklong 22s linear forwards}@keyframes walklong{to{transform:translateX(640px) translateY(-14px)}}
+.walkpair.on{animation:walkp 10s ease-in-out infinite alternate}@keyframes walkp{to{transform:translateX(-16px)}}
+.beckon.on{animation:beck 2.4s ease-in-out infinite}@keyframes beck{50%{transform:translateY(-3px)}}
+.grow{transform-box:fill-box;transform-origin:bottom;transform:scaleY(.2)}.grow.on{transform:none;transition:opacity 1s,transform 2.5s ease-out}
+.float.on use{animation:floaty 6s ease-in-out infinite}@keyframes floaty{50%{transform:translateY(-6px)}}
+.twinkle{animation:tw 3s ease-in-out infinite}.twinkle:nth-child(2n){animation-delay:1.2s}@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.petal{animation:petal 9s linear infinite}@keyframes petal{from{transform:translate(0,-20px)}to{transform:translate(60px,200px)}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:rip 3s ease-out infinite}@keyframes rip{from{transform:scale(.3);opacity:.9}to{transform:scale(2.2);opacity:0}}
+.ripple-flag{animation:flagr 2.5s ease-in-out infinite;transform-box:fill-box;transform-origin:left}@keyframes flagr{50%{transform:skewY(4deg) scaleX(.94)}}
+.pageturn{transform-box:fill-box;transform-origin:left;}.b.on .pageturn{animation:pt 5s ease-in-out infinite}@keyframes pt{0%,60%{transform:none}80%{transform:scaleX(-1)}100%{transform:scaleX(-1)}}
+.spin.on>g{animation:spin 6s ease-in-out 1;transform-box:fill-box;transform-origin:center}@keyframes spin{50%{transform:rotate(40deg)}}
+.peace{animation:breathe 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.breathe{animation:breathe 7s ease-in-out infinite;transform-box:fill-box;transform-origin:center}@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+.journal2.breathe{animation:breathe2 7s ease-in-out infinite}@keyframes breathe2{50%{box-shadow:0 8px 34px rgba(201,150,63,.28)}}
+.gauge{animation:gauge 4s ease-in-out infinite}@keyframes gauge{50%{transform:translateY(4px)}}
+.doorleaf{transform-box:fill-box;transform-origin:left;transition:transform 2.5s ease}.b.on .doorleaf{animation:door 7s ease-in-out forwards}@keyframes door{0%{transform:scaleX(.15)}45%{transform:scaleX(1)}100%{transform:scaleX(.15)}}
+.brick{opacity:0;animation:brick .6s ease forwards;animation-delay:var(--d);animation-play-state:paused}.b.on .brick{animation-play-state:running}@keyframes brick{to{opacity:1}}
+.sand{animation:sand 3s linear infinite;transform-box:fill-box;transform-origin:bottom}@keyframes sand{to{transform:scaleY(.4)}}
+.feedscroll{animation:feed 8s linear infinite}@keyframes feed{to{transform:translateY(-68px)}}
+.tipL{animation:tip 4s ease-in-out infinite;transform-box:fill-box;transform-origin:top}@keyframes tip{50%{transform:translateY(5px)}}
+.glowall.on use{filter:drop-shadow(0 0 4px #f0c77a)}
+.drift-slow{transform-box:view-box;transform-origin:50% 60%;animation:drifts 40s ease-in-out infinite alternate}@keyframes drifts{to{transform:scale(1.05) translateX(-8px)}}
+.cam{transform-box:view-box;transform-origin:50% 75%;animation:camin 60s ease-out forwards}@keyframes camin{to{transform:scale(1.07)}}
+.sunup{transform:translateY(40px)}.sunup.on{transform:none;transition:opacity 2s,transform 8s ease-out}
+/* reduce motion: same pictures, gentle fades only */
+body.still .b,body.still .flip,body.still .card7{transition:opacity .8s ease!important}
+body.still .up,body.still .pop,body.still .walkin,body.still .walkin2,body.still .walkin3,body.still .walkfrom,body.still .walkfrom2,body.still .walkacross,body.still .grow,body.still .sunup,body.still .card7{transform:none!important}
+body.still .flip.on{transform:none}body.still .flip.on .front{opacity:0}body.still .face.back{transform:none;opacity:0;transition:opacity .8s}body.still .flip.on .back{opacity:1}
+body.still *{animation:none!important}
+body.still .draw{stroke-dasharray:none!important}
+body.still .heb .type{clip-path:none;transition:none}
+@media (prefers-reduced-motion:reduce){.b{transition:opacity .8s!important}}
+/* captions + controls */
+#cap{position:absolute;left:50%;bottom:2vh;transform:translateX(-50%);width:min(92vw,820px);background:rgba(29,39,56,.84);color:#f6ecd6;border-radius:10px;padding:.5em .9em;font-size:clamp(16px,2.25vw,20px);line-height:1.4;text-align:center}
+#cap.hide{display:none}
+footer{background:#1d2738;color:#ece4d0;padding:10px 4vw calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+button{font:inherit;background:none;color:#ece4d0;border:1px solid #3b4760;border-radius:8px;padding:6px 12px;cursor:pointer}
+button.primary{background:#c9963f;border-color:#c9963f;color:#1d2738;font-weight:700;min-width:6.5em}
+button:focus-visible{outline:2px solid #f0c77a;outline-offset:2px}
+.bar{height:8px;background:#2c3850;border-radius:4px;overflow:hidden;flex:1;min-width:120px;cursor:pointer}.bar i{display:block;height:100%;width:0;background:#c9963f}
+.dots{display:flex;gap:6px;flex-wrap:wrap}.dots i{width:8px;height:8px;border-radius:50%;background:#3b4760;display:block;cursor:pointer}.dots i.on{background:#c9963f}
+.small{color:#a7afbf;font-size:13px}
+@media(max-width:640px){.slide{padding:2.5vh 4vw 17vh}.twocol2,.bgrow,.row2,.cardrow{grid-template-columns:1fr}.trio3{grid-template-columns:1fr 1fr 1fr;gap:6px}.flip{min-height:clamp(210px,34vh,300px)}.cardrow .mcard:nth-child(n){}.scene{max-height:40vh}.panel svg{max-height:52px}.heb{font-size:34px}.cards7{gap:5px}}
+
+#stage.eve{background:linear-gradient(180deg,#f8eedb 0%,#f2dfbb 70%,#e8c995 100%)}
+.hills .h1{fill:#e8dcc2}.hills .h2{fill:#dccbaa}.hills .h3{fill:#cdb791}
+.tiny2{font-size:15px;font-weight:700;fill:#7a5536;text-anchor:middle;font-family:'Source Sans 3',sans-serif}
+.tiny3{font-size:11px;font-weight:700;fill:#7a5536;text-anchor:middle}
+.bigt{font-family:'Source Serif 4',serif;font-style:italic;font-size:34px;fill:#8a6a24}
+.hand2{font-family:'Source Serif 4',serif;font-style:italic;font-size:18px;fill:#8a6a24}
+.scr2{font-family:'Source Serif 4',serif;font-size:clamp(19px,2.6vw,26px);color:#5b4a26;margin:.2em 0}.ref2{font-family:'Source Sans 3',sans-serif;font-size:.6em;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.chips{justify-content:center;margin:.3em 0}.chips span{font-size:clamp(16px,2.2vw,20px)}
+.lab2{margin:.4em auto}.glowp.on{box-shadow:0 0 0 3px #f0c77a}
+.pcard{position:relative;background:#fffaf0;border:1px solid #d9c9a3;border-radius:16px;padding:.8em 1em;text-align:left;box-shadow:0 10px 26px rgba(43,52,69,.08);display:flex;flex-direction:column;gap:.35em}
+.pcard>b{font-family:'Source Serif 4',serif;font-size:clamp(22px,3vw,30px)}
+.pcard svg{width:100%;max-height:22vh}
+.says{list-style:none;padding:0;margin:0;font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(17px,2.3vw,22px);color:#5b4a26}.says li{margin:.1em 0}
+.pl2{font-family:'Source Serif 4',serif;font-size:clamp(17px,2.3vw,22px);margin:0;line-height:1.35}
+.love{color:#8a6a24;font-style:italic}.mute{color:var(--mute)}.strongline{font-weight:600;color:#2b3445}
+.keep2{grid-template-columns:1fr 1fr!important;gap:10px!important}
+.small3{font-size:clamp(14px,1.9vw,17px)}
+.qs{list-style:none;padding:0;margin:.2em auto;text-align:left;max-width:34em;font-size:clamp(18px,2.5vw,24px);line-height:1.35}
+.qs li{display:flex;align-items:center;gap:.6em;margin:.35em 0}.qs svg{width:1.8em;height:1.8em;flex:none}
+.qs.sm2{font-size:clamp(17px,2.3vw,22px)}.quote.sm2{font-size:clamp(18px,2.38vw,22px)}
+.safety{background:#fffaf0;border:2px solid #c9963f;border-radius:16px;padding:1.2em 1.6em;max-width:34em;font-family:'Source Serif 4',serif;font-size:clamp(22px,3.2vw,32px);line-height:1.4;color:#3b3020}.safety p{margin:.3em 0}
+.chairsL{transform:translateX(-30px) scaleX(.86);transform-box:fill-box;transform-origin:center}.chairsR{transform:translateX(30px) scaleX(.86);transform-box:fill-box;transform-origin:center}
+.leanf{transition:transform 1.4s ease}.leanf.on{transform:translateX(14px) rotate(4deg);transform-box:fill-box;transform-origin:bottom}
+.stepb{transition:transform 1.6s ease}.stepb.on{transform:translateX(26px)}
+.turnback{transform:scaleX(-1);transform-box:fill-box;transform-origin:center}
+.sideL,.sideR{transition:transform 3s ease}.sideL.on{transform:translateX(-60px)}.sideR.on{transform:translateX(60px)}
+.lightwalk.on{animation:lw 14s ease-in-out forwards}@keyframes lw{0%{transform:translate(140px,30px)}100%{transform:translate(-120px,-30px)}}
+.lightrun.on{animation:lr 6s ease-in-out forwards}@keyframes lr{to{transform:translateX(340px)}}
+.frameL,.frameR{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}.frameL{transform:scaleX(-1)}.frameR{transform:scaleX(-1)}
+.turnf.on~*{}.pcard:has(.turnf.on) .frameL,.pcard:has(.turnf.on) .frameR{transform:none}
+.mapL,.mapR{transition:transform 2.5s ease}
+.mapL.on{transform:translateX(40px)}.mapR.on{transform:translateX(-40px)}
+.grow2{transform-box:fill-box;transform-origin:center}.envg{transform-box:fill-box;transform-origin:center;transition:transform 2s ease}
+.shieldup{transform:translateY(20px)}.shieldup.on{transform:none}
+.litL.on{animation:lit 6s ease-in-out infinite}.litR.on{animation:lit 6s ease-in-out 3s infinite}@keyframes lit{0%,100%{opacity:.2}50%{opacity:1}}
+.ripple-line{animation:rl 4s ease-in-out infinite}@keyframes rl{50%{transform:translateX(-12px)}}
+.word .ref{display:block;font-family:'Source Sans 3',sans-serif;font-style:normal;font-size:.3em;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+body.still .leanf.on,body.still .stepb.on,body.still .sideL.on,body.still .sideR.on,body.still .shieldup{transform:none!important}
+.flick{animation:flick 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom}@keyframes flick{50%{transform:scaleY(.94) translateY(2px)}}
+.journal2 p b{font-size:1em}
+
+.ref2{display:block}
+body.still .b{transition:none!important}
+body.still .cam{transform:none!important}
+.heb.on .type{clip-path:inset(0 0 0 0)}
+</style>
+</head>
+<body>
+<div id="stage" class="light">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <!-- the wooden chair from the cover, seen from the side, facing right -->
+ <symbol id="chair" viewBox="0 0 70 112">
+  <ellipse cx="36" cy="108" rx="30" ry="3.5" fill="#000" opacity=".10"/>
+  <path d="M8 10 Q20 2 33 9" stroke="#7a5536" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M10 10 L15 63 M17 7 L20 63 M24 6 L25 63 M31 8 L30 63" stroke="#7a5536" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M7 60 Q36 55 65 61 L63 70 Q35 66 7 69 Z" fill="#7a5536"/>
+  <path d="M13 69 L9 107 M60 69 L64 107 M22 69 L25 104 M51 69 L48 104" stroke="#64432a" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M12 89 L61 89" stroke="#64432a" stroke-width="2.6"/>
+ </symbol>
+ <symbol id="per" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M13 64 L12 95 L18 95 L19 66 Z M21 66 L22 95 L28 95 L27 64 Z" fill="#2b3445"/>
+  <path d="M9 32 Q20 24 31 32 L32 68 Q20 71 8 68 Z" fill="currentColor"/>
+  <path d="M9 34 L5 60 L9 61 L12 40 Z M31 34 L35 60 L31 61 L28 40 Z" fill="currentColor" opacity=".85"/>
+  <circle cx="20" cy="17" r="8.5" fill="#c69d84"/>
+  <path d="M11.5 16 Q12 7 20 7 Q28 7 28.5 16 Q24 11 20 12 Q15 11 11.5 16Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="perw" viewBox="0 0 40 100">
+  <ellipse cx="20" cy="97" rx="13" ry="3" fill="#000" opacity=".10"/>
+  <path d="M10 62 L8 95 L32 95 L30 62 Z" fill="currentColor" opacity=".9"/>
+  <path d="M10 32 Q20 24 30 32 L31 66 Q20 69 9 66 Z" fill="currentColor"/>
+  <path d="M10 34 L6 60 L10 61 L13 40 Z M30 34 L34 60 L30 61 L27 40 Z" fill="currentColor" opacity=".85"/>
+  <path d="M10 20 Q8 6 20 6 Q32 6 30 20 L31 34 L26 30 L14 30 L9 34 Z" fill="#3a3330"/>
+  <circle cx="20" cy="17" r="8" fill="#c69d84"/>
+  <path d="M12 15 Q14 7 20 8 Q27 7 28 15 Q24 11 20 12 Q16 11 12 15Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="sit" viewBox="0 0 50 80">
+  <path d="M14 26 Q24 18 34 26 L36 52 L12 52 Z" fill="currentColor"/>
+  <path d="M12 50 L40 50 L42 58 L40 76 L35 76 L35 60 L14 60 Z" fill="#2b3445"/>
+  <circle cx="24" cy="13" r="8" fill="#c69d84"/>
+  <path d="M16 12 Q17 4 24 4 Q31 4 32 12 Q28 8 24 9 Q19 8 16 12Z" fill="#3a3330"/>
+ </symbol>
+ <symbol id="tree" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#6b5847"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#7e9b78"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#8fae86"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#738f6e"/>
+ </symbol>
+ <symbol id="treeD" viewBox="0 0 80 120">
+  <path d="M37 120 L39 70 L41 70 L44 120 Z" fill="#4f4338"/>
+  <ellipse cx="40" cy="52" rx="34" ry="30" fill="#5d7658"/>
+  <ellipse cx="28" cy="40" rx="20" ry="18" fill="#6b8564"/>
+  <ellipse cx="54" cy="44" rx="18" ry="16" fill="#556d51"/>
+ </symbol>
+ <symbol id="house" viewBox="0 0 60 50">
+  <path d="M6 22 L30 4 L54 22 Z" fill="#b5735e"/>
+  <rect x="10" y="22" width="40" height="26" fill="#efe2c6"/>
+  <rect x="26" y="32" width="9" height="16" fill="#8a6a4f"/>
+  <rect x="15" y="28" width="7" height="7" fill="#f2c97a"/><rect x="39" y="28" width="7" height="7" fill="#f2c97a"/>
+ </symbol>
+ <symbol id="lamp" viewBox="0 0 40 60"><path d="M10 50 Q20 58 30 50 L27 40 L13 40Z" fill="#b5835a"/><path d="M20 40 Q12 26 20 14 Q28 26 20 40Z" fill="#f2c97a"/><circle cx="20" cy="28" r="16" fill="#f2c97a" opacity=".25"/></symbol>
+ <symbol id="cross" viewBox="0 0 40 60"><path d="M20 4 V56 M8 18 H32" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></symbol>
+ <symbol id="note" viewBox="0 0 60 44"><path d="M2 6 L58 2 L56 40 L4 42 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="1.5"/><path d="M4 24 L56 21" stroke="#e8dcc0" stroke-width="1.2"/></symbol>
+ <symbol id="env" viewBox="0 0 70 46"><rect x="2" y="2" width="66" height="42" rx="3" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><path d="M3 4 L35 26 L67 4" fill="none" stroke="#c9b48a" stroke-width="2"/></symbol>
+ <symbol id="cloud" viewBox="0 0 120 70"><path d="M24 60 Q4 60 6 44 Q6 30 22 30 Q24 10 46 12 Q60 0 76 12 Q100 8 104 28 Q118 32 114 48 Q112 60 96 60 Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/><circle cx="20" cy="66" r="3" fill="#fffaf0" stroke="#d9c9a3"/></symbol>
+ <symbol id="door" viewBox="0 0 40 70"><rect x="2" y="2" width="36" height="66" rx="2" fill="#a7805c" stroke="#7a5536" stroke-width="2"/><circle cx="31" cy="38" r="2.2" fill="#e9b25e"/></symbol>
+ <symbol id="laptop" viewBox="0 0 80 50"><rect x="12" y="2" width="56" height="36" rx="3" fill="#2b3445"/><rect x="16" y="6" width="48" height="28" fill="#a9c2d0"/><path d="M2 40 H78 L72 48 H8 Z" fill="#69707a"/></symbol>
+ <symbol id="cup" viewBox="0 0 30 30"><path d="M4 8 H22 L20 26 H6 Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M22 12 Q29 12 28 18 Q27 22 21 22" fill="none" stroke="#8a6a4f" stroke-width="2"/></symbol>
+ <symbol id="shield" viewBox="0 0 50 60"><path d="M25 4 L46 12 Q46 42 25 56 Q4 42 4 12 Z" fill="#cdd8de" stroke="#69707a" stroke-width="3"/></symbol>
+ <symbol id="xtree" viewBox="0 0 40 60"><path d="M20 4 L34 26 L26 26 L38 44 L2 44 L14 26 L6 26 Z" fill="#6f8f6a"/><rect x="17" y="44" width="6" height="10" fill="#7a5536"/><circle cx="20" cy="4" r="3" fill="#e9b25e"/><circle cx="14" cy="34" r="2" fill="#d9818c"/><circle cx="26" cy="22" r="2" fill="#e9b25e"/><circle cx="25" cy="38" r="2" fill="#d9818c"/></symbol>
+ <symbol id="scale" viewBox="0 0 120 70"><path d="M60 8 V62 M40 66 H80" stroke="#7a5536" stroke-width="4"/><g class="tipbeam"><path d="M14 18 L106 18" stroke="#7a5536" stroke-width="4"/><path d="M14 18 L4 40 H24 Z M106 18 L96 40 H116 Z" fill="#e9d5a8" stroke="#7a5536" stroke-width="2"/></g></symbol>
+ <symbol id="frame" viewBox="0 0 60 50"><rect x="2" y="2" width="56" height="46" fill="#fffaf0" stroke="#b9925b" stroke-width="4"/><path d="M12 38 L24 24 L32 32 L40 22 L50 38 Z" fill="#c4d4b9"/><circle cx="18" cy="14" r="4" fill="#e9b25e"/></symbol>
+ <symbol id="map" viewBox="0 0 100 70"><path d="M2 8 L34 2 L66 8 L98 2 L98 62 L66 68 L34 62 L2 68 Z" fill="#f6edd6" stroke="#c9b48a" stroke-width="2"/><path d="M34 2 V62 M66 8 V68" stroke="#e1d2ad" stroke-width="1.5"/></symbol>
+ <symbol id="sign" viewBox="0 0 80 90"><rect x="37" y="20" width="6" height="68" fill="#7a5536"/><path d="M6 10 H70 L78 22 L70 34 H6 Z" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+ <symbol id="table" viewBox="0 0 120 50"><rect x="4" y="4" width="112" height="8" rx="2" fill="#a7805c"/><path d="M14 12 V48 M106 12 V48" stroke="#7a5536" stroke-width="5"/></symbol>
+ <symbol id="sofa" viewBox="0 0 140 70"><rect x="6" y="14" width="128" height="30" rx="10" fill="#b88a6a"/><rect x="2" y="30" width="136" height="26" rx="8" fill="#a77a5b"/><path d="M14 56 V66 M126 56 V66" stroke="#64432a" stroke-width="5"/></symbol>
+ <symbol id="shelf" viewBox="0 0 120 120"><rect x="2" y="2" width="116" height="116" fill="#d8c4a0"/><path d="M2 40 H118 M2 80 H118" stroke="#a7805c" stroke-width="4"/><g fill="#8a6a4f"><rect x="10" y="14" width="8" height="26"/><rect x="20" y="18" width="7" height="22"/><rect x="30" y="12" width="9" height="28"/><rect x="60" y="54" width="8" height="26"/><rect x="70" y="58" width="10" height="22"/><rect x="20" y="92" width="8" height="26"/><rect x="88" y="90" width="9" height="28"/></g><g fill="#b5735e"><rect x="44" y="16" width="7" height="24"/><rect x="84" y="56" width="7" height="24"/><rect x="40" y="94" width="8" height="24"/></g></symbol>
+ <symbol id="journal" viewBox="0 0 160 110">
+  <path d="M80 12 Q44 0 6 8 L6 104 Q44 96 80 106 Q116 96 154 104 L154 8 Q116 0 80 12Z" fill="#fffaf0" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M80 12 V106" stroke="#d9c9a3" stroke-width="2"/>
+  <path d="M74 4 L74 30 L78 25 L82 30 L82 4" fill="#c9963f"/>
+ </symbol>
+ <symbol id="nb" viewBox="0 0 60 76"><rect x="4" y="2" width="52" height="72" rx="4" fill="#7a5536"/><rect x="10" y="2" width="46" height="72" rx="3" fill="#8b6340"/><rect x="18" y="20" width="30" height="12" rx="2" fill="#f4ead6"/></symbol>
+ <symbol id="leaf" viewBox="0 0 40 30"><path d="M2 15 Q12 0 38 4 Q30 26 2 15Z" fill="#7e9b78"/><path d="M4 15 Q20 10 36 6" stroke="#5f7a59" stroke-width="1.4" fill="none"/></symbol>
+ <symbol id="garm" viewBox="0 0 90 50"><path d="M6 40 Q44 24 84 40 L80 48 L10 48 Z" fill="#b9946a"/><path d="M14 30 Q46 14 78 30 L76 38 Q46 24 16 38 Z" fill="#c8a57a"/><ellipse cx="45" cy="48" rx="42" ry="3" fill="#000" opacity=".1"/></symbol>
+ <symbol id="boat" viewBox="0 0 120 60"><path d="M6 34 H114 Q104 56 60 56 Q16 56 6 34Z" fill="#8b6340"/><rect x="58" y="4" width="3" height="30" fill="#7a5536"/></symbol>
+ <symbol id="pen" viewBox="0 0 40 10"><path d="M2 5 L32 2 L38 5 L32 8 Z" fill="#2b3445"/></symbol>
+ <symbol id="pan" viewBox="0 0 50 30"><ellipse cx="18" cy="16" rx="16" ry="10" fill="#69707a"/><rect x="32" y="13" width="16" height="5" rx="2" fill="#2b3445"/></symbol>
+ <symbol id="basket" viewBox="0 0 50 40"><path d="M4 12 H46 L40 38 H10 Z" fill="#c9a061"/><path d="M8 20 H42 M10 28 H40" stroke="#a8743f" stroke-width="2"/><path d="M12 12 Q16 2 24 6 Q32 0 38 12" fill="#cdd8de"/></symbol>
+ <symbol id="cal" viewBox="0 0 50 50"><rect x="3" y="7" width="44" height="40" rx="4" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><rect x="3" y="7" width="44" height="11" fill="#c9963f"/><path d="M14 3 V12 M36 3 V12" stroke="#2b3445" stroke-width="3"/></symbol>
+ <symbol id="bag" viewBox="0 0 40 44"><rect x="4" y="10" width="32" height="32" rx="6" fill="#8fae9f"/><path d="M12 10 Q12 2 20 2 Q28 2 28 10" fill="none" stroke="#5f7a6d" stroke-width="3"/><rect x="10" y="22" width="20" height="10" rx="2" fill="#6f8f80"/></symbol>
+ <symbol id="ear" viewBox="0 0 40 50"><path d="M30 18 Q30 4 18 4 Q6 4 6 18 Q6 26 12 30 Q16 34 14 42 Q14 48 22 46" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M14 20 Q14 12 20 12 Q24 12 24 18" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="hand" viewBox="0 0 50 50"><path d="M10 30 Q8 20 12 18 L14 30 L16 10 Q18 6 21 10 L21 28 L23 6 Q26 2 28 6 L28 28 L31 10 Q34 6 36 10 L35 32 Q36 44 26 46 Q14 46 10 30Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></symbol>
+ <symbol id="mend" viewBox="0 0 50 50"><path d="M8 14 H38 L34 44 H12 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M38 20 Q48 20 46 30 Q44 36 36 36" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M20 14 L24 26 L18 32 L22 44" fill="none" stroke="#c9963f" stroke-width="3"/></symbol>
+ <symbol id="cordi" viewBox="0 0 60 40"><path d="M4 20 Q16 4 30 20 T56 20" fill="none" stroke="currentColor" stroke-width="4"/><path d="M4 22 Q16 38 30 22 T56 22" fill="none" stroke="#c9963f" stroke-width="4"/></symbol>
+ <symbol id="shieldi" viewBox="0 0 50 50"><path d="M25 4 L44 11 Q44 36 25 46 Q6 36 6 11 Z" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M4 48 H46" stroke="currentColor" stroke-width="3"/></symbol>
+ <symbol id="marker" viewBox="0 0 30 60"><rect x="13" y="14" width="4" height="46" fill="#8a6a4f"/><rect x="2" y="4" width="26" height="16" rx="3" fill="#fbf6ea" stroke="#c9963f" stroke-width="2"/></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="eveg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8eedb"/><stop offset="1" stop-color="#efd9b0"/></linearGradient>
+<linearGradient id="gardeneve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dfb8"/><stop offset=".6" stop-color="#ecd3a4"/><stop offset="1" stop-color="#e3c48e"/></linearGradient>
+<radialGradient id="glowr"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".5" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f0c77a" stop-opacity="0"/></radialGradient>
+</defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="creamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#f1e5c9"/></linearGradient>
+<linearGradient id="lightbeam" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></linearGradient>
+<linearGradient id="dawnsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ead2"/><stop offset=".7" stop-color="#f3dcb3"/><stop offset="1" stop-color="#e9c48a"/></linearGradient>
+<!-- the cover: ten walnut steps in three flights climbing to an open door -->
+<symbol id="stairs" viewBox="0 0 300 215">
+ <ellipse cx="150" cy="211" rx="150" ry="4" fill="#000" opacity=".08"/>
+ <path d="M10 210 V195 H35 V180 H60 V165 H85 V150 H110 V135 H135 V120 H160 V105 H185 V90 H210 V75 H235 V60 H260 V210 Z" fill="#8b6340"/>
+ <path d="M10 195 H35 M35 180 H60 M60 165 H85 M85 150 H110 M110 135 H135 M135 120 H160 M160 105 H185 M185 90 H210 M210 75 H235 M235 60 H260" stroke="#a7805c" stroke-width="3"/>
+ <path d="M85 150 V210 M185 90 V210" stroke="#7a5536" stroke-width="1.5" opacity=".5"/>
+ <rect x="258" y="0" width="38" height="60" fill="#7a5536"/>
+ <rect x="263" y="5" width="28" height="55" fill="#fbecc6"/>
+ <path d="M263 5 L278 10 L278 60 L263 60 Z" fill="#8b6340"/>
+ <circle cx="275" cy="35" r="1.6" fill="#e9b25e"/>
+</symbol>
+<symbol id="doorlight" viewBox="0 0 280 290"><path d="M240 10 L280 10 L280 80 L20 290 L0 290 Z" fill="url(#lightbeam)" opacity=".75"/></symbol>
+<symbol id="board" viewBox="0 0 200 140"><rect x="2" y="2" width="196" height="136" rx="6" fill="#c9a77a" stroke="#8a6a4f" stroke-width="4"/><rect x="16" y="14" width="40" height="30" fill="#fffaf0" transform="rotate(-4 36 29)"/><rect x="150" y="90" width="34" height="34" fill="#f4ead6" transform="rotate(5 167 107)"/><circle cx="36" cy="16" r="3" fill="#c95f5f"/></symbol>
+<symbol id="bush" viewBox="0 0 110 130"><path d="M40 130 L50 70 M70 130 L60 72 M55 130 V80" stroke="#6b5847" stroke-width="5"/><ellipse cx="55" cy="72" rx="44" ry="30" fill="#7e8f5a"/><g class="flick"><path d="M30 70 Q24 40 40 22 Q42 44 52 50 Q50 20 62 4 Q66 34 78 40 Q84 24 92 22 Q92 56 80 74 Z" fill="#e9973f" opacity=".9"/><path d="M42 70 Q40 50 52 38 Q56 54 64 56 Q66 44 74 40 Q76 60 68 74 Z" fill="#f6d58e"/></g><circle cx="55" cy="55" r="52" fill="url(#glowr)"/></symbol>
+<symbol id="horeb" viewBox="0 0 800 300"><rect width="800" height="300" fill="url(#dawnsky)"/><circle cx="640" cy="80" r="44" fill="#fff3cf" opacity=".8"/><path d="M0 230 L160 120 L260 170 L420 60 L560 160 L680 110 L800 180 V300 H0Z" fill="#c9a57a"/><path d="M0 260 Q200 230 400 250 T800 245 V300 H0Z" fill="#b48e62"/><g fill="#fbf6ea" stroke="#d9c9a3"><ellipse cx="120" cy="262" rx="14" ry="8"/><ellipse cx="150" cy="268" rx="14" ry="8"/><ellipse cx="180" cy="260" rx="14" ry="8"/></g><use href="#bush" x="470" y="160" width="80" height="94"/><path d="M380 270 L404 230" stroke="#7a5536" stroke-width="5" stroke-linecap="round"/></symbol>
+<symbol id="stone" viewBox="0 0 70 36"><path d="M4 30 Q2 12 20 8 Q40 2 58 10 Q70 18 66 30 Z" fill="#b8a991"/><path d="M14 14 Q30 8 46 12" stroke="#d6cab4" stroke-width="2" fill="none"/></symbol>
+<symbol id="hilltown" viewBox="0 0 800 260"><rect width="800" height="260" fill="#f3e3c2"/><path d="M0 200 Q200 90 420 120 T800 150 V260 H0Z" fill="#d8c08f"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="300" y="100" width="40" height="30"/><rect x="345" y="92" width="44" height="38"/><rect x="395" y="104" width="36" height="26"/><rect x="438" y="96" width="40" height="34"/></g><path d="M280 132 H500" stroke="#b8a07a" stroke-width="6"/><g fill="#8a9a6a"><circle cx="150" cy="190" r="16"/><circle cx="200" cy="200" r="14"/><circle cx="600" cy="170" r="16"/><circle cx="650" cy="180" r="14"/><circle cx="700" cy="172" r="15"/></g></symbol>
+<symbol id="scroll" viewBox="0 0 200 56"><rect x="20" y="8" width="160" height="40" fill="#f4ead6" stroke="#c9b48a" stroke-width="2"/><rect x="6" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><rect x="178" y="2" width="16" height="52" rx="8" fill="#b88a6a"/><path d="M36 20 H164 M36 28 H150 M36 36 H160" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="port" viewBox="0 0 800 160"><rect width="800" height="160" fill="#eef0ea"/><rect x="0" y="110" width="800" height="50" fill="#9fb4bf"/><g fill="#efe2c6" stroke="#c9b48a"><rect x="80" y="50" width="120" height="60"/><rect x="560" y="40" width="150" height="70"/></g><g fill="#d8c8a6"><rect x="90" y="56" width="8" height="54"/><rect x="120" y="56" width="8" height="54"/><rect x="150" y="56" width="8" height="54"/><rect x="180" y="56" width="8" height="54"/><rect x="575" y="48" width="9" height="62"/><rect x="610" y="48" width="9" height="62"/><rect x="645" y="48" width="9" height="62"/><rect x="680" y="48" width="9" height="62"/></g><path d="M74 50 L140 26 L206 50Z M552 40 L635 12 L718 40Z" fill="#c9a77a"/><g fill="#8b6340"><path d="M300 120 H400 Q390 140 350 140 Q310 140 300 120Z"/><path d="M420 126 H500 Q492 142 460 142 Q428 142 420 126Z"/></g><path d="M350 120 V80 L380 110Z M460 126 V92 L484 120Z" fill="#fffaf0" stroke="#c9b48a"/></symbol>
+<symbol id="i-bible" viewBox="0 0 40 40"><rect x="6" y="4" width="28" height="32" rx="3" fill="#7a5536"/><path d="M20 10 V26 M14 16 H26" stroke="#f0c77a" stroke-width="3"/></symbol>
+<symbol id="i-guitar" viewBox="0 0 40 40"><circle cx="15" cy="27" r="9" fill="#b88a6a"/><circle cx="21" cy="21" r="7" fill="#b88a6a"/><circle cx="15" cy="27" r="3" fill="#5b4a26"/><path d="M22 18 L36 4" stroke="#5b4a26" stroke-width="3"/></symbol>
+<symbol id="i-mat" viewBox="0 0 40 40"><rect x="10" y="2" width="20" height="28" fill="#a7805c"/><circle cx="26" cy="17" r="1.5" fill="#e9b25e"/><rect x="4" y="32" width="32" height="6" rx="2" fill="#c9963f"/></symbol>
+<symbol id="i-ball" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#d98c4a"/><path d="M4 20 H36 M20 4 V36 M9 8 Q20 20 9 32 M31 8 Q20 20 31 32" stroke="#5b4a26" stroke-width="1.6" fill="none"/></symbol>
+<symbol id="i-clip" viewBox="0 0 40 40"><rect x="7" y="5" width="26" height="32" rx="3" fill="#a7805c"/><rect x="11" y="10" width="18" height="24" fill="#fffaf0"/><rect x="14" y="2" width="12" height="6" rx="2" fill="#69707a"/><path d="M14 16 H26 M14 22 H26 M14 28 H22" stroke="#c9b48a" stroke-width="2"/></symbol>
+<symbol id="i-agenda" viewBox="0 0 40 40"><rect x="6" y="3" width="28" height="34" rx="2" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><path d="M11 12 H29 M11 19 H29 M11 26 H24" stroke="#c9963f" stroke-width="2.5"/></symbol>
+<symbol id="i-speech" viewBox="0 0 40 40"><path d="M4 6 H36 V28 H16 L8 36 V28 H4 Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><text x="20" y="24" text-anchor="middle" font-size="16" font-weight="700" fill="#c9963f">?</text></symbol>
+</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="sfsky" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9aa6b8"/><stop offset=".45" stop-color="#e9e1cf"/><stop offset="1" stop-color="#fbefcf"/></linearGradient>
+<radialGradient id="sflight" cx="1" cy=".25" r=".8"><stop offset="0" stop-color="#fff3cf" stop-opacity=".95"/><stop offset=".45" stop-color="#f6d58e" stop-opacity=".45"/><stop offset="1" stop-color="#f6d58e" stop-opacity="0"/></radialGradient>
+<linearGradient id="navyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22304a"/><stop offset="1" stop-color="#1b263b"/></linearGradient>
+<!-- storm clouds, left -->
+<symbol id="storm" viewBox="0 0 360 200"><g fill="#5d6a80" opacity=".9"><path d="M20 90 Q0 90 4 70 Q8 52 30 54 Q36 26 70 30 Q90 6 124 20 Q160 10 170 44 Q200 46 196 74 Q194 92 170 92 Z"/></g><g fill="#7b879b" opacity=".85"><path d="M110 140 Q90 140 94 122 Q98 106 118 108 Q124 84 152 88 Q172 66 200 80 Q232 72 240 100 Q266 102 262 126 Q260 142 238 142 Z"/></g><g stroke="#8e9ab0" stroke-width="2" opacity=".6"><path d="M40 100 l-10 30 M70 100 l-10 30 M100 98 l-10 30 M140 150 l-8 26 M180 150 l-8 26 M210 150 l-8 26"/></g></symbol>
+<!-- the rock -->
+<symbol id="rock" viewBox="0 0 400 120"><path d="M10 116 Q30 40 120 30 Q200 14 290 34 Q380 50 392 116 Z" fill="#8c8578"/><path d="M40 70 Q120 40 220 44 Q300 48 360 80" stroke="#a69f91" stroke-width="5" fill="none"/><path d="M90 100 Q170 84 300 96" stroke="#766f63" stroke-width="3" fill="none"/></symbol>
+<!-- a believer standing, facing right, with the whole armour drawn faintly -->
+<symbol id="fig" viewBox="0 0 80 160"><g fill="#56607a"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/><path d="M26 94 L32 150 L40 150 L40 100 L44 150 L52 150 L54 94Z"/><path d="M24 40 L14 86 L20 88 L30 50 Z M56 40 L66 86 L60 88 L50 50Z"/></g><g class="armour" fill="none" stroke="#2b3c62" stroke-width="1.6" opacity=".55"><path d="M28 10 Q40 -2 52 10 L52 20 L28 20Z"/><path d="M27 40 Q40 34 53 40 L55 70 Q40 76 25 70Z"/><path d="M23 74 H57 V80 H23Z"/><path d="M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z"/><path d="M14 86 L6 128 M10 82 H20"/><path d="M28 144 H42 V152 H26Z M42 144 H54 V152 H42Z"/></g></symbol>
+<symbol id="figgold" viewBox="0 0 80 160"><use href="#fig"/><path d="M23 74 H57 V80 H23Z" fill="#e9b25e" stroke="#c9963f"/></symbol>
+<symbol id="person" viewBox="0 0 40 100"><circle cx="20" cy="12" r="10" fill="currentColor"/><path d="M8 26 Q20 20 32 26 L34 66 L6 66Z" fill="currentColor"/><path d="M9 66 L13 98 L19 98 L20 72 L21 98 L27 98 L31 66Z" fill="currentColor" opacity=".85"/></symbol>
+<symbol id="car" viewBox="0 0 120 60"><path d="M10 40 L18 24 Q22 18 30 18 L80 18 Q88 18 94 24 L104 34 Q114 36 114 44 L114 48 L6 48 L6 44 Q6 40 10 40Z" fill="#8fa3b8"/><rect x="28" y="22" width="24" height="12" rx="2" fill="#e8eef3"/><rect x="56" y="22" width="26" height="12" rx="2" fill="#e8eef3"/><circle cx="30" cy="50" r="8" fill="#2b3445"/><circle cx="90" cy="50" r="8" fill="#2b3445"/><path d="M96 30 L110 12 L118 16 L104 34Z" fill="#7d90a5"/></symbol>
+<symbol id="desk" viewBox="0 0 120 70"><rect x="10" y="34" width="100" height="6" fill="#a7805c"/><path d="M18 40 V68 M102 40 V68" stroke="#7a5536" stroke-width="4"/><rect x="40" y="10" width="40" height="24" rx="2" fill="#2b3445"/><rect x="44" y="14" width="32" height="16" fill="#a9c0d0"/></symbol>
+<symbol id="phone" viewBox="0 0 24 40"><rect x="2" y="2" width="20" height="36" rx="4" fill="#2b3445"/><rect x="5" y="6" width="14" height="26" rx="1" fill="#cfe0ea"/></symbol>
+<symbol id="spanner" viewBox="0 0 40 40"><path d="M8 32 L24 16 Q22 8 30 6 L26 12 L30 16 L36 12 Q34 20 26 18 L10 34Z" fill="#69707a"/></symbol>
+<symbol id="chairs2" viewBox="0 0 60 40"><rect x="4" y="10" width="18" height="4" fill="#a7805c"/><path d="M6 14 V36 M20 14 V36 M6 4 V14" stroke="#7a5536" stroke-width="3"/><rect x="38" y="10" width="18" height="4" fill="#a7805c"/><path d="M40 14 V36 M54 14 V36 M54 4 V14" stroke="#7a5536" stroke-width="3"/></symbol>
+<symbol id="heart" viewBox="0 0 40 40"><path d="M20 34 Q4 22 6 12 Q8 4 16 6 Q20 8 20 12 Q20 8 24 6 Q32 4 34 12 Q36 22 20 34Z" fill="#c9963f"/></symbol>
+<symbol id="street" viewBox="0 0 40 40"><rect x="4" y="10" width="10" height="26" fill="#8a96a8"/><rect x="16" y="4" width="10" height="32" fill="#69707a"/><rect x="28" y="14" width="9" height="22" fill="#a2acbb"/><path d="M2 37 H38" stroke="#2b3445" stroke-width="2"/></symbol>
+<symbol id="lampscroll" viewBox="0 0 40 40"><rect x="4" y="22" width="24" height="10" rx="2" fill="#f4ead6" stroke="#c9b48a"/><path d="M30 34 Q34 36 38 34 L37 30 L31 30Z" fill="#b5835a"/><path d="M34 30 Q30 24 34 18 Q38 24 34 30Z" fill="#f2c97a"/></symbol>
+<symbol id="cuphand" viewBox="0 0 40 40"><path d="M10 14 H28 L26 30 H12Z" fill="#fbf6ea" stroke="#8a6a4f" stroke-width="2"/><path d="M4 32 Q12 28 20 34 Q28 36 36 30" stroke="#c48a7d" stroke-width="4" fill="none"/></symbol>
+<symbol id="crosshill" viewBox="0 0 800 260"><rect width="800" height="260" fill="#f8ecd3"/><circle cx="560" cy="150" r="70" fill="#fbe4ae" opacity=".9"/><path d="M0 220 Q250 140 400 150 T800 210 V260 H0Z" fill="#d8c08f"/><path d="M400 150 V40 M370 74 H430" stroke="#7a5536" stroke-width="10" stroke-linecap="round"/></symbol>
+<symbol id="prison" viewBox="0 0 400 220"><rect width="400" height="220" fill="#d9cdb4"/><rect x="250" y="30" width="80" height="60" fill="#f6e7c4"/><path d="M266 30 V90 M282 30 V90 M298 30 V90 M314 30 V90" stroke="#5c5145" stroke-width="4"/><path d="M290 90 L170 210 L380 210 L330 90Z" fill="#f6e7c4" opacity=".35"/><rect x="0" y="180" width="400" height="40" fill="#c4b698"/><rect x="120" y="140" width="110" height="10" fill="#a7805c"/><use href="#sit" x="140" y="96" width="50" height="80" style="color:#6b5e4f"/><rect x="170" y="128" width="50" height="12" fill="#f4ead6" stroke="#c9b48a"/><path d="M70 196 q10 -8 20 0 q10 8 20 0 q10 -8 20 0" stroke="#7d7466" stroke-width="3" fill="none"/></symbol>
+<symbol id="ephesus" viewBox="0 0 400 220"><rect width="400" height="220" fill="#f3e5c6"/><path d="M0 150 Q100 120 200 132 T400 120 V220 H0Z" fill="#dcc79c"/><path d="M40 150 A60 50 0 0 1 160 150 Z" fill="#cdb488"/><path d="M50 150 A50 40 0 0 1 150 150" stroke="#b39a6c" stroke-width="3" fill="none"/><g fill="#efe3c8" stroke="#b39a6c"><rect x="260" y="90" width="110" height="10"/><path d="M256 90 L315 66 L374 90Z"/><rect x="266" y="100" width="8" height="40"/><rect x="286" y="100" width="8" height="40"/><rect x="306" y="100" width="8" height="40"/><rect x="326" y="100" width="8" height="40"/><rect x="346" y="100" width="8" height="40"/></g><rect x="0" y="190" width="400" height="30" fill="#9fb4bf"/></symbol>
+<symbol id="fire" viewBox="0 0 120 100"><path d="M20 90 H100" stroke="#7a5536" stroke-width="8"/><path d="M60 88 Q30 70 46 40 Q50 60 60 56 Q54 30 70 14 Q74 40 84 46 Q96 64 60 88Z" fill="#e9a24a"/><path d="M60 86 Q46 74 54 58 Q60 70 66 66 Q72 76 60 86Z" fill="#f6d58e"/><g fill="#f4ead6" stroke="#c9b48a"><rect x="24" y="74" width="26" height="8" transform="rotate(-12 37 78)"/><rect x="70" y="74" width="26" height="8" transform="rotate(12 83 78)"/></g></symbol>
+<symbol id="wrestlers" viewBox="0 0 160 110"><g fill="none" stroke="#5b4a26" stroke-width="5" stroke-linecap="round"><circle cx="52" cy="18" r="10"/><circle cx="108" cy="18" r="10"/><path d="M54 30 L64 64 L50 104 M64 64 L80 104"/><path d="M106 30 L96 64 L110 104 M96 64 L80 104" opacity=".0"/><path d="M106 30 L96 64 L110 104"/><path d="M56 40 L96 40 M104 42 L64 46"/></g></symbol>
+<symbol id="crossroads" viewBox="0 0 40 40"><path d="M20 38 V14 M20 18 L8 6 M20 18 L32 6" stroke="#7a5536" stroke-width="3" fill="none"/></symbol>
+<symbol id="twofig" viewBox="0 0 40 40"><use href="#person" x="4" y="6" width="14" height="32" style="color:#56607a"/><use href="#person" x="20" y="6" width="14" height="32" style="color:#c48a7d"/></symbol>
+<symbol id="thought" viewBox="0 0 40 40"><path d="M8 24 Q2 24 3 17 Q4 10 11 11 Q13 4 21 5 Q29 3 31 11 Q38 12 37 19 Q36 25 29 25Z" fill="#fffaf0" stroke="#8a6a4f" stroke-width="2"/><circle cx="12" cy="31" r="3" fill="#fffaf0" stroke="#8a6a4f" stroke-width="1.5"/><circle cx="7" cy="36" r="2" fill="#fffaf0" stroke="#8a6a4f" stroke-width="1.5"/></symbol>
+<symbol id="target" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#a8743f" stroke-width="3"/><circle cx="20" cy="20" r="8" fill="none" stroke="#a8743f" stroke-width="3"/><path d="M4 36 L36 4" stroke="#c95f5f" stroke-width="4"/></symbol>
+<symbol id="opendoor" viewBox="0 0 40 60"><rect x="4" y="4" width="32" height="54" fill="#fff3cf" stroke="#a7805c" stroke-width="3"/><path d="M4 4 L18 10 L18 62 L4 58Z" fill="#a7805c"/></symbol>
+</defs></svg>
+
+<section class="slide" data-n="1" data-theme="light" aria-label="Slide 1">
+<div class="wrap">
+ <p class="label b" data-at="Welcome to Stand Firm">Lesson 1 · Chapter 1 · Part 1: Understanding the Battle</p>
+ <h1 class="b up" data-at="Welcome to Stand Firm">Stand Firm</h1>
+ <svg class="scene" viewBox="0 0 800 380" aria-hidden="true"><g class="cam">
+  <rect width="800" height="380" fill="url(#sfsky)"/><rect width="800" height="380" fill="url(#sflight)"/>
+  <path class="b draw" data-at="Welcome to Stand Firm" style="--len:700" d="M50 350 H750" stroke="#c9963f" stroke-width="2.5" fill="none"/>
+  <g class="b" data-at="I'm Pastor Richmond Kobe"><use href="#storm" x="0" y="20" width="360" height="200"/></g>
+  <g class="b" data-at="I'm Pastor Richmond Kobe"><path d="M800 40 L560 260 M800 100 L600 280 M800 0 L520 240" stroke="#fff3cf" stroke-width="18" opacity=".35"/></g>
+  <use href="#rock" x="200" y="240" width="400" height="120"/>
+  <g class="b up" data-at="in every place I have met"><use href="#fig" x="365" y="118" width="70" height="140"/></g>
+ </g></svg>
+ <p class="parts b" data-at="recognise spiritual opposition">Recognise spiritual opposition · <span class="b" data-at="stand firm in Christ">stand firm in Christ</span> · <span class="b" data-at="without living in fear">without living in fear</span></p>
+ <div class="b" data-at="We begin with a question"><h2>What Is Spiritual Warfare?</h2></div>
+</div></section>
+
+<section class="slide" data-n="2" data-theme="light" aria-label="Slide 2">
+<div class="wrap">
+ <p class="label">Imagine…</p>
+ <svg class="scene" viewBox="0 0 800 360" aria-hidden="true">
+  <rect width="800" height="360" fill="#f3e8d2"/><rect y="280" width="800" height="80" fill="#e2d2b2"/>
+  <g class="b" data-at="Imagine a man named Simon" data-until="On Sunday a friend">
+   <rect x="70" y="60" width="140" height="110" fill="#cfdbe3" stroke="#a7805c" stroke-width="6"/>
+   <use href="#table" x="280" y="230" width="260" height="60"/>
+   <use href="#sit" x="360" y="166" width="72" height="116" style="color:#56607a"/>
+   <use href="#cup" x="456" y="206" width="26" height="26"/>
+   <g class="b pop" data-at="His car has broken down twice"><rect x="560" y="40" width="190" height="80" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#car" x="590" y="50" width="130" height="64"/></g>
+   <g class="b pop" data-at="His manager has become cold"><rect x="560" y="132" width="190" height="80" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#desk" x="575" y="140" width="110" height="66"/><use href="#person" x="696" y="140" width="28" height="66" style="color:#8a96a8" class="turnback"/></g>
+   <g class="b pop" data-at="He and his wife keep arguing"><rect x="560" y="224" width="190" height="80" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#person" x="600" y="232" width="28" height="66" style="color:#56607a" class="turnback"/><use href="#person" x="680" y="232" width="28" height="66" style="color:#c48a7d"/></g>
+   <g class="b up" data-at="a troubling thought comes"><text x="400" y="120" class="hand2" text-anchor="middle" style="fill:#7d7466">God is tired of you.</text></g>
+  </g>
+  <g class="b" data-at="On Sunday a friend">
+   <rect width="800" height="360" fill="#f4ecdc"/><rect x="0" y="280" width="800" height="80" fill="#e2d2b2"/>
+   <rect x="80" y="40" width="120" height="240" fill="#fffaf0" stroke="#d9c9a3"/><path d="M110 70 V120 M90 92 H130" stroke="#c9963f" stroke-width="5"/>
+   <use href="#person" x="330" y="150" width="56" height="140" style="color:#56607a"/>
+   <use href="#person" x="420" y="148" width="56" height="140" style="color:#8fae9f"/>
+   <rect x="470" y="70" width="260" height="56" rx="12" fill="#fffaf0" stroke="#d9c9a3"/><text x="600" y="104" class="hand2" text-anchor="middle">Brother, this is spiritual warfare.</text>
+   <g class="b" data-at="Part of him feels relieved"><circle cx="358" cy="140" r="34" fill="#f6d58e" opacity=".35"/></g>
+   <g class="b" data-at="Another part feels frightened"><text x="250" y="80" class="qm">?</text><text x="280" y="60" class="qm">?</text></g>
+  </g>
+ </svg>
+ <p class="q b" data-at="Is the devil behind his car">Is the devil behind his car, his manager and his marriage?</p>
+</div></section>
+
+<section class="slide" data-n="3" data-theme="dawn" aria-label="Slide 3">
+<div class="wrap">
+ <p class="label">Ephesians 6:10–12</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="#efe1c4"/>
+  <g class="b" data-at="Let us open the Bible" data-until="Put on the whole armor"><rect x="200" y="150" width="400" height="20" fill="#a7805c"/><use href="#scroll" x="250" y="100" width="300" height="84"/><use href="#lamp" x="560" y="80" width="50" height="75"/></g>
+  <g class="b" data-at="Put on the whole armor" data-until="For we do not wrestle"><rect width="800" height="260" fill="#fbf6ea"/><use href="#fig" x="360" y="40" width="90" height="180"/></g>
+  <g class="b" data-at="For we do not wrestle"><rect width="800" height="260" fill="#3c4760"/><path d="M0 200 Q400 190 800 200" stroke="#f6d58e" stroke-width="3"/><use href="#rock" x="200" y="160" width="400" height="100"/></g>
+ </svg>
+ <div class="stack">
+  <p class="scripture b" data-at="Finally be strong in the Lord" data-until="Put on the whole armor">“Finally, be strong in the Lord and in the strength of his might.”<span class="ref">Ephesians 6:10 (ESV)</span></p>
+  <p class="scripture b" data-at="Put on the whole armor" data-until="For we do not wrestle">“Put on the whole armor of God, that you may be able to stand against the schemes of the devil.”<span class="ref">Ephesians 6:11 (ESV)</span></p>
+  <p class="scripture b" data-at="For we do not wrestle">“For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places.”<span class="ref">Ephesians 6:12 (ESV)</span></p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="4" data-theme="light" aria-label="Slide 4">
+<div class="wrap">
+ <p class="label">“Finally, be strong in the Lord”</p>
+ <svg class="scene" viewBox="0 0 800 340" aria-hidden="true">
+  <rect width="800" height="340" fill="url(#sfsky)"/>
+  <g class="b" data-at="Before he names a single enemy"><rect width="800" height="340" fill="url(#sflight)"/></g>
+  <use href="#storm" x="0" y="10" width="330" height="180" opacity=".9"/>
+  <use href="#rock" x="200" y="220" width="400" height="110"/>
+  <use href="#fig" x="365" y="100" width="70" height="140"/>
+  <path class="b draw" data-at="where our strength comes from" style="--len:420" d="M800 60 Q600 160 440 236" stroke="#c9963f" stroke-width="4" fill="none"/>
+ </svg>
+ <p class="big b up" data-at="Before he names a single enemy">Before he names a single enemy, Paul points us to the Lord.</p>
+ <p class="scripture b" data-at="Be strong in the Lord and in the strength">“Be strong in the Lord and in the strength of his might.”<span class="ref">Ephesians 6:10</span></p>
+</div></section>
+
+<section class="slide" data-n="5" data-theme="light" aria-label="Slide 5">
+<div class="wrap">
+ <p class="label">Not written from a comfortable chair</p>
+ <div class="stack">
+  <div class="b" data-at="To hear this passage rightly" data-until="His first readers lived">
+   <svg class="scene" viewBox="0 0 400 220" aria-hidden="true"><use href="#prison" width="400" height="220"/>
+    <g class="b pop" data-at="Three times in this letter"><rect x="20" y="20" width="56" height="26" rx="6" fill="#c9963f"/><text x="48" y="38" class="tiny2" style="fill:#fffaf0;font-size:13px">3:1</text><rect x="20" y="52" width="56" height="26" rx="6" fill="#c9963f"/><text x="48" y="70" class="tiny2" style="fill:#fffaf0;font-size:13px">4:1</text><rect x="20" y="84" width="56" height="26" rx="6" fill="#c9963f"/><text x="48" y="102" class="tiny2" style="fill:#fffaf0;font-size:13px">6:20</text></g>
+   </svg>
+   <p class="tag">Ephesians 3:1 · 4:1 · 6:20 — Paul writes as a prisoner</p>
+  </div>
+  <div class="b" data-at="His first readers lived">
+   <svg class="scene" viewBox="0 0 400 220" aria-hidden="true"><use href="#ephesus" width="400" height="220"/>
+    <g class="b pop" data-at="brought their books of magic arts"><rect x="150" y="100" width="130" height="100" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#fire" x="160" y="106" width="110" height="90"/></g>
+   </svg>
+   <p class="tag">Acts 19:18–19 — a city that knew the world was not empty</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="6" data-theme="light" aria-label="Slide 6">
+<div class="wrap">
+ <p class="label">A close struggle</p>
+ <div class="panel6 one6">
+  <p class="heb b on" style="font-family:'Source Serif 4',serif" data-at="Paul says we do not wrestle"><span class="type">πάλη</span></p>
+  <b class="b" data-at="The Greek word is palē">palē · “wrestling”</b>
+  <span class="ref2 b" data-at="The Greek word is palē">Ephesians 6:12</span>
+  <svg class="b" data-at="It was used for wrestling as a contest" viewBox="0 0 160 110" style="width:150px" aria-hidden="true"><use href="#wrestlers" width="160" height="110"/></svg>
+  <p class="big6 b" data-at="It suggests a struggle">A close, personal struggle</p>
+  <div class="lexcon">
+   <span class="b pop" data-at="in our thoughts"><svg class="bicon" viewBox="0 0 40 40"><use href="#thought"/></svg><b>Thoughts</b></span>
+   <span class="b pop" data-at="our choices"><svg class="bicon" viewBox="0 0 40 40"><use href="#crossroads"/></svg><b>Choices</b></span>
+   <span class="b pop" data-at="our relationships"><svg class="bicon" viewBox="0 0 40 40"><use href="#twofig"/></svg><b>Relationships</b></span>
+   <span class="b pop" data-at="and our faithfulness"><svg class="bicon" viewBox="0 0 40 40"><use href="#i-bible"/></svg><b>Faithfulness</b></span>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="7" data-theme="light" aria-label="Slide 7">
+<div class="wrap">
+ <p class="label">What spiritual warfare is</p>
+ <div class="stack">
+  <div class="b" data-at="Many Christians stand where Simon" data-until="Here is a simple definition">
+   <div class="twocol2">
+    <div class="panel b" data-at="to see a demon behind every problem"><svg viewBox="0 0 200 70" aria-hidden="true"><rect width="200" height="70" fill="#e4dccb"/><path d="M20 10 Q30 30 20 60 M170 8 Q160 30 176 62 M120 6 Q110 20 124 40" stroke="#5d6a80" stroke-width="10" opacity=".35" fill="none"/><use href="#person" x="86" y="8" width="26" height="60" style="color:#56607a"/></svg><b>A demon behind every problem</b></div>
+    <div class="panel b" data-at="an old-fashioned idea"><svg viewBox="0 0 200 70" aria-hidden="true"><rect width="200" height="70" fill="#efe6d2"/><rect x="40" y="36" width="50" height="30" fill="#a49373"/><path d="M42 40 H88" stroke="#d8ccb2"/><use href="#person" x="110" y="8" width="26" height="60" style="color:#8a96a8"/></svg><b>The devil as an old-fashioned idea</b></div>
+   </div>
+   <p class="big b up" data-at="Neither view comes from the Bible">Neither view comes from the Bible.</p>
+  </div>
+  <div class="b" data-at="Here is a simple definition">
+   <div class="journal2"><p><b>Spiritual warfare</b> is the Christian’s struggle to remain faithful to Christ amid the pressures of <b style="color:#22304a">the world</b>, the desires of <b style="color:#22304a">the flesh</b> and the opposition of <b style="color:#22304a">the devil</b>.</p></div>
+   <svg class="scene short b" data-at="And we stand through God's strength" viewBox="0 0 800 160" aria-hidden="true"><use href="#rock" x="250" y="90" width="300" height="70"/><use href="#fig" x="370" y="0" width="50" height="100"/></svg>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="8" data-theme="light" aria-label="Slide 8">
+<div class="wrap">
+ <p class="label b" data-at="Here is our first main point">Point 1</p>
+ <h2 class="b up" data-at="Here is our first main point">People are not the enemy</h2>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="url(#creamg)"/>
+  <g class="b" data-at="The people who hurt us"><use href="#desk" x="80" y="150" width="160" height="94"/><use href="#person" x="230" y="120" width="50" height="126" style="color:#8a96a8"/></g>
+  <g class="b" data-at="oppose us"><use href="#table" x="340" y="200" width="160" height="50"/><use href="#person" x="395" y="110" width="50" height="126" style="color:#c48a7d"/></g>
+  <g class="b" data-at="or frustrate us"><rect x="580" y="150" width="140" height="10" fill="#a7805c"/><path d="M590 160 V240 M710 160 V240" stroke="#a7805c" stroke-width="6"/><use href="#person" x="625" y="114" width="50" height="126" style="color:#6f8f6a"/></g>
+  <g class="b" data-at="are not our ultimate enemy"><circle cx="255" cy="150" r="60" fill="#f6d58e" opacity=".25"/><circle cx="420" cy="150" r="60" fill="#f6d58e" opacity=".25"/><circle cx="650" cy="150" r="60" fill="#f6d58e" opacity=".25"/></g>
+  <g class="b pop" data-at="turning people into targets"><use href="#target" x="40" y="20" width="60" height="60"/></g>
+ </svg>
+ <p class="scripture b" data-at="who our struggle is not against">“We do not wrestle against flesh and blood.”<span class="ref">Ephesians 6:12</span></p>
+</div></section>
+
+<section class="slide" data-n="9" data-theme="light" aria-label="Slide 9">
+<div class="wrap">
+ <p class="label">Slower to hate, quicker to pray</p>
+ <svg class="scene" viewBox="0 0 800 260" aria-hidden="true">
+  <rect width="800" height="260" fill="url(#creamg)"/><rect width="800" height="260" fill="url(#sflight)" opacity=".7"/>
+  <g class="b" data-at="Wrongs should be named"><use href="#note" x="60" y="110" width="110" height="80"/></g>
+  <g class="b" data-at="Seeking safety and help"><use href="#opendoor" x="200" y="80" width="70" height="110"/></g>
+  <g class="b" data-at="slower to hate"><rect x="340" y="200" width="120" height="20" fill="#e3d6b8"/><text x="400" y="244" class="tiny2" text-anchor="middle">slower to hate</text></g>
+  <g class="b" data-at="quicker to pray"><rect x="470" y="170" width="120" height="20" fill="#e9cf96"/><text x="530" y="214" class="tiny2" text-anchor="middle" dy="-48">quicker to pray</text></g>
+  <g class="b" data-at="fight the right battle"><rect x="600" y="140" width="120" height="20" fill="#f0c77a"/><use href="#fig" x="635" y="40" width="50" height="100"/></g>
+ </svg>
+ <p class="q2 b" data-at="Wrongs should be named">Wrongs can still be named, and sometimes confronted or reported.</p>
+ <p class="q2 b" data-at="Seeking safety and help"><b>Seeking safety and help can be a faithful response.</b></p>
+ <p class="tag b" data-at="But a Christian who understands">Slower to hate · quicker to pray · careful to fight the right battle</p>
+</div></section>
+
+<section class="slide" data-n="10" data-theme="light" aria-label="Slide 10">
+<div class="wrap">
+ <p class="label b" data-at="Our second main point">Point 2</p>
+ <h2 class="b up" data-at="Our second main point">Real, but not behind every problem</h2>
+ <div class="stack">
+  <div class="b" data-at="Earlier in the same letter" data-until="Look closely and you will see">
+   <p class="ref2">Ephesians 2:1–3 (excerpt)</p>
+   <div class="stack">
+    <p class="scripture b" data-at="And you were dead" data-until="following the prince">“…following the course of this world…”</p>
+    <p class="scripture b" data-at="following the prince" data-until="among whom we all">“…following the prince of the power of the air…”</p>
+    <p class="scripture b" data-at="among whom we all">“…among whom we all once lived in the passions of our flesh…”</p>
+   </div>
+  </div>
+  <div class="b" data-at="Look closely and you will see">
+   <div class="trio3">
+    <div class="tile3 b pop" data-at="the world the flesh and the devil"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#e8eef3"/><use href="#street" x="30" y="10" width="60" height="60"/></svg><small><b>The world</b></small></div>
+    <div class="tile3 b pop" data-at="the flesh and the devil"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#f6ead4"/><use href="#heart" x="40" y="14" width="40" height="40"/></svg><small><b>The flesh</b></small></div>
+    <div class="tile3 b pop" data-at="and the devil"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#ece4d4"/><text x="60" y="48" text-anchor="middle" style="font-family:'Source Serif 4',serif;font-size:20px;fill:#22304a">schemes</text></svg><small><b>The devil</b></small></div>
+   </div>
+   <p class="tag b" data-at="these three can overlap">These three can overlap.</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="11" data-theme="light" aria-label="Slide 11">
+<div class="wrap">
+ <p class="label">The world, the flesh and the devil</p>
+ <div class="stack">
+  <div class="b" data-at="The world is the pattern" data-until="The flesh here means">
+   <svg class="scene" viewBox="0 0 800 260" aria-hidden="true"><rect width="800" height="260" fill="#e8eef3"/><g fill="#a2acbb"><rect x="60" y="40" width="120" height="200"/><rect x="200" y="80" width="100" height="160"/><rect x="500" y="60" width="120" height="180"/><rect x="640" y="100" width="100" height="140"/></g><g fill="#fffaf0"><rect x="80" y="60" width="80" height="50"/><rect x="520" y="80" width="80" height="50"/></g><use href="#person" x="370" y="120" width="50" height="126" style="color:#56607a"/><use href="#phone" x="420" y="160" width="18" height="30"/></svg>
+   <p class="big2"><b>The world</b> — the pattern of life around us that leaves God out <span class="ref2">1 John 2:16</span></p>
+  </div>
+  <div class="b" data-at="The flesh here means" data-until="And the devil is a real">
+   <svg class="scene" viewBox="0 0 800 260" aria-hidden="true"><rect width="800" height="260" fill="#f6ead4"/><path d="M400 250 V140 M400 160 L250 40 M400 160 L550 40" stroke="#b39a6c" stroke-width="14" fill="none" stroke-linecap="round"/><use href="#person" x="372" y="130" width="50" height="126" style="color:#56607a"/><g class="b" data-at="each person is tempted"><use href="#heart" x="430" y="150" width="30" height="30"/></g></svg>
+   <p class="big2"><b>The flesh</b> — the fallen desires within us; not the body itself, which God made good</p>
+   <p class="scripture b" data-at="each person is tempted">“Each person is tempted when he is lured and enticed by his own desire.”<span class="ref">James 1:14</span></p>
+  </div>
+  <div class="b" data-at="And the devil is a real" data-until="A healthy understanding">
+   <svg class="scene short3" viewBox="0 0 800 220" aria-hidden="true"><rect width="800" height="220" fill="#ece4d4"/><text x="330" y="125" text-anchor="middle" style="font-family:'Source Serif 4',serif;font-size:56px;fill:#22304a">“schemes”</text><use href="#i-bible" x="540" y="70" width="80" height="80"/></svg>
+   <p class="big2"><b>The devil</b> — a real, personal enemy with “schemes” <span class="ref2">Ephesians 6:11</span></p>
+  </div>
+  <div class="b" data-at="A healthy understanding">
+   <div class="trio3"><div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#e8eef3"/><use href="#street" x="30" y="10" width="60" height="60"/></svg><small><b>The world</b></small></div><div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#f6ead4"/><use href="#heart" x="40" y="14" width="40" height="40"/></svg><small><b>The flesh</b></small></div><div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#ece4d4"/><text x="60" y="48" text-anchor="middle" style="font-family:'Source Serif 4',serif;font-size:20px;fill:#22304a">schemes</text></svg><small><b>The devil</b></small></div></div>
+   <p class="tag">Keep all three in view.</p>
+  </div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="12" data-theme="light" aria-label="Slide 12">
+<div class="wrap">
+ <p class="label">Real, but not everywhere</p>
+ <p class="scripture b" data-at="Your adversary the devil prowls">“Your adversary the devil prowls around like a roaring lion, seeking someone to devour.”<span class="ref">1 Peter 5:8</span></p>
+ <div class="trio3 b" data-at="Simon's worn-out car">
+  <div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#fffaf0"/><use href="#car" x="6" y="18" width="80" height="44"/><g class="b pop" data-at="a mechanic"><use href="#spanner" x="82" y="20" width="32" height="32"/></g></svg><small>a mechanic</small></div>
+  <div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#fffaf0"/><use href="#desk" x="6" y="18" width="70" height="44"/><g class="b pop" data-at="an honest conversation at work"><use href="#chairs2" x="74" y="30" width="42" height="30"/></g></svg><small>an honest conversation</small></div>
+  <div class="tile3"><svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#fffaf0"/><g class="b pop" data-at="a humble apology at home"><use href="#cup" x="40" y="30" width="24" height="24"/><use href="#cup" x="62" y="30" width="24" height="24"/></g></svg><small>a humble apology</small></div>
+ </div>
+ <p class="tag b" data-at="They still call for prayer">They still call for prayer.</p>
+</div></section>
+
+<section class="slide" data-n="13" data-theme="light" aria-label="Slide 13">
+<div class="wrap">
+ <p class="label">Four questions for reflection</p>
+ <p class="tag2 b" data-at="They are prompts for reflection">Prompts, not a test</p>
+ <div class="stack">
+  <div class="b" data-at="First my own heart" data-until="Second the world around me"><svg class="bicon" viewBox="0 0 40 40"><use href="#heart"/></svg><p class="big"><span class="note">1 · My own heart</span><br>Is there sin in me that I need to confess or turn from?</p></div>
+  <div class="b" data-at="Second the world around me" data-until="Third truth and lies"><svg class="bicon" viewBox="0 0 40 40"><use href="#street"/></svg><p class="big"><span class="note">2 · The world around me</span><br>Am I being shaped by pressures, values or voices that pull me away from God?</p></div>
+  <div class="b" data-at="Third truth and lies" data-until="And fourth ordinary needs"><svg class="bicon" viewBox="0 0 40 40"><use href="#lampscroll"/></svg><p class="big"><span class="note">3 · Truth and lies</span><br>Is there a thought, accusation, fear or temptation pressing on me that contradicts what God says?</p></div>
+  <div class="b" data-at="And fourth ordinary needs" data-until="More than one answer"><svg class="bicon" viewBox="0 0 40 40"><use href="#cuphand"/></svg><p class="big"><span class="note">4 · Ordinary needs</span><br>Is there a practical, physical, relational or medical need to care for as well?</p></div>
+  <div class="b" data-at="More than one answer"><div class="lexcon"><span><svg class="bicon" viewBox="0 0 40 40"><use href="#heart"/></svg></span><span><svg class="bicon" viewBox="0 0 40 40"><use href="#street"/></svg></span><span><svg class="bicon" viewBox="0 0 40 40"><use href="#lampscroll"/></svg></span><span><svg class="bicon" viewBox="0 0 40 40"><use href="#cuphand"/></svg></span></div><p class="big">More than one can be true at the same time.</p></div>
+ </div>
+</div></section>
+
+<section class="slide" data-n="14" data-theme="light" aria-label="Slide 14">
+<div class="wrap">
+ <p class="label">Imagine… the four questions with Simon</p>
+ <ul class="qs">
+  <li class="b up" data-at="an apology after an argument"><svg viewBox="0 0 40 40"><use href="#heart"/></svg><span><b>My own heart</b> → an apology after an argument</span></li>
+  <li class="b up" data-at="to giving less attention"><svg viewBox="0 0 40 40"><use href="#street"/></svg><span><b>The world around me</b> → less attention to voices that feed fear</span></li>
+  <li class="b up" data-at="to remembering that he belongs"><svg viewBox="0 0 40 40"><use href="#lampscroll"/></svg><span><b>Truth and lies</b> → remembering that he belongs to Christ</span></li>
+  <li class="b up" data-at="arranging the car repair"><svg viewBox="0 0 40 40"><use href="#cuphand"/></svg><span><b>Ordinary needs</b> → arranging the car repair</span></li>
+ </ul>
+ <p class="big b" data-at="He does not need one explanation">He does not need one explanation for everything.</p>
+ <p class="tag b" data-at="Together the questions suggest">Together, the questions suggest several possible faithful steps.</p>
+</div></section>
+
+<section class="slide" data-n="15" data-theme="light" aria-label="Slide 15">
+<div class="wrap">
+ <p class="label">“God is tired of you”</p>
+ <svg class="scene short3" viewBox="0 0 800 240" aria-hidden="true">
+  <rect width="800" height="240" fill="#f3e8d2"/><use href="#table" x="280" y="170" width="240" height="56"/><use href="#sit" x="360" y="110" width="66" height="106" style="color:#56607a"/>
+  <g class="b" data-at="Look again at the thought" data-until="It needs to be tested"><text x="400" y="70" class="hand2" text-anchor="middle" style="fill:#7d7466;font-size:26px">God is tired of you.</text></g>
+  <g class="b" data-at="It needs to be tested" data-until="Whether it comes from"><text x="400" y="70" class="hand2" text-anchor="middle" style="fill:#7d7466;font-size:26px;opacity:.25">God is tired of you.</text></g>
+  <g class="b" data-at="Whether it comes from discouragement" data-until="he can bring it to God"><text x="140" y="60" class="hand2" style="opacity:.6">discouragement</text><text x="560" y="50" class="hand2" style="opacity:.6">old beliefs</text><text x="600" y="110" class="hand2" style="opacity:.6">opposition</text></g>
+  <g class="b pop" data-at="and seek support"><use href="#phone" x="470" y="120" width="22" height="36"/></g>
+ </svg>
+ <p class="scripture b" data-at="There is therefore now">“There is therefore now no condemnation for those who are in Christ Jesus.”<span class="ref">Romans 8:1</span></p>
+ <p class="tag b" data-at="Simon does not need to establish">He can answer it with the gospel without knowing its exact source.</p>
+</div></section>
+
+<section class="slide" data-n="16" data-theme="light" aria-label="Slide 16">
+<div class="wrap">
+ <p class="label b" data-at="Our third main point">Point 3</p>
+ <h2 class="b up" data-at="Our third main point">You are not meant to stand alone</h2>
+ <svg class="scene" viewBox="0 0 800 300" aria-hidden="true">
+  <rect width="800" height="300" fill="url(#sfsky)"/><rect width="800" height="300" fill="url(#sflight)"/>
+  <use href="#rock" x="150" y="190" width="500" height="110"/>
+  <use href="#fig" x="370" y="70" width="60" height="120"/>
+  <g class="b walkin" data-at="The commands are plural"><use href="#person" x="300" y="96" width="38" height="96" style="color:#c48a7d"/></g>
+  <g class="b walkin2" data-at="You all put on the armour"><use href="#person" x="450" y="94" width="38" height="96" style="color:#6f8f6a"/></g>
+  <g class="b walkin" data-at="You all stand"><use href="#person" x="250" y="104" width="34" height="88" style="color:#8a96a8"/></g>
+  <g class="b walkin2" data-at="to pray with us"><use href="#person" x="510" y="102" width="34" height="90" style="color:#b88a6a"/></g>
+  <g class="b pop" data-at="get his car to the mechanic"><rect x="590" y="20" width="180" height="90" rx="10" fill="#fffaf0" stroke="#d9c9a3"/><use href="#car" x="600" y="40" width="110" height="56"/><use href="#person" x="712" y="36" width="24" height="60" style="color:#56607a"/><use href="#person" x="738" y="36" width="24" height="60" style="color:#8fae9f"/></g>
+ </svg>
+ <p class="q b" data-at="The commands are plural">“Put on” · “stand” — <span class="b" data-at="You all put on the armour">you all</span></p>
+</div></section>
+
+<section class="slide" data-n="17" data-theme="light" aria-label="Slide 17">
+<div class="wrap">
+ <p class="label">Stand</p>
+ <svg class="scene" viewBox="0 0 800 280" aria-hidden="true">
+  <rect width="800" height="280" fill="url(#sfsky)"/><g class="b" data-at="My grace is sufficient"><rect width="800" height="280" fill="url(#sflight)"/></g>
+  <use href="#storm" x="0" y="0" width="340" height="190"/>
+  <g class="b" data-at="Others last a long time"><g class="rain" stroke="#8e9ab0" stroke-width="2" opacity=".7"><path d="M60 140 l-8 26 M100 150 l-8 26 M140 140 l-8 26 M180 160 l-8 26 M220 146 l-8 26 M260 156 l-8 26"/></g></g>
+  <use href="#rock" x="200" y="180" width="400" height="100"/>
+  <use href="#person" x="330" y="90" width="38" height="96" style="color:#c48a7d"/><use href="#fig" x="372" y="64" width="58" height="118"/><use href="#person" x="436" y="88" width="38" height="96" style="color:#6f8f6a"/>
+  <g class="b" data-at="the hundredth difficult morning"><use href="#cal" x="660" y="170" width="70" height="70"/><text x="695" y="226" class="cal" text-anchor="middle" style="font-size:20px">100</text></g>
+ </svg>
+ <p class="parts"><span class="b" data-at="That you may be able to stand">“stand”</span> · <span class="b" data-at="Having done all to stand firm">“stand firm”</span> · <span class="b" data-at="Stand therefore">“Stand therefore”</span></p>
+ <p class="scripture b" data-at="My grace is sufficient">“My grace is sufficient for you, for my power is made perfect in weakness.”<span class="ref">2 Corinthians 12:9</span></p>
+ <p class="tag b" data-at="That is not defeat">Victory is not the same as an easy life.</p>
+</div></section>
+
+<section class="slide" data-n="18" data-theme="dawn" aria-label="Slide 18">
+<div class="wrap">
+ <p class="label">A victorious King</p>
+ <svg class="scene short3" viewBox="0 0 800 260" aria-hidden="true"><use href="#crosshill" width="800" height="260"/><g class="b" data-at="His defeat has already been secured"><rect width="800" height="260" fill="url(#sflight)"/></g></svg>
+ <p class="tag2 b" data-at="he is not God's equal">Not God’s equal</p>
+ <p class="scripture b" data-at="The reason the Son of God">“The reason the Son of God appeared was to destroy the works of the devil.”<span class="ref">1 John 3:8</span></p>
+ <p class="big b up" data-at="we do not fight for victory">We do not fight <i>for</i> victory. <span class="b" data-at="We stand in the victory">We stand <span style="color:#c9963f">in</span> the victory Christ has won.</span></p>
+</div></section>
+
+<section class="slide" data-n="19" data-theme="light" aria-label="Slide 19">
+<div class="wrap">
+ <p class="label">Bringing it together</p>
+ <p class="big b up" data-at="Spiritual warfare is real">Spiritual warfare is real, but not behind every problem.</p>
+ <ul class="qs">
+  <li class="b up" data-at="People are not the enemy"><svg viewBox="0 0 40 40"><use href="#twofig"/></svg><span><b>1</b> · People are not the enemy</span></li>
+  <li class="b up" data-at="The world the flesh and the devil are all real"><svg viewBox="0 0 40 40"><use href="#street"/></svg><span><b>2</b> · The world, the flesh, the devil — and ordinary needs</span></li>
+  <li class="b up" data-at="And we stand together"><svg viewBox="0 0 40 40"><use href="#person" style="color:#56607a"/></svg><span><b>3</b> · We stand together</span></li>
+ </ul>
+ <p class="tag b" data-at="Christ calls us to stand">Christ calls us to stand, not to fear.</p>
+</div></section>
+
+<section class="slide" data-n="20" data-theme="light" aria-label="Slide 20">
+<div class="wrap">
+ <p class="label">This week’s practice</p>
+ <div class="journal2 breathe">
+  <p class="b" data-at="Choose one difficulty">1. Choose one difficulty in your life right now.</p>
+  <p class="b" data-at="Then work slowly through">2. Work slowly through the four questions in prayer.</p>
+  <p class="b" data-at="You do not need to settle"><b>You do not need to settle whether this is a spiritual attack before taking a faithful step.</b></p>
+ </div>
+ <p class="tag2 b" data-at="the seven-day Battle Plan">Want to go further? The 7-day Battle Plan is on the lesson page.</p>
+</div></section>
+
+<section class="slide" data-n="21" data-theme="light" aria-label="Slide 21">
+<div class="wrap">
+ <p class="label">Remember</p>
+ <div style="background:url(#) ;background:#22304a;border:2px solid #c9963f;border-radius:18px;padding:1.2em 1.6em;max-width:34em;color:#f6ecd6;position:relative">
+  <svg viewBox="0 0 80 160" style="position:absolute;right:10px;bottom:8px;width:40px;opacity:.35" aria-hidden="true"><use href="#fig"/></svg>
+  <p class="scripture b" style="color:#f6ecd6" data-at="Remember this word of Scripture">“Be strong in the Lord and in the strength of his might.”<span class="ref" style="color:#e9cf96">Ephesians 6:10</span></p>
+  <p class="q b" style="color:#e9b25e" data-at="My strength is in the Lord">My strength is in the Lord. Christ has already won, and by his grace I will stand.</p>
+ </div>
+</div></section>
+
+<section class="slide" data-n="22" data-theme="light" aria-label="Slide 22">
+<div class="wrap">
+ <p class="label">Prayer</p>
+ <svg class="scene short2" viewBox="0 0 800 200" aria-hidden="true"><rect width="800" height="200" fill="url(#sfsky)"/><g class="breathe"><rect width="800" height="200" fill="url(#sflight)"/></g><use href="#rock" x="250" y="130" width="300" height="70"/><use href="#person" x="330" y="64" width="28" height="70" style="color:#c48a7d"/><use href="#fig" x="370" y="44" width="44" height="88"/><use href="#person" x="420" y="64" width="28" height="70" style="color:#6f8f6a"/></svg>
+ <div class="prayer stack">
+  <div class="b" data-at="Let us pray" data-until="Lord Jesus thank you"><p>Let us pray.</p></div>
+  <div class="b" data-at="Lord Jesus thank you" data-until="Thank you that I do not"><p>Lord Jesus, thank you that you came to destroy the works of the devil, and that you have triumphed over every power of darkness.</p></div>
+  <div class="b" data-at="Thank you that I do not" data-until="to confess my own sin"><p>Thank you that I do not have to live in fear.</p><p>Give me wisdom to see my life clearly:</p></div>
+  <div class="b" data-at="to confess my own sin" data-until="Where I have treated"><p>to confess my own sin, to resist the pull of the world,</p><p>to recognise the lies of the enemy, and to care for the ordinary needs in front of me.</p></div>
+  <div class="b" data-at="Where I have treated" data-until="Make me strong in you"><p>Where I have treated people as my enemies, forgive me and teach me to love.</p><p>When the battle is long, help me to keep standing.</p></div>
+  <div class="b" data-at="Make me strong in you" data-until="This week choose one"><p>Make me strong in you and in the strength of your might. Amen.</p></div>
+  <div class="b" data-at="This week choose one"><div style="background:#fbf6ea;border:1px solid #d9c9a3;border-radius:14px;padding:.8em 1.2em"><p class="close" style="margin:0"><b>This week:</b> choose one difficulty and pray through the four questions.<br><span class="small2">Lesson 1 of 12 · Stop here for today, or continue to Lesson 2.</span></p></div></div>
+ </div>
+</div></section>
+
+<div id="cap"></div>
+</div>
+<footer>
+ <div class="row">
+   <button id="prev" aria-label="Previous slide">‹ Back</button>
+   <button id="play" class="primary" aria-label="Play">▶ Play</button>
+   <button id="next" aria-label="Next slide">Next ›</button>
+   <div class="bar" id="seek" role="slider" aria-label="Lesson position" tabindex="0"><i id="prog"></i></div>
+   <span id="clock" class="small">0:00 / 0:00</span>
+ </div>
+ <div class="row">
+   <span id="pos" class="small">Slide 1 of 22</span>
+   <div class="dots" id="dots"></div>
+   <span><label class="small"><input type="checkbox" id="capT" checked> Captions</label> &nbsp; <label class="small"><input type="checkbox" id="stillT"> Reduce motion</label></span>
+ </div>
+ <audio id="aud" src="sf-lesson-01.mp3" preload="auto"></audio>
+</footer>
+<script>
+const NARR = {"1": "Welcome to Stand Firm. I’m Pastor Richmond Kobe. For more than twenty years I have served as a pastor, and in every place I have met believers who hear the words “spiritual warfare” often, but have never had them explained clearly. My prayer is that this course will help you recognise spiritual opposition, stand firm in Christ, and practise daily faith without living in fear. We begin with a question many Christians carry quietly.", "2": "Imagine a man named Simon. He has followed Jesus for eleven years, and for most of that time his faith has felt steady. But this year everything seems to be going wrong at once. His car has broken down twice. His manager has become cold towards him. He and his wife keep arguing about small things. And when he tries to pray, his mind wanders, and a troubling thought comes: God is tired of you. On Sunday a friend at church listens to all of this and says, “Brother, this is spiritual warfare. The enemy is attacking you.” Simon goes home unsure what to think. Part of him feels relieved, because at least there is a name for it. Another part feels frightened. Is the devil behind his car, his manager and his marriage? And what is he supposed to do about it?", "3": "Let us open the Bible together. Our Scripture readings in this course are from the English Standard Version. Ephesians chapter six, verses ten to twelve. “Finally, be strong in the Lord and in the strength of his might. Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places.”", "4": "Now notice what Paul does first. Before he names a single enemy, he points us to the Lord. “Be strong in the Lord and in the strength of his might.” The battle begins with where our strength comes from, not with the enemy. That order matters for everything else in this course. We look to Christ first, and we look at the enemy only in the light of what Christ has done.", "5": "To hear this passage rightly, we need to know where Paul was when he wrote it. He was a prisoner. Three times in this letter he refers to his imprisonment. He was not imagining spiritual battle from a safe distance. He had lived it. His first readers lived in Ephesus, a great city full of magic, idols and fear of unseen powers. The book of Acts tells us that when people there came to faith, many of them brought their books of magic arts and burned them in public. So Paul is not inventing a new fear for these believers. He is telling them the truth about a world they already knew was not empty.", "6": "Paul says, “we do not wrestle.” The Greek word is palē. It was used for wrestling as a contest, and it appears only here in the New Testament. It suggests a struggle that is close and personal, not a battle fought far away. That fits what many of us know. Spiritual warfare is often close to home: in our thoughts, our choices, our relationships and our faithfulness.", "7": "So what is spiritual warfare? Many Christians stand where Simon is standing. Some of us have been taught to see a demon behind every problem. Others have quietly learned that the devil is an old-fashioned idea. Neither view comes from the Bible. Here is a simple definition that we will use throughout this course. Spiritual warfare is the Christian’s struggle to remain faithful to Christ amid the pressures of the world, the desires of the flesh and the opposition of the devil. And we stand through God’s strength and the resources he gives us.", "8": "Here is our first main point. People are not the enemy. Paul tells us who our struggle is not against: “flesh and blood.” This is one of the most important lines in the whole passage. The people who hurt us, oppose us or frustrate us are not our ultimate enemy. Simon’s manager is not a demon. His wife is not his enemy. Paul’s words protect us from turning people into targets.", "9": "That does not mean people are never responsible for what they do. Wrongs should be named, and sometimes they must be confronted or reported. Seeking safety and help can be a faithful response. But a Christian who understands spiritual warfare will be slower to hate, quicker to pray, and more careful to fight the right battle.", "10": "Our second main point: the enemy is real, but he is not behind every problem. Ephesians six is not the only place where Paul describes what we face. Earlier in the same letter, in chapter two, he describes our life before Christ. “And you were dead in the trespasses and sins in which you once walked, following the course of this world, following the prince of the power of the air, the spirit that is now at work in the sons of disobedience—among whom we all once lived in the passions of our flesh…” Look closely and you will see three influences in one sentence. Christians through the centuries have summarised them as the world, the flesh and the devil. And these three can overlap.", "11": "The world is the pattern of life around us that leaves God out. It shapes us through culture, pressure, values and voices that tell us what matters. The flesh here means our sinful orientation: the fallen desires within us that pull us away from God. It does not mean the body itself is evil; God made it good. James is honest: “each person is tempted when he is lured and enticed by his own desire.” Not every temptation needs an outside explanation. Sometimes the problem is my own heart. And the devil is a real, personal enemy who opposes God and his people. Paul speaks of his “schemes,” his plans and methods. A healthy understanding keeps all three in view. If we only talk about the devil, we may stop taking responsibility for our own sin. If we never talk about him, we may be unprepared for his schemes.", "12": "The Bible does not allow us to dismiss the devil. Jesus himself spoke of him, confronted him in the wilderness and set people free. Peter warns, “Your adversary the devil prowls around like a roaring lion, seeking someone to devour.” But the Bible never encourages us to become fascinated by him, afraid of him, or to blame him for everything. Simon’s worn-out car, his stressed manager and those tired arguments may be the ordinary troubles of a fallen world. They still call for prayer. They may also call for a mechanic, an honest conversation at work and a humble apology at home.", "13": "So when something difficult happens, here are four questions that can help you pray honestly. They are prompts for reflection, not a test that identifies the cause of a difficulty. First, my own heart: is there sin in me that I need to confess or turn from? Second, the world around me: am I being shaped by pressures, values or voices that pull me away from God? Third, truth and lies: is there a thought, an accusation, a fear or a temptation pressing on me that contradicts what God says? And fourth, ordinary needs: is there a practical, physical, relational or medical need that should be cared for as well? More than one answer may be true at the same time.", "14": "Let us walk through the four questions with Simon. For him, they might lead to an apology after an argument with his wife; to giving less attention to voices that feed his fear; to remembering that he belongs to Christ; and to arranging the car repair. He does not need one explanation for everything. Together, the questions suggest several possible faithful steps.", "15": "Look again at the thought that came to Simon when he prayed: God is tired of you. It needs to be tested against the gospel, and the gospel says otherwise. “There is therefore now no condemnation for those who are in Christ Jesus.” Notice this carefully. Simon does not need to establish the precise source of that thought before he responds. Whether it comes from discouragement, from beliefs he learned long ago, or from spiritual opposition, he can bring it to God, answer it with what God has said in Christ, and seek support. You can do the same. You do not need to settle whether something is a spiritual attack before you take a faithful step.", "16": "Our third main point: you are not meant to stand alone. Ephesians six was written to a church, not to one person. The commands are plural. You all put on the armour. You all stand. Standing firm includes asking trusted believers to pray with us, to help us examine our assumptions, and to offer practical help. A mature Christian friend may help Simon see what he cannot see on his own, and may simply help him get his car to the mechanic. No Christian is meant to fight alone.", "17": "Notice the word Paul repeats again and again: stand. “That you may be able to stand.” “Having done all, to stand firm.” “Stand therefore.” Paul does not promise that the evil day will never come. He promises that in Christ we can stand when it does. Some battles end quickly. Others last a long time. Paul himself prayed three times for a painful thorn to be removed, and the Lord answered, “My grace is sufficient for you, for my power is made perfect in weakness.” So if your difficulty has not gone away, it does not mean you have failed. Standing firm may look like still trusting God on the hundredth difficult morning. That is not defeat. That is faith.", "18": "And here is why we can stand. The devil is real, but he is not God’s equal. His defeat has already been secured. “The reason the Son of God appeared was to destroy the works of the devil.” In Lesson two we will see how Christ triumphed over the powers at the cross. For now, hold on to this: we do not fight for victory, as though the outcome were uncertain. We stand in the victory Christ has already won.", "19": "Let us bring it together. Spiritual warfare is real, but it is not behind every problem. People are not the enemy. The world, the flesh and the devil are all real, and so are our ordinary needs, and more than one may be at work at once. And we stand together. Christ calls us to stand, not to fear.", "20": "Here is your practice for this week. Choose one difficulty in your life right now. Then work slowly through the four questions in prayer. You do not need to settle whether this is a spiritual attack before taking a faithful step. Let the questions help you pray honestly, and notice what step each one might ask of you: a confession, a change, a truth to hold on to, or a practical need to meet. And if you would like a short daily guide for this week, you will find the seven-day Battle Plan on the lesson page.", "21": "Remember this word of Scripture: “Be strong in the Lord and in the strength of his might.” And here is this week’s declaration. It is not a formula. It is a statement of trust. My strength is in the Lord. Christ has already won, and by his grace I will stand.", "22": "Let us pray. Lord Jesus, thank you that you came to destroy the works of the devil, and that you have triumphed over every power of darkness. Thank you that I do not have to live in fear. Give me wisdom to see my life clearly: to confess my own sin, to resist the pull of the world, to recognise the lies of the enemy, and to care for the ordinary needs in front of me. Where I have treated people as my enemies, forgive me and teach me to love. When the battle is long, help me to keep standing. Make me strong in you and in the strength of your might. Amen. This week, choose one difficulty and pray through the four questions. Then stop here for today, or continue to Lesson two."};
+const TIMES = {"1": [0.12, 0.54, 0.64, 1.05, 1.81, 2.0, 2.44, 2.95, 3.75, 3.87, 4.1, 4.3, 4.7, 5.18, 5.29, 5.43, 5.91, 6.02, 6.12, 7.14, 7.27, 7.41, 7.78, 8.23, 8.34, 8.54, 8.8, 9.49, 9.64, 9.88, 9.97, 10.59, 11.42, 12.03, 12.96, 13.08, 13.24, 13.58, 13.84, 13.98, 14.56, 15.8, 15.99, 16.7, 16.87, 17.1, 17.33, 17.72, 17.9, 18.2, 18.38, 19.04, 19.75, 20.73, 21.24, 21.66, 21.8, 22.64, 22.83, 23.36, 23.84, 24.33, 24.75, 25.18, 25.34, 26.17, 26.29, 26.65, 26.85, 26.89, 27.51, 27.85, 28.47, 28.89], "2": [30.38, 31.02, 31.1, 31.62, 31.94, 32.99, 33.12, 33.33, 33.7, 34.2, 34.41, 34.8, 35.63, 35.77, 35.89, 36.25, 36.35, 36.6, 36.94, 37.21, 37.5, 37.75, 38.05, 39.15, 39.34, 39.59, 40.19, 40.7, 41.11, 41.2, 41.35, 41.75, 42.16, 42.38, 43.38, 43.56, 43.91, 44.13, 44.54, 44.88, 46.13, 46.32, 46.8, 47.01, 47.42, 47.86, 48.44, 49.36, 49.66, 49.79, 49.98, 50.33, 50.57, 51.26, 51.59, 52.02, 53.03, 53.15, 53.3, 53.45, 53.87, 53.96, 54.75, 54.94, 55.31, 56.2, 56.38, 56.43, 56.98, 57.28, 58.41, 58.95, 59.18, 59.7, 59.86, 60.77, 60.95, 61.61, 61.69, 62.17, 62.31, 62.78, 63.28, 63.45, 63.72, 63.82, 64.37, 64.48, 65.23, 66.05, 66.28, 66.39, 67.11, 68.08, 68.26, 68.82, 68.94, 69.48, 70.1, 70.62, 70.89, 71.45, 72.05, 72.28, 72.37, 73.16, 73.51, 73.6, 73.85, 74.32, 75.41, 75.75, 75.89, 76.4, 76.58, 76.72, 76.77, 77.17, 77.46, 78.15, 78.54, 79.08, 79.6, 80.74, 80.95, 81.06, 81.54, 81.97, 82.21, 83.07, 83.26, 84.11, 84.31, 84.52, 85.45, 85.67, 85.97, 86.11, 86.22, 86.77, 86.85, 87.09, 87.43], "3": [88.33, 88.53, 88.69, 89.01, 89.08, 89.49, 90.64, 90.78, 91.28, 91.77, 91.9, 92.09, 92.49, 92.57, 92.81, 93.02, 93.41, 93.9, 94.87, 95.55, 95.95, 96.78, 97.24, 97.6, 97.71, 98.86, 99.99, 100.15, 100.72, 100.83, 100.91, 101.58, 101.79, 101.93, 102.0, 102.51, 102.61, 102.84, 103.82, 104.01, 104.23, 104.32, 104.78, 105.24, 105.35, 106.21, 106.43, 106.58, 106.74, 106.93, 107.19, 107.32, 107.86, 108.25, 108.34, 108.98, 109.1, 109.2, 110.21, 110.34, 110.48, 110.62, 110.87, 111.28, 111.69, 112.07, 112.27, 113.29, 113.43, 113.89, 113.98, 115.03, 115.5, 115.67, 116.76, 117.21, 117.29, 117.93, 118.59, 118.88, 119.13, 119.61, 120.65, 121.13, 121.22, 121.94, 122.6, 122.71, 123.24, 123.39, 123.45, 123.95], "4": [125.06, 125.24, 125.8, 126.02, 126.38, 126.64, 127.87, 128.31, 128.47, 128.86, 128.92, 129.47, 130.12, 130.27, 130.76, 131.01, 131.14, 131.25, 132.23, 132.4, 133.01, 133.12, 133.22, 133.67, 133.93, 134.07, 134.16, 134.8, 134.89, 135.18, 136.23, 136.32, 136.84, 137.41, 137.6, 138.04, 138.22, 138.74, 139.15, 139.7, 140.09, 140.26, 140.45, 141.51, 141.88, 142.49, 143.11, 143.47, 143.98, 144.28, 144.43, 144.62, 145.54, 145.76, 146.09, 146.26, 146.86, 147.87, 148.04, 148.19, 148.46, 148.59, 148.76, 149.64, 150.11, 150.25, 150.33, 150.79, 150.92, 151.1, 151.66, 151.9], "5": [152.91, 153.04, 153.39, 153.63, 154.16, 154.99, 155.25, 155.7, 155.8, 156.07, 156.4, 156.82, 157.21, 157.39, 157.54, 157.83, 158.4, 158.58, 158.77, 158.81, 159.88, 160.19, 160.7, 160.83, 161.02, 161.38, 161.55, 162.12, 162.28, 162.47, 163.65, 163.77, 163.97, 164.27, 164.96, 165.65, 166.03, 166.23, 166.26, 166.68, 167.87, 168.02, 168.19, 168.56, 169.47, 169.7, 170.14, 170.65, 171.02, 171.27, 172.37, 172.48, 172.9, 173.38, 173.71, 173.82, 174.66, 175.37, 175.57, 176.14, 176.39, 177.14, 178.53, 178.62, 178.85, 178.95, 179.39, 179.75, 180.01, 180.2, 180.45, 180.91, 181.22, 181.55, 181.67, 182.59, 182.99, 183.11, 183.33, 183.73, 183.88, 184.31, 184.44, 184.94, 185.55, 185.78, 186.19, 186.53, 186.69, 187.92, 188.15, 188.6, 188.76, 189.05, 189.63, 189.68, 189.97, 190.42, 190.57, 190.86, 192.14, 192.29, 192.47, 192.84, 193.02, 193.1, 193.56, 193.87, 193.9, 194.41, 194.59, 195.17, 195.5, 195.78, 196.12], "6": [197.17, 197.51, 198.35, 198.68, 198.81, 199.01, 200.06, 200.19, 200.55, 200.82, 200.98, 201.93, 202.04, 202.25, 202.59, 202.77, 203.29, 203.42, 203.46, 204.69, 204.86, 204.97, 205.46, 205.81, 206.24, 206.36, 206.42, 206.63, 207.97, 208.1, 209.16, 209.22, 209.93, 210.15, 210.32, 210.82, 211.06, 212.07, 212.32, 212.43, 212.8, 213.18, 213.54, 214.57, 214.8, 215.15, 215.39, 215.72, 215.83, 216.07, 216.71, 217.47, 218.11, 218.25, 218.61, 218.98, 219.1, 219.99, 220.13, 220.3, 221.11, 221.29, 222.0, 222.25, 223.11, 223.36, 223.51], "7": [225.06, 225.32, 225.8, 226.04, 226.93, 228.09, 228.4, 228.98, 229.53, 229.75, 230.25, 230.36, 231.31, 231.57, 231.71, 231.9, 232.07, 232.28, 232.64, 232.74, 233.0, 233.04, 233.59, 234.12, 234.43, 235.28, 235.64, 235.79, 236.43, 236.87, 237.09, 237.16, 237.68, 237.84, 237.96, 238.35, 238.89, 240.11, 240.54, 240.98, 241.46, 241.76, 241.84, 242.69, 242.93, 243.06, 243.12, 243.68, 244.35, 244.54, 244.63, 244.8, 245.27, 245.73, 245.93, 247.15, 247.8, 248.45, 248.7, 248.79, 249.44, 249.98, 250.11, 250.53, 251.11, 251.26, 251.84, 252.18, 252.26, 252.91, 253.02, 253.11, 254.02, 254.11, 254.84, 254.95, 255.05, 255.66, 256.07, 256.21, 256.93, 257.12, 257.23, 258.0, 258.21, 258.39, 258.98, 259.29, 259.65, 260.44, 260.6, 260.67, 261.49, 261.67, 261.99], "8": [262.94, 263.24, 263.42, 263.59, 264.08, 264.43, 265.26, 265.87, 266.03, 266.66, 266.85, 267.68, 267.93, 268.29, 268.91, 269.13, 269.32, 269.84, 270.03, 270.39, 271.28, 271.73, 272.03, 272.97, 273.15, 273.27, 273.44, 273.53, 273.6, 273.92, 274.66, 275.48, 275.62, 275.7, 276.02, 277.17, 277.26, 277.67, 277.9, 278.17, 278.9, 279.4, 279.63, 279.83, 280.48, 280.79, 280.94, 281.31, 281.69, 282.21, 283.28, 283.78, 284.29, 284.48, 284.66, 284.72, 285.64, 285.83, 286.38, 286.58, 286.83, 287.08, 288.04, 288.51, 288.99, 289.56, 289.79, 290.03, 290.48, 290.97, 291.3], "9": [292.48, 292.84, 293.03, 293.29, 293.62, 294.03, 294.15, 294.51, 295.25, 295.42, 295.65, 295.79, 296.7, 297.22, 297.44, 297.57, 298.32, 298.45, 299.15, 299.27, 299.55, 299.66, 300.44, 300.59, 301.7, 302.21, 302.79, 302.93, 303.41, 303.61, 303.78, 303.81, 304.34, 305.78, 305.91, 305.95, 306.49, 306.66, 307.27, 307.98, 308.54, 308.74, 308.9, 309.46, 309.61, 310.52, 310.82, 310.96, 311.84, 311.97, 312.27, 312.79, 312.9, 313.31, 313.41, 313.7], "10": [314.5, 314.69, 315.11, 315.35, 316.19, 316.36, 316.66, 316.79, 317.49, 317.66, 317.77, 317.9, 318.15, 318.64, 318.92, 320.02, 320.58, 321.08, 321.22, 321.46, 321.6, 321.96, 322.33, 322.51, 322.84, 323.48, 323.64, 323.81, 325.07, 325.48, 325.62, 325.69, 326.04, 326.64, 326.78, 327.18, 327.9, 328.11, 328.73, 328.86, 329.26, 329.64, 330.76, 330.92, 331.08, 331.25, 331.77, 331.92, 332.03, 332.89, 333.07, 333.6, 333.74, 334.0, 334.1, 334.45, 335.27, 335.92, 336.0, 336.43, 336.55, 336.76, 337.86, 338.38, 338.47, 339.06, 339.24, 339.32, 339.99, 340.13, 340.35, 341.27, 341.37, 342.07, 342.23, 342.42, 342.89, 343.11, 343.54, 343.78, 343.87, 344.53, 344.68, 346.06, 346.48, 347.23, 347.46, 347.92, 348.38, 349.11, 349.25, 349.32, 350.16, 350.33, 350.52, 351.85, 352.16, 353.08, 353.44, 353.59, 353.72, 354.02, 354.59, 355.53, 355.69, 356.14, 357.4, 357.98, 358.25, 358.36, 359.29, 359.48, 360.25, 360.58, 360.81, 360.89, 361.63, 361.73, 362.43, 362.62, 362.69, 363.74, 364.01, 364.37, 364.8, 365.07], "11": [366.37, 366.43, 366.83, 366.99, 367.05, 367.58, 367.69, 368.02, 368.43, 368.62, 368.83, 369.25, 369.62, 370.4, 370.53, 370.98, 371.18, 371.39, 371.97, 372.57, 373.3, 373.44, 374.26, 374.47, 374.73, 374.88, 375.13, 376.43, 376.57, 377.04, 377.37, 377.78, 377.94, 378.63, 380.1, 380.17, 380.65, 381.27, 381.59, 381.86, 382.11, 382.37, 382.55, 382.93, 383.17, 384.36, 384.52, 384.78, 385.03, 385.32, 385.39, 385.79, 386.29, 386.45, 387.37, 387.74, 388.04, 388.14, 389.22, 389.67, 389.83, 390.78, 391.11, 391.56, 391.77, 392.3, 392.46, 392.6, 392.75, 393.28, 393.59, 394.27, 394.43, 394.72, 395.07, 396.21, 396.56, 396.89, 397.67, 398.05, 398.22, 398.82, 400.01, 400.67, 400.75, 401.21, 401.36, 401.6, 401.81, 402.87, 403.03, 403.11, 403.56, 403.77, 403.83, 404.39, 405.18, 406.15, 406.29, 406.92, 407.35, 407.7, 407.9, 408.97, 409.4, 409.96, 410.14, 410.31, 411.39, 411.58, 412.43, 412.6, 413.97, 414.02, 414.54, 415.28, 415.64, 416.02, 416.55, 416.72, 417.8, 417.98, 418.17, 418.54, 418.82, 419.1, 419.18, 420.09, 420.21, 420.39, 420.84, 421.21, 422.11, 422.32, 422.49, 422.87, 423.9, 424.09, 424.22, 424.55, 424.84, 425.12, 425.79, 425.92, 426.12, 426.32, 427.08, 427.23, 427.43], "12": [428.82, 428.92, 429.33, 429.57, 429.82, 430.22, 430.39, 430.5, 431.0, 431.12, 432.2, 432.66, 433.12, 433.59, 433.68, 434.38, 435.03, 435.22, 435.33, 435.4, 436.49, 436.69, 437.09, 437.41, 438.5, 438.77, 439.86, 440.26, 441.02, 441.13, 441.62, 442.25, 442.76, 442.98, 443.03, 443.51, 444.26, 444.81, 445.34, 445.48, 446.36, 446.53, 446.6, 447.13, 447.55, 448.22, 448.45, 448.55, 448.91, 449.76, 449.96, 450.76, 451.26, 451.37, 452.15, 452.28, 452.38, 452.81, 453.04, 453.25, 454.53, 455.14, 455.46, 455.69, 456.42, 456.56, 457.07, 457.94, 458.12, 458.38, 458.83, 459.86, 460.06, 460.22, 460.36, 460.94, 461.41, 461.52, 461.57, 462.07, 463.54, 463.7, 464.13, 464.47, 464.6, 465.75, 465.91, 466.11, 466.64, 467.01, 467.27, 467.31, 468.44, 468.69, 469.15, 470.0, 470.16, 470.9, 471.09, 471.15, 471.77, 472.6, 472.75], "13": [473.72, 473.91, 474.12, 474.74, 475.3, 475.98, 476.45, 476.53, 477.05, 477.78, 477.91, 478.11, 478.46, 478.62, 479.01, 480.59, 480.76, 480.88, 481.46, 481.62, 482.82, 483.08, 483.15, 483.61, 483.75, 484.63, 484.73, 485.28, 485.37, 485.42, 486.86, 487.49, 487.74, 487.93, 488.92, 489.08, 489.23, 489.61, 489.74, 490.03, 490.17, 490.26, 490.52, 490.61, 491.2, 491.31, 491.65, 492.56, 493.5, 493.57, 493.98, 494.42, 495.23, 495.38, 495.52, 495.79, 496.28, 496.46, 497.41, 498.17, 498.39, 498.98, 499.2, 499.45, 499.61, 499.92, 500.14, 501.27, 502.09, 502.67, 502.91, 504.18, 504.38, 504.61, 504.65, 505.59, 505.74, 507.1, 507.18, 508.17, 508.36, 508.4, 509.23, 509.71, 509.93, 510.46, 510.62, 511.36, 511.54, 511.9, 513.22, 513.4, 514.31, 514.93, 515.87, 516.05, 516.27, 516.32, 517.5, 518.31, 519.24, 519.38, 519.93, 520.63, 520.79, 521.03, 521.15, 521.53, 521.86, 522.01, 522.75, 523.19, 523.44, 523.66, 524.24, 524.53, 524.77, 525.34, 525.53, 525.62, 526.11], "14": [526.94, 527.14, 527.31, 527.63, 527.89, 527.98, 528.28, 528.89, 529.05, 530.19, 530.35, 531.01, 531.21, 531.52, 531.81, 531.98, 532.06, 533.27, 533.62, 533.7, 534.23, 534.36, 534.55, 535.43, 535.51, 535.86, 536.13, 536.65, 536.75, 537.39, 537.57, 537.88, 538.16, 538.94, 539.1, 539.81, 539.95, 540.09, 540.54, 540.64, 541.53, 541.72, 541.89, 542.55, 542.65, 543.02, 544.15, 544.26, 544.5, 544.74, 545.04, 545.5, 546.39, 546.59, 547.71, 548.48, 548.57, 549.18, 549.77, 550.3, 550.88, 551.44], "15": [552.54, 552.79, 553.35, 553.55, 553.63, 554.34, 554.52, 554.93, 555.05, 555.54, 555.76, 555.91, 556.95, 557.48, 557.69, 558.14, 558.25, 559.12, 559.28, 559.65, 559.75, 559.9, 560.5, 560.99, 561.07, 562.19, 562.31, 562.39, 562.96, 563.55, 564.98, 565.22, 565.41, 566.05, 566.39, 566.77, 567.78, 567.98, 568.43, 568.58, 568.72, 568.86, 569.38, 570.74, 571.19, 571.41, 572.45, 573.01, 573.21, 573.47, 573.84, 573.98, 574.64, 574.74, 575.41, 575.85, 575.97, 576.23, 576.89, 577.44, 577.61, 579.12, 579.44, 579.59, 579.99, 580.23, 581.52, 581.82, 582.4, 582.65, 582.97, 583.22, 583.94, 584.2, 584.44, 585.26, 586.43, 586.58, 586.8, 587.11, 587.25, 587.38, 588.21, 588.63, 588.78, 588.96, 589.14, 589.53, 589.7, 590.05, 590.19, 591.05, 591.24, 591.65, 592.58, 592.98, 593.25, 593.5, 593.61, 594.44, 594.55, 594.68, 594.91, 595.16, 595.26, 595.79, 596.1, 596.82, 596.99, 597.03, 597.78, 598.37, 598.87, 599.03, 599.46, 599.53, 600.1], "16": [600.8, 601.04, 601.54, 601.9, 602.85, 603.05, 603.15, 603.51, 603.91, 604.04, 604.52, 605.61, 606.18, 606.64, 606.82, 607.11, 607.3, 607.34, 608.04, 608.32, 608.43, 608.73, 609.91, 609.98, 610.51, 610.57, 611.83, 612.0, 612.28, 612.53, 612.64, 612.78, 613.48, 613.67, 613.92, 615.22, 615.87, 616.31, 617.06, 617.65, 618.11, 618.74, 618.86, 619.2, 619.4, 620.02, 620.1, 620.43, 620.59, 621.17, 621.34, 622.45, 622.65, 622.79, 623.19, 623.82, 624.9, 625.03, 625.61, 626.16, 626.7, 626.95, 627.25, 627.75, 628.17, 628.37, 628.48, 628.82, 629.1, 629.23, 629.46, 629.96, 630.22, 630.39, 630.86, 631.18, 631.38, 631.66, 631.85, 632.25, 632.4, 632.48, 633.76, 634.14, 634.87, 635.06, 635.51, 635.63, 636.11], "17": [637.31, 637.67, 637.77, 638.14, 638.43, 638.91, 639.49, 639.73, 640.61, 641.73, 642.03, 642.24, 642.44, 642.64, 642.92, 643.07, 644.17, 644.51, 644.75, 645.37, 645.48, 646.01, 646.84, 647.69, 648.92, 649.26, 649.46, 649.7, 650.11, 650.33, 650.53, 650.88, 651.13, 651.33, 651.73, 652.65, 652.78, 653.46, 653.65, 653.79, 654.34, 654.52, 654.72, 655.17, 655.36, 655.52, 656.52, 656.9, 657.43, 657.81, 658.73, 659.12, 659.66, 659.71, 660.09, 660.97, 661.35, 662.04, 662.47, 662.96, 663.6, 663.79, 663.83, 664.51, 665.02, 665.12, 665.32, 666.43, 666.6, 666.68, 667.06, 668.17, 668.45, 669.07, 669.25, 669.99, 670.23, 671.21, 671.31, 671.51, 672.02, 672.23, 672.51, 673.1, 673.28, 674.5, 675.2, 675.34, 675.46, 676.11, 676.33, 676.58, 676.81, 677.59, 677.72, 677.92, 678.24, 678.49, 678.62, 678.76, 679.66, 680.34, 680.91, 681.09, 681.36, 681.65, 682.08, 682.59, 683.0, 683.18, 683.25, 683.99, 684.57, 685.35, 685.58, 685.73, 685.96, 686.7, 686.91, 687.12], "18": [688.26, 688.42, 688.74, 688.89, 689.15, 689.33, 689.52, 690.4, 690.56, 691.02, 691.19, 691.91, 692.12, 692.35, 692.53, 692.9, 693.47, 694.64, 694.84, 695.35, 695.65, 696.27, 696.51, 697.8, 697.9, 698.34, 698.44, 698.76, 698.88, 699.22, 699.78, 700.06, 700.2, 700.82, 700.93, 701.45, 701.59, 701.7, 702.62, 702.75, 703.22, 703.56, 703.77, 703.92, 704.27, 704.48, 705.08, 705.82, 706.05, 706.17, 706.78, 706.93, 707.0, 708.26, 708.43, 709.26, 709.56, 709.77, 709.92, 710.85, 711.07, 711.35, 711.61, 712.06, 712.17, 713.25, 713.44, 713.7, 713.9, 714.54, 714.76, 716.03, 716.18, 716.75, 716.9, 716.98, 717.58, 718.11, 718.34, 718.98], "19": [720.12, 720.27, 720.4, 720.65, 720.76, 721.75, 722.39, 723.1, 723.25, 724.18, 724.3, 724.43, 724.6, 724.94, 725.49, 725.8, 726.93, 727.41, 727.56, 727.93, 728.09, 729.22, 729.31, 730.22, 730.31, 730.9, 731.16, 731.22, 731.72, 731.87, 732.29, 733.1, 733.27, 733.71, 733.92, 734.19, 734.81, 735.59, 735.81, 736.1, 736.26, 736.64, 736.81, 736.99, 737.12, 737.41, 737.55, 738.38, 738.56, 738.73, 739.21, 740.05, 740.46, 740.89, 741.16, 741.28, 742.3, 742.59, 742.8], "20": [743.57, 743.89, 744.03, 744.19, 744.74, 744.86, 745.1, 745.99, 746.41, 746.7, 747.38, 747.5, 747.67, 748.08, 748.34, 749.08, 749.6, 749.92, 750.57, 750.86, 750.96, 751.37, 752.07, 752.23, 753.33, 753.56, 753.8, 754.05, 754.36, 754.47, 754.96, 755.29, 755.57, 755.72, 755.76, 756.49, 757.24, 757.67, 758.08, 758.14, 758.74, 759.8, 760.04, 760.16, 760.83, 761.15, 761.3, 761.8, 762.44, 762.92, 763.32, 763.55, 764.13, 764.38, 764.68, 765.0, 765.37, 765.49, 766.25, 766.33, 767.42, 767.49, 768.59, 768.66, 769.1, 769.23, 769.53, 769.75, 770.37, 770.53, 770.57, 771.24, 771.78, 771.87, 772.99, 773.19, 773.33, 773.49, 773.66, 773.94, 773.98, 774.5, 774.84, 775.19, 775.34, 775.62, 776.45, 776.6, 776.73, 777.29, 777.38, 777.83, 778.04, 778.42, 778.95, 779.13, 779.2, 779.66], "21": [780.83, 781.32, 781.66, 782.07, 782.16, 783.22, 783.38, 784.07, 784.2, 784.27, 785.21, 785.38, 785.52, 785.6, 786.21, 786.31, 786.52, 787.38, 787.56, 788.46, 788.68, 788.93, 789.34, 790.6, 790.73, 790.91, 791.14, 791.19, 792.34, 792.45, 792.6, 792.64, 793.35, 793.47, 794.79, 794.95, 795.49, 795.79, 795.93, 796.02, 796.89, 797.35, 797.56, 797.95, 798.7, 798.88, 799.08, 799.35, 799.82, 800.01, 800.19], "22": [801.23, 801.41, 801.55, 802.6, 802.84, 803.64, 804.08, 804.25, 804.46, 804.58, 804.93, 805.06, 805.67, 805.77, 806.22, 806.32, 806.43, 806.91, 807.26, 807.45, 807.57, 807.73, 808.39, 808.78, 809.16, 809.67, 809.78, 810.87, 811.18, 811.34, 811.48, 811.6, 811.79, 812.05, 812.29, 812.41, 812.63, 812.76, 813.59, 813.8, 813.99, 814.51, 814.62, 814.89, 815.12, 815.49, 816.54, 816.62, 817.22, 817.44, 817.67, 818.62, 818.71, 819.29, 819.36, 819.79, 819.91, 819.99, 820.84, 820.94, 821.71, 821.82, 822.39, 822.49, 822.66, 823.53, 823.67, 823.75, 824.19, 824.34, 824.5, 825.08, 825.72, 825.9, 826.28, 826.37, 827.3, 827.49, 827.64, 827.87, 828.37, 828.76, 828.93, 829.15, 830.2, 830.65, 831.22, 831.48, 831.83, 831.99, 832.14, 833.0, 833.19, 833.26, 833.69, 833.86, 834.67, 834.93, 835.09, 835.21, 835.5, 836.64, 836.89, 837.04, 837.55, 837.67, 838.33, 838.51, 838.64, 838.7, 839.22, 839.34, 839.53, 840.42, 846.34, 846.62, 847.36, 847.76, 848.14, 849.19, 849.4, 849.72, 850.01, 850.11, 850.55, 851.58, 852.13, 852.61, 853.24, 853.42, 854.33, 854.49, 855.11, 855.75, 856.28]};
+
+
+const toks = s => (s.replace(/[’‘]/g,"'").match(/[A-Za-zÀ-ɏḀ-ỿ']+/g)||[]).map(t=>t.replace(/^'+|'+$/g,'').toLowerCase()).filter(Boolean);
+const slides=[...document.querySelectorAll('.slide')];
+const stage=document.getElementById('stage'),cap=document.getElementById('cap'),aud=document.getElementById('aud');
+const S=slides.map((el,k)=>{
+  const n=el.dataset.n,text=NARR[n],words=toks(text),T=TIMES[n];
+  const at=i=>T[Math.min(i,T.length-1)];
+  const sentences=[];let idx=0;
+  const chunks=s=>{const w=s.split(/\s+/),out=[];let c=[];for(const x of w){c.push(x);const len=c.join(" ").length;if(len>=70||(len>=38&&/[,;:]$/.test(x))){out.push(c.join(" "));c=[];}}if(c.length){if(out.length&&c.join(" ").length<18){out[out.length-1]+=" "+c.join(" ");}else out.push(c.join(" "));}return out;};
+  text.split(/(?<=[.?!”"])\s+/).forEach(s=>chunks(s).forEach(p=>{sentences.push({t:at(idx)-0.15,s:p});idx+=toks(p).length;}));
+  const find=(phrase)=>{let occ=1;const m=phrase.match(/^(.*) (\d)$/);if(m){phrase=m[1];occ=+m[2];}
+    const p=toks(phrase);let seen=0;
+    for(let i=0;i<=words.length-p.length;i++){if(p.every((w,j)=>words[i+j]===w)){if(++seen===occ)return at(i)-0.25;}}
+    (window.__miss=window.__miss||[]).push(n+': '+phrase);return at(0);};
+  const beats=[...el.querySelectorAll('[data-at]')].map(b=>({b,at:find(b.dataset.at),until:b.dataset.until?find(b.dataset.until):1e9}));
+  return{el,beats,sentences,first:T[0]};
+});
+S.forEach((s,k)=>{s.start=k===0?0:Math.max(s.first-0.6,(S[k-1].first+0.1));});
+const dots=document.getElementById('dots');dots.innerHTML=S.map(()=>'<i></i>').join('');
+[...dots.children].forEach((d,i)=>d.onclick=()=>go(i));
+let cur=-1;
+const FULL=856.9;const dur=()=>(isFinite(aud.duration)&&aud.duration>1)?aud.duration:FULL;
+const fmt=x=>{x=Math.max(0,x|0);return (x/60|0)+':'+String(x%60).padStart(2,'0');};
+function slideAt(t){let k=0;S.forEach((s,i)=>{if(t>=s.start)k=i;});return k;}
+function render(){
+  const t=aud.currentTime,k=slideAt(t);
+  if(k!==cur){cur=k;S.forEach((s,i)=>s.el.classList.toggle('cur',i===k));stage.className=S[k].el.dataset.theme;
+    document.getElementById('pos').textContent=`Slide ${k+1} of ${S.length}`;[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===k));}
+  const s=S[k];s.beats.forEach(({b,at,until})=>b.classList.toggle('on',t>=at&&t<until));
+  let line=s.sentences.length?s.sentences[0].s:'';s.sentences.forEach(x=>{if(t>=x.t)line=x.s;});cap.textContent=line;
+  const d=dur();document.getElementById('prog').style.width=(d?t/d*100:0)+'%';
+  document.getElementById('clock').textContent=fmt(t)+' / '+fmt(d);
+}
+function loop(){render();requestAnimationFrame(loop);}
+let pendingT=null;
+(function(){const so=aud.querySelector('source');const url=so?so.getAttribute('src'):aud.getAttribute('src');if(!url||!window.fetch||!window.URL)return;
+ fetch(url).then(r=>{if(!r.ok)throw 0;return r.blob();}).then(b=>{const t=(pendingT!==null?pendingT:aud.currentTime),was=!aud.paused;const orig=aud.currentSrc;const bu=URL.createObjectURL(b);
+  const fail=()=>{aud.removeEventListener('error',fail);aud.src=orig;aud.load();pendingT=t;if(was)aud.play().catch(()=>{});};
+  aud.addEventListener('error',fail,{once:true});
+  aud.src=bu;aud.load();pendingT=t;
+  aud.addEventListener('loadedmetadata',()=>{aud.removeEventListener('error',fail);try{aud.currentTime=t;}catch(e){}if(was)aud.play().catch(()=>{});window.__blob=true;},{once:true});
+ }).catch(()=>{});})();
+function setT(x){pendingT=x;try{aud.currentTime=x;}catch(e){}render();}
+aud.addEventListener('playing',()=>{if(pendingT!==null){if(Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;pendingT=null;}});
+aud.addEventListener('loadedmetadata',()=>{if(pendingT!==null&&Math.abs(aud.currentTime-pendingT)>1)aud.currentTime=pendingT;});
+function go(i){if(i<0||i>=S.length)return;setT(i===0?0:Math.max(S[i].start+0.01,S[i].first+0.05));}
+const btn=document.getElementById('play');
+function setBtn(){btn.textContent=aud.paused?'▶ Play':'❚❚ Pause';btn.setAttribute('aria-label',aud.paused?'Play':'Pause');}
+btn.onclick=()=>{aud.paused?aud.play():aud.pause();};
+aud.addEventListener('play',setBtn);aud.addEventListener('pause',setBtn);aud.addEventListener('ended',setBtn);
+document.getElementById('prev').onclick=()=>go(cur-1);
+document.getElementById('next').onclick=()=>go(cur+1);
+const seek=document.getElementById('seek');
+seek.addEventListener('click',e=>{const r=seek.getBoundingClientRect();setT((e.clientX-r.left)/r.width*dur());});
+seek.addEventListener('keydown',e=>{if(e.key==='ArrowRight')aud.currentTime+=5;if(e.key==='ArrowLeft')aud.currentTime-=5;});
+const stillT=document.getElementById('stillT');
+let stillPref=null;try{stillPref=localStorage.getItem('sf-reduce-motion');}catch(e){}
+stillT.checked=stillPref!==null?stillPref==='1':window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.body.classList.toggle('still',stillT.checked);
+stillT.onchange=e=>{document.body.classList.toggle('still',e.target.checked);try{localStorage.setItem('sf-reduce-motion',e.target.checked?'1':'0');}catch(err){}};
+document.getElementById('capT').onchange=e=>cap.classList.toggle('hide',!e.target.checked);
+document.addEventListener('keydown',e=>{if(e.target===seek)return;if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1);if(e.key===' '){e.preventDefault();btn.click();}});
+function fitSlides(){const sh=stage.clientHeight;S.forEach(s=>{const w=s.el.querySelector(':scope > .wrap');if(!w)return;w.style.zoom=1;const cs=getComputedStyle(s.el);const avail=sh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const h=w.scrollHeight;w.style.zoom=h>avail?Math.max(.55,avail/h):1;});}
+fitSlides();addEventListener('resize',fitSlides);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSlides);
+render();requestAnimationFrame(loop);
+window.__seek=(sec)=>{aud.currentTime=sec;render();};
+
+</script>
+</body></html>

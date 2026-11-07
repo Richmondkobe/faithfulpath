@@ -55,6 +55,8 @@ const nextConfig: NextConfig = {
     "/members/courses/talk-before-you-marry-new/**/*": ["./content/courses/talk-before-you-marry-new/**/*"],
     // The new Lead Before You're Ready edition (hidden test course): its pages.
     "/members/courses/lead-before-youre-ready-new/**/*": ["./content/courses/lead-before-youre-ready-new/**/*"],
+    // Stand Firm: its pages and the Leader's Guide (the recordings are in the private bucket, never here).
+    "/members/courses/stand-firm/**/*": ["./content/courses/stand-firm/**/*.html", "./content/courses/stand-firm/downloads/*.pdf"],
   },
   images: {
     // Keep resized images for 31 days rather than the default 4 hours. A book

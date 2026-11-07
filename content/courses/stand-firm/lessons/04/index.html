@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 4 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 2: The Armour of God</span><span class="steps" aria-label="Lesson 4 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 4 · Chapters 5–6 · Part 2: The Armour of God</p>
+ <h1>Be Strong in the Lord and the Belt of Truth</h1>
+ <p class="question">Where does my strength to stand come from?</p>
+ <span class="chip">About 14½ minutes</span><span class="chip">Ephesians 6:10–14a</span><span class="chip">Part 2 · The Armour of God</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> identify one lie to reject or one truthful action to take.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 14½ minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why Paul calls us to be strong “in the Lord”, and what kind of strength he means (Ephesians 1:19–20)</li>
+  <li>Whose armour it is: God wears it first (Isaiah 59:17), and he gives it to every believer in Christ</li>
+  <li>What the belt of truth pictures, and the two sides of truth: truth God has revealed and truth we live</li>
+  <li>How truth sets us free, including from false verdicts about ourselves</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 4 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Be strong in the Lord and the belt of truth</h4><p>Welcome back to Stand Firm. In the first three lessons we looked at the battle itself: what spiritual warfare is, the enemy who has already been defeated, and how he works. Today we begin Part 2, the armour of God. We start where Paul starts, with the Lord’s strength, and we look at the first piece he names: the belt of truth. So we ask: where does my strength to stand come from?</p>
+<h4>2 · Imagine a man named Kevin</h4><p>Imagine an accountant named Kevin. He has been a Christian for many years, and he is respected at church. One day at work, his manager asks him to adjust a few figures before the end of the quarter. Everyone in the office seems to treat it as normal, and Kevin goes along with it. A few weeks later, the same compromise has become a habit. Kevin finds himself shading the truth in other places too: an excuse to his wife about why he is late, a slightly exaggerated story in his small group. When he opens his Bible, he feels distant from God, and he cannot quite say why. At the same time, another kind of untruth is working on Kevin from the inside. Late at night he thinks, you are a fraud. If people really knew you, they would want nothing to do with you. Let us open the Bible.</p>
+<h4>3 · Ephesians 6:10–14a</h4><p>Ephesians chapter 6, from verse 10 to the first part of verse 14. “Finally, be strong in the Lord and in the strength of his might. Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places. Therefore take up the whole armor of God, that you may be able to withstand in the evil day, and having done all, to stand firm. Stand therefore, having fastened on the belt of truth.”</p>
+<h4>4 · Point 1: Strong in the Lord</h4><p>Our first main point: strong in the Lord. In Lesson 1 we noticed that Paul points us to the Lord before he names the enemy. Now notice what kind of strength he means. Many interpreters note that the verb can be understood as “be strengthened.” Either way, the source is clear: “in the Lord and in the strength of his might.” Paul has already told us what that might is. Earlier in the letter he prays that believers would know “the immeasurable greatness of his power toward us who believe, according to the working of his great might that he worked in Christ when he raised him from the dead.” The strength Paul has in mind is resurrection power. We do not stand because we are strong people. We stand because we are held by a strong God.</p>
+<h4>5 · When our strength runs out</h4><p>Many sincere Christians reach a moment when their strength runs out, and all they can pray is, Lord, I don’t have anything left. That prayer is not a sign of failure. Isaiah says, “He gives power to the faint, and to him who has no might he increases strength.” And exhaustion does not necessarily mean we have failed to trust God. Faithful people can be worn out by illness, grief or heavy workloads, and sometimes receiving God’s help includes rest, shared responsibilities and appropriate care. An honest prayer like that may be the beginning of learning where real strength comes from.</p>
+<h4>6 · Point 2: Whose armour is it?</h4><p>Our second main point asks a question: whose armour is it? Paul calls it “the whole armor of God.” That can mean the armour God provides. But there is a deeper background. In the book of Isaiah, God himself is pictured as a warrior who comes to rescue his people. “He put on righteousness as a breastplate, and a helmet of salvation on his head.” Isaiah also describes the coming King from David’s line: “Righteousness shall be the belt of his waist, and faithfulness the belt of his loins.” And he speaks of the messenger who publishes peace. Paul’s words echo all three. Before Paul ever told believers to put on this armour, God wore it first.</p>
+<h4>7 · God’s gift to every believer</h4><p>So the armour is God’s own, and he gives it to every believer in Christ. It is not a reward for mature Christians, and it is not something we earn. That is why, from the first lesson, the figure in this course has worn the whole armour, drawn faintly. As we study each piece, it turns gold. Nothing is handed over, because nothing was missing. Paul also tells believers to “put on the Lord Jesus Christ.” Putting on the armour of God is closely connected with putting on Christ: living in his truth, his righteousness and his peace.</p>
+<h4>8 · The soldier, held lightly</h4><p>Paul’s first readers would also have pictured a soldier. The picture is vivid and helpful, and we will use it. But we should hold it lightly. Paul was not writing a manual on Roman equipment. In another letter he speaks of “the breastplate of faith and love, and for a helmet the hope of salvation.” The pieces are not a rigid code. They are a memorable way of describing what God gives. In the verses that follow, Paul names six pieces of armour and then calls us to prayer. Notice how ordinary they are. There is nothing here that only a few special Christians can reach.</p>
+<h4>9 · Put on, take up, stand</h4><p>If the strength is God’s and the armour is God’s, what is our part? Paul uses three action words: put on, take up and stand. God provides, and we respond. We cannot make the armour, but we can put it on. We do this when we choose truth over a convenient lie, trust God’s promises over our fears, open his Word and pray. These are not ways of earning God’s help. They are ways of receiving what he has already given. Naming each piece in prayer each morning can be a helpful reminder. But the armour is not a ritual that must be performed correctly, and forgetting it one morning does not leave you unprotected.</p>
+<h4>10 · Point 3: The belt of truth</h4><p>Our third main point: the belt of truth. Paul’s word, perizōsamenoi, translated “having fastened on,” could be rendered more literally as “having girded your waist.” In the ancient world, people wore long, loose garments. Before working, travelling or fighting, they would gather up the robe and fasten it with a belt, so that they were free to move.</p>
+<h4>11 · Ready for action</h4><p>The Bible uses this picture more than once. At the first Passover, Israel was told to eat the meal “with your belt fastened, your sandals on your feet, and your staff in your hand,” ready to leave Egypt at God’s word. So the belt of truth is not a decoration. It is what makes us ready to stand and to move. A life without truth is like a soldier tripping over his own robe.</p>
+<h4>12 · Two sides of truth</h4><p>When Paul speaks of truth here, he seems to have two connected ideas in mind. First, the truth God has revealed. Paul calls the gospel “the word of truth,” and Jesus said, “I am the way, and the truth, and the life.” This is truth outside of us: who God is and what he has done in Christ. Second, truthfulness in our own lives. In the same letter Paul writes, “Therefore, having put away falsehood, let each one of you speak the truth with his neighbor, for we are members one of another.” The two belong together. We cannot hold firmly to God’s truth while practising deception.</p>
+<h4>13 · The truth that sets us free</h4><p>Jesus said, “If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.” These words are often quoted on their own, but their setting matters. Jesus is speaking to people who had begun to believe in him, and the freedom he means is freedom from sin: “everyone who practices sin is a slave to sin.” Then he says, “So if the Son sets you free, you will be free indeed.” The truth that sets us free is not general information. It is the truth Jesus speaks, received by those who abide in his word. That is where the belt of truth begins.</p>
+<h4>14 · Two kinds of untruth</h4><p>Return to Kevin. He is living with two kinds of untruth. The first is the excuses and the figures: he has been shading the truth, and that needs to be faced. The second is the voice that says, you are a fraud. Part of it is real: he has been dishonest. But the thought turns his failure into a final verdict about his worth. The belt of truth works in both directions. It calls Kevin to stop the dishonesty and confess it. It also calls him to reject the false verdict and to believe what God says about those who come to him in repentance. His dishonesty needs repentance and repair, but it does not put him beyond Christ’s forgiveness. An honest view of our sin should lead us towards God’s mercy, not away from it. David prayed, “you delight in truth in the inward being,” in the same psalm where he begged for cleansing.</p>
+<h4>15 · Kevin takes off the mask</h4><p>Imagine that Kevin finally tells a trusted friend from church what has been happening. Together they pray, and Kevin confesses to God. Then he takes some harder steps. He apologises to his wife. He seeks confidential professional advice about correcting what has happened and responding to his manager. With that guidance, he takes steps to stop the dishonesty and put matters right. These steps cost him something. The conversations at work are uncomfortable, and he is not sure how they will affect his job. But for the first time in weeks, Kevin feels free. Truth has not made his life easier, but he has stopped hiding. The right steps will differ from one workplace to another. Trust may take time to rebuild. But consequences do not mean Kevin is beyond God’s mercy, or that dishonesty must define the rest of his life.</p>
+<h4>16 · Speaking the truth in love</h4><p>Keeping this belt fastened matters every day: in our words, in our promises, and in what we feed our minds. And Paul joins truth with love: “speaking the truth in love.” Truthfulness is not cruelty, and it does not mean telling everyone everything. Nor is truth whatever feels true to us. Our feelings matter, but God’s truth, revealed in Christ and in his Word, is the final measure.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. Our strength to stand is not our own. It is the Lord’s, the same power that raised Jesus from the dead. The armour is God’s own: he wore it first, and he gives it to every believer in Christ. And the first piece is the belt of truth: the truth God has revealed, and the truth we live. Our strength is the Lord’s, and truth, believed and lived, holds everything in place.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Ask God to help you take an honest look, and then answer three questions. Is there one place where I have been shading the truth? It is fine if the answer is no, or if you are unsure. Is there a false verdict about myself that I need to reject? And what is one truthful step I will take this week? It might be a confession, a correction, or a verse of Scripture set against a false verdict. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.” And here is this week’s declaration, a statement of trust: My strength is not my own. I am clothed with what God provides. I will abide in Christ’s word, live honestly, and speak the truth in love. In the Lord, and with his people, by his grace I will stand.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Lord Jesus, I confess that I often try to stand in my own strength, and I grow tired. Thank you that the power that raised you from the dead is at work in those who believe. Thank you that the armour you give is your own. Help me to abide in your word. Where I have shaded the truth, forgive me, and give me courage to make it right. Where I have believed false verdicts about myself, help me to hear what you say. Teach me to speak the truth in love, and keep me close to your people. Amen. This week, take one truthful step. Then stop here for today, or continue to Lesson 5.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Ephesians 6:10–14 · Ephesians 1:13, 19–20 · Isaiah 40:29 · Isaiah 59:17 · Isaiah 11:5 · Isaiah 52:7 · Romans 13:14 · 1 Thessalonians 5:8 · Exodus 12:11 · John 14:6 · Ephesians 4:15, 25 · John 8:31–36 · Psalm 51:6</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Ask God to help you take an honest look, then answer three questions:</p>
+  <p class="prompt">1. Is there one place where I have been shading the truth, at work, at home or with myself? (“No” or “unsure” is a fine answer.)</p>
+  <textarea aria-label="Is there one place where I have been shading the truth"></textarea>
+  <p class="prompt">2. Is there a false verdict about myself that I need to reject?</p>
+  <textarea aria-label="Is there a false verdict about myself"></textarea>
+  <p class="prompt">3. One truthful step I will take this week is…</p>
+  <textarea aria-label="One truthful step"></textarea>
+  <p class="refs">A step might be a confession, a correction, an apology, or a verse of Scripture written beside a false verdict. If you need help with a step, ask a trusted Christian.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“If you abide in my word, you are truly my disciples, and you will know the truth, and the truth will set you free.”<span class="r">John 8:31–32 (ESV)</span></div><p class="d">My strength is not my own. I am clothed with what God provides. I will abide in Christ’s word, live honestly, and speak the truth in love. In the Lord, and with his people, by his grace I will stand.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z" fill="#e9b25e"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Do you tend to rely on your own strength in spiritual struggles? How does that show itself?<textarea></textarea></li>
+  <li>How does Isaiah 59:17 change the way you think about the armour of God?<textarea></textarea></li>
+  <li>Where do you find it hardest to be fully truthful: at work, at home, at church or with yourself?<textarea></textarea></li>
+  <li>What is the difference between honestly facing your sin and accepting a false verdict about yourself?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 4 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:10–18</td><td>Which words in this passage describe what God gives, and which describe what I do?</td><td>Lord, strengthen me with your might.</td><td>My strength is not my own.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Ephesians 1:15–23</td><td>What does it mean that resurrection power is at work in those who believe?</td><td>Open the eyes of my heart to know your power.</td><td>God’s power is at work in me.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Isaiah 40:27–31</td><td>Where has my strength run out?</td><td>Give power to me when I am faint.</td><td>The Lord renews my strength.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Isaiah 59:15–17</td><td>What does it mean that God wore this armour first?</td><td>Thank you that the armour you give is your own.</td><td>I am clothed with what God provides.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>John 8:31–36</td><td>What does Jesus link together: abiding, truth and freedom?</td><td>Help me to abide in your word.</td><td>The Son sets me free.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Ephesians 4:14–25</td><td>Where is God calling me to speak the truth in love?</td><td>Teach me to speak the truth in love.</td><td>I will put away falsehood.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Psalm 51:1–12</td><td>Where do I need to be honest with God and ask for cleansing or renewal?</td><td>Create in me a clean heart.</td><td>His truth holds my life together.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 5.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapters</summary><p>Chapters 5 and 6 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Aaron’s story</summary><p><i>Imagine a youth pastor named Aaron.</i> For years he has given everything: late-night phone calls, weekend camps, extra Bible studies. His answer to every problem is to try harder, pray longer and do more. One evening, sitting in his car outside the church, he prays, “Lord, I don’t have anything left.” Then he does something he has avoided for months: he tells two older leaders the truth about how tired he is. They pray for him, help him share the load and encourage him to take proper rest. He learns that standing firm was never meant to be a one-man effort.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Why do you think Paul placed the armour passage at the end of Ephesians, rather than at the beginning?</li>
+  <li>How does the setting of John 8:31–36 deepen your understanding of “the truth will set you free”?</li>
+  <li>What helped Kevin, and what helped Aaron, to stop hiding?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Part 1 we looked at the battle and how the enemy works. Today we began Part 2: our strength is the Lord’s, the armour is his gift, and the first piece is the belt of truth.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

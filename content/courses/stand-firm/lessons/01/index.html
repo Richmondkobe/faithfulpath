@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 1: Understanding the Battle</span><span class="steps" aria-label="Lesson 1 of 12"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 1 · Chapter 1 · Part 1: Understanding the Battle</p>
+ <h1>What Is Spiritual Warfare?</h1>
+ <p class="question">Is the devil behind everything that goes wrong in my life?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Ephesians 6:10–12</span><span class="chip">Part 1 · Understanding the Battle</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> apply the four reflection questions to a difficulty without claiming certainty about its cause.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why Paul’s call to stand begins with the Lord’s strength, not with the enemy (Ephesians 6:10–12)</li>
+  <li>Why the people who hurt us are not our ultimate enemy</li>
+  <li>How the world, the flesh, the devil and ordinary needs differ, and why the devil is real but not behind every problem</li>
+  <li>Why no Christian is meant to stand alone</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 1 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Stand Firm</h4><p>Welcome to Stand Firm. I’m Pastor Richmond Kobe. For more than twenty years I have served as a pastor, and in every place I have met believers who hear the words “spiritual warfare” often, but have never had them explained clearly. My prayer is that this course will help you recognise spiritual opposition, stand firm in Christ, and practise daily faith without living in fear. We begin with a question many Christians carry quietly.</p>
+<h4>2 · Imagine a man named Simon</h4><p>Imagine a man named Simon. He has followed Jesus for eleven years, and for most of that time his faith has felt steady. But this year everything seems to be going wrong at once. His car has broken down twice. His manager has become cold towards him. He and his wife keep arguing about small things. And when he tries to pray, his mind wanders, and a troubling thought comes: God is tired of you. On Sunday a friend at church listens to all of this and says, “Brother, this is spiritual warfare. The enemy is attacking you.” Simon goes home unsure what to think. Part of him feels relieved, because at least there is a name for it. Another part feels frightened. Is the devil behind his car, his manager and his marriage? And what is he supposed to do about it?</p>
+<h4>3 · Ephesians 6:10–12</h4><p>Let us open the Bible together. Our Scripture readings in this course are from the English Standard Version. Ephesians chapter 6, verses 10 to 12. “Finally, be strong in the Lord and in the strength of his might. Put on the whole armor of God, that you may be able to stand against the schemes of the devil. For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the cosmic powers over this present darkness, against the spiritual forces of evil in the heavenly places.”</p>
+<h4>4 · “Finally, be strong in the Lord”</h4><p>Now notice what Paul does first. Before he names a single enemy, he points us to the Lord. “Be strong in the Lord and in the strength of his might.” The battle begins with where our strength comes from, not with the enemy. That order matters for everything else in this course. We look to Christ first, and we look at the enemy only in the light of what Christ has done.</p>
+<h4>5 · Not written from a comfortable chair</h4><p>To hear this passage rightly, we need to know where Paul was when he wrote it. He was a prisoner. Three times in this letter he refers to his imprisonment. He was not imagining spiritual battle from a safe distance. He had lived it. His first readers lived in Ephesus, a great city full of magic, idols and fear of unseen powers. The book of Acts tells us that when people there came to faith, many of them brought their books of magic arts and burned them in public. So Paul is not inventing a new fear for these believers. He is telling them the truth about a world they already knew was not empty.</p>
+<h4>6 · palē: a close struggle</h4><p>Paul says, “we do not wrestle.” The Greek word is palē. It was used for wrestling as a contest, and it appears only here in the New Testament. It suggests a struggle that is close and personal, not a battle fought far away. That fits what many of us know. Spiritual warfare is often close to home: in our thoughts, our choices, our relationships and our faithfulness.</p>
+<h4>7 · What spiritual warfare is</h4><p>So what is spiritual warfare? Many Christians stand where Simon is standing. Some of us have been taught to see a demon behind every problem. Others have quietly learned that the devil is an old-fashioned idea. Neither view comes from the Bible. Here is a simple definition that we will use throughout this course. Spiritual warfare is the Christian’s struggle to remain faithful to Christ amid the pressures of the world, the desires of the flesh and the opposition of the devil. And we stand through God’s strength and the resources he gives us.</p>
+<h4>8 · Point 1: People are not the enemy</h4><p>Here is our first main point. People are not the enemy. Paul tells us who our struggle is not against: “flesh and blood.” This is one of the most important lines in the whole passage. The people who hurt us, oppose us or frustrate us are not our ultimate enemy. Simon’s manager is not a demon. His wife is not his enemy. Paul’s words protect us from turning people into targets.</p>
+<h4>9 · Slower to hate, quicker to pray</h4><p>That does not mean people are never responsible for what they do. Wrongs should be named, and sometimes they must be confronted or reported. Seeking safety and help can be a faithful response. But a Christian who understands spiritual warfare will be slower to hate, quicker to pray, and more careful to fight the right battle.</p>
+<h4>10 · Point 2: Three fronts</h4><p>Our second main point: the enemy is real, but he is not behind every problem. Ephesians six is not the only place where Paul describes what we face. Earlier in the same letter, in chapter 2, he describes our life before Christ. “And you were dead in the trespasses and sins in which you once walked, following the course of this world, following the prince of the power of the air, the spirit that is now at work in the sons of disobedience—among whom we all once lived in the passions of our flesh…” Look closely and you will see three influences in one sentence. Christians through the centuries have summarised them as the world, the flesh and the devil. And these three can overlap.</p>
+<h4>11 · The world, the flesh and the devil</h4><p>The world is the pattern of life around us that leaves God out. It shapes us through culture, pressure, values and voices that tell us what matters. The flesh here means our sinful orientation: the fallen desires within us that pull us away from God. It does not mean the body itself is evil; God made it good. James is honest: “each person is tempted when he is lured and enticed by his own desire.” Not every temptation needs an outside explanation. Sometimes the problem is my own heart. And the devil is a real, personal enemy who opposes God and his people. Paul speaks of his “schemes,” his plans and methods. A healthy understanding keeps all three in view. If we only talk about the devil, we may stop taking responsibility for our own sin. If we never talk about him, we may be unprepared for his schemes.</p>
+<h4>12 · Real, but not everywhere</h4><p>The Bible does not allow us to dismiss the devil. Jesus himself spoke of him, confronted him in the wilderness and set people free. Peter warns, “Your adversary the devil prowls around like a roaring lion, seeking someone to devour.” But the Bible never encourages us to become fascinated by him, afraid of him, or to blame him for everything. Simon’s worn-out car, his stressed manager and those tired arguments may be the ordinary troubles of a fallen world. They still call for prayer. They may also call for a mechanic, an honest conversation at work and a humble apology at home.</p>
+<h4>13 · Four questions for reflection</h4><p>So when something difficult happens, here are four questions that can help you pray honestly. They are prompts for reflection, not a test that identifies the cause of a difficulty. First, my own heart: is there sin in me that I need to confess or turn from? Second, the world around me: am I being shaped by pressures, values or voices that pull me away from God? Third, truth and lies: is there a thought, an accusation, a fear or a temptation pressing on me that contradicts what God says? And fourth, ordinary needs: is there a practical, physical, relational or medical need that should be cared for as well? More than one answer may be true at the same time.</p>
+<h4>14 · The four questions with Simon</h4><p>Let us walk through the four questions with Simon. For him, they might lead to an apology after an argument with his wife; to giving less attention to voices that feed his fear; to remembering that he belongs to Christ; and to arranging the car repair. He does not need one explanation for everything. Together, the questions suggest several possible faithful steps.</p>
+<h4>15 · “God is tired of you”</h4><p>Look again at the thought that came to Simon when he prayed: God is tired of you. It needs to be tested against the gospel, and the gospel says otherwise. “There is therefore now no condemnation for those who are in Christ Jesus.” Notice this carefully. Simon does not need to establish the precise source of that thought before he responds. Whether it comes from discouragement, from beliefs he learned long ago, or from spiritual opposition, he can bring it to God, answer it with what God has said in Christ, and seek support. You can do the same. You do not need to settle whether something is a spiritual attack before you take a faithful step.</p>
+<h4>16 · Point 3: You are not meant to stand alone</h4><p>Our third main point: you are not meant to stand alone. Ephesians six was written to a church, not to one person. The commands are plural. You all put on the armour. You all stand. Standing firm includes asking trusted believers to pray with us, to help us examine our assumptions, and to offer practical help. A mature Christian friend may help Simon see what he cannot see on his own, and may simply help him get his car to the mechanic. No Christian is meant to fight alone.</p>
+<h4>17 · Stand</h4><p>Notice the word Paul repeats again and again: stand. “That you may be able to stand.” “Having done all, to stand firm.” “Stand therefore.” Paul does not promise that the evil day will never come. He promises that in Christ we can stand when it does. Some battles end quickly. Others last a long time. Paul himself prayed three times for a painful thorn to be removed, and the Lord answered, “My grace is sufficient for you, for my power is made perfect in weakness.” So if your difficulty has not gone away, it does not mean you have failed. Standing firm may look like still trusting God on the hundredth difficult morning. That is not defeat. That is faith.</p>
+<h4>18 · A victorious King</h4><p>And here is why we can stand. The devil is real, but he is not God’s equal. His defeat has already been secured. “The reason the Son of God appeared was to destroy the works of the devil.” In Lesson 2 we will see how Christ triumphed over the powers at the cross. For now, hold on to this: we do not fight for victory, as though the outcome were uncertain. We stand in the victory Christ has already won.</p>
+<h4>19 · Bringing it together</h4><p>Let us bring it together. Spiritual warfare is real, but it is not behind every problem. People are not the enemy. The world, the flesh and the devil are all real, and so are our ordinary needs, and more than one may be at work at once. And we stand together. Christ calls us to stand, not to fear.</p>
+<h4>20 · This week’s practice</h4><p>Here is your practice for this week. Choose one difficulty in your life right now. Then work slowly through the four questions in prayer. You do not need to settle whether this is a spiritual attack before taking a faithful step. Let the questions help you pray honestly, and notice what step each one might ask of you: a confession, a change, a truth to hold on to, or a practical need to meet. And if you would like a short daily guide for this week, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>21 · Remember</h4><p>Remember this word of Scripture: “Be strong in the Lord and in the strength of his might.” And here is this week’s declaration. It is not a formula. It is a statement of trust. My strength is in the Lord. Christ has already won, and by his grace I will stand.</p>
+<h4>22 · Prayer</h4><p>Let us pray. Lord Jesus, thank you that you came to destroy the works of the devil, and that you have triumphed over every power of darkness. Thank you that I do not have to live in fear. Give me wisdom to see my life clearly: to confess my own sin, to resist the pull of the world, to recognise the lies of the enemy, and to care for the ordinary needs in front of me. Where I have treated people as my enemies, forgive me and teach me to love. When the battle is long, help me to keep standing. Make me strong in you and in the strength of your might. Amen. This week, choose one difficulty and pray through the four questions. Then stop here for today, or continue to Lesson 2.</p>
+
+<p class="refs"><b>Scripture in this lesson:</b> Ephesians 6:10–12 · Ephesians 3:1; 4:1; 6:20 · Acts 19:18–19 · Ephesians 2:1–3 · 1 John 2:16 · James 1:14 · 1 Peter 5:8 · Romans 8:1 · Ephesians 6:13–14 · 2 Corinthians 12:7–10 · 1 John 3:8</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Choose one difficulty in your life right now, and work slowly through the four questions in prayer:</p>
+  <ol>
+   <li><b>My own heart:</b> Is there sin in me that I need to confess or turn from?</li>
+   <li><b>The world around me:</b> Am I being shaped by pressures, values or voices that pull me away from God?</li>
+   <li><b>Truth and lies:</b> Is there a thought, accusation, fear or temptation pressing on me that contradicts what God says?</li>
+   <li><b>Ordinary needs:</b> Is there a practical, physical, relational or medical need that should be cared for as well?</li>
+  </ol>
+  <p class="refs">These are prompts for reflection, not a test that identifies the cause. More than one answer may be true at the same time.</p>
+  <p class="prompt">After the four questions, finish this sentence: “Without needing to know the cause, one faithful step I can take is…”</p>
+  <textarea aria-label="One faithful step I can take"></textarea>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Be strong in the Lord and in the strength of his might.”<span class="r">Ephesians 6:10 (ESV)</span></div><p class="d">My strength is in the Lord. Christ has already won, and by his grace I will stand.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/><path d="M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z"/></g></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>What did “spiritual warfare” make you think of before this lesson? Has that changed?<textarea></textarea></li>
+  <li>Which error do you lean towards: ignoring the devil, or giving him too much attention?<textarea></textarea></li>
+  <li>Which of the three (the world, the flesh or the devil) do you find easiest to overlook in your own life?<textarea></textarea></li>
+  <li>Is there a difficulty you have been praying about that may also need a practical step?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 1 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:10–12</td><td>What does Paul point to before he names any enemy?</td><td>Lord, make me strong in you, not in myself.</td><td>My strength is in the Lord.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Ephesians 2:1–10</td><td>What did God do for us “even when we were dead”?</td><td>Thank you that I am alive in Christ by grace.</td><td>I am saved by grace, through faith.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>1 John 2:15–17</td><td>Which voice of “the world” pulls hardest at me?</td><td>Help me to love what you love.</td><td>“Whoever does the will of God abides forever.” (1 John 2:17)</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>James 1:12–18</td><td>Where does James say temptation comes from?</td><td>Show me my own heart, and give me grace to turn.</td><td>Every good gift comes from my Father.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>1 Peter 5:6–11</td><td>What does Peter tell us to do with our anxieties?</td><td>I cast my cares on you, because you care for me.</td><td>I will resist, firm in the faith.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>2 Corinthians 12:7–10</td><td>Where do I need to depend on God’s grace while I continue to ask for help or relief?</td><td>Let your power be made perfect in my weakness.</td><td>His grace is sufficient for me.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Romans 8:31–39</td><td>Which line of this passage do I most need today?</td><td>Thank you that nothing can separate me from your love.</td><td>Christ has already won, and by his grace I will stand.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 2.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapter</summary><p>Chapter 1 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Paul begins with “be strong in the Lord” before he names any enemy. Why do you think that order matters?</li>
+  <li>Why is it important to remember that people are not our ultimate enemy, even when they have hurt us?</li>
+  <li>How can a church help someone like Simon without either blaming the devil for everything or ignoring the spiritual side of life?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>This is the first lesson, so there is nothing to look back on yet.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 6 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 2: The Armour of God</span><span class="steps" aria-label="Lesson 6 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 6 · Chapters 9–10 · Part 2: The Armour of God</p>
+ <h1>The Shield of Faith and the Helmet of Salvation</h1>
+ <p class="question">How do I keep trusting God when the outcome is still uncertain?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Ephesians 6:16–17a</span><span class="chip">Part 2 · The Armour of God</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> answer one recurring doubt with a promise of Scripture, without demanding a particular outcome.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>What the shield of faith pictures, and why faith in God is different from faith in faith</li>
+  <li>How Hebrews 11 honours those who saw deliverance and those who did not</li>
+  <li>Salvation in three tenses: what God has done, is doing and will do</li>
+  <li>How the helmet of salvation gives assurance and a living hope</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 6 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · The shield and the helmet</h4><p>Welcome back to Stand Firm. In Lesson 5 we looked at the breastplate of righteousness and the shoes of the gospel of peace. Today we look at the next two pieces: the shield of faith and the helmet of salvation. Together they answer a question many believers carry through long seasons: how do I keep trusting God when the outcome is still uncertain?</p>
+<h4>2 · Imagine a woman named Esi</h4><p>Imagine a woman named Esi. Eight months ago her husband lost his job. At first, Esi was full of confidence. She prayed every morning, quoted promises from Scripture, and told her friends that God would provide something better soon. But the months have passed, and nothing has changed. The savings are almost gone. Her husband has become quiet and discouraged. One night, unable to sleep, Esi finds herself thinking: Maybe God doesn’t hear me. Maybe my faith isn’t strong enough. Maybe I’ve been fooling myself all along. The thoughts feel like burning arrows, one after another. Esi has not stopped believing in God. But she is tired, and she wonders whether her faith can hold. Let us open the Bible.</p>
+<h4>3 · Ephesians 6:16–17a</h4><p>Ephesians chapter 6, verse 16 and the first part of verse 17. “In all circumstances take up the shield of faith, with which you can extinguish all the flaming darts of the evil one; and take the helmet of salvation.”</p>
+<h4>4 · Point 1: The shield of faith</h4><p>Our first main point: the shield of faith. Paul’s word for “shield,” thyreos, comes from the word for a door. It was a large shield, shaped like a door, the kind that could cover much of a soldier’s body. In ancient warfare, arrows were sometimes wrapped in material soaked in pitch, set alight and fired at the enemy. Paul’s point is clear: faith is able to “extinguish all the flaming darts of the evil one.” And notice the words “in all circumstances.” The shield is not only for dramatic battles. It is for ordinary days, long seasons and sleepless nights like Esi’s.</p>
+<h4>5 · Faith in God, not faith in faith</h4><p>Faith in the Bible is not a vague positive feeling, and it is not believing hard enough to make something happen. At its heart, faith is trust in God: in his character, his promises and what he has done in Christ. “Now faith is the assurance of things hoped for, the conviction of things not seen.” So the strength of the shield does not depend mainly on the strength of our feelings. It depends on the One we trust. Jesus spoke of faith like a grain of mustard seed. And when a desperate father cried out, “I believe; help my unbelief!” Jesus did not send him away. He helped him. A small, trembling faith in a great and faithful God is still a real shield. The object of our trust matters more than its size.</p>
+<h4>6 · Answering the darts</h4><p>What are the flaming darts? Paul does not give a list, but they may come as sudden doubts about God’s goodness, accusations, temptations or fears about the future. As we saw in Lesson 1, we do not need to establish the exact source of each thought before responding. Some may come from tiredness or disappointment, and some may be part of spiritual opposition. Whatever their source, we bring them to God and test them against his Word. When Esi thinks, maybe God doesn’t hear me, the shield of faith answers with Scripture: “The eyes of the LORD are toward the righteous and his ears toward their cry.” Her feelings may not change straight away. But she has something to hold up.</p>
+<h4>7 · Faith that remembers</h4><p>One of the simplest ways the Bible strengthens faith is by remembering. Psalm 77 begins with a man in deep distress, asking honest, painful questions. Then something turns. “I will remember the deeds of the LORD; yes, I will remember your wonders of old.” David did something similar before facing Goliath. He remembered how God had rescued him from the lion and the bear. For Christians, the greatest thing to remember is the cross and the empty tomb. If God did not spare his own Son but gave him up for us, we have every reason to believe he has not forgotten us now.</p>
+<h4>8 · Point 2: Faith when the outcome is uncertain</h4><p>Our second main point: faith when the outcome is uncertain. Near the end of Hebrews chapter 11, two groups stand side by side. Some saw remarkable deliverance. “who through faith conquered kingdoms, enforced justice, obtained promises, stopped the mouths of lions, quenched the power of fire, escaped the edge of the sword.” Others did not. “Others suffered mocking and flogging, and even chains and imprisonment.” And then the writer says this about them all. “And all these, though commended through their faith, did not receive what was promised, since God had provided something better for us, that apart from us they should not be made perfect.” Some received particular deliverances, but none had yet received the complete fulfilment towards which God’s promises pointed. Their shared hope reached beyond their immediate circumstances.</p>
+<h4>9 · Continuing hardship is not failed faith</h4><p>Both groups are commended for their faith. Their faith was not measured by how quickly their circumstances changed, but by their trust in God through every circumstance. Some saw deliverance in this life. Others looked further ahead: they desired a better country, a heavenly one. So continuing hardship does not mean failed faith. If your prayers have not yet been answered in the way you hoped, that does not prove that your faith has failed or that God has forgotten you.</p>
+<h4>10 · Esi’s faith and Esi’s timetable</h4><p>This matters for Esi. If her faith depends on her husband finding a job next month, it will be shaken every month that passes without one. But if her faith rests on God’s character, she can keep praying for work, take practical steps, and trust that God has not abandoned her family, even while she does not know how things will change. Esi can pray confidently for provision without treating a better job on her preferred timetable as something God has promised. God’s promises are sure. Our own expectations, however sincere, need to be held more humbly.</p>
+<h4>11 · Locking shields</h4><p>Roman soldiers could sometimes hold their shields together to protect the whole group. We should not build too much on that detail, but it is a helpful picture of the church. When our own faith feels weak, the faith of other believers can help to shield us. Imagine that Esi finally tells her small group how discouraged she has become. Instead of offering quick answers, they listen. One friend agrees to pray with her each week. Another helps her husband update his CV and introduces him to a contact. The church’s benevolence fund helps with a difficult month of bills. Esi’s circumstances have not been resolved yet. But she no longer feels that she is holding up her shield alone.</p>
+<h4>12 · Two mistakes about faith</h4><p>So we avoid two mistakes. Some teaching suggests that if we have enough faith, we can always secure the outcome we want, and that unanswered prayer proves a lack of faith. But faith trusts God and what he has promised, without insisting on an outcome he has not guaranteed. The opposite mistake is to think that any doubt means faith has failed. But the Psalms are full of honest questions, and Jesus helped the father who said, “help my unbelief.” Faith is not the absence of struggle. It is holding on to God in the middle of it.</p>
+<h4>13 · Point 3: The helmet of salvation</h4><p>Our third main point: the helmet of salvation. A soldier’s helmet protected his head, where a single blow could be fatal. We should not press the picture too far, but many Christian teachers have connected the helmet with the protection of our thinking: what we believe about God, ourselves and the future. As we saw in Lesson 4, Isaiah describes the Lord putting on “a helmet of salvation on his head…” And in an earlier letter Paul adds something important: “for a helmet the hope of salvation.” Then he says what that hope rests on: Christ, “who died for us so that whether we are awake or asleep we might live with him.”</p>
+<h4>14 · Salvation in three tenses</h4><p>The Bible speaks of salvation in more than one tense. We have been saved: “For by grace you have been saved through faith.” We are being saved: the message of the cross is the power of God “to us who are being saved.” And we will be saved: “salvation is nearer to us now than when we first believed.” One day Christ will return, and we will be with him for ever. The helmet of salvation draws on all three. It reminds us of what God has done, assures us of what he is doing, and fills us with hope for what he will do.</p>
+<h4>15 · The helmet of assurance</h4><p>Many sincere Christians wrestle with the question, am I really saved?, especially in times of grief, illness or failure. The Bible gives believers real grounds for assurance. Jesus said of his sheep, “I give them eternal life, and they will never perish, and no one will snatch them out of my hand.” John wrote “that you may know that you have eternal life.” Notice where these verses point. Our assurance does not rest on the strength of our feelings. It rests on Christ: his promise, his grip on us and his finished work. Scripture does call us to examine ourselves, but self-examination is meant to lead us back to Christ, not to leave us circling our own doubts.</p>
+<h4>16 · The helmet of hope</h4><p>The helmet of salvation also gives hope. Peter writes that God “has caused us to be born again to a living hope through the resurrection of Jesus Christ from the dead.” Christian hope is not wishful thinking. It is anchored in an event that has already happened: Jesus rose from the dead. That hope does not remove grief. Paul told believers not to grieve as others do who have no hope. He did not say they would not grieve. And Christian hope is not a mood we manufacture or simply positive thinking. It rests on the resurrection of Jesus and the promises of God. Our feelings may rise and fall, but the ground of our hope does not. So Esi can pray for work, and still lift her eyes to a hope that no job could give or take away.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. The shield is faith in God, not faith in faith: even small faith in a faithful God is a real shield. Faith holds when the outcome is uncertain, because it rests on God’s character, not on our timetable. And the helmet is salvation past, present and future, with a hope anchored in the risen Lord. Faith in God and the hope of salvation hold us even when the outcome is uncertain.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Write down one doubt that keeps returning. Beside it, write a promise from Scripture that speaks to it. Choose something God has truly promised, such as his presence, his care or his faithfulness. Then write a short prayer asking honestly for what you need, while trusting God without demanding a particular result or timetable. For example: Father, please provide work for our family. Help us take wise steps and trust your care while we wait. If your faith feels weak, you can pray the words of the father in Mark 9: “I believe; help my unbelief!” And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “Now faith is the assurance of things hoped for, the conviction of things not seen.” And here is this week’s declaration, a statement of trust: My faith may feel small, but my God is great and faithful. My assurance rests on Christ, not on my feelings. My hope is anchored in the risen Lord. I will hold up the shield of faith, and I will not stand alone.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Father, thank you that my faith does not rest on my own strength, but on you. You are faithful, even when I struggle to trust. When doubts and fears come like burning arrows, help me to hold up the shield of faith and to set your promises against them. Where my faith is weak, help my unbelief. Teach me to trust you when I do not know how things will turn out. Thank you that by grace I have been saved, that you are still at work in me, and that one day my salvation will be complete. Lift my eyes to the living hope of the resurrection, and surround me with your people. In Jesus’ name, Amen. This week, write down one doubt, one promise and one prayer of trust. Then stop here for today, or continue to Lesson 7.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Ephesians 6:16–17 · Hebrews 11:1 · Matthew 17:20 · Mark 9:24 · Psalm 34:15 · Psalm 77:11 · 1 Samuel 17:37 · Romans 8:32 · Hebrews 11:16, 33–34, 36, 39–40 · Isaiah 59:17 · 1 Thessalonians 5:8–10 · Ephesians 2:8 · 1 Corinthians 1:18 · Romans 13:11 · John 10:28 · 1 John 5:13 · 2 Corinthians 13:5 · 1 Peter 1:3 · 1 Thessalonians 4:13, 16–17</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Write down one doubt that keeps returning, and a promise from Scripture beside it. Choose something God has truly promised, such as his presence, his care or his faithfulness.</p>
+  <p class="prompt">1. A doubt or fear that keeps returning is…</p>
+  <textarea aria-label="A doubt or fear that keeps returning"></textarea>
+  <p class="prompt">2. A promise from Scripture that speaks to it is… (with the reference)</p>
+  <textarea aria-label="A promise from Scripture"></textarea>
+  <p class="prompt">3. A short prayer asking honestly for what you need, while trusting God without demanding a particular result or timetable: “Father, …”</p>
+  <textarea aria-label="A short prayer"></textarea>
+  <p class="refs">For example: “Father, please provide work for our family. Help us take wise steps and trust your care while we wait.” If your faith feels weak, you can pray, “I believe; help my unbelief!” (Mark 9:24).</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“Now faith is the assurance of things hoped for, the conviction of things not seen.”<span class="r">Hebrews 11:1 (ESV)</span></div><p class="d">My faith may feel small, but my God is great and faithful. My assurance rests on Christ, not on my feelings. My hope is anchored in the risen Lord. I will hold up the shield of faith, and I will not stand alone.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/></g><path d="M23 74 H57 V80 H23Z M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z M28 10 Q40 -2 52 10 L52 20 L28 20Z" fill="#e9b25e"/></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>How would you explain the difference between faith in God and “faith in faith”?<textarea></textarea></li>
+  <li>How do Hebrews 11:13–16 and 11:35–40 help you trust God when your circumstances remain unresolved?<textarea></textarea></li>
+  <li>Which tense of salvation (past, present or future) do you find easiest to forget?<textarea></textarea></li>
+  <li>Who has helped to shield you when your own faith felt weak? Who might need you to do the same?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 6 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:16–17</td><td>Which flaming darts do I face most often?</td><td>Lord, help me to hold up the shield of faith.</td><td>My faith rests on God, not on my feelings.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Mark 9:14–27</td><td>Where do I need to pray, “help my unbelief”?</td><td>I believe; help my unbelief.</td><td>Small faith in a faithful God is a real shield.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Psalm 77:1–20</td><td>What has God done that I need to remember today?</td><td>Help me to remember your deeds.</td><td>I will remember the deeds of the Lord.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Hebrews 11:32–40</td><td>How does this passage change the way I see unanswered prayer?</td><td>Teach me to trust you when I do not know the outcome.</td><td>God’s promises are sure.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Ephesians 2:1–10</td><td>What has Christ already done to save me?</td><td>Thank you that by grace I have been saved.</td><td>I have been saved by grace.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>1 John 5:9–13</td><td>Where do I tend to look for assurance?</td><td>Help me to rest in your promise.</td><td>My assurance rests on Christ.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>1 Peter 1:3–9</td><td>Where do I need a living hope this week?</td><td>Lift my eyes to the hope of the resurrection.</td><td>My hope is anchored in the risen Lord.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 7.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapters</summary><p>Chapters 9 and 10 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Marcus’s story</summary><p><i>Imagine a man named Marcus.</i> He has been a Christian for more than twenty years. Last spring his father died after a long illness, and since then Marcus has lain awake thinking about death, wondering whether he is really saved, and feeling that the future looks grey. He finally tells his pastor, who does not hurry him or dismiss his grief. They read through 1 John together slowly, and Marcus begins to see that his assurance rests on Christ, not on how strong he feels. His pastor also encourages him to see his doctor about his sleep and to join a small grief group at the church. Marcus still misses his father, and some nights are still hard. But hope becomes something he can hold on to again, even with tears.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>What kinds of “flaming darts” do you find hardest to extinguish?</li>
+  <li>Why do you think Hebrews 11 commends both those who saw deliverance and those who did not?</li>
+  <li>What is the difference between Christian hope and positive thinking?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 5 we saw the breastplate of righteousness and the shoes of the gospel of peace. Today we took up the shield of faith and the helmet of salvation, which hold us when the outcome is uncertain.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

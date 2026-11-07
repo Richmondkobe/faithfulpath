@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 7 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 2: The Armour of God</span><span class="steps" aria-label="Lesson 7 of 12"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 7 · Chapters 11–12 · Part 2: The Armour of God</p>
+ <h1>The Sword of the Spirit and Praying at All Times</h1>
+ <p class="question">How do I use God’s Word and prayer in the battle?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Ephesians 6:17b–20</span><span class="chip">Part 2 · The Armour of God</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> use one Scripture and one simple pattern of prayer in a real struggle.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why God’s Word is “the sword of the Spirit”, and how Jesus used it</li>
+  <li>How to take up the Word: reading it in context, storing it and obeying it</li>
+  <li>What it means to pray “at all times in the Spirit”, including where Christians differ</li>
+  <li>Why Paul calls us to keep alert and to pray for all the saints</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 7 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · The sword and prayer</h4><p>Welcome back to Stand Firm. In Lesson 6 we looked at the shield of faith and the helmet of salvation. Today we come to the last piece of armour, the sword of the Spirit, and to what Paul says straight after it: praying at all times in the Spirit. Our question is practical. How do I use God’s Word and prayer in the battle?</p>
+<h4>2 · Imagine a mother named Ama</h4><p>Imagine a mother named Ama. She has three young children, a part-time job and an elderly mother who needs care. She loves the Lord, but her prayer life feels thin. Most days she prays only when something goes wrong. When she tries to pray for longer, she falls asleep, or her mind races through her list of things to do. Her Bible often stays closed. Recently Ama joined a new church where many people pray with great freedom, and some pray in tongues. She is moved by their faith, but also unsure. Is my prayer life second-class? Am I missing something? And what does it actually mean to pray in the Spirit? Let us open the Bible.</p>
+<h4>3 · Ephesians 6:17b–20</h4><p>Ephesians chapter 6, from the second part of verse 17 to verse 20. “and the sword of the Spirit, which is the word of God, praying at all times in the Spirit, with all prayer and supplication. To that end, keep alert with all perseverance, making supplication for all the saints, and also for me, that words may be given to me in opening my mouth boldly to proclaim the mystery of the gospel, for which I am an ambassador in chains, that I may declare it boldly, as I ought to speak.”</p>
+<h4>4 · Point 1: The sword of the Spirit</h4><p>Our first main point: the sword of the Spirit. Every other piece of armour Paul names is mainly protective. The sword can protect too, but it is also the piece with which a soldier engages the enemy. And Paul tells us exactly what it is: “the word of God.” Notice whose sword it is: the sword of the Spirit. “All Scripture is breathed out by God.” The Spirit gave the Word, and the Spirit makes it effective in our lives. Paul’s word for “word” here, rhēma, often refers to something spoken. Some interpreters see an emphasis on God’s Word applied in a particular moment. Others note that Paul’s vocabulary overlaps, and we should not build too much on one term. Either way, the sword is not our own opinion or cleverness. It is what God has said.</p>
+<h4>5 · A Word that searches us</h4><p>Hebrews uses a related picture: “For the word of God is living and active, sharper than any two-edged sword.” There, the Word searches and exposes us before God. As we resist deception, we also let God’s Word examine our own hearts. And the Word that exposes also points us to grace. That guards us from two mistakes. Some use Scripture mainly as a weapon against others, quoting verses to win arguments or to condemn. But we do not wrestle against flesh and blood. Others treat the Bible almost like a charm, something to carry or recite without understanding. But the power of the sword is in the truth of what God has said and the work of his Spirit. We receive it by understanding, believing and obeying it.</p>
+<h4>6 · As Jesus used it</h4><p>Jesus shows us how to use this sword. In Lesson 2 we watched him in the wilderness. Each temptation he answered from Scripture, beginning with “It is written,” and drawing on the book of Deuteronomy. And there we also saw that the devil can quote Scripture out of context. So the sword of the Spirit is not a set of magic words. Jesus’ answers show his deep familiarity with Scripture and his faithfulness to it, words he knew in their setting and lived by. That is the pattern for us too.</p>
+<h4>7 · The Word in the hardest hours</h4><p>On the cross, in the deepest agony, he cried out in the words of a psalm: “My God, my God, why have you forsaken me?” Luke records Jesus’ final prayer before he died: “Father, into your hands I commit my spirit!” So the sword of the Spirit is not only for confident moments of victory. It gives us words when our own words fail: words of lament, trust and surrender. “This is my comfort in my affliction, that your promise gives me life.” If you are in a hard season, you do not need to find the perfect verse. Sometimes taking up the sword means simply opening the Psalms and praying them back to God.</p>
+<h4>8 · How we take up the sword</h4><p>So how do ordinary believers take up the sword? Read it regularly: a short passage read slowly is better than a long plan abandoned after a week. Understand it in context. Three simple questions can help any reader begin. What is happening in this passage? What does it reveal about God and his work? What response does it call for? Only then do we ask how it applies to us. Store it in the heart: “I have stored up your word in my heart, that I might not sin against you.” Obey it: “be doers of the word, and not hearers only.” And share it, as the word of Christ dwells in us richly and we teach and encourage one another.</p>
+<h4>9 · Point 2: Praying at all times in the Spirit</h4><p>Our second main point: praying at all times in the Spirit. Paul does not describe prayer as another piece of equipment. There is no belt of prayer or lance of intercession. Instead, in the flow of Paul’s sentence, prayer is closely connected to taking up the armour. Many interpreters see prayer as the way the whole armour is worn. We stand in the Lord’s strength, and prayer is how we lean on it. And Paul’s language is wide: “at all times,” “with all prayer,” “with all perseverance,” “for all the saints.” Prayer is not only for emergencies. It is meant to run through the whole of life.</p>
+<h4>10 · At all times</h4><p>For someone like Ama, praying at all times may sound impossible. But it does not mean being on our knees every waking hour. It means living in ongoing conversation with God: a brief prayer while cooking, a moment of thanks in the car, a cry for help during a difficult phone call, as well as set times of prayer when we can. Nehemiah gives a lovely example. When the king asked him an unexpected question, he says, “So I prayed to the God of heaven. And I said to the king.” That was a brief prayer within a conversation. And it came from a life in which he had already been praying for months.</p>
+<h4>11 · In the Spirit</h4><p>What does it mean to pray in the Spirit? A central emphasis is prayer that depends on the Holy Spirit. Paul writes elsewhere, “the Spirit helps us in our weakness. For we do not know what to pray for as we ought, but the Spirit himself intercedes for us with groanings too deep for words.” Jude encourages believers to keep “praying in the Holy Spirit.” The Spirit draws us to pray, helps us when we do not know what to say, and shapes our prayers according to God’s will.</p>
+<h4>12 · Christians differ: praying in tongues</h4><p>This is a place where sincere Christians understand Paul’s words in different ways, so we explain it carefully. Some Christians understand praying in tongues as one expression of praying in the Spirit, a gift Paul describes in First Corinthians 14. He writes, “I will pray with my spirit, but I will pray with my mind also…” Paul valued this gift in personal prayer, and when tongues are spoken for the gathered church to hear, he requires interpretation so that others are built up. Others understand Ephesians 6:18 as Spirit-led prayer without seeing tongues specifically in view. Christians also differ on whether every believer should expect this gift. Paul asks, “Do all speak with tongues?” This course holds that praying in tongues is a genuine gift of the Spirit, and Paul’s words “do not forbid speaking in tongues” should be taken seriously. At the same time, praying in the Spirit is never limited to tongues, and no believer’s prayers are second-class because they pray in their own language.</p>
+<h4>13 · Point 3: Keep alert</h4><p>Our third main point: keep alert, for all the saints. Paul says, “keep alert with all perseverance.” The idea is watchfulness: staying awake, paying attention and not giving up. In Gethsemane, Jesus said to his sleeping disciples, “Watch and pray that you may not enter into temptation. The spirit indeed is willing, but the flesh is weak.” Watchful prayer helps us notice temptation before it overtakes us. And some prayers need us to keep praying for a long time. Perseverance is not trying to wear God down. It is continuing to trust him and bring our requests to him.</p>
+<h4>14 · For all the saints, and also for me</h4><p>Paul tells believers to pray “for all the saints,” which means for all God’s people. Spiritual warfare is never a solo effort. When you pray for a struggling believer, you are helping to hold up their shield. Then Paul asks for prayer for himself. He is “an ambassador in chains,” yet in this passage he does not ask for release. He asks for words, and for boldness to proclaim the gospel. It is right to pray for our needs. Paul’s request reminds us also to pray for courage, faithfulness and opportunities to make Christ known.</p>
+<h4>15 · Ama learns to pray</h4><p>Imagine that Ama shares her questions with an older woman in her new church. The woman smiles and says, “God hears your prayers in your own language just as much as anyone else’s. Start where you are.” So Ama begins with small steps. Before the children wake, she reads a few verses, asks the three simple questions, and turns one verse into a short prayer. She turns ordinary moments, like the drive to work or folding laundry, into brief conversations with God. She asks a friend to be a prayer partner, and they send each other one request each week. Over time she also asks the pastor to teach her more about the gifts of the Spirit. Whether or not she receives the gift of tongues, she is discovering that prayer in the Spirit begins with depending on God, wherever she is.</p>
+<h4>16 · Two misunderstandings about prayer</h4><p>Some think that effective prayer depends on the right technique: the right words, the right volume, the right length. But Jesus warned against piling up words, “for your Father knows what you need before you ask him.” Prayer is not a technique for controlling outcomes. It is speaking with our Father. Others believe that praying in the Spirit belongs only to those with particular gifts, so they hold back. But every believer has received the Spirit, and every believer is invited to pray in dependence on him.</p>
+<h4>17 · Bringing it together</h4><p>Let us bring it together. The sword of the Spirit is the Word of God, given by the Spirit, and Jesus shows us how to use it: known, understood and obeyed. Prayer is how the whole armour is worn, at all times and in dependence on the Spirit. And we keep alert, persevering and praying for all God’s people. God’s Word and prayer are how we stand, and how we help others stand.</p>
+<h4>18 · This week’s practice</h4><p>Here is your practice for this week. Choose one verse for your current struggle. Each day, read it in its context, using the three simple questions: What is happening? What does it reveal about God? What response does it call for? Then turn it into a short prayer for yourself and for one other believer. For example, from Romans 8: Father, your Spirit helps us in our weakness. Help me and my friend pray when we do not know what to say. And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>19 · Remember</h4><p>Remember this word of Scripture: “I have stored up your word in my heart, that I might not sin against you.” And here is this week’s declaration, a statement of trust: God’s Word is living and active. I will let it search my heart, store it in my mind, and stand on what God has said. I will not stand in my own strength. I will pray at all times in the Spirit, watching, persevering and standing with God’s people.</p>
+<h4>20 · Prayer</h4><p>Let us pray. Father, thank you that I can come to you at any time. Thank you for your Word, living and active. Holy Spirit, search my heart through it, and lead me to the grace of Jesus. Help me to read, understand, remember and obey what you have said. Help me in my weakness, especially when I do not know what to pray. Teach me to pray at all times, not only in emergencies. Keep me alert and give me perseverance. Help me to pray for my brothers and sisters, and give me boldness to make Christ known. In Jesus’ name, Amen. This week, read one verse in its context and pray it for yourself and for one other believer. Then stop here for today, or continue to Lesson 8.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Ephesians 6:17–20 · 2 Timothy 3:16 · Hebrews 4:12 · Matthew 4:1–11 · Matthew 27:46 (Psalm 22:1) · Luke 23:46 (Psalm 31:5) · Psalm 119:11, 50 · James 1:22 · Colossians 3:16 · Nehemiah 2:4–5 · Romans 8:26 · Jude 20 · 1 Corinthians 12:30; 14:14–15, 27–28, 39 · Matthew 26:41 · Matthew 6:7–8 · Ephesians 4:32 · Colossians 4:2–4</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Choose one verse for your current struggle. Each day, read it in its context and turn it into a short prayer for yourself and for one other believer.</p>
+  <p class="prompt">1. My verse for this week is… (with the reference)</p>
+  <textarea aria-label="My verse for this week"></textarea>
+  <p class="prompt">2. Reading it in context: What is happening in this passage? What does it reveal about God? What response does it call for?</p>
+  <textarea aria-label="Reading it in context"></textarea>
+  <p class="prompt">3. My short prayer: “Lord, you have said… so I ask you… for me and for…”</p>
+  <textarea aria-label="My short prayer"></textarea>
+  <p class="refs">For example, from Romans 8:26: “Father, your Spirit helps us in our weakness. Help me and my friend pray when we do not know what to say.” If you are not sure which verse to choose, ask a mature believer to help you.</p>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“I have stored up your word in my heart, that I might not sin against you.”<span class="r">Psalm 119:11 (ESV)</span></div><p class="d">God’s Word is living and active. I will let it search my heart, store it in my mind, and stand on what God has said. I will not stand in my own strength. I will pray at all times in the Spirit, watching, persevering and standing with God’s people.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><use href="#kfig"/></svg></div>
+ <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="kfig" viewBox="0 0 80 160"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="52" r="12"/><path d="M26 68 Q40 62 54 68 L56 112 L24 112 Z"/><path d="M24 112 L22 146 L36 146 L38 120 L42 120 L44 146 L58 146 L56 112Z"/></g><path d="M28 42 Q40 30 52 42 L52 52 L28 52Z M24 104 H56 V110 H24Z M60 104 L76 108 Q78 136 66 150 Q56 138 58 110Z" fill="#e9b25e"/><path d="M6 152 L30 152" stroke="#e9b25e" stroke-width="3"/></symbol></defs></svg>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Why do you think Paul calls the word of God “the sword of the Spirit”?<textarea></textarea></li>
+  <li>Which practice do you find hardest: reading, understanding, storing, obeying or sharing God’s Word?<textarea></textarea></li>
+  <li>What would praying “at all times” look like in your ordinary week?<textarea></textarea></li>
+  <li>Who is one believer you could pray for every day this week?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 7 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Ephesians 6:17–20</td><td>What does Paul ask the believers to pray for?</td><td>Lord, teach me to take up your Word and to pray.</td><td>God’s Word is the sword of the Spirit.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Matthew 4:1–11</td><td>How did Jesus use Scripture when he was tempted?</td><td>Help me to know your Word as Jesus did.</td><td>It is written, and I will stand on it.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Hebrews 4:12–16</td><td>Where is God’s Word searching my heart?</td><td>Search my heart, and lead me to your grace.</td><td>God’s Word is living and active.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Psalm 119:9–16</td><td>Which verse will I store in my heart this week?</td><td>Help me to store your word in my heart.</td><td>I will treasure what God has said.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Nehemiah 1:4–2:5</td><td>How did Nehemiah’s prayer life prepare him for a sudden moment?</td><td>Teach me to pray at all times.</td><td>I can speak with God at any moment.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Romans 8:26–28</td><td>Where do I need the Spirit’s help to pray?</td><td>Holy Spirit, help me in my weakness.</td><td>The Spirit helps me pray.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Colossians 4:2–4</td><td>Who will I pray for by name today?</td><td>Keep me watchful and thankful as I pray for others.</td><td>I will stand with God’s people in prayer.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 8.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapters</summary><p>Chapters 11 and 12 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Joy’s story</summary><p><i>Imagine a woman named Joy.</i> She came to faith three years ago, not long after a painful divorce, and one struggle keeps returning: bitterness towards her former husband. She finds the Bible hard to read and feels guilty about it. Then she joins a women’s Bible study that reads one short passage each week. When the group studies Ephesians 4:31–32, Joy writes verse 32 on a card and keeps it by her phone: “Be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you.” When the next difficult message comes, she reads it before replying. Some days she still feels angry, but slowly the Word begins to shape how she responds. Forgiveness does not mean pretending nothing happened or removing every boundary; a wise friend helps her communicate calmly for the sake of her children. The Word does not make her situation simple, but it gives her a different way to stand in it.</p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>How has God’s Word exposed something in your own heart, and then pointed you to grace?</li>
+  <li>How would you explain praying “in the Spirit” to someone with questions like Ama’s?</li>
+  <li>What do you notice about Paul’s request for prayer while he was in chains?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 6 we took up the shield of faith and the helmet of salvation. Today the last piece, the sword of the Spirit, turned gold, and we saw that prayer is how the whole armour is worn.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 2 · Stand Firm</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+:root{--cream:#fbf6ea;--paper:#fffaf0;--ink:#2b3445;--mute:#69707a;--gold:#c9963f;--gold-d:#8a6a24;--navy:#22304a;--line:#e3d6b8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Source Sans 3',system-ui,sans-serif;font-size:17px;line-height:1.55}
+.container{width:min(100% - 32px,920px);margin:0 auto}
+header.top{background:linear-gradient(90deg,#c9d0db 0%,#f3ead6 45%,#fbefcf 100%);position:relative;padding:18px 0 46px}
+.barh{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:#4a5263}
+.steps{display:flex;gap:4px}.steps i{width:10px;height:10px;border-radius:50%;background:#d8cdb4}.steps i.on{background:var(--gold)}
+.eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--gold-d);margin:22px 0 4px}
+h1{font-family:'Source Serif 4',serif;font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 .2em;color:var(--navy)}
+.question{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(19px,2.6vw,24px);color:var(--gold-d);margin:0 0 .8em}
+.chip{display:inline-block;background:var(--paper);border:1px solid var(--line);border-radius:2em;padding:.2em .8em;font-size:14px;margin:0 6px 6px 0}
+.wave{position:absolute;left:0;right:0;bottom:0;width:100%;height:40px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:18px 0}
+.kicker{letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold-d);margin:0}
+h2{font-family:'Source Serif 4',serif;font-size:24px;margin:.1em 0 .4em}h3{font-family:'Source Serif 4',serif;margin:.1em 0 .4em;font-size:21px}
+.stepc{border-left:6px solid var(--gold)}
+.stepc h2 .n{display:inline-block;width:1.6em;height:1.6em;border-radius:50%;background:var(--gold);color:#1d2738;text-align:center;line-height:1.6em;font-size:.8em;margin-right:.4em;font-family:'Source Sans 3',sans-serif}
+.outcome{background:#f4ecd8;border-radius:10px;padding:8px 12px}
+.player{width:min(100vw - 32px,1240px);position:relative;left:50%;transform:translateX(-50%);margin:18px 0;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(43,52,69,.15);background:#1d2738}
+.player iframe{display:block;width:100%;height:min(88vh,860px);min-height:520px;border:0}
+@media(max-width:640px){.player iframe{height:86vh}}
+details summary{cursor:pointer;font-weight:700}.tx h4{font-family:'Source Serif 4',serif;margin:1.2em 0 .3em;color:var(--gold-d)}.tx p{margin:.4em 0}
+.refs{font-size:15px;color:var(--mute)}
+.action{background:#fdf3dc;border:2px solid var(--gold);border-radius:14px;padding:14px 18px;box-shadow:0 8px 22px rgba(201,150,63,.18)}
+.action ol{padding-left:1.3em}.action li{margin:.45em 0}
+.prompt{font-family:'Source Serif 4',serif;font-style:italic;margin:.8em 0 .3em}
+textarea{width:100%;min-height:70px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff}
+.bplink{display:inline-block;margin-top:10px;font-weight:700;color:var(--navy);background:var(--paper);border:1px solid var(--gold);border-radius:10px;padding:8px 14px;text-decoration:none}
+.decl{background:var(--navy);color:#f6ecd6;border:2px solid var(--gold);border-radius:18px;padding:22px 60px 22px 26px;max-width:540px;position:relative}
+.decl .v{font-family:'Source Serif 4',serif;font-size:21px;line-height:1.4}.decl .r{display:block;margin-top:6px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#e9cf96}
+.decl .d{font-family:'Source Serif 4',serif;font-style:italic;font-size:21px;color:#e9b25e;margin:.7em 0 0}
+.decl svg{position:absolute;right:12px;bottom:10px;width:34px;opacity:.35}
+.reflect ol{padding-left:1.2em}.reflect li{margin:.7em 0}
+.unsaved{background:#fdf3dc;border:1px solid #e9cf96;border-radius:10px;padding:8px 12px;font-size:15px}
+table.bp{width:100%;border-collapse:collapse;font-size:15px}table.bp td,table.bp th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}table.bp th{color:var(--gold-d);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:640px){table.bp thead{display:none}table.bp tr{display:block;border-bottom:1px solid var(--line);padding:6px 0}table.bp td{display:block;border:0;padding:2px 4px}}
+.finish{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--gold);background:var(--gold);color:#1d2738;cursor:pointer}.btn.alt{background:transparent;color:var(--ink);border-color:#cdbf9f}
+.done{display:none;color:var(--gold-d);font-weight:700}
+footer{color:var(--mute);font-size:13px;padding:20px 0 40px}footer a{color:var(--gold-d)}
+@media print{.player,.finish,.noprint{display:none!important}details>*{display:block}}
+</style></head><body>
+<header class="top"><div class="container">
+ <div class="barh"><span>Stand Firm · Part 1: Understanding the Battle</span><span class="steps" aria-label="Lesson 2 of 12"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+ <p class="eyebrow">Lesson 2 · Chapters 2–3 · Part 1: Understanding the Battle</p>
+ <h1>A Real Enemy, Already Defeated</h1>
+ <p class="question">How strong is the enemy, really — and how strong is Christ?</p>
+ <span class="chip">About 15 minutes</span><span class="chip">Colossians 2:13–15</span><span class="chip">Part 1 · Understanding the Battle</span>
+ <p class="outcome"><b>By the end of this lesson you will be able to:</b> explain in your own words what Christ has already done to the enemy at the cross.</p>
+</div><svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 22 C200 6 380 30 600 16 S1000 6 1200 20 V40 H0z" fill="#fbf6ea"/></svg></header>
+<main class="container">
+<section class="card stepc">
+ <h2><span class="n">1</span>Watch and Learn</h2>
+ <p>About 15 minutes: Scripture, its meaning and a practical example.</p>
+ <p class="kicker" style="margin-top:10px">In this lesson</p>
+ <ul>
+  <li>Why the devil is real but is not God’s equal</li>
+  <li>What God did at the cross: forgave, cancelled the record of debt and disarmed the powers (Colossians 2:13–15)</li>
+  <li>How Jesus faced the tempter in the wilderness, and why that matters when temptation returns</li>
+  <li>Why we stand from a victory already won, without carelessness and without fear</li>
+ </ul>
+</section>
+<div class="player"><iframe src="player.html" title="Lesson 2 teaching with narration" allow="autoplay"></iframe></div>
+<section class="card"><details><summary>Transcript and Scripture references</summary><div class="tx">
+<h4>1 · Real, and already defeated</h4><p>Welcome back to Stand Firm. In Lesson 1 we saw that spiritual warfare is real, but not behind every problem. Today we ask a question that many believers carry quietly: how strong is the enemy, really, and how strong is Christ? The Bible’s answer has two halves, and we need both. The enemy is real. And the enemy is already defeated.</p>
+<h4>2 · Imagine a young woman named Leah</h4><p>Imagine a young woman named Leah. She grew up in a home where unseen spirits were part of everyday life. There were offerings to keep them happy, charms to keep them away, and certain places you did not walk at night. Two years ago Leah came to faith in Jesus. She loves him, and she has known a peace she never knew before. But some nights the old fear returns. A sound in the house, a bad dream, or a story from a relative brings back the question she has never quite settled: what if the dark powers I used to fear are as strong as God? What if they can still reach me? Even where people say they do not believe in such things, many Christians carry a quieter version of Leah’s question. Let us open the Bible.</p>
+<h4>3 · Colossians 2:13–15</h4><p>Colossians chapter 2, verses 13 to 15. “And you, who were dead in your trespasses and the uncircumcision of your flesh, God made alive together with him, having forgiven us all our trespasses, by canceling the record of debt that stood against us with its legal demands. This he set aside, nailing it to the cross. He disarmed the rulers and authorities and put them to open shame, by triumphing over them in him.”</p>
+<h4>4 · Not according to Christ</h4><p>Paul wrote these words to believers in Colossae, a small town in what is now Turkey. They were being pressed to look for spiritual security somewhere other than Christ. A few verses earlier, Paul warns them not to be taken captive by human tradition, “according to the elemental spirits of the world, and not according to Christ.” So when Paul tells them what happened at the cross, he is answering a real question: do we need something beyond Christ to belong fully to God and stand against spiritual powers? Paul’s answer is that in Christ the whole fullness of God dwells, and in him believers have been filled.</p>
+<h4>5 · Forgiven, cancelled, disarmed</h4><p>Look at what God has done in these three verses. He made us alive. He forgave all our trespasses. He cancelled the record of debt that stood against us, setting it aside and nailing it to the cross. And he disarmed the rulers and authorities. Notice that Paul places forgiveness, the cancelling of our debt and the defeat of the powers side by side. They belong to the same saving work of God in Christ.</p>
+<h4>6 · thriambeusas: the procession of triumph</h4><p>The word Paul uses for “triumphing” is thriambeusas. In the Roman world, a victorious general would sometimes be honoured with a triumph: a public procession through the city, with his defeated enemies displayed for all to see. The verb Paul uses here occurs twice in the New Testament. Paul uses that picture to describe the cross. What looked like Jesus’ public shame was, in fact, the public defeat of the powers.</p>
+<h4>7 · Point 1: Not God’s equal</h4><p>Our first main point: the enemy is real, but he is not God’s equal. The Bible does not give us a full biography of the devil. It tells us what we need to know, and no more. One simple way to learn about him is to notice the names Scripture uses. Adversary. Accuser. Slanderer. Deceiver. Liar. Each name tells us something about how he works. He opposes God’s purposes, accuses God’s people, twists the truth and seeks to destroy. We will look more closely at his methods in Lesson 3.</p>
+<h4>8 · Not God’s opposite</h4><p>This may be the most important truth for someone like Leah: the devil is not God’s opposite. It is easy to imagine the world as a contest between two equal forces, good and evil, light and dark, each pulling with similar strength. The Bible never teaches this. God alone is eternal, all-powerful, present everywhere and all-knowing. The devil is none of these. He is a creature. He had a beginning, he has limits, and he has an appointed end. We see those limits in the book of Job, where the Lord tells the adversary, “Only against him do not stretch out your hand.” God sets the boundary.</p>
+<h4>9 · Greater is he who is in you</h4><p>The apostle John puts it simply: “he who is in you is greater than he who is in the world.” John was encouraging believers who faced false teachers and the spirit behind them. But the principle reaches every believer, and it reaches Leah at her window: the One who lives in us is greater.</p>
+<h4>10 · Point 2: Promised from the beginning</h4><p>Our second main point: the enemy has been defeated at the cross. That defeat was promised from the very beginning. Right after the fall, God told the serpent that the offspring of the woman would come: “he shall bruise your head, and you shall bruise his heel.” Christians have long seen in these words the first announcement of the gospel: a wound to the heel, but a crushing blow to the head. And Colossians tells us how that promise was kept.</p>
+<h4>11 · The record set aside</h4><p>Our guilt was real. But for those who belong to Christ, it no longer provides grounds for condemnation. So when an accusing thought reminds us of our sin, we can answer with what God has done: that record has been set aside. God’s forgiveness does not remove our responsibility to confess wrongdoing and make amends. It means we can do so without believing that we are beyond his mercy.</p>
+<h4>12 · Free from fear</h4><p>The letter to the Hebrews says the same thing in different words. Jesus shared our humanity “that through death he might destroy the one who has the power of death, that is, the devil, and deliver all those who through fear of death were subject to lifelong slavery.” Christ came to free his people from fear. That freedom gives Leah reason to trust Christ as she faces the fears that once held her.</p>
+<h4>13 · Already, and not yet</h4><p>If the devil is defeated, why does Peter still warn that he “prowls around like a roaring lion”? Why do Christians still struggle? The New Testament holds two truths together. The decisive victory has already been won at the cross and the empty tomb. But the final judgement has not yet come. Paul could write, “The God of peace will soon crush Satan under your feet.” That promise is still waiting to be fulfilled. Picture a war in which the deciding battle has been fought and won, but the defeated enemy has not yet laid down all his arms. He can still cause real harm, which is why Scripture tells us to be watchful. But he cannot change the outcome. The illustration shows a decisive victory with continuing opposition; it does not explain every detail of Paul’s imagery. But it reminds us that we do not fight towards an uncertain victory. We stand from a victory already secured.</p>
+<h4>14 · Point 3: Led by the Spirit into the wilderness</h4><p>Our third main point: our Captain went first. Before we ever stand in Christ’s victory, we need to see how Christ himself faced the enemy. Matthew chapter 4. Then Jesus was led up by the Spirit into the wilderness to be tempted by the devil. And after fasting forty days and forty nights, he was hungry. And the tempter came and said to him, “If you are the Son of God, command these stones to become loaves of bread.” But he answered, “It is written, ‘Man shall not live by bread alone, but by every word that comes from the mouth of God.’”</p>
+<h4>15 · “If you are the Son of God”</h4><p>Notice where this story begins. Just before it, at his baptism, a voice from heaven had declared, “This is my beloved Son…” Then the tempter comes with his first words: “If you are the Son of God.” The Father had just spoken clearly. Now the enemy invites Jesus to doubt it, or to prove it on his own terms. Across the three temptations the same question sits underneath: will you trust the Father and follow his way, or will you take a shortcut? The enemy still asks believers to doubt who God says they are.</p>
+<h4>16 · “It is written”</h4><p>Each time, Jesus answers with Scripture, and all three answers come from Deuteronomy, from Moses’ words to Israel after their years in the wilderness. Notice too that the devil can quote Scripture. In the second temptation he twists a promise of God’s care into a dare to force God’s hand. So spiritual warfare is not won by repeating verses like magic words. Jesus’ “It is written” came from a life shaped by Scripture. We resist temptation by relying on Christ and, with the Spirit’s help, understanding, trusting and obeying God’s Word.</p>
+<h4>17 · “Until an opportune time”</h4><p>Luke adds an honest detail. After the wilderness, the devil “departed from him until an opportune time.” The battle in the wilderness was won, but it was not the last battle. If you are facing a temptation that keeps returning, remember this. A victory today does not mean the struggle will never come back. Standing firm is a pattern of trusting the Father again each time the test returns. And because Jesus himself suffered when tempted, “he is able to help those who are being tempted.”</p>
+<h4>18 · “Rejoice that your names are written in heaven”</h4><p>Jesus did not keep this ministry to himself. He sent out seventy-two disciples, two by two, and they came back full of joy: “Lord, even the demons are subject to us in your name!” Notice: in your name. Whatever authority believers have comes from Christ and is used under Christ. But Jesus gently redirected them: “rejoice that your names are written in heaven.” The heart of the Christian life is not spiritual power. It is belonging to God.</p>
+<h4>19 · Watchful, not afraid</h4><p>There are two opposite mistakes here. The first is carelessness: “Since the devil is defeated, I don’t need to take him seriously.” But the apostles who proclaimed Christ’s victory most clearly also told believers to be watchful. The second is fear: “Since the devil is real, I must always be afraid.” But Scripture never tells believers to fear him. Return to Leah. Imagine her sharing these fears with a trusted small-group leader. Her fear may not disappear in a single night. She can receive prayer while gradually learning to answer old fears with Scripture and the support of other believers. Perhaps two women from the group begin praying with her by phone, and together they read Colossians 2 aloud.</p>
+<h4>20 · Bringing it together</h4><p>Let us bring it together. The enemy is real, but he is not God’s equal. At the cross, God forgave us, cancelled the record of debt that stood against us, and disarmed the powers. And our Captain went first: he faced the tempter in the wilderness, he understands our weakness, and he is able to help us.</p>
+<h4>21 · This week’s practice</h4><p>Here is your practice for this week. Read Colossians 2, verses 13 to 15, slowly, and underline everything God has already done: made alive, forgiven, cancelled, set aside, disarmed, triumphed. Then finish this sentence in your own words: “At the cross, Christ…” And if you would like a short daily guide, you will find the seven-day Battle Plan on the lesson page.</p>
+<h4>22 · Remember and pray</h4><p>Remember this word of Scripture: “He disarmed the rulers and authorities and put them to open shame, by triumphing over them in him.” And here is this week’s declaration, a statement of trust: The enemy is real, but he is not God’s equal. Christ has triumphed, and I belong to him. Let us pray. Father, thank you that you alone are God, and that nothing in all creation is your equal. Thank you that at the cross you forgave all my trespasses, cancelled the record of debt that stood against me, and disarmed every power of darkness. Where old fears still live in my heart, replace them with trust in Jesus. Help me trust you when old fears return. Keep me watchful but not afraid. Thank you that my name is written in heaven. In Jesus’ name, Amen. This week, read Colossians 2, verses 13 to 15, and finish the sentence, “At the cross, Christ…” Then stop here for today, or continue to Lesson 3.</p>
+<p class="refs"><b>Scripture in this lesson:</b> Colossians 2:8–15 · Job 1:12 · 1 John 4:4 · Genesis 3:15 · Hebrews 2:14–15, 18 · 1 Peter 5:8 · Romans 16:20 · Matthew 3:17 · Matthew 4:1–11 · Luke 4:13 · Luke 10:1, 17–20</p>
+</div></details></section>
+
+<section class="card stepc">
+ <h2><span class="n">2</span>Reflect and Practise</h2>
+ <div class="action">
+  <h3>This week’s practice</h3>
+  <p>Read Colossians 2:13–15 slowly, and underline everything God has already done: <i>made alive, forgiven, cancelled, set aside, disarmed, triumphed</i>.</p>
+  <p>Then finish this sentence in your own words:</p>
+  <p class="prompt">“At the cross, Christ…”</p>
+  <textarea aria-label="At the cross, Christ"></textarea>
+  <a class="bplink noprint" href="#battle-plan">Want to go further? The 7-day Battle Plan ↓</a>
+ </div>
+
+ <h3 style="margin-top:22px">Your declaration card</h3>
+ <div class="decl"><div class="v">“He disarmed the rulers and authorities and put them to open shame, by triumphing over them in him.”<span class="r">Colossians 2:15 (ESV)</span></div><p class="d">The enemy is real, but he is not God’s equal. Christ has triumphed, and I belong to him.</p>
+ <svg viewBox="0 0 80 160" aria-hidden="true"><g fill="none" stroke="#e9cf96" stroke-width="2"><circle cx="40" cy="20" r="12"/><path d="M26 36 Q40 30 54 36 L58 94 L22 94 Z"/><path d="M60 52 L76 56 Q78 84 66 96 Q56 86 58 58Z"/></g></svg></div>
+ <p class="refs noprint">To keep it on your phone, take a screenshot of the card, or <button class="btn alt" style="padding:4px 10px;font-size:14px" onclick="window.print()">print it</button>.</p>
+
+ <div class="reflect">
+ <h3 style="margin-top:22px">Reflect (private and optional)</h3>
+ <p class="unsaved">Write here and print, or use your own notebook. Nothing you type is saved.</p>
+ <ol>
+  <li>Before this lesson, how powerful did you imagine the devil to be? Has that picture changed?<textarea></textarea></li>
+  <li>How does knowing that God has forgiven you change the way you respond to accusation?<textarea></textarea></li>
+  <li>How does Luke 4:13 (“until an opportune time”) help you think about temptations that return?<textarea></textarea></li>
+  <li>Which mistake do you lean towards: carelessness or fear?<textarea></textarea></li>
+ </ol></div>
+
+ <h3 id="battle-plan" style="margin-top:22px">The 7-day Battle Plan · Week 2 <span style="font-weight:400;color:var(--mute);font-size:.75em">(optional)</span></h3>
+ <p class="refs">About five to ten minutes a day. If you miss a day, continue when you can. The Declare lines are words of trust and commitment, not techniques that guarantee an outcome.</p>
+ <table class="bp"><thead><tr><th>Day</th><th>Read</th><th>Reflect</th><th>Pray</th><th>Declare</th></tr></thead><tbody><tr><td><label><input type="checkbox"> <b>Day 1</b></label></td><td>Colossians 2:6–15</td><td>What does Paul say we already have in Christ?</td><td>Thank you that in Christ I lack nothing for salvation.</td><td>Christ is enough.</td></tr><tr><td><label><input type="checkbox"> <b>Day 2</b></label></td><td>Genesis 3:1–15</td><td>How did the serpent cast doubt on God’s word?</td><td>Help me to trust your word and your goodness.</td><td>God’s word is true.</td></tr><tr><td><label><input type="checkbox"> <b>Day 3</b></label></td><td>Job 1:6–12</td><td>Who sets the boundary in this scene?</td><td>Thank you that nothing is outside your rule.</td><td>The enemy is not God’s equal.</td></tr><tr><td><label><input type="checkbox"> <b>Day 4</b></label></td><td>Matthew 4:1–11</td><td>Which temptation feels closest to my own life?</td><td>Teach me to trust the Father’s way, not a shortcut.</td><td>I will live by every word from God.</td></tr><tr><td><label><input type="checkbox"> <b>Day 5</b></label></td><td>Luke 10:17–20</td><td>What did Jesus tell his disciples to rejoice in?</td><td>Thank you that my name is written in heaven.</td><td>I belong to God.</td></tr><tr><td><label><input type="checkbox"> <b>Day 6</b></label></td><td>Hebrews 2:14–18</td><td>Which fear does Christ free me from?</td><td>Help me in my temptation, Lord Jesus.</td><td>Christ is able to help me.</td></tr><tr><td><label><input type="checkbox"> <b>Day 7</b></label></td><td>Revelation 12:9–11</td><td>How is the accuser answered?</td><td>Thank you for the blood of the Lamb.</td><td>Christ has triumphed, and I belong to him.</td></tr></tbody></table>
+</section>
+
+<section class="card">
+ <div class="finish noprint">
+  <button class="btn" onclick="this.parentNode.querySelector('.done').style.display='inline'">I have completed this lesson</button>
+  <button class="btn alt" onclick="this.parentNode.querySelector('.done').style.display='inline'">Stop here for today</button>
+  <span class="done">Thank you. Stop here for today, or continue to Lesson 3.</span>
+ </div>
+ <p class="refs" style="margin:.6em 0 0">Completion records that you took part. The practice, the Battle Plan and reflections are never required.</p>
+</section>
+
+<section class="card stepc">
+ <h2><span class="n">3</span>Go Deeper <span style="font-weight:400;color:var(--mute);font-size:.7em">(optional)</span></h2>
+ <details><summary>The full chapters</summary><p>Chapters 2 and 3 of <i>Stand Firm: A Christian Guide to Spiritual Warfare and the Armour of God</i> (available to members as a PDF).</p></details>
+ <details style="margin-top:10px"><summary>Nathan and the secret formula</summary><p><i>Imagine a young man named Nathan who became a Christian last year. One night he watches a series of online videos about spiritual warfare: in one a preacher shouts at the devil for ten minutes; in another a speaker promises “seven secret prayers that make demons flee.” By midnight he feels stirred up and strangely anxious: “Am I doing it wrong? Do I need a special formula?” Looking at Jesus answers him. Jesus was led by the Spirit, shaped by the Word, trusted his Father when he was weak, refused shortcuts, and pointed his disciples back to their relationship with God. Nathan does not need a secret technique. He needs to know Jesus, trust his Word, walk with his Spirit and stay close to his people.</i></p></details>
+ <details style="margin-top:10px"><summary>Talk about it (for a small group)</summary><ol>
+  <li>Why is it important that the devil is not God’s opposite or equal?</li>
+  <li>Paul places forgiveness and the defeat of the powers side by side in Colossians 2:13–15. Why might that matter for someone troubled by accusation?</li>
+  <li>What is the difference between quoting Scripture and living by Scripture?</li></ol></details>
+ <details style="margin-top:10px"><summary>Look back</summary><p>In Lesson 1 we saw that spiritual warfare is real, but not behind every problem, and that we stand together. Today we saw why we can stand: the enemy is already defeated.</p></details>
+</section>
+</main>
+<footer class="container">Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved. The ESV text may not be quoted in any publication made available to the public by a Creative Commons license. The ESV may not be translated in whole or in part into any other language. · Need help? Write to <a href="mailto:info@faithfulpathcommunity.com">info@faithfulpathcommunity.com</a></footer>
+<script>
+(function(){let typed=false;document.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',()=>{typed=[...document.querySelectorAll('textarea')].some(x=>x.value.trim());}));
+addEventListener('beforeunload',e=>{if(typed){e.preventDefault();e.returnValue='Your notes are not saved. Print them first?';return e.returnValue;}});})();
+</script>
+</body></html>
