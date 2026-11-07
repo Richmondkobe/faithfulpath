@@ -82,7 +82,7 @@ const COURSES: { title: string; line: string; book: string }[] = [
   },
   {
     title: "Stand Firm",
-    line: "A 12-lesson course on spiritual warfare and the armour of God, with narrated lessons and a Leader’s Guide for groups.",
+    line: "twelve lessons on spiritual warfare and the armour of God.",
     book: "stand-firm",
   },
 ];
