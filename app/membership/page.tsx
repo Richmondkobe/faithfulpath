@@ -11,11 +11,11 @@ import { listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 
 // From the approved page's own heading and opening line.
-const TITLE = "Five Christian courses, one membership";
+const TITLE = "Six Christian courses, one membership";
 // Under 160 characters, with the price early, so a search result shows it
 // whole (website audit S5).
 const DESCRIPTION =
-  "Five Christian courses with Pastor Richmond Kobe for US$19 a month: burnout, worry, dating, marriage and church leadership. Learn at home; cancel any time.";
+  "Six Christian courses with Pastor Richmond Kobe for US$19 a month: burnout, worry, dating, marriage and church leadership. Learn at home; cancel any time.";
 
 // A purpose-built 1200x630 card, like the ones the guides use. The course cover
 // itself is portrait 2/3, which a social card would crop to a band and cut the
@@ -60,7 +60,7 @@ function H2({ children }: { children: React.ReactNode }) {
   );
 }
 
-// The five courses, each with the book it is built on. Titles and lines are
+// The six courses, each with the book it is built on. Titles and lines are
 // the approved wording.
 const COURSES: { title: string; line: string; book: string }[] = [
   {
@@ -79,6 +79,11 @@ const COURSES: { title: string; line: string; book: string }[] = [
     title: "Lead Before You’re Ready",
     line: "for your first years of leading in a church.",
     book: "lead-before-youre-ready",
+  },
+  {
+    title: "Stand Firm",
+    line: "A 12-lesson course on spiritual warfare and the armour of God, with narrated lessons and a Leader’s Guide for groups.",
+    book: "stand-firm",
   },
 ];
 
@@ -157,7 +162,7 @@ function Faq({
   );
 }
 
-// The membership, and the five courses it opens, as the page shows them
+// The membership, and the six courses it opens, as the page shows them
 // (website audit S4: this used to describe the Spiritual Reset alone). Course,
 // not an accredited programme: there is deliberately no
 // educationalCredentialAwarded, since a certificate of completion is not a
@@ -227,7 +232,7 @@ export default async function Membership() {
         className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
-        Five Christian courses, one membership
+        Six Christian courses, one membership
       </h1>
       <p className="mt-3 text-lg text-muted" style={lede}>
         With Pastor Richmond Kobe
@@ -242,7 +247,7 @@ export default async function Membership() {
 
       <JoinButton label="Join for US$19 a month" id="join" />
 
-      <H2>Five complete courses</H2>
+      <H2>Six complete courses</H2>
       {/* Each course with its book's cover, so the page shows what you join
           rather than only describing it (website audit V19). The words are the
           approved wording, unchanged. */}
@@ -266,11 +271,6 @@ export default async function Membership() {
           );
         })}
       </ul>
-      {/* Richmond's approved line for the new course (7 November 2026). */}
-      <p className="mt-4 rounded-2xl border border-gold bg-paper px-5 py-4 leading-relaxed">
-        <Bold>New: Stand Firm.</Bold> A 12-lesson course on spiritual warfare and the armour of God, with
-        narrated lessons and a Leader&rsquo;s Guide for groups. Included in your membership.
-      </p>
 
       <H2>Also included</H2>
       <ul className="mt-5 list-disc space-y-3 pl-6 leading-relaxed">
