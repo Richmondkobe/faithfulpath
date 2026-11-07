@@ -15,7 +15,7 @@ const TITLE = "Six Christian courses, one membership";
 // Under 160 characters, with the price early, so a search result shows it
 // whole (website audit S5).
 const DESCRIPTION =
-  "Six Christian courses with Pastor Richmond Kobe for US$19 a month: burnout, worry, dating, marriage, church leadership and spiritual warfare. Learn at home; cancel any time.";
+  "Six Christian courses with Pastor Richmond Kobe for US$19 a month: burnout, worry, dating, marriage, church leadership and spiritual warfare. Cancel any time.";
 
 // A purpose-built 1200x630 card, like the ones the guides use. The course cover
 // itself is portrait 2/3, which a social card would crop to a band and cut the
