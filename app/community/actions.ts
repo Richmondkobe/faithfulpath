@@ -25,6 +25,7 @@ import {
   PRAYER_MAX,
   QUESTION_MAX,
   firstNameOf,
+  posterName,
   prayerName,
 } from "@/lib/community";
 
@@ -300,7 +301,7 @@ export async function postPrayerRequest(_prev: PrayerPostState, formData: FormDa
     return { error: "That could not be shared just now. Please try again.", posted: false };
   }
 
-  const shownAs = prayerName({ show_name: showName, display_name: viewer.profile.first_name });
+  const shownAs = prayerName({ show_name: showName, display_name: posterName({ isAdmin: viewer.isAdmin, profile: viewer.profile }) });
   after(() => notifyPrayerForReview({ kind: "new", body, shownAs, fromEmail: viewer.email }).then(() => undefined));
 
   revalidatePath("/community/prayer");
@@ -425,7 +426,7 @@ export async function askQuestion(_prev: QuestionState, formData: FormData): Pro
     console.error("Question not saved:", error.message);
     return { error: "That could not be sent just now. Please try again.", asked: false };
   }
-  const shownAs = prayerName({ show_name: showName, display_name: viewer.profile.first_name });
+  const shownAs = prayerName({ show_name: showName, display_name: posterName({ isAdmin: viewer.isAdmin, profile: viewer.profile }) });
   const { email } = viewer;
   after(() => notifyNewQuestion({ body, shownAs, fromEmail: email }));
   revalidatePath("/community/questions");

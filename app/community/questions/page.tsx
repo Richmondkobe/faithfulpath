@@ -6,7 +6,7 @@ import QuestionForm from "@/components/community/QuestionForm";
 import Markdown from "@/components/Markdown";
 import { DISPLAY, inputClass, okClass, quietButtonClass } from "@/components/community/styles";
 import { loadQuestions, requireCommunity } from "@/lib/community-db";
-import { QUESTIONS_PER_WEEK, prayerName, shortDate, type CommunityQuestion } from "@/lib/community";
+import { QUESTIONS_PER_WEEK, posterName, prayerName, shortDate, type CommunityQuestion } from "@/lib/community";
 import { GUIDELINES_PATH } from "@/lib/community-guidelines";
 import { deleteOwnQuestion, reportQuestion } from "@/app/community/actions";
 
@@ -83,7 +83,7 @@ export default async function AskPastorRichmond({ searchParams }: Props) {
                 .
               </p>
               <div className="mt-5">
-                <QuestionForm firstName={viewer.profile.first_name} />
+                <QuestionForm firstName={posterName({ isAdmin: viewer.isAdmin, profile: viewer.profile })} />
               </div>
             </>
           )}

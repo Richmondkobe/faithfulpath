@@ -195,9 +195,30 @@ export function isOccurrenceOf(g: Gathering, all: Gathering[], start: string, no
   return upcomingOccurrences(g, all, now, 60).some((o) => o.start === start && !o.skipped);
 }
 
-/** "Sarah" or "Anonymous", as the wall shows it. */
+/**
+ * "Sarah", "Pastor Richmond" or "Anonymous", as the wall shows it.
+ *
+ * For a member who chose their name, the database copies their first name
+ * into display_name (first_name is never empty). The one exception is Pastor
+ * Richmond's own account: the database guard lets the admin through unchanged,
+ * so his named posts have show_name set and no display_name (found 8 November
+ * 2026, when his request showed as "Anonymous"). Those are shown as his name.
+ */
 export function prayerName(p: Pick<PrayerRequest, "show_name" | "display_name">): string {
-  return p.show_name && p.display_name ? p.display_name : "Anonymous";
+  if (!p.show_name) return "Anonymous";
+  return p.display_name || PASTOR_NAME;
+}
+
+/** How Pastor Richmond's named posts are shown. */
+export const PASTOR_NAME = "Pastor Richmond";
+
+/**
+ * The name a poster's own posts go out under, for the "Show it as" choice and
+ * the review email: their first name, or "Pastor Richmond" for his account,
+ * to match what the wall shows (prayerName above).
+ */
+export function posterName(viewer: { isAdmin: boolean; profile: { first_name: string } }): string {
+  return viewer.isAdmin ? PASTOR_NAME : viewer.profile.first_name;
 }
 
 /** A date as the wall shows it, e.g. "25 October 2026". */

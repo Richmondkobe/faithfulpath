@@ -8,6 +8,7 @@ import { loadWall, requireCommunity } from "@/lib/community-db";
 import {
   ANSWER_MAX,
   PRAYERS_PER_DAY,
+  posterName,
   prayerName,
   shortDate,
   type PrayerAnswer,
@@ -299,7 +300,7 @@ export default async function PrayerWall({ searchParams }: Props) {
                   full name or private details without their permission.
                 </p>
                 <div className="mt-5">
-                  <PrayerPostForm firstName={viewer.profile.first_name} />
+                  <PrayerPostForm firstName={posterName({ isAdmin: viewer.isAdmin, profile: viewer.profile })} />
                 </div>
               </>
             )}
