@@ -9,9 +9,10 @@ import { TrackedSubmit } from "@/components/analytics/Tracked";
 import { abs, breadcrumbs, graph, orgRef } from "@/lib/schema";
 import { listPublishedProducts } from "@/lib/products-db";
 import { coverPublicUrl } from "@/lib/supabase/admin";
+import { COURSE_COUNT_CAP, MEMBERSHIP_COURSES } from "@/lib/membership-courses";
 
 // From the approved page's own heading and opening line.
-const TITLE = "Six Christian courses, one membership";
+const TITLE = `${COURSE_COUNT_CAP} Christian courses, one membership`;
 // Under 160 characters, with the price early, so a search result shows it
 // whole (website audit S5).
 const DESCRIPTION =
@@ -60,32 +61,8 @@ function H2({ children }: { children: React.ReactNode }) {
   );
 }
 
-// The six courses, each with the book it is built on. Titles and lines are
-// the approved wording.
-const COURSES: { title: string; line: string; book: string }[] = [
-  {
-    title: "The Christian Spiritual Reset",
-    line: "a guided retreat at home for burnout and spiritual dryness.",
-    book: "the-christian-spiritual-reset",
-  },
-  { title: "When Your Mind Won’t Rest", line: "overthinking, worry and fear.", book: "when-your-mind-wont-rest" },
-  {
-    title: "Before You Say Yes",
-    line: "discernment in dating and the decision to marry.",
-    book: "before-you-say-yes",
-  },
-  { title: "Talk Before You Marry", line: "fifteen lessons for couples before marriage.", book: "talk-before-you-marry" },
-  {
-    title: "Lead Before You’re Ready",
-    line: "for your first years of leading in a church.",
-    book: "lead-before-youre-ready",
-  },
-  {
-    title: "Stand Firm",
-    line: "twelve lessons on spiritual warfare and the armour of God.",
-    book: "stand-firm",
-  },
-];
+// The courses come from the one shared list (lib/membership-courses.ts).
+const COURSES = MEMBERSHIP_COURSES;
 
 /** Each course's book cover, from the published books. Read only; a missing one shows a plain tile. */
 async function courseCovers(): Promise<Map<string, string>> {
@@ -232,7 +209,7 @@ export default async function Membership() {
         className="mt-4 text-[2.25rem] leading-[1.1] tracking-[-0.02em] text-navy sm:text-[3rem]"
         style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
       >
-        Six Christian courses, one membership
+        {COURSE_COUNT_CAP} Christian courses, one membership
       </h1>
       <p className="mt-3 text-lg text-muted" style={lede}>
         With Pastor Richmond Kobe
@@ -247,7 +224,7 @@ export default async function Membership() {
 
       <JoinButton label="Join for US$19 a month" id="join" />
 
-      <H2>Six complete courses</H2>
+      <H2>{COURSE_COUNT_CAP} complete courses</H2>
       {/* Each course with its book's cover, so the page shows what you join
           rather than only describing it (website audit V19). The words are the
           approved wording, unchanged. */}

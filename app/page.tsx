@@ -12,6 +12,7 @@ import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
 import { formatPrice } from "@/lib/products";
 import { publicNextGathering } from "@/lib/public-gathering";
 import NextGatheringTime from "@/components/community/NextGatheringTime";
+import { COURSE_COUNT_CAP, topicList } from "@/lib/membership-courses";
 
 // The title and description are the root layout's, which were written for this
 // page. Only the canonical is set here: without it the home page is reachable
@@ -279,8 +280,8 @@ export default async function Home() {
             Courses
           </h2>
         </div>
-      {/* The membership as it is today (Richmond, 26 October 2026): five
-          courses, not the Spiritual Reset alone. */}
+      {/* The membership as it is today (Richmond, 26 October 2026): every
+          course in lib/membership-courses.ts, not the Spiritual Reset alone. */}
       <section className="mx-auto max-w-5xl px-6 pt-14 pb-2">
         <p className="text-[13px] font-semibold uppercase tracking-[0.12em] text-gold-text">
           Course Membership
@@ -289,7 +290,7 @@ export default async function Home() {
           className="mt-4 text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
           style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
         >
-          Five Christian courses, US$19 a month
+          {COURSE_COUNT_CAP} Christian courses, US$19 a month
         </h2>
         <p
           className="mt-5 max-w-xl text-lg leading-relaxed"
@@ -298,8 +299,7 @@ export default async function Home() {
           Learn at home, at your own pace, with Pastor Richmond.
         </p>
         <p className="mt-4 max-w-xl leading-relaxed">
-          Spiritual burnout, worry and overthinking, Christian dating, preparing
-          for marriage, and church leadership: each course has video teaching,
+          {topicList(true)}: each course has video teaching,
           guided prayers and workbooks. US$19 a month, cancel any time.
         </p>
         <div className="mt-8">

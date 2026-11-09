@@ -201,7 +201,7 @@ const RELATED_ARTICLES: Record<
   ],
 };
 
-// Books that also exist as a course: the five in the membership, and the four
+// Books that also exist as a course: the ones in the membership, and the four
 // Following Jesus books, each its own video course. The note sits under the
 // Buy button, where someone is deciding how they want to work through the
 // material (website audit V3, N12). The Life Guides booklet has no course.

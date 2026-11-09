@@ -5,6 +5,7 @@ import { coverPublicUrl } from "@/lib/supabase/admin";
 import { formatPrice, type Product } from "@/lib/products";
 import { SITE } from "@/lib/site";
 import { TrackedLink } from "@/components/analytics/Tracked";
+import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
 
 // Saving a book in the admin calls revalidatePath("/start"); this is the
 // backstop for rows edited directly in Supabase.
@@ -137,10 +138,10 @@ export default async function Start() {
         >
           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Membership · US$19 a month</p>
           <p className="mt-2 text-xl text-navy" style={DISPLAY}>
-            Five Christian courses, one membership
+            {COURSE_COUNT_CAP} Christian courses, one membership
           </p>
           <p className="mt-2 leading-relaxed text-ink">
-            Burnout, worry, dating, marriage and church leadership. Learn at home, at your own pace. Cancel any time.
+            Burnout, worry, dating, marriage, church leadership and spiritual warfare. Learn at home, at your own pace. Cancel any time.
           </p>
           <span className="mt-4 inline-block font-semibold text-gold-text">See the membership ›</span>
         </TrackedLink>

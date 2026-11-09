@@ -7,6 +7,7 @@ import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
 import { formatPrice } from "@/lib/products";
 import { LBYR_NEW_LIVE } from "@/lib/lbyr-new-live";
 import { SITE } from "@/lib/site";
+import { COURSE_COUNT_CAP, COURSE_COUNT_WORD, MEMBERSHIP_COURSES } from "@/lib/membership-courses";
 
 // Lead Before You're Ready's Welcome page, open to anyone. A whole HTML page,
 // not a React one, so a plain link rather than <Link>.
@@ -19,7 +20,7 @@ const LBYR_WELCOME = "/members/courses/lead-before-youre-ready-new/welcome";
 
 const TITLE = "Courses";
 const DESCRIPTION =
-  "Ways to grow with Pastor Richmond Kobe: the Free Community, the Course Membership (five courses, US$19 a month), the Following Jesus video courses and one-to-one Pastoral Conversations.";
+  `Ways to grow with Pastor Richmond Kobe: the Free Community, the Course Membership (${COURSE_COUNT_WORD} courses, US$19 a month), the Following Jesus video courses and one-to-one Pastoral Conversations.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -112,7 +113,7 @@ function ways(fjSingle: string, fjAll: string): Way[] {
       cells: [
         "US$19 a month",
         "Monthly. Cancel any time; full refund within 7 days of your first payment",
-        "Five courses, a private journal, new courses as they are added, and the Free Community",
+        `${COURSE_COUNT_CAP} courses, a private journal, new courses as they are added, and the Free Community`,
         "One private written question a month, with a personal reply within three working days",
         "Access until the end of your billing period. You can still read your journal",
       ],
@@ -236,19 +237,16 @@ export default function Courses() {
           kicker="Course Membership · US$19 a month"
           // The approved membership page's heading and opening paragraph
           // (Richmond, 8 October 2026).
-          title="Five Christian courses, one membership"
-          body="Practical, Scripture-centred guidance for seasons when you need help taking the next faithful step: through tiredness, worry, dating, marriage and your first years of church leadership. Learn at home, at your own pace, for US$19 a month. Cancel whenever you need to."
+          title={`${COURSE_COUNT_CAP} Christian courses, one membership`}
+          body="Practical, Scripture-centred guidance for seasons when you need help taking the next faithful step: through tiredness, worry, dating, marriage, your first years of church leadership and spiritual battles. Learn at home, at your own pace, for US$19 a month. Cancel whenever you need to."
           href="/membership"
           button="See the Course Membership"
-          // The five courses, in the approved membership page's own words
-          // (Membership-Page-Final.md, reviewer-approved 8 October 2026).
-          items={[
-            ["The Christian Spiritual Reset", "a guided retreat at home for burnout and spiritual dryness."],
-            ["When Your Mind Won’t Rest", "overthinking, worry and fear."],
-            ["Before You Say Yes", "discernment in dating and the decision to marry."],
-            ["Talk Before You Marry", "fifteen lessons for couples before marriage."],
-            ["Lead Before You’re Ready", "for your first years of leading in a church.", LBYR_NEW_LIVE ? LBYR_WELCOME : undefined],
-          ]}
+          // The courses, from the one shared list (lib/membership-courses.ts).
+          items={MEMBERSHIP_COURSES.map((c): [string, string, string?] => [
+            c.title,
+            c.line,
+            c.book === "lead-before-youre-ready" && LBYR_NEW_LIVE ? LBYR_WELCOME : undefined,
+          ])}
         />
         <Course
           kicker={`Sold separately · ${single} a course`}

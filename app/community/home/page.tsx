@@ -13,6 +13,7 @@ import { getCommunityViewer, loadAnnouncements, loadAnswered, nextGathering } fr
 import NextGatheringTime from "@/components/community/NextGatheringTime";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
 import { agreeToGuidelines, leaveCommunity } from "@/app/community/actions";
+import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
 
 export const metadata: Metadata = {
   title: "Community home",
@@ -233,7 +234,7 @@ export default async function CommunityHome({ searchParams }: Props) {
               Courses with Pastor Richmond
             </h2>
             <p className="mt-2 leading-relaxed">
-              Five Christian courses on rest, worry, dating, marriage and church leadership. Learn at your own pace.
+              {COURSE_COUNT_CAP} Christian courses on rest, worry, dating, marriage, church leadership and spiritual warfare. Learn at your own pace.
               US$19 a month, cancel any time.
             </p>
             <Link

@@ -7,6 +7,7 @@ import { booksForEmail } from "@/lib/book-library";
 import { coverPublicUrl } from "@/lib/supabase/admin";
 import { getMemberByEmail, isActive } from "@/lib/members";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
 
 export const metadata: Metadata = {
   title: "Your books",
@@ -106,7 +107,7 @@ export default async function YourBooks() {
               <p className="mt-2 text-xl text-navy" style={DISPLAY}>
                 See the membership
               </p>
-              <p className="mt-2 text-[15px] leading-relaxed">Five Christian courses with Pastor Richmond. Cancel any time.</p>
+              <p className="mt-2 text-[15px] leading-relaxed">{COURSE_COUNT_CAP} Christian courses with Pastor Richmond. Cancel any time.</p>
               <span className="mt-3 inline-block font-semibold text-gold-text">See the membership ›</span>
             </Link>
           )}

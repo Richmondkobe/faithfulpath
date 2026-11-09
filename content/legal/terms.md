@@ -1,6 +1,6 @@
 # Terms of Purchase and Use
 
-*Last updated: 26 October 2026*
+*Last updated: 9 November 2026*
 
 These terms cover the website faithfulpathcommunity.com, the digital books sold on it, the Faithful Path membership, and gifts to the ministry. Pastoral sessions have their own page: [Pastoral Conversation Terms](/pastoral-terms). The site is operated by Richmond Kobe, trading as Faithful Path Community, in Thailand. By buying a book, joining the membership or giving a gift you agree to these terms.
 
@@ -22,7 +22,7 @@ At checkout you are asked to agree to immediate delivery and to waive any statut
 
 ## 3. Membership
 
-**What it is.** Faithful Path membership is a monthly subscription, currently US$19 a month, giving access to five Christian courses with Pastor Richmond: *The Christian Spiritual Reset* (spiritual burnout), *When Your Mind Won't Rest* (overthinking, worry and fear), *Before You Say Yes* (Christian dating), *Talk Before You Marry* (preparing for marriage) and *Lead Before You're Ready* (church leadership), with their guided prayers, workbooks and resources; any future courses added to the membership; and one written question to Richmond each month, answered in writing within three working days. Live one-to-one conversations are not included; they are booked separately as a pastoral session.
+**What it is.** Faithful Path membership is a monthly subscription, currently US$19 a month, giving access to six Christian courses with Pastor Richmond: *The Christian Spiritual Reset* (spiritual burnout), *When Your Mind Won't Rest* (overthinking, worry and fear), *Before You Say Yes* (Christian dating), *Talk Before You Marry* (preparing for marriage), *Lead Before You're Ready* (church leadership) and *Stand Firm* (spiritual warfare), with their guided prayers, workbooks and resources; any future courses added to the membership; and one written question to Richmond each month, answered in writing within three working days. Live one-to-one conversations are not included; they are booked separately as a pastoral session.
 
 **Billing.** Your card is charged when you join and then every month on the same date until you cancel. Prices are in US dollars. If the price ever changes, you will be told by email at least thirty days before it affects you.
 
