@@ -319,6 +319,114 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Old Zyro pages that AI search (Copilot/Bing) still cites, each sent to
+      // the article that answers the same question (Bing AI Performance
+      // report, 9 November 2026).
+      {
+        source: "/theology-for-beginners",
+        destination: "/articles/what-do-christians-believe",
+        permanent: true,
+      },
+      {
+        source: "/renewed-mind",
+        destination: "/articles/renewing-your-mind-not-positive-thinking",
+        permanent: true,
+      },
+      {
+        source: "/transform-your-life-with-a-renewed-mind",
+        destination: "/articles/renewing-your-mind-not-positive-thinking",
+        permanent: true,
+      },
+      {
+        source: "/2-corinthians-10-5-practical",
+        destination: "/articles/take-every-thought-captive-meaning",
+        permanent: true,
+      },
+      {
+        source: "/how-to-pray-when-youre-spiritually-exhausted",
+        destination: "/articles/spiritual-dryness",
+        permanent: true,
+      },
+      {
+        source: "/spiritual-gates-explained-",
+        destination: "/articles/spiritual-gates-explained",
+        permanent: true,
+      },
+      {
+        source: "/anxiety-christian-perspective",
+        destination: "/articles/what-does-the-bible-say-about-worry",
+        permanent: true,
+      },
+      {
+        source: "/why-were-some-books-left-out-of-the-bible",
+        destination: "/articles/apocrypha-controversy",
+        permanent: true,
+      },
+      {
+        source: "/digital-evangelism-tools",
+        destination: "/articles/christian-social-media-outreach",
+        permanent: true,
+      },
+      {
+        source: "/christian-dating-rules",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
+      {
+        source: "/evangelical-christian-dating",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
+      {
+        source: "/reformed-dating",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
+      {
+        source: "/how-to-pray-beginner-christian",
+        destination: "/articles/bible-verses-about-prayer",
+        permanent: true,
+      },
+      {
+        source: "/first-steps-as-a-new-christian",
+        destination: "/articles/what-to-do-after-becoming-a-christian",
+        permanent: true,
+      },
+      {
+        source: "/daily-spiritual-growth",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/growing-spiritually-vs-religious-motions",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/christian-discipleship-steps",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/the-forbidden-fruit-in-the-garden-of-eden",
+        destination: "/articles/forbidden-fruit-garden-eden",
+        permanent: true,
+      },
+      {
+        source: "/jesus-descended-into-hell-a-christian-debate",
+        destination: "/articles/did-jesus-descend-into-hell",
+        permanent: true,
+      },
+      {
+        source: "/predestination-vs-free-will-in-salvation",
+        destination: "/articles/predestination-and-free-will",
+        permanent: true,
+      },
+      {
+        source: "/toxic-relationship-christian-guide",
+        destination: "/articles/when-to-break-up-christian-relationship",
+        permanent: true,
+      },
       // Old Zyro mindfulness pages, still shown by Google for "Christian
       // mindfulness" (721 impressions, Aug–Nov 2026), now answered by one
       // article (Growth Report, 9 November 2026).
