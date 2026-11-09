@@ -319,6 +319,13 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Moved out of lib/gone-paths.ts: the article now exists (9 November 2026;
+      // Bing AI Performance listed this old page with 53 citations).
+      {
+        source: "/ephesians-6-10-18-breakdown",
+        destination: "/articles/ephesians-6-10-18-armour-of-god",
+        permanent: true,
+      },
       // Old Zyro pages that AI search (Copilot/Bing) still cites, each sent to
       // the article that answers the same question (Bing AI Performance
       // report, 9 November 2026).

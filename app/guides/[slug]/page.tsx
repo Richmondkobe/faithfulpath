@@ -176,6 +176,16 @@ const RELATED_ARTICLES: Record<
         "\"God Told Me to Marry You\": How to Test a Spiritual Claim in Dating",
     },
   ],
+  "stand-firm": [
+    {
+      href: "/articles/ephesians-6-10-18-armour-of-god",
+      title: "Ephesians 6:10–18 Explained: The Armour of God",
+    },
+    {
+      href: "/articles/spiritual-gates-explained",
+      title: "What Are the Gates of Hades? Matthew 16:18 Explained",
+    },
+  ],
   "when-your-mind-wont-rest": [
     {
       href: "/articles/how-to-stop-overthinking-christian",
