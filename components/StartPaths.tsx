@@ -14,7 +14,7 @@ const PATHS: Path[] = [
     question: "I’m new to following Jesus",
     steps: [
       { label: "Read", title: "What Does It Mean to Be Born Again?", href: "/articles/what-does-it-mean-to-be-born-again" },
-      { label: "Try", title: "How to Study the Bible for Beginners", href: "/articles/how-to-study-the-bible-for-beginners" },
+      { label: "Try", title: "Your First 30 Days as a Christian", href: "/articles/what-to-do-after-becoming-a-christian" },
       { label: "Next step", title: "The Following Jesus courses", href: "/courses/following-jesus" },
     ],
   },
