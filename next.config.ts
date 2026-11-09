@@ -319,6 +319,34 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Old Zyro mindfulness pages, still shown by Google for "Christian
+      // mindfulness" (721 impressions, Aug–Nov 2026), now answered by one
+      // article (Growth Report, 9 November 2026).
+      {
+        source: "/christian-mindfulness",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
+      {
+        source: "/christian-mindfulness-practices",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
+      {
+        source: "/christian-mindfulness-strengthen-your-faith",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
+      {
+        source: "/biblical-mindfulness-strengthening-faith",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
+      {
+        source: "/practice-mindfulness-daily-christian",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
       // Renamed by Richmond, 22 October 2026.
       {
         source: "/articles/church-leadership-training",
