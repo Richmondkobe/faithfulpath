@@ -319,6 +319,13 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // John 14:6 article (9 November 2026; Bing AI Performance listed the old
+      // page with 46 citations).
+      {
+        source: "/understanding-john-146-and-salvation",
+        destination: "/articles/john-14-6-meaning",
+        permanent: true,
+      },
       // Moved out of lib/gone-paths.ts: the article now exists (9 November 2026;
       // Bing AI Performance listed this old page with 53 citations).
       {
