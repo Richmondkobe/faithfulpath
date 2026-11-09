@@ -48,7 +48,7 @@ export async function generateMetadata({
   return {
     title: { absolute: title },
     description,
-    authors: [{ name: AUTHOR.name }],
+    authors: [{ name: AUTHOR.name, url: "/about" }],
     alternates: { canonical: url },
     openGraph: {
       type: "article",
@@ -147,7 +147,10 @@ export default async function ArticlePage({
           <Image src={AUTHOR.image} alt="Pastor Richmond Kobe" fill sizes="3rem" className="object-cover" />
         </div>
         <div>
-          <p className="font-medium text-navy">{AUTHOR.name}</p>
+          {/* The byline links to the author profile (Growth Report, 9 November 2026). */}
+          <Link href="/about" rel="author" className="font-medium text-navy underline decoration-gold-line underline-offset-4 hover:text-gold-text">
+            {AUTHOR.name}
+          </Link>
           <p className="text-sm text-muted">{AUTHOR.credential}</p>
         </div>
       </div>

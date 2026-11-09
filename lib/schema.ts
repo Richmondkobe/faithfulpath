@@ -86,7 +86,7 @@ export function personRichmond() {
 }
 
 /** The author field on a Book or an Article: the @id, plus a name to read. */
-export const personRef = { "@id": PERSON_ID, "@type": "Person", name: AUTHOR.name };
+export const personRef = { "@id": PERSON_ID, "@type": "Person", name: AUTHOR.name, url: abs("/about") };
 
 /**
  * A breadcrumb trail. Positions are 1-based and the last item is the page
