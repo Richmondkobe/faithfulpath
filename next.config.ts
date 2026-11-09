@@ -319,6 +319,13 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Suicide and the Bible article (9 November 2026; Bing AI Performance
+      // listed the old page with 40 citations).
+      {
+        source: "/suicide-heaven-or-hell-what-the-bible-says",
+        destination: "/articles/what-does-the-bible-say-about-suicide",
+        permanent: true,
+      },
       // Strengths and weaknesses article (9 November 2026; Bing AI Performance
       // listed the old page with 50 citations).
       {
