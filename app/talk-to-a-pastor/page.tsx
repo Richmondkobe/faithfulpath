@@ -189,6 +189,16 @@ export default function Home() {
             Read the Pastoral Conversation Terms
           </FinePrintLink>
         </FinePrint>
+
+        {/* For the hesitant visitor (Growth Report reviewer, 9 November 2026). */}
+        <p className="mt-4 text-[15px]">
+          <Link
+            href="/articles/talk-to-a-pastor-online"
+            className="font-medium text-gold-text underline underline-offset-4 hover:text-navy"
+          >
+            What happens in a session? Read the step-by-step guide
+          </Link>
+        </p>
       </section>
 
       {/* Credential band */}
