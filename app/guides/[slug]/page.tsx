@@ -130,6 +130,10 @@ const RELATED_ARTICLES: Record<
   ],
   "lead-before-youre-ready": [
     {
+      href: "/articles/christian-leadership-training",
+      title: "Church Leadership Training: A Six-Week Plan for New Leaders",
+    },
+    {
       href: "/articles/retreat-for-pastors",
       title:
         "A Christian Retreat for Pastors and Ministry Leaders Facing Burnout",
