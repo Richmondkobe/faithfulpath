@@ -187,6 +187,12 @@ export default async function ArticlePage({
         >
           If this is where you are right now, we can talk about it properly.
         </p>
+        {/* The booking facts in a line (Growth Report, 9 November 2026), the
+            same as the box on /talk-to-a-pastor. */}
+        <p className="mt-3 max-w-xl leading-relaxed text-muted">
+          Online pastoral counselling with Pastor Richmond Kobe: a 60-minute video or audio
+          conversation, then a written follow-up within 24 hours. Open to anyone 18 or over.
+        </p>
         <Link
           href="/talk-to-a-pastor"
           className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold px-7 py-4 text-[15px] font-semibold text-night transition-colors hover:bg-gold-soft"
