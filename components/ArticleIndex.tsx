@@ -5,6 +5,7 @@ import ArticlePagination from "@/components/ArticlePagination";
 import ArticleCards from "@/components/ArticleCards";
 import ArticleSearch from "@/components/ArticleSearch";
 import CategoryRow from "@/components/CategoryRow";
+import StartPaths from "@/components/StartPaths";
 
 /**
  * The articles index, shared by /articles, /articles/page/[page] and the
@@ -60,6 +61,18 @@ export default function ArticleIndex({
           </p>
         )}
       </div>
+
+      {/* Only on the first page of all articles, not on categories. */}
+      {page === 1 && !category && <StartPaths />}
+
+      {page === 1 && !category && articles.length > 0 && (
+        <h2
+          className="mt-14 text-2xl text-navy sm:text-3xl"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+        >
+          Latest articles
+        </h2>
+      )}
 
       {articles.length === 0 ? (
         <p className="mt-14 max-w-[40rem] leading-relaxed text-muted">{empty}</p>
