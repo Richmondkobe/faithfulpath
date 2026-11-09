@@ -35,6 +35,31 @@ const COUNTRIES = [
   "Singapore",
 ];
 
+const AT_A_GLANCE: [string, string][] = [
+  ["With", "Pastor Richmond Kobe, ordained minister, pastoring for over twenty years"],
+  ["Price", "US$60, paid when you book"],
+  ["Format", "A short written intake, then 60 minutes live on Zoom or Google Meet (audio only if you prefer), in English"],
+  ["Follow-up", "A written note within 24 hours: what I heard, passages to sit with, and two or three next steps"],
+  ["Who can book", "Anyone aged 18 or over, anywhere in the world. No church membership needed, and you don’t need your faith intact"],
+  ["Changes", "Reschedule or cancel free up to 24 hours before"],
+];
+
+const PASTOR_HELPS = [
+  "Prayer, doubt, or a faith that has gone quiet",
+  "Grief, loss, and questions about where God is in it",
+  "Preparing for marriage, or a marriage that feels stuck",
+  "A decision you want to think through in the light of Scripture",
+  "Ministry pressure, and leaders with no one to talk to",
+];
+
+const CLINICIAN_FIRST = [
+  "Thoughts of harming yourself or someone else (contact emergency help now)",
+  "Symptoms that stop you sleeping, eating or working for weeks",
+  "Panic, trauma or compulsions that are getting worse",
+  "Alcohol or drug use you can’t stop",
+  "Abuse or violence at home",
+];
+
 const SITUATIONS = [
   "We're getting married, and everyone keeps telling us we should talk to someone first.",
   "Something happened, and I haven't been able to pray since.",
@@ -136,6 +161,18 @@ export default function Home() {
             One 60-minute session. No church membership required.
           </p>
         </div>
+
+        {/* The booking facts together, next to the button (Growth Report,
+            9 November 2026): who, price, format, who can book, follow-up.
+            Same facts as /pastoral-terms; change both together. */}
+        <dl className="mt-8 grid max-w-2xl! gap-x-8 gap-y-4 rounded-2xl border border-gold-line/60 bg-paper p-6 sm:grid-cols-2">
+          {AT_A_GLANCE.map(([term, detail]) => (
+            <div key={term}>
+              <dt className="text-[12px] font-semibold uppercase tracking-[0.12em] text-gold-text">{term}</dt>
+              <dd className="mt-1 leading-relaxed text-ink">{detail}</dd>
+            </div>
+          ))}
+        </dl>
 
         {/* What the hour is, before anyone books it. Above the rescheduling
             line because the scope of the session matters more than its
@@ -268,6 +305,42 @@ export default function Home() {
             development. But the work I care most about has always happened in a
             room with one person, telling the truth.
           </p>
+        </div>
+      </section>
+
+      {/* The scope of pastoral care, and when a licensed professional is the
+          better first step (Growth Report, 9 November 2026). */}
+      <section className="mx-auto max-w-5xl px-6 pb-14 sm:pb-24">
+        <h2
+          className="max-w-3xl text-3xl tracking-[-0.01em] text-navy sm:text-4xl"
+          style={{ fontFamily: "var(--font-display)", fontWeight: 400 }}
+        >
+          Is a pastor the right person for this?
+        </h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <div className="rounded-2xl border border-line bg-paper p-6">
+            <h3 className="text-xl text-navy" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+              A pastor can help with
+            </h3>
+            <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed">
+              {PASTOR_HELPS.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-line bg-paper p-6">
+            <h3 className="text-xl text-navy" style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}>
+              See a licensed professional first for
+            </h3>
+            <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed">
+              {CLINICIAN_FIRST.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="mt-4 leading-relaxed text-muted">
+              You can still talk to me alongside that care. Many people do.
+            </p>
+          </div>
         </div>
       </section>
 
