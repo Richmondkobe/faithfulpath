@@ -319,6 +319,13 @@ const nextConfig: NextConfig = {
         destination: "/articles/jesus-siblings",
         permanent: true,
       },
+      // Strengths and weaknesses article (9 November 2026; Bing AI Performance
+      // listed the old page with 50 citations).
+      {
+        source: "/my-strengths-and-weaknesses-christian-guide",
+        destination: "/articles/christian-strengths-and-weaknesses",
+        permanent: true,
+      },
       // John 14:6 article (9 November 2026; Bing AI Performance listed the old
       // page with 46 citations).
       {
