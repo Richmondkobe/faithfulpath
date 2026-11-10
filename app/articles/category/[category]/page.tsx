@@ -21,11 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     // Short enough for Google to show whole; the description says "Christian articles".
     title: category.label,
-    description: category.description,
+    description: category.metaDescription ?? category.description,
     alternates: { canonical: categoryHref(category.slug) },
     ...socialMeta({
       title: `${category.label} — Articles`,
-      description: category.description,
+      description: category.metaDescription ?? category.description,
       path: categoryHref(category.slug),
     }),
   };

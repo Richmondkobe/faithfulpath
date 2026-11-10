@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Faithful Path Community",
   },
   description:
-    "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+    "Pastoral guidance online with Pastor Richmond Kobe, a pastor of twenty years: Christian articles, video courses, guides and one-to-one conversations.",
   authors: [{ name: "Richmond Kobe" }],
   openGraph: {
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     // Each page gives its own through lib/social-meta.ts.
     title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
-      "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+      "Pastoral guidance online with Pastor Richmond Kobe, a pastor of twenty years: Christian articles, video courses, guides and one-to-one conversations.",
     images: [
       {
         url: "/og-site.png",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Faithful Path Community — Online Pastoral Counselling & Spiritual Guidance",
     description:
-      "Pastoral guidance online with a pastor of twenty years. Articles, teaching, and one-to-one conversations.",
+      "Pastoral guidance online with Pastor Richmond Kobe, a pastor of twenty years: Christian articles, video courses, guides and one-to-one conversations.",
     images: ["/og-site.png"],
   },
   // Added to an iPhone's home screen, the site opens full screen under this

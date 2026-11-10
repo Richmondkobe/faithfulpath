@@ -13,13 +13,13 @@ export const revalidate = 300;
 export const metadata: Metadata = {
   title: "Christian Articles on Faith and Life",
   description:
-    "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
+    "Christian articles from a pastor of twenty years on faith, prayer, worry, dating, marriage, rest and church leadership, rooted in Scripture.",
   // Page one of the index is /articles, never /articles/page/1 — which
   // redirects here rather than existing as a second copy of this page.
   alternates: { canonical: "/articles" },
   ...socialMeta({
     title: "Articles — Faithful Path Community",
-    description: "Writing and teaching on faith, marriage, grief, and staying with God when it is hard.",
+    description: "Christian articles from a pastor of twenty years on faith, prayer, worry, dating, marriage, rest and church leadership, rooted in Scripture.",
     path: "/articles",
   }),
 };

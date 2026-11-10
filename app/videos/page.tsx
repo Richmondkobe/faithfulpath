@@ -8,7 +8,7 @@ import { VIDEOS, videoSchema } from "@/lib/videos";
 
 const TITLE = "Videos";
 const DESCRIPTION =
-  "Teaching videos from Pastor Richmond Kobe, from the Before You Say Yes series on Christian dating.";
+  "Christian teaching videos from Pastor Richmond Kobe, including the Before You Say Yes series on Christian dating, discernment and choosing well.";
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -11,7 +11,7 @@ import {
   GUIDELINES_VERSE,
 } from "@/lib/community-guidelines";
 
-const DESCRIPTION = "How members of the Faithful Path Community treat one another: the guidelines every member agrees to.";
+const DESCRIPTION = "The Faithful Path Community guidelines every member agrees to: speak with respect, keep words clean, protect each other's privacy, and no arguing or selling.";
 
 export const metadata: Metadata = {
   title: "Community Guidelines",

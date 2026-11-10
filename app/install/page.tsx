@@ -4,7 +4,7 @@ import { socialMeta } from "@/lib/social-meta";
 
 const TITLE = "Install the App";
 const DESCRIPTION =
-  "Add Faithful Path Community to your phone's home screen, so it opens full screen like an app.";
+  "Add Faithful Path Community to your phone's home screen so it opens full screen like an app, with step-by-step instructions for iPhone and Android.";
 
 export const metadata: Metadata = {
   title: TITLE,

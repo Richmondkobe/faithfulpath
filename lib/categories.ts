@@ -14,8 +14,10 @@
 export type Category = {
   slug: string;
   label: string;
-  /** The lede on the category page, and its meta description. */
+  /** The lede on the category page (and its meta description unless metaDescription is set). */
   description: string;
+  /** A longer search description (110–160 characters, as Bing recommends). Not shown on the page. */
+  metaDescription?: string;
 };
 
 export const CATEGORIES: readonly Category[] = [
@@ -24,42 +26,56 @@ export const CATEGORIES: readonly Category[] = [
     label: "New to Faith & Discipleship",
     description:
       "Beginning with Christ, and the first steps of following him: baptism, the Bible, prayer and belonging to a church.",
+    metaDescription:
+      "Christian articles for new believers: being born again, baptism, assurance of salvation, studying the Bible, prayer, finding a church and growing in faith.",
   },
   {
     slug: "burnout-rest-and-retreats",
     label: "Burnout, Rest & Retreats",
     description:
       "For the tiredness that sleep does not reach — recognising burnout, and making room to stop.",
+    metaDescription:
+      "Christian articles on burnout and rest: signs of spiritual burnout, taking a Sabbath, planning a retreat at home, a digital detox and help for tired pastors.",
   },
   {
     slug: "overthinking-and-worry",
     label: "Overthinking & Worry",
     description:
       "When your mind will not rest: anxiety, rumination, and thinking about faith without spiralling.",
+    metaDescription:
+      "Christian articles on overthinking, worry and anxiety: what the Bible says, praying when anxious, replaying the past, sleepless nights and making decisions.",
   },
   {
     slug: "prayer-and-hearing-god",
     label: "Prayer & Hearing God",
     description:
       "Prayer, silence, and testing what you think you have heard from God.",
+    metaDescription:
+      "Christian articles on prayer and hearing God: quiet prayer, testing what you think God said, when God seems silent, spiritual dryness and starting again.",
   },
   {
     slug: "dating-and-discernment",
     label: "Dating & Discernment",
     description:
       "Christian dating, red and green flags, and how to decide well before you commit.",
+    metaDescription:
+      "Christian dating articles: red and green flags, being equally yoked, boundaries, dating after 30, money, engagement timing and deciding well before you commit.",
   },
   {
     slug: "marriage-and-premarital",
     label: "Marriage & Premarital",
     description:
       "Preparing for marriage, and the conversations married couples put off having.",
+    metaDescription:
+      "Christian marriage and premarital articles: premarital counselling, questions to ask before marriage, money, children and in-laws, and help for couples.",
   },
   {
     slug: "church-leadership",
     label: "Church Leadership",
     description:
       "For pastors and new church leaders: training, raising people up, and planning for a group.",
+    metaDescription:
+      "Church leadership articles for pastors and new leaders: a six-week training plan, mentoring, small groups, volunteers, prayer meetings and retreats.",
   },
 ] as const;
 

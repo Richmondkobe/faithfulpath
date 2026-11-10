@@ -34,11 +34,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${category.label} — page ${page}`,
-    description: category.description,
+    description: category.metaDescription ?? category.description,
     alternates: { canonical: categoryHref(category.slug, page) },
     ...socialMeta({
       title: `${category.label} — Articles, page ${page}`,
-      description: category.description,
+      description: category.metaDescription ?? category.description,
       path: categoryHref(category.slug, page),
     }),
   };
