@@ -31,10 +31,12 @@ import { Analytics } from "@vercel/analytics/next";
  * /install, the page on adding the site to a home screen, is left out too
  * (Richmond, 21 October 2026: no analytics on that page).
  *
- * beforeSend stays as the second line: it reduces the URL to its pathname, so a
- * query string cannot carry a token or an email address into a payload by
+ * beforeSend stays as the second line: it removes the query string and
+ * fragment, so neither can carry a token or an email address into a payload by
  * accident, and it drops anything under /members that a client-side navigation
- * might still produce.
+ * might still produce. It keeps the URL absolute (origin + path): from
+ * 27 September to 10 November 2026 it sent a bare path, which Vercel rejects,
+ * so no page view or event was ever recorded.
  */
 export default function VercelAnalytics() {
   const pathname = usePathname();
@@ -43,14 +45,20 @@ export default function VercelAnalytics() {
   return (
     <Analytics
       beforeSend={(event) => {
-        let path = event.url;
+        // Vercel rejects any event whose url is not absolute (400, "body/o
+        // must match pattern ^https?://"), so the url must stay a full
+        // address. Strip the query string and fragment, keep the origin.
+        let url: URL;
         try {
-          path = new URL(event.url).pathname;
+          url = new URL(event.url, window.location.origin);
         } catch {
-          // Already a path, or unparseable; carry on with what we have.
+          return null; // Unparseable: send nothing rather than guess.
         }
+        const path = url.pathname;
         if (path.startsWith("/members") || path.startsWith("/courses") || path === "/install") return null;
-        return { ...event, url: path };
+        url.search = "";
+        url.hash = "";
+        return { ...event, url: url.href };
       }}
     />
   );
