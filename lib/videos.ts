@@ -8,6 +8,12 @@
  * the series" on that book's page) and one article to show it in (an article
  * slug: it then shows after that article's opening section).
  *
+ * The upload date must be the full date, time and timezone, exactly as the
+ * watch page's metadata gives it (uploadDate), e.g. "2026-10-21T06:12:08-07:00".
+ * Google rejects a bare date ("uploadDate is missing a timezone"). As a
+ * safety net, videoSchema() turns a date-only value into midnight UTC, but
+ * that time is a guess: always copy the real one.
+ *
  * The thumbnails are fetched from YouTube when the site is built and served
  * from this site (app/videos/thumbnail/[id]), so nothing is requested from
  * YouTube until someone presses play.
@@ -16,7 +22,7 @@ export type Video = {
   id: string;
   title: string;
   description: string;
-  /** ISO 8601, as YouTube gives it. */
+  /** ISO 8601 date, time and timezone, as YouTube gives it: "2026-10-21T06:12:08-07:00". */
   uploaded: string;
   /** ISO 8601 duration, e.g. PT19M54S. */
   duration: string;
@@ -28,8 +34,8 @@ export const VIDEOS: Video[] = [
   { id: "BDbkbvhXh8U", title: "7 Red Flags Christians Often Ignore", description: "Pastor Richmond Kobe walks through seven red flags Christians often spiritualise in dating, and how to tell an ordinary difference from a troubling pattern.", uploaded: "2026-10-19T18:38:24-07:00", duration: "PT19M54S", book: "before-you-say-yes", article: "christian-dating-red-flags" },
   { id: "8aSGo1Wa4R0", title: "What Does 'Equally Yoked' Really Mean?", description: "Pastor Richmond Kobe explains what 2 Corinthians 6:14 actually means, how it applies to dating and marriage, and five areas where a Christian couple needs to pull in the same direction.", uploaded: "2026-10-19T20:48:40-07:00", duration: "PT18M37S", book: "before-you-say-yes", article: "what-does-equally-yoked-mean" },
   { id: "flN96Mo4tG8", title: "10 Quiet Green Flags in a Christian Relationship", description: "Pastor Richmond Kobe walks through ten quiet signs of godly character in a Christian relationship: how someone treats your freedom, handles failure and lives the truth.", uploaded: "2026-10-20T08:24:08-07:00", duration: "PT18M43S", book: "before-you-say-yes", article: "green-flags-christian-relationship" },
-  { id: "j6uVKsf2L98", title: "\"God Told Me You're the One\": How to Test It", description: "Pastor Richmond Kobe explains five biblical tests for when someone says \"God told me you're the one\": Scripture, freedom, peace, counsel and fruit.", uploaded: "2026-10-21", duration: "PT11M4S", book: "before-you-say-yes", article: "god-told-me-to-marry-you" },
-  { id: "GERMUiJnAtI", title: "How Long Should Christians Date Before Engagement?", description: "Pastor Richmond Kobe explains five things time should reveal before engagement, and how to know whether a couple is moving too fast or standing still too long.", uploaded: "2026-10-22", duration: "PT10M29S", book: "before-you-say-yes", article: "how-long-to-date-before-engagement" },
+  { id: "j6uVKsf2L98", title: "\"God Told Me You're the One\": How to Test It", description: "Pastor Richmond Kobe explains five biblical tests for when someone says \"God told me you're the one\": Scripture, freedom, peace, counsel and fruit.", uploaded: "2026-10-21T06:12:08-07:00", duration: "PT11M4S", book: "before-you-say-yes", article: "god-told-me-to-marry-you" },
+  { id: "GERMUiJnAtI", title: "How Long Should Christians Date Before Engagement?", description: "Pastor Richmond Kobe explains five things time should reveal before engagement, and how to know whether a couple is moving too fast or standing still too long.", uploaded: "2026-10-22T06:06:18-07:00", duration: "PT10M29S", book: "before-you-say-yes", article: "how-long-to-date-before-engagement" },
   { id: "Qio8kUMytjo", title: "Waiting on God for Marriage? Don't Put Life on Hold", description: "How to wait on God without losing hope, compromising your convictions, or putting your life on hold — five ways to wait well, from Isaiah 40:31 and the Hebrew word qāwâ.", uploaded: "2026-10-23T11:34:29-07:00", duration: "PT11M20S", book: "before-you-say-yes", article: "christian-dating-after-30" },
 ];
 
@@ -39,6 +45,9 @@ export const videosForBook = (slug: string) => VIDEOS.filter((v) => v.book === s
 
 export const videoForArticle = (slug: string) => VIDEOS.find((v) => v.article === slug) ?? null;
 
+/** A bare YYYY-MM-DD becomes midnight UTC, so Google never gets a date with no time or timezone. */
+const withTimeAndZone = (date: string) => (/^\d{4}-\d{2}-\d{2}$/.test(date) ? `${date}T00:00:00+00:00` : date);
+
 /** VideoObject structured data for one video, for a page's JSON-LD graph. */
 export function videoSchema(v: Video, abs: (path: string) => string, publisher: object) {
   return {
@@ -46,7 +55,7 @@ export function videoSchema(v: Video, abs: (path: string) => string, publisher: 
     name: v.title,
     description: v.description,
     thumbnailUrl: [abs(videoThumbnail(v.id)), `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`],
-    uploadDate: v.uploaded,
+    uploadDate: withTimeAndZone(v.uploaded),
     duration: v.duration,
     embedUrl: `https://www.youtube.com/embed/${v.id}`,
     url: `https://www.youtube.com/watch?v=${v.id}`,
