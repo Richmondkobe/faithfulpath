@@ -19,13 +19,14 @@ export const PERSON_ID = `${SITE.url}/#richmond`;
 export const abs = (path: string) =>
   path.startsWith("http") ? path : `${SITE.url}${path}`;
 
-/** The five accounts the footer links to. */
+/** The six accounts the footer links to. */
 const SOCIAL = [
   "https://www.facebook.com/faithfulpathcummunity",
   "https://www.instagram.com/faithfulpathcommunty/",
   "https://www.linkedin.com/in/richmondkobe/",
   "https://www.tiktok.com/@christianheritagehub",
-  "https://www.youtube.com/channel/UCKRk5vFH9j9WzfQDKlA81yg",
+  "https://www.youtube.com/@FaithfulPathCommunity",
+  "https://open.spotify.com/show/1uz3OnJS2SQYwrr9qxatR8",
 ];
 
 /** A reference to the Organization, for use as provider, publisher, worksFor. */

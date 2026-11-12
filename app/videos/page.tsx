@@ -42,6 +42,28 @@ export default function VideosPage() {
         {TITLE}
       </h1>
 
+      <p className="mt-5 text-[16px] leading-relaxed text-muted">
+        New teachings are posted on YouTube and as a podcast on Spotify.
+      </p>
+      <div className="mt-2 flex flex-wrap gap-x-6">
+        <a
+          href="https://www.youtube.com/@FaithfulPathCommunity"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center text-[15px] font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
+        >
+          Subscribe on YouTube →
+        </a>
+        <a
+          href="https://open.spotify.com/show/1uz3OnJS2SQYwrr9qxatR8"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center text-[15px] font-medium text-gold-text underline underline-offset-4 transition-colors hover:text-navy"
+        >
+          Listen on Spotify →
+        </a>
+      </div>
+
       <ul className="mt-10 space-y-14">
         {VIDEOS.map((v, i) => (
           <li key={v.id}>
