@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 import CommunityNav from "@/components/community/CommunityNav";
 import CommunityFooter from "@/components/community/CommunityFooter";
 import LocalTime from "@/components/community/LocalTime";
@@ -13,6 +15,8 @@ export const metadata: Metadata = {
 
 /** The next gathering. The Zoom link is only ever in this signed-in page and its calendar file. */
 export default async function WeeklyGathering() {
+  // On hold (lib/gathering-switch.ts): the page and its data stay, unseen.
+  if (!GATHERING_ON) redirect("/community/home");
   const viewer = await requireCommunity();
   const { next, skippedBefore } = await nextGathering(viewer.supabase);
   const g = next?.gathering ?? null;

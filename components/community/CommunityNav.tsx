@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { communitySignOut } from "@/app/community/actions";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 
 const LINKS = [
   { href: "/community/home", label: "Community home", key: "home" },
@@ -15,7 +16,8 @@ export default function CommunityNav({ current }: { current: (typeof LINKS)[numb
       {/* One row. On a phone it scrolls sideways rather than wrapping onto three. */}
       <div className="mx-auto flex max-w-3xl items-center gap-x-4 overflow-x-auto px-4 [scrollbar-width:thin] sm:px-6">
         <nav aria-label="Community" className="-mx-2 flex shrink-0 items-center whitespace-nowrap text-[15px] font-semibold">
-          {LINKS.map((l) => (
+          {/* The Weekly Gathering tab only while it is on (lib/gathering-switch.ts). */}
+          {LINKS.filter((l) => GATHERING_ON || l.key !== "gathering").map((l) => (
             <Link
               key={l.key}
               href={l.href}

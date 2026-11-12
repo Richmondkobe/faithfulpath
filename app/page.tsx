@@ -11,6 +11,7 @@ import { listPublishedArticles } from "@/lib/articles-db";
 import { OFFERS, SERIES_PATH } from "@/lib/following-jesus";
 import { formatPrice } from "@/lib/products";
 import { publicNextGathering } from "@/lib/public-gathering";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 import NextGatheringTime from "@/components/community/NextGatheringTime";
 import { COURSE_COUNT_CAP, topicList } from "@/lib/membership-courses";
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   ...socialMeta({
     title: "Faithful Path Community — Grow in Faith, Pray Together, Talk to a Pastor",
     description:
-      "A free Christian community led by Pastor Richmond Kobe: teaching, prayer, a weekly online gathering, and one-to-one pastoral conversations.",
+      "A free Christian community led by Pastor Richmond Kobe: teaching, a Prayer Wall, a place to ask Pastor Richmond your questions, and one-to-one pastoral conversations.",
     path: "/",
   }),
 };
@@ -68,7 +69,7 @@ const STEPS = [
   {
     label: "Join the Free Community",
     title: "Pray and walk with others",
-    body: "A prayer wall, a weekly gathering on Zoom, and your questions answered by Pastor Richmond. Free, with no card.",
+    body: "A Prayer Wall, and a place to ask Pastor Richmond your questions and read his answers. Free, with no card.",
     href: "/community",
     cta: "Join free",
   },
@@ -84,7 +85,8 @@ const STEPS = [
 export default async function Home() {
   const [recent, gathering] = await Promise.all([
     listPublishedArticles().then((all) => all.slice(0, 3)),
-    publicNextGathering(),
+    // Nothing while the gathering is on hold (lib/gathering-switch.ts).
+    GATHERING_ON ? publicNextGathering() : null,
   ]);
   const fjSingle = formatPrice(OFFERS["following-jesus-begin"].priceCents);
   const fjAll = formatPrice(OFFERS["following-jesus-all-four"].priceCents);

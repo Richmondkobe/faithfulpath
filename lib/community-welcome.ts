@@ -1,6 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { SITE } from "@/lib/site";
 import { firstNameOf, nextOccurrence, type Gathering } from "@/lib/community";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 
 /**
  * The welcome email to someone who has just joined the community (Richmond's
@@ -9,7 +10,8 @@ import { firstNameOf, nextOccurrence, type Gathering } from "@/lib/community";
  * signing in again never sends it.
  *
  * Plain, like the site's other emails. No Zoom link: members find it on the
- * Gathering page once signed in.
+ * Gathering page once signed in. The gathering line is left out while the
+ * gathering is on hold (lib/gathering-switch.ts).
  */
 
 const FROM = "Pastor Richmond Kobe <questions@faithfulpathcommunity.com>";
@@ -41,9 +43,35 @@ async function nextGatheringWhen(): Promise<string | null> {
 export function welcomeEmail(firstName: string, when: string | null) {
   const prayer = `${SITE.url}/community/prayer`;
   const gathering = `${SITE.url}/community/gathering`;
-  const gatheringLine = when
-    ? `Join our weekly gathering on Zoom for prayer and Bible study. The next one is ${when}.`
-    : "Join our weekly gathering on Zoom for prayer and Bible study.";
+  const questions = `${SITE.url}/community/questions`;
+  const link = (href: string, label: string) => `<a href="${href}" style="color:#5e4412">${label}</a>`;
+
+  // Each way to begin, as plain text and as HTML.
+  const ways: { text: string; html: string }[] = [
+    {
+      text: `Share a prayer request on the Prayer Wall, and pray for others.\n   ${prayer}`,
+      html: `Share a prayer request on the ${link(prayer, "Prayer Wall")}, and pray for others.`,
+    },
+    ...(GATHERING_ON
+      ? [
+          {
+            text: `Join our weekly gathering on Zoom for prayer and Bible study.${when ? ` The next one is ${when}.` : ""}\n   ${gathering}`,
+            html: `Join our ${link(gathering, "weekly gathering")} on Zoom for prayer and Bible study.${
+              when ? ` The next one is ${escape(when)}.` : ""
+            }`,
+          },
+        ]
+      : []),
+    {
+      text: `Ask me a question about faith, the Bible or following Jesus on the community Q&A board, with your first name or anonymously. I answer there for everyone to read.\n   ${questions}`,
+      html: `Ask me a question about faith, the Bible or following Jesus on the community ${link(questions, "Q&amp;A board")}, with your first name or anonymously. I answer there for everyone to read.`,
+    },
+    {
+      text: "Reply to this email if you'd like to tell me a little more about yourself.",
+      html: "Reply to this email if you&rsquo;d like to tell me a little more about yourself.",
+    },
+  ];
+  const count = ["one", "two", "three", "four", "five"][ways.length - 1] ?? String(ways.length);
 
   const subject = `Welcome to the Faithful Path Community, ${firstName}`;
   const text = [
@@ -51,11 +79,9 @@ export function welcomeEmail(firstName: string, when: string | null) {
     "",
     "Welcome! I'm so glad you've joined us. Thank you for telling me a little about yourself. I read every message personally.",
     "",
-    "Here are three simple ways to begin:",
+    `Here are ${count} simple ways to begin:`,
     "",
-    `1. Share a prayer request on the Prayer Wall, and pray for others.\n   ${prayer}`,
-    `2. ${gatheringLine}\n   ${gathering}`,
-    "3. Reply to this email if you'd like to tell me more or ask a question.",
+    ...ways.map((w, i) => `${i + 1}. ${w.text}`),
     "",
     "You don't have to walk with God alone. We're glad you're here.",
     "",
@@ -65,18 +91,13 @@ export function welcomeEmail(firstName: string, when: string | null) {
   ].join("\n");
 
   const p = (s: string) => `<p style="margin:0 0 16px;line-height:1.6">${s}</p>`;
-  const link = (href: string, label: string) => `<a href="${href}" style="color:#5e4412">${label}</a>`;
   const html =
     `<div style="font-family:Helvetica,Arial,sans-serif;font-size:16px;color:#2b3445;max-width:560px">` +
     p(`Dear ${escape(firstName)},`) +
     p("Welcome! I&rsquo;m so glad you&rsquo;ve joined us. Thank you for telling me a little about yourself. I read every message personally.") +
-    p("Here are three simple ways to begin:") +
+    p(`Here are ${count} simple ways to begin:`) +
     `<ol style="margin:0 0 16px;padding-left:24px;line-height:1.6">` +
-    `<li style="margin-bottom:8px">Share a prayer request on the ${link(prayer, "Prayer Wall")}, and pray for others.</li>` +
-    `<li style="margin-bottom:8px">Join our ${link(gathering, "weekly gathering")} on Zoom for prayer and Bible study.${
-      when ? ` The next one is ${escape(when)}.` : ""
-    }</li>` +
-    `<li>Reply to this email if you&rsquo;d like to tell me more or ask a question.</li>` +
+    ways.map((w, i) => `<li${i < ways.length - 1 ? ' style="margin-bottom:8px"' : ""}>${w.html}</li>`).join("") +
     `</ol>` +
     p("You don&rsquo;t have to walk with God alone. We&rsquo;re glad you&rsquo;re here.") +
     `<p style="margin:0;line-height:1.6">Grace and peace,<br>Pastor Richmond Kobe<br>Faithful Path Community</p>` +
@@ -109,7 +130,7 @@ async function deliver(p: { email: string; fullName: string }): Promise<string |
   const key = process.env.RESEND_API_KEY;
   if (!key) return "RESEND_API_KEY is not set for this site.";
   const firstName = firstNameOf(p.fullName) || "friend";
-  const { subject, text, html } = welcomeEmail(firstName, await nextGatheringWhen());
+  const { subject, text, html } = welcomeEmail(firstName, GATHERING_ON ? await nextGatheringWhen() : null);
   try {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",

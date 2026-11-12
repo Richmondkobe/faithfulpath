@@ -7,10 +7,13 @@ import { DISPLAY } from "@/components/community/styles";
 import { socialMeta } from "@/lib/social-meta";
 import { HELP_PATH } from "@/lib/site";
 import { GUIDELINES_PATH } from "@/lib/community-guidelines";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 
 const TITLE = "The Faithful Path Community";
-const DESCRIPTION =
-  "A free community led by Pastor Richmond Kobe: a place to grow, pray and walk with others. Share prayer requests and join the weekly online gathering.";
+// The gathering is mentioned only while it is on (lib/gathering-switch.ts).
+const DESCRIPTION = GATHERING_ON
+  ? "A free community led by Pastor Richmond Kobe: a place to grow, pray and walk with others. Share prayer requests and join the weekly online gathering."
+  : "A free community led by Pastor Richmond Kobe: a place to grow, pray and walk with others. Share prayer requests on the Prayer Wall and ask Pastor Richmond your questions.";
 
 export const metadata: Metadata = {
   title: "Community",
@@ -19,13 +22,14 @@ export const metadata: Metadata = {
   ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/community" }),
 };
 
-const GETS = [
+const ALL_GETS = [
   {
     title: "The Prayer Wall",
     text: "Share a prayer request, with your first name or anonymously, and pray for others. Pastor Richmond reads every request before it appears, and you can mark yours answered when God answers.",
   },
   {
     title: "The Weekly Gathering",
+    gathering: true,
     text: "An online gathering on Zoom each week, to pray and open the Bible together. The time is shown in your own time zone, with a button to add it to your calendar.",
   },
   {
@@ -37,6 +41,8 @@ const GETS = [
     text: "Joining costs nothing. Tell us your name, country and a little about yourself. There is no password: we email you a 6-digit code to sign in.",
   },
 ];
+
+const GETS = ALL_GETS.filter((g) => GATHERING_ON || !("gathering" in g));
 
 /** The statement of faith: each belief's opening words in bold, then the rest. */
 const BELIEFS: [string, string][] = [
@@ -104,7 +110,9 @@ export default function Community() {
               Trinity Western University in Canada, I am an ordained minister, and I live in Thailand with my family.
             </p>
             <p className="mt-3 leading-relaxed">
-              This community is where we pray for one another and meet each week, wherever in the world you are.{" "}
+              {GATHERING_ON
+                ? "This community is where we pray for one another and meet each week, wherever in the world you are."
+                : "This community is where we pray for one another and bring our questions, wherever in the world you are."}{" "}
               <Link href="/about" className="font-semibold text-gold-text underline underline-offset-4 hover:text-navy">
                 More about me
               </Link>

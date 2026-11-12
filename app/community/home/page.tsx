@@ -14,6 +14,7 @@ import NextGatheringTime from "@/components/community/NextGatheringTime";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
 import { agreeToGuidelines, leaveCommunity } from "@/app/community/actions";
 import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
+import { GATHERING_ON } from "@/lib/gathering-switch";
 
 export const metadata: Metadata = {
   title: "Community home",
@@ -97,7 +98,8 @@ export default async function CommunityHome({ searchParams }: Props) {
     loadAnnouncements(viewer),
     loadAnswered(viewer, 1),
     // The next real date: skipped weeks are passed over (lib/community.ts).
-    nextGathering(viewer.supabase).catch(() => ({ next: null })),
+    // Not read while the gathering is on hold (lib/gathering-switch.ts).
+    GATHERING_ON ? nextGathering(viewer.supabase).catch(() => ({ next: null })) : { next: null },
   ]);
   const nextStart = gathering.next?.start ?? null;
   const isNew = (createdAt: string) => !seenBefore || new Date(createdAt).getTime() > seenBefore.getTime();
@@ -157,7 +159,7 @@ export default async function CommunityHome({ searchParams }: Props) {
           </section>
         )}
 
-        <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+        <ul className={`mt-8 grid gap-4 ${GATHERING_ON ? "sm:grid-cols-2" : ""}`}>
           <li>
             <Link
               href="/community/prayer"
@@ -171,27 +173,29 @@ export default async function CommunityHome({ searchParams }: Props) {
               <span className="mt-4 inline-block font-semibold text-gold-soft">Open the Prayer Wall ›</span>
             </Link>
           </li>
-          <li>
-            <Link
-              href="/community/gathering"
-              className="block h-full rounded-2xl border border-gold-line/60 bg-paper p-6 transition-colors hover:border-gold-line"
-            >
-              <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Every week, online</p>
-              <p className="mt-2 text-2xl text-navy" style={DISPLAY}>
-                Weekly Gathering
-              </p>
-              <p className="mt-2 leading-relaxed">
-                {nextStart ? (
-                  <>
-                    Next: <NextGatheringTime iso={nextStart} />
-                  </>
-                ) : (
-                  "The next time we meet, in your own time zone."
-                )}
-              </p>
-              <span className="mt-4 inline-block font-semibold text-gold-text">See the next gathering ›</span>
-            </Link>
-          </li>
+          {GATHERING_ON && (
+            <li>
+              <Link
+                href="/community/gathering"
+                className="block h-full rounded-2xl border border-gold-line/60 bg-paper p-6 transition-colors hover:border-gold-line"
+              >
+                <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-text">Every week, online</p>
+                <p className="mt-2 text-2xl text-navy" style={DISPLAY}>
+                  Weekly Gathering
+                </p>
+                <p className="mt-2 leading-relaxed">
+                  {nextStart ? (
+                    <>
+                      Next: <NextGatheringTime iso={nextStart} />
+                    </>
+                  ) : (
+                    "The next time we meet, in your own time zone."
+                  )}
+                </p>
+                <span className="mt-4 inline-block font-semibold text-gold-text">See the next gathering ›</span>
+              </Link>
+            </li>
+          )}
         </ul>
 
         <Link

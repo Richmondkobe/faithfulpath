@@ -102,7 +102,7 @@ function ways(fjSingle: string, fjAll: string): Way[] {
       cells: [
         "Free",
         "Nothing to pay, no card",
-        "The Prayer Wall, the Weekly Gathering on Zoom, and Ask Pastor Richmond",
+        "The Prayer Wall and Ask Pastor Richmond",
         "Ask on the community board. Pastor Richmond answers there, for everyone to read (first name or anonymous)",
         "Leave whenever you like",
       ],
