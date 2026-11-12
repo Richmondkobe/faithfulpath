@@ -39,7 +39,7 @@ export default function FooterCommunityInvite() {
         Join the Faithful Path Community
       </p>
       <p className="mt-2 max-w-md text-[15px] leading-relaxed text-muted">
-        Free. Prayer, a weekly gathering, and letters from Pastor Richmond.
+        Free. Prayer, and letters from Pastor Richmond.
       </p>
       <Link
         href="/community"

@@ -102,7 +102,7 @@ export default async function GiveThankYou({ searchParams }: Props) {
         <h2 id="community" className="mt-2 text-2xl text-sun" style={DISPLAY}>
           Join the Faithful Path Community
         </h2>
-        <p className="mt-2 leading-relaxed text-sand">Prayer, a weekly gathering, and letters from Pastor Richmond.</p>
+        <p className="mt-2 leading-relaxed text-sand">Prayer, and letters from Pastor Richmond.</p>
         <Link
           href="/community"
           className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-gold px-7 text-[15px] font-semibold text-night hover:bg-gold-soft"

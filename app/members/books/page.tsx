@@ -97,7 +97,7 @@ export default async function YourBooks() {
               <p className="mt-2 text-xl text-sun" style={DISPLAY}>
                 Join the free community
               </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-sand">Prayer, a weekly gathering, and letters from Pastor Richmond.</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-sand">Prayer, and letters from Pastor Richmond.</p>
               <span className="mt-3 inline-block font-semibold text-gold-soft">Join free ›</span>
             </Link>
           )}

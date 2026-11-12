@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { listPublishedProducts } from "@/lib/products-db";
-import { coverPublicUrl } from "@/lib/supabase/admin";
+import { coverPublicUrl, listSampleSlugs } from "@/lib/supabase/admin";
 import { formatPrice, type Product } from "@/lib/products";
 import { SITE } from "@/lib/site";
-import { TrackedLink } from "@/components/analytics/Tracked";
+import { TrackedLink, TrackedSubmit } from "@/components/analytics/Tracked";
 import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
 
 // Saving a book in the admin calls revalidatePath("/start"); this is the
@@ -12,9 +13,13 @@ import { COURSE_COUNT_CAP } from "@/lib/membership-courses";
 export const revalidate = 300;
 
 /**
- * /start — the link in the Instagram bio. Built for a phone first: the
- * free community, the featured book (Richmond's choice, "Featured on /start"
- * in the admin), the other books, then the membership and Talk to a Pastor.
+ * /start — the link in the Instagram bio. Built for a phone first: the two
+ * "Start here" books side by side (both covers on the first screen), the free
+ * community, the other books, then the membership and Talk to a Pastor.
+ *
+ * The pair: if exactly two books are ticked "Featured on /start" in the admin,
+ * those two; otherwise Before You Say Yes and Talk Before You Marry
+ * (Richmond, 12 November 2026).
  *
  * Kept out of search results and the sitemap: it repeats what /guides and the
  * home page already say, and exists for people arriving from Instagram.
@@ -27,6 +32,64 @@ export const metadata: Metadata = {
 };
 
 const DISPLAY = { fontFamily: "var(--font-display)", fontWeight: 400 } as const;
+
+/** The default "Start here" pair, in the order shown. */
+const START_PAIR = ["before-you-say-yes", "talk-before-you-marry"];
+
+/** One click event per book, e.g. start_buy_before_you_say_yes. */
+const buyEvent = (slug: string) => `start_buy_${slug.replace(/-/g, "_")}`;
+
+/**
+ * One book of the pair. Buy posts to /api/checkout exactly as the book's own
+ * page does, so it starts the same Stripe checkout at the price in the
+ * database. The sample opens in a new tab, as on the book page.
+ */
+function PairBook({ book, hasSample }: { book: Product; hasSample: boolean }) {
+  const cover = coverPublicUrl(book.cover_path);
+  return (
+    <li className="flex flex-col items-center text-center">
+      <Link href={`/guides/${book.slug}`} className="group flex w-full flex-col items-center">
+        <div className="relative aspect-[2/3] w-full max-w-[8.5rem] overflow-hidden rounded-md bg-night/40">
+          {cover && (
+            <Image
+              src={cover}
+              alt={`Cover of ${book.title}`}
+              fill
+              sizes="8.5rem"
+              loading="eager"
+              fetchPriority="high"
+              className="object-contain"
+            />
+          )}
+        </div>
+        <h3 className="mt-3 text-[17px] leading-snug text-sun group-hover:underline" style={DISPLAY}>
+          {book.title}
+        </h3>
+      </Link>
+      <p className="mt-1 text-[13px] font-medium uppercase tracking-[0.12em] text-gold-soft">{formatPrice(book.price_cents)}</p>
+      <form action="/api/checkout" method="POST" className="mt-auto w-full pt-3">
+        <input type="hidden" name="slug" value={book.slug} />
+        <TrackedSubmit
+          event={buyEvent(book.slug)}
+          slug={book.slug}
+          className="flex min-h-12 w-full items-center justify-center rounded-xl bg-gold px-3 text-[16px] font-semibold text-night transition-colors hover:bg-gold-soft"
+        >
+          Buy
+        </TrackedSubmit>
+      </form>
+      {hasSample && (
+        <a
+          href={`/guides/${book.slug}/sample`}
+          target="_blank"
+          rel="noopener nofollow"
+          className="mt-2 inline-flex min-h-[44px] items-center text-[14px] text-sand underline underline-offset-4 transition-colors hover:text-gold-soft"
+        >
+          Read a free sample
+        </a>
+      )}
+    </li>
+  );
+}
 
 function BookRow({ book }: { book: Product }) {
   const cover = coverPublicUrl(book.cover_path);
@@ -54,10 +117,13 @@ function BookRow({ book }: { book: Product }) {
 }
 
 export default async function Start() {
-  const books = await listPublishedProducts();
-  const featured = books.find((b) => b.featured_on_start) ?? null;
-  const others = books.filter((b) => b !== featured);
-  const featuredCover = featured ? coverPublicUrl(featured.cover_path) : null;
+  const [books, samples] = await Promise.all([listPublishedProducts(), listSampleSlugs()]);
+  const toggled = books.filter((b) => b.featured_on_start);
+  const pair =
+    toggled.length === 2
+      ? toggled
+      : START_PAIR.map((slug) => books.find((b) => b.slug === slug)).filter((b): b is Product => Boolean(b));
+  const others = books.filter((b) => !pair.includes(b));
 
   return (
     <main className="mx-auto max-w-md px-4 pt-8 pb-16 sm:pt-12">
@@ -68,7 +134,34 @@ export default async function Start() {
         <p className="mt-1 text-[13px] font-medium uppercase tracking-[0.12em] text-gold-text">{SITE.name}</p>
       </header>
 
-      {/* The free community first (Richmond, 29 October 2026). */}
+      {/* The two books first, then the community (Richmond, 12 November 2026). */}
+      {pair.length > 0 && (
+        <section aria-labelledby="start-here-title" className="mt-6 rounded-2xl bg-navy px-4 pt-5 pb-4 shadow-sm">
+          <h2
+            id="start-here-title"
+            className="text-center text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft"
+          >
+            Start here
+          </h2>
+          <p className="mt-2 text-center leading-relaxed text-sand">
+            Choosing wisely, then preparing well. Two guides that belong together.
+          </p>
+          <ul className="mt-5 grid grid-cols-2 gap-4">
+            {pair.map((b) => (
+              <PairBook key={b.id} book={b} hasSample={samples.has(b.slug)} />
+            ))}
+          </ul>
+          {/* The book page's agreement line, shown before either Buy is pressed. */}
+          <p className="mt-3 text-center text-[13px] leading-relaxed text-sand/80">
+            PDF, instant download. By buying you agree to immediate download and to our{" "}
+            <Link href="/terms#books" className="underline underline-offset-4 hover:text-gold-soft">
+              Terms
+            </Link>
+            .
+          </p>
+        </section>
+      )}
+
       <div className="mt-8">
         <TrackedLink
           href="/community"
@@ -80,47 +173,16 @@ export default async function Start() {
             Join the community
           </p>
           <p className="mt-2 leading-relaxed text-sand">
-            A place to grow, pray and walk with others: a Prayer Wall and a weekly online gathering.
+            A place to grow, pray and walk with others: a Prayer Wall and a place to ask your questions.
           </p>
           <span className="mt-4 inline-block font-semibold text-gold-soft">Join free ›</span>
         </TrackedLink>
       </div>
 
-      {featured && (
-        <section aria-labelledby="featured-title" className="mt-8 rounded-2xl bg-navy px-5 pt-6 pb-6 text-center shadow-sm">
-          <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-gold-soft">Featured</p>
-          {featuredCover && (
-            <div className="relative mx-auto mt-4 aspect-[2/3] w-48 overflow-hidden rounded-lg">
-              <Image
-                src={featuredCover}
-                alt={`Cover of ${featured.title}`}
-                fill
-                sizes="12rem"
-                loading="eager"
-                fetchPriority="high"
-                className="object-contain"
-              />
-            </div>
-          )}
-          <h2 id="featured-title" className="mt-5 text-2xl leading-snug text-sun" style={DISPLAY}>
-            {featured.title}
-          </h2>
-          {featured.subtitle && <p className="mt-2 leading-relaxed text-sand">{featured.subtitle}</p>}
-          <TrackedLink
-            href={`/guides/${featured.slug}`}
-            event="start_featured_book"
-            slug={featured.slug}
-            className="mt-6 flex min-h-14 w-full items-center justify-center rounded-xl bg-gold px-6 text-[17px] font-semibold text-night transition-colors hover:bg-gold-soft"
-          >
-            Get the book · {formatPrice(featured.price_cents)}
-          </TrackedLink>
-        </section>
-      )}
-
       {others.length > 0 && (
         <section aria-labelledby="books-title" className="mt-10">
           <h2 id="books-title" className="text-xl text-navy" style={DISPLAY}>
-            {featured ? "More books" : "Books"}
+            {pair.length > 0 ? "More books" : "Books"}
           </h2>
           <ul className="mt-4 space-y-3">
             {others.map((b) => (

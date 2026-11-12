@@ -327,8 +327,8 @@ export default function ProductForm({
           className="mt-0.5 h-4 w-4 accent-gold-text"
         />
         <label htmlFor="featured_on_start" className="text-sm text-ink">
-          Featured on /start — the one book at the top of the Instagram link page. Ticking it here takes it off
-          whichever book had it before.
+          Featured on /start. The Instagram link page shows Before You Say Yes and Talk Before You Marry at the top
+          by default. Ticking it here takes it off whichever book had it before.
         </label>
       </div>
 
