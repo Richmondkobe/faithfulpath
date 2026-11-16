@@ -22,7 +22,8 @@ export default async function DailyDevotional() {
 
       {passage ? (
         <blockquote className="mt-4 border-l-[3px] border-gold pl-4">
-          <p className="text-lg leading-relaxed text-navy">&ldquo;{passage}&rdquo;</p>
+          {/* No quotation marks added: the ESV text brings its own where the passage is speech. */}
+          <p className="text-lg leading-relaxed text-navy">{passage}</p>
           <footer className="mt-2 text-[15px] font-semibold text-gold-text">
             <cite className="not-italic">{d.ref}</cite> <span className="font-normal text-muted">(ESV)</span>
           </footer>
