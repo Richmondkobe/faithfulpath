@@ -17,8 +17,11 @@ import {
   type PrayerRequest,
 } from "@/lib/community";
 import { inputClass, labelClass } from "@/components/community/styles";
+import { devotionAt, type Reflection } from "@/lib/devotional";
 import {
   approvePrayer,
+  deleteReflection,
+  setReflectionStatus,
   declineQuestion,
   deleteQuestion,
   publishAnswer,
@@ -240,6 +243,14 @@ export default async function AdminCommunity({ searchParams }: Props) {
       </main>
     );
   }
+  // Kept apart from the rest: until its migration is run this table is not
+  // there, and the page should still load without it.
+  const reflectionRows = await supabase.from("devotional_reflections").select("*").order("created_at", { ascending: false }).limit(300);
+  const reflections = (reflectionRows.data ?? []) as Reflection[];
+  const reflectionsPending = reflections.filter((r) => r.status === "pending");
+  const reflectionsShown = reflections.filter((r) => r.status === "approved");
+  const reflectionsHidden = reflections.filter((r) => r.status === "rejected");
+
   const loadError = [requests, profiles, gatherings, notices, answerRows, questionRows].find((r) => r.error)?.error;
   const questions = (questionRows.data ?? []) as CommunityQuestion[];
   const questionsPending = questions.filter((q) => q.status === "pending");
@@ -509,6 +520,45 @@ export default async function AdminCommunity({ searchParams }: Props) {
     );
   };
 
+  const ReflectionRow = ({ r }: { r: Reflection }) => {
+    const d = devotionAt(r.day_seq);
+    return (
+      <li id={`f-${r.id}`} className="scroll-mt-6 rounded-xl border border-line bg-paper p-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 text-sm">
+          <p className="text-navy">
+            <span className="font-semibold">Reflection, shown as {r.display_name}</span>
+            <span className="text-muted"> · {author(r)}</span>
+          </p>
+          <p className="text-muted">{shortDate(r.created_at)}</p>
+        </div>
+        <p className="mt-2 text-[13px] text-gold-text">
+          Daily Devotional · Day {d.day}: {d.title}
+        </p>
+        <p className="mt-3 whitespace-pre-line leading-relaxed text-ink">{r.body}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          {r.status !== "approved" && (
+            <form action={setReflectionStatus}>
+              <input type="hidden" name="id" value={r.id} />
+              <input type="hidden" name="status" value="approved" />
+              <button className={gold}>{r.status === "pending" ? "Approve" : "Show again"}</button>
+            </form>
+          )}
+          {r.status !== "rejected" && (
+            <form action={setReflectionStatus}>
+              <input type="hidden" name="id" value={r.id} />
+              <input type="hidden" name="status" value="rejected" />
+              <button className={small}>{r.status === "approved" ? "Take down" : "Reject"}</button>
+            </form>
+          )}
+          <form action={deleteReflection}>
+            <input type="hidden" name="id" value={r.id} />
+            <button className={`${small} text-danger`}>Delete</button>
+          </form>
+        </div>
+      </li>
+    );
+  };
+
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
       <h1 className="text-3xl text-navy" style={DISPLAY}>
@@ -527,24 +577,51 @@ export default async function AdminCommunity({ searchParams }: Props) {
 
       <section id="review" className="mt-10 scroll-mt-6">
         <h2 className={H2} style={DISPLAY}>
-          Waiting for review ({pending.length + praisePending.length + questionsPending.length})
+          Waiting for review ({pending.length + praisePending.length + questionsPending.length + reflectionsPending.length})
         </h2>
         <p className="mt-1 text-sm text-muted">
-          New requests, approved ones a member has reported, and new praise updates on answered prayers. Nothing here is
-          shown to members yet.
+          New requests, approved ones a member has reported, new praise updates on answered prayers, and new
+          reflections on the Daily Devotional. Nothing here is shown to members yet.
         </p>
-        {pending.length + praisePending.length + questionsPending.length === 0 ? (
+        {pending.length + praisePending.length + questionsPending.length + reflectionsPending.length === 0 ? (
           <p className="mt-4 text-muted">Nothing waiting.</p>
         ) : (
           <ul className="mt-4 space-y-3">
             {questionsPending.map((q) => (
               <QuestionRow key={q.id} q={q} />
             ))}
+            {reflectionsPending.map((r) => (
+              <ReflectionRow key={r.id} r={r} />
+            ))}
             {praisePending.map((a) => (
               <AnswerRow key={a.request_id} a={a} />
             ))}
             {pending.map((r) => (
               <RequestRow key={r.id} r={r} actions={["approve", "reject"]} />
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <section id="reflections" className="mt-14 scroll-mt-6">
+        <h2 className={H2} style={DISPLAY}>
+          Daily Devotional reflections ({reflectionsShown.length} shown)
+        </h2>
+        <p className="mt-1 text-sm text-muted">
+          New reflections are in &ldquo;Waiting for review&rdquo; above. These are the ones members can see, newest
+          first, each under the day it was written for.
+        </p>
+        {reflectionRows.error ? (
+          <p className="mt-4 rounded-xl border border-danger-line bg-danger-bg px-4 py-3 text-danger">
+            Reflections are not switched on yet. Run supabase/migrations/20261116120000_devotional_reflections.sql in the
+            Supabase SQL editor.
+          </p>
+        ) : reflectionsShown.length + reflectionsHidden.length === 0 ? (
+          <p className="mt-4 text-muted">None yet.</p>
+        ) : (
+          <ul className="mt-4 space-y-3">
+            {[...reflectionsShown, ...reflectionsHidden].map((r) => (
+              <ReflectionRow key={r.id} r={r} />
             ))}
           </ul>
         )}

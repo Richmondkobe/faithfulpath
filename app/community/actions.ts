@@ -8,7 +8,9 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { siteUrl } from "@/lib/stripe";
 import { checkFormStamp } from "@/lib/form-stamp";
 import { getCommunityViewer } from "@/lib/community-db";
-import { notifyNewMember, notifyNewQuestion, notifyPrayerForReview } from "@/lib/community-email";
+import { notifyNewMember, notifyNewQuestion, notifyNewReflection, notifyPrayerForReview } from "@/lib/community-email";
+import { PASTOR_NAME } from "@/lib/community";
+import { REFLECTION_MAX, devotionAt, devotionalSeq } from "@/lib/devotional";
 import { syncCommunityMember } from "@/lib/community-sync";
 import { removeFromCommunityGroup } from "@/lib/mailerlite-community";
 import { sendWelcomeEmail } from "@/lib/community-welcome";
@@ -398,6 +400,59 @@ export async function deleteOwnPrayerRequest(formData: FormData) {
   revalidatePath("/community/prayer");
   revalidatePath("/admin/community");
   redirect("/community/prayer");
+}
+
+/* --------------------------------------------------------- daily devotional */
+
+export type ReflectionState = { error: string | null; shared: boolean };
+
+/**
+ * A reflection under today's devotion. The day is worked out here, never
+ * taken from the form. The database makes a member's reflection pending,
+ * copies their first name in, and refuses a banned member or a fourth in a
+ * day; Pastor Richmond's own go straight up under his name.
+ */
+export async function shareReflection(_prev: ReflectionState, formData: FormData): Promise<ReflectionState> {
+  const viewer = await getCommunityViewer();
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
+  if (!viewer.inCommunity || viewer.needsAgreement) redirect(COMMUNITY_HOME);
+  if (!viewer.isAdmin && !viewer.profile) return { error: "Add your name and country on the community home before sharing.", shared: false };
+  if (viewer.profile?.is_banned) return { error: "Posting is closed on this account.", shared: false };
+
+  const seq = devotionalSeq();
+  if (seq === null) return { error: "The devotional has not begun yet.", shared: false };
+  const body = String(formData.get("body") ?? "").replace(/\r\n/g, "\n").trim();
+  if (body.length < 2) return { error: "Write your reflection first.", shared: false };
+  if (body.length > REFLECTION_MAX) return { error: `Please keep it under ${REFLECTION_MAX.toLocaleString("en-GB")} characters.`, shared: false };
+
+  const row: Record<string, string | number> = { user_id: viewer.user.id, day_seq: seq, body, display_name: viewer.profile?.first_name ?? "" };
+  if (viewer.isAdmin) Object.assign(row, { display_name: PASTOR_NAME, status: "approved", approved_at: new Date().toISOString() });
+  const { error } = await viewer.supabase.from("devotional_reflections").insert(row);
+  if (error) {
+    if (error.code === "P0001") return { error: error.message, shared: false };
+    console.error("Reflection not saved:", error.message);
+    return { error: "That could not be shared just now. Please try again.", shared: false };
+  }
+  if (!viewer.isAdmin) {
+    const d = devotionAt(seq);
+    const { email } = viewer;
+    const shownAs = viewer.profile?.first_name ?? "";
+    after(() => notifyNewReflection({ body, shownAs, fromEmail: email, devotion: `Day ${d.day}: ${d.title}` }));
+  }
+  revalidatePath("/community/prayer");
+  revalidatePath("/admin/community");
+  return { error: null, shared: true };
+}
+
+export async function deleteOwnReflection(formData: FormData) {
+  const viewer = await getCommunityViewer();
+  if (!viewer) redirect(COMMUNITY_SIGN_IN);
+  const id = String(formData.get("id") ?? "");
+  const { error } = await viewer.supabase.from("devotional_reflections").delete().eq("id", id).eq("user_id", viewer.user.id);
+  if (error) console.error("Own reflection not deleted:", error.message);
+  revalidatePath("/community/prayer");
+  revalidatePath("/admin/community");
+  redirect("/community/prayer#devotional");
 }
 
 /* ------------------------------------------------------ ask pastor richmond */

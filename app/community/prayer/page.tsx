@@ -273,7 +273,7 @@ export default async function PrayerWall({ searchParams }: Props) {
           </section>
         ) : (
           <>
-          <DailyDevotional />
+          <DailyDevotional viewer={viewer} />
           <section aria-labelledby="share" className="mt-8 rounded-2xl border border-gold-line/60 bg-cream p-5 sm:p-6">
             <h2 id="share" className="text-xl text-navy" style={DISPLAY}>
               Share a prayer request

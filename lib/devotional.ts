@@ -34,13 +34,24 @@ const DEVOTIONS: Devotion[] = JSON.parse(
 export const ESV_SHORT_NOTICE =
   "Scripture quotations are from the ESV® Bible (The Holy Bible, English Standard Version®), © 2001 by Crossway, a publishing ministry of Good News Publishers. Used by permission. All rights reserved.";
 
+export { REFLECTION_MAX, type Reflection } from "@/lib/devotional-shared";
+
+/** Days since the series began (0 on the first day), or null before it has. */
+export function devotionalSeq(now = Date.now()): number | null {
+  const start = Date.parse(`${DEVOTIONAL_START}T00:00:00Z`) + DAY_STARTS_UTC_HOUR * 3_600_000;
+  if (DEVOTIONS.length === 0 || now < start) return null;
+  return Math.floor((now - start) / 86_400_000);
+}
+
+/** The devotion shown on a given day of the series; the series repeats after the last one. */
+export function devotionAt(seq: number): Devotion {
+  return DEVOTIONS[seq % DEVOTIONS.length];
+}
+
 /** Today's devotion, or null before the series has begun. */
 export function devotionFor(now = Date.now()): Devotion | null {
-  if (DEVOTIONS.length === 0) return null;
-  const start = Date.parse(`${DEVOTIONAL_START}T00:00:00Z`) + DAY_STARTS_UTC_HOUR * 3_600_000;
-  if (now < start) return null;
-  const index = Math.floor((now - start) / 86_400_000) % DEVOTIONS.length;
-  return DEVOTIONS[index];
+  const seq = devotionalSeq(now);
+  return seq === null ? null : devotionAt(seq);
 }
 
 const fetchEsv = unstable_cache(

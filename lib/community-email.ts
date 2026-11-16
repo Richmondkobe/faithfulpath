@@ -162,6 +162,25 @@ export async function notifyNewQuestion(q: { body: string; shownAs: string; from
   );
 }
 
+/** Tells Richmond a member's reflection on the daily devotional is waiting for his approval. */
+export async function notifyNewReflection(r: { body: string; shownAs: string; fromEmail: string; devotion: string }): Promise<void> {
+  const from = process.env.RESEND_FROM ?? "Faithful Path <questions@faithfulpathcommunity.com>";
+  const review = `${SITE.url}/admin/community#review`;
+  await send(
+    {
+      from,
+      to: [INBOX],
+      subject: "New reflection on the Daily Devotional to review",
+      text: `A member has shared a reflection on ${r.devotion}. It will be shown as "${r.shownAs}" once you approve it.\n\n${r.body}\n\n—\nShared by: ${r.fromEmail}\nReview it: ${review}`,
+      html:
+        `<p>A member has shared a reflection on ${escape(r.devotion)}. It will be shown as &ldquo;${escape(r.shownAs)}&rdquo; once you approve it.</p>` +
+        `<p style="white-space:pre-wrap;border-left:3px solid #d4a24c;padding-left:12px">${escape(r.body)}</p>` +
+        `<hr><p style="color:#6B5F53;font-size:13px">Shared by: ${escape(r.fromEmail)}<br><a href="${review}">Review it in the admin</a></p>`,
+    },
+    "new reflection"
+  );
+}
+
 const MEMBER_FROM = "Pastor Richmond Kobe <questions@faithfulpathcommunity.com>";
 
 /** Tells the member their question has been answered, with a link to it. */

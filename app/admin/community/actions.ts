@@ -138,6 +138,30 @@ export async function deletePrayerReply(formData: FormData) {
   done("Reply deleted. The request stays on the wall.", `#r-${id}`);
 }
 
+/* ------------------------------------------------------- daily devotional */
+
+/** A member's reflection under a devotion: show it, or keep it from other members. */
+export async function setReflectionStatus(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  const status = String(formData.get("status") ?? "");
+  if (!["approved", "rejected"].includes(status)) failed("Changing the reflection", "that is not a choice");
+  const { error } = await supabase
+    .from("devotional_reflections")
+    .update(status === "approved" ? { status, approved_at: new Date().toISOString() } : { status })
+    .eq("id", id);
+  if (error) failed("Changing the reflection", error.message);
+  done(status === "approved" ? "Approved. It is under that day’s devotion." : "Not shown. Only its author can see it.", "#review");
+}
+
+export async function deleteReflection(formData: FormData) {
+  const supabase = await db();
+  const id = String(formData.get("id") ?? "");
+  const { error } = await supabase.from("devotional_reflections").delete().eq("id", id);
+  if (error) failed("Deleting the reflection", error.message);
+  done("Reflection deleted.", "#reflections");
+}
+
 /** A praise update or an answered prayer: approve it, hide it from the page, or show it again. */
 export async function setAnswerStatus(formData: FormData) {
   const supabase = await db();
