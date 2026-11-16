@@ -9,6 +9,7 @@ import MarkJoined from "@/components/community/MarkJoined";
 import { DISPLAY, buttonClass, errorClass, quietButtonClass } from "@/components/community/styles";
 import GuidelinesList from "@/components/community/GuidelinesList";
 import { GUIDELINES_PATH } from "@/lib/community-guidelines";
+import DevotionalCard from "@/components/community/DevotionalCard";
 import { getCommunityViewer, loadAnnouncements, loadAnswered, nextGathering } from "@/lib/community-db";
 import NextGatheringTime from "@/components/community/NextGatheringTime";
 import { COMMUNITY_SIGN_IN, prayerName, shortDate } from "@/lib/community";
@@ -113,6 +114,8 @@ export default async function CommunityHome({ searchParams }: Props) {
           {name ? `Welcome, ${name}` : "Welcome to the community"}
         </h1>
         <p className="mt-4 text-lg leading-relaxed">A place to grow, pray and walk with others.</p>
+
+        <DevotionalCard />
 
         {announcements.length > 0 && (
           <section aria-labelledby="announcements" className="mt-10">
