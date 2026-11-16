@@ -99,3 +99,25 @@ ${button}
 </div>
 </body></html>`;
 }
+
+/**
+ * The email that tells the community a new request is on the Prayer Wall.
+ * It names who asked, as the wall shows them ("Anonymous" becomes "A member"),
+ * and links to the request. The request's words are not in the email.
+ */
+export function prayerRequestEmail(p: { requestId: string; shownAs: string }): { subject: string; html: string } {
+  // A first name, kept clear of Markdown's own characters.
+  const name = p.shownAs.replace(/[*_`[\]<>\\]/g, "").trim();
+  const who = !name || name === "Anonymous" ? "A member of our community" : name;
+  const subject = who === name ? `${name} has asked for prayer` : "A new prayer request on the Prayer Wall";
+  const html = announcementEmailHtml({
+    title: "A new prayer request",
+    body:
+      `**${who}** has shared a prayer request on the Prayer Wall.\n\n` +
+      "Please take a moment to read it and pray. When you have prayed, tap “I prayed” so they know they are not praying alone.\n\n" +
+      "“Bear one another’s burdens, and so fulfill the law of Christ.” — Galatians 6:2 (ESV)",
+    link_label: "Read it and pray",
+    link_url: `/community/prayer#p-${p.requestId}`,
+  });
+  return { subject, html };
+}

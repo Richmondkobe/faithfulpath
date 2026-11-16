@@ -8,8 +8,8 @@ import { syncCommunityMember } from "@/lib/community-sync";
 import { sendWelcomeEmail } from "@/lib/community-welcome";
 import { emailCommunityGroup, removeFromCommunityGroup } from "@/lib/mailerlite-community";
 import { emailPrayerReply, emailQuestionAnswered, emailQuestionDeclined } from "@/lib/community-email";
-import { announcementEmailHtml } from "@/lib/announcement-email";
-import { PASTOR_REPLY_MAX, type Announcement, type CommunityProfile } from "@/lib/community";
+import { announcementEmailHtml, prayerRequestEmail } from "@/lib/announcement-email";
+import { PASTOR_REPLY_MAX, prayerName, type Announcement, type CommunityProfile } from "@/lib/community";
 
 /**
  * The admin's community actions. Each checks requireAdmin() (a server action
@@ -40,14 +40,38 @@ function failed(what: string, message: string): never {
 
 /* ------------------------------------------------------------ prayer wall */
 
+/**
+ * Puts a request on the wall. The first time it goes up, and unless the box
+ * is unticked, the community is emailed that there is a new request to pray
+ * for: who it is from (as the wall shows it) and a link, never the request
+ * itself, which stays on the wall where its author can still remove it.
+ */
 export async function approvePrayer(formData: FormData) {
   const supabase = await db();
   const id = String(formData.get("id") ?? "");
+  const tellCommunity = formData.get("email") === "on";
+  const { data: before, error: readError } = await supabase
+    .from("prayer_requests")
+    .select("approved_at, show_name, display_name")
+    .eq("id", id)
+    .single();
+  if (readError) failed("Approving", readError.message);
   const { error } = await supabase
     .from("prayer_requests")
     .update({ status: "approved", approved_at: new Date().toISOString(), reported_at: null })
     .eq("id", id);
   if (error) failed("Approving", error.message);
+
+  if (tellCommunity && !before.approved_at) {
+    const { subject, html } = prayerRequestEmail({ requestId: id, shownAs: prayerName(before) });
+    const e = await emailCommunityGroup({ subject, html });
+    done(
+      e
+        ? `Approved. It is on the Prayer Wall, but the email to the community did not go: ${e}`
+        : "Approved. It is on the Prayer Wall, and the community has been emailed.",
+      "#review"
+    );
+  }
   done("Approved. It is on the Prayer Wall.", "#review");
 }
 

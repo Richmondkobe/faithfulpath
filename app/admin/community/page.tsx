@@ -463,9 +463,15 @@ export default async function AdminCommunity({ searchParams }: Props) {
         {r.status === "approved" && <ReplyBox r={r} />}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           {actions.includes("approve") && (
-            <form action={approvePrayer}>
+            <form action={approvePrayer} className="flex flex-wrap items-center gap-3">
               <input type="hidden" name="id" value={r.id} />
               <button className={gold}>Approve</button>
+              {!r.approved_at && (
+                <label className="flex items-center gap-2 text-sm text-ink">
+                  <input type="checkbox" name="email" defaultChecked className="h-5 w-5 accent-[#a97a29]" />
+                  Email the community about it
+                </label>
+              )}
             </form>
           )}
           {actions.includes("reject") && (
