@@ -3,6 +3,7 @@ import Link from "next/link";
 import CommunityNav from "@/components/community/CommunityNav";
 import CommunityFooter from "@/components/community/CommunityFooter";
 import PrayerPostForm from "@/components/community/PrayerPostForm";
+import DailyDevotional from "@/components/community/DailyDevotional";
 import { DISPLAY, inputClass, labelClass, okClass, quietButtonClass } from "@/components/community/styles";
 import { loadWall, requireCommunity } from "@/lib/community-db";
 import {
@@ -272,6 +273,7 @@ export default async function PrayerWall({ searchParams }: Props) {
           </section>
         ) : (
           <>
+          <DailyDevotional />
           <section aria-labelledby="share" className="mt-8 rounded-2xl border border-gold-line/60 bg-cream p-5 sm:p-6">
             <h2 id="share" className="text-xl text-navy" style={DISPLAY}>
               Share a prayer request
