@@ -38,7 +38,19 @@ const FALLBACK_PAGES = 12;
 // chapters, and every chapter page opens with a "PART ONE · …" running header
 // rather than the chapter heading. Chapter 1 ends on page 20; Chapter 2 starts
 // on 21 (Richmond, 5 November 2026). Check the number after revising the book.
-const LAST_PAGE = { "stand-firm": 20 };
+//
+// Growing Together in Marriage's outline lists "Where to Begin" and the Part
+// One divider before its chapters, so the outline reads those two as the first
+// two sections and cuts at page 12. Chapter 1 runs from page 15 to page 24;
+// Chapter 2 starts on 25 (Richmond, 19 November 2026).
+const LAST_PAGE = { "stand-firm": 20, "growing-together-in-marriage": 24 };
+
+// Books whose PDF opens on the title page rather than the cover. The other
+// books' PDFs carry the cover as page 1, so their samples open with it for
+// free; for these the cover image is fetched from the covers bucket and placed
+// in front, on a page the size of the book's own (filled edge to edge, centred,
+// the overflow cropped — never stretched).
+const COVER_FIRST = new Set(["growing-together-in-marriage"]);
 const SAMPLES_PREFIX = "samples";
 const dry = process.argv.includes("--dry");
 
@@ -177,7 +189,7 @@ async function chaptersFromText(bytes) {
 
 const { data: allBooks, error } = await sb
   .from("products")
-  .select("slug,title,pdf_path")
+  .select("slug,title,pdf_path,cover_path")
   .eq("published", true)
   .order("slug");
 if (error) {
@@ -237,6 +249,32 @@ for (const book of books) {
   }
 
   const sample = await PDFDocument.create();
+  let coverPages = 0;
+  if (COVER_FIRST.has(book.slug)) {
+    const { data: img, error: imgError } = book.cover_path
+      ? await sb.storage.from("covers").download(book.cover_path)
+      : { data: null, error: { message: "no cover_path" } };
+    if (imgError || !img) {
+      // A sample that silently lost its cover would look finished and not be.
+      console.log(`  ${book.slug}: cover download failed — ${imgError?.message}, skipped`);
+      continue;
+    }
+    const imgBytes = Buffer.from(await img.arrayBuffer());
+    const isPng = imgBytes[0] === 0x89 && imgBytes[1] === 0x50;
+    const image = isPng ? await sample.embedPng(imgBytes) : await sample.embedJpg(imgBytes);
+    const { width, height } = doc.getPage(0).getSize();
+    const scale = Math.max(width / image.width, height / image.height);
+    const w = image.width * scale;
+    const h = image.height * scale;
+    sample.addPage([width, height]).drawImage(image, {
+      x: (width - w) / 2,
+      y: (height - h) / 2,
+      width: w,
+      height: h,
+    });
+    coverPages = 1;
+    note = `cover image + ${note}`;
+  }
   const copied = await sample.copyPages(doc, Array.from({ length: last }, (_, i) => i));
   copied.forEach((p) => sample.addPage(p));
   sample.setTitle(`${book.title} — free sample`);
@@ -246,6 +284,19 @@ for (const book of books) {
 
   const path = `${SAMPLES_PREFIX}/${book.slug}-sample.pdf`;
   rows.push({ slug: book.slug, total, first: 1, last, out: out.length, note });
+
+  // With --only, list what each page of the sample is, so the cut can be read
+  // rather than trusted.
+  if (only) {
+    const { text } = await extractText(await getDocumentProxy(new Uint8Array(bytes)), { mergePages: false });
+    console.log(`  ${book.slug}: the sample has ${sample.getPageCount()} pages\n`);
+    if (coverPages) console.log(`    sample p1   cover image (${book.cover_path.split("/").pop()})`);
+    for (let i = 0; i < last; i++) {
+      const opening = deSpace(text[i].replace(/\s+/g, " ").trim()).slice(0, 70) || "(blank)";
+      console.log(`    sample p${String(i + 1 + coverPages).padEnd(3)} book p${String(i + 1).padEnd(3)} ${opening}`);
+    }
+    console.log();
+  }
 
   if (dry) continue;
   const { error: upError } = await sb.storage.from("covers").upload(path, out, {
