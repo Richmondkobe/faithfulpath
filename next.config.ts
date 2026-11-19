@@ -500,6 +500,58 @@ const nextConfig: NextConfig = {
         destination: "/articles/christian-mindfulness",
         permanent: true,
       },
+      // Ten more old Zyro URLs that returned a plain 404, each sent to the page
+      // on the same topic (Richmond, 19 November 2026).
+      {
+        source: "/how-to-grow-spiritually",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/spiritual-growth-",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/faith-path-blog-spiritual-growth",
+        destination: "/articles/how-do-christians-grow-spiritually",
+        permanent: true,
+      },
+      {
+        source: "/how-to-study-the-bible",
+        destination: "/articles/how-to-study-the-bible-for-beginners",
+        permanent: true,
+      },
+      {
+        source: "/understanding-the-bible-clarity-in-studybible-study",
+        destination: "/articles/how-to-study-the-bible-for-beginners",
+        permanent: true,
+      },
+      {
+        source: "/christian-dating-advice-tips-for-singles",
+        destination: "/articles/christian-dating-tips",
+        permanent: true,
+      },
+      {
+        source: "/understanding-anxiety-spiritual-failure-or-mental-health",
+        destination: "/articles/is-anxiety-a-sin",
+        permanent: true,
+      },
+      {
+        source: "/spiritual-science-of-forgiveness",
+        destination: "/articles/bible-verses-about-forgiveness",
+        permanent: true,
+      },
+      {
+        source: "/beat-burnout-recharge-your-energy-effectively",
+        destination: "/articles/signs-of-spiritual-burnout",
+        permanent: true,
+      },
+      {
+        source: "/christian-book-store",
+        destination: "/guides",
+        permanent: true,
+      },
       // Renamed by Richmond, 22 October 2026.
       {
         source: "/articles/church-leadership-training",
