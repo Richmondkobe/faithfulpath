@@ -483,6 +483,23 @@ const nextConfig: NextConfig = {
         destination: "/articles/christian-mindfulness",
         permanent: true,
       },
+      // Three more old Zyro URLs that returned a plain 404, each with an
+      // article on the same topic (Richmond, 19 November 2026).
+      {
+        source: "/understanding-afterlife-evidence-a-christian-view",
+        destination: "/articles/christian-view-of-afterlife",
+        permanent: true,
+      },
+      {
+        source: "/christian-digital-detox-strategies",
+        destination: "/articles/christian-digital-detox",
+        permanent: true,
+      },
+      {
+        source: "/christian-mindfulness-for-parents",
+        destination: "/articles/christian-mindfulness",
+        permanent: true,
+      },
       // Renamed by Richmond, 22 October 2026.
       {
         source: "/articles/church-leadership-training",
